@@ -63,7 +63,7 @@ export const tracks: Track[] = [
       lyricist: ["정진석"],
       arranger: ["정진석", "황경하"],
       personnel: [
-        { role: "보컬, 기타", name: ["정진석"] },
+        { role: "보컬, 기타, 박수", name: ["정진석"] },
         { role: "코러스", name: ["김동산", "황경하", "까르"] },
         { role: "베이스, 레코딩, 믹싱", name: ["황경하"] },
         { role: "마스터링", name: ["이재수"] }

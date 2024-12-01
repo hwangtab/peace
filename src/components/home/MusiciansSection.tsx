@@ -25,7 +25,7 @@ const MusiciansSection = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {musicians.map((musician, index) => (
+          {[...musicians].sort((a, b) => a.id - b.id).map((musician, index) => (
             <MusicianCard
               key={musician.id}
               musician={musician}
