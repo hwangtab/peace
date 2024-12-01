@@ -34,6 +34,14 @@ export const videoItems: VideoItem[] = [
   },
   {
     id: 4,
+    title: "김인 - 이름을 모르는 먼 곳의 그대에게 서울 쇼케이스",
+    description: "독특한 소리를 탐구하며 환경과 평화에 대한 깊은 애정을 음악으로 표현하는 독립 음악가입니다. 다양한 장르의 음악을 즐기며 자신만의 독특한 음악 세계를 꾸준히 구축해왔습니다. 밤하늘의 별과 달을 모티프로 한 서정적인 음악을 통해 평화의 메시지를 전달하며, 섬세한 감성과 깊이 있는 가사로 주목받고 있습니다.",
+    youtubeUrl: "https://www.youtube.com/embed/8jPAlA7cGtM",
+    date: "2024-11-02",
+    location: "서울 홍대 스페이스 한강"
+  },
+  {
+    id: 5,
     title: "모모 - 이름을 모르는 먼 곳의 그대에게 서울 쇼케이스",
     description: "예진 안젤라 박과 황슬기로 구성된 재즈 듀오입니다. 재즈를 기반으로 하여 다양하고 아름다운 소리를 탐구하는 음악적 여정을 함께하고 있습니다. 재즈의 즉흥성과 실험정신을 바탕으로, 현대사회의 문제의식을 섬세하게 담아내는 것이 특징이며, 분쟁 지역의 평범한 일상과 그 속에 내재된 긴장감을 음악적으로 표현합니다.",
     youtubeUrl: "https://www.youtube.com/embed/hh-MwTiaJxk",
@@ -41,7 +49,7 @@ export const videoItems: VideoItem[] = [
     location: "서울 홍대 스페이스 한강"
   },
   {
-    id: 5,
+    id: 6,
     title: "자이 x HANASH - 이름을 모르는 먼 곳의 그대에게 서울 쇼케이스",
     description: "자이의 따뜻한 목소리, HANASH의 혁신적인 전자음악이 만나 새로운 음악적 가능성을 탐구하는 콜라보레이션입니다. 자이는 일상의 이야기를 슬프지만 힘 있는 목소리로 표현하며, HANASH는 세계 각국의 다양한 악기와 장르를 전자음악과 접목시키는 실험을 진행합니다. 두 아티스트의 만남은 전통과 현대의 조화로운 융합을 보여줍니다.",
     youtubeUrl: "https://www.youtube.com/embed/ka9DcFOD2fw",
