@@ -14,9 +14,10 @@ const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
         {press.imageUrl && (
           <div className="h-48 overflow-hidden">
             <img
-              src={press.imageUrl}
+              src={`https://images.weserv.nl/?url=${encodeURIComponent(press.imageUrl)}`}
               alt={press.title}
               className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+              loading="lazy"
             />
           </div>
         )}
