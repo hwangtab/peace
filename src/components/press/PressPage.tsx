@@ -14,10 +14,17 @@ const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
         {press.imageUrl && (
           <div className="h-48 overflow-hidden">
             <img
-              src={`https://images.weserv.nl/?url=${encodeURIComponent(press.imageUrl)}`}
+              src={press.imageUrl}
               alt={press.title}
               className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
               loading="lazy"
+              onError={(e) => {
+                const img = e.target as HTMLImageElement;
+                // JPEG 확장자를 JPG로 시도
+                if (img.src.endsWith('.jpeg')) {
+                  img.src = img.src.replace('.jpeg', '.jpg');
+                }
+              }}
             />
           </div>
         )}
