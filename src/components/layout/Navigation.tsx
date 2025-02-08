@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
@@ -64,33 +64,35 @@ const Navigation = () => {
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-light-beige/80 backdrop-blur-md"
-          >
-            <div className="container mx-auto px-4 py-4">
-              {menuItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`block py-2 ${
-                    location.pathname === item.path
-                      ? 'text-deep-sage'
-                      : 'text-text-dark'
-                  } font-serif`}
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div className="mobile-menu-wrapper">
+        <AnimatePresence initial={false}>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden bg-light-beige/80 backdrop-blur-md"
+            >
+              <div className="container mx-auto px-4 py-4">
+                {menuItems.map((item) => (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    className={`block py-2 ${
+                      location.pathname === item.path
+                        ? 'text-deep-sage'
+                        : 'text-text-dark'
+                    } font-serif`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </nav>
   );
 };

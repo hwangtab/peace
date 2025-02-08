@@ -135,7 +135,7 @@ export const pressItems: PressItem[] = [
     date: "2024-11-29",
     url: "https://bbs.ruliweb.com/news/read/204826",
     description: "이서영만의 독특한 음색과 서정적인 사운드스케이프가 돋보이는 '우리'는 피아노와 보컬을 중심으로 한 원곡에 일렉트릭 기타, 베이스, 플루겔혼이 더해진 풍성한 편곡이 특징이다. 특히 플루겔혼의 깊이 있는 음색은 곡의 시적 이미지를 한층 강화하며, 각 악기들은 독자적인 성부를 그리면서도 조화로운 앙상블을 이룬다.",
-    imageUrl: "https://i3.ruliweb.com/img/24/11/29/193767b79b4afd4.jpeg"
+    imageUrl: "https://www.news-art.co.kr/data/photos/20241043/art_17295699483884_fb2af4.jpg"
   },
   {
     id: 15,
@@ -145,5 +145,132 @@ export const pressItems: PressItem[] = [
     url: "https://www.news-art.co.kr/news/article.html?no=32582",
     description: "정진석은 이 곡에서 전통적인 블루스의 틀을 한국적 정서와 결합시키는 데 성공했다. 구수한 경상도 사투리로 노래하는 보컬은 미국 남부의 블루스 가수들을 연상시키면서도, 동시에 한국 시골 노인들의 구술 전통을 떠올리게 한다. 이러한 독특한 보컬 스타일은 곡의 주제의식과 완벽하게 조화를 이루며, 청자로 하여금 소성리 주민들의 목소리를 직접 듣는 듯한 착각을 불러일으킨다.",
     imageUrl: "https://www.news-art.co.kr/data/photos/20241041/art_17286175936167_e2bc82.jpg"
+  },
+  {
+    id: 16,
+    title: "‘이름을 모르는 먼 곳의 그대에게’ 평화 노래한 음악가들 여정, 아카이브 웹사이트 다시 만난다",
+    publisher: "스포츠경향",
+    date: "2024-12-02",
+    url: "https://sports.khan.co.kr/article/202412020551003",
+    description: "웹사이트에서는 프로젝트에 참여한 12팀의 뮤지션 소개와 각 음악가들이 전하는 평화 메시지를 만나볼 수 있다. 특히 제주 강정마을에서 결성된 포크듀오 모레도토요일, 네팔 출신 시타리스트 리테스 마하르잔이 참여한 Project Around Surround 등 다채로운 음악가들의 이야기가 담겨있다.",
+    imageUrl: "https://images.khan.co.kr/article/2024/12/02/news-p.v1.20241202.02d6177fa7fd480381f431c60710a344_P1.webp"
+  },
+  {
+    id: 17,
+    title: "거리를 초월하는 연대의 선율 - 남수의 '안녕(먼 곳의 그대에게)'",
+    publisher: "뉴스아트",
+    date: "2024-10-26",
+    url: "https://www.news-art.co.kr/news/article.html?no=32617",
+    description: "남수의 '안녕(먼 곳의 그대에게)'은 현대사회의 복잡한 양상 속에서 순수한 인간애를 되새기게 하는 작품이다. 이 곡은 단순한 멜로디와 절제된 편곡으로 메시지에 집중하게 하는 동시에, 깊은 울림을 전달한다. 곡의 구조는 다소 절제된 형식을 따르고 있지만, 그 안에서 남수만의 독특한 음악적 색채가 드러난다. 다소 무겁고 슬프게 느껴지는 피아노 반주는 묵묵하게 나아가며 곡의 분위기를 이끌어간다.",
+    imageUrl: "https://www.news-art.co.kr/data/photos/20241042/art_17290693286107_ca5934.png"
+  },
+  {
+    id: 18,
+    title: "까르의 'TRANSITION' - 시대의 전환을 노래하는 생명의 詩",
+    publisher: "뉴스아트",
+    date: "2024-11-19",
+    url: "https://www.news-art.co.kr/news/article.html?no=32677",
+    description: "'TRANSITION'은 결국 우리 시대의 불안과 희망을 솔직하게 담아낸 음악이다. 이 곡은 현대 사회의 위기 속에서도 끊임없이 새로운 가능성을 모색하는 예술가의 목소리를 들려주며, 동시에 한국 포크 음악의 현재적 의미를 다시 한번 생각하게 만든다. 까르가 제시하는 '전환'의 비전은, 그저 이상이나 구호가 아닌 일상의 실천과 예술적 승화를 통해 실현 가능한 것으로 다가온다.",
+    imageUrl: "https://www.news-art.co.kr/data/photos/20241147/art_17319955139486_dbe4f0.jpg"
+  },
+  {
+    id: 19,
+    title: "김인의 '별을 보러 간 사람' - 평화에 대한 서정적 시학",
+    publisher: "뉴스아트",
+    date: "2024-12-05",
+    url: "https://www.news-art.co.kr/news/article.html?no=32691",
+    description: "'별을 보러 간 사람'의 진정한 성취는 전쟁의 폭력성을 고발하는 방식에 있다. 이 곡은 직접적인 분노나 저항의 표현 대신, 평화로웠던 순간의 구체적 감각과 기억을 소환함으로써 전쟁의 부조리를 드러낸다. 특히 '어깨를 포근히 기대어 앉았던 그 밤'과 같은 친밀한 기억의 순간은, 전쟁이 파괴하는 것이 단순히 물리적 공간이나 생명만이 아니라 인간의 가장 소중한 관계성임을 암시한다.",
+    imageUrl: "https://www.news-art.co.kr/data/photos/20241249/art_17333740286862_d4e1e2.jpg"
+  },
+  {
+    id: 20,
+    title: "현대 문명의 비극을 담아낸 포크 록 '김동산과 블루이웃 - 물결'",
+    publisher: "뉴스아트",
+    date: "2024-11-20",
+    url: "https://news.mt.co.kr/mtview.php?no=2024122015155125322&type=1",
+    description: "음악적으로 '물결'은 주목할 만한 성취를 보여준다. 밴드 블루이웃의 호흡은 단단하다. 류준철의 오르간은 서정적인 화음으로 곡의 분위기를 이끌어가고, 이인우의 베이스와 김예준의 드럼은 견고한 리듬 섹션을 구축한다. 특히 후반부로 갈수록 고조되는 밴드의 연주는 가사가 던지는 질문의 무게감을 효과적으로 전달한다.",
+    imageUrl: "https://www.news-art.co.kr/data/photos/20241147/art_17320679353068_c724d0.jpg"
+  },
+  {
+    id: 21,
+    title: "전쟁의 상처를 노래하다 - 자이(Jai)와 HANASH의 '분홍색 패딩 소녀'",
+    publisher: "뉴스아트",
+    date: "2024-10-25",
+    url: "https://www.news-art.co.kr/news/article.html?no=32649",
+    description: "순수한 한 소녀의 이야기를 통해 전쟁의 비극을 더욱 선명하게 드러내는 이 곡은, 반전의 메시지를 전달하는 새로운 방식을 보여준다. 자이의 독특한 보컬과 HANASH의 실험적 사운드의 만남은 전쟁이라는 무거운 주제를 새로운 관점에서 조명하는데 성공했다. 무고한 영혼의 상처를 통해 전쟁의 참상을 이야기하는 이 시도는, 우리에게 더 깊은 울림을 준다.",
+    imageUrl: "https://www.news-art.co.kr/data/photos/20241043/art_17298221431005_afab11.jpg"
+  },
+  {
+    id: 22,
+    title: "전쟁의 상처를 노래하다 - 자이(Jai)와 HANASH의 '분홍색 패딩 소녀'",
+    publisher: "뉴스아트",
+    date: "2024-10-25",
+    url: "https://www.news-art.co.kr/news/article.html?no=32649",
+    description: "순수한 한 소녀의 이야기를 통해 전쟁의 비극을 더욱 선명하게 드러내는 이 곡은, 반전의 메시지를 전달하는 새로운 방식을 보여준다. 자이의 독특한 보컬과 HANASH의 실험적 사운드의 만남은 전쟁이라는 무거운 주제를 새로운 관점에서 조명하는데 성공했다. 무고한 영혼의 상처를 통해 전쟁의 참상을 이야기하는 이 시도는, 우리에게 더 깊은 울림을 준다.",
+    imageUrl: "https://www.news-art.co.kr/data/photos/20241043/art_17298221431005_afab11.jpg"
+  },
+  {
+    id: 23,
+    title: "작은 바람이 전하는 평화의 노래 - 나뭇잎들의 '눈 앞의 마음'",
+    publisher: "뉴스아트",
+    date: "2024-12-10",
+    url: "https://www.news-art.co.kr/news/article.html?no=32695",
+    description: "나뭇잎들은 포크 장르 특유의 친밀한 음악적 접근을 통해 거대한 평화라는 주제를 개인의 시선으로 풀어낸다. 특히 주목할 만한 것은 이들이 선택한 서정적 관점이다. 대부분의 반전 음악들이 전쟁의 참상을 직접적으로 고발하거나 저항의 목소리를 내는 것과 달리, '눈앞의 마음'은 일상의 작은 순간들과 개인의 감정선을 통해 평화의 가치를 이야기한다.",
+    imageUrl: "https://www.news-art.co.kr/data/photos/20241250/art_17338217947325_88f251.jpg"
+  },
+  {
+    id: 24,
+    title: "포크 듀오 나뭇잎들, 평화를 노래하다···새 싱글 ‘눈 앞의 마음’ 발매",
+    publisher: "스포츠경향",
+    date: "2025-01-16",
+    url: "https://sports.khan.co.kr/article/202501162213003",
+    description: "‘눈 앞의 마음’은 기존 반전 음악들과는 다른 접근방식이 돋보인다. 전쟁의 참상을 직접적으로 고발하거나 저항의 목소리를 내기보다, 일상의 작은 순간들과 개인의 감정선을 통해 평화의 가치를 이야기한다. “슬픔과 기쁨이 찾아오고 떠나가고 맴도네”라는 가사로 시작해 “모든 마음이 그곳에 닿기를 기도하고 노래하겠네”로 마무리되는 노랫말은 개인의 내면에서 시작해 세상을 향한 희망으로 확장된다.",
+    imageUrl: "https://images.khan.co.kr/article/2025/01/16/news-p.v1.20250116.cc1325a1e49d403d9bc62e48a2268aa5_P1.webp"
+  },
+  {
+    id: 25,
+    title: "예술해방전선, 포크 듀오 나뭇잎들 새 싱글 '눈 앞의 마음' 발매",
+    publisher: "루리웹",
+    date: "2025-01-16",
+    url: "https://bbs.ruliweb.com/news/read/206470",
+    description: "여울과 원걸로 구성된 나뭇잎들은 이번 곡에서도 특유의 조화로운 하모니를 선보인다. 여울의 맑은 음색과 원걸의 따뜻한 중저음이 만나 마치 두 개의 나뭇잎이 바람에 흔들리듯 자연스럽게 어우러진다. 어쿠스틱 기타와 쉐이커만을 사용한 미니멀한 편곡은 메시지의 순수성을 더욱 돋보이게 한다.",
+    imageUrl: "https://i3.ruliweb.com/img/25/01/16/1946d7c52aaafd4.jpeg"
+  },
+  {
+    id: 26,
+    title: "[강정의 자연을 담은 신비로운 사운드] Project Around Surround, 동서양 음악의 실험적 융합 선보여",
+    publisher: "뉴스아트",
+    date: "2025-01-17",
+    url: "https://www.news-art.co.kr/news/article.html?no=32718",
+    description: "이번 작품은 강정의 자연 풍경을 청각적으로 재해석한다. 잔잔한 파도 소리에서 시작해 점차 한라산의 웅장함으로 이어지는 음악적 흐름은, 고대 인도의 라가와 현대 앰비언트 음악의 특징을 절묘하게 조화시킨다. 특히 시타르의 신비로운 음색과 첨단 사운드 디자인의 만남은 동양의 전통과 서양의 현대성을 잇는 가교 역할을 한다.",
+    imageUrl: "https://www.news-art.co.kr/data/photos/20250103/art_17370882782835_3077f9.jpg"
+  },
+  {
+    id: 27,
+    title: "여유, '서울의 밤' 발매…'포크 선율에 담긴 청춘의 이야기'",
+    publisher: "머니투데이",
+    date: "2025-02-06",
+    url: "https://news.mt.co.kr/mtview.php?no=2025020613450122763",
+    description: "가사는 청년들의 불안과 순수한 삶에 대한 갈망을 그려냈다. 특히 제주도는 대안적 삶의 가능성을 상징하며 희망을 담고 있다. 포크 본연의 매력으로 청자들에게 깊은 울림을 전한다.",
+    imageUrl: "https://thumb.mt.co.kr/06/2025/02/2025020613450122763_1.jpg"
+  },
+  {
+    id: 28,
+    title: "여유 ‘서울의 밤’, 현대판 포크의 정수",
+    publisher: "스포츠경향",
+    date: "2025-02-06",
+    url: "https://sports.khan.co.kr/article/202502060153003",
+    description: "‘서울의 밤’은 과도한 형식적 실험이나 음악적 과시 없이도, 포크 음악이 가진 매력으로 청자들 마음을 울리는 데 성공했다. 개인의 서정적 독백으로 시작해 “잘 살아라 친구야”라는 축복으로 마무리되는 구조는, 개인의고민이 동시대인들과의 연대로 확장되는 과정을 들려준다.",
+    imageUrl: "https://images.khan.co.kr/article/2025/02/06/news-p.v1.20250206.9e168b0306d64ee8ab38e308df22e191_P1.webp"
+  },
+  {
+    id: 29,
+    title: "전쟁과 폭력에 저항하는 12인의 음악가들, 평화를 노래하다 - 『이름을 모르는 먼 곳의 그대에게』 발매",
+    publisher: "뉴스아트",
+    date: "2025-02-07",
+    url: "https://www.news-art.co.kr/news/article.html?no=32724",
+    description: "전쟁과 폭력이 일상이 되어버린 세계 곳곳의 평화를 염원하는 음악가들이 하나의 목소리를 냈다. 우크라이나 전쟁의 포화 속에서 희생되는 무고한 생명들, 가자지구에서 계속되는 민간인 학살, 그리고 70년이 넘도록 풀리지 않는 한반도 분단의 아픔까지, 각기 다른 현장의 고통을 음악으로 담아낸 음반 『이름을 모르는 먼 곳의 그대에게』가 2월 7일 오후 2시 디지털 음원으로 발매된다.",
+    imageUrl: "https://www.news-art.co.kr/data/photos/20250206/art_17388988747253_d7feea.jpg"
   }
 ];
+  
