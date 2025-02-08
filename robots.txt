@@ -1,0 +1,12 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Allow: /favicon.ico
+Allow: /favicon.png
+Allow: /apple-touch-icon.png
+Allow: /apple-touch-icon-precomposed.png
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.js.map$
+Allow: /*.css.map$
+Sitemap: https://peaceandmusic.net/sitemap.xml
