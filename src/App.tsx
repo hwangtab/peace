@@ -42,16 +42,18 @@ const AnimatedRoutes = () => {
   const location = useLocation();
   
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/musicians" element={<MusiciansPage />} />
-        <Route path="/tracks" element={<TracksPage />} />
-        <Route path="/gallery" element={<GalleryPage />} />
-        <Route path="/videos" element={<VideoPage />} />
-        <Route path="/press" element={<PressPage />} />
-      </Routes>
-    </AnimatePresence>
+    <div className="app-wrapper">
+      <AnimatePresence mode="wait" initial={false}>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/musicians" element={<MusiciansPage />} />
+          <Route path="/tracks" element={<TracksPage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/videos" element={<VideoPage />} />
+          <Route path="/press" element={<PressPage />} />
+        </Routes>
+      </AnimatePresence>
+    </div>
   );
 };
 
