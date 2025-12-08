@@ -1,4 +1,21 @@
 # https://www.robotstxt.org/robotstxt.html
+# Googlebot
+User-agent: Googlebot
+Allow: /
+
+# Bingbot
+User-agent: Bingbot
+Allow: /
+
+# Yandex
+User-agent: Yandex
+Allow: /
+
+# Naver
+User-agent: Yeti
+Allow: /
+
+# 모든 봇 기본 설정
 User-agent: *
 Allow: /
 Allow: /favicon.ico
@@ -9,4 +26,9 @@ Allow: /*.js$
 Allow: /*.css$
 Allow: /*.js.map$
 Allow: /*.css.map$
+
+# Sitemap
 Sitemap: https://peaceandmusic.net/sitemap.xml
+
+# Crawl-delay (1초)
+Crawl-delay: 1

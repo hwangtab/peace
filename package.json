@@ -37,12 +37,14 @@
   },
   "scripts": {
     "start": "GENERATE_SOURCEMAP=false HOT=false react-scripts start",
+    "prebuild": "node scripts/generateSitemap.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "ts-node src/server/server.ts",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "generate-sitemap": "node scripts/generateSitemap.js"
   },
   "browserslist": {
     "production": [
