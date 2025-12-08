@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { PressItem, pressItems } from '../../data/press';
+import SEOHelmet from '../shared/SEOHelmet';
+import { getBreadcrumbSchema } from '../../utils/structuredData';
 
 const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
   return (
@@ -47,32 +49,51 @@ export default function PressPage() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+  // Breadcrumb Structured Data
+  const breadcrumbs = [
+    { name: "홈", url: "https://peaceandmusic.net/" },
+    { name: "언론보도", url: "https://peaceandmusic.net/press" }
+  ];
+
+  const structuredData = [
+    getBreadcrumbSchema(breadcrumbs)
+  ];
+
   return (
-    <section className="section bg-light-beige" ref={ref}>
-      <div className="container mx-auto px-4 py-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-4xl font-medium text-gray-900 mb-4 font-serif">
-            언론보도
-          </h2>
-          <p className="text-lg text-gray-600 mb-12 subtitle">
-            평화를 노래하는 우리들의 이야기
-          </p>
-        </motion.div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[...pressItems]
-            .sort((a, b) => a.id - b.id)
-            .map((press) => (
-            <div key={press.id} className="h-full">
-              <PressCard press={press} />
-            </div>
-          ))}
+    <>
+      <SEOHelmet
+        title="언론보도 | 이름을 모르는 먼 곳의 그대에게"
+        description="평화를 노래하는 우리들의 이야기. 이름을 모르는 먼 곳의 그대에게 프로젝트에 대한 언론 보도와 기사를 확인하세요."
+        keywords="언론보도, 기사, 뉴스, 평화 프로젝트 보도"
+        canonicalUrl="https://peaceandmusic.net/press"
+        structuredData={structuredData}
+      />
+      <section className="section bg-light-beige" ref={ref}>
+        <div className="container mx-auto px-4 py-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl font-medium text-gray-900 mb-4 font-serif">
+              언론보도
+            </h2>
+            <p className="text-lg text-gray-600 mb-12 subtitle">
+              평화를 노래하는 우리들의 이야기
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[...pressItems]
+              .sort((a, b) => a.id - b.id)
+              .map((press) => (
+                <div key={press.id} className="h-full">
+                  <PressCard press={press} />
+                </div>
+              ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

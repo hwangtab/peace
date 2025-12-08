@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { getGalleryImages } from '../api/gallery';
+import { getGalleryImages } from '../src/api/gallery';
+import SEOHelmet from '../src/components/shared/SEOHelmet';
+import { getBreadcrumbSchema, getImageGallerySchema } from '../src/utils/structuredData';
 
 interface GalleryImage {
   id: number;
@@ -16,7 +18,7 @@ const GalleryPage = () => {
     const loadImages = async () => {
       try {
         const imageList = await getGalleryImages();
-        console.log('Loaded images:', imageList); // 디버그 로그
+        console.log('Loaded images:', imageList);
         setImages(imageList);
       } catch (error) {
         console.error('Error loading gallery images:', error);
@@ -27,19 +29,43 @@ const GalleryPage = () => {
   }, []);
 
   const handleImageLoad = (src: string) => {
-    console.log('Image loaded:', src); // 디버그 로그
+    console.log('Image loaded:', src);
     setLoadedImages(prev => [...prev, src]);
   };
 
   const handleImageError = (src: string) => {
-    console.log('Image error:', src); // 디버그 로그
+    console.log('Image error:', src);
     setImages(prev => prev.filter(img => img.url !== src));
   };
 
-  console.log('Current state:', { images, loadedImages }); // 디버그 로그
+  // Breadcrumb Structured Data
+  const breadcrumbs = [
+    { name: "홈", url: "https://peaceandmusic.net/" },
+    { name: "갤러리", url: "https://peaceandmusic.net/gallery" }
+  ];
+
+  // ImageGallery Structured Data
+  const imageList = images.map(img => ({
+    url: `https://peaceandmusic.net${img.url}`,
+    caption: `Gallery image ${img.id}`
+  }));
+
+  const structuredData = [
+    getBreadcrumbSchema(breadcrumbs),
+    getImageGallerySchema(imageList)
+  ];
+
+  console.log('Current state:', { images, loadedImages });
 
   return (
     <div className="pt-24 pb-16 min-h-screen bg-light-beige">
+      <SEOHelmet
+        title="갤러리 | 이름을 모르는 먼 곳의 그대에게"
+        description="평화를 노래하는 우리들의 순간들. 평화 프로젝트의 다양한 활동 모습과 뮤지션들의 순간을 담은 사진 갤러리."
+        keywords="갤러리, 사진, 평화 프로젝트 사진, 뮤지션 사진"
+        canonicalUrl="https://peaceandmusic.net/gallery"
+        structuredData={structuredData}
+      />
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -68,9 +94,8 @@ const GalleryPage = () => {
                 alt={`Gallery image ${image.id}`}
                 onLoad={() => handleImageLoad(image.url)}
                 onError={() => handleImageError(image.url)}
-                className={`absolute w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105 ${
-                  loadedImages.includes(image.url) ? 'opacity-100' : 'opacity-0'
-                }`}
+                className={`absolute w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105 ${loadedImages.includes(image.url) ? 'opacity-100' : 'opacity-0'
+                  }`}
               />
               <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
             </div>
