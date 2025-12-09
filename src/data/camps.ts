@@ -58,18 +58,18 @@ export const camps: CampEvent[] = [
       'HANASH'
     ],
     images: [
-      '/images/2th-camp/1.jpg',
-      '/images/2th-camp/2.jpg',
-      '/images/2th-camp/3.jpg',
-      '/images/2th-camp/4.jpg',
-      '/images/2th-camp/5.jpg',
-      '/images/2th-camp/6.jpg',
-      '/images/2th-camp/7.jpg',
-      '/images/2th-camp/8.jpg',
-      '/images/2th-camp/9.jpg',
-      '/images/2th-camp/10.jpg',
-      '/images/2th-camp/11.jpg',
-      '/images/2th-camp/12.jpg'
+      '/Images/2th camp/DSC00316.JPG',
+      '/Images/2th camp/DSC00340.JPG',
+      '/Images/2th camp/DSC00393.JPG',
+      '/Images/2th camp/DSC00428.JPG',
+      '/Images/2th camp/DSC00481.JPG',
+      '/Images/2th camp/DSC00559.JPG',
+      '/Images/2th camp/DSC00625.JPG',
+      '/Images/2th camp/DSC00667.JPG',
+      '/Images/2th camp/DSC00729.JPG',
+      '/Images/2th camp/DSC00835.JPG',
+      '/Images/2th camp/DSC00938.JPG',
+      '/Images/2th camp/DSC01127.JPG'
     ]
   },
   {
