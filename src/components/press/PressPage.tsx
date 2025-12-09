@@ -1,8 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useMemo } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { PressItem, pressItems } from '../../data/press';
 import SEOHelmet from '../shared/SEOHelmet';
 import { getBreadcrumbSchema } from '../../utils/structuredData';
+import PressEventFilter from './EventFilter';
 
 const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
   return (
@@ -48,6 +49,7 @@ const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
 export default function PressPage() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [selectedFilter, setSelectedFilter] = useState<string>('all');
 
   // Breadcrumb Structured Data
   const breadcrumbs = [
@@ -58,6 +60,19 @@ export default function PressPage() {
   const structuredData = [
     getBreadcrumbSchema(breadcrumbs)
   ];
+
+  const filteredItems = useMemo(() => {
+    if (selectedFilter === 'all') {
+      return pressItems;
+    } else if (selectedFilter === 'album-2024') {
+      return pressItems.filter(press => press.eventType === 'album' && press.eventYear === 2024);
+    } else if (selectedFilter === 'camp-2023') {
+      return pressItems.filter(press => press.eventType === 'camp' && press.eventYear === 2023);
+    } else if (selectedFilter === 'camp-2025') {
+      return pressItems.filter(press => press.eventType === 'camp' && press.eventYear === 2025);
+    }
+    return pressItems;
+  }, [selectedFilter]);
 
   return (
     <>
@@ -83,8 +98,9 @@ export default function PressPage() {
               평화를 노래하는 우리들의 이야기
             </p>
           </motion.div>
+          <PressEventFilter selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[...pressItems]
+            {[...filteredItems]
               .sort((a, b) => a.id - b.id)
               .map((press) => (
                 <div key={press.id} className="h-full">

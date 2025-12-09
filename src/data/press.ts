@@ -1,4 +1,5 @@
 import { StaticImageData } from "next/image";
+import { EventType } from "../types/event";
 
 export interface PressItem {
   id: number;
@@ -7,10 +8,13 @@ export interface PressItem {
   date: string;          // 보도 날짜
   url: string;           // 기사 링크
   description: string;   // 기사 요약 또는 발췌
-  imageUrl?: string;     // 관련 이미지 
+  imageUrl?: string;     // 관련 이미지
+  eventType?: EventType; // 'camp' or 'album'
+  eventYear?: number;    // 2023, 2024, 2025, etc.
 }
 
-export const pressItems: PressItem[] = [
+// All press items are about the 2024 album project by default
+export const pressItems: PressItem[] = ([
   {
     id: 4,
     title: "평화를 노래하는 뮤지션들의 무대 '이름을 모르는 먼 곳의 그대에게' 전석 매진",
@@ -272,5 +276,9 @@ export const pressItems: PressItem[] = [
     description: "전쟁과 폭력이 일상이 되어버린 세계 곳곳의 평화를 염원하는 음악가들이 하나의 목소리를 냈다. 우크라이나 전쟁의 포화 속에서 희생되는 무고한 생명들, 가자지구에서 계속되는 민간인 학살, 그리고 70년이 넘도록 풀리지 않는 한반도 분단의 아픔까지, 각기 다른 현장의 고통을 음악으로 담아낸 음반 『이름을 모르는 먼 곳의 그대에게』가 2월 7일 오후 2시 디지털 음원으로 발매된다.",
     imageUrl: "https://www.news-art.co.kr/data/photos/20250206/art_17388988747253_d7feea.jpg"
   }
-];
-  
+] as PressItem[]).map(item => ({
+  ...item,
+  eventType: item.eventType || 'album',
+  eventYear: item.eventYear || 2024
+}));
+
