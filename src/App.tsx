@@ -10,6 +10,7 @@ import GallerySection from './components/home/GallerySection';
 import PressPage from './components/press/PressPage';
 import VideoPage from './components/videos/VideoPage';
 import Camp2023Page from './pages/Camp2023Page';
+import Camp2025Page from './pages/Camp2025Page';
 
 // Pages will be imported here
 const HomePage = () => (
@@ -53,6 +54,7 @@ const AnimatedRoutes = () => {
           <Route path="/videos" element={<VideoPage />} />
           <Route path="/press" element={<PressPage />} />
           <Route path="/camps/2023" element={<Camp2023Page />} />
+          <Route path="/camps/2025" element={<Camp2025Page />} />
         </Routes>
       </AnimatePresence>
     </div>
