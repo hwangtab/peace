@@ -26,12 +26,12 @@ export const camps: CampEvent[] = [
       '태히언'
     ],
     images: [
-      '/images/1th-camp/1.jpg',
-      '/images/1th-camp/2.jpg',
-      '/images/1th-camp/3.jpg',
-      '/images/1th-camp/4.jpg',
-      '/images/1th-camp/5.jpg',
-      '/images/1th-camp/6.jpg'
+      '/Images/1th camp/20230600.편집.19.jpg',
+      '/Images/1th camp/20230600.편집.24.jpg',
+      '/Images/1th camp/20230600.편집.29.jpg',
+      '/Images/1th camp/20230600.편집.32.jpg',
+      '/Images/1th camp/20230600.편집.37.jpg',
+      '/Images/1th camp/20230609_160722.jpg'
     ]
   },
   {
