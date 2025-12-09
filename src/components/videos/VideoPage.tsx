@@ -1,6 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useMemo } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { VideoItem, videoItems } from '../../data/videos';
+import VideoEventFilter from './EventFilter';
 
 const VideoCard: React.FC<{ video: VideoItem }> = ({ video }) => {
   const getYoutubeVideoUrl = (embedUrl: string) => {
@@ -44,6 +45,20 @@ const VideoCard: React.FC<{ video: VideoItem }> = ({ video }) => {
 export default function VideoPage() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [selectedFilter, setSelectedFilter] = useState<string>('all');
+
+  const filteredVideos = useMemo(() => {
+    if (selectedFilter === 'all') {
+      return videoItems;
+    } else if (selectedFilter === 'album-2024') {
+      return videoItems.filter(video => video.eventType === 'album' && video.eventYear === 2024);
+    } else if (selectedFilter === 'camp-2023') {
+      return videoItems.filter(video => video.eventType === 'camp' && video.eventYear === 2023);
+    } else if (selectedFilter === 'camp-2025') {
+      return videoItems.filter(video => video.eventType === 'camp' && video.eventYear === 2025);
+    }
+    return videoItems;
+  }, [selectedFilter]);
 
   return (
     <section className="section bg-white" ref={ref}>
@@ -61,8 +76,9 @@ export default function VideoPage() {
             평화를 노래하는 우리들의 순간
           </p>
         </motion.div>
+        <VideoEventFilter selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {videoItems.map((video) => (
+          {filteredVideos.map((video) => (
             <div key={video.id} className="h-full">
               <VideoCard video={video} />
             </div>
