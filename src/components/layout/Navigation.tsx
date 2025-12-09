@@ -9,8 +9,8 @@ const Navigation = () => {
 
   const menuItems = [
     { name: '홈', path: '/' },
-    { name: '뮤지션', path: '/musicians' },
-    { name: '수록곡', path: '/tracks' },
+    { name: '뮤지션 (앨범)', path: '/musicians' },
+    { name: '수록곡 (앨범)', path: '/tracks' },
     { name: '갤러리', path: '/gallery' },
     { name: '공연영상', path: '/videos' },
     { name: '언론보도', path: '/press' },
