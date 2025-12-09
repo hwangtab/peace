@@ -2,10 +2,13 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { GalleryImage } from '../../types/gallery';
 import { getGalleryImages } from '../../api/gallery';
+import EventFilter from '../gallery/EventFilter';
 
 const GallerySection = () => {
   const [images, setImages] = useState<GalleryImage[]>([]);
+  const [filteredImages, setFilteredImages] = useState<GalleryImage[]>([]);
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
+  const [selectedFilter, setSelectedFilter] = useState<string>('all');
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -16,9 +19,29 @@ const GallerySection = () => {
       // ID가 높은 순서대로 정렬
       const sortedImages = [...galleryImages].sort((a, b) => b.id - a.id);
       setImages(sortedImages);
+      setFilteredImages(sortedImages);
     };
     loadImages();
   }, []);
+
+  useEffect(() => {
+    if (selectedFilter === 'all') {
+      const sortedImages = [...images].sort((a, b) => b.id - a.id);
+      setFilteredImages(sortedImages);
+    } else if (selectedFilter === 'album-2024') {
+      const filtered = images.filter(img => img.eventType === 'album' && img.eventYear === 2024);
+      const sortedImages = [...filtered].sort((a, b) => b.id - a.id);
+      setFilteredImages(sortedImages);
+    } else if (selectedFilter === 'camp-2023') {
+      const filtered = images.filter(img => img.eventType === 'camp' && img.eventYear === 2023);
+      const sortedImages = [...filtered].sort((a, b) => b.id - a.id);
+      setFilteredImages(sortedImages);
+    } else if (selectedFilter === 'camp-2025') {
+      const filtered = images.filter(img => img.eventType === 'camp' && img.eventYear === 2025);
+      const sortedImages = [...filtered].sort((a, b) => b.id - a.id);
+      setFilteredImages(sortedImages);
+    }
+  }, [selectedFilter, images]);
 
   const handleImageLoad = (index: number) => {
     setLoadedImages(prev => new Set(prev).add(index));
@@ -41,8 +64,10 @@ const GallerySection = () => {
           </p>
         </motion.div>
 
+        <EventFilter selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
+
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {images.map((image, index) => (
+          {filteredImages.map((image, index) => (
             <motion.div
               key={image.id}
               initial={{ opacity: 0, y: 20 }}
