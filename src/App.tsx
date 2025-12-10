@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 import Navigation from './components/layout/Navigation';
 import HeroSection from './components/home/HeroSection';
 import AboutSection from './components/home/AboutSection';
+import TimelineSection from './components/home/TimelineSection';
 import MusiciansSection from './components/home/MusiciansSection';
 import TracksSection from './components/home/TracksSection';
 import GallerySection from './components/home/GallerySection';
@@ -19,6 +20,7 @@ const HomePage = () => (
   <div>
     <HeroSection />
     <AboutSection />
+    <TimelineSection />
     <MusiciansSection />
     <TracksSection />
   </div>
