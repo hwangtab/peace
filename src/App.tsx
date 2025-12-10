@@ -10,10 +10,13 @@ import TracksSection from './components/home/TracksSection';
 import GallerySection from './components/home/GallerySection';
 import PressPage from './components/press/PressPage';
 import VideoPage from './components/videos/VideoPage';
+import CampsPage from './pages/CampsPage';
 import Camp2023Page from './pages/Camp2023Page';
 import Camp2025Page from './pages/Camp2025Page';
+import Camp2026Page from './pages/Camp2026Page';
 import AlbumMusiciansPage from './pages/album/AlbumMusiciansPage';
 import AlbumTracksPage from './pages/album/AlbumTracksPage';
+import AlbumAboutPage from './pages/album/AlbumAboutPage';
 
 // Pages will be imported here
 const HomePage = () => (
@@ -59,8 +62,11 @@ const AnimatedRoutes = () => {
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/videos" element={<VideoPage />} />
           <Route path="/press" element={<PressPage />} />
+          <Route path="/camps" element={<CampsPage />} />
           <Route path="/camps/2023" element={<Camp2023Page />} />
           <Route path="/camps/2025" element={<Camp2025Page />} />
+          <Route path="/camps/2026" element={<Camp2026Page />} />
+          <Route path="/album/about" element={<AlbumAboutPage />} />
         </Routes>
       </AnimatePresence>
     </div>
