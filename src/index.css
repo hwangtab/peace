@@ -25,7 +25,7 @@
   }
 
   body {
-    @apply bg-light-beige text-text-dark;
+    @apply bg-ocean-sand text-deep-ocean;
     font-family: 'Pretendard-Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -57,7 +57,31 @@
   }
 
   .btn-primary {
-    @apply bg-sage-gray text-pure-white hover:bg-deep-sage;
+    @apply bg-jeju-ocean text-cloud-white hover:bg-ocean-mist transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-ocean-mist text-cloud-white hover:bg-jeju-ocean transition-colors duration-200;
+  }
+
+  .btn-accent-gold {
+    @apply bg-golden-sun text-deep-ocean hover:bg-sunset-coral hover:text-cloud-white transition-colors duration-200;
+  }
+
+  .btn-accent-coral {
+    @apply bg-sunset-coral text-cloud-white hover:bg-golden-sun hover:text-deep-ocean transition-colors duration-200;
+  }
+
+  .section-ocean {
+    @apply bg-ocean-sand;
+  }
+
+  .section-sky {
+    @apply bg-sky-horizon;
+  }
+
+  .section-sunlight {
+    @apply bg-sunlight-glow;
   }
 }
 

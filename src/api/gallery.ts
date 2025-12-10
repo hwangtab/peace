@@ -9,7 +9,7 @@ export const getGalleryImages = async (): Promise<GalleryImage[]> => {
   for (let i = imageCount; i >= 1; i--) {
     images.push({
       id: i,
-      url: `/gallery/${i}.jpeg`
+      url: `/images-webp/gallery/${i}.webp`
     });
   }
   
