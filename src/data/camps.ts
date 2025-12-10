@@ -26,12 +26,12 @@ export const camps: CampEvent[] = [
       '태히언'
     ],
     images: [
-      '/Images/1th camp/20230600.편집.19.jpg',
-      '/Images/1th camp/20230600.편집.24.jpg',
-      '/Images/1th camp/20230600.편집.29.jpg',
-      '/Images/1th camp/20230600.편집.32.jpg',
-      '/Images/1th camp/20230600.편집.37.jpg',
-      '/Images/1th camp/20230609_160722.jpg'
+      '/images-webp/camps/2023/20230600.편집.19.webp',
+      '/images-webp/camps/2023/20230600.편집.24.webp',
+      '/images-webp/camps/2023/20230600.편집.29.webp',
+      '/images-webp/camps/2023/20230600.편집.32.webp',
+      '/images-webp/camps/2023/20230600.편집.37.webp',
+      '/images-webp/camps/2023/20230609_160722.webp'
     ]
   },
   {
@@ -58,18 +58,18 @@ export const camps: CampEvent[] = [
       'HANASH'
     ],
     images: [
-      '/Images/2th camp/DSC00316.JPG',
-      '/Images/2th camp/DSC00340.JPG',
-      '/Images/2th camp/DSC00393.JPG',
-      '/Images/2th camp/DSC00428.JPG',
-      '/Images/2th camp/DSC00481.JPG',
-      '/Images/2th camp/DSC00559.JPG',
-      '/Images/2th camp/DSC00625.JPG',
-      '/Images/2th camp/DSC00667.JPG',
-      '/Images/2th camp/DSC00729.JPG',
-      '/Images/2th camp/DSC00835.JPG',
-      '/Images/2th camp/DSC00938.JPG',
-      '/Images/2th camp/DSC01127.JPG'
+      '/images-webp/camps/2025/DSC00316.webp',
+      '/images-webp/camps/2025/DSC00340.webp',
+      '/images-webp/camps/2025/DSC00393.webp',
+      '/images-webp/camps/2025/DSC00428.webp',
+      '/images-webp/camps/2025/DSC00481.webp',
+      '/images-webp/camps/2025/DSC00559.webp',
+      '/images-webp/camps/2025/DSC00625.webp',
+      '/images-webp/camps/2025/DSC00667.webp',
+      '/images-webp/camps/2025/DSC00729.webp',
+      '/images-webp/camps/2025/DSC00835.webp',
+      '/images-webp/camps/2025/DSC00938.webp',
+      '/images-webp/camps/2025/DSC01127.webp'
     ]
   },
   {
