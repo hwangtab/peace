@@ -27,45 +27,45 @@ const AboutSection = () => {
         >
           <motion.h2
             variants={fadeIn}
-            className="font-serif text-5xl font-medium text-gray-900 mb-8 whitespace-pre-line"
+            className="font-serif text-5xl font-medium text-gray-900 mb-8"
           >
-            {'이름을 모르는\n먼 곳의 그대에게'}
+            강정피스앤뮤직캠프
           </motion.h2>
           <motion.p
             variants={fadeIn}
             className="text-2xl font-medium text-gray-800 mb-16 subtitle"
           >
-            음악으로 평화를, 평화로 세상을
+            강정마을에서 시작되는 평화를 위한 음악 운동
           </motion.p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-7xl mx-auto">
           <motion.div variants={fadeIn} className="space-y-12">
             <div>
-              <h3 className="font-serif text-3xl font-medium text-gray-900 mb-6">평화를 노래하다</h3>
+              <h3 className="font-serif text-3xl font-medium text-gray-900 mb-6">강정에서 시작되다</h3>
               <p className="text-lg leading-relaxed text-gray-600">
-                우리는 전쟁과 분쟁이 끊이지 않는 혼란한 시대를 살아가고 있습니다. 세계 곳곳에서 들려오는 전쟁의 소식은 우리의 일상을 불안과 공포로 채웁니다. 이런 때일수록 우리에게 절실히 필요한 것은 전쟁이 아닌 평화를 선택하는 것, 분쟁과 폭력의 악순환을 끊고 서로 존중하며 화해하는 것입니다.
+                제주 강정마을에서 시작된 평화음악캠프는 해군기지 건설로 인한 갈등과 상처를 음악으로 치유하고, 평화의 메시지를 전 세계에 전하는 운동입니다. 강정마을의 평화운동가들과 전국의 음악가들이 함께 모여 평화를 위한 목소리를 높입니다.
               </p>
             </div>
             <div>
-              <h3 className="font-serif text-3xl font-medium text-gray-900 mb-6">하나의 메시지</h3>
+              <h3 className="font-serif text-3xl font-medium text-gray-900 mb-6">매년 되풀이되다</h3>
               <p className="text-lg leading-relaxed text-gray-600">
-                『이름을 모르는 먼 곳의 그대에게』는 평화를 갈망하는 12팀의 뮤지션들이 하나 된 마음으로 전쟁에 반대하고 평화를 노래하는 프로젝트입니다. 각기 다른 음악적 색깔과 개성을 지닌 이들이 전쟁으로 인한 고통과 상처, 그리고 평화를 향한 간절한 염원이라는 공통의 메시지를 노래합니다.
+                2023년의 첫 캠프부터 시작하여, 2025년, 그리고 미래로 계속될 강정피스앤뮤직캠프는 정해진 날짜에 강정마을에서 해마다 개최됩니다. 이는 평화를 향한 우리의 변치 않는 의지와, 계속되어야 할 평화운동의 상징입니다.
               </p>
             </div>
           </motion.div>
 
           <motion.div variants={fadeIn} className="space-y-12">
             <div>
-              <h3 className="font-serif text-3xl font-medium text-gray-900 mb-6">음악의 힘을 믿다</h3>
+              <h3 className="font-serif text-3xl font-medium text-gray-900 mb-6">음악으로 평화를 말하다</h3>
               <p className="text-lg leading-relaxed text-gray-600">
-                우리는 음악이 가진 놀라운 힘을 믿습니다. 음악은 사람과 사람, 마음과 마음을 이어주고, 언어와 국경을 뛰어넘어 공감과 연대의 메시지를 전합니다. 작은 촛불들이 모여 어둠을 밝히듯, 한 사람 한 사람의 평화를 향한 마음이 모여 세상을 움직이는 힘이 될 것입니다.
+                다양한 장르의 뮤지션들이 강정피스앤뮤직캠프에서 함께 만나 평화의 메시지를 음악으로 표현합니다. 『이름을 모르는 먼 곳의 그대에게』 앨범에는 12팀의 뮤지션들이 각자의 음악 언어로 평화를 노래했으며, 이러한 다양한 목소리들이 모여 하나의 강력한 메시지를 만듭니다.
               </p>
             </div>
             <div>
-              <h3 className="font-serif text-3xl font-medium text-gray-900 mb-6">함께 만드는 평화</h3>
+              <h3 className="font-serif text-3xl font-medium text-gray-900 mb-6">연대의 힘을 믿다</h3>
               <p className="text-lg leading-relaxed text-gray-600">
-                평화는 결코 이상향이 아닙니다. 우리 모두의 간절한 염원이자 지향점이며, 한 걸음 한 걸음 우리의 노력으로 만들어가야 할 소중한 가치입니다. 이 프로젝트를 통해 더 많은 이들이 평화의 소중함을 되새기고, 평화를 위한 작은 발걸음을 함께 내딛기를 희망합니다.
+                우크라이나, 가자, 한반도 - 세계 곳곳의 분쟁 지역을 위해 음악가들이 연대하고, 평화를 노래하는 강정피스앤뮤직캠프는 평화운동의 새로운 형태입니다. 이 캠프를 통해 우리는 언어와 국경을 넘어 평화를 향한 간절한 염원을 함께할 수 있습니다.
               </p>
             </div>
           </motion.div>
