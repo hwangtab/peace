@@ -21,7 +21,7 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="text-2xl font-bold font-serif text-deep-sage hover:text-sage-gray transition-colors">
-            이름을 모르는 먼 곳의 그대에게
+            강정피스앤뮤직캠프
           </Link>
 
           {/* Desktop Menu */}
