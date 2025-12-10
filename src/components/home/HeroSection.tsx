@@ -24,11 +24,11 @@ const HeroSection = () => {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-5xl font-medium text-gray-900 mb-6 font-serif">
-            이름을 모르는<br />먼 곳의 그대에게
+            강정피스앤뮤직캠프
           </h1>
           <p className="text-2xl text-gray-800 mb-12 subtitle">
-            평화를 노래하는 우리들의 목소리가<br />
-            먼 곳의 그대에게 전해지기를
+            평화를 노래하는 음악가들의 만남<br />
+            강정마을에서 시작되는 평화의 메시지
           </p>
           <div className="flex justify-center">
             <motion.button
