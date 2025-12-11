@@ -101,7 +101,7 @@ export default function PressPage() {
           <PressEventFilter selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[...filteredItems]
-              .sort((a, b) => a.id - b.id)
+              .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
               .map((press) => (
                 <div key={press.id} className="h-full">
                   <PressCard press={press} />
