@@ -281,7 +281,7 @@ export const pressItems: PressItem[] = ([
     publisher: "제주투데이",
     date: "2025-06-13",
     url: "https://www.ijejutoday.com/news/articleView.html?idxno=400217",
-    description: "올해로 2회째를 맞는 강정피스앤뮤직캠프가 오는 14일 강정천 체육공원에서 개최된다. 이번 캠프는 '평화를 노래하는 모든 이들의 축제'를 슬로건으로 내걸고 다양한 장르의 뮤지션들이 참여해 평화의 메시지를 전한다.",
+    description: "올해로 2회째를 맞는 강정피스앤뮤직캠프가 오는 14일 할망물식당 일대(서귀포시 강정동 2835-1)에서 개최된다. 이번 캠프는 '평화를 노래하는 모든 이들의 축제'를 슬로건으로 내걸고 다양한 장르의 뮤지션들이 참여해 평화의 메시지를 전한다.",
     eventType: 'camp',
     eventYear: 2025
   },
