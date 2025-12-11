@@ -6,7 +6,7 @@ const HeroSection = () => {
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url("/hero-bg.webp")' }}
+        style={{ backgroundImage: 'url("/images-webp/camps/2023/20230600.편집.29.webp")' }}
       />
 
       {/* Gradient Overlay using Coastal Palette */}

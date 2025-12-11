@@ -274,7 +274,7 @@ export const pressItems: PressItem[] = ([
     url: "https://www.news-art.co.kr/news/article.html?no=32724",
     description: "전쟁과 폭력이 일상이 되어버린 세계 곳곳의 평화를 염원하는 음악가들이 하나의 목소리를 냈다. 우크라이나 전쟁의 포화 속에서 희생되는 무고한 생명들, 가자지구에서 계속되는 민간인 학살, 그리고 70년이 넘도록 풀리지 않는 한반도 분단의 아픔까지, 각기 다른 현장의 고통을 음악으로 담아낸 음반 『이름을 모르는 먼 곳의 그대에게』가 2월 7일 오후 2시 디지털 음원으로 발매된다.",
     imageUrl: "https://www.news-art.co.kr/data/photos/20250206/art_17388988747253_d7feea.jpg"
-  }
+  },
   {
     id: 30,
     title: "평화콘서트 강정피스앤뮤직캠프 14일 개최",
