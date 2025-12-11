@@ -42,6 +42,8 @@ const AudioPlayer = ({ audioUrl, isPlaying, onPlayPause, title, artist }: AudioP
     if (!soundRef.current) return;
 
     if (isPlaying) {
+      // Ensure we stop any previous playback and reset before playing
+      soundRef.current.stop();
       soundRef.current.play();
       const animate = () => {
         setProgress(soundRef.current?.seek() || 0);
@@ -54,6 +56,12 @@ const AudioPlayer = ({ audioUrl, isPlaying, onPlayPause, title, artist }: AudioP
         cancelAnimationFrame(requestRef.current);
       }
     }
+
+    return () => {
+      if (requestRef.current) {
+        cancelAnimationFrame(requestRef.current);
+      }
+    };
   }, [isPlaying]);
 
   const formatTime = (time: number) => {
