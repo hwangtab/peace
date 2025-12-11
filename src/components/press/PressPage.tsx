@@ -36,7 +36,7 @@ const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
             <span className="text-sm text-gray-500">{press.publisher}</span>
             <span className="text-sm text-gray-500">{press.date}</span>
           </div>
-          <h3 className="text-xl font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-200">
+          <h3 className="text-xl font-semibold text-deep-ocean hover:text-jeju-ocean transition-colors duration-200">
             {press.title}
           </h3>
           <p className="text-gray-600 mt-2 flex-1">{press.description}</p>

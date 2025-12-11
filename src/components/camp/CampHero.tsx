@@ -14,7 +14,7 @@ const CampHero: React.FC<CampHeroProps> = ({ camp }) => {
   });
 
   return (
-    <section className="relative h-96 flex items-center justify-center text-center overflow-hidden bg-deep-sage">
+    <section className="relative h-96 flex items-center justify-center text-center overflow-hidden bg-hero-gradient">
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black opacity-40" />
 

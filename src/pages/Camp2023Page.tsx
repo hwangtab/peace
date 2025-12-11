@@ -58,7 +58,7 @@ const Camp2023Page = () => {
                       transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
                       className="flex items-center gap-2"
                     >
-                      <span className="inline-block w-2 h-2 bg-deep-sage rounded-full" />
+                      <span className="inline-block w-2 h-2 bg-jeju-ocean rounded-full" />
                       <span className="text-gray-700">{participant}</span>
                     </motion.div>
                   ))}

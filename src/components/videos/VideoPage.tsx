@@ -5,35 +5,39 @@ import VideoEventFilter from './EventFilter';
 import SEOHelmet from '../shared/SEOHelmet';
 
 const VideoCard: React.FC<{ video: VideoItem }> = ({ video }) => {
-  const getYoutubeVideoUrl = (embedUrl: string) => {
-    const videoId = embedUrl.split('/').pop();
-    return `https://www.youtube.com/watch?v=${videoId}`;
-  };
+  const getYoutubeVideoId = (url: string) => url.split('/').pop();
+  const getYoutubeWatchUrl = (url: string) => `https://www.youtube.com/watch?v=${getYoutubeVideoId(url)}`;
 
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden h-full flex flex-col transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
-      <div className="relative w-full pb-[56.25%]">
-        <iframe
-          className="absolute inset-0 w-full h-full"
-          src={video.youtubeUrl}
-          title={video.title}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-          allowFullScreen
-          frameBorder="0"
-        ></iframe>
-      </div>
       <a
-        href={getYoutubeVideoUrl(video.youtubeUrl)}
+        href={getYoutubeWatchUrl(video.youtubeUrl)}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex-1 block hover:bg-gray-50/80 transition-colors duration-300"
+        className="flex-1 block hover:bg-ocean-mist/10 transition-colors duration-300"
       >
+        <div className="relative aspect-video overflow-hidden rounded-t-xl group">
+          <img
+            src={`https://img.youtube.com/vi/${getYoutubeVideoId(video.youtubeUrl)}/maxresdefault.jpg`}
+            alt={video.title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300" />
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-300">
+              <svg className="w-6 h-6 text-jeju-ocean ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
         <div className="p-6 h-full flex flex-col cursor-pointer">
           <div className="flex justify-between items-center mb-2">
             <span className="text-sm text-gray-500 cursor-pointer">{video.location}</span>
             <span className="text-sm text-gray-500 cursor-pointer">{video.date}</span>
           </div>
-          <h3 className="text-xl font-semibold text-gray-800 mb-2 hover:text-blue-600 transition-colors duration-300 cursor-pointer">
+          <h3 className="text-xl font-semibold text-deep-ocean mb-2 hover:text-jeju-ocean transition-colors duration-300 cursor-pointer">
             {video.title}
           </h3>
           <p className="text-gray-600 flex-1 cursor-pointer">{video.description}</p>

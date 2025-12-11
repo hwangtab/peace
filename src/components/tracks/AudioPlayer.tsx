@@ -80,7 +80,7 @@ const AudioPlayer = ({ audioUrl, isPlaying, onPlayPause, title, artist }: AudioP
         <motion.button
           whileTap={{ scale: 0.95 }}
           onClick={onPlayPause}
-          className="w-10 h-10 flex items-center justify-center rounded-full bg-sage-gray text-white hover:bg-deep-sage transition-colors"
+          className="w-10 h-10 flex items-center justify-center rounded-full bg-ocean-mist text-white hover:bg-jeju-ocean transition-colors"
         >
           {isPlaying ? (
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">

@@ -105,8 +105,8 @@ const AlbumAboutPage = () => {
               className="space-y-3"
             >
               <Link
-                to="/album/musicians"
-                className="block bg-deep-sage text-white py-3 rounded font-medium text-center hover:bg-sage-gray transition-colors"
+                to="/album/tracks"
+                className="block bg-golden-sun text-white py-3 rounded font-medium text-center hover:bg-sunset-coral transition-colors"
               >
                 뮤지션 보기 →
               </Link>
