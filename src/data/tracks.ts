@@ -19,7 +19,7 @@ export const tracks: Track[] = [
         { role: "마스터링", name: ["이재수"] }
       ]
     },
-    imageUrl: "/gallery-webp/1.webp"
+    imageUrl: "/images-webp/gallery/1.webp"
   },
   {
     id: 2,
@@ -69,7 +69,7 @@ export const tracks: Track[] = [
         { role: "마스터링", name: ["이재수"] }
       ]
     },
-    imageUrl: "/gallery-webp/2.webp"
+    imageUrl: "/images-webp/gallery/2.webp"
   },
   {
     id: 3,
@@ -116,7 +116,7 @@ export const tracks: Track[] = [
         { role: "마스터링", name: ["이재수"] }
       ]
     },
-    imageUrl: "/gallery-webp/3.webp"
+    imageUrl: "/images-webp/gallery/3.webp"
   },
   {
     id: 4,

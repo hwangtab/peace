@@ -22,7 +22,7 @@ export const galleryImages: GalleryImages = Array.from({ length: TOTAL_IMAGES },
 
   return {
     id: imageId,
-    url: `/gallery/${imageId}.jpeg`,
+    url: `/images-webp/gallery/${imageId}.webp`,
     eventType,
     eventYear,
   };

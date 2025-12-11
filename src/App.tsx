@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Navigation from './components/layout/Navigation';
@@ -8,12 +8,17 @@ import TimelineSection from './components/home/TimelineSection';
 import MusiciansSection from './components/home/MusiciansSection';
 import TracksSection from './components/home/TracksSection';
 import GallerySection from './components/home/GallerySection';
-import PressPage from './components/press/PressPage';
-import VideoPage from './components/videos/VideoPage';
-import Camp2023Page from './pages/Camp2023Page';
-import Camp2025Page from './pages/Camp2025Page';
-import AlbumMusiciansPage from './pages/album/AlbumMusiciansPage';
-import AlbumTracksPage from './pages/album/AlbumTracksPage';
+
+// Lazy load route-specific pages
+const PressPage = lazy(() => import('./components/press/PressPage'));
+const VideoPage = lazy(() => import('./components/videos/VideoPage'));
+const CampsPage = lazy(() => import('./pages/CampsPage'));
+const Camp2023Page = lazy(() => import('./pages/Camp2023Page'));
+const Camp2025Page = lazy(() => import('./pages/Camp2025Page'));
+const Camp2026Page = lazy(() => import('./pages/Camp2026Page'));
+const AlbumMusiciansPage = lazy(() => import('./pages/album/AlbumMusiciansPage'));
+const AlbumTracksPage = lazy(() => import('./pages/album/AlbumTracksPage'));
+const AlbumAboutPage = lazy(() => import('./pages/album/AlbumAboutPage'));
 
 // Pages will be imported here
 const HomePage = () => (
@@ -44,13 +49,24 @@ const GalleryPage = () => (
   </div>
 );
 
+// Loading fallback component for lazy-loaded pages
+const PageLoadingSpinner = () => (
+  <div className="min-h-screen bg-light-beige flex items-center justify-center">
+    <div className="text-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-deep-sage mx-auto mb-4"></div>
+      <p className="text-gray-600 font-serif">로딩 중...</p>
+    </div>
+  </div>
+);
+
 const AnimatedRoutes = () => {
   const location = useLocation();
-  
+
   return (
     <div className="app-wrapper">
       <AnimatePresence mode="wait" initial={false}>
-        <Routes location={location} key={location.pathname}>
+        <Suspense fallback={<PageLoadingSpinner />}>
+          <Routes location={location} key={location.pathname}>
           <Route path="/" element={<HomePage />} />
           <Route path="/musicians" element={<Navigate to="/album/musicians" replace />} />
           <Route path="/tracks" element={<Navigate to="/album/tracks" replace />} />
@@ -59,9 +75,13 @@ const AnimatedRoutes = () => {
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/videos" element={<VideoPage />} />
           <Route path="/press" element={<PressPage />} />
+          <Route path="/camps" element={<CampsPage />} />
           <Route path="/camps/2023" element={<Camp2023Page />} />
           <Route path="/camps/2025" element={<Camp2025Page />} />
-        </Routes>
+          <Route path="/camps/2026" element={<Camp2026Page />} />
+          <Route path="/album/about" element={<AlbumAboutPage />} />
+          </Routes>
+        </Suspense>
       </AnimatePresence>
     </div>
   );
