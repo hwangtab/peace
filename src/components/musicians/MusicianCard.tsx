@@ -56,11 +56,11 @@ const MusicianCard = ({ musician, index }: MusicianCardProps) => {
 
           {/* Content */}
           <div className="p-6 flex-1 flex flex-col">
-            <h3 className="text-2xl font-serif text-gray-900 group-hover:text-blue-600 transition-colors duration-200 mb-2">
+            <h3 className="text-2xl font-serif text-deep-ocean group-hover:text-jeju-ocean transition-colors duration-200 mb-2">
               {musician.name}
             </h3>
             <p className="text-gray-600 mb-4 flex-1">{musician.shortDescription}</p>
-            
+
             {/* Instagram Links */}
             {musician.instagramUrls.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-4">
