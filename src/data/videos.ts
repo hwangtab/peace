@@ -9,6 +9,7 @@ export interface VideoItem {
   location: string;
   eventType?: EventType; // 'camp' or 'album'
   eventYear?: number; // 2023, 2024, 2025, etc.
+  thumbnailUrl?: string;
 }
 
 export const videoItems: VideoItem[] = [
@@ -81,7 +82,8 @@ export const videoItems: VideoItem[] = [
     date: "2023-06-10",
     location: "서귀포시 강정천 체육공원",
     eventType: 'camp',
-    eventYear: 2023
+    eventYear: 2023,
+    thumbnailUrl: "https://i.ytimg.com/vi/dF6raNSEkfI/sddefault.jpg"
   },
   {
     id: 102,
@@ -91,7 +93,8 @@ export const videoItems: VideoItem[] = [
     date: "2023-06-10",
     location: "서귀포시 강정천 체육공원",
     eventType: 'camp',
-    eventYear: 2023
+    eventYear: 2023,
+    thumbnailUrl: "https://i.ytimg.com/vi/mPeFqepsf_Y/maxresdefault.jpg"
   },
   {
     id: 103,
@@ -101,7 +104,8 @@ export const videoItems: VideoItem[] = [
     date: "2023-06-10",
     location: "서귀포시 강정천 체육공원",
     eventType: 'camp',
-    eventYear: 2023
+    eventYear: 2023,
+    thumbnailUrl: "https://i.ytimg.com/vi/MzIpAmDAYzk/maxresdefault.jpg"
   },
   {
     id: 104,
@@ -111,7 +115,8 @@ export const videoItems: VideoItem[] = [
     date: "2023-06-10",
     location: "서귀포시 강정천 체육공원",
     eventType: 'camp',
-    eventYear: 2023
+    eventYear: 2023,
+    thumbnailUrl: "https://i.ytimg.com/vi/OGKd_pnrul4/maxresdefault.jpg"
   },
   {
     id: 105,
@@ -121,7 +126,8 @@ export const videoItems: VideoItem[] = [
     date: "2023-06-10",
     location: "서귀포시 강정천 체육공원",
     eventType: 'camp',
-    eventYear: 2023
+    eventYear: 2023,
+    thumbnailUrl: "https://i.ytimg.com/vi/GHSxHVc-b1w/maxresdefault.jpg"
   },
   {
     id: 106,
@@ -131,7 +137,8 @@ export const videoItems: VideoItem[] = [
     date: "2023-06-10",
     location: "서귀포시 강정천 체육공원",
     eventType: 'camp',
-    eventYear: 2023
+    eventYear: 2023,
+    thumbnailUrl: "https://i.ytimg.com/vi/1TyLqzoHA7M/maxresdefault.jpg"
   },
   {
     id: 107,
@@ -141,7 +148,8 @@ export const videoItems: VideoItem[] = [
     date: "2023-06-10",
     location: "서귀포시 강정천 체육공원",
     eventType: 'camp',
-    eventYear: 2023
+    eventYear: 2023,
+    thumbnailUrl: "https://i.ytimg.com/vi/YwOO627losU/maxresdefault.jpg"
   },
   {
     id: 108,
@@ -151,7 +159,8 @@ export const videoItems: VideoItem[] = [
     date: "2023-06-10",
     location: "서귀포시 강정천 체육공원",
     eventType: 'camp',
-    eventYear: 2023
+    eventYear: 2023,
+    thumbnailUrl: "https://i.ytimg.com/vi/RH2x3ctcBgU/maxresdefault.jpg"
   },
   {
     id: 109,
@@ -161,7 +170,8 @@ export const videoItems: VideoItem[] = [
     date: "2023-06-10",
     location: "서귀포시 강정천 체육공원",
     eventType: 'camp',
-    eventYear: 2023
+    eventYear: 2023,
+    thumbnailUrl: "https://i.ytimg.com/vi/tFxoLxIDfyM/maxresdefault.jpg"
   },
   {
     id: 110,
@@ -171,7 +181,8 @@ export const videoItems: VideoItem[] = [
     date: "2023-06-10",
     location: "서귀포시 강정천 체육공원",
     eventType: 'camp',
-    eventYear: 2023
+    eventYear: 2023,
+    thumbnailUrl: "https://i.ytimg.com/vi/-PhTNOVdLc0/maxresdefault.jpg"
   },
   {
     id: 111,
@@ -181,7 +192,8 @@ export const videoItems: VideoItem[] = [
     date: "2023-06-10",
     location: "서귀포시 강정천 체육공원",
     eventType: 'camp',
-    eventYear: 2023
+    eventYear: 2023,
+    thumbnailUrl: "https://i.ytimg.com/vi/mC-HJ-VhLOQ/maxresdefault.jpg"
   },
   {
     id: 112,
@@ -191,7 +203,8 @@ export const videoItems: VideoItem[] = [
     date: "2023-06-10",
     location: "서귀포시 강정천 체육공원",
     eventType: 'camp',
-    eventYear: 2023
+    eventYear: 2023,
+    thumbnailUrl: "https://i.ytimg.com/vi/crK6y7mJrfY/maxresdefault.jpg"
   },
 
   // 2025 Camp Videos
@@ -203,7 +216,8 @@ export const videoItems: VideoItem[] = [
     date: "2025-06-14",
     location: "서귀포시 강정동 할망물식당 일대",
     eventType: 'camp',
-    eventYear: 2025
+    eventYear: 2025,
+    thumbnailUrl: "https://i.ytimg.com/vi/pcsM9lxlA24/maxresdefault.jpg"
   },
   {
     id: 202,
@@ -213,6 +227,7 @@ export const videoItems: VideoItem[] = [
     date: "2025-06-14",
     location: "서귀포시 강정동 할망물식당 일대",
     eventType: 'camp',
-    eventYear: 2025
+    eventYear: 2025,
+    thumbnailUrl: "https://i.ytimg.com/vi/DBlCTgWNNKU/maxresdefault.jpg"
   }
 ];
