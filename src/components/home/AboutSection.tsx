@@ -46,10 +46,11 @@ const AboutSection = () => {
 
           <motion.div variants={fadeIn} className="bg-ocean-sand/30 p-8 rounded-2xl hover:bg-ocean-sand/50 transition-colors duration-300">
             <h3 className="font-serif text-2xl font-bold text-deep-ocean mb-4">함께 걷는 평화의 여정</h3>
+            <h3 className="font-serif text-2xl font-bold text-deep-ocean mb-4">함께 걷는 평화의 여정</h3>
             <p className="text-base leading-relaxed text-coastal-gray">
               강정의 자연 속에서 뮤지션과 관객이 경계 없이 어우러집니다.
-              2박 3일간의 캠핑, 평화 포럼, 그리고 밤하늘을 수놓는 공연까지.
-              우리는 서로의 존재를 확인하며 평화의 가능성을 확장해 나갑니다.
+              평화를 노래하는 무대 위에서 우리는 서로의 존재를 확인하며,
+              음악을 통해 연대의 가능성을 확장해 나갑니다.
             </p>
           </motion.div>
 
