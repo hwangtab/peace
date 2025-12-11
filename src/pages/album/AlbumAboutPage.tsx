@@ -32,7 +32,7 @@ const AlbumAboutPage = () => {
       <div className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
         {/* Background Decorative Elements */}
         {/* Background Decorative Elements */}
-        <div className="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-l from-ocean-mist/20 to-transparent -skew-x-12 transform origin-top-right z-0" />
+        <div className="absolute top-[-20%] right-[-10%] w-2/3 h-[120%] bg-ocean-mist/20 rounded-full blur-3xl z-0 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-1/2 h-2/3 bg-golden-sun/10 rounded-full blur-3xl z-0" />
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-jeju-ocean/5 rounded-full blur-3xl z-0" />
 
