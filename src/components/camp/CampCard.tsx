@@ -18,9 +18,8 @@ const CampCard: React.FC<CampCardProps> = ({ camp }) => {
     >
       <Link
         to={isComingSoon ? '#' : `/camps/${camp.year}`}
-        className={`block h-full rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow ${
-          isComingSoon ? 'pointer-events-none' : ''
-        }`}
+        className={`block h-full rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow ${isComingSoon ? 'pointer-events-none' : ''
+          }`}
       >
         <div className="bg-gradient-to-b from-deep-sage to-sage-gray h-48 flex flex-col items-center justify-center p-4 text-center">
           <h3 className="text-4xl font-bold text-white font-serif mb-2">
@@ -74,12 +73,11 @@ const CampCard: React.FC<CampCardProps> = ({ camp }) => {
                 </div>
               )}
 
-              <motion.button
-                whileHover={{ backgroundColor: '#5a6854' }}
-                className="w-full bg-deep-sage text-white py-2 rounded font-medium text-sm transition-colors"
+              <button
+                className="w-full bg-jeju-ocean text-white py-2 rounded font-medium text-sm transition-colors hover:bg-ocean-mist"
               >
                 자세히 보기 →
-              </motion.button>
+              </button>
             </>
           )}
         </div>
