@@ -75,8 +75,8 @@ export const videoItems: VideoItem[] = [
   // 2023 Camp Videos
   {
     id: 101,
-    title: "2023 강정피스앤뮤직캠프 공연 #1",
-    description: "강정천 체육공원에서 펼쳐진 2023 강정피스앤뮤직캠프 공연 실황입니다.",
+    title: "인간띠잇기",
+    description: "2023년 봄 제주해군기지 정문 앞 인간띠잇기",
     youtubeUrl: "https://www.youtube.com/watch?v=dF6raNSEkfI",
     date: "2023-06-10",
     location: "서귀포시 강정천 체육공원",
@@ -85,7 +85,7 @@ export const videoItems: VideoItem[] = [
   },
   {
     id: 102,
-    title: "2023 강정피스앤뮤직캠프 공연 #2",
+    title: "2023 제1회 강정피스앤뮤직캠프",
     description: "강정천 체육공원에서 펼쳐진 2023 강정피스앤뮤직캠프 공연 실황입니다.",
     youtubeUrl: "https://www.youtube.com/watch?v=mPeFqepsf_Y",
     date: "2023-06-10",
@@ -95,8 +95,8 @@ export const videoItems: VideoItem[] = [
   },
   {
     id: 103,
-    title: "2023 강정피스앤뮤직캠프 공연 #3",
-    description: "강정천 체육공원에서 펼쳐진 2023 강정피스앤뮤직캠프 공연 실황입니다.",
+    title: "3강정3종댄스",
+    description: "강정천 체육공원에서 펼쳐진 3강정3종댄스입니다.",
     youtubeUrl: "https://www.youtube.com/watch?v=MzIpAmDAYzk",
     date: "2023-06-10",
     location: "서귀포시 강정천 체육공원",
@@ -105,8 +105,8 @@ export const videoItems: VideoItem[] = [
   },
   {
     id: 104,
-    title: "2023 강정피스앤뮤직캠프 공연 #4",
-    description: "강정천 체육공원에서 펼쳐진 2023 강정피스앤뮤직캠프 공연 실황입니다.",
+    title: "2023 제1회 강정피스앤뮤직캠프",
+    description: "강정천 체육공원에서 펼쳐진 2023 제1회 강정피스앤뮤직캠프 현장입니다.",
     youtubeUrl: "https://www.youtube.com/watch?v=OGKd_pnrul4",
     date: "2023-06-10",
     location: "서귀포시 강정천 체육공원",
@@ -115,8 +115,8 @@ export const videoItems: VideoItem[] = [
   },
   {
     id: 105,
-    title: "2023 강정피스앤뮤직캠프 공연 #5",
-    description: "강정천 체육공원에서 펼쳐진 2023 강정피스앤뮤직캠프 공연 실황입니다.",
+    title: "2023 제1회 강정피스앤뮤직캠프",
+    description: "강정천 체육공원에서 펼쳐진 2023 제1회 강정피스앤뮤직캠프 현장입니다.",
     youtubeUrl: "https://www.youtube.com/watch?v=GHSxHVc-b1w",
     date: "2023-06-10",
     location: "서귀포시 강정천 체육공원",
@@ -125,8 +125,8 @@ export const videoItems: VideoItem[] = [
   },
   {
     id: 106,
-    title: "2023 강정피스앤뮤직캠프 공연 #6",
-    description: "강정천 체육공원에서 펼쳐진 2023 강정피스앤뮤직캠프 공연 실황입니다.",
+    title: "2023 제1회 강정피스앤뮤직캠프",
+    description: "강정천 체육공원에서 펼쳐진 2023 제1회 강정피스앤뮤직캠프 현장입니다.",
     youtubeUrl: "https://www.youtube.com/watch?v=1TyLqzoHA7M",
     date: "2023-06-10",
     location: "서귀포시 강정천 체육공원",
@@ -135,8 +135,8 @@ export const videoItems: VideoItem[] = [
   },
   {
     id: 107,
-    title: "2023 강정피스앤뮤직캠프 공연 #7",
-    description: "강정천 체육공원에서 펼쳐진 2023 강정피스앤뮤직캠프 공연 실황입니다.",
+    title: "2023 제1회 강정피스앤뮤직캠프",
+    description: "강정천 체육공원에서 펼쳐진 2023 제1회 강정피스앤뮤직캠프 현장입니다.",
     youtubeUrl: "https://www.youtube.com/watch?v=YwOO627losU",
     date: "2023-06-10",
     location: "서귀포시 강정천 체육공원",
@@ -145,8 +145,8 @@ export const videoItems: VideoItem[] = [
   },
   {
     id: 108,
-    title: "2023 강정피스앤뮤직캠프 공연 #8",
-    description: "강정천 체육공원에서 펼쳐진 2023 강정피스앤뮤직캠프 공연 실황입니다.",
+    title: "2023 제1회 강정피스앤뮤직캠프",
+    description: "강정천 체육공원에서 펼쳐진 2023 제1회 강정피스앤뮤직캠프 현장입니다.",
     youtubeUrl: "https://www.youtube.com/watch?v=RH2x3ctcBgU",
     date: "2023-06-10",
     location: "서귀포시 강정천 체육공원",
@@ -155,8 +155,8 @@ export const videoItems: VideoItem[] = [
   },
   {
     id: 109,
-    title: "2023 강정피스앤뮤직캠프 공연 #9",
-    description: "강정천 체육공원에서 펼쳐진 2023 강정피스앤뮤직캠프 공연 실황입니다.",
+    title: "2023 제1회 강정피스앤뮤직캠프",
+    description: "강정천 체육공원에서 펼쳐진 2023 제1회 강정피스앤뮤직캠프 현장입니다.",
     youtubeUrl: "https://www.youtube.com/watch?v=tFxoLxIDfyM",
     date: "2023-06-10",
     location: "서귀포시 강정천 체육공원",
@@ -165,8 +165,8 @@ export const videoItems: VideoItem[] = [
   },
   {
     id: 110,
-    title: "2023 강정피스앤뮤직캠프 공연 #10",
-    description: "강정천 체육공원에서 펼쳐진 2023 강정피스앤뮤직캠프 공연 실황입니다.",
+    title: "2023 제1회 강정피스앤뮤직캠프",
+    description: "강정천 체육공원에서 펼쳐진 2023 제1회 강정피스앤뮤직캠프 현장입니다.",
     youtubeUrl: "https://www.youtube.com/watch?v=-PhTNOVdLc0",
     date: "2023-06-10",
     location: "서귀포시 강정천 체육공원",
@@ -175,8 +175,8 @@ export const videoItems: VideoItem[] = [
   },
   {
     id: 111,
-    title: "2023 강정피스앤뮤직캠프 공연 #11",
-    description: "강정천 체육공원에서 펼쳐진 2023 강정피스앤뮤직캠프 공연 실황입니다.",
+    title: "2023 제1회 강정피스앤뮤직캠프",
+    description: "강정천 체육공원에서 펼쳐진 2023 제1회 강정피스앤뮤직캠프 현장입니다.",
     youtubeUrl: "https://www.youtube.com/watch?v=mC-HJ-VhLOQ",
     date: "2023-06-10",
     location: "서귀포시 강정천 체육공원",
@@ -185,8 +185,8 @@ export const videoItems: VideoItem[] = [
   },
   {
     id: 112,
-    title: "2023 강정피스앤뮤직캠프 공연 #12",
-    description: "강정천 체육공원에서 펼쳐진 2023 강정피스앤뮤직캠프 공연 실황입니다.",
+    title: "강정피스앤뮤직캠프",
+    description: "전쟁을 멈추자라는 슬로건을 내세운 강정피스앤뮤직캠프가 처음 열렸다!",
     youtubeUrl: "https://www.youtube.com/watch?v=crK6y7mJrfY",
     date: "2023-06-10",
     location: "서귀포시 강정천 체육공원",
@@ -197,8 +197,8 @@ export const videoItems: VideoItem[] = [
   // 2025 Camp Videos
   {
     id: 201,
-    title: "2025 강정피스앤뮤직캠프 공연 #1",
-    description: "할망물식당 일대에서 펼쳐진 2025 강정피스앤뮤직캠프 공연 실황입니다.",
+    title: "제2회 강정피스앤뮤직캠프는 준비중!",
+    description: "내일 열리는 강정피스앤뮤직캠프 여럿이서 열심히 준비하고 있습니다!",
     youtubeUrl: "https://www.youtube.com/watch?v=pcsM9lxlA24",
     date: "2025-06-14",
     location: "서귀포시 강정동 할망물식당 일대",
@@ -207,8 +207,8 @@ export const videoItems: VideoItem[] = [
   },
   {
     id: 202,
-    title: "2025 강정피스앤뮤직캠프 공연 #2",
-    description: "할망물식당 일대에서 펼쳐진 2025 강정피스앤뮤직캠프 공연 실황입니다.",
+    title: "제2회 강정피스앤뮤직캠프",
+    description: "제주 강정마을에서 열리는 평화와 반전의 음악 축제",
     youtubeUrl: "https://youtu.be/DBlCTgWNNKU?si=9QRus6J85pPEqf-F",
     date: "2025-06-14",
     location: "서귀포시 강정동 할망물식당 일대",

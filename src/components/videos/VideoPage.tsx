@@ -8,6 +8,9 @@ const VideoCard: React.FC<{ video: VideoItem }> = ({ video }) => {
   const getYoutubeVideoId = (url: string) => url.split('/').pop();
   const getYoutubeWatchUrl = (url: string) => `https://www.youtube.com/watch?v=${getYoutubeVideoId(url)}`;
 
+  const videoId = getYoutubeVideoId(video.youtubeUrl);
+  const [imgSrc, setImgSrc] = useState(`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`);
+
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden h-full flex flex-col transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
       <a
@@ -18,8 +21,13 @@ const VideoCard: React.FC<{ video: VideoItem }> = ({ video }) => {
       >
         <div className="relative aspect-video overflow-hidden rounded-t-xl group">
           <img
-            src={`https://img.youtube.com/vi/${getYoutubeVideoId(video.youtubeUrl)}/maxresdefault.jpg`}
+            src={imgSrc}
             alt={video.title}
+            onError={() => {
+              if (imgSrc.includes('maxresdefault')) {
+                setImgSrc(`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`);
+              }
+            }}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
           />
@@ -37,10 +45,10 @@ const VideoCard: React.FC<{ video: VideoItem }> = ({ video }) => {
             <span className="text-sm text-gray-500 cursor-pointer">{video.location}</span>
             <span className="text-sm text-gray-500 cursor-pointer">{video.date}</span>
           </div>
-          <h3 className="text-xl font-semibold text-deep-ocean mb-2 hover:text-jeju-ocean transition-colors duration-300 cursor-pointer">
+          <h3 className="text-xl font-semibold text-deep-ocean mb-2 hover:text-jeju-ocean transition-colors duration-300 cursor-pointer line-clamp-2">
             {video.title}
           </h3>
-          <p className="text-gray-600 flex-1 cursor-pointer">{video.description}</p>
+          <p className="text-gray-600 flex-1 cursor-pointer line-clamp-3">{video.description}</p>
         </div>
       </a>
     </div>
