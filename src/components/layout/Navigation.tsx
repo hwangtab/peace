@@ -2,18 +2,31 @@ import { useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import NavigationDropdown from './NavigationDropdown';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
 
-  const menuItems = [
+  const simpleMenuItems = [
     { name: '홈', path: '/' },
-    { name: '뮤지션 (앨범)', path: '/musicians' },
-    { name: '수록곡 (앨범)', path: '/tracks' },
     { name: '갤러리', path: '/gallery' },
     { name: '공연영상', path: '/videos' },
     { name: '언론보도', path: '/press' },
+  ];
+
+  const campItems = [
+    { name: '2023 캠프', path: '/camps/2023' },
+    { name: '2025 캠프', path: '/camps/2025' },
+    { name: '2026 캠프', path: '/camps/2026' },
+    { name: '모든 캠프', path: '/camps' },
+  ];
+
+  const albumItems = [
+    { name: '앨범 소개', path: '/album/about' },
+    { name: '뮤지션', path: '/album/musicians' },
+    { name: '수록곡', path: '/album/tracks' },
   ];
 
   return (
@@ -26,7 +39,7 @@ const Navigation = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            {menuItems.map((item) => (
+            {simpleMenuItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
@@ -45,6 +58,18 @@ const Navigation = () => {
                 )}
               </Link>
             ))}
+            <NavigationDropdown
+              label="캠프"
+              items={campItems}
+              isOpen={openDropdown === 'camps'}
+              onOpenChange={(isOpen) => setOpenDropdown(isOpen ? 'camps' : null)}
+            />
+            <NavigationDropdown
+              label="앨범"
+              items={albumItems}
+              isOpen={openDropdown === 'album'}
+              onOpenChange={(isOpen) => setOpenDropdown(isOpen ? 'album' : null)}
+            />
           </div>
 
           {/* Mobile Menu Button */}
@@ -74,7 +99,7 @@ const Navigation = () => {
               className="md:hidden bg-light-beige/80 backdrop-blur-md"
             >
               <div className="container mx-auto px-4 py-4">
-                {menuItems.map((item) => (
+                {simpleMenuItems.map((item) => (
                   <Link
                     key={item.path}
                     to={item.path}
@@ -88,6 +113,83 @@ const Navigation = () => {
                     {item.name}
                   </Link>
                 ))}
+
+                {/* Mobile Dropdowns */}
+                <div className="border-t border-sage-gray my-4 pt-4">
+                  <button
+                    onClick={() => setOpenDropdown(openDropdown === 'camps' ? null : 'camps')}
+                    className="w-full text-left py-2 font-serif text-text-dark flex justify-between items-center"
+                  >
+                    캠프
+                    <motion.span
+                      animate={{ rotate: openDropdown === 'camps' ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      ▼
+                    </motion.span>
+                  </button>
+                  <AnimatePresence>
+                    {openDropdown === 'camps' && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="pl-4 overflow-hidden"
+                      >
+                        {campItems.map((item) => (
+                          <Link
+                            key={item.path}
+                            to={item.path}
+                            className="block py-2 text-text-dark hover:text-deep-sage font-serif text-sm"
+                            onClick={() => {
+                              setIsOpen(false);
+                              setOpenDropdown(null);
+                            }}
+                          >
+                            {item.name}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  <button
+                    onClick={() => setOpenDropdown(openDropdown === 'album' ? null : 'album')}
+                    className="w-full text-left py-2 font-serif text-text-dark flex justify-between items-center"
+                  >
+                    앨범
+                    <motion.span
+                      animate={{ rotate: openDropdown === 'album' ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      ▼
+                    </motion.span>
+                  </button>
+                  <AnimatePresence>
+                    {openDropdown === 'album' && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="pl-4 overflow-hidden"
+                      >
+                        {albumItems.map((item) => (
+                          <Link
+                            key={item.path}
+                            to={item.path}
+                            className="block py-2 text-text-dark hover:text-deep-sage font-serif text-sm"
+                            onClick={() => {
+                              setIsOpen(false);
+                              setOpenDropdown(null);
+                            }}
+                          >
+                            {item.name}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </div>
             </motion.div>
           )}
