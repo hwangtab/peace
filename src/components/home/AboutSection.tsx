@@ -34,35 +34,41 @@ const AboutSection = () => {
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-7xl mx-auto">
-          <motion.div variants={fadeIn} className="space-y-12">
-            <div>
-              <h3 className="font-serif text-3xl font-medium text-gray-900 mb-6">강정에서 시작되다</h3>
-              <p className="text-lg leading-relaxed text-gray-600">
-                제주 강정마을에서 시작된 평화음악캠프는 해군기지 건설로 인한 갈등과 상처를 음악으로 치유하고, 평화의 메시지를 전 세계에 전하는 운동입니다. 강정마을의 평화운동가들과 전국의 음악가들이 함께 모여 평화를 위한 목소리를 높입니다.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-serif text-3xl font-medium text-gray-900 mb-6">매년 되풀이되다</h3>
-              <p className="text-lg leading-relaxed text-gray-600">
-                2023년의 첫 캠프부터 시작하여, 2025년, 그리고 미래로 계속될 강정피스앤뮤직캠프는 정해진 날짜에 강정마을에서 해마다 개최됩니다. 이는 평화를 향한 우리의 변치 않는 의지와, 계속되어야 할 평화운동의 상징입니다.
-              </p>
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-7xl mx-auto">
+          <motion.div variants={fadeIn} className="bg-ocean-sand/30 p-8 rounded-2xl hover:bg-ocean-sand/50 transition-colors duration-300">
+            <h3 className="font-serif text-2xl font-bold text-deep-ocean mb-4">강정, 평화의 물결이 시작되는 곳</h3>
+            <p className="text-base leading-relaxed text-coastal-gray">
+              제주 강정마을의 구럼비 바위가 품었던 평화의 기억을 되살립니다.
+              해군기지 건설의 아픔을 넘어, 우리는 이곳에서 치유와 회복을 노래합니다.
+              강정의 작은 평화가 전 세계로 퍼져나가는 나비효과를 꿈꿉니다.
+            </p>
           </motion.div>
 
-          <motion.div variants={fadeIn} className="space-y-12">
-            <div>
-              <h3 className="font-serif text-3xl font-medium text-gray-900 mb-6">음악으로 평화를 말하다</h3>
-              <p className="text-lg leading-relaxed text-gray-600">
-                다양한 장르의 뮤지션들이 강정피스앤뮤직캠프에서 함께 만나 평화의 메시지를 음악으로 표현합니다. 『이름을 모르는 먼 곳의 그대에게』 앨범에는 12팀의 뮤지션들이 각자의 음악 언어로 평화를 노래했으며, 이러한 다양한 목소리들이 모여 하나의 강력한 메시지를 만듭니다.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-serif text-3xl font-medium text-gray-900 mb-6">연대의 힘을 믿다</h3>
-              <p className="text-lg leading-relaxed text-gray-600">
-                우크라이나, 가자, 한반도 - 세계 곳곳의 분쟁 지역을 위해 음악가들이 연대하고, 평화를 노래하는 강정피스앤뮤직캠프는 평화운동의 새로운 형태입니다. 이 캠프를 통해 우리는 언어와 국경을 넘어 평화를 향한 간절한 염원을 함께할 수 있습니다.
-              </p>
-            </div>
+          <motion.div variants={fadeIn} className="bg-ocean-sand/30 p-8 rounded-2xl hover:bg-ocean-sand/50 transition-colors duration-300">
+            <h3 className="font-serif text-2xl font-bold text-deep-ocean mb-4">선율에 실어 보내는 평화의 메시지</h3>
+            <p className="text-base leading-relaxed text-coastal-gray">
+              말로는 다 전할 수 없는 마음을 음악에 담습니다.
+              포크, 재즈, 일렉트로닉 등 서로 다른 장르의 뮤지션 12팀이 모여
+              각자의 언어로 '평화'라는 하나의 멜로디를 완성합니다.
+            </p>
+          </motion.div>
+
+          <motion.div variants={fadeIn} className="bg-ocean-sand/30 p-8 rounded-2xl hover:bg-ocean-sand/50 transition-colors duration-300">
+            <h3 className="font-serif text-2xl font-bold text-deep-ocean mb-4">매년 이어지는 평화의 약속</h3>
+            <p className="text-base leading-relaxed text-coastal-gray">
+              2023년 여름, 첫 번째 화음이 시작되었습니다.
+              우리의 축제는 일회성 이벤트가 아닌, 매년 강정의 여름을 지키는
+              끈질기고 아름다운 평화의 의식(Ritual)으로 계속될 것입니다.
+            </p>
+          </motion.div>
+
+          <motion.div variants={fadeIn} className="bg-ocean-sand/30 p-8 rounded-2xl hover:bg-ocean-sand/50 transition-colors duration-300">
+            <h3 className="font-serif text-2xl font-bold text-deep-ocean mb-4">경계를 넘어선 연대의 울림</h3>
+            <p className="text-base leading-relaxed text-coastal-gray">
+              팔레스타인 가자지구에서 우크라이나까지, 세계 곳곳의 분쟁 지역을 기억합니다.
+              강정피스앤뮤직캠프는 단순한 음악회를 넘어, 고통받는 이들과 함께하며
+              평화를 염원하는 강력한 연대의 장입니다.
+            </p>
           </motion.div>
         </div>
       </div>
