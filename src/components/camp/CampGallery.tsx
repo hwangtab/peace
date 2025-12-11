@@ -49,7 +49,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
                 )}
                 <img
                   src={imageUrl}
-                  alt={`Camp ${camp.year} photo ${index + 1}`}
+                  alt={`${index + 1}`}
                   className={`w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 ${
                     loadedImages.has(index) ? 'opacity-100' : 'opacity-0'
                   }`}
@@ -84,7 +84,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
               </button>
               <img
                 src={selectedImage}
-                alt="Camp event photo"
+                alt="Full size view"
                 className="w-full h-auto rounded-lg"
               />
             </div>

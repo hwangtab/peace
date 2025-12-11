@@ -20,7 +20,6 @@ const SEOHelmet: React.FC<SEOProps> = ({
     canonicalUrl,
     structuredData,
 }) => {
-    const siteUrl = "https://peaceandmusic.net";
     const fullCanonicalUrl = canonicalUrl || window.location.href;
 
     // Structured Data를 배열로 변환 (단일 객체 또는 배열 모두 지원)
