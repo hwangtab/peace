@@ -4,6 +4,7 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import CampCard from '../components/camp/CampCard';
 import { camps } from '../data/camps';
+import SEOHelmet from '../components/shared/SEOHelmet';
 
 const CampsPage = () => {
   const ref = useRef(null);
@@ -16,6 +17,11 @@ const CampsPage = () => {
 
   return (
     <div className="min-h-screen bg-light-beige pt-24 pb-16">
+      <SEOHelmet
+        title="강정피스앤뮤직캠프 아카이브 - 평화를 향한 여정"
+        description="제주 강정마을에서 열리는 평화 음악 축제, 강정피스앤뮤직캠프의 역대 아카이브. 2023년 제1회부터 2026년 제3회까지의 기록."
+        keywords="강정피스앤뮤직캠프, 아카이브, 강정마을, 평화음악, 음악축제"
+      />
       <div className="container mx-auto px-4">
         {/* Header */}
         <motion.div

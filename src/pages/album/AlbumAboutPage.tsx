@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import SEOHelmet from '../../components/shared/SEOHelmet';
 
 const AlbumAboutPage = () => {
   const ref = useRef(null);
@@ -21,6 +22,11 @@ const AlbumAboutPage = () => {
 
   return (
     <div className="min-h-screen bg-white pt-24 pb-16">
+      <SEOHelmet
+        title="이름을 모르는 먼 곳의 그대에게 - 앨범 소개"
+        description="강정피스앤뮤직캠프의 2024년 음반 프로젝트. 전쟁을 끝내고 평화를 노래하는 12곡의 음악 여정."
+        keywords="이름을 모르는 먼 곳의 그대에게, 강정피스앤뮤직캠프, 음반, 평화음악"
+      />
       <div className="container mx-auto px-4">
         {/* Header */}
         <motion.div

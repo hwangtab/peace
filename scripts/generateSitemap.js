@@ -32,6 +32,41 @@ const pages = [
         path: '/videos',
         changefreq: 'weekly',
         priority: '0.7'
+    },
+    {
+        path: '/camps',
+        changefreq: 'monthly',
+        priority: '0.9'
+    },
+    {
+        path: '/camps/2023',
+        changefreq: 'yearly',
+        priority: '0.8'
+    },
+    {
+        path: '/camps/2025',
+        changefreq: 'yearly',
+        priority: '0.8'
+    },
+    {
+        path: '/camps/2026',
+        changefreq: 'monthly',
+        priority: '0.9'
+    },
+    {
+        path: '/album/about',
+        changefreq: 'monthly',
+        priority: '0.8'
+    },
+    {
+        path: '/album/musicians',
+        changefreq: 'monthly',
+        priority: '0.7'
+    },
+    {
+        path: '/album/tracks',
+        changefreq: 'monthly',
+        priority: '0.7'
     }
 ];
 

@@ -2,6 +2,7 @@ import React, { useRef, useState, useMemo } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { VideoItem, videoItems } from '../../data/videos';
 import VideoEventFilter from './EventFilter';
+import SEOHelmet from '../shared/SEOHelmet';
 
 const VideoCard: React.FC<{ video: VideoItem }> = ({ video }) => {
   const getYoutubeVideoUrl = (embedUrl: string) => {
@@ -62,6 +63,11 @@ export default function VideoPage() {
 
   return (
     <section className="section bg-white" ref={ref}>
+      <SEOHelmet
+        title="공연영상 - 강정피스앤뮤직캠프"
+        description="강정피스앤뮤직캠프의 공연영상 모음. 평화를 노래하는 뮤지션들의 공연 영상을 만나보세요."
+        keywords="공연영상, 강정피스앤뮤직캠프, 평화 공연, 뮤지션 공연, 유튜브 영상"
+      />
       <div className="container mx-auto px-4 py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

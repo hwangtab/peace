@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import CampHero from '../components/camp/CampHero';
 import { camps } from '../data/camps';
+import SEOHelmet from '../components/shared/SEOHelmet';
 
 const Camp2026Page = () => {
   const ref = useRef(null);
@@ -26,6 +27,11 @@ const Camp2026Page = () => {
 
   return (
     <div className="min-h-screen bg-light-beige pt-24 pb-16">
+      <SEOHelmet
+        title="제3회 강정피스앤뮤직캠프 (2026) - Coming Soon"
+        description="2026년 여름 개최 예정인 제3회 강정피스앤뮤직캠프. 평화를 노래하는 음악 축제에 함께하세요."
+        keywords="강정피스앤뮤직캠프, 제3회 캠프, 2026, 강정마을, 평화음악"
+      />
       <CampHero camp={camp2026} />
 
       <div className="container mx-auto px-4 py-16" ref={ref}>
