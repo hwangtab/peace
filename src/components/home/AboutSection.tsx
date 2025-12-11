@@ -45,11 +45,11 @@ const AboutSection = () => {
           </motion.div>
 
           <motion.div variants={fadeIn} className="bg-ocean-sand/30 p-8 rounded-2xl hover:bg-ocean-sand/50 transition-colors duration-300">
-            <h3 className="font-serif text-2xl font-bold text-deep-ocean mb-4">선율에 실어 보내는 평화의 메시지</h3>
+            <h3 className="font-serif text-2xl font-bold text-deep-ocean mb-4">함께 걷는 평화의 여정</h3>
             <p className="text-base leading-relaxed text-coastal-gray">
-              말로는 다 전할 수 없는 마음을 음악에 담습니다.
-              포크, 재즈, 일렉트로닉 등 서로 다른 장르의 뮤지션 12팀이 모여
-              각자의 언어로 '평화'라는 하나의 멜로디를 완성합니다.
+              강정의 자연 속에서 뮤지션과 관객이 경계 없이 어우러집니다.
+              2박 3일간의 캠핑, 평화 포럼, 그리고 밤하늘을 수놓는 공연까지.
+              우리는 서로의 존재를 확인하며 평화의 가능성을 확장해 나갑니다.
             </p>
           </motion.div>
 
