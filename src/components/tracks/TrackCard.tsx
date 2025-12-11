@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Track } from '../../types/track';
 import AudioPlayer from './AudioPlayer';
@@ -18,11 +17,6 @@ const TrackCard: React.FC<TrackCardProps> = ({
   currentlyPlaying,
   onPlay,
 }) => {
-  const isPlaying = currentlyPlaying;
-
-  const handlePlayPause = () => {
-    onPlay();
-  };
 
   return (
     <motion.div

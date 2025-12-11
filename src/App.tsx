@@ -31,18 +31,6 @@ const HomePage = () => (
   </div>
 );
 
-const MusiciansPage = () => (
-  <div className="min-h-screen bg-light-beige">
-    <MusiciansSection />
-  </div>
-);
-
-const TracksPage = () => (
-  <div className="min-h-screen bg-light-beige">
-    <TracksSection />
-  </div>
-);
-
 const GalleryPage = () => (
   <div className="min-h-screen bg-light-beige">
     <GallerySection />

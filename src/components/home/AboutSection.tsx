@@ -6,11 +6,6 @@ const AboutSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const fadeUpVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
-
   const fadeIn = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 }

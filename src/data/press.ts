@@ -1,4 +1,3 @@
-import { StaticImageData } from "next/image";
 import { EventType } from "../types/event";
 
 export interface PressItem {
