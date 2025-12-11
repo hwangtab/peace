@@ -13,10 +13,17 @@ const CampHero: React.FC<CampHeroProps> = ({ camp }) => {
     day: 'numeric'
   });
 
+  const backgroundImage = camp.images && camp.images.length > 0
+    ? camp.images[0]
+    : null;
+
   return (
-    <section className="relative h-96 flex items-center justify-center text-center overflow-hidden bg-hero-gradient">
+    <section
+      className="relative h-[500px] md:h-[600px] lg:h-[700px] flex items-center justify-center text-center overflow-hidden bg-hero-gradient"
+      style={backgroundImage ? { backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
+    >
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black opacity-40" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
