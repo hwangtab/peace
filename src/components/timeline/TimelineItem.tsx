@@ -9,9 +9,15 @@ interface TimelineItemProps {
 
 const TimelineItem: React.FC<TimelineItemProps> = ({ event, isLeft }) => {
   const eventTypeColor = {
-    camp: 'bg-deep-sage',
-    album: 'bg-blue-600',
-    milestone: 'bg-purple-600'
+    camp: 'bg-jeju-ocean',
+    album: 'bg-golden-sun',
+    milestone: 'bg-sunset-coral'
+  };
+
+  const eventTypeBorder = {
+    camp: 'border-jeju-ocean',
+    album: 'border-golden-sun',
+    milestone: 'border-sunset-coral'
   };
 
   const eventTypeLabel = {
@@ -38,66 +44,73 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ event, isLeft }) => {
     }
   };
 
+  const CardContent = () => (
+    <div className="bg-cloud-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all border border-ocean-mist/20">
+      <span className={`inline-block px-3 py-1 rounded-full text-white text-xs font-bold ${eventTypeColor[event.eventType]} mb-3 shadow-sm`}>
+        {eventTypeLabel[event.eventType]}
+      </span>
+      <h3 className="text-xl font-bold text-deep-ocean mb-2 font-serif">{event.title}</h3>
+      <p className="text-coastal-gray mb-3 text-sm leading-relaxed">{event.description}</p>
+      {event.location && (
+        <p className="text-xs text-ocean-mist flex items-center font-medium">
+          <span className="mr-1">📍</span> {event.location}
+        </p>
+      )}
+    </div>
+  );
+
+  const YearLabel = ({ align }: { align: 'left' | 'right' }) => (
+    <div className={`flex flex-col justify-center h-full ${align === 'right' ? 'items-end' : 'items-start'}`}>
+      <span className="text-3xl font-bold text-jeju-ocean/80 font-serif">{event.year}</span>
+      {event.month && (
+        <span className="text-ocean-mist font-medium">{event.month}월</span>
+      )}
+    </div>
+  );
+
   return (
     <motion.div
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
-      className="flex items-center mb-16"
+      className="flex items-stretch mb-16 w-full"
     >
-      {/* Left Content */}
-      {isLeft && (
-        <motion.div variants={contentVariants} className="w-5/12 text-right pr-8">
-          <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
-            <span className={`inline-block px-3 py-1 rounded-full text-white text-sm font-medium ${eventTypeColor[event.eventType]} mb-3`}>
-              {eventTypeLabel[event.eventType]}
-            </span>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">{event.title}</h3>
-            <p className="text-gray-600 mb-2">{event.description}</p>
-            {event.location && (
-              <p className="text-sm text-gray-500">📍 {event.location}</p>
-            )}
+      {/* Left Column (5/12) */}
+      <div className="w-5/12 pr-8 flex justify-end">
+        {isLeft ? (
+          <motion.div variants={contentVariants} className="w-full text-right">
+            <CardContent />
+          </motion.div>
+        ) : (
+          <div className="w-full">
+            <YearLabel align="right" />
           </div>
-        </motion.div>
-      )}
-
-      {/* Center Timeline Dot and Line */}
-      <div className="w-2/12 flex justify-center">
-        <div className="relative flex flex-col items-center">
-          <motion.div
-            whileInView={{ scale: 1.2 }}
-            transition={{ duration: 0.4 }}
-            className={`w-6 h-6 rounded-full ${eventTypeColor[event.eventType]} border-4 border-white shadow-md z-10`}
-          />
-        </div>
+        )}
       </div>
 
-      {/* Right Content */}
-      {!isLeft && (
-        <motion.div variants={contentVariants} className="w-5/12 pl-8">
-          <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="text-2xl font-bold text-deep-sage">{event.year}</span>
-              {event.month && (
-                <span className="text-gray-500">/ {event.month}월</span>
-              )}
-            </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">{event.title}</h3>
-            <p className="text-gray-600 mb-2">{event.description}</p>
-            {event.location && (
-              <p className="text-sm text-gray-500">📍 {event.location}</p>
-            )}
-          </div>
-        </motion.div>
-      )}
+      {/* Center Column (2/12) */}
+      <div className="w-2/12 flex justify-center relative">
+        <div className="w-1 bg-transparent h-full absolute left-1/2 -translate-x-1/2" /> {/* Spacer for line */}
+        <motion.div
+          whileInView={{ scale: 1.2 }}
+          transition={{ duration: 0.4 }}
+          className={`w-6 h-6 rounded-full bg-cloud-white border-4 ${eventTypeBorder[event.eventType]} shadow-md z-10 mt-6`}
+        />
+      </div>
 
-      {/* Left Year Label */}
-      {isLeft && (
-        <div className="w-5/12 flex justify-end pr-8">
-          <span className="text-2xl font-bold text-deep-sage">{event.year}</span>
-        </div>
-      )}
+      {/* Right Column (5/12) */}
+      <div className="w-5/12 pl-8 flex justify-start">
+        {!isLeft ? (
+          <motion.div variants={contentVariants} className="w-full text-left">
+            <CardContent />
+          </motion.div>
+        ) : (
+          <div className="w-full">
+            <YearLabel align="left" />
+          </div>
+        )}
+      </div>
     </motion.div>
   );
 };
