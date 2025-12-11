@@ -1,5 +1,5 @@
-import React, { useRef, useState, useEffect, useMemo } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React, { useState, useEffect, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import { GalleryImage } from '../../types/gallery';
 import { getGalleryImages } from '../../api/gallery';
 import EventFilter from '../gallery/EventFilter';
@@ -10,8 +10,6 @@ const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
   const [visibleCount, setVisibleCount] = useState<number>(12);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   useEffect(() => {
     const loadImages = async () => {
@@ -57,11 +55,12 @@ const GallerySection = () => {
   };
 
   return (
-    <section id="gallery" className="section bg-light-beige" ref={ref}>
+    <section id="gallery" className="section bg-light-beige">
       <div className="container mx-auto px-4 py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
@@ -81,18 +80,20 @@ const GallerySection = () => {
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
+            <motion.div
+              layout
+              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12"
+            >
               {filteredImages.slice(0, visibleCount).map((image, index) => (
                 <GalleryImageItem
                   key={image.id}
                   image={image}
                   index={index}
                   priority={index < 6} // Load first 6 images eagerly
-                  isInView={isInView}
                   onClick={setSelectedImage}
                 />
               ))}
-            </div>
+            </motion.div>
 
             {visibleCount < filteredImages.length && (
               <div className="text-center mt-12">

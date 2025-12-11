@@ -6,19 +6,20 @@ interface GalleryImageItemProps {
     image: GalleryImage;
     index: number;
     priority?: boolean;
-    isInView: boolean;
     onClick: (image: GalleryImage) => void;
 }
 
-const GalleryImageItem = ({ image, index, priority = false, isInView, onClick }: GalleryImageItemProps) => {
+const GalleryImageItem = ({ image, index, priority = false, onClick }: GalleryImageItemProps) => {
     // Isolate loading state to this component only
     const [isLoaded, setIsLoaded] = useState(false);
 
     return (
         <motion.div
+            layout
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: (index % 12) * 0.1 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: (index % 12) * 0.05 }}
             className="cursor-pointer group"
             onClick={() => onClick(image)}
         >
