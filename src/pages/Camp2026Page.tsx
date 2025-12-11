@@ -12,7 +12,7 @@ const Camp2026Page = () => {
 
   if (!camp2026) {
     return (
-      <div className="min-h-screen bg-light-beige pt-24 pb-16 flex items-center justify-center">
+      <div className="min-h-screen bg-ocean-sand pt-24 pb-16 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-serif font-medium text-gray-900 mb-4">캠프를 찾을 수 없습니다</h1>
         </div>
@@ -26,7 +26,7 @@ const Camp2026Page = () => {
   };
 
   return (
-    <div className="min-h-screen bg-light-beige pt-24 pb-16">
+    <div className="min-h-screen bg-ocean-sand pt-24 pb-16">
       <SEOHelmet
         title="제3회 강정피스앤뮤직캠프 (2026) - Coming Soon"
         description="2026년 여름 개최 예정인 제3회 강정피스앤뮤직캠프. 평화를 노래하는 음악 축제에 함께하세요."
@@ -50,7 +50,7 @@ const Camp2026Page = () => {
             variants={fadeUpVariants}
             className="bg-white rounded-lg p-12 shadow-md text-center mb-12"
           >
-            <div className="inline-block bg-gradient-to-r from-deep-sage to-sage-gray rounded-full p-6 mb-8">
+            <div className="inline-block bg-gradient-to-r from-jeju-ocean to-ocean-mist rounded-full p-6 mb-8">
               <svg
                 className="h-16 w-16 text-white"
                 fill="none"
@@ -80,7 +80,7 @@ const Camp2026Page = () => {
           {/* Newsletter Signup */}
           <motion.div
             variants={fadeUpVariants}
-            className="bg-gradient-to-r from-deep-sage to-sage-gray rounded-lg p-8 text-center text-white"
+            className="bg-gradient-to-r from-jeju-ocean to-ocean-mist rounded-lg p-8 text-center text-white"
           >
             <h3 className="text-2xl font-serif font-medium mb-4">
               소식을 받아보세요
@@ -97,7 +97,7 @@ const Camp2026Page = () => {
               />
               <button
                 disabled
-                className="px-6 py-3 bg-white text-deep-sage font-semibold rounded hover:bg-light-beige transition-colors opacity-50 cursor-not-allowed"
+                className="px-6 py-3 bg-white text-jeju-ocean font-semibold rounded hover:bg-ocean-sand transition-colors opacity-50 cursor-not-allowed"
               >
                 구독
               </button>

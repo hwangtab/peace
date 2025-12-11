@@ -8,7 +8,7 @@ const MusiciansSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="musicians" className="section bg-light-beige" ref={ref}>
+    <section id="musicians" className="section bg-ocean-sand" ref={ref}>
       <div className="container mx-auto px-4 py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

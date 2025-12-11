@@ -28,7 +28,7 @@ const TrackCard: React.FC<TrackCardProps> = ({
     >
       {/* Header */}
       <div
-        className="p-4 cursor-pointer hover:bg-light-beige transition-colors"
+        className="p-4 cursor-pointer hover:bg-ocean-sand transition-colors"
         onClick={() => {
           onToggle();
           onPlay();
@@ -38,13 +38,13 @@ const TrackCard: React.FC<TrackCardProps> = ({
           <div className="flex-grow">
             <div className="flex items-center justify-between mb-1">
               <h3 className="text-lg font-bold font-serif">{track.title}</h3>
-              <span className="text-sm text-sage-gray ml-4">{track.duration}</span>
+              <span className="text-sm text-coastal-gray ml-4">{track.duration}</span>
             </div>
-            <p className="text-deep-sage font-serif">{track.artist}</p>
+            <p className="text-jeju-ocean font-serif">{track.artist}</p>
           </div>
           <motion.button
             animate={{ rotate: isExpanded ? 180 : 0 }}
-            className="text-sage-gray ml-4"
+            className="text-coastal-gray ml-4"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -87,8 +87,8 @@ const TrackCard: React.FC<TrackCardProps> = ({
           {track.description && (
             <div className="mb-8">
               <div className="flex items-center mb-4">
-                <h4 className="text-lg font-serif text-deep-sage">곡 설명</h4>
-                <div className="flex-grow ml-4 h-px bg-sage-gray/20"></div>
+                <h4 className="text-lg font-serif text-jeju-ocean">곡 설명</h4>
+                <div className="flex-grow ml-4 h-px bg-coastal-gray/20"></div>
               </div>
               <p className="text-gray-600 leading-relaxed whitespace-pre-line">{track.description}</p>
             </div>
@@ -98,10 +98,10 @@ const TrackCard: React.FC<TrackCardProps> = ({
           {track.lyrics && (
             <div className="mb-8">
               <div className="flex items-center mb-4">
-                <h4 className="text-lg font-serif text-deep-sage">가사</h4>
-                <div className="flex-grow ml-4 h-px bg-sage-gray/20"></div>
+                <h4 className="text-lg font-serif text-jeju-ocean">가사</h4>
+                <div className="flex-grow ml-4 h-px bg-coastal-gray/20"></div>
               </div>
-              <div className="bg-light-beige/30 p-4 rounded-lg">
+              <div className="bg-ocean-sand/30 p-4 rounded-lg">
                 <p className="text-gray-600 whitespace-pre-line leading-relaxed">{track.lyrics}</p>
               </div>
             </div>
@@ -111,28 +111,28 @@ const TrackCard: React.FC<TrackCardProps> = ({
           {track.credits && (
             <div className="mb-4">
               <div className="flex items-center mb-4">
-                <h4 className="text-lg font-serif text-deep-sage">크레딧</h4>
-                <div className="flex-grow ml-4 h-px bg-sage-gray/20"></div>
+                <h4 className="text-lg font-serif text-jeju-ocean">크레딧</h4>
+                <div className="flex-grow ml-4 h-px bg-coastal-gray/20"></div>
               </div>
               <div className="grid grid-cols-1 gap-4">
                 {Object.entries(track.credits).map(([role, value]) => {
                   type Performer = { role: string; name: string[] };
-                  
+
                   const isPerformerArray = (arr: any[]): arr is Performer[] => {
-                    return arr.every(item => 
-                      typeof item === 'object' && 
-                      item !== null && 
-                      'role' in item && 
+                    return arr.every(item =>
+                      typeof item === 'object' &&
+                      item !== null &&
+                      'role' in item &&
                       'name' in item &&
                       Array.isArray(item.name)
                     );
                   };
-                  
+
                   const renderValue = () => {
                     if (!Array.isArray(value)) return String(value);
-                    
+
                     if (value.length === 0) return '';
-                    
+
                     if (isPerformerArray(value)) {
                       return value.map((performer, idx) => (
                         <div key={idx}>
@@ -140,13 +140,13 @@ const TrackCard: React.FC<TrackCardProps> = ({
                         </div>
                       ));
                     }
-                    
+
                     return (value as string[]).join(', ');
                   };
 
                   return (
                     <div key={role} className="flex items-start space-x-2">
-                      <span className="text-sm text-sage-gray font-medium min-w-[80px]">
+                      <span className="text-sm text-coastal-gray font-medium min-w-[80px]">
                         {role === 'personnel' ? 'Personnel' : role}
                       </span>
                       <span className="text-gray-600">
