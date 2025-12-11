@@ -33,7 +33,7 @@ const MusicianCard = ({ musician, index }: MusicianCardProps) => {
                   loading="eager"
                 />
               ) : (
-                <div className="absolute w-full h-full flex items-center justify-center text-sage-gray">
+                <div className="absolute w-full h-full flex items-center justify-center text-coastal-gray">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-12 w-12"
@@ -56,7 +56,7 @@ const MusicianCard = ({ musician, index }: MusicianCardProps) => {
 
           {/* Content */}
           <div className="p-6 flex-1 flex flex-col">
-            <h3 className="text-2xl font-serif text-deep-ocean group-hover:text-jeju-ocean transition-colors duration-200 mb-2">
+            <h3 className="text-2xl font-serif text-jeju-ocean group-hover:text-ocean-mist transition-colors duration-200 mb-2">
               {musician.name}
             </h3>
             <p className="text-gray-600 mb-4 flex-1">{musician.shortDescription}</p>
@@ -89,7 +89,7 @@ const MusicianCard = ({ musician, index }: MusicianCardProps) => {
             {/* Track Title */}
             <div className="mt-auto pt-4 border-t border-gray-100">
               <p className="text-sm text-gray-500">수록곡</p>
-              <p className="text-deep-sage font-medium">{musician.trackTitle}</p>
+              <p className="text-jeju-ocean font-medium">{musician.trackTitle}</p>
             </div>
           </div>
         </div>

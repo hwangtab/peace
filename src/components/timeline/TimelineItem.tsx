@@ -49,7 +49,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ event, isLeft }) => {
       <span className={`inline-block px-3 py-1 rounded-full text-white text-xs font-bold ${eventTypeColor[event.eventType]} mb-3 shadow-sm`}>
         {eventTypeLabel[event.eventType]}
       </span>
-      <h3 className="text-xl font-bold text-deep-ocean mb-2 font-serif">{event.title}</h3>
+      <h3 className="text-xl font-bold text-jeju-ocean mb-2 font-serif">{event.title}</h3>
       <p className="text-coastal-gray mb-3 text-sm leading-relaxed">{event.description}</p>
       {event.location && (
         <p className="text-xs text-ocean-mist flex items-center font-medium">

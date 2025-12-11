@@ -52,8 +52,8 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
         onClick={() => setOpen(!open)}
         className={`flex items-center gap-1 ${
           isActive || open
-            ? 'text-deep-sage'
-            : 'text-text-dark hover:text-deep-sage'
+            ? 'text-jeju-ocean font-bold'
+            : 'text-coastal-gray hover:text-jeju-ocean'
         } transition-colors duration-300 font-serif py-2`}
       >
         {label}
@@ -81,8 +81,8 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
                   to={item.path}
                   className={`block px-4 py-2 ${
                     location.pathname === item.path
-                      ? 'bg-light-beige text-deep-sage font-semibold'
-                      : 'text-text-dark hover:bg-light-beige'
+                      ? 'bg-ocean-sand text-jeju-ocean font-semibold'
+                      : 'text-deep-ocean hover:bg-ocean-sand/50'
                   } transition-colors duration-200 font-serif`}
                   onClick={() => setOpen(false)}
                 >

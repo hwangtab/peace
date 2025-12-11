@@ -111,7 +111,7 @@ const AudioPlayer = ({ audioUrl, isPlaying, onPlayPause, title, artist }: AudioP
         onClick={handleSeek}
       >
         <motion.div
-          className="h-full bg-sage-gray rounded"
+          className="h-full bg-coastal-gray rounded"
           style={{ width: `${(progress / duration) * 100}%` }}
           layout
         />

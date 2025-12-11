@@ -26,8 +26,10 @@ const HeroSection = () => {
           <h1 className="text-5xl md:text-7xl font-bold text-cloud-white mb-6 font-serif drop-shadow-md">
             강정피스앤뮤직캠프
           </h1>
-          <p className="text-xl md:text-2xl text-seafoam mb-12 subtitle font-medium drop-shadow-sm">
-            평화를 노래하는 음악가들의 만남<br />
+          <p className="text-2xl md:text-3xl text-golden-sun mb-6 font-bold drop-shadow-sm">
+            전쟁을 끝내자! 노래하자, 춤추자
+          </p>
+          <p className="text-lg md:text-xl text-seafoam mb-12 subtitle font-medium drop-shadow-sm">
             강정마을에서 시작되는 평화의 메시지
           </p>
           <div className="flex justify-center gap-4">
@@ -38,7 +40,7 @@ const HeroSection = () => {
               }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-golden-sun text-deep-ocean rounded-full font-bold hover:bg-opacity-90 transition-colors shadow-lg"
+              className="px-8 py-3 bg-golden-sun text-jeju-ocean rounded-full font-bold hover:bg-opacity-90 transition-colors shadow-lg"
             >
               프로젝트 소개
             </motion.button>

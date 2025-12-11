@@ -66,10 +66,10 @@ const AlbumAboutPage = () => {
               variants={fadeUpVariants}
               className="w-full lg:w-7/12 text-center lg:text-left"
             >
-              <span className="inline-block px-3 py-1 bg-deep-ocean text-white text-sm font-bold tracking-wider rounded-full mb-6">
+              <span className="inline-block px-3 py-1 bg-jeju-ocean text-white text-sm font-bold tracking-wider rounded-full mb-6">
                 2024 OFFICIAL RELEASE
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-deep-ocean mb-6 leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-jeju-ocean mb-6 leading-tight">
                 이름을 모르는<br />먼 곳의 그대에게
               </h1>
               <p className="text-xl text-coastal-gray font-medium mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
@@ -80,13 +80,13 @@ const AlbumAboutPage = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Link
                   to="/album/tracks"
-                  className="px-8 py-4 bg-deep-ocean text-white rounded-full font-bold hover:bg-jeju-ocean transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+                  className="px-8 py-4 bg-jeju-ocean text-white rounded-full font-bold hover:bg-ocean-mist transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
                 >
                   수록곡 듣기 →
                 </Link>
                 <Link
                   to="/album/musicians"
-                  className="px-8 py-4 bg-white border-2 border-deep-ocean text-deep-ocean rounded-full font-bold hover:bg-ocean-mist/10 transition-all duration-300"
+                  className="px-8 py-4 bg-white border-2 border-jeju-ocean text-jeju-ocean rounded-full font-bold hover:bg-ocean-mist/10 transition-all duration-300"
                 >
                   참여 뮤지션 소개
                 </Link>
@@ -109,7 +109,7 @@ const AlbumAboutPage = () => {
               transition={{ duration: 0.6 }}
               className="bg-ocean-sand/30 p-10 rounded-3xl"
             >
-              <h3 className="text-2xl font-serif font-bold text-deep-ocean mb-6 flex items-center gap-3">
+              <h3 className="text-2xl font-serif font-bold text-jeju-ocean mb-6 flex items-center gap-3">
                 <span className="w-8 h-8 rounded-full bg-golden-sun flex items-center justify-center text-white text-sm">01</span>
                 제목의 의미
               </h3>
@@ -127,7 +127,7 @@ const AlbumAboutPage = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="bg-ocean-sand/30 p-10 rounded-3xl"
             >
-              <h3 className="text-2xl font-serif font-bold text-deep-ocean mb-6 flex items-center gap-3">
+              <h3 className="text-2xl font-serif font-bold text-jeju-ocean mb-6 flex items-center gap-3">
                 <span className="w-8 h-8 rounded-full bg-jeju-ocean flex items-center justify-center text-white text-sm">02</span>
                 12팀의 목소리
               </h3>
@@ -149,7 +149,7 @@ const AlbumAboutPage = () => {
             className="mt-24 pt-12 border-t border-gray-100 text-center"
           >
             <p className="text-coastal-gray font-serif text-lg">
-              Produced by <span className="text-deep-ocean font-bold">강정피스앤뮤직캠프</span> · 2024
+              Produced by <span className="text-jeju-ocean font-bold">강정피스앤뮤직캠프</span> · 2024
             </p>
           </motion.div>
         </div>
