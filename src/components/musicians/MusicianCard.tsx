@@ -11,15 +11,6 @@ interface MusicianCardProps {
 const MusicianCard = ({ musician, index }: MusicianCardProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleInstagramClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    // 약간의 딜레이를 두고 순차적으로 창 열기
-    musician.instagramUrls.forEach((url, index) => {
-      setTimeout(() => {
-        window.open(url, '_blank');
-      }, index * 100); // 각 창을 100ms 간격으로 열기
-    });
-  };
 
   return (
     <>
