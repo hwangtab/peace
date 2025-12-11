@@ -16,185 +16,142 @@ const AlbumAboutPage = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.2, delayChildren: 0.1 }
+      transition: { staggerChildren: 0.1, delayChildren: 0.1 }
     }
   };
 
   return (
-    <div className="min-h-screen bg-white pt-24 pb-16">
+    <div className="min-h-screen bg-white">
       <SEOHelmet
         title="이름을 모르는 먼 곳의 그대에게 - 앨범 소개"
         description="강정피스앤뮤직캠프의 2024년 음반 프로젝트. 전쟁을 끝내고 평화를 노래하는 12곡의 음악 여정."
         keywords="이름을 모르는 먼 곳의 그대에게, 강정피스앤뮤직캠프, 음반, 평화음악"
       />
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <motion.div
-          ref={ref}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={fadeUpVariants}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
-        >
-          <h1 className="text-5xl font-serif font-medium text-gray-900 mb-6">
-            이름을 모르는 먼 곳의 그대에게
-          </h1>
-          <p className="text-xl text-gray-600 subtitle mb-4">
-            강정피스앤뮤직캠프의 첫 번째 음악 프로젝트
-          </p>
-          <p className="text-gray-600">2024년 발매</p>
-        </motion.div>
 
-        {/* Album Info Section */}
-        <motion.div
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={containerVariants}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto mb-16"
-        >
-          {/* Album Cover Placeholder */}
-          <motion.div
-            variants={fadeUpVariants}
-            className="bg-light-beige rounded-lg aspect-square flex items-center justify-center shadow-lg"
-          >
-            <div className="text-center">
-              <div className="text-6xl mb-4">🎵</div>
-              <p className="text-gray-600 font-serif text-lg">Album Cover</p>
-            </div>
-          </motion.div>
+      {/* Hero Section */}
+      <div className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
+        {/* Background Decorative Elements */}
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-ocean-mist/10 -skew-x-12 transform origin-top-right z-0" />
+        <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-golden-sun/5 rounded-full blur-3xl z-0" />
 
-          {/* Album Info */}
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
+            ref={ref}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
             variants={containerVariants}
-            className="flex flex-col justify-center"
+            className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20"
           >
-            <motion.h2
-              variants={fadeUpVariants}
-              className="text-3xl font-serif font-medium text-gray-900 mb-6"
-            >
-              앨범 정보
-            </motion.h2>
-
+            {/* Left: Album Art */}
             <motion.div
               variants={fadeUpVariants}
-              className="space-y-4 mb-8"
+              className="w-full lg:w-5/12 max-w-lg"
             >
-              <div className="border-b border-light-beige pb-4">
-                <p className="text-sm text-gray-600 font-semibold mb-1">발매일</p>
-                <p className="text-lg text-gray-900">2024년</p>
-              </div>
-              <div className="border-b border-light-beige pb-4">
-                <p className="text-sm text-gray-600 font-semibold mb-1">참여 뮤지션</p>
-                <p className="text-lg text-gray-900">12팀</p>
-              </div>
-              <div className="border-b border-light-beige pb-4">
-                <p className="text-sm text-gray-600 font-semibold mb-1">수록곡</p>
-                <p className="text-lg text-gray-900">13곡</p>
-              </div>
-              <div>
-                <p className="text-sm text-gray-600 font-semibold mb-1">앨범 컨셉</p>
-                <p className="text-lg text-gray-900">
-                  강정마을에서 시작된 평화운동을 음악으로 표현
-                </p>
+              <div className="relative aspect-square rounded-xl shadow-2xl overflow-hidden group">
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500" />
+                <img
+                  src="/images-webp/album/albumart.png"
+                  alt="이름을 모르는 먼 곳의 그대에게 앨범 커버"
+                  className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700"
+                />
+                {/* Vinyl Record Effect (Optional aesthetic touch) */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-50 pointer-events-none" />
               </div>
             </motion.div>
 
+            {/* Right: Info */}
             <motion.div
               variants={fadeUpVariants}
-              className="space-y-3"
+              className="w-full lg:w-7/12 text-center lg:text-left"
             >
-              <Link
-                to="/album/tracks"
-                className="block bg-golden-sun text-white py-3 rounded font-medium text-center hover:bg-sunset-coral transition-colors"
-              >
-                뮤지션 보기 →
-              </Link>
-              <Link
-                to="/album/tracks"
-                className="block border-2 border-deep-sage text-deep-sage py-3 rounded font-medium text-center hover:bg-light-beige transition-colors"
-              >
-                수록곡 보기 →
-              </Link>
+              <span className="inline-block px-3 py-1 bg-deep-ocean text-white text-sm font-bold tracking-wider rounded-full mb-6">
+                2024 OFFICIAL RELEASE
+              </span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-deep-ocean mb-6 leading-tight">
+                이름을 모르는<br />먼 곳의 그대에게
+              </h1>
+              <p className="text-xl text-coastal-gray font-medium mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                전쟁과 폭력이 만연한 세상에서 보내는 평화의 편지.<br className="hidden md:block" />
+                12팀의 뮤지션이 강정마을에서 쏘아 올린 음악의 파동.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <Link
+                  to="/album/tracks"
+                  className="px-8 py-4 bg-deep-ocean text-white rounded-full font-bold hover:bg-jeju-ocean transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+                >
+                  수록곡 듣기 →
+                </Link>
+                <Link
+                  to="/album/musicians"
+                  className="px-8 py-4 bg-white border-2 border-deep-ocean text-deep-ocean rounded-full font-bold hover:bg-ocean-mist/10 transition-all duration-300"
+                >
+                  참여 뮤지션 소개
+                </Link>
+              </div>
             </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
+      </div>
 
-        {/* About Album */}
-        <motion.div
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={containerVariants}
-          className="max-w-3xl mx-auto mb-16"
-        >
-          <motion.h2
-            variants={fadeUpVariants}
-            className="text-3xl font-serif font-medium text-gray-900 mb-8"
-          >
-            앨범 소개
-          </motion.h2>
+      {/* Content Section */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
 
-          <motion.div
-            variants={containerVariants}
-            className="space-y-6"
-          >
-            <motion.div variants={fadeUpVariants}>
-              <h3 className="text-2xl font-serif font-medium text-gray-900 mb-3">
+            {/* Card 1: Meaning */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-ocean-sand/30 p-10 rounded-3xl"
+            >
+              <h3 className="text-2xl font-serif font-bold text-deep-ocean mb-6 flex items-center gap-3">
+                <span className="w-8 h-8 rounded-full bg-golden-sun flex items-center justify-center text-white text-sm">01</span>
                 제목의 의미
               </h3>
-              <p className="text-gray-700 leading-relaxed">
-                "이름을 모르는 먼 곳의 그대에게"는 세계 곳곳의 분쟁 지역에서 고통받고 있는 이들에게 보내는 평화의 메시지입니다.
-                우크라이나, 가자, 한반도 등 지구 반대편에서 일어나고 있는 전쟁과 폭력에 맞서,
-                음악가들은 자신들의 목소리로 평화를 노래합니다.
+              <p className="text-lg text-gray-700 leading-loose">
+                "이름을 모르는 먼 곳의 그대에게"는 세계 곳곳의 분쟁 지역에서 고통받고 있는 이들에게 보내는 연대의 메시지입니다.
+                우크라이나, 가자, 그리고 한반도. 우리는 서로의 얼굴도, 이름도 모르지만 같은 시대를 살아가며 평화를 염원하는 마음만은 하나로 연결되어 있습니다.
               </p>
             </motion.div>
 
-            <motion.div variants={fadeUpVariants}>
-              <h3 className="text-2xl font-serif font-medium text-gray-900 mb-3">
-                참여 뮤지션들
+            {/* Card 2: Participants */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="bg-ocean-sand/30 p-10 rounded-3xl"
+            >
+              <h3 className="text-2xl font-serif font-bold text-deep-ocean mb-6 flex items-center gap-3">
+                <span className="w-8 h-8 rounded-full bg-jeju-ocean flex items-center justify-center text-white text-sm">02</span>
+                12팀의 목소리
               </h3>
-              <p className="text-gray-700 leading-relaxed">
-                12팀의 뮤지션들은 각각 다른 장르와 스타일을 가지고 있지만,
-                평화라는 하나의 주제로 모여 이 앨범을 만들었습니다.
-                록, 포크, 힙합, 국악 등 다양한 음악 언어로 표현된 평화의 메시지를 만나보세요.
+              <p className="text-lg text-gray-700 leading-loose">
+                록, 포크, 힙합, 일렉트로닉, 그리고 국악까지.
+                강정마을의 평화운동에 공감하는 12팀의 뮤지션들이 각자의 음악 언어로 평화를 번역했습니다.
+                다양한 장르가 모여 만든 이 앨범은 다양성이야말로 평화의 본질임을 증명합니다.
               </p>
             </motion.div>
 
-            <motion.div variants={fadeUpVariants}>
-              <h3 className="text-2xl font-serif font-medium text-gray-900 mb-3">
-                앨범의 의미
-              </h3>
-              <p className="text-gray-700 leading-relaxed">
-                이 앨범은 강정피스앤뮤직캠프의 공식 음악 프로젝트입니다.
-                판매 수익금의 일부는 강정마을의 평화운동과 전 세계의 평화 관련 단체를 지원합니다.
-                앨범을 통해 당신도 평화운동에 함께할 수 있습니다.
-              </p>
-            </motion.div>
-          </motion.div>
-        </motion.div>
+          </div>
 
-        {/* Call to Action */}
-        <motion.div
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={fadeUpVariants}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="bg-gradient-to-r from-deep-sage to-sage-gray rounded-lg p-8 text-white text-center max-w-3xl mx-auto"
-        >
-          <h3 className="text-2xl font-serif font-medium mb-4">
-            앨범에 참여한 뮤지션들을 만나보세요
-          </h3>
-          <p className="mb-6">
-            각 뮤지션의 음악과 평화에 대한 생각을 알아보세요
-          </p>
-          <Link
-            to="/album/musicians"
-            className="inline-block bg-white text-deep-sage px-8 py-3 rounded font-semibold hover:bg-light-beige transition-colors"
+          {/* Credits Strip */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-24 pt-12 border-t border-gray-100 text-center"
           >
-            뮤지션 보기 →
-          </Link>
-        </motion.div>
-      </div>
+            <p className="text-coastal-gray font-serif text-lg">
+              Produced by <span className="text-deep-ocean font-bold">강정피스앤뮤직캠프</span> · 2024
+            </p>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 };
