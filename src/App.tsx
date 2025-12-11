@@ -26,8 +26,7 @@ const HomePage = () => (
     <HeroSection />
     <AboutSection />
     <TimelineSection />
-    <MusiciansSection />
-    <TracksSection />
+    <GallerySection />
   </div>
 );
 
@@ -55,19 +54,19 @@ const AnimatedRoutes = () => {
       <AnimatePresence mode="wait" initial={false}>
         <Suspense fallback={<PageLoadingSpinner />}>
           <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/musicians" element={<Navigate to="/album/musicians" replace />} />
-          <Route path="/tracks" element={<Navigate to="/album/tracks" replace />} />
-          <Route path="/album/musicians" element={<AlbumMusiciansPage />} />
-          <Route path="/album/tracks" element={<AlbumTracksPage />} />
-          <Route path="/gallery" element={<GalleryPage />} />
-          <Route path="/videos" element={<VideoPage />} />
-          <Route path="/press" element={<PressPage />} />
-          <Route path="/camps" element={<CampsPage />} />
-          <Route path="/camps/2023" element={<Camp2023Page />} />
-          <Route path="/camps/2025" element={<Camp2025Page />} />
-          <Route path="/camps/2026" element={<Camp2026Page />} />
-          <Route path="/album/about" element={<AlbumAboutPage />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/musicians" element={<Navigate to="/album/musicians" replace />} />
+            <Route path="/tracks" element={<Navigate to="/album/tracks" replace />} />
+            <Route path="/album/musicians" element={<AlbumMusiciansPage />} />
+            <Route path="/album/tracks" element={<AlbumTracksPage />} />
+            <Route path="/gallery" element={<GalleryPage />} />
+            <Route path="/videos" element={<VideoPage />} />
+            <Route path="/press" element={<PressPage />} />
+            <Route path="/camps" element={<CampsPage />} />
+            <Route path="/camps/2023" element={<Camp2023Page />} />
+            <Route path="/camps/2025" element={<Camp2025Page />} />
+            <Route path="/camps/2026" element={<Camp2026Page />} />
+            <Route path="/album/about" element={<AlbumAboutPage />} />
           </Routes>
         </Suspense>
       </AnimatePresence>

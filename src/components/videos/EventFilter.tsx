@@ -27,11 +27,10 @@ const VideoEventFilter: React.FC<VideoEventFilterProps> = ({ selectedFilter, onF
           onClick={() => onFilterChange(filter.id)}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className={`px-6 py-2 rounded-full font-medium transition-colors ${
-            selectedFilter === filter.id
-              ? 'bg-blue-600 text-white shadow-md'
-              : 'bg-white text-blue-600 border-2 border-blue-600 hover:bg-blue-600 hover:text-white'
-          }`}
+          className={`px-6 py-2 rounded-full font-medium transition-colors ${selectedFilter === filter.id
+              ? 'bg-jeju-ocean text-white shadow-md'
+              : 'bg-white text-jeju-ocean border-2 border-jeju-ocean hover:bg-jeju-ocean hover:text-white'
+            }`}
         >
           {filter.label}
         </motion.button>

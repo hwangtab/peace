@@ -27,11 +27,10 @@ const EventFilter: React.FC<EventFilterProps> = ({ selectedFilter, onFilterChang
           onClick={() => onFilterChange(filter.id)}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className={`px-6 py-2 rounded-full font-medium transition-colors ${
-            selectedFilter === filter.id
-              ? 'bg-deep-sage text-white shadow-md'
-              : 'bg-white text-deep-sage border-2 border-deep-sage hover:bg-deep-sage hover:text-white'
-          }`}
+          className={`px-6 py-2 rounded-full font-medium transition-colors ${selectedFilter === filter.id
+              ? 'bg-jeju-ocean text-white shadow-md'
+              : 'bg-white text-jeju-ocean border-2 border-jeju-ocean hover:bg-jeju-ocean hover:text-white'
+            }`}
         >
           {filter.label}
         </motion.button>
