@@ -71,5 +71,148 @@ export const videoItems: VideoItem[] = [
     location: "서울 홍대 스페이스 한강",
     eventType: 'album',
     eventYear: 2024
+  },
+  // 2023 Camp Videos
+  {
+    id: 101,
+    title: "2023 강정피스앤뮤직캠프 공연 #1",
+    description: "강정천 체육공원에서 펼쳐진 2023 강정피스앤뮤직캠프 공연 실황입니다.",
+    youtubeUrl: "https://www.youtube.com/watch?v=dF6raNSEkfI",
+    date: "2023-06-10",
+    location: "서귀포시 강정천 체육공원",
+    eventType: 'camp',
+    eventYear: 2023
+  },
+  {
+    id: 102,
+    title: "2023 강정피스앤뮤직캠프 공연 #2",
+    description: "강정천 체육공원에서 펼쳐진 2023 강정피스앤뮤직캠프 공연 실황입니다.",
+    youtubeUrl: "https://www.youtube.com/watch?v=mPeFqepsf_Y",
+    date: "2023-06-10",
+    location: "서귀포시 강정천 체육공원",
+    eventType: 'camp',
+    eventYear: 2023
+  },
+  {
+    id: 103,
+    title: "2023 강정피스앤뮤직캠프 공연 #3",
+    description: "강정천 체육공원에서 펼쳐진 2023 강정피스앤뮤직캠프 공연 실황입니다.",
+    youtubeUrl: "https://www.youtube.com/watch?v=MzIpAmDAYzk",
+    date: "2023-06-10",
+    location: "서귀포시 강정천 체육공원",
+    eventType: 'camp',
+    eventYear: 2023
+  },
+  {
+    id: 104,
+    title: "2023 강정피스앤뮤직캠프 공연 #4",
+    description: "강정천 체육공원에서 펼쳐진 2023 강정피스앤뮤직캠프 공연 실황입니다.",
+    youtubeUrl: "https://www.youtube.com/watch?v=OGKd_pnrul4",
+    date: "2023-06-10",
+    location: "서귀포시 강정천 체육공원",
+    eventType: 'camp',
+    eventYear: 2023
+  },
+  {
+    id: 105,
+    title: "2023 강정피스앤뮤직캠프 공연 #5",
+    description: "강정천 체육공원에서 펼쳐진 2023 강정피스앤뮤직캠프 공연 실황입니다.",
+    youtubeUrl: "https://www.youtube.com/watch?v=GHSxHVc-b1w",
+    date: "2023-06-10",
+    location: "서귀포시 강정천 체육공원",
+    eventType: 'camp',
+    eventYear: 2023
+  },
+  {
+    id: 106,
+    title: "2023 강정피스앤뮤직캠프 공연 #6",
+    description: "강정천 체육공원에서 펼쳐진 2023 강정피스앤뮤직캠프 공연 실황입니다.",
+    youtubeUrl: "https://www.youtube.com/watch?v=1TyLqzoHA7M",
+    date: "2023-06-10",
+    location: "서귀포시 강정천 체육공원",
+    eventType: 'camp',
+    eventYear: 2023
+  },
+  {
+    id: 107,
+    title: "2023 강정피스앤뮤직캠프 공연 #7",
+    description: "강정천 체육공원에서 펼쳐진 2023 강정피스앤뮤직캠프 공연 실황입니다.",
+    youtubeUrl: "https://www.youtube.com/watch?v=YwOO627losU",
+    date: "2023-06-10",
+    location: "서귀포시 강정천 체육공원",
+    eventType: 'camp',
+    eventYear: 2023
+  },
+  {
+    id: 108,
+    title: "2023 강정피스앤뮤직캠프 공연 #8",
+    description: "강정천 체육공원에서 펼쳐진 2023 강정피스앤뮤직캠프 공연 실황입니다.",
+    youtubeUrl: "https://www.youtube.com/watch?v=RH2x3ctcBgU",
+    date: "2023-06-10",
+    location: "서귀포시 강정천 체육공원",
+    eventType: 'camp',
+    eventYear: 2023
+  },
+  {
+    id: 109,
+    title: "2023 강정피스앤뮤직캠프 공연 #9",
+    description: "강정천 체육공원에서 펼쳐진 2023 강정피스앤뮤직캠프 공연 실황입니다.",
+    youtubeUrl: "https://www.youtube.com/watch?v=tFxoLxIDfyM",
+    date: "2023-06-10",
+    location: "서귀포시 강정천 체육공원",
+    eventType: 'camp',
+    eventYear: 2023
+  },
+  {
+    id: 110,
+    title: "2023 강정피스앤뮤직캠프 공연 #10",
+    description: "강정천 체육공원에서 펼쳐진 2023 강정피스앤뮤직캠프 공연 실황입니다.",
+    youtubeUrl: "https://www.youtube.com/watch?v=-PhTNOVdLc0",
+    date: "2023-06-10",
+    location: "서귀포시 강정천 체육공원",
+    eventType: 'camp',
+    eventYear: 2023
+  },
+  {
+    id: 111,
+    title: "2023 강정피스앤뮤직캠프 공연 #11",
+    description: "강정천 체육공원에서 펼쳐진 2023 강정피스앤뮤직캠프 공연 실황입니다.",
+    youtubeUrl: "https://www.youtube.com/watch?v=mC-HJ-VhLOQ",
+    date: "2023-06-10",
+    location: "서귀포시 강정천 체육공원",
+    eventType: 'camp',
+    eventYear: 2023
+  },
+  {
+    id: 112,
+    title: "2023 강정피스앤뮤직캠프 공연 #12",
+    description: "강정천 체육공원에서 펼쳐진 2023 강정피스앤뮤직캠프 공연 실황입니다.",
+    youtubeUrl: "https://www.youtube.com/watch?v=crK6y7mJrfY",
+    date: "2023-06-10",
+    location: "서귀포시 강정천 체육공원",
+    eventType: 'camp',
+    eventYear: 2023
+  },
+
+  // 2025 Camp Videos
+  {
+    id: 201,
+    title: "2025 강정피스앤뮤직캠프 공연 #1",
+    description: "할망물식당 일대에서 펼쳐진 2025 강정피스앤뮤직캠프 공연 실황입니다.",
+    youtubeUrl: "https://www.youtube.com/watch?v=pcsM9lxlA24",
+    date: "2025-06-14",
+    location: "서귀포시 강정동 할망물식당 일대",
+    eventType: 'camp',
+    eventYear: 2025
+  },
+  {
+    id: 202,
+    title: "2025 강정피스앤뮤직캠프 공연 #2",
+    description: "할망물식당 일대에서 펼쳐진 2025 강정피스앤뮤직캠프 공연 실황입니다.",
+    youtubeUrl: "https://youtu.be/DBlCTgWNNKU?si=9QRus6J85pPEqf-F",
+    date: "2025-06-14",
+    location: "서귀포시 강정동 할망물식당 일대",
+    eventType: 'camp',
+    eventYear: 2025
   }
 ];
