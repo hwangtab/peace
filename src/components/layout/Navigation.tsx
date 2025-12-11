@@ -39,24 +39,22 @@ const Navigation = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            {simpleMenuItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`${location.pathname === item.path
-                    ? 'text-jeju-ocean font-bold'
-                    : 'text-deep-ocean hover:text-jeju-ocean'
-                  } transition-colors duration-300 font-serif`}
-              >
-                {item.name}
-                {location.pathname === item.path && (
-                  <motion.div
-                    className="absolute bottom-0 left-0 w-full h-0.5 bg-golden-sun"
-                    layoutId="underline"
-                  />
-                )}
-              </Link>
-            ))}
+            <Link
+              to="/"
+              className={`${location.pathname === '/'
+                ? 'text-jeju-ocean font-bold'
+                : 'text-deep-ocean hover:text-jeju-ocean'
+                } transition-colors duration-300 font-serif relative`}
+            >
+              홈
+              {location.pathname === '/' && (
+                <motion.div
+                  className="absolute bottom-0 left-0 w-full h-0.5 bg-golden-sun"
+                  layoutId="underline"
+                />
+              )}
+            </Link>
+
             <NavigationDropdown
               label="캠프"
               items={campItems}
@@ -69,6 +67,29 @@ const Navigation = () => {
               isOpen={openDropdown === 'album'}
               onOpenChange={(isOpen) => setOpenDropdown(isOpen ? 'album' : null)}
             />
+
+            {[
+              { name: '갤러리', path: '/gallery' },
+              { name: '공연영상', path: '/videos' },
+              { name: '언론보도', path: '/press' },
+            ].map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`${location.pathname === item.path
+                  ? 'text-jeju-ocean font-bold'
+                  : 'text-deep-ocean hover:text-jeju-ocean'
+                  } transition-colors duration-300 font-serif relative`}
+              >
+                {item.name}
+                {location.pathname === item.path && (
+                  <motion.div
+                    className="absolute bottom-0 left-0 w-full h-0.5 bg-golden-sun"
+                    layoutId="underline"
+                  />
+                )}
+              </Link>
+            ))}
           </div>
 
           {/* Mobile Menu Button */}
@@ -103,8 +124,8 @@ const Navigation = () => {
                     key={item.path}
                     to={item.path}
                     className={`block py-2 ${location.pathname === item.path
-                        ? 'text-jeju-ocean font-bold'
-                        : 'text-deep-ocean'
+                      ? 'text-jeju-ocean font-bold'
+                      : 'text-deep-ocean'
                       } font-serif`}
                     onClick={() => setIsOpen(false)}
                   >
