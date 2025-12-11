@@ -39,6 +39,7 @@ const MusicianCard = ({ musician, index }: MusicianCardProps) => {
                   src={musician.imageUrl}
                   alt={musician.name}
                   className="absolute w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                  loading="eager"
                 />
               ) : (
                 <div className="absolute w-full h-full flex items-center justify-center text-sage-gray">
