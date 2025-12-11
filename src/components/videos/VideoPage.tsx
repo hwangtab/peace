@@ -22,9 +22,9 @@ const VideoCard: React.FC<{ video: VideoItem }> = ({ video }) => {
           frameBorder="0"
         ></iframe>
       </div>
-      <a 
-        href={getYoutubeVideoUrl(video.youtubeUrl)} 
-        target="_blank" 
+      <a
+        href={getYoutubeVideoUrl(video.youtubeUrl)}
+        target="_blank"
         rel="noopener noreferrer"
         className="flex-1 block hover:bg-gray-50/80 transition-colors duration-300"
       >
@@ -49,16 +49,23 @@ export default function VideoPage() {
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
 
   const filteredVideos = useMemo(() => {
-    if (selectedFilter === 'all') {
-      return videoItems;
-    } else if (selectedFilter === 'album-2024') {
-      return videoItems.filter(video => video.eventType === 'album' && video.eventYear === 2024);
-    } else if (selectedFilter === 'camp-2023') {
-      return videoItems.filter(video => video.eventType === 'camp' && video.eventYear === 2023);
-    } else if (selectedFilter === 'camp-2025') {
-      return videoItems.filter(video => video.eventType === 'camp' && video.eventYear === 2025);
+    let result = videoItems;
+
+    if (selectedFilter !== 'all') {
+      if (selectedFilter === 'album-2024') {
+        result = videoItems.filter(video => video.eventType === 'album' && video.eventYear === 2024);
+      } else if (selectedFilter === 'camp-2023') {
+        result = videoItems.filter(video => video.eventType === 'camp' && video.eventYear === 2023);
+      } else if (selectedFilter === 'camp-2025') {
+        result = videoItems.filter(video => video.eventType === 'camp' && video.eventYear === 2025);
+      }
     }
-    return videoItems;
+
+    // 연도순(오름차순) 정렬
+    return [...result].sort((a, b) => {
+      if (a.eventYear !== b.eventYear) return (a.eventYear || 0) - (b.eventYear || 0);
+      return a.id - b.id;
+    });
   }, [selectedFilter]);
 
   return (
