@@ -30,10 +30,10 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed w-full bg-light-beige/80 backdrop-blur-md z-50">
+    <nav className="fixed w-full bg-cloud-white/90 backdrop-blur-md z-50 shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="text-2xl font-bold font-serif text-deep-sage hover:text-sage-gray transition-colors">
+          <Link to="/" className="text-2xl font-bold font-serif text-jeju-ocean hover:text-ocean-mist transition-colors">
             강정피스앤뮤직캠프
           </Link>
 
@@ -43,16 +43,15 @@ const Navigation = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`${
-                  location.pathname === item.path
-                    ? 'text-deep-sage'
-                    : 'text-text-dark hover:text-deep-sage'
-                } transition-colors duration-300 font-serif`}
+                className={`${location.pathname === item.path
+                    ? 'text-jeju-ocean font-bold'
+                    : 'text-deep-ocean hover:text-jeju-ocean'
+                  } transition-colors duration-300 font-serif`}
               >
                 {item.name}
                 {location.pathname === item.path && (
                   <motion.div
-                    className="absolute bottom-0 left-0 w-full h-0.5 bg-deep-sage"
+                    className="absolute bottom-0 left-0 w-full h-0.5 bg-golden-sun"
                     layoutId="underline"
                   />
                 )}
@@ -76,7 +75,7 @@ const Navigation = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-text-dark hover:text-deep-sage transition-colors"
+              className="text-deep-ocean hover:text-jeju-ocean transition-colors"
             >
               {isOpen ? (
                 <XMarkIcon className="h-6 w-6" />
@@ -96,18 +95,17 @@ const Navigation = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-light-beige/80 backdrop-blur-md"
+              className="md:hidden bg-cloud-white/95 backdrop-blur-md border-t border-seafoam"
             >
               <div className="container mx-auto px-4 py-4">
                 {simpleMenuItems.map((item) => (
                   <Link
                     key={item.path}
                     to={item.path}
-                    className={`block py-2 ${
-                      location.pathname === item.path
-                        ? 'text-deep-sage'
-                        : 'text-text-dark'
-                    } font-serif`}
+                    className={`block py-2 ${location.pathname === item.path
+                        ? 'text-jeju-ocean font-bold'
+                        : 'text-deep-ocean'
+                      } font-serif`}
                     onClick={() => setIsOpen(false)}
                   >
                     {item.name}
