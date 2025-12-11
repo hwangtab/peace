@@ -9,7 +9,7 @@ const VideoCard: React.FC<{ video: VideoItem }> = ({ video }) => {
   const getYoutubeWatchUrl = (url: string) => `https://www.youtube.com/watch?v=${getYoutubeVideoId(url)}`;
 
   const videoId = getYoutubeVideoId(video.youtubeUrl);
-  const [imgSrc, setImgSrc] = useState(`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`);
+  const [imgSrc, setImgSrc] = useState(video.thumbnailUrl || `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`);
 
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden h-full flex flex-col transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
