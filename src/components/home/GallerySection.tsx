@@ -1,15 +1,14 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useMemo } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { GalleryImage } from '../../types/gallery';
 import { getGalleryImages } from '../../api/gallery';
 import EventFilter from '../gallery/EventFilter';
+import GalleryImageItem from '../gallery/GalleryImageItem';
 
 const GallerySection = () => {
   const [images, setImages] = useState<GalleryImage[]>([]);
-  const [filteredImages, setFilteredImages] = useState<GalleryImage[]>([]);
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
-  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
   const [visibleCount, setVisibleCount] = useState<number>(12);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -17,18 +16,18 @@ const GallerySection = () => {
   useEffect(() => {
     const loadImages = async () => {
       const galleryImages = await getGalleryImages();
-      // 연도순(오름차순)으로 정렬: 2023 -> 2024 -> 2025
+      // Initial sort: Year ascending, then ID ascending
       const sortedImages = [...galleryImages].sort((a, b) => {
         if (a.eventYear !== b.eventYear) return (a.eventYear || 0) - (b.eventYear || 0);
         return a.id - b.id;
       });
       setImages(sortedImages);
-      setFilteredImages(sortedImages);
     };
     loadImages();
   }, []);
 
-  useEffect(() => {
+  // Memozied filtering and sorting to prevent re-calculation on every render
+  const filteredImages = useMemo(() => {
     let filtered = [...images];
 
     if (selectedFilter !== 'all') {
@@ -41,20 +40,17 @@ const GallerySection = () => {
       }
     }
 
-    // 연도순 정렬 (2023 -> 2024 -> 2025)
-    // 같은 연도 내에서는 ID 순 (등록순)
-    const sorted = filtered.sort((a, b) => {
+    // Sort: Year ascending, then ID ascending
+    return filtered.sort((a, b) => {
       if (a.eventYear !== b.eventYear) return (a.eventYear || 0) - (b.eventYear || 0);
       return a.id - b.id;
     });
-
-    setFilteredImages(sorted);
-    setVisibleCount(12); // 필터 변경 시 초기화
   }, [selectedFilter, images]);
 
-  const handleImageLoad = (id: number) => {
-    setLoadedImages(prev => new Set(prev).add(id));
-  };
+  // Reset visible count when filter changes
+  useEffect(() => {
+    setVisibleCount(12);
+  }, [selectedFilter]);
 
   const handleLoadMore = () => {
     setVisibleCount(prev => prev + 12);
@@ -87,29 +83,14 @@ const GallerySection = () => {
           <>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
               {filteredImages.slice(0, visibleCount).map((image, index) => (
-                <motion.div
+                <GalleryImageItem
                   key={image.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.6, delay: (index % 12) * 0.1 }}
-                  className="cursor-pointer group"
-                  onClick={() => setSelectedImage(image)}
-                >
-                  <div className="relative overflow-hidden rounded-lg aspect-square bg-gray-100">
-                    {!loadedImages.has(image.id) && (
-                      <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-lg" />
-                    )}
-                    <img
-                      src={image.url}
-                      alt={image.description || `Gallery image ${image.id}`}
-                      className={`w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 ${loadedImages.has(image.id) ? 'opacity-100' : 'opacity-0'
-                        }`}
-                      loading="lazy"
-                      onLoad={() => handleImageLoad(image.id)}
-                    />
-                    <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
-                  </div>
-                </motion.div>
+                  image={image}
+                  index={index}
+                  priority={index < 6} // Load first 6 images eagerly
+                  isInView={isInView}
+                  onClick={setSelectedImage}
+                />
               ))}
             </div>
 
