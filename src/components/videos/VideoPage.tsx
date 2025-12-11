@@ -75,7 +75,7 @@ export default function VideoPage() {
   return (
     <section className="section bg-white" ref={ref}>
       <SEOHelmet
-        title="공연영상 - 강정피스앤뮤직캠프"
+        title="비디오 - 강정피스앤뮤직캠프"
         description="강정피스앤뮤직캠프의 공연영상 모음. 평화를 노래하는 뮤지션들의 공연 영상을 만나보세요."
         keywords="공연영상, 강정피스앤뮤직캠프, 평화 공연, 뮤지션 공연, 유튜브 영상"
       />
@@ -87,7 +87,7 @@ export default function VideoPage() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl font-medium text-gray-900 mb-4 font-serif">
-            공연영상
+            비디오
           </h2>
           <p className="text-lg text-gray-600 mb-12 subtitle">
             평화를 노래하는 우리들의 순간

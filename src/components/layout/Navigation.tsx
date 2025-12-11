@@ -12,7 +12,7 @@ const Navigation = () => {
   const simpleMenuItems = [
     { name: '홈', path: '/' },
     { name: '갤러리', path: '/gallery' },
-    { name: '공연영상', path: '/videos' },
+    { name: '비디오', path: '/videos' },
     { name: '언론보도', path: '/press' },
   ];
 
@@ -43,7 +43,7 @@ const Navigation = () => {
               to="/"
               className={`${location.pathname === '/'
                 ? 'text-jeju-ocean font-bold'
-                : 'text-deep-ocean hover:text-jeju-ocean'
+                : 'text-coastal-gray hover:text-jeju-ocean'
                 } transition-colors duration-300 font-serif relative`}
             >
               홈
@@ -70,7 +70,7 @@ const Navigation = () => {
 
             {[
               { name: '갤러리', path: '/gallery' },
-              { name: '공연영상', path: '/videos' },
+              { name: '비디오', path: '/videos' },
               { name: '언론보도', path: '/press' },
             ].map((item) => (
               <Link
@@ -78,7 +78,7 @@ const Navigation = () => {
                 to={item.path}
                 className={`${location.pathname === item.path
                   ? 'text-jeju-ocean font-bold'
-                  : 'text-deep-ocean hover:text-jeju-ocean'
+                  : 'text-coastal-gray hover:text-jeju-ocean'
                   } transition-colors duration-300 font-serif relative`}
               >
                 {item.name}
@@ -96,7 +96,7 @@ const Navigation = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-deep-ocean hover:text-jeju-ocean transition-colors"
+              className="text-coastal-gray hover:text-jeju-ocean transition-colors"
             >
               {isOpen ? (
                 <XMarkIcon className="h-6 w-6" />
@@ -125,7 +125,7 @@ const Navigation = () => {
                     to={item.path}
                     className={`block py-2 ${location.pathname === item.path
                       ? 'text-jeju-ocean font-bold'
-                      : 'text-deep-ocean'
+                      : 'text-coastal-gray'
                       } font-serif`}
                     onClick={() => setIsOpen(false)}
                   >
@@ -134,10 +134,10 @@ const Navigation = () => {
                 ))}
 
                 {/* Mobile Dropdowns */}
-                <div className="border-t border-sage-gray my-4 pt-4">
+                <div className="border-t border-coastal-gray/20 my-4 pt-4">
                   <button
                     onClick={() => setOpenDropdown(openDropdown === 'camps' ? null : 'camps')}
-                    className="w-full text-left py-2 font-serif text-text-dark flex justify-between items-center"
+                    className="w-full text-left py-2 font-serif text-deep-ocean flex justify-between items-center"
                   >
                     캠프
                     <motion.span
@@ -159,7 +159,7 @@ const Navigation = () => {
                           <Link
                             key={item.path}
                             to={item.path}
-                            className="block py-2 text-text-dark hover:text-deep-sage font-serif text-sm"
+                            className="block py-2 text-deep-ocean hover:text-jeju-ocean font-serif text-sm"
                             onClick={() => {
                               setIsOpen(false);
                               setOpenDropdown(null);
@@ -174,7 +174,7 @@ const Navigation = () => {
 
                   <button
                     onClick={() => setOpenDropdown(openDropdown === 'album' ? null : 'album')}
-                    className="w-full text-left py-2 font-serif text-text-dark flex justify-between items-center"
+                    className="w-full text-left py-2 font-serif text-deep-ocean flex justify-between items-center"
                   >
                     앨범
                     <motion.span
@@ -196,7 +196,7 @@ const Navigation = () => {
                           <Link
                             key={item.path}
                             to={item.path}
-                            className="block py-2 text-text-dark hover:text-deep-sage font-serif text-sm"
+                            className="block py-2 text-deep-ocean hover:text-jeju-ocean font-serif text-sm"
                             onClick={() => {
                               setIsOpen(false);
                               setOpenDropdown(null);
