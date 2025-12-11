@@ -11,7 +11,7 @@ const Camp2023Page = () => {
   const isInfoInView = useInView(infoRef, { once: true, margin: "-100px" });
 
   return (
-    <div className="min-h-screen bg-light-beige">
+    <div className="min-h-screen bg-ocean-sand">
       <SEOHelmet
         title="제1회 강정피스앤뮤직캠프 (2023) - 전쟁을 끝내자!"
         description="2023년 6월 10일 제주 강정마을에서 열린 제1회 강정피스앤뮤직캠프. 리테스 마하르잔, 여유와 설빈, 출장작곡가 김동산 등 7팀의 뮤지션이 함께한 평화 음악 축제."
@@ -21,7 +21,7 @@ const Camp2023Page = () => {
       <CampHero camp={camp} />
 
       {/* Camp Information Section */}
-      <section ref={infoRef} className="bg-light-beige py-16">
+      <section ref={infoRef} className="bg-ocean-sand py-16">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

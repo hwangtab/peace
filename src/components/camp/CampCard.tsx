@@ -21,13 +21,13 @@ const CampCard: React.FC<CampCardProps> = ({ camp }) => {
         className={`block h-full rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow ${isComingSoon ? 'pointer-events-none' : ''
           }`}
       >
-        <div className="bg-gradient-to-b from-deep-sage to-sage-gray h-48 flex flex-col items-center justify-center p-4 text-center">
+        <div className="bg-gradient-to-b from-jeju-ocean to-ocean-mist h-48 flex flex-col items-center justify-center p-4 text-center">
           <h3 className="text-4xl font-bold text-white font-serif mb-2">
             {camp.year}
           </h3>
           <p className="text-white text-lg mb-4">{camp.title}</p>
           {isComingSoon && (
-            <span className="bg-white text-deep-sage px-4 py-2 rounded-full text-sm font-semibold">
+            <span className="bg-white text-jeju-ocean px-4 py-2 rounded-full text-sm font-semibold">
               Coming Soon
             </span>
           )}
@@ -59,13 +59,13 @@ const CampCard: React.FC<CampCardProps> = ({ camp }) => {
                     {camp.participants.slice(0, 3).map((participant: string, index: number) => (
                       <span
                         key={index}
-                        className="bg-light-beige text-deep-sage px-2 py-1 rounded text-xs font-medium"
+                        className="bg-ocean-sand text-jeju-ocean px-2 py-1 rounded text-xs font-medium"
                       >
                         {participant}
                       </span>
                     ))}
                     {camp.participants.length > 3 && (
-                      <span className="bg-light-beige text-deep-sage px-2 py-1 rounded text-xs font-medium">
+                      <span className="bg-ocean-sand text-jeju-ocean px-2 py-1 rounded text-xs font-medium">
                         +{camp.participants.length - 3}
                       </span>
                     )}
