@@ -275,6 +275,36 @@ export const pressItems: PressItem[] = ([
     description: "전쟁과 폭력이 일상이 되어버린 세계 곳곳의 평화를 염원하는 음악가들이 하나의 목소리를 냈다. 우크라이나 전쟁의 포화 속에서 희생되는 무고한 생명들, 가자지구에서 계속되는 민간인 학살, 그리고 70년이 넘도록 풀리지 않는 한반도 분단의 아픔까지, 각기 다른 현장의 고통을 음악으로 담아낸 음반 『이름을 모르는 먼 곳의 그대에게』가 2월 7일 오후 2시 디지털 음원으로 발매된다.",
     imageUrl: "https://www.news-art.co.kr/data/photos/20250206/art_17388988747253_d7feea.jpg"
   }
+  {
+    id: 30,
+    title: "평화콘서트 강정피스앤뮤직캠프 14일 개최",
+    publisher: "제주투데이",
+    date: "2025-06-13",
+    url: "https://www.ijejutoday.com/news/articleView.html?idxno=400217",
+    description: "올해로 2회째를 맞는 강정피스앤뮤직캠프가 오는 14일 강정천 체육공원에서 개최된다. 이번 캠프는 '평화를 노래하는 모든 이들의 축제'를 슬로건으로 내걸고 다양한 장르의 뮤지션들이 참여해 평화의 메시지를 전한다.",
+    eventType: 'camp',
+    eventYear: 2025
+  },
+  {
+    id: 31,
+    title: "반전의 춤, 평화의 노래 ... 제2회 강정피스앤뮤직캠프 개최",
+    publisher: "뉴스N제주",
+    date: "2025-06-15",
+    url: "https://www.newsnjeju.com/news/articleView.html?idxno=220836",
+    description: "제2회 강정피스앤뮤직캠프가 성황리에 막을 내렸다. 이번 행사는 평화를 염원하는 시민들과 예술가들이 함께 어우러져 반전과 평화의 가치를 공유하는 뜻깊은 자리였다.",
+    eventType: 'camp',
+    eventYear: 2025
+  },
+  {
+    id: 32,
+    title: "[전문]“우리는 시민이다! 평화를 노래할 권리를 보장하라!”",
+    publisher: "뉴스N제주",
+    date: "2025-05-23",
+    url: "https://www.newsnjeju.com/news/articleView.html?idxno=218234",
+    description: "강정피스앤뮤직캠프 조직위원회는 기자회견을 열고 평화적인 문화행사 개최 보장과 시민들의 문화향유권 보장을 촉구했다.",
+    eventType: 'camp',
+    eventYear: 2025
+  }
 ] as PressItem[]).map(item => ({
   ...item,
   eventType: item.eventType || 'album',
