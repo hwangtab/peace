@@ -65,18 +65,17 @@ export const camps: CampEvent[] = [
     ],
     images: [
       '/images-webp/camps/2025/peacemusic-1.webp',
-      '/images-webp/camps/2025/DSC00316.webp',
-      '/images-webp/camps/2025/DSC00340.webp',
-      '/images-webp/camps/2025/DSC00393.webp',
-      '/images-webp/camps/2025/DSC00428.webp',
-      '/images-webp/camps/2025/DSC00481.webp',
+      '/images-webp/camps/2025/DSC00427.webp',
+      '/images-webp/camps/2025/DSC00491.webp',
+      '/images-webp/camps/2025/DSC00524.webp',
+      '/images-webp/camps/2025/DSC00533.webp',
+      '/images-webp/camps/2025/DSC00547.webp',
       '/images-webp/camps/2025/DSC00559.webp',
       '/images-webp/camps/2025/DSC00625.webp',
       '/images-webp/camps/2025/DSC00667.webp',
       '/images-webp/camps/2025/DSC00729.webp',
       '/images-webp/camps/2025/DSC00835.webp',
-      '/images-webp/camps/2025/DSC00938.webp',
-      '/images-webp/camps/2025/DSC01127.webp'
+      '/images-webp/camps/2025/DSC00938.webp'
     ]
   },
   {
