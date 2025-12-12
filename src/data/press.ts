@@ -282,6 +282,7 @@ export const pressItems: PressItem[] = ([
     date: "2025-06-13",
     url: "https://www.ijejutoday.com/news/articleView.html?idxno=400217",
     description: "올해로 2회째를 맞는 강정피스앤뮤직캠프가 오는 14일 할망물식당 일대(서귀포시 강정동 2835-1)에서 개최된다. 이번 캠프는 '평화를 노래하는 모든 이들의 축제'를 슬로건으로 내걸고 다양한 장르의 뮤지션들이 참여해 평화의 메시지를 전한다.",
+    imageUrl: "https://cdn.ijejutoday.com/news/photo/202506/400217_400434_1722.jpg",
     eventType: 'camp',
     eventYear: 2025
   },
@@ -292,16 +293,18 @@ export const pressItems: PressItem[] = ([
     date: "2025-06-15",
     url: "https://www.newsnjeju.com/news/articleView.html?idxno=220836",
     description: "제2회 강정피스앤뮤직캠프가 성황리에 막을 내렸다. 이번 행사는 평화를 염원하는 시민들과 예술가들이 함께 어우러져 반전과 평화의 가치를 공유하는 뜻깊은 자리였다.",
+    imageUrl: "http://www.newsnjeju.com/news/thumbnail/202506/220836_287179_4455_v150.jpg",
     eventType: 'camp',
     eventYear: 2025
   },
   {
     id: 32,
-    title: "[전문]“우리는 시민이다! 평화를 노래할 권리를 보장하라!”",
+    title: "[전문]\"우리는 시민이다! 평화를 노래할 권리를 보장하라!\"",
     publisher: "뉴스N제주",
     date: "2025-05-23",
     url: "https://www.newsnjeju.com/news/articleView.html?idxno=218234",
     description: "강정피스앤뮤직캠프 조직위원회는 기자회견을 열고 평화적인 문화행사 개최 보장과 시민들의 문화향유권 보장을 촉구했다.",
+    imageUrl: "http://www.newsnjeju.com/news/thumbnail/202505/218234_282572_2715_v150.jpg",
     eventType: 'camp',
     eventYear: 2025
   }
