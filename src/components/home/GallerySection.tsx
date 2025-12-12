@@ -5,6 +5,21 @@ import { getGalleryImages } from '../../api/gallery';
 import EventFilter from '../gallery/EventFilter';
 import GalleryImageItem from '../gallery/GalleryImageItem';
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 }
+};
+
 const GallerySection = () => {
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
@@ -82,16 +97,19 @@ const GallerySection = () => {
           <>
             <motion.div
               layout
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
               className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12"
             >
               {filteredImages.slice(0, visibleCount).map((image, index) => (
-                <GalleryImageItem
-                  key={image.id}
-                  image={image}
-                  index={index}
-                  priority={index < 6} // Load first 6 images eagerly
-                  onClick={setSelectedImage}
-                />
+                <motion.div variants={itemVariants} key={image.id}>
+                  <GalleryImageItem
+                    image={image}
+                    priority={index < 6} // Load first 6 images eagerly
+                    onClick={setSelectedImage}
+                  />
+                </motion.div>
               ))}
             </motion.div>
 
