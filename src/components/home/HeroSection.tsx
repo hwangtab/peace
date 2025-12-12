@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
 
-const HeroSection = () => {
+const HeroSection = ({ imageUrl }) => {
   return (
     <section className="relative h-screen flex items-center justify-center text-center overflow-hidden">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url("/images-webp/camps/2023/20230600.편집.29.webp")' }}
+        style={{ backgroundImage: `url("${imageUrl}")` }}
       />
 
       {/* Gradient Overlay using Coastal Palette */}
@@ -33,17 +33,18 @@ const HeroSection = () => {
             강정마을에서 시작되는 평화의 메시지
           </p>
           <div className="flex justify-center gap-4">
-            <motion.button
-              onClick={() => {
-                const aboutSection = document.querySelector('section:nth-of-type(2)');
-                aboutSection?.scrollIntoView({ behavior: 'smooth' });
+            <motion.a
+              href="#about"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
               }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-3 bg-golden-sun text-jeju-ocean rounded-full font-bold hover:bg-opacity-90 transition-colors shadow-lg"
             >
               프로젝트 소개
-            </motion.button>
+            </motion.a>
             <motion.a
               href="/camps/2026"
               whileHover={{ scale: 1.05 }}
