@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['Pretendard-Regular', ...require('tailwindcss/defaultTheme').fontFamily.sans],
+        'sans': ['GMarketSans', ...require('tailwindcss/defaultTheme').fontFamily.sans],
         'serif': ['BookkMyungjo-Bd', ...require('tailwindcss/defaultTheme').fontFamily.serif],
       },
       colors: {
