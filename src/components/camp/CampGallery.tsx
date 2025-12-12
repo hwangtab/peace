@@ -33,7 +33,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {camp.images.slice(0, 12).map((imageUrl, index) => (
             <motion.div
               key={index}
