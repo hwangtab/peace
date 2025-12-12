@@ -21,7 +21,7 @@ const AlbumAboutPage = lazy(() => import('./pages/album/AlbumAboutPage'));
 // Pages will be imported here
 const HomePage = () => (
   <div>
-    <HeroSection />
+    <HeroSection imageUrl="/images-webp/camps/2023/20230600.편집.29.webp" />
     <AboutSection />
     <TimelineSection />
     <GallerySection />
