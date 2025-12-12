@@ -73,11 +73,8 @@ export default function VideoPage() {
       }
     }
 
-    // 연도순(내림차순) 정렬
-    return [...result].sort((a, b) => {
-      if (a.eventYear !== b.eventYear) return (b.eventYear || 0) - (a.eventYear || 0);
-      return b.id - a.id;
-    });
+    // 날짜순(내림차순) 정렬
+    return [...result].sort((a, b) => b.date.localeCompare(a.date));
   }, [selectedFilter]);
 
   return (
