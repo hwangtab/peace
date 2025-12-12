@@ -1,6 +1,10 @@
 import { motion } from 'framer-motion';
 
-const HeroSection = ({ imageUrl }) => {
+interface HeroSectionProps {
+  imageUrl: string;
+}
+
+const HeroSection = ({ imageUrl }: HeroSectionProps) => {
   return (
     <section className="relative h-screen flex items-center justify-center text-center overflow-hidden">
       {/* Background Image */}
