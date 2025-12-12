@@ -33,11 +33,11 @@ export const camps: CampEvent[] = [
       '/images-webp/camps/2023/20230600.편집.37.webp',
       '/images-webp/camps/2023/20230609_160722.webp',
       '/images-webp/camps/2023/20230610_195517.webp',
-      '/images-webp/camps/2023/20230610_183856.webp',
-      '/images-webp/camps/2023/20230610_184242.webp',
-      '/images-webp/camps/2023/20230610_191827.webp',
-      '/images-webp/camps/2023/20230610_195302.webp',
-      '/images-webp/camps/2023/20230610_200144.webp'
+      '/images-webp/camps/2023/20230610_115532.webp',
+      '/images-webp/camps/2023/20230610리테스마하르잔.webp',
+      '/images-webp/camps/2023/20230610깃발.webp',
+      '/images-webp/camps/2023/20230610밤 전쟁을끝내자.webp',
+      '/images-webp/camps/2023/20230610강정피스앤뮤직캠프현수믹.webp'
     ]
   },
   {
