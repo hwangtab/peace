@@ -33,7 +33,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-4 gap-4">
           {camp.images.slice(0, 12).map((imageUrl, index) => (
             <motion.div
               key={index}
@@ -50,9 +50,8 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
                 <img
                   src={imageUrl}
                   alt={`${index + 1}`}
-                  className={`w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 ${
-                    loadedImages.has(index) ? 'opacity-100' : 'opacity-0'
-                  }`}
+                  className={`w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 ${loadedImages.has(index) ? 'opacity-100' : 'opacity-0'
+                    }`}
                   loading={index < 4 ? 'eager' : 'lazy'}
                   onLoad={() => handleImageLoad(index)}
                   onError={(e) => {
