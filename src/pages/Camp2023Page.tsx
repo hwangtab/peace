@@ -21,7 +21,7 @@ const Camp2023Page = () => {
       <CampHero camp={camp} />
 
       {/* Camp Information Section */}
-      <section ref={infoRef} className="bg-ocean-sand py-16">
+      <section ref={infoRef} className="bg-ocean-sand pt-16">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
