@@ -58,6 +58,7 @@ export const camps: CampEvent[] = [
       'HANASH'
     ],
     images: [
+      '/images-webp/camps/2025/peacemusic-1.webp',
       '/images-webp/camps/2025/DSC00316.webp',
       '/images-webp/camps/2025/DSC00340.webp',
       '/images-webp/camps/2025/DSC00393.webp',
