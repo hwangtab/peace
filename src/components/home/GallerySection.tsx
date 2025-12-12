@@ -68,7 +68,7 @@ const GallerySection = () => {
             갤러리
           </h2>
           <p className="text-lg text-gray-600 subtitle">
-            평화를 노래하는 순간들 ({filteredImages.length}장)
+            평화를 노래하는 순간들
           </p>
         </motion.div>
 
@@ -101,7 +101,7 @@ const GallerySection = () => {
                   onClick={handleLoadMore}
                   className="px-8 py-3 bg-white border-2 border-jeju-ocean text-jeju-ocean rounded-full font-medium hover:bg-jeju-ocean hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
                 >
-                  더 보기 ({Math.min(filteredImages.length - visibleCount, 12)}장 남음)
+                  더 보기
                 </button>
               </div>
             )}
