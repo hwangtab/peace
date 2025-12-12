@@ -46,7 +46,7 @@ module.exports = {
         'ocean-gradient': 'linear-gradient(135deg, #0A5F8A 0%, #4A90B8 100%)',
         'sky-gradient': 'linear-gradient(180deg, #87CEEB 0%, #D4E9F7 100%)',
         'sunset-gradient': 'linear-gradient(135deg, #FDB44B 0%, #FF8C69 100%)',
-        'hero-gradient': 'linear-gradient(135deg, rgba(5, 74, 117, 0.75) 0%, rgba(0, 151, 167, 0.65) 100%)',
+        'hero-gradient': 'linear-gradient(0deg, rgba(26, 35, 50, 0.8) 0%, rgba(26, 35, 50, 0.1) 70%, transparent 100%)',
       },
     },
   },
