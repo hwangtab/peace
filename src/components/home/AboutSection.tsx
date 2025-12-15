@@ -13,12 +13,12 @@ const AboutSection = () => {
 
   return (
     <section id="about" className="section bg-white" ref={ref}>
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           transition={{ staggerChildren: 0.2 }}
-          className="max-w-4xl mx-auto text-center mb-16"
+          className="max-w-4xl mx-auto text-center mb-12"
         >
           <motion.h2
             variants={fadeIn}
