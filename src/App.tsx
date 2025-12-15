@@ -17,10 +17,12 @@ const Camp2026Page = lazy(() => import('./pages/Camp2026Page'));
 const AlbumMusiciansPage = lazy(() => import('./pages/album/AlbumMusiciansPage'));
 const AlbumTracksPage = lazy(() => import('./pages/album/AlbumTracksPage'));
 const AlbumAboutPage = lazy(() => import('./pages/album/AlbumAboutPage'));
+import SEOHelmet from './components/shared/SEOHelmet';
 
 // Pages will be imported here
 const HomePage = () => (
   <div>
+    <SEOHelmet />
     <HeroSection imageUrl="/images-webp/camps/2023/20230600.편집.29.webp" />
     <AboutSection />
     <TimelineSection />
