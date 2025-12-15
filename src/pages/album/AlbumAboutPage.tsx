@@ -27,6 +27,7 @@ const AlbumAboutPage = () => {
       description="강정피스앤뮤직캠프의 2024년 음반 프로젝트. 전쟁을 끝내고 평화를 노래하는 12곡의 음악 여정."
       keywords="이름을 모르는 먼 곳의 그대에게, 강정피스앤뮤직캠프, 음반, 평화음악"
       background="white"
+      disableTopPadding={true}
     >
       {/* Hero Section embedded in PageLayout content, or separate? 
           Original had a hero section with background decorations. 
@@ -41,7 +42,7 @@ const AlbumAboutPage = () => {
         <div className="absolute bottom-0 left-0 w-1/2 h-2/3 bg-golden-sun/10 rounded-full blur-3xl z-0" />
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-jeju-ocean/5 rounded-full blur-3xl z-0" />
 
-        <div className="container mx-auto px-4 relative z-10 pt-10">
+        <div className="container mx-auto px-4 relative z-10 pt-32 pb-12">
           <motion.div
             ref={ref}
             initial="hidden"

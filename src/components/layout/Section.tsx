@@ -42,7 +42,7 @@ const Section = React.forwardRef<HTMLElement, SectionProps>(({
             )}
         >
             {children}
-        </section>
+        </section >
     );
 });
 

@@ -5,7 +5,11 @@ import { GalleryImage } from '../../types/gallery';
 import { getGalleryImages } from '../../api/gallery';
 import Section from '../layout/Section';
 
-const GallerySection = () => {
+interface GallerySectionProps {
+  className?: string;
+}
+
+const GallerySection: React.FC<GallerySectionProps> = ({ className }) => {
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
 
@@ -14,18 +18,7 @@ const GallerySection = () => {
     threshold: 0.1
   });
 
-  useEffect(() => {
-    const loadImages = async () => {
-      const galleryImages = await getGalleryImages();
-      // Initial sort: Year ascending, then ID ascending
-      const sortedImages = [...galleryImages].sort((a, b) => {
-        if (a.eventYear !== b.eventYear) return (a.eventYear || 0) - (b.eventYear || 0);
-        return a.id - b.id;
-      });
-      setImages(sortedImages);
-    };
-    loadImages();
-  }, []);
+  // ... (rest of the component)
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -46,12 +39,25 @@ const GallerySection = () => {
     }
   };
 
+  useEffect(() => {
+    const loadImages = async () => {
+      const galleryImages = await getGalleryImages();
+      // Initial sort: Year ascending, then ID ascending
+      const sortedImages = [...galleryImages].sort((a, b) => {
+        if (a.eventYear !== b.eventYear) return (a.eventYear || 0) - (b.eventYear || 0);
+        return a.id - b.id;
+      });
+      setImages(sortedImages);
+    };
+    loadImages();
+  }, []);
+
   const displayImages = useMemo(() => {
     return images.slice(0, 8);
   }, [images]);
 
   return (
-    <Section id="gallery" background="seafoam" ref={ref}>
+    <Section id="gallery" background="seafoam" ref={ref} className={className}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
