@@ -4,7 +4,7 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import CampCard from '../components/camp/CampCard';
 import { camps } from '../data/camps';
-import Link from 'next/link';
+
 import PageLayout from '../components/layout/PageLayout';
 
 const CampsPage = () => {
