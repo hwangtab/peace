@@ -31,11 +31,11 @@ const CampHero: React.FC<CampHeroProps> = ({ camp }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl font-medium text-white mb-4 font-serif">
+          <h1 className="typo-h1 text-white mb-4">
             {camp.title}
           </h1>
           {camp.slogan && (
-            <p className="text-2xl text-gray-100 mb-6 subtitle">
+            <p className="typo-subtitle text-gray-100 mb-6">
               {camp.slogan}
             </p>
           )}

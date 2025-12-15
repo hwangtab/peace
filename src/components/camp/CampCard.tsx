@@ -22,10 +22,10 @@ const CampCard: React.FC<CampCardProps> = ({ camp }) => {
           }`}
       >
         <div className="bg-gradient-to-b from-jeju-ocean to-ocean-mist h-48 flex flex-col items-center justify-center p-4 text-center">
-          <h3 className="text-4xl font-bold text-white font-serif mb-2">
+          <h3 className="typo-h2 text-white mb-2">
             {camp.year}
           </h3>
-          <p className="text-white text-lg mb-4">{camp.title}</p>
+          <p className="typo-h3 text-white mb-4">{camp.title}</p>
           {isComingSoon && (
             <span className="bg-white text-jeju-ocean px-4 py-2 rounded-full text-sm font-semibold">
               Coming Soon

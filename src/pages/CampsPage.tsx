@@ -32,10 +32,10 @@ const CampsPage = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h1 className="text-5xl font-serif font-medium text-gray-900 mb-6">
+          <h1 className="typo-h1 mb-6">
             강정피스앤뮤직캠프
           </h1>
-          <p className="text-xl text-gray-600 subtitle max-w-2xl mx-auto">
+          <p className="typo-subtitle max-w-2xl mx-auto">
             평화를 위한 음악 캠프의 역사와 미래
           </p>
         </motion.div>
@@ -71,13 +71,13 @@ const CampsPage = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-16 bg-white rounded-lg p-8 shadow-md"
         >
-          <h2 className="text-2xl font-serif font-medium text-gray-900 mb-4">
+          <h2 className="typo-h2 mb-4">
             강정피스앤뮤직캠프에 대해
           </h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
+          <p className="typo-body mb-4">
             강정피스앤뮤직캠프는 제주 강정마을에서 시작된 평화운동입니다. 음악가들이 함께 모여 평화의 메시지를 전 세계에 전하고 있습니다.
           </p>
-          <p className="text-gray-600 leading-relaxed">
+          <p className="typo-body">
             매년 정해진 일시에 강정마을에서 개최되는 이 캠프는 세계 곳곳의 분쟁을 위해 음악가들의 연대를 보여주는 상징적인 행사입니다.
           </p>
         </motion.div>
