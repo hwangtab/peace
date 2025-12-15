@@ -49,8 +49,8 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ event, isLeft }) => {
       <span className={`inline-block px-3 py-1 rounded-full text-white text-xs font-bold ${eventTypeColor[event.eventType]} mb-3 shadow-sm`}>
         {eventTypeLabel[event.eventType]}
       </span>
-      <h3 className="text-xl font-bold text-jeju-ocean mb-2 font-serif">{event.title}</h3>
-      <p className="text-coastal-gray mb-3 text-sm leading-relaxed">{event.description}</p>
+      <h3 className="typo-h3 text-jeju-ocean mb-2">{event.title}</h3>
+      <p className="typo-body text-coastal-gray mb-3 text-sm">{event.description}</p>
       {event.location && (
         <p className="text-xs text-ocean-mist flex items-center font-medium">
           <span className="mr-1">📍</span> {event.location}
@@ -61,7 +61,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ event, isLeft }) => {
 
   const YearLabel = ({ align }: { align: 'left' | 'right' }) => (
     <div className={`flex flex-col justify-center h-full ${align === 'right' ? 'items-end' : 'items-start'}`}>
-      <span className="text-3xl font-bold text-jeju-ocean/80 font-serif">{event.year}</span>
+      <span className="text-3xl font-bold text-jeju-ocean/80 font-display">{event.year}</span>
       {event.month && (
         <span className="text-ocean-mist font-medium">{event.month}월</span>
       )}

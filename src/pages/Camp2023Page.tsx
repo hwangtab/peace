@@ -30,10 +30,10 @@ const Camp2023Page = () => {
             className="max-w-3xl mx-auto"
           >
             <div className="bg-white rounded-lg shadow-sm p-8 mb-12">
-              <h2 className="text-3xl font-serif font-medium text-gray-900 mb-6">
+              <h2 className="typo-h2 mb-6">
                 행사 개요
               </h2>
-              <p className="text-gray-700 leading-relaxed text-lg mb-4">
+              <p className="typo-body mb-4">
                 {camp.description}
               </p>
             </div>
@@ -46,7 +46,7 @@ const Camp2023Page = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="bg-white rounded-lg shadow-sm p-8"
               >
-                <h3 className="text-2xl font-serif font-medium text-gray-900 mb-6">
+                <h3 className="typo-h3 mb-6">
                   참여 뮤지션
                 </h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
