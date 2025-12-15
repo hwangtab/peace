@@ -19,7 +19,7 @@ const TracksSection = () => {
   };
 
   return (
-    <section id="tracks" className="section bg-white" ref={ref}>
+    <section id="tracks" className="section bg-sky-horizon" ref={ref}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
