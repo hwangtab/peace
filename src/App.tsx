@@ -37,7 +37,7 @@ const GalleryPage = () => (
     description="강정피스앤뮤직캠프의 생생한 순간들."
     background="seafoam"
   >
-    <GallerySection />
+    <GallerySection className="!pt-0" />
   </PageLayout>
 );
 
