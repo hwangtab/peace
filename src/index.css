@@ -83,6 +83,10 @@
     @apply py-16 md:py-24;
   }
 
+  .page-container {
+    @apply pt-24 pb-16 md:pt-32 md:pb-24;
+  }
+
   .btn {
     @apply px-6 py-2 rounded-lg transition-all duration-300;
   }
