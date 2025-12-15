@@ -23,7 +23,7 @@ const AlbumAboutPage = lazy(() => import('./pages/album/AlbumAboutPage'));
 const HomePage = () => (
   <div>
     <SEOHelmet />
-    <HeroSection imageUrl="/images-webp/camps/2023/20230600.편집.29.webp" />
+    <HeroSection imageUrl="/images-webp/camps/2023/DSC00437.webp" />
     <AboutSection />
     <TimelineSection />
     <GallerySection />
