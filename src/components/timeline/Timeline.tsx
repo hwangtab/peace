@@ -19,7 +19,7 @@ const Timeline: React.FC = () => {
   };
 
   return (
-    <section className="section bg-ocean-sand" ref={ref}>
+    <section className="section bg-sunlight-glow" ref={ref}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
