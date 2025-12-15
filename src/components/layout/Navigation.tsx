@@ -44,7 +44,7 @@ const Navigation = () => {
               className={`${location.pathname === '/'
                 ? 'text-jeju-ocean font-bold'
                 : 'text-coastal-gray hover:text-jeju-ocean'
-                } transition-colors duration-300 font-serif relative`}
+                } transition-colors duration-300 font-display relative`}
             >
               홈
               {location.pathname === '/' && (
@@ -79,7 +79,7 @@ const Navigation = () => {
                 className={`${location.pathname === item.path
                   ? 'text-jeju-ocean font-bold'
                   : 'text-coastal-gray hover:text-jeju-ocean'
-                  } transition-colors duration-300 font-serif relative`}
+                  } transition-colors duration-300 font-display relative`}
               >
                 {item.name}
                 {location.pathname === item.path && (

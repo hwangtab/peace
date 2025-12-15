@@ -14,7 +14,7 @@ const Camp2026Page = () => {
     return (
       <div className="min-h-screen bg-ocean-sand pt-24 pb-16 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-serif font-medium text-gray-900 mb-4">캠프를 찾을 수 없습니다</h1>
+          <h1 className="typo-h2 text-gray-900 mb-4">캠프를 찾을 수 없습니다</h1>
         </div>
       </div>
     );
@@ -66,13 +66,13 @@ const Camp2026Page = () => {
               </svg>
             </div>
 
-            <h2 className="text-4xl font-serif font-medium text-gray-900 mb-4">
+            <h2 className="typo-h2 mb-4">
               Coming Soon
             </h2>
-            <p className="text-xl text-gray-600 mb-8">
+            <p className="typo-subtitle mb-8">
               강정피스앤뮤직캠프 2026은 계획 중입니다
             </p>
-            <p className="text-gray-600 leading-relaxed">
+            <p className="typo-body">
               매년 같은 정신으로 계속되는 강정피스앤뮤직캠프. 2026년의 캠프도 더 많은 음악가들과 함께 평화를 노래할 수 있기를 기대합니다.
             </p>
           </motion.div>
@@ -82,10 +82,10 @@ const Camp2026Page = () => {
             variants={fadeUpVariants}
             className="bg-gradient-to-r from-jeju-ocean to-ocean-mist rounded-lg p-8 text-center text-white"
           >
-            <h3 className="text-2xl font-serif font-medium mb-4">
+            <h3 className="typo-h3 text-white mb-4">
               소식을 받아보세요
             </h3>
-            <p className="mb-6">
+            <p className="typo-body text-white/90 mb-6">
               2026년 캠프 소식이 나올 때까지 뉴스레터를 구독하세요
             </p>
             <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
