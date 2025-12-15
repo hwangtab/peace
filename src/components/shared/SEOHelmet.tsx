@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-export interface SEOProps {
+export interface SEOHelmetProps {
     title?: string;
     description?: string;
     keywords?: string;
@@ -11,7 +11,7 @@ export interface SEOProps {
     structuredData?: object | object[];
 }
 
-const SEOHelmet: React.FC<SEOProps> = ({
+const SEOHelmet: React.FC<SEOHelmetProps> = ({
     title = "강정피스앤뮤직캠프 | 노래하자, 춤추자, 전쟁을 끝내자",
     description = "제주 강정마을에서 시작되는 평화를 위한 음악 프로젝트. 전세계 분쟁 지역의 평화를 염원하며 음악가들이 함께 노래하고 연대하는 강정피스앤뮤직캠프입니다.",
     keywords = "강정피스앤뮤직캠프, 강정마을, 평화음악, 음악캠프, 평화운동, 제주, 반전운동, 음악축제, 평화프로젝트, 뮤지션, 음악가, 평화와음악",

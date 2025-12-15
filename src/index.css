@@ -79,14 +79,6 @@
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 
-  .section {
-    @apply py-16 md:py-24;
-  }
-
-  .page-container {
-    @apply pt-24 pb-16 md:pt-32 md:pb-24;
-  }
-
   .btn {
     @apply px-6 py-2 rounded-lg transition-all duration-300;
   }
@@ -105,18 +97,6 @@
 
   .btn-accent-coral {
     @apply bg-sunset-coral text-cloud-white hover:bg-golden-sun hover:text-deep-ocean transition-colors duration-200;
-  }
-
-  .section-ocean {
-    @apply bg-ocean-sand;
-  }
-
-  .section-sky {
-    @apply bg-sky-horizon;
-  }
-
-  .section-sunlight {
-    @apply bg-sunlight-glow;
   }
 
   /* Typography Utilities */

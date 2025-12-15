@@ -1,7 +1,8 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import SEOHelmet from '../../components/shared/SEOHelmet';
+import PageLayout from '../../components/layout/PageLayout';
+import Section from '../../components/layout/Section';
 
 const AlbumAboutPage = () => {
   const ref = useRef(null);
@@ -21,17 +22,21 @@ const AlbumAboutPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      <SEOHelmet
-        title="이름을 모르는 먼 곳의 그대에게 - 앨범 소개"
-        description="강정피스앤뮤직캠프의 2024년 음반 프로젝트. 전쟁을 끝내고 평화를 노래하는 12곡의 음악 여정."
-        keywords="이름을 모르는 먼 곳의 그대에게, 강정피스앤뮤직캠프, 음반, 평화음악"
-      />
+    <PageLayout
+      title="이름을 모르는 먼 곳의 그대에게 - 앨범 소개"
+      description="강정피스앤뮤직캠프의 2024년 음반 프로젝트. 전쟁을 끝내고 평화를 노래하는 12곡의 음악 여정."
+      keywords="이름을 모르는 먼 곳의 그대에게, 강정피스앤뮤직캠프, 음반, 평화음악"
+      background="white"
+    >
+      {/* Hero Section embedded in PageLayout content, or separate? 
+          Original had a hero section with background decorations. 
+          I'll keep the structure but wrap everything in PageLayout. 
+          The PageLayout adds padding, so I might need to adjust.
+          Actually, PageLayout standardizes padding. I'll rely on it.
+      */}
 
-      {/* Hero Section */}
-      <div className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
-        {/* Background Decorative Elements */}
-        {/* Background Decorative Elements */}
+      <div className="relative overflow-hidden mb-20">
+        {/* Background Decorative Elements - reimplemented inside container or just kept here */}
         <div className="absolute top-[-20%] right-[-10%] w-2/3 h-[120%] bg-ocean-mist/20 rounded-full blur-3xl z-0 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-1/2 h-2/3 bg-golden-sun/10 rounded-full blur-3xl z-0" />
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-jeju-ocean/5 rounded-full blur-3xl z-0" />
@@ -56,7 +61,6 @@ const AlbumAboutPage = () => {
                   alt="이름을 모르는 먼 곳의 그대에게 앨범 커버"
                   className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700"
                 />
-                {/* Vinyl Record Effect (Optional aesthetic touch) */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-50 pointer-events-none" />
               </div>
             </motion.div>
@@ -96,8 +100,7 @@ const AlbumAboutPage = () => {
         </div>
       </div>
 
-      {/* Content Section */}
-      <section className="section bg-white">
+      <Section background="white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
 
@@ -153,8 +156,8 @@ const AlbumAboutPage = () => {
             </p>
           </motion.div>
         </div>
-      </section>
-    </div>
+      </Section>
+    </PageLayout>
   );
 };
 

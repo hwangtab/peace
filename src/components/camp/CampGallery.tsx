@@ -1,6 +1,7 @@
-import React, { useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { CampEvent } from '../../types/camp';
+import Section from '../layout/Section';
 
 interface CampGalleryProps {
   camp: CampEvent;
@@ -8,89 +9,65 @@ interface CampGalleryProps {
 
 const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const handleImageLoad = (index: number) => {
-    setLoadedImages(prev => new Set(prev).add(index));
-  };
+  if (!camp.images || camp.images.length === 0) {
+    return null;
+  }
 
   return (
-    <section ref={ref} className="section bg-ocean-sand">
+    <Section background="ocean-sand">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h2 className="typo-h2 mb-4">
-            행사 현장
-          </h2>
-          <p className="typo-subtitle">
-            {camp.year}년 강정피스앤뮤직캠프의 순간들
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-          {camp.images.slice(0, 12).map((imageUrl, index) => (
+        <h2 className="typo-h2 text-center mb-12">갤러리</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {camp.images.map((img, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="cursor-pointer group"
-              onClick={() => setSelectedImage(imageUrl)}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="cursor-pointer overflow-hidden rounded-xl shadow-lg relative group aspect-video"
+              onClick={() => setSelectedImage(img)}
             >
-              <div className="relative overflow-hidden rounded-lg aspect-square">
-                {!loadedImages.has(index) && (
-                  <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-lg" />
-                )}
-                <img
-                  src={imageUrl}
-                  alt={`${index + 1}`}
-                  className={`w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 ${loadedImages.has(index) ? 'opacity-100' : 'opacity-0'
-                    }`}
-                  loading={index < 4 ? 'eager' : 'lazy'}
-                  onLoad={() => handleImageLoad(index)}
-                  onError={(e) => {
-                    // Handle broken images gracefully
-                    const target = e.target as HTMLImageElement;
-                    target.src = '/placeholder.png';
-                    handleImageLoad(index);
-                  }}
-                />
-                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
-              </div>
+              <img
+                src={img}
+                alt={`Gallery ${index + 1}`}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300" />
             </motion.div>
           ))}
         </div>
+      </div>
 
+      <AnimatePresence>
         {selectedImage && (
-          <div
-            className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4"
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
             onClick={() => setSelectedImage(null)}
           >
-            <div className="relative max-w-4xl w-full">
-              <button
-                onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 text-white hover:text-gray-300 z-10"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-              <img
-                src={selectedImage}
-                alt="Full size view"
-                className="w-full h-auto rounded-lg"
-              />
-            </div>
-          </div>
+            <motion.img
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.9 }}
+              src={selectedImage}
+              alt="Expanded view"
+              className="max-w-full max-h-[90vh] rounded-lg shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+            <button
+              className="absolute top-8 right-8 text-white text-4xl font-light hover:text-jeju-ocean transition-colors"
+              onClick={() => setSelectedImage(null)}
+            >
+              &times;
+            </button>
+          </motion.div>
         )}
-      </div>
-    </section>
+      </AnimatePresence>
+    </Section>
   );
 };
 

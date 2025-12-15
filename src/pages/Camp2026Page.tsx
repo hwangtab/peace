@@ -1,114 +1,106 @@
-import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import CampHero from '../components/camp/CampHero';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { camps } from '../data/camps';
-import SEOHelmet from '../components/shared/SEOHelmet';
+import PageLayout from '../components/layout/PageLayout';
 
 const Camp2026Page = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const camp2026 = camps.find(camp => camp.id === 'camp-2026');
+  const [email, setEmail] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const camp2026 = camps.find(c => c.year === 2026);
+  // 이메일 제출 핸들러 (실제 기능은 백엔드 연동 필요)
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      setIsSubmitted(true);
+      setEmail('');
+    }
+  };
 
   if (!camp2026) {
     return (
-      <div className="min-h-screen bg-ocean-sand page-container flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="typo-h2 text-gray-900 mb-4">캠프를 찾을 수 없습니다</h1>
+      <PageLayout
+        title="제3회 강정피스앤뮤직캠프 (2026)"
+        description="2026년 예정된 제3회 강정피스앤뮤직캠프 정보."
+      >
+        <div className="flex items-center justify-center h-full min-h-[50vh]">
+          <div className="text-center">
+            <h1 className="typo-h2 text-gray-900 mb-4">캠프를 찾을 수 없습니다</h1>
+          </div>
         </div>
-      </div>
+      </PageLayout>
     );
   }
 
-  const fadeUpVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
-
   return (
-    <div className="min-h-screen bg-ocean-sand page-container">
-      <SEOHelmet
-        title="제3회 강정피스앤뮤직캠프 (2026) - Coming Soon"
-        description="2026년 여름 개최 예정인 제3회 강정피스앤뮤직캠프. 평화를 노래하는 음악 축제에 함께하세요."
-        keywords="강정피스앤뮤직캠프, 제3회 캠프, 2026, 강정마을, 평화음악"
-      />
-      <CampHero camp={camp2026} />
+    <PageLayout
+      title="제3회 강정피스앤뮤직캠프 (2026) - Coming Soon"
+      description="2026년 여름 개최 예정인 제3회 강정피스앤뮤직캠프. 평화를 노래하는 음악 축제에 함께하세요."
+      keywords="강정피스앤뮤직캠프, 2026, 제3회 캠프, Coming Soon, 평화음악"
+    >
+      <div className="container mx-auto px-4 relative z-10 flex flex-col items-center justify-center min-h-[60vh] text-center">
 
-      <div className="container mx-auto px-4 py-16" ref={ref}>
         <motion.div
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={{
-            visible: {
-              transition: { staggerChildren: 0.2 }
-            }
-          }}
-          className="max-w-3xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-3xl w-full bg-white/90 backdrop-blur-sm p-12 rounded-3xl shadow-2xl border border-white/50"
         >
-          {/* Coming Soon Message */}
-          <motion.div
-            variants={fadeUpVariants}
-            className="bg-white rounded-lg p-12 shadow-md text-center mb-12"
-          >
-            <div className="inline-block bg-gradient-to-r from-jeju-ocean to-ocean-mist rounded-full p-6 mb-8">
-              <svg
-                className="h-16 w-16 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+          <span className="inline-block px-4 py-1 bg-jeju-ocean text-white font-bold rounded-full mb-6 text-sm tracking-wider">
+            2026 COMING SOON
+          </span>
+
+          <h1 className="typo-h2 mb-4 text-gray-900">
+            {camp2026.title}
+          </h1>
+
+          <div className="w-24 h-1 bg-gradient-to-r from-jeju-ocean to-emerald-400 mx-auto mb-8 rounded-full"></div>
+
+          <p className="typo-subtitle mb-10 text-gray-700 leading-relaxed">
+            평화의 바람은 계속해서 불어옵니다.<br />
+            세 번째 평화의 노래가 2026년 여름, 강정에서 울려 퍼집니다.
+          </p>
+
+          <div className="bg-ocean-sand/30 p-8 rounded-2xl mb-10">
+            <h3 className="typo-h3 mb-4 text-jeju-ocean">뉴스레터 구독하기</h3>
+            <p className="typo-body text-gray-600 mb-6 text-sm">
+              가장 먼저 알림을 받고 싶으신가요? 이메일을 등록해주세요.
+            </p>
+
+            {isSubmitted ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="bg-green-100 text-green-700 p-4 rounded-lg font-medium"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                ✅ 구독 신청이 완료되었습니다! 평화의 소식을 기다려주세요.
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                <input
+                  type="email"
+                  placeholder="이메일 주소를 입력하세요"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="flex-1 px-5 py-3 rounded-full border border-gray-300 focus:border-jeju-ocean focus:ring-2 focus:ring-jeju-ocean/20 outline-none transition-all"
                 />
-              </svg>
-            </div>
+                <button
+                  type="submit"
+                  className="px-8 py-3 bg-jeju-ocean text-white font-bold rounded-full hover:bg-ocean-mist transition-all duration-300 shadow-md hover:shadow-lg"
+                >
+                  구독하기
+                </button>
+              </form>
+            )}
+          </div>
 
-            <h2 className="typo-h2 mb-4">
-              Coming Soon
-            </h2>
-            <p className="typo-subtitle mb-8">
-              강정피스앤뮤직캠프 2026은 계획 중입니다
-            </p>
-            <p className="typo-body">
-              매년 같은 정신으로 계속되는 강정피스앤뮤직캠프. 2026년의 캠프도 더 많은 음악가들과 함께 평화를 노래할 수 있기를 기대합니다.
-            </p>
-          </motion.div>
-
-          {/* Newsletter Signup */}
-          <motion.div
-            variants={fadeUpVariants}
-            className="bg-gradient-to-r from-jeju-ocean to-ocean-mist rounded-lg p-8 text-center text-white"
-          >
-            <h3 className="typo-h3 text-white mb-4">
-              소식을 받아보세요
-            </h3>
-            <p className="typo-body text-white/90 mb-6">
-              2026년 캠프 소식이 나올 때까지 뉴스레터를 구독하세요
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="이메일 주소"
-                className="flex-1 px-4 py-3 rounded text-gray-900 placeholder-gray-500"
-                disabled
-              />
-              <button
-                disabled
-                className="px-6 py-3 bg-white text-jeju-ocean font-semibold rounded hover:bg-ocean-sand transition-colors opacity-50 cursor-not-allowed"
-              >
-                구독
-              </button>
-            </div>
-            <p className="text-sm text-white/70 mt-4">
-              * 이 기능은 준비 중입니다
-            </p>
-          </motion.div>
+          <div className="text-gray-500 text-sm font-medium">
+            Jeju Gangjeong Peace & Music Camp
+          </div>
         </motion.div>
       </div>
-    </div>
+    </PageLayout>
   );
 };
 

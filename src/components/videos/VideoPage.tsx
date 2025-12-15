@@ -2,7 +2,7 @@ import React, { useRef, useState, useMemo } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { VideoItem, videoItems } from '../../data/videos';
 import VideoEventFilter from './EventFilter';
-import SEOHelmet from '../shared/SEOHelmet';
+import PageLayout from '../layout/PageLayout';
 
 const VideoCard: React.FC<{ video: VideoItem }> = ({ video }) => {
   const getYoutubeVideoId = (url: string) => url.split('/').pop();
@@ -78,13 +78,13 @@ export default function VideoPage() {
   }, [selectedFilter]);
 
   return (
-    <section className="page-container bg-white" ref={ref}>
-      <SEOHelmet
-        title="비디오 - 강정피스앤뮤직캠프"
-        description="강정피스앤뮤직캠프의 공연영상 모음. 평화를 노래하는 뮤지션들의 공연 영상을 만나보세요."
-        keywords="공연영상, 강정피스앤뮤직캠프, 평화 공연, 뮤지션 공연, 유튜브 영상"
-      />
-      <div className="container mx-auto px-4">
+    <PageLayout
+      title="비디오 - 강정피스앤뮤직캠프"
+      description="강정피스앤뮤직캠프의 공연영상 모음. 평화를 노래하는 뮤지션들의 공연 영상을 만나보세요."
+      keywords="공연영상, 강정피스앤뮤직캠프, 평화 공연, 뮤지션 공연, 유튜브 영상"
+      background="white"
+    >
+      <div className="container mx-auto px-4" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -107,6 +107,6 @@ export default function VideoPage() {
           ))}
         </div>
       </div>
-    </section>
+    </PageLayout>
   );
 }
