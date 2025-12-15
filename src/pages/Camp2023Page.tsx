@@ -3,7 +3,8 @@ import { motion, useInView } from 'framer-motion';
 import CampHero from '../components/camp/CampHero';
 import CampGallery from '../components/camp/CampGallery';
 import { camps } from '../data/camps';
-import SEOHelmet from '../components/shared/SEOHelmet';
+import PageLayout from '../components/layout/PageLayout';
+import Section from '../components/layout/Section';
 
 const Camp2023Page = () => {
   const camp = camps.find(c => c.id === 'camp-2023')!;
@@ -11,17 +12,16 @@ const Camp2023Page = () => {
   const isInfoInView = useInView(infoRef, { once: true, margin: "-100px" });
 
   return (
-    <div className="min-h-screen bg-ocean-sand page-container">
-      <SEOHelmet
-        title="제1회 강정피스앤뮤직캠프 (2023) - 전쟁을 끝내자!"
-        description="2023년 6월 10일 제주 강정마을에서 열린 제1회 강정피스앤뮤직캠프. 리테스 마하르잔, 여유와 설빈, 출장작곡가 김동산 등 7팀의 뮤지션이 함께한 평화 음악 축제."
-        keywords="강정피스앤뮤직캠프, 제1회 캠프, 2023, 강정마을, 평화음악, 반전운동"
-        ogImage="/images-webp/camps/2023/20230610_195517.webp"
-      />
+    <PageLayout
+      title="제1회 강정피스앤뮤직캠프 (2023) - 전쟁을 끝내자!"
+      description="2023년 6월 10일 제주 강정마을에서 열린 제1회 강정피스앤뮤직캠프. 리테스 마하르잔, 여유와 설빈, 출장작곡가 김동산 등 7팀의 뮤지션이 함께한 평화 음악 축제."
+      keywords="강정피스앤뮤직캠프, 제1회 캠프, 2023, 강정마을, 평화음악, 반전운동"
+      ogImage="/images-webp/camps/2023/20230610_195517.webp"
+    >
       <CampHero camp={camp} />
 
       {/* Camp Information Section */}
-      <section ref={infoRef} className="section bg-ocean-sand">
+      <Section background="ocean-sand" ref={infoRef}>
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -67,11 +67,11 @@ const Camp2023Page = () => {
             )}
           </motion.div>
         </div>
-      </section>
+      </Section>
 
       {/* Gallery Section */}
       <CampGallery camp={camp} />
-    </div>
+    </PageLayout>
   );
 };
 

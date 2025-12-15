@@ -1,40 +1,35 @@
-import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import MusicianCard from '../musicians/MusicianCard';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import { musicians } from '../../data/musicians';
+import MusicianCard from '../musicians/MusicianCard';
+import Section from '../layout/Section';
 
 const MusiciansSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1
+  });
 
   return (
-    <section id="musicians" className="section bg-white" ref={ref}>
+    <Section id="musicians" background="ocean-sand" ref={ref}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <h2 className="typo-h2 mb-4">
-            참여 뮤지션
-          </h2>
-          <p className="typo-subtitle">
-            12팀의 뮤지션들이 전하는 평화의 메시지
-          </p>
+          <h2 className="typo-h2 mb-4 text-gray-900">참여 뮤지션</h2>
+          <p className="typo-subtitle mb-12 text-gray-600">평화를 노래하는 12팀의 아티스트</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[...musicians].sort((a, b) => a.id - b.id).map((musician, index) => (
-            <MusicianCard
-              key={musician.id}
-              musician={musician}
-              index={index}
-            />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {musicians.map((musician, index) => (
+            <MusicianCard key={musician.id} musician={musician} index={index} />
           ))}
         </div>
       </div>
-    </section>
+    </Section>
   );
 };
 

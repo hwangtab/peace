@@ -3,7 +3,8 @@ import { motion, useInView } from 'framer-motion';
 import CampHero from '../components/camp/CampHero';
 import CampGallery from '../components/camp/CampGallery';
 import { camps } from '../data/camps';
-import SEOHelmet from '../components/shared/SEOHelmet';
+import PageLayout from '../components/layout/PageLayout';
+import Section from '../components/layout/Section';
 
 const Camp2025Page = () => {
   const camp = camps.find(c => c.id === 'camp-2025')!;
@@ -11,17 +12,16 @@ const Camp2025Page = () => {
   const isInfoInView = useInView(infoRef, { once: true, margin: "-100px" });
 
   return (
-    <div className="min-h-screen bg-ocean-sand page-container">
-      <SEOHelmet
-        title="제2회 강정피스앤뮤직캠프 (2025) - 노래하자, 춤추자"
-        description="2025년 6월 14일 제주 강정마을에서 열린 제2회 강정피스앤뮤직캠프. 까르, 남수, 모레도토요일, HANASH 등 10팀의 뮤지션이 참여한 평화 음악 축제."
-        keywords="강정피스앤뮤직캠프, 제2회 캠프, 2025, 강정마을, 평화음악, 반전운동"
-        ogImage="/images-webp/camps/2025/DSC00393.webp"
-      />
+    <PageLayout
+      title="제2회 강정피스앤뮤직캠프 (2025) - 노래하자, 춤추자"
+      description="2025년 6월 14일 제주 강정마을에서 열린 제2회 강정피스앤뮤직캠프. 까르, 남수, 모레도토요일, HANASH 등 10팀의 뮤지션이 참여한 평화 음악 축제."
+      keywords="강정피스앤뮤직캠프, 제2회 캠프, 2025, 강정마을, 평화음악, 반전운동"
+      ogImage="/images-webp/camps/2025/DSC00393.webp"
+    >
       <CampHero camp={camp} />
 
       {/* Camp Information Section */}
-      <section ref={infoRef} className="section bg-ocean-sand">
+      <Section background="ocean-sand" ref={infoRef}>
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -67,11 +67,11 @@ const Camp2025Page = () => {
             )}
           </motion.div>
         </div>
-      </section>
+      </Section>
 
       {/* Gallery Section */}
       <CampGallery camp={camp} />
-    </div>
+    </PageLayout>
   );
 };
 

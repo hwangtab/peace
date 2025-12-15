@@ -1,78 +1,89 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import Section from '../layout/Section';
 
 const AboutSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const fadeIn = {
+  const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1 }
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" }
+    }
   };
 
   return (
-    <section id="about" className="section bg-sky-horizon" ref={ref}>
+    <Section id="about" background="white" ref={ref}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
+          variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          transition={{ staggerChildren: 0.2 }}
-          className="max-w-4xl mx-auto text-center mb-12"
+          className="max-w-4xl mx-auto text-center"
         >
           <motion.h2
-            variants={fadeIn}
-            className="typo-h2 mb-8"
+            variants={itemVariants}
+            className="typo-h2 mb-4 sm:mb-6 text-gray-900"
           >
-            강정피스앤뮤직캠프
+            우리의 평화는 음악으로 흐릅니다
           </motion.h2>
-          <motion.p
-            variants={fadeIn}
-            className="typo-subtitle mb-16"
-          >
-            강정마을에서 시작되는 평화를 위한 음악 운동
-          </motion.p>
+
+          <motion.div
+            variants={itemVariants}
+            className="w-20 h-1 bg-jeju-ocean mx-auto mb-8 sm:mb-12 rounded-full"
+          />
+
+          <motion.div variants={itemVariants} className="space-y-6 sm:space-y-8 text-base sm:text-lg text-gray-700 leading-relaxed font-light">
+            <p>
+              제주 강정마을, 거친 바람이 부는 구럼비 바위 앞에서 우리는 처음 노래를 불렀습니다.
+              평화는 거창한 구호가 아니라, 서로의 목소리에 귀 기울이는 순간 시작된다는 것을 알았습니다.
+            </p>
+            <p>
+              <strong className="font-bold text-jeju-ocean bg-ocean-mist/10 px-1 rounded">강정피스앤뮤직캠프</strong>는
+              전쟁 없는 세상을 꿈꾸는 음악가들의 연대이자 축제입니다.
+              국경과 언어를 넘어, 음악이라는 가장 아름다운 무기로 우리는 평화를 이야기합니다.
+            </p>
+            <p className="text-gray-900 font-medium">
+              함께 노래하고, 춤추고, 서로를 안아줄 때,<br className="hidden sm:block" />
+              전쟁은 멈추고 평화의 파도는 더 멀리 퍼져나갈 것입니다.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8 mt-12">
+            <motion.div variants={itemVariants} className="bg-ocean-sand/30 p-8 rounded-2xl hover:bg-ocean-sand/50 transition-colors duration-300">
+              <h3 className="typo-h3 mb-4">매년 이어지는 평화의 약속</h3>
+              <p className="typo-body text-coastal-gray">
+                2023년 여름, 첫 번째 화음이 시작되었습니다.
+                우리의 축제는 일회성 이벤트가 아닌, 매년 강정의 여름을 지키는
+                끈질기고 아름다운 평화의 의식(Ritual)으로 계속될 것입니다.
+              </p>
+            </motion.div>
+
+            <motion.div variants={itemVariants} className="bg-ocean-sand/30 p-8 rounded-2xl hover:bg-ocean-sand/50 transition-colors duration-300">
+              <h3 className="typo-h3 mb-4">경계를 넘어선 연대의 울림</h3>
+              <p className="typo-body text-coastal-gray">
+                팔레스타인 가자지구에서 우크라이나까지, 세계 곳곳의 분쟁 지역을 기억합니다.
+                강정피스앤뮤직캠프는 단순한 음악회를 넘어, 고통받는 이들과 함께하며
+                평화를 염원하는 강력한 연대의 장입니다.
+              </p>
+            </motion.div>
+          </div>
         </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-7xl mx-auto">
-          <motion.div variants={fadeIn} className="bg-ocean-sand/30 p-8 rounded-2xl hover:bg-ocean-sand/50 transition-colors duration-300">
-            <h3 className="typo-h3 mb-4">강정, 평화의 물결이 시작되는 곳</h3>
-            <p className="typo-body text-coastal-gray">
-              제주 강정마을의 구럼비 바위가 품었던 평화의 기억을 되살립니다.
-              해군기지 건설의 아픔을 넘어, 우리는 이곳에서 치유와 회복을 노래합니다.
-              강정의 작은 평화가 전 세계로 퍼져나가는 나비효과를 꿈꿉니다.
-            </p>
-          </motion.div>
-
-          <motion.div variants={fadeIn} className="bg-ocean-sand/30 p-8 rounded-2xl hover:bg-ocean-sand/50 transition-colors duration-300">
-            <h3 className="typo-h3 mb-4">함께 걷는 평화의 여정</h3>
-            <p className="typo-body text-coastal-gray">
-              강정의 자연 속에서 뮤지션과 관객이 경계 없이 어우러집니다.
-              평화를 노래하는 무대 위에서 우리는 서로의 존재를 확인하며,
-              음악을 통해 연대의 가능성을 확장해 나갑니다.
-            </p>
-          </motion.div>
-
-          <motion.div variants={fadeIn} className="bg-ocean-sand/30 p-8 rounded-2xl hover:bg-ocean-sand/50 transition-colors duration-300">
-            <h3 className="typo-h3 mb-4">매년 이어지는 평화의 약속</h3>
-            <p className="typo-body text-coastal-gray">
-              2023년 여름, 첫 번째 화음이 시작되었습니다.
-              우리의 축제는 일회성 이벤트가 아닌, 매년 강정의 여름을 지키는
-              끈질기고 아름다운 평화의 의식(Ritual)으로 계속될 것입니다.
-            </p>
-          </motion.div>
-
-          <motion.div variants={fadeIn} className="bg-ocean-sand/30 p-8 rounded-2xl hover:bg-ocean-sand/50 transition-colors duration-300">
-            <h3 className="typo-h3 mb-4">경계를 넘어선 연대의 울림</h3>
-            <p className="typo-body text-coastal-gray">
-              팔레스타인 가자지구에서 우크라이나까지, 세계 곳곳의 분쟁 지역을 기억합니다.
-              강정피스앤뮤직캠프는 단순한 음악회를 넘어, 고통받는 이들과 함께하며
-              평화를 염원하는 강력한 연대의 장입니다.
-            </p>
-          </motion.div>
-        </div>
       </div>
-    </section>
+    </Section>
   );
 };
 
