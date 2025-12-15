@@ -17,6 +17,7 @@ const Camp2025Page = () => {
       description="2025년 6월 14일 제주 강정마을에서 열린 제2회 강정피스앤뮤직캠프. 까르, 남수, 모레도토요일, HANASH 등 10팀의 뮤지션이 참여한 평화 음악 축제."
       keywords="강정피스앤뮤직캠프, 제2회 캠프, 2025, 강정마을, 평화음악, 반전운동"
       ogImage="/images-webp/camps/2025/DSC00393.webp"
+      disableTopPadding={true}
     >
       <CampHero camp={camp} />
 
