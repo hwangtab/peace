@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Navigation from './components/layout/Navigation';
+import PageLayout from './components/layout/PageLayout';
 import HeroSection from './components/home/HeroSection';
 import AboutSection from './components/home/AboutSection';
 import TimelineSection from './components/home/TimelineSection';
@@ -31,9 +32,12 @@ const HomePage = () => (
 );
 
 const GalleryPage = () => (
-  <div className="min-h-screen bg-light-beige">
+  <PageLayout
+    title="갤러리"
+    description="강정피스앤뮤직캠프의 생생한 순간들."
+  >
     <GallerySection />
-  </div>
+  </PageLayout>
 );
 
 // Loading fallback component for lazy-loaded pages
