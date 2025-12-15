@@ -6,6 +6,7 @@ import HeroSection from './components/home/HeroSection';
 import AboutSection from './components/home/AboutSection';
 import TimelineSection from './components/home/TimelineSection';
 import GallerySection from './components/home/GallerySection';
+import SEOHelmet from './components/shared/SEOHelmet';
 
 // Lazy load route-specific pages
 const PressPage = lazy(() => import('./components/press/PressPage'));
@@ -17,7 +18,6 @@ const Camp2026Page = lazy(() => import('./pages/Camp2026Page'));
 const AlbumMusiciansPage = lazy(() => import('./pages/album/AlbumMusiciansPage'));
 const AlbumTracksPage = lazy(() => import('./pages/album/AlbumTracksPage'));
 const AlbumAboutPage = lazy(() => import('./pages/album/AlbumAboutPage'));
-import SEOHelmet from './components/shared/SEOHelmet';
 
 // Pages will be imported here
 const HomePage = () => (
