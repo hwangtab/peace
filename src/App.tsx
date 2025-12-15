@@ -7,6 +7,7 @@ import HeroSection from './components/home/HeroSection';
 import AboutSection from './components/home/AboutSection';
 import TimelineSection from './components/home/TimelineSection';
 import GallerySection from './components/home/GallerySection';
+import FullGallery from './components/gallery/FullGallery';
 import SEOHelmet from './components/shared/SEOHelmet';
 
 // Lazy load route-specific pages
@@ -37,7 +38,7 @@ const GalleryPage = () => (
     description="강정피스앤뮤직캠프의 생생한 순간들."
     background="seafoam"
   >
-    <GallerySection className="!pt-0" />
+    <FullGallery className="!pt-0" />
   </PageLayout>
 );
 
