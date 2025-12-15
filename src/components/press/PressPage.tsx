@@ -4,7 +4,7 @@ import { PressItem, pressItems } from '../../data/press';
 import { getBreadcrumbSchema } from '../../utils/structuredData';
 import PressEventFilter from './EventFilter';
 import PageLayout from '../../components/layout/PageLayout';
-import Section from '../../components/layout/Section';
+
 
 const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
   return (
