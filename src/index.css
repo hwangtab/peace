@@ -45,6 +45,13 @@
     font-display: swap;
   }
 
+  @font-face {
+    font-family: 'JejuStoneWall';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_jejudoldam.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
+  }
+
   body {
     @apply bg-ocean-sand text-deep-ocean;
     font-family: 'GMarketSans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -114,7 +121,7 @@
   }
 
   .typo-h2 {
-    @apply font-display font-bold text-3xl md:text-4xl leading-tight text-gray-900;
+    @apply font-stone font-normal text-3xl md:text-4xl leading-tight text-gray-900;
   }
 
   .typo-h3 {
