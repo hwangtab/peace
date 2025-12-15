@@ -19,14 +19,14 @@ const Timeline: React.FC = () => {
   };
 
   return (
-    <section className="bg-ocean-sand py-20" ref={ref}>
-      <div className="container mx-auto px-4">
+    <section className="section bg-ocean-sand" ref={ref}>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <h2 className="text-4xl font-bold text-jeju-ocean mb-4 font-serif">
             강정피스앤뮤직캠프 여정
