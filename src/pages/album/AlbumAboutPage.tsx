@@ -69,10 +69,10 @@ const AlbumAboutPage = () => {
               <span className="inline-block px-3 py-1 bg-jeju-ocean text-white text-sm font-bold tracking-wider rounded-full mb-6">
                 2024 OFFICIAL RELEASE
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-jeju-ocean mb-6 leading-tight">
+              <h1 className="typo-h1 text-jeju-ocean mb-6 leading-tight">
                 이름을 모르는<br />먼 곳의 그대에게
               </h1>
-              <p className="text-xl text-coastal-gray font-medium mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              <p className="typo-subtitle text-coastal-gray font-medium mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 전쟁과 폭력이 만연한 세상에서 보내는 평화의 편지.<br className="hidden md:block" />
                 12팀의 뮤지션이 강정마을에서 쏘아 올린 음악의 파동.
               </p>
@@ -109,11 +109,11 @@ const AlbumAboutPage = () => {
               transition={{ duration: 0.6 }}
               className="bg-ocean-sand/30 p-10 rounded-3xl"
             >
-              <h3 className="text-2xl font-serif font-bold text-jeju-ocean mb-6 flex items-center gap-3">
+              <h3 className="typo-h3 text-jeju-ocean mb-6 flex items-center gap-3">
                 <span className="w-8 h-8 rounded-full bg-golden-sun flex items-center justify-center text-white text-sm">01</span>
                 제목의 의미
               </h3>
-              <p className="text-lg text-gray-700 leading-loose">
+              <p className="typo-body text-gray-700 leading-loose">
                 "이름을 모르는 먼 곳의 그대에게"는 세계 곳곳의 분쟁 지역에서 고통받고 있는 이들에게 보내는 연대의 메시지입니다.
                 우크라이나, 가자, 그리고 한반도. 우리는 서로의 얼굴도, 이름도 모르지만 같은 시대를 살아가며 평화를 염원하는 마음만은 하나로 연결되어 있습니다.
               </p>
@@ -127,11 +127,11 @@ const AlbumAboutPage = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="bg-ocean-sand/30 p-10 rounded-3xl"
             >
-              <h3 className="text-2xl font-serif font-bold text-jeju-ocean mb-6 flex items-center gap-3">
+              <h3 className="typo-h3 text-jeju-ocean mb-6 flex items-center gap-3">
                 <span className="w-8 h-8 rounded-full bg-jeju-ocean flex items-center justify-center text-white text-sm">02</span>
                 12팀의 목소리
               </h3>
-              <p className="text-lg text-gray-700 leading-loose">
+              <p className="typo-body text-gray-700 leading-loose">
                 록, 포크, 힙합, 일렉트로닉, 그리고 국악까지.
                 강정마을의 평화운동에 공감하는 12팀의 뮤지션들이 각자의 음악 언어로 평화를 번역했습니다.
                 다양한 장르가 모여 만든 이 앨범은 다양성이야말로 평화의 본질임을 증명합니다.

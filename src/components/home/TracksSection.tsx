@@ -27,10 +27,10 @@ const TracksSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-medium text-gray-900 mb-4 font-serif">
+          <h2 className="typo-h2 mb-4">
             수록곡
           </h2>
-          <p className="text-lg text-gray-600 subtitle">
+          <p className="typo-subtitle">
             평화를 노래하는 12곡의 이야기
           </p>
         </motion.div>
