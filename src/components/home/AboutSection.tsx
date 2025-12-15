@@ -12,7 +12,7 @@ const AboutSection = () => {
   };
 
   return (
-    <section id="about" className="section bg-white" ref={ref}>
+    <section id="about" className="section bg-sky-horizon" ref={ref}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
