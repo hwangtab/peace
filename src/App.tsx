@@ -35,7 +35,7 @@ const GalleryPage = () => (
   <PageLayout
     title="갤러리"
     description="강정피스앤뮤직캠프의 생생한 순간들."
-    disableTopPadding={true}
+    background="seafoam"
   >
     <GallerySection />
   </PageLayout>
