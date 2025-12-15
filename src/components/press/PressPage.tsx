@@ -83,8 +83,8 @@ export default function PressPage() {
         canonicalUrl="https://peaceandmusic.net/press"
         structuredData={structuredData}
       />
-      <section className="section bg-light-beige" ref={ref}>
-        <div className="container mx-auto px-4 py-16">
+      <section className="page-container bg-light-beige" ref={ref}>
+        <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
