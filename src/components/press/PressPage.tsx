@@ -36,10 +36,10 @@ const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
             <span className="text-sm text-gray-500">{press.publisher}</span>
             <span className="text-sm text-gray-500">{press.date}</span>
           </div>
-          <h3 className="text-xl font-semibold text-deep-ocean hover:text-jeju-ocean transition-colors duration-200">
+          <h3 className="typo-h3 hover:text-jeju-ocean transition-colors duration-200">
             {press.title}
           </h3>
-          <p className="text-gray-600 mt-2 flex-1">{press.description}</p>
+          <p className="typo-body mt-2 flex-1">{press.description}</p>
         </div>
       </article>
     </a>
@@ -91,10 +91,10 @@ export default function PressPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl font-medium text-gray-900 mb-4 font-serif">
+            <h2 className="typo-h2 mb-4">
               언론보도
             </h2>
-            <p className="text-lg text-gray-600 mb-12 subtitle">
+            <p className="typo-subtitle mb-12">
               평화를 노래하는 우리들의 이야기
             </p>
           </motion.div>

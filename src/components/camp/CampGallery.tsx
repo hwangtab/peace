@@ -25,10 +25,10 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-medium text-gray-900 mb-4 font-serif">
+          <h2 className="typo-h2 mb-4">
             행사 현장
           </h2>
-          <p className="text-lg text-gray-600 subtitle">
+          <p className="typo-subtitle">
             {camp.year}년 강정피스앤뮤직캠프의 순간들
           </p>
         </motion.div>
