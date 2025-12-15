@@ -28,10 +28,10 @@ const Timeline: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold text-jeju-ocean mb-4 font-serif">
+          <h2 className="typo-h2 mb-4">
             강정피스앤뮤직캠프 여정
           </h2>
-          <p className="text-lg text-coastal-gray subtitle max-w-2xl mx-auto">
+          <p className="typo-subtitle max-w-2xl mx-auto">
             2023년 강정마을에서 시작된 평화를 위한 음악 프로젝트의 여정입니다
           </p>
         </motion.div>
