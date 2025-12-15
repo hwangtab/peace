@@ -13,8 +13,8 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
         style={{ backgroundImage: `url("${imageUrl}")` }}
       />
 
-      {/* Gradient Overlay using Coastal Palette */}
-      <div className="absolute inset-0 bg-hero-gradient" />
+      {/* Gradient Overlay using Bright Ocean Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-t from-jeju-ocean/70 via-ocean-mist/40 to-seafoam/20" />
 
       {/* Pattern Overlay */}
       <div className="absolute inset-0 opacity-10">
