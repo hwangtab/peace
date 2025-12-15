@@ -98,6 +98,31 @@
   .section-sunlight {
     @apply bg-sunlight-glow;
   }
+
+  /* Typography Utilities */
+  .typo-h1 {
+    @apply font-display font-bold text-4xl md:text-5xl lg:text-7xl leading-tight;
+  }
+
+  .typo-h2 {
+    @apply font-display font-bold text-3xl md:text-4xl leading-tight text-gray-900;
+  }
+
+  .typo-h3 {
+    @apply font-display font-medium text-xl md:text-2xl text-deep-ocean;
+  }
+
+  .typo-body {
+    @apply font-body font-light text-base md:text-lg leading-relaxed text-gray-700;
+  }
+
+  .typo-subtitle {
+    @apply font-caption text-lg md:text-xl text-gray-600;
+  }
+
+  .typo-caption {
+    @apply font-caption text-sm text-gray-500;
+  }
 }
 
 body {

@@ -45,10 +45,10 @@ const VideoCard: React.FC<{ video: VideoItem }> = ({ video }) => {
             <span className="text-sm text-gray-500 cursor-pointer">{video.location}</span>
             <span className="text-sm text-gray-500 cursor-pointer">{video.date}</span>
           </div>
-          <h3 className="text-xl font-semibold text-deep-ocean mb-2 hover:text-jeju-ocean transition-colors duration-300 cursor-pointer line-clamp-2">
+          <h3 className="typo-h3 mb-2 hover:text-jeju-ocean transition-colors duration-300 cursor-pointer line-clamp-2">
             {video.title}
           </h3>
-          <p className="text-gray-600 flex-1 cursor-pointer line-clamp-3">{video.description}</p>
+          <p className="typo-body flex-1 cursor-pointer line-clamp-3">{video.description}</p>
         </div>
       </a>
     </div>
@@ -91,10 +91,10 @@ export default function VideoPage() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-medium text-gray-900 mb-4 font-serif">
+          <h2 className="typo-h2 mb-4">
             비디오
           </h2>
-          <p className="text-lg text-gray-600 mb-12 subtitle">
+          <p className="typo-subtitle mb-12">
             평화를 노래하는 우리들의 순간
           </p>
         </motion.div>
