@@ -78,13 +78,13 @@ export default function VideoPage() {
   }, [selectedFilter]);
 
   return (
-    <section className="section bg-white" ref={ref}>
+    <section className="page-container bg-white" ref={ref}>
       <SEOHelmet
         title="비디오 - 강정피스앤뮤직캠프"
         description="강정피스앤뮤직캠프의 공연영상 모음. 평화를 노래하는 뮤지션들의 공연 영상을 만나보세요."
         keywords="공연영상, 강정피스앤뮤직캠프, 평화 공연, 뮤지션 공연, 유튜브 영상"
       />
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}

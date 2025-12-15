@@ -12,7 +12,7 @@ const Camp2026Page = () => {
 
   if (!camp2026) {
     return (
-      <div className="min-h-screen bg-ocean-sand pt-24 pb-16 flex items-center justify-center">
+      <div className="min-h-screen bg-ocean-sand page-container flex items-center justify-center">
         <div className="text-center">
           <h1 className="typo-h2 text-gray-900 mb-4">캠프를 찾을 수 없습니다</h1>
         </div>
@@ -26,7 +26,7 @@ const Camp2026Page = () => {
   };
 
   return (
-    <div className="min-h-screen bg-ocean-sand pt-24 pb-16">
+    <div className="min-h-screen bg-ocean-sand page-container">
       <SEOHelmet
         title="제3회 강정피스앤뮤직캠프 (2026) - Coming Soon"
         description="2026년 여름 개최 예정인 제3회 강정피스앤뮤직캠프. 평화를 노래하는 음악 축제에 함께하세요."
