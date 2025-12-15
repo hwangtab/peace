@@ -35,13 +35,13 @@ const AlbumAboutPage = () => {
           Actually, PageLayout standardizes padding. I'll rely on it.
       */}
 
-      <div className="relative overflow-hidden mb-20">
+      <div className="relative overflow-hidden mb-12">
         {/* Background Decorative Elements - reimplemented inside container or just kept here */}
         <div className="absolute top-[-20%] right-[-10%] w-2/3 h-[120%] bg-ocean-mist/20 rounded-full blur-3xl z-0 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-1/2 h-2/3 bg-golden-sun/10 rounded-full blur-3xl z-0" />
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-jeju-ocean/5 rounded-full blur-3xl z-0" />
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 relative z-10 pt-10">
           <motion.div
             ref={ref}
             initial="hidden"
