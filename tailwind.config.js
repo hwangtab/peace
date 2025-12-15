@@ -10,6 +10,7 @@ module.exports = {
         'serif': ['BookkMyungjo-Bd', ...require('tailwindcss/defaultTheme').fontFamily.serif],
         // Semantic Typography
         'display': ['BookkMyungjo-Bd', ...require('tailwindcss/defaultTheme').fontFamily.serif],
+        'partial': ['PartialSans', 'sans-serif'],
         'body': ['GMarketSans', ...require('tailwindcss/defaultTheme').fontFamily.sans],
         'caption': ['S-CoreDream-3Light', 'sans-serif'],
       },
