@@ -47,9 +47,9 @@ const Camp2025Page = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="bg-white rounded-lg shadow-sm p-8"
               >
-                <h3 className="typo-h3 mb-6">
+                <h2 className="typo-h2 mb-6">
                   참여 뮤지션
-                </h3>
+                </h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                   {camp.participants.map((participant, index) => (
                     <motion.div
