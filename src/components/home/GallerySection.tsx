@@ -11,7 +11,7 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.08
+      staggerChildren: 0.03
     }
   }
 };
@@ -97,7 +97,6 @@ const GallerySection: React.FC<GallerySectionProps> = ({
       ) : (
         <>
           <motion.div
-            layout
             variants={containerVariants}
             initial="hidden"
             animate="visible"

@@ -8,9 +8,12 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
   return (
     <section className="relative h-screen flex items-center justify-center text-center overflow-hidden">
       {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url("${imageUrl}")` }}
+      <img
+        src={imageUrl}
+        alt="Hero background"
+        className="absolute inset-0 w-full h-full object-cover object-center"
+        loading="eager"
+        fetchPriority="high"
       />
 
       {/* Gradient Overlay using Bright Ocean Gradient */}
