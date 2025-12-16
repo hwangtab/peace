@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import { useState, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import TrackCard from '../tracks/TrackCard';
 import Section from '../layout/Section';
 import { tracks } from '../../data/tracks';
@@ -11,9 +10,10 @@ interface TracksSectionProps {
 }
 
 const TracksSection: React.FC<TracksSectionProps> = ({ enableSectionWrapper = true }) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1
+  const ref = useRef(null);
+  const inView = useInView(ref, {
+    once: true,
+    amount: 0.1
   });
 
   const [expandedTrackId, setExpandedTrackId] = useState<number | null>(null);

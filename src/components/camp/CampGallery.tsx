@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { CampEvent } from '../../types/camp';
+import ImageLightbox from '../common/ImageLightbox';
 import Section from '../layout/Section';
 
 interface CampGalleryProps {
@@ -41,33 +42,12 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
         </div>
       </div>
 
-      <AnimatePresence>
-        {selectedImage && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
-            onClick={() => setSelectedImage(null)}
-          >
-            <motion.img
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.9 }}
-              src={selectedImage}
-              alt="Expanded view"
-              className="max-w-full max-h-[90vh] rounded-lg shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            />
-            <button
-              className="absolute top-8 right-8 text-white text-4xl font-light hover:text-jeju-ocean transition-colors"
-              onClick={() => setSelectedImage(null)}
-            >
-              &times;
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {selectedImage && (
+        <ImageLightbox
+          image={selectedImage}
+          onClose={() => setSelectedImage(null)}
+        />
+      )}
     </Section>
   );
 };

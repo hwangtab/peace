@@ -4,6 +4,7 @@ import { GalleryImage } from '../../types/gallery';
 import { getGalleryImages } from '../../api/gallery';
 import EventFilter from '../gallery/EventFilter';
 import GalleryImageItem from '../gallery/GalleryImageItem';
+import ImageLightbox from '../common/ImageLightbox';
 import Section from '../layout/Section';
 
 const containerVariants = {
@@ -136,26 +137,14 @@ const GallerySection: React.FC<GallerySectionProps> = ({
       )}
 
       {selectedImage && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
-        >
-          <div className="relative max-w-4xl w-full" onClick={e => e.stopPropagation()}>
-            <button
-              onClick={() => setSelectedImage(null)}
-              className="absolute -top-12 right-0 text-white hover:text-gray-300 p-2"
-            >
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-            <img
-              src={selectedImage.url}
-              alt={selectedImage.description || `Gallery image ${selectedImage.id}`}
-              className="w-full h-auto rounded-lg max-h-[85vh] object-contain"
-            />
-          </div>
-        </div>
+        <ImageLightbox
+          image={{
+            url: selectedImage.url,
+            alt: selectedImage.description || `Gallery image ${selectedImage.id}`
+          }}
+          onClose={() => setSelectedImage(null)}
+          maxHeight="85vh"
+        />
       )}
     </div>
   );
