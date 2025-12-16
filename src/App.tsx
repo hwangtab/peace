@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Navigation from './components/layout/Navigation';
+import PageLayout from './components/layout/PageLayout';
 import HeroSection from './components/home/HeroSection';
 import AboutSection from './components/home/AboutSection';
 import TimelineSection from './components/home/TimelineSection';
@@ -31,9 +32,13 @@ const HomePage = () => (
 );
 
 const GalleryPage = () => (
-  <div className="min-h-screen bg-light-beige pt-32">
-    <GallerySection />
-  </div>
+  <PageLayout
+    title="평화의 순간들 | 이름을 모르는 먼 곳의 그대에게"
+    description="평화를 노래하는 우리들의 순간들"
+    background="seafoam"
+  >
+    <GallerySection className="!pt-0 ms:!pt-0 lg:!pt-0 text-left" />
+  </PageLayout>
 );
 
 // Loading fallback component for lazy-loaded pages
