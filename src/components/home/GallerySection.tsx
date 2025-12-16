@@ -21,7 +21,15 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 }
 };
 
-const GallerySection: React.FC = () => {
+interface GallerySectionProps {
+  className?: string;
+  enableSectionWrapper?: boolean;
+}
+
+const GallerySection: React.FC<GallerySectionProps> = ({
+  className,
+  enableSectionWrapper = true
+}) => {
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
@@ -63,72 +71,70 @@ const GallerySection: React.FC = () => {
 
   const displayImages = useMemo(() => filteredImages.slice(0, visibleCount), [filteredImages, visibleCount]);
 
-  return (
-    <Section id="gallery" background="seafoam">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h2 className="typo-h2 mb-4 text-gray-900">
-            평화의 순간들
-          </h2>
-          <p className="typo-subtitle mb-8 text-gray-600">
-            평화를 노래하는 순간들
-          </p>
-        </motion.div>
+  const content = (
+    <div className={`container mx-auto px-4 sm:px-6 lg:px-8 ${!enableSectionWrapper ? className : ''}`}>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-12"
+      >
+        <h2 className="typo-h2 mb-4 text-gray-900">
+          평화의 순간들
+        </h2>
+        <p className="typo-subtitle mb-8 text-gray-600">
+          평화를 노래하는 순간들
+        </p>
+      </motion.div>
 
-        <EventFilter selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
+      <EventFilter selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
 
-        {filteredImages.length === 0 ? (
-          <div className="text-center py-20 bg-white/50 rounded-lg">
-            <p className="text-xl text-gray-500 font-serif">등록된 사진이 없습니다.</p>
-          </div>
-        ) : (
-          <>
-            <motion.div
-              layout
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12"
-            >
-              <AnimatePresence mode='popLayout'>
-                {displayImages.map((image, index) => (
-                  <motion.div
-                    key={image.id}
-                    layout
-                    variants={itemVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit={{ opacity: 0, scale: 0.9 }}
-                  >
-                    <GalleryImageItem
-                      image={image}
-                      priority={index < 6}
-                      onClick={setSelectedImage}
-                    />
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-            </motion.div>
-
-            {visibleCount < filteredImages.length && (
-              <div className="text-center mt-12">
-                <button
-                  onClick={handleLoadMore}
-                  className="px-8 py-3 bg-white border border-jeju-ocean text-jeju-ocean rounded-full font-medium hover:bg-jeju-ocean hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
+      {filteredImages.length === 0 ? (
+        <div className="text-center py-20 bg-white/50 rounded-lg">
+          <p className="text-xl text-gray-500 font-serif">등록된 사진이 없습니다.</p>
+        </div>
+      ) : (
+        <>
+          <motion.div
+            layout
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12"
+          >
+            <AnimatePresence mode='popLayout'>
+              {displayImages.map((image, index) => (
+                <motion.div
+                  key={image.id}
+                  layout
+                  variants={itemVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit={{ opacity: 0, scale: 0.9 }}
                 >
-                  더 보기
-                </button>
-              </div>
-            )}
-          </>
-        )}
-      </div>
+                  <GalleryImageItem
+                    image={image}
+                    priority={index < 6}
+                    onClick={setSelectedImage}
+                  />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+
+          {visibleCount < filteredImages.length && (
+            <div className="text-center mt-12">
+              <button
+                onClick={handleLoadMore}
+                className="px-8 py-3 bg-white border border-jeju-ocean text-jeju-ocean rounded-full font-medium hover:bg-jeju-ocean hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
+              >
+                더 보기
+              </button>
+            </div>
+          )}
+        </>
+      )}
 
       {selectedImage && (
         <div
@@ -152,8 +158,18 @@ const GallerySection: React.FC = () => {
           </div>
         </div>
       )}
-    </Section>
+    </div>
   );
+
+  if (enableSectionWrapper) {
+    return (
+      <Section id="gallery" background="seafoam" className={className}>
+        {content}
+      </Section>
+    );
+  }
+
+  return content;
 };
 
 export default GallerySection;
