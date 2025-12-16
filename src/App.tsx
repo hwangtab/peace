@@ -31,7 +31,7 @@ const HomePage = () => (
 );
 
 const GalleryPage = () => (
-  <div className="min-h-screen bg-light-beige">
+  <div className="min-h-screen bg-light-beige pt-32">
     <GallerySection />
   </div>
 );
