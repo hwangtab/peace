@@ -37,7 +37,7 @@ const GalleryPage = () => (
     description="평화를 노래하는 우리들의 순간들"
     background="seafoam"
   >
-    <GallerySection className="!pt-0 ms:!pt-0 lg:!pt-0 text-left" />
+    <GallerySection />
   </PageLayout>
 );
 
