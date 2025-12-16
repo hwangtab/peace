@@ -80,7 +80,7 @@ const GallerySection = () => {
           className="text-center mb-12"
         >
           <h2 className="typo-h2 mb-4">
-            갤러리
+            평화의 순간들
           </h2>
           <p className="typo-subtitle">
             평화를 노래하는 순간들
