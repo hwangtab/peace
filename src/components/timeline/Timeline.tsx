@@ -12,7 +12,7 @@ const Timeline = () => {
   });
 
   return (
-    <Section id="history" background="light-beige" ref={ref}>
+    <Section id="history" background="sunlight-glow" ref={ref}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -26,7 +26,7 @@ const AboutSection = () => {
   };
 
   return (
-    <Section id="about" background="white" ref={ref}>
+    <Section id="about" background="sky-horizon" ref={ref}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}

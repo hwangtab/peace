@@ -4,11 +4,7 @@ import { GalleryImage } from '../../types/gallery';
 import { getGalleryImages } from '../../api/gallery';
 import EventFilter from '../gallery/EventFilter';
 import GalleryImageItem from '../gallery/GalleryImageItem';
-import classNames from 'classnames';
-
-interface GallerySectionProps {
-  className?: string;
-}
+import Section from '../layout/Section';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -25,7 +21,7 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 }
 };
 
-const GallerySection: React.FC<GallerySectionProps> = ({ className }) => {
+const GallerySection: React.FC = () => {
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
@@ -68,8 +64,8 @@ const GallerySection: React.FC<GallerySectionProps> = ({ className }) => {
   const displayImages = useMemo(() => filteredImages.slice(0, visibleCount), [filteredImages, visibleCount]);
 
   return (
-    <section id="gallery" className={className}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+    <Section id="gallery" background="seafoam">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -156,7 +152,7 @@ const GallerySection: React.FC<GallerySectionProps> = ({ className }) => {
           </div>
         </div>
       )}
-    </section>
+    </Section>
   );
 };
 
