@@ -9,7 +9,7 @@ const AlbumMusiciansPage = () => (
     keywords="참여뮤지션, 음반참여, 평화뮤지션, 강정피스앤뮤직캠프, 아티스트"
     background="white"
   >
-    <MusiciansSection />
+    <MusiciansSection enableSectionWrapper={false} />
   </PageLayout>
 );
 
