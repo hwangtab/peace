@@ -4,6 +4,7 @@ import { GalleryImage } from '../../types/gallery';
 import { getGalleryImages } from '../../api/gallery';
 import Section from '../layout/Section';
 import EventFilter from './EventFilter';
+import GalleryImageItem from './GalleryImageItem';
 import SEOHelmet from '../shared/SEOHelmet';
 import { getBreadcrumbSchema, getImageGallerySchema } from '../../utils/structuredData';
 
@@ -11,21 +12,37 @@ interface FullGalleryProps {
     className?: string;
 }
 
+// Animation variants from original GallerySection
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.08
+        }
+    }
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+};
+
 const FullGallery: React.FC<FullGalleryProps> = ({ className }) => {
     const [images, setImages] = useState<GalleryImage[]>([]);
     const [selectedFilter, setSelectedFilter] = useState('all');
     const [visibleCount, setVisibleCount] = useState(12);
     const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
-    const [loadedImages, setLoadedImages] = useState<string[]>([]);
 
     useEffect(() => {
         const loadImages = async () => {
             try {
                 const galleryImages = await getGalleryImages();
-                // Sort: Newest year first, then by ID
+                // Fix: Restore original sort order (Year Ascending)
+                // User complaint: "Order is a mess" -> implied they wanted chronological or specific original order
                 const sortedImages = [...galleryImages].sort((a, b) => {
-                    if (a.eventYear !== b.eventYear) return (b.eventYear || 0) - (a.eventYear || 0);
-                    return b.id - a.id;
+                    if (a.eventYear !== b.eventYear) return (a.eventYear || 0) - (b.eventYear || 0);
+                    return a.id - b.id;
                 });
                 setImages(sortedImages);
             } catch (error) {
@@ -35,22 +52,23 @@ const FullGallery: React.FC<FullGalleryProps> = ({ className }) => {
         loadImages();
     }, []);
 
-    const handleImageLoad = (src: string) => {
-        setLoadedImages(prev => [...prev, src]);
-    };
-
-    const handleImageError = (src: string) => {
-        console.log('Image error:', src);
-        // Optional: Remove broken images or show placeholder
-    };
-
     const filteredImages = useMemo(() => {
-        return images.filter(img => {
-            if (selectedFilter === 'all') return true;
-            if (selectedFilter === 'camp-2023') return img.eventYear === 2023;
-            if (selectedFilter === 'album-2024') return img.eventYear === 2024;
-            if (selectedFilter === 'camp-2025') return img.eventYear === 2025;
-            return true;
+        let filtered = [...images];
+
+        if (selectedFilter !== 'all') {
+            if (selectedFilter === 'album-2024') {
+                filtered = images.filter(img => img.eventType === 'album' && img.eventYear === 2024);
+            } else if (selectedFilter === 'camp-2023') {
+                filtered = images.filter(img => img.eventType === 'camp' && img.eventYear === 2023);
+            } else if (selectedFilter === 'camp-2025') {
+                filtered = images.filter(img => img.eventType === 'camp' && img.eventYear === 2025);
+            }
+        }
+
+        // Ensure consistent sort after filtering
+        return filtered.sort((a, b) => {
+            if (a.eventYear !== b.eventYear) return (a.eventYear || 0) - (b.eventYear || 0);
+            return a.id - b.id;
         });
     }, [images, selectedFilter]);
 
@@ -67,13 +85,12 @@ const FullGallery: React.FC<FullGalleryProps> = ({ className }) => {
         setVisibleCount(12);
     };
 
-    // Restored Structured Data
+    // SEO Data
     const breadcrumbs = [
         { name: "홈", url: "https://peaceandmusic.net/" },
         { name: "갤러리", url: "https://peaceandmusic.net/gallery" }
     ];
 
-    // Create image list for SEO
     const imageListForSEO = images.slice(0, 20).map(img => ({
         url: `https://peaceandmusic.net${img.url}`,
         caption: img.description || `Gallery image ${img.id}`
@@ -104,59 +121,56 @@ const FullGallery: React.FC<FullGalleryProps> = ({ className }) => {
                     <p className="typo-subtitle mb-8 text-gray-600">
                         평화를 노래하는 순간들
                     </p>
-                    {/* User requested removal of divider */}
                 </motion.div>
 
-                {/* Filter Navigation */}
                 <EventFilter
                     selectedFilter={selectedFilter}
                     onFilterChange={handleFilterChange}
                 />
 
-                {/* Gallery Grid - Restored grid-cols-2 for mobile as per original */}
-                <motion.div
-                    layout
-                    className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-                >
-                    <AnimatePresence mode='popLayout'>
-                        {displayImages.map((image, index) => (
-                            <motion.div
-                                key={image.id}
-                                layout
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.9 }}
-                                transition={{ duration: 0.3 }}
-                            >
-                                <div
-                                    className="relative aspect-square overflow-hidden rounded-lg cursor-pointer group shadow-sm hover:shadow-md transition-shadow"
-                                    onClick={() => setSelectedImage(image)}
-                                >
-                                    <img
-                                        src={image.url}
-                                        alt={image.description || `Gallery image ${image.id}`}
-                                        onLoad={() => handleImageLoad(image.url)}
-                                        onError={() => handleImageError(image.url)}
-                                        className={`absolute w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110 ${loadedImages.includes(image.url) ? 'opacity-100' : 'opacity-0'}`}
-                                        loading={index < 6 ? "eager" : "lazy"}
-                                    />
-                                    <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
-                                </div>
-                            </motion.div>
-                        ))}
-                    </AnimatePresence>
-                </motion.div>
-
-                {/* Load More Button - Reduced border thickness */}
-                {visibleCount < filteredImages.length && (
-                    <div className="text-center mt-12">
-                        <button
-                            onClick={handleLoadMore}
-                            className="px-8 py-3 bg-white border border-jeju-ocean text-jeju-ocean rounded-full font-medium hover:bg-jeju-ocean hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
-                        >
-                            더 보기
-                        </button>
+                {filteredImages.length === 0 ? (
+                    <div className="text-center py-20 bg-white/50 rounded-lg">
+                        <p className="text-xl text-gray-500 font-serif">등록된 사진이 없습니다.</p>
                     </div>
+                ) : (
+                    <>
+                        {/* Gallery Grid - Restored Animations & Variants */}
+                        <motion.div
+                            layout
+                            variants={containerVariants}
+                            initial="hidden"
+                            animate="visible"
+                            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+                        >
+                            <AnimatePresence mode='popLayout'>
+                                {displayImages.map((image, index) => (
+                                    <motion.div
+                                        key={image.id}
+                                        layout
+                                        variants={itemVariants}
+                                        exit={{ opacity: 0, scale: 0.9 }}
+                                    >
+                                        <GalleryImageItem
+                                            image={image}
+                                            priority={index < 6}
+                                            onClick={setSelectedImage}
+                                        />
+                                    </motion.div>
+                                ))}
+                            </AnimatePresence>
+                        </motion.div>
+
+                        {visibleCount < filteredImages.length && (
+                            <div className="text-center mt-12">
+                                <button
+                                    onClick={handleLoadMore}
+                                    className="px-8 py-3 bg-white border border-jeju-ocean text-jeju-ocean rounded-full font-medium hover:bg-jeju-ocean hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
+                                >
+                                    더 보기
+                                </button>
+                            </div>
+                        )}
+                    </>
                 )}
 
                 {/* Lightbox Modal */}
@@ -186,6 +200,11 @@ const FullGallery: React.FC<FullGalleryProps> = ({ className }) => {
                                     alt={selectedImage.description || 'Gallery Preview'}
                                     className="max-w-full max-h-[85vh] object-contain rounded-lg"
                                 />
+                                {selectedImage.description && (
+                                    <div className="absolute -bottom-10 left-0 right-0 text-center">
+                                        <p className="text-white/90 font-medium">{selectedImage.description}</p>
+                                    </div>
+                                )}
                             </motion.div>
                         </div>
                     )}
