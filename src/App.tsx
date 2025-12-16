@@ -11,6 +11,7 @@ import SEOHelmet from './components/shared/SEOHelmet';
 
 // Lazy load route-specific pages
 const PressPage = lazy(() => import('./components/press/PressPage'));
+const GalleryPage = lazy(() => import('./pages/GalleryPage'));
 const VideoPage = lazy(() => import('./components/videos/VideoPage'));
 const CampsPage = lazy(() => import('./pages/CampsPage'));
 const Camp2023Page = lazy(() => import('./pages/Camp2023Page'));
@@ -31,15 +32,7 @@ const HomePage = () => (
   </div>
 );
 
-const GalleryPage = () => (
-  <PageLayout
-    title="평화의 순간들 | 이름을 모르는 먼 곳의 그대에게"
-    description="평화를 노래하는 우리들의 순간들"
-    background="seafoam"
-  >
-    <GallerySection />
-  </PageLayout>
-);
+
 
 // Loading fallback component for lazy-loaded pages
 const PageLoadingSpinner = () => (
