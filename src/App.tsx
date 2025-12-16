@@ -7,7 +7,6 @@ import HeroSection from './components/home/HeroSection';
 import AboutSection from './components/home/AboutSection';
 import TimelineSection from './components/home/TimelineSection';
 import GallerySection from './components/home/GallerySection';
-import FullGallery from './components/gallery/FullGallery';
 import SEOHelmet from './components/shared/SEOHelmet';
 
 // Lazy load route-specific pages
@@ -33,13 +32,13 @@ const HomePage = () => (
 );
 
 const GalleryPage = () => (
-  <PageLayout
-    title="갤러리"
-    description="강정피스앤뮤직캠프의 생생한 순간들."
-    background="seafoam"
-  >
-    <FullGallery className="!pt-0" />
-  </PageLayout>
+  <div className="min-h-screen bg-light-beige">
+    <SEOHelmet
+      title="갤러리 | 이름을 모르는 먼 곳의 그대에게"
+      description="평화를 노래하는 우리들의 순간들"
+    />
+    <GallerySection />
+  </div>
 );
 
 // Loading fallback component for lazy-loaded pages
