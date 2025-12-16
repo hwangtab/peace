@@ -44,7 +44,18 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
     };
   }, [open, setOpen]);
 
-  const isActive = items.some(item => location.pathname === item.path || location.pathname.startsWith(item.path.split('/').slice(0, -1).join('/')));
+  const isActive = items.some(item => {
+    if (location.pathname === item.path) return true;
+
+    // 경로 접두사 확인: /camps/2023, /camps/2025 등
+    const pathParts = item.path.split('/').filter(p => p);  // 빈 문자열 제거
+    if (pathParts.length > 1) {
+      const prefix = '/' + pathParts.slice(0, -1).join('/');  // /camps
+      return prefix && location.pathname.startsWith(prefix + '/');
+    }
+
+    return false;
+  });
 
   return (
     <div className="relative group" ref={dropdownRef}>
