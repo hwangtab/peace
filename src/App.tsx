@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Navigation from './components/layout/Navigation';
-import PageLayout from './components/layout/PageLayout';
+
 import HeroSection from './components/home/HeroSection';
 import AboutSection from './components/home/AboutSection';
 import TimelineSection from './components/home/TimelineSection';
