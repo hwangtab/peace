@@ -11,7 +11,7 @@ const MusiciansSection = () => {
   });
 
   return (
-    <Section id="musicians" background="ocean-sand" ref={ref}>
+    <Section id="musicians" background="white" ref={ref}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

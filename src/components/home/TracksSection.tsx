@@ -23,7 +23,7 @@ const TracksSection = () => {
   };
 
   return (
-    <Section id="tracks" background="white" ref={ref}>
+    <Section id="tracks" background="sky-horizon" ref={ref}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
