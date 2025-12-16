@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 import { musicians } from '../../data/musicians';
 import MusicianCard from '../musicians/MusicianCard';
 import Section from '../layout/Section';
@@ -10,9 +10,10 @@ interface MusiciansSectionProps {
 }
 
 const MusiciansSection: React.FC<MusiciansSectionProps> = ({ enableSectionWrapper = true }) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1
+  const ref = useRef(null);
+  const inView = useInView(ref, {
+    once: true,
+    amount: 0.1
   });
 
   const content = (

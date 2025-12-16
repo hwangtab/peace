@@ -1,14 +1,14 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import TimelineItem from './TimelineItem';
 import { timelineEvents as timelineData } from '../../data/timeline';
 import Section from '../layout/Section';
 
 const Timeline = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
+  const ref = useRef(null);
+  const inView = useInView(ref, {
+    once: true,
+    amount: 0.1,
   });
 
   return (
