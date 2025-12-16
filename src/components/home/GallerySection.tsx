@@ -1,9 +1,14 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { GalleryImage } from '../../types/gallery';
 import { getGalleryImages } from '../../api/gallery';
 import EventFilter from '../gallery/EventFilter';
 import GalleryImageItem from '../gallery/GalleryImageItem';
+import classNames from 'classnames';
+
+interface GallerySectionProps {
+  className?: string;
+}
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -20,7 +25,7 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 }
 };
 
-const GallerySection = () => {
+const GallerySection: React.FC<GallerySectionProps> = ({ className }) => {
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
@@ -39,24 +44,15 @@ const GallerySection = () => {
     loadImages();
   }, []);
 
-  // Memozied filtering and sorting to prevent re-calculation on every render
+  // Optimized: Filter without re-sorting (data is already sorted)
   const filteredImages = useMemo(() => {
-    let filtered = [...images];
+    if (selectedFilter === 'all') return images;
 
-    if (selectedFilter !== 'all') {
-      if (selectedFilter === 'album-2024') {
-        filtered = images.filter(img => img.eventType === 'album' && img.eventYear === 2024);
-      } else if (selectedFilter === 'camp-2023') {
-        filtered = images.filter(img => img.eventType === 'camp' && img.eventYear === 2023);
-      } else if (selectedFilter === 'camp-2025') {
-        filtered = images.filter(img => img.eventType === 'camp' && img.eventYear === 2025);
-      }
-    }
-
-    // Sort: Year ascending, then ID ascending
-    return filtered.sort((a, b) => {
-      if (a.eventYear !== b.eventYear) return (a.eventYear || 0) - (b.eventYear || 0);
-      return a.id - b.id;
+    return images.filter(img => {
+      if (selectedFilter === 'album-2024') return img.eventType === 'album' && img.eventYear === 2024;
+      if (selectedFilter === 'camp-2023') return img.eventType === 'camp' && img.eventYear === 2023;
+      if (selectedFilter === 'camp-2025') return img.eventType === 'camp' && img.eventYear === 2025;
+      return true;
     });
   }, [selectedFilter, images]);
 
@@ -69,9 +65,11 @@ const GallerySection = () => {
     setVisibleCount(prev => prev + 12);
   };
 
+  const displayImages = useMemo(() => filteredImages.slice(0, visibleCount), [filteredImages, visibleCount]);
+
   return (
-    <section id="gallery" className="section bg-seafoam">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <section id="gallery" className={classNames("section bg-seafoam", className)}>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -79,10 +77,10 @@ const GallerySection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="typo-h2 mb-4">
+          <h2 className="typo-h2 mb-4 text-gray-900">
             평화의 순간들
           </h2>
-          <p className="typo-subtitle">
+          <p className="typo-subtitle mb-8 text-gray-600">
             평화를 노래하는 순간들
           </p>
         </motion.div>
@@ -102,22 +100,31 @@ const GallerySection = () => {
               animate="visible"
               className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12"
             >
-              {filteredImages.slice(0, visibleCount).map((image, index) => (
-                <motion.div variants={itemVariants} key={image.id}>
-                  <GalleryImageItem
-                    image={image}
-                    priority={index < 6} // Load first 6 images eagerly
-                    onClick={setSelectedImage}
-                  />
-                </motion.div>
-              ))}
+              <AnimatePresence mode='popLayout'>
+                {displayImages.map((image, index) => (
+                  <motion.div
+                    key={image.id}
+                    layout
+                    variants={itemVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit={{ opacity: 0, scale: 0.9 }}
+                  >
+                    <GalleryImageItem
+                      image={image}
+                      priority={index < 6}
+                      onClick={setSelectedImage}
+                    />
+                  </motion.div>
+                ))}
+              </AnimatePresence>
             </motion.div>
 
             {visibleCount < filteredImages.length && (
               <div className="text-center mt-12">
                 <button
                   onClick={handleLoadMore}
-                  className="px-8 py-3 bg-white border-2 border-jeju-ocean text-jeju-ocean rounded-full font-medium hover:bg-jeju-ocean hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
+                  className="px-8 py-3 bg-white border border-jeju-ocean text-jeju-ocean rounded-full font-medium hover:bg-jeju-ocean hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
                 >
                   더 보기
                 </button>
@@ -132,19 +139,19 @@ const GallerySection = () => {
           className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4"
           onClick={() => setSelectedImage(null)}
         >
-          <div className="relative max-w-4xl w-full">
+          <div className="relative max-w-4xl w-full" onClick={e => e.stopPropagation()}>
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 text-white hover:text-gray-300"
+              className="absolute -top-12 right-0 text-white hover:text-gray-300 p-2"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
             <img
               src={selectedImage.url}
               alt={selectedImage.description || `Gallery image ${selectedImage.id}`}
-              className="w-full h-auto"
+              className="w-full h-auto rounded-lg max-h-[85vh] object-contain"
             />
           </div>
         </div>
