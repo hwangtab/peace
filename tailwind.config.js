@@ -11,7 +11,7 @@ module.exports = {
         // Semantic Typography
         'display': ['BookkMyungjo-Bd', ...require('tailwindcss/defaultTheme').fontFamily.serif],
         'partial': ['PartialSans', 'sans-serif'],
-        'stone': ['JejuStoneWall', 'sans-serif'],
+        'stone': ['KkuBulLim', 'sans-serif'],
         'body': ['GMarketSans', ...require('tailwindcss/defaultTheme').fontFamily.sans],
         'caption': ['S-CoreDream-3Light', 'sans-serif'],
       },
