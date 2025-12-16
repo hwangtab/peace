@@ -47,8 +47,6 @@ const FullGallery: React.FC<FullGalleryProps> = ({ className }) => {
     const filteredImages = useMemo(() => {
         return images.filter(img => {
             if (selectedFilter === 'all') return true;
-            // Filter logic matches presumed requirements based on EventFilter.tsx
-            // Note: Update these IDs if EventFilter uses different ones
             if (selectedFilter === 'camp-2023') return img.eventYear === 2023;
             if (selectedFilter === 'album-2024') return img.eventYear === 2024;
             if (selectedFilter === 'camp-2025') return img.eventYear === 2025;
@@ -75,7 +73,7 @@ const FullGallery: React.FC<FullGalleryProps> = ({ className }) => {
         { name: "갤러리", url: "https://peaceandmusic.net/gallery" }
     ];
 
-    // Create image list for SEO (limit to first 20 to avoid huge payload)
+    // Create image list for SEO
     const imageListForSEO = images.slice(0, 20).map(img => ({
         url: `https://peaceandmusic.net${img.url}`,
         caption: img.description || `Gallery image ${img.id}`
@@ -104,24 +102,24 @@ const FullGallery: React.FC<FullGalleryProps> = ({ className }) => {
                         갤러리
                     </h2>
                     <p className="typo-subtitle mb-8 text-gray-600">
-                        평화를 노래하는 우리들의 순간들
+                        평화를 노래하는 순간들
                     </p>
-                    <div className="w-24 h-1 bg-jeju-ocean mx-auto rounded-full mb-12" />
+                    {/* User requested removal of divider */}
                 </motion.div>
 
-                {/* Filter Navigation - Keeping this as requested by user ("Category buttons lost") */}
+                {/* Filter Navigation */}
                 <EventFilter
                     selectedFilter={selectedFilter}
                     onFilterChange={handleFilterChange}
                 />
 
-                {/* Gallery Grid - Restored Responsive Classes */}
+                {/* Gallery Grid - Restored grid-cols-2 for mobile as per original */}
                 <motion.div
                     layout
-                    className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+                    className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
                 >
                     <AnimatePresence mode='popLayout'>
-                        {displayImages.map((image) => (
+                        {displayImages.map((image, index) => (
                             <motion.div
                                 key={image.id}
                                 layout
@@ -140,70 +138,56 @@ const FullGallery: React.FC<FullGalleryProps> = ({ className }) => {
                                         onLoad={() => handleImageLoad(image.url)}
                                         onError={() => handleImageError(image.url)}
                                         className={`absolute w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110 ${loadedImages.includes(image.url) ? 'opacity-100' : 'opacity-0'}`}
-                                        loading="lazy"
+                                        loading={index < 6 ? "eager" : "lazy"}
                                     />
                                     <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
-                                    {/* Description overlay if available */}
-                                    {image.description && (
-                                        <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                            <p className="text-white text-sm font-medium truncate">{image.description}</p>
-                                        </div>
-                                    )}
                                 </div>
                             </motion.div>
                         ))}
                     </AnimatePresence>
                 </motion.div>
 
-                {/* Load More - Keeping functional */}
+                {/* Load More Button - Reduced border thickness */}
                 {visibleCount < filteredImages.length && (
-                    <div className="text-center mt-16">
+                    <div className="text-center mt-12">
                         <button
                             onClick={handleLoadMore}
-                            className="px-8 py-3 bg-white text-jeju-ocean border-2 border-jeju-ocean rounded-full font-bold hover:bg-jeju-ocean hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
+                            className="px-8 py-3 bg-white border border-jeju-ocean text-jeju-ocean rounded-full font-medium hover:bg-jeju-ocean hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
                         >
                             더 보기
                         </button>
                     </div>
                 )}
 
-                {/* Lightbox - Restored Design */}
+                {/* Lightbox Modal */}
                 <AnimatePresence>
                     {selectedImage && (
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
+                        <div
+                            className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
                             onClick={() => setSelectedImage(null)}
-                            className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4 backdrop-blur-md"
                         >
                             <motion.div
-                                initial={{ scale: 0.95, opacity: 0 }}
-                                animate={{ scale: 1, opacity: 1 }}
-                                exit={{ scale: 0.95, opacity: 0 }}
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
                                 className="relative max-w-7xl max-h-[90vh] w-full flex items-center justify-center"
                                 onClick={(e) => e.stopPropagation()}
                             >
                                 <button
                                     onClick={() => setSelectedImage(null)}
-                                    className="absolute -top-12 right-0 text-white/80 hover:text-white transition-colors p-2"
+                                    className="absolute -top-12 right-0 text-white hover:text-gray-300 p-2"
                                 >
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                                     </svg>
                                 </button>
                                 <img
                                     src={selectedImage.url}
                                     alt={selectedImage.description || 'Gallery Preview'}
-                                    className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
+                                    className="max-w-full max-h-[85vh] object-contain rounded-lg"
                                 />
-                                {selectedImage.description && (
-                                    <div className="absolute -bottom-10 left-0 right-0 text-center">
-                                        <p className="text-white/90 font-medium">{selectedImage.description}</p>
-                                    </div>
-                                )}
                             </motion.div>
-                        </motion.div>
+                        </div>
                     )}
                 </AnimatePresence>
             </div>
