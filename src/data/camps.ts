@@ -27,13 +27,10 @@ export const camps: CampEvent[] = [
     ],
     images: [
       '/images-webp/camps/2023/20230600.편집.29.webp',
-      '/images-webp/camps/2023/20230600.편집.19.webp',
       '/images-webp/camps/2023/20230600.편집.24.webp',
       '/images-webp/camps/2023/20230600.편집.32.webp',
-      '/images-webp/camps/2023/20230600.편집.37.webp',
       '/images-webp/camps/2023/20230609_160722.webp',
       '/images-webp/camps/2023/20230610_195517.webp',
-      '/images-webp/camps/2023/20230610_115532.webp',
       '/images-webp/camps/2023/20230610리테스마하르잔.webp',
       '/images-webp/camps/2023/20230610깃발.webp',
       '/images-webp/camps/2023/20230610밤 전쟁을끝내자.webp',
