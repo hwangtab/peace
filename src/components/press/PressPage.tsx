@@ -2,7 +2,7 @@ import React, { useRef, useState, useMemo } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { PressItem, pressItems } from '../../data/press';
 import { getBreadcrumbSchema } from '../../utils/structuredData';
-import PressEventFilter from './EventFilter';
+import EventFilter from '../common/EventFilter';
 import PageLayout from '../../components/layout/PageLayout';
 
 
@@ -98,7 +98,12 @@ export default function PressPage() {
             평화를 노래하는 우리들의 이야기
           </p>
         </motion.div>
-        <PressEventFilter selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
+        <EventFilter
+          selectedFilter={selectedFilter}
+          onFilterChange={setSelectedFilter}
+          colorScheme="orange"
+          filterOrder="press"
+        />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[...filteredItems]
             .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
