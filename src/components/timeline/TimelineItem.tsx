@@ -127,7 +127,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ event, isLeft }) => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
-      className="flex items-stretch mb-12 md:mb-16 w-full"
+      className="flex items-stretch mb-8 md:mb-16 w-full"
     >
       {/* Left Column (5/12) - Hidden on mobile */}
       <div className="hidden md:flex md:w-5/12 md:pr-8 md:justify-end">
@@ -142,18 +142,18 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ event, isLeft }) => {
         )}
       </div>
 
-      {/* Center Column (2/12 on desktop, auto on mobile) */}
-      <div className="w-auto md:w-2/12 flex justify-start md:justify-center relative pr-3 md:pr-0">
+      {/* Center Column (2/12 on desktop, hidden on mobile) */}
+      <div className="hidden md:flex md:w-2/12 md:justify-center relative">
         <div className="w-1 bg-transparent h-full absolute left-1/2 -translate-x-1/2" /> {/* Spacer for line */}
         <motion.div
           whileInView={{ scale: 1.2 }}
           transition={{ duration: 0.4 }}
-          className={`w-4 h-4 md:w-6 md:h-6 rounded-full bg-cloud-white border-2 md:border-4 ${eventTypeBorder[event.eventType]} shadow-md z-10 mt-3 md:mt-6`}
+          className={`w-6 h-6 rounded-full bg-cloud-white border-4 ${eventTypeBorder[event.eventType]} shadow-md z-10 mt-6`}
         />
       </div>
 
       {/* Right Column (5/12 on desktop, full width on mobile) */}
-      <div className="flex-1 md:w-5/12 pl-0 md:pl-8 flex justify-start">
+      <div className="w-full md:w-5/12 md:pl-8 flex justify-start">
         {/* Mobile view: Always show full card with year inside */}
         <div className="block md:hidden w-full">
           <MobileCard />
