@@ -67,10 +67,21 @@
   h3 {
     @apply font-serif font-bold;
     font-family: 'BookkMyungjo-Bd', serif;
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 
   p {
     @apply font-sans;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  span,
+  button,
+  a {
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 }
 
@@ -102,26 +113,38 @@
   /* Typography Utilities */
   .typo-h1 {
     @apply font-partial font-normal text-4xl md:text-5xl lg:text-7xl leading-tight;
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 
   .typo-h2 {
     @apply font-stone font-normal text-3xl md:text-4xl leading-tight text-gray-900;
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 
   .typo-h3 {
     @apply font-display font-medium text-xl md:text-2xl text-deep-ocean;
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 
   .typo-body {
     @apply font-body font-light text-base md:text-lg leading-relaxed text-gray-700;
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 
   .typo-subtitle {
     @apply font-caption text-lg md:text-xl text-gray-600;
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 
   .typo-caption {
     @apply font-caption text-sm text-gray-500;
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 }
 
