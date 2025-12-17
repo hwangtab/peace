@@ -143,6 +143,7 @@ const Navigation = () => {
                     <motion.span
                       animate={{ rotate: openDropdown === 'camps' ? 180 : 0 }}
                       transition={{ duration: 0.2 }}
+                      className="pointer-events-none"
                     >
                       ▼
                     </motion.span>
@@ -180,6 +181,7 @@ const Navigation = () => {
                     <motion.span
                       animate={{ rotate: openDropdown === 'album' ? 180 : 0 }}
                       transition={{ duration: 0.2 }}
+                      className="pointer-events-none"
                     >
                       ▼
                     </motion.span>
