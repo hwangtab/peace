@@ -84,7 +84,7 @@ export default function PressPage() {
       structuredData={structuredData}
       background="white"
     >
-      <div className="container mx-auto px-4" ref={ref}>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
