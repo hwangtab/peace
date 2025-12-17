@@ -1,7 +1,7 @@
 import React, { useRef, useState, useMemo } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { VideoItem, videoItems } from '../../data/videos';
-import VideoEventFilter from './EventFilter';
+import EventFilter from '../common/EventFilter';
 import PageLayout from '../layout/PageLayout';
 
 const VideoCard: React.FC<{ video: VideoItem }> = ({ video }) => {
@@ -98,7 +98,12 @@ export default function VideoPage() {
             평화를 노래하는 우리들의 순간
           </p>
         </motion.div>
-        <VideoEventFilter selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
+        <EventFilter
+          selectedFilter={selectedFilter}
+          onFilterChange={setSelectedFilter}
+          colorScheme="ocean"
+          filterOrder="videos"
+        />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {filteredVideos.map((video) => (
             <div key={video.id} className="h-full">
