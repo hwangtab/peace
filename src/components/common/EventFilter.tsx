@@ -56,7 +56,7 @@ const EventFilter: React.FC<EventFilterProps> = ({
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="flex flex-wrap gap-2 sm:gap-3 justify-center mb-6 sm:mb-8"
+      className="flex flex-nowrap gap-1.5 sm:gap-2 md:gap-3 justify-center mb-6 sm:mb-8"
     >
       {filters.map((filter) => {
         const isActive = selectedFilter === filter.id;
@@ -67,7 +67,7 @@ const EventFilter: React.FC<EventFilterProps> = ({
             onClick={() => onFilterChange(filter.id)}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className={`px-4 py-2.5 sm:px-6 sm:py-2 rounded-full text-sm sm:text-base font-medium transition-colors min-h-[44px] sm:min-h-0 ${getColorClasses(isActive)}`}
+            className={`px-2.5 py-2 sm:px-4 sm:py-2.5 md:px-6 rounded-full text-xs sm:text-sm md:text-base font-medium transition-colors min-h-[44px] sm:min-h-0 ${getColorClasses(isActive)}`}
           >
             {filter.label}
           </motion.button>
