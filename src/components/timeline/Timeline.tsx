@@ -31,7 +31,7 @@ const Timeline = () => {
 
         <div className="relative">
           {/* Central Line */}
-          <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-jeju-ocean/20 via-jeju-ocean/50 to-jeju-ocean/20 rounded-full" />
+          <div className="absolute left-5 md:left-1/2 transform md:-translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-jeju-ocean/20 via-jeju-ocean/50 to-jeju-ocean/20 rounded-full" />
 
           <div className="space-y-12 sm:space-y-24">
             {timelineData.map((item, index) => (
