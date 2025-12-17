@@ -219,7 +219,8 @@ const camp2023Images: GalleryImages = [
   { id: 136, url: '/images-webp/camps/2023/20230610지슬.webp', eventType: 'camp', eventYear: 2023 },
   { id: 137, url: '/images-webp/camps/2023/20230610토란타로.webp', eventType: 'camp', eventYear: 2023 },
   { id: 138, url: '/images-webp/camps/2023/20230610평화문화셀러.webp', eventType: 'camp', eventYear: 2023 },
-  { id: 139, url: '/images-webp/camps/2023/20230610행인핫도그.webp', eventType: 'camp';
+  { id: 139, url: '/images-webp/camps/2023/20230610행인핫도그.webp', eventType: 'camp', eventYear: 2023 },
+];
 
 // Camp 2025 Images
 const camp2025Images: GalleryImages = [
