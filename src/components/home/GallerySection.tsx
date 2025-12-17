@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GalleryImage } from '../../types/gallery';
 import { getGalleryImages } from '../../api/gallery';
-import EventFilter from '../gallery/EventFilter';
+import EventFilter from '../common/EventFilter';
 import GalleryImageItem from '../gallery/GalleryImageItem';
 import ImageLightbox from '../common/ImageLightbox';
 import Section from '../layout/Section';
@@ -89,7 +89,12 @@ const GallerySection: React.FC<GallerySectionProps> = ({
         </p>
       </motion.div>
 
-      <EventFilter selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
+      <EventFilter
+        selectedFilter={selectedFilter}
+        onFilterChange={setSelectedFilter}
+        colorScheme="ocean"
+        filterOrder="gallery"
+      />
 
       {filteredImages.length === 0 ? (
         <div className="text-center py-20 bg-white/50 rounded-lg">
