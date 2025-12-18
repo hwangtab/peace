@@ -401,18 +401,14 @@ const AlbumAboutPage = () => {
               </motion.div>
             )}
           </AnimatePresence>
-        </div>
-      </Section>
 
-      {/* Credits Section */}
-      <Section background="white">
-        <div className="container mx-auto px-4">
+          {/* Credits Area - Now integrated for cleaner layout */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="py-12 border-t border-gray-100 text-center"
+            className="pt-12 pb-8 border-t border-jeju-ocean/10 text-center"
           >
             <p className="text-coastal-gray font-serif text-lg">
               Produced by <span className="text-jeju-ocean font-bold">강정피스앤뮤직캠프</span> · 2024
