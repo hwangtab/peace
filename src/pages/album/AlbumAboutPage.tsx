@@ -285,7 +285,7 @@ const AlbumAboutPage = () => {
                         ) : (
                           <span
                             key={idx}
-                            className="px-3 py-1.5 bg-gray-50 text-gray-400 rounded-lg text-xs font-medium border border-gray-100"
+                            className="px-3 py-1.5 bg-ocean-mist/5 text-ocean-mist/80 rounded-lg text-xs font-medium border border-ocean-mist/10"
                           >
                             {performer.name}
                           </span>
