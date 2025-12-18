@@ -240,38 +240,34 @@ const AlbumAboutPage = () => {
                 {/* Card Header Background Decor */}
                 <div className="h-2 bg-gradient-to-r from-jeju-ocean to-ocean-mist opacity-80" />
 
-                <div className="p-8 flex-1 flex flex-col md:flex-row gap-8 divide-y md:divide-y-0 md:divide-x divide-gray-100">
-                  {/* Left Column: Info */}
-                  <div className="flex-1">
-                    <h3 className="typo-h3 text-2xl mb-8 group-hover:text-jeju-ocean transition-colors duration-300">
-                      {concert.name}
-                    </h3>
+                <div className="p-8 flex-1 flex flex-col">
+                  <h3 className="typo-h3 text-2xl mb-8 group-hover:text-jeju-ocean transition-colors duration-300">
+                    {concert.name}
+                  </h3>
 
-                    <div className="space-y-4 mb-8">
-                      <div className="flex items-center gap-4 text-gray-700">
-                        <div className="w-10 h-10 rounded-full bg-ocean-sand flex items-center justify-center text-jeju-ocean">
-                          <CalendarIcon className="w-5 h-5" />
-                        </div>
-                        <div className="flex flex-col">
-                          <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">일시</span>
-                          <span className="font-medium">{concert.date} <span className="text-coastal-gray text-sm">{concert.time}</span></span>
-                        </div>
+                  <div className="space-y-4 mb-8">
+                    <div className="flex items-center gap-4 text-gray-700">
+                      <div className="w-10 h-10 rounded-full bg-ocean-sand flex items-center justify-center text-jeju-ocean">
+                        <CalendarIcon className="w-5 h-5" />
                       </div>
+                      <div className="flex flex-col">
+                        <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">일시</span>
+                        <span className="font-medium">{concert.date} <span className="text-coastal-gray text-sm">{concert.time}</span></span>
+                      </div>
+                    </div>
 
-                      <div className="flex items-center gap-4 text-gray-700">
-                        <div className="w-10 h-10 rounded-full bg-ocean-sand flex items-center justify-center text-jeju-ocean">
-                          <MapPinIcon className="w-5 h-5" />
-                        </div>
-                        <div className="flex flex-col">
-                          <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">장소</span>
-                          <span className="font-medium">{concert.venue}</span>
-                        </div>
+                    <div className="flex items-center gap-4 text-gray-700">
+                      <div className="w-10 h-10 rounded-full bg-ocean-sand flex items-center justify-center text-jeju-ocean">
+                        <MapPinIcon className="w-5 h-5" />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">장소</span>
+                        <span className="font-medium">{concert.venue}</span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Right Column: Performers */}
-                  <div className="pt-6 md:pt-0 md:pl-8 flex flex-col justify-center min-w-[200px]">
+                  <div className="mt-auto">
                     <div className="flex items-center gap-2 mb-4">
                       <UserGroupIcon className="w-4 h-4 text-jeju-ocean" />
                       <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">출연진</span>
