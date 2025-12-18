@@ -6,7 +6,8 @@ import NavigationDropdown from './NavigationDropdown';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [desktopOpenDropdown, setDesktopOpenDropdown] = useState<string | null>(null);
+  const [mobileOpenDropdown, setMobileOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
 
   const simpleMenuItems = [
@@ -58,14 +59,14 @@ const Navigation = () => {
             <NavigationDropdown
               label="캠프"
               items={campItems}
-              isOpen={openDropdown === 'camps'}
-              onOpenChange={(isOpen) => setOpenDropdown(isOpen ? 'camps' : null)}
+              isOpen={desktopOpenDropdown === 'camps'}
+              onOpenChange={(isOpen) => setDesktopOpenDropdown(isOpen ? 'camps' : null)}
             />
             <NavigationDropdown
               label="앨범"
               items={albumItems}
-              isOpen={openDropdown === 'album'}
-              onOpenChange={(isOpen) => setOpenDropdown(isOpen ? 'album' : null)}
+              isOpen={desktopOpenDropdown === 'album'}
+              onOpenChange={(isOpen) => setDesktopOpenDropdown(isOpen ? 'album' : null)}
             />
 
             {[
@@ -95,7 +96,10 @@ const Navigation = () => {
           {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => {
+                setIsOpen(!isOpen);
+                if (isOpen) setMobileOpenDropdown(null);
+              }}
               className="text-coastal-gray hover:text-jeju-ocean transition-colors"
             >
               {isOpen ? (
@@ -136,12 +140,12 @@ const Navigation = () => {
                 {/* Mobile Dropdowns */}
                 <div className="border-t border-coastal-gray/20 my-4 pt-4">
                   <button
-                    onClick={() => setOpenDropdown(openDropdown === 'camps' ? null : 'camps')}
+                    onClick={() => setMobileOpenDropdown(mobileOpenDropdown === 'camps' ? null : 'camps')}
                     className="w-full text-left py-2 font-serif text-deep-ocean flex justify-between items-center"
                   >
                     캠프
                     <motion.span
-                      animate={{ rotate: openDropdown === 'camps' ? 180 : 0 }}
+                      animate={{ rotate: mobileOpenDropdown === 'camps' ? 180 : 0 }}
                       transition={{ duration: 0.2 }}
                       className="pointer-events-none"
                     >
@@ -149,7 +153,7 @@ const Navigation = () => {
                     </motion.span>
                   </button>
                   <AnimatePresence>
-                    {openDropdown === 'camps' && (
+                    {mobileOpenDropdown === 'camps' && (
                       <motion.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
@@ -163,7 +167,7 @@ const Navigation = () => {
                             className="block py-2 text-deep-ocean hover:text-jeju-ocean font-serif text-sm"
                             onClick={() => {
                               setIsOpen(false);
-                              setOpenDropdown(null);
+                              setMobileOpenDropdown(null);
                             }}
                           >
                             {item.name}
@@ -174,12 +178,12 @@ const Navigation = () => {
                   </AnimatePresence>
 
                   <button
-                    onClick={() => setOpenDropdown(openDropdown === 'album' ? null : 'album')}
+                    onClick={() => setMobileOpenDropdown(mobileOpenDropdown === 'album' ? null : 'album')}
                     className="w-full text-left py-2 font-serif text-deep-ocean flex justify-between items-center"
                   >
                     앨범
                     <motion.span
-                      animate={{ rotate: openDropdown === 'album' ? 180 : 0 }}
+                      animate={{ rotate: mobileOpenDropdown === 'album' ? 180 : 0 }}
                       transition={{ duration: 0.2 }}
                       className="pointer-events-none"
                     >
@@ -187,7 +191,7 @@ const Navigation = () => {
                     </motion.span>
                   </button>
                   <AnimatePresence>
-                    {openDropdown === 'album' && (
+                    {mobileOpenDropdown === 'album' && (
                       <motion.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
@@ -201,7 +205,7 @@ const Navigation = () => {
                             className="block py-2 text-deep-ocean hover:text-jeju-ocean font-serif text-sm"
                             onClick={() => {
                               setIsOpen(false);
-                              setOpenDropdown(null);
+                              setMobileOpenDropdown(null);
                             }}
                           >
                             {item.name}
