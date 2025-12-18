@@ -13,12 +13,12 @@ const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
     const [imgSrc, setImgSrc] = useState(video.thumbnailUrl || `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`);
 
     return (
-        <div className="bg-white rounded-xl shadow-md overflow-hidden h-full flex flex-col transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
+        <div className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
             <a
                 href={getYoutubeWatchUrl(video.youtubeUrl)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 block hover:bg-ocean-mist/10 transition-colors duration-300"
+                className="block hover:bg-ocean-mist/10 transition-colors duration-300"
             >
                 <div className="relative aspect-video overflow-hidden rounded-t-xl group">
                     <img
@@ -41,15 +41,17 @@ const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
                         </div>
                     </div>
                 </div>
-                <div className="p-6 h-full flex flex-col cursor-pointer">
-                    <div className="flex justify-between items-center mb-2">
-                        <span className="text-sm text-gray-500 cursor-pointer">{video.location}</span>
-                        <span className="text-sm text-gray-500 cursor-pointer">{video.date}</span>
+                <div className="pt-5 px-6 pb-10 flex flex-col cursor-pointer">
+                    <div className="flex justify-between items-center mb-3 text-xs font-medium text-ocean-mist uppercase tracking-tighter">
+                        <span>{video.location}</span>
+                        <span>{video.date}</span>
                     </div>
-                    <h3 className="typo-h3 mb-2 hover:text-jeju-ocean transition-colors duration-300 cursor-pointer line-clamp-2">
+                    <h3 className="typo-h3 text-xl mb-3 hover:text-jeju-ocean transition-colors duration-300 line-clamp-2 leading-snug">
                         {video.title}
                     </h3>
-                    <p className="typo-body flex-1 cursor-pointer line-clamp-3">{video.description}</p>
+                    <p className="typo-body text-sm text-gray-600 line-clamp-3 leading-relaxed">
+                        {video.description}
+                    </p>
                 </div>
             </a>
         </div>
