@@ -5,6 +5,7 @@ import { VideoItem, videoItems } from '../../data/videos';
 import EventFilter from '../common/EventFilter';
 import PageLayout from '../layout/PageLayout';
 import VideoCard from './VideoCard';
+import SectionHeader from '../common/SectionHeader';
 
 export default function VideoPage() {
   const location = useLocation();
@@ -49,19 +50,11 @@ export default function VideoPage() {
       background="white"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h2 className="typo-h2 mb-4">
-            비디오
-          </h2>
-          <p className="typo-subtitle mb-12">
-            평화를 노래하는 우리들의 순간
-          </p>
-        </motion.div>
+        <SectionHeader
+          title="비디오"
+          subtitle="평화를 노래하는 우리들의 순간"
+          inView={isInView}
+        />
 
         <EventFilter
           selectedFilter={selectedFilter}

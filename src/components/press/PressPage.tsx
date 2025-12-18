@@ -4,6 +4,7 @@ import { PressItem, pressItems } from '../../data/press';
 import { getBreadcrumbSchema } from '../../utils/structuredData';
 import EventFilter from '../common/EventFilter';
 import PageLayout from '../../components/layout/PageLayout';
+import SectionHeader from '../common/SectionHeader';
 
 
 const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
@@ -85,19 +86,11 @@ export default function PressPage() {
       background="white"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h2 className="typo-h2 mb-4">
-            언론보도
-          </h2>
-          <p className="typo-subtitle mb-12">
-            평화를 노래하는 우리들의 이야기
-          </p>
-        </motion.div>
+        <SectionHeader
+          title="언론보도"
+          subtitle="평화를 노래하는 우리들의 이야기"
+          inView={isInView}
+        />
         <EventFilter
           selectedFilter={selectedFilter}
           onFilterChange={setSelectedFilter}

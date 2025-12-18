@@ -1,8 +1,10 @@
 import React, { useRef, useState } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import Button from '../../components/common/Button';
 import PageLayout from '../../components/layout/PageLayout';
 import Section from '../../components/layout/Section';
+import SectionHeader from '../../components/common/SectionHeader';
 import { galleryImages } from '../../data/gallery';
 import { videoItems } from '../../data/videos';
 import { musicians } from '../../data/musicians';
@@ -98,7 +100,7 @@ const AlbumAboutPage = () => {
           Actually, PageLayout standardizes padding. I'll rely on it.
       */}
 
-      <div className="relative overflow-hidden mb-12">
+      <div className="relative overflow-hidden">
         {/* Background Decorative Elements - reimplemented inside container or just kept here */}
         <div className="absolute top-[-20%] right-[-10%] w-2/3 h-[120%] bg-ocean-mist/20 rounded-full blur-3xl z-0 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-1/2 h-2/3 bg-golden-sun/10 rounded-full blur-3xl z-0" />
@@ -145,18 +147,18 @@ const AlbumAboutPage = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link
+                <Button
                   to="/album/tracks"
-                  className="px-8 py-4 bg-jeju-ocean text-white rounded-full font-bold hover:bg-ocean-mist transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+                  variant="primary"
                 >
-                  수록곡 듣기 →
-                </Link>
-                <Link
+                  수록곡 듣기
+                </Button>
+                <Button
                   to="/album/musicians"
-                  className="px-8 py-4 bg-white border-2 border-jeju-ocean text-jeju-ocean rounded-full font-bold hover:bg-ocean-mist/10 transition-all duration-300"
+                  variant="outline"
                 >
                   참여 뮤지션 소개
-                </Link>
+                </Button>
               </div>
             </motion.div>
           </motion.div>
@@ -211,45 +213,38 @@ const AlbumAboutPage = () => {
       {/* Release Commemoration Concerts - Integrated Tab Section */}
       <Section background="ocean-sand" className="!pb-0">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="typo-h2 text-jeju-ocean mb-6">발매 기념 공연</h2>
-            <p className="typo-body text-gray-700 max-w-3xl mx-auto leading-loose pb-8">
-              음반 발매를 기념하여 강정과 서울에서 개최된 공연의 모든 기록을 확인해 보세요.
-            </p>
+          <SectionHeader
+            title="발매 기념 공연"
+            subtitle="음반 발매를 기념하여 강정과 서울에서 개최된 공연의 모든 기록을 확인해 보세요."
+            className="!mb-8"
+          />
 
-            {/* Tab Navigation */}
-            <div className="flex justify-center mb-12">
-              <div className="inline-flex p-1 bg-white/50 backdrop-blur-sm rounded-2xl shadow-inner border border-white/50">
-                {[
-                  { id: 'info', label: '공연 개요' },
-                  { id: 'video', label: '현장 영상' },
-                  { id: 'photo', label: '현장 사진' }
-                ].map((tab) => (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id as any)}
-                    className={`relative px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 ${activeTab === tab.id ? 'text-white' : 'text-coastal-gray hover:text-jeju-ocean'
-                      }`}
-                  >
-                    {activeTab === tab.id && (
-                      <motion.div
-                        layoutId="activeTabBg"
-                        className="absolute inset-0 bg-jeju-ocean rounded-xl shadow-lg"
-                        transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
-                      />
-                    )}
-                    <span className="relative z-10">{tab.label}</span>
-                  </button>
-                ))}
-              </div>
+          {/* Tab Navigation */}
+          <div className="flex justify-center mb-12">
+            <div className="inline-flex p-1 bg-white/50 backdrop-blur-sm rounded-2xl shadow-inner border border-white/50">
+              {[
+                { id: 'info', label: '공연 개요' },
+                { id: 'video', label: '현장 영상' },
+                { id: 'photo', label: '현장 사진' }
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id as any)}
+                  className={`relative px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 ${activeTab === tab.id ? 'text-white' : 'text-coastal-gray hover:text-jeju-ocean'
+                    }`}
+                >
+                  {activeTab === tab.id && (
+                    <motion.div
+                      layoutId="activeTabBg"
+                      className="absolute inset-0 bg-jeju-ocean rounded-xl shadow-lg"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
+                    />
+                  )}
+                  <span className="relative z-10">{tab.label}</span>
+                </button>
+              ))}
             </div>
-          </motion.div>
+          </div>
 
           <AnimatePresence mode="wait">
             {activeTab === 'info' && (
@@ -356,12 +351,12 @@ const AlbumAboutPage = () => {
                   ))}
                 </div>
                 <div className="text-center mt-8">
-                  <Link
+                  <Button
                     to="/videos?filter=album-2024"
-                    className="inline-block px-8 py-3 bg-white border border-jeju-ocean text-jeju-ocean rounded-full font-bold hover:bg-jeju-ocean hover:text-white transition-all duration-300"
+                    variant="outline"
                   >
-                    전체 영상 보기 →
-                  </Link>
+                    전체 영상 보기
+                  </Button>
                 </div>
               </motion.div>
             )}
@@ -392,12 +387,12 @@ const AlbumAboutPage = () => {
                   ))}
                 </div>
                 <div className="text-center mt-12">
-                  <Link
+                  <Button
                     to="/gallery?filter=album-2024"
-                    className="inline-block px-8 py-4 bg-jeju-ocean text-white rounded-full font-bold hover:bg-ocean-mist transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+                    variant="primary"
                   >
-                    공연 사진 전체 보기 →
-                  </Link>
+                    공연 사진 전체 보기
+                  </Button>
                 </div>
               </motion.div>
             )}
@@ -418,14 +413,16 @@ const AlbumAboutPage = () => {
         </div>
       </Section>
       {/* Modal */}
-      {selectedMusician && (
-        <MusicianModal
-          musician={selectedMusician}
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-        />
-      )}
-    </PageLayout>
+      {
+        selectedMusician && (
+          <MusicianModal
+            musician={selectedMusician}
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+          />
+        )
+      }
+    </PageLayout >
   );
 };
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { camps } from '../data/camps';
 import PageLayout from '../components/layout/PageLayout';
+import SectionHeader from '../components/common/SectionHeader';
 
 const Camp2026Page = () => {
   const camp2026 = camps.find(camp => camp.id === 'camp-2026');
@@ -50,16 +51,10 @@ const Camp2026Page = () => {
             2026 COMING SOON
           </span>
 
-          <h1 className="typo-h2 mb-4 text-gray-900">
-            {camp2026.title}
-          </h1>
-
-          <div className="w-24 h-1 bg-gradient-to-r from-jeju-ocean to-emerald-400 mx-auto mb-8 rounded-full"></div>
-
-          <p className="typo-subtitle mb-10 text-gray-700 leading-relaxed">
-            평화의 바람은 계속해서 불어옵니다.<br />
-            세 번째 평화의 노래가 2026년 여름, 강정에서 울려 퍼집니다.
-          </p>
+          <SectionHeader
+            title={camp2026.title}
+            subtitle="평화의 바람은 계속해서 불어옵니다. 세 번째 평화의 노래가 2026년 여름, 강정에서 울려 퍼집니다."
+          />
 
           <div className="bg-ocean-sand/30 p-8 rounded-2xl mb-10">
             <h3 className="typo-h3 mb-4 text-jeju-ocean">뉴스레터 구독하기</h3>
