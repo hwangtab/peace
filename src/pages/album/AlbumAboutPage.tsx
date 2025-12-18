@@ -217,7 +217,7 @@ const AlbumAboutPage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="typo-h2 text-jeju-ocean mb-6">발매 기념 공연 기록</h2>
+            <h2 className="typo-h2 text-jeju-ocean mb-6">발매 기념 공연</h2>
             <p className="typo-body text-gray-700 max-w-3xl mx-auto leading-loose pb-8">
               음반 발매를 기념하여 강정과 서울에서 개최된 공연의 모든 기록을 확인해 보세요.
             </p>
@@ -356,7 +356,7 @@ const AlbumAboutPage = () => {
                 </div>
                 <div className="text-center mt-8">
                   <Link
-                    to="/videos"
+                    to="/videos?filter=album-2024"
                     className="inline-block px-8 py-3 bg-white border border-jeju-ocean text-jeju-ocean rounded-full font-bold hover:bg-jeju-ocean hover:text-white transition-all duration-300"
                   >
                     전체 영상 보기 →
@@ -392,7 +392,7 @@ const AlbumAboutPage = () => {
                 </div>
                 <div className="text-center mt-12">
                   <Link
-                    to="/gallery"
+                    to="/gallery?filter=album-2024"
                     className="inline-block px-8 py-4 bg-jeju-ocean text-white rounded-full font-bold hover:bg-ocean-mist transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
                   >
                     공연 사진 전체 보기 →
