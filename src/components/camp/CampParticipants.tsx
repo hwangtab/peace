@@ -15,7 +15,7 @@ const CampParticipants: React.FC<CampParticipantsProps> = ({ participants, inVie
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleParticipantClick = (participant: string | Participant) => {
-        if (typeof participant === 'object' && participant.musicianId) {
+        if (typeof participant === 'object' && participant !== null && participant.musicianId) {
             const musician = musicians.find(m => m.id === participant.musicianId);
             if (musician) {
                 setSelectedMusician(musician);
@@ -25,11 +25,12 @@ const CampParticipants: React.FC<CampParticipantsProps> = ({ participants, inVie
     };
 
     const getParticipantName = (participant: string | Participant) => {
+        if (!participant) return '';
         return typeof participant === 'string' ? participant : participant.name;
     };
 
     const isClickable = (participant: string | Participant) => {
-        return typeof participant === 'object' && !!participant.musicianId;
+        return typeof participant === 'object' && participant !== null && !!participant.musicianId;
     };
 
     return (

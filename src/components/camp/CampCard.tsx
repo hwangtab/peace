@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CampEvent } from '../../types/camp';
-import Button from '../common/Button';
+import { CampEvent } from '../../types/camp';
 
 interface CampCardProps {
   camp: CampEvent;
@@ -77,13 +77,11 @@ const CampCard: React.FC<CampCardProps> = ({ camp }) => {
                 </div>
               )}
 
-              <Button
-                variant="primary"
-                size="sm"
-                fullWidth
+              <div
+                className="w-full inline-flex items-center justify-center rounded-full font-medium transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none bg-jeju-ocean text-white hover:bg-ocean-mist px-6 py-2 text-sm"
               >
                 자세히 보기
-              </Button>
+              </div>
             </>
           )}
         </div>
