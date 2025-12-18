@@ -3,6 +3,8 @@ import { motion, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import PageLayout from '../../components/layout/PageLayout';
 import Section from '../../components/layout/Section';
+import { galleryImages } from '../../data/gallery';
+import { videoItems } from '../../data/videos';
 
 const AlbumAboutPage = () => {
   const ref = useRef(null);
@@ -20,6 +22,46 @@ const AlbumAboutPage = () => {
       transition: { staggerChildren: 0.1, delayChildren: 0.1 }
     }
   };
+
+  // Concert data with musician IDs for linking
+  const concerts = [
+    {
+      id: 'gangjeong',
+      name: '강정 공연',
+      date: '2024년 10월 12일(토)',
+      time: '19:00~',
+      venue: '강정평화센터',
+      performers: [
+        { name: 'Project Around Surround', musicianId: 1 },
+        { name: '정진석', musicianId: 2 },
+        { name: '남수', musicianId: 4 },
+        { name: '모레도토요일', musicianId: 7 },
+        { name: '자이(Jai) x HANASH', musicianId: 11 }
+      ]
+    },
+    {
+      id: 'hongdae',
+      name: '홍대 공연',
+      date: '2024년 11월 2일(토)',
+      time: '19:00~',
+      venue: '스페이스 한강',
+      performers: [
+        { name: '김인', musicianId: 6 },
+        { name: '모모', musicianId: 10 },
+        { name: '남수', musicianId: 4 },
+        { name: '자이(Jai) x HANASH', musicianId: 11 },
+        { name: '길가는 밴드 장현호', musicianId: null },
+        { name: '김동산과 블루이웃', musicianId: 3 }
+      ]
+    }
+  ];
+
+  // Filter album photos and videos
+  const albumPhotos = galleryImages.filter(img => img.eventType === 'album' && img.eventYear === 2024);
+  const albumVideos = videoItems.filter(video => video.eventType === 'album' && video.eventYear === 2024);
+
+  // Get random 6 photos for preview
+  const randomPhotos = albumPhotos.sort(() => 0.5 - Math.random()).slice(0, 6);
 
   return (
     <PageLayout
@@ -143,14 +185,166 @@ const AlbumAboutPage = () => {
             </motion.div>
 
           </div>
+        </div>
+      </Section>
 
-          {/* Credits Strip */}
+      {/* Release Commemoration Concerts Section */}
+      <Section background="ocean-sand">
+        <div className="container mx-auto px-4">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="typo-h2 text-jeju-ocean mb-6">발매 기념 공연</h2>
+            <p className="typo-body text-gray-700 max-w-3xl mx-auto leading-loose">
+              음반 발매를 기념하여 강정과 서울에서 개최된 공연.<br />
+              참여 뮤지션들이 한자리에 모여 평화의 메시지를 노래했습니다.
+            </p>
+          </motion.div>
+
+          {/* Concert Cards */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-16">
+            {concerts.map((concert, index) => (
+              <motion.div
+                key={concert.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
+              >
+                <h3 className="text-2xl font-bold text-jeju-ocean mb-6">{concert.name}</h3>
+
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-start gap-3">
+                    <span className="font-semibold text-gray-900 min-w-[70px]">일시:</span>
+                    <span className="text-gray-700">{concert.date} {concert.time}</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="font-semibold text-gray-900 min-w-[70px]">장소:</span>
+                    <span className="text-gray-700">{concert.venue}</span>
+                  </div>
+                </div>
+
+                <div>
+                  <p className="font-semibold text-gray-900 mb-4">출연진:</p>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                    {concert.performers.map((performer, idx) => (
+                      performer.musicianId ? (
+                        <Link
+                          key={idx}
+                          to={`/album/musicians#musician-${performer.musicianId}`}
+                          className="px-1 py-1 bg-jeju-ocean/10 text-jeju-ocean rounded-full text-[10px] font-medium hover:bg-jeju-ocean hover:text-white transition-all duration-300 text-center w-full whitespace-nowrap overflow-hidden"
+                        >
+                          {performer.name}
+                        </Link>
+                      ) : (
+                        <span
+                          key={idx}
+                          className="px-1 py-1 bg-jeju-ocean/10 text-jeju-ocean rounded-full text-[10px] font-medium text-center w-full block whitespace-nowrap overflow-hidden"
+                        >
+                          {performer.name}
+                        </span>
+                      )
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Concert Videos - Only for Hongdae Concert */}
+          {albumVideos.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="mb-16"
+            >
+              <h3 className="typo-h3 text-jeju-ocean text-center mb-8">공연 영상</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                {albumVideos.map((video, index) => (
+                  <motion.div
+                    key={video.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
+                  >
+                    <div className="aspect-video">
+                      <iframe
+                        src={video.youtubeUrl}
+                        title={video.title}
+                        className="w-full h-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    </div>
+                    <div className="p-4">
+                      <h4 className="font-bold text-gray-900 mb-2 line-clamp-2">{video.title}</h4>
+                      <p className="text-sm text-gray-600">{video.date} · {video.location}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+
+          {/* Concert Photo Gallery Preview */}
+          {randomPhotos.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
+              <h3 className="typo-h3 text-jeju-ocean text-center mb-8">공연 현장</h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto mb-8">
+                {randomPhotos.map((photo, index) => (
+                  <motion.div
+                    key={photo.id}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.05 }}
+                    className="aspect-square rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  >
+                    <img
+                      src={photo.url}
+                      alt={`앨범 발매 기념 공연 현장 ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </motion.div>
+                ))}
+              </div>
+              <div className="text-center">
+                <Link
+                  to="/media/gallery?filter=album&year=2024"
+                  className="inline-block px-8 py-4 bg-jeju-ocean text-white rounded-full font-bold hover:bg-ocean-mist transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+                >
+                  전체 사진 보기 ({albumPhotos.length}장) →
+                </Link>
+              </div>
+            </motion.div>
+          )}
+        </div>
+      </Section>
+
+      {/* Credits Section */}
+      <Section background="white">
+        <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-24 pt-12 border-t border-gray-100 text-center"
+            transition={{ duration: 0.8 }}
+            className="py-12 border-t border-gray-100 text-center"
           >
             <p className="text-coastal-gray font-serif text-lg">
               Produced by <span className="text-jeju-ocean font-bold">강정피스앤뮤직캠프</span> · 2024
