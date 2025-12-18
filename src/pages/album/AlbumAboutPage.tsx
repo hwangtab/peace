@@ -1,14 +1,29 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import PageLayout from '../../components/layout/PageLayout';
 import Section from '../../components/layout/Section';
 import { galleryImages } from '../../data/gallery';
 import { videoItems } from '../../data/videos';
+import { musicians } from '../../data/musicians';
+import MusicianModal from '../../components/musicians/MusicianModal';
+import { Musician } from '../../types/musician';
 
 const AlbumAboutPage = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [selectedMusician, setSelectedMusician] = useState<Musician | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleMusicianClick = (musicianId: number | null) => {
+    if (musicianId) {
+      const musician = musicians.find(m => m.id === musicianId);
+      if (musician) {
+        setSelectedMusician(musician);
+        setIsModalOpen(true);
+      }
+    }
+  };
 
   const fadeUpVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -235,17 +250,17 @@ const AlbumAboutPage = () => {
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                     {concert.performers.map((performer, idx) => (
                       performer.musicianId ? (
-                        <Link
+                        <button
                           key={idx}
-                          to={`/album/musicians#musician-${performer.musicianId}`}
+                          onClick={() => handleMusicianClick(performer.musicianId)}
                           className="px-1 py-1 bg-jeju-ocean/10 text-jeju-ocean rounded-full text-[10px] font-medium hover:bg-jeju-ocean hover:text-white transition-all duration-300 text-center w-full whitespace-nowrap overflow-hidden"
                         >
                           {performer.name}
-                        </Link>
+                        </button>
                       ) : (
                         <span
                           key={idx}
-                          className="px-1 py-1 bg-jeju-ocean/10 text-jeju-ocean rounded-full text-[10px] font-medium text-center w-full block whitespace-nowrap overflow-hidden"
+                          className="px-1 py-1 bg-gray-100 text-gray-500 rounded-full text-[10px] font-medium text-center w-full block whitespace-nowrap overflow-hidden"
                         >
                           {performer.name}
                         </span>
@@ -352,6 +367,14 @@ const AlbumAboutPage = () => {
           </motion.div>
         </div>
       </Section>
+      {/* Modal */}
+      {selectedMusician && (
+        <MusicianModal
+          musician={selectedMusician}
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
     </PageLayout>
   );
 };
