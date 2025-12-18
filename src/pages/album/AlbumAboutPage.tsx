@@ -415,13 +415,13 @@ const AlbumAboutPage = () => {
             )}
           </AnimatePresence>
 
-          {/* Credits Area - Now integrated for cleaner layout */}
+          {/* Credits Area - Now integrated for cleaner layout with proper spacing */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="py-20 border-t border-jeju-ocean/10 text-center"
+            className="mt-16 md:mt-24 pt-16 md:pt-20 pb-20 border-t border-jeju-ocean/10 text-center"
           >
             <p className="text-coastal-gray font-serif text-lg">
               Produced by <span className="text-jeju-ocean font-bold">강정피스앤뮤직캠프</span> · 2024
