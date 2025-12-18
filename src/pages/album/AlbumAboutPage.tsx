@@ -87,8 +87,9 @@ const AlbumAboutPage = () => {
       title="이름을 모르는 먼 곳의 그대에게 - 앨범 소개"
       description="강정피스앤뮤직캠프의 2024년 음반 프로젝트. 전쟁을 끝내고 평화를 노래하는 12곡의 음악 여정."
       keywords="이름을 모르는 먼 곳의 그대에게, 강정피스앤뮤직캠프, 음반, 평화음악"
-      background="white"
+      background="ocean-sand"
       disableTopPadding={true}
+      className="!pb-0"
     >
       {/* Hero Section embedded in PageLayout content, or separate? 
           Original had a hero section with background decorations. 
@@ -208,7 +209,7 @@ const AlbumAboutPage = () => {
       </Section>
 
       {/* Release Commemoration Concerts - Integrated Tab Section */}
-      <Section background="ocean-sand">
+      <Section background="ocean-sand" className="!pb-0">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -408,7 +409,7 @@ const AlbumAboutPage = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="pt-12 pb-8 border-t border-jeju-ocean/10 text-center"
+            className="py-20 border-t border-jeju-ocean/10 text-center"
           >
             <p className="text-coastal-gray font-serif text-lg">
               Produced by <span className="text-jeju-ocean font-bold">강정피스앤뮤직캠프</span> · 2024
