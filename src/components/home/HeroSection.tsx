@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { useRef, useCallback } from 'react';
 import Button from '../common/Button';
 
 interface HeroSectionProps {
@@ -6,6 +7,14 @@ interface HeroSectionProps {
 }
 
 const HeroSection = ({ imageUrl }: HeroSectionProps) => {
+  const scrollIndicatorRef = useRef(null);
+  const isScrollIndicatorInView = useInView(scrollIndicatorRef);
+
+  const handleScrollToAbout = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+  }, []);
+
   return (
     <section className="relative h-screen flex items-center justify-center text-center overflow-hidden">
       {/* Background Image */}
@@ -44,10 +53,7 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
             <Button
               href="#about"
               variant="gold"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={handleScrollToAbout}
             >
               캠프 소개
             </Button>
@@ -61,8 +67,9 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - Only animates when in view */}
       <motion.div
+        ref={scrollIndicatorRef}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
@@ -70,12 +77,12 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
       >
         <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
           <motion.div
-            animate={{
+            animate={isScrollIndicatorInView ? {
               y: [0, 12, 0],
-            }}
+            } : { y: 0 }}
             transition={{
               duration: 1.5,
-              repeat: Infinity,
+              repeat: isScrollIndicatorInView ? Infinity : 0,
               repeatType: "reverse",
             }}
             className="w-2 h-2 bg-white rounded-full mt-2"
