@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 import { GalleryImage } from '../../types/gallery';
 import { getGalleryImages } from '../../api/gallery';
 import EventFilter from '../common/EventFilter';
 import GalleryImageItem from '../gallery/GalleryImageItem';
 import ImageLightbox from '../common/ImageLightbox';
 import Section from '../layout/Section';
-
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -31,10 +31,23 @@ const GallerySection: React.FC<GallerySectionProps> = ({
   className,
   enableSectionWrapper = true
 }) => {
+  const location = useLocation();
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
   const [visibleCount, setVisibleCount] = useState<number>(12);
+
+  // Sync filter with query parameter on mount
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const filterParam = params.get('filter');
+    if (filterParam) {
+      const validFilters = ['all', 'album-2024', 'camp-2023', 'camp-2025'];
+      if (validFilters.includes(filterParam)) {
+        setSelectedFilter(filterParam);
+      }
+    }
+  }, [location.search]);
 
   useEffect(() => {
     const loadImages = async () => {
