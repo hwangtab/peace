@@ -7,6 +7,7 @@ import { galleryImages } from '../../data/gallery';
 import { videoItems } from '../../data/videos';
 import { musicians } from '../../data/musicians';
 import MusicianModal from '../../components/musicians/MusicianModal';
+import VideoCard from '../../components/videos/VideoCard';
 import { Musician } from '../../types/musician';
 import {
   CalendarIcon,
@@ -80,9 +81,6 @@ const AlbumAboutPage = () => {
   // Filter album photos and videos
   const albumPhotos = galleryImages.filter(img => img.eventType === 'album' && img.eventYear === 2024);
   const albumVideos = videoItems.filter(video => video.eventType === 'album' && video.eventYear === 2024);
-
-  // Get random 6 photos for preview
-  const randomPhotos = albumPhotos.sort(() => 0.5 - Math.random()).slice(0, 6);
 
   return (
     <PageLayout
@@ -344,43 +342,18 @@ const AlbumAboutPage = () => {
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4 }}
               >
-                {albumVideos.length > 0 && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                    className="mb-16"
-                  >
-                    <h3 className="typo-h3 text-jeju-ocean text-center mb-8">공연 영상</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                      {albumVideos.map((video, index) => (
-                        <motion.div
-                          key={video.id}
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.5, delay: index * 0.1 }}
-                          className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
-                        >
-                          <div className="aspect-video">
-                            <iframe
-                              src={video.youtubeUrl}
-                              title={video.title}
-                              className="w-full h-full"
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                              allowFullScreen
-                            />
-                          </div>
-                          <div className="p-4">
-                            <h4 className="font-bold text-gray-900 mb-2 line-clamp-2">{video.title}</h4>
-                            <p className="text-sm text-gray-600">{video.date} · {video.location}</p>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
+                  {albumVideos.map((video, index) => (
+                    <motion.div
+                      key={video.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                    >
+                      <VideoCard video={video} />
+                    </motion.div>
+                  ))}
+                </div>
                 <div className="text-center mt-8">
                   <Link
                     to="/videos"
