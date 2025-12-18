@@ -4,6 +4,7 @@ import { CampEvent } from '../../types/camp';
 import ImageLightbox from '../common/ImageLightbox';
 import Section from '../layout/Section';
 import SectionHeader from '../common/SectionHeader';
+import Button from '../common/Button';
 
 interface CampGalleryProps {
   camp: CampEvent;
@@ -40,6 +41,15 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300" />
             </motion.div>
           ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <Button
+            to={`/gallery?filter=camp-${camp.year}`}
+            variant="outline"
+          >
+            더 보기
+          </Button>
         </div>
       </div>
 
