@@ -15,10 +15,11 @@ const MusicianCard = ({ musician, index }: MusicianCardProps) => {
   return (
     <>
       <motion.div
+        id={`musician-${musician.id}`}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: index * 0.1 }}
-        className="transform-gpu h-full"
+        className="transform-gpu h-full scroll-mt-24"
         onClick={() => setIsModalOpen(true)}
       >
         <div className="group relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-[1.02] hover:shadow-xl h-full flex flex-col">

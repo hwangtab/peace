@@ -56,14 +56,17 @@ const CampCard: React.FC<CampCardProps> = ({ camp }) => {
                     참여자 ({camp.participants.length})
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {camp.participants.slice(0, 3).map((participant: string, index: number) => (
-                      <span
-                        key={index}
-                        className="bg-ocean-sand text-jeju-ocean px-2 py-1 rounded text-xs font-medium"
-                      >
-                        {participant}
-                      </span>
-                    ))}
+                    {camp.participants.slice(0, 3).map((participant, index) => {
+                      const name = typeof participant === 'string' ? participant : participant.name;
+                      return (
+                        <span
+                          key={index}
+                          className="bg-ocean-sand text-jeju-ocean px-2 py-1 rounded text-xs font-medium"
+                        >
+                          {name}
+                        </span>
+                      );
+                    })}
                     {camp.participants.length > 3 && (
                       <span className="bg-ocean-sand text-jeju-ocean px-2 py-1 rounded text-xs font-medium">
                         +{camp.participants.length - 3}
