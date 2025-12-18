@@ -8,6 +8,11 @@ import { videoItems } from '../../data/videos';
 import { musicians } from '../../data/musicians';
 import MusicianModal from '../../components/musicians/MusicianModal';
 import { Musician } from '../../types/musician';
+import {
+  CalendarIcon,
+  MapPinIcon,
+  UserGroupIcon
+} from '@heroicons/react/24/outline';
 
 const AlbumAboutPage = () => {
   const ref = useRef(null);
@@ -230,42 +235,63 @@ const AlbumAboutPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col"
               >
-                <h3 className="text-2xl font-bold text-jeju-ocean mb-6">{concert.name}</h3>
+                {/* Card Header Background Decor */}
+                <div className="h-2 bg-gradient-to-r from-jeju-ocean to-ocean-mist opacity-80" />
 
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-start gap-3">
-                    <span className="font-semibold text-gray-900 min-w-[70px]">일시:</span>
-                    <span className="text-gray-700">{concert.date} {concert.time}</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="font-semibold text-gray-900 min-w-[70px]">장소:</span>
-                    <span className="text-gray-700">{concert.venue}</span>
-                  </div>
-                </div>
+                <div className="p-8 flex-1 flex flex-col">
+                  <h3 className="typo-h3 text-2xl mb-8 group-hover:text-jeju-ocean transition-colors duration-300">
+                    {concert.name}
+                  </h3>
 
-                <div>
-                  <p className="font-semibold text-gray-900 mb-4">출연진:</p>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-                    {concert.performers.map((performer, idx) => (
-                      performer.musicianId ? (
-                        <button
-                          key={idx}
-                          onClick={() => handleMusicianClick(performer.musicianId)}
-                          className="px-1 py-1 bg-jeju-ocean/10 text-jeju-ocean rounded-full text-[10px] font-medium hover:bg-jeju-ocean hover:text-white transition-all duration-300 text-center w-full whitespace-nowrap overflow-hidden"
-                        >
-                          {performer.name}
-                        </button>
-                      ) : (
-                        <span
-                          key={idx}
-                          className="px-1 py-1 bg-gray-100 text-gray-500 rounded-full text-[10px] font-medium text-center w-full block whitespace-nowrap overflow-hidden"
-                        >
-                          {performer.name}
-                        </span>
-                      )
-                    ))}
+                  <div className="space-y-4 mb-8">
+                    <div className="flex items-center gap-4 text-gray-700">
+                      <div className="w-10 h-10 rounded-full bg-ocean-sand flex items-center justify-center text-jeju-ocean">
+                        <CalendarIcon className="w-5 h-5" />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">일시</span>
+                        <span className="font-medium">{concert.date} <span className="text-coastal-gray text-sm">{concert.time}</span></span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-4 text-gray-700">
+                      <div className="w-10 h-10 rounded-full bg-ocean-sand flex items-center justify-center text-jeju-ocean">
+                        <MapPinIcon className="w-5 h-5" />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">장소</span>
+                        <span className="font-medium">{concert.venue}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-auto">
+                    <div className="flex items-center gap-2 mb-4">
+                      <UserGroupIcon className="w-4 h-4 text-jeju-ocean" />
+                      <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">출연진</span>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {concert.performers.map((performer, idx) => (
+                        performer.musicianId ? (
+                          <button
+                            key={idx}
+                            onClick={() => handleMusicianClick(performer.musicianId)}
+                            className="px-3 py-1.5 bg-ocean-sand text-jeju-ocean rounded-lg text-xs font-medium border border-jeju-ocean/10 hover:border-jeju-ocean hover:bg-jeju-ocean hover:text-white hover:shadow-md transition-all duration-300"
+                          >
+                            {performer.name}
+                          </button>
+                        ) : (
+                          <span
+                            key={idx}
+                            className="px-3 py-1.5 bg-gray-50 text-gray-400 rounded-lg text-xs font-medium border border-gray-100"
+                          >
+                            {performer.name}
+                          </span>
+                        )
+                      ))}
+                    </div>
                   </div>
                 </div>
               </motion.div>
