@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect, useMemo } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import Button from '../../components/common/Button';
 import PageLayout from '../../components/layout/PageLayout';
 import Section from '../../components/layout/Section';
