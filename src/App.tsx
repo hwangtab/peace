@@ -1,8 +1,10 @@
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+import { ErrorBoundary } from 'react-error-boundary';
 import Navigation from './components/layout/Navigation';
 import ScrollToTop from './components/common/ScrollToTop';
+import ErrorFallback from './components/common/ErrorFallback';
 
 import HeroSection from './components/home/HeroSection';
 import AboutSection from './components/home/AboutSection';
@@ -76,9 +78,11 @@ const AnimatedRoutes = () => {
 const App = () => {
   return (
     <Router>
-      <ScrollToTop />
-      <Navigation />
-      <AnimatedRoutes />
+      <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => window.location.reload()}>
+        <ScrollToTop />
+        <Navigation />
+        <AnimatedRoutes />
+      </ErrorBoundary>
     </Router>
   );
 };
