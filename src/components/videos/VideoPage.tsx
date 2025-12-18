@@ -1,14 +1,28 @@
-import React, { useRef, useState, useMemo } from 'react';
+import React, { useRef, useState, useMemo, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 import { VideoItem, videoItems } from '../../data/videos';
 import EventFilter from '../common/EventFilter';
 import PageLayout from '../layout/PageLayout';
 import VideoCard from './VideoCard';
 
 export default function VideoPage() {
+  const location = useLocation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
+
+  // Sync filter with query parameter on mount
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const filterParam = params.get('filter');
+    if (filterParam) {
+      const validFilters = ['all', 'album-2024', 'camp-2023', 'camp-2025'];
+      if (validFilters.includes(filterParam)) {
+        setSelectedFilter(filterParam);
+      }
+    }
+  }, [location.search]);
 
   const filteredVideos = useMemo(() => {
     let result = videoItems;
@@ -48,12 +62,14 @@ export default function VideoPage() {
             평화를 노래하는 우리들의 순간
           </p>
         </motion.div>
+
         <EventFilter
           selectedFilter={selectedFilter}
           onFilterChange={setSelectedFilter}
           colorScheme="ocean"
           filterOrder="videos"
         />
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {filteredVideos.map((video) => (
             <div key={video.id} className="h-full">
