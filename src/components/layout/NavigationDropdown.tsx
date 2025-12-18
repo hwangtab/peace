@@ -61,11 +61,13 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
     <div className="relative group" ref={dropdownRef}>
       <button
         onClick={() => setOpen(!open)}
-        className={`flex items-center gap-1 ${
-          isActive || open
+        className={`flex items-center gap-1 ${isActive || open
             ? 'text-jeju-ocean font-bold'
             : 'text-coastal-gray hover:text-jeju-ocean'
-        } transition-colors duration-300 font-serif py-2`}
+          } transition-colors duration-300 font-serif py-2`
+        }
+        aria-expanded={open}
+        aria-haspopup="true"
       >
         {label}
         <motion.div
@@ -90,11 +92,10 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`block px-4 py-2 ${
-                    location.pathname === item.path
+                  className={`block px-4 py-2 ${location.pathname === item.path
                       ? 'bg-ocean-sand text-jeju-ocean font-semibold'
                       : 'text-deep-ocean hover:bg-ocean-sand/50'
-                  } transition-colors duration-200 font-serif`}
+                    } transition-colors duration-200 font-serif`}
                   onClick={() => setOpen(false)}
                 >
                   {item.name}
