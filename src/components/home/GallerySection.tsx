@@ -7,6 +7,8 @@ import EventFilter from '../common/EventFilter';
 import GalleryImageItem from '../gallery/GalleryImageItem';
 import ImageLightbox from '../common/ImageLightbox';
 import Section from '../layout/Section';
+import Button from '../common/Button';
+import SectionHeader from '../common/SectionHeader';
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -87,20 +89,10 @@ const GallerySection: React.FC<GallerySectionProps> = ({
 
   const content = (
     <div className={`container mx-auto px-4 sm:px-6 lg:px-8 ${!enableSectionWrapper ? className : ''}`}>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-12"
-      >
-        <h2 className="typo-h2 mb-4 text-gray-900">
-          평화의 순간들
-        </h2>
-        <p className="typo-subtitle mb-8 text-gray-600">
-          평화를 노래하는 순간들
-        </p>
-      </motion.div>
+      <SectionHeader
+        title="평화의 순간들"
+        subtitle="평화를 노래하는 순간들"
+      />
 
       <EventFilter
         selectedFilter={selectedFilter}
@@ -143,12 +135,12 @@ const GallerySection: React.FC<GallerySectionProps> = ({
 
           {visibleCount < filteredImages.length && (
             <div className="text-center mt-12">
-              <button
+              <Button
                 onClick={handleLoadMore}
-                className="px-8 py-3 bg-white border border-jeju-ocean text-jeju-ocean rounded-full font-medium hover:bg-jeju-ocean hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
+                variant="outline"
               >
                 더 보기
-              </button>
+              </Button>
             </div>
           )}
         </>

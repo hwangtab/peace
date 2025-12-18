@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { CampEvent } from '../../types/camp';
 import ImageLightbox from '../common/ImageLightbox';
 import Section from '../layout/Section';
+import SectionHeader from '../common/SectionHeader';
 
 interface CampGalleryProps {
   camp: CampEvent;
@@ -18,7 +19,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
   return (
     <Section background="ocean-sand">
       <div className="container mx-auto px-4">
-        <h2 className="typo-h2 text-center mb-12">갤러리</h2>
+        <SectionHeader title="갤러리" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {camp.images.map((img, index) => (
             <motion.div
