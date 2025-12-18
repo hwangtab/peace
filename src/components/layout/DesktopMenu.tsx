@@ -29,7 +29,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
                 {location.pathname === ROUTES.HOME && (
                     <motion.div
                         className="absolute bottom-0 left-0 w-full h-0.5 bg-golden-sun"
-                        layoutId="underline"
+                        layoutId="underline-home"
                     />
                 )}
             </Link>
@@ -62,7 +62,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
                         {location.pathname === item.path && (
                             <motion.div
                                 className="absolute bottom-0 left-0 w-full h-0.5 bg-golden-sun"
-                                layoutId="underline"
+                                layoutId={`underline-${item.path}`}
                             />
                         )}
                     </Link>
