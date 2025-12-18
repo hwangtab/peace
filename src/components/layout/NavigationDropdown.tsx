@@ -62,8 +62,8 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
       <button
         onClick={() => setOpen(!open)}
         className={`flex items-center gap-1 ${isActive || open
-            ? 'text-jeju-ocean font-bold'
-            : 'text-coastal-gray hover:text-jeju-ocean'
+          ? 'text-jeju-ocean font-bold'
+          : 'text-coastal-gray hover:text-jeju-ocean'
           } transition-colors duration-300 font-serif py-2`
         }
         aria-expanded={open}
@@ -88,13 +88,13 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
             className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-50"
           >
             <div className="py-2">
-              {items.map((item, index) => (
+              {items.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
                   className={`block px-4 py-2 ${location.pathname === item.path
-                      ? 'bg-ocean-sand text-jeju-ocean font-semibold'
-                      : 'text-deep-ocean hover:bg-ocean-sand/50'
+                    ? 'bg-ocean-sand text-jeju-ocean font-semibold'
+                    : 'text-deep-ocean hover:bg-ocean-sand/50'
                     } transition-colors duration-200 font-serif`}
                   onClick={() => setOpen(false)}
                 >
