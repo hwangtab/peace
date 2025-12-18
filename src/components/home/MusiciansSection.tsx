@@ -1,4 +1,4 @@
-import { motion, useInView } from 'framer-motion';
+import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { musicians } from '../../data/musicians';
 import MusicianCard from '../musicians/MusicianCard';

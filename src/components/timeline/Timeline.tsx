@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { useInView } from 'framer-motion';
 import TimelineItem from './TimelineItem';
 import { timelineEvents as timelineData } from '../../data/timeline';
 import Section from '../layout/Section';

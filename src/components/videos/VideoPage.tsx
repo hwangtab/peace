@@ -1,7 +1,7 @@
 import React, { useRef, useState, useMemo, useEffect } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { useInView } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
-import { VideoItem, videoItems } from '../../data/videos';
+import { videoItems } from '../../data/videos';
 import EventFilter from '../common/EventFilter';
 import PageLayout from '../layout/PageLayout';
 import VideoCard from './VideoCard';

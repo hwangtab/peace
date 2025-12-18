@@ -1,5 +1,5 @@
 import React, { useRef, useState, useMemo } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { useInView } from 'framer-motion';
 import { PressItem, pressItems } from '../../data/press';
 import { getBreadcrumbSchema } from '../../utils/structuredData';
 import EventFilter from '../common/EventFilter';
