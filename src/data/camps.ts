@@ -26,14 +26,15 @@ export const camps: CampEvent[] = [
       '태히언'
     ],
     images: [
-      '/images-webp/camps/2023/20230600.편집.29.webp',
-      '/images-webp/camps/2023/20230600.편집.24.webp',
-      '/images-webp/camps/2023/20230609_160722.webp',
-      '/images-webp/camps/2023/20230610_195517.webp',
-      '/images-webp/camps/2023/20230610리테스마하르잔.webp',
-      '/images-webp/camps/2023/20230610깃발.webp',
+      '/images-webp/camps/2023/20230610둘리목걸이고르는.webp',
       '/images-webp/camps/2023/20230610밤 전쟁을끝내자.webp',
-      '/images-webp/camps/2023/20230610강정피스앤뮤직캠프현수믹.webp'
+      '/images-webp/camps/2023/20230610블로쿠뺄라지다2.webp',
+      '/images-webp/camps/2023/DSC00451.webp',
+      '/images-webp/camps/2023/20230610여울과2.webp',
+      '/images-webp/camps/2023/20230610지슬.webp',
+      '/images-webp/camps/2023/20230610평화문화셀러.webp',
+      '/images-webp/camps/2023/DSC00273.webp',
+      '/images-webp/camps/2023/DSC00360.webp'
     ]
   },
   {
