@@ -123,6 +123,7 @@ const Navigation = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               className="md:hidden bg-cloud-white/95 backdrop-blur-md border-t border-seafoam"
+              data-testid="mobile-menu"
             >
               <div className="container mx-auto px-4 py-4">
                 {simpleMenuItems.map((item) => (
