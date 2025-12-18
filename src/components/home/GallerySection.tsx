@@ -72,7 +72,8 @@ const GallerySection: React.FC<GallerySectionProps> = ({
 
         setImages(sortedImages);
       } catch (error) {
-        console.error('Error loading gallery images:', error);
+        // Silent fail in production - images will remain empty
+        // TODO: Integrate error tracking service (e.g., Sentry) for production monitoring
       }
     };
     loadImages();
