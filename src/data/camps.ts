@@ -17,10 +17,10 @@ export const camps: CampEvent[] = [
     startDate: '2023-06-10',
     slogan: '전쟁을 끝내자! 놀며, 춤추며, 노래하며!',
     participants: [
-      '리테스 마하르잔',
-      '여유와 설빈',
-      '출장작곡가 김동산',
-      '까르',
+      { name: '리테스 마하르잔', musicianId: 1 },
+      { name: '여유와 설빈', musicianId: 9 },
+      { name: '출장작곡가 김동산', musicianId: 3 },
+      { name: '까르', musicianId: 5 },
       '오재환',
       '항아',
       '태히언'
@@ -49,16 +49,16 @@ export const camps: CampEvent[] = [
     endDate: '2025-06-14',
     slogan: '노래하자, 춤추자, 전쟁을 끝내자!',
     participants: [
-      '까르',
-      '남수',
-      '모레도토요일',
+      { name: '까르', musicianId: 5 },
+      { name: '남수', musicianId: 4 },
+      { name: '모레도토요일', musicianId: 7 },
       '오재환',
-      '이서영',
-      '자이(Jai)',
-      '정진석',
-      '출장작곡가 김동산',
+      { name: '이서영', musicianId: 12 },
+      { name: '자이(Jai)', musicianId: 11 },
+      { name: '정진석', musicianId: 2 },
+      { name: '출장작곡가 김동산', musicianId: 3 },
       '태히언',
-      'HANASH'
+      { name: 'HANASH', musicianId: 11 }
     ],
     images: [
       '/images-webp/camps/2025/peacemusic-1.webp',

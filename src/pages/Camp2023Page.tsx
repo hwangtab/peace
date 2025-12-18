@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import CampHero from '../components/camp/CampHero';
 import CampGallery from '../components/camp/CampGallery';
+import CampParticipants from '../components/camp/CampParticipants';
 import { camps } from '../data/camps';
 import PageLayout from '../components/layout/PageLayout';
 import Section from '../components/layout/Section';
@@ -50,20 +51,7 @@ const Camp2023Page = () => {
                 <h2 className="typo-h2 mb-6">
                   참여 뮤지션
                 </h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {camp.participants.map((participant, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={isInfoInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-                      transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
-                      className="flex items-center gap-2"
-                    >
-                      <span className="inline-block w-2 h-2 bg-jeju-ocean rounded-full" />
-                      <span className="text-gray-700">{participant}</span>
-                    </motion.div>
-                  ))}
-                </div>
+                <CampParticipants participants={camp.participants} inView={isInfoInView} />
               </motion.div>
             )}
           </motion.div>
