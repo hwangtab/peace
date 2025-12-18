@@ -101,6 +101,8 @@ const Navigation = () => {
                 if (isOpen) setMobileOpenDropdown(null);
               }}
               className="text-coastal-gray hover:text-jeju-ocean transition-colors"
+              aria-label={isOpen ? "메뉴 닫기" : "메뉴 열기"}
+              aria-expanded={isOpen}
             >
               {isOpen ? (
                 <XMarkIcon className="h-6 w-6" />
@@ -142,6 +144,7 @@ const Navigation = () => {
                   <button
                     onClick={() => setMobileOpenDropdown(mobileOpenDropdown === 'camps' ? null : 'camps')}
                     className="w-full text-left py-2 font-serif text-deep-ocean flex justify-between items-center"
+                    aria-expanded={mobileOpenDropdown === 'camps'}
                   >
                     캠프
                     <motion.span
@@ -180,6 +183,7 @@ const Navigation = () => {
                   <button
                     onClick={() => setMobileOpenDropdown(mobileOpenDropdown === 'album' ? null : 'album')}
                     className="w-full text-left py-2 font-serif text-deep-ocean flex justify-between items-center"
+                    aria-expanded={mobileOpenDropdown === 'album'}
                   >
                     앨범
                     <motion.span

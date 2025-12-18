@@ -18,6 +18,7 @@ interface ButtonProps {
     disabled?: boolean;
     external?: boolean;
     fullWidth?: boolean;
+    ariaLabel?: string;
 }
 
 const Button = ({
@@ -32,6 +33,7 @@ const Button = ({
     disabled = false,
     external = false,
     fullWidth = false,
+    ariaLabel,
 }: ButtonProps) => {
     const baseClasses = 'inline-flex items-center justify-center rounded-full font-medium transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none';
 
@@ -74,10 +76,11 @@ const Button = ({
                     to={to}
                     className={combinedClasses}
                     onClick={onClick as any}
+                    aria-label={ariaLabel}
                 >
                     {content}
                 </Link>
-            </motion.div>
+            </motion.div >
         );
     }
 
@@ -91,6 +94,7 @@ const Button = ({
                         rel="noopener noreferrer"
                         className={combinedClasses}
                         onClick={onClick as any}
+                        aria-label={ariaLabel}
                     >
                         {content}
                     </a>
@@ -103,6 +107,7 @@ const Button = ({
                     href={href}
                     className={combinedClasses}
                     onClick={onClick as any}
+                    aria-label={ariaLabel}
                 >
                     {content}
                 </a>
@@ -117,6 +122,7 @@ const Button = ({
             className={combinedClasses}
             onClick={onClick}
             disabled={disabled}
+            aria-label={ariaLabel}
         >
             {content}
         </motion.button>
