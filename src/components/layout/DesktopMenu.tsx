@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Location } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import NavigationDropdown from './NavigationDropdown';
-import { campItems, albumItems } from './navigationData';
+import { campItems, albumItems, simpleMenuItems } from './navigationData';
 import { ROUTES } from '../../constants/routes';
 
 interface DesktopMenuProps {
@@ -21,8 +21,8 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
             <Link
                 to={ROUTES.HOME}
                 className={`${location.pathname === ROUTES.HOME
-                        ? 'text-jeju-ocean font-bold'
-                        : 'text-coastal-gray hover:text-jeju-ocean'
+                    ? 'text-jeju-ocean font-bold'
+                    : 'text-coastal-gray hover:text-jeju-ocean'
                     } transition-colors duration-300 font-display relative`}
             >
                 홈
@@ -47,28 +47,26 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
                 onOpenChange={(isOpen) => onOpenChange('album', isOpen)}
             />
 
-            {[
-                { name: '갤러리', path: ROUTES.GALLERY },
-                { name: '비디오', path: ROUTES.VIDEOS },
-                { name: '언론보도', path: ROUTES.PRESS },
-            ].map((item) => (
-                <Link
-                    key={item.path}
-                    to={item.path}
-                    className={`${location.pathname === item.path
+            {simpleMenuItems
+                .filter(item => item.path !== ROUTES.HOME) // '홈'은 별도 처리
+                .map((item) => (
+                    <Link
+                        key={item.path}
+                        to={item.path}
+                        className={`${location.pathname === item.path
                             ? 'text-jeju-ocean font-bold'
                             : 'text-coastal-gray hover:text-jeju-ocean'
-                        } transition-colors duration-300 font-display relative`}
-                >
-                    {item.name}
-                    {location.pathname === item.path && (
-                        <motion.div
-                            className="absolute bottom-0 left-0 w-full h-0.5 bg-golden-sun"
-                            layoutId="underline"
-                        />
-                    )}
-                </Link>
-            ))}
+                            } transition-colors duration-300 font-display relative`}
+                    >
+                        {item.name}
+                        {location.pathname === item.path && (
+                            <motion.div
+                                className="absolute bottom-0 left-0 w-full h-0.5 bg-golden-sun"
+                                layoutId="underline"
+                            />
+                        )}
+                    </Link>
+                ))}
         </div>
     );
 };
