@@ -46,7 +46,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
                         <span>{video.location}</span>
                         <span>{video.date}</span>
                     </div>
-                    <h3 className="typo-h3 text-xl mb-3 hover:text-jeju-ocean transition-colors duration-300 line-clamp-2 leading-snug">
+                    <h3 className="typo-h3 text-xl mb-3 hover:text-jeju-ocean transition-colors duration-300 line-clamp-1 leading-snug">
                         {video.title}
                     </h3>
                     <p className="typo-body text-sm text-gray-600 line-clamp-3 leading-relaxed">
