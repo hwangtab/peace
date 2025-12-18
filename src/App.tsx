@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { ErrorBoundary } from 'react-error-boundary';
+import { ROUTES } from './constants/routes';
 import Navigation from './components/layout/Navigation';
 import ScrollToTop from './components/common/ScrollToTop';
 import ErrorFallback from './components/common/ErrorFallback';
@@ -55,19 +56,19 @@ const AnimatedRoutes = () => {
       <AnimatePresence mode="wait" initial={false}>
         <Suspense fallback={<PageLoadingSpinner />}>
           <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/musicians" element={<Navigate to="/album/musicians" replace />} />
-            <Route path="/tracks" element={<Navigate to="/album/tracks" replace />} />
-            <Route path="/album/musicians" element={<AlbumMusiciansPage />} />
-            <Route path="/album/tracks" element={<AlbumTracksPage />} />
-            <Route path="/gallery" element={<GalleryPage />} />
-            <Route path="/videos" element={<VideoPage />} />
-            <Route path="/press" element={<PressPage />} />
-            <Route path="/camps" element={<CampsPage />} />
-            <Route path="/camps/2023" element={<Camp2023Page />} />
-            <Route path="/camps/2025" element={<Camp2025Page />} />
-            <Route path="/camps/2026" element={<Camp2026Page />} />
-            <Route path="/album/about" element={<AlbumAboutPage />} />
+            <Route path={ROUTES.HOME} element={<HomePage />} />
+            <Route path={ROUTES.LEGACY.MUSICIANS} element={<Navigate to={ROUTES.ALBUM.MUSICIANS} replace />} />
+            <Route path={ROUTES.LEGACY.TRACKS} element={<Navigate to={ROUTES.ALBUM.TRACKS} replace />} />
+            <Route path={ROUTES.ALBUM.MUSICIANS} element={<AlbumMusiciansPage />} />
+            <Route path={ROUTES.ALBUM.TRACKS} element={<AlbumTracksPage />} />
+            <Route path={ROUTES.GALLERY} element={<GalleryPage />} />
+            <Route path={ROUTES.VIDEOS} element={<VideoPage />} />
+            <Route path={ROUTES.PRESS} element={<PressPage />} />
+            <Route path={ROUTES.CAMPS.ROOT} element={<CampsPage />} />
+            <Route path={ROUTES.CAMPS.CAMP_2023} element={<Camp2023Page />} />
+            <Route path={ROUTES.CAMPS.CAMP_2025} element={<Camp2025Page />} />
+            <Route path={ROUTES.CAMPS.CAMP_2026} element={<Camp2026Page />} />
+            <Route path={ROUTES.ALBUM.ABOUT} element={<AlbumAboutPage />} />
           </Routes>
         </Suspense>
       </AnimatePresence>
