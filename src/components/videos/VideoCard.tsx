@@ -41,7 +41,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
                         </div>
                     </div>
                 </div>
-                <div className="pt-5 px-6 pb-10 flex flex-col cursor-pointer">
+                <div className="pt-5 px-6 pb-4 flex flex-col cursor-pointer">
                     <div className="flex justify-between items-center mb-3 text-xs font-medium text-ocean-mist uppercase tracking-tighter">
                         <span>{video.location}</span>
                         <span>{video.date}</span>
