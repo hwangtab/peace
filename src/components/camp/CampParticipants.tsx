@@ -48,10 +48,10 @@ const CampParticipants: React.FC<CampParticipantsProps> = ({ participants, inVie
                             className={`flex items-center gap-2 ${clickable ? 'cursor-pointer group' : ''}`}
                             onClick={() => handleParticipantClick(participant)}
                         >
-                            <span className={`inline-block w-2 h-2 rounded-full transition-colors duration-200 ${clickable ? 'bg-jeju-ocean group-hover:bg-ocean-mist' : 'bg-jeju-ocean'}`} />
-                            <span className={`transition-colors duration-200 ${clickable ? 'text-jeju-ocean font-medium group-hover:text-ocean-mist underline underline-offset-4 decoration-jeju-ocean/30' : 'text-gray-700'}`}>
+                            <span className={`inline-block w-2 h-2 rounded-full transition-colors duration-200 mt-1.5 ${clickable ? 'bg-jeju-ocean group-hover:bg-ocean-mist' : 'bg-jeju-ocean'}`} />
+                            <h3 className={`typo-h3 !text-lg transition-colors duration-200 ${clickable ? 'text-jeju-ocean group-hover:text-ocean-mist underline underline-offset-4 decoration-jeju-ocean/30' : 'text-gray-700'}`}>
                                 {name}
-                            </span>
+                            </h3>
                         </motion.div>
                     );
                 })}
