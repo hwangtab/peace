@@ -47,7 +47,7 @@ const AboutSection = () => {
               평화는 거창한 구호가 아니라, 서로의 목소리에 귀 기울이는 순간 시작된다는 것을 알았습니다.
             </p>
             <p>
-              <strong className="font-semibold text-gray-900">강정피스앤뮤직캠프</strong>는
+              강정피스앤뮤직캠프는
               전쟁 없는 세상을 꿈꾸는 음악가들의 연대이자 축제입니다.<br className="hidden md:block" />
               국경과 언어를 넘어, 음악이라는 가장 아름다운 무기로 우리는 평화를 이야기합니다.
             </p>
