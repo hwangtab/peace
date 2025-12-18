@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import Button from '../common/Button';
 
 interface HeroSectionProps {
   imageUrl: string;
@@ -30,36 +31,32 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="typo-h1 text-cloud-white mb-6 drop-shadow-md">
+          <h1 className="text-[clamp(1.5rem,8vw,5.5rem)] font-partial leading-tight text-cloud-white mb-6 drop-shadow-md whitespace-nowrap">
             강정피스앤뮤직캠프
           </h1>
-          <p className="typo-h2 text-golden-sun mb-6 drop-shadow-sm">
+          <p className="text-[clamp(1rem,4vw,2.25rem)] font-stone leading-tight text-golden-sun mb-6 drop-shadow-sm whitespace-nowrap">
             전쟁을 끝내자! 노래하자, 춤추자
           </p>
-          <p className="typo-subtitle text-seafoam mb-12 font-medium drop-shadow-sm">
+          <p className="text-[clamp(0.8125rem,2.2vw,1.25rem)] font-caption leading-relaxed text-seafoam mb-12 font-medium drop-shadow-sm whitespace-nowrap">
             강정마을에서 시작되는 평화의 메시지
           </p>
           <div className="flex justify-center gap-4">
-            <motion.a
+            <Button
               href="#about"
+              variant="gold"
               onClick={(e) => {
                 e.preventDefault();
                 document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
               }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-golden-sun text-jeju-ocean rounded-full font-bold hover:bg-opacity-90 transition-colors shadow-lg"
             >
-              프로젝트 소개
-            </motion.a>
-            <motion.a
-              href="/camps/2026"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 border-2 border-cloud-white text-cloud-white rounded-full font-bold hover:bg-white/10 transition-colors"
+              캠프 소개
+            </Button>
+            <Button
+              to="/camps/2026"
+              variant="white-outline"
             >
-              2026 캠프 알림
-            </motion.a>
+              2026 캠프
+            </Button>
           </div>
         </motion.div>
       </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CampEvent } from '../../types/camp';
+import Button from '../common/Button';
 
 interface CampCardProps {
   camp: CampEvent;
@@ -76,11 +77,13 @@ const CampCard: React.FC<CampCardProps> = ({ camp }) => {
                 </div>
               )}
 
-              <button
-                className="w-full bg-jeju-ocean text-white py-2 rounded font-medium text-sm transition-colors hover:bg-ocean-mist"
+              <Button
+                variant="primary"
+                size="sm"
+                fullWidth
               >
-                자세히 보기 →
-              </button>
+                자세히 보기
+              </Button>
             </>
           )}
         </div>

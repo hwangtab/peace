@@ -4,6 +4,8 @@ import TrackCard from '../tracks/TrackCard';
 import Section from '../layout/Section';
 import { tracks } from '../../data/tracks';
 import React from 'react';
+import Button from '../common/Button';
+import SectionHeader from '../common/SectionHeader';
 
 interface TracksSectionProps {
   enableSectionWrapper?: boolean;
@@ -29,15 +31,11 @@ const TracksSection: React.FC<TracksSectionProps> = ({ enableSectionWrapper = tr
 
   const content = (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-16"
-      >
-        <h2 className="typo-h2 mb-4 text-gray-900">수록곡</h2>
-        <p className="typo-subtitle mb-12 text-gray-600">12곡의 평화의 노래</p>
-      </motion.div>
+      <SectionHeader
+        title="수록곡"
+        subtitle="12곡의 평화의 노래"
+        inView={inView}
+      />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4 max-w-6xl mx-auto">
         {tracks.map((track) => (
@@ -58,14 +56,14 @@ const TracksSection: React.FC<TracksSectionProps> = ({ enableSectionWrapper = tr
         transition={{ duration: 0.6, delay: 0.4 }}
         className="text-center mt-16"
       >
-        <a
+        <Button
           href="https://smartstore.naver.com/peaceandmusic"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block bg-jeju-ocean text-white font-bold py-4 px-12 rounded-full hover:bg-ocean-mist transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1 duration-200"
+          variant="primary"
+          size="lg"
+          external
         >
           음반 구매하기
-        </a>
+        </Button>
       </motion.div>
     </div>
   );
@@ -77,7 +75,7 @@ const TracksSection: React.FC<TracksSectionProps> = ({ enableSectionWrapper = tr
       </Section>
     );
   }
-  
+
   return <div ref={ref}>{content}</div>;
 };
 

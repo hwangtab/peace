@@ -6,6 +6,7 @@ import CampParticipants from '../components/camp/CampParticipants';
 import { camps } from '../data/camps';
 import PageLayout from '../components/layout/PageLayout';
 import Section from '../components/layout/Section';
+import SectionHeader from '../components/common/SectionHeader';
 
 const Camp2025Page = () => {
   const camp = camps.find(c => c.id === 'camp-2025')!;
@@ -32,9 +33,7 @@ const Camp2025Page = () => {
             className="max-w-3xl mx-auto"
           >
             <div className="bg-white rounded-lg shadow-sm p-8 mb-12">
-              <h2 className="typo-h2 mb-6">
-                행사 개요
-              </h2>
+              <SectionHeader title="행사 개요" align="left" className="!mb-6" />
               <p className="typo-body mb-4">
                 {camp.description}
               </p>
@@ -48,9 +47,7 @@ const Camp2025Page = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="bg-white rounded-lg shadow-sm p-8"
               >
-                <h2 className="typo-h2 mb-6">
-                  참여 뮤지션
-                </h2>
+                <SectionHeader title="참여 뮤지션" align="left" className="!mb-6" />
                 <CampParticipants participants={camp.participants} inView={isInfoInView} />
               </motion.div>
             )}

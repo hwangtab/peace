@@ -6,6 +6,7 @@ import CampCard from '../components/camp/CampCard';
 import { camps } from '../data/camps';
 
 import PageLayout from '../components/layout/PageLayout';
+import SectionHeader from '../components/common/SectionHeader';
 
 const CampsPage = () => {
   const ref = useRef(null);
@@ -24,21 +25,12 @@ const CampsPage = () => {
     >
       <div className="container mx-auto px-4">
         {/* Header */}
-        <motion.div
-          ref={ref}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={fadeUpVariants}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h1 className="typo-h1 mb-6">
-            강정피스앤뮤직캠프
-          </h1>
-          <p className="typo-subtitle max-w-2xl mx-auto">
-            평화를 위한 음악 캠프의 역사와 미래
-          </p>
-        </motion.div>
+        <SectionHeader
+          title="강정피스앤뮤직캠프"
+          subtitle="평화를 위한 음악 캠프의 역사와 미래"
+          titleTag="h1"
+          inView={isInView}
+        />
 
         {/* Camps Grid */}
         <motion.div
