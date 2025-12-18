@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import PageLayout from '../../components/layout/PageLayout';
 import Section from '../../components/layout/Section';
@@ -19,6 +19,7 @@ const AlbumAboutPage = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [selectedMusician, setSelectedMusician] = useState<Musician | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<'info' | 'video' | 'photo'>('info');
 
   const handleMusicianClick = (musicianId: number | null) => {
     if (musicianId) {
@@ -208,172 +209,225 @@ const AlbumAboutPage = () => {
         </div>
       </Section>
 
-      {/* Release Commemoration Concerts Section */}
+      {/* Release Commemoration Concerts - Integrated Tab Section */}
       <Section background="ocean-sand">
         <div className="container mx-auto px-4">
-          {/* Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
-            <h2 className="typo-h2 text-jeju-ocean mb-6">발매 기념 공연</h2>
-            <p className="typo-body text-gray-700 max-w-3xl mx-auto leading-loose">
-              음반 발매를 기념하여 강정과 서울에서 개최된 공연.<br />
-              참여 뮤지션들이 한자리에 모여 평화의 메시지를 노래했습니다.
+            <h2 className="typo-h2 text-jeju-ocean mb-6">발매 기념 공연 기록</h2>
+            <p className="typo-body text-gray-700 max-w-3xl mx-auto leading-loose pb-8">
+              음반 발매를 기념하여 강정과 서울에서 개최된 공연의 모든 기록을 확인해 보세요.
             </p>
+
+            {/* Tab Navigation */}
+            <div className="flex justify-center mb-12">
+              <div className="inline-flex p-1 bg-white/50 backdrop-blur-sm rounded-2xl shadow-inner border border-white/50">
+                {[
+                  { id: 'info', label: '공연 개요' },
+                  { id: 'video', label: '현장 영상' },
+                  { id: 'photo', label: '현장 사진' }
+                ].map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id as any)}
+                    className={`relative px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 ${activeTab === tab.id ? 'text-white' : 'text-coastal-gray hover:text-jeju-ocean'
+                      }`}
+                  >
+                    {activeTab === tab.id && (
+                      <motion.div
+                        layoutId="activeTabBg"
+                        className="absolute inset-0 bg-jeju-ocean rounded-xl shadow-lg"
+                        transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
+                      />
+                    )}
+                    <span className="relative z-10">{tab.label}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
           </motion.div>
 
-          {/* Concert Cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-16">
-            {concerts.map((concert, index) => (
+          <AnimatePresence mode="wait">
+            {activeTab === 'info' && (
               <motion.div
-                key={concert.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col"
+                key="info-tab"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.4 }}
               >
-                {/* Card Header Background Decor */}
-                <div className="h-2 bg-gradient-to-r from-jeju-ocean to-ocean-mist opacity-80" />
 
-                <div className="p-8 flex-1 flex flex-col">
-                  <h3 className="typo-h3 text-2xl mb-8 group-hover:text-jeju-ocean transition-colors duration-300">
-                    {concert.name}
-                  </h3>
+                {/* Concert Cards */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-16">
+                  {concerts.map((concert, index) => (
+                    <motion.div
+                      key={concert.id}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: index * 0.2 }}
+                      className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col"
+                    >
+                      {/* Card Header Background Decor */}
+                      <div className="h-2 bg-gradient-to-r from-jeju-ocean to-ocean-mist opacity-80" />
 
-                  <div className="space-y-4 mb-8">
-                    <div className="flex items-center gap-4 text-gray-700">
-                      <div className="w-10 h-10 rounded-full bg-ocean-sand flex items-center justify-center text-jeju-ocean">
-                        <CalendarIcon className="w-5 h-5" />
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">일시</span>
-                        <span className="font-medium">{concert.date} <span className="text-coastal-gray text-sm">{concert.time}</span></span>
-                      </div>
-                    </div>
+                      <div className="p-8 flex-1 flex flex-col">
+                        <h3 className="typo-h3 text-2xl mb-8 group-hover:text-jeju-ocean transition-colors duration-300">
+                          {concert.name}
+                        </h3>
 
-                    <div className="flex items-center gap-4 text-gray-700">
-                      <div className="w-10 h-10 rounded-full bg-ocean-sand flex items-center justify-center text-jeju-ocean">
-                        <MapPinIcon className="w-5 h-5" />
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">장소</span>
-                        <span className="font-medium">{concert.venue}</span>
-                      </div>
-                    </div>
-                  </div>
+                        <div className="space-y-4 mb-8">
+                          <div className="flex items-center gap-4 text-gray-700">
+                            <div className="w-10 h-10 rounded-full bg-ocean-sand flex items-center justify-center text-jeju-ocean">
+                              <CalendarIcon className="w-5 h-5" />
+                            </div>
+                            <div className="flex flex-col">
+                              <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">일시</span>
+                              <span className="font-medium">{concert.date} <span className="text-coastal-gray text-sm">{concert.time}</span></span>
+                            </div>
+                          </div>
 
-                  <div className="mt-auto">
-                    <div className="flex items-center gap-2 mb-4">
-                      <UserGroupIcon className="w-4 h-4 text-jeju-ocean" />
-                      <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">출연진</span>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {concert.performers.map((performer, idx) => (
-                        performer.musicianId ? (
-                          <button
-                            key={idx}
-                            onClick={() => handleMusicianClick(performer.musicianId)}
-                            className="px-3 py-1.5 bg-ocean-sand text-jeju-ocean rounded-lg text-xs font-medium border border-jeju-ocean/10 hover:border-jeju-ocean hover:bg-jeju-ocean hover:text-white hover:shadow-md transition-all duration-300"
-                          >
-                            {performer.name}
-                          </button>
-                        ) : (
-                          <span
-                            key={idx}
-                            className="px-3 py-1.5 bg-ocean-mist/5 text-ocean-mist/80 rounded-lg text-xs font-medium border border-ocean-mist/10"
-                          >
-                            {performer.name}
-                          </span>
-                        )
-                      ))}
-                    </div>
-                  </div>
+                          <div className="flex items-center gap-4 text-gray-700">
+                            <div className="w-10 h-10 rounded-full bg-ocean-sand flex items-center justify-center text-jeju-ocean">
+                              <MapPinIcon className="w-5 h-5" />
+                            </div>
+                            <div className="flex flex-col">
+                              <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">장소</span>
+                              <span className="font-medium">{concert.venue}</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="mt-auto">
+                          <div className="flex items-center gap-2 mb-4">
+                            <UserGroupIcon className="w-4 h-4 text-jeju-ocean" />
+                            <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">출연진</span>
+                          </div>
+                          <div className="flex flex-wrap gap-2">
+                            {concert.performers.map((performer, idx) => (
+                              performer.musicianId ? (
+                                <button
+                                  key={idx}
+                                  onClick={() => handleMusicianClick(performer.musicianId)}
+                                  className="px-3 py-1.5 bg-ocean-sand text-jeju-ocean rounded-lg text-xs font-medium border border-jeju-ocean/10 hover:border-jeju-ocean hover:bg-jeju-ocean hover:text-white hover:shadow-md transition-all duration-300"
+                                >
+                                  {performer.name}
+                                </button>
+                              ) : (
+                                <span
+                                  key={idx}
+                                  className="px-3 py-1.5 bg-ocean-mist/5 text-ocean-mist/80 rounded-lg text-xs font-medium border border-ocean-mist/10"
+                                >
+                                  {performer.name}
+                                </span>
+                              )
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
               </motion.div>
-            ))}
-          </div>
+            )}
 
-          {/* Concert Videos - Only for Hongdae Concert */}
-          {albumVideos.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="mb-16"
-            >
-              <h3 className="typo-h3 text-jeju-ocean text-center mb-8">공연 영상</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                {albumVideos.map((video, index) => (
+            {activeTab === 'video' && (
+              <motion.div
+                key="video-tab"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.4 }}
+              >
+                {albumVideos.length > 0 && (
                   <motion.div
-                    key={video.id}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    className="mb-16"
                   >
-                    <div className="aspect-video">
-                      <iframe
-                        src={video.youtubeUrl}
-                        title={video.title}
-                        className="w-full h-full"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      />
-                    </div>
-                    <div className="p-4">
-                      <h4 className="font-bold text-gray-900 mb-2 line-clamp-2">{video.title}</h4>
-                      <p className="text-sm text-gray-600">{video.date} · {video.location}</p>
+                    <h3 className="typo-h3 text-jeju-ocean text-center mb-8">공연 영상</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                      {albumVideos.map((video, index) => (
+                        <motion.div
+                          key={video.id}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.5, delay: index * 0.1 }}
+                          className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
+                        >
+                          <div className="aspect-video">
+                            <iframe
+                              src={video.youtubeUrl}
+                              title={video.title}
+                              className="w-full h-full"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                            />
+                          </div>
+                          <div className="p-4">
+                            <h4 className="font-bold text-gray-900 mb-2 line-clamp-2">{video.title}</h4>
+                            <p className="text-sm text-gray-600">{video.date} · {video.location}</p>
+                          </div>
+                        </motion.div>
+                      ))}
                     </div>
                   </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          )}
+                )}
+                <div className="text-center mt-8">
+                  <Link
+                    to="/videos"
+                    className="inline-block px-8 py-3 bg-white border border-jeju-ocean text-jeju-ocean rounded-full font-bold hover:bg-jeju-ocean hover:text-white transition-all duration-300"
+                  >
+                    전체 영상 보기 →
+                  </Link>
+                </div>
+              </motion.div>
+            )}
 
-          {/* Concert Photo Gallery Preview */}
-          {randomPhotos.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-            >
-              <h3 className="typo-h3 text-jeju-ocean text-center mb-8">공연 현장</h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto mb-8">
-                {randomPhotos.map((photo, index) => (
-                  <motion.div
-                    key={photo.id}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.05 }}
-                    className="aspect-square rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105"
+            {activeTab === 'photo' && (
+              <motion.div
+                key="photo-tab"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.4 }}
+              >
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto mb-8">
+                  {albumPhotos.slice(0, 12).map((photo, index) => (
+                    <motion.div
+                      key={photo.id}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.4, delay: index * 0.05 }}
+                      className="aspect-square rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105"
+                    >
+                      <img
+                        src={photo.url}
+                        alt={`앨범 발매 기념 공연 현장 ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </motion.div>
+                  ))}
+                </div>
+                <div className="text-center mt-12">
+                  <Link
+                    to="/gallery"
+                    className="inline-block px-8 py-4 bg-jeju-ocean text-white rounded-full font-bold hover:bg-ocean-mist transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
                   >
-                    <img
-                      src={photo.url}
-                      alt={`앨범 발매 기념 공연 현장 ${index + 1}`}
-                      className="w-full h-full object-cover"
-                    />
-                  </motion.div>
-                ))}
-              </div>
-              <div className="text-center">
-                <Link
-                  to="/media/gallery?filter=album&year=2024"
-                  className="inline-block px-8 py-4 bg-jeju-ocean text-white rounded-full font-bold hover:bg-ocean-mist transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
-                >
-                  전체 사진 보기 ({albumPhotos.length}장) →
-                </Link>
-              </div>
-            </motion.div>
-          )}
+                    공연 사진 전체 보기 →
+                  </Link>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </Section>
 
