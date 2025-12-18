@@ -53,18 +53,32 @@ const GallerySection: React.FC<GallerySectionProps> = ({
 
   useEffect(() => {
     const loadImages = async () => {
-      const galleryImages = await getGalleryImages();
-      // Initial sort: Year ascending, then ID ascending
-      const sortedImages = [...galleryImages].sort((a, b) => {
-        if (a.eventYear !== b.eventYear) return (a.eventYear || 0) - (b.eventYear || 0);
-        return a.id - b.id;
-      });
-      setImages(sortedImages);
+      try {
+        const categories = ['album', 'camp2023', 'camp2025'];
+        const allFetchedImages: GalleryImage[] = [];
+
+        for (const cat of categories) {
+          const response = await fetch(`/data/gallery/${cat}.json`);
+          if (response.ok) {
+            const data = await response.json();
+            allFetchedImages.push(...data);
+          }
+        }
+
+        // Apply a stable sort: Year ascending, then ID ascending
+        const sortedImages = allFetchedImages.sort((a, b) => {
+          if (a.eventYear !== b.eventYear) return (a.eventYear || 0) - (b.eventYear || 0);
+          return a.id - b.id;
+        });
+
+        setImages(sortedImages);
+      } catch (error) {
+        console.error('Error loading gallery images:', error);
+      }
     };
     loadImages();
   }, []);
 
-  // Optimized: Filter without re-sorting (data is already sorted)
   const filteredImages = useMemo(() => {
     if (selectedFilter === 'all') return images;
 
