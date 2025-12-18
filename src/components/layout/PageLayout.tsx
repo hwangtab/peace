@@ -7,6 +7,7 @@ interface PageLayoutProps extends SEOHelmetProps {
     className?: string;
     background?: 'white' | 'ocean-sand' | 'seafoam' | 'sunlight-glow' | 'sky-horizon' | 'light-beige';
     disableTopPadding?: boolean;
+    disableBottomPadding?: boolean;
 }
 
 /**
@@ -22,6 +23,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
     className,
     background = 'ocean-sand',
     disableTopPadding = false,
+    disableBottomPadding = false,
     ...seoProps
 }) => {
     return (
@@ -37,7 +39,11 @@ const PageLayout: React.FC<PageLayoutProps> = ({
             },
             // Standard top/bottom padding (formerly .page-container)
             // If disableTopPadding is true, we remove the top padding classes
-            disableTopPadding ? 'pb-16 md:pb-24' : 'pt-24 pb-16 md:pt-32 md:pb-24',
+            // If disableBottomPadding is true, we remove the bottom padding classes
+            {
+                'pt-24 md:pt-32': !disableTopPadding,
+                'pb-16 md:pb-24': !disableBottomPadding,
+            },
             className
         )}>
             <SEOHelmet {...seoProps} />

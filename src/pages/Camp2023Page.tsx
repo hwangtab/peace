@@ -20,6 +20,7 @@ const Camp2023Page = () => {
       keywords="강정피스앤뮤직캠프, 제1회 캠프, 2023, 강정마을, 평화음악, 반전운동"
       ogImage="/images-webp/camps/2023/20230610_195517.webp"
       disableTopPadding={true}
+      disableBottomPadding={true}
     >
       <CampHero camp={camp} />
 
