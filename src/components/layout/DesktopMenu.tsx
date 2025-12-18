@@ -3,6 +3,7 @@ import { Link, Location } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import NavigationDropdown from './NavigationDropdown';
 import { campItems, albumItems } from './navigationData';
+import { ROUTES } from '../../constants/routes';
 
 interface DesktopMenuProps {
     location: Location;
@@ -18,14 +19,14 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
     return (
         <div className="hidden md:flex items-center space-x-8">
             <Link
-                to="/"
-                className={`${location.pathname === '/'
+                to={ROUTES.HOME}
+                className={`${location.pathname === ROUTES.HOME
                         ? 'text-jeju-ocean font-bold'
                         : 'text-coastal-gray hover:text-jeju-ocean'
                     } transition-colors duration-300 font-display relative`}
             >
                 홈
-                {location.pathname === '/' && (
+                {location.pathname === ROUTES.HOME && (
                     <motion.div
                         className="absolute bottom-0 left-0 w-full h-0.5 bg-golden-sun"
                         layoutId="underline"
@@ -47,9 +48,9 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
             />
 
             {[
-                { name: '갤러리', path: '/gallery' },
-                { name: '비디오', path: '/videos' },
-                { name: '언론보도', path: '/press' },
+                { name: '갤러리', path: ROUTES.GALLERY },
+                { name: '비디오', path: ROUTES.VIDEOS },
+                { name: '언론보도', path: ROUTES.PRESS },
             ].map((item) => (
                 <Link
                     key={item.path}
