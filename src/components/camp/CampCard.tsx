@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CampEvent } from '../../types/camp';
-import { CampEvent } from '../../types/camp';
 
 interface CampCardProps {
   camp: CampEvent;
