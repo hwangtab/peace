@@ -7,45 +7,48 @@ interface TimelineItemProps {
   isLeft: boolean;
 }
 
-const TimelineItem: React.FC<TimelineItemProps> = ({ event, isLeft }) => {
-  const eventTypeColor = {
-    camp: 'bg-jeju-ocean',
-    album: 'bg-golden-sun',
-    milestone: 'bg-sunset-coral'
-  };
+// Move static objects outside component to prevent recreation
+const eventTypeColor = {
+  camp: 'bg-jeju-ocean',
+  album: 'bg-golden-sun',
+  milestone: 'bg-sunset-coral'
+};
 
-  const eventTypeBorder = {
-    camp: 'border-jeju-ocean',
-    album: 'border-golden-sun',
-    milestone: 'border-sunset-coral'
-  };
+const eventTypeBorder = {
+  camp: 'border-jeju-ocean',
+  album: 'border-golden-sun',
+  milestone: 'border-sunset-coral'
+};
 
-  const eventTypeLabel = {
-    camp: '캠프',
-    album: '앨범',
-    milestone: '마일스톤'
-  };
+const eventTypeLabel = {
+  camp: '캠프',
+  album: '앨범',
+  milestone: '마일스톤'
+};
 
-  const containerVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 }
-    }
-  };
+const containerVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6 }
+  }
+};
 
+const mobileContentVariants = {
+  hidden: { opacity: 0, x: 20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6, delay: 0.2 }
+  }
+};
+
+// Memoized component to prevent unnecessary re-renders
+const TimelineItem = React.memo<TimelineItemProps>(({ event, isLeft }) => {
+  // Content variants depend on isLeft, so keep them inside
   const contentVariants = {
     hidden: { opacity: 0, x: isLeft ? -20 : 20 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.6, delay: 0.2 }
-    }
-  };
-
-  const mobileContentVariants = {
-    hidden: { opacity: 0, x: 20 },
     visible: {
       opacity: 1,
       x: 0,
@@ -174,6 +177,6 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ event, isLeft }) => {
       </div>
     </motion.div>
   );
-};
+});
 
 export default TimelineItem;
