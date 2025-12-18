@@ -1,15 +1,17 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect, useMemo } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Button from '../../components/common/Button';
 import PageLayout from '../../components/layout/PageLayout';
 import Section from '../../components/layout/Section';
 import SectionHeader from '../../components/common/SectionHeader';
-import { galleryImages } from '../../data/gallery';
 import { videoItems } from '../../data/videos';
 import { musicians } from '../../data/musicians';
 import MusicianModal from '../../components/musicians/MusicianModal';
 import VideoCard from '../../components/videos/VideoCard';
+import ImageLightbox from '../../components/common/ImageLightbox';
+import { getGalleryImages } from '../../api/gallery';
+import { GalleryImage } from '../../types/gallery';
 import { Musician } from '../../types/musician';
 import {
   CalendarIcon,
@@ -21,8 +23,10 @@ const AlbumAboutPage = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [selectedMusician, setSelectedMusician] = useState<Musician | null>(null);
+  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'info' | 'video' | 'photo'>('info');
+  const [images, setImages] = useState<GalleryImage[]>([]);
 
   const handleMusicianClick = (musicianId: number | null) => {
     if (musicianId) {
@@ -38,6 +42,15 @@ const AlbumAboutPage = () => {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 }
   };
+
+  // Load photos dynamically
+  useEffect(() => {
+    const loadData = async () => {
+      const allImages = await getGalleryImages();
+      setImages(allImages);
+    };
+    loadData();
+  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -81,7 +94,10 @@ const AlbumAboutPage = () => {
   ];
 
   // Filter album photos and videos
-  const albumPhotos = galleryImages.filter(img => img.eventType === 'album' && img.eventYear === 2024);
+  const albumPhotos = useMemo(() =>
+    images.filter(img => img.eventType === 'album' && img.eventYear === 2024),
+    [images]
+  );
   const albumVideos = videoItems.filter(video => video.eventType === 'album' && video.eventYear === 2024);
 
   return (
@@ -376,7 +392,8 @@ const AlbumAboutPage = () => {
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.4, delay: index * 0.05 }}
-                      className="aspect-square rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105"
+                      className="aspect-square rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+                      onClick={() => setSelectedImage(photo)}
                     >
                       <img
                         src={photo.url}
@@ -422,6 +439,16 @@ const AlbumAboutPage = () => {
           />
         )
       }
+      {selectedImage && (
+        <ImageLightbox
+          image={{
+            url: selectedImage.url,
+            alt: `앨범 발매 기념 공연 현장 ${selectedImage.id}`
+          }}
+          onClose={() => setSelectedImage(null)}
+          maxHeight="85vh"
+        />
+      )}
     </PageLayout >
   );
 };
