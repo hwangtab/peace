@@ -54,7 +54,10 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
             </TitleTag>
 
             {displaySubtitle && (
-                <p className="typo-subtitle mb-6 text-gray-600 max-w-2xl mx-auto">
+                <p
+                    className="typo-subtitle mb-6 text-gray-600 max-w-2xl mx-auto"
+                    style={{ textWrap: 'balance' }}
+                >
                     {displaySubtitle}
                 </p>
             )}
