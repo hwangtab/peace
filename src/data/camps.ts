@@ -69,10 +69,7 @@ export const camps: CampEvent[] = [
       '/images-webp/camps/2025/DSC00547.webp',
       '/images-webp/camps/2025/DSC00559.webp',
       '/images-webp/camps/2025/DSC00625.webp',
-      '/images-webp/camps/2025/DSC00667.webp',
-      '/images-webp/camps/2025/DSC00729.webp',
-      '/images-webp/camps/2025/DSC00835.webp',
-      '/images-webp/camps/2025/DSC00938.webp'
+      '/images-webp/camps/2025/DSC00667.webp'
     ]
   },
   {
