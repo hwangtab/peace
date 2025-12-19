@@ -1,6 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
-import { Howl } from 'howler';
 import { motion } from 'framer-motion';
+import { useAudioPlayer } from '../../hooks/useAudioPlayer';
 
 interface AudioPlayerProps {
   audioUrl: string;
@@ -11,73 +10,13 @@ interface AudioPlayerProps {
 }
 
 const AudioPlayer = ({ audioUrl, isPlaying, onPlayPause, title, artist }: AudioPlayerProps) => {
-  const [progress, setProgress] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const soundRef = useRef<Howl | null>(null);
-  const requestRef = useRef<number>();
-
-  useEffect(() => {
-    if (audioUrl && !soundRef.current) {
-      soundRef.current = new Howl({
-        src: [audioUrl],
-        html5: true,
-        onload: () => {
-          setDuration(soundRef.current?.duration() || 0);
-        },
-      });
-    }
-
-    return () => {
-      if (soundRef.current) {
-        soundRef.current.unload();
-        soundRef.current = null;
-      }
-      if (requestRef.current) {
-        cancelAnimationFrame(requestRef.current);
-      }
-    };
-  }, [audioUrl]);
-
-  useEffect(() => {
-    if (!soundRef.current) return;
-
-    if (isPlaying) {
-      soundRef.current.play();
-      const animate = () => {
-        setProgress(soundRef.current?.seek() || 0);
-        requestRef.current = requestAnimationFrame(animate);
-      };
-      requestRef.current = requestAnimationFrame(animate);
-    } else {
-      soundRef.current.pause();
-      if (requestRef.current) {
-        cancelAnimationFrame(requestRef.current);
-      }
-    }
-
-    return () => {
-      if (requestRef.current) {
-        cancelAnimationFrame(requestRef.current);
-      }
-    };
-  }, [isPlaying]);
-
-  const formatTime = (time: number) => {
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-  };
-
-  const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!soundRef.current) return;
-
-    const bounds = e.currentTarget.getBoundingClientRect();
-    const percent = (e.clientX - bounds.left) / bounds.width;
-    const newTime = percent * duration;
-
-    soundRef.current.seek(newTime);
-    setProgress(newTime);
-  };
+  const {
+    progress,
+    duration,
+    getProgressPercent,
+    handleSeek,
+    formatTime,
+  } = useAudioPlayer({ audioUrl, isPlaying });
 
   return (
     <div className="w-full bg-white rounded-lg shadow-md p-4">
@@ -118,7 +57,7 @@ const AudioPlayer = ({ audioUrl, isPlaying, onPlayPause, title, artist }: AudioP
       >
         <motion.div
           className="h-full bg-coastal-gray rounded"
-          style={{ width: `${(progress / duration) * 100}%` }}
+          style={{ width: `${getProgressPercent()}%` }}
           layout
         />
       </div>

@@ -1,6 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import { Musician } from '../../types/musician';
+import { extractInstagramUsername } from '../../utils/instagram';
 
 interface MusicianModalProps {
   musician: Musician;
@@ -103,8 +104,8 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                           SNS
                         </h4>
                         <div className="flex flex-wrap gap-2">
-                          {musician.instagramUrls.map((url, idx) => {
-                            const username = url.split('instagram.com/')[1]?.replace(/\/$/, '') || url;
+                          {musician.instagramUrls.map((url) => {
+                            const username = extractInstagramUsername(url);
                             return (
                               <a
                                 key={url}
