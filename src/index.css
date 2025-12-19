@@ -75,6 +75,7 @@
     @apply font-sans;
     word-break: keep-all;
     overflow-wrap: break-word;
+    text-wrap: pretty;
   }
 
   span,
@@ -155,6 +156,15 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
 }
 
 .subtitle {

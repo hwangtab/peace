@@ -62,7 +62,7 @@ const TimelineItem = React.memo<TimelineItemProps>(({ event, isLeft }) => {
         {eventTypeLabel[event.eventType]}
       </span>
       <h3 className="typo-h3 text-jeju-ocean mb-2">{event.title}</h3>
-      <p className="typo-body text-coastal-gray mb-3 text-sm">{event.description}</p>
+      <p className="typo-body text-coastal-gray mb-3 text-sm text-pretty">{event.description}</p>
       {event.location && (
         <p className="text-xs text-ocean-mist flex items-center font-medium">
           <span className="mr-1">📍</span> {event.location}
@@ -111,7 +111,7 @@ const TimelineItem = React.memo<TimelineItemProps>(({ event, isLeft }) => {
       </h3>
 
       {/* 설명 */}
-      <p className="text-sm text-coastal-gray mb-3 leading-relaxed">
+      <p className="text-sm text-coastal-gray mb-3 leading-relaxed text-pretty">
         {event.description}
       </p>
 
