@@ -2,7 +2,9 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import { GalleryImage } from '../../types/gallery';
+import { getGalleryImages } from '../../api/gallery';
 import { filterByEvent, isValidFilter } from '../../utils/filtering';
+import { GALLERY_CONFIG } from '../../constants/config';
 import EventFilter from '../common/EventFilter';
 import GalleryImageItem from '../gallery/GalleryImageItem';
 import ImageLightbox from '../common/ImageLightbox';
@@ -37,7 +39,7 @@ const GallerySection: React.FC<GallerySectionProps> = ({
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
-  const [visibleCount, setVisibleCount] = useState<number>(12);
+  const [visibleCount, setVisibleCount] = useState<number>(GALLERY_CONFIG.INITIAL_VISIBLE_COUNT);
 
   // Sync filter with query parameter on mount
   useEffect(() => {
@@ -52,42 +54,16 @@ const GallerySection: React.FC<GallerySectionProps> = ({
     let isCancelled = false;
 
     const loadImages = async () => {
-      try {
-        const categories = ['album', 'camp2023', 'camp2025'];
+      const allFetchedImages = await getGalleryImages();
 
-        // Promise.all로 병렬 처리 (성능 개선 + 개별 에러 처리)
-        const responses = await Promise.all(
-          categories.map(cat =>
-            fetch(`/data/gallery/${cat}.json`)
-              .then(res => {
-                if (!res.ok) {
-                  console.warn(`Failed to fetch gallery/${cat}.json: ${res.status}`);
-                  return [];
-                }
-                return res.json();
-              })
-              .catch(err => {
-                console.error(`Gallery fetch error for ${cat}:`, err);
-                return [];
-              })
-          )
-        );
+      if (isCancelled) return;
 
-        // 취소된 요청이면 상태 업데이트 안함 (race condition 방지)
-        if (isCancelled) return;
+      const sortedImages = allFetchedImages.sort((a, b) => {
+        if (a.eventYear !== b.eventYear) return (a.eventYear || 0) - (b.eventYear || 0);
+        return a.id - b.id;
+      });
 
-        const allFetchedImages = responses.flat() as GalleryImage[];
-
-        // Apply a stable sort: Year ascending, then ID ascending
-        const sortedImages = allFetchedImages.sort((a, b) => {
-          if (a.eventYear !== b.eventYear) return (a.eventYear || 0) - (b.eventYear || 0);
-          return a.id - b.id;
-        });
-
-        setImages(sortedImages);
-      } catch (error) {
-        console.error('Gallery loading error:', error);
-      }
+      setImages(sortedImages);
     };
 
     loadImages();
@@ -104,11 +80,11 @@ const GallerySection: React.FC<GallerySectionProps> = ({
 
   // Reset visible count when filter changes
   useEffect(() => {
-    setVisibleCount(12);
+    setVisibleCount(GALLERY_CONFIG.INITIAL_VISIBLE_COUNT);
   }, [selectedFilter]);
 
   const handleLoadMore = () => {
-    setVisibleCount(prev => prev + 12);
+    setVisibleCount(prev => prev + GALLERY_CONFIG.LOAD_MORE_COUNT);
   };
 
   const displayImages = useMemo(() => filteredImages.slice(0, visibleCount), [filteredImages, visibleCount]);
@@ -157,7 +133,7 @@ const GallerySection: React.FC<GallerySectionProps> = ({
                 >
                   <GalleryImageItem
                     image={image}
-                    priority={index < 8}
+                    priority={index < GALLERY_CONFIG.PRIORITY_IMAGE_THRESHOLD}
                     onClick={setSelectedImage}
                   />
                 </motion.div>
@@ -182,7 +158,8 @@ const GallerySection: React.FC<GallerySectionProps> = ({
         <ImageLightbox
           image={{
             url: selectedImage.url,
-            alt: selectedImage.description || `Gallery image ${selectedImage.id}`
+            alt: selectedImage.description ||
+                 `${selectedImage.eventYear || ''}년 강정피스앤뮤직캠프 갤러리 이미지`
           }}
           onClose={() => setSelectedImage(null)}
           maxHeight="85vh"

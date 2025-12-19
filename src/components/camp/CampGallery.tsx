@@ -34,7 +34,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
             >
               <img
                 src={img}
-                alt={`Gallery ${index + 1}`}
+                alt={`${camp.year}년 ${camp.title} 갤러리 사진 ${index + 1}`}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300" />
@@ -54,7 +54,10 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
 
       {selectedImage && (
         <ImageLightbox
-          image={selectedImage}
+          image={{
+            url: selectedImage,
+            alt: `${camp.year}년 ${camp.title} 갤러리 이미지`
+          }}
           onClose={() => setSelectedImage(null)}
         />
       )}
