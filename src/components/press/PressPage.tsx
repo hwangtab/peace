@@ -6,7 +6,7 @@ import { filterByEvent } from '../../utils/filtering';
 import { sortByDateDesc } from '../../utils/sorting';
 import EventFilter from '../common/EventFilter';
 import PageLayout from '../../components/layout/PageLayout';
-import SectionHeader from '../common/SectionHeader';
+import PageHero from '../common/PageHero';
 
 
 const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
@@ -27,7 +27,6 @@ const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
               loading="lazy"
               onError={(e) => {
                 const img = e.target as HTMLImageElement;
-                // JPEG 확장자를 JPG로 시도
                 if (img.src.endsWith('.jpeg')) {
                   img.src = img.src.replace('.jpeg', '.jpg');
                 }
@@ -55,7 +54,6 @@ export default function PressPage() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
 
-  // Breadcrumb Structured Data
   const breadcrumbs = [
     { name: "홈", url: "https://peaceandmusic.net/" },
     { name: "언론보도", url: "https://peaceandmusic.net/press" }
@@ -77,14 +75,16 @@ export default function PressPage() {
       keywords="언론보도, 기사, 뉴스, 평화 프로젝트 보도"
       canonicalUrl="https://peaceandmusic.net/press"
       structuredData={structuredData}
-      background="white"
+      background="ocean-sand"
+      disableTopPadding={true}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
-        <SectionHeader
-          title="언론보도"
-          subtitle="평화를 노래하는 우리들의 이야기"
-          inView={isInView}
-        />
+      <PageHero
+        title="언론보도"
+        subtitle="평화를 노래하는 우리들의 이야기"
+        backgroundImage="/images-webp/camps/2025/peacemusic-1.webp"
+      />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24" ref={ref}>
         <EventFilter
           selectedFilter={selectedFilter}
           onFilterChange={setSelectedFilter}

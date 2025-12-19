@@ -13,6 +13,7 @@ interface NavigationDropdownProps {
   items: DropdownItem[];
   isOpen?: boolean;
   onOpenChange?: (isOpen: boolean) => void;
+  isScrolled?: boolean;
 }
 
 const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
@@ -20,6 +21,7 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
   items,
   isOpen = false,
   onOpenChange,
+  isScrolled = true,
 }) => {
   const [internalOpen, setInternalOpen] = useState(isOpen);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -67,15 +69,23 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
     return false;
   });
 
+  // Dynamic styles based on scroll position
+  const getButtonColors = () => {
+    if (isScrolled) {
+      return isActive || open
+        ? 'text-jeju-ocean font-bold'
+        : 'text-coastal-gray hover:text-jeju-ocean';
+    }
+    return isActive || open
+      ? 'text-cloud-white font-bold drop-shadow-md'
+      : 'text-cloud-white/90 hover:text-cloud-white drop-shadow-md';
+  };
+
   return (
     <div className="relative group" ref={dropdownRef}>
       <button
         onClick={() => setOpen(!open)}
-        className={`flex items-center gap-1 ${isActive || open
-          ? 'text-jeju-ocean font-bold'
-          : 'text-coastal-gray hover:text-jeju-ocean'
-          } transition-colors duration-300 font-serif py-2`
-        }
+        className={`flex items-center gap-1 ${getButtonColors()} transition-colors duration-300 font-serif py-2`}
         aria-expanded={open}
         aria-haspopup="true"
       >

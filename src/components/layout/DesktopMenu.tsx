@@ -9,26 +9,37 @@ interface DesktopMenuProps {
     location: Location;
     desktopOpenDropdown: string | null;
     onOpenChange: (dropdown: string, isOpen: boolean) => void;
+    isScrolled: boolean;
 }
 
 const DesktopMenu: React.FC<DesktopMenuProps> = ({
     location,
     desktopOpenDropdown,
     onOpenChange,
+    isScrolled,
 }) => {
+    // Dynamic text colors based on scroll position
+    const getTextColor = (isActive: boolean) => {
+        if (isScrolled) {
+            return isActive
+                ? 'text-jeju-ocean font-bold'
+                : 'text-coastal-gray hover:text-jeju-ocean';
+        }
+        return isActive
+            ? 'text-cloud-white font-bold drop-shadow-md'
+            : 'text-cloud-white/90 hover:text-cloud-white drop-shadow-md';
+    };
+
     return (
         <div className="hidden md:flex items-center space-x-8">
             <Link
                 to={ROUTES.HOME}
-                className={`${location.pathname === ROUTES.HOME
-                    ? 'text-jeju-ocean font-bold'
-                    : 'text-coastal-gray hover:text-jeju-ocean'
-                    } transition-colors duration-300 font-display relative`}
+                className={`${getTextColor(location.pathname === ROUTES.HOME)} transition-colors duration-300 font-display relative`}
             >
                 홈
                 {location.pathname === ROUTES.HOME && (
                     <motion.div
-                        className="absolute bottom-0 left-0 w-full h-0.5 bg-golden-sun"
+                        className={`absolute bottom-0 left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
                         layoutId="underline-home"
                     />
                 )}
@@ -39,12 +50,14 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
                 items={campItems}
                 isOpen={desktopOpenDropdown === 'camps'}
                 onOpenChange={(isOpen) => onOpenChange('camps', isOpen)}
+                isScrolled={isScrolled}
             />
             <NavigationDropdown
                 label="앨범"
                 items={albumItems}
                 isOpen={desktopOpenDropdown === 'album'}
                 onOpenChange={(isOpen) => onOpenChange('album', isOpen)}
+                isScrolled={isScrolled}
             />
 
             {simpleMenuItems
@@ -53,15 +66,12 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
                     <Link
                         key={item.path}
                         to={item.path}
-                        className={`${location.pathname === item.path
-                            ? 'text-jeju-ocean font-bold'
-                            : 'text-coastal-gray hover:text-jeju-ocean'
-                            } transition-colors duration-300 font-display relative`}
+                        className={`${getTextColor(location.pathname === item.path)} transition-colors duration-300 font-display relative`}
                     >
                         {item.name}
                         {location.pathname === item.path && (
                             <motion.div
-                                className="absolute bottom-0 left-0 w-full h-0.5 bg-golden-sun"
+                                className={`absolute bottom-0 left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
                                 layoutId={`underline-${item.path}`}
                             />
                         )}

@@ -75,7 +75,7 @@ const Button = ({
                 <Link
                     to={to}
                     className={combinedClasses}
-                    onClick={onClick as any}
+                    onClick={onClick}
                     aria-label={ariaLabel}
                 >
                     {content}
@@ -93,7 +93,7 @@ const Button = ({
                         target="_blank"
                         rel="noopener noreferrer"
                         className={combinedClasses}
-                        onClick={onClick as any}
+                        onClick={onClick}
                         aria-label={ariaLabel}
                     >
                         {content}
@@ -106,7 +106,7 @@ const Button = ({
                 <a
                     href={href}
                     className={combinedClasses}
-                    onClick={onClick as any}
+                    onClick={onClick}
                     aria-label={ariaLabel}
                 >
                     {content}

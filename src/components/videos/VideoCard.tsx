@@ -5,7 +5,7 @@ interface VideoCardProps {
     video: VideoItem;
 }
 
-const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
+const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
     const getYoutubeVideoId = (url: string) => url.split('/').pop();
     const getYoutubeWatchUrl = (url: string) => `https://www.youtube.com/watch?v=${getYoutubeVideoId(url)}`;
 
@@ -56,6 +56,8 @@ const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
             </a>
         </div>
     );
-};
+});
+
+VideoCard.displayName = 'VideoCard';
 
 export default VideoCard;
