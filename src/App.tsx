@@ -17,7 +17,6 @@ import SEOHelmet from './components/shared/SEOHelmet';
 const PressPage = lazy(() => import('./components/press/PressPage'));
 const GalleryPage = lazy(() => import('./pages/GalleryPage'));
 const VideoPage = lazy(() => import('./components/videos/VideoPage'));
-const CampsPage = lazy(() => import('./pages/CampsPage'));
 const Camp2023Page = lazy(() => import('./pages/Camp2023Page'));
 const Camp2025Page = lazy(() => import('./pages/Camp2025Page'));
 const Camp2026Page = lazy(() => import('./pages/Camp2026Page'));
@@ -64,7 +63,8 @@ const AnimatedRoutes = () => {
             <Route path={ROUTES.GALLERY} element={<GalleryPage />} />
             <Route path={ROUTES.VIDEOS} element={<VideoPage />} />
             <Route path={ROUTES.PRESS} element={<PressPage />} />
-            <Route path={ROUTES.CAMPS.ROOT} element={<CampsPage />} />
+            {/* Redirect /camps to latest camp */}
+            <Route path={ROUTES.CAMPS.ROOT} element={<Navigate to={ROUTES.CAMPS.CAMP_2026} replace />} />
             <Route path={ROUTES.CAMPS.CAMP_2023} element={<Camp2023Page />} />
             <Route path={ROUTES.CAMPS.CAMP_2025} element={<Camp2025Page />} />
             <Route path={ROUTES.CAMPS.CAMP_2026} element={<Camp2026Page />} />
