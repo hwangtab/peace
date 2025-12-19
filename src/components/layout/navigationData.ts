@@ -11,7 +11,6 @@ export const campItems = [
     { name: '2023 캠프', path: ROUTES.CAMPS.CAMP_2023 },
     { name: '2025 캠프', path: ROUTES.CAMPS.CAMP_2025 },
     { name: '2026 캠프', path: ROUTES.CAMPS.CAMP_2026 },
-    { name: '모든 캠프', path: ROUTES.CAMPS.ROOT },
 ];
 
 export const albumItems = [
