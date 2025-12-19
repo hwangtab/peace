@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { camps } from '../data/camps';
 import PageLayout from '../components/layout/PageLayout';
@@ -6,17 +6,6 @@ import SectionHeader from '../components/common/SectionHeader';
 
 const Camp2026Page = () => {
   const camp2026 = camps.find(camp => camp.id === 'camp-2026');
-  const [email, setEmail] = useState('');
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  // 이메일 제출 핸들러 (실제 기능은 백엔드 연동 필요)
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setIsSubmitted(true);
-      setEmail('');
-    }
-  };
 
   if (!camp2026) {
     return (
@@ -56,38 +45,12 @@ const Camp2026Page = () => {
             subtitle="평화의 바람은 계속해서 불어옵니다. 세 번째 평화의 노래가 2026년 여름, 강정에서 울려 퍼집니다."
           />
 
-          <div className="bg-ocean-sand/30 p-8 rounded-2xl mb-10">
-            <h3 className="typo-h3 mb-4 text-jeju-ocean">뉴스레터 구독하기</h3>
-            <p className="typo-body text-gray-600 mb-6 text-sm">
-              가장 먼저 알림을 받고 싶으신가요? 이메일을 등록해주세요.
+          <div className="bg-ocean-sand/30 p-10 rounded-2xl mb-10">
+            <h3 className="typo-h3 mb-6 text-jeju-ocean">2026년 여름을 기대해주세요!</h3>
+            <p className="typo-body text-gray-700 mb-0 leading-relaxed">
+              더 풍성하고 의미 있는 평화의 축제를 준비하고 있습니다.<br />
+              구체적인 일정과 라인업은 추후 공개됩니다.
             </p>
-
-            {isSubmitted ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="bg-green-100 text-green-700 p-4 rounded-lg font-medium"
-              >
-                ✅ 구독 신청이 완료되었습니다! 평화의 소식을 기다려주세요.
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                <input
-                  type="email"
-                  placeholder="이메일 주소를 입력하세요"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="flex-1 px-5 py-3 rounded-full border border-gray-300 focus:border-jeju-ocean focus:ring-2 focus:ring-jeju-ocean/20 outline-none transition-all"
-                />
-                <button
-                  type="submit"
-                  className="px-8 py-3 bg-jeju-ocean text-white font-bold rounded-full hover:bg-ocean-mist transition-all duration-300 shadow-md hover:shadow-lg"
-                >
-                  구독하기
-                </button>
-              </form>
-            )}
           </div>
 
           <div className="text-gray-500 text-sm font-medium">

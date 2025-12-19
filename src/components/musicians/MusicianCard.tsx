@@ -63,7 +63,7 @@ const MusicianCard = memo(({ musician, index }: MusicianCardProps) => {
             <h3 className="text-2xl font-serif text-jeju-ocean group-hover:text-ocean-mist transition-colors duration-200 mb-2">
               {musician.name}
             </h3>
-            <p className="text-gray-600 mb-4 flex-1">{musician.shortDescription}</p>
+            <p className="text-gray-600 mb-4 flex-1 text-pretty">{musician.shortDescription}</p>
 
             {/* Instagram Links */}
             {musician.instagramUrls.length > 0 && (

@@ -43,7 +43,7 @@ const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
           <h3 className="typo-h3 hover:text-jeju-ocean transition-colors duration-200">
             {press.title}
           </h3>
-          <p className="typo-body mt-2 flex-1">{press.description}</p>
+          <p className="typo-body mt-2 flex-1 text-pretty">{press.description}</p>
         </div>
       </article>
     </a>
