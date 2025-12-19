@@ -6,6 +6,7 @@ import { ROUTES } from './constants/routes';
 import Navigation from './components/layout/Navigation';
 import ScrollToTop from './components/common/ScrollToTop';
 import ErrorFallback from './components/common/ErrorFallback';
+import Footer from './components/layout/Footer';
 
 import HeroSection from './components/home/HeroSection';
 import AboutSection from './components/home/AboutSection';
@@ -83,6 +84,7 @@ const App = () => {
         <ScrollToTop />
         <Navigation />
         <AnimatedRoutes />
+        <Footer />
       </ErrorBoundary>
     </Router>
   );
