@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
@@ -25,8 +25,18 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
   const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
-  const open = onOpenChange !== undefined ? isOpen : internalOpen;
-  const setOpen = onOpenChange !== undefined ? onOpenChange : setInternalOpen;
+  // 제어/비제어 모드 결정
+  const isControlled = onOpenChange !== undefined;
+  const open = isControlled ? isOpen : internalOpen;
+
+  // useCallback으로 안정적인 setOpen 함수 생성
+  const setOpen = useCallback((value: boolean) => {
+    if (isControlled && onOpenChange) {
+      onOpenChange(value);
+    } else {
+      setInternalOpen(value);
+    }
+  }, [isControlled, onOpenChange]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

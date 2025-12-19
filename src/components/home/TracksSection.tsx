@@ -1,9 +1,8 @@
-import { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import { motion, useInView } from 'framer-motion';
 import TrackCard from '../tracks/TrackCard';
 import Section from '../layout/Section';
 import { tracks } from '../../data/tracks';
-import React from 'react';
 import Button from '../common/Button';
 import SectionHeader from '../common/SectionHeader';
 
@@ -21,13 +20,13 @@ const TracksSection: React.FC<TracksSectionProps> = ({ enableSectionWrapper = tr
   const [expandedTrackId, setExpandedTrackId] = useState<number | null>(null);
   const [playingTrackId, setPlayingTrackId] = useState<number | null>(null);
 
-  const handleToggle = (id: number) => {
+  const handleToggle = useCallback((id: number) => {
     setExpandedTrackId(prev => prev === id ? null : id);
-  };
+  }, []);
 
-  const handlePlay = (id: number) => {
+  const handlePlay = useCallback((id: number) => {
     setPlayingTrackId(prev => prev === id ? null : id);
-  };
+  }, []);
 
   const content = (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">

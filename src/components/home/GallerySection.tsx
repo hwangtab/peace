@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import { GalleryImage } from '../../types/gallery';
+import { filterByEvent, isValidFilter } from '../../utils/filtering';
 import EventFilter from '../common/EventFilter';
 import GalleryImageItem from '../gallery/GalleryImageItem';
 import ImageLightbox from '../common/ImageLightbox';
@@ -42,27 +43,40 @@ const GallerySection: React.FC<GallerySectionProps> = ({
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const filterParam = params.get('filter');
-    if (filterParam) {
-      const validFilters = ['all', 'album-2024', 'camp-2023', 'camp-2025'];
-      if (validFilters.includes(filterParam)) {
-        setSelectedFilter(filterParam);
-      }
+    if (filterParam && isValidFilter(filterParam)) {
+      setSelectedFilter(filterParam);
     }
   }, [location.search]);
 
   useEffect(() => {
+    let isCancelled = false;
+
     const loadImages = async () => {
       try {
         const categories = ['album', 'camp2023', 'camp2025'];
-        const allFetchedImages: GalleryImage[] = [];
 
-        for (const cat of categories) {
-          const response = await fetch(`/data/gallery/${cat}.json`);
-          if (response.ok) {
-            const data = await response.json();
-            allFetchedImages.push(...data);
-          }
-        }
+        // Promise.all로 병렬 처리 (성능 개선 + 개별 에러 처리)
+        const responses = await Promise.all(
+          categories.map(cat =>
+            fetch(`/data/gallery/${cat}.json`)
+              .then(res => {
+                if (!res.ok) {
+                  console.warn(`Failed to fetch gallery/${cat}.json: ${res.status}`);
+                  return [];
+                }
+                return res.json();
+              })
+              .catch(err => {
+                console.error(`Gallery fetch error for ${cat}:`, err);
+                return [];
+              })
+          )
+        );
+
+        // 취소된 요청이면 상태 업데이트 안함 (race condition 방지)
+        if (isCancelled) return;
+
+        const allFetchedImages = responses.flat() as GalleryImage[];
 
         // Apply a stable sort: Year ascending, then ID ascending
         const sortedImages = allFetchedImages.sort((a, b) => {
@@ -72,23 +86,21 @@ const GallerySection: React.FC<GallerySectionProps> = ({
 
         setImages(sortedImages);
       } catch (error) {
-        // Silent fail in production - images will remain empty
-        // TODO: Integrate error tracking service (e.g., Sentry) for production monitoring
+        console.error('Gallery loading error:', error);
       }
     };
+
     loadImages();
+
+    return () => {
+      isCancelled = true;
+    };
   }, []);
 
-  const filteredImages = useMemo(() => {
-    if (selectedFilter === 'all') return images;
-
-    return images.filter(img => {
-      if (selectedFilter === 'album-2024') return img.eventType === 'album' && img.eventYear === 2024;
-      if (selectedFilter === 'camp-2023') return img.eventType === 'camp' && img.eventYear === 2023;
-      if (selectedFilter === 'camp-2025') return img.eventType === 'camp' && img.eventYear === 2025;
-      return true;
-    });
-  }, [selectedFilter, images]);
+  const filteredImages = useMemo(() =>
+    filterByEvent(images, selectedFilter),
+    [selectedFilter, images]
+  );
 
   // Reset visible count when filter changes
   useEffect(() => {
@@ -137,15 +149,11 @@ const GallerySection: React.FC<GallerySectionProps> = ({
               {displayImages.map((image, index) => (
                 <motion.div
                   key={image.id}
-                  layout="position"
                   variants={itemVariants}
                   initial="hidden"
                   animate="visible"
                   exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
-                  transition={{
-                    layout: { type: "spring", stiffness: 200, damping: 25 },
-                    opacity: { duration: 0.3 }
-                  }}
+                  transition={{ opacity: { duration: 0.3 } }}
                 >
                   <GalleryImageItem
                     image={image}
