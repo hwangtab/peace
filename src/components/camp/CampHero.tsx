@@ -17,11 +17,40 @@ const CampHero: React.FC<CampHeroProps> = ({ camp }) => {
     ? camp.images[0]
     : null;
 
+  // Generate responsive image paths
+  const getResponsiveImagePath = (imagePath: string) => {
+    const basePath = imagePath.replace('.webp', '');
+    return {
+      mobile: `${basePath}-mobile.webp`,
+      tablet: `${basePath}-tablet.webp`,
+      desktop: `${basePath}-desktop.webp`,
+      original: imagePath
+    };
+  };
+
+  const responsiveImages = backgroundImage ? getResponsiveImagePath(backgroundImage) : null;
+
   return (
     <section
       className="relative h-[500px] md:h-[600px] lg:h-[700px] flex items-center justify-center text-center overflow-hidden bg-hero-gradient"
-      style={backgroundImage ? { backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
     >
+      {/* Responsive Background Image */}
+      {responsiveImages && (
+        <img
+          src={responsiveImages.desktop}
+          srcSet={`
+            ${responsiveImages.mobile} 800w,
+            ${responsiveImages.tablet} 1200w,
+            ${responsiveImages.desktop} 1920w
+          `}
+          sizes="100vw"
+          alt={camp.title}
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
+          fetchPriority="high"
+        />
+      )}
+
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
 
