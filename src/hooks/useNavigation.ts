@@ -1,11 +1,25 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 export const useNavigation = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [desktopOpenDropdown, setDesktopOpenDropdown] = useState<string | null>(null);
     const [mobileOpenDropdown, setMobileOpenDropdown] = useState<string | null>(null);
+    const [isScrolled, setIsScrolled] = useState(false);
     const location = useLocation();
+
+    // Scroll detection - transparent on all pages with hero sections
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 50);
+        };
+
+        // Check initial state
+        handleScroll();
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const toggleMenu = useCallback(() => {
         setIsOpen((prev) => {
@@ -30,6 +44,7 @@ export const useNavigation = () => {
 
     return {
         isOpen,
+        isScrolled,
         desktopOpenDropdown,
         mobileOpenDropdown,
         location,

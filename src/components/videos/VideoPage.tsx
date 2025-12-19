@@ -6,8 +6,8 @@ import { filterByEvent, isValidFilter } from '../../utils/filtering';
 import { sortByDateDesc } from '../../utils/sorting';
 import EventFilter from '../common/EventFilter';
 import PageLayout from '../layout/PageLayout';
+import PageHero from '../common/PageHero';
 import VideoCard from './VideoCard';
-import SectionHeader from '../common/SectionHeader';
 
 export default function VideoPage() {
   const location = useLocation();
@@ -34,15 +34,16 @@ export default function VideoPage() {
       title="비디오 - 강정피스앤뮤직캠프"
       description="강정피스앤뮤직캠프의 공연영상 모음. 평화를 노래하는 뮤지션들의 공연 영상을 만나보세요."
       keywords="공연영상, 강정피스앤뮤직캠프, 평화 공연, 뮤지션 공연, 유튜브 영상"
-      background="white"
+      background="ocean-sand"
+      disableTopPadding={true}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
-        <SectionHeader
-          title="비디오"
-          subtitle="평화를 노래하는 우리들의 순간"
-          inView={isInView}
-        />
+      <PageHero
+        title="비디오"
+        subtitle="평화를 노래하는 순간들"
+        backgroundImage="/images-webp/camps/2023/DSC00437.webp"
+      />
 
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24" ref={ref}>
         <EventFilter
           selectedFilter={selectedFilter}
           onFilterChange={setSelectedFilter}

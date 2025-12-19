@@ -7,6 +7,7 @@ import MobileMenu from './MobileMenu';
 const Navigation = () => {
   const {
     isOpen,
+    isScrolled,
     desktopOpenDropdown,
     mobileOpenDropdown,
     location,
@@ -17,10 +18,21 @@ const Navigation = () => {
   } = useNavigation();
 
   return (
-    <nav className="fixed w-full bg-cloud-white/90 backdrop-blur-md z-50 shadow-sm">
+    <nav
+      className={`fixed w-full z-50 transition-all duration-300 ${isScrolled
+          ? 'bg-cloud-white/90 backdrop-blur-md shadow-sm'
+          : 'bg-transparent'
+        }`}
+    >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="text-2xl font-bold font-serif text-jeju-ocean hover:text-ocean-mist transition-colors">
+          <Link
+            to="/"
+            className={`text-2xl font-bold font-serif transition-colors duration-300 ${isScrolled
+                ? 'text-jeju-ocean hover:text-ocean-mist'
+                : 'text-cloud-white hover:text-seafoam drop-shadow-md'
+              }`}
+          >
             강정피스앤뮤직캠프
           </Link>
 
@@ -29,13 +41,17 @@ const Navigation = () => {
             location={location}
             desktopOpenDropdown={desktopOpenDropdown}
             onOpenChange={handleDesktopDropdownChange}
+            isScrolled={isScrolled}
           />
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="text-coastal-gray hover:text-jeju-ocean transition-colors"
+              className={`transition-colors duration-300 ${isScrolled
+                  ? 'text-coastal-gray hover:text-jeju-ocean'
+                  : 'text-cloud-white hover:text-seafoam'
+                }`}
               aria-label={isOpen ? "메뉴 닫기" : "메뉴 열기"}
               aria-expanded={isOpen}
             >

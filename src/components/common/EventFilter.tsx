@@ -51,6 +51,8 @@ const EventFilter: React.FC<EventFilterProps> = ({
 
   return (
     <motion.div
+      role="group"
+      aria-label="이벤트 필터"
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
@@ -65,6 +67,8 @@ const EventFilter: React.FC<EventFilterProps> = ({
             onClick={() => onFilterChange(filter.id)}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            aria-pressed={isActive}
+            aria-label={`${filter.label} 필터${isActive ? ' (선택됨)' : ''}`}
             className={`px-2.5 py-2 sm:px-4 sm:py-2.5 md:px-6 rounded-full text-xs sm:text-sm md:text-base font-medium transition-colors min-h-[44px] sm:min-h-0 ${getColorClasses(isActive)}`}
           >
             {filter.label}

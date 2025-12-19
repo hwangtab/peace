@@ -39,7 +39,7 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
           ${responsiveImages.desktop} 1920w
         `}
         sizes="100vw"
-        alt="Hero background"
+        alt="강정마을 해변에서 열린 피스앤뮤직캠프 공연 무대"
         className="absolute inset-0 w-full h-full object-cover object-center"
         loading="eager"
         fetchPriority="high"

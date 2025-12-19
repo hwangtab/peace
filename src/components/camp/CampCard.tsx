@@ -7,7 +7,7 @@ interface CampCardProps {
   camp: CampEvent;
 }
 
-const CampCard: React.FC<CampCardProps> = ({ camp }) => {
+const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
   const isComingSoon = camp.year === 2026;
 
   return (
@@ -87,6 +87,8 @@ const CampCard: React.FC<CampCardProps> = ({ camp }) => {
       </Link>
     </motion.div>
   );
-};
+});
+
+CampCard.displayName = 'CampCard';
 
 export default CampCard;
