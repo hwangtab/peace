@@ -15,11 +15,30 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
   }, []);
 
+  // Generate responsive image paths
+  const getResponsiveImagePath = (imagePath: string) => {
+    const basePath = imagePath.replace('.webp', '');
+    return {
+      mobile: `${basePath}-mobile.webp`,
+      tablet: `${basePath}-tablet.webp`,
+      desktop: `${basePath}-desktop.webp`,
+      original: imagePath
+    };
+  };
+
+  const responsiveImages = getResponsiveImagePath(imageUrl);
+
   return (
     <section className="relative h-screen flex items-center justify-center text-center overflow-hidden">
-      {/* Background Image */}
+      {/* Responsive Background Image */}
       <img
-        src={imageUrl}
+        src={responsiveImages.desktop}
+        srcSet={`
+          ${responsiveImages.mobile} 800w,
+          ${responsiveImages.tablet} 1200w,
+          ${responsiveImages.desktop} 1920w
+        `}
+        sizes="100vw"
         alt="Hero background"
         className="absolute inset-0 w-full h-full object-cover object-center"
         loading="eager"
