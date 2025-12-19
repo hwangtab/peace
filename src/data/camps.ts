@@ -26,9 +26,9 @@ export const camps: CampEvent[] = [
       '태히언'
     ],
     images: [
+      '/images-webp/camps/2023/20230610블로쿠뺄라지다2.webp',
       '/images-webp/camps/2023/20230610둘리목걸이고르는.webp',
       '/images-webp/camps/2023/20230610밤 전쟁을끝내자.webp',
-      '/images-webp/camps/2023/20230610블로쿠뺄라지다2.webp',
       '/images-webp/camps/2023/DSC00451.webp',
       '/images-webp/camps/2023/20230610여울과2.webp',
       '/images-webp/camps/2023/20230610지슬.webp',
