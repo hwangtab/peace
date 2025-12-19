@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo, useCallback } from 'react';
 import { motion } from 'framer-motion';
 
 interface EventFilterProps {
@@ -19,7 +19,7 @@ const EventFilter: React.FC<EventFilterProps> = ({
   colorScheme = 'ocean',
   filterOrder = 'gallery',
 }) => {
-  const getFilters = (): FilterItem[] => {
+  const filters = useMemo((): FilterItem[] => {
     if (filterOrder === 'press') {
       return [
         { id: 'all', label: '전체' },
@@ -35,9 +35,9 @@ const EventFilter: React.FC<EventFilterProps> = ({
       { id: 'album-2024', label: '2024 앨범' },
       { id: 'camp-2025', label: '2025 캠프' },
     ];
-  };
+  }, [filterOrder]);
 
-  const getColorClasses = (isActive: boolean): string => {
+  const getColorClasses = useCallback((isActive: boolean): string => {
     if (colorScheme === 'orange') {
       return isActive
         ? 'bg-orange-600 text-white shadow-md'
@@ -47,9 +47,7 @@ const EventFilter: React.FC<EventFilterProps> = ({
     return isActive
       ? 'bg-jeju-ocean text-white shadow-md'
       : 'bg-white text-jeju-ocean border-2 border-jeju-ocean hover:bg-jeju-ocean hover:text-white';
-  };
-
-  const filters = getFilters();
+  }, [colorScheme]);
 
   return (
     <motion.div

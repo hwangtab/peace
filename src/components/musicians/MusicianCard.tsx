@@ -1,6 +1,7 @@
+import React, { memo, useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
 import { Musician } from '../../types/musician';
+import { extractInstagramUsername } from '../../utils/instagram';
 import MusicianModal from './MusicianModal';
 
 interface MusicianCardProps {
@@ -8,9 +9,11 @@ interface MusicianCardProps {
   index: number;
 }
 
-const MusicianCard = ({ musician, index }: MusicianCardProps) => {
+const MusicianCard = memo(({ musician, index }: MusicianCardProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const handleOpenModal = useCallback(() => setIsModalOpen(true), []);
+  const handleCloseModal = useCallback(() => setIsModalOpen(false), []);
 
   return (
     <>
@@ -20,7 +23,7 @@ const MusicianCard = ({ musician, index }: MusicianCardProps) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: index * 0.1 }}
         className="transform-gpu h-full scroll-mt-24"
-        onClick={() => setIsModalOpen(true)}
+        onClick={handleOpenModal}
       >
         <div className="group relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-[1.02] hover:shadow-xl h-full flex flex-col">
           {/* Image */}
@@ -31,7 +34,7 @@ const MusicianCard = ({ musician, index }: MusicianCardProps) => {
                   src={musician.imageUrl}
                   alt={musician.name}
                   className="absolute w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
-                  loading="eager"
+                  loading={index < 4 ? "eager" : "lazy"}
                 />
               ) : (
                 <div className="absolute w-full h-full flex items-center justify-center text-coastal-gray">
@@ -65,9 +68,8 @@ const MusicianCard = ({ musician, index }: MusicianCardProps) => {
             {/* Instagram Links */}
             {musician.instagramUrls.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-4">
-                {musician.instagramUrls.map((url, idx) => {
-                  // 인스타그램 URL에서 사용자명 추출
-                  const username = url.split('instagram.com/')[1]?.replace(/\/$/, '') || url;
+                {musician.instagramUrls.map((url) => {
+                  const username = extractInstagramUsername(url);
                   return (
                     <a
                       key={url}
@@ -100,10 +102,12 @@ const MusicianCard = ({ musician, index }: MusicianCardProps) => {
       <MusicianModal
         musician={musician}
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        onClose={handleCloseModal}
       />
     </>
   );
-};
+});
+
+MusicianCard.displayName = 'MusicianCard';
 
 export default MusicianCard;

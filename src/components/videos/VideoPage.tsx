@@ -2,6 +2,8 @@ import React, { useRef, useState, useMemo, useEffect } from 'react';
 import { useInView } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import { videoItems } from '../../data/videos';
+import { filterByEvent, isValidFilter } from '../../utils/filtering';
+import { sortByDateDesc } from '../../utils/sorting';
 import EventFilter from '../common/EventFilter';
 import PageLayout from '../layout/PageLayout';
 import VideoCard from './VideoCard';
@@ -17,30 +19,15 @@ export default function VideoPage() {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const filterParam = params.get('filter');
-    if (filterParam) {
-      const validFilters = ['all', 'album-2024', 'camp-2023', 'camp-2025'];
-      if (validFilters.includes(filterParam)) {
-        setSelectedFilter(filterParam);
-      }
+    if (filterParam && isValidFilter(filterParam)) {
+      setSelectedFilter(filterParam);
     }
   }, [location.search]);
 
-  const filteredVideos = useMemo(() => {
-    let result = videoItems;
-
-    if (selectedFilter !== 'all') {
-      if (selectedFilter === 'album-2024') {
-        result = videoItems.filter(video => video.eventType === 'album' && video.eventYear === 2024);
-      } else if (selectedFilter === 'camp-2023') {
-        result = videoItems.filter(video => video.eventType === 'camp' && video.eventYear === 2023);
-      } else if (selectedFilter === 'camp-2025') {
-        result = videoItems.filter(video => video.eventType === 'camp' && video.eventYear === 2025);
-      }
-    }
-
-    // 날짜순(내림차순) 정렬
-    return [...result].sort((a, b) => b.date.localeCompare(a.date));
-  }, [selectedFilter]);
+  const filteredVideos = useMemo(() =>
+    sortByDateDesc(filterByEvent(videoItems, selectedFilter)),
+    [selectedFilter]
+  );
 
   return (
     <PageLayout

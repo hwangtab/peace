@@ -2,6 +2,8 @@ import React, { useRef, useState, useMemo } from 'react';
 import { useInView } from 'framer-motion';
 import { PressItem, pressItems } from '../../data/press';
 import { getBreadcrumbSchema } from '../../utils/structuredData';
+import { filterByEvent } from '../../utils/filtering';
+import { sortByDateDesc } from '../../utils/sorting';
 import EventFilter from '../common/EventFilter';
 import PageLayout from '../../components/layout/PageLayout';
 import SectionHeader from '../common/SectionHeader';
@@ -63,18 +65,10 @@ export default function PressPage() {
     getBreadcrumbSchema(breadcrumbs)
   ];
 
-  const filteredItems = useMemo(() => {
-    if (selectedFilter === 'all') {
-      return pressItems;
-    } else if (selectedFilter === 'album-2024') {
-      return pressItems.filter(press => press.eventType === 'album' && press.eventYear === 2024);
-    } else if (selectedFilter === 'camp-2023') {
-      return pressItems.filter(press => press.eventType === 'camp' && press.eventYear === 2023);
-    } else if (selectedFilter === 'camp-2025') {
-      return pressItems.filter(press => press.eventType === 'camp' && press.eventYear === 2025);
-    }
-    return pressItems;
-  }, [selectedFilter]);
+  const filteredItems = useMemo(() =>
+    sortByDateDesc(filterByEvent(pressItems, selectedFilter)),
+    [selectedFilter]
+  );
 
   return (
     <PageLayout
@@ -98,13 +92,11 @@ export default function PressPage() {
           filterOrder="press"
         />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[...filteredItems]
-            .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-            .map((press) => (
-              <div key={press.id} className="h-full">
-                <PressCard press={press} />
-              </div>
-            ))}
+          {filteredItems.map((press) => (
+            <div key={press.id} className="h-full">
+              <PressCard press={press} />
+            </div>
+          ))}
         </div>
       </div>
     </PageLayout>
