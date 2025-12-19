@@ -34,7 +34,7 @@ const CampCard: React.FC<CampCardProps> = ({ camp }) => {
         </div>
 
         <div className="bg-white p-6">
-          <p className="text-gray-700 mb-4 leading-relaxed">
+          <p className="text-gray-700 mb-4 leading-relaxed text-pretty">
             {camp.description}
           </p>
 

@@ -82,7 +82,7 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
 
                     {/* Description */}
                     <div className="mt-4 space-y-4">
-                      <p className="text-lg text-gray-700 leading-relaxed whitespace-pre-wrap">
+                      <p className="text-lg text-gray-700 leading-relaxed whitespace-pre-wrap text-pretty">
                         {musician.description}
                       </p>
                     </div>
