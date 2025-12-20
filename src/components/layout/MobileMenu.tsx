@@ -11,7 +11,7 @@ interface MobileMenuProps {
     onToggleDropdown: (dropdown: string) => void;
 }
 
-const MobileMenu: React.FC<MobileMenuProps> = ({
+const MobileMenu: React.FC<MobileMenuProps> = React.memo(({
     isOpen,
     location,
     mobileOpenDropdown,
@@ -34,8 +34,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
                                     key={item.path}
                                     to={item.path}
                                     className={`block py-2 ${location.pathname === item.path
-                                            ? 'text-jeju-ocean font-bold'
-                                            : 'text-coastal-gray'
+                                        ? 'text-jeju-ocean font-bold'
+                                        : 'text-coastal-gray'
                                         } font-serif`}
                                     onClick={onClose}
                                 >
@@ -68,7 +68,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
             </AnimatePresence>
         </div>
     );
-};
+});
+
+MobileMenu.displayName = 'MobileMenu';
 
 interface MobileDropdownProps {
     label: string;
@@ -79,7 +81,7 @@ interface MobileDropdownProps {
     onClose: () => void;
 }
 
-const MobileDropdown: React.FC<MobileDropdownProps> = ({
+const MobileDropdown: React.FC<MobileDropdownProps> = React.memo(({
     label,
     dropdownId,
     items,
@@ -124,6 +126,8 @@ const MobileDropdown: React.FC<MobileDropdownProps> = ({
             )}
         </AnimatePresence>
     </>
-);
+));
+
+MobileDropdown.displayName = 'MobileDropdown';
 
 export default MobileMenu;

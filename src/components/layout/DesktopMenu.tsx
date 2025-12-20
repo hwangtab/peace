@@ -12,7 +12,7 @@ interface DesktopMenuProps {
     isScrolled: boolean;
 }
 
-const DesktopMenu: React.FC<DesktopMenuProps> = ({
+const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(({
     location,
     desktopOpenDropdown,
     onOpenChange,
@@ -79,6 +79,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({
                 ))}
         </div>
     );
-};
+});
 
+DesktopMenu.displayName = 'DesktopMenu';
 export default DesktopMenu;
