@@ -17,7 +17,7 @@ const AlbumTracksPage = () => (
       backgroundImage="/images-webp/gallery/152.webp"
     />
     <div className="pt-12">
-      <TracksSection enableSectionWrapper={false} />
+      <TracksSection enableSectionWrapper={false} hideSectionHeader={true} />
     </div>
   </PageLayout>
 );
