@@ -25,11 +25,8 @@ const GalleryImageItem = React.memo(({ image, priority = false, onClick }: Galle
                 <img
                     src={image.url}
                     alt={image.description || `Gallery image ${image.id}`}
-                    className={`w-full h-full object-cover transition-opacity duration-700 ease-in-out group-hover:scale-110 ${isLoaded ? 'opacity-100' : 'opacity-0'
+                    className={`w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110 ${isLoaded ? 'opacity-100' : 'opacity-0'
                         }`}
-                    style={{
-                        transitionProperty: 'opacity, transform'
-                    }}
                     loading={priority ? "eager" : "lazy"}
                     onLoad={() => setIsLoaded(true)}
                 />

@@ -8,10 +8,18 @@ export const useNavigation = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const location = useLocation();
 
-    // Scroll detection - transparent on all pages with hero sections
+    // Scroll detection with requestAnimationFrame throttling
     useEffect(() => {
+        let ticking = false;
+
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    setIsScrolled(window.scrollY > 50);
+                    ticking = false;
+                });
+                ticking = true;
+            }
         };
 
         // Check initial state
