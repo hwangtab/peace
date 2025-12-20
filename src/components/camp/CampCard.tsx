@@ -12,13 +12,16 @@ const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
 
   return (
     <motion.div
-      whileHover={!isComingSoon ? { y: -8 } : {}}
+      whileHover={!isComingSoon ? {
+        y: -8,
+        boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)"
+      } : {}}
       transition={{ duration: 0.3 }}
       className="h-full"
     >
       <Link
         to={isComingSoon ? '#' : `/camps/${camp.year}`}
-        className={`block h-full rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow ${isComingSoon ? 'pointer-events-none' : ''
+        className={`block h-full rounded-lg overflow-hidden shadow-md ${isComingSoon ? 'pointer-events-none' : ''
           }`}
       >
         <div className="bg-gradient-to-b from-jeju-ocean to-ocean-mist h-48 flex flex-col items-center justify-center p-4 text-center">
