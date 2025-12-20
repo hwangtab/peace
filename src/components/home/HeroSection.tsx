@@ -1,10 +1,21 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef, useCallback } from 'react';
+import { useRef, useCallback, useMemo } from 'react';
 import Button from '../common/Button';
 
 interface HeroSectionProps {
   imageUrl: string;
 }
+
+// Moved outside component to avoid recreation
+const getResponsiveImagePath = (imagePath: string) => {
+  const basePath = imagePath.replace('.webp', '');
+  return {
+    mobile: `${basePath}-mobile.webp`,
+    tablet: `${basePath}-tablet.webp`,
+    desktop: `${basePath}-desktop.webp`,
+    original: imagePath
+  };
+};
 
 const HeroSection = ({ imageUrl }: HeroSectionProps) => {
   const scrollIndicatorRef = useRef(null);
@@ -15,18 +26,8 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
   }, []);
 
-  // Generate responsive image paths
-  const getResponsiveImagePath = (imagePath: string) => {
-    const basePath = imagePath.replace('.webp', '');
-    return {
-      mobile: `${basePath}-mobile.webp`,
-      tablet: `${basePath}-tablet.webp`,
-      desktop: `${basePath}-desktop.webp`,
-      original: imagePath
-    };
-  };
-
-  const responsiveImages = getResponsiveImagePath(imageUrl);
+  // Memoize to prevent unnecessary recalculation
+  const responsiveImages = useMemo(() => getResponsiveImagePath(imageUrl), [imageUrl]);
 
   return (
     <section className="relative h-screen flex items-center justify-center text-center overflow-hidden">
