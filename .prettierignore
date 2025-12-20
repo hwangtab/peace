@@ -1,0 +1,10 @@
+build/
+node_modules/
+coverage/
+public/
+*.md
+*.json
+.git/
+.eslintrc.js
+tailwind.config.js
+postcss.config.js
