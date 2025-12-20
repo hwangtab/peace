@@ -13,7 +13,7 @@ const AlbumMusiciansPage = () => (
   >
     <PageHero
       title="참여 뮤지션"
-      subtitle="12팀의 목소리"
+      subtitle="12개의 목소리, 하나의 평화"
       backgroundImage="/images-webp/gallery/2.webp"
     />
     <div className="pt-12">
