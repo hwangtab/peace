@@ -14,9 +14,9 @@ const AlbumTracksPage = () => (
     <PageHero
       title="수록곡"
       subtitle="평화의 12곡"
-      backgroundImage="/images-webp/camps/2025/DSC00599.webp"
+      backgroundImage="/images-webp/gallery/1.webp"
     />
-    <div className="py-16 md:py-24">
+    <div className="pt-12">
       <TracksSection enableSectionWrapper={false} />
     </div>
   </PageLayout>

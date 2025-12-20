@@ -14,9 +14,9 @@ const GalleryPage = () => {
             <PageHero
                 title="갤러리"
                 subtitle="평화의 순간들"
-                backgroundImage="/images-webp/gallery/1.webp"
+                backgroundImage="/images-webp/camps/2023/DSC00528.webp"
             />
-            <div className="py-16 md:py-24">
+            <div className="pt-12">
                 <GallerySection enableSectionWrapper={false} />
             </div>
         </PageLayout>
