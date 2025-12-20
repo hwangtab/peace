@@ -164,13 +164,13 @@ const AlbumAboutPage = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Button
                   to="/album/tracks"
-                  variant="primary"
+                  variant="gold"
                 >
                   수록곡 듣기
                 </Button>
                 <Button
                   to="/album/musicians"
-                  variant="outline"
+                  variant="white-outline"
                 >
                   참여 뮤지션 소개
                 </Button>
