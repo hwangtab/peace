@@ -54,6 +54,13 @@ const AudioPlayer = ({ audioUrl, isPlaying, onPlayPause, title, artist }: AudioP
       <div
         className="mt-2 h-1 bg-gray-200 rounded cursor-pointer"
         onClick={handleSeek}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleSeek(e as unknown as React.MouseEvent<HTMLDivElement>); } }}
+        role="slider"
+        tabIndex={0}
+        aria-label="오디오 재생 위치"
+        aria-valuenow={Math.round(progress)}
+        aria-valuemin={0}
+        aria-valuemax={Math.round(duration)}
       >
         <motion.div
           className="h-full bg-coastal-gray rounded"

@@ -33,6 +33,10 @@ const TrackCard: React.FC<TrackCardProps> = ({
           onToggle();
           onPlay();
         }}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onToggle(); onPlay(); } }}
+        role="button"
+        tabIndex={0}
+        aria-expanded={isExpanded}
       >
         <div className="flex justify-between items-center">
           <div className="flex-grow">
