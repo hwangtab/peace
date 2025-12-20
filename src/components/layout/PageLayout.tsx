@@ -5,7 +5,7 @@ import SEOHelmet, { SEOHelmetProps } from '../shared/SEOHelmet';
 interface PageLayoutProps extends SEOHelmetProps {
     children: ReactNode;
     className?: string;
-    background?: 'white' | 'ocean-sand' | 'seafoam' | 'sunlight-glow' | 'sky-horizon' | 'light-beige';
+    background?: 'white' | 'ocean-sand' | 'seafoam' | 'sunlight-glow' | 'sky-horizon' | 'light-beige' | 'jeju-ocean';
     disableTopPadding?: boolean;
     disableBottomPadding?: boolean;
 }
@@ -36,6 +36,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
                 'bg-sunlight-glow': background === 'sunlight-glow',
                 'bg-sky-horizon': background === 'sky-horizon',
                 'bg-light-beige': background === 'light-beige',
+                'bg-jeju-ocean': background === 'jeju-ocean',
             },
             // Standard top/bottom padding (formerly .page-container)
             // If disableTopPadding is true, we remove the top padding classes

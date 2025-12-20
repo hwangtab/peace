@@ -104,7 +104,7 @@ const AlbumAboutPage = () => {
       title="이름을 모르는 먼 곳의 그대에게 - 앨범 소개"
       description="강정피스앤뮤직캠프의 2024년 음반 프로젝트. 전쟁을 끝내고 평화를 노래하는 12곡의 음악 여정."
       keywords="이름을 모르는 먼 곳의 그대에게, 강정피스앤뮤직캠프, 음반, 평화음악"
-      background="ocean-sand"
+      background="jeju-ocean"
       disableTopPadding={true}
       className="!pb-0"
     >
@@ -153,10 +153,10 @@ const AlbumAboutPage = () => {
               <span className="inline-block px-3 py-1 bg-jeju-ocean text-white text-sm font-bold tracking-wider rounded-full mb-6">
                 2024 OFFICIAL RELEASE
               </span>
-              <h1 className="typo-h1 text-jeju-ocean mb-6 leading-tight">
+              <h1 className="typo-h1 text-white mb-6 leading-tight">
                 이름을 모르는<br />먼 곳의 그대에게
               </h1>
-              <p className="typo-subtitle text-coastal-gray font-medium mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              <p className="typo-subtitle text-white/90 font-medium mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 전쟁과 폭력이 만연한 세상에서 보내는 평화의 편지.<br className="hidden md:block" />
                 12팀의 뮤지션이 강정마을에서 쏘아 올린 음악의 파동.
               </p>
