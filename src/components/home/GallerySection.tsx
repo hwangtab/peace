@@ -11,20 +11,6 @@ import ImageLightbox from '../common/ImageLightbox';
 import Section from '../layout/Section';
 import Button from '../common/Button';
 import SectionHeader from '../common/SectionHeader';
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.03
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 }
-};
 
 interface GallerySectionProps {
   className?: string;
