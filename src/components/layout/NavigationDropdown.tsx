@@ -86,10 +86,21 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(({
       : 'text-cloud-white/90 hover:text-cloud-white drop-shadow-md';
   };
 
+  // Keyboard navigation handler
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape' && open) {
+      setOpenRef.current(false);
+    } else if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      setOpenRef.current(!open);
+    }
+  };
+
   return (
     <div className="relative group" ref={dropdownRef}>
       <button
         onClick={() => setOpen(!open)}
+        onKeyDown={handleKeyDown}
         className={`flex items-center gap-1 ${getButtonColors()} transition-colors duration-300 font-serif py-2`}
         aria-expanded={open}
         aria-haspopup="true"
