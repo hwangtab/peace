@@ -5,7 +5,7 @@ interface SectionProps {
     children: ReactNode;
     id?: string;
     className?: string; // For additional custom styles if absolutely necessary
-    background?: 'white' | 'ocean-sand' | 'sky-horizon' | 'sunlight-glow' | 'seafoam' | 'light-beige' | 'transparent';
+    background?: 'white' | 'ocean-sand' | 'sky-horizon' | 'sunlight-glow' | 'seafoam' | 'light-beige' | 'transparent' | 'golden-sun';
 }
 
 /**
@@ -27,7 +27,8 @@ const Section = React.forwardRef<HTMLElement, SectionProps>(({
         'sunlight-glow': 'bg-sunlight-glow',
         'seafoam': 'bg-seafoam',
         'light-beige': 'bg-light-beige',
-        'transparent': 'bg-transparent'
+        'transparent': 'bg-transparent',
+        'golden-sun': 'bg-golden-sun'
     };
 
     return (
