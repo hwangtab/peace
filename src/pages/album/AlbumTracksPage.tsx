@@ -13,7 +13,7 @@ const AlbumTracksPage = () => (
   >
     <PageHero
       title="수록곡"
-      subtitle="평화의 12곡"
+      subtitle="이름을 모르는 먼 곳의 그대에게"
       backgroundImage="/images-webp/gallery/152.webp"
     />
     <div className="pt-12">
