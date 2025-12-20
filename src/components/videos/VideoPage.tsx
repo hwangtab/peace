@@ -40,10 +40,10 @@ export default function VideoPage() {
       <PageHero
         title="비디오"
         subtitle="평화를 노래하는 순간들"
-        backgroundImage="/images-webp/camps/2023/DSC00437.webp"
+        backgroundImage="/images-webp/camps/2023/IMG_2064.webp"
       />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24" ref={ref}>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-12" ref={ref}>
         <EventFilter
           selectedFilter={selectedFilter}
           onFilterChange={setSelectedFilter}

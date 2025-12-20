@@ -81,10 +81,10 @@ export default function PressPage() {
       <PageHero
         title="언론보도"
         subtitle="평화를 노래하는 우리들의 이야기"
-        backgroundImage="/images-webp/camps/2025/peacemusic-1.webp"
+        backgroundImage="/images-webp/camps/2023/DSC00610.webp"
       />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24" ref={ref}>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-12" ref={ref}>
         <EventFilter
           selectedFilter={selectedFilter}
           onFilterChange={setSelectedFilter}

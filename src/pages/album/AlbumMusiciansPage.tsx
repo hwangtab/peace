@@ -14,9 +14,9 @@ const AlbumMusiciansPage = () => (
     <PageHero
       title="참여 뮤지션"
       subtitle="12팀의 목소리"
-      backgroundImage="/images-webp/camps/2025/DSC00547.webp"
+      backgroundImage="/images-webp/gallery/4.webp"
     />
-    <div className="py-16 md:py-24">
+    <div className="pt-12">
       <MusiciansSection enableSectionWrapper={false} />
     </div>
   </PageLayout>
