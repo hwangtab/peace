@@ -15,11 +15,13 @@ import SectionHeader from '../common/SectionHeader';
 interface GallerySectionProps {
   className?: string;
   enableSectionWrapper?: boolean;
+  hideSectionHeader?: boolean;
 }
 
 const GallerySection: React.FC<GallerySectionProps> = ({
   className,
-  enableSectionWrapper = true
+  enableSectionWrapper = true,
+  hideSectionHeader = false
 }) => {
   const location = useLocation();
   const [images, setImages] = useState<GalleryImage[]>([]);
@@ -61,7 +63,7 @@ const GallerySection: React.FC<GallerySectionProps> = ({
 
   const filteredImages = useMemo(() =>
     filterByEvent(images, selectedFilter),
-    [selectedFilter, images]
+    [images, selectedFilter]
   );
 
   // Reset visible count when filter changes
@@ -70,17 +72,19 @@ const GallerySection: React.FC<GallerySectionProps> = ({
   }, [selectedFilter]);
 
   const handleLoadMore = () => {
-    setVisibleCount(prev => prev + GALLERY_CONFIG.LOAD_MORE_COUNT);
+    setVisibleCount(prev => Math.min(prev + GALLERY_CONFIG.LOAD_MORE_COUNT, filteredImages.length));
   };
 
   const displayImages = useMemo(() => filteredImages.slice(0, visibleCount), [filteredImages, visibleCount]);
 
   const content = (
     <div className={`container mx-auto px-4 sm:px-6 lg:px-8 ${!enableSectionWrapper ? className : ''}`}>
-      <SectionHeader
-        title="평화의 순간들"
-        subtitle="평화를 노래하는 순간들"
-      />
+      {!hideSectionHeader && (
+        <SectionHeader
+          title="평화의 순간들"
+          subtitle="평화를 노래하는 순간들"
+        />
+      )}
 
       <motion.div
         initial={{ opacity: 0, y: 10 }}
