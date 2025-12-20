@@ -17,9 +17,11 @@ const PageHero: React.FC<PageHeroProps> = ({
     subtitle,
     backgroundImage,
 }) => {
-    // Generate responsive image paths
+    // Check if responsive versions exist, otherwise use original
     const getResponsiveImagePath = (imagePath: string) => {
         const basePath = imagePath.replace('.webp', '');
+        // Return both responsive and original paths
+        // Browser will use srcset if available, fallback to src
         return {
             mobile: `${basePath}-mobile.webp`,
             tablet: `${basePath}-tablet.webp`,
@@ -34,9 +36,9 @@ const PageHero: React.FC<PageHeroProps> = ({
         <section
             className="relative h-[500px] md:h-[600px] lg:h-[700px] flex items-center justify-center text-center overflow-hidden"
         >
-            {/* Background Image */}
+            {/* Background Image - use original as src, srcset as optimization */}
             <img
-                src={responsiveImages.desktop}
+                src={backgroundImage}
                 srcSet={`
           ${responsiveImages.mobile} 800w,
           ${responsiveImages.tablet} 1200w,
@@ -47,6 +49,14 @@ const PageHero: React.FC<PageHeroProps> = ({
                 className="absolute inset-0 w-full h-full object-cover"
                 loading="eager"
                 fetchPriority="high"
+                onError={(e) => {
+                    // Fallback to original if responsive versions don't exist
+                    const img = e.target as HTMLImageElement;
+                    if (img.src !== backgroundImage) {
+                        img.src = backgroundImage;
+                        img.removeAttribute('srcset');
+                    }
+                }}
             />
 
             {/* Dark Overlay - Same as CampHero */}
