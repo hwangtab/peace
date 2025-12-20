@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useLocation } from 'react-router-dom';
 import { GalleryImage } from '../../types/gallery';
-import { getGalleryImages } from '../../api/gallery';
-import { filterByEvent, isValidFilter } from '../../utils/filtering';
+import { useGalleryImages } from '../../hooks/useGalleryImages';
 import { GALLERY_CONFIG } from '../../constants/config';
 import EventFilter from '../common/EventFilter';
 import GalleryImageItem from '../gallery/GalleryImageItem';
@@ -23,59 +21,16 @@ const GallerySection: React.FC<GallerySectionProps> = ({
   enableSectionWrapper = true,
   hideSectionHeader = false
 }) => {
-  const location = useLocation();
-  const [images, setImages] = useState<GalleryImage[]>([]);
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
-  const [selectedFilter, setSelectedFilter] = useState<string>('all');
-  const [visibleCount, setVisibleCount] = useState<number>(GALLERY_CONFIG.INITIAL_VISIBLE_COUNT);
 
-  // Sync filter with query parameter on mount
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const filterParam = params.get('filter');
-    if (filterParam && isValidFilter(filterParam)) {
-      setSelectedFilter(filterParam);
-    }
-  }, [location.search]);
-
-  useEffect(() => {
-    let isCancelled = false;
-
-    const loadImages = async () => {
-      const allFetchedImages = await getGalleryImages();
-
-      if (isCancelled) return;
-
-      const sortedImages = allFetchedImages.sort((a, b) => {
-        if (a.eventYear !== b.eventYear) return (a.eventYear || 0) - (b.eventYear || 0);
-        return a.id - b.id;
-      });
-
-      setImages(sortedImages);
-    };
-
-    loadImages();
-
-    return () => {
-      isCancelled = true;
-    };
-  }, []);
-
-  const filteredImages = useMemo(() =>
-    filterByEvent(images, selectedFilter),
-    [images, selectedFilter]
-  );
-
-  // Reset visible count when filter changes
-  useEffect(() => {
-    setVisibleCount(GALLERY_CONFIG.INITIAL_VISIBLE_COUNT);
-  }, [selectedFilter]);
-
-  const handleLoadMore = () => {
-    setVisibleCount(prev => Math.min(prev + GALLERY_CONFIG.LOAD_MORE_COUNT, filteredImages.length));
-  };
-
-  const displayImages = useMemo(() => filteredImages.slice(0, visibleCount), [filteredImages, visibleCount]);
+  const {
+    displayImages,
+    filteredImages,
+    selectedFilter,
+    setSelectedFilter,
+    hasMore,
+    loadMore,
+  } = useGalleryImages();
 
   const content = (
     <div className={`container mx-auto px-4 sm:px-6 lg:px-8 ${!enableSectionWrapper ? className : ''}`}>
@@ -128,10 +83,10 @@ const GallerySection: React.FC<GallerySectionProps> = ({
             </AnimatePresence>
           </motion.div>
 
-          {visibleCount < filteredImages.length && (
+          {hasMore && (
             <div className="text-center mt-12">
               <Button
-                onClick={handleLoadMore}
+                onClick={loadMore}
                 variant="outline"
               >
                 더 보기
@@ -167,3 +122,4 @@ const GallerySection: React.FC<GallerySectionProps> = ({
 };
 
 export default GallerySection;
+
