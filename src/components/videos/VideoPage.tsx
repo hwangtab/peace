@@ -34,7 +34,7 @@ export default function VideoPage() {
       title="비디오 - 강정피스앤뮤직캠프"
       description="강정피스앤뮤직캠프의 공연영상 모음. 평화를 노래하는 뮤지션들의 공연 영상을 만나보세요."
       keywords="공연영상, 강정피스앤뮤직캠프, 평화 공연, 뮤지션 공연, 유튜브 영상"
-      background="ocean-sand"
+      background="sunlight-glow"
       disableTopPadding={true}
     >
       <PageHero
