@@ -116,20 +116,17 @@ const GallerySection: React.FC<GallerySectionProps> = ({
       ) : (
         <>
           <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
             className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12"
           >
             <AnimatePresence mode='popLayout' initial={false}>
               {displayImages.map((image, index) => (
                 <motion.div
                   key={image.id}
-                  variants={itemVariants}
-                  initial="hidden"
-                  animate="visible"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
                   exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
-                  transition={{ opacity: { duration: 0.3 } }}
+                  transition={{ duration: 0.3 }}
                 >
                   <GalleryImageItem
                     image={image}
