@@ -17,7 +17,7 @@ const AlbumMusiciansPage = () => (
       backgroundImage="/images-webp/gallery/2.webp"
     />
     <div className="pt-12">
-      <MusiciansSection enableSectionWrapper={false} />
+      <MusiciansSection enableSectionWrapper={false} hideSectionHeader={true} />
     </div>
   </PageLayout>
 );

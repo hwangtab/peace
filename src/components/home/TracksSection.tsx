@@ -8,9 +8,10 @@ import SectionHeader from '../common/SectionHeader';
 
 interface TracksSectionProps {
   enableSectionWrapper?: boolean;
+  hideSectionHeader?: boolean;
 }
 
-const TracksSection: React.FC<TracksSectionProps> = ({ enableSectionWrapper = true }) => {
+const TracksSection: React.FC<TracksSectionProps> = ({ enableSectionWrapper = true, hideSectionHeader = false }) => {
   const ref = useRef(null);
   const inView = useInView(ref, {
     once: true,
@@ -30,11 +31,13 @@ const TracksSection: React.FC<TracksSectionProps> = ({ enableSectionWrapper = tr
 
   const content = (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionHeader
-        title="수록곡"
-        subtitle="12곡의 평화의 노래"
-        inView={inView}
-      />
+      {!hideSectionHeader && (
+        <SectionHeader
+          title="수록곡"
+          subtitle="12곡의 평화의 노래"
+          inView={inView}
+        />
+      )}
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4 max-w-6xl mx-auto">
         {tracks.map((track) => (
