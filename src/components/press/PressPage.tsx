@@ -1,5 +1,4 @@
-import React, { useRef, useState, useMemo } from 'react';
-import { useInView } from 'framer-motion';
+import React, { useState, useMemo } from 'react';
 import { PressItem, pressItems } from '../../data/press';
 import { getBreadcrumbSchema } from '../../utils/structuredData';
 import { filterByEvent } from '../../utils/filtering';
@@ -50,8 +49,6 @@ const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
 };
 
 export default function PressPage() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
 
   const breadcrumbs = [
@@ -84,7 +81,7 @@ export default function PressPage() {
         backgroundImage="/images-webp/camps/2023/DSC00610.webp"
       />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-12" ref={ref}>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-12">
         <EventFilter
           selectedFilter={selectedFilter}
           onFilterChange={setSelectedFilter}

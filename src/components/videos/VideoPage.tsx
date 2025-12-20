@@ -1,5 +1,4 @@
-import React, { useRef, useState, useMemo, useEffect } from 'react';
-import { useInView } from 'framer-motion';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { videoItems } from '../../data/videos';
 import { filterByEvent, isValidFilter } from '../../utils/filtering';
@@ -11,8 +10,6 @@ import VideoCard from './VideoCard';
 
 export default function VideoPage() {
   const location = useLocation();
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
 
   // Sync filter with query parameter on mount
@@ -43,7 +40,7 @@ export default function VideoPage() {
         backgroundImage="/images-webp/camps/2023/IMG_2064.webp"
       />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-12" ref={ref}>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-12">
         <EventFilter
           selectedFilter={selectedFilter}
           onFilterChange={setSelectedFilter}
