@@ -159,7 +159,7 @@ const GallerySection: React.FC<GallerySectionProps> = ({
           image={{
             url: selectedImage.url,
             alt: selectedImage.description ||
-                 `${selectedImage.eventYear || ''}년 강정피스앤뮤직캠프 갤러리 이미지`
+              `${selectedImage.eventYear || ''}년 강정피스앤뮤직캠프 갤러리 이미지`
           }}
           onClose={() => setSelectedImage(null)}
           maxHeight="85vh"
@@ -170,7 +170,7 @@ const GallerySection: React.FC<GallerySectionProps> = ({
 
   if (enableSectionWrapper) {
     return (
-      <Section id="gallery" background="seafoam" className={className}>
+      <Section id="gallery" background="golden-sun" className={className}>
         {content}
       </Section>
     );

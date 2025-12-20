@@ -8,7 +8,7 @@ const GalleryPage = () => {
         <PageLayout
             title="평화의 순간들 | 이름을 모르는 먼 곳의 그대에게"
             description="평화를 노래하는 우리들의 순간들"
-            background="seafoam"
+            background="golden-sun"
             disableTopPadding={true}
         >
             <PageHero
