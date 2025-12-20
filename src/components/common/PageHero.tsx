@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 interface PageHeroProps {
@@ -17,6 +18,8 @@ const PageHero: React.FC<PageHeroProps> = ({
     subtitle,
     backgroundImage,
 }) => {
+    const [imageFailed, setImageFailed] = useState(false);
+
     // Check if responsive versions exist, otherwise use original
     const getResponsiveImagePath = (imagePath: string) => {
         const basePath = imagePath.replace('.webp', '');
@@ -39,22 +42,25 @@ const PageHero: React.FC<PageHeroProps> = ({
             {/* Background Image - use original as src, srcset as optimization */}
             <img
                 src={backgroundImage}
-                srcSet={`
+                srcSet={!imageFailed ? `
           ${responsiveImages.mobile} 800w,
           ${responsiveImages.tablet} 1200w,
           ${responsiveImages.desktop} 1920w
-        `}
+        ` : undefined}
                 sizes="100vw"
                 alt={title}
                 className="absolute inset-0 w-full h-full object-cover"
                 loading="eager"
                 fetchPriority="high"
                 onError={(e) => {
-                    // Fallback to original if responsive versions don't exist
+                    // Prevent infinite retry - only fallback once
+                    if (imageFailed) return;
+
                     const img = e.target as HTMLImageElement;
                     if (img.src !== backgroundImage) {
                         img.src = backgroundImage;
                         img.removeAttribute('srcset');
+                        setImageFailed(true);
                     }
                 }}
             />
