@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
@@ -16,7 +16,7 @@ interface NavigationDropdownProps {
   isScrolled?: boolean;
 }
 
-const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
+const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(({
   label,
   items,
   isOpen = false,
@@ -40,10 +40,14 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
     }
   }, [isControlled, onOpenChange]);
 
+  // useRef로 setOpen 참조 안정화 (의존성 배열에서 제거)
+  const setOpenRef = useRef(setOpen);
+  setOpenRef.current = setOpen;
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setOpen(false);
+        setOpenRef.current(false);
       }
     };
 
@@ -54,9 +58,10 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [open, setOpen]);
+  }, [open]); // setOpen 의존성 제거됨
 
-  const isActive = items.some(item => {
+  // useMemo로 isActive 계산 캐싱
+  const isActive = useMemo(() => items.some(item => {
     if (location.pathname === item.path) return true;
 
     // 경로 접두사 확인: /camps/2023, /camps/2025 등
@@ -67,7 +72,7 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
     }
 
     return false;
-  });
+  }), [items, location.pathname]);
 
   // Dynamic styles based on scroll position
   const getButtonColors = () => {
@@ -127,6 +132,7 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = ({
       </AnimatePresence>
     </div>
   );
-};
+});
 
+NavigationDropdown.displayName = 'NavigationDropdown';
 export default NavigationDropdown;

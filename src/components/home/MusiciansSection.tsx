@@ -11,7 +11,7 @@ interface MusiciansSectionProps {
   hideSectionHeader?: boolean;
 }
 
-const MusiciansSection: React.FC<MusiciansSectionProps> = ({ enableSectionWrapper = true, hideSectionHeader = false }) => {
+const MusiciansSection: React.FC<MusiciansSectionProps> = React.memo(({ enableSectionWrapper = true, hideSectionHeader = false }) => {
   const ref = useRef(null);
   const inView = useInView(ref, {
     once: true,
@@ -45,6 +45,7 @@ const MusiciansSection: React.FC<MusiciansSectionProps> = ({ enableSectionWrappe
   }
 
   return <div ref={ref}>{content}</div>;
-};
+});
 
+MusiciansSection.displayName = 'MusiciansSection';
 export default MusiciansSection;
