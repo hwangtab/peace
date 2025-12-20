@@ -4,7 +4,6 @@ import CampHero from '../components/camp/CampHero';
 import CampGallery from '../components/camp/CampGallery';
 import CampParticipants from '../components/camp/CampParticipants';
 import { camps } from '../data/camps';
-import { CampEvent } from '../types/camp';
 import PageLayout from '../components/layout/PageLayout';
 import Section from '../components/layout/Section';
 import SectionHeader from '../components/common/SectionHeader';
