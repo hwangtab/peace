@@ -101,8 +101,9 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
             } : { y: 0 }}
             transition={{
               duration: 1.5,
-              repeat: isScrollIndicatorInView ? Infinity : 0,
+              repeat: isScrollIndicatorInView ? 3 : 0,
               repeatType: "reverse",
+              repeatDelay: 0.5,
             }}
             className="w-2 h-2 bg-white rounded-full mt-2"
           />
