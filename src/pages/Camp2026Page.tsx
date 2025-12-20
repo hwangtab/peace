@@ -27,6 +27,7 @@ const Camp2026Page = () => {
       title="제3회 강정피스앤뮤직캠프 (2026) - Coming Soon"
       description="2026년 여름 개최 예정인 제3회 강정피스앤뮤직캠프. 평화를 노래하는 음악 축제에 함께하세요."
       keywords="강정피스앤뮤직캠프, 2026, 제3회 캠프, Coming Soon, 평화음악"
+      background="jeju-ocean"
     >
       <div className="container mx-auto px-4 relative z-10 flex flex-col items-center justify-center min-h-[60vh] text-center">
 

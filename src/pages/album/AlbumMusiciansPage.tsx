@@ -14,7 +14,7 @@ const AlbumMusiciansPage = () => (
     <PageHero
       title="참여 뮤지션"
       subtitle="12팀의 목소리"
-      backgroundImage="/images-webp/gallery/4.webp"
+      backgroundImage="/images-webp/gallery/116.webp"
     />
     <div className="pt-12">
       <MusiciansSection enableSectionWrapper={false} />
