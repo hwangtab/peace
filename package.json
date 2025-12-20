@@ -46,7 +46,11 @@
     "server": "ts-node src/server/server.ts",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "generate-sitemap": "node scripts/generateSitemap.js"
+    "generate-sitemap": "node scripts/generateSitemap.js",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css}\"",
+    "lint": "eslint src --ext .ts,.tsx,.js,.jsx",
+    "lint:fix": "eslint src --ext .ts,.tsx,.js,.jsx --fix"
   },
   "browserslist": {
     "production": [
@@ -70,8 +74,10 @@
     "@typescript-eslint/parser": "^8.23.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-jest": "^25.7.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
     "gh-pages": "^6.3.0",
     "jest": "^27.5.1",
+    "prettier": "^3.4.2",
     "sharp": "^0.33.5",
     "ts-node": "^10.9.2"
   }
