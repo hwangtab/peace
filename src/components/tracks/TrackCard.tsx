@@ -122,7 +122,7 @@ const TrackCard: React.FC<TrackCardProps> = ({
                 {Object.entries(track.credits).map(([role, value]) => {
                   type Performer = { role: string; name: string[] };
 
-                  const isPerformerArray = (arr: any[]): arr is Performer[] => {
+                  const isPerformerArray = (arr: unknown[]): arr is Performer[] => {
                     return arr.every(item =>
                       typeof item === 'object' &&
                       item !== null &&

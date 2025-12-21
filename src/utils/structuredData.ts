@@ -2,7 +2,7 @@
 
 export interface StructuredDataProps {
   type: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 // Organization Schema - 조직 정보
