@@ -5,6 +5,7 @@ import Section from '../layout/Section';
 import { tracks } from '../../data/tracks';
 import Button from '../common/Button';
 import SectionHeader from '../common/SectionHeader';
+import { config } from '../../config/env';
 
 interface TracksSectionProps {
   enableSectionWrapper?: boolean;
@@ -59,7 +60,7 @@ const TracksSection: React.FC<TracksSectionProps> = ({ enableSectionWrapper = tr
         className="text-center mt-16"
       >
         <Button
-          href="https://smartstore.naver.com/peaceandmusic"
+          href={config.smartstoreUrl}
           variant="primary"
           size="lg"
           external
