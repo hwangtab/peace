@@ -18,6 +18,7 @@ export const camps: CampEvent[] = [
     slogan: '전쟁을 끝내자! 놀며, 춤추며, 노래하며!',
     participants: [
       { name: '리테스 마하르잔', musicianId: 1 },
+      '바투카다',
       { name: '여유와 설빈', musicianId: 9 },
       { name: '출장작곡가 김동산', musicianId: 3 },
       { name: '까르', musicianId: 5 },
