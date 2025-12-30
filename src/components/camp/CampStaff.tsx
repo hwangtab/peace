@@ -21,10 +21,10 @@ const CampStaff: React.FC<CampStaffProps> = ({ staff, collaborators, inView }) =
                         transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
                         className="flex items-start gap-2"
                     >
-                        <span className="inline-block w-2 h-2 rounded-full bg-jeju-ocean mt-2 flex-shrink-0" />
-                        <p className="typo-body">
-                            <span className="font-medium text-jeju-ocean">{section.role}:</span>{' '}
-                            <span className="text-coastal-gray">{section.members.join(', ')}</span>
+                        <span className="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" />
+                        <p className="font-serif text-base">
+                            <span className="text-gray-700">{section.role}:</span>
+                            <span className="text-gray-500 ml-2">{section.members.join(', ')}</span>
                         </p>
                     </motion.div>
                 ))}
@@ -38,7 +38,7 @@ const CampStaff: React.FC<CampStaffProps> = ({ staff, collaborators, inView }) =
                     transition={{ duration: 0.4, delay: 0.3 + staff.length * 0.05 }}
                     className="pt-4 border-t border-gray-100"
                 >
-                    <h4 className="typo-h3 !text-lg text-jeju-ocean mb-3">협력</h4>
+                    <h4 className="font-serif text-base text-gray-600 mb-3">협력</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         {collaborators.map((org, index) => (
                             <motion.div
@@ -48,8 +48,8 @@ const CampStaff: React.FC<CampStaffProps> = ({ staff, collaborators, inView }) =
                                 transition={{ duration: 0.4, delay: 0.4 + staff.length * 0.05 + index * 0.03 }}
                                 className="flex items-center gap-2"
                             >
-                                <span className="inline-block w-1.5 h-1.5 rounded-full bg-ocean-mist flex-shrink-0" />
-                                <span className="typo-body !text-sm text-coastal-gray">{org}</span>
+                                <span className="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 flex-shrink-0" />
+                                <span className="font-serif text-sm text-gray-600">{org}</span>
                             </motion.div>
                         ))}
                     </div>
