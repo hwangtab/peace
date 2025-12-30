@@ -46,7 +46,6 @@ export const camps: CampEvent[] = [
     ],
     images: [
       '/images-webp/camps/2023/IMG_2465.webp',
-      '/images-webp/camps/2023/DSC00451.webp',
       '/images-webp/camps/2023/20230610둘리목걸이고르는.webp',
       '/images-webp/camps/2023/20230610밤 전쟁을끝내자.webp',
       '/images-webp/camps/2023/DSC00451.webp',
