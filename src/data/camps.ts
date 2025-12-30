@@ -45,6 +45,7 @@ export const camps: CampEvent[] = [
       '정전 70년 한반도 평화행동', '정치하는 엄마들', '평화바람'
     ],
     images: [
+      '/images-webp/camps/2023/IMG_2465.webp',
       '/images-webp/camps/2023/DSC00451.webp',
       '/images-webp/camps/2023/20230610둘리목걸이고르는.webp',
       '/images-webp/camps/2023/20230610밤 전쟁을끝내자.webp',
