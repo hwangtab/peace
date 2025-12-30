@@ -3,6 +3,7 @@ import { motion, useInView } from 'framer-motion';
 import CampHero from '../components/camp/CampHero';
 import CampGallery from '../components/camp/CampGallery';
 import CampParticipants from '../components/camp/CampParticipants';
+import CampStaff from '../components/camp/CampStaff';
 import { camps } from '../data/camps';
 import PageLayout from '../components/layout/PageLayout';
 import Section from '../components/layout/Section';
@@ -74,10 +75,22 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId }) => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInfoInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="bg-white rounded-lg shadow-sm p-8"
+                className="bg-white rounded-lg shadow-sm p-8 mb-8"
               >
                 <SectionHeader title="참여 뮤지션" align="left" className="!mb-6" />
                 <CampParticipants participants={camp.participants} inView={isInfoInView} />
+              </motion.div>
+            )}
+
+            {camp.staff && camp.staff.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInfoInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="bg-white rounded-lg shadow-sm p-8"
+              >
+                <SectionHeader title="함께 만든 사람들" align="left" className="!mb-6" />
+                <CampStaff staff={camp.staff} collaborators={camp.collaborators} inView={isInfoInView} />
               </motion.div>
             )}
           </motion.div>
