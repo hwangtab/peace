@@ -6,7 +6,21 @@ interface VideoCardProps {
 }
 
 const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
-    const getYoutubeVideoId = (url: string) => url.split('/').pop();
+    const getYoutubeVideoId = (url: string): string => {
+        // embed 형식: https://www.youtube.com/embed/VIDEO_ID
+        if (url.includes('/embed/')) {
+            return url.split('/embed/')[1]?.split('?')[0] || '';
+        }
+        // watch 형식: https://www.youtube.com/watch?v=VIDEO_ID
+        if (url.includes('watch?v=')) {
+            return url.split('watch?v=')[1]?.split('&')[0] || '';
+        }
+        // 단축 형식: https://youtu.be/VIDEO_ID
+        if (url.includes('youtu.be/')) {
+            return url.split('youtu.be/')[1]?.split('?')[0] || '';
+        }
+        return url.split('/').pop() || '';
+    };
     const getYoutubeWatchUrl = (url: string) => `https://www.youtube.com/watch?v=${getYoutubeVideoId(url)}`;
 
     const videoId = getYoutubeVideoId(video.youtubeUrl);
