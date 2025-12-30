@@ -25,6 +25,21 @@ export const camps: CampEvent[] = [
       '항아',
       '태히언'
     ],
+    staff: [
+      { role: '기획', members: ['장하나', '이상', '황경하', '자리타', '읭', '안드레아'] },
+      { role: '조명', members: ['이상'] },
+      { role: '무대', members: ['응'] },
+      { role: '음향', members: ['황경하'] },
+      { role: '진행', members: ['이상'] },
+      { role: '디자인', members: ['여울', '장하나'] },
+      { role: '사진', members: ['종은'] },
+      { role: '스텝 및 도움 주신 분들', members: ['달해', '도토', '록키', '모레', '민상', '박용성', '산호', '성준', '소설', '여울', '영', '조은', '준후'] }
+    ],
+    collaborators: [
+      '강정마을 해군기지 반대주민회', '강정친구들', '강정평화네트워크',
+      '열린 군대를 위한 시민연대', '(재)성프란치스코평화센터',
+      '정전 70년 한반도 평화행동', '정치하는 엄마들', '평화바람'
+    ],
     images: [
       '/images-webp/camps/2023/20230610블로쿠뺄라지다2.webp',
       '/images-webp/camps/2023/20230610둘리목걸이고르는.webp',
@@ -59,6 +74,22 @@ export const camps: CampEvent[] = [
       { name: '출장작곡가 김동산', musicianId: 3 },
       '태히언',
       { name: 'HANASH', musicianId: 11 }
+    ],
+    staff: [
+      { role: '기획', members: ['장하나', '이상', '황경하'] },
+      { role: '조명', members: ['이상'] },
+      { role: '음향', members: ['강경덕'] },
+      { role: '진행', members: ['장하나'] },
+      { role: '디자인', members: ['도토'] },
+      { role: '영상', members: ['황경하'] },
+      { role: '사진', members: ['김동희'] },
+      { role: '스텝 및 도움 주신 분들', members: ['든든', '려강', '카레', '개미', '수산', '지혜', '버들', '김성환', '이성준'] }
+    ],
+    collaborators: [
+      '가장자리에서', '개척자들', '강정마을 해군기지 반대주민회',
+      '강정친구들', '강정평화네트워크', '공간()', '(재)성프란치스코평화센터',
+      '전쟁 없는 세상', '정치하는 엄마들', '핫핑크돌핀스',
+      '비무장 평화의 섬 제주를 만드는 사람들'
     ],
     images: [
       '/images-webp/camps/2025/peacemusic-1.webp',
