@@ -66,6 +66,7 @@ export const camps: CampEvent[] = [
     participants: [
       { name: '까르', musicianId: 5 },
       { name: '남수', musicianId: 4 },
+      '블로꾸 자파리 & 뽈레뽈레',
       { name: '모레도토요일', musicianId: 7 },
       '오재환',
       { name: '이서영', musicianId: 12 },
