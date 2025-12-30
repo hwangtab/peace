@@ -15,7 +15,7 @@ interface CampDetailPageProps {
 
 const getOrdinalKorean = (year: number): string => {
   const campIndex = camps.findIndex(c => c.year === year);
-  const ordinals = ['첫', '두', '세', '네', '다섯'];
+  const ordinals = ['1', '2', '3', '4', '5'];
   return ordinals[campIndex] || `${campIndex + 1}`;
 };
 
