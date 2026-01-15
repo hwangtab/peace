@@ -1,8 +1,9 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import TrackCard from '../tracks/TrackCard';
 import Section from '../layout/Section';
-import { tracks } from '../../data/tracks';
+import { getTracks } from '../../api/tracks';
+import { Track } from '../../types/track';
 import Button from '../common/Button';
 import SectionHeader from '../common/SectionHeader';
 import { config } from '../../config/env';
@@ -19,8 +20,30 @@ const TracksSection: React.FC<TracksSectionProps> = ({ enableSectionWrapper = tr
     amount: 0.1
   });
 
+  const [tracks, setTracks] = useState<Track[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [expandedTrackId, setExpandedTrackId] = useState<number | null>(null);
   const [playingTrackId, setPlayingTrackId] = useState<number | null>(null);
+
+  // Load tracks data on mount
+  useEffect(() => {
+    let isCancelled = false;
+
+    const loadTracks = async () => {
+      setIsLoading(true);
+      const data = await getTracks();
+      if (!isCancelled) {
+        setTracks(data);
+        setIsLoading(false);
+      }
+    };
+
+    loadTracks();
+
+    return () => {
+      isCancelled = true;
+    };
+  }, []);
 
   const handleToggle = useCallback((id: number) => {
     setExpandedTrackId(prev => prev === id ? null : id);
@@ -40,18 +63,24 @@ const TracksSection: React.FC<TracksSectionProps> = ({ enableSectionWrapper = tr
         />
       )}
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4 max-w-6xl mx-auto">
-        {tracks.map((track) => (
-          <TrackCard
-            key={track.id}
-            track={track}
-            isExpanded={expandedTrackId === track.id}
-            onToggle={() => handleToggle(track.id)}
-            currentlyPlaying={playingTrackId === track.id}
-            onPlay={() => handlePlay(track.id)}
-          />
-        ))}
-      </div>
+      {isLoading ? (
+        <div className="flex justify-center items-center py-20">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-jeju-ocean"></div>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4 max-w-6xl mx-auto">
+          {tracks.map((track) => (
+            <TrackCard
+              key={track.id}
+              track={track}
+              isExpanded={expandedTrackId === track.id}
+              onToggle={() => handleToggle(track.id)}
+              currentlyPlaying={playingTrackId === track.id}
+              onPlay={() => handlePlay(track.id)}
+            />
+          ))}
+        </div>
+      )}
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
