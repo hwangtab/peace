@@ -8,11 +8,9 @@
   <meta name="theme-color" content="#ffffff" />
   <meta name="naver-site-verification" content="68980c84460ca49f3268a96ad5832da513b55bca" />
 
-  <!-- 폰트 프리로드 (FOUT/FOIT 방지) -->
-  <link rel="preload" href="%PUBLIC_URL%/fonts/GMarketSans/GMarketSansTTFMedium.ttf" as="font" type="font/ttf"
-    crossorigin />
-  <link rel="preload" href="%PUBLIC_URL%/fonts/BookkMyungjo/BookkMyungjo-Bd.ttf" as="font" type="font/ttf"
-    crossorigin />
+  <!-- 폰트 CDN Preconnect (FOUT 방지) -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="preconnect" href="https://fastly.jsdelivr.net" crossorigin />
 
   <!-- DNS Prefetch (외부 리소스) -->
   <link rel="dns-prefetch" href="//fonts.googleapis.com" />
