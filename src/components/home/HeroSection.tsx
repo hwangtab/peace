@@ -1,5 +1,5 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef, useCallback, useMemo } from 'react';
+import { useRef, useCallback, useMemo, useState } from 'react';
 import Button from '../common/Button';
 
 interface HeroSectionProps {
@@ -20,6 +20,7 @@ const getResponsiveImagePath = (imagePath: string) => {
 const HeroSection = ({ imageUrl }: HeroSectionProps) => {
   const scrollIndicatorRef = useRef(null);
   const isScrollIndicatorInView = useInView(scrollIndicatorRef);
+  const [imageFailed, setImageFailed] = useState(false);
 
   const handleScrollToAbout = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
@@ -31,19 +32,29 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
 
   return (
     <section className="relative h-screen flex items-center justify-center text-center overflow-hidden">
-      {/* Responsive Background Image */}
+      {/* Responsive Background Image with fallback */}
       <img
         src={responsiveImages.desktop}
-        srcSet={`
+        srcSet={!imageFailed ? `
           ${responsiveImages.mobile} 800w,
           ${responsiveImages.tablet} 1200w,
           ${responsiveImages.desktop} 1920w
-        `}
+        ` : undefined}
         sizes="100vw"
         alt="강정마을 해변에서 열린 피스앤뮤직캠프 공연 무대"
         className="absolute inset-0 w-full h-full object-cover object-center"
         loading="eager"
         fetchPriority="high"
+        onError={(e) => {
+          // 반응형 이미지 로드 실패 시 원본으로 fallback
+          if (imageFailed) return;
+          const img = e.target as HTMLImageElement;
+          if (img.src !== imageUrl) {
+            img.src = imageUrl;
+            img.removeAttribute('srcset');
+            setImageFailed(true);
+          }
+        }}
       />
 
       {/* Gradient Overlay using Bright Ocean Gradient */}
