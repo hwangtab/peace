@@ -50,7 +50,8 @@
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css}\"",
     "lint": "eslint src --ext .ts,.tsx,.js,.jsx",
-    "lint:fix": "eslint src --ext .ts,.tsx,.js,.jsx --fix"
+    "lint:fix": "eslint src --ext .ts,.tsx,.js,.jsx --fix",
+    "analyze": "source-map-explorer 'build/static/js/*.js'"
   },
   "browserslist": {
     "production": [
@@ -79,6 +80,7 @@
     "jest": "^27.5.1",
     "prettier": "^3.4.2",
     "sharp": "^0.33.5",
+    "source-map-explorer": "^2.5.3",
     "ts-node": "^10.9.2"
   }
 }
