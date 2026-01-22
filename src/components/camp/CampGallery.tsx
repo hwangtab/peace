@@ -18,7 +18,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
   }
 
   return (
-    <Section background="ocean-sand" className="!pt-0">
+    <Section background="light-beige">
       <div className="container mx-auto px-4">
         <SectionHeader title="갤러리" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

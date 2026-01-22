@@ -8,6 +8,7 @@ import { camps } from '../data/camps';
 import PageLayout from '../components/layout/PageLayout';
 import Section from '../components/layout/Section';
 import SectionHeader from '../components/common/SectionHeader';
+import WaveDivider from '../components/common/WaveDivider';
 
 interface CampDetailPageProps {
   campId: string;
@@ -96,6 +97,8 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId }) => {
           </motion.div>
         </div>
       </Section>
+
+      <WaveDivider className="text-light-beige -mt-[60px] sm:-mt-[100px] relative z-10" />
 
       <CampGallery camp={camp} />
     </PageLayout>
