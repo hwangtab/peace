@@ -53,6 +53,9 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
             img.style.display = 'none';
           }
         }}
+        width="1920"
+        height="1080"
+        decoding="async"
       />
 
       {/* Gradient Overlay using Bright Ocean Gradient */}
@@ -102,8 +105,8 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
             animate={
               isScrollIndicatorInView
                 ? {
-                  y: [0, 12, 0],
-                }
+                    y: [0, 12, 0],
+                  }
                 : { y: 0 }
             }
             transition={{

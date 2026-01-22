@@ -13,6 +13,7 @@ import AboutSection from './components/home/AboutSection';
 import TimelineSection from './components/home/TimelineSection';
 import GallerySection from './components/home/GallerySection';
 import SEOHelmet from './components/shared/SEOHelmet';
+import WaveDivider from './components/common/WaveDivider';
 
 // Lazy load route-specific pages
 const PressPage = lazy(() => import('./components/press/PressPage'));
@@ -32,7 +33,9 @@ const HomePage = () => (
     <SEOHelmet />
     <HeroSection imageUrl="/images-webp/camps/2023/DSC00437.webp" />
     <AboutSection />
+    <WaveDivider className="text-sunlight-glow -mt-[60px] sm:-mt-[100px] relative z-10" />
     <TimelineSection />
+    <WaveDivider className="text-golden-sun -mt-[60px] sm:-mt-[100px] relative z-10" />
     <GallerySection />
   </div>
 );

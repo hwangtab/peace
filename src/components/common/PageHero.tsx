@@ -49,6 +49,9 @@ const PageHero: React.FC<PageHeroProps> = ({ title, subtitle, backgroundImage })
             setImageFailed(true);
           }
         }}
+        width="1920"
+        height="700"
+        decoding="async"
       />
 
       {/* Dark Overlay - Same as CampHero */}
