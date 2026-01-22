@@ -140,5 +140,18 @@ export const musicians: Musicians = [
     trackTitle: "우리",
     imageUrl: "/images-webp/musicians/12.webp",
     instagramUrls: ["https://www.instagram.com/leesyoung.kr/"]
+  },
+  {
+    id: 13,
+    name: "블로꾸 자파리 & 뽈레뽈레",
+    shortDescription: "평범한 사람들의 자기 창조성을 일깨우는 바투카다 밴드와 당신과 우주의 행복에 기여하는 예술단체의 연합 팀",
+    description: "블로꾸 자파리는 평범한 사람들의 자기 창조성을 일깨우는 바투카다 밴드로, 제주 동쪽에서 서식하고 있습니다. '당신과 우주의 행복에 기여하는 예술단체, 뽈레뽈레'와 연합 공연 및 워크숍을 펼치고 있으며, 2026 강정피스앤뮤직캠프에서 함께 오프닝을 맡았습니다.",
+    genre: ["바투카다", "퍼포먼스"],
+    trackTitle: "오프닝 퍼포먼스",
+    imageUrl: "/images-webp/musicians/13.webp",
+    instagramUrls: [
+      "https://www.instagram.com/bloco_japari",
+      "https://www.instagram.com/polepole2014"
+    ]
   }
 ];
