@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { CampEvent } from '../../types/camp';
+import { getResponsiveImagePath } from '../../utils/images';
 
 interface CampHeroProps {
   camp: CampEvent;
@@ -10,30 +11,15 @@ const CampHero: React.FC<CampHeroProps> = ({ camp }) => {
   const formattedDate = eventDate.toLocaleDateString('ko-KR', {
     year: 'numeric',
     month: 'long',
-    day: 'numeric'
+    day: 'numeric',
   });
 
-  const backgroundImage = camp.images && camp.images.length > 0
-    ? camp.images[0]
-    : null;
-
-  // Generate responsive image paths
-  const getResponsiveImagePath = (imagePath: string) => {
-    const basePath = imagePath.replace('.webp', '');
-    return {
-      mobile: `${basePath}-mobile.webp`,
-      tablet: `${basePath}-tablet.webp`,
-      desktop: `${basePath}-desktop.webp`,
-      original: imagePath
-    };
-  };
+  const backgroundImage = camp.images && camp.images.length > 0 ? camp.images[0] : null;
 
   const responsiveImages = backgroundImage ? getResponsiveImagePath(backgroundImage) : null;
 
   return (
-    <section
-      className="relative h-[500px] md:h-[600px] lg:h-[700px] flex items-center justify-center text-center overflow-hidden bg-hero-gradient"
-    >
+    <section className="relative h-[500px] md:h-[600px] lg:h-[700px] flex items-center justify-center text-center overflow-hidden bg-hero-gradient">
       {/* Responsive Background Image */}
       {responsiveImages && (
         <img
@@ -60,14 +46,8 @@ const CampHero: React.FC<CampHeroProps> = ({ camp }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="typo-h1 text-white mb-4">
-            {camp.title}
-          </h1>
-          {camp.slogan && (
-            <p className="typo-subtitle text-gray-100 mb-6">
-              {camp.slogan}
-            </p>
-          )}
+          <h1 className="typo-h1 text-white mb-4">{camp.title}</h1>
+          {camp.slogan && <p className="typo-subtitle text-gray-100 mb-6">{camp.slogan}</p>}
           <div className="flex flex-col sm:flex-row justify-center gap-6 text-white">
             <div>
               <p className="text-sm uppercase tracking-wide text-gray-300 mb-1">일시</p>

@@ -13,11 +13,14 @@ interface TracksSectionProps {
   hideSectionHeader?: boolean;
 }
 
-const TracksSection: React.FC<TracksSectionProps> = ({ enableSectionWrapper = true, hideSectionHeader = false }) => {
+const TracksSection: React.FC<TracksSectionProps> = ({
+  enableSectionWrapper = true,
+  hideSectionHeader = false,
+}) => {
   const ref = useRef(null);
   const inView = useInView(ref, {
     once: true,
-    amount: 0.1
+    amount: 0.1,
   });
 
   const [tracks, setTracks] = useState<Track[]>([]);
@@ -31,10 +34,17 @@ const TracksSection: React.FC<TracksSectionProps> = ({ enableSectionWrapper = tr
 
     const loadTracks = async () => {
       setIsLoading(true);
-      const data = await getTracks();
-      if (!isCancelled) {
-        setTracks(data);
-        setIsLoading(false);
+      try {
+        const data = await getTracks();
+        if (!isCancelled) {
+          setTracks(data);
+        }
+      } catch (error) {
+        console.error('Failed to load tracks:', error);
+      } finally {
+        if (!isCancelled) {
+          setIsLoading(false);
+        }
       }
     };
 
@@ -46,21 +56,17 @@ const TracksSection: React.FC<TracksSectionProps> = ({ enableSectionWrapper = tr
   }, []);
 
   const handleToggle = useCallback((id: number) => {
-    setExpandedTrackId(prev => prev === id ? null : id);
+    setExpandedTrackId((prev) => (prev === id ? null : id));
   }, []);
 
   const handlePlay = useCallback((id: number) => {
-    setPlayingTrackId(prev => prev === id ? null : id);
+    setPlayingTrackId((prev) => (prev === id ? null : id));
   }, []);
 
   const content = (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
       {!hideSectionHeader && (
-        <SectionHeader
-          title="수록곡"
-          subtitle="12곡의 평화의 노래"
-          inView={inView}
-        />
+        <SectionHeader title="수록곡" subtitle="12곡의 평화의 노래" inView={inView} />
       )}
 
       {isLoading ? (
@@ -88,12 +94,7 @@ const TracksSection: React.FC<TracksSectionProps> = ({ enableSectionWrapper = tr
         transition={{ duration: 0.6, delay: 0.4 }}
         className="text-center mt-16"
       >
-        <Button
-          href={config.smartstoreUrl}
-          variant="primary"
-          size="lg"
-          external
-        >
+        <Button href={config.smartstoreUrl} variant="primary" size="lg" external>
           음반 구매하기
         </Button>
       </motion.div>
