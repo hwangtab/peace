@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { getResponsiveImagePath } from '../../utils/images';
 
 interface PageHeroProps {
   title: string;
   subtitle?: string;
   backgroundImage: string; // Required - no gradient fallback
 }
-
-import { getResponsiveImagePath } from '../../utils/images';
 
 /**
  * PageHero Component

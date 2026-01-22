@@ -1,12 +1,11 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useCallback, useMemo, useState } from 'react';
 import Button from '../common/Button';
+import { getResponsiveImagePath } from '../../utils/images';
 
 interface HeroSectionProps {
   imageUrl: string;
 }
-
-import { getResponsiveImagePath } from '../../utils/images';
 
 const HeroSection = ({ imageUrl }: HeroSectionProps) => {
   const scrollIndicatorRef = useRef(null);
@@ -103,8 +102,8 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
             animate={
               isScrollIndicatorInView
                 ? {
-                    y: [0, 12, 0],
-                  }
+                  y: [0, 12, 0],
+                }
                 : { y: 0 }
             }
             transition={{
