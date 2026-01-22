@@ -35,7 +35,10 @@ const MusicianCard = memo(({ musician, index }: MusicianCardProps) => {
                   src={musician.imageUrl}
                   alt={musician.name}
                   className="absolute w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
-                  loading={index < 4 ? "eager" : "lazy"}
+                  loading={index < 4 ? 'eager' : 'lazy'}
+                  width="400"
+                  height="400"
+                  decoding="async"
                 />
               ) : (
                 <div className="absolute w-full h-full flex items-center justify-center text-coastal-gray">
@@ -80,8 +83,7 @@ const MusicianCard = memo(({ musician, index }: MusicianCardProps) => {
                       onClick={(e) => e.stopPropagation()}
                       className="inline-flex items-center px-3 py-1 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors duration-200"
                     >
-                      <InstagramIcon className="w-4 h-4 mr-1" />
-                      @{username}
+                      <InstagramIcon className="w-4 h-4 mr-1" />@{username}
                     </a>
                   );
                 })}
@@ -98,11 +100,7 @@ const MusicianCard = memo(({ musician, index }: MusicianCardProps) => {
       </motion.div>
 
       {/* Modal */}
-      <MusicianModal
-        musician={musician}
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-      />
+      <MusicianModal musician={musician} isOpen={isModalOpen} onClose={handleCloseModal} />
     </>
   );
 });

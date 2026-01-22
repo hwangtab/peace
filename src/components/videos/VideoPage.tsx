@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { videoItems } from '../../data/videos';
+import { getVideos } from '../../api/videos';
+import { VideoItem } from '../../types/video';
 import { filterByEvent, isValidFilter } from '../../utils/filtering';
 import { sortByDateDesc } from '../../utils/sorting';
 import EventFilter from '../common/EventFilter';
@@ -11,6 +12,15 @@ import VideoCard from './VideoCard';
 export default function VideoPage() {
   const location = useLocation();
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
+  const [videos, setVideos] = useState<VideoItem[]>([]);
+
+  useEffect(() => {
+    const loadVideos = async () => {
+      const data = await getVideos();
+      setVideos(data);
+    };
+    loadVideos();
+  }, []);
 
   // Sync filter with query parameter on mount
   useEffect(() => {
@@ -21,9 +31,9 @@ export default function VideoPage() {
     }
   }, [location.search]);
 
-  const filteredVideos = useMemo(() =>
-    sortByDateDesc(filterByEvent(videoItems, selectedFilter)),
-    [selectedFilter]
+  const filteredVideos = useMemo(
+    () => sortByDateDesc(filterByEvent(videos, selectedFilter)),
+    [videos, selectedFilter]
   );
 
   return (
