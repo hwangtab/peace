@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Track } from '../../types/track';
 import AudioPlayer from './AudioPlayer';
@@ -10,13 +11,13 @@ export interface TrackCardProps {
   onPlay: () => void;
 }
 
-const TrackCard: React.FC<TrackCardProps> = ({
+const TrackCard = React.memo(({
   track,
   isExpanded,
   onToggle,
   currentlyPlaying,
   onPlay,
-}) => {
+}: TrackCardProps) => {
 
   return (
     <motion.div
@@ -166,6 +167,6 @@ const TrackCard: React.FC<TrackCardProps> = ({
       )}
     </motion.div>
   );
-};
+});
 
 export default TrackCard;
