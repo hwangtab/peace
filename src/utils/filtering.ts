@@ -1,4 +1,4 @@
-type EventType = 'album' | 'camp';
+import { EventType } from '../types/event';
 
 interface FilterableItem {
   eventType?: EventType | string;
@@ -21,18 +21,13 @@ const filterMap: Record<string, { type: string; year: number }> = {
  * @param filter 필터 ID ('all', 'album-2024', 'camp-2023', 'camp-2025')
  * @returns 필터링된 아이템 배열
  */
-export const filterByEvent = <T extends FilterableItem>(
-  items: T[],
-  filter: string
-): T[] => {
+export const filterByEvent = <T extends FilterableItem>(items: T[], filter: string): T[] => {
   if (filter === 'all') return items;
 
   const config = filterMap[filter];
   if (!config) return items;
 
-  return items.filter(
-    item => item.eventType === config.type && item.eventYear === config.year
-  );
+  return items.filter((item) => item.eventType === config.type && item.eventYear === config.year);
 };
 
 /**
