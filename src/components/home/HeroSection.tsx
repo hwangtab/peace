@@ -6,16 +6,7 @@ interface HeroSectionProps {
   imageUrl: string;
 }
 
-// Moved outside component to avoid recreation
-const getResponsiveImagePath = (imagePath: string) => {
-  const basePath = imagePath.replace('.webp', '');
-  return {
-    mobile: `${basePath}-mobile.webp`,
-    tablet: `${basePath}-tablet.webp`,
-    desktop: `${basePath}-desktop.webp`,
-    original: imagePath
-  };
-};
+import { getResponsiveImagePath } from '../../utils/images';
 
 const HeroSection = ({ imageUrl }: HeroSectionProps) => {
   const scrollIndicatorRef = useRef(null);
@@ -35,11 +26,15 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
       {/* Responsive Background Image with fallback */}
       <img
         src={responsiveImages.desktop}
-        srcSet={!imageFailed ? `
+        srcSet={
+          !imageFailed
+            ? `
           ${responsiveImages.mobile} 800w,
           ${responsiveImages.tablet} 1200w,
           ${responsiveImages.desktop} 1920w
-        ` : undefined}
+        `
+            : undefined
+        }
         sizes="100vw"
         alt="강정마을 해변에서 열린 피스앤뮤직캠프 공연 무대"
         className="absolute inset-0 w-full h-full object-cover object-center"
@@ -85,17 +80,10 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
             강정마을에서 시작되는 평화의 메시지
           </p>
           <div className="flex justify-center gap-4">
-            <Button
-              href="#about"
-              variant="gold"
-              onClick={handleScrollToAbout}
-            >
+            <Button href="#about" variant="gold" onClick={handleScrollToAbout}>
               캠프 소개
             </Button>
-            <Button
-              to="/camps/2026"
-              variant="white-outline"
-            >
+            <Button to="/camps/2026" variant="white-outline">
               2026 캠프
             </Button>
           </div>
@@ -112,13 +100,17 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
       >
         <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
           <motion.div
-            animate={isScrollIndicatorInView ? {
-              y: [0, 12, 0],
-            } : { y: 0 }}
+            animate={
+              isScrollIndicatorInView
+                ? {
+                    y: [0, 12, 0],
+                  }
+                : { y: 0 }
+            }
             transition={{
               duration: 1.5,
               repeat: isScrollIndicatorInView ? 3 : 0,
-              repeatType: "reverse",
+              repeatType: 'reverse',
               repeatDelay: 0.5,
             }}
             className="w-2 h-2 bg-white rounded-full mt-2"
