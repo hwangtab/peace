@@ -14,7 +14,7 @@ const CampParticipants: React.FC<CampParticipantsProps> = ({ participants, inVie
     const [selectedMusician, setSelectedMusician] = useState<Musician | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const handleParticipantClick = (participant: string | Participant) => {
+    const handleParticipantClick = React.useCallback((participant: string | Participant) => {
         if (typeof participant === 'object' && participant !== null && participant.musicianId) {
             const musician = musicians.find(m => m.id === participant.musicianId);
             if (musician) {
@@ -22,7 +22,7 @@ const CampParticipants: React.FC<CampParticipantsProps> = ({ participants, inVie
                 setIsModalOpen(true);
             }
         }
-    };
+    }, []);
 
     const getParticipantName = (participant: string | Participant) => {
         if (!participant) return '';

@@ -49,10 +49,14 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
           // 반응형 이미지 로드 실패 시 원본으로 fallback
           if (imageFailed) return;
           const img = e.target as HTMLImageElement;
+          // Fallback to a placeholder or empty string if even the original fails to prevent infinite loops
           if (img.src !== imageUrl) {
             img.src = imageUrl;
             img.removeAttribute('srcset');
             setImageFailed(true);
+          } else {
+            // If original URL also fails, stop trying
+            img.style.display = 'none';
           }
         }}
       />

@@ -24,6 +24,7 @@ const Camp2026Page = lazy(() => import('./pages/Camp2026Page'));
 const AlbumMusiciansPage = lazy(() => import('./pages/album/AlbumMusiciansPage'));
 const AlbumTracksPage = lazy(() => import('./pages/album/AlbumTracksPage'));
 const AlbumAboutPage = lazy(() => import('./pages/album/AlbumAboutPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 // Pages will be imported here
 const HomePage = () => (
@@ -70,6 +71,7 @@ const AnimatedRoutes = () => {
             <Route path={ROUTES.CAMPS.CAMP_2025} element={<Camp2025Page />} />
             <Route path={ROUTES.CAMPS.CAMP_2026} element={<Camp2026Page />} />
             <Route path={ROUTES.ALBUM.ABOUT} element={<AlbumAboutPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
       </AnimatePresence>
