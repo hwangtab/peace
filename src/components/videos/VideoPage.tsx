@@ -8,6 +8,7 @@ import EventFilter from '../common/EventFilter';
 import PageLayout from '../layout/PageLayout';
 import PageHero from '../common/PageHero';
 import VideoCard from './VideoCard';
+import { getCollectionPageSchema } from '../../utils/structuredData';
 
 export default function VideoPage() {
   const location = useLocation();
@@ -36,12 +37,20 @@ export default function VideoPage() {
     [videos, selectedFilter]
   );
 
+  // Collection Page Schema
+  const collectionSchema = getCollectionPageSchema({
+    name: "비디오 - 강정피스앤뮤직캠프",
+    description: "강정피스앤뮤직캠프의 공연영상 모음. 평화를 노래하는 뮤지션들의 공연 영상을 만나보세요.",
+    url: "https://peaceandmusic.net/videos"
+  });
+
   return (
     <PageLayout
       title="비디오 - 강정피스앤뮤직캠프"
       description="강정피스앤뮤직캠프의 공연영상 모음. 평화를 노래하는 뮤지션들의 공연 영상을 만나보세요."
       keywords="공연영상, 강정피스앤뮤직캠프, 평화 공연, 뮤지션 공연, 유튜브 영상"
       background="sunlight-glow"
+      structuredData={collectionSchema}
       disableTopPadding={true}
     >
       <PageHero

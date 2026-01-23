@@ -9,6 +9,8 @@ import PageLayout from '../components/layout/PageLayout';
 import Section from '../components/layout/Section';
 import SectionHeader from '../components/common/SectionHeader';
 import WaveDivider from '../components/common/WaveDivider';
+import { getEventSchema } from '../utils/structuredData';
+import { getFullUrl } from '../config/env';
 
 interface CampDetailPageProps {
   campId: string;
@@ -45,12 +47,30 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId }) => {
 
   const ordinal = getOrdinalKorean(camp.year);
 
+  // Event Schema construction
+  const eventSchema = getEventSchema({
+    name: camp.title,
+    startDate: camp.startDate,
+    endDate: camp.endDate || camp.startDate,
+    description: camp.description,
+    location: {
+      name: camp.location.split('(')[0]?.trim() || camp.location,
+      address: camp.location.includes('(') ? (camp.location.split('(')[1]?.replace(')', '') || camp.location) : camp.location
+    },
+    image: camp.images && camp.images.length > 0 && camp.images[0] ? getFullUrl(camp.images[0]) : undefined,
+    performers: camp.participants?.map(p => ({
+      type: 'MusicGroup', // Default to MusicGroup for simplicity
+      name: typeof p === 'string' ? p : p.name
+    }))
+  });
+
   return (
     <PageLayout
       title={`제${ordinal}회 강정피스앤뮤직캠프 (${camp.year}) - ${camp.slogan || ''}`}
       description={camp.description}
       keywords={`강정피스앤뮤직캠프, 제${ordinal}회 캠프, ${camp.year}, 강정마을, 평화음악, 반전운동`}
       ogImage={camp.images[0]}
+      structuredData={eventSchema}
       disableTopPadding={true}
       disableBottomPadding={true}
     >
