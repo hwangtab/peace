@@ -15,6 +15,8 @@ import { VideoItem } from '../../types/video';
 import { Musician } from '../../types/musician';
 import { CalendarIcon, MapPinIcon, UserGroupIcon } from '@heroicons/react/24/outline';
 import WaveDivider from '../../components/common/WaveDivider';
+import { getMusicAlbumSchema } from '../../utils/structuredData';
+import { getFullUrl } from '../../config/env';
 
 const AlbumAboutPage = () => {
   const ref = useRef(null);
@@ -108,12 +110,29 @@ const AlbumAboutPage = () => {
     [videos]
   );
 
+  // MusicAlbum Schema
+  const albumSchema = getMusicAlbumSchema({
+    name: "이름을 모르는 먼 곳의 그대에게",
+    byArtist: { name: "강정피스앤뮤직캠프" },
+    genre: ["Folk", "Rock", "Jazz", "Electronic", "Ambient", "World Music"],
+    image: getFullUrl("/images-webp/album/albumart.png"),
+    datePublished: "2024-10-12",
+    numTracks: 12,
+    track: musicians.filter(m => m.trackTitle && m.id && m.id <= 13 && m.id !== 13).map(m => ({ // Include all except performance team if needed, but list implies 12 tracks
+      // Actually there are 13 musicians in the list. ID 13 is performance.
+      // Logic: checking if trackTitle exists.
+      name: m.trackTitle || "",
+      url: "https://peaceandmusic.net/album/tracks"
+    }))
+  });
+
   return (
     <PageLayout
       title="이름을 모르는 먼 곳의 그대에게 - 앨범 소개"
       description="강정피스앤뮤직캠프의 2024년 음반 프로젝트. 전쟁을 끝내고 평화를 노래하는 12곡의 음악 여정."
       keywords="이름을 모르는 먼 곳의 그대에게, 강정피스앤뮤직캠프, 음반, 평화음악"
       background="jeju-ocean"
+      structuredData={albumSchema}
       disableTopPadding={true}
       className="!pb-0"
     >

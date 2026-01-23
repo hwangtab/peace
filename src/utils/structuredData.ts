@@ -149,3 +149,98 @@ export const getCollectionPageSchema = (collection: {
   "description": collection.description,
   "url": collection.url
 });
+// Event Schema - 공연/캠프 정보
+export const getEventSchema = (event: {
+  name: string;
+  startDate: string;
+  endDate: string;
+  description: string;
+  location: {
+    name: string;
+    address: string;
+  };
+  image?: string;
+  performers?: Array<{ type: 'Person' | 'MusicGroup'; name: string }>;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": event.name,
+  "startDate": event.startDate,
+  "endDate": event.endDate,
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "location": {
+    "@type": "Place",
+    "name": event.location.name,
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": event.location.address,
+      "addressCountry": "KR"
+    }
+  },
+  "image": event.image || "https://peaceandmusic.net/og-image.png",
+  "description": event.description,
+  "performer": event.performers?.map(p => ({
+    "@type": p.type,
+    "name": p.name
+  })) || {
+    "@type": "Organization",
+    "name": "강정피스앤뮤직캠프"
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "강정피스앤뮤직캠프",
+    "url": "https://peaceandmusic.net"
+  }
+});
+
+// ProfilePage Schema - 뮤지션 프로필 페이지
+export const getProfilePageSchema = (person: {
+  name: string;
+  description: string;
+  image?: string;
+  jobTitle?: string;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "mainEntity": {
+    "@type": "Person",
+    "name": person.name,
+    "description": person.description,
+    "image": person.image,
+    "jobTitle": person.jobTitle || "Musician",
+    "memberOf": {
+      "@type": "Organization",
+      "name": "강정피스앤뮤직캠프"
+    }
+  }
+});
+
+// MusicAlbum Schema - 음악 앨범
+export const getMusicAlbumSchema = (album: {
+  name: string;
+  byArtist: { name: string };
+  genre: string[];
+  track?: Array<{ name: string; url?: string; duration?: string }>;
+  image?: string;
+  datePublished?: string;
+  numTracks?: number;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "MusicAlbum",
+  "name": album.name,
+  "byArtist": {
+    "@type": "MusicGroup",
+    "name": album.byArtist.name
+  },
+  "genre": album.genre,
+  "image": album.image,
+  "datePublished": album.datePublished,
+  "numTracks": album.numTracks || (album.track ? album.track.length : 0),
+  "track": album.track?.map(t => ({
+    "@type": "MusicRecording",
+    "name": t.name,
+    "duration": t.duration,
+    "url": t.url
+  }))
+});

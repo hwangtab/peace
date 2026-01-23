@@ -16,7 +16,7 @@ interface GallerySectionProps {
   hideSectionHeader?: boolean;
 }
 
-const GallerySection: React.FC<GallerySectionProps> = ({
+const GallerySection: React.FC<GallerySectionProps> = React.memo(({
   className,
   enableSectionWrapper = true,
   hideSectionHeader = false
@@ -119,7 +119,9 @@ const GallerySection: React.FC<GallerySectionProps> = ({
   }
 
   return content;
-};
+});
+
+GallerySection.displayName = 'GallerySection';
 
 export default GallerySection;
 

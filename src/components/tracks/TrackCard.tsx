@@ -93,7 +93,7 @@ const TrackCard = React.memo(({
                         <div className="mb-8">
                             <div className="flex items-center mb-4">
                                 <h4 className="text-lg font-serif text-jeju-ocean">곡 설명</h4>
-                                <div className="flex-grow ml-4 h-px bg-coastal-gray/20"></div>
+                                <div className="flex-grow ml-4 h-px bg-coastal-gray/20" />
                             </div>
                             <p className="text-gray-600 leading-relaxed whitespace-pre-line">{track.description}</p>
                         </div>
@@ -104,7 +104,7 @@ const TrackCard = React.memo(({
                         <div className="mb-8">
                             <div className="flex items-center mb-4">
                                 <h4 className="text-lg font-serif text-jeju-ocean">가사</h4>
-                                <div className="flex-grow ml-4 h-px bg-coastal-gray/20"></div>
+                                <div className="flex-grow ml-4 h-px bg-coastal-gray/20" />
                             </div>
                             <div className="bg-ocean-sand/30 p-4 rounded-lg">
                                 <p className="text-gray-600 whitespace-pre-line leading-relaxed">{track.lyrics}</p>
@@ -117,7 +117,7 @@ const TrackCard = React.memo(({
                         <div className="mb-4">
                             <div className="flex items-center mb-4">
                                 <h4 className="text-lg font-serif text-jeju-ocean">크레딧</h4>
-                                <div className="flex-grow ml-4 h-px bg-coastal-gray/20"></div>
+                                <div className="flex-grow ml-4 h-px bg-coastal-gray/20" />
                             </div>
                             <div className="grid grid-cols-1 gap-4">
                                 {Object.entries(track.credits).map(([role, value]) => {

@@ -14,6 +14,8 @@ import TimelineSection from './components/home/TimelineSection';
 import GallerySection from './components/home/GallerySection';
 import SEOHelmet from './components/shared/SEOHelmet';
 import WaveDivider from './components/common/WaveDivider';
+import { getWebSiteSchema, getOrganizationSchema, getFAQSchema } from './utils/structuredData';
+import { seoFaqs } from './data/seo-faq';
 
 // Lazy load route-specific pages
 const PressPage = lazy(() => import('./components/press/PressPage'));
@@ -28,17 +30,30 @@ const AlbumAboutPage = lazy(() => import('./pages/album/AlbumAboutPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 // Pages will be imported here
-const HomePage = () => (
-  <div>
-    <SEOHelmet />
-    <HeroSection imageUrl="/images-webp/camps/2023/DSC00437.webp" />
-    <AboutSection />
-    <WaveDivider className="text-sunlight-glow -mt-[60px] sm:-mt-[100px] relative z-10" />
-    <TimelineSection />
-    <WaveDivider className="text-golden-sun -mt-[60px] sm:-mt-[100px] relative z-10" />
-    <GallerySection />
-  </div>
-);
+const HomePage = () => {
+  const structuredData = [
+    getWebSiteSchema(),
+    getOrganizationSchema(),
+    getFAQSchema(seoFaqs)
+  ];
+
+  return (
+    <div>
+      <SEOHelmet
+        title="강정피스앤뮤직캠프 | 노래하자, 춤추자, 전쟁을 끝내자"
+        description="제주 강정마을에서 시작되는 평화를 위한 음악 프로젝트. 2026년 6월 5일-7일 강정체육공원에서 열리는 반전 평화 음악 축제. 전세계 분쟁 지역의 평화를 염원하며 함께 노래합니다."
+        keywords="강정피스앤뮤직캠프, 평화축제, 제주도축제, 음악캠프, 반전평화, 강정마을, 2026공연, 인디밴드공연, 평화운동, 제주공연"
+        structuredData={structuredData}
+      />
+      <HeroSection imageUrl="/images-webp/camps/2023/DSC00437.webp" />
+      <AboutSection />
+      <WaveDivider className="text-sunlight-glow -mt-[60px] sm:-mt-[100px] relative z-10" />
+      <TimelineSection />
+      <WaveDivider className="text-golden-sun -mt-[60px] sm:-mt-[100px] relative z-10" />
+      <GallerySection />
+    </div>
+  );
+};
 
 
 
@@ -46,7 +61,7 @@ const HomePage = () => (
 const PageLoadingSpinner = () => (
   <div className="min-h-screen bg-light-beige flex items-center justify-center">
     <div className="text-center">
-      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-deep-sage mx-auto mb-4"></div>
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-deep-sage mx-auto mb-4" />
       <p className="text-gray-600 font-serif">로딩 중...</p>
     </div>
   </div>
@@ -59,7 +74,7 @@ const AnimatedRoutes = () => {
     <div className="app-wrapper">
       <AnimatePresence mode="wait" initial={false}>
         <Suspense fallback={<PageLoadingSpinner />}>
-          <Routes location={location} key={location.pathname}>
+          <Routes location={location}>
             <Route path={ROUTES.HOME} element={<HomePage />} />
             <Route path={ROUTES.LEGACY.MUSICIANS} element={<Navigate to={ROUTES.ALBUM.MUSICIANS} replace />} />
             <Route path={ROUTES.LEGACY.TRACKS} element={<Navigate to={ROUTES.ALBUM.TRACKS} replace />} />

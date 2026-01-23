@@ -12,11 +12,13 @@ jest.mock('react-error-boundary', () => ({
   useErrorBoundary: () => ({ resetBoundary: jest.fn() }),
 }));
 // Mock framer-motion to skip animations
+type MotionComponentProps = React.HTMLAttributes<HTMLElement> & { children?: React.ReactNode };
+
 jest.mock('framer-motion', () => ({
   motion: {
-    div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
-    span: ({ children, ...props }: any) => <span {...props}>{children}</span>,
-    button: ({ children, ...props }: any) => <button {...props}>{children}</button>,
+    div: ({ children, ...props }: MotionComponentProps) => <div {...props}>{children}</div>,
+    span: ({ children, ...props }: MotionComponentProps) => <span {...props}>{children}</span>,
+    button: ({ children, ...props }: MotionComponentProps) => <button {...props}>{children}</button>,
   },
-  AnimatePresence: ({ children }: any) => <>{children}</>,
+  AnimatePresence: ({ children }: { children: React.ReactNode }) => <>{children}</>,
 }));

@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { camps } from '../data/camps';
 import PageLayout from '../components/layout/PageLayout';
 import SectionHeader from '../components/common/SectionHeader';
+import { getEventSchema } from '../utils/structuredData';
+import { getFullUrl } from '../config/env';
 
 const Camp2026Page = () => {
   const camp2026 = camps.find(camp => camp.id === 'camp-2026');
@@ -22,12 +24,30 @@ const Camp2026Page = () => {
     );
   }
 
+  // Event Schema construction
+  const eventSchema = getEventSchema({
+    name: camp2026.title,
+    startDate: camp2026.startDate,
+    endDate: camp2026.endDate || camp2026.startDate,
+    description: camp2026.description,
+    location: {
+      name: camp2026.location.split('(')[0]?.trim() || camp2026.location,
+      address: camp2026.location.includes('(') ? (camp2026.location.split('(')[1]?.replace(')', '') || camp2026.location) : camp2026.location
+    },
+    image: camp2026.images && camp2026.images.length > 0 && camp2026.images[0] ? getFullUrl(camp2026.images[0]) : undefined,
+    performers: camp2026.participants?.map(p => ({
+      type: 'MusicGroup',
+      name: typeof p === 'string' ? p : p.name
+    }))
+  });
+
   return (
     <PageLayout
       title="제3회 강정피스앤뮤직캠프 (2026) - Coming Soon"
-      description="2026년 여름 개최 예정인 제3회 강정피스앤뮤직캠프. 평화를 노래하는 음악 축제에 함께하세요."
-      keywords="강정피스앤뮤직캠프, 2026, 제3회 캠프, Coming Soon, 평화음악"
+      description="2026년 6월 5일-7일 강정체육공원에서 개최 예정인 제3회 강정피스앤뮤직캠프. 32팀의 뮤지션 확정!"
+      keywords="강정피스앤뮤직캠프, 2026, 제3회 캠프, Coming Soon, 평화음악, 강정체육공원"
       background="jeju-ocean"
+      structuredData={eventSchema}
     >
       <div className="container mx-auto px-4 relative z-10 flex flex-col items-center justify-center min-h-[60vh] text-center">
 
