@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import { useAudioPlayer } from '../../hooks/useAudioPlayer';
 
@@ -9,7 +10,7 @@ interface AudioPlayerProps {
   artist: string;
 }
 
-const AudioPlayer = ({ audioUrl, isPlaying, onPlayPause, title, artist }: AudioPlayerProps) => {
+const AudioPlayer = React.memo(({ audioUrl, isPlaying, onPlayPause, title, artist }: AudioPlayerProps) => {
   const {
     progress,
     duration,
@@ -54,6 +55,18 @@ const AudioPlayer = ({ audioUrl, isPlaying, onPlayPause, title, artist }: AudioP
       <div
         className="mt-2 h-1 bg-gray-200 rounded cursor-pointer"
         onClick={handleSeek}
+        onTouchEnd={(e) => {
+          const touch = e.changedTouches[0];
+          if (touch) {
+            const target = e.currentTarget;
+            const bounds = target.getBoundingClientRect();
+            const mouseEvent = {
+              currentTarget: target,
+              clientX: touch.clientX,
+            } as React.MouseEvent<HTMLDivElement>;
+            handleSeek(mouseEvent);
+          }
+        }}
         onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleSeek(e as unknown as React.MouseEvent<HTMLDivElement>); } }}
         role="slider"
         tabIndex={0}
@@ -70,6 +83,8 @@ const AudioPlayer = ({ audioUrl, isPlaying, onPlayPause, title, artist }: AudioP
       </div>
     </div>
   );
-};
+});
+
+AudioPlayer.displayName = 'AudioPlayer';
 
 export default AudioPlayer;

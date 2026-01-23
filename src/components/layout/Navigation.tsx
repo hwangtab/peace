@@ -18,13 +18,21 @@ const Navigation = () => {
   } = useNavigation();
 
   return (
-    <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${isScrolled
-          ? 'bg-cloud-white/90 backdrop-blur-md shadow-sm'
-          : 'bg-transparent'
-        }`}
-    >
-      <div className="container mx-auto px-4">
+    <>
+      {/* Skip to main content link for screen readers */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:bg-jeju-ocean focus:text-white focus:px-4 focus:py-2 focus:rounded"
+      >
+        메인 콘텐츠로 바로가기
+      </a>
+      <nav
+        className={`fixed w-full z-50 transition-all duration-300 ${isScrolled
+            ? 'bg-cloud-white/90 backdrop-blur-md shadow-sm'
+            : 'bg-transparent'
+          }`}
+      >
+        <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <Link
             to="/"
@@ -63,17 +71,18 @@ const Navigation = () => {
             </button>
           </div>
         </div>
-      </div>
+        </div>
 
-      {/* Mobile Menu */}
-      <MobileMenu
-        isOpen={isOpen}
-        location={location}
-        mobileOpenDropdown={mobileOpenDropdown}
-        onClose={closeMenu}
-        onToggleDropdown={toggleMobileDropdown}
-      />
-    </nav>
+        {/* Mobile Menu */}
+        <MobileMenu
+          isOpen={isOpen}
+          location={location}
+          mobileOpenDropdown={mobileOpenDropdown}
+          onClose={closeMenu}
+          onToggleDropdown={toggleMobileDropdown}
+        />
+      </nav>
+    </>
   );
 };
 
