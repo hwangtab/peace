@@ -43,14 +43,14 @@ const Camp2026Page = () => {
 
           <SectionHeader
             title={camp2026.title}
-            subtitle="평화의 바람은 계속해서 불어옵니다. 세 번째 평화의 노래가 2026년 여름, 강정에서 울려 퍼집니다."
+            subtitle="평화의 바람은 계속해서 불어옵니다. 세 번째 평화의 노래가 2026년 6월, 강정에서 울려 퍼집니다."
           />
 
           <div className="bg-ocean-sand/30 p-10 rounded-2xl mb-10">
-            <h3 className="typo-h3 mb-6 text-jeju-ocean">2026년 여름을 기대해주세요!</h3>
+            <h3 className="typo-h3 mb-6 text-jeju-ocean">2026년 6월 5일(금) - 6월 7일(일)<br />강정체육공원</h3>
             <p className="typo-body text-gray-700 mb-0 leading-relaxed">
-              더 풍성하고 의미 있는 평화의 축제를 준비하고 있습니다.<br />
-              구체적인 일정과 라인업은 추후 공개됩니다.
+              현재 음악가 32팀 출연 확정<br />
+              약 50-60팀 출연 예상
             </p>
           </div>
 
