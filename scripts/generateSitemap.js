@@ -8,16 +8,7 @@ const pages = [
         changefreq: 'weekly',
         priority: '1.0'
     },
-    {
-        path: '/musicians',
-        changefreq: 'weekly',
-        priority: '0.8'
-    },
-    {
-        path: '/tracks',
-        changefreq: 'weekly',
-        priority: '0.8'
-    },
+
     {
         path: '/gallery',
         changefreq: 'weekly',
