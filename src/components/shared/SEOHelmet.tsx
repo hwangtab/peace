@@ -23,6 +23,9 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
 }) => {
     const fullCanonicalUrl = canonicalUrl || (typeof window !== 'undefined' ? window.location.href : config.siteUrl);
 
+    // Ensure ogImage is a full URL (if it's a relative path, convert it)
+    const fullOgImage = ogImage.startsWith('http') ? ogImage : getFullUrl(ogImage);
+
     // Structured Data를 배열로 변환 (단일 객체 또는 배열 모두 지원)
     const structuredDataArray = structuredData
         ? (Array.isArray(structuredData) ? structuredData : [structuredData])
@@ -56,7 +59,7 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
             <meta property="og:site_name" content="강정피스앤뮤직캠프" />
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
-            <meta property="og:image" content={ogImage} />
+            <meta property="og:image" content={fullOgImage} />
             <meta property="og:image:width" content="1200" />
             <meta property="og:image:height" content="630" />
             <meta property="og:locale" content="ko_KR" />
@@ -66,7 +69,7 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
             <meta name="twitter:url" content={fullCanonicalUrl} />
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description} />
-            <meta name="twitter:image" content={ogImage} />
+            <meta name="twitter:image" content={fullOgImage} />
 
             {/* Structured Data (JSON-LD) */}
             {structuredDataArray.map((data, index) => (
