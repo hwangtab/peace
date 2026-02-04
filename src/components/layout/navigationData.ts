@@ -1,20 +1,20 @@
 import { ROUTES } from '../../constants/routes';
 
 export const simpleMenuItems = [
-    { name: '홈', path: ROUTES.HOME },
-    { name: '갤러리', path: ROUTES.GALLERY },
-    { name: '비디오', path: ROUTES.VIDEOS },
-    { name: '언론보도', path: ROUTES.PRESS },
+    { nameKey: 'nav.home', path: ROUTES.HOME },
+    { nameKey: 'nav.gallery', path: ROUTES.GALLERY },
+    { nameKey: 'nav.video', path: ROUTES.VIDEOS },
+    { nameKey: 'nav.press', path: ROUTES.PRESS },
 ];
 
 export const campItems = [
-    { name: '2023 캠프', path: ROUTES.CAMPS.CAMP_2023 },
-    { name: '2025 캠프', path: ROUTES.CAMPS.CAMP_2025 },
-    { name: '2026 캠프', path: ROUTES.CAMPS.CAMP_2026 },
+    { nameKey: 'nav.camp_2023', path: ROUTES.CAMPS.CAMP_2023 },
+    { nameKey: 'nav.camp_2025', path: ROUTES.CAMPS.CAMP_2025 },
+    { nameKey: 'nav.camp_2026', path: ROUTES.CAMPS.CAMP_2026 },
 ];
 
 export const albumItems = [
-    { name: '앨범 소개', path: ROUTES.ALBUM.ABOUT },
-    { name: '뮤지션', path: ROUTES.ALBUM.MUSICIANS },
-    { name: '수록곡', path: ROUTES.ALBUM.TRACKS },
+    { nameKey: 'nav.album_about', path: ROUTES.ALBUM.ABOUT },
+    { nameKey: 'nav.musician', path: ROUTES.ALBUM.MUSICIANS },
+    { nameKey: 'nav.track', path: ROUTES.ALBUM.TRACKS },
 ];

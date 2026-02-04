@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { PressItem, pressItems } from '../../data/press';
 import { getBreadcrumbSchema } from '../../utils/structuredData';
 import { filterByEvent } from '../../utils/filtering';
@@ -49,11 +50,12 @@ const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
 };
 
 export default function PressPage() {
+  const { t } = useTranslation();
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
 
   const breadcrumbs = [
-    { name: "홈", url: "https://peaceandmusic.net/" },
-    { name: "언론보도", url: "https://peaceandmusic.net/press" }
+    { name: t('press.breadcrumb_home'), url: "https://peaceandmusic.net/" },
+    { name: t('press.breadcrumb_press'), url: "https://peaceandmusic.net/press" }
   ];
 
   const structuredData = [
@@ -67,17 +69,17 @@ export default function PressPage() {
 
   return (
     <PageLayout
-      title="언론보도 | 이름을 모르는 먼 곳의 그대에게"
-      description="평화를 노래하는 우리들의 이야기. 이름을 모르는 먼 곳의 그대에게 프로젝트에 대한 언론 보도와 기사를 확인하세요."
-      keywords="언론보도, 기사, 뉴스, 평화 프로젝트 보도"
+      title={t('press.page_title')}
+      description={t('press.page_desc')}
+      keywords={t('press.keywords')}
       canonicalUrl="https://peaceandmusic.net/press"
       structuredData={structuredData}
       background="ocean-sand"
       disableTopPadding={true}
     >
       <PageHero
-        title="언론보도"
-        subtitle="평화를 노래하는 우리들의 이야기"
+        title={t('press.hero_title')}
+        subtitle={t('press.hero_subtitle')}
         backgroundImage="/images-webp/camps/2023/DSC00610.webp"
       />
 

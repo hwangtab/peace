@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Track } from '../../types/track';
 import AudioPlayer from './AudioPlayer';
@@ -18,6 +19,7 @@ const TrackCard = React.memo(({
     currentlyPlaying,
     onPlay,
 }: TrackCardProps) => {
+    const { t } = useTranslation();
 
     return (
         <motion.div
@@ -92,7 +94,7 @@ const TrackCard = React.memo(({
                     {track.description && (
                         <div className="mb-8">
                             <div className="flex items-center mb-4">
-                                <h4 className="text-lg font-serif text-jeju-ocean">곡 설명</h4>
+                                <h4 className="text-lg font-serif text-jeju-ocean">{t('common.track_desc')}</h4>
                                 <div className="flex-grow ml-4 h-px bg-coastal-gray/20" />
                             </div>
                             <p className="text-gray-600 leading-relaxed whitespace-pre-line">{track.description}</p>
@@ -103,7 +105,7 @@ const TrackCard = React.memo(({
                     {track.lyrics && (
                         <div className="mb-8">
                             <div className="flex items-center mb-4">
-                                <h4 className="text-lg font-serif text-jeju-ocean">가사</h4>
+                                <h4 className="text-lg font-serif text-jeju-ocean">{t('common.lyrics')}</h4>
                                 <div className="flex-grow ml-4 h-px bg-coastal-gray/20" />
                             </div>
                             <div className="bg-ocean-sand/30 p-4 rounded-lg">
@@ -116,7 +118,7 @@ const TrackCard = React.memo(({
                     {track.credits && (
                         <div className="mb-4">
                             <div className="flex items-center mb-4">
-                                <h4 className="text-lg font-serif text-jeju-ocean">크레딧</h4>
+                                <h4 className="text-lg font-serif text-jeju-ocean">{t('common.credits')}</h4>
                                 <div className="flex-grow ml-4 h-px bg-coastal-gray/20" />
                             </div>
                             <div className="grid grid-cols-1 gap-4">
@@ -152,7 +154,7 @@ const TrackCard = React.memo(({
                                     return (
                                         <div key={role} className="flex items-start space-x-2">
                                             <span className="text-sm text-coastal-gray font-medium min-w-[80px]">
-                                                {role === 'personnel' ? 'Personnel' : role}
+                                                {role === 'personnel' ? t('common.label_personnel') : role}
                                             </span>
                                             <span className="text-gray-600">
                                                 {renderValue()}

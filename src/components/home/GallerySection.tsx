@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { GalleryImage } from '../../types/gallery';
 import { useGalleryImages } from '../../hooks/useGalleryImages';
 import { GALLERY_CONFIG } from '../../constants/config';
@@ -21,6 +22,7 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(({
   enableSectionWrapper = true,
   hideSectionHeader = false
 }) => {
+  const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
 
   const {
@@ -36,8 +38,8 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(({
     <div className={`container mx-auto px-4 sm:px-6 lg:px-8 ${!enableSectionWrapper ? className : ''}`}>
       {!hideSectionHeader && (
         <SectionHeader
-          title="평화의 순간들"
-          subtitle="평화를 노래하는 순간들"
+          title={t('gallery.section_title')}
+          subtitle={t('gallery.section_subtitle')}
         />
       )}
 
@@ -56,7 +58,7 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(({
 
       {filteredImages.length === 0 ? (
         <div className="text-center py-20 bg-white/50 rounded-lg">
-          <p className="text-xl text-gray-500 font-serif">등록된 사진이 없습니다.</p>
+          <p className="text-xl text-gray-500 font-serif">{t('gallery.no_images')}</p>
         </div>
       ) : (
         <>
@@ -89,7 +91,7 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(({
                 onClick={loadMore}
                 variant="outline"
               >
-                더 보기
+                {t('gallery.load_more')}
               </Button>
             </div>
           )}
@@ -101,7 +103,7 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(({
           image={{
             url: selectedImage.url,
             alt: selectedImage.description ||
-              `${selectedImage.eventYear || ''}년 강정피스앤뮤직캠프 갤러리 이미지`
+              `${selectedImage.eventYear || ''}${t('gallery.image_alt_fallback')}`
           }}
           onClose={() => setSelectedImage(null)}
           maxHeight="85vh"
@@ -124,4 +126,3 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(({
 GallerySection.displayName = 'GallerySection';
 
 export default GallerySection;
-
