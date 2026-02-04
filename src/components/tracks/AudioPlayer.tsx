@@ -61,7 +61,6 @@ const AudioPlayer = React.memo(({ audioUrl, isPlaying, onPlayPause, title, artis
           const touch = e.changedTouches[0];
           if (touch) {
             const target = e.currentTarget;
-            const bounds = target.getBoundingClientRect();
             const mouseEvent = {
               currentTarget: target,
               clientX: touch.clientX,

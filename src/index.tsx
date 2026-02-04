@@ -16,5 +16,6 @@ root.render(
 
 // Only measure performance in development
 if (process.env.NODE_ENV === 'development') {
+  // eslint-disable-next-line no-console
   reportWebVitals(console.log);
 }
