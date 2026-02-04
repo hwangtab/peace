@@ -1,4 +1,5 @@
 import React, { memo, useState, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Musician } from '../../types/musician';
 import { extractInstagramUsername } from '../../utils/instagram';
@@ -11,6 +12,7 @@ interface MusicianCardProps {
 }
 
 const MusicianCard = memo(({ musician, index }: MusicianCardProps) => {
+  const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = useCallback(() => setIsModalOpen(true), []);
@@ -92,7 +94,7 @@ const MusicianCard = memo(({ musician, index }: MusicianCardProps) => {
 
             {/* Track Title */}
             <div className="mt-auto pt-4 border-t border-gray-100">
-              <p className="text-sm text-gray-500">수록곡</p>
+              <p className="text-sm text-gray-500">{t('common.featured_track')}</p>
               <p className="text-jeju-ocean font-medium">{musician.trackTitle}</p>
             </div>
           </div>

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { motion, useInView } from 'framer-motion';
 import { useRef, useCallback, useMemo, useState } from 'react';
 import Button from '../common/Button';
@@ -8,6 +9,7 @@ interface HeroSectionProps {
 }
 
 const HeroSection = ({ imageUrl }: HeroSectionProps) => {
+  const { t } = useTranslation();
   const scrollIndicatorRef = useRef(null);
   const isScrollIndicatorInView = useInView(scrollIndicatorRef);
   const [imageFailed, setImageFailed] = useState(false);
@@ -35,7 +37,7 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
             : undefined
         }
         sizes="100vw"
-        alt="강정마을 해변에서 열린 피스앤뮤직캠프 공연 무대"
+        alt={t('home.hero.image_alt')}
         className="absolute inset-0 w-full h-full object-cover object-center"
         loading="eager"
         fetchPriority="high"
@@ -73,20 +75,20 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-[clamp(1.5rem,8vw,5.5rem)] font-partial leading-tight text-cloud-white mb-6 drop-shadow-md whitespace-nowrap">
-            강정피스앤뮤직캠프
+            {t('home.hero.title')}
           </h1>
           <p className="text-[clamp(1rem,4vw,2.25rem)] font-stone leading-tight text-golden-sun mb-6 drop-shadow-sm whitespace-nowrap">
-            전쟁을 끝내자! 노래하자, 춤추자
+            {t('home.hero.subtitle')}
           </p>
           <p className="text-[clamp(0.8125rem,2.2vw,1.25rem)] font-caption leading-relaxed text-seafoam mb-12 font-medium drop-shadow-sm whitespace-nowrap">
-            강정마을에서 시작되는 평화의 메시지
+            {t('home.hero.message')}
           </p>
           <div className="flex justify-center gap-4">
             <Button href="#about" variant="gold" onClick={handleScrollToAbout}>
-              캠프 소개
+              {t('home.hero.camp_intro')}
             </Button>
             <Button to="/camps/2026" variant="white-outline">
-              2026 캠프
+              {t('home.hero.camp_2026')}
             </Button>
           </div>
         </motion.div>
@@ -105,8 +107,8 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
             animate={
               isScrollIndicatorInView
                 ? {
-                    y: [0, 12, 0],
-                  }
+                  y: [0, 12, 0],
+                }
                 : { y: 0 }
             }
             transition={{

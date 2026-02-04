@@ -1,10 +1,11 @@
-import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import { AnimatePresence, motion } from 'framer-motion';
+import { IoChevronDown } from 'react-icons/io5';
+import { useTranslation } from 'react-i18next';
 
 interface DropdownItem {
-  name: string;
+  nameKey: string;
   path: string;
 }
 
@@ -19,35 +20,32 @@ interface NavigationDropdownProps {
 const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(({
   label,
   items,
-  isOpen = false,
+  isOpen,
   onOpenChange,
-  isScrolled = true,
+  isScrolled
 }) => {
-  const [internalOpen, setInternalOpen] = useState(isOpen);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
   const location = useLocation();
+  const [internalOpen, setInternalOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // 제어/비제어 모드 결정
-  const isControlled = onOpenChange !== undefined;
+  // Controlled vs Uncontrolled state
+  const isControlled = isOpen !== undefined && onOpenChange !== undefined;
   const open = isControlled ? isOpen : internalOpen;
 
-  // useCallback으로 안정적인 setOpen 함수 생성
-  const setOpen = useCallback((value: boolean) => {
-    if (isControlled && onOpenChange) {
-      onOpenChange(value);
+  const setOpen = React.useCallback((newOpen: boolean) => {
+    if (isControlled) {
+      if (onOpenChange) onOpenChange(newOpen);
     } else {
-      setInternalOpen(value);
+      setInternalOpen(newOpen);
     }
   }, [isControlled, onOpenChange]);
 
-  // useRef로 setOpen 참조 안정화 (의존성 배열에서 제거)
-  const setOpenRef = useRef(setOpen);
-  setOpenRef.current = setOpen;
-
+  // Close when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setOpenRef.current(false);
+        setOpen(false);
       }
     };
 
@@ -58,24 +56,12 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(({
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [open]); // setOpen 의존성 제거됨
+  }, [open, setOpen]);
 
-  // useMemo로 isActive 계산 캐싱
-  const isActive = useMemo(() => items.some(item => {
-    if (location.pathname === item.path) return true;
+  // Check if any item is active
+  const isActive = items.some(item => location.pathname === item.path);
 
-    // 경로 접두사 확인: /camps/2023, /camps/2025 등
-    const pathParts = item.path.split('/').filter(p => p);  // 빈 문자열 제거
-    if (pathParts.length > 1) {
-      const prefix = '/' + pathParts.slice(0, -1).join('/');  // /camps
-      return prefix && location.pathname.startsWith(prefix + '/');
-    }
-
-    return false;
-  }), [items, location.pathname]);
-
-  // Dynamic styles based on scroll position
-  const getButtonColors = () => {
+  const getTextColor = () => {
     if (isScrolled) {
       return isActive || open
         ? 'text-jeju-ocean font-bold'
@@ -86,31 +72,19 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(({
       : 'text-cloud-white/90 hover:text-cloud-white drop-shadow-md';
   };
 
-  // Keyboard navigation handler
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Escape' && open) {
-      setOpenRef.current(false);
-    } else if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      setOpenRef.current(!open);
-    }
-  };
-
   return (
     <div className="relative group" ref={dropdownRef}>
       <button
         onClick={() => setOpen(!open)}
-        onKeyDown={handleKeyDown}
-        className={`flex items-center gap-1 ${getButtonColors()} transition-colors duration-300 font-serif py-2`}
+        className={`flex items-center space-x-1 ${getTextColor()} transition-colors duration-300 font-display focus:outline-none`}
         aria-expanded={open}
-        aria-haspopup="true"
       >
-        {label}
+        <span>{label}</span>
         <motion.div
           animate={{ rotate: open ? 180 : 0 }}
           transition={{ duration: 0.2 }}
         >
-          <ChevronDownIcon className="h-4 w-4" />
+          <IoChevronDown className="w-4 h-4 ml-1" />
         </motion.div>
       </button>
 
@@ -121,23 +95,21 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-50"
+            className="absolute top-full left-0 mt-2 w-48 bg-white/95 backdrop-blur-md shadow-lg rounded-lg overflow-hidden py-2 border border-ocean-mist/20 z-50 text-left"
           >
-            <div className="py-2">
-              {items.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`block px-4 py-2 ${location.pathname === item.path
-                    ? 'bg-ocean-sand text-jeju-ocean font-semibold'
-                    : 'text-deep-ocean hover:bg-ocean-sand/50'
-                    } transition-colors duration-200 font-serif`}
-                  onClick={() => setOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
+            {items.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`block px-4 py-2 ${location.pathname === item.path
+                  ? 'bg-ocean-sand text-jeju-ocean font-semibold'
+                  : 'text-deep-ocean hover:bg-ocean-sand/50'
+                  } transition-colors duration-200 font-serif`}
+                onClick={() => setOpen(false)}
+              >
+                {t(item.nameKey)}
+              </Link>
+            ))}
           </motion.div>
         )}
       </AnimatePresence>

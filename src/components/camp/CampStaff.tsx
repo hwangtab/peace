@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { StaffSection } from '../../types/camp';
 
@@ -9,6 +10,7 @@ interface CampStaffProps {
 }
 
 const CampStaff: React.FC<CampStaffProps> = ({ staff, collaborators, inView }) => {
+    const { t } = useTranslation();
     return (
         <div className="space-y-6">
             {/* Staff sections */}
@@ -38,7 +40,7 @@ const CampStaff: React.FC<CampStaffProps> = ({ staff, collaborators, inView }) =
                     transition={{ duration: 0.4, delay: 0.3 + staff.length * 0.05 }}
                     className="pt-4 border-t border-gray-100"
                 >
-                    <h4 className="font-serif text-base text-gray-600 mb-3">협력</h4>
+                    <h4 className="font-serif text-base text-gray-600 mb-3">{t('camp.section_collaborators')}</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         {collaborators.map((org, index) => (
                             <motion.div

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useAudioPlayer } from '../../hooks/useAudioPlayer';
 
@@ -11,6 +12,7 @@ interface AudioPlayerProps {
 }
 
 const AudioPlayer = React.memo(({ audioUrl, isPlaying, onPlayPause, title, artist }: AudioPlayerProps) => {
+  const { t } = useTranslation();
   const {
     progress,
     duration,
@@ -70,7 +72,7 @@ const AudioPlayer = React.memo(({ audioUrl, isPlaying, onPlayPause, title, artis
         onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleSeek(e as unknown as React.MouseEvent<HTMLDivElement>); } }}
         role="slider"
         tabIndex={0}
-        aria-label="오디오 재생 위치"
+        aria-label={t('common.audio_position')}
         aria-valuenow={Math.round(progress)}
         aria-valuemin={0}
         aria-valuemax={Math.round(duration)}

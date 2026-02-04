@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
 import { config, getFullUrl } from '../../config/env';
 
@@ -13,14 +14,18 @@ export interface SEOHelmetProps {
 }
 
 const SEOHelmet: React.FC<SEOHelmetProps> = ({
-    title = "강정피스앤뮤직캠프 | 노래하자, 춤추자, 전쟁을 끝내자",
-    description = "제주 강정마을에서 시작되는 평화를 위한 음악 프로젝트. 전세계 분쟁 지역의 평화를 염원하며 음악가들이 함께 노래하고 연대하는 강정피스앤뮤직캠프입니다.",
-    keywords = "강정피스앤뮤직캠프, 강정마을, 평화음악, 음악캠프, 평화운동, 제주, 반전운동, 음악축제, 평화프로젝트, 뮤지션, 음악가, 평화와음악",
+    title,
+    description,
+    keywords,
     ogImage = getFullUrl(config.ogImage),
     ogType = "website",
     canonicalUrl,
     structuredData,
 }) => {
+    const { t, i18n } = useTranslation();
+    const finalTitle = title || t('seo.default.title');
+    const finalDescription = description || t('seo.default.description');
+    const finalKeywords = keywords || t('seo.default.keywords');
     const fullCanonicalUrl = canonicalUrl || (typeof window !== 'undefined' ? window.location.href : config.siteUrl);
 
     // Ensure ogImage is a full URL (if it's a relative path, convert it)
@@ -34,11 +39,11 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
     return (
         <Helmet>
             {/* 기본 메타 태그 */}
-            <html lang="ko" />
-            <title>{title}</title>
-            <meta name="description" content={description} />
-            <meta name="keywords" content={keywords} />
-            <meta name="author" content="강정피스앤뮤직캠프" />
+            <html lang={i18n.language} />
+            <title>{finalTitle}</title>
+            <meta name="description" content={finalDescription} />
+            <meta name="keywords" content={finalKeywords} />
+            <meta name="author" content={t('nav.logo')} />
 
             {/* Canonical URL */}
             <link rel="canonical" href={fullCanonicalUrl} />
@@ -49,26 +54,26 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
             <meta name="rating" content="general" />
 
             {/* 지역 및 언어 */}
-            <meta name="geo.region" content="KR" />
-            <meta name="geo.placename" content="South Korea" />
-            <meta name="language" content="Korean" />
+            <meta name="geo.region" content={i18n.language === 'ko' ? 'KR' : 'US'} />
+            <meta name="geo.placename" content={i18n.language === 'ko' ? 'South Korea' : 'USA'} />
+            <meta name="language" content={i18n.language === 'ko' ? 'Korean' : 'English'} />
 
             {/* Open Graph / Facebook */}
             <meta property="og:type" content={ogType} />
             <meta property="og:url" content={fullCanonicalUrl} />
-            <meta property="og:site_name" content="강정피스앤뮤직캠프" />
-            <meta property="og:title" content={title} />
-            <meta property="og:description" content={description} />
+            <meta property="og:site_name" content={t('nav.logo')} />
+            <meta property="og:title" content={finalTitle} />
+            <meta property="og:description" content={finalDescription} />
             <meta property="og:image" content={fullOgImage} />
             <meta property="og:image:width" content="1200" />
             <meta property="og:image:height" content="630" />
-            <meta property="og:locale" content="ko_KR" />
+            <meta property="og:locale" content={i18n.language === 'ko' ? 'ko_KR' : 'en_US'} />
 
             {/* Twitter Card */}
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:url" content={fullCanonicalUrl} />
-            <meta name="twitter:title" content={title} />
-            <meta name="twitter:description" content={description} />
+            <meta name="twitter:title" content={finalTitle} />
+            <meta name="twitter:description" content={finalDescription} />
             <meta name="twitter:image" content={fullOgImage} />
 
             {/* Structured Data (JSON-LD) */}

@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link, Location } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import NavigationDropdown from './NavigationDropdown';
+import LanguageSwitcher from '../common/LanguageSwitcher';
 import { campItems, albumItems, simpleMenuItems } from './navigationData';
 import { ROUTES } from '../../constants/routes';
 
@@ -12,14 +14,22 @@ interface DesktopMenuProps {
     isScrolled: boolean;
 }
 
+
+// ... (other imports)
+
+// ... (interface)
+
 const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(({
     location,
     desktopOpenDropdown,
     onOpenChange,
     isScrolled,
 }) => {
+    const { t } = useTranslation();
+
     // Dynamic text colors based on scroll position
     const getTextColor = (isActive: boolean) => {
+        // ... (existing logic)
         if (isScrolled) {
             return isActive
                 ? 'text-jeju-ocean font-bold'
@@ -36,7 +46,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(({
                 to={ROUTES.HOME}
                 className={`${getTextColor(location.pathname === ROUTES.HOME)} transition-colors duration-300 font-display relative`}
             >
-                홈
+                {t('nav.home')}
                 {location.pathname === ROUTES.HOME && (
                     <motion.div
                         className={`absolute bottom-0 left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
@@ -46,19 +56,20 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(({
             </Link>
 
             <NavigationDropdown
-                label="캠프"
+                label={t('nav.camp')}
                 items={campItems}
                 isOpen={desktopOpenDropdown === 'camps'}
                 onOpenChange={(isOpen) => onOpenChange('camps', isOpen)}
                 isScrolled={isScrolled}
             />
             <NavigationDropdown
-                label="앨범"
+                label={t('nav.album')}
                 items={albumItems}
                 isOpen={desktopOpenDropdown === 'album'}
                 onOpenChange={(isOpen) => onOpenChange('album', isOpen)}
                 isScrolled={isScrolled}
             />
+
 
             {simpleMenuItems
                 .filter(item => item.path !== ROUTES.HOME) // '홈'은 별도 처리
@@ -68,7 +79,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(({
                         to={item.path}
                         className={`${getTextColor(location.pathname === item.path)} transition-colors duration-300 font-display relative`}
                     >
-                        {item.name}
+                        {t(item.nameKey)}
                         {location.pathname === item.path && (
                             <motion.div
                                 className={`absolute bottom-0 left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
@@ -77,6 +88,10 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(({
                         )}
                     </Link>
                 ))}
+
+            <div className="pl-4 border-l border-white/30 ml-4">
+                <LanguageSwitcher isScrolled={isScrolled} />
+            </div>
         </div>
     );
 });

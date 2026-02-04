@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { TimelineEvent } from '../../data/timeline';
 
 interface TimelineItemProps {
@@ -21,9 +22,9 @@ const eventTypeBorder = {
 };
 
 const eventTypeLabel = {
-    camp: '캠프',
-    album: '앨범',
-    milestone: '마일스톤'
+    camp: 'camp',
+    album: 'album',
+    milestone: 'milestone'
 };
 
 const containerVariants = {
@@ -46,6 +47,8 @@ const mobileContentVariants = {
 
 // Memoized component to prevent unnecessary re-renders
 const TimelineItem = React.memo<TimelineItemProps>(({ event, isLeft }) => {
+    const { t } = useTranslation();
+
     // Content variants depend on isLeft, so keep them inside
     const contentVariants = {
         hidden: { opacity: 0, x: isLeft ? -20 : 20 },
@@ -59,13 +62,13 @@ const TimelineItem = React.memo<TimelineItemProps>(({ event, isLeft }) => {
     const CardContent = () => (
         <div className="bg-cloud-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all border border-ocean-mist/20">
             <span className={`inline-block px-3 py-1 rounded-full text-white text-xs font-bold ${eventTypeColor[event.eventType]} mb-3 shadow-sm`}>
-                {eventTypeLabel[event.eventType]}
+                {t(`timeline.labels.${event.eventType}`)}
             </span>
-            <h3 className="typo-h3 text-jeju-ocean mb-2">{event.title}</h3>
-            <p className="typo-body text-coastal-gray mb-3 text-sm text-pretty">{event.description}</p>
-            {event.location && (
+            <h3 className="typo-h3 text-jeju-ocean mb-2">{t(event.titleKey)}</h3>
+            <p className="typo-body text-coastal-gray mb-3 text-sm text-pretty">{t(event.descriptionKey)}</p>
+            {event.locationKey && (
                 <p className="text-xs text-ocean-mist flex items-center font-medium">
-                    <span className="mr-1">📍</span> {event.location}
+                    <span className="mr-1">📍</span> {t(event.locationKey)}
                 </p>
             )}
         </div>
@@ -75,7 +78,7 @@ const TimelineItem = React.memo<TimelineItemProps>(({ event, isLeft }) => {
         <div className={`flex flex-col justify-center h-full ${align === 'right' ? 'items-end' : 'items-start'}`}>
             <span className="text-3xl font-bold text-jeju-ocean/80 font-display">{event.year}</span>
             {event.month && (
-                <span className="text-ocean-mist font-medium">{event.month}월</span>
+                <span className="text-ocean-mist font-medium">{t(`timeline.month_${event.month}`)}</span>
             )}
         </div>
     );
@@ -95,30 +98,30 @@ const TimelineItem = React.memo<TimelineItemProps>(({ event, isLeft }) => {
                 </span>
                 {event.month && (
                     <span className="text-sm text-ocean-mist font-medium">
-                        {event.month}월
+                        {t(`timeline.month_${event.month}`)}
                     </span>
                 )}
             </div>
 
             {/* 이벤트 타입 뱃지 */}
             <span className={`inline-block px-3 py-1 rounded-full text-white text-xs font-bold ${eventTypeColor[event.eventType]} mb-3 shadow-sm`}>
-                {eventTypeLabel[event.eventType]}
+                {t(`timeline.labels.${event.eventType}`)}
             </span>
 
             {/* 제목 */}
             <h3 className="text-lg font-medium text-jeju-ocean mb-2 font-display">
-                {event.title}
+                {t(event.titleKey)}
             </h3>
 
             {/* 설명 */}
             <p className="text-sm text-coastal-gray mb-3 leading-relaxed text-pretty">
-                {event.description}
+                {t(event.descriptionKey)}
             </p>
 
             {/* 위치 */}
-            {event.location && (
+            {event.locationKey && (
                 <p className="text-xs text-ocean-mist flex items-center font-medium">
-                    <span className="mr-1">📍</span> {event.location}
+                    <span className="mr-1">📍</span> {t(event.locationKey)}
                 </p>
             )}
         </motion.div>

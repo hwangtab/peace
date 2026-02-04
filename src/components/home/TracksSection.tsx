@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import TrackCard from '../tracks/TrackCard';
@@ -17,6 +18,7 @@ const TracksSection: React.FC<TracksSectionProps> = ({
   enableSectionWrapper = true,
   hideSectionHeader = false,
 }) => {
+  const { t } = useTranslation();
   const ref = useRef(null);
   const inView = useInView(ref, {
     once: true,
@@ -66,7 +68,7 @@ const TracksSection: React.FC<TracksSectionProps> = ({
   const content = (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
       {!hideSectionHeader && (
-        <SectionHeader title="수록곡" subtitle="12곡의 평화의 노래" inView={inView} />
+        <SectionHeader title={t('home.tracks.title')} subtitle={t('home.tracks.subtitle')} inView={inView} />
       )}
 
       {isLoading ? (
@@ -95,7 +97,7 @@ const TracksSection: React.FC<TracksSectionProps> = ({
         className="text-center mt-16"
       >
         <Button href={config.smartstoreUrl} variant="primary" size="lg" external>
-          음반 구매하기
+          {t('home.tracks.buy_album')}
         </Button>
       </motion.div>
     </div>

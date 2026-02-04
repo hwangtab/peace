@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { VideoItem } from '../../types/video';
 
 interface VideoCardProps {
@@ -26,6 +27,7 @@ const getYoutubeWatchUrl = (url: string) =>
   `https://www.youtube.com/watch?v=${getYoutubeVideoId(url)}`;
 
 const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
+  const { i18n } = useTranslation();
   const videoId = getYoutubeVideoId(video.youtubeUrl);
   const [imgSrc, setImgSrc] = useState(
     video.thumbnailUrl || `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
@@ -63,7 +65,13 @@ const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
         <div className="pt-5 px-6 pb-4 flex flex-col cursor-pointer">
           <div className="flex justify-between items-center mb-3 text-xs font-medium text-ocean-mist uppercase tracking-tighter">
             <span>{video.location}</span>
-            <span>{video.date}</span>
+            <span>
+              {new Date(video.date).toLocaleDateString(i18n.language === 'ko' ? 'ko-KR' : 'en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </span>
           </div>
           <h3 className="typo-h3 text-xl mb-3 hover:text-jeju-ocean transition-colors duration-300 line-clamp-1 leading-snug">
             {video.title}

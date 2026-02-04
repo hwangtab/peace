@@ -1,4 +1,5 @@
 import React, { lazy, Suspense } from 'react';
+import { useTranslation } from 'react-i18next';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { ErrorBoundary } from 'react-error-boundary';
@@ -15,7 +16,6 @@ import GallerySection from './components/home/GallerySection';
 import SEOHelmet from './components/shared/SEOHelmet';
 import WaveDivider from './components/common/WaveDivider';
 import { getWebSiteSchema, getOrganizationSchema, getFAQSchema } from './utils/structuredData';
-import { seoFaqs } from './data/seo-faq';
 
 // Lazy load route-specific pages
 const PressPage = lazy(() => import('./components/press/PressPage'));
@@ -29,20 +29,26 @@ const AlbumTracksPage = lazy(() => import('./pages/album/AlbumTracksPage'));
 const AlbumAboutPage = lazy(() => import('./pages/album/AlbumAboutPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
+
+
+// ... (imports)
+
 // Pages will be imported here
 const HomePage = () => {
+  const { t, i18n } = useTranslation();
+  const faqs = t('faqs.items', { returnObjects: true }) as Array<{ q: string; a: string }>;
   const structuredData = [
-    getWebSiteSchema(),
-    getOrganizationSchema(),
-    getFAQSchema(seoFaqs)
+    getWebSiteSchema(i18n.language),
+    getOrganizationSchema(i18n.language),
+    getFAQSchema(faqs.map(f => ({ question: f.q, answer: f.a })), i18n.language)
   ];
 
   return (
     <div>
       <SEOHelmet
-        title="강정피스앤뮤직캠프 | 노래하자, 춤추자, 전쟁을 끝내자"
-        description="제주 강정마을에서 시작되는 평화를 위한 음악 프로젝트. 2026년 6월 5일-7일 강정체육공원에서 열리는 반전 평화 음악 축제. 전세계 분쟁 지역의 평화를 염원하며 함께 노래합니다."
-        keywords="강정피스앤뮤직캠프, 평화축제, 제주도축제, 음악캠프, 반전평화, 강정마을, 2026공연, 인디밴드공연, 평화운동, 제주공연"
+        title={t('seo.default.title')}
+        description={t('seo.default.description')}
+        keywords={t('seo.default.keywords')}
         structuredData={structuredData}
       />
       <HeroSection imageUrl="/images-webp/camps/2023/DSC00437.webp" />
@@ -58,14 +64,17 @@ const HomePage = () => {
 
 
 // Loading fallback component for lazy-loaded pages
-const PageLoadingSpinner = () => (
-  <div className="min-h-screen bg-light-beige flex items-center justify-center">
-    <div className="text-center">
-      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-deep-sage mx-auto mb-4" />
-      <p className="text-gray-600 font-serif">로딩 중...</p>
+const PageLoadingSpinner = () => {
+  const { t } = useTranslation();
+  return (
+    <div className="min-h-screen bg-light-beige flex items-center justify-center">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-deep-sage mx-auto mb-4" />
+        <p className="text-gray-600 font-serif">{t('common.loading')}</p>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const AnimatedRoutes = () => {
   const location = useLocation();

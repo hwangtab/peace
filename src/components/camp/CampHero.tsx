@@ -1,3 +1,5 @@
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { CampEvent } from '../../types/camp';
 import { getResponsiveImagePath } from '../../utils/images';
@@ -7,8 +9,9 @@ interface CampHeroProps {
 }
 
 const CampHero: React.FC<CampHeroProps> = ({ camp }) => {
+  const { t, i18n } = useTranslation();
   const eventDate = new Date(camp.startDate);
-  const formattedDate = eventDate.toLocaleDateString('ko-KR', {
+  const formattedDate = eventDate.toLocaleDateString(i18n.language === 'ko' ? 'ko-KR' : 'en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
@@ -50,12 +53,12 @@ const CampHero: React.FC<CampHeroProps> = ({ camp }) => {
           {camp.slogan && <p className="typo-subtitle text-gray-100 mb-6">{camp.slogan}</p>}
           <div className="flex flex-col sm:flex-row justify-center gap-6 text-white">
             <div>
-              <p className="text-sm uppercase tracking-wide text-gray-300 mb-1">일시</p>
+              <p className="text-sm uppercase tracking-wide text-gray-300 mb-1">{t('album.label_date')}</p>
               <p className="text-lg font-medium">{formattedDate}</p>
             </div>
             <div className="hidden sm:block text-gray-400">|</div>
             <div>
-              <p className="text-sm uppercase tracking-wide text-gray-300 mb-1">장소</p>
+              <p className="text-sm uppercase tracking-wide text-gray-300 mb-1">{t('album.label_venue')}</p>
               <p className="text-lg font-medium">{camp.location}</p>
             </div>
           </div>

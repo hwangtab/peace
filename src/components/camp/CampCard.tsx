@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CampEvent } from '../../types/camp';
@@ -8,6 +9,7 @@ interface CampCardProps {
 }
 
 const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
+  const { t } = useTranslation();
   const isComingSoon = camp.year === 2026;
 
   return (
@@ -31,7 +33,7 @@ const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
           <p className="typo-h3 text-white mb-4">{camp.title}</p>
           {isComingSoon && (
             <span className="bg-white text-jeju-ocean px-4 py-2 rounded-full text-sm font-semibold">
-              Coming Soon
+              {t('camp.coming_soon')}
             </span>
           )}
         </div>
@@ -45,18 +47,18 @@ const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
             <>
               <div className="mb-4 space-y-2">
                 <p className="text-sm text-gray-600">
-                  <span className="font-semibold">📅 기간:</span> {camp.startDate}
+                  <span className="font-semibold">📅 {t('camp.label_period')}:</span> {camp.startDate}
                   {camp.endDate && ` ~ ${camp.endDate}`}
                 </p>
                 <p className="text-sm text-gray-600">
-                  <span className="font-semibold">📍 장소:</span> {camp.location}
+                  <span className="font-semibold">📍 {t('camp.label_location')}:</span> {camp.location}
                 </p>
               </div>
 
               {camp.participants && camp.participants.length > 0 && (
                 <div className="mb-6">
                   <p className="text-sm font-semibold text-gray-900 mb-2">
-                    참여자 ({camp.participants.length})
+                    {t('camp.label_participants')} ({camp.participants.length})
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {camp.participants.slice(0, 3).map((participant, index) => {
@@ -82,7 +84,7 @@ const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
               <div
                 className="w-full inline-flex items-center justify-center rounded-full font-medium transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none bg-jeju-ocean text-white hover:bg-ocean-mist px-6 py-2 text-sm"
               >
-                자세히 보기
+                {t('camp.view_detail')}
               </div>
             </>
           )}
