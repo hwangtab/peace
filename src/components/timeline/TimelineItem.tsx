@@ -21,11 +21,7 @@ const eventTypeBorder = {
     milestone: 'border-sunset-coral'
 };
 
-const eventTypeLabel = {
-    camp: 'camp',
-    album: 'album',
-    milestone: 'milestone'
-};
+
 
 const containerVariants = {
     hidden: { opacity: 0, y: 20 },
