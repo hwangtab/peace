@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { useInView } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import TimelineItem from './TimelineItem';
 import { timelineEvents as timelineData } from '../../data/timeline';
 import Section from '../layout/Section';
@@ -11,13 +12,14 @@ const Timeline = () => {
     once: true,
     amount: 0.1,
   });
+  const { t } = useTranslation();
 
   return (
     <Section id="history" background="sunlight-glow" ref={ref}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          title="평화의 발자취"
-          subtitle="강정에서 시작된 평화의 노래가 걸어온 길"
+          title={t('timeline.title')}
+          subtitle={t('timeline.subtitle')}
           inView={inView}
         />
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { camps } from '../data/camps';
 import PageLayout from '../components/layout/PageLayout';
@@ -7,17 +8,18 @@ import { getEventSchema } from '../utils/structuredData';
 import { getFullUrl } from '../config/env';
 
 const Camp2026Page = () => {
+  const { t, i18n } = useTranslation();
   const camp2026 = camps.find(camp => camp.id === 'camp-2026');
 
   if (!camp2026) {
     return (
       <PageLayout
-        title="제3회 강정피스앤뮤직캠프 (2026)"
-        description="2026년 예정된 제3회 강정피스앤뮤직캠프 정보."
+        title={t('camp.ordinal', { num: 3 }) + ' ' + t('app.title') + ' (2026)'}
+        description={t('camp.not_found_desc')}
       >
         <div className="flex items-center justify-center h-full min-h-[50vh]">
           <div className="text-center">
-            <h1 className="typo-h2 text-gray-900 mb-4">캠프를 찾을 수 없습니다</h1>
+            <h1 className="typo-h2 text-gray-900 mb-4">{t('camp.not_found')}</h1>
           </div>
         </div>
       </PageLayout>
@@ -39,13 +41,13 @@ const Camp2026Page = () => {
       type: 'MusicGroup',
       name: typeof p === 'string' ? p : p.name
     }))
-  });
+  }, i18n.language);
 
   return (
     <PageLayout
-      title="제3회 강정피스앤뮤직캠프 (2026) - Coming Soon"
-      description="2026년 6월 5일-7일 강정체육공원에서 개최 예정인 제3회 강정피스앤뮤직캠프. 32팀의 뮤지션 확정!"
-      keywords="강정피스앤뮤직캠프, 2026, 제3회 캠프, Coming Soon, 평화음악, 강정체육공원"
+      title={`${t('camp.ordinal', { num: 3 })} ${t('app.title')} (2026) - ${t('camp.coming_soon')}`}
+      description={t('seo.default.description')}
+      keywords={t('seo.default.keywords')}
       background="jeju-ocean"
       structuredData={eventSchema}
     >
@@ -58,19 +60,20 @@ const Camp2026Page = () => {
           className="max-w-3xl w-full bg-white/90 backdrop-blur-sm p-12 rounded-3xl shadow-2xl border border-white/50"
         >
           <span className="inline-block px-4 py-1 bg-jeju-ocean text-white font-bold rounded-full mb-6 text-sm tracking-wider">
-            2026 COMING SOON
+            2026 {t('camp.coming_soon')}
           </span>
 
           <SectionHeader
             title={camp2026.title}
-            subtitle="평화의 바람은 계속해서 불어옵니다. 세 번째 평화의 노래가 2026년 6월, 강정에서 울려 퍼집니다."
+            subtitle={t('camp.description_2026')}
           />
 
           <div className="bg-ocean-sand/30 p-10 rounded-2xl mb-10">
-            <h3 className="typo-h3 mb-6 text-jeju-ocean">2026년 6월 5일(금) - 6월 7일(일)<br />강정체육공원</h3>
+            <h3 className="typo-h3 mb-6 text-jeju-ocean">
+              {t('camp.date_2026')}<br />{t('camp.venue_2026')}
+            </h3>
             <p className="typo-body text-gray-700 mb-0 leading-relaxed">
-              현재 음악가 32팀 출연 확정<br />
-              약 50-60팀 출연 예상
+              {t('camp.expected_2026')}
             </p>
           </div>
 

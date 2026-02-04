@@ -1,4 +1,5 @@
 import { ReactNode, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import Navigation from './Navigation';
 import { motion } from 'framer-motion';
 
@@ -7,9 +8,10 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
+  const { t } = useTranslation();
   useEffect(() => {
-    document.title = '이름을 모르는 먼 곳의 그대에게';
-  }, []);
+    document.title = t('app.title');
+  }, [t]);
 
   return (
     <div className="min-h-screen bg-ocean-sand">

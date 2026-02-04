@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { CampEvent } from '../../types/camp';
 import ImageLightbox from '../common/ImageLightbox';
@@ -11,6 +12,7 @@ interface CampGalleryProps {
 }
 
 const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
+  const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   if (!camp.images || camp.images.length === 0) {
@@ -20,7 +22,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
   return (
     <Section background="light-beige">
       <div className="container mx-auto px-4">
-        <SectionHeader title="갤러리" />
+        <SectionHeader title={t('camp.section_gallery')} />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {camp.images.map((img, index) => (
             <motion.div
@@ -34,7 +36,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
             >
               <img
                 src={img}
-                alt={`${camp.year}년 ${camp.title} 갤러리 사진 ${index + 1}`}
+                alt={`${camp.year} ${camp.title} ${t('gallery.seo_keywords')} ${index + 1}`}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300" />
@@ -47,7 +49,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
             to={`/gallery?filter=camp-${camp.year}`}
             variant="outline"
           >
-            더 보기
+            {t('camp.more')}
           </Button>
         </div>
       </div>
@@ -56,7 +58,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
         <ImageLightbox
           image={{
             url: selectedImage,
-            alt: `${camp.year}년 ${camp.title} 갤러리 이미지`
+            alt: t('gallery.image_alt_template', { year: camp.year, title: camp.title })
           }}
           onClose={() => setSelectedImage(null)}
         />

@@ -1,5 +1,6 @@
-import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Dialog, Transition } from '@headlessui/react';
 import { Musician } from '../../types/musician';
 import { extractInstagramUsername } from '../../utils/instagram';
 import InstagramIcon from '../icons/InstagramIcon';
@@ -11,6 +12,7 @@ interface MusicianModalProps {
 }
 
 const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
+  const { t } = useTranslation();
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-50" onClose={onClose}>
@@ -44,7 +46,7 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                     onClick={onClose}
                     className="absolute right-0 top-0 p-2 text-gray-400 hover:text-gray-500"
                   >
-                    <span className="sr-only">Close</span>
+                    <span className="sr-only">{t('common.close')}</span>
                     <svg
                       className="h-6 w-6"
                       fill="none"
@@ -92,7 +94,7 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                     {musician.trackTitle && (
                       <div className="mt-6">
                         <h4 className="text-lg font-medium text-gray-900 mb-2">
-                          수록곡
+                          {t('common.featured_track')}
                         </h4>
                         <p className="text-gray-600">{musician.trackTitle}</p>
                       </div>
@@ -102,7 +104,7 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                     {musician.instagramUrls.length > 0 && (
                       <div className="mt-6">
                         <h4 className="text-lg font-medium text-gray-900 mb-2">
-                          SNS
+                          {t('common.sns')}
                         </h4>
                         <div className="flex flex-wrap gap-2">
                           {musician.instagramUrls.map((url) => {

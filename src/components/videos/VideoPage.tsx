@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import { getVideos } from '../../api/videos';
 import { VideoItem } from '../../types/video';
@@ -11,6 +12,7 @@ import VideoCard from './VideoCard';
 import { getCollectionPageSchema } from '../../utils/structuredData';
 
 export default function VideoPage() {
+  const { t, i18n } = useTranslation();
   const location = useLocation();
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
   const [videos, setVideos] = useState<VideoItem[]>([]);
@@ -39,23 +41,23 @@ export default function VideoPage() {
 
   // Collection Page Schema
   const collectionSchema = getCollectionPageSchema({
-    name: "비디오 - 강정피스앤뮤직캠프",
-    description: "강정피스앤뮤직캠프의 공연영상 모음. 평화를 노래하는 뮤지션들의 공연 영상을 만나보세요.",
+    name: t('videos.page_title'),
+    description: t('videos.page_desc'),
     url: "https://peaceandmusic.net/videos"
-  });
+  }, i18n.language);
 
   return (
     <PageLayout
-      title="비디오 - 강정피스앤뮤직캠프"
-      description="강정피스앤뮤직캠프의 공연영상 모음. 평화를 노래하는 뮤지션들의 공연 영상을 만나보세요."
-      keywords="공연영상, 강정피스앤뮤직캠프, 평화 공연, 뮤지션 공연, 유튜브 영상"
+      title={t('videos.page_title')}
+      description={t('videos.page_desc')}
+      keywords={t('videos.keywords')}
       background="sunlight-glow"
       structuredData={collectionSchema}
       disableTopPadding={true}
     >
       <PageHero
-        title="비디오"
-        subtitle="평화를 노래하는 순간들"
+        title={t('videos.hero_title')}
+        subtitle={t('videos.hero_subtitle')}
         backgroundImage="/images-webp/camps/2023/IMG_2064.webp"
       />
 

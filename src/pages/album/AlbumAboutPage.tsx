@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect, useMemo, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import Button from '../../components/common/Button';
 import PageLayout from '../../components/layout/PageLayout';
@@ -19,6 +20,7 @@ import { getMusicAlbumSchema } from '../../utils/structuredData';
 import { getFullUrl } from '../../config/env';
 
 const AlbumAboutPage = () => {
+  const { t, i18n } = useTranslation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [selectedMusician, setSelectedMusician] = useState<Musician | null>(null);
@@ -71,10 +73,10 @@ const AlbumAboutPage = () => {
   const concerts = [
     {
       id: 'gangjeong',
-      name: '강정 공연',
-      date: '2024년 10월 12일(토)',
+      name: t('album.concert_gangjeong'),
+      date: '2024. 10. 12 (Sat)',
       time: '19:00~',
-      venue: '강정평화센터',
+      venue: t('album.venue_gangjeong'),
       performers: [
         { name: 'Project Around Surround', musicianId: 1 },
         { name: '정진석', musicianId: 2 },
@@ -85,10 +87,10 @@ const AlbumAboutPage = () => {
     },
     {
       id: 'hongdae',
-      name: '홍대 공연',
-      date: '2024년 11월 2일(토)',
+      name: t('album.concert_hongdae'),
+      date: '2024. 11. 02 (Sat)',
       time: '19:00~',
-      venue: '스페이스 한강',
+      venue: t('album.venue_hongdae'),
       performers: [
         { name: '김인', musicianId: 6 },
         { name: '모모', musicianId: 10 },
@@ -112,8 +114,8 @@ const AlbumAboutPage = () => {
 
   // MusicAlbum Schema
   const albumSchema = getMusicAlbumSchema({
-    name: "이름을 모르는 먼 곳의 그대에게",
-    byArtist: { name: "강정피스앤뮤직캠프" },
+    name: t('album.album_title_full'),
+    byArtist: { name: t('app.title') },
     genre: ["Folk", "Rock", "Jazz", "Electronic", "Ambient", "World Music"],
     image: getFullUrl("/images-webp/album/albumart.png"),
     datePublished: "2024-10-12",
@@ -124,13 +126,13 @@ const AlbumAboutPage = () => {
       name: m.trackTitle || "",
       url: "https://peaceandmusic.net/album/tracks"
     }))
-  });
+  }, i18n.language);
 
   return (
     <PageLayout
-      title="이름을 모르는 먼 곳의 그대에게 - 앨범 소개"
-      description="강정피스앤뮤직캠프의 2024년 음반 프로젝트. 전쟁을 끝내고 평화를 노래하는 12곡의 음악 여정."
-      keywords="이름을 모르는 먼 곳의 그대에게, 강정피스앤뮤직캠프, 음반, 평화음악"
+      title={t('album.page_title')}
+      description={t('album.page_desc')}
+      keywords={t('album.keywords')}
       background="jeju-ocean"
       structuredData={albumSchema}
       disableTopPadding={true}
@@ -163,7 +165,7 @@ const AlbumAboutPage = () => {
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500" />
                 <img
                   src="/images-webp/album/albumart.png"
-                  alt="이름을 모르는 먼 곳의 그대에게 앨범 커버"
+                  alt={t('album.image_alt_cover')}
                   className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700"
                   width="500"
                   height="500"
@@ -179,24 +181,22 @@ const AlbumAboutPage = () => {
               className="w-full lg:w-7/12 text-center lg:text-left"
             >
               <span className="inline-block px-3 py-1 bg-jeju-ocean text-white text-sm font-bold tracking-wider rounded-full mb-6">
-                2024 OFFICIAL RELEASE
+                {t('album.release_official')}
               </span>
               <h1 className="typo-h1 text-white mb-6 leading-tight">
-                이름을 모르는
-                <br />먼 곳의 그대에게
+                {t('album.hero_title_1')}
+                <br />{t('album.hero_title_2')}
               </h1>
               <p className="typo-subtitle text-white/90 font-medium mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                전쟁과 폭력이 만연한 세상에서 보내는 평화의 편지.
-                <br className="hidden md:block" />
-                12팀의 뮤지션이 강정마을에서 쏘아 올린 음악의 파동.
+                {t('album.hero_subtitle')}
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Button to="/album/tracks" variant="gold">
-                  수록곡 듣기
+                  {t('album.listen_tracks')}
                 </Button>
                 <Button to="/album/musicians" variant="white-outline">
-                  참여 뮤지션 소개
+                  {t('album.intro_musicians')}
                 </Button>
               </div>
             </motion.div>
@@ -219,13 +219,10 @@ const AlbumAboutPage = () => {
                 <span className="w-8 h-8 rounded-full bg-golden-sun flex items-center justify-center text-white text-sm">
                   01
                 </span>
-                제목의 의미
+                {t('album.meaning_title')}
               </h3>
               <p className="typo-body text-gray-700 leading-loose">
-                "이름을 모르는 먼 곳의 그대에게"는 세계 곳곳의 분쟁 지역에서 고통받고 있는 이들에게
-                보내는 연대의 메시지입니다. 우크라이나, 가자, 그리고 한반도. 우리는 서로의 얼굴도,
-                이름도 모르지만 같은 시대를 살아가며 평화를 염원하는 마음만은 하나로 연결되어
-                있습니다.
+                {t('album.meaning_desc')}
               </p>
             </motion.div>
 
@@ -241,12 +238,10 @@ const AlbumAboutPage = () => {
                 <span className="w-8 h-8 rounded-full bg-jeju-ocean flex items-center justify-center text-white text-sm">
                   02
                 </span>
-                12팀의 목소리
+                {t('album.voices_title')}
               </h3>
               <p className="typo-body text-gray-700 leading-loose">
-                록, 포크, 재즈, 일렉트로닉. 강정마을의 평화운동에 공감하는 12팀의 뮤지션들이 각자의
-                음악 언어로 평화를 번역했습니다. 다양한 장르가 모여 만든 이 앨범은 다양성이야말로
-                평화의 본질임을 증명합니다.
+                {t('album.voices_desc')}
               </p>
             </motion.div>
           </div>
@@ -259,8 +254,8 @@ const AlbumAboutPage = () => {
       <Section background="ocean-sand" className="!pb-0">
         <div className="container mx-auto px-4">
           <SectionHeader
-            title="발매 기념 공연"
-            subtitle="음반 발매를 기념하여 강정과 서울에서 개최된 공연의 모든 기록을 확인해 보세요."
+            title={t('album.concert_title')}
+            subtitle={t('album.concert_subtitle')}
             className="!mb-8"
           />
 
@@ -268,9 +263,9 @@ const AlbumAboutPage = () => {
           <div className="flex justify-center mb-12">
             <div className="inline-flex p-1 bg-white/50 backdrop-blur-sm rounded-2xl shadow-inner border border-white/50">
               {[
-                { id: 'info', label: '공연 개요' },
-                { id: 'video', label: '현장 영상' },
-                { id: 'photo', label: '현장 사진' },
+                { id: 'info', label: t('album.tab_info') },
+                { id: 'video', label: t('album.tab_video') },
+                { id: 'photo', label: t('album.tab_photo') },
               ].map((tab) => (
                 <button
                   key={tab.id}
@@ -326,7 +321,7 @@ const AlbumAboutPage = () => {
                             </div>
                             <div className="flex flex-col">
                               <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">
-                                일시
+                                {t('album.label_date')}
                               </span>
                               <span className="font-medium">
                                 {concert.date}{' '}
@@ -341,7 +336,7 @@ const AlbumAboutPage = () => {
                             </div>
                             <div className="flex flex-col">
                               <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">
-                                장소
+                                {t('album.label_venue')}
                               </span>
                               <span className="font-medium">{concert.venue}</span>
                             </div>
@@ -352,7 +347,7 @@ const AlbumAboutPage = () => {
                           <div className="flex items-center gap-2 mb-4">
                             <UserGroupIcon className="w-4 h-4 text-jeju-ocean" />
                             <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">
-                              출연진
+                              {t('album.label_performers')}
                             </span>
                           </div>
                           <div className="flex flex-wrap gap-2">
@@ -405,7 +400,7 @@ const AlbumAboutPage = () => {
                 </div>
                 <div className="text-center mt-8">
                   <Button to="/videos?filter=album-2024" variant="outline">
-                    전체 영상 보기
+                    {t('videos.all_videos')}
                   </Button>
                 </div>
               </motion.div>
@@ -431,7 +426,7 @@ const AlbumAboutPage = () => {
                     >
                       <img
                         src={photo.url}
-                        alt={`앨범 발매 기념 공연 현장 ${index + 1}`}
+                        alt={t('album.image_alt_concert', { num: index + 1 })}
                         className="w-full h-full object-cover"
                         width="300"
                         height="300"
@@ -443,7 +438,7 @@ const AlbumAboutPage = () => {
                 </div>
                 <div className="text-center mt-12">
                   <Button to="/gallery?filter=album-2024" variant="primary">
-                    공연 사진 전체 보기
+                    {t('album.all_photos')}
                   </Button>
                 </div>
               </motion.div>
@@ -459,7 +454,7 @@ const AlbumAboutPage = () => {
             className="mt-16 md:mt-24 pt-16 md:pt-20 pb-20 border-t border-jeju-ocean/10 text-center"
           >
             <p className="text-coastal-gray font-serif text-lg">
-              Produced by <span className="text-jeju-ocean font-bold">강정피스앤뮤직캠프</span> ·
+              {t('common.label_produced_by')} <span className="text-jeju-ocean font-bold">{t('app.title')}</span> ·
               2024
             </p>
           </motion.div>
@@ -477,7 +472,7 @@ const AlbumAboutPage = () => {
         <ImageLightbox
           image={{
             url: selectedImage.url,
-            alt: `앨범 발매 기념 공연 현장 ${selectedImage.id}`,
+            alt: t('album.image_alt_concert', { num: selectedImage.id }),
           }}
           onClose={() => setSelectedImage(null)}
           maxHeight="85vh"

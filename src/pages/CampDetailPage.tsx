@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion, useInView } from 'framer-motion';
 import CampHero from '../components/camp/CampHero';
 import CampGallery from '../components/camp/CampGallery';
@@ -23,6 +24,7 @@ const getOrdinalKorean = (year: number): string => {
 };
 
 const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId }) => {
+  const { t, i18n } = useTranslation();
   const camp = camps.find(c => c.id === campId);
   const infoRef = useRef(null);
   const isInfoInView = useInView(infoRef, { once: true, margin: "-100px" });
@@ -30,14 +32,14 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId }) => {
   if (!camp) {
     return (
       <PageLayout
-        title="캠프를 찾을 수 없습니다"
-        description="요청하신 캠프 정보를 찾을 수 없습니다."
+        title={t('camp.not_found')}
+        description={t('camp.not_found_desc')}
       >
         <div className="flex items-center justify-center h-full min-h-[50vh]">
           <div className="text-center">
-            <h1 className="typo-h2 text-gray-900 mb-4">캠프를 찾을 수 없습니다</h1>
+            <h1 className="typo-h2 text-gray-900 mb-4">{t('camp.not_found')}</h1>
             <p className="typo-body text-gray-600">
-              요청하신 캠프 정보가 존재하지 않습니다.
+              {t('camp.not_found_desc')}
             </p>
           </div>
         </div>
@@ -62,13 +64,13 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId }) => {
       type: 'MusicGroup', // Default to MusicGroup for simplicity
       name: typeof p === 'string' ? p : p.name
     }))
-  });
+  }, i18n.language);
 
   return (
     <PageLayout
-      title={`제${ordinal}회 강정피스앤뮤직캠프 (${camp.year}) - ${camp.slogan || ''}`}
+      title={`${t('camp.ordinal', { num: ordinal })} ${t('app.title')} (${camp.year}) - ${camp.slogan || ''}`}
       description={camp.description}
-      keywords={`강정피스앤뮤직캠프, 제${ordinal}회 캠프, ${camp.year}, 강정마을, 평화음악, 반전운동`}
+      keywords={`${t('app.title')}, ${t('camp.ordinal', { num: ordinal })}, ${camp.year}, ${t('camp.keywords_base')}`}
       ogImage={camp.images[0]}
       structuredData={eventSchema}
       disableTopPadding={true}
@@ -85,7 +87,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId }) => {
             className="max-w-3xl mx-auto"
           >
             <div className="bg-white rounded-lg shadow-sm p-8 mb-12">
-              <SectionHeader title="행사 개요" align="left" className="!mb-6" />
+              <SectionHeader title={t('camp.section_overview')} align="left" className="!mb-6" />
               <p className="typo-body mb-4">
                 {camp.description}
               </p>
@@ -98,7 +100,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId }) => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="bg-white rounded-lg shadow-sm p-8 mb-8"
               >
-                <SectionHeader title="참여 뮤지션" align="left" className="!mb-6" />
+                <SectionHeader title={t('camp.section_musicians')} align="left" className="!mb-6" />
                 <CampParticipants participants={camp.participants} inView={isInfoInView} />
               </motion.div>
             )}
@@ -110,7 +112,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId }) => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="bg-white rounded-lg shadow-sm p-8"
               >
-                <SectionHeader title="함께 만든 사람들" align="left" className="!mb-6" />
+                <SectionHeader title={t('camp.section_staff')} align="left" className="!mb-6" />
                 <CampStaff staff={camp.staff} collaborators={camp.collaborators} inView={isInfoInView} />
               </motion.div>
             )}
