@@ -106,7 +106,8 @@ const detectLocale = (request: NextRequest): string => {
 };
 
 export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  try {
+    const { pathname } = request.nextUrl;
 
   // Skip static files and API routes
   if (
@@ -123,9 +124,9 @@ export function middleware(request: NextRequest) {
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
-  if (pathnameHasLocale) {
-    return NextResponse.next();
-  }
+    if (pathnameHasLocale) {
+      return NextResponse.next();
+    }
 
   // Detect the best locale for the user
   const detectedLocale = detectLocale(request);
@@ -134,18 +135,25 @@ export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
   url.pathname = `/${detectedLocale}${pathname === '/' ? '' : pathname}`;
 
-  const response = NextResponse.redirect(url);
+    const response = NextResponse.redirect(url);
 
   // Set NEXT_LOCALE cookie to persist preference
-  if (detectedLocale) {
-    response.cookies.set('NEXT_LOCALE', detectedLocale, {
-      path: '/',
-      maxAge: 60 * 60 * 24 * 365, // 1 year
-      sameSite: 'lax',
-    });
-  }
+    if (detectedLocale) {
+      response.cookies.set('NEXT_LOCALE', detectedLocale, {
+        path: '/',
+        maxAge: 60 * 60 * 24 * 365, // 1 year
+        sameSite: 'lax',
+      });
+    }
 
-  return response;
+    return response;
+  } catch (error) {
+    console.error('middleware_error', {
+      message: error instanceof Error ? error.message : String(error),
+      stack: error instanceof Error ? error.stack : undefined,
+    });
+    return NextResponse.next();
+  }
 }
 
 export const config = {
