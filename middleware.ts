@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { LOCALES, DEFAULT_LOCALE } from './src/i18n/locales';
+import nextI18NextConfig from './next-i18next.config';
+
+const LOCALES = nextI18NextConfig.i18n?.locales || [];
+const DEFAULT_LOCALE = nextI18NextConfig.i18n?.defaultLocale || 'ko';
 
 const PUBLIC_FILE = /\.(.*)$/;
 

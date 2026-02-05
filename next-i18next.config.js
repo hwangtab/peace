@@ -24,4 +24,6 @@ module.exports = {
   localePath: path.resolve('./public/locales'),
   reloadOnPrerender: false,
   fallbackLng: 'ko',
+  defaultNS: 'translation',
+  ns: ['translation'],
 };

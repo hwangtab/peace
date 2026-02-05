@@ -44,7 +44,7 @@ export default function VideoPage() {
     name: t('videos.page_title'),
     description: t('videos.page_desc'),
     url: "https://peaceandmusic.net/videos"
-  }, i18n.language);
+  });
 
   return (
     <PageLayout

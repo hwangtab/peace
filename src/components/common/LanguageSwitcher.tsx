@@ -1,7 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
-import { LOCALES } from '../../i18n/locales';
+import nextI18NextConfig from '../../../next-i18next.config';
+
+const LOCALES = nextI18NextConfig.i18n.locales;
 
 interface LanguageSwitcherProps {
     className?: string;

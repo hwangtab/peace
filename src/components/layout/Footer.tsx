@@ -37,13 +37,13 @@ const Footer = () => {
 
                     {/* Left Column - Site Info */}
                     <div className="text-center md:text-left space-y-4">
-                        <h2 className="text-xl md:text-2xl font-serif font-bold">
+                        <h2 className="text-xl md:text-2xl font-serif font-bold break-words">
                             {t('app.title')}
                         </h2>
-                        <p className="text-golden-sun text-sm md:text-base font-stone">
+                        <p className="text-golden-sun text-sm md:text-base font-stone break-words">
                             {t('footer.slogan')}
                         </p>
-                        <p className="text-seafoam/80 text-sm font-caption leading-relaxed">
+                        <p className="text-seafoam/80 text-sm font-caption leading-relaxed break-words">
                             {t('footer.description')}
                         </p>
                     </div>

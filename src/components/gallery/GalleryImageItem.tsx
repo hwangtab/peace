@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { GalleryImage } from '../../types/gallery';
 
 interface GalleryImageItemProps {
@@ -25,13 +26,15 @@ const GalleryImageItem = React.memo(({ image, priority = false, onClick }: Galle
                     <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-lg z-0" />
                 )}
 
-                <img
+                <Image
                     src={image.url}
                     alt={image.description || `Gallery image ${image.id}`}
-                    className={`w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110 ${isLoaded ? 'opacity-100' : 'opacity-0'
+                    fill
+                    sizes="(max-width: 768px) 50vw, 33vw"
+                    className={`object-cover transition-all duration-700 ease-in-out group-hover:scale-110 ${isLoaded ? 'opacity-100' : 'opacity-0'
                         }`}
-                    loading={priority ? "eager" : "lazy"}
-                    onLoad={() => setIsLoaded(true)}
+                    priority={priority}
+                    onLoadingComplete={() => setIsLoaded(true)}
                 />
 
                 {/* Hover overlay */}

@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
+import Image from 'next/image';
 
 interface ImageLightboxProps {
   image: string | { url: string; alt?: string };
@@ -43,13 +44,17 @@ const ImageLightbox: React.FC<ImageLightboxProps> = ({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="relative max-w-full transform overflow-hidden rounded-lg shadow-2xl transition-all">
-                <img
-                  src={imageUrl}
-                  alt={altText}
-                  className="max-w-full h-auto rounded-lg"
-                  style={{ maxHeight }}
-                />
+              <Dialog.Panel className="relative w-[90vw] max-w-5xl transform overflow-hidden rounded-lg shadow-2xl transition-all">
+                <div className="relative w-full h-[90vh]" style={{ maxHeight }}>
+                  <Image
+                    src={imageUrl}
+                    alt={altText}
+                    fill
+                    sizes="90vw"
+                    className="object-contain rounded-lg"
+                    priority
+                  />
+                </div>
 
                 {/* Close button inside panel for better focus management */}
                 <button

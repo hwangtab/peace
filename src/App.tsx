@@ -40,7 +40,7 @@ const HomePage = () => {
   const structuredData = [
     getWebSiteSchema(i18n.language),
     getOrganizationSchema(i18n.language),
-    getFAQSchema(faqs.map(f => ({ question: f.q, answer: f.a })), i18n.language)
+    getFAQSchema(faqs.map(f => ({ question: f.q, answer: f.a })))
   ];
 
   return (
