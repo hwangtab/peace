@@ -92,6 +92,7 @@ const detectLocale = (request: NextRequest): string => {
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // Skip static files and API routes
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||
@@ -101,17 +102,24 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const hasLocale = LOCALES.some((locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`));
-  if (hasLocale) {
-    return NextResponse.next();
+  // Detect the best locale for the user
+  const detectedLocale = detectLocale(request);
+  const response = NextResponse.next();
+
+  // Set NEXT_LOCALE cookie for Next.js built-in i18n to use
+  // This preserves our advanced locale detection while letting Next.js handle routing
+  if (detectedLocale) {
+    response.cookies.set('NEXT_LOCALE', detectedLocale, {
+      path: '/',
+      maxAge: 60 * 60 * 24 * 365, // 1 year
+      sameSite: 'lax',
+    });
   }
 
-  const locale = detectLocale(request);
-  const url = request.nextUrl.clone();
-  url.pathname = `/${locale}${pathname}`;
-  return NextResponse.redirect(url);
+  return response;
 }
 
 export const config = {
-  matcher: ['/((?!_next|api|static|.*\\..*).*)'],
+  // Run on all pages except static assets
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)'],
 };
