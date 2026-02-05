@@ -21,6 +21,7 @@
         "page_title": "갤러리 | 강정피스앤뮤직캠프",
         "page_desc": "평화를 노래하는 우리들의 순간들. 강정피스앤뮤직캠프의 생생한 현장 사진을 만나보세요.",
         "keywords": "갤러리, 사진첩, 행사사진, 평화캠프사진, 강정마을",
+        "seo_keywords": "갤러리 사진",
         "hero_title": "갤러리",
         "hero_subtitle": "그곳에서 만난 평화",
         "section_title": "평화의 순간들",
@@ -119,6 +120,8 @@
         "label_produced_by": "제작"
     },
     "timeline": {
+        "title": "연대의 여정",
+        "subtitle": "강정에서 시작된 평화의 기록",
         "labels": {
             "camp": "캠프",
             "album": "앨범",
@@ -180,7 +183,8 @@
         "venue_2026": "강정체육공원",
         "keywords_base": "강정마을, 평화음악, 반전운동",
         "description_2026": "평화의 바람은 계속해서 불어옵니다. 세 번째 평화의 노래가 2026년 6월, 강정에서 울려 퍼집니다.",
-        "expected_2026": "현재 음악가 32팀 출연 확정\n약 50-60팀 출연 예상"
+        "expected_2026": "현재 음악가 32팀 출연 확정\n약 50-60팀 출연 예상",
+        "brand_line": "제주 강정 피스앤뮤직캠프"
     },
     "album": {
         "page_title": "이름을 모르는 먼 곳의 그대에게 - 앨범 소개",
@@ -205,8 +209,12 @@
         "label_performers": "출연진",
         "concert_gangjeong": "강정 공연",
         "concert_hongdae": "홍대 공연",
+        "concert_gangjeong_date": "2024. 10. 12 (토)",
+        "concert_hongdae_date": "2024. 11. 02 (토)",
+        "concert_time": "19:00~",
         "venue_gangjeong": "강정평화센터",
         "venue_hongdae": "스페이스 한강",
+        "performer_gilganeun_band": "길가는 밴드 장현호",
         "release_official": "2024 공식 발매",
         "album_title_full": "이름을 모르는 먼 곳의 그대에게",
         "all_photos": "공연 사진 전체 보기",

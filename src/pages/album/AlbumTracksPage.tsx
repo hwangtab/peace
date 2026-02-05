@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import TracksSection from '../../components/home/TracksSection';
 import PageLayout from '../../components/layout/PageLayout';
 import PageHero from '../../components/common/PageHero';
 import { getMusicPlaylistSchema } from '../../utils/structuredData';
-import { musicians } from '../../data/musicians';
+import { getMusicians } from '../../api/musicians';
+import { Musician } from '../../types/musician';
 
 const AlbumTracksPage = () => {
   const { t, i18n } = useTranslation();
+  const [musicians, setMusicians] = useState<Musician[]>([]);
+
+  useEffect(() => {
+    const loadMusicians = async () => {
+      const data = await getMusicians(i18n.language);
+      setMusicians(data);
+    };
+    loadMusicians();
+  }, [i18n.language]);
+
   // Playlist Schema
-  const playlistSchema = getMusicPlaylistSchema(
+  const playlistSchema = useMemo(() => getMusicPlaylistSchema(
     musicians
       .filter(m => m.trackTitle && m.id !== 13) // Exclude non-tracks if any
       .map(m => ({
@@ -17,7 +28,7 @@ const AlbumTracksPage = () => {
         url: "https://peaceandmusic.net/album/tracks"
       })),
     i18n.language
-  );
+  ), [musicians, i18n.language]);
 
   return (
     <PageLayout

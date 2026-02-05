@@ -18,7 +18,7 @@ const TracksSection: React.FC<TracksSectionProps> = ({
   enableSectionWrapper = true,
   hideSectionHeader = false,
 }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const ref = useRef(null);
   const inView = useInView(ref, {
     once: true,
@@ -37,7 +37,7 @@ const TracksSection: React.FC<TracksSectionProps> = ({
     const loadTracks = async () => {
       setIsLoading(true);
       try {
-        const data = await getTracks();
+        const data = await getTracks(i18n.language);
         if (!isCancelled) {
           setTracks(data);
         }
@@ -55,7 +55,7 @@ const TracksSection: React.FC<TracksSectionProps> = ({
     return () => {
       isCancelled = true;
     };
-  }, []);
+  }, [i18n.language]);
 
   const handleToggle = useCallback((id: number) => {
     setExpandedTrackId((prev) => (prev === id ? null : id));

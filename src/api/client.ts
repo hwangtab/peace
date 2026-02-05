@@ -1,3 +1,5 @@
+import { getLanguageCode } from '../utils/localization';
+
 export async function fetchLocalData<T>(path: string): Promise<T[]> {
   try {
     const response = await fetch(path);
@@ -16,4 +18,16 @@ export async function fetchLocalData<T>(path: string): Promise<T[]> {
     console.error(`Error fetching ${path}:`, error);
     return [];
   }
+}
+
+export async function fetchLocalizedData<T>(path: string, language?: string): Promise<T[]> {
+  const lang = getLanguageCode(language);
+  if (lang === 'en' && path.startsWith('/data/')) {
+    const localizedPath = path.replace('/data/', `/data/${lang}/`);
+    const localized = await fetchLocalData<T>(localizedPath);
+    if (localized.length > 0) {
+      return localized;
+    }
+  }
+  return fetchLocalData<T>(path);
 }

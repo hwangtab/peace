@@ -6,7 +6,7 @@ import PageLayout from '../../components/layout/PageLayout';
 import Section from '../../components/layout/Section';
 import SectionHeader from '../../components/common/SectionHeader';
 import { getVideos } from '../../api/videos';
-import { musicians } from '../../data/musicians';
+import { getMusicians } from '../../api/musicians';
 import MusicianModal from '../../components/musicians/MusicianModal';
 import VideoCard from '../../components/videos/VideoCard';
 import ImageLightbox from '../../components/common/ImageLightbox';
@@ -29,16 +29,22 @@ const AlbumAboutPage = () => {
   const [activeTab, setActiveTab] = useState<'info' | 'video' | 'photo'>('info');
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [videos, setVideos] = useState<VideoItem[]>([]);
+  const [musicians, setMusicians] = useState<Musician[]>([]);
 
   // Load photos and videos dynamically
   useEffect(() => {
     const loadData = async () => {
-      const [allImages, allVideos] = await Promise.all([getGalleryImages(), getVideos()]);
+      const [allImages, allVideos, allMusicians] = await Promise.all([
+        getGalleryImages(),
+        getVideos(i18n.language),
+        getMusicians(i18n.language),
+      ]);
       setImages(allImages);
       setVideos(allVideos);
+      setMusicians(allMusicians);
     };
     loadData();
-  }, []);
+  }, [i18n.language]);
 
   const handleMusicianClick = useCallback((musicianId: number | null) => {
     if (musicianId) {
@@ -48,7 +54,7 @@ const AlbumAboutPage = () => {
         setIsModalOpen(true);
       }
     }
-  }, []); // musicians is static
+  }, [musicians]);
 
   const fadeUpVariants = useMemo(
     () => ({
@@ -69,38 +75,47 @@ const AlbumAboutPage = () => {
     []
   );
 
+  const resolveMusicianName = useCallback((fallbackName: string, musicianId?: number | null) => {
+    if (!musicianId) return fallbackName;
+    return musicians.find((m) => m.id === musicianId)?.name || fallbackName;
+  }, [musicians]);
+
+  const fallbackName = useCallback((ko: string, en: string) => (
+    i18n.language.startsWith('ko') ? ko : en
+  ), [i18n.language]);
+
   // Concert data with musician IDs for linking
-  const concerts = [
+  const concerts = useMemo(() => ([
     {
       id: 'gangjeong',
       name: t('album.concert_gangjeong'),
-      date: '2024. 10. 12 (Sat)',
-      time: '19:00~',
+      date: t('album.concert_gangjeong_date'),
+      time: t('album.concert_time'),
       venue: t('album.venue_gangjeong'),
       performers: [
-        { name: 'Project Around Surround', musicianId: 1 },
-        { name: '정진석', musicianId: 2 },
-        { name: '남수', musicianId: 4 },
-        { name: '모레도토요일', musicianId: 7 },
-        { name: '자이(Jai) x HANASH', musicianId: 11 },
+        { name: resolveMusicianName('Project Around Surround', 1), musicianId: 1 },
+        { name: resolveMusicianName(fallbackName('정진석', 'Jeong Jinseok'), 2), musicianId: 2 },
+        { name: resolveMusicianName(fallbackName('남수', 'Namsu'), 4), musicianId: 4 },
+        { name: resolveMusicianName(fallbackName('모레도토요일', 'MoredoSaturday'), 7), musicianId: 7 },
+        { name: resolveMusicianName('Jai x HANASH', 11), musicianId: 11 },
       ],
     },
     {
       id: 'hongdae',
       name: t('album.concert_hongdae'),
-      date: '2024. 11. 02 (Sat)',
-      time: '19:00~',
+      date: t('album.concert_hongdae_date'),
+      time: t('album.concert_time'),
       venue: t('album.venue_hongdae'),
       performers: [
-        { name: '김인', musicianId: 6 },
-        { name: '모모', musicianId: 10 },
-        { name: '남수', musicianId: 4 },
-        { name: '자이(Jai) x HANASH', musicianId: 11 },
-        { name: '길가는 밴드 장현호', musicianId: null },
-        { name: '김동산과 블루이웃', musicianId: 3 },
+        { name: resolveMusicianName(fallbackName('김인', 'Kim In'), 6), musicianId: 6 },
+        { name: resolveMusicianName(fallbackName('모모', 'MOMO'), 10), musicianId: 10 },
+        { name: resolveMusicianName(fallbackName('남수', 'Namsu'), 4), musicianId: 4 },
+        { name: resolveMusicianName('Jai x HANASH', 11), musicianId: 11 },
+        { name: t('album.performer_gilganeun_band'), musicianId: null },
+        { name: resolveMusicianName(fallbackName('김동산과 블루이웃', 'Kim Dongsan & Blueeewoot'), 3), musicianId: 3 },
       ],
     },
-  ];
+  ]), [fallbackName, resolveMusicianName, t]);
 
   // Filter album photos and videos
   const albumPhotos = useMemo(
@@ -113,7 +128,7 @@ const AlbumAboutPage = () => {
   );
 
   // MusicAlbum Schema
-  const albumSchema = getMusicAlbumSchema({
+  const albumSchema = useMemo(() => getMusicAlbumSchema({
     name: t('album.album_title_full'),
     byArtist: { name: t('app.title') },
     genre: ["Folk", "Rock", "Jazz", "Electronic", "Ambient", "World Music"],
@@ -126,7 +141,7 @@ const AlbumAboutPage = () => {
       name: m.trackTitle || "",
       url: "https://peaceandmusic.net/album/tracks"
     }))
-  }, i18n.language);
+  }, i18n.language), [musicians, i18n.language, t]);
 
   return (
     <PageLayout

@@ -1,4 +1,5 @@
 import { EventType } from "../types/event";
+import { getLanguageCode } from "../utils/localization";
 
 export interface PressItem {
   id: number;
@@ -13,7 +14,7 @@ export interface PressItem {
 }
 
 // All press items are about the 2024 album project by default
-export const pressItems: PressItem[] = ([
+const pressItemsKo: PressItem[] = [
   {
     id: 4,
     title: "평화를 노래하는 뮤지션들의 무대 '이름을 모르는 먼 곳의 그대에게' 전석 매진",
@@ -308,9 +309,313 @@ export const pressItems: PressItem[] = ([
     eventType: 'camp',
     eventYear: 2025
   }
-] as PressItem[]).map(item => ({
+];
+
+const pressItemsEn: PressItem[] = [
+  {
+    id: 4,
+    title: "Sold out: 'To You in a Distant Place Whose Name I Don't Know,' a stage by musicians singing for peace",
+    publisher: "News Art",
+    date: "2024-10-31",
+    url: "https://www.news-art.co.kr/news/article.html?no=32660",
+    description: "The release concerts for the album 'To You in a Distant Place Whose Name I Don't Know' have drawn an enthusiastic response. After the October 12 show in Gangjeong sold out, the November 2 concert at Space Hangang in Hongdae also sold out early.",
+    imageUrl: "https://www.news-art.co.kr/data/photos/20241044/art_17303642770961_5c659f.jpg"
+  },
+  {
+    id: 1,
+    title: "Born in Gangjeong: songs by 12 musicians praying for world peace",
+    publisher: "Hankyoreh",
+    date: "2024-10-10",
+    url: "https://www.hani.co.kr/arti/culture/culture_general/1161535.html",
+    description: "Planner Jang Hana said it became a meaningful opportunity for a new generation of musicians to participate in making socially engaged music, and expressed hope that the collaboration of artists with diverse colors and experiences would inspire rich musical imagination around the theme of peace.",
+    imageUrl: "https://flexible.img.hani.co.kr/flexible/normal/960/960/imgdb/original/2024/1008/20241008501862.jpg"
+  },
+  {
+    id: 2,
+    title: "To places of gunfire and pain... sending a musical letter of peace",
+    publisher: "Kyunghyang Shinmun",
+    date: "2024-09-19",
+    url: "https://www.khan.co.kr/culture/culture-general/article/202409191455001",
+    description: "The album was planned by activist Jang Hana, a former National Assembly member, and musician-activist Hwang Gyeongha, and produced by the Gangjeong Peace Music Camp Organizing Committee and the Art Liberation Front. Participating musicians will perform on October 12 at Gangjeong Peace Center in Jeju and on November 2 at Space Hangang in Hongdae, Seoul.",
+    imageUrl: "https://img.khan.co.kr/news/2024/09/19/news-p.v1.20240919.2b72c5956ca04f74bed8fd9f0dd47766_P1.webp"
+  },
+  {
+    id: 3,
+    title: "Project album released to call out the pain of war and awaken the value of peace",
+    publisher: "News Art",
+    date: "2024-09-03",
+    url: "https://www.news-art.co.kr/news/article.html?no=32254",
+    description: "News of war from Ukraine to Israel-Palestine and tensions on the Korean Peninsula colors daily life with anxiety and fear. Against this backdrop, 'To You in a Distant Place Whose Name I Don't Know' holds the musicians' earnest desire to deliver a message of peace worldwide through music.",
+    imageUrl: "https://www.news-art.co.kr/data/photos/20240936/art_17253322573648_23573e.jpg"
+  },
+  {
+    id: 5,
+    title: "Namsu releases new song 'Hello (To You in a Distant Place)' - We ultimately live on the same land",
+    publisher: "Monthly Mixing",
+    date: "2024-11-22",
+    url: "https://mixing.co.kr/29252",
+    description: "In the album notes, Namsu says, \"Though we are far apart, we ultimately live on the same land. What happens is not in another world but on the same ground. We may be far, but we share the same hearts and wishes. We don't know each other's names, but we wish each other well.\"",
+    imageUrl: "https://mmagimg.speedgabia.com/2024/11/_namsu-bye-thumb.jpg"
+  },
+  {
+    id: 6,
+    title: "A melody of solidarity beyond distance: artist Namsu releases single 'Hello (To You in a Distant Place)'",
+    publisher: "Sports Kyunghyang",
+    date: "2024-11-24",
+    url: "https://sports.khan.co.kr/article/202411240607003",
+    description: "The lyrics remind us of humanity that persists amid division and conflict. The line \"If the same wind is within you and me\" points to a universal longing, and \"to you whose name I don't know\" symbolizes our connection even in anonymity.",
+    imageUrl: "https://images.khan.co.kr/article/2024/11/24/news-p.v1.20241124.37bd552a91f74c7db1d08c28705cc907_P1.webp"
+  },
+  {
+    id: 7,
+    title: "A voyage of freedom drawn in harmony: MoredoSaturday's 'We will sail for your freedom'",
+    publisher: "News Art",
+    date: "2024-10-15",
+    url: "https://www.news-art.co.kr/news/article.html?no=32606",
+    description: "MoredoSaturday's greatest strength lies in the balance between musical completeness, sincerity of message, and real action. They use their talent to convey social messages while practicing them on the ground. As the late documentary photographer Choi Min-sik emphasized, their life and belief add weight and persuasiveness to their music.",
+    imageUrl: "https://www.news-art.co.kr/data/photos/20241042/art_17289686768047_b83e1e.jpg"
+  },
+  {
+    id: 8,
+    title: "MoredoSaturday, peace activists from Gangjeong Village, release a single",
+    publisher: "Headline Jeju",
+    date: "2024-11-25",
+    url: "https://www.headlinejeju.co.kr/news/articleView.html?idxno=558061",
+    description: "The name 'MoredoSaturday' carries a desire to sustain ideal moments. More and Doto met through the Gangjeong peace program 'Something Peace' and formed an artistic, practical community through music. Amid conflicts over the naval base, they go beyond music to on-site peace actions such as human-chain protests, showing a harmonious blend of art and practice.",
+    imageUrl: "https://www.headlinejeju.co.kr/news/photo/202411/558061_449548_4751.jpg"
+  },
+  {
+    id: 9,
+    title: "Jeju folk duo MoredoSaturday sings for peace, releases 'We will sail for your freedom'",
+    publisher: "Monthly Mixing",
+    date: "2024-11-25",
+    url: "https://mixing.co.kr/29341",
+    description: "The folk duo of Gangjeong peace activists released their new song on the 25th. The track reinterprets a 2016 song composed by Emma Ringqvist for women in Gaza, originally created by 13 women activists sailing to the illegally blockaded Gaza Strip. The lyrics use olive trees to convey a message of peace and hope for the future.",
+    imageUrl: "https://mmagimg.speedgabia.com/2024/11/_we-will-sail-thumb.jpg"
+  },
+  {
+    id: 10,
+    title: "On the contradictions of a society that believes it is free: jazz duo MOMO's 'If this can be tolerated, what can't be?'",
+    publisher: "Monthly Mixing",
+    date: "2024-11-27",
+    url: "https://mixing.co.kr/29415",
+    description: "The lyric \"If this can be tolerated, what can't be? Why we bear catastrophe if we're so free?\" sharply points to the contradiction of allowing violence in a society that speaks of freedom. The repeated melody becomes an ongoing question of why we endure it, conveying resilience and hope within everyday life.",
+    imageUrl: "https://mmagimg.speedgabia.com/2024/11/_momo-thumb.jpg"
+  },
+  {
+    id: 12,
+    title: "Lee Seoyoung releases single 'We' - a song to sing love, peace, and freedom together",
+    publisher: "Monthly Mixing",
+    date: "2024-11-29",
+    url: "https://mixing.co.kr/29490",
+    description: "Lee Seoyoung explained that a vision of people passing through a deep tunnel in the mountain became this song. The echo of love, peace, and freedom feels like an answer from the depths of the heart. She added that she wanted to sing in harmony like different instruments coming together, and hopes listeners can feel it as a song sung together.",
+    imageUrl: "https://mmagimg.speedgabia.com/2024/11/_we-thumb.jpg"
+  },
+  {
+    id: 11,
+    title: "Unstoppable rhythm, unbroken hope - MOMO's jazz of resistance",
+    publisher: "News Art",
+    date: "2024-10-22",
+    url: "https://www.news-art.co.kr/news/article.html?no=32644",
+    description: "\"If this can be tolerated, what can't be? Why we bear catastrophe if we're so free?\" raises a sharp question about a world order filled with war and violence. It asks how a society that believes it is free tolerates such destruction. MOMO captures conflicts across the globe and challenges our posture of endurance toward these \"disasters.\"",
+    imageUrl: "https://www.news-art.co.kr/data/photos/20241043/art_172957614531_cb2e06.jpg"
+  },
+  {
+    id: 13,
+    title: "A fiery message in a cool tone - Lee Seoyoung draws solidarity in 'We'",
+    publisher: "News Art",
+    date: "2024-10-22",
+    url: "https://www.news-art.co.kr/news/article.html?no=32645",
+    description: "Lyrics beginning with \"We live with thorns, we walk through our chests\" capture the moment personal pain expands into a collective experience. The repeated point of view \"we\" evokes a shared consciousness of those living in the same era, hinting at solidarity amid structural contradictions. The line \"even breathless, we insist on life\" reveals both hardship and human resilience.",
+    imageUrl: "https://www.news-art.co.kr/data/photos/20241043/art_17295757086366_a46773.jpg"
+  },
+  {
+    id: 14,
+    title: "Singer-songwriter Lee Seoyoung releases new single 'We' that holds time",
+    publisher: "Ruliweb",
+    date: "2024-11-29",
+    url: "https://bbs.ruliweb.com/news/read/204826",
+    description: "With her distinctive timbre and lyrical soundscape, 'We' expands the piano-and-vocal original with electric guitar, bass, and flugelhorn. The flugelhorn deepens the song's poetic imagery, and the instruments create a harmonious ensemble while drawing their own voices.",
+    imageUrl: "https://www.news-art.co.kr/data/photos/20241043/art_17295699483884_fb2af4.jpg"
+  },
+  {
+    id: 15,
+    title: "Jeong Jinseok's 'Is This Your Land or Mine' - resistance blues capturing the tragedy of Soseong-ri",
+    publisher: "News Art",
+    date: "2024-10-11",
+    url: "https://www.news-art.co.kr/news/article.html?no=32582",
+    description: "Jeong Jinseok succeeds in fusing traditional blues with Korean sensibilities. His Gyeongsang dialect vocals recall U.S. Southern blues singers and Korean rural oral traditions, perfectly aligning with the theme and making listeners feel the voices of Soseong-ri residents.",
+    imageUrl: "https://www.news-art.co.kr/data/photos/20241041/art_17286175936167_e2bc82.jpg"
+  },
+  {
+    id: 16,
+    title: "The journey of musicians singing peace in 'To You in a Distant Place...' meets us again on the archive website",
+    publisher: "Sports Kyunghyang",
+    date: "2024-12-02",
+    url: "https://sports.khan.co.kr/article/202412020551003",
+    description: "The website introduces 12 participating musicians and their messages of peace. Stories include the Gangjeong-formed folk duo MoredoSaturday and Nepalese sitarist Ritesh Maharjan of Project Around Surround, among many others.",
+    imageUrl: "https://images.khan.co.kr/article/2024/12/02/news-p.v1.20241202.02d6177fa7fd480381f431c60710a344_P1.webp"
+  },
+  {
+    id: 17,
+    title: "A melody of solidarity beyond distance - Namsu's 'Hello (To You in a Distant Place)'",
+    publisher: "News Art",
+    date: "2024-10-26",
+    url: "https://www.news-art.co.kr/news/article.html?no=32617",
+    description: "Namsu's \"Hello (To You in a Distant Place)\" recalls pure humanity amid the complexities of modern society. With a simple melody and restrained arrangement, it focuses on the message while delivering deep resonance, and the somber piano accompaniment quietly leads the atmosphere, revealing Namsu's unique musical color.",
+    imageUrl: "https://www.news-art.co.kr/data/photos/20241042/art_17290693286107_ca5934.png"
+  },
+  {
+    id: 18,
+    title: "Caru's 'TRANSITION' - a life poem singing the turning of the times",
+    publisher: "News Art",
+    date: "2024-11-19",
+    url: "https://www.news-art.co.kr/news/article.html?no=32677",
+    description: "'TRANSITION' honestly captures the anxiety and hope of our era. The song offers an artist's voice seeking new possibilities amid crisis and reconsiders the contemporary meaning of Korean folk. Caru's vision of transition feels achievable through daily practice and artistic sublimation rather than mere ideals or slogans.",
+    imageUrl: "https://www.news-art.co.kr/data/photos/20241147/art_17319955139486_dbe4f0.jpg"
+  },
+  {
+    id: 19,
+    title: "Kim In's 'A Person Who Went to See the Stars' - a lyrical poetics of peace",
+    publisher: "News Art",
+    date: "2024-12-05",
+    url: "https://www.news-art.co.kr/news/article.html?no=32691",
+    description: "The song's real achievement lies in how it exposes the violence of war. Instead of direct anger or resistance, it summons concrete memories of peaceful moments to reveal the absurdity of war. Intimate lines like \"the night we leaned our shoulders together\" suggest that war destroys not only spaces and lives but also our most precious relationships.",
+    imageUrl: "https://www.news-art.co.kr/data/photos/20241249/art_17333740286862_d4e1e2.jpg"
+  },
+  {
+    id: 20,
+    title: "A folk rock capturing the tragedy of modern civilization - 'Wave' by Kim Dongsan and Blueeewoot",
+    publisher: "News Art",
+    date: "2024-11-20",
+    url: "https://news.mt.co.kr/mtview.php?no=2024122015155125322&type=1",
+    description: "Musically, 'Wave' is a notable achievement. The band's tight interplay stands out: Ryu Jooncheol's organ sets a lyrical mood, and Lee Inwoo's bass and Kim Yejun's drums build a solid rhythm section. The band's rising performance toward the end effectively delivers the weight of the questions in the lyrics.",
+    imageUrl: "https://www.news-art.co.kr/data/photos/20241147/art_17320679353068_c724d0.jpg"
+  },
+  {
+    id: 21,
+    title: "Singing the wounds of war - Jai and HANASH's 'Pink Padded Girl'",
+    publisher: "News Art",
+    date: "2024-10-25",
+    url: "https://www.news-art.co.kr/news/article.html?no=32649",
+    description: "Through the story of an innocent girl, the song reveals the tragedy of war and presents a new way to convey anti-war messages. Jai's distinctive vocals and HANASH's experimental sound illuminate the heavy theme from a new angle, leaving a deeper resonance.",
+    imageUrl: "https://www.news-art.co.kr/data/photos/20241043/art_17298221431005_afab11.jpg"
+  },
+  {
+    id: 22,
+    title: "Singing the wounds of war - Jai and HANASH's 'Pink Padded Girl'",
+    publisher: "News Art",
+    date: "2024-10-25",
+    url: "https://www.news-art.co.kr/news/article.html?no=32649",
+    description: "Through the story of an innocent girl, the song reveals the tragedy of war and presents a new way to convey anti-war messages. Jai's distinctive vocals and HANASH's experimental sound illuminate the heavy theme from a new angle, leaving a deeper resonance.",
+    imageUrl: "https://www.news-art.co.kr/data/photos/20241043/art_17298221431005_afab11.jpg"
+  },
+  {
+    id: 23,
+    title: "A small breeze's song of peace - Leafs' 'Heart in Front of My Eyes'",
+    publisher: "News Art",
+    date: "2024-12-10",
+    url: "https://www.news-art.co.kr/news/article.html?no=32695",
+    description: "Leafs approach the vast theme of peace from a personal perspective, using folk's intimate sensibility. Unlike many anti-war songs that directly accuse the horrors of war, 'Heart in Front of My Eyes' speaks of the value of peace through everyday moments and personal emotions.",
+    imageUrl: "https://www.news-art.co.kr/data/photos/20241250/art_17338217947325_88f251.jpg"
+  },
+  {
+    id: 24,
+    title: "Folk duo Leafs sing for peace... new single 'Heart in Front of My Eyes'",
+    publisher: "Sports Kyunghyang",
+    date: "2025-01-16",
+    url: "https://sports.khan.co.kr/article/202501162213003",
+    description: "'Heart in Front of My Eyes' stands out for its different approach from earlier anti-war music. Rather than directly denouncing war, it speaks of peace through everyday moments and personal emotions. The lyrics move from \"Sorrow and joy come and go and linger\" to \"May every heart reach there,\" expanding from the inner self toward hope for the world.",
+    imageUrl: "https://images.khan.co.kr/article/2025/01/16/news-p.v1.20250116.cc1325a1e49d403d9bc62e48a2268aa5_P1.webp"
+  },
+  {
+    id: 25,
+    title: "Art Liberation Front releases folk duo Leafs' new single 'Heart in Front of My Eyes'",
+    publisher: "Ruliweb",
+    date: "2025-01-16",
+    url: "https://bbs.ruliweb.com/news/read/206470",
+    description: "The duo Yeo-ul and Wongirl presents their signature harmony again. Yeo-ul's clear tone and Wongirl's warm low register blend like two leaves swaying in the wind. A minimal arrangement with acoustic guitar and shaker highlights the purity of the message.",
+    imageUrl: "https://i3.ruliweb.com/img/25/01/16/1946d7c52aaafd4.jpeg"
+  },
+  {
+    id: 26,
+    title: "[Mysterious sounds of Gangjeong nature] Project Around Surround presents an experimental fusion of East and West",
+    publisher: "News Art",
+    date: "2025-01-17",
+    url: "https://www.news-art.co.kr/news/article.html?no=32718",
+    description: "This work reinterprets Gangjeong's natural scenery through sound. The musical flow from gentle waves to the grandeur of Hallasan blends ancient Indian raga with modern ambient music. The sitar's mystic tone and advanced sound design bridge Eastern tradition and Western modernity.",
+    imageUrl: "https://www.news-art.co.kr/data/photos/20250103/art_17370882782835_3077f9.jpg"
+  },
+  {
+    id: 27,
+    title: "Yeoyu releases 'Seoul Night'... a youth story in folk melodies",
+    publisher: "Money Today",
+    date: "2025-02-06",
+    url: "https://news.mt.co.kr/mtview.php?no=2025020613450122763",
+    description: "The lyrics portray the anxieties of youth and a longing for a pure life. Jeju symbolizes the possibility of an alternative life and carries hope. The song moves listeners with folk's inherent charm.",
+    imageUrl: "https://thumb.mt.co.kr/06/2025/02/2025020613450122763_1.jpg"
+  },
+  {
+    id: 28,
+    title: "Yeoyu's 'Seoul Night,' the essence of contemporary folk",
+    publisher: "Sports Kyunghyang",
+    date: "2025-02-06",
+    url: "https://sports.khan.co.kr/article/202502060153003",
+    description: "'Seoul Night' succeeds in touching listeners through folk's appeal without excessive formal experiments. Beginning with a lyrical monologue and ending with the blessing \"Live well, my friend,\" its structure shows a process in which personal worries expand into solidarity with contemporaries.",
+    imageUrl: "https://images.khan.co.kr/article/2025/02/06/news-p.v1.20250206.9e168b0306d64ee8ab38e308df22e191_P1.webp"
+  },
+  {
+    id: 29,
+    title: "Twelve musicians resist war and violence, sing for peace - 'To You in a Distant Place Whose Name I Don't Know' released",
+    publisher: "News Art",
+    date: "2025-02-07",
+    url: "https://www.news-art.co.kr/news/article.html?no=32724",
+    description: "Musicians yearning for peace around the world raised one voice. The album, capturing the pain of Ukraine's war, ongoing civilian massacres in Gaza, and the long-unresolved division of the Korean Peninsula, will be released digitally at 2 p.m. on February 7.",
+    imageUrl: "https://www.news-art.co.kr/data/photos/20250206/art_17388988747253_d7feea.jpg"
+  },
+  {
+    id: 30,
+    title: "Peace Concert Gangjeong Peace Music Camp to be held on the 14th",
+    publisher: "Jeju Today",
+    date: "2025-06-13",
+    url: "https://www.ijejutoday.com/news/articleView.html?idxno=400217",
+    description: "The 2nd Gangjeong Peace Music Camp will be held on the 14th around Halmae Water Restaurant (2835-1 Gangjeong-dong, Seogwipo). Under the slogan \"A festival for all who sing for peace,\" musicians of various genres will participate and deliver a message of peace.",
+    imageUrl: "https://cdn.ijejutoday.com/news/photo/202506/400217_400434_1722.jpg",
+    eventType: 'camp',
+    eventYear: 2025
+  },
+  {
+    id: 31,
+    title: "Anti-war dance, song of peace... 2nd Gangjeong Peace Music Camp held",
+    publisher: "NewsNJeju",
+    date: "2025-06-15",
+    url: "https://www.newsnjeju.com/news/articleView.html?idxno=220836",
+    description: "The 2nd Gangjeong Peace Music Camp concluded successfully. It was a meaningful gathering where citizens and artists came together to share the values of anti-war and peace.",
+    imageUrl: "http://www.newsnjeju.com/news/thumbnail/202506/220836_287179_4455_v150.jpg",
+    eventType: 'camp',
+    eventYear: 2025
+  },
+  {
+    id: 32,
+    title: "[Full text] \"We are citizens! Guarantee the right to sing for peace!\"",
+    publisher: "NewsNJeju",
+    date: "2025-05-23",
+    url: "https://www.newsnjeju.com/news/articleView.html?idxno=218234",
+    description: "The Gangjeong Peace Music Camp organizing committee held a press conference urging guarantees for peaceful cultural events and citizens' rights to enjoy culture.",
+    imageUrl: "http://www.newsnjeju.com/news/thumbnail/202505/218234_282572_2715_v150.jpg",
+    eventType: 'camp',
+    eventYear: 2025
+  }
+];
+
+const applyDefaults = (items: PressItem[]) => items.map(item => ({
   ...item,
   eventType: item.eventType || 'album',
   eventYear: item.eventYear || 2024
 }));
 
+export const getPressItems = (language?: string): PressItem[] => (
+  applyDefaults(getLanguageCode(language) === 'en' ? pressItemsEn : pressItemsKo)
+);
+
+export const pressItems = applyDefaults(pressItemsKo);
