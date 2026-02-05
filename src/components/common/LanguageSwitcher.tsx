@@ -14,21 +14,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ className = '', isS
     const { t, i18n } = useTranslation();
     const router = useRouter();
 
-    const languageLabels: Record<string, string> = {
-        ko: '한국어',
-        en: 'English',
-        es: 'Español',
-        fr: 'Français',
-        de: 'Deutsch',
-        pt: 'Português',
-        ru: 'Русский',
-        ar: 'العربية',
-        ja: '日本語',
-        'zh-Hans': '简体中文',
-        'zh-Hant': '繁體中文',
-        hi: 'हिन्दी',
-        id: 'Bahasa Indonesia',
-    };
+    const languageLabels = t('languages', { returnObjects: true }) as Record<string, string>;
 
     const currentLocale = router.locale || i18n.language || 'ko';
 

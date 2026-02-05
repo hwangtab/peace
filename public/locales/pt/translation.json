@@ -2,6 +2,21 @@
     "app": {
         "title": "Acampamento de Música pela Paz de Gangjeong"
     },
+    "languages": {
+        "ko": "한국어",
+        "en": "English",
+        "es": "Español",
+        "fr": "Français",
+        "de": "Deutsch",
+        "pt": "Português",
+        "ru": "Русский",
+        "ar": "العربية",
+        "ja": "日本語",
+        "zh-Hans": "简体中文",
+        "zh-Hant": "繁體中文",
+        "hi": "हिन्दी",
+        "id": "Bahasa Indonesia"
+    },
     "about": {
         "title": "Sobre",
         "subtitle": "Nossas canções pela paz",

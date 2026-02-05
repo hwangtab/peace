@@ -32,15 +32,18 @@ const AlbumAboutPage = () => {
   const [videos, setVideos] = useState<VideoItem[]>([]);
   const [musicians, setMusicians] = useState<Musician[]>([]);
 
-  // Load photos and videos dynamically
+  // Load images (language-independent)
+  useEffect(() => {
+    getGalleryImages().then(setImages);
+  }, []);
+
+  // Load videos and musicians (language-dependent)
   useEffect(() => {
     const loadData = async () => {
-      const [allImages, allVideos, allMusicians] = await Promise.all([
-        getGalleryImages(),
+      const [allVideos, allMusicians] = await Promise.all([
         getVideos(i18n.language),
         getMusicians(i18n.language),
       ]);
-      setImages(allImages);
       setVideos(allVideos);
       setMusicians(allMusicians);
     };

@@ -64,27 +64,71 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1,
-  h2,
-  h3 {
-    @apply font-serif font-bold;
-    font-family: 'BookkMyungjo-Bd', serif;
-    word-break: keep-all;
-    overflow-wrap: break-word;
+  :root {
+    --text-word-break: keep-all;
+    --text-hyphens: manual;
+    --text-line-break: auto;
   }
 
-  p {
+  html:lang(ko),
+  html:lang(ja),
+  html:lang(zh) {
+    --text-word-break: keep-all;
+    --text-hyphens: manual;
+    --text-line-break: strict;
+  }
+
+  html:lang(en),
+  html:lang(es),
+  html:lang(fr),
+  html:lang(de),
+  html:lang(pt),
+  html:lang(ru),
+  html:lang(hi),
+  html:lang(id) {
+    --text-word-break: normal;
+    --text-hyphens: auto;
+    --text-line-break: auto;
+  }
+
+  html:lang(ar) {
+    --text-word-break: normal;
+    --text-hyphens: manual;
+    --text-line-break: auto;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif font-bold;
+    font-family: 'BookkMyungjo-Bd', serif;
+    word-break: var(--text-word-break);
+    overflow-wrap: break-word;
+    hyphens: var(--text-hyphens);
+    line-break: var(--text-line-break);
+  }
+
+  p,
+  li {
     @apply font-sans;
-    word-break: keep-all;
+    word-break: var(--text-word-break);
     overflow-wrap: break-word;
     text-wrap: pretty;
+    hyphens: var(--text-hyphens);
+    line-break: var(--text-line-break);
   }
 
   span,
   button,
-  a {
-    word-break: keep-all;
+  a,
+  label {
+    word-break: var(--text-word-break);
     overflow-wrap: break-word;
+    hyphens: var(--text-hyphens);
+    line-break: var(--text-line-break);
   }
 }
 
