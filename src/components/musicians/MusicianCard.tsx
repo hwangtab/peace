@@ -1,4 +1,5 @@
 import React, { memo, useState, useCallback } from 'react';
+import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import { motion } from 'framer-motion';
 import { Musician } from '../../types/musician';
@@ -33,14 +34,13 @@ const MusicianCard = memo(({ musician, index }: MusicianCardProps) => {
           <div className="relative w-full pb-[66.666%]">
             <div className="absolute inset-0 overflow-hidden">
               {musician.imageUrl ? (
-                <img
+                <Image
                   src={musician.imageUrl}
                   alt={musician.name}
-                  className="absolute w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
-                  loading={index < 4 ? 'eager' : 'lazy'}
-                  width="400"
-                  height="400"
-                  decoding="async"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                  priority={index < 4}
                 />
               ) : (
                 <div className="absolute w-full h-full flex items-center justify-center text-coastal-gray">
@@ -66,10 +66,10 @@ const MusicianCard = memo(({ musician, index }: MusicianCardProps) => {
 
           {/* Content */}
           <div className="p-6 flex-1 flex flex-col">
-            <h3 className="text-2xl font-serif text-jeju-ocean group-hover:text-ocean-mist transition-colors duration-200 mb-2">
+            <h3 className="text-2xl font-serif text-jeju-ocean group-hover:text-ocean-mist transition-colors duration-200 mb-2 break-words">
               {musician.name}
             </h3>
-            <p className="text-gray-600 mb-4 flex-1 text-pretty">{musician.shortDescription}</p>
+            <p className="text-gray-600 mb-4 flex-1 text-pretty break-words">{musician.shortDescription}</p>
 
             {/* Instagram Links */}
             {musician.instagramUrls.length > 0 && (

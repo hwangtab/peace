@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect, useMemo, useCallback } from 'react';
 import { useTranslation } from 'next-i18next';
+import Image from 'next/image';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import Button from '../../components/common/Button';
 import PageLayout from '../../components/layout/PageLayout';
@@ -141,7 +142,7 @@ const AlbumAboutPage = () => {
       name: m.trackTitle || "",
       url: "https://peaceandmusic.net/album/tracks"
     }))
-  }, i18n.language), [musicians, i18n.language, t]);
+  }), [musicians, t]);
 
   return (
     <PageLayout
@@ -178,13 +179,13 @@ const AlbumAboutPage = () => {
             <motion.div variants={fadeUpVariants} className="w-full lg:w-5/12 max-w-lg">
               <div className="relative aspect-square rounded-xl shadow-2xl overflow-hidden group">
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500" />
-                <img
+                <Image
                   src="/images-webp/album/albumart.png"
                   alt={t('album.image_alt_cover')}
-                  className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700"
-                  width="500"
-                  height="500"
-                  decoding="async"
+                  fill
+                  sizes="(max-width: 1024px) 80vw, 40vw"
+                  className="object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700"
+                  priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-50 pointer-events-none" />
               </div>
@@ -439,14 +440,12 @@ const AlbumAboutPage = () => {
                       className="aspect-square rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
                       onClick={() => setSelectedImage(photo)}
                     >
-                      <img
+                      <Image
                         src={photo.url}
                         alt={t('album.image_alt_concert', { num: index + 1 })}
-                        className="w-full h-full object-cover"
-                        width="300"
-                        height="300"
-                        loading="lazy"
-                        decoding="async"
+                        fill
+                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                        className="object-cover"
                       />
                     </motion.div>
                   ))}

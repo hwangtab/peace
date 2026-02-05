@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { useTranslation } from 'next-i18next';
 import { Dialog, Transition } from '@headlessui/react';
+import Image from 'next/image';
 import { Musician } from '../../types/musician';
 import { extractInstagramUsername } from '../../utils/instagram';
 import InstagramIcon from '../icons/InstagramIcon';
@@ -67,10 +68,12 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                     {/* Image */}
                     {musician.imageUrl && (
                       <div className="relative w-full aspect-[3/2] mb-6 rounded-lg overflow-hidden">
-                        <img
+                        <Image
                           src={musician.imageUrl}
                           alt={musician.name}
-                          className="w-full h-full object-cover"
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-cover"
                         />
                       </div>
                     )}
@@ -78,14 +81,14 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                     {/* Header */}
                     <Dialog.Title
                       as="h3"
-                      className="text-3xl font-medium leading-6 text-gray-900 mb-4 font-serif"
+                      className="text-3xl font-medium leading-6 text-gray-900 mb-4 font-serif break-words"
                     >
                       {musician.name}
                     </Dialog.Title>
 
                     {/* Description */}
                     <div className="mt-4 space-y-4">
-                      <p className="text-lg text-gray-700 leading-relaxed whitespace-pre-wrap text-pretty">
+                      <p className="text-lg text-gray-700 leading-relaxed whitespace-pre-wrap text-pretty break-words">
                         {musician.description}
                       </p>
                     </div>
@@ -96,7 +99,7 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                         <h4 className="text-lg font-medium text-gray-900 mb-2">
                           {t('common.featured_track')}
                         </h4>
-                        <p className="text-gray-600">{musician.trackTitle}</p>
+                        <p className="text-gray-600 break-words">{musician.trackTitle}</p>
                       </div>
                     )}
 

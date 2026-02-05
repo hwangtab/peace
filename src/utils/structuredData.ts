@@ -75,7 +75,7 @@ export const getBreadcrumbSchema = (items: Array<{ name: string; url: string }>)
 });
 
 // FAQPage Schema - 자주 묻는 질문 (AI 추천 확률 향상)
-export const getFAQSchema = (faqs: Array<{ question: string; answer: string }>, lang: string = 'ko') => ({
+export const getFAQSchema = (faqs: Array<{ question: string; answer: string }>) => ({
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": faqs.map(faq => ({
@@ -164,7 +164,7 @@ export const getCollectionPageSchema = (collection: {
   name: string;
   description: string;
   url: string;
-}, lang: string = 'ko') => ({
+}) => ({
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "name": collection.name,
@@ -247,7 +247,7 @@ export const getMusicAlbumSchema = (album: {
   image?: string;
   datePublished?: string;
   numTracks?: number;
-}, lang: string = 'ko') => ({
+}) => ({
   "@context": "https://schema.org",
   "@type": "MusicAlbum",
   "name": album.name,

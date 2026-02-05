@@ -1,8 +1,8 @@
 import React from 'react';
 import { useTranslation } from 'next-i18next';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { CampEvent } from '../../types/camp';
-import { getResponsiveImagePath } from '../../utils/images';
 
 interface CampHeroProps {
   camp: CampEvent;
@@ -19,24 +19,17 @@ const CampHero: React.FC<CampHeroProps> = ({ camp }) => {
 
   const backgroundImage = camp.images && camp.images.length > 0 ? camp.images[0] : null;
 
-  const responsiveImages = backgroundImage ? getResponsiveImagePath(backgroundImage) : null;
-
   return (
     <section className="relative h-[500px] md:h-[600px] lg:h-[700px] flex items-center justify-center text-center overflow-hidden bg-hero-gradient">
       {/* Responsive Background Image */}
-      {responsiveImages && (
-        <img
-          src={responsiveImages.desktop}
-          srcSet={`
-            ${responsiveImages.mobile} 800w,
-            ${responsiveImages.tablet} 1200w,
-            ${responsiveImages.desktop} 1920w
-          `}
-          sizes="100vw"
+      {backgroundImage && (
+        <Image
+          src={backgroundImage}
           alt={camp.title}
+          fill
+          sizes="100vw"
           className="absolute inset-0 w-full h-full object-cover"
-          loading="eager"
-          fetchPriority="high"
+          priority
         />
       )}
 
