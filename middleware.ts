@@ -102,12 +102,25 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // Check if the current pathname already starts with a supported locale
+  const pathnameHasLocale = LOCALES.some(
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+  );
+
+  if (pathnameHasLocale) {
+    return NextResponse.next();
+  }
+
   // Detect the best locale for the user
   const detectedLocale = detectLocale(request);
-  const response = NextResponse.next();
 
-  // Set NEXT_LOCALE cookie for Next.js built-in i18n to use
-  // This preserves our advanced locale detection while letting Next.js handle routing
+  // Redirect to the locale-prefixed version of the path
+  const url = request.nextUrl.clone();
+  url.pathname = `/${detectedLocale}${pathname === '/' ? '' : pathname}`;
+
+  const response = NextResponse.redirect(url);
+
+  // Set NEXT_LOCALE cookie to persist preference
   if (detectedLocale) {
     response.cookies.set('NEXT_LOCALE', detectedLocale, {
       path: '/',
