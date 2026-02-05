@@ -1,0 +1,676 @@
+[
+    {
+        "id": 1,
+        "title": "Wenn ich an den Horizont blicke",
+        "artist": "Project Around Surround",
+        "duration": "4:44",
+        "description": "Ein Instrumentalstück, das die traditionelle nepalesische Sitar mit modernem Sounddesign verbindet. Im Mittelpunkt steht das Sitarspiel des nepalesischen Musikers Ritesh Maharjan, unterstützt von den koreanischen Produzenten Kang Kyungdeok und Park In. Es verbindet östliche traditionelle Instrumente mit modernem elektronischem Klang und eröffnet neue musikalische Möglichkeiten. Der Track beginnt mit einer friedlichen Atmosphäre, als stünde man an einem ruhigen Strand von Jeju, und öffnet sich allmählich zu einer weiteren musikalischen Landschaft. Riteshs geheimnisvoller Sitar‑Klang kündigt den Beginn an, hinzu kommt Kangs sorgfältiges, innovatives Sounddesign, während Park Ins sensibles Spiel und Producing Tiefe hinzufügen und die Hörenden in eine reichere Gefühlswelt führen.",
+        "audioUrl": "/audio/1.mp3",
+        "credits": {
+            "composer": [
+                "Ritesh Maharjan"
+            ],
+            "lyricist": [
+                "Ritesh Maharjan"
+            ],
+            "arranger": [
+                "Kang Kyungdeok",
+                "Ritesh Maharjan",
+                "Park In"
+            ],
+            "personnel": [
+                {
+                    "role": "Sitar, Sound Design",
+                    "name": [
+                        "Ritesh Maharjan"
+                    ]
+                },
+                {
+                    "role": "Sound Design, Recording, Mixing",
+                    "name": [
+                        "Kang Kyungdeok"
+                    ]
+                },
+                {
+                    "role": "Producing, Synthesizer, Guitar, Bass",
+                    "name": [
+                        "Park In"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        },
+        "imageUrl": "/images-webp/gallery/1.webp"
+    },
+    {
+        "id": 2,
+        "title": "Ist dies dein Land oder meines",
+        "artist": "Jeong Jinseok",
+        "description": "Jeong Jinseok, bekannt als der „Soseong‑ri‑Star“, studierte ursprünglich Kunst. Nach der Sewol‑Fährenkatastrophe warf er sich vor, soziale Fragen ignoriert zu haben, und begann Musik zu machen und bei vielen sozialen Aktionen zu spielen. Er erlebte die Gewalt in Soseong‑ri während der angekündigten THAAD‑Stationierung und die Beleidigungen gegenüber den Großmüttern. Er verlegte seinen Wohnsitz nach Soseong‑ri, wurde ein echter Bewohner, half bei allen möglichen Arbeiten und entschied sich, an der Seite der älteren Menschen zu stehen, die unter einem verantwortungslosen Staat litten, und für den Frieden zu kämpfen. Fast acht Jahre sind vergangen, und seine Solidarität dauert an. Dieser Blues‑Song zeigt mit Humor die Ironie einer THAAD‑Basis, die mit staatlicher Gewalt in einem kleinen Friedensdorf errichtet wurde, dessen Adresse „Kalifornien“ lautet. Mit erdigem Gyeongsang‑Dialekt und rauen, aber lebendigen Rhythmen weist er auf eine neue Richtung des koreanischen Blues.",
+        "duration": "06:00",
+        "audioUrl": "/audio/2.mp3",
+        "lyrics": "Du fährst eine lange gerade Straße entlang, dann biegst du an einer Ecke ab\nEntlang des schmalen Weges liegen verstreute Landhäuser in den Tälern\nVorbei an Reisfeldern so groß wie eine Handfläche und an recht großen Gewächshäusern\n\nDas Dorf, das du findest, ist kein gewöhnlicher Ort – rundliche Berge voller Kraft,\nder Klang von Wasser und Wind ist erfrischend\nSchau auf den Menschen dort, der geht – Schritt für Schritt erbebt der ganze Berg\nObwohl der Körper dürr ist, leuchtet das Gesicht\n\nEin echtes Bergdorf – keine Spur der Stadt\nSchluchten und Schluchten, Gräben und Bäche, Talwasser, Bachwasser, klare Luft heißt dich willkommen\nDieses schöne Dorf heißt Soseong‑ri\n\nEine THAAD‑Basis kam herein, gebracht von Leuten von jenseits des Meeres\nÜber den Gipfel Ummallae hinweg kam das amerikanische THAAD\nDie Polizei dieses Landes, mit Schlagstöcken, schlug unsere Omas und Opas\nDie Basis, die einzog – ihre Adresse ist\nKalifornien\n\nDort drüben, über den Pazifik, ragt eine Landmasse auf\nZieh die Hosenbeine hoch und geh hinein – willkommen im Hotel California\nAber was soll das – auch hier, Kalifornien?\n\nIst dieses Land dein Land, ist dieses Land mein Land?\nDieses Land ist nicht dein Land, dieses Land ist mein Land\nIst dieses Land dein Land, ist dieses Land mein Land?\nDieses Land ist nicht dein Land, dieses Land ist mein Land\nDieses Land ist nicht dein Land, dieses Land ist unser Land\n\nEin echtes Bergdorf – keine Spur der Stadt\nSchluchten und Schluchten, Gräben und Bäche, Talwasser, Bachwasser, klare Luft heißt dich willkommen\nDieses schöne Dorf heißt Soseong‑ri",
+        "credits": {
+            "composer": [
+                "Jeong Jinseok"
+            ],
+            "lyricist": [
+                "Jeong Jinseok"
+            ],
+            "arranger": [
+                "Jeong Jinseok",
+                "Hwang Gyeongha"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Guitar, Handclaps",
+                    "name": [
+                        "Jeong Jinseok"
+                    ]
+                },
+                {
+                    "role": "Chorus",
+                    "name": [
+                        "Kim Dongsan",
+                        "Hwang Gyeongha",
+                        "Caru"
+                    ]
+                },
+                {
+                    "role": "Bass, Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        },
+        "imageUrl": "/images-webp/gallery/2.webp"
+    },
+    {
+        "id": 3,
+        "title": "Welle",
+        "artist": "Kim Dongsan",
+        "description": "„Welle“ eröffnet mit dem kraftvollen Sound der Band Blueeewoot und zieht die Hörenden sofort hinein. Ryu Jooncheols Keyboards, Lee Inwoos Bass und Kim Yejuns Drums erzeugen einen schweren Rocksound, der an Songs der 1970er von Crosby, Stills, Nash & Young erinnert. Die Lyrics beginnen mit „jene Menschen in strahlenden Erinnerungen“ und stellen Vergangenheit und Gegenwart gegenüber, wodurch sie behutsam die Gewalt der modernen Zivilisation und die Entfremdung des Menschen ansprechen. Die Zeile „nur grauer Rauch und Tränen wiederholen sich wie ein Rad“ deutet auf die Tragödie hin, die die technologische Zivilisation mit sich bringt, und offenbart eine existentielle Krise jenseits eines einzelnen Ereignisses. Die Frage „Was ist Schönheit“, die sich mit dem wuchtigen Sound der Band erhebt, lädt zur Reflexion über das Verhältnis von Zivilisation und Natur, den Zerfall von Gemeinschaft und die Rolle der Kunst ein.",
+        "duration": "05:06",
+        "audioUrl": "/audio/3.mp3",
+        "lyrics": "In strahlenden Erinnerungen, jene Menschen\nAlle trugen die gleichen Kleider\nWir feierten ein großes Fest\n\nWenn das Lachen vorbei ist und das Lagerfeuer erlischt\nBleiben nur grauer Rauch und Seufzer\nNur grauer Rauch und Tränen\n\nWenn alles vorbei ist, wiederholen sich die gleichen Dinge\nWie ein Rad\nMein Lied und deine Tränen\nFließen in jene Wellen\n\nWie viel muss ich weinen und wieder weinen\nUm dir in mir zu begegnen\n\nIch frage dich\nDu fragst mich\nWas ist Schönheit\n\nWenn alles vorbei ist, wiederholt sich derselbe Kummer\nWie ein Rad\nMein Lied und deine Tränen\nFließen in jene Wellen",
+        "credits": {
+            "composer": [
+                "Kim Dongsan"
+            ],
+            "lyricist": [
+                "Kim Dongsan"
+            ],
+            "arranger": [
+                "Kim Dongsan",
+                "Kim Yejun",
+                "Ryu Jooncheol",
+                "Lee Inwoo"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Guitar",
+                    "name": [
+                        "Kim Dongsan"
+                    ]
+                },
+                {
+                    "role": "Keyboards",
+                    "name": [
+                        "Ryu Jooncheol"
+                    ]
+                },
+                {
+                    "role": "Bass",
+                    "name": [
+                        "Lee Inwoo"
+                    ]
+                },
+                {
+                    "role": "Drums",
+                    "name": [
+                        "Kim Yejun"
+                    ]
+                },
+                {
+                    "role": "Chorus",
+                    "name": [
+                        "Kim Dongsan",
+                        "Semin"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        },
+        "imageUrl": "/images-webp/gallery/3.webp"
+    },
+    {
+        "id": 4,
+        "title": "Hallo (An dich in der Ferne)",
+        "artist": "Namsu",
+        "description": "Ein Lied der Solidarität für Menschen, die unter den Kriegen in der Ukraine und in Palästina leiden. Zarte Klavierlinien und warme Stimmen besingen die Menschlichkeit, die über Grenzen hinweg verbindet. Namsu richtet einen Gruß an die Menschen in fernen Kriegsorten und wünscht ihnen Sicherheit und Frieden.",
+        "duration": "4:45",
+        "audioUrl": "/audio/4.mp3",
+        "lyrics": "Wenn derselbe Wind in dir und in mir ist (dann)\nWünschen wir uns aus der Ferne dieselbe Welt (wir)\n\nAn dich, dessen Namen ich nicht kenne (hallo)\nAn dich, dessen Gesicht ich nicht kenne (hallo)\n\nAn dich in einem fernen Ort, dessen Namen ich nicht kenne (hallo)\nAn dich in einem fernen Ort, dessen Gesicht ich nicht kenne (hallo)",
+        "credits": {
+            "composer": [
+                "Namsu"
+            ],
+            "lyricist": [
+                "Namsu"
+            ],
+            "arranger": [
+                "Namsu"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Piano",
+                    "name": [
+                        "Namsu"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 5,
+        "title": "Übergang",
+        "artist": "Caru",
+        "description": "Ein Lied voller tiefer Reflexion und Hoffnung von Caru. Es beginnt mit Angst und Furcht in der modernen Gesellschaft und führt über persönliches Wachstum und einen Wandel der Weltsicht schließlich zu Hoffnung auf Frieden und Übergang. Die Lyrics sprechen von nuklearen Bedrohungen und Staub, der die Luft bedeckt, während die Stimme eines Lehrers ermutigt, die Welt mit weitem Blick zu sehen. Wir sind Tropfen der Wellen, eine Raupe, die zum Schmetterling wird – und das Lied endet mit einem kraftvollen Ruf nach Übergang.",
+        "duration": "4:32",
+        "audioUrl": "/audio/5.mp3",
+        "lyrics": "Ich hatte Angst vor der Welt\nSie war wie ein brennender Wald\nAtomwaffen, die jederzeit explodieren können, und brauner Staub, der die Luft bedeckt\n\nMein Lehrer jenseits des fernen Meeres sagte\nKind, die Welt verändert sich\nDie Stimmen, die du hörst, sind nicht nur deine; sie sind die Gebete der Welt\n\nWir sind Tropfen der Wellen\nDie Resonanz, die du fühlst, ist nicht nur deine eigene Unruhe\nEiner von Milliarden Tropfen, die die Wellen auf dem weiten Meer spüren\n\nIch empfand die Welt als düster\nWie eine Lokomotive, die ihr Steuer verloren hat\nEs gibt so vieles, das ich schützen will, doch ich war kleiner als David\n\nIm tiefen Gebirge sagte mein Lehrer\nKind, sieh die Welt mit fernen Augen\nHöre den Herzschlag des Lebens, der seit vor deiner Geburt schlägt\n\nWir sind eine einzige Raupe\nJetzt leben wir, indem wir Bäume fressen\nDoch wenn wir die Zeit des Kokons mit Fäden aus Schmerz und Sehnsucht verbringen, werden wir als Schmetterling erblühen\n\nIch beschloss, stark zu werden\nIch werde meine schmerzenden Augen nicht schließen\nIndem ich meine Grenzen anerkenne, beschloss ich zu leben\n\nIch beschloss, Hoffnung zu halten\nAus dem Blick einer Schildkröte, die fünfhundert Jahre lebt\nWir haben uns entwickelt, und jetzt werden wir übergehen\n\nÜbergangskraft!\n\nFrieden für die Welt, die Herzen der Menschen, eine andere Kultur\nFinde, was wirklich wichtig ist, in eine andere Welt\nFrieden für die Welt, die Herzen des Lebens, eine andere Zivilisation\nFinde, was wirklich wichtig ist, in eine andere Welt",
+        "credits": {
+            "composer": [
+                "Caru"
+            ],
+            "lyricist": [
+                "Caru"
+            ],
+            "arranger": [
+                "Caru",
+                "Hwang Gyeongha"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Acoustic Guitar, Percussion",
+                    "name": [
+                        "Caru"
+                    ]
+                },
+                {
+                    "role": "Cajon",
+                    "name": [
+                        "Sanho"
+                    ]
+                },
+                {
+                    "role": "Chorus",
+                    "name": [
+                        "Hyoseon",
+                        "Jinna",
+                        "Chanmi",
+                        "Naje"
+                    ]
+                },
+                {
+                    "role": "Bass, Percussion Sequencing, Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 6,
+        "title": "Jemand, der die Sterne sehen ging",
+        "artist": "Kim In",
+        "description": "Ein Lied mit einer Friedensbotschaft, inspiriert von Mond und Sternen. Vor warmem akustischem Klang reflektiert es poetisch darüber, was durch den Krieg verloren ging. Mit dem Nachthimmel als Motiv bittet es um das Ende des Krieges und wünscht Frieden für alle.",
+        "duration": "5:12",
+        "audioUrl": "/audio/6.mp3",
+        "lyrics": "Er rannte los, um die Sterne zu sehen\nUnzählige Lichter\nWaren da\n\nEr fühlte etwas Seltsames\nSo vieles\nWar verloren\n\nDie Sterne am Himmel werden sich erinnern\nAn all unsere Trauer und Freude\n\nWenn ich mit dir noch einmal teilen könnte\nEin Stück des Mondes, das warm duftet\n\nO Sterne, die unerreichbar sind\nBitte hört meinen Wunsch\n\nBitte lasst diesen Krieg\nZu Ende gehen\n\nIch werde mich an jene Nacht erinnern\nAls wir unsere Schultern anlehnten\n\nIch wünsche und warte innig\nAuf deinen Frieden, auf den Frieden aller",
+        "credits": {
+            "composer": [
+                "Kim In"
+            ],
+            "lyricist": [
+                "Kim In"
+            ],
+            "arranger": [
+                "Kim In",
+                "Hwang Gyeongha"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Guitar, Bass",
+                    "name": [
+                        "Kim In"
+                    ]
+                },
+                {
+                    "role": "Synthesizer, Drum Sequencing, Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 7,
+        "title": "Wir werden für eure Freiheit segeln",
+        "artist": "MoredoSaturday",
+        "description": "Eine Neuinterpretation von Emma Ringqvists Lied, einer Solidaritätshymne für Frauen in Gaza. Das Folk‑Arrangement betont die Harmonie von More und Doto. Mores kühle, luftige Stimme trifft auf Dotos warmes, tiefes Register und vermittelt eine ruhige, aber entschlossene Friedensbotschaft.",
+        "duration": "3:58",
+        "audioUrl": "/audio/7.mp3",
+        "lyrics": "Wir lichteten den Anker und segelten von der Küste Spaniens\nauf unserem Boot Zaytouna Olive, so heißt sie\nUnd Olive ist das Symbol eines fernen Ortes\nzu dem wir unseren Kurs über die Wellen richten\n\nWir sind dreizehn Frauen hier, die mit Frieden in den Händen segeln\nzu unseren Schwestern in diesem fremden Land\n\nAus vielen verschiedenen Ecken dieser Welt sind wir gekommen\num euch die Freiheit eines Liedes zu bringen\n\nWir segeln für eure Freiheit, unsere Schwestern in Palästina\nWir werden niemals schweigen, bis ihr frei seid\n\nWir werden vom Licht der Sterne in der Nacht geleitet\nund von der Kraft des so hellen Meeres\nWährend die Welt uns zuschaut, bringen wir die Stimme der Frauen\nmit der Botschaft, dass wir alle eine Wahl haben sollten\n\nEure Großmütter pflanzten Olivenbäume\nauf diesem Land, auf dem ihr in Frieden leben sollt\nDiese tausendjährigen Bäume wurden herausgerissen\nMöge eure Töchter neue Bäume pflanzen und sie wachsen sehen\n\nWir segeln für eure Freiheit, unsere Schwestern in Palästina\nWir werden niemals schweigen, bis ihr frei seid\n\nWir segeln für eure Freiheit, unsere Schwestern in Palästina\nWir werden niemals schweigen, bis ihr frei seid",
+        "credits": {
+            "composer": [
+                "Emma Ringqvist"
+            ],
+            "lyricist": [
+                "Emma Ringqvist"
+            ],
+            "arranger": [
+                "More, Doto"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals",
+                    "name": [
+                        "More",
+                        "Doto"
+                    ]
+                },
+                {
+                    "role": "Acoustic Guitar",
+                    "name": [
+                        "Doto"
+                    ]
+                },
+                {
+                    "role": "Cajon",
+                    "name": [
+                        "Sanho"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 8,
+        "title": "Herz vor meinen Augen",
+        "artist": "Leaves",
+        "description": "Ein Lied, das das Wechselspiel zwischen Innen‑ und Außenwelt beschreibt, getragen von einem Folk‑Sound mit Hoffnung und Solidarität. Zarte Harmonien und tiefgründige Lyrics stechen hervor. Mit den sanften Stimmen von Leafs übermittelt es eine Botschaft von Frieden und Hoffnung.",
+        "duration": "4:18",
+        "audioUrl": "/audio/8.mp3",
+        "lyrics": "In meiner Welt kommen Trauer und Freude\nGehen und bleiben\n\nIn deiner Welt verblassen die Bilder, die wir sehen\nSo sehr wir sie vermissen\n\nDas Herz und die Schritte eines Menschen\nWerden zum Wind über die ganze Welt\n\nLiebe und Frieden, auch wenn man sie nicht sieht,\nSind in den Dingen vor meinen Augen, in meinem Herzen\n\nMögen alle Herzen diesen Ort erreichen\nIch werde beten und singen",
+        "credits": {
+            "composer": [
+                "Yeoul",
+                "Wongirl"
+            ],
+            "lyricist": [
+                "Yeoul",
+                "Wongirl"
+            ],
+            "arranger": [
+                "Yeoul",
+                "Wongirl"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Acoustic Guitar, Shaker",
+                    "name": [
+                        "Yeoul",
+                        "Wongirl"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 9,
+        "title": "Seoul‑Nacht (feat. Jung Sumin)",
+        "artist": "Yeoyu",
+        "description": "Ein Lied über das Umherirren und Wachsen der Jugend und die Sehnsucht nach einem friedlichen Leben. Es verbindet Folk mit elektronischem Sound und bringt zeitlose Aspekte der Welt und menschliche Sehnsucht zum Ausdruck. Das Lied trägt eine Botschaft von Frieden und Hoffnung.",
+        "duration": "5:05",
+        "audioUrl": "/audio/9.mp3",
+        "lyrics": "So geht ein weiterer Tag zu Ende\nDer Tag des Aufbruchs ist nicht fern\nVierundzwanzig ist doch noch weit, oder?\nEin anderer Tag wird kommen\n\nAuch diese Nachbarschaft werde ich vermissen\nDie Menschen, die hektisch beschäftigt sind\nMögen sie glücklich sein, auch ohne Geld\nFür eine romantische Nacht\n\nDie Leute wissen nicht\nWie jung und töricht ich bin\nIch will leben\nSo rein wie Fels und Wasser\n\nIch ziehe fort, irgendwo weit weg\nNach der Zeit der Tränen\nHeb das Glas, mein Freund\nFür die Nacht von Seoul\n\nDer Typ, der ein Buch als Geburtstagsgeschenk gab\nBaut ein Haus auf einem Handwagen\nDer, der tief in die Hippie‑Kultur fiel\nIst jetzt Zivildienstleistender\n\nIhr alle wisst\nWie jung und töricht ich bin\nWachst gut auf und esst gut\nAn den Orten, an denen ihr steht\n\nIch ziehe fort, irgendwo weit weg\nNach der Zeit der Tränen\nHeb das Glas, mein Freund\nFür die Nacht von Seoul\n\nIch ziehe fort, weit weg nach Jeju\nWo die Person lebt, die ich liebe\nLebe gut, mein Freund\nFür ein wanderndes Leben\n\nHeb das Glas, mein Freund\nFür die Nacht von Seoul",
+        "credits": {
+            "composer": [
+                "Yeoyu"
+            ],
+            "lyricist": [
+                "Yeoyu"
+            ],
+            "arranger": [
+                "Yeoyu"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Guitar, Piano, Mixing",
+                    "name": [
+                        "Yeoyu"
+                    ]
+                },
+                {
+                    "role": "Contrabass",
+                    "name": [
+                        "Jung Sumin"
+                    ]
+                },
+                {
+                    "role": "Drums",
+                    "name": [
+                        "Kwon Nakju"
+                    ]
+                },
+                {
+                    "role": "Clarinet",
+                    "name": [
+                        "Seolbin"
+                    ]
+                },
+                {
+                    "role": "Chorus, Piano",
+                    "name": [
+                        "Namsu"
+                    ]
+                },
+                {
+                    "role": "Recording",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 10,
+        "title": "Wenn das hinnehmbar ist, was dann nicht?",
+        "artist": "MOMO",
+        "description": "Ein Lied, in dem die Jazzsängerin MOMO eine scharfe Frage nach den Widersprüchen und der Gewalt der modernen Gesellschaft stellt. Durch die endlose Wiederholung einer Zeile lädt es zum Nachdenken über unsere Abstumpfung und unser Schweigen ein. Gesang und Kontrabass schaffen eine gespannte Atmosphäre, und die minimalistische Anordnung lenkt den Fokus auf die Botschaft.",
+        "duration": "6:15",
+        "audioUrl": "/audio/10.mp3",
+        "lyrics": "Wenn das hinnehmbar ist, was dann nicht?\nWarum ertragen wir die Katastrophe, wenn wir doch so frei sind?",
+        "credits": {
+            "composer": [
+                "Yejin Angela Park"
+            ],
+            "lyricist": [
+                "Yejin Angela Park"
+            ],
+            "arranger": [
+                "Yejin Angela Park",
+                "Hwang Seulgi"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals",
+                    "name": [
+                        "Yejin Angela Park"
+                    ]
+                },
+                {
+                    "role": "Contrabass",
+                    "name": [
+                        "Hwang Seulgi"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 11,
+        "title": "Das Mädchen im rosafarbenen Steppmantel",
+        "artist": "Jai x HANASH",
+        "description": "Inspiriert von der Geschichte eines Mädchens, das bei einem Bombenangriff einen Arm verlor. Die lyrische Stimme der Singer‑Songwriterin Jai und der experimentelle Klang des Elektronik‑Produzenten HANASH schaffen eine einzigartige Atmosphäre. Das Lied offenbart die Grausamkeit des Krieges und trägt zugleich eine Botschaft von Frieden und Solidarität.",
+        "duration": "5:42",
+        "audioUrl": "/audio/11.mp3",
+        "lyrics": "Ich sah ein Foto eines Mädchens in einem rosafarbenen Steppmantel, das strahlend lächelt\nUnd auf der nächsten Seite sah ich dasselbe Mädchen im rosafarbenen Steppmantel, dem ein Arm fehlt\n\nKrieg ist Schmerz\nTrauer im Krieg\n\nDas Mädchen fragt, ob sie einen rosa Kunstarm haben kann, der mit Blumen gefärbt ist\nSie sagt, es ist nicht, weil sie schlecht ist, und der Schmerz kommt mit dem Lächeln des Kindes\n\nKrieg schafft Schmerz\nKinder werden darin verletzt\n\nKrieg hinterlässt Leid\nKinder werden darin verletzt, einfach so\n\nKrieg ist Schmerz\nTrauer im Krieg\n\nIn der Gewalt des Krieges\nWerden Kinder verletzt",
+        "credits": {
+            "composer": [
+                "Jai",
+                "HANASH"
+            ],
+            "lyricist": [
+                "Jai"
+            ],
+            "arranger": [
+                "Jai",
+                "HANASH"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals",
+                    "name": [
+                        "Jai"
+                    ]
+                },
+                {
+                    "role": "Synthesizer",
+                    "name": [
+                        "HANASH"
+                    ]
+                },
+                {
+                    "role": "Recording",
+                    "name": [
+                        "HANASH",
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mixing",
+                    "name": [
+                        "HANASH"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 12,
+        "title": "Wir",
+        "artist": "Lee Seoyoung",
+        "description": "Singer‑Songwriterin Lee Seoyoung fängt das universelle menschliche Sehnen nach Liebe, Frieden und Freiheit ein. Zehn Jahre nach der Komposition im Studium neu interpretiert, wurde das Lied von einem Tunnel in den Bergen inspiriert. Im Zentrum stehen Klavier und Gesang, ergänzt durch E‑Gitarre, Bass und Flügelhorn für ein reichhaltigeres Arrangement.",
+        "duration": "5:28",
+        "audioUrl": "/audio/12.mp3",
+        "lyrics": "Wir leben, die Dornen in uns tragend\nWir gehen, als wären unsere Brustkörbe durchbohrt\n\nWir wollen Frieden, ohne ihn zu kennen\nAuch wenn wir bis zum Hals außer Atem sind, beharren wir auf dem Leben\n\nWir\nWollen Freiheit\n\nWir, wir\nWollen Frieden\n\nTrauer mehr als Freude\nIst diesem Ort nahe\n\nDas Gegenteil von Einsamkeit\nGibt es hier nicht\n\nWir\nWollen Liebe\n\nWir, wir\nWollen Frieden\n\nWir leben, die Dornen in uns tragend\nWir gehen, als wären unsere Brustkörbe durchbohrt\n\nWir wollen Frieden, ohne ihn zu kennen\nAuch wenn wir bis zum Hals außer Atem sind, beharren wir auf dem Leben\n\nWir\nWollen Freiheit\n\nWir, wir\nWollen Frieden\n\nTrauer mehr als Freude\nIst diesem Ort nahe\n\nDas Gegenteil von Einsamkeit\nGibt es hier nicht\n\nWir\nWollen Liebe\n\nWir, wir\nWollen Frieden",
+        "credits": {
+            "composer": [
+                "Lee Seoyoung"
+            ],
+            "lyricist": [
+                "Lee Seoyoung"
+            ],
+            "arranger": [
+                "Lee Seoyoung"
+            ],
+            "personnel": [
+                {
+                    "role": "Producing, Vocals, Piano, Chorus",
+                    "name": [
+                        "Lee Seoyoung"
+                    ]
+                },
+                {
+                    "role": "Bass",
+                    "name": [
+                        "Jeong Yeonsu"
+                    ]
+                },
+                {
+                    "role": "Flugelhorn",
+                    "name": [
+                        "Yoo Heewon"
+                    ]
+                },
+                {
+                    "role": "Electric Guitar, Mixing",
+                    "name": [
+                        "Park Chanwool"
+                    ]
+                },
+                {
+                    "role": "Recording",
+                    "name": [
+                        "Park Chanwool",
+                        "Shin Garam",
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 13,
+        "title": "Unbekannt",
+        "artist": "MoredoSaturday",
+        "description": "Ein autobiografisches Lied, entstanden aus der Anti‑Marinebasis‑Bewegung in Gangjeong, Jeju. Geschrieben von den Friedensaktivist*innen und Musiker*innen More und Doto auf Grundlage von vier Jahren Leben in Gangjeong, fängt es den Alltag von Aktivist*innen ein, die Schritt für Schritt auf eine unbekannte Zukunft zugehen.",
+        "duration": "4:22",
+        "audioUrl": "/audio/13.mp3",
+        "lyrics": "Ich gehe einen Weg, den niemand kennt\nIch tanze, ohne dass es jemand weiß\n\nNiemand kennt unsere Tage\nDie Landschaft außerhalb meines (deines) Fensters, die niemand kennt\n\nSelbst wenn ich mich bewege, fühlt es sich an, als wäre ich am selben Ort\nUnd auch wenn die Entfernung zwischen dir und mir groß erscheint\nVerändert sich die Landschaft um uns langsam\nMit deinem einen Schritt\n\nAh\n\nIch gehe, dem Herz folgend, dem wir begegnet sind\nIch erinnere mich an das Gesicht, das gelacht hat\nIch bewahre die Wärme der zwei Hände, die wir hielten\nLa la la la, la la\n\nWenn du der Liebe folgst\nWirst du eines Tages ankommen\nAuch wenn du Angst hast, von Liebe zu sprechen\nWir haben Gesten, die wir teilen\nWir haben ein Lied, das wir gemeinsam singen\n\nWir haben ein Lied, das wir gemeinsam singen",
+        "credits": {
+            "composer": [
+                "More, Doto"
+            ],
+            "lyricist": [
+                "More, Doto"
+            ],
+            "arranger": [
+                "More, Doto"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals",
+                    "name": [
+                        "More",
+                        "Doto"
+                    ]
+                },
+                {
+                    "role": "Acoustic Guitar",
+                    "name": [
+                        "Doto"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    }
+]

@@ -1,0 +1,676 @@
+[
+    {
+        "id": 1,
+        "title": "Quando olho para o horizonte",
+        "artist": "Project Around Surround",
+        "duration": "4:44",
+        "description": "Uma peça instrumental que combina a sitar tradicional nepalesa com design de som moderno. Centrada na performance do músico nepales Ritesh Maharjan, com participação dos produtores coreanos Kang Kyungdeok e Park In, ela mistura instrumentos tradicionais do Oriente com som eletrônico moderno, sugerindo novas possibilidades musicais. A faixa começa com uma atmosfera tranquila, como estar numa praia silenciosa de Jeju, e aos poucos se abre para uma paisagem musical mais ampla. O timbre místico da sitar de Ritesh anuncia o início, somando‑se ao design de som meticuloso e inovador de Kang, enquanto a performance e a produção delicadas de Park In acrescentam profundidade e conduzem o ouvinte a um mundo emocional mais rico.",
+        "audioUrl": "/audio/1.mp3",
+        "credits": {
+            "composer": [
+                "Ritesh Maharjan"
+            ],
+            "lyricist": [
+                "Ritesh Maharjan"
+            ],
+            "arranger": [
+                "Kang Kyungdeok",
+                "Ritesh Maharjan",
+                "Park In"
+            ],
+            "personnel": [
+                {
+                    "role": "Sitar, Sound Design",
+                    "name": [
+                        "Ritesh Maharjan"
+                    ]
+                },
+                {
+                    "role": "Sound Design, Recording, Mixing",
+                    "name": [
+                        "Kang Kyungdeok"
+                    ]
+                },
+                {
+                    "role": "Producing, Synthesizer, Guitar, Bass",
+                    "name": [
+                        "Park In"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        },
+        "imageUrl": "/images-webp/gallery/1.webp"
+    },
+    {
+        "id": 2,
+        "title": "Esta terra é sua ou minha?",
+        "artist": "Jeong Jinseok",
+        "description": "Jeong Jinseok, conhecido como a “estrela de Soseong‑ri”, estudou artes plásticas. Após o desastre da balsa Sewol, passou a se culpar por ignorar questões sociais e começou a fazer música e se apresentar em solidariedade a muitos movimentos. Presenciou a violência em Soseong‑ri durante o anúncio da instalação do THAAD e os insultos às avós locais. Mudou seu endereço para Soseong‑ri, tornou‑se morador de fato, ajudou em todo tipo de trabalho e decidiu estar ao lado dos idosos que sofreram com um Estado irresponsável e lutar pela paz. Quase oito anos se passaram, e sua solidariedade continua. Este blues expõe com humor a ironia de uma base THAAD imposta com violência estatal a uma pequena vila pacífica cujo endereço é “Califórnia”. Com dialeto de Gyeongsang e ritmos ásperos, porém vibrantes, aponta um novo caminho para o blues coreano.",
+        "duration": "06:00",
+        "audioUrl": "/audio/2.mp3",
+        "lyrics": "Seguindo por uma estrada reta e longa, você vira numa esquina\nAo longo do caminho estreito, casas rurais espalhadas nos vales\nPassando por arrozais do tamanho da palma da mão e estufas bem grandes\n\nA vila que você encontra não é comum – montanhas arredondadas cheias de vigor,\no som da água e do vento é refrescante\nVeja a pessoa caminhando ali – passo a passo, toda a montanha treme\nApesar do corpo magro, o rosto brilha\n\nUma verdadeira vila de montanha – nenhum vestígio da cidade\nVales e vales, valetas e riachos, água do vale, água do córrego, ar puro lhe dá as boas‑vindas\nEsta linda vila se chama Soseong‑ri\n\nUma base THAAD entrou, trazida por pessoas de além‑mar\nPassando o pico Ummallae, o THAAD americano entrou\nA polícia deste país, com cassetetes, bateu em nossas avós e avôs\nA base que entrou – seu endereço é\nCalifórnia\n\nLá adiante, além do Oceano Pacífico, ergue‑se um grande pedaço de terra\nArregace as calças e entre – bem‑vindo ao Hotel California\nMas que coisa é essa – aqui também, Califórnia?\n\nEsta terra é sua, esta terra é minha?\nEsta terra não é sua, esta terra é minha\nEsta terra é sua, esta terra é minha?\nEsta terra não é sua, esta terra é minha\nEsta terra não é sua, esta terra é nossa\n\nUma verdadeira vila de montanha – nenhum vestígio da cidade\nVales e vales, valetas e riachos, água do vale, água do córrego, ar puro lhe dá as boas‑vindas\nEsta linda vila se chama Soseong‑ri",
+        "credits": {
+            "composer": [
+                "Jeong Jinseok"
+            ],
+            "lyricist": [
+                "Jeong Jinseok"
+            ],
+            "arranger": [
+                "Jeong Jinseok",
+                "Hwang Gyeongha"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Guitar, Handclaps",
+                    "name": [
+                        "Jeong Jinseok"
+                    ]
+                },
+                {
+                    "role": "Chorus",
+                    "name": [
+                        "Kim Dongsan",
+                        "Hwang Gyeongha",
+                        "Caru"
+                    ]
+                },
+                {
+                    "role": "Bass, Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        },
+        "imageUrl": "/images-webp/gallery/2.webp"
+    },
+    {
+        "id": 3,
+        "title": "Onda",
+        "artist": "Kim Dongsan",
+        "description": "“Onda” abre com o som poderoso da banda Blueeewoot, atraindo o ouvinte de imediato. Os teclados de Ryu Jooncheol, o baixo de Lee Inwoo e a bateria de Kim Yejun criam um rock pesado que lembra canções dos anos 1970 de Crosby, Stills, Nash & Young. As letras começam com “aquelas pessoas em lembranças radiantes” e contrastam passado e presente, abordando delicadamente a violência da civilização moderna e a alienação humana. A linha “apenas fumaça cinza e lágrimas se repetem como uma roda” sugere a tragédia trazida pela civilização tecnológica, revelando uma crise existencial além de um evento específico. A pergunta “o que é beleza” que se ergue com o peso da banda convida à reflexão sobre a relação entre civilização e natureza, o colapso da comunidade e o papel da arte.",
+        "duration": "05:06",
+        "audioUrl": "/audio/3.mp3",
+        "lyrics": "Em lembranças radiantes, aquelas pessoas\nTodas vestiam as mesmas roupas\nFizemos um grande festival\n\nQuando a risada passa e a fogueira se apaga\nSó fica a fumaça cinza e suspiros\nSó a fumaça cinza e lágrimas\n\nQuando tudo passa, as mesmas coisas\nSe repetem como uma roda\nMinha canção e suas lágrimas\nEscorrem para aquelas ondas\n\nQuanto devo chorar e chorar de novo\nPara encontrar você dentro de mim\n\nEu pergunto a você\nVocê me pergunta\nO que é beleza\n\nQuando tudo passa, a mesma tristeza\nSe repete como uma roda\nMinha canção e suas lágrimas\nEscorrem para aquelas ondas",
+        "credits": {
+            "composer": [
+                "Kim Dongsan"
+            ],
+            "lyricist": [
+                "Kim Dongsan"
+            ],
+            "arranger": [
+                "Kim Dongsan",
+                "Kim Yejun",
+                "Ryu Jooncheol",
+                "Lee Inwoo"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Guitar",
+                    "name": [
+                        "Kim Dongsan"
+                    ]
+                },
+                {
+                    "role": "Keyboards",
+                    "name": [
+                        "Ryu Jooncheol"
+                    ]
+                },
+                {
+                    "role": "Bass",
+                    "name": [
+                        "Lee Inwoo"
+                    ]
+                },
+                {
+                    "role": "Drums",
+                    "name": [
+                        "Kim Yejun"
+                    ]
+                },
+                {
+                    "role": "Chorus",
+                    "name": [
+                        "Kim Dongsan",
+                        "Semin"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        },
+        "imageUrl": "/images-webp/gallery/3.webp"
+    },
+    {
+        "id": 4,
+        "title": "Olá (Para você em um lugar distante)",
+        "artist": "Namsu",
+        "description": "Uma canção de solidariedade para quem sofre nas guerras da Ucrânia e da Palestina. As linhas delicadas do piano e as vozes calorosas cantam a humanidade que nos conecta além das fronteiras. Namsu envia uma saudação a quem está em lugares distantes de guerra, desejando segurança e paz.",
+        "duration": "4:45",
+        "audioUrl": "/audio/4.mp3",
+        "lyrics": "Se o mesmo vento está em você e em mim (então)\nNós desejamos o mesmo mundo de longe (nós)\n\nPara você que não sabe meu nome (olá)\nPara você que não sabe meu rosto (olá)\n\nPara você em um lugar distante cujo nome eu não conheço (olá)\nPara você em um lugar distante cujo rosto eu não conheço (olá)",
+        "credits": {
+            "composer": [
+                "Namsu"
+            ],
+            "lyricist": [
+                "Namsu"
+            ],
+            "arranger": [
+                "Namsu"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Piano",
+                    "name": [
+                        "Namsu"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 5,
+        "title": "TRANSIÇÃO",
+        "artist": "Caru",
+        "description": "Uma canção repleta de reflexão e esperança de Caru. Começa com ansiedade e medo na sociedade moderna e percorre o crescimento pessoal, a mudança de visão de mundo e, por fim, a esperança de paz e transição. As letras falam de ameaças nucleares e poeira cobrindo o ar, enquanto a voz de um mestre nos incentiva a olhar o mundo com perspectiva. Somos gotas das ondas, uma lagarta que se tornará borboleta, e a canção termina com um forte chamado à transição.",
+        "duration": "4:32",
+        "audioUrl": "/audio/5.mp3",
+        "lyrics": "Eu tinha medo do mundo\nEra como uma floresta em chamas\nBombas nucleares que podem explodir a qualquer momento e poeira marrom cobrindo o ar\n\nMeu mestre do outro lado do mar distante disse\nMeu filho, o mundo está mudando\nAs vozes que você ouve não são só suas; são as preces do mundo\n\nSomos gotas das ondas\nA ressonância que você sente não é apenas a sua agitação\nUma entre bilhões de gotas que sentem as ondas no vasto mar\n\nEu achei o mundo sombrio\nComo uma locomotiva que perdeu o volante\nHá tanta coisa que eu quero proteger, mas eu era menor que Davi\n\nNo fundo das montanhas meu mestre disse\nMeu filho, veja o mundo com olhos distantes\nOuça o batimento da vida que corre desde antes de você nascer\n\nSomos uma única lagarta\nAgora vivemos comendo árvores\nMas se passarmos o tempo do casulo com fios de angústia e desejo, floresceremos como borboleta\n\nDecidi ficar forte\nNão vou fechar meus olhos doloridos\nReconhecendo meus limites, decidi viver\n\nDecidi cultivar esperança\nDo olhar de uma tartaruga que vive quinhentos anos\nNós evoluímos e agora vamos transitar\n\nPoder de transição!\n\nPaz para o mundo, os corações das pessoas, outra cultura\nEncontre o que realmente importa, para outro mundo\nPaz para o mundo, os corações da vida, outra civilização\nEncontre o que realmente importa, para outro mundo",
+        "credits": {
+            "composer": [
+                "Caru"
+            ],
+            "lyricist": [
+                "Caru"
+            ],
+            "arranger": [
+                "Caru",
+                "Hwang Gyeongha"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Acoustic Guitar, Percussion",
+                    "name": [
+                        "Caru"
+                    ]
+                },
+                {
+                    "role": "Cajon",
+                    "name": [
+                        "Sanho"
+                    ]
+                },
+                {
+                    "role": "Chorus",
+                    "name": [
+                        "Hyoseon",
+                        "Jinna",
+                        "Chanmi",
+                        "Naje"
+                    ]
+                },
+                {
+                    "role": "Bass, Percussion Sequencing, Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 6,
+        "title": "A pessoa que foi ver as estrelas",
+        "artist": "Kim In",
+        "description": "Uma canção que carrega uma mensagem de paz com motivos do luar e das estrelas. Oferece uma reflexão lírica sobre o que foi perdido na guerra, com um som acústico acolhedor. Com o céu noturno como motivo, pede o fim da guerra e deseja paz para todos.",
+        "duration": "5:12",
+        "audioUrl": "/audio/6.mp3",
+        "lyrics": "Ele correu para ver as estrelas\nIncontáveis luzes\nEstavam lá\n\nEle sentiu algo estranho\nTantas coisas\nForam perdidas\n\nAs estrelas naquele céu devem lembrar\nDe todas as nossas tristezas e alegrias\n\nSe eu pudesse dividir com você de novo\nUm pedaço da lua com cheiro quente\n\nÓ estrelas inalcançáveis\nOuçam meu desejo\n\nPor favor, deixem que esta guerra\nChegue ao fim\n\nEu me lembrarei daquela noite\nQuando apoiamos os ombros juntos\n\nEu desejo e espero sinceramente\nPela sua paz, pela paz de todos",
+        "credits": {
+            "composer": [
+                "Kim In"
+            ],
+            "lyricist": [
+                "Kim In"
+            ],
+            "arranger": [
+                "Kim In",
+                "Hwang Gyeongha"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Guitar, Bass",
+                    "name": [
+                        "Kim In"
+                    ]
+                },
+                {
+                    "role": "Synthesizer, Drum Sequencing, Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 7,
+        "title": "Vamos navegar pela sua liberdade",
+        "artist": "MoredoSaturday",
+        "description": "Um remake da canção de Emma Ringqvist, um hino de solidariedade às mulheres de Gaza. O arranjo folk destaca a harmonia de More e Doto. A voz fria e leve de More encontra o timbre grave e quente de Doto, entregando uma mensagem de paz calma, mas resoluta.",
+        "duration": "3:58",
+        "audioUrl": "/audio/7.mp3",
+        "lyrics": "Levantamos a âncora e partimos da costa da Espanha\nno nosso barco Zaytouna Olive, esse é o nome dela\nE a oliveira é o símbolo de um lugar distante\npara o qual guiamos nosso curso através das ondas\n\nSomos treze mulheres aqui para navegar com a paz em nossas mãos\nrumo às nossas irmãs nesta terra estrangeira\n\nDe muitos cantos diferentes deste mundo viemos\npara trazer a vocês a liberdade de uma canção\n\nNavegaremos pela sua liberdade, nossas irmãs na Palestina\nNunca ficaremos em silêncio até que vocês sejam livres\n\nSomos guiadas pela luz das estrelas à noite\ne pelo poder do mar tão brilhante\nEnquanto o mundo nos observa, trazemos a voz das mulheres\ncom a mensagem de que todas devemos ter escolha\n\nSuas avós plantaram oliveiras\nnesta terra onde vocês devem viver em paz\nEssas árvores de mil anos foram arrancadas\nQue suas filhas plantem novas árvores e as vejam permanecer\n\nNavegaremos pela sua liberdade, nossas irmãs na Palestina\nNunca ficaremos em silêncio até que vocês sejam livres\n\nNavegaremos pela sua liberdade, nossas irmãs na Palestina\nNunca ficaremos em silêncio até que vocês sejam livres",
+        "credits": {
+            "composer": [
+                "Emma Ringqvist"
+            ],
+            "lyricist": [
+                "Emma Ringqvist"
+            ],
+            "arranger": [
+                "More, Doto"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals",
+                    "name": [
+                        "More",
+                        "Doto"
+                    ]
+                },
+                {
+                    "role": "Acoustic Guitar",
+                    "name": [
+                        "Doto"
+                    ]
+                },
+                {
+                    "role": "Cajon",
+                    "name": [
+                        "Sanho"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 8,
+        "title": "Coração diante dos meus olhos",
+        "artist": "Leaves",
+        "description": "Uma canção que retrata a interação entre o mundo interior e exterior, com um som folk que carrega mensagem de esperança e solidariedade. Harmonias delicadas e letras profundas se destacam. Transmite uma mensagem de paz e esperança com as vozes suaves de Leafs.",
+        "duration": "4:18",
+        "audioUrl": "/audio/8.mp3",
+        "lyrics": "No meu mundo, tristeza e alegria\nVêm e vão e permanecem\n\nNo seu mundo, as imagens que vemos\nSão lembradas e depois ficam tênues\n\nO coração e os passos de uma pessoa\nViraram vento por todo o mundo\n\nAmor e paz, ainda que invisíveis,\nEstão no que vejo, no meu coração\n\nQue todos os corações alcancem esse lugar\nEu vou rezar e cantar",
+        "credits": {
+            "composer": [
+                "Yeoul",
+                "Wongirl"
+            ],
+            "lyricist": [
+                "Yeoul",
+                "Wongirl"
+            ],
+            "arranger": [
+                "Yeoul",
+                "Wongirl"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Acoustic Guitar, Shaker",
+                    "name": [
+                        "Yeoul",
+                        "Wongirl"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 9,
+        "title": "Noite de Seul (feat. Jung Sumin)",
+        "artist": "Yeoyu",
+        "description": "Uma canção sobre o vagar e o crescimento da juventude, e a saudade de uma vida pacífica. Expressa aspectos atemporais do mundo e o anseio humano por meio de uma fusão de folk e som eletrônico. A canção carrega uma mensagem de paz e esperança.",
+        "duration": "5:05",
+        "audioUrl": "/audio/9.mp3",
+        "lyrics": "Mais um dia se vai assim\nO dia de partir não está longe\nVinte e quatro ainda é longe, não é?\nOutro dia vai chegar\n\nTambém sentirei saudade deste bairro\nDas pessoas ocupadas sem parar\nQue sejam felizes mesmo sem dinheiro\nPor uma noite romântica\n\nAs pessoas não sabem\nO quanto sou jovem e tolo\nQuero viver\nPuro como pedra e água\n\nVou embora, para algum lugar distante\nDepois do tempo de lágrimas\nErga o copo, meu amigo\nPela noite de Seul\n\nO cara que me deu um livro de aniversário\nConstruiu uma casa num carrinho de mão\nO cara que mergulhou na cultura hippie\nÉ servidor público\n\nVocês todos sabem\nO quanto sou jovem e tolo\nCresçam bem e comam bem\nNos lugares onde vocês estão\n\nVou embora, para algum lugar distante\nDepois do tempo de lágrimas\nErga o copo, meu amigo\nPela noite de Seul\n\nVou embora, bem longe para Jeju\nOnde vive a pessoa que amo\nViva bem, meu amigo\nPor uma vida errante\n\nErga o copo, meu amigo\nPela noite de Seul",
+        "credits": {
+            "composer": [
+                "Yeoyu"
+            ],
+            "lyricist": [
+                "Yeoyu"
+            ],
+            "arranger": [
+                "Yeoyu"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Guitar, Piano, Mixing",
+                    "name": [
+                        "Yeoyu"
+                    ]
+                },
+                {
+                    "role": "Contrabass",
+                    "name": [
+                        "Jung Sumin"
+                    ]
+                },
+                {
+                    "role": "Drums",
+                    "name": [
+                        "Kwon Nakju"
+                    ]
+                },
+                {
+                    "role": "Clarinet",
+                    "name": [
+                        "Seolbin"
+                    ]
+                },
+                {
+                    "role": "Chorus, Piano",
+                    "name": [
+                        "Namsu"
+                    ]
+                },
+                {
+                    "role": "Recording",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 10,
+        "title": "Se isto pode ser tolerado, o que não pode?",
+        "artist": "MOMO",
+        "description": "Uma canção em que a cantora de jazz MOMO faz uma pergunta afiada sobre as contradições e a violência da sociedade moderna. Ao repetir sem parar uma única linha, convida à reflexão sobre nossa insensibilidade e silêncio. Voz e contrabaixo criam uma atmosfera tensa, e o arranjo minimalista foca a mensagem.",
+        "duration": "6:15",
+        "audioUrl": "/audio/10.mp3",
+        "lyrics": "Se isto pode ser tolerado, o que não pode?\nPor que suportamos a catástrofe se somos tão livres?",
+        "credits": {
+            "composer": [
+                "Yejin Angela Park"
+            ],
+            "lyricist": [
+                "Yejin Angela Park"
+            ],
+            "arranger": [
+                "Yejin Angela Park",
+                "Hwang Seulgi"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals",
+                    "name": [
+                        "Yejin Angela Park"
+                    ]
+                },
+                {
+                    "role": "Contrabass",
+                    "name": [
+                        "Hwang Seulgi"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 11,
+        "title": "A garota do casaco acolchoado rosa",
+        "artist": "Jai x HANASH",
+        "description": "Inspirada na história de uma garota que perdeu um braço em um bombardeio. A voz lírica da cantora‑compositora Jai e o som experimental do produtor eletrônico HANASH criam uma atmosfera única. A canção expõe a crueldade da guerra e também carrega uma mensagem de paz e solidariedade.",
+        "duration": "5:42",
+        "audioUrl": "/audio/11.mp3",
+        "lyrics": "Vi a foto de uma garota com um casaco acolchoado rosa, sorrindo muito\nE na página seguinte vi a mesma garota com o casaco rosa, sem um braço\n\nGuerra é dor\nTristeza na guerra\n\nA garota pergunta se pode ter um braço artificial rosa manchado de flores\nE diz que não é porque ela é má, e a dor chega junto com o sorriso da criança\n\nA guerra cria dor\nAs crianças se machucam nela\n\nA guerra deixa sofrimento\nAs crianças se machucam nela, assim mesmo\n\nGuerra é dor\nTristeza na guerra\n\nNa violência da guerra\nAs crianças se machucam",
+        "credits": {
+            "composer": [
+                "Jai",
+                "HANASH"
+            ],
+            "lyricist": [
+                "Jai"
+            ],
+            "arranger": [
+                "Jai",
+                "HANASH"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals",
+                    "name": [
+                        "Jai"
+                    ]
+                },
+                {
+                    "role": "Synthesizer",
+                    "name": [
+                        "HANASH"
+                    ]
+                },
+                {
+                    "role": "Recording",
+                    "name": [
+                        "HANASH",
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mixing",
+                    "name": [
+                        "HANASH"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 12,
+        "title": "Nós",
+        "artist": "Lee Seoyoung",
+        "description": "A cantora‑compositora Lee Seoyoung capta o desejo universal da humanidade por amor, paz e liberdade. Reinterpretada dez anos depois de ter sido composta na faculdade, a canção foi inspirada por um túnel nas montanhas. Centrando‑se no piano e na voz, ganha riqueza com guitarra elétrica, baixo e flugelhorn.",
+        "duration": "5:28",
+        "audioUrl": "/audio/12.mp3",
+        "lyrics": "Nós vivemos carregando espinhos\nCaminhamos como se nossos peitos estivessem perfurados\n\nQueremos paz sem conhecê‑la\nMesmo ofegantes até o queixo, insistimos em viver\n\nNós\nQueremos liberdade\n\nNós, nós\nQueremos paz\n\nA tristeza mais do que a alegria\nEstá perto deste lugar\n\nO oposto da solidão\nNão existe aqui\n\nNós\nQueremos amor\n\nNós, nós\nQueremos paz\n\nNós vivemos carregando espinhos\nCaminhamos como se nossos peitos estivessem perfurados\n\nQueremos paz sem conhecê‑la\nMesmo ofegantes até o queixo, insistimos em viver\n\nNós\nQueremos liberdade\n\nNós, nós\nQueremos paz\n\nA tristeza mais do que a alegria\nEstá perto deste lugar\n\nO oposto da solidão\nNão existe aqui\n\nNós\nQueremos amor\n\nNós, nós\nQueremos paz",
+        "credits": {
+            "composer": [
+                "Lee Seoyoung"
+            ],
+            "lyricist": [
+                "Lee Seoyoung"
+            ],
+            "arranger": [
+                "Lee Seoyoung"
+            ],
+            "personnel": [
+                {
+                    "role": "Producing, Vocals, Piano, Chorus",
+                    "name": [
+                        "Lee Seoyoung"
+                    ]
+                },
+                {
+                    "role": "Bass",
+                    "name": [
+                        "Jeong Yeonsu"
+                    ]
+                },
+                {
+                    "role": "Flugelhorn",
+                    "name": [
+                        "Yoo Heewon"
+                    ]
+                },
+                {
+                    "role": "Electric Guitar, Mixing",
+                    "name": [
+                        "Park Chanwool"
+                    ]
+                },
+                {
+                    "role": "Recording",
+                    "name": [
+                        "Park Chanwool",
+                        "Shin Garam",
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 13,
+        "title": "Desconhecido",
+        "artist": "MoredoSaturday",
+        "description": "Uma canção autobiográfica nascida do movimento contra a base naval em Gangjeong, Jeju. Escrita pelos ativistas e músicos More e Doto a partir de quatro anos de vida em Gangjeong, ela captura o cotidiano de ativistas que avançam passo a passo rumo a um futuro desconhecido.",
+        "duration": "4:22",
+        "audioUrl": "/audio/13.mp3",
+        "lyrics": "Estou andando por um caminho que ninguém conhece\nEstou dançando sem que ninguém saiba\n\nNinguém conhece nossos dias\nA paisagem do lado de fora da minha (sua) janela que ninguém conhece\n\nMesmo quando me movo, sinto que estou no mesmo lugar\nMesmo que a distância entre você e eu pareça grande\nA paisagem ao nosso redor muda lentamente\nCom seu passo\n\nAh\n\nEstou caminhando seguindo o coração que encontramos\nLembro do rosto que sorriu\nGuardo o calor das duas mãos que seguramos\nLa la la la, la la\n\nSe você seguir o amor\nUm dia vai chegar\nMesmo que tenha medo de falar de amor\nTemos gestos que compartilhamos\nTemos uma canção para cantar juntos\n\nTemos uma canção para cantar juntos",
+        "credits": {
+            "composer": [
+                "More, Doto"
+            ],
+            "lyricist": [
+                "More, Doto"
+            ],
+            "arranger": [
+                "More, Doto"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals",
+                    "name": [
+                        "More",
+                        "Doto"
+                    ]
+                },
+                {
+                    "role": "Acoustic Guitar",
+                    "name": [
+                        "Doto"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    }
+]

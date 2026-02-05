@@ -178,4 +178,6 @@ const TimelineItem = React.memo<TimelineItemProps>(({ event, isLeft }) => {
     );
 });
 
+TimelineItem.displayName = 'TimelineItem';
+
 export default TimelineItem;

@@ -1,0 +1,676 @@
+[
+    {
+        "id": 1,
+        "title": "當我望向地平線",
+        "artist": "Project Around Surround",
+        "duration": "4:44",
+        "description": "這是一首將尼泊爾傳統西塔琴與現代聲音設計融合的器樂作品。以尼泊爾音樂人里泰什·馬哈詹的西塔演奏為核心，並由韓國製作人姜京德、朴仁參與，傳統東方樂器與電子音色交織，呈現新的音樂可能。開頭如同站在濟州靜謐海灘，逐漸展開更廣闊的聲景；西塔的神祕音色揭開序幕，配以細膩創新的聲效設計與朴仁的精緻演奏與製作，帶來更深的情感層次。",
+        "audioUrl": "/audio/1.mp3",
+        "credits": {
+            "composer": [
+                "Ritesh Maharjan"
+            ],
+            "lyricist": [
+                "Ritesh Maharjan"
+            ],
+            "arranger": [
+                "Kang Kyungdeok",
+                "Ritesh Maharjan",
+                "Park In"
+            ],
+            "personnel": [
+                {
+                    "role": "Sitar, Sound Design",
+                    "name": [
+                        "Ritesh Maharjan"
+                    ]
+                },
+                {
+                    "role": "Sound Design, Recording, Mixing",
+                    "name": [
+                        "Kang Kyungdeok"
+                    ]
+                },
+                {
+                    "role": "Producing, Synthesizer, Guitar, Bass",
+                    "name": [
+                        "Park In"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        },
+        "imageUrl": "/images-webp/gallery/1.webp"
+    },
+    {
+        "id": 2,
+        "title": "這片土地是你的還是我的？",
+        "artist": "Jeong Jinseok",
+        "description": "被稱為“韶城里大明星”的鄭鎮錫原本學習美術。世越號事故後，他反思自己忽視社會問題，開始用音樂參與許多社會現場的連帶。他見證了薩德部署過程中對韶城里居民的暴力與侮辱，並把戶口遷到韶城里，成為真正的居民，和遭受不公的老人們站在一起，為和平而鬥爭。近八年來他的連帶從未停止。這首布魯斯以幽默揭示了國家暴力在小小和平村落強行設立薩德基地的諷刺——基地地址竟是“加州”。帶著慶尚道方言的土味與粗礪卻有生命力的節奏，指向韓國布魯斯的新方向。",
+        "duration": "06:00",
+        "audioUrl": "/audio/2.mp3",
+        "lyrics": "沿著筆直長路驅車前行，在拐角轉入\n狹窄小路兩側，山谷裡散落著鄉間小屋\n經過掌心大小的稻田和不小的溫室\n\n你抵達的村落並不尋常——起伏的山勢充滿力量，\n水聲與風聲清爽宜人\n看那走過的人，一步一步，整座山都在晃動\n身形雖瘦，臉上卻有光\n\n這真是山村——城市的痕跡無處可尋\n山谷又山谷，溝渠與溪流，谷水、澗水，清新的空氣迎你而來\n這美麗的村莊名叫韶城里\n\n薩德基地進來了，是海那邊的人帶來的\n越過嗚末萊山峰，美國的薩德進來了\n這個國家的警察揮舞棍棒毆打我們的奶奶和爺爺\n進駐的基地——它的地址是\n加利福尼亞\n\n看那太平洋彼岸的巨大陸地\n捲起褲腳走進去——歡迎來到加州旅館\n可這是什麼？這裡也叫加州？\n\n這片土地是你的，這片土地是我的？\n這片土地不是你的，這片土地是我的\n這片土地是你的，這片土地是我的？\n這片土地不是你的，這片土地是我的\n這片土地不是你的，這片土地是我們的\n\n這真是山村——城市的痕跡無處可尋\n山谷又山谷，溝渠與溪流，谷水、澗水，清新的空氣迎你而來\n這美麗的村莊名叫韶城里",
+        "credits": {
+            "composer": [
+                "Jeong Jinseok"
+            ],
+            "lyricist": [
+                "Jeong Jinseok"
+            ],
+            "arranger": [
+                "Jeong Jinseok",
+                "Hwang Gyeongha"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Guitar, Handclaps",
+                    "name": [
+                        "Jeong Jinseok"
+                    ]
+                },
+                {
+                    "role": "Chorus",
+                    "name": [
+                        "Kim Dongsan",
+                        "Hwang Gyeongha",
+                        "Caru"
+                    ]
+                },
+                {
+                    "role": "Bass, Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        },
+        "imageUrl": "/images-webp/gallery/2.webp"
+    },
+    {
+        "id": 3,
+        "title": "波",
+        "artist": "Kim Dongsan",
+        "description": "《波》以樂隊Blueeewoot強勁的聲響開場，瞬間把聽眾帶入其中。柳俊哲的鍵盤、李仁宇的貝斯與金藝俊的鼓創造出厚重的搖滾質感，令人想起七十年代Crosby、Stills、Nash & Young的作品。歌詞從「燦爛記憶中的那些人」開始，對照過去與現在，細膩觸及現代文明的暴力與人的疏離。「只有灰色的煙與淚像輪子一樣重複」暗示技術文明帶來的悲劇；「什麼是美」的追問在厚重聲響中升起，邀請我們思考文明與自然、共同體的崩解與藝術的角色。",
+        "duration": "05:06",
+        "audioUrl": "/audio/3.mp3",
+        "lyrics": "在燦爛的記憶裡，那些人\n都穿著同樣的衣服\n我們辦了一場盛大的節日\n\n笑聲散去，篝火熄滅\n只剩灰色的煙與嘆息\n只剩灰色的煙與淚\n\n一切過去，同樣的事情\n像車輪一樣反覆\n我的歌，你的淚\n流入那波濤之中\n\n我要哭多少次，又再哭多少次\n才能遇見我心裡的你\n\n我問你\n你問我\n什麼是美\n\n一切過去，同樣的悲傷\n像車輪一樣反覆\n我的歌，你的淚\n流入那波濤之中",
+        "credits": {
+            "composer": [
+                "Kim Dongsan"
+            ],
+            "lyricist": [
+                "Kim Dongsan"
+            ],
+            "arranger": [
+                "Kim Dongsan",
+                "Kim Yejun",
+                "Ryu Jooncheol",
+                "Lee Inwoo"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Guitar",
+                    "name": [
+                        "Kim Dongsan"
+                    ]
+                },
+                {
+                    "role": "Keyboards",
+                    "name": [
+                        "Ryu Jooncheol"
+                    ]
+                },
+                {
+                    "role": "Bass",
+                    "name": [
+                        "Lee Inwoo"
+                    ]
+                },
+                {
+                    "role": "Drums",
+                    "name": [
+                        "Kim Yejun"
+                    ]
+                },
+                {
+                    "role": "Chorus",
+                    "name": [
+                        "Kim Dongsan",
+                        "Semin"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        },
+        "imageUrl": "/images-webp/gallery/3.webp"
+    },
+    {
+        "id": 4,
+        "title": "你好（致遠方的你）",
+        "artist": "Namsu",
+        "description": "獻給烏克蘭與巴勒斯坦戰爭中受苦的人們的連帶之歌。細膩的鋼琴線條與溫暖的歌聲歌唱跨越邊界相連的人性。Namsu向遠方戰地的人們問候，祈願他們平安與和平。",
+        "duration": "4:45",
+        "audioUrl": "/audio/4.mp3",
+        "lyrics": "若你我心中有同樣的風（那就）\n我們從遠方祈願同一個世界（我們）\n\n向不知我名的你（你好）\n向不知我面的你（你好）\n\n向遠方不知其名的你（你好）\n向遠方不知其面的你（你好）",
+        "credits": {
+            "composer": [
+                "Namsu"
+            ],
+            "lyricist": [
+                "Namsu"
+            ],
+            "arranger": [
+                "Namsu"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Piano",
+                    "name": [
+                        "Namsu"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 5,
+        "title": "轉變",
+        "artist": "Caru",
+        "description": "Caru充滿深思與希望的作品。它從現代社會的焦慮與恐懼出發，經歷個人成長與世界觀的轉變，最終抵達對和平與「轉變」的希望。歌詞提到核威脅與覆蓋空氣的褐色塵埃，遠方師者的聲音鼓勵我們以長遠目光看世界。我們是浪花的水滴，是將化為蝴蝶的毛蟲；歌曲以強烈的「轉變」呼喊收束。",
+        "duration": "4:32",
+        "audioUrl": "/audio/5.mp3",
+        "lyrics": "我曾害怕世界\n像燃燒的森林\n隨時會爆炸的核與覆蓋空氣的褐色塵埃\n\n遠海那邊的老師說\n孩子，世界正在改變\n你聽到的聲音不只屬於你，那是世界的祈禱\n\n我們是浪花的水滴\n你感到的共鳴並非只屬於你自己\n是億萬水滴中的一滴，在遼闊海面感受浪潮\n\n我曾覺得世界黯淡\n像失去方向盤的火車\n想守護的太多，而我比大衛還要渺小\n\n在深山裡老師說\n孩子，用遠遠的眼睛看世界\n聽那從你出生前就奔跑的生命脈動\n\n我們是一隻毛蟲\n現在以樹木為生\n若以痛苦與渴望之線度過繭的時間，就會開成蝴蝶\n\n我決定要變強\n不會閉上疼痛的雙眼\n承認自己的極限，同時也決定活下去\n\n我決定懷抱希望\n從活了五百年的烏龜之眼望去\n我們已經發展，現在要轉變\n\n轉變之力！\n\n世界和平，人的心，另一個文化\n尋找真正重要的事，去往另一個世界\n世界和平，生命的心，另一個文明\n尋找真正重要的事，去往另一個世界",
+        "credits": {
+            "composer": [
+                "Caru"
+            ],
+            "lyricist": [
+                "Caru"
+            ],
+            "arranger": [
+                "Caru",
+                "Hwang Gyeongha"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Acoustic Guitar, Percussion",
+                    "name": [
+                        "Caru"
+                    ]
+                },
+                {
+                    "role": "Cajon",
+                    "name": [
+                        "Sanho"
+                    ]
+                },
+                {
+                    "role": "Chorus",
+                    "name": [
+                        "Hyoseon",
+                        "Jinna",
+                        "Chanmi",
+                        "Naje"
+                    ]
+                },
+                {
+                    "role": "Bass, Percussion Sequencing, Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 6,
+        "title": "去看星星的人",
+        "artist": "Kim In",
+        "description": "以月與星為意象的和平之歌，在溫暖的原聲基調中，詩意反思戰爭奪走的一切。以夜空為主題，祈求戰爭結束、萬眾和平。",
+        "duration": "5:12",
+        "audioUrl": "/audio/6.mp3",
+        "lyrics": "他跑去看星星\n無數的光\n在那裡\n\n他感到奇異\n失去了太多\n\n天上的星一定記得\n我們所有的悲傷與喜悅\n\n若能再次與你分享\n一塊帶著溫暖氣息的月亮\n\n不可觸及的星啊\n請聽我的願望\n\n願這場戰爭\n就此結束\n\n我會記得那一夜\n我們肩並肩依靠而坐\n\n我殷切地祈願並等待\n你的和平，所有人的和平",
+        "credits": {
+            "composer": [
+                "Kim In"
+            ],
+            "lyricist": [
+                "Kim In"
+            ],
+            "arranger": [
+                "Kim In",
+                "Hwang Gyeongha"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Guitar, Bass",
+                    "name": [
+                        "Kim In"
+                    ]
+                },
+                {
+                    "role": "Synthesizer, Drum Sequencing, Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 7,
+        "title": "為你們的自由起航",
+        "artist": "MoredoSaturday",
+        "description": "對Emma Ringqvist歌曲的再詮釋，是獻給加沙女性的連帶讚歌。民謠編曲突出莫雷與多托的和聲；莫雷冷冽清透的聲音與多托溫暖低沉的聲線相遇，傳遞平靜卻堅定的和平訊息。",
+        "duration": "3:58",
+        "audioUrl": "/audio/7.mp3",
+        "lyrics": "我們從西班牙海岸起錨出航\n我們的船叫「橄欖·扎伊圖納」\n橄欖是遙遠之地的象徵\n我們將航向那片海浪彼岸\n\n這裡有十三位女性，手握和平出航\n朝向異鄉的姐妹們\n\n我們來自世界的不同角落\n為你們帶來自由之歌\n\n我們將為你們的自由起航，巴勒斯坦的姐妹們\n在你們獲得自由之前我們絕不沉默\n\n夜裡我們由星光引領\n也由明亮海洋的力量引領\n當世界注視著我們，我們帶來女性的聲音\n傳達人人都應有選擇的訊息\n\n你們的祖母種下橄欖樹\n在你們本應平安生活的土地上\n這些千年古樹被連根拔起\n願你們的女兒再種新樹並看它們長成\n\n我們將為你們的自由起航，巴勒斯坦的姐妹們\n在你們獲得自由之前我們絕不沉默\n\n我們將為你們的自由起航，巴勒斯坦的姐妹們\n在你們獲得自由之前我們絕不沉默",
+        "credits": {
+            "composer": [
+                "Emma Ringqvist"
+            ],
+            "lyricist": [
+                "Emma Ringqvist"
+            ],
+            "arranger": [
+                "More, Doto"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals",
+                    "name": [
+                        "More",
+                        "Doto"
+                    ]
+                },
+                {
+                    "role": "Acoustic Guitar",
+                    "name": [
+                        "Doto"
+                    ]
+                },
+                {
+                    "role": "Cajon",
+                    "name": [
+                        "Sanho"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 8,
+        "title": "眼前的心",
+        "artist": "Leaves",
+        "description": "描繪內心與外界互動的民謠之作，溫柔的和聲與深刻歌詞格外突出。以Leaves柔和的聲線傳遞和平與希望。",
+        "duration": "4:18",
+        "audioUrl": "/audio/8.mp3",
+        "lyrics": "在我的世界裡，悲傷與喜悅\n來來去去又徘徊\n\n在你的世界裡，那些看見的圖畫\n讓人懷念卻又漸漸淡去\n\n一個人的心與腳步\n成了吹遍世界的風\n\n愛與和平，即使看不見\n也在我眼前、在我心裡\n\n願所有的心抵達那裡\n我會祈禱並歌唱",
+        "credits": {
+            "composer": [
+                "Yeoul",
+                "Wongirl"
+            ],
+            "lyricist": [
+                "Yeoul",
+                "Wongirl"
+            ],
+            "arranger": [
+                "Yeoul",
+                "Wongirl"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Acoustic Guitar, Shaker",
+                    "name": [
+                        "Yeoul",
+                        "Wongirl"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 9,
+        "title": "首爾之夜（feat. Jung Sumin）",
+        "artist": "Yeoyu",
+        "description": "關於青春的漂泊與成長，以及對和平生活的嚮往。以民謠與電子的融合表達世界的恆常與人類的渴望，傳遞和平與希望的訊息。",
+        "duration": "5:05",
+        "audioUrl": "/audio/9.mp3",
+        "lyrics": "這一天又這樣落幕\n離開的日子不遠了\n二十四還很遠吧\n另一天還會到來\n\n這個街區也會想念吧\n忙得不可開交的人們\n即使沒有錢也願他們幸福\n為了浪漫的夜晚\n\n人們並不知道\n我有多年輕多可笑\n我想像岩石與水一樣純淨地活著\n\n我要出發，去很遠的地方\n越過淚水的時間\n舉起酒杯吧朋友\n為了首爾的夜\n\n送我生日禮物書的人\n在手推車上建了房\n沉迷嬉皮文化的人\n成了公益勤務員\n\n你們都知道\n我有多年輕多可笑\n好好長大，好好吃飯\n在你們各自的位置上\n\n我要出發，去很遠的地方\n越過淚水的時間\n舉起酒杯吧朋友\n為了首爾的夜\n\n我要出發，去遠遠的濟州\n我愛的人住在那裡\n好好活吧朋友\n為了漂泊的生活\n\n舉起酒杯吧朋友\n為了首爾的夜",
+        "credits": {
+            "composer": [
+                "Yeoyu"
+            ],
+            "lyricist": [
+                "Yeoyu"
+            ],
+            "arranger": [
+                "Yeoyu"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Guitar, Piano, Mixing",
+                    "name": [
+                        "Yeoyu"
+                    ]
+                },
+                {
+                    "role": "Contrabass",
+                    "name": [
+                        "Jung Sumin"
+                    ]
+                },
+                {
+                    "role": "Drums",
+                    "name": [
+                        "Kwon Nakju"
+                    ]
+                },
+                {
+                    "role": "Clarinet",
+                    "name": [
+                        "Seolbin"
+                    ]
+                },
+                {
+                    "role": "Chorus, Piano",
+                    "name": [
+                        "Namsu"
+                    ]
+                },
+                {
+                    "role": "Recording",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 10,
+        "title": "如果這都能容忍，還有什麼不能？",
+        "artist": "MOMO",
+        "description": "爵士歌手MOMO對現代社會的矛盾與暴力提出尖銳提問。透過不斷重複一句話，提醒我們反思麻木與沉默。人聲與低音提琴營造緊張氛圍，極簡編配讓訊息更集中。",
+        "duration": "6:15",
+        "audioUrl": "/audio/10.mp3",
+        "lyrics": "如果這都能容忍，還有什麼不能？\n既然我們如此自由，為何要承受災難？",
+        "credits": {
+            "composer": [
+                "Yejin Angela Park"
+            ],
+            "lyricist": [
+                "Yejin Angela Park"
+            ],
+            "arranger": [
+                "Yejin Angela Park",
+                "Hwang Seulgi"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals",
+                    "name": [
+                        "Yejin Angela Park"
+                    ]
+                },
+                {
+                    "role": "Contrabass",
+                    "name": [
+                        "Hwang Seulgi"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 11,
+        "title": "粉色棉服女孩",
+        "artist": "Jai x HANASH",
+        "description": "受一位在轟炸中失去手臂的女孩故事啟發。創作歌手Jai的抒情嗓音與電子製作人HANASH的實驗性音色交織出獨特氛圍，揭示戰爭殘酷，也承載和平與連帶的訊息。",
+        "duration": "5:42",
+        "audioUrl": "/audio/11.mp3",
+        "lyrics": "我看見一張穿著粉色棉服、笑得燦爛的女孩照片\n下一頁卻是同一個穿粉色棉服、失去一隻手臂的女孩\n\n戰爭是痛\n戰爭裡的悲傷\n\n女孩問能否擁有一隻染著花朵的粉色義肢\n她說這不是因為她壞，痛楚與孩子的笑一起傳來\n\n戰爭製造痛\n孩子在其中受傷\n\n戰爭留下苦難\n孩子就在其中受傷\n\n戰爭是痛\n戰爭裡的悲傷\n\n在戰爭的暴力中\n孩子受傷",
+        "credits": {
+            "composer": [
+                "Jai",
+                "HANASH"
+            ],
+            "lyricist": [
+                "Jai"
+            ],
+            "arranger": [
+                "Jai",
+                "HANASH"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals",
+                    "name": [
+                        "Jai"
+                    ]
+                },
+                {
+                    "role": "Synthesizer",
+                    "name": [
+                        "HANASH"
+                    ]
+                },
+                {
+                    "role": "Recording",
+                    "name": [
+                        "HANASH",
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mixing",
+                    "name": [
+                        "HANASH"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 12,
+        "title": "我們",
+        "artist": "Lee Seoyoung",
+        "description": "創作歌手李瑞英捕捉人類對愛、和平與自由的普遍渴望。歌曲在大學時期創作，十年後重新詮釋，靈感來自山中的隧道。以鋼琴與人聲為核心，加入電吉他、貝斯與次中音號，使編配更為豐富。",
+        "duration": "5:28",
+        "audioUrl": "/audio/12.mp3",
+        "lyrics": "我們帶著荊棘生活\n像胸口被刺穿般行走\n\n我們渴望和平卻不知和平\n即使氣喘到喉嚨，也仍堅持活著\n\n我們\n渴望自由\n\n我們，我們\n渴望和平\n\n悲傷比喜悅\n更靠近這裡\n\n孤獨的反面\n在這裡不存在\n\n我們\n渴望愛\n\n我們，我們\n渴望和平\n\n我們帶著荊棘生活\n像胸口被刺穿般行走\n\n我們渴望和平卻不知和平\n即使氣喘到喉嚨，也仍堅持活著\n\n我們\n渴望自由\n\n我們，我們\n渴望和平\n\n悲傷比喜悅\n更靠近這裡\n\n孤獨的反面\n在這裡不存在\n\n我們\n渴望愛\n\n我們，我們\n渴望和平",
+        "credits": {
+            "composer": [
+                "Lee Seoyoung"
+            ],
+            "lyricist": [
+                "Lee Seoyoung"
+            ],
+            "arranger": [
+                "Lee Seoyoung"
+            ],
+            "personnel": [
+                {
+                    "role": "Producing, Vocals, Piano, Chorus",
+                    "name": [
+                        "Lee Seoyoung"
+                    ]
+                },
+                {
+                    "role": "Bass",
+                    "name": [
+                        "Jeong Yeonsu"
+                    ]
+                },
+                {
+                    "role": "Flugelhorn",
+                    "name": [
+                        "Yoo Heewon"
+                    ]
+                },
+                {
+                    "role": "Electric Guitar, Mixing",
+                    "name": [
+                        "Park Chanwool"
+                    ]
+                },
+                {
+                    "role": "Recording",
+                    "name": [
+                        "Park Chanwool",
+                        "Shin Garam",
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 13,
+        "title": "未知",
+        "artist": "MoredoSaturday",
+        "description": "來自濟州江汀反海軍基地運動的自傳式歌曲。由和平活動家兼音樂人More與Doto以在江汀生活四年的經歷寫成，記錄了活動家們一步步走向未知未來的日常。",
+        "duration": "4:22",
+        "audioUrl": "/audio/13.mp3",
+        "lyrics": "我走在無人知曉的路上\n我跳著無人知曉的舞\n\n無人知曉我們的日子\n無人知曉我（你）窗外的風景\n\n即便前行也像原地踏步\n即便你我之間的距離看似遙遠\n環繞我們的風景也在緩慢改變\n隨著你的一步\n\n啊啊啊\n\n我循著相遇的心向前走\n記得曾笑過的臉\n把握過的兩隻手的溫度記在心裡\n啦啦啦啦 啦啦\n\n若追隨愛\n終會抵達\n即使害怕說出愛\n我們仍有共享的姿態\n我們仍有一起唱的歌\n\n我們仍有一起唱的歌",
+        "credits": {
+            "composer": [
+                "More, Doto"
+            ],
+            "lyricist": [
+                "More, Doto"
+            ],
+            "arranger": [
+                "More, Doto"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals",
+                    "name": [
+                        "More",
+                        "Doto"
+                    ]
+                },
+                {
+                    "role": "Acoustic Guitar",
+                    "name": [
+                        "Doto"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    }
+]

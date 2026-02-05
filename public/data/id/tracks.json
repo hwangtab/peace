@@ -1,0 +1,676 @@
+[
+    {
+        "id": 1,
+        "title": "Saat Aku Menatap Cakrawala",
+        "artist": "Project Around Surround",
+        "duration": "4:44",
+        "description": "Sebentuk karya instrumental yang memadukan sitar tradisional Nepal dengan desain suara modern. Berpusat pada permainan sitar musisi Nepal Ritesh Maharjan, dengan produser Korea Kang Kyungdeok dan Park In turut serta, lagu ini memadukan instrumen tradisional Timur dengan suara elektronik modern untuk membuka kemungkinan musikal baru. Track ini dimulai dengan suasana damai seperti berdiri di pantai Jeju yang sunyi lalu perlahan terbuka menjadi lanskap bunyi yang lebih luas. Sitar mistis Ritesh menjadi pembuka, disusul desain suara Kang yang teliti dan inovatif, sementara permainan dan produksi halus Park In menambah kedalaman, menuntun pendengar ke dunia emosi yang lebih kaya.",
+        "audioUrl": "/audio/1.mp3",
+        "credits": {
+            "composer": [
+                "Ritesh Maharjan"
+            ],
+            "lyricist": [
+                "Ritesh Maharjan"
+            ],
+            "arranger": [
+                "Kang Kyungdeok",
+                "Ritesh Maharjan",
+                "Park In"
+            ],
+            "personnel": [
+                {
+                    "role": "Sitar, Sound Design",
+                    "name": [
+                        "Ritesh Maharjan"
+                    ]
+                },
+                {
+                    "role": "Sound Design, Recording, Mixing",
+                    "name": [
+                        "Kang Kyungdeok"
+                    ]
+                },
+                {
+                    "role": "Producing, Synthesizer, Guitar, Bass",
+                    "name": [
+                        "Park In"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        },
+        "imageUrl": "/images-webp/gallery/1.webp"
+    },
+    {
+        "id": 2,
+        "title": "Ini Tanahmu atau Tanahku",
+        "artist": "Jeong Jinseok",
+        "description": "Jeong Jinseok, yang dijuluki 'bintang Soseong-ri', awalnya belajar seni rupa. Setelah tragedi kapal feri Sewol, ia menyesali diri karena mengabaikan isu sosial lalu mulai bermusik dan tampil dalam solidaritas di banyak peristiwa sosial. Ia menyaksikan kekerasan di Soseong-ri saat rencana penempatan THAAD diumumkan serta penghinaan terhadap para nenek setempat. Ia memindahkan alamatnya ke Soseong-ri, menjadi warga sungguhan, membantu berbagai pekerjaan, dan memutuskan berdiri bersama para lansia yang menderita akibat negara yang tak bertanggung jawab, demi memperjuangkan perdamaian. Hampir delapan tahun berlalu dan solidaritasnya terus berlanjut. Lagu blues ini dengan humor membongkar ironi pangkalan THAAD yang dipaksakan dengan kekerasan negara di sebuah desa damai kecil yang alamatnya justru di California. Dengan dialek Gyeongsang yang earthy dan irama kasar namun hidup, ia menunjuk pada arah baru blues Korea.",
+        "duration": "06:00",
+        "audioUrl": "/audio/2.mp3",
+        "lyrics": "Melaju di jalan lurus yang panjang, kau berbelok di sebuah tikungan\nDi sepanjang jalan sempit, rumah-rumah desa tersebar di lembah\nMelewati sawah seluas telapak tangan, beberapa rumah kaca yang cukup besar\n\nDesa yang kau temukan bukan tempat biasa - pegunungan membulat penuh tenaga,\nsuara air dan angin terasa menyegarkan\nLihat orang yang berjalan itu - selangkah demi selangkah, seluruh gunung berguncang\nMeski tubuhnya kurus, wajahnya bersinar\n\nSebuah desa pegunungan sejati - tak ada jejak kota\nLembah demi lembah, parit dan aliran, air lembah, air anak sungai, udara jernih menyambutmu\nDesa indah ini bernama Soseong-ri\n\nPangkalan THAAD datang, dibawa orang-orang dari seberang laut\nMelewati puncak Ummallae, THAAD Amerika masuk\nPolisi negeri ini, dengan pentungan, memukuli nenek dan kakek kami\nPangkalan yang masuk itu - alamatnya adalah\nCalifornia\n\nDi sana, di seberang Samudra Pasifik, daratan raksasa menjulang\nGulung celanamu dan masuklah - selamat datang di Hotel California\nTapi apa ini - di sini pun California?\n\nApakah tanah ini milikmu, apakah tanah ini milikku?\nTanah ini bukan milikmu, tanah ini milikku\nApakah tanah ini milikmu, apakah tanah ini milikku?\nTanah ini bukan milikmu, tanah ini milikku\nTanah ini bukan milikmu, tanah ini milik kita\n\nSebuah desa pegunungan sejati - tak ada jejak kota\nLembah demi lembah, parit dan aliran, air lembah, air anak sungai, udara jernih menyambutmu\nDesa indah ini bernama Soseong-ri",
+        "credits": {
+            "composer": [
+                "Jeong Jinseok"
+            ],
+            "lyricist": [
+                "Jeong Jinseok"
+            ],
+            "arranger": [
+                "Jeong Jinseok",
+                "Hwang Gyeongha"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Guitar, Handclaps",
+                    "name": [
+                        "Jeong Jinseok"
+                    ]
+                },
+                {
+                    "role": "Chorus",
+                    "name": [
+                        "Kim Dongsan",
+                        "Hwang Gyeongha",
+                        "Caru"
+                    ]
+                },
+                {
+                    "role": "Bass, Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        },
+        "imageUrl": "/images-webp/gallery/2.webp"
+    },
+    {
+        "id": 3,
+        "title": "Gelombang",
+        "artist": "Kim Dongsan",
+        "description": "'Gelombang' dibuka oleh suara kuat band Blueeewoot, seketika menarik pendengar masuk. Keyboard Ryu Jooncheol, bass Lee Inwoo, dan drum Kim Yejun menciptakan warna rock yang tebal, mengingatkan pada karya-karya Crosby, Stills, Nash & Young tahun 1970-an. Liriknya dimulai dari 'orang-orang dalam kenangan yang cemerlang' dan membandingkan masa lalu dengan masa kini, menyentuh kekerasan peradaban modern serta keterasingan manusia secara halus. Baris 'hanya asap abu-abu dan air mata berulang seperti roda' menyiratkan tragedi yang dibawa peradaban teknologi; pertanyaan 'apa itu keindahan' yang naik bersama bunyi berat mengajak kita merenungkan relasi peradaban dan alam, runtuhnya komunitas, serta peran seni.",
+        "duration": "05:06",
+        "audioUrl": "/audio/3.mp3",
+        "lyrics": "Di dalam kenangan yang cemerlang, orang-orang itu\nSemua mengenakan pakaian yang sama\nKami mengadakan perayaan besar\n\nSaat tawa berlalu dan api unggun padam\nHanya asap abu-abu dan desahan\nHanya asap abu-abu dan air mata\n\nSaat semuanya berlalu, hal yang sama\nBerulang seperti roda\nLaguku dan airmu\nMengalir ke dalam gelombang itu\n\nBerapa kali harus aku menangis dan menangis lagi\nAgar bertemu denganmu di dalam diriku\n\nAku bertanya padamu\nKau bertanya padaku\nApa itu keindahan\n\nSaat semuanya berlalu, kesedihan yang sama\nBerulang seperti roda\nLaguku dan airmu\nMengalir ke dalam gelombang itu",
+        "credits": {
+            "composer": [
+                "Kim Dongsan"
+            ],
+            "lyricist": [
+                "Kim Dongsan"
+            ],
+            "arranger": [
+                "Kim Dongsan",
+                "Kim Yejun",
+                "Ryu Jooncheol",
+                "Lee Inwoo"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Guitar",
+                    "name": [
+                        "Kim Dongsan"
+                    ]
+                },
+                {
+                    "role": "Keyboards",
+                    "name": [
+                        "Ryu Jooncheol"
+                    ]
+                },
+                {
+                    "role": "Bass",
+                    "name": [
+                        "Lee Inwoo"
+                    ]
+                },
+                {
+                    "role": "Drums",
+                    "name": [
+                        "Kim Yejun"
+                    ]
+                },
+                {
+                    "role": "Chorus",
+                    "name": [
+                        "Kim Dongsan",
+                        "Semin"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        },
+        "imageUrl": "/images-webp/gallery/3.webp"
+    },
+    {
+        "id": 4,
+        "title": "Halo (Untukmu di Tempat yang Jauh)",
+        "artist": "Namsu",
+        "description": "Sebuah lagu yang memeluk solidaritas bagi mereka yang menderita dalam perang di Ukraina dan Palestina. Garis piano yang halus dan vokal hangat menyanyikan kemanusiaan yang terhubung melampaui batas. Namsu menyampaikan salam kepada mereka di tempat-tempat perang yang jauh, mendoakan keselamatan dan perdamaian.",
+        "duration": "4:45",
+        "audioUrl": "/audio/4.mp3",
+        "lyrics": "Jika angin yang sama ada di dalam dirimu dan diriku (maka)\nKita tengah menginginkan dunia yang sama dari jauh (kita)\n\nUntukmu yang tak tahu namaku (halo)\nUntukmu yang tak tahu wajahku (halo)\n\nUntukmu di tempat jauh yang namanya tak kutahu (halo)\nUntukmu di tempat jauh yang wajahnya tak kukenal (halo)",
+        "credits": {
+            "composer": [
+                "Namsu"
+            ],
+            "lyricist": [
+                "Namsu"
+            ],
+            "arranger": [
+                "Namsu"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Piano",
+                    "name": [
+                        "Namsu"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 5,
+        "title": "TRANSISI",
+        "artist": "Caru",
+        "description": "Sebuah lagu yang dipenuhi perenungan mendalam Caru dan harapan. Dimulai dari kecemasan dan ketakutan di masyarakat modern, lalu berjalan melalui pertumbuhan pribadi, pergeseran cara pandang, dan akhirnya menuju harapan akan perdamaian dan transisi. Liriknya berbicara tentang ancaman nuklir dan debu yang menutupi udara, sementara suara seorang guru mendorong kita melihat dunia dengan pandangan jauh. Kita adalah tetes gelombang, ulat yang akan menjadi kupu-kupu, dan lagu ini berakhir dengan seruan kuat untuk transisi.",
+        "duration": "4:32",
+        "audioUrl": "/audio/5.mp3",
+        "lyrics": "Aku takut pada dunia\nRasanya seperti hutan yang menyala\nBom nuklir yang bisa meledak kapan saja, dan debu cokelat menutupi udara\n\nGuruku di seberang laut yang jauh berkata\nNak, dunia sedang berubah\nSuara yang kau dengar bukan hanya milikmu; itu adalah doa dunia\n\nKita adalah tetes-tetes gelombang\nResonansi yang kau rasakan bukan hanya kegelisahanmu sendiri\nSatu dari miliaran tetes yang merasakan gelombang di lautan luas\n\nAku merasa dunia suram\nSeperti lokomotif yang kehilangan kemudi\nAda begitu banyak yang ingin kulindungi, tetapi aku lebih kecil daripada Daud\n\nDi pegunungan yang dalam guruku berkata\nNak, lihatlah dunia dengan mata yang jauh\nDengarkan detak kehidupan yang berlari sejak sebelum kau lahir\n\nKita adalah seekor ulat\nKita hidup sekarang memakan pepohonan\nNamun jika kita menjalani waktu kepompong dengan benang kesedihan dan kerinduan, kita akan mekar menjadi kupu-kupu\n\nAku memutuskan untuk menjadi kuat\nAku tidak akan menutup mataku yang perih\nMengakui keterbatasanku, aku memilih untuk hidup\n\nAku memutuskan untuk memegang harapan\nDari pandangan seekor kura-kura yang hidup lima ratus tahun\nKita telah berkembang, dan kini kita akan bertransisi\n\nKekuatan transisi!\n\nDamai bagi dunia, hati manusia, budaya yang lain\nTemukan yang sungguh penting, menuju dunia lain\nDamai bagi dunia, hati kehidupan, peradaban yang lain\nTemukan yang sungguh penting, menuju dunia lain",
+        "credits": {
+            "composer": [
+                "Caru"
+            ],
+            "lyricist": [
+                "Caru"
+            ],
+            "arranger": [
+                "Caru",
+                "Hwang Gyeongha"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Acoustic Guitar, Percussion",
+                    "name": [
+                        "Caru"
+                    ]
+                },
+                {
+                    "role": "Cajon",
+                    "name": [
+                        "Sanho"
+                    ]
+                },
+                {
+                    "role": "Chorus",
+                    "name": [
+                        "Hyoseon",
+                        "Jinna",
+                        "Chanmi",
+                        "Naje"
+                    ]
+                },
+                {
+                    "role": "Bass, Percussion Sequencing, Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 6,
+        "title": "Seseorang yang Pergi Melihat Bintang",
+        "artist": "Kim In",
+        "description": "Sebuah lagu yang membawa pesan damai dengan motif bulan dan bintang. Lagu ini menawarkan renungan puitis tentang apa yang direnggut perang, berbalut bunyi akustik yang hangat. Dengan langit malam sebagai motif, lagu ini memohon berakhirnya perang dan mendoakan perdamaian bagi semua.",
+        "duration": "5:12",
+        "audioUrl": "/audio/6.mp3",
+        "lyrics": "Ia berlari untuk melihat bintang\nCahaya yang tak terhitung\nAda di sana\n\nIa merasa asing\nBegitu banyak hal\nTelah hilang\n\nBintang-bintang di langit itu pasti mengingat\nSemua duka dan sukacita kita\n\nJika aku bisa berbagi lagi denganmu\nSekeping bulan yang beraroma hangat\n\nOh bintang-bintang di luar jangkauan\nTolong dengarkan doaku\n\nTolong biarkan perang ini\nBerakhir\n\nAku akan mengingat malam\nSaat kita menyandarkan bahu bersama\n\nAku sungguh berharap dan menunggu\nUntuk kedamaianmu, untuk kedamaian semua",
+        "credits": {
+            "composer": [
+                "Kim In"
+            ],
+            "lyricist": [
+                "Kim In"
+            ],
+            "arranger": [
+                "Kim In",
+                "Hwang Gyeongha"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Guitar, Bass",
+                    "name": [
+                        "Kim In"
+                    ]
+                },
+                {
+                    "role": "Synthesizer, Drum Sequencing, Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 7,
+        "title": "Kami akan berlayar demi kebebasanmu",
+        "artist": "MoredoSaturday",
+        "description": "Sebuah remake dari lagu Emma Ringqvist, himne solidaritas untuk perempuan di Gaza. Aransemen folk menonjolkan harmoni More dan Doto. Vokal More yang sejuk dan ringan bertemu rentang rendah Doto yang hangat, menyampaikan pesan damai yang hening namun tegas.",
+        "duration": "3:58",
+        "audioUrl": "/audio/7.mp3",
+        "lyrics": "Kami melepas sauh dan berlayar dari pantai Spanyol\ndi perahu kami Zaytouna Olive, itulah namanya\nDan zaitun adalah simbol dari tempat yang jauh\nke sana kami arahkan haluan menyeberangi ombak\n\nKami tiga belas perempuan di sini berlayar dengan damai di tangan\nmenuju para saudari kami di negeri asing ini\n\nDari banyak penjuru dunia kami datang\nuntuk membawakan padamu kebebasan sebuah lagu\n\nKami akan berlayar demi kebebasanmu, saudari-saudari kami di Palestina\nKami takkan pernah diam sampai kalian bebas\n\nKami dibimbing cahaya bintang di malam hari\ndan kekuatan laut yang begitu terang\nSaat dunia memandang kami, kami membawa suara perempuan\ndengan pesan bahwa kita semua berhak memilih\n\nNenek-nenekmu menanam pohon zaitun\nDi tanah ini tempat kalian seharusnya hidup dalam damai\nPohon-pohon berusia seribu tahun itu telah dicabut\nSemoga putri-putrimu menanam pohon baru dan menjaganya tetap tumbuh\n\nKami akan berlayar demi kebebasanmu, saudari-saudari kami di Palestina\nKami takkan pernah diam sampai kalian bebas\n\nKami akan berlayar demi kebebasanmu, saudari-saudari kami di Palestina\nKami takkan pernah diam sampai kalian bebas",
+        "credits": {
+            "composer": [
+                "Emma Ringqvist"
+            ],
+            "lyricist": [
+                "Emma Ringqvist"
+            ],
+            "arranger": [
+                "More, Doto"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals",
+                    "name": [
+                        "More",
+                        "Doto"
+                    ]
+                },
+                {
+                    "role": "Acoustic Guitar",
+                    "name": [
+                        "Doto"
+                    ]
+                },
+                {
+                    "role": "Cajon",
+                    "name": [
+                        "Sanho"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 8,
+        "title": "Hati di Depan Mataku",
+        "artist": "Leaves",
+        "description": "Sebuah lagu yang menggambarkan interaksi antara dunia batin dan luar, beraroma folk serta membawa pesan harapan dan solidaritas. Harmoni yang halus dan lirik yang dalam sangat menonjol. Lagu ini menyampaikan pesan damai dan harapan melalui suara lembut Leaves.",
+        "duration": "4:18",
+        "audioUrl": "/audio/8.mp3",
+        "lyrics": "Di duniaku, sedih dan gembira\nDatang, pergi, dan tinggal sejenak\n\nDi duniamu, gambar-gambar yang kita lihat\nTerlewat, namun semakin pudar\n\nHati dan langkah seseorang\nMenjadi angin di seluruh dunia\n\nCinta dan damai, meski tak terlihat,\nAda pada hal-hal di depan mataku, di hatiku\n\nSemoga setiap hati sampai ke tempat itu\nAku akan berdoa dan bernyanyi",
+        "credits": {
+            "composer": [
+                "Yeoul",
+                "Wongirl"
+            ],
+            "lyricist": [
+                "Yeoul",
+                "Wongirl"
+            ],
+            "arranger": [
+                "Yeoul",
+                "Wongirl"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Acoustic Guitar, Shaker",
+                    "name": [
+                        "Yeoul",
+                        "Wongirl"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 9,
+        "title": "Malam Seoul (feat. Jung Sumin)",
+        "artist": "Yeoyu",
+        "description": "Sebuah lagu tentang pengembaraan dan pertumbuhan anak muda, serta kerinduan akan hidup yang damai. Ia mengekspresikan sisi-sisi abadi dunia dan kerinduan manusia melalui perpaduan folk dan elektronik. Lagu ini membawa pesan damai dan harapan.",
+        "duration": "5:05",
+        "audioUrl": "/audio/9.mp3",
+        "lyrics": "Hari lain memudar seperti ini\nHari untuk pergi tidaklah jauh\nDua puluh empat masih jauh, kan\nHari lain akan datang\n\nAku juga akan merindukan lingkungan ini\nOrang-orang yang sibuk ke sana kemari\nSemoga mereka bahagia meski tanpa uang\nUntuk malam yang romantis\n\nOrang-orang tak tahu\nBetapa muda dan bodohnya aku\nAku ingin hidup\nMurni seperti batu dan air\n\nAku berangkat, ke tempat yang jauh\nSetelah masa air mata\nAngkat gelasmu, kawan\nUntuk malam Seoul\n\nOrang yang memberi buku sebagai hadiah ulang tahun\nMembangun rumah di atas gerobak\nOrang yang tenggelam dalam budaya hippie\nMenjadi pekerja layanan publik\n\nKalian semua tahu\nBetapa muda dan bodohnya aku\nTumbuhlah dengan baik dan makanlah dengan baik\nDi tempat kalian masing-masing berdiri\n\nAku berangkat, ke tempat yang jauh\nSetelah masa air mata\nAngkat gelasmu, kawan\nUntuk malam Seoul\n\nAku berangkat, jauh ke Jeju\nTempat orang yang kucintai tinggal\nHiduplah dengan baik, kawan\nUntuk hidup yang mengembara\n\nAngkat gelasmu, kawan\nUntuk malam Seoul",
+        "credits": {
+            "composer": [
+                "Yeoyu"
+            ],
+            "lyricist": [
+                "Yeoyu"
+            ],
+            "arranger": [
+                "Yeoyu"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Guitar, Piano, Mixing",
+                    "name": [
+                        "Yeoyu"
+                    ]
+                },
+                {
+                    "role": "Contrabass",
+                    "name": [
+                        "Jung Sumin"
+                    ]
+                },
+                {
+                    "role": "Drums",
+                    "name": [
+                        "Kwon Nakju"
+                    ]
+                },
+                {
+                    "role": "Clarinet",
+                    "name": [
+                        "Seolbin"
+                    ]
+                },
+                {
+                    "role": "Chorus, Piano",
+                    "name": [
+                        "Namsu"
+                    ]
+                },
+                {
+                    "role": "Recording",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 10,
+        "title": "Jika ini bisa ditoleransi, apa yang tidak?",
+        "artist": "MOMO",
+        "description": "Sebuah lagu di mana vokalis jazz MOMO mengajukan pertanyaan tajam tentang kontradiksi dan kekerasan masyarakat modern. Dengan mengulang satu baris tanpa henti, lagu ini mengajak refleksi atas kebekuan dan keheningan kita di era ini. Vokal dan kontrabas membangun suasana tegang, dan aransemen minimalis menajamkan pesan.",
+        "duration": "6:15",
+        "audioUrl": "/audio/10.mp3",
+        "lyrics": "Jika ini bisa ditoleransi, apa yang tak bisa?\nMengapa kita menanggung bencana jika kita begitu bebas?",
+        "credits": {
+            "composer": [
+                "Yejin Angela Park"
+            ],
+            "lyricist": [
+                "Yejin Angela Park"
+            ],
+            "arranger": [
+                "Yejin Angela Park",
+                "Hwang Seulgi"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals",
+                    "name": [
+                        "Yejin Angela Park"
+                    ]
+                },
+                {
+                    "role": "Contrabass",
+                    "name": [
+                        "Hwang Seulgi"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 11,
+        "title": "Gadis Berjaket Padded Merah Muda",
+        "artist": "Jai x HANASH",
+        "description": "Terinspirasi dari kisah seorang gadis yang kehilangan lengan akibat pengeboman. Vokal liris penyanyi-penulis lagu Jai dan bunyi eksperimental produser elektronik HANASH menciptakan atmosfer yang unik. Lagu ini mengungkap kekejaman perang sekaligus membawa pesan damai dan solidaritas.",
+        "duration": "5:42",
+        "audioUrl": "/audio/11.mp3",
+        "lyrics": "Aku melihat foto seorang gadis berjaket padded merah muda, tersenyum cerah\nDan di halaman berikutnya aku melihat gadis berjaket padded merah muda itu, dengan satu lengan hilang\n\nPerang adalah sakit\nDuka dalam perang\n\nGadis itu bertanya apakah ia boleh memiliki lengan buatan berwarna merah muda bernoda bunga\nIa berkata itu bukan karena ia jahat, dan rasa sakit itu disampaikan bersama senyum sang anak\n\nPerang menciptakan sakit\nAnak-anak terluka di dalamnya\n\nPerang meninggalkan penderitaan\nAnak-anak terluka di dalamnya, begitu saja\n\nPerang adalah sakit\nDuka dalam perang\n\nDalam kekerasan perang\nAnak-anak terluka",
+        "credits": {
+            "composer": [
+                "Jai",
+                "HANASH"
+            ],
+            "lyricist": [
+                "Jai"
+            ],
+            "arranger": [
+                "Jai",
+                "HANASH"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals",
+                    "name": [
+                        "Jai"
+                    ]
+                },
+                {
+                    "role": "Synthesizer",
+                    "name": [
+                        "HANASH"
+                    ]
+                },
+                {
+                    "role": "Recording",
+                    "name": [
+                        "HANASH",
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mixing",
+                    "name": [
+                        "HANASH"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 12,
+        "title": "Kita",
+        "artist": "Lee Seoyoung",
+        "description": "Penyanyi-penulis lagu Lee Seoyoung menangkap kerinduan universal manusia akan cinta, perdamaian, dan kebebasan. Diinterpretasi ulang sepuluh tahun setelah digubah saat kuliah, lagu ini terinspirasi oleh sebuah terowongan di pegunungan. Berpusat pada piano dan vokal, aransemen diperkaya dengan gitar elektrik, bass, dan flugelhorn.",
+        "duration": "5:28",
+        "audioUrl": "/audio/12.mp3",
+        "lyrics": "Kita hidup memegang duri\nKita berjalan seolah dada kita tertusuk\n\nKita menginginkan damai tanpa menyadarinya\nBahkan ketika napas tercekat sampai dagu, kita tetap bersikeras hidup\n\nKita\nMenginginkan kebebasan\n\nKita, kita\nMenginginkan damai\n\nDuka lebih dari suka\nDekat dengan tempat ini\n\nKebalikan dari kesepian\nTak ada di sini\n\nKita\nMenginginkan cinta\n\nKita, kita\nMenginginkan damai\n\nKita hidup memegang duri\nKita berjalan seolah dada kita tertusuk\n\nKita menginginkan damai tanpa menyadarinya\nBahkan ketika napas tercekat sampai dagu, kita tetap bersikeras hidup\n\nKita\nMenginginkan kebebasan\n\nKita, kita\nMenginginkan damai\n\nDuka lebih dari suka\nDekat dengan tempat ini\n\nKebalikan dari kesepian\nTak ada di sini\n\nKita\nMenginginkan cinta\n\nKita, kita\nMenginginkan damai",
+        "credits": {
+            "composer": [
+                "Lee Seoyoung"
+            ],
+            "lyricist": [
+                "Lee Seoyoung"
+            ],
+            "arranger": [
+                "Lee Seoyoung"
+            ],
+            "personnel": [
+                {
+                    "role": "Producing, Vocals, Piano, Chorus",
+                    "name": [
+                        "Lee Seoyoung"
+                    ]
+                },
+                {
+                    "role": "Bass",
+                    "name": [
+                        "Jeong Yeonsu"
+                    ]
+                },
+                {
+                    "role": "Flugelhorn",
+                    "name": [
+                        "Yoo Heewon"
+                    ]
+                },
+                {
+                    "role": "Electric Guitar, Mixing",
+                    "name": [
+                        "Park Chanwool"
+                    ]
+                },
+                {
+                    "role": "Recording",
+                    "name": [
+                        "Park Chanwool",
+                        "Shin Garam",
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 13,
+        "title": "Tak Dikenal",
+        "artist": "MoredoSaturday",
+        "description": "Sebuah lagu autobiografis yang lahir dari gerakan anti-pangkalan angkatan laut di Desa Gangjeong, Jeju. Ditulis oleh aktivis perdamaian sekaligus musisi More dan Doto berdasarkan pengalaman hidup empat tahun di Gangjeong, lagu ini menangkap keseharian para aktivis yang melangkah sedikit demi sedikit menuju masa depan yang tak dikenal.",
+        "duration": "4:22",
+        "audioUrl": "/audio/13.mp3",
+        "lyrics": "Aku berjalan di jalan yang tak seorang pun tahu\nAku menari tanpa seorang pun tahu\n\nTak seorang pun tahu hari-hari kita\nPemandangan di luar jendelaku (jendelamu) yang tak seorang pun tahu\n\nBahkan saat aku bergerak, rasanya seperti tetap di tempat\nMeski jarak antara kau dan aku terasa jauh\nPemandangan di sekitar kita perlahan berubah\nDengan satu langkahmu\n\nAhhh\n\nAku berjalan mengikuti hati yang pernah kita temui\nAku mengingat wajah yang tertawa\nAku menyimpan hangatnya dua tangan yang kita genggam\nLa la la la, la la\n\nJika kau mengikuti cinta\nSuatu hari kau akan sampai\nMeski kau takut membicarakan cinta\nKita punya gerak yang kita bagi\nKita punya lagu untuk dinyanyikan bersama\n\nKita punya lagu untuk dinyanyikan bersama",
+        "credits": {
+            "composer": [
+                "More, Doto"
+            ],
+            "lyricist": [
+                "More, Doto"
+            ],
+            "arranger": [
+                "More, Doto"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals",
+                    "name": [
+                        "More",
+                        "Doto"
+                    ]
+                },
+                {
+                    "role": "Acoustic Guitar",
+                    "name": [
+                        "Doto"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    }
+]

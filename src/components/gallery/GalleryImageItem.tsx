@@ -41,4 +41,6 @@ const GalleryImageItem = React.memo(({ image, priority = false, onClick }: Galle
     );
 });
 
+GalleryImageItem.displayName = 'GalleryImageItem';
+
 export default GalleryImageItem;

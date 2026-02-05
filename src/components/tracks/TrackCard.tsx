@@ -171,4 +171,6 @@ const TrackCard = React.memo(({
     );
 });
 
+TrackCard.displayName = 'TrackCard';
+
 export default TrackCard;
