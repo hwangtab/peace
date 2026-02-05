@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import PageLayout from '../components/layout/PageLayout';
 import Button from '../components/common/Button';
 
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 // ...
 
 const NotFoundPage = () => {
@@ -17,7 +17,7 @@ const NotFoundPage = () => {
                 <p className="text-gray-600 mb-8 max-w-md">
                     {t('notFound.message')}
                 </p>
-                <Link to="/">
+                <Link href="/">
                     <Button variant="primary">{t('notFound.homeButton')}</Button>
                 </Link>
             </div>

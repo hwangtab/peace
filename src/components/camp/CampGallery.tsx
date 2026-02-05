@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import { motion } from 'framer-motion';
 import { CampEvent } from '../../types/camp';
 import ImageLightbox from '../common/ImageLightbox';

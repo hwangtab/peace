@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 /**
  * ScrollToTop Component
@@ -11,12 +11,12 @@ import { useLocation } from 'react-router-dom';
  * 예: <Router><ScrollToTop /><Navigation /><Routes /></Router>
  */
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const router = useRouter();
 
   useEffect(() => {
     // 라우트 경로 변경 시 페이지 최상단으로 스크롤
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [router.asPath]);
 
   // 이 컴포넌트는 동작만 수행하고 UI를 렌더링하지 않음
   return null;

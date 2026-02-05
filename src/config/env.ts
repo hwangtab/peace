@@ -5,15 +5,15 @@
 
 export const config = {
     // Site
-    siteUrl: process.env.REACT_APP_SITE_URL || 'https://peaceandmusic.net',
-    siteName: process.env.REACT_APP_SITE_NAME || '강정피스앤뮤직캠프',
+    siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://peaceandmusic.net',
+    siteName: process.env.NEXT_PUBLIC_SITE_NAME || '강정피스앤뮤직캠프',
 
     // External Links
-    smartstoreUrl: process.env.REACT_APP_SMARTSTORE_URL || 'https://smartstore.naver.com/peaceandmusic',
-    instagramUrl: process.env.REACT_APP_INSTAGRAM_URL || 'https://www.instagram.com/peace_music_in_gangjeong',
+    smartstoreUrl: process.env.NEXT_PUBLIC_SMARTSTORE_URL || 'https://smartstore.naver.com/peaceandmusic',
+    instagramUrl: process.env.NEXT_PUBLIC_INSTAGRAM_URL || 'https://www.instagram.com/peace_music_in_gangjeong',
 
     // Images
-    ogImage: process.env.REACT_APP_OG_IMAGE || '/images-webp/camps/2023/DSC00437.webp',
+    ogImage: process.env.NEXT_PUBLIC_OG_IMAGE || '/images-webp/camps/2023/DSC00437.webp',
 } as const;
 
 // Helper function for full URLs

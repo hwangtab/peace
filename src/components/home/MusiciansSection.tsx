@@ -1,4 +1,4 @@
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import { useInView } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import { getMusicians } from '../../api/musicians';

@@ -615,7 +615,7 @@ const applyDefaults = (items: PressItem[]) => items.map(item => ({
 }));
 
 export const getPressItems = (language?: string): PressItem[] => (
-  applyDefaults(getLanguageCode(language) === 'en' ? pressItemsEn : pressItemsKo)
+  applyDefaults(getLanguageCode(language) === 'ko' ? pressItemsKo : pressItemsEn)
 );
 
 export const pressItems = applyDefaults(pressItemsKo);

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useInView } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import TimelineItem from './TimelineItem';
 import { timelineEvents as timelineData } from '../../data/timeline';
 import Section from '../layout/Section';

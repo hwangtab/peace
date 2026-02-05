@@ -1,0 +1,284 @@
+{
+    "app": {
+        "title": "Acampamento de Música pela Paz de Gangjeong"
+    },
+    "about": {
+        "title": "Sobre",
+        "subtitle": "Nossas canções pela paz",
+        "desc1": "Cantamos pela primeira vez diante da rocha Gureombi, na vila de Gangjeong, em Jeju, onde sopra o vento forte. Percebemos que a paz não é um grande slogan, mas começa no instante em que escutamos as vozes uns dos outros.",
+        "desc2": "O Gangjeong Peace Music Camp é uma solidariedade e um festival de músicos que sonham com um mundo sem guerras. Para além de fronteiras e idiomas, falamos de paz com a música, a arma mais bela.",
+        "desc3": "Quando cantamos, dançamos e nos abraçamos juntos, a guerra para e as ondas da paz se espalham mais longe.",
+        "card1": {
+            "title": "Paz Duradoura",
+            "desc": "O primeiro acorde começou no verão de 2023. Nosso festival continuará não como um evento único, mas como um ritual de paz persistente e belo que guarda o verão de Gangjeong todos os anos."
+        },
+        "card2": {
+            "title": "Solidariedade Sem Fronteiras",
+            "desc": "Lembramos zonas de conflito do Gaza, na Palestina, à Ucrânia. O Gangjeong Peace Music Camp vai além de um simples concerto; é um poderoso espaço de solidariedade ao lado de quem sofre e deseja a paz."
+        }
+    },
+    "gallery": {
+        "page_title": "Galeria | Acampamento de Música pela Paz de Gangjeong",
+        "page_desc": "Momentos em que cantamos pela paz. Explore fotos vívidas do Gangjeong Peace Music Camp.",
+        "keywords": "Galeria, Álbum de fotos, Fotos do evento, Fotos do acampamento da paz, Vila de Gangjeong",
+        "seo_keywords": "foto de galeria",
+        "hero_title": "Galeria",
+        "hero_subtitle": "A paz encontrada ali",
+        "section_title": "Momentos de Paz",
+        "section_subtitle": "Momentos em que cantamos pela paz",
+        "no_images": "Nenhuma foto disponível.",
+        "load_more": "Ver mais",
+        "image_alt_fallback": "Imagem da galeria do Gangjeong Peace Music Camp",
+        "image_alt_template": "Imagem da galeria {{title}} {{year}}"
+    },
+    "home": {
+        "hero": {
+            "title": "Acampamento de Música pela Paz de Gangjeong",
+            "subtitle": "Acabemos com a guerra! Vamos cantar, vamos dançar",
+            "message": "Uma mensagem de paz que começa na vila de Gangjeong",
+            "camp_intro": "Sobre o Acampamento",
+            "camp_2026": "Acampamento 2026",
+            "image_alt": "Palco do Peace Music Camp na praia da vila de Gangjeong"
+        },
+        "musicians": {
+            "title": "Músicos Participantes",
+            "subtitle": "12 artistas cantando pela paz"
+        },
+        "tracks": {
+            "title": "Faixas",
+            "subtitle": "12 canções de paz",
+            "buy_album": "Comprar álbum"
+        }
+    },
+    "footer": {
+        "slogan": "Nossas vozes pela paz",
+        "description": "Um projeto musical pela paz que começa na vila de Gangjeong, em Jeju. O Gangjeong Peace Music Camp é onde músicos cantam juntos e se solidarizam, desejando paz em zonas de conflito ao redor do mundo.",
+        "links": "Links rápidos",
+        "contact": "Contato",
+        "copyright": "Todos os direitos reservados.",
+        "sns_aria": "Siga o Gangjeong Peace Music Camp no Instagram",
+        "email_aria": "Contato por e-mail",
+        "menu": {
+            "home": "Início",
+            "gallery": "Galeria",
+            "video": "Vídeos",
+            "press": "Imprensa",
+            "camp_2023": "Acampamento 2023",
+            "camp_2025": "Acampamento 2025",
+            "camp_2026": "Acampamento 2026",
+            "album_about": "Sobre o álbum",
+            "musicians": "Músicos",
+            "tracks": "Faixas"
+        }
+    },
+    "notFound": {
+        "title": "Página não encontrada",
+        "desc": "A página solicitada não existe.",
+        "message": "Desculpe, a página que você procura pode ter sido removida, renomeada ou estar temporariamente indisponível.",
+        "homeButton": "Voltar para o início"
+    },
+    "nav": {
+        "home": "Início",
+        "camp": "Acampamento",
+        "album": "Álbum",
+        "gallery": "Galeria",
+        "video": "Vídeos",
+        "press": "Imprensa",
+        "camp_2023": "Acampamento 2023",
+        "camp_2025": "Acampamento 2025",
+        "camp_2026": "Acampamento 2026",
+        "album_about": "Sobre o álbum",
+        "musician": "Músicos",
+        "track": "Faixas",
+        "skip_to_main": "Pular para o conteúdo principal",
+        "close_menu": "Fechar menu",
+        "open_menu": "Abrir menu",
+        "logo": "Acampamento de Música pela Paz de Gangjeong",
+        "switch_en": "Mudar para inglês",
+        "switch_ko": "Mudar para coreano",
+        "switch_language": "Trocar idioma"
+    },
+    "common": {
+        "loading": "Carregando...",
+        "track_desc": "Descrição",
+        "lyrics": "Letra",
+        "credits": "Créditos",
+        "featured_track": "Faixa",
+        "filter_all": "Todas",
+        "filter_album_2024": "Álbum 2024",
+        "filter_camp_2023": "Acampamento 2023",
+        "filter_camp_2025": "Acampamento 2025",
+        "aria_filter": "Filtro de evento",
+        "aria_filter_selected": "filtro (selecionado)",
+        "close": "Fechar",
+        "sns": "SNS",
+        "error_title": "Ops, algo deu errado.",
+        "error_message": "Desculpe, ocorreu um erro inesperado e não foi possível exibir a página.\nTente novamente mais tarde.",
+        "retry": "Tentar novamente",
+        "go_home": "Ir para o início",
+        "audio_position": "Posição de reprodução de áudio",
+        "label_personnel": "Equipe",
+        "label_produced_by": "Produzido por"
+    },
+    "timeline": {
+        "title": "Nossa Jornada",
+        "subtitle": "Um registro de paz que começa em Gangjeong",
+        "labels": {
+            "camp": "Acampamento",
+            "album": "Álbum",
+            "milestone": "Marco"
+        },
+        "events": {
+            "camp_2023": {
+                "title": "1º Acampamento de Música pela Paz de Gangjeong",
+                "desc": "O primeiro acampamento musical pela paz na vila de Gangjeong.",
+                "location": "Parque Esportivo de Gangjeong"
+            },
+            "album_2024": {
+                "title": "Show de lançamento do álbum",
+                "desc": "Showcase do álbum “To You in a Distant Place Whose Name I Don't Know”.",
+                "location": "Centro de Paz de Gangjeong · Space Hangang"
+            },
+            "camp_2025": {
+                "title": "2º Acampamento de Música pela Paz de Gangjeong",
+                "desc": "Mensagem de paz no 73º aniversário do armistício.",
+                "location": "Em torno da vila de Gangjeong"
+            },
+            "camp_2026": {
+                "title": "3º Acampamento de Música pela Paz de Gangjeong",
+                "desc": "Programado para 5–7 de junho de 2026.",
+                "location": "Parque Esportivo de Gangjeong"
+            }
+        },
+        "month_1": "Janeiro",
+        "month_2": "Fevereiro",
+        "month_3": "Março",
+        "month_4": "Abril",
+        "month_5": "Maio",
+        "month_6": "Junho",
+        "month_7": "Julho",
+        "month_8": "Agosto",
+        "month_9": "Setembro",
+        "month_10": "Outubro",
+        "month_11": "Novembro",
+        "month_12": "Dezembro"
+    },
+    "seo": {
+        "default": {
+            "title": "Acampamento de Música pela Paz de Gangjeong | Cante, dance, acabe com a guerra",
+            "description": "Um projeto musical pela paz que começa na vila de Gangjeong, em Jeju. Festival musical pela paz e contra a guerra realizado no Parque Esportivo de Gangjeong de 5 a 7 de junho de 2026. Cantamos juntos desejando paz nas zonas de conflito do mundo.",
+            "keywords": "Acampamento de Música pela Paz de Gangjeong, Festival da Paz, Festival de Jeju, Acampamento musical, Paz contra a guerra, Vila de Gangjeong, Concerto 2026, Concerto de banda indie, Movimento pela paz, Concerto em Jeju"
+        }
+    },
+    "press": {
+        "page_title": "Imprensa | To You in a Distant Place Whose Name I Don't Know",
+        "page_desc": "Nossa história cantando pela paz. Confira a cobertura e as matérias sobre o projeto 'To You in a Distant Place Whose Name I Don't Know'.",
+        "keywords": "Imprensa, Artigos, Notícias, Projeto de paz",
+        "hero_title": "Imprensa",
+        "hero_subtitle": "Nossa história cantando pela paz",
+        "breadcrumb_home": "Início",
+        "breadcrumb_press": "Imprensa"
+    },
+    "videos": {
+        "page_title": "Vídeos - Acampamento de Música pela Paz de Gangjeong",
+        "page_desc": "Coleção de vídeos de apresentações do Gangjeong Peace Music Camp. Conheça as apresentações dos músicos que cantam pela paz.",
+        "keywords": "Vídeos de apresentações, Gangjeong Peace Music Camp, Concerto pela paz, Apresentação de músicos, Vídeos do YouTube",
+        "hero_title": "Vídeos",
+        "hero_subtitle": "Momentos cantando pela paz",
+        "all_videos": "Ver todos os vídeos"
+    },
+    "camp": {
+        "ordinal": "{{num}}",
+        "not_found": "Acampamento não encontrado",
+        "not_found_desc": "As informações solicitadas do acampamento não foram encontradas.",
+        "coming_soon": "EM BREVE",
+        "section_overview": "Visão geral",
+        "section_musicians": "Músicos participantes",
+        "section_staff": "Equipe",
+        "section_gallery": "Galeria",
+        "section_collaborators": "Colaboração",
+        "more": "Mais",
+        "view_detail": "Ver detalhes",
+        "label_period": "Período",
+        "label_location": "Local",
+        "label_participants": "Participantes",
+        "date_2026": "5 de junho (sex) – 7 de junho (dom), 2026",
+        "venue_2026": "Parque Esportivo de Gangjeong",
+        "keywords_base": "Vila de Gangjeong, Música pela paz, Movimento anti-guerra",
+        "description_2026": "O vento da paz continua soprando. A terceira canção de paz ressoará em Gangjeong em junho de 2026.",
+        "expected_2026": "32 equipes de músicos confirmadas\nCerca de 50–60 equipes previstas",
+        "brand_line": "Acampamento de Música pela Paz de Gangjeong, Jeju"
+    },
+    "album": {
+        "page_title": "To You in a Distant Place Whose Name I Don't Know - Sobre o álbum",
+        "page_desc": "Projeto de álbum de 2024 do Gangjeong Peace Music Camp. Uma jornada musical de 12 canções que encerram a guerra e cantam pela paz.",
+        "keywords": "To You in a Distant Place Whose Name I Don't Know, Gangjeong Peace Music Camp, Álbum, Música pela paz",
+        "hero_title_1": "To You In A",
+        "hero_title_2": "Distant Place",
+        "hero_subtitle": "Uma carta de paz enviada de um mundo cheio de guerra e violência. As ondas de música lançadas da vila de Gangjeong por 12 equipes de músicos.",
+        "listen_tracks": "Ouvir faixas",
+        "intro_musicians": "Conhecer músicos",
+        "meaning_title": "Significado do título",
+        "meaning_desc": "'To You in a Distant Place Whose Name I Don't Know' é uma mensagem de solidariedade enviada às pessoas que sofrem em zonas de conflito ao redor do mundo. Ucrânia, Gaza e a península coreana. Não conhecemos os rostos nem os nomes, mas nossos corações que desejam a paz na mesma era estão conectados.",
+        "voices_title": "12 vozes",
+        "voices_desc": "Rock, folk, jazz, eletrônico. Doze equipes de músicos que empatizam com o movimento pela paz em Gangjeong traduziram a paz em sua própria linguagem musical. Este álbum, feito por diversos gêneros, prova que a diversidade é a essência da paz.",
+        "concert_title": "Show de lançamento",
+        "concert_subtitle": "Confira todos os registros dos shows realizados em Gangjeong e Seul para celebrar o lançamento do álbum.",
+        "tab_info": "Visão geral do show",
+        "tab_video": "Vídeos ao vivo",
+        "tab_photo": "Fotos ao vivo",
+        "label_date": "Data",
+        "label_venue": "Local",
+        "label_performers": "Artistas",
+        "concert_gangjeong": "Show em Gangjeong",
+        "concert_hongdae": "Show em Hongdae",
+        "concert_gangjeong_date": "2024. 10. 12 (sáb)",
+        "concert_hongdae_date": "2024. 11. 02 (sáb)",
+        "concert_time": "19:00~",
+        "venue_gangjeong": "Centro de Paz de Gangjeong",
+        "venue_hongdae": "Space Hangang",
+        "performer_gilganeun_band": "Gilganeun Band Jang Hyunho",
+        "release_official": "LANÇAMENTO OFICIAL 2024",
+        "album_title_full": "To You in a Distant Place Whose Name I Don't Know",
+        "all_photos": "Ver todas as fotos do show",
+        "musicians_page_title": "Músicos participantes - To You in a Distant Place Whose Name I Don't Know",
+        "musicians_page_desc": "12 equipes de músicos que participaram do projeto de álbum do Gangjeong Peace Music Camp. Artistas que cantam pela paz, como Caru, Kim Dongsan, Namsu e MoredoSaturday.",
+        "musicians_page_keywords": "Músicos participantes, Participação no álbum, Músicos pela paz, Gangjeong Peace Music Camp, Artista",
+        "musicians_hero_subtitle": "12 vozes, uma paz",
+        "tracks_page_title": "Faixas - To You in a Distant Place Whose Name I Don't Know",
+        "tracks_page_desc": "Todas as faixas do álbum do Gangjeong Peace Music Camp. 12 canções com mensagens de paz e solidariedade.",
+        "tracks_page_keywords": "Faixas, Lista de faixas, Canções de paz, Lista de músicas, Gangjeong Peace Music Camp",
+        "tracks_hero_subtitle": "To You in a Distant Place Whose Name I Don't Know",
+        "image_alt_cover": "Capa do álbum 'To You in a Distant Place Whose Name I Don't Know'",
+        "image_alt_concert": "Cena do show de lançamento do álbum {{num}}"
+    },
+    "faqs": {
+        "title": "Perguntas frequentes",
+        "items": [
+            {
+                "q": "Que tipo de evento é o Gangjeong Peace Music Camp?",
+                "a": "O Gangjeong Peace Music Camp é um projeto musical pela paz que começou na vila de Gangjeong, em Jeju. É um festival musical pela paz e contra a guerra onde músicos de diversos gêneros se reúnem para cantar e demonstrar solidariedade pela paz em regiões de conflito ao redor do mundo."
+            },
+            {
+                "q": "Quando será realizado o Gangjeong Peace Music Camp?",
+                "a": "O 3º Gangjeong Peace Music Camp está programado para três dias, de 5 (sex) a 7 (dom) de junho de 2026."
+            },
+            {
+                "q": "Onde será realizado o Gangjeong Peace Music Camp?",
+                "a": "Será realizado no Parque Esportivo de Gangjeong e em toda a vila de Gangjeong, localizada em Seogwipo-si, Província Autônoma Especial de Jeju."
+            },
+            {
+                "q": "Quais músicos participarão?",
+                "a": "Músicos de diversos gêneros, como rock, folk, jazz e eletrônico, participarão. No acampamento de 2026, espera-se a participação de cerca de 50–60 equipes, e atualmente 32 equipes já estão confirmadas. Participantes anteriores incluem Solga e o Coral de Gangjeong, entre outros."
+            },
+            {
+                "q": "Há taxa de entrada?",
+                "a": "O Gangjeong Peace Music Camp busca ser um festival aberto que qualquer pessoa que ama a paz possa aproveitar gratuitamente. No entanto, para a sustentabilidade do evento, há doações voluntárias e venda de produtos."
+            },
+            {
+                "q": "O que é o projeto 'To You in a Distant Place Whose Name I Don't Know'?",
+                "a": "'To You in a Distant Place Whose Name I Don't Know' é o nome do projeto de álbum coletivo de 2024 do Gangjeong Peace Music Camp. Ele contém 12 canções com mensagens de solidariedade para pessoas que sofrem com a guerra em lugares como a Ucrânia e a Palestina."
+            }
+        ]
+    }
+}

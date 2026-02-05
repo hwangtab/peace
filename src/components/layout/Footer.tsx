@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { FaInstagram } from 'react-icons/fa';
 import { HiOutlineMail } from 'react-icons/hi';
 import { ROUTES } from '../../constants/routes';
 import { SITE_CONFIG } from '../../constants/config';
 
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 // ...
 
 const Footer = () => {
@@ -59,7 +59,7 @@ const Footer = () => {
                                 {FOOTER_MENU_ITEMS.map((item) => (
                                     <Link
                                         key={item.path}
-                                        to={item.path}
+                                        href={item.path}
                                         className="block text-cloud-white/80 hover:text-golden-sun
                                transition-colors duration-200 text-sm"
                                     >
@@ -72,7 +72,7 @@ const Footer = () => {
                                 {CAMP_MENU_ITEMS.slice(0, 2).map((item) => (
                                     <Link
                                         key={item.path}
-                                        to={item.path}
+                                        href={item.path}
                                         className="block text-cloud-white/80 hover:text-golden-sun
                                transition-colors duration-200 text-sm"
                                     >
@@ -82,7 +82,7 @@ const Footer = () => {
                                 {ALBUM_MENU_ITEMS.slice(0, 2).map((item) => (
                                     <Link
                                         key={item.path}
-                                        to={item.path}
+                                        href={item.path}
                                         className="block text-cloud-white/80 hover:text-golden-sun
                                transition-colors duration-200 text-sm"
                                     >

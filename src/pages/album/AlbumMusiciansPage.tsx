@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import MusiciansSection from '../../components/home/MusiciansSection';
 import PageLayout from '../../components/layout/PageLayout';
 import PageHero from '../../components/common/PageHero';

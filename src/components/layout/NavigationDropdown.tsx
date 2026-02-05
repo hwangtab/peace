@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { AnimatePresence, motion } from 'framer-motion';
 import { IoChevronDown } from 'react-icons/io5';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 
 interface DropdownItem {
   nameKey: string;
@@ -25,7 +26,7 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(({
   isScrolled
 }) => {
   const { t } = useTranslation();
-  const location = useLocation();
+  const router = useRouter();
   const [internalOpen, setInternalOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -59,7 +60,7 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(({
   }, [open, setOpen]);
 
   // Check if any item is active
-  const isActive = items.some(item => location.pathname === item.path);
+  const isActive = items.some(item => router.pathname === item.path);
 
   const getTextColor = () => {
     if (isScrolled) {
@@ -76,7 +77,7 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(({
     <div className="relative group" ref={dropdownRef}>
       <button
         onClick={() => setOpen(!open)}
-        className={`flex items-center space-x-1 ${getTextColor()} transition-colors duration-300 font-display focus:outline-none`}
+        className={`flex items-center gap-1 ${getTextColor()} transition-colors duration-300 font-display focus:outline-none text-balance`}
         aria-expanded={open}
       >
         <span>{label}</span>
@@ -100,8 +101,8 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(({
             {items.map((item) => (
               <Link
                 key={item.path}
-                to={item.path}
-                className={`block px-4 py-2 whitespace-normal break-words ${location.pathname === item.path
+                href={item.path}
+                className={`block px-4 py-2 whitespace-normal break-words ${router.pathname === item.path
                   ? 'bg-ocean-sand text-jeju-ocean font-semibold'
                   : 'text-deep-ocean hover:bg-ocean-sand/50'
                   } transition-colors duration-200 font-serif`}
