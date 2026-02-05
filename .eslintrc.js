@@ -1,15 +1,24 @@
 module.exports = {
   extends: [
-    'react-app',
-    'react-app/jest',
-    'plugin:jsx-a11y/recommended'
+    'next/core-web-vitals',
+    'plugin:jsx-a11y/recommended',
+    'plugin:@typescript-eslint/recommended'
   ],
-  plugins: ['jsx-a11y'],
+  plugins: ['jsx-a11y', '@typescript-eslint'],
   env: {
     browser: true,
     node: true,
     es6: true
   },
+  overrides: [
+    {
+      files: ['**/*.{test,spec}.{ts,tsx,js,jsx}', '**/__tests__/**/*.{ts,tsx,js,jsx}'],
+      extends: ['plugin:jest/recommended'],
+      env: {
+        jest: true
+      }
+    }
+  ],
   rules: {
     // TypeScript
     '@typescript-eslint/no-unused-vars': 'warn',

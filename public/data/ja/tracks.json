@@ -1,0 +1,676 @@
+[
+    {
+        "id": 1,
+        "title": "地平線を見つめるとき",
+        "artist": "Project Around Surround",
+        "duration": "4:44",
+        "description": "ネパールの伝統楽器シタールと現代的なサウンドデザインを融合したインストゥルメンタル。ネパール出身のリテス・マハルジャンのシタール演奏を中心に、韓国のプロデューサー、カン・ギョンドクとパク・インが参加。東洋の伝統楽器とエレクトロニックな音像が溶け合い、新しい音楽的可能性を示す。済州の静かな浜辺に立つような穏やかな空気で始まり、次第に広い音の風景へと開いていく。リテスの神秘的なシタールが幕を開け、カンの精緻で革新的なサウンドデザインが重なり、パク・インの繊細な演奏とプロデュースが奥行きを与える。",
+        "audioUrl": "/audio/1.mp3",
+        "credits": {
+            "composer": [
+                "Ritesh Maharjan"
+            ],
+            "lyricist": [
+                "Ritesh Maharjan"
+            ],
+            "arranger": [
+                "Kang Kyungdeok",
+                "Ritesh Maharjan",
+                "Park In"
+            ],
+            "personnel": [
+                {
+                    "role": "Sitar, Sound Design",
+                    "name": [
+                        "Ritesh Maharjan"
+                    ]
+                },
+                {
+                    "role": "Sound Design, Recording, Mixing",
+                    "name": [
+                        "Kang Kyungdeok"
+                    ]
+                },
+                {
+                    "role": "Producing, Synthesizer, Guitar, Bass",
+                    "name": [
+                        "Park In"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        },
+        "imageUrl": "/images-webp/gallery/1.webp"
+    },
+    {
+        "id": 2,
+        "title": "この土地は君のもの？それとも僕のもの？",
+        "artist": "Jeong Jinseok",
+        "description": "「ソソン里の大スター」と呼ばれるチョン・ジンソクは、もともと美術を学んだアーティスト。セウォル号事故を機に社会問題を見過ごしてきた自分を省み、さまざまな現場で連帯の歌をうたうようになった。THAAD配備が告知されたソソン里で起きた暴力や、村の高齢者たちへの侮辱を目の当たりにし、住所もソソン里へ移し、住民として暮らしながら平和のために闘い続けている。約8年の歳月を経ても、その連帯は続く。このブルースは、国家暴力によって小さな平和の村に押しつけられたTHAAD基地の皮肉を、ユーモアとともに描き出す。土臭い慶尚道方言と荒々しくも生き生きとしたリズムが、韓国ブルースの新しい方向性を指し示す。",
+        "duration": "06:00",
+        "audioUrl": "/audio/2.mp3",
+        "lyrics": "長くまっすぐな道を走って角を曲がれば\n細い道の両側に谷あいの家々が点々と\n手のひらほどの田んぼを過ぎ、大きなビニールハウスを過ぎて\n\n辿り着く村はただの村じゃない　うねる山々に力が満ち\n水の音、風の音がすがすがしい\nあそこを歩く人を見て　その一歩一歩で山が揺れる\n痩せた身体なのに顔は輝いている\n\nまさに山里　街の痕跡はどこにもなく\n谷、谷、谷、谷　用水路、谷川、清らかな空気が迎える\n美しいこの村の名はソソン里\n\nサード基地が入ってきた　海の向こうの人が持ち込んだ\n笑末峰を越えてアメリカのTHAADが入ってきた\nこの国の警察が棍棒で私たちのハルメハルベを殴った\nこうして建った基地の住所は\nカリフォルニア\n\nあの太平洋の向こうにそびえる大地\nズボンをまくって踏み込めば　ウェルカム・トゥ・ザ・ホテル・カリフォルニア\nでも、これはいったいどういうこと？ここもカリフォルニア？\n\nこの土地は君の土地？この土地は僕の土地？\nこの土地は君の土地じゃない　この土地は僕の土地\nこの土地は君の土地？この土地は僕の土地？\nこの土地は君の土地じゃない　この土地は僕の土地\nこの土地は君の土地じゃない　この土地は私たちの土地\n\nまさに山里　街の痕跡はどこにもなく\n谷、谷、谷、谷　用水路、谷川、清らかな空気が迎える\n美しいこの村の名はソソン里",
+        "credits": {
+            "composer": [
+                "Jeong Jinseok"
+            ],
+            "lyricist": [
+                "Jeong Jinseok"
+            ],
+            "arranger": [
+                "Jeong Jinseok",
+                "Hwang Gyeongha"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Guitar, Handclaps",
+                    "name": [
+                        "Jeong Jinseok"
+                    ]
+                },
+                {
+                    "role": "Chorus",
+                    "name": [
+                        "Kim Dongsan",
+                        "Hwang Gyeongha",
+                        "Caru"
+                    ]
+                },
+                {
+                    "role": "Bass, Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        },
+        "imageUrl": "/images-webp/gallery/2.webp"
+    },
+    {
+        "id": 3,
+        "title": "波",
+        "artist": "Kim Dongsan",
+        "description": "「波」はブルイウットの力強いバンドサウンドで幕を開け、聴き手を一気に引き込む。リュ・ジュンチョルのキーボード、イ・インウのベース、キム・イェジュンのドラムが作る重厚なロックサウンドは、70年代のクロスビー、スティルス、ナッシュ＆ヤングを想起させる。歌詞は「輝く記憶の中の人たち」から始まり、過去と現在を対比しながら現代文明の暴力性と人間の疎外を繊細に描く。「灰色の煙と涙だけが車輪のように繰り返される」という一節は技術文明の悲劇を示唆し、「美とは何か」という問いが重いサウンドとともに浮かび上がる。",
+        "duration": "05:06",
+        "audioUrl": "/audio/3.mp3",
+        "lyrics": "輝く記憶の中の人たち\nみんな同じ服を着て\n大きな祭りをした\n\n笑いが過ぎ去り　焚き火も消えれば\n灰色の煙とため息だけ\n灰色の煙と涙だけ\n\nすべてが過ぎ去れば同じことが\n車輪のように繰り返され\n私の歌もあなたの涙も\nあの波の中へ流れていく\n\nどれほど泣いて　また泣けば\n自分の中のあなたに会えるのだろう\n\n私はあなたに問う\nあなたは私に問う\n美とは何かを\n\nすべてが過ぎ去れば同じ悲しみが\n車輪のように繰り返され\n私の歌もあなたの涙も\nあの波の中へ流れていく",
+        "credits": {
+            "composer": [
+                "Kim Dongsan"
+            ],
+            "lyricist": [
+                "Kim Dongsan"
+            ],
+            "arranger": [
+                "Kim Dongsan",
+                "Kim Yejun",
+                "Ryu Jooncheol",
+                "Lee Inwoo"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Guitar",
+                    "name": [
+                        "Kim Dongsan"
+                    ]
+                },
+                {
+                    "role": "Keyboards",
+                    "name": [
+                        "Ryu Jooncheol"
+                    ]
+                },
+                {
+                    "role": "Bass",
+                    "name": [
+                        "Lee Inwoo"
+                    ]
+                },
+                {
+                    "role": "Drums",
+                    "name": [
+                        "Kim Yejun"
+                    ]
+                },
+                {
+                    "role": "Chorus",
+                    "name": [
+                        "Kim Dongsan",
+                        "Semin"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        },
+        "imageUrl": "/images-webp/gallery/3.webp"
+    },
+    {
+        "id": 4,
+        "title": "こんにちは（遠い場所のあなたへ）",
+        "artist": "Namsu",
+        "description": "ウクライナやパレスチナの戦争に苦しむ人々への連帯を込めた歌。繊細なピアノと温かな歌声が、国境を超えてつながる人間性を歌う。ナムスが遠い戦場の人々へ「無事と平和」を祈る挨拶を届ける。",
+        "duration": "4:45",
+        "audioUrl": "/audio/4.mp3",
+        "lyrics": "もし同じ風があなたと私の中にあるなら（それは）\n遠くから同じ世界を願う（私たち）\n\n名前を知らないあなたへ（こんにちは）\n顔を知らないあなたへ（こんにちは）\n\n名前も知らない遠い場所のあなたへ（こんにちは）\n顔も知らない遠い場所のあなたへ（こんにちは）",
+        "credits": {
+            "composer": [
+                "Namsu"
+            ],
+            "lyricist": [
+                "Namsu"
+            ],
+            "arranger": [
+                "Namsu"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Piano",
+                    "name": [
+                        "Namsu"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 5,
+        "title": "トランジション",
+        "artist": "Caru",
+        "description": "カルの深い省察と希望が詰まった曲。現代社会の不安と恐れから始まり、個人の成長や世界観の転換を経て、平和と「転換」への希望へと至る。核の脅威や空気を覆う茶色い塵の描写の中で、師の声が遠い眼で世界を見ることを促す。私たちは波の一滴であり、やがて蝶になる毛虫。曲は力強い「転換」の呼びかけで終わる。",
+        "duration": "4:32",
+        "audioUrl": "/audio/5.mp3",
+        "lyrics": "私は世界が怖かった\n燃え盛る森のようだった\nいつ爆発するか分からない核と　空気を覆う茶色い塵\n\n遠い海の向こうの師は言った\n「坊や、世界は変わっている」\n「君が聞く声は君だけのものではない　世界の祈りなんだ」\n\n私たちは波の雫\n君が感じる響きは君だけの動揺ではない\n広い海の波を感じる数十億の雫の一つ\n\n世界は暗く見えた\nハンドルを失った機関車のようだった\n守りたいものがたくさんあるのに　私はダビデよりも小さかった\n\n深い山の中で師は言った\n「坊や、遥かな目で世界を見よ」\n「君が生まれる前から走っている生命の鼓動を聴け」\n\n私たちは一匹の毛虫\n今は木を食べて生きているが\n苦悩と願いの糸で繭の時間を過ごせば　蝶として咲く\n\n強くなると決めた\n痛む目を閉じない\n自分の限界を認めつつ　それでも生きると決めた\n\n希望を抱くと決めた\n五百年を生きる亀の視線から見れば\n私たちは発展してきた　そして今、転換する\n\nトランジション・パワー！\n\n世界に平和を　人の心に　別の文化へ\n本当に大切なものを探して　もう一つの世界へ\n世界に平和を　生命の心に　別の文明へ\n本当に大切なものを探して　もう一つの世界へ",
+        "credits": {
+            "composer": [
+                "Caru"
+            ],
+            "lyricist": [
+                "Caru"
+            ],
+            "arranger": [
+                "Caru",
+                "Hwang Gyeongha"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Acoustic Guitar, Percussion",
+                    "name": [
+                        "Caru"
+                    ]
+                },
+                {
+                    "role": "Cajon",
+                    "name": [
+                        "Sanho"
+                    ]
+                },
+                {
+                    "role": "Chorus",
+                    "name": [
+                        "Hyoseon",
+                        "Jinna",
+                        "Chanmi",
+                        "Naje"
+                    ]
+                },
+                {
+                    "role": "Bass, Percussion Sequencing, Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 6,
+        "title": "星を見に行った人",
+        "artist": "Kim In",
+        "description": "月と星をモチーフに、戦争によって失われたものを詩的に見つめる平和の歌。温かなアコースティックサウンドの中で、戦争の終わりとみんなの平和を願う。",
+        "duration": "5:12",
+        "audioUrl": "/audio/6.mp3",
+        "lyrics": "彼は星を見に走っていった\n数えきれない光が\nそこにあった\n\n不思議な気分がした\nあまりにも多くのものを\n失ってしまった\n\nあの空の星は覚えているだろう\n私たちのすべての悲しみと喜びを\n\n温かな匂いのする月のかけらを\nもう一度あなたと分け合えたなら\n\n届かない星よ\n願いを聞いてくれ\n\nどうかこの戦争が\n終わりますように\n\n肩を寄せ合って座った\nあの夜を覚えている\n\nあなたの平和を　みんなの平和を\n切に願い待つ",
+        "credits": {
+            "composer": [
+                "Kim In"
+            ],
+            "lyricist": [
+                "Kim In"
+            ],
+            "arranger": [
+                "Kim In",
+                "Hwang Gyeongha"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Guitar, Bass",
+                    "name": [
+                        "Kim In"
+                    ]
+                },
+                {
+                    "role": "Synthesizer, Drum Sequencing, Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 7,
+        "title": "あなたの自由のために航海する",
+        "artist": "MoredoSaturday",
+        "description": "エンマ・リングクヴィストの曲を再解釈した、ガザの女性たちへの連帯の賛歌。フォークアレンジがモレとドトのハーモニーを引き立てる。モレの冷ややかな透明感とドトの温かい低音が重なり、静かで力強い平和のメッセージを届ける。",
+        "duration": "3:58",
+        "audioUrl": "/audio/7.mp3",
+        "lyrics": "私たちはスペインの岸から錨を上げて出航した\n私たちの船はザイトゥーナ・オリーブ　それが彼女の名\nオリーブは遠い地の象徴\n私たちは波を越えてその地へ向かう\n\nここには13人の女性がいる　手に平和を携え航海する\n異国の地にいる姉妹たちへ向かって\n\n世界のさまざまな場所から私たちは集まった\nあなたたちに歌の自由を届けるために\n\n私たちはあなたたちの自由のために航海する　パレスチナの姉妹たちよ\nあなたたちが自由になるまで決して沈黙しない\n\n夜には星の光に導かれ\n海のまばゆい力に導かれる\n世界が見守る中　私たちは女性の声を届ける\n私たち皆に選択の権利があるというメッセージを\n\nあなたたちの祖母はオリーブの木を植えた\nあなたたちが平和に暮らすべきこの土地に\n千年の木々は掘り返されてしまった\n娘たちが新しい木を植え　そのまま育つことを願う\n\n私たちはあなたたちの自由のために航海する　パレスチナの姉妹たちよ\nあなたたちが自由になるまで決して沈黙しない\n\n私たちはあなたたちの自由のために航海する　パレスチナの姉妹たちよ\nあなたたちが自由になるまで決して沈黙しない",
+        "credits": {
+            "composer": [
+                "Emma Ringqvist"
+            ],
+            "lyricist": [
+                "Emma Ringqvist"
+            ],
+            "arranger": [
+                "More, Doto"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals",
+                    "name": [
+                        "More",
+                        "Doto"
+                    ]
+                },
+                {
+                    "role": "Acoustic Guitar",
+                    "name": [
+                        "Doto"
+                    ]
+                },
+                {
+                    "role": "Cajon",
+                    "name": [
+                        "Sanho"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 8,
+        "title": "目の前の心",
+        "artist": "Leaves",
+        "description": "内面と外界の相互作用を描くフォークサウンドの歌。繊細なハーモニーと深い歌詞が際立つ。リーフスの優しい声で平和と希望のメッセージを届ける。",
+        "duration": "4:18",
+        "audioUrl": "/audio/8.mp3",
+        "lyrics": "私の世界では悲しみと喜びが\n訪れては去り　めぐっている\n\nあなたの世界に見える絵は\n恋しくても薄れてゆく\n\n一人の心と歩みが\n世界中の風になる\n\n愛と平和　見えなくても\n目の前の心の中にある\n\nすべての心がそこに届きますように\n祈り歌う",
+        "credits": {
+            "composer": [
+                "Yeoul",
+                "Wongirl"
+            ],
+            "lyricist": [
+                "Yeoul",
+                "Wongirl"
+            ],
+            "arranger": [
+                "Yeoul",
+                "Wongirl"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Acoustic Guitar, Shaker",
+                    "name": [
+                        "Yeoul",
+                        "Wongirl"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 9,
+        "title": "ソウルの夜（feat. Jung Sumin）",
+        "artist": "Yeoyu",
+        "description": "若さの彷徨と成長、そして平和な暮らしへの憧れを歌った曲。フォークとエレクトロニックを融合し、時代を超えた世界と人間の渇望を表現する。平和と希望のメッセージを抱いた歌。",
+        "duration": "5:05",
+        "audioUrl": "/audio/9.mp3",
+        "lyrics": "今日もこうして一日が暮れる\n旅立つ日も遠くない\n二十四ならまだ遠いだろ\nまた別の日が来る\n\nこの町も恋しくなるだろう\n忙しなく生きる人たち\nお金がなくても幸せであってほしい\nロマンの夜のために\n\n自分がどれほど幼くて滑稽か\n人は知らない\n岩と水のように純粋に\n生きていたい\n\n旅立つ　遠くどこかへ\n涙の時間を越えて\n杯を上げよう　友よ\nソウルの夜のために\n\n誕生日に本をくれた奴は\nリヤカーの上に家を建て\nヒッピー文化にどっぷり浸かった奴は\n公益勤務員だ\n\n自分がどれほど幼くて滑稽か\n君たちは皆知っている\nよく育って　よく食べろ\nそれぞれの場所で\n\n旅立つ　遠くどこかへ\n涙の時間を越えて\n杯を上げよう　友よ\nソウルの夜のために\n\n旅立つ　遠く済州へ\n愛する人が住む場所へ\n元気で生きろ　友よ\n放浪する人生のために\n\n杯を上げよう　友よ\nソウルの夜のために",
+        "credits": {
+            "composer": [
+                "Yeoyu"
+            ],
+            "lyricist": [
+                "Yeoyu"
+            ],
+            "arranger": [
+                "Yeoyu"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals, Guitar, Piano, Mixing",
+                    "name": [
+                        "Yeoyu"
+                    ]
+                },
+                {
+                    "role": "Contrabass",
+                    "name": [
+                        "Jung Sumin"
+                    ]
+                },
+                {
+                    "role": "Drums",
+                    "name": [
+                        "Kwon Nakju"
+                    ]
+                },
+                {
+                    "role": "Clarinet",
+                    "name": [
+                        "Seolbin"
+                    ]
+                },
+                {
+                    "role": "Chorus, Piano",
+                    "name": [
+                        "Namsu"
+                    ]
+                },
+                {
+                    "role": "Recording",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 10,
+        "title": "これが許されるなら、何が許されないのか？",
+        "artist": "MOMO",
+        "description": "ジャズボーカリストMOMOが、現代社会の矛盾と暴力に鋭い問いを投げかける曲。一行を反復し続けることで、私たちの麻痺と沈黙を見つめ直させる。声とコントラバスが緊張感を生み、ミニマルな編成がメッセージに焦点を当てる。",
+        "duration": "6:15",
+        "audioUrl": "/audio/10.mp3",
+        "lyrics": "これが許されるなら、何が許されないのか？\nこんなに自由なのに、なぜ私たちは惨事に耐えるのか？",
+        "credits": {
+            "composer": [
+                "Yejin Angela Park"
+            ],
+            "lyricist": [
+                "Yejin Angela Park"
+            ],
+            "arranger": [
+                "Yejin Angela Park",
+                "Hwang Seulgi"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals",
+                    "name": [
+                        "Yejin Angela Park"
+                    ]
+                },
+                {
+                    "role": "Contrabass",
+                    "name": [
+                        "Hwang Seulgi"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 11,
+        "title": "ピンクのダウンの少女",
+        "artist": "Jai x HANASH",
+        "description": "爆撃で腕を失った少女の物語に着想した曲。シンガーソングライターJaiのリリカルな声と、電子音楽プロデューサーHANASHの実験的なサウンドが独特の空気をつくる。戦争の残酷さを告発しつつ、平和と連帯のメッセージを抱く。",
+        "duration": "5:42",
+        "audioUrl": "/audio/11.mp3",
+        "lyrics": "ピンクのダウンを着てにっこり笑う少女の写真を見た\n次のページには片腕を失ったピンクのダウンの少女がいた\n\n戦争は痛み\n戦争の悲しみ\n\n少女は花で染まったピンクの義手を持てるかと問う\n悪いからではないと言い　子どもの笑顔とともに痛みが伝わる\n\n戦争は痛みを作り\n子どもたちはその中で傷つく\n\n戦争は苦しみを残し\n子どもたちはその中でただ傷ついていく\n\n戦争は痛み\n戦争の悲しみ\n\n戦争の暴力の中で\n子どもたちは傷つく",
+        "credits": {
+            "composer": [
+                "Jai",
+                "HANASH"
+            ],
+            "lyricist": [
+                "Jai"
+            ],
+            "arranger": [
+                "Jai",
+                "HANASH"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals",
+                    "name": [
+                        "Jai"
+                    ]
+                },
+                {
+                    "role": "Synthesizer",
+                    "name": [
+                        "HANASH"
+                    ]
+                },
+                {
+                    "role": "Recording",
+                    "name": [
+                        "HANASH",
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mixing",
+                    "name": [
+                        "HANASH"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 12,
+        "title": "私たち",
+        "artist": "Lee Seoyoung",
+        "description": "シンガーソングライターのイ・ソヨンが、愛・平和・自由への普遍的な憧れを捉える曲。大学時代に作曲された曲を10年後に再解釈。山のトンネルから着想し、ピアノと声を軸に、エレキギター、ベース、フリューゲルホルンを加えて豊かに編成した。",
+        "duration": "5:28",
+        "audioUrl": "/audio/12.mp3",
+        "lyrics": "私たちは棘を抱えて生き\n胸を貫かれたように歩く\n\n平和を知らないまま求め\n息が上がっても生を固く抱く\n\n私たちは\n自由を望む\n\n私たち　私たち\n平和を望む\n\n喜びよりも悲しみが\nこの場所に近い\n\n孤独の反対は\nここにはない\n\n私たちは\n愛を望む\n\n私たち　私たち\n平和を望む\n\n私たちは棘を抱えて生き\n胸を貫かれたように歩く\n\n平和を知らないまま求め\n息が上がっても生を固く抱く\n\n私たちは\n自由を望む\n\n私たち　私たち\n平和を望む\n\n喜びよりも悲しみが\nこの場所に近い\n\n孤独の反対は\nここにはない\n\n私たちは\n愛を望む\n\n私たち　私たち\n平和を望む",
+        "credits": {
+            "composer": [
+                "Lee Seoyoung"
+            ],
+            "lyricist": [
+                "Lee Seoyoung"
+            ],
+            "arranger": [
+                "Lee Seoyoung"
+            ],
+            "personnel": [
+                {
+                    "role": "Producing, Vocals, Piano, Chorus",
+                    "name": [
+                        "Lee Seoyoung"
+                    ]
+                },
+                {
+                    "role": "Bass",
+                    "name": [
+                        "Jeong Yeonsu"
+                    ]
+                },
+                {
+                    "role": "Flugelhorn",
+                    "name": [
+                        "Yoo Heewon"
+                    ]
+                },
+                {
+                    "role": "Electric Guitar, Mixing",
+                    "name": [
+                        "Park Chanwool"
+                    ]
+                },
+                {
+                    "role": "Recording",
+                    "name": [
+                        "Park Chanwool",
+                        "Shin Garam",
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "id": 13,
+        "title": "未知",
+        "artist": "MoredoSaturday",
+        "description": "済州・江汀村の海軍基地反対運動から生まれた自伝的な歌。平和活動家で音楽家のモレとドトが、江汀で過ごした4年間をもとに書いた。未知の未来へ一歩ずつ進む活動家たちの日々を描く。",
+        "duration": "4:22",
+        "audioUrl": "/audio/13.mp3",
+        "lyrics": "誰も知らない道を歩いている\n誰にも知られず踊っている\n\n誰も知らない私たちの日々\n誰も知らない私（あなた）の窓の外の風景\n\n歩みを進めても同じ場所にいる気がして\nあなたと私の距離が遠く感じても\n私たちを包む風景は少しずつ変わっていく\nあなたの一歩で\n\nああ\n\n出会った心を辿って歩いている\n笑っていた顔を覚えている\n握った二つの手の温もりを抱いて\nララララ　ララ\n\n愛をたどっていけば\nいつかは届くから\n愛を語るのが怖くても\n分け合う身振りがある\n一緒に歌う歌がある\n\n一緒に歌う歌がある",
+        "credits": {
+            "composer": [
+                "More, Doto"
+            ],
+            "lyricist": [
+                "More, Doto"
+            ],
+            "arranger": [
+                "More, Doto"
+            ],
+            "personnel": [
+                {
+                    "role": "Vocals",
+                    "name": [
+                        "More",
+                        "Doto"
+                    ]
+                },
+                {
+                    "role": "Acoustic Guitar",
+                    "name": [
+                        "Doto"
+                    ]
+                },
+                {
+                    "role": "Recording, Mixing",
+                    "name": [
+                        "Hwang Gyeongha"
+                    ]
+                },
+                {
+                    "role": "Mastering",
+                    "name": [
+                        "Lee Jaesu"
+                    ]
+                }
+            ]
+        }
+    }
+]
