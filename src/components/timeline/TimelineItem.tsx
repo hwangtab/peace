@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import { TimelineEvent } from '../../data/timeline';
 
 interface TimelineItemProps {

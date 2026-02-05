@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import { GalleryImage } from '../../types/gallery';
 import { useGalleryImages } from '../../hooks/useGalleryImages';
 import { GALLERY_CONFIG } from '../../constants/config';

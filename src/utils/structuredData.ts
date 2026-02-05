@@ -31,7 +31,21 @@ export const getWebSiteSchema = (lang: string = 'ko') => ({
   "description": lang === 'ko'
     ? "전쟁과 폭력이 만연한 세상에서 음악으로 평화의 메시지를 전하는 뮤지션들의 프로젝트"
     : "A project of musicians delivering a message of peace through music in a world where war and violence are prevalent",
-  "inLanguage": lang === 'ko' ? "ko-KR" : "en-US",
+  "inLanguage": ({
+    ko: "ko-KR",
+    en: "en-US",
+    es: "es-ES",
+    fr: "fr-FR",
+    de: "de-DE",
+    pt: "pt-PT",
+    ru: "ru-RU",
+    ar: "ar",
+    ja: "ja-JP",
+    "zh-Hans": "zh-Hans",
+    "zh-Hant": "zh-Hant",
+    hi: "hi-IN",
+    id: "id-ID"
+  } as Record<string, string>)[lang] || "en-US",
   "publisher": {
     "@type": "Organization",
     "name": lang === 'ko' ? "이름을 모르는 먼 곳의 그대에게" : "To You in a Distant Place Whose Name I Don't Know"

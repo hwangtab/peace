@@ -1,5 +1,5 @@
 import React, { memo, useState, useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import { motion } from 'framer-motion';
 import { Musician } from '../../types/musician';
 import { extractInstagramUsername } from '../../utils/instagram';

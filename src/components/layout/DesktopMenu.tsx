@@ -1,6 +1,6 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { Link, Location } from 'react-router-dom';
+import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import NavigationDropdown from './NavigationDropdown';
 import LanguageSwitcher from '../common/LanguageSwitcher';
@@ -8,7 +8,7 @@ import { campItems, albumItems, simpleMenuItems } from './navigationData';
 import { ROUTES } from '../../constants/routes';
 
 interface DesktopMenuProps {
-    location: Location;
+    pathname: string;
     desktopOpenDropdown: string | null;
     onOpenChange: (dropdown: string, isOpen: boolean) => void;
     isScrolled: boolean;
@@ -20,7 +20,7 @@ interface DesktopMenuProps {
 // ... (interface)
 
 const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(({
-    location,
+    pathname,
     desktopOpenDropdown,
     onOpenChange,
     isScrolled,
@@ -41,13 +41,13 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(({
     };
 
     return (
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex flex-wrap items-center gap-x-6 gap-y-2">
             <Link
-                to={ROUTES.HOME}
-                className={`${getTextColor(location.pathname === ROUTES.HOME)} transition-colors duration-300 font-display relative`}
+                href={ROUTES.HOME}
+                className={`${getTextColor(pathname === ROUTES.HOME)} transition-colors duration-300 font-display relative`}
             >
                 {t('nav.home')}
-                {location.pathname === ROUTES.HOME && (
+                {pathname === ROUTES.HOME && (
                     <motion.div
                         className={`absolute bottom-0 left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
                         layoutId="underline-home"
@@ -76,11 +76,11 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(({
                 .map((item) => (
                     <Link
                         key={item.path}
-                        to={item.path}
-                        className={`${getTextColor(location.pathname === item.path)} transition-colors duration-300 font-display relative`}
+                        href={item.path}
+                        className={`${getTextColor(pathname === item.path)} transition-colors duration-300 font-display relative`}
                     >
                         {t(item.nameKey)}
-                        {location.pathname === item.path && (
+                        {pathname === item.path && (
                             <motion.div
                                 className={`absolute bottom-0 left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
                                 layoutId={`underline-${item.path}`}

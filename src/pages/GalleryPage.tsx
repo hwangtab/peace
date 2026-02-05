@@ -4,7 +4,7 @@ import PageHero from '../components/common/PageHero';
 import GallerySection from '../components/home/GallerySection';
 import { getImageGallerySchema } from '../utils/structuredData';
 
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 // ...
 
 const GalleryPage = () => {

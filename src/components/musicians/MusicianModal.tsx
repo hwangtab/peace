@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import { Dialog, Transition } from '@headlessui/react';
 import { Musician } from '../../types/musician';
 import { extractInstagramUsername } from '../../utils/instagram';

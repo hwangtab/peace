@@ -1,12 +1,13 @@
 import { useState, useCallback, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 export const useNavigation = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [desktopOpenDropdown, setDesktopOpenDropdown] = useState<string | null>(null);
     const [mobileOpenDropdown, setMobileOpenDropdown] = useState<string | null>(null);
     const [isScrolled, setIsScrolled] = useState(false);
-    const location = useLocation();
+    const router = useRouter();
+    const pathname = router.pathname;
 
     // Scroll detection with requestAnimationFrame throttling
     useEffect(() => {
@@ -55,7 +56,7 @@ export const useNavigation = () => {
         isScrolled,
         desktopOpenDropdown,
         mobileOpenDropdown,
-        location,
+        pathname,
         toggleMenu,
         closeMenu,
         toggleMobileDropdown,

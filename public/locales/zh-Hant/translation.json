@@ -1,0 +1,284 @@
+{
+    "app": {
+        "title": "江汀和平音樂營"
+    },
+    "about": {
+        "title": "關於我們",
+        "subtitle": "為和平而唱的歌",
+        "desc1": "在濟州江汀村迎著海風的巨岩——古倫比岩前，我們第一次歌唱。我們明白，和平不是宏大的口號，而是傾聽彼此聲音的瞬間開始。",
+        "desc2": "江汀和平音樂營是夢想無戰世界的音樂人共同的連帶與節慶。跨越國界與語言，我們以音樂——最美的武器——講述和平。",
+        "desc3": "當我們一起歌唱、舞蹈、擁抱，戰爭將停止，和平的浪潮會傳得更遠。",
+        "card1": {
+            "title": "持續的和平",
+            "desc": "第一段和聲始於2023年夏天。我們的節慶不會止於一次活動，而將成為守護江汀夏天的堅定而美麗的和平儀式。"
+        },
+        "card2": {
+            "title": "無國界的連帶",
+            "desc": "從巴勒斯坦加薩到烏克蘭，我們記得每一個衝突地帶。江汀和平音樂營不僅是音樂會，更是與受苦者並肩、渴望和平的強大連帶場域。"
+        }
+    },
+    "gallery": {
+        "page_title": "畫廊 | 江汀和平音樂營",
+        "page_desc": "我們為和平歌唱的瞬間。瀏覽江汀和平音樂營的生動現場照片。",
+        "keywords": "畫廊, 相簿, 活動照片, 和平營照片, 江汀村",
+        "seo_keywords": "畫廊照片",
+        "hero_title": "畫廊",
+        "hero_subtitle": "在那裡遇見的和平",
+        "section_title": "和平的瞬間",
+        "section_subtitle": "為和平歌唱的瞬間",
+        "no_images": "暫無照片。",
+        "load_more": "載入更多",
+        "image_alt_fallback": "江汀和平音樂營畫廊圖片",
+        "image_alt_template": "{{year}}年 {{title}} 畫廊圖片"
+    },
+    "home": {
+        "hero": {
+            "title": "江汀和平音樂營",
+            "subtitle": "結束戰爭！一起歌唱、一起舞蹈",
+            "message": "從江汀村出發的和平訊息",
+            "camp_intro": "關於營地",
+            "camp_2026": "2026 營地",
+            "image_alt": "江汀村海邊舉行的和平音樂營演出舞台"
+        },
+        "musicians": {
+            "title": "參演音樂人",
+            "subtitle": "12組為和平歌唱的藝術家"
+        },
+        "tracks": {
+            "title": "曲目",
+            "subtitle": "12首和平之歌",
+            "buy_album": "購買專輯"
+        }
+    },
+    "footer": {
+        "slogan": "我們為和平發聲",
+        "description": "始於濟州江汀村的和平音樂計畫。江汀和平音樂營匯聚音樂人共同歌唱與連帶，祈願世界衝突地區的和平。",
+        "links": "快速連結",
+        "contact": "聯絡",
+        "copyright": "版權所有。",
+        "sns_aria": "在 Instagram 追蹤江汀和平音樂營",
+        "email_aria": "透過電子郵件聯絡",
+        "menu": {
+            "home": "首頁",
+            "gallery": "畫廊",
+            "video": "影片",
+            "press": "報導",
+            "camp_2023": "2023 營地",
+            "camp_2025": "2025 營地",
+            "camp_2026": "2026 營地",
+            "album_about": "專輯介紹",
+            "musicians": "音樂人",
+            "tracks": "曲目"
+        }
+    },
+    "notFound": {
+        "title": "找不到頁面",
+        "desc": "您請求的頁面不存在。",
+        "message": "抱歉，該頁面可能已刪除、改名或暫時無法使用。",
+        "homeButton": "返回首頁"
+    },
+    "nav": {
+        "home": "首頁",
+        "camp": "營地",
+        "album": "專輯",
+        "gallery": "畫廊",
+        "video": "影片",
+        "press": "報導",
+        "camp_2023": "2023 營地",
+        "camp_2025": "2025 營地",
+        "camp_2026": "2026 營地",
+        "album_about": "專輯介紹",
+        "musician": "音樂人",
+        "track": "曲目",
+        "skip_to_main": "跳到主要內容",
+        "close_menu": "關閉選單",
+        "open_menu": "開啟選單",
+        "logo": "江汀和平音樂營",
+        "switch_en": "切換到英文",
+        "switch_ko": "切換到韓文",
+        "switch_language": "切換語言"
+    },
+    "common": {
+        "loading": "載入中...",
+        "track_desc": "介紹",
+        "lyrics": "歌詞",
+        "credits": "製作人員",
+        "featured_track": "曲目",
+        "filter_all": "全部",
+        "filter_album_2024": "2024 專輯",
+        "filter_camp_2023": "2023 營地",
+        "filter_camp_2025": "2025 營地",
+        "aria_filter": "活動篩選",
+        "aria_filter_selected": "篩選（已選）",
+        "close": "關閉",
+        "sns": "SNS",
+        "error_title": "哎呀，出了點問題。",
+        "error_message": "抱歉，發生了意外錯誤，無法顯示頁面。\n請稍後再試。",
+        "retry": "重試",
+        "go_home": "返回首頁",
+        "audio_position": "音訊播放位置",
+        "label_personnel": "參與人員",
+        "label_produced_by": "製作"
+    },
+    "timeline": {
+        "title": "連帶之路",
+        "subtitle": "從江汀開始的和平記錄",
+        "labels": {
+            "camp": "營地",
+            "album": "專輯",
+            "milestone": "里程碑"
+        },
+        "events": {
+            "camp_2023": {
+                "title": "第一屆江汀和平音樂營",
+                "desc": "江汀村首次舉辦的和平音樂營。",
+                "location": "江汀體育公園"
+            },
+            "album_2024": {
+                "title": "專輯發行演出",
+                "desc": "專輯《To You in a Distant Place Whose Name I Don't Know》發表演出。",
+                "location": "江汀和平中心 · Space Hangang"
+            },
+            "camp_2025": {
+                "title": "第二屆江汀和平音樂營",
+                "desc": "停戰73週年的和平訊息。",
+                "location": "江汀村一帶"
+            },
+            "camp_2026": {
+                "title": "第三屆江汀和平音樂營",
+                "desc": "預計於2026年6月5–7日舉行。",
+                "location": "江汀體育公園"
+            }
+        },
+        "month_1": "1月",
+        "month_2": "2月",
+        "month_3": "3月",
+        "month_4": "4月",
+        "month_5": "5月",
+        "month_6": "6月",
+        "month_7": "7月",
+        "month_8": "8月",
+        "month_9": "9月",
+        "month_10": "10月",
+        "month_11": "11月",
+        "month_12": "12月"
+    },
+    "seo": {
+        "default": {
+            "title": "江汀和平音樂營 | 歌唱、舞動、結束戰爭",
+            "description": "從濟州江汀村開始的和平音樂計畫。2026年6月5–7日在江汀體育公園舉行的反戰和平音樂節。我們一起歌唱，祈願世界衝突地區的和平。",
+            "keywords": "江汀和平音樂營, 和平節, 濟州節慶, 音樂營, 反戰和平, 江汀村, 2026演出, 獨立樂團演出, 和平運動, 濟州演出"
+        }
+    },
+    "press": {
+        "page_title": "報導 | To You in a Distant Place Whose Name I Don't Know",
+        "page_desc": "我們為和平歌唱的故事。查看關於“To You in a Distant Place Whose Name I Don't Know”專案的媒體報導與文章。",
+        "keywords": "報導, 文章, 新聞, 和平專案",
+        "hero_title": "報導",
+        "hero_subtitle": "我們為和平歌唱的故事",
+        "breadcrumb_home": "首頁",
+        "breadcrumb_press": "報導"
+    },
+    "videos": {
+        "page_title": "影片 - 江汀和平音樂營",
+        "page_desc": "江汀和平音樂營演出影片合集。觀看為和平歌唱的音樂人表演。",
+        "keywords": "演出影片, 江汀和平音樂營, 和平演唱會, 音樂人演出, YouTube影片",
+        "hero_title": "影片",
+        "hero_subtitle": "為和平歌唱的瞬間",
+        "all_videos": "查看全部影片"
+    },
+    "camp": {
+        "ordinal": "{{num}}",
+        "not_found": "找不到營地",
+        "not_found_desc": "找不到您請求的營地資訊。",
+        "coming_soon": "即將推出",
+        "section_overview": "活動概覽",
+        "section_musicians": "參演音樂人",
+        "section_staff": "工作人員",
+        "section_gallery": "畫廊",
+        "section_collaborators": "合作",
+        "more": "更多",
+        "view_detail": "查看詳情",
+        "label_period": "期間",
+        "label_location": "地點",
+        "label_participants": "參與者",
+        "date_2026": "2026年6月5日（週五）- 6月7日（週日）",
+        "venue_2026": "江汀體育公園",
+        "keywords_base": "江汀村, 和平音樂, 反戰運動",
+        "description_2026": "和平之風持續吹拂。第三首和平之歌將在2026年6月於江汀響起。",
+        "expected_2026": "已確認32支音樂人團隊\n預計約50–60支團隊",
+        "brand_line": "濟州 江汀和平音樂營"
+    },
+    "album": {
+        "page_title": "To You in a Distant Place Whose Name I Don't Know - 專輯介紹",
+        "page_desc": "江汀和平音樂營2024年專輯計畫。12首終結戰爭、歌唱和平的音樂旅程。",
+        "keywords": "To You in a Distant Place Whose Name I Don't Know, 江汀和平音樂營, 專輯, 和平音樂",
+        "hero_title_1": "To You In A",
+        "hero_title_2": "Distant Place",
+        "hero_subtitle": "從充滿戰爭與暴力的世界寄出的和平之信。12組音樂人自江汀村發出的音樂波瀾。",
+        "listen_tracks": "聆聽曲目",
+        "intro_musicians": "認識音樂人",
+        "meaning_title": "標題的含義",
+        "meaning_desc": "《To You in a Distant Place Whose Name I Don't Know》是送給世界各地衝突地區受苦人們的連帶訊息。烏克蘭、加薩，以及朝鮮半島。我們彼此不知姓名與面貌，但在同一時代渴望和平的心緊密相連。",
+        "voices_title": "12種聲音",
+        "voices_desc": "搖滾、民謠、爵士、電子。12組共鳴江汀村和平運動的音樂人，用各自的音樂語言翻譯和平。這張專輯證明：多樣性正是和平的本質。",
+        "concert_title": "發行紀念演出",
+        "concert_subtitle": "查看在江汀與首爾舉行的專輯發行紀念演出的完整記錄。",
+        "tab_info": "演出概覽",
+        "tab_video": "現場影片",
+        "tab_photo": "現場照片",
+        "label_date": "日期",
+        "label_venue": "地點",
+        "label_performers": "出演者",
+        "concert_gangjeong": "江汀演出",
+        "concert_hongdae": "弘大演出",
+        "concert_gangjeong_date": "2024. 10. 12（週六）",
+        "concert_hongdae_date": "2024. 11. 02（週六）",
+        "concert_time": "19:00~",
+        "venue_gangjeong": "江汀和平中心",
+        "venue_hongdae": "Space Hangang",
+        "performer_gilganeun_band": "Gilganeun Band Jang Hyunho",
+        "release_official": "2024 官方發行",
+        "album_title_full": "To You in a Distant Place Whose Name I Don't Know",
+        "all_photos": "查看所有演出照片",
+        "musicians_page_title": "參演音樂人 - To You in a Distant Place Whose Name I Don't Know",
+        "musicians_page_desc": "參與江汀和平音樂營專輯計畫的12組音樂人。包括Caru、Kim Dongsan、Namsu、MoredoSaturday等歌唱和平的藝術家。",
+        "musicians_page_keywords": "參演音樂人, 專輯參與, 和平音樂人, 江汀和平音樂營, 藝術家",
+        "musicians_hero_subtitle": "12種聲音，一個和平",
+        "tracks_page_title": "曲目 - To You in a Distant Place Whose Name I Don't Know",
+        "tracks_page_desc": "江汀和平音樂營專輯全部曲目。12首承載和平與連帶訊息的歌曲。",
+        "tracks_page_keywords": "曲目, 曲目列表, 和平歌曲, 音樂列表, 江汀和平音樂營",
+        "tracks_hero_subtitle": "To You in a Distant Place Whose Name I Don't Know",
+        "image_alt_cover": "《To You in a Distant Place Whose Name I Don't Know》專輯封面",
+        "image_alt_concert": "專輯發行紀念演出現場 {{num}}"
+    },
+    "faqs": {
+        "title": "常見問題",
+        "items": [
+            {
+                "q": "江汀和平音樂營是什麼樣的活動？",
+                "a": "江汀和平音樂營是始於濟州江汀村的和平音樂計畫。它是一個反戰和平音樂節，來自不同風格的音樂人聚在一起，為世界衝突地區的和平而歌唱與連帶。"
+            },
+            {
+                "q": "江汀和平音樂營什麼時候舉辦？",
+                "a": "第三屆江汀和平音樂營計畫於2026年6月5日（週五）至6月7日（週日）舉辦，為期三天。"
+            },
+            {
+                "q": "江汀和平音樂營在哪裡舉辦？",
+                "a": "活動在濟州特別自治道西歸浦市江汀村的江汀體育公園及江汀村一帶舉行。"
+            },
+            {
+                "q": "有哪些音樂人會參與？",
+                "a": "將有搖滾、民謠、爵士、電子等多種類型的音樂人參與。2026年的營地預計約有50–60組出演，目前已確認32組。過去的參與者包括Solga、江汀合唱團等。"
+            },
+            {
+                "q": "需要購票嗎？",
+                "a": "江汀和平音樂營致力於打造任何熱愛和平的人都能免費參與的開放式節慶。但為維持活動的持續性，會進行自願捐助與周邊銷售。"
+            },
+            {
+                "q": "“To You in a Distant Place Whose Name I Don't Know”專案是什麼？",
+                "a": "“To You in a Distant Place Whose Name I Don't Know”是江汀和平音樂營2024年的合輯專輯專案名稱，收錄了12首向烏克蘭、巴勒斯坦等戰火中受難者表達連帶的歌曲。"
+            }
+        ]
+    }
+}

@@ -245,7 +245,7 @@ const campsEn: CampEvent[] = [
 ];
 
 export const getCamps = (language?: string): CampEvent[] => (
-  getLanguageCode(language) === 'en' ? campsEn : campsKo
+  getLanguageCode(language) === 'ko' ? campsKo : campsEn
 );
 
 export const camps = campsKo;

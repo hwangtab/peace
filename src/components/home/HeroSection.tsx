@@ -1,4 +1,4 @@
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import { motion, useInView } from 'framer-motion';
 import { useRef, useCallback, useMemo, useState } from 'react';
 import Button from '../common/Button';

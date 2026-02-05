@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import TracksSection from '../../components/home/TracksSection';
 import PageLayout from '../../components/layout/PageLayout';
 import PageHero from '../../components/common/PageHero';
