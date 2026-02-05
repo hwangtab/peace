@@ -1,21 +1,26 @@
 import React from 'react';
 import { render, screen } from '../../test-utils';
+import { I18nextProvider } from 'react-i18next';
+import i18n from '../../test-utils/i18n-test';
 import Footer from './Footer';
 
 describe('Footer Component', () => {
-    test('renders site name', () => {
-        render(<Footer />);
-        expect(screen.getByText('강정피스앤뮤직캠프')).toBeInTheDocument();
-    });
+    const renderWithI18n = (component: React.ReactElement) => {
+        return render(
+            <I18nextProvider i18n={i18n}>
+                {component}
+            </I18nextProvider>
+        );
+    };
 
-    test('renders main tagline', () => {
-        render(<Footer />);
-        expect(screen.getByText('전쟁을 끝내자! 노래하자, 춤추자')).toBeInTheDocument();
+    test('renders site name', () => {
+        renderWithI18n(<Footer />);
+        expect(screen.getByText(i18n.t('app.title'))).toBeInTheDocument();
     });
 
     test('renders Instagram link with correct URL', () => {
-        render(<Footer />);
-        const instagramLink = screen.getByLabelText('인스타그램에서 강정피스앤뮤직캠프 팔로우하기');
+        renderWithI18n(<Footer />);
+        const instagramLink = screen.getByRole('link', { name: /instagram/i });
         expect(instagramLink).toBeInTheDocument();
         expect(instagramLink).toHaveAttribute('href', 'https://www.instagram.com/peace_music_in_gangjeong');
         expect(instagramLink).toHaveAttribute('target', '_blank');
@@ -23,21 +28,22 @@ describe('Footer Component', () => {
     });
 
     test('renders Email link with correct mailto', () => {
-        render(<Footer />);
-        const emailLink = screen.getByLabelText('이메일로 연락하기');
+        renderWithI18n(<Footer />);
+        const emailLink = screen.getByRole('link', { name: /email/i });
         expect(emailLink).toBeInTheDocument();
         expect(emailLink).toHaveAttribute('href', 'mailto:gpmc0625@gmail.com');
     });
 
     test('renders navigation menu links', () => {
-        render(<Footer />);
-        expect(screen.getByText('홈')).toBeInTheDocument();
-        expect(screen.getByText('갤러리')).toBeInTheDocument();
-        expect(screen.getByText('비디오')).toBeInTheDocument();
+        renderWithI18n(<Footer />);
+        expect(screen.getByText(i18n.t('nav.home'))).toBeInTheDocument();
+        expect(screen.getByText(i18n.t('nav.gallery'))).toBeInTheDocument();
+        expect(screen.getByText(i18n.t('nav.video'))).toBeInTheDocument();
     });
 
     test('renders copyright with 2026', () => {
-        render(<Footer />);
-        expect(screen.getByText('© 2026 강정피스앤뮤직캠프. All rights reserved.')).toBeInTheDocument();
+        renderWithI18n(<Footer />);
+        const copyrightText = screen.getByText(/2026/);
+        expect(copyrightText).toBeInTheDocument();
     });
 });

@@ -1,4 +1,7 @@
 const path = require('path');
+const stressPostProcessor = require('./src/i18n/stressPostProcessor');
+
+const isStressEnabled = ['1', 'true'].includes(process.env.NEXT_PUBLIC_I18N_STRESS);
 
 const locales = [
   'ko',
@@ -26,4 +29,7 @@ module.exports = {
   fallbackLng: 'ko',
   defaultNS: 'translation',
   ns: ['translation'],
+  use: [stressPostProcessor],
+  postProcess: isStressEnabled ? ['stress'] : [],
+  serializeConfig: false,
 };
