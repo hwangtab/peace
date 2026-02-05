@@ -1,33 +1,45 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, useInView } from 'framer-motion';
 import CampHero from '../components/camp/CampHero';
 import CampGallery from '../components/camp/CampGallery';
 import CampParticipants from '../components/camp/CampParticipants';
 import CampStaff from '../components/camp/CampStaff';
-import { camps } from '../data/camps';
+import { getCamps } from '../data/camps';
 import PageLayout from '../components/layout/PageLayout';
 import Section from '../components/layout/Section';
 import SectionHeader from '../components/common/SectionHeader';
 import WaveDivider from '../components/common/WaveDivider';
 import { getEventSchema } from '../utils/structuredData';
 import { getFullUrl } from '../config/env';
+import { getMusicians } from '../api/musicians';
+import { Musician } from '../types/musician';
+import { formatOrdinal } from '../utils/format';
 
 interface CampDetailPageProps {
   campId: string;
 }
 
-const getOrdinalKorean = (year: number): string => {
-  const campIndex = camps.findIndex(c => c.year === year);
-  const ordinals = ['1', '2', '3', '4', '5'];
-  return ordinals[campIndex] || `${campIndex + 1}`;
+const getCampOrdinal = (year: number, campList: Array<{ year: number }>): number => {
+  const campIndex = campList.findIndex(c => c.year === year);
+  return campIndex >= 0 ? campIndex + 1 : 0;
 };
 
 const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId }) => {
   const { t, i18n } = useTranslation();
-  const camp = camps.find(c => c.id === campId);
+  const campList = getCamps(i18n.language);
+  const camp = campList.find(c => c.id === campId);
+  const [musicians, setMusicians] = useState<Musician[]>([]);
   const infoRef = useRef(null);
   const isInfoInView = useInView(infoRef, { once: true, margin: "-100px" });
+
+  useEffect(() => {
+    const loadMusicians = async () => {
+      const data = await getMusicians(i18n.language);
+      setMusicians(data);
+    };
+    loadMusicians();
+  }, [i18n.language]);
 
   if (!camp) {
     return (
@@ -47,7 +59,8 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId }) => {
     );
   }
 
-  const ordinal = getOrdinalKorean(camp.year);
+  const ordinal = getCampOrdinal(camp.year, campList);
+  const ordinalLabel = formatOrdinal(ordinal, i18n.language);
 
   // Event Schema construction
   const eventSchema = getEventSchema({
@@ -68,9 +81,9 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId }) => {
 
   return (
     <PageLayout
-      title={`${t('camp.ordinal', { num: ordinal })} ${t('app.title')} (${camp.year}) - ${camp.slogan || ''}`}
+      title={`${t('camp.ordinal', { num: ordinalLabel })} ${t('app.title')} (${camp.year}) - ${camp.slogan || ''}`}
       description={camp.description}
-      keywords={`${t('app.title')}, ${t('camp.ordinal', { num: ordinal })}, ${camp.year}, ${t('camp.keywords_base')}`}
+      keywords={`${t('app.title')}, ${t('camp.ordinal', { num: ordinalLabel })}, ${camp.year}, ${t('camp.keywords_base')}`}
       ogImage={camp.images[0]}
       structuredData={eventSchema}
       disableTopPadding={true}
@@ -101,7 +114,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId }) => {
                 className="bg-white rounded-lg shadow-sm p-8 mb-8"
               >
                 <SectionHeader title={t('camp.section_musicians')} align="left" className="!mb-6" />
-                <CampParticipants participants={camp.participants} inView={isInfoInView} />
+                <CampParticipants participants={camp.participants} musicians={musicians} inView={isInfoInView} />
               </motion.div>
             )}
 

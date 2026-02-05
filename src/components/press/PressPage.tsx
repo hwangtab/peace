@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { PressItem, pressItems } from '../../data/press';
+import { PressItem, getPressItems } from '../../data/press';
 import { getBreadcrumbSchema } from '../../utils/structuredData';
 import { filterByEvent } from '../../utils/filtering';
 import { sortByDateDesc } from '../../utils/sorting';
@@ -50,8 +50,10 @@ const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
 };
 
 export default function PressPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
+
+  const pressItems = useMemo(() => getPressItems(i18n.language), [i18n.language]);
 
   const breadcrumbs = [
     { name: t('press.breadcrumb_home'), url: "https://peaceandmusic.net/" },
@@ -64,7 +66,7 @@ export default function PressPage() {
 
   const filteredItems = useMemo(() =>
     sortByDateDesc(filterByEvent(pressItems, selectedFilter)),
-    [selectedFilter]
+    [pressItems, selectedFilter]
   );
 
   return (

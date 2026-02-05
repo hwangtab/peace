@@ -19,11 +19,11 @@ export default function VideoPage() {
 
   useEffect(() => {
     const loadVideos = async () => {
-      const data = await getVideos();
+      const data = await getVideos(i18n.language);
       setVideos(data);
     };
     loadVideos();
-  }, []);
+  }, [i18n.language]);
 
   // Sync filter with query parameter on mount
   useEffect(() => {

@@ -4,8 +4,9 @@
  */
 
 import { CampEvent } from '../types/camp';
+import { getLanguageCode } from '../utils/localization';
 
-export const camps: CampEvent[] = [
+const campsKo: CampEvent[] = [
   {
     id: 'camp-2023',
     eventType: 'camp',
@@ -123,3 +124,128 @@ export const camps: CampEvent[] = [
     images: []
   }
 ];
+
+const campsEn: CampEvent[] = [
+  {
+    id: 'camp-2023',
+    eventType: 'camp',
+    year: 2023,
+    title: '1st Gangjeong Peace Music Camp',
+    shortDescription: 'The first camp singing for peace in Gangjeong Village',
+    description: 'The first Peace Music Camp held in Gangjeong Village on June 10, 2023. Under the slogan “End the war! Play, dance, and sing!”, we shared solidarity and friendship within the Gangjeong peace movement.',
+    location: 'Gangjeong Sports Park (669 Ieodo-ro, Seogwipo-si, Jeju)',
+    startDate: '2023-06-10',
+    slogan: 'End the war! Play, dance, and sing!',
+    participants: [
+      { name: 'Project Around Surround', musicianId: 1 },
+      'Bloco Palazida',
+      { name: 'Yeoyu & Seolbin', musicianId: 9 },
+      { name: 'Guest Composer Kim Dongsan', musicianId: 3 },
+      { name: 'Caru', musicianId: 5 },
+      'Oh Jaehwan',
+      'Hanga & Minji',
+      'Taehyeon',
+      'DJ Okgwa',
+      'DJ Josuganman',
+      'Kohey'
+    ],
+    staff: [
+      { role: 'Planning', members: ['Jang Hana', 'Lee Sang', 'Hwang Gyeongha', 'Jarita', 'Eung', 'Andrea'] },
+      { role: 'Lighting', members: ['Lee Sang'] },
+      { role: 'Stage', members: ['Eung'] },
+      { role: 'Sound', members: ['Hwang Gyeongha'] },
+      { role: 'Program', members: ['Lee Sang'] },
+      { role: 'Design', members: ['Yeoul', 'Jang Hana'] },
+      { role: 'Photography', members: ['Jongeun'] },
+      { role: 'Staff and Helpers', members: ['Dalhae', 'Doto', 'Rocky', 'More', 'Minsang', 'Park Yongseong', 'Sanho', 'Seongjun', 'Soseol', 'Yeoul', 'Young', 'Joeun', 'Junhu'] }
+    ],
+    collaborators: [
+      "Gangjeong Village Residents' Committee Against the Naval Base", 'Gangjeong Friends', 'Gangjeong Peace Network',
+      'Citizens’ Solidarity for an Open Military', 'St. Francis Peace Center Foundation',
+      'Korean Peninsula Peace Action for 70 Years of Armistice', 'Mothers Who Do Politics', 'Peace Breeze'
+    ],
+    images: [
+      '/images-webp/camps/2023/IMG_2465.webp',
+      '/images-webp/camps/2023/20230610둘리목걸이고르는.webp',
+      '/images-webp/camps/2023/20230610밤 전쟁을끝내자.webp',
+      '/images-webp/camps/2023/DSC00451.webp',
+      '/images-webp/camps/2023/20230610여울과2.webp',
+      '/images-webp/camps/2023/20230610지슬.webp',
+      '/images-webp/camps/2023/20230610평화문화셀러.webp',
+      '/images-webp/camps/2023/DSC00273.webp',
+      '/images-webp/camps/2023/DSC00360.webp'
+    ]
+  },
+  {
+    id: 'camp-2025',
+    eventType: 'camp',
+    year: 2025,
+    title: '2nd Gangjeong Peace Music Camp',
+    shortDescription: 'On the 73rd anniversary of the armistice, raise the voices for peace',
+    description: 'The second Peace Music Camp held across Gangjeong Village, Jeju, on June 14, 2025. Marking the 73rd anniversary of the armistice, it delivered a message of peace against the intensifying militarization of the Korean Peninsula.',
+    location: 'Gangjeong Sports Park (2661, Gangjeong-dong, Seogwipo-si, Jeju) and around Gangjeong Village',
+    startDate: '2025-06-14',
+    endDate: '2025-06-14',
+    slogan: "Let’s sing, let’s dance, end the war!",
+    participants: [
+      { name: 'Caru', musicianId: 5 },
+      { name: 'Namsu', musicianId: 4 },
+      { name: 'Bloco Jafari & PollePolle', musicianId: 13 },
+      { name: 'MoredoSaturday', musicianId: 7 },
+      'Oh Jaehwan',
+      { name: 'Lee Seoyoung', musicianId: 12 },
+      { name: 'Jai', musicianId: 11 },
+      { name: 'Jeong Jinseok', musicianId: 2 },
+      { name: 'Guest Composer Kim Dongsan', musicianId: 3 },
+      'Taehyeon',
+      { name: 'HANASH', musicianId: 11 }
+    ],
+    staff: [
+      { role: 'Planning', members: ['Jang Hana', 'Lee Sang', 'Hwang Gyeongha'] },
+      { role: 'Lighting', members: ['Lee Sang'] },
+      { role: 'Sound', members: ['Kang Kyungdeok'] },
+      { role: 'Program', members: ['Jang Hana'] },
+      { role: 'Design', members: ['Doto'] },
+      { role: 'Video', members: ['Hwang Gyeongha'] },
+      { role: 'Photography', members: ['Kim Donghee'] },
+      { role: 'Staff and Helpers', members: ['Deundeun', 'Ryeogang', 'Kare', 'Gaemi', 'Susan', 'Jihye', 'Beodeul', 'Kim Seonghwan', 'Lee Seongjun'] }
+    ],
+    collaborators: [
+      'At the Margins', 'Pioneers', "Gangjeong Village Residents' Committee Against the Naval Base",
+      'Gangjeong Friends', 'Gangjeong Peace Network', 'Space ()', 'St. Francis Peace Center Foundation',
+      'A World Without War', 'Mothers Who Do Politics', 'Hot Pink Dolphins',
+      'People Creating Jeju, the Demilitarized Peace Island'
+    ],
+    images: [
+      '/images-webp/camps/2025/peacemusic-1.webp',
+      '/images-webp/camps/2025/DSC00427.webp',
+      '/images-webp/camps/2025/DSC00491.webp',
+      '/images-webp/camps/2025/DSC00524.webp',
+      '/images-webp/camps/2025/DSC00533.webp',
+      '/images-webp/camps/2025/DSC00547.webp',
+      '/images-webp/camps/2025/DSC00559.webp',
+      '/images-webp/camps/2025/DSC00625.webp',
+      '/images-webp/camps/2025/DSC00667.webp'
+    ]
+  },
+  {
+    id: 'camp-2026',
+    eventType: 'camp',
+    year: 2026,
+    title: '3rd Gangjeong Peace Music Camp',
+    shortDescription: 'June 5–7, 2026, Gangjeong Sports Park',
+    description: 'The 3rd Gangjeong Peace Music Camp will be held at Gangjeong Sports Park from June 5 (Fri) to June 7 (Sun), 2026. Thirty-two teams are confirmed, with about 50–60 teams expected.',
+    location: 'Gangjeong Sports Park',
+    startDate: '2026-06-05',
+    endDate: '2026-06-07',
+    slogan: '',
+    participants: [],
+    images: []
+  }
+];
+
+export const getCamps = (language?: string): CampEvent[] => (
+  getLanguageCode(language) === 'en' ? campsEn : campsKo
+);
+
+export const camps = campsKo;

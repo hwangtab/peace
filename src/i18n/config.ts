@@ -20,6 +20,13 @@ i18n
     .init({
         resources,
         fallbackLng: 'ko',
+        supportedLngs: ['ko', 'en'],
+        nonExplicitSupportedLngs: true,
+        detection: {
+            order: ['querystring', 'localStorage', 'navigator'],
+            lookupQuerystring: 'lang',
+            caches: ['localStorage'],
+        },
         interpolation: {
             escapeValue: false,
         },

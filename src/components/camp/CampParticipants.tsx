@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Participant } from '../../types/camp';
-import { musicians } from '../../data/musicians';
 import MusicianModal from '../musicians/MusicianModal';
 import { Musician } from '../../types/musician';
 
 interface CampParticipantsProps {
     participants: (string | Participant)[];
+    musicians: Musician[];
     inView: boolean;
 }
 
-const CampParticipants: React.FC<CampParticipantsProps> = ({ participants, inView }) => {
+const CampParticipants: React.FC<CampParticipantsProps> = ({ participants, musicians, inView }) => {
     const [selectedMusician, setSelectedMusician] = useState<Musician | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -22,7 +22,7 @@ const CampParticipants: React.FC<CampParticipantsProps> = ({ participants, inVie
                 setIsModalOpen(true);
             }
         }
-    }, []);
+    }, [musicians]);
 
     const getParticipantName = (participant: string | Participant) => {
         if (!participant) return '';

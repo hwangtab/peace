@@ -21,6 +21,7 @@
         "page_title": "Gallery | Gangjeong Peace Music Camp",
         "page_desc": "Moments of us singing for peace. Explore vivid photos from the Gangjeong Peace Music Camp.",
         "keywords": "Gallery, Photo Album, Event Photos, Peace Camp Photos, Gangjeong Village",
+        "seo_keywords": "gallery photo",
         "hero_title": "Gallery",
         "hero_subtitle": "Peace Found There",
         "section_title": "Moments of Peace",
@@ -119,6 +120,8 @@
         "label_produced_by": "Produced by"
     },
     "timeline": {
+        "title": "Our Journey",
+        "subtitle": "A record of peace beginning in Gangjeong",
         "labels": {
             "camp": "Camp",
             "album": "Album",
@@ -162,7 +165,7 @@
         "all_videos": "View All Videos"
     },
     "camp": {
-        "ordinal": "{{num}}th",
+        "ordinal": "{{num}}",
         "not_found": "Camp Not Found",
         "not_found_desc": "The requested camp information could not be found.",
         "coming_soon": "COMING SOON",
@@ -180,7 +183,8 @@
         "venue_2026": "Gangjeong Sports Park",
         "keywords_base": "Gangjeong Village, Peace Music, Anti-war Movement",
         "description_2026": "The wind of peace continues to blow. The third song of peace will resonate in Gangjeong in June 2026.",
-        "expected_2026": "32 teams of musicians confirmed\nAbout 50-60 teams expected"
+        "expected_2026": "32 teams of musicians confirmed\nAbout 50-60 teams expected",
+        "brand_line": "Jeju Gangjeong Peace & Music Camp"
     },
     "album": {
         "page_title": "To You in a Distant Place Whose Name I Don't Know - About Album",
@@ -205,8 +209,12 @@
         "label_performers": "Performers",
         "concert_gangjeong": "Gangjeong Concert",
         "concert_hongdae": "Hongdae Concert",
+        "concert_gangjeong_date": "2024. 10. 12 (Sat)",
+        "concert_hongdae_date": "2024. 11. 02 (Sat)",
+        "concert_time": "19:00~",
         "venue_gangjeong": "Gangjeong Peace Center",
         "venue_hongdae": "Space Hangang",
+        "performer_gilganeun_band": "Gilganeun Band Jang Hyunho",
         "release_official": "2024 OFFICIAL RELEASE",
         "album_title_full": "To You in a Distant Place Whose Name I Don't Know",
         "all_photos": "View All Concert Photos",

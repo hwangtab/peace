@@ -13,6 +13,11 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ className = '', isS
         const currentLang = i18n.language;
         const nextLang = currentLang.startsWith('ko') ? 'en' : 'ko';
         i18n.changeLanguage(nextLang);
+        if (typeof window !== 'undefined') {
+            const url = new URL(window.location.href);
+            url.searchParams.set('lang', nextLang);
+            window.history.replaceState(null, '', url.toString());
+        }
     };
 
     const isKo = i18n.language.startsWith('ko');
