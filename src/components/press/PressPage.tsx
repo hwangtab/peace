@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useTranslation } from 'next-i18next';
+import Image from 'next/image';
 import { getPressItems } from '../../api/press';
 import { PressItem } from '../../types/press';
 import { getBreadcrumbSchema } from '../../utils/structuredData';
@@ -11,6 +12,8 @@ import PageHero from '../common/PageHero';
 
 
 const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
+  const [imgSrc, setImgSrc] = useState(press.imageUrl || '');
+
   return (
     <a
       href={press.url}
@@ -19,17 +22,17 @@ const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
       className="block h-full cursor-pointer"
     >
       <article className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl h-full flex flex-col">
-        {press.imageUrl && (
-          <div className="h-48 overflow-hidden">
-            <img
-              src={press.imageUrl}
+        {imgSrc && (
+          <div className="relative h-48 overflow-hidden">
+            <Image
+              src={imgSrc}
               alt={press.title}
-              className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-              loading="lazy"
-              onError={(e) => {
-                const img = e.target as HTMLImageElement;
-                if (img.src.endsWith('.jpeg')) {
-                  img.src = img.src.replace('.jpeg', '.jpg');
+              fill
+              sizes="(max-width: 1024px) 100vw, 33vw"
+              className="object-cover transition-transform duration-500 hover:scale-110"
+              onError={() => {
+                if (imgSrc.endsWith('.jpeg')) {
+                  setImgSrc(imgSrc.replace('.jpeg', '.jpg'));
                 }
               }}
             />

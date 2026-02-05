@@ -53,7 +53,6 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(({
                             <div className="border-t border-coastal-gray/20 my-4 pt-4">
                                 <MobileDropdown
                                     label={t('nav.camp')}
-                                    dropdownId="camps"
                                     items={campItems}
                                     isOpen={mobileOpenDropdown === 'camps'}
                                     onToggle={() => onToggleDropdown('camps')}
@@ -62,7 +61,6 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(({
 
                                 <MobileDropdown
                                     label={t('nav.album')}
-                                    dropdownId="album"
                                     items={albumItems}
                                     isOpen={mobileOpenDropdown === 'album'}
                                     onToggle={() => onToggleDropdown('album')}
@@ -85,7 +83,6 @@ MobileMenu.displayName = 'MobileMenu';
 
 interface MobileDropdownProps {
     label: string;
-    dropdownId: string;
     items: { nameKey: string; path: string }[];
     isOpen: boolean;
     onToggle: () => void;
@@ -94,7 +91,6 @@ interface MobileDropdownProps {
 
 const MobileDropdown: React.FC<MobileDropdownProps> = React.memo(({
     label,
-    dropdownId,
     items,
     isOpen,
     onToggle,

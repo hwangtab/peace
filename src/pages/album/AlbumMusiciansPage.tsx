@@ -6,12 +6,12 @@ import PageHero from '../../components/common/PageHero';
 import { getCollectionPageSchema } from '../../utils/structuredData';
 
 const AlbumMusiciansPage = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const collectionSchema = getCollectionPageSchema({
     name: t('album.musicians_page_title'),
     description: t('album.musicians_page_desc'),
     url: "https://peaceandmusic.net/album/musicians"
-  }, i18n.language);
+  });
 
   return (
     <PageLayout

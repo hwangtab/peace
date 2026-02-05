@@ -26,7 +26,7 @@ const CampStaff: React.FC<CampStaffProps> = ({ staff, collaborators, inView }) =
                         <span className="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" />
                         <p className="font-serif text-base">
                             <span className="text-gray-700">{section.role}:</span>
-                            <span className="text-gray-500 ml-2">{section.members.join(', ')}</span>
+                            <span className="text-gray-500 ml-2 break-words">{section.members.join(', ')}</span>
                         </p>
                     </motion.div>
                 ))}
@@ -51,7 +51,7 @@ const CampStaff: React.FC<CampStaffProps> = ({ staff, collaborators, inView }) =
                                 className="flex items-center gap-2"
                             >
                                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 flex-shrink-0" />
-                                <span className="font-serif text-sm text-gray-600">{org}</span>
+                                <span className="font-serif text-sm text-gray-600 break-words">{org}</span>
                             </motion.div>
                         ))}
                     </div>

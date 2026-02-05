@@ -44,10 +44,10 @@ const TrackCard = React.memo(({
                 <div className="flex justify-between items-center">
                     <div className="flex-grow">
                         <div className="flex items-center justify-between mb-1">
-                            <h3 className="text-lg font-bold font-serif">{track.title}</h3>
+                            <h3 className="text-lg font-bold font-serif break-words">{track.title}</h3>
                             <span className="text-sm text-coastal-gray ml-4">{track.duration}</span>
                         </div>
-                        <p className="text-jeju-ocean font-serif">{track.artist}</p>
+                        <p className="text-jeju-ocean font-serif break-words">{track.artist}</p>
                     </div>
                     <motion.button
                         animate={{ rotate: isExpanded ? 180 : 0 }}
@@ -97,7 +97,7 @@ const TrackCard = React.memo(({
                                 <h4 className="text-lg font-serif text-jeju-ocean">{t('common.track_desc')}</h4>
                                 <div className="flex-grow ml-4 h-px bg-coastal-gray/20" />
                             </div>
-                            <p className="text-gray-600 leading-relaxed whitespace-pre-line">{track.description}</p>
+                            <p className="text-gray-600 leading-relaxed whitespace-pre-line break-words">{track.description}</p>
                         </div>
                     )}
 
@@ -109,7 +109,7 @@ const TrackCard = React.memo(({
                                 <div className="flex-grow ml-4 h-px bg-coastal-gray/20" />
                             </div>
                             <div className="bg-ocean-sand/30 p-4 rounded-lg">
-                                <p className="text-gray-600 whitespace-pre-line leading-relaxed">{track.lyrics}</p>
+                                <p className="text-gray-600 whitespace-pre-line leading-relaxed break-words">{track.lyrics}</p>
                             </div>
                         </div>
                     )}

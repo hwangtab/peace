@@ -1,8 +1,8 @@
 import { useTranslation } from 'next-i18next';
 import { motion, useInView } from 'framer-motion';
-import { useRef, useCallback, useMemo, useState } from 'react';
+import { useRef, useCallback, useState } from 'react';
+import Image from 'next/image';
 import Button from '../common/Button';
-import { getResponsiveImagePath } from '../../utils/images';
 
 interface HeroSectionProps {
   imageUrl: string;
@@ -19,46 +19,20 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
   }, []);
 
-  // Memoize to prevent unnecessary recalculation
-  const responsiveImages = useMemo(() => getResponsiveImagePath(imageUrl), [imageUrl]);
-
   return (
     <section className="relative h-screen flex items-center justify-center text-center overflow-hidden">
       {/* Responsive Background Image with fallback */}
-      <img
-        src={responsiveImages.desktop}
-        srcSet={
-          !imageFailed
-            ? `
-          ${responsiveImages.mobile} 800w,
-          ${responsiveImages.tablet} 1200w,
-          ${responsiveImages.desktop} 1920w
-        `
-            : undefined
-        }
-        sizes="100vw"
-        alt={t('home.hero.image_alt')}
-        className="absolute inset-0 w-full h-full object-cover object-center"
-        loading="eager"
-        fetchPriority="high"
-        onError={(e) => {
-          // 반응형 이미지 로드 실패 시 원본으로 fallback
-          if (imageFailed) return;
-          const img = e.target as HTMLImageElement;
-          // Fallback to a placeholder or empty string if even the original fails to prevent infinite loops
-          if (img.src !== imageUrl) {
-            img.src = imageUrl;
-            img.removeAttribute('srcset');
-            setImageFailed(true);
-          } else {
-            // If original URL also fails, stop trying
-            img.style.display = 'none';
-          }
-        }}
-        width="1920"
-        height="1080"
-        decoding="async"
-      />
+      {!imageFailed && (
+        <Image
+          src={imageUrl}
+          alt={t('home.hero.image_alt')}
+          fill
+          sizes="100vw"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          priority
+          onError={() => setImageFailed(true)}
+        />
+      )}
 
       {/* Gradient Overlay using Bright Ocean Gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-jeju-ocean/70 via-ocean-mist/40 to-seafoam/20" />
@@ -74,13 +48,13 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-[clamp(1.5rem,8vw,5.5rem)] font-partial leading-tight text-cloud-white mb-6 drop-shadow-md text-balance max-w-5xl mx-auto">
+          <h1 className="text-[clamp(1.5rem,8vw,5.5rem)] font-partial leading-tight text-cloud-white mb-6 drop-shadow-md text-balance break-words max-w-5xl mx-auto">
             {t('home.hero.title')}
           </h1>
-          <p className="text-[clamp(1rem,4vw,2.25rem)] font-stone leading-tight text-golden-sun mb-6 drop-shadow-sm text-balance max-w-4xl mx-auto">
+          <p className="text-[clamp(1rem,4vw,2.25rem)] font-stone leading-tight text-golden-sun mb-6 drop-shadow-sm text-balance break-words max-w-4xl mx-auto">
             {t('home.hero.subtitle')}
           </p>
-          <p className="text-[clamp(0.8125rem,2.2vw,1.25rem)] font-caption leading-relaxed text-seafoam mb-12 font-medium drop-shadow-sm text-balance max-w-3xl mx-auto">
+          <p className="text-[clamp(0.8125rem,2.2vw,1.25rem)] font-caption leading-relaxed text-seafoam mb-12 font-medium drop-shadow-sm text-balance break-words max-w-3xl mx-auto">
             {t('home.hero.message')}
           </p>
           <div className="flex flex-wrap justify-center gap-4">

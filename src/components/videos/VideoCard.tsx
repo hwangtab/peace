@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'next-i18next';
+import Image from 'next/image';
 import { VideoItem } from '../../types/video';
 
 interface VideoCardProps {
@@ -42,16 +43,17 @@ const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
         className="block hover:bg-ocean-mist/10 transition-colors duration-300"
       >
         <div className="relative aspect-video overflow-hidden rounded-t-xl group">
-          <img
+          <Image
             src={imgSrc}
             alt={video.title}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
             onError={() => {
               if (imgSrc.includes('maxresdefault')) {
                 setImgSrc(`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`);
               }
             }}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            loading="lazy"
           />
           <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300" />
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -73,10 +75,10 @@ const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
               })}
             </span>
           </div>
-          <h3 className="typo-h3 text-xl mb-3 hover:text-jeju-ocean transition-colors duration-300 line-clamp-1 leading-snug">
+          <h3 className="typo-h3 text-xl mb-3 hover:text-jeju-ocean transition-colors duration-300 line-clamp-1 leading-snug break-words">
             {video.title}
           </h3>
-          <p className="typo-body text-sm text-gray-600 line-clamp-3 leading-relaxed">
+          <p className="typo-body text-sm text-gray-600 line-clamp-3 leading-relaxed break-words">
             {video.description}
           </p>
         </div>

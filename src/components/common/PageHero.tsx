@@ -1,6 +1,5 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { getResponsiveImagePath } from '../../utils/images';
+import Image from 'next/image';
 
 interface PageHeroProps {
   title: string;
@@ -15,43 +14,16 @@ interface PageHeroProps {
  * 투명 네비게이션과 함께 사용하여 일관된 페이지 헤더 제공.
  */
 const PageHero: React.FC<PageHeroProps> = ({ title, subtitle, backgroundImage }) => {
-  const [imageFailed, setImageFailed] = useState(false);
-
-  const responsiveImages = getResponsiveImagePath(backgroundImage);
-
   return (
     <section className="relative h-[500px] md:h-[600px] lg:h-[700px] flex items-center justify-center text-center overflow-hidden">
       {/* Background Image - use original as src, srcset as optimization */}
-      <img
+      <Image
         src={backgroundImage}
-        srcSet={
-          !imageFailed
-            ? `
-          ${responsiveImages.mobile} 800w,
-          ${responsiveImages.tablet} 1200w,
-          ${responsiveImages.desktop} 1920w
-        `
-            : undefined
-        }
-        sizes="100vw"
         alt={title}
+        fill
+        sizes="100vw"
         className="absolute inset-0 w-full h-full object-cover"
-        loading="eager"
-        fetchPriority="high"
-        onError={(e) => {
-          // Prevent infinite retry - only fallback once
-          if (imageFailed) return;
-
-          const img = e.target as HTMLImageElement;
-          if (img.src !== backgroundImage) {
-            img.src = backgroundImage;
-            img.removeAttribute('srcset');
-            setImageFailed(true);
-          }
-        }}
-        width="1920"
-        height="700"
-        decoding="async"
+        priority
       />
 
       {/* Dark Overlay - Same as CampHero */}
