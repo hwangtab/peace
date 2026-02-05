@@ -1,8 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server';
-import nextI18NextConfig from './next-i18next.config';
-
-const LOCALES = nextI18NextConfig.i18n?.locales || [];
-const DEFAULT_LOCALE = nextI18NextConfig.i18n?.defaultLocale || 'ko';
+// Edge middleware cannot import Node-only modules from next-i18next config.
+const LOCALES = [
+  'ko',
+  'en',
+  'es',
+  'fr',
+  'de',
+  'pt',
+  'ru',
+  'ar',
+  'ja',
+  'zh-Hans',
+  'zh-Hant',
+  'hi',
+  'id',
+];
+const DEFAULT_LOCALE = 'ko';
 
 const PUBLIC_FILE = /\.(.*)$/;
 
