@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, useMemo, useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import Button from '../../components/common/Button';
 import PageLayout from '../../components/layout/PageLayout';

@@ -1,7 +1,9 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 import { config, getFullUrl } from '../../config/env';
+import { DEFAULT_LOCALE, LOCALES } from '../../i18n/locales';
 
 export interface SEOHelmetProps {
     title?: string;
@@ -23,10 +25,11 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
     structuredData,
 }) => {
     const { t, i18n } = useTranslation();
+    const router = useRouter();
     const finalTitle = title || t('seo.default.title');
     const finalDescription = description || t('seo.default.description');
     const finalKeywords = keywords || t('seo.default.keywords');
-    const fullCanonicalUrl = canonicalUrl || (typeof window !== 'undefined' ? window.location.href : config.siteUrl);
+    const fullCanonicalUrl = canonicalUrl || getFullUrl(router.asPath || '/');
 
     // Ensure ogImage is a full URL (if it's a relative path, convert it)
     const fullOgImage = ogImage.startsWith('http') ? ogImage : getFullUrl(ogImage);
@@ -36,10 +39,55 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
         ? (Array.isArray(structuredData) ? structuredData : [structuredData])
         : [];
 
+    const ogLocaleMap: Record<string, string> = {
+        ko: 'ko_KR',
+        en: 'en_US',
+        es: 'es_ES',
+        fr: 'fr_FR',
+        de: 'de_DE',
+        pt: 'pt_BR',
+        ru: 'ru_RU',
+        ar: 'ar_AR',
+        ja: 'ja_JP',
+        'zh-Hans': 'zh_CN',
+        'zh-Hant': 'zh_TW',
+        hi: 'hi_IN',
+        id: 'id_ID',
+    };
+
+    const languageNameMap: Record<string, string> = {
+        ko: 'Korean',
+        en: 'English',
+        es: 'Spanish',
+        fr: 'French',
+        de: 'German',
+        pt: 'Portuguese',
+        ru: 'Russian',
+        ar: 'Arabic',
+        ja: 'Japanese',
+        'zh-Hans': 'Chinese (Simplified)',
+        'zh-Hant': 'Chinese (Traditional)',
+        hi: 'Hindi',
+        id: 'Indonesian',
+    };
+
+    const locale = router.locale || i18n.language;
+    const ogLocale = ogLocaleMap[locale] || locale.replace('-', '_');
+    const languageName = languageNameMap[locale] || locale;
+
+    const asPath = router.asPath.split('?')[0] || '/';
+    const pathWithoutLocale = LOCALES.some((loc) => asPath === `/${loc}` || asPath.startsWith(`/${loc}/`))
+        ? asPath.replace(new RegExp(`^/(${LOCALES.join('|')})`), '') || '/'
+        : asPath;
+
+    const alternateLinks = LOCALES.map((loc) => ({
+        locale: loc,
+        href: getFullUrl(`/${loc}${pathWithoutLocale}`),
+    }));
+
     return (
-        <Helmet>
+        <Head>
             {/* 기본 메타 태그 */}
-            <html lang={i18n.language} />
             <title>{finalTitle}</title>
             <meta name="description" content={finalDescription} />
             <meta name="keywords" content={finalKeywords} />
@@ -47,16 +95,18 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
 
             {/* Canonical URL */}
             <link rel="canonical" href={fullCanonicalUrl} />
+            {alternateLinks.map((link) => (
+                <link key={link.locale} rel="alternate" hrefLang={link.locale} href={link.href} />
+            ))}
+            <link rel="alternate" hrefLang="x-default" href={getFullUrl(`/${DEFAULT_LOCALE}${pathWithoutLocale}`)} />
 
             {/* 로봇 메타 태그 */}
             <meta name="robots" content="index, follow" />
             <meta name="googlebot" content="index, follow" />
             <meta name="rating" content="general" />
 
-            {/* 지역 및 언어 */}
-            <meta name="geo.region" content={i18n.language === 'ko' ? 'KR' : 'US'} />
-            <meta name="geo.placename" content={i18n.language === 'ko' ? 'South Korea' : 'USA'} />
-            <meta name="language" content={i18n.language === 'ko' ? 'Korean' : 'English'} />
+            {/* 언어 */}
+            <meta name="language" content={languageName} />
 
             {/* Open Graph / Facebook */}
             <meta property="og:type" content={ogType} />
@@ -67,7 +117,7 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
             <meta property="og:image" content={fullOgImage} />
             <meta property="og:image:width" content="1200" />
             <meta property="og:image:height" content="630" />
-            <meta property="og:locale" content={i18n.language === 'ko' ? 'ko_KR' : 'en_US'} />
+            <meta property="og:locale" content={ogLocale} />
 
             {/* Twitter Card */}
             <meta name="twitter:card" content="summary_large_image" />
@@ -78,11 +128,13 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
 
             {/* Structured Data (JSON-LD) */}
             {structuredDataArray.map((data, index) => (
-                <script key={`structured-data-${index}`} type="application/ld+json">
-                    {JSON.stringify(data)}
-                </script>
+                <script
+                    key={`structured-data-${index}`}
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+                />
             ))}
-        </Helmet>
+        </Head>
     );
 };
 

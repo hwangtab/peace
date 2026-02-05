@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '../../test-utils';
 import Navigation from './Navigation';
-import { act } from 'react-dom/test-utils';
 
 // Mock resize observer for responsive checks if needed
 // window.resizeTo = function (width, height) {
@@ -36,9 +35,7 @@ describe('Navigation Component', () => {
         expect(toggleButton).toHaveAttribute('aria-expanded', 'false');
 
         // Click to open
-        await act(async () => {
-            fireEvent.click(toggleButton);
-        });
+        fireEvent.click(toggleButton);
 
         // Aria label should change (if implementation supports dynamic label)
         // Check if mobile menu container is present by test id
@@ -52,20 +49,13 @@ describe('Navigation Component', () => {
 
         // Click "캠프" dropdown trigger
         const dropdownTriggers = screen.getAllByText('캠프');
-        // Assuming the first one is desktop or mobile, let's just click the visible one.
-        // For simple integration test, scanning for text is okay.
-
         const trigger = dropdownTriggers[0];
-        if (trigger) {
-            await act(async () => {
-                fireEvent.click(trigger);
-            });
+        expect(trigger).toBeInTheDocument();
+        fireEvent.click(trigger);
 
-            // Check for dropdown content
-            const dropdownItem = screen.getAllByText('2023 캠프')[0];
-            if (dropdownItem) {
-                expect(dropdownItem).toBeVisible();
-            }
-        }
+        // Check for dropdown content
+        await waitFor(() => {
+            expect(screen.getAllByText('2023 캠프')[0]).toBeInTheDocument();
+        });
     });
 });

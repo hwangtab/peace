@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { GalleryImage } from '../types/gallery';
 import { getGalleryImages } from '../api/gallery';
 import { filterByEvent, isValidFilter } from '../utils/filtering';
@@ -22,7 +22,7 @@ interface UseGalleryImagesReturn {
  * Extracts complex state logic from GallerySection for better maintainability.
  */
 export const useGalleryImages = (): UseGalleryImagesReturn => {
-  const location = useLocation();
+  const router = useRouter();
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
   const [visibleCount, setVisibleCount] = useState<number>(GALLERY_CONFIG.INITIAL_VISIBLE_COUNT);
@@ -30,12 +30,12 @@ export const useGalleryImages = (): UseGalleryImagesReturn => {
 
   // Sync filter with query parameter on mount
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const filterParam = params.get('filter');
+    if (!router.isReady) return;
+    const filterParam = typeof router.query.filter === 'string' ? router.query.filter : null;
     if (filterParam && isValidFilter(filterParam)) {
       setSelectedFilter(filterParam);
     }
-  }, [location.search]);
+  }, [router.isReady, router.query.filter]);
 
   // Load images on mount
   useEffect(() => {

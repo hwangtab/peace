@@ -1,17 +1,17 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useNavigation } from '../../hooks/useNavigation';
 import DesktopMenu from './DesktopMenu';
 import MobileMenu from './MobileMenu';
 
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 // ...
 const Navigation = () => {
   const { t } = useTranslation();
   const {
     isScrolled,
     isOpen,
-    location,
+    pathname,
     desktopOpenDropdown,
     mobileOpenDropdown,
     toggleMenu,
@@ -36,10 +36,10 @@ const Navigation = () => {
           }`}
       >
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center min-h-[4rem] py-2 gap-4">
             <Link
-              to="/"
-              className={`text-2xl font-bold font-serif transition-colors duration-300 ${isScrolled
+              href="/"
+              className={`text-2xl font-bold font-serif transition-colors duration-300 text-balance break-words ${isScrolled
                 ? 'text-jeju-ocean hover:text-ocean-mist'
                 : 'text-cloud-white hover:text-seafoam drop-shadow-md'
                 }`}
@@ -49,7 +49,7 @@ const Navigation = () => {
 
             {/* Desktop Menu */}
             <DesktopMenu
-              location={location}
+              pathname={pathname}
               desktopOpenDropdown={desktopOpenDropdown}
               onOpenChange={handleDesktopDropdownChange}
               isScrolled={isScrolled}
@@ -79,7 +79,7 @@ const Navigation = () => {
         {/* Mobile Menu */}
         <MobileMenu
           isOpen={isOpen}
-          location={location}
+          pathname={pathname}
           mobileOpenDropdown={mobileOpenDropdown}
           onClose={closeMenu}
           onToggleDropdown={toggleMobileDropdown}

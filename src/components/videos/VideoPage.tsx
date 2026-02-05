@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
+import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
 import { getVideos } from '../../api/videos';
 import { VideoItem } from '../../types/video';
 import { filterByEvent, isValidFilter } from '../../utils/filtering';
@@ -13,7 +13,7 @@ import { getCollectionPageSchema } from '../../utils/structuredData';
 
 export default function VideoPage() {
   const { t, i18n } = useTranslation();
-  const location = useLocation();
+  const router = useRouter();
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
   const [videos, setVideos] = useState<VideoItem[]>([]);
 
@@ -27,12 +27,12 @@ export default function VideoPage() {
 
   // Sync filter with query parameter on mount
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const filterParam = params.get('filter');
+    if (!router.isReady) return;
+    const filterParam = typeof router.query.filter === 'string' ? router.query.filter : null;
     if (filterParam && isValidFilter(filterParam)) {
       setSelectedFilter(filterParam);
     }
-  }, [location.search]);
+  }, [router.isReady, router.query.filter]);
 
   const filteredVideos = useMemo(
     () => sortByDateDesc(filterByEvent(videos, selectedFilter)),

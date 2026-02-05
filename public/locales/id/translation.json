@@ -1,0 +1,284 @@
+{
+    "app": {
+        "title": "Kemah Musik Perdamaian Gangjeong"
+    },
+    "about": {
+        "title": "Tentang",
+        "subtitle": "Lagu-lagu Kami untuk Perdamaian",
+        "desc1": "Kami pertama kali bernyanyi di depan Batu Gureombi di Desa Gangjeong, Jeju, tempat angin kencang berembus. Kami menyadari bahwa perdamaian bukan slogan besar, melainkan dimulai saat kita saling mendengarkan.",
+        "desc2": "Gangjeong Peace Music Camp adalah solidaritas dan festival para musisi yang memimpikan dunia tanpa perang. Melampaui batas dan bahasa, kami berbicara tentang perdamaian melalui musik, senjata paling indah.",
+        "desc3": "Saat kita bernyanyi, menari, dan saling berpelukan, perang akan berhenti dan gelombang perdamaian menyebar lebih jauh.",
+        "card1": {
+            "title": "Perdamaian Berkelanjutan",
+            "desc": "Harmoni pertama dimulai pada musim panas 2023. Festival kami akan terus berlanjut bukan sebagai acara sekali saja, melainkan sebagai ritual perdamaian yang gigih dan indah, menjaga musim panas Gangjeong setiap tahun."
+        },
+        "card2": {
+            "title": "Solidaritas Tanpa Batas",
+            "desc": "Kami mengingat wilayah konflik dari Gaza di Palestina hingga Ukraina. Gangjeong Peace Music Camp bukan sekadar konser; ini adalah ruang solidaritas yang kuat, berdiri bersama mereka yang menderita dan merindukan perdamaian."
+        }
+    },
+    "gallery": {
+        "page_title": "Galeri | Kemah Musik Perdamaian Gangjeong",
+        "page_desc": "Momen-momen kami bernyanyi untuk perdamaian. Jelajahi foto-foto hidup dari Gangjeong Peace Music Camp.",
+        "keywords": "Galeri, Album foto, Foto acara, Foto kamp perdamaian, Desa Gangjeong",
+        "seo_keywords": "foto galeri",
+        "hero_title": "Galeri",
+        "hero_subtitle": "Perdamaian yang ditemukan di sana",
+        "section_title": "Momen Perdamaian",
+        "section_subtitle": "Momen bernyanyi untuk perdamaian",
+        "no_images": "Tidak ada foto tersedia.",
+        "load_more": "Muat lebih banyak",
+        "image_alt_fallback": "Gambar galeri Gangjeong Peace Music Camp",
+        "image_alt_template": "Gambar galeri {{title}} {{year}}"
+    },
+    "home": {
+        "hero": {
+            "title": "Kemah Musik Perdamaian Gangjeong",
+            "subtitle": "Hentikan perang! Mari bernyanyi, mari menari",
+            "message": "Pesan perdamaian yang dimulai dari Desa Gangjeong",
+            "camp_intro": "Tentang Kamp",
+            "camp_2026": "Kamp 2026",
+            "image_alt": "Panggung pertunjukan Peace Music Camp di pantai Desa Gangjeong"
+        },
+        "musicians": {
+            "title": "Musisi yang Berpartisipasi",
+            "subtitle": "12 artis yang bernyanyi untuk perdamaian"
+        },
+        "tracks": {
+            "title": "Track",
+            "subtitle": "12 lagu perdamaian",
+            "buy_album": "Beli album"
+        }
+    },
+    "footer": {
+        "slogan": "Suara kami untuk perdamaian",
+        "description": "Proyek musik untuk perdamaian yang dimulai dari Desa Gangjeong, Jeju. Gangjeong Peace Music Camp adalah tempat para musisi bernyanyi bersama dan bersolidaritas, mengharapkan perdamaian di wilayah konflik di seluruh dunia.",
+        "links": "Tautan cepat",
+        "contact": "Kontak",
+        "copyright": "Hak cipta dilindungi.",
+        "sns_aria": "Ikuti Gangjeong Peace Music Camp di Instagram",
+        "email_aria": "Hubungi melalui email",
+        "menu": {
+            "home": "Beranda",
+            "gallery": "Galeri",
+            "video": "Video",
+            "press": "Pers",
+            "camp_2023": "Kamp 2023",
+            "camp_2025": "Kamp 2025",
+            "camp_2026": "Kamp 2026",
+            "album_about": "Tentang album",
+            "musicians": "Musisi",
+            "tracks": "Track"
+        }
+    },
+    "notFound": {
+        "title": "Halaman tidak ditemukan",
+        "desc": "Halaman yang Anda minta tidak ada.",
+        "message": "Maaf, halaman yang Anda cari mungkin telah dihapus, berganti nama, atau sementara tidak tersedia.",
+        "homeButton": "Kembali ke beranda"
+    },
+    "nav": {
+        "home": "Beranda",
+        "camp": "Kamp",
+        "album": "Album",
+        "gallery": "Galeri",
+        "video": "Video",
+        "press": "Pers",
+        "camp_2023": "Kamp 2023",
+        "camp_2025": "Kamp 2025",
+        "camp_2026": "Kamp 2026",
+        "album_about": "Tentang album",
+        "musician": "Musisi",
+        "track": "Track",
+        "skip_to_main": "Lewati ke konten utama",
+        "close_menu": "Tutup menu",
+        "open_menu": "Buka menu",
+        "logo": "Kemah Musik Perdamaian Gangjeong",
+        "switch_en": "Beralih ke Bahasa Inggris",
+        "switch_ko": "Beralih ke Bahasa Korea",
+        "switch_language": "Ganti bahasa"
+    },
+    "common": {
+        "loading": "Memuat...",
+        "track_desc": "Deskripsi",
+        "lyrics": "Lirik",
+        "credits": "Kredit",
+        "featured_track": "Track",
+        "filter_all": "Semua",
+        "filter_album_2024": "Album 2024",
+        "filter_camp_2023": "Kamp 2023",
+        "filter_camp_2025": "Kamp 2025",
+        "aria_filter": "Filter acara",
+        "aria_filter_selected": "filter (dipilih)",
+        "close": "Tutup",
+        "sns": "SNS",
+        "error_title": "Ups, terjadi kesalahan.",
+        "error_message": "Maaf, terjadi kesalahan tak terduga dan halaman tidak dapat ditampilkan.\nSilakan coba lagi nanti.",
+        "retry": "Coba lagi",
+        "go_home": "Ke beranda",
+        "audio_position": "Posisi pemutaran audio",
+        "label_personnel": "Personel",
+        "label_produced_by": "Diproduksi oleh"
+    },
+    "timeline": {
+        "title": "Perjalanan Kita",
+        "subtitle": "Catatan perdamaian yang dimulai dari Gangjeong",
+        "labels": {
+            "camp": "Kamp",
+            "album": "Album",
+            "milestone": "Tonggak"
+        },
+        "events": {
+            "camp_2023": {
+                "title": "Kemah Musik Perdamaian Gangjeong ke-1",
+                "desc": "Kemah musik perdamaian pertama di Desa Gangjeong.",
+                "location": "Taman Olahraga Gangjeong"
+            },
+            "album_2024": {
+                "title": "Konser rilis album",
+                "desc": "Showcase album “To You in a Distant Place Whose Name I Don't Know”.",
+                "location": "Gangjeong Peace Center · Space Hangang"
+            },
+            "camp_2025": {
+                "title": "Kemah Musik Perdamaian Gangjeong ke-2",
+                "desc": "Pesan perdamaian pada peringatan 73 tahun gencatan senjata.",
+                "location": "Sekitar Desa Gangjeong"
+            },
+            "camp_2026": {
+                "title": "Kemah Musik Perdamaian Gangjeong ke-3",
+                "desc": "Dijadwalkan 5–7 Juni 2026.",
+                "location": "Taman Olahraga Gangjeong"
+            }
+        },
+        "month_1": "Januari",
+        "month_2": "Februari",
+        "month_3": "Maret",
+        "month_4": "April",
+        "month_5": "Mei",
+        "month_6": "Juni",
+        "month_7": "Juli",
+        "month_8": "Agustus",
+        "month_9": "September",
+        "month_10": "Oktober",
+        "month_11": "November",
+        "month_12": "Desember"
+    },
+    "seo": {
+        "default": {
+            "title": "Kemah Musik Perdamaian Gangjeong | Bernyanyi, menari, akhiri perang",
+            "description": "Proyek musik untuk perdamaian yang dimulai dari Desa Gangjeong, Jeju. Festival musik perdamaian anti-perang yang diadakan di Taman Olahraga Gangjeong pada 5–7 Juni 2026. Kita bernyanyi bersama demi perdamaian di wilayah konflik dunia.",
+            "keywords": "Kemah Musik Perdamaian Gangjeong, Festival Perdamaian, Festival Jeju, Kemah Musik, Perdamaian anti-perang, Desa Gangjeong, Konser 2026, Konser band indie, Gerakan perdamaian, Konser Jeju"
+        }
+    },
+    "press": {
+        "page_title": "Pers | To You in a Distant Place Whose Name I Don't Know",
+        "page_desc": "Kisah kami bernyanyi untuk perdamaian. Lihat liputan pers dan artikel tentang proyek 'To You in a Distant Place Whose Name I Don't Know'.",
+        "keywords": "Pers, Artikel, Berita, Proyek perdamaian",
+        "hero_title": "Pers",
+        "hero_subtitle": "Kisah kami bernyanyi untuk perdamaian",
+        "breadcrumb_home": "Beranda",
+        "breadcrumb_press": "Pers"
+    },
+    "videos": {
+        "page_title": "Video - Kemah Musik Perdamaian Gangjeong",
+        "page_desc": "Koleksi video penampilan Gangjeong Peace Music Camp. Temui video penampilan musisi yang bernyanyi untuk perdamaian.",
+        "keywords": "Video penampilan, Gangjeong Peace Music Camp, Konser perdamaian, Penampilan musisi, Video YouTube",
+        "hero_title": "Video",
+        "hero_subtitle": "Momen bernyanyi untuk perdamaian",
+        "all_videos": "Lihat semua video"
+    },
+    "camp": {
+        "ordinal": "{{num}}",
+        "not_found": "Kamp tidak ditemukan",
+        "not_found_desc": "Informasi kamp yang diminta tidak ditemukan.",
+        "coming_soon": "SEGERA HADIR",
+        "section_overview": "Ringkasan",
+        "section_musicians": "Musisi yang berpartisipasi",
+        "section_staff": "Tim",
+        "section_gallery": "Galeri",
+        "section_collaborators": "Kolaborasi",
+        "more": "Lainnya",
+        "view_detail": "Lihat detail",
+        "label_period": "Periode",
+        "label_location": "Lokasi",
+        "label_participants": "Peserta",
+        "date_2026": "5 Juni (Jum) – 7 Juni (Min), 2026",
+        "venue_2026": "Taman Olahraga Gangjeong",
+        "keywords_base": "Desa Gangjeong, Musik perdamaian, Gerakan anti-perang",
+        "description_2026": "Angin perdamaian terus berhembus. Lagu perdamaian ketiga akan bergema di Gangjeong pada Juni 2026.",
+        "expected_2026": "32 tim musisi telah dikonfirmasi\nSekitar 50–60 tim diperkirakan",
+        "brand_line": "Kemah Musik Perdamaian Gangjeong, Jeju"
+    },
+    "album": {
+        "page_title": "To You in a Distant Place Whose Name I Don't Know - Tentang Album",
+        "page_desc": "Proyek album 2024 dari Gangjeong Peace Music Camp. Perjalanan musik 12 lagu yang mengakhiri perang dan bernyanyi untuk perdamaian.",
+        "keywords": "To You in a Distant Place Whose Name I Don't Know, Gangjeong Peace Music Camp, Album, Musik perdamaian",
+        "hero_title_1": "To You In A",
+        "hero_title_2": "Distant Place",
+        "hero_subtitle": "Surat perdamaian dari dunia yang dipenuhi perang dan kekerasan. Gelombang musik yang diluncurkan dari Desa Gangjeong oleh 12 tim musisi.",
+        "listen_tracks": "Dengarkan track",
+        "intro_musicians": "Kenali musisi",
+        "meaning_title": "Makna judul",
+        "meaning_desc": "'To You in a Distant Place Whose Name I Don't Know' adalah pesan solidaritas bagi mereka yang menderita di wilayah konflik di seluruh dunia. Ukraina, Gaza, dan Semenanjung Korea. Kita tidak saling mengenal wajah atau nama, tetapi hati yang menginginkan perdamaian di zaman yang sama terhubung menjadi satu.",
+        "voices_title": "12 suara",
+        "voices_desc": "Rock, folk, jazz, elektronik. Dua belas tim musisi yang berempati dengan gerakan perdamaian di Desa Gangjeong menerjemahkan perdamaian dalam bahasa musik mereka masing-masing. Album ini membuktikan bahwa keberagaman adalah esensi dari perdamaian.",
+        "concert_title": "Konser rilis",
+        "concert_subtitle": "Lihat semua catatan konser yang diadakan di Gangjeong dan Seoul untuk merayakan perilisan album.",
+        "tab_info": "Ringkasan konser",
+        "tab_video": "Video langsung",
+        "tab_photo": "Foto langsung",
+        "label_date": "Tanggal",
+        "label_venue": "Lokasi",
+        "label_performers": "Penampil",
+        "concert_gangjeong": "Konser Gangjeong",
+        "concert_hongdae": "Konser Hongdae",
+        "concert_gangjeong_date": "2024. 10. 12 (Sab)",
+        "concert_hongdae_date": "2024. 11. 02 (Sab)",
+        "concert_time": "19:00~",
+        "venue_gangjeong": "Gangjeong Peace Center",
+        "venue_hongdae": "Space Hangang",
+        "performer_gilganeun_band": "Gilganeun Band Jang Hyunho",
+        "release_official": "RILIS RESMI 2024",
+        "album_title_full": "To You in a Distant Place Whose Name I Don't Know",
+        "all_photos": "Lihat semua foto konser",
+        "musicians_page_title": "Musisi yang berpartisipasi - To You in a Distant Place Whose Name I Don't Know",
+        "musicians_page_desc": "12 tim musisi yang berpartisipasi dalam proyek album Gangjeong Peace Music Camp. Artis yang bernyanyi untuk perdamaian seperti Caru, Kim Dongsan, Namsu, dan MoredoSaturday.",
+        "musicians_page_keywords": "Musisi yang berpartisipasi, Partisipasi album, Musisi perdamaian, Gangjeong Peace Music Camp, Artis",
+        "musicians_hero_subtitle": "12 suara, satu perdamaian",
+        "tracks_page_title": "Track - To You in a Distant Place Whose Name I Don't Know",
+        "tracks_page_desc": "Semua track dari album Gangjeong Peace Music Camp. 12 lagu dengan pesan perdamaian dan solidaritas.",
+        "tracks_page_keywords": "Track, Daftar track, Lagu perdamaian, Daftar musik, Gangjeong Peace Music Camp",
+        "tracks_hero_subtitle": "To You in a Distant Place Whose Name I Don't Know",
+        "image_alt_cover": "Sampul album 'To You in a Distant Place Whose Name I Don't Know'",
+        "image_alt_concert": "Adegan konser rilis album {{num}}"
+    },
+    "faqs": {
+        "title": "Pertanyaan yang Sering Diajukan",
+        "items": [
+            {
+                "q": "Apa itu Gangjeong Peace Music Camp?",
+                "a": "Gangjeong Peace Music Camp adalah proyek musik perdamaian yang dimulai di Desa Gangjeong, Jeju. Ini adalah festival musik perdamaian anti-perang di mana musisi dari berbagai genre berkumpul untuk bernyanyi dan menunjukkan solidaritas bagi perdamaian di wilayah konflik di seluruh dunia."
+            },
+            {
+                "q": "Kapan Gangjeong Peace Music Camp diselenggarakan?",
+                "a": "Gangjeong Peace Music Camp ke-3 dijadwalkan berlangsung selama 3 hari dari 5 (Jum) hingga 7 (Min) Juni 2026."
+            },
+            {
+                "q": "Di mana Gangjeong Peace Music Camp diselenggarakan?",
+                "a": "Acara ini diadakan di Taman Olahraga Gangjeong dan seluruh Desa Gangjeong, yang terletak di Seogwipo-si, Provinsi Otonom Khusus Jeju."
+            },
+            {
+                "q": "Musisi apa saja yang akan berpartisipasi?",
+                "a": "Musisi dari berbagai genre seperti rock, folk, jazz, dan elektronik akan berpartisipasi. Untuk kamp 2026, sekitar 50–60 tim diperkirakan tampil, dan saat ini 32 tim telah dikonfirmasi. Peserta sebelumnya termasuk Solga, Gangjeong Choir, dan lainnya."
+            },
+            {
+                "q": "Apakah ada biaya masuk?",
+                "a": "Gangjeong Peace Music Camp bertujuan menjadi festival terbuka yang dapat dinikmati gratis oleh siapa pun yang mencintai perdamaian. Namun, untuk keberlanjutan acara, ada donasi sukarela dan penjualan merchandise."
+            },
+            {
+                "q": "Apa itu proyek 'To You in a Distant Place Whose Name I Don't Know'?",
+                "a": "'To You in a Distant Place Whose Name I Don't Know' adalah nama proyek album omnibus 2024 dari Gangjeong Peace Music Camp. Album ini berisi 12 lagu dengan pesan solidaritas bagi mereka yang menderita akibat perang di tempat-tempat seperti Ukraina dan Palestina."
+            }
+        ]
+    }
+}

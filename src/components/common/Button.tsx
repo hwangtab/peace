@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import classNames from 'classnames';
 
@@ -35,7 +35,7 @@ const Button = ({
     fullWidth = false,
     ariaLabel,
 }: ButtonProps) => {
-    const baseClasses = 'inline-flex items-center justify-center rounded-full font-medium transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none';
+    const baseClasses = 'inline-flex items-center justify-center rounded-full font-medium transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none text-center whitespace-normal break-words max-w-full';
 
     const variantClasses = {
         primary: 'bg-jeju-ocean text-white hover:bg-ocean-mist',
@@ -73,7 +73,7 @@ const Button = ({
         return (
             <motion.div {...motionProps} className={fullWidth ? 'w-full' : 'inline-block'}>
                 <Link
-                    to={to}
+                    href={to}
                     className={combinedClasses}
                     onClick={onClick}
                     aria-label={ariaLabel}

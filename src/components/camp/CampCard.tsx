@@ -1,6 +1,6 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { CampEvent } from '../../types/camp';
 
@@ -22,7 +22,7 @@ const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
       className="h-full"
     >
       <Link
-        to={isComingSoon ? '#' : `/camps/${camp.year}`}
+        href={isComingSoon ? '#' : `/camps/${camp.year}`}
         className={`block h-full rounded-lg overflow-hidden shadow-md ${isComingSoon ? 'pointer-events-none' : ''
           }`}
       >
@@ -30,7 +30,7 @@ const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
           <h3 className="typo-h2 text-white mb-2">
             {camp.year}
           </h3>
-          <p className="typo-h3 text-white mb-4">{camp.title}</p>
+          <p className="typo-h3 text-white mb-4 text-balance break-words">{camp.title}</p>
           {isComingSoon && (
             <span className="bg-white text-jeju-ocean px-4 py-2 rounded-full text-sm font-semibold">
               {t('camp.coming_soon')}
@@ -39,7 +39,7 @@ const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
         </div>
 
         <div className="bg-white p-6">
-          <p className="text-gray-700 mb-4 leading-relaxed text-pretty">
+          <p className="text-gray-700 mb-4 leading-relaxed text-pretty break-words">
             {camp.description}
           </p>
 

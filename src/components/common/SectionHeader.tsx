@@ -48,7 +48,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
         >
             <TitleTag className={classNames(
                 titleTag === 'h1' ? 'typo-h1' : 'typo-h2',
-                'mb-4 text-gray-900'
+                'mb-4 text-gray-900 text-balance break-words'
             )}>
                 {title}
             </TitleTag>

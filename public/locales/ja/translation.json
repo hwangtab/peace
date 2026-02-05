@@ -1,0 +1,284 @@
+{
+    "app": {
+        "title": "ガンジョン平和音楽キャンプ"
+    },
+    "about": {
+        "title": "私たちについて",
+        "subtitle": "平和のための歌",
+        "desc1": "済州の江汀（ガンジョン）村、荒い風が吹くグレオンビ岩の前で、私たちは初めて歌いました。平和は大きなスローガンではなく、互いの声に耳を傾ける瞬間から始まることを知りました。",
+        "desc2": "ガンジョン平和音楽キャンプは、戦争のない世界を夢見る音楽家たちの連帯とフェスティバルです。国境や言語を越え、最も美しい武器である音楽で平和を語ります。",
+        "desc3": "共に歌い、踊り、抱きしめ合うとき、戦争は止まり、平和の波はさらに遠くへ広がります。",
+        "card1": {
+            "title": "続く平和",
+            "desc": "最初のハーモニーは2023年の夏に始まりました。私たちの祭りは一度きりのイベントではなく、毎年ガンジョンの夏を守る粘り強く美しい平和の儀式として続いていきます。"
+        },
+        "card2": {
+            "title": "国境のない連帯",
+            "desc": "パレスチナのガザからウクライナまで、紛争地を忘れません。ガンジョン平和音楽キャンプは単なるコンサートを超え、苦しむ人々と共に立ち平和を願う力強い連帯の場です。"
+        }
+    },
+    "gallery": {
+        "page_title": "ギャラリー | ガンジョン平和音楽キャンプ",
+        "page_desc": "平和を歌う私たちの瞬間。ガンジョン平和音楽キャンプの生き生きとした写真をご覧ください。",
+        "keywords": "ギャラリー, 写真集, イベント写真, 平和キャンプ写真, ガンジョン村",
+        "seo_keywords": "ギャラリー写真",
+        "hero_title": "ギャラリー",
+        "hero_subtitle": "そこで出会った平和",
+        "section_title": "平和の瞬間",
+        "section_subtitle": "平和を歌う瞬間",
+        "no_images": "写真がありません。",
+        "load_more": "もっと見る",
+        "image_alt_fallback": "ガンジョン平和音楽キャンプのギャラリー画像",
+        "image_alt_template": "{{year}}年 {{title}} ギャラリー画像"
+    },
+    "home": {
+        "hero": {
+            "title": "ガンジョン平和音楽キャンプ",
+            "subtitle": "戦争を終わらせよう！歌おう、踊ろう",
+            "message": "ガンジョン村から始まる平和のメッセージ",
+            "camp_intro": "キャンプ紹介",
+            "camp_2026": "2026キャンプ",
+            "image_alt": "ガンジョン村の海辺で行われた平和音楽キャンプのステージ"
+        },
+        "musicians": {
+            "title": "参加ミュージシャン",
+            "subtitle": "平和を歌う12組のアーティスト"
+        },
+        "tracks": {
+            "title": "収録曲",
+            "subtitle": "平和の12曲",
+            "buy_album": "アルバムを購入"
+        }
+    },
+    "footer": {
+        "slogan": "平和へ向けた私たちの声",
+        "description": "済州・ガンジョン村から始まる平和のための音楽プロジェクト。ガンジョン平和音楽キャンプは、世界の紛争地に平和を願い、音楽家たちが共に歌い連帯する場です。",
+        "links": "クイックリンク",
+        "contact": "お問い合わせ",
+        "copyright": "All rights reserved.",
+        "sns_aria": "Instagramでガンジョン平和音楽キャンプをフォロー",
+        "email_aria": "メールで連絡",
+        "menu": {
+            "home": "ホーム",
+            "gallery": "ギャラリー",
+            "video": "動画",
+            "press": "メディア",
+            "camp_2023": "2023キャンプ",
+            "camp_2025": "2025キャンプ",
+            "camp_2026": "2026キャンプ",
+            "album_about": "アルバム紹介",
+            "musicians": "ミュージシャン",
+            "tracks": "収録曲"
+        }
+    },
+    "notFound": {
+        "title": "ページが見つかりません",
+        "desc": "指定されたページは存在しません。",
+        "message": "申し訳ありません。ページが削除された、名前が変更された、または一時的に利用できない可能性があります。",
+        "homeButton": "ホームに戻る"
+    },
+    "nav": {
+        "home": "ホーム",
+        "camp": "キャンプ",
+        "album": "アルバム",
+        "gallery": "ギャラリー",
+        "video": "動画",
+        "press": "メディア",
+        "camp_2023": "2023キャンプ",
+        "camp_2025": "2025キャンプ",
+        "camp_2026": "2026キャンプ",
+        "album_about": "アルバム紹介",
+        "musician": "ミュージシャン",
+        "track": "収録曲",
+        "skip_to_main": "メインコンテンツへスキップ",
+        "close_menu": "メニューを閉じる",
+        "open_menu": "メニューを開く",
+        "logo": "ガンジョン平和音楽キャンプ",
+        "switch_en": "英語に切り替え",
+        "switch_ko": "韓国語に切り替え",
+        "switch_language": "言語を切り替える"
+    },
+    "common": {
+        "loading": "読み込み中...",
+        "track_desc": "説明",
+        "lyrics": "歌詞",
+        "credits": "クレジット",
+        "featured_track": "トラック",
+        "filter_all": "すべて",
+        "filter_album_2024": "2024アルバム",
+        "filter_camp_2023": "2023キャンプ",
+        "filter_camp_2025": "2025キャンプ",
+        "aria_filter": "イベントフィルター",
+        "aria_filter_selected": "フィルター（選択済み）",
+        "close": "閉じる",
+        "sns": "SNS",
+        "error_title": "おっと、問題が発生しました。",
+        "error_message": "申し訳ありません。予期しないエラーが発生し、ページを表示できません。\nしばらくしてからもう一度お試しください。",
+        "retry": "再試行",
+        "go_home": "ホームへ",
+        "audio_position": "音声の再生位置",
+        "label_personnel": "スタッフ",
+        "label_produced_by": "制作"
+    },
+    "timeline": {
+        "title": "連帯の歩み",
+        "subtitle": "ガンジョンから始まった平和の記録",
+        "labels": {
+            "camp": "キャンプ",
+            "album": "アルバム",
+            "milestone": "節目"
+        },
+        "events": {
+            "camp_2023": {
+                "title": "第1回 ガンジョン平和音楽キャンプ",
+                "desc": "ガンジョン村で初めて開かれた平和音楽キャンプ。",
+                "location": "ガンジョン体育公園"
+            },
+            "album_2024": {
+                "title": "アルバム発売公演",
+                "desc": "アルバム「To You in a Distant Place Whose Name I Don't Know」ショーケース。",
+                "location": "ガンジョン平和センター · Space Hangang"
+            },
+            "camp_2025": {
+                "title": "第2回 ガンジョン平和音楽キャンプ",
+                "desc": "休戦73周年の平和メッセージ。",
+                "location": "ガンジョン村一帯"
+            },
+            "camp_2026": {
+                "title": "第3回 ガンジョン平和音楽キャンプ",
+                "desc": "2026年6月5日〜7日開催予定。",
+                "location": "ガンジョン体育公園"
+            }
+        },
+        "month_1": "1月",
+        "month_2": "2月",
+        "month_3": "3月",
+        "month_4": "4月",
+        "month_5": "5月",
+        "month_6": "6月",
+        "month_7": "7月",
+        "month_8": "8月",
+        "month_9": "9月",
+        "month_10": "10月",
+        "month_11": "11月",
+        "month_12": "12月"
+    },
+    "seo": {
+        "default": {
+            "title": "ガンジョン平和音楽キャンプ | 歌おう、踊ろう、戦争を終わらせよう",
+            "description": "済州・ガンジョン村から始まる平和のための音楽プロジェクト。2026年6月5〜7日にガンジョン体育公園で開催される反戦・平和音楽フェスティバル。世界の紛争地の平和を願い、共に歌います。",
+            "keywords": "ガンジョン平和音楽キャンプ, 平和フェスティバル, 済州フェス, 音楽キャンプ, 反戦平和, ガンジョン村, 2026公演, インディバンド公演, 平和運動, 済州公演"
+        }
+    },
+    "press": {
+        "page_title": "メディア | To You in a Distant Place Whose Name I Don't Know",
+        "page_desc": "平和を歌う私たちの物語。『To You in a Distant Place Whose Name I Don't Know』プロジェクトに関する報道・記事をご覧ください。",
+        "keywords": "メディア, 記事, ニュース, 平和プロジェクト",
+        "hero_title": "メディア",
+        "hero_subtitle": "平和を歌う私たちの物語",
+        "breadcrumb_home": "ホーム",
+        "breadcrumb_press": "メディア"
+    },
+    "videos": {
+        "page_title": "動画 - ガンジョン平和音楽キャンプ",
+        "page_desc": "ガンジョン平和音楽キャンプのパフォーマンス動画集。平和を歌うミュージシャンたちの映像をご覧ください。",
+        "keywords": "パフォーマンス動画, ガンジョン平和音楽キャンプ, 平和コンサート, ミュージシャンの公演, YouTube動画",
+        "hero_title": "動画",
+        "hero_subtitle": "平和を歌う瞬間",
+        "all_videos": "すべての動画を見る"
+    },
+    "camp": {
+        "ordinal": "{{num}}",
+        "not_found": "キャンプが見つかりません",
+        "not_found_desc": "指定されたキャンプ情報が見つかりませんでした。",
+        "coming_soon": "COMING SOON",
+        "section_overview": "概要",
+        "section_musicians": "参加ミュージシャン",
+        "section_staff": "制作スタッフ",
+        "section_gallery": "ギャラリー",
+        "section_collaborators": "協力",
+        "more": "もっと見る",
+        "view_detail": "詳細を見る",
+        "label_period": "期間",
+        "label_location": "場所",
+        "label_participants": "参加者",
+        "date_2026": "2026年6月5日(金)〜6月7日(日)",
+        "venue_2026": "ガンジョン体育公園",
+        "keywords_base": "ガンジョン村, 平和音楽, 反戦運動",
+        "description_2026": "平和の風は吹き続けます。第三の平和の歌が2026年6月、ガンジョンに響きます。",
+        "expected_2026": "出演確定32組\n約50〜60組出演予定",
+        "brand_line": "済州 ガンジョン 平和音楽キャンプ"
+    },
+    "album": {
+        "page_title": "To You in a Distant Place Whose Name I Don't Know - アルバム紹介",
+        "page_desc": "ガンジョン平和音楽キャンプの2024年アルバムプロジェクト。戦争を終わらせ平和を歌う12曲の音楽の旅。",
+        "keywords": "To You in a Distant Place Whose Name I Don't Know, ガンジョン平和音楽キャンプ, アルバム, 平和音楽",
+        "hero_title_1": "To You In A",
+        "hero_title_2": "Distant Place",
+        "hero_subtitle": "戦争と暴力があふれる世界から送る平和の手紙。12組のミュージシャンがガンジョン村から放つ音楽の波。",
+        "listen_tracks": "収録曲を聴く",
+        "intro_musicians": "参加ミュージシャン紹介",
+        "meaning_title": "タイトルの意味",
+        "meaning_desc": "「To You in a Distant Place Whose Name I Don't Know」は、世界の紛争地で苦しむ人々へ送る連帯のメッセージです。ウクライナ、ガザ、そして朝鮮半島。私たちは互いの顔も名前も知りませんが、同じ時代に生き平和を願う心は一つにつながっています。",
+        "voices_title": "12の声",
+        "voices_desc": "ロック、フォーク、ジャズ、エレクトロニック。ガンジョン村の平和運動に共感する12組のミュージシャンが、それぞれの音楽言語で平和を翻訳しました。多様なジャンルが生み出したこのアルバムは、多様性こそ平和の本質であることを示しています。",
+        "concert_title": "発売記念公演",
+        "concert_subtitle": "アルバム発売を記念してガンジョンとソウルで開催された公演の記録をご覧ください。",
+        "tab_info": "公演概要",
+        "tab_video": "現場映像",
+        "tab_photo": "現場写真",
+        "label_date": "日時",
+        "label_venue": "場所",
+        "label_performers": "出演者",
+        "concert_gangjeong": "ガンジョン公演",
+        "concert_hongdae": "ホンデ公演",
+        "concert_gangjeong_date": "2024. 10. 12 (土)",
+        "concert_hongdae_date": "2024. 11. 02 (土)",
+        "concert_time": "19:00〜",
+        "venue_gangjeong": "ガンジョン平和センター",
+        "venue_hongdae": "Space Hangang",
+        "performer_gilganeun_band": "Gilganeun Band Jang Hyunho",
+        "release_official": "2024 OFFICIAL RELEASE",
+        "album_title_full": "To You in a Distant Place Whose Name I Don't Know",
+        "all_photos": "公演写真をすべて見る",
+        "musicians_page_title": "参加ミュージシャン - To You in a Distant Place Whose Name I Don't Know",
+        "musicians_page_desc": "ガンジョン平和音楽キャンプのアルバムプロジェクトに参加した12組のミュージシャン。Caru、Kim Dongsan、Namsu、MoredoSaturdayなど、平和を歌うアーティストたち。",
+        "musicians_page_keywords": "参加ミュージシャン, アルバム参加, 平和ミュージシャン, ガンジョン平和音楽キャンプ, アーティスト",
+        "musicians_hero_subtitle": "12の声、ひとつの平和",
+        "tracks_page_title": "収録曲 - To You in a Distant Place Whose Name I Don't Know",
+        "tracks_page_desc": "ガンジョン平和音楽キャンプのアルバム全曲。平和と連帯のメッセージを込めた12曲。",
+        "tracks_page_keywords": "収録曲, トラックリスト, 平和の歌, 音楽リスト, ガンジョン平和音楽キャンプ",
+        "tracks_hero_subtitle": "To You in a Distant Place Whose Name I Don't Know",
+        "image_alt_cover": "『To You in a Distant Place Whose Name I Don't Know』アルバムカバー",
+        "image_alt_concert": "アルバム発売記念公演の様子 {{num}}"
+    },
+    "faqs": {
+        "title": "よくある質問",
+        "items": [
+            {
+                "q": "ガンジョン平和音楽キャンプはどんなイベントですか？",
+                "a": "ガンジョン平和音楽キャンプは、済州・ガンジョン村から始まった平和のための音楽プロジェクトです。世界の紛争地の平和を願い、さまざまなジャンルのミュージシャンが集い歌い連帯する反戦・平和音楽フェスティバルです。"
+            },
+            {
+                "q": "ガンジョン平和音楽キャンプはいつ開催されますか？",
+                "a": "第3回ガンジョン平和音楽キャンプは、2026年6月5日(金)から6月7日(日)までの3日間開催予定です。"
+            },
+            {
+                "q": "ガンジョン平和音楽キャンプはどこで開催されますか？",
+                "a": "済州特別自治道・西帰浦市のガンジョン村にあるガンジョン体育公園およびガンジョン村一帯で開催されます。"
+            },
+            {
+                "q": "どんなミュージシャンが参加しますか？",
+                "a": "ロック、フォーク、ジャズ、エレクトロニックなど多様なジャンルのミュージシャンが参加します。2026年のキャンプでは約50〜60組の出演が見込まれており、現在32組が確定しています。過去の参加ミュージシャンにはSolga、ガンジョン合唱団などがいます。"
+            },
+            {
+                "q": "入場料はありますか？",
+                "a": "ガンジョン平和音楽キャンプは、平和を愛する誰もが無料で楽しめる開かれたフェスティバルを目指しています。ただし、イベントの継続性のために自発的な寄付やグッズ販売が行われます。"
+            },
+            {
+                "q": "「To You in a Distant Place Whose Name I Don't Know」プロジェクトとは？",
+                "a": "「To You in a Distant Place Whose Name I Don't Know」は、ガンジョン平和音楽キャンプの2024年オムニバス・アルバムプロジェクト名です。ウクライナやパレスチナなど、戦争で苦しむ人々への連帯のメッセージを込めた12曲が収録されています。"
+            }
+        ]
+    }
+}

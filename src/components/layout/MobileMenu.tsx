@@ -1,13 +1,13 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { Link, Location } from 'react-router-dom';
+import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { simpleMenuItems, campItems, albumItems } from './navigationData';
 import LanguageSwitcher from '../common/LanguageSwitcher';
 
 interface MobileMenuProps {
     isOpen: boolean;
-    location: Location;
+    pathname: string;
     mobileOpenDropdown: string | null;
     onClose: () => void;
     onToggleDropdown: (dropdown: string) => void;
@@ -17,7 +17,7 @@ interface MobileMenuProps {
 
 const MobileMenu: React.FC<MobileMenuProps> = React.memo(({
     isOpen,
-    location,
+    pathname,
     mobileOpenDropdown,
     onClose,
     onToggleDropdown,
@@ -38,8 +38,8 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(({
                             {simpleMenuItems.map((item) => (
                                 <Link
                                     key={item.path}
-                                    to={item.path}
-                                    className={`block py-2 ${location.pathname === item.path
+                                    href={item.path}
+                                    className={`block py-2 break-words ${pathname === item.path
                                         ? 'text-jeju-ocean font-bold'
                                         : 'text-coastal-gray'
                                         } font-serif`}
@@ -106,7 +106,7 @@ const MobileDropdown: React.FC<MobileDropdownProps> = React.memo(({
         <>
             <button
                 onClick={onToggle}
-                className="w-full text-left py-2 font-serif text-deep-ocean flex justify-between items-center"
+                className="w-full text-left py-2 font-serif text-deep-ocean flex justify-between items-center break-words"
                 aria-expanded={isOpen}
             >
                 {label}
@@ -129,8 +129,8 @@ const MobileDropdown: React.FC<MobileDropdownProps> = React.memo(({
                         {items.map((item) => (
                             <Link
                                 key={item.path}
-                                to={item.path}
-                                className="block py-2 text-deep-ocean hover:text-jeju-ocean font-serif text-sm"
+                                href={item.path}
+                                className="block py-2 text-deep-ocean hover:text-jeju-ocean font-serif text-sm break-words"
                                 onClick={onClose}
                             >
                                 {t(item.nameKey)}

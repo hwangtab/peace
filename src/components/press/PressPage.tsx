@@ -1,6 +1,7 @@
-import React, { useState, useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
-import { PressItem, getPressItems } from '../../data/press';
+import React, { useState, useMemo, useEffect } from 'react';
+import { useTranslation } from 'next-i18next';
+import { getPressItems } from '../../api/press';
+import { PressItem } from '../../types/press';
 import { getBreadcrumbSchema } from '../../utils/structuredData';
 import { filterByEvent } from '../../utils/filtering';
 import { sortByDateDesc } from '../../utils/sorting';
@@ -39,10 +40,10 @@ const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
             <span>{press.publisher}</span>
             <span>{press.date}</span>
           </div>
-          <h3 className="typo-h3 hover:text-jeju-ocean transition-colors duration-200">
+          <h3 className="typo-h3 hover:text-jeju-ocean transition-colors duration-200 text-balance break-words">
             {press.title}
           </h3>
-          <p className="typo-body mt-2 flex-1 text-pretty">{press.description}</p>
+          <p className="typo-body mt-2 flex-1 text-pretty break-words">{press.description}</p>
         </div>
       </article>
     </a>
@@ -52,8 +53,15 @@ const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
 export default function PressPage() {
   const { t, i18n } = useTranslation();
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
+  const [pressItems, setPressItems] = useState<PressItem[]>([]);
 
-  const pressItems = useMemo(() => getPressItems(i18n.language), [i18n.language]);
+  useEffect(() => {
+    const loadPress = async () => {
+      const data = await getPressItems(i18n.language);
+      setPressItems(data);
+    };
+    loadPress();
+  }, [i18n.language]);
 
   const breadcrumbs = [
     { name: t('press.breadcrumb_home'), url: "https://peaceandmusic.net/" },
@@ -74,7 +82,6 @@ export default function PressPage() {
       title={t('press.page_title')}
       description={t('press.page_desc')}
       keywords={t('press.keywords')}
-      canonicalUrl="https://peaceandmusic.net/press"
       structuredData={structuredData}
       background="ocean-sand"
       disableTopPadding={true}
