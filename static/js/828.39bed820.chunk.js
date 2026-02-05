@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkdear_stranger_archive=self.webpackChunkdear_stranger_archive||[]).push([[828],{8828:(a,e,r)=>{r.r(e),r.d(e,{default:()=>t});var s=r(2259),c=r(579);const t=()=>(0,c.jsx)(s.A,{campId:"camp-2025"})}}]);
-//# sourceMappingURL=828.39bed820.chunk.js.map
