@@ -119,10 +119,15 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Check if the current pathname already starts with a supported locale
-  const pathnameHasLocale = LOCALES.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-  );
+    // Only redirect on the root path to avoid locale redirect loops on subpages.
+    if (pathname !== '/') {
+      return NextResponse.next();
+    }
+
+    // Check if the current pathname already starts with a supported locale
+    const pathnameHasLocale = LOCALES.some(
+      (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+    );
 
     if (pathnameHasLocale) {
       return NextResponse.next();
