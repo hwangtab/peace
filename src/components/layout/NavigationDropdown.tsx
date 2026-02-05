@@ -95,13 +95,13 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-full left-0 mt-2 w-48 bg-white/95 backdrop-blur-md shadow-lg rounded-lg overflow-hidden py-2 border border-ocean-mist/20 z-50 text-left"
+            className="absolute top-full left-0 mt-2 min-w-[12rem] max-w-[18rem] w-max bg-white/95 backdrop-blur-md shadow-lg rounded-lg overflow-hidden py-2 border border-ocean-mist/20 z-50 text-left"
           >
             {items.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`block px-4 py-2 ${location.pathname === item.path
+                className={`block px-4 py-2 whitespace-normal break-words ${location.pathname === item.path
                   ? 'bg-ocean-sand text-jeju-ocean font-semibold'
                   : 'text-deep-ocean hover:bg-ocean-sand/50'
                   } transition-colors duration-200 font-serif`}
