@@ -1,20 +1,23 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { camps } from '../data/camps';
+import { getCamps } from '../data/camps';
 import PageLayout from '../components/layout/PageLayout';
 import SectionHeader from '../components/common/SectionHeader';
 import { getEventSchema } from '../utils/structuredData';
 import { getFullUrl } from '../config/env';
+import { formatOrdinal } from '../utils/format';
 
 const Camp2026Page = () => {
   const { t, i18n } = useTranslation();
-  const camp2026 = camps.find(camp => camp.id === 'camp-2026');
+  const campList = getCamps(i18n.language);
+  const camp2026 = campList.find(camp => camp.id === 'camp-2026');
+  const ordinalLabel = formatOrdinal(3, i18n.language);
 
   if (!camp2026) {
     return (
       <PageLayout
-        title={t('camp.ordinal', { num: 3 }) + ' ' + t('app.title') + ' (2026)'}
+        title={t('camp.ordinal', { num: ordinalLabel }) + ' ' + t('app.title') + ' (2026)'}
         description={t('camp.not_found_desc')}
       >
         <div className="flex items-center justify-center h-full min-h-[50vh]">
@@ -45,7 +48,7 @@ const Camp2026Page = () => {
 
   return (
     <PageLayout
-      title={`${t('camp.ordinal', { num: 3 })} ${t('app.title')} (2026) - ${t('camp.coming_soon')}`}
+      title={`${t('camp.ordinal', { num: ordinalLabel })} ${t('app.title')} (2026) - ${t('camp.coming_soon')}`}
       description={t('seo.default.description')}
       keywords={t('seo.default.keywords')}
       background="jeju-ocean"
@@ -78,7 +81,7 @@ const Camp2026Page = () => {
           </div>
 
           <div className="text-gray-500 text-sm font-medium">
-            Jeju Gangjeong Peace & Music Camp
+            {t('camp.brand_line')}
           </div>
         </motion.div>
       </div>

@@ -15,7 +15,7 @@ interface MusiciansSectionProps {
 
 const MusiciansSection: React.FC<MusiciansSectionProps> = React.memo(
   ({ enableSectionWrapper = true, hideSectionHeader = false }) => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const ref = useRef(null);
     const inView = useInView(ref, {
       once: true,
@@ -32,7 +32,7 @@ const MusiciansSection: React.FC<MusiciansSectionProps> = React.memo(
       const loadMusicians = async () => {
         setIsLoading(true);
         try {
-          const data = await getMusicians();
+          const data = await getMusicians(i18n.language);
           if (!isCancelled) {
             setMusicians(data);
           }
@@ -50,7 +50,7 @@ const MusiciansSection: React.FC<MusiciansSectionProps> = React.memo(
       return () => {
         isCancelled = true;
       };
-    }, []);
+    }, [i18n.language]);
 
     const content = (
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
