@@ -74,16 +74,16 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-[clamp(1.5rem,8vw,5.5rem)] font-partial leading-tight text-cloud-white mb-6 drop-shadow-md whitespace-nowrap">
+          <h1 className="text-[clamp(1.5rem,8vw,5.5rem)] font-partial leading-tight text-cloud-white mb-6 drop-shadow-md text-balance max-w-5xl mx-auto">
             {t('home.hero.title')}
           </h1>
-          <p className="text-[clamp(1rem,4vw,2.25rem)] font-stone leading-tight text-golden-sun mb-6 drop-shadow-sm whitespace-nowrap">
+          <p className="text-[clamp(1rem,4vw,2.25rem)] font-stone leading-tight text-golden-sun mb-6 drop-shadow-sm text-balance max-w-4xl mx-auto">
             {t('home.hero.subtitle')}
           </p>
-          <p className="text-[clamp(0.8125rem,2.2vw,1.25rem)] font-caption leading-relaxed text-seafoam mb-12 font-medium drop-shadow-sm whitespace-nowrap">
+          <p className="text-[clamp(0.8125rem,2.2vw,1.25rem)] font-caption leading-relaxed text-seafoam mb-12 font-medium drop-shadow-sm text-balance max-w-3xl mx-auto">
             {t('home.hero.message')}
           </p>
-          <div className="flex justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-4">
             <Button href="#about" variant="gold" onClick={handleScrollToAbout}>
               {t('home.hero.camp_intro')}
             </Button>

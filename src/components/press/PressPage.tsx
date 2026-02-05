@@ -35,9 +35,9 @@ const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
           </div>
         )}
         <div className="p-6 flex-1 flex flex-col">
-          <div className="flex justify-between items-center mb-2">
-            <span className="text-sm text-gray-500">{press.publisher}</span>
-            <span className="text-sm text-gray-500">{press.date}</span>
+          <div className="flex flex-wrap items-center gap-2 mb-2 text-sm text-gray-500">
+            <span>{press.publisher}</span>
+            <span>{press.date}</span>
           </div>
           <h3 className="typo-h3 hover:text-jeju-ocean transition-colors duration-200">
             {press.title}
