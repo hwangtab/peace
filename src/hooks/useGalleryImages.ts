@@ -11,9 +11,6 @@ interface UseGalleryImagesReturn {
   displayImages: GalleryImage[];
   selectedFilter: string;
   setSelectedFilter: (filter: string) => void;
-  visibleCount: number;
-  hasMore: boolean;
-  loadMore: () => void;
   isLoading: boolean;
 }
 
@@ -25,7 +22,6 @@ export const useGalleryImages = (initialImages: GalleryImage[] = []): UseGallery
   const router = useRouter();
   const [images, setImages] = useState<GalleryImage[]>(initialImages);
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
-  const [visibleCount, setVisibleCount] = useState<number>(GALLERY_CONFIG.INITIAL_VISIBLE_COUNT);
   const [isLoading, setIsLoading] = useState<boolean>(initialImages.length === 0);
 
   // Sync filter with query parameter on mount
@@ -81,25 +77,8 @@ export const useGalleryImages = (initialImages: GalleryImage[] = []): UseGallery
     [images, selectedFilter]
   );
 
-  // Reset visible count when filter changes
-  useEffect(() => {
-    setVisibleCount(GALLERY_CONFIG.INITIAL_VISIBLE_COUNT);
-  }, [initialImages.length, selectedFilter]);
-
-  // Load more handler
-  const loadMore = useCallback(() => {
-    setVisibleCount((prev) =>
-      Math.min(prev + GALLERY_CONFIG.LOAD_MORE_COUNT, filteredImages.length)
-    );
-  }, [filteredImages.length]);
-
-  // Slice images for display
-  const displayImages = useMemo(
-    () => filteredImages.slice(0, visibleCount),
-    [filteredImages, visibleCount]
-  );
-
-  const hasMore = visibleCount < filteredImages.length;
+  // Slice images for display (Now returning all filtered images)
+  const displayImages = filteredImages;
 
   return {
     images,
@@ -107,9 +86,6 @@ export const useGalleryImages = (initialImages: GalleryImage[] = []): UseGallery
     displayImages,
     selectedFilter,
     setSelectedFilter,
-    visibleCount,
-    hasMore,
-    loadMore,
     isLoading,
   };
 };
