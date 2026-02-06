@@ -57,5 +57,19 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        '.hyphens-none': {
+          hyphens: 'none',
+        },
+        '.hyphens-manual': {
+          hyphens: 'manual',
+        },
+        '.hyphens-auto': {
+          hyphens: 'auto',
+        },
+      })
+    },
+  ],
 }
