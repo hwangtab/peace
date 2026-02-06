@@ -50,8 +50,8 @@ export const useGalleryImages = (initialImages: GalleryImage[] = []): UseGallery
         if (isCancelled) return;
 
         const sortedImages = allFetchedImages.sort((a, b) => {
-          if (a.eventYear !== b.eventYear) return (a.eventYear || 0) - (b.eventYear || 0);
-          return a.id - b.id;
+          if (a.eventYear !== b.eventYear) return (b.eventYear || 0) - (a.eventYear || 0);
+          return b.id - a.id;
         });
 
         setImages(sortedImages);
