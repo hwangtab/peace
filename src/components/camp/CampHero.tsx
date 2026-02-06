@@ -42,8 +42,8 @@ const CampHero: React.FC<CampHeroProps> = ({ camp }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="typo-h1 text-white mb-4">{camp.title}</h1>
-          {camp.slogan && <p className="typo-subtitle text-gray-100 mb-6">{camp.slogan}</p>}
+          <h1 className="typo-h1 text-white mb-4 hyphens-auto">{camp.title}</h1>
+          {camp.slogan && <p className="typo-subtitle text-gray-100 mb-6 hyphens-auto">{camp.slogan}</p>}
           <div className="flex flex-col sm:flex-row justify-center gap-6 text-white">
             <div>
               <p className="text-sm uppercase tracking-wide text-gray-300 mb-1">{t('album.label_date')}</p>
