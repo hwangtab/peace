@@ -8,7 +8,6 @@ import EventFilter from '../common/EventFilter';
 import GalleryImageItem from '../gallery/GalleryImageItem';
 import ImageLightbox from '../common/ImageLightbox';
 import Section from '../layout/Section';
-import Button from '../common/Button';
 import SectionHeader from '../common/SectionHeader';
 
 interface GallerySectionProps {
@@ -32,8 +31,6 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(({
     filteredImages,
     selectedFilter,
     setSelectedFilter,
-    hasMore,
-    loadMore,
   } = useGalleryImages(initialImages);
 
   const content = (
@@ -63,33 +60,20 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(({
           <p className="text-xl text-gray-500 font-serif">{t('gallery.no_images')}</p>
         </div>
       ) : (
-        <>
-          <motion.div
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12"
-          >
-            <AnimatePresence mode='popLayout' initial={false}>
-              {displayImages.map((image, index) => (
-                <VirtualGalleryItem
-                  key={image.id}
-                  image={image}
-                  priority={index < GALLERY_CONFIG.PRIORITY_IMAGE_THRESHOLD}
-                  onClick={setSelectedImage}
-                />
-              ))}
-            </AnimatePresence>
-          </motion.div>
-
-          {hasMore && (
-            <div className="text-center mt-12">
-              <Button
-                onClick={loadMore}
-                variant="outline"
-              >
-                {t('gallery.load_more')}
-              </Button>
-            </div>
-          )}
-        </>
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12"
+        >
+          <AnimatePresence mode='popLayout' initial={false}>
+            {displayImages.map((image, index) => (
+              <VirtualGalleryItem
+                key={image.id}
+                image={image}
+                priority={index < GALLERY_CONFIG.PRIORITY_IMAGE_THRESHOLD}
+                onClick={setSelectedImage}
+              />
+            ))}
+          </AnimatePresence>
+        </motion.div>
       )}
 
       {selectedImage && (
