@@ -49,7 +49,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(({
                 {t('nav.home')}
                 {pathname === ROUTES.HOME && (
                     <motion.div
-                        className={`absolute bottom-[-8px] left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
+                        className={`absolute bottom-[-4px] left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
                         layoutId="underline-home"
                     />
                 )}
@@ -82,7 +82,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(({
                         {t(item.nameKey)}
                         {pathname === item.path && (
                             <motion.div
-                                className={`absolute bottom-[-8px] left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
+                                className={`absolute bottom-[-4px] left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
                                 layoutId={`underline-${item.path}`}
                             />
                         )}
