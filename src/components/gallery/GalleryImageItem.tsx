@@ -34,6 +34,7 @@ const GalleryImageItem = React.memo(({ image, priority = false, onClick }: Galle
                     className={`object-cover transition-all duration-700 ease-in-out group-hover:scale-110 ${isLoaded ? 'opacity-100' : 'opacity-0'
                         }`}
                     priority={priority}
+                    loading={priority ? 'eager' : 'lazy'}
                     onLoadingComplete={() => setIsLoaded(true)}
                 />
 

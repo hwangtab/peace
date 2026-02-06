@@ -21,12 +21,12 @@ interface UseGalleryImagesReturn {
  * Custom hook for managing gallery image loading, filtering, and pagination.
  * Extracts complex state logic from GallerySection for better maintainability.
  */
-export const useGalleryImages = (): UseGalleryImagesReturn => {
+export const useGalleryImages = (initialImages: GalleryImage[] = []): UseGalleryImagesReturn => {
   const router = useRouter();
-  const [images, setImages] = useState<GalleryImage[]>([]);
+  const [images, setImages] = useState<GalleryImage[]>(initialImages);
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
   const [visibleCount, setVisibleCount] = useState<number>(GALLERY_CONFIG.INITIAL_VISIBLE_COUNT);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(initialImages.length === 0);
 
   // Sync filter with query parameter on mount
   useEffect(() => {
@@ -37,8 +37,13 @@ export const useGalleryImages = (): UseGalleryImagesReturn => {
     }
   }, [router.isReady, router.query.filter]);
 
-  // Load images on mount
+  // Load images on mount if not provided via props
   useEffect(() => {
+    if (initialImages.length > 0) {
+      setIsLoading(false);
+      return;
+    }
+
     let isCancelled = false;
 
     const loadImages = async () => {
@@ -68,7 +73,7 @@ export const useGalleryImages = (): UseGalleryImagesReturn => {
     return () => {
       isCancelled = true;
     };
-  }, []);
+  }, [initialImages.length]);
 
   // Filter images based on selected filter
   const filteredImages = useMemo(
@@ -79,7 +84,7 @@ export const useGalleryImages = (): UseGalleryImagesReturn => {
   // Reset visible count when filter changes
   useEffect(() => {
     setVisibleCount(GALLERY_CONFIG.INITIAL_VISIBLE_COUNT);
-  }, [selectedFilter]);
+  }, [initialImages.length, selectedFilter]);
 
   // Load more handler
   const loadMore = useCallback(() => {

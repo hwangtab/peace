@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect, useMemo, useCallback } from 'react';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
-import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import Button from '../../components/common/Button';
 import PageLayout from '../../components/layout/PageLayout';
 import Section from '../../components/layout/Section';
@@ -9,36 +9,48 @@ import SectionHeader from '../../components/common/SectionHeader';
 import { getVideos } from '../../api/videos';
 import { getMusicians } from '../../api/musicians';
 import MusicianModal from '../../components/musicians/MusicianModal';
-import VideoCard from '../../components/videos/VideoCard';
 import ImageLightbox from '../../components/common/ImageLightbox';
+import AlbumTabContent from '../../components/album/AlbumTabContent';
 import { getGalleryImages } from '../../api/gallery';
 import { GalleryImage } from '../../types/gallery';
 import { VideoItem } from '../../types/video';
 import { Musician } from '../../types/musician';
-import { CalendarIcon, MapPinIcon, UserGroupIcon } from '@heroicons/react/24/outline';
 import WaveDivider from '../../components/common/WaveDivider';
 import { getMusicAlbumSchema } from '../../utils/structuredData';
 import { getFullUrl } from '../../config/env';
 
-const AlbumAboutPage = () => {
+interface AlbumAboutPageProps {
+  initialVideos?: VideoItem[];
+  initialMusicians?: Musician[];
+  initialImages?: GalleryImage[];
+}
+
+const AlbumAboutPage = ({
+  initialVideos = [],
+  initialMusicians = [],
+  initialImages = []
+}: AlbumAboutPageProps) => {
   const { t, i18n } = useTranslation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [selectedMusician, setSelectedMusician] = useState<Musician | null>(null);
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState<'info' | 'video' | 'photo'>('info');
-  const [images, setImages] = useState<GalleryImage[]>([]);
-  const [videos, setVideos] = useState<VideoItem[]>([]);
-  const [musicians, setMusicians] = useState<Musician[]>([]);
+  const [images, setImages] = useState<GalleryImage[]>(initialImages);
+  const [videos, setVideos] = useState<VideoItem[]>(initialVideos);
+  const [musicians, setMusicians] = useState<Musician[]>(initialMusicians);
 
-  // Load images (language-independent)
+  // Load images (language-independent) if not provided
   useEffect(() => {
-    getGalleryImages().then(setImages);
-  }, []);
+    if (initialImages.length === 0) {
+      getGalleryImages().then(setImages);
+    }
+  }, [initialImages]);
 
-  // Load videos and musicians (language-dependent)
+  // Load videos and musicians (language-dependent) if not provided or language changed
   useEffect(() => {
+    // Only fetch if initial data is missing OR if initial data language doesn't match current language
+    // But since getStaticProps handles language, we only need to refetch if language changes after mount
     const loadData = async () => {
       const [allVideos, allMusicians] = await Promise.all([
         getVideos(i18n.language),
@@ -47,8 +59,11 @@ const AlbumAboutPage = () => {
       setVideos(allVideos);
       setMusicians(allMusicians);
     };
-    loadData();
-  }, [i18n.language]);
+
+    if (initialVideos.length === 0 || initialMusicians.length === 0) {
+      loadData();
+    }
+  }, [i18n.language, initialVideos.length, initialMusicians.length]); // Keep language dependency to refetch on lang switch
 
   const handleMusicianClick = useCallback((musicianId: number | null) => {
     if (musicianId) {
@@ -189,6 +204,8 @@ const AlbumAboutPage = () => {
                   sizes="(max-width: 1024px) 80vw, 40vw"
                   className="object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700"
                   priority
+                  loading="eager"
+                  quality={90}
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-50 pointer-events-none" />
               </div>
@@ -278,189 +295,13 @@ const AlbumAboutPage = () => {
             className="!mb-8"
           />
 
-          {/* Tab Navigation */}
-          <div className="flex justify-center mb-12">
-            <div className="inline-flex p-1 bg-white/50 backdrop-blur-sm rounded-2xl shadow-inner border border-white/50">
-              {[
-                { id: 'info', label: t('album.tab_info') },
-                { id: 'video', label: t('album.tab_video') },
-                { id: 'photo', label: t('album.tab_photo') },
-              ].map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id as 'info' | 'video' | 'photo')}
-                  className={`relative px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 ${activeTab === tab.id ? 'text-white' : 'text-coastal-gray hover:text-jeju-ocean'
-                    }`}
-                >
-                  {activeTab === tab.id && (
-                    <motion.div
-                      layoutId="activeTabBg"
-                      className="absolute inset-0 bg-jeju-ocean rounded-xl shadow-lg"
-                      transition={{ type: 'spring', bounce: 0.2, duration: 0.5 }}
-                    />
-                  )}
-                  <span className="relative z-10">{tab.label}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <AnimatePresence mode="wait">
-            {activeTab === 'info' && (
-              <motion.div
-                key="info-tab"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.4 }}
-              >
-                {/* Concert Cards */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-16">
-                  {concerts.map((concert, index) => (
-                    <motion.div
-                      key={concert.id}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: index * 0.2 }}
-                      className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col"
-                    >
-                      {/* Card Header Background Decor */}
-                      <div className="h-2 bg-gradient-to-r from-jeju-ocean to-ocean-mist opacity-80" />
-
-                      <div className="p-8 flex-1 flex flex-col">
-                        <h3 className="typo-h3 text-2xl mb-8 group-hover:text-jeju-ocean transition-colors duration-300">
-                          {concert.name}
-                        </h3>
-
-                        <div className="space-y-4 mb-8">
-                          <div className="flex items-center gap-4 text-gray-700">
-                            <div className="w-10 h-10 rounded-full bg-ocean-sand flex items-center justify-center text-jeju-ocean">
-                              <CalendarIcon className="w-5 h-5" />
-                            </div>
-                            <div className="flex flex-col">
-                              <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">
-                                {t('album.label_date')}
-                              </span>
-                              <span className="font-medium">
-                                {concert.date}{' '}
-                                <span className="text-coastal-gray text-sm">{concert.time}</span>
-                              </span>
-                            </div>
-                          </div>
-
-                          <div className="flex items-center gap-4 text-gray-700">
-                            <div className="w-10 h-10 rounded-full bg-ocean-sand flex items-center justify-center text-jeju-ocean">
-                              <MapPinIcon className="w-5 h-5" />
-                            </div>
-                            <div className="flex flex-col">
-                              <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">
-                                {t('album.label_venue')}
-                              </span>
-                              <span className="font-medium">{concert.venue}</span>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="mt-auto">
-                          <div className="flex items-center gap-2 mb-4">
-                            <UserGroupIcon className="w-4 h-4 text-jeju-ocean" />
-                            <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">
-                              {t('album.label_performers')}
-                            </span>
-                          </div>
-                          <div className="flex flex-wrap gap-2">
-                            {concert.performers.map((performer, idx) =>
-                              performer.musicianId ? (
-                                <button
-                                  key={idx}
-                                  onClick={() => handleMusicianClick(performer.musicianId)}
-                                  className="px-3 py-1.5 bg-ocean-sand text-jeju-ocean rounded-lg text-xs font-medium border border-jeju-ocean/10 hover:border-jeju-ocean hover:bg-jeju-ocean hover:text-white hover:shadow-md transition-all duration-300"
-                                >
-                                  {performer.name}
-                                </button>
-                              ) : (
-                                <span
-                                  key={idx}
-                                  className="px-3 py-1.5 bg-ocean-mist/5 text-ocean-mist/80 rounded-lg text-xs font-medium border border-ocean-mist/10"
-                                >
-                                  {performer.name}
-                                </span>
-                              )
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            )}
-
-            {activeTab === 'video' && (
-              <motion.div
-                key="video-tab"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.4 }}
-              >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
-                  {albumVideos.map((video, index) => (
-                    <motion.div
-                      key={video.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                    >
-                      <VideoCard video={video} />
-                    </motion.div>
-                  ))}
-                </div>
-                <div className="text-center mt-8">
-                  <Button to="/videos?filter=album-2024" variant="outline">
-                    {t('videos.all_videos')}
-                  </Button>
-                </div>
-              </motion.div>
-            )}
-
-            {activeTab === 'photo' && (
-              <motion.div
-                key="photo-tab"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.4 }}
-              >
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto mb-8">
-                  {albumPhotos.slice(0, 12).map((photo, index) => (
-                    <motion.div
-                      key={photo.id}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.4, delay: index * 0.05 }}
-                      className="aspect-square rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
-                      onClick={() => setSelectedImage(photo)}
-                    >
-                      <Image
-                        src={photo.url}
-                        alt={t('album.image_alt_concert', { num: index + 1 })}
-                        fill
-                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                        className="object-cover"
-                      />
-                    </motion.div>
-                  ))}
-                </div>
-                <div className="text-center mt-12">
-                  <Button to="/gallery?filter=album-2024" variant="primary">
-                    {t('album.all_photos')}
-                  </Button>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          <AlbumTabContent
+            concerts={concerts}
+            albumVideos={albumVideos}
+            albumPhotos={albumPhotos}
+            onMusicianClick={handleMusicianClick}
+            onImageClick={setSelectedImage}
+          />
 
           {/* Credits Area - Now integrated for cleaner layout with proper spacing */}
           <motion.div
