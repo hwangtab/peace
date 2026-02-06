@@ -77,7 +77,7 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(({
     <div className="relative group" ref={dropdownRef}>
       <button
         onClick={() => setOpen(!open)}
-        className={`flex items-center gap-1 ${getTextColor()} transition-colors duration-300 font-display focus:outline-none text-balance`}
+        className={`flex items-center gap-1 ${getTextColor()} transition-colors duration-300 font-display focus:outline-none text-balance relative`}
         aria-expanded={open}
       >
         <span>{label}</span>
@@ -87,6 +87,12 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(({
         >
           <IoChevronDown className="w-4 h-4 ml-1" />
         </motion.div>
+        {isActive && (
+          <motion.div
+            className={`absolute bottom-[-8px] left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
+            layoutId={`underline-${label}`}
+          />
+        )}
       </button>
 
       <AnimatePresence>
