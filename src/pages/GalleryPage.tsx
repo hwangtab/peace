@@ -7,7 +7,13 @@ import { getImageGallerySchema } from '../utils/structuredData';
 import { useTranslation } from 'next-i18next';
 // ...
 
-const GalleryPage = () => {
+import { GalleryImage } from '../types/gallery';
+
+interface GalleryPageProps {
+    initialImages?: GalleryImage[];
+}
+
+const GalleryPage = ({ initialImages = [] }: GalleryPageProps) => {
     const { t, i18n } = useTranslation();
     // Basic ImageGallery Schema - real images are loaded dynamically, so providing static fallback or main images
     const gallerySchema = getImageGallerySchema([
@@ -30,7 +36,11 @@ const GalleryPage = () => {
                 backgroundImage="/images-webp/camps/2023/DSC00528.webp"
             />
             <div className="pt-12">
-                <GallerySection enableSectionWrapper={false} hideSectionHeader={true} />
+                <GallerySection
+                    enableSectionWrapper={false}
+                    hideSectionHeader={true}
+                    initialImages={initialImages}
+                />
             </div>
         </PageLayout>
     );

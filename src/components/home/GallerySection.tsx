@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import { GalleryImage } from '../../types/gallery';
 import { useGalleryImages } from '../../hooks/useGalleryImages';
@@ -15,12 +15,14 @@ interface GallerySectionProps {
   className?: string;
   enableSectionWrapper?: boolean;
   hideSectionHeader?: boolean;
+  initialImages?: GalleryImage[];
 }
 
 const GallerySection: React.FC<GallerySectionProps> = React.memo(({
   className,
   enableSectionWrapper = true,
-  hideSectionHeader = false
+  hideSectionHeader = false,
+  initialImages = []
 }) => {
   const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
@@ -32,7 +34,7 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(({
     setSelectedFilter,
     hasMore,
     loadMore,
-  } = useGalleryImages();
+  } = useGalleryImages(initialImages);
 
   const content = (
     <div className={`container mx-auto px-4 sm:px-6 lg:px-8 ${!enableSectionWrapper ? className : ''}`}>
@@ -67,20 +69,12 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(({
           >
             <AnimatePresence mode='popLayout' initial={false}>
               {displayImages.map((image, index) => (
-                <motion.div
+                <VirtualGalleryItem
                   key={image.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <GalleryImageItem
-                    image={image}
-                    priority={index < GALLERY_CONFIG.PRIORITY_IMAGE_THRESHOLD}
-                    onClick={setSelectedImage}
-                  />
-                </motion.div>
+                  image={image}
+                  priority={index < GALLERY_CONFIG.PRIORITY_IMAGE_THRESHOLD}
+                  onClick={setSelectedImage}
+                />
               ))}
             </AnimatePresence>
           </motion.div>
@@ -124,5 +118,39 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(({
 });
 
 GallerySection.displayName = 'GallerySection';
+
+/**
+ * Sub-component for virtualized gallery rendering.
+ * Only renders the actual content when in or near the viewport.
+ */
+const VirtualGalleryItem: React.FC<{
+  image: GalleryImage;
+  priority: boolean;
+  onClick: (image: GalleryImage) => void;
+}> = React.memo(({ image, priority, onClick }) => {
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "200px 0px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
+      transition={{ duration: 0.3 }}
+      className="aspect-[4/3] relative bg-gray-100 rounded-lg overflow-hidden"
+    >
+      {isInView && (
+        <GalleryImageItem
+          image={image}
+          priority={priority}
+          onClick={onClick}
+        />
+      )}
+    </motion.div>
+  );
+});
+
+VirtualGalleryItem.displayName = 'VirtualGalleryItem';
 
 export default GallerySection;

@@ -1,8 +1,13 @@
 import React from 'react';
 import { useTranslation } from 'next-i18next';
 import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import { Track } from '../../types/track';
-import AudioPlayer from './AudioPlayer';
+
+const AudioPlayer = dynamic(() => import('./AudioPlayer'), {
+    loading: () => <div className="h-20 w-full animate-pulse bg-gray-100 rounded-lg" />,
+    ssr: false,
+});
 
 export interface TrackCardProps {
     track: Track;

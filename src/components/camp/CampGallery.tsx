@@ -27,7 +27,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {camp.images.map((img, index) => (
             <motion.div
-              key={index}
+              key={img}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -42,6 +42,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
                 sizes="(max-width: 768px) 100vw, 33vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
                 priority={index < 3}
+                loading={index < 3 ? 'eager' : 'lazy'}
               />
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300" />
             </motion.div>
