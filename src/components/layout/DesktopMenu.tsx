@@ -41,7 +41,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(({
     };
 
     return (
-        <div className="hidden md:flex flex-wrap items-center gap-x-6 gap-y-2">
+        <div className="hidden md:flex flex-wrap items-center gap-x-4 lg:gap-x-6 gap-y-2">
             <Link
                 href={ROUTES.HOME}
                 className={`${getTextColor(pathname === ROUTES.HOME)} transition-colors duration-300 font-display relative`}
@@ -89,7 +89,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(({
                     </Link>
                 ))}
 
-            <div className="pl-4 border-l border-white/30 ml-4">
+            <div className="pl-2 ml-2 sm:pl-4 sm:ml-4 border-l border-white/30">
                 <LanguageSwitcher isScrolled={isScrolled} />
             </div>
         </div>
