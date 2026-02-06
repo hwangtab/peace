@@ -61,11 +61,11 @@ const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
                     {t('camp.label_participants')} ({camp.participants.length})
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {camp.participants.slice(0, 3).map((participant, index) => {
+                    {camp.participants.slice(0, 3).map((participant) => {
                       const name = typeof participant === 'string' ? participant : participant.name;
                       return (
                         <span
-                          key={index}
+                          key={name}
                           className="bg-ocean-sand text-jeju-ocean px-2 py-1 rounded text-xs font-medium"
                         >
                           {name}

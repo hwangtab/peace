@@ -7,6 +7,8 @@ import '../src/index.css';
 import Navigation from '../src/components/layout/Navigation';
 import Footer from '../src/components/layout/Footer';
 
+import { NavigationProvider } from '../src/context/NavigationContext';
+
 function App({ Component, pageProps }: AppProps) {
   const { locale } = useRouter();
 
@@ -17,11 +19,11 @@ function App({ Component, pageProps }: AppProps) {
   }, [locale]);
 
   return (
-    <>
+    <NavigationProvider>
       <Navigation />
       <Component {...pageProps} />
       <Footer />
-    </>
+    </NavigationProvider>
   );
 }
 

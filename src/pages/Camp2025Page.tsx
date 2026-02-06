@@ -1,5 +1,12 @@
 import CampDetailPage from './CampDetailPage';
+import { Musician } from '../types/musician';
 
-const Camp2025Page = () => <CampDetailPage campId="camp-2025" />;
+interface CampPageProps {
+    initialMusicians?: Musician[];
+}
+
+const Camp2025Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => (
+    <CampDetailPage campId="camp-2025" initialMusicians={initialMusicians} />
+);
 
 export default Camp2025Page;

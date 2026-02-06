@@ -8,7 +8,13 @@ import { getEventSchema } from '../utils/structuredData';
 import { getFullUrl } from '../config/env';
 import { formatOrdinal } from '../utils/format';
 
-const Camp2026Page = () => {
+import { Musician } from '../types/musician';
+
+interface CampPageProps {
+  initialMusicians?: Musician[];
+}
+
+const Camp2026Page: React.FC<CampPageProps> = () => {
   const { t, i18n } = useTranslation();
   const campList = getCamps(i18n.language);
   const camp2026 = campList.find(camp => camp.id === 'camp-2026');

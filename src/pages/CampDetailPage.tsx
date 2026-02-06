@@ -18,6 +18,7 @@ import { formatOrdinal } from '../utils/format';
 
 interface CampDetailPageProps {
   campId: string;
+  initialMusicians?: Musician[];
 }
 
 const getCampOrdinal = (year: number, campList: Array<{ year: number }>): number => {
@@ -25,21 +26,23 @@ const getCampOrdinal = (year: number, campList: Array<{ year: number }>): number
   return campIndex >= 0 ? campIndex + 1 : 0;
 };
 
-const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId }) => {
+const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId, initialMusicians = [] }) => {
   const { t, i18n } = useTranslation();
   const campList = getCamps(i18n.language);
   const camp = campList.find(c => c.id === campId);
-  const [musicians, setMusicians] = useState<Musician[]>([]);
+  const [musicians, setMusicians] = useState<Musician[]>(initialMusicians);
   const infoRef = useRef(null);
   const isInfoInView = useInView(infoRef, { once: true, margin: "-100px" });
 
   useEffect(() => {
+    if (initialMusicians.length > 0) return;
+
     const loadMusicians = async () => {
       const data = await getMusicians(i18n.language);
       setMusicians(data);
     };
     loadMusicians();
-  }, [i18n.language]);
+  }, [i18n.language, initialMusicians.length]);
 
   if (!camp) {
     return (

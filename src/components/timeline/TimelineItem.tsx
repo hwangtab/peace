@@ -1,7 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'next-i18next';
 import { TimelineEvent } from '../../data/timeline';
+
+import TimelineCardContent from './subcomponents/TimelineCardContent';
+import TimelineMobileCard from './subcomponents/TimelineMobileCard';
+import TimelineYearLabel from './subcomponents/TimelineYearLabel';
 
 interface TimelineItemProps {
     event: TimelineEvent;
@@ -20,8 +23,6 @@ const eventTypeBorder = {
     album: 'border-golden-sun',
     milestone: 'border-sunset-coral'
 };
-
-
 
 const containerVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -43,8 +44,6 @@ const mobileContentVariants = {
 
 // Memoized component to prevent unnecessary re-renders
 const TimelineItem = React.memo<TimelineItemProps>(({ event, isLeft }) => {
-    const { t } = useTranslation();
-
     // Content variants depend on isLeft, so keep them inside
     const contentVariants = {
         hidden: { opacity: 0, x: isLeft ? -20 : 20 },
@@ -54,74 +53,6 @@ const TimelineItem = React.memo<TimelineItemProps>(({ event, isLeft }) => {
             transition: { duration: 0.6, delay: 0.2 }
         }
     };
-
-    const CardContent = () => (
-        <div className="bg-cloud-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all border border-ocean-mist/20">
-            <span className={`inline-block px-3 py-1 rounded-full text-white text-xs font-bold ${eventTypeColor[event.eventType]} mb-3 shadow-sm`}>
-                {t(`timeline.labels.${event.eventType}`)}
-            </span>
-            <h3 className="typo-h3 text-jeju-ocean mb-2 text-balance break-words">{t(event.titleKey)}</h3>
-            <p className="typo-body text-coastal-gray mb-3 text-sm text-pretty break-words">{t(event.descriptionKey)}</p>
-            {event.locationKey && (
-                <p className="text-xs text-ocean-mist flex items-center font-medium">
-                    <span className="mr-1">📍</span> {t(event.locationKey)}
-                </p>
-            )}
-        </div>
-    );
-
-    const YearLabel = ({ align }: { align: 'left' | 'right' }) => (
-        <div className={`flex flex-col justify-center h-full ${align === 'right' ? 'items-end' : 'items-start'}`}>
-            <span className="text-3xl font-bold text-jeju-ocean/80 font-display">{event.year}</span>
-            {event.month && (
-                <span className="text-ocean-mist font-medium">{t(`timeline.month_${event.month}`)}</span>
-            )}
-        </div>
-    );
-
-    const MobileCard = () => (
-        <motion.div
-            variants={mobileContentVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            className="bg-cloud-white rounded-xl p-4 shadow-sm border border-ocean-mist/20 w-full"
-        >
-            {/* 연도 레이블 - 모바일에서 카드 안에 */}
-            <div className="flex items-baseline gap-2 mb-3">
-                <span className="text-2xl font-bold text-jeju-ocean/80 font-display">
-                    {event.year}
-                </span>
-                {event.month && (
-                    <span className="text-sm text-ocean-mist font-medium">
-                        {t(`timeline.month_${event.month}`)}
-                    </span>
-                )}
-            </div>
-
-            {/* 이벤트 타입 뱃지 */}
-            <span className={`inline-block px-3 py-1 rounded-full text-white text-xs font-bold ${eventTypeColor[event.eventType]} mb-3 shadow-sm`}>
-                {t(`timeline.labels.${event.eventType}`)}
-            </span>
-
-            {/* 제목 */}
-            <h3 className="text-lg font-medium text-jeju-ocean mb-2 font-display text-balance break-words">
-                {t(event.titleKey)}
-            </h3>
-
-            {/* 설명 */}
-            <p className="text-sm text-coastal-gray mb-3 leading-relaxed text-pretty break-words">
-                {t(event.descriptionKey)}
-            </p>
-
-            {/* 위치 */}
-            {event.locationKey && (
-                <p className="text-xs text-ocean-mist flex items-center font-medium">
-                    <span className="mr-1">📍</span> {t(event.locationKey)}
-                </p>
-            )}
-        </motion.div>
-    );
 
     return (
         <motion.div
@@ -135,11 +66,11 @@ const TimelineItem = React.memo<TimelineItemProps>(({ event, isLeft }) => {
             <div className="hidden md:flex md:w-5/12 md:pr-8 md:justify-end">
                 {isLeft ? (
                     <motion.div variants={contentVariants} className="w-full text-right">
-                        <CardContent />
+                        <TimelineCardContent event={event} eventTypeColor={eventTypeColor} />
                     </motion.div>
                 ) : (
                     <div className="w-full">
-                        <YearLabel align="right" />
+                        <TimelineYearLabel event={event} align="right" />
                     </div>
                 )}
             </div>
@@ -158,18 +89,22 @@ const TimelineItem = React.memo<TimelineItemProps>(({ event, isLeft }) => {
             <div className="w-full md:w-5/12 md:pl-8 flex justify-start">
                 {/* Mobile view: Always show full card with year inside */}
                 <div className="block md:hidden w-full">
-                    <MobileCard />
+                    <TimelineMobileCard
+                        event={event}
+                        eventTypeColor={eventTypeColor}
+                        mobileContentVariants={mobileContentVariants}
+                    />
                 </div>
 
                 {/* Desktop view: Show conditional layout (left/right content) */}
                 <div className="hidden md:block w-full">
                     {!isLeft ? (
                         <motion.div variants={contentVariants} className="w-full text-left">
-                            <CardContent />
+                            <TimelineCardContent event={event} eventTypeColor={eventTypeColor} />
                         </motion.div>
                     ) : (
                         <div className="w-full">
-                            <YearLabel align="left" />
+                            <TimelineYearLabel event={event} align="left" />
                         </div>
                     )}
                 </div>
