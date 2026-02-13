@@ -85,7 +85,7 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
 
     const alternateLinks = LOCALES.map((loc) => ({
         locale: loc,
-        href: getFullUrl(`/${loc}${pathWithoutLocale}`),
+        href: getFullUrl(loc === DEFAULT_LOCALE ? pathWithoutLocale : `/${loc}${pathWithoutLocale}`),
     }));
 
     return (
@@ -101,7 +101,7 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
             {alternateLinks.map((link) => (
                 <link key={link.locale} rel="alternate" hrefLang={link.locale} href={link.href} />
             ))}
-            <link rel="alternate" hrefLang="x-default" href={getFullUrl(`/${DEFAULT_LOCALE}${pathWithoutLocale}`)} />
+            <link rel="alternate" hrefLang="x-default" href={getFullUrl(pathWithoutLocale)} />
 
             {/* 로봇 메타 태그 */}
             <meta name="robots" content="index, follow" />
