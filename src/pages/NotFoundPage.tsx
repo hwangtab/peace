@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import PageLayout from '../components/layout/PageLayout';
 import Button from '../components/common/Button';
 
@@ -17,9 +16,7 @@ const NotFoundPage = () => {
                 <p className="text-gray-600 mb-8 max-w-md">
                     {t('notFound.message')}
                 </p>
-                <Link href="/">
-                    <Button variant="primary">{t('notFound.homeButton')}</Button>
-                </Link>
+                <Button to="/" variant="primary">{t('notFound.homeButton')}</Button>
             </div>
         </PageLayout>
     );

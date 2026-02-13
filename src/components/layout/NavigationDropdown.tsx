@@ -77,8 +77,9 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(({
     <div className="relative group" ref={dropdownRef}>
       <button
         onClick={() => setOpen(!open)}
-        className={`flex items-center gap-1 ${getTextColor()} transition-colors duration-300 font-display focus:outline-none text-balance`}
+        className={`flex items-center gap-1 ${getTextColor()} transition-colors duration-300 font-display focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm text-balance`}
         aria-expanded={open}
+        aria-haspopup="menu"
       >
         <span className="relative">
           {label}

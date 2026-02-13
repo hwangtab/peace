@@ -21,7 +21,9 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <NavigationProvider>
       <Navigation />
-      <Component {...pageProps} />
+      <main id="main-content">
+        <Component {...pageProps} />
+      </main>
       <Footer />
     </NavigationProvider>
   );
