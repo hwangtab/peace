@@ -6,6 +6,8 @@ import fs from 'fs';
 import path from 'path';
 import { GalleryImage } from '../src/types/gallery';
 
+const GALLERY_SSG_PREVIEW_COUNT = 24;
+
 export default function WrappedPage({ initialImages }: { initialImages: GalleryImage[] }) {
   return <Page initialImages={initialImages} />;
 }
@@ -24,7 +26,13 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
       }
       return [];
     });
-    initialImages = results.flat();
+    initialImages = results
+      .flat()
+      .sort((a, b) => {
+        if (a.eventYear !== b.eventYear) return (b.eventYear || 0) - (a.eventYear || 0);
+        return b.id - a.id;
+      })
+      .slice(0, GALLERY_SSG_PREVIEW_COUNT);
   } catch (error) {
     console.error('Error in getStaticProps for gallery:', error);
   }

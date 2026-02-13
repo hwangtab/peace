@@ -26,7 +26,8 @@ export default function VideoPage({
   const [videos, setVideos] = useState<VideoItem[]>(initialVideos);
 
   useEffect(() => {
-    if (initialVideos.length > 0 && i18n.language === initialLocale) {
+    if (i18n.language === initialLocale) {
+      setVideos(initialVideos);
       return;
     }
 
