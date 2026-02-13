@@ -1,9 +1,8 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import { GalleryImage } from '../types/gallery';
 import { getGalleryImages } from '../api/gallery';
 import { filterByEvent, isValidFilter } from '../utils/filtering';
-import { GALLERY_CONFIG } from '../constants/config';
 
 interface UseGalleryImagesReturn {
   images: GalleryImage[];
