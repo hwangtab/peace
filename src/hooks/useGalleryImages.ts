@@ -13,11 +13,18 @@ interface UseGalleryImagesReturn {
   isLoading: boolean;
 }
 
+const EMPTY_GALLERY_IMAGES: GalleryImage[] = [];
+
+const sortGalleryImages = (items: GalleryImage[]) => items.slice().sort((a, b) => {
+  if (a.eventYear !== b.eventYear) return (b.eventYear || 0) - (a.eventYear || 0);
+  return b.id - a.id;
+});
+
 /**
  * Custom hook for managing gallery image loading, filtering, and pagination.
  * Extracts complex state logic from GallerySection for better maintainability.
  */
-export const useGalleryImages = (initialImages: GalleryImage[] = []): UseGalleryImagesReturn => {
+export const useGalleryImages = (initialImages: GalleryImage[] = EMPTY_GALLERY_IMAGES): UseGalleryImagesReturn => {
   const router = useRouter();
   const [images, setImages] = useState<GalleryImage[]>(initialImages);
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
@@ -32,27 +39,25 @@ export const useGalleryImages = (initialImages: GalleryImage[] = []): UseGallery
     }
   }, [router.isReady, router.query.filter]);
 
-  // Load images on mount if not provided via props
+  // Always fetch full gallery in background.
+  // When initialImages exist, render them immediately and replace with full data after fetch.
   useEffect(() => {
     if (initialImages.length > 0) {
+      setImages(sortGalleryImages(initialImages));
       setIsLoading(false);
-      return;
+    } else {
+      setIsLoading(true);
     }
 
     let isCancelled = false;
 
     const loadImages = async () => {
-      setIsLoading(true);
       try {
         const allFetchedImages = await getGalleryImages();
 
         if (isCancelled) return;
 
-        const sortedImages = allFetchedImages.sort((a, b) => {
-          if (a.eventYear !== b.eventYear) return (b.eventYear || 0) - (a.eventYear || 0);
-          return b.id - a.id;
-        });
-
+        const sortedImages = sortGalleryImages(allFetchedImages);
         setImages(sortedImages);
       } catch (error) {
         console.error('Failed to load gallery images:', error);
@@ -68,7 +73,7 @@ export const useGalleryImages = (initialImages: GalleryImage[] = []): UseGallery
     return () => {
       isCancelled = true;
     };
-  }, [initialImages.length]);
+  }, [initialImages]);
 
   // Filter images based on selected filter
   const filteredImages = useMemo(

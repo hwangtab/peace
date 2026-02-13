@@ -73,7 +73,8 @@ export default function PressPage({
   const [pressItems, setPressItems] = useState<PressItem[]>(normalizePressItems(initialPressItems));
 
   useEffect(() => {
-    if (initialPressItems.length > 0 && i18n.language === initialLocale) {
+    if (i18n.language === initialLocale) {
+      setPressItems(normalizePressItems(initialPressItems));
       return;
     }
 

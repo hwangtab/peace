@@ -12,6 +12,7 @@ interface WrappedPageProps {
   initialVideos: VideoItem[];
   initialMusicians: Musician[];
   initialImages: GalleryImage[];
+  initialLocale: string;
 }
 
 export default function WrappedPage(props: WrappedPageProps) {
@@ -50,8 +51,8 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
   const initialVideos = getLocalizedData<VideoItem>('videos.json');
   const initialMusicians = getLocalizedData<Musician>('musicians.json');
 
-  // Gallery images (language independent, but currently fetched from multiple files)
-  const categories = ['album', 'camp2023', 'camp2025'];
+  // Gallery preview for SSG payload size optimization (full data is fetched client-side)
+  const categories = ['album'];
   let initialImages: GalleryImage[] = [];
   try {
     initialImages = categories.flatMap(cat => {
@@ -68,6 +69,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
       initialVideos,
       initialMusicians,
       initialImages,
+      initialLocale: lang,
     },
     revalidate: 3600,
   };
