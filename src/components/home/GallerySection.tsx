@@ -17,11 +17,13 @@ interface GallerySectionProps {
   initialImages?: GalleryImage[];
 }
 
+const EMPTY_GALLERY_IMAGES: GalleryImage[] = [];
+
 const GallerySection: React.FC<GallerySectionProps> = React.memo(({
   className,
   enableSectionWrapper = true,
   hideSectionHeader = false,
-  initialImages = []
+  initialImages = EMPTY_GALLERY_IMAGES
 }) => {
   const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);

@@ -23,12 +23,14 @@ interface AlbumAboutPageProps {
   initialVideos?: VideoItem[];
   initialMusicians?: Musician[];
   initialImages?: GalleryImage[];
+  initialLocale?: string;
 }
 
 const AlbumAboutPage = ({
   initialVideos = [],
   initialMusicians = [],
-  initialImages = []
+  initialImages = [],
+  initialLocale = 'ko',
 }: AlbumAboutPageProps) => {
   const { t, i18n } = useTranslation();
   const ref = useRef(null);
@@ -47,23 +49,33 @@ const AlbumAboutPage = ({
     }
   }, [initialImages]);
 
-  // Load videos and musicians (language-dependent) if not provided or language changed
+  // Keep SSG-provided locale data in sync, fetch only when client locale differs.
   useEffect(() => {
-    // Only fetch if initial data is missing OR if initial data language doesn't match current language
-    // But since getStaticProps handles language, we only need to refetch if language changes after mount
+    if (i18n.language === initialLocale) {
+      setVideos(initialVideos);
+      setMusicians(initialMusicians);
+      return;
+    }
+
+    let isCancelled = false;
+
     const loadData = async () => {
       const [allVideos, allMusicians] = await Promise.all([
         getVideos(i18n.language),
         getMusicians(i18n.language),
       ]);
-      setVideos(allVideos);
-      setMusicians(allMusicians);
+      if (!isCancelled) {
+        setVideos(allVideos);
+        setMusicians(allMusicians);
+      }
     };
 
-    if (initialVideos.length === 0 || initialMusicians.length === 0) {
-      loadData();
-    }
-  }, [i18n.language, initialVideos.length, initialMusicians.length]); // Keep language dependency to refetch on lang switch
+    loadData();
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [i18n.language, initialLocale, initialMusicians, initialVideos]);
 
   const handleMusicianClick = useCallback((musicianId: number | null) => {
     if (musicianId) {

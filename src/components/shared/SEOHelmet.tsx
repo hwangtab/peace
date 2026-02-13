@@ -29,10 +29,16 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
 }) => {
     const { t, i18n } = useTranslation();
     const router = useRouter();
+    const locale = router.locale || i18n.language || DEFAULT_LOCALE;
     const finalTitle = title || t('seo.default.title');
     const finalDescription = description || t('seo.default.description');
     const finalKeywords = keywords || t('seo.default.keywords');
-    const fullCanonicalUrl = canonicalUrl || getFullUrl(router.asPath || '/');
+    const asPath = router.asPath.split('?')[0] || '/';
+    const pathWithoutLocale = LOCALES.some((loc) => asPath === `/${loc}` || asPath.startsWith(`/${loc}/`))
+        ? asPath.replace(new RegExp(`^/(${LOCALES.join('|')})`), '') || '/'
+        : asPath;
+    const canonicalPath = locale === DEFAULT_LOCALE ? pathWithoutLocale : `/${locale}${pathWithoutLocale}`;
+    const fullCanonicalUrl = canonicalUrl || getFullUrl(canonicalPath);
 
     // Ensure ogImage is a full URL (if it's a relative path, convert it)
     const fullOgImage = ogImage.startsWith('http') ? ogImage : getFullUrl(ogImage);
@@ -74,14 +80,8 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
         id: 'Indonesian',
     };
 
-    const locale = router.locale || i18n.language;
     const ogLocale = ogLocaleMap[locale] || locale.replace('-', '_');
     const languageName = languageNameMap[locale] || locale;
-
-    const asPath = router.asPath.split('?')[0] || '/';
-    const pathWithoutLocale = LOCALES.some((loc) => asPath === `/${loc}` || asPath.startsWith(`/${loc}/`))
-        ? asPath.replace(new RegExp(`^/(${LOCALES.join('|')})`), '') || '/'
-        : asPath;
 
     const alternateLinks = LOCALES.map((loc) => ({
         locale: loc,
