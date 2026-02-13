@@ -11,19 +11,40 @@ import PageHero from '../common/PageHero';
 import VideoCard from './VideoCard';
 import { getCollectionPageSchema } from '../../utils/structuredData';
 
-export default function VideoPage() {
+interface VideoPageProps {
+  initialVideos?: VideoItem[];
+  initialLocale?: string;
+}
+
+export default function VideoPage({
+  initialVideos = [],
+  initialLocale = 'ko',
+}: VideoPageProps) {
   const { t, i18n } = useTranslation();
   const router = useRouter();
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
-  const [videos, setVideos] = useState<VideoItem[]>([]);
+  const [videos, setVideos] = useState<VideoItem[]>(initialVideos);
 
   useEffect(() => {
+    if (initialVideos.length > 0 && i18n.language === initialLocale) {
+      return;
+    }
+
+    let isCancelled = false;
+
     const loadVideos = async () => {
       const data = await getVideos(i18n.language);
-      setVideos(data);
+      if (!isCancelled) {
+        setVideos(data);
+      }
     };
+
     loadVideos();
-  }, [i18n.language]);
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [i18n.language, initialLocale, initialVideos]);
 
   // Sync filter with query parameter on mount
   useEffect(() => {

@@ -10,6 +10,17 @@ import EventFilter from '../common/EventFilter';
 import PageLayout from '../../components/layout/PageLayout';
 import PageHero from '../common/PageHero';
 
+interface PressPageProps {
+  initialPressItems?: PressItem[];
+  initialLocale?: string;
+}
+
+const normalizePressItems = (items: PressItem[]): PressItem[] =>
+  items.map((item) => ({
+    ...item,
+    eventType: item.eventType ?? 'album',
+    eventYear: item.eventYear ?? 2024,
+  }));
 
 const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
   const [imgSrc, setImgSrc] = useState(press.imageUrl || '');
@@ -53,18 +64,34 @@ const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
   );
 };
 
-export default function PressPage() {
+export default function PressPage({
+  initialPressItems = [],
+  initialLocale = 'ko',
+}: PressPageProps) {
   const { t, i18n } = useTranslation();
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
-  const [pressItems, setPressItems] = useState<PressItem[]>([]);
+  const [pressItems, setPressItems] = useState<PressItem[]>(normalizePressItems(initialPressItems));
 
   useEffect(() => {
+    if (initialPressItems.length > 0 && i18n.language === initialLocale) {
+      return;
+    }
+
+    let isCancelled = false;
+
     const loadPress = async () => {
       const data = await getPressItems(i18n.language);
-      setPressItems(data);
+      if (!isCancelled) {
+        setPressItems(normalizePressItems(data));
+      }
     };
+
     loadPress();
-  }, [i18n.language]);
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [i18n.language, initialLocale, initialPressItems]);
 
   const breadcrumbs = [
     { name: t('press.breadcrumb_home'), url: "https://peaceandmusic.net/" },
