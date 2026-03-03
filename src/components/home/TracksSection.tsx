@@ -12,11 +12,15 @@ import { config } from '../../config/env';
 interface TracksSectionProps {
   enableSectionWrapper?: boolean;
   hideSectionHeader?: boolean;
+  initialTracks?: Track[];
+  initialLocale?: string;
 }
 
 const TracksSection: React.FC<TracksSectionProps> = ({
   enableSectionWrapper = true,
   hideSectionHeader = false,
+  initialTracks = [],
+  initialLocale = 'ko',
 }) => {
   const { t, i18n } = useTranslation();
   const ref = useRef(null);
@@ -25,13 +29,18 @@ const TracksSection: React.FC<TracksSectionProps> = ({
     amount: 0.1,
   });
 
-  const [tracks, setTracks] = useState<Track[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [tracks, setTracks] = useState<Track[]>(initialTracks);
+  const [isLoading, setIsLoading] = useState(initialTracks.length === 0);
   const [expandedTrackId, setExpandedTrackId] = useState<number | null>(null);
   const [playingTrackId, setPlayingTrackId] = useState<number | null>(null);
 
-  // Load tracks data on mount
+  // Load tracks data on mount or when language changes
   useEffect(() => {
+    if (i18n.language === initialLocale && initialTracks.length > 0) {
+      setTracks(initialTracks);
+      return;
+    }
+
     let isCancelled = false;
 
     const loadTracks = async () => {
@@ -55,7 +64,7 @@ const TracksSection: React.FC<TracksSectionProps> = ({
     return () => {
       isCancelled = true;
     };
-  }, [i18n.language]);
+  }, [i18n.language, initialLocale, initialTracks]);
 
   const handleToggle = useCallback((id: number) => {
     setExpandedTrackId((prev) => (prev === id ? null : id));

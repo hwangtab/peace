@@ -11,10 +11,12 @@ import React from 'react';
 interface MusiciansSectionProps {
   enableSectionWrapper?: boolean;
   hideSectionHeader?: boolean;
+  initialMusicians?: Musician[];
+  initialLocale?: string;
 }
 
 const MusiciansSection: React.FC<MusiciansSectionProps> = React.memo(
-  ({ enableSectionWrapper = true, hideSectionHeader = false }) => {
+  ({ enableSectionWrapper = true, hideSectionHeader = false, initialMusicians = [], initialLocale = 'ko' }) => {
     const { t, i18n } = useTranslation();
     const ref = useRef(null);
     const inView = useInView(ref, {
@@ -22,11 +24,16 @@ const MusiciansSection: React.FC<MusiciansSectionProps> = React.memo(
       amount: 0.1,
     });
 
-    const [musicians, setMusicians] = useState<Musician[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const [musicians, setMusicians] = useState<Musician[]>(initialMusicians);
+    const [isLoading, setIsLoading] = useState(initialMusicians.length === 0);
 
-    // Load musicians data on mount
+    // Load musicians data on mount or when language changes
     useEffect(() => {
+      if (i18n.language === initialLocale && initialMusicians.length > 0) {
+        setMusicians(initialMusicians);
+        return;
+      }
+
       let isCancelled = false;
 
       const loadMusicians = async () => {
@@ -50,7 +57,7 @@ const MusiciansSection: React.FC<MusiciansSectionProps> = React.memo(
       return () => {
         isCancelled = true;
       };
-    }, [i18n.language]);
+    }, [i18n.language, initialLocale, initialMusicians]);
 
     const content = (
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
