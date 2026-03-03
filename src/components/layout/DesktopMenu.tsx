@@ -14,11 +14,6 @@ interface DesktopMenuProps {
     isScrolled: boolean;
 }
 
-
-// ... (other imports)
-
-// ... (interface)
-
 const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(({
     pathname,
     desktopOpenDropdown,
@@ -27,9 +22,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(({
 }) => {
     const { t } = useTranslation();
 
-    // Dynamic text colors based on scroll position
     const getTextColor = (isActive: boolean) => {
-        // ... (existing logic)
         if (isScrolled) {
             return isActive
                 ? 'text-jeju-ocean font-bold'

@@ -1,32 +1,19 @@
 const path = require('path');
 const stressPostProcessor = require('./src/i18n/stressPostProcessor');
+const { LOCALES, DEFAULT_LOCALE } = require('./src/constants/locales.js');
 
 const isStressEnabled = ['1', 'true'].includes(process.env.NEXT_PUBLIC_I18N_STRESS);
 
-const locales = [
-  'ko',
-  'en',
-  'es',
-  'fr',
-  'de',
-  'pt',
-  'ru',
-  'ar',
-  'ja',
-  'zh-Hans',
-  'zh-Hant',
-  'hi',
-  'id',
-];
+const locales = [...LOCALES];
 
 module.exports = {
   i18n: {
-    defaultLocale: 'ko',
+    defaultLocale: DEFAULT_LOCALE,
     locales,
   },
   localePath: path.resolve('./public/locales'),
   reloadOnPrerender: false,
-  fallbackLng: 'ko',
+  fallbackLng: DEFAULT_LOCALE,
   defaultNS: 'translation',
   ns: ['translation'],
   use: [stressPostProcessor],
