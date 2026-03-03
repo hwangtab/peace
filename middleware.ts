@@ -1,21 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-// Edge middleware cannot import Node-only modules from next-i18next config.
-const LOCALES = [
-  'ko',
-  'en',
-  'es',
-  'fr',
-  'de',
-  'pt',
-  'ru',
-  'ar',
-  'ja',
-  'zh-Hans',
-  'zh-Hant',
-  'hi',
-  'id',
-];
-const DEFAULT_LOCALE = 'ko';
+import { LOCALES, DEFAULT_LOCALE, isSupportedLocale as checkSupportedLocale } from './src/constants/locales';
 
 const PUBLIC_FILE = /\.(.*)$/;
 
@@ -52,7 +36,7 @@ const COUNTRY_TO_LOCALE: Record<string, string> = {
   SY: 'ar',
 };
 
-const isSupportedLocale = (locale?: string) => !!locale && LOCALES.includes(locale as typeof LOCALES[number]);
+const isSupportedLocale = checkSupportedLocale;
 
 const parseAcceptLanguage = (header: string | null): string[] => {
   if (!header) return [];

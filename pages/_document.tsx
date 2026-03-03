@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
+import { getTextDirection } from '../src/utils/rtl';
 
 class MyDocument extends Document {
   static override async getInitialProps(ctx: DocumentContext) {
@@ -7,10 +8,9 @@ class MyDocument extends Document {
   }
 
   override render() {
-    // __NEXT_DATA__ contains the locale info passed from getStaticProps
     const { locale } = this.props.__NEXT_DATA__;
     const currentLocale = locale || 'ko';
-    const dir = currentLocale === 'ar' ? 'rtl' : 'ltr';
+    const dir = getTextDirection(currentLocale);
 
       return (
         <Html lang={currentLocale} dir={dir}>

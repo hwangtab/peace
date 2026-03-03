@@ -1,17 +1,6 @@
 import { EventType } from "../types/event";
+import { PressItem } from "../types/press";
 import { getLanguageCode } from "../utils/localization";
-
-export interface PressItem {
-  id: number;
-  title: string;          // 기사 제목
-  publisher: string;      // 언론사
-  date: string;          // 보도 날짜
-  url: string;           // 기사 링크
-  description: string;   // 기사 요약 또는 발췌
-  imageUrl?: string;     // 관련 이미지
-  eventType?: EventType; // 'camp' or 'album'
-  eventYear?: number;    // 2023, 2024, 2025, etc.
-}
 
 // All press items are about the 2024 album project by default
 const pressItemsKo: PressItem[] = [
@@ -197,15 +186,6 @@ const pressItemsKo: PressItem[] = [
   },
   {
     id: 21,
-    title: "전쟁의 상처를 노래하다 - 자이(Jai)와 HANASH의 '분홍색 패딩 소녀'",
-    publisher: "뉴스아트",
-    date: "2024-10-25",
-    url: "https://www.news-art.co.kr/news/article.html?no=32649",
-    description: "순수한 한 소녀의 이야기를 통해 전쟁의 비극을 더욱 선명하게 드러내는 이 곡은, 반전의 메시지를 전달하는 새로운 방식을 보여준다. 자이의 독특한 보컬과 HANASH의 실험적 사운드의 만남은 전쟁이라는 무거운 주제를 새로운 관점에서 조명하는데 성공했다. 무고한 영혼의 상처를 통해 전쟁의 참상을 이야기하는 이 시도는, 우리에게 더 깊은 울림을 준다.",
-    imageUrl: "https://www.news-art.co.kr/data/photos/20241043/art_17298221431005_afab11.jpg"
-  },
-  {
-    id: 22,
     title: "전쟁의 상처를 노래하다 - 자이(Jai)와 HANASH의 '분홍색 패딩 소녀'",
     publisher: "뉴스아트",
     date: "2024-10-25",
@@ -494,15 +474,6 @@ const pressItemsEn: PressItem[] = [
   },
   {
     id: 21,
-    title: "Singing the wounds of war - Jai and HANASH's 'Pink Padded Girl'",
-    publisher: "News Art",
-    date: "2024-10-25",
-    url: "https://www.news-art.co.kr/news/article.html?no=32649",
-    description: "Through the story of an innocent girl, the song reveals the tragedy of war and presents a new way to convey anti-war messages. Jai's distinctive vocals and HANASH's experimental sound illuminate the heavy theme from a new angle, leaving a deeper resonance.",
-    imageUrl: "https://www.news-art.co.kr/data/photos/20241043/art_17298221431005_afab11.jpg"
-  },
-  {
-    id: 22,
     title: "Singing the wounds of war - Jai and HANASH's 'Pink Padded Girl'",
     publisher: "News Art",
     date: "2024-10-25",

@@ -6,6 +6,7 @@ import nextI18NextConfig from '../next-i18next.config';
 import '../src/index.css';
 import Navigation from '../src/components/layout/Navigation';
 import Footer from '../src/components/layout/Footer';
+import { getTextDirection } from '../src/utils/rtl';
 
 import { NavigationProvider } from '../src/context/NavigationContext';
 
@@ -14,7 +15,7 @@ function App({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     if (typeof document === 'undefined') return;
-    const dir = locale === 'ar' ? 'rtl' : 'ltr';
+    const dir = getTextDirection(locale || 'ko');
     document.documentElement.setAttribute('dir', dir);
   }, [locale]);
 
