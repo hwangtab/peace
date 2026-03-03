@@ -4,8 +4,14 @@ import MusiciansSection from '../../components/home/MusiciansSection';
 import PageLayout from '../../components/layout/PageLayout';
 import PageHero from '../../components/common/PageHero';
 import { getCollectionPageSchema } from '../../utils/structuredData';
+import { Musician } from '../../types/musician';
 
-const AlbumMusiciansPage = () => {
+interface AlbumMusiciansPageProps {
+  initialMusicians?: Musician[];
+  initialLocale?: string;
+}
+
+const AlbumMusiciansPage = ({ initialMusicians = [], initialLocale = 'ko' }: AlbumMusiciansPageProps) => {
   const { t } = useTranslation();
   const collectionSchema = getCollectionPageSchema({
     name: t('album.musicians_page_title'),
@@ -28,7 +34,12 @@ const AlbumMusiciansPage = () => {
         backgroundImage="/images-webp/gallery/2.webp"
       />
       <div className="pt-12">
-        <MusiciansSection enableSectionWrapper={false} hideSectionHeader={true} />
+        <MusiciansSection
+          enableSectionWrapper={false}
+          hideSectionHeader={true}
+          initialMusicians={initialMusicians}
+          initialLocale={initialLocale}
+        />
       </div>
     </PageLayout>
   );
