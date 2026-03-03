@@ -27,7 +27,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ className = '', isS
 
     const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const nextLang = event.target.value;
-        i18n.changeLanguage(nextLang);
+        document.cookie = `NEXT_LOCALE=${nextLang}; path=/; max-age=31536000; samesite=lax`;
         router.push(router.asPath, router.asPath, { locale: nextLang });
     };
 

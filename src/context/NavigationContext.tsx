@@ -1,11 +1,9 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 
 interface NavigationContextType {
     previousPath: string | null;
     isNavigating: boolean;
-    lastNavigatedYear: number | null;
-    setLastNavigatedYear: (year: number | null) => void;
 }
 
 const NavigationContext = createContext<NavigationContextType | undefined>(undefined);
@@ -14,17 +12,18 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     const router = useRouter();
     const [previousPath, setPreviousPath] = useState<string | null>(null);
     const [isNavigating, setIsNavigating] = useState(false);
-    const [lastNavigatedYear, setLastNavigatedYear] = useState<number | null>(null);
+    const previousPathRef = useRef<string | null>(null);
 
     useEffect(() => {
-        const handleStart = (_url: string) => {
-            if (_url !== router.asPath) {
+        const handleStart = (url: string) => {
+            if (url !== router.asPath) {
+                previousPathRef.current = router.asPath;
                 setIsNavigating(true);
             }
         };
 
         const handleComplete = () => {
-            setPreviousPath(router.asPath);
+            setPreviousPath(previousPathRef.current);
             setIsNavigating(false);
         };
 
@@ -44,16 +43,16 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     }, [router]);
 
     return (
-        <NavigationContext.Provider value={{ previousPath, isNavigating, lastNavigatedYear, setLastNavigatedYear }}>
+        <NavigationContext.Provider value={{ previousPath, isNavigating }}>
             {children}
         </NavigationContext.Provider>
     );
 };
 
-export const useNavigation = () => {
+export const useNavigationState = () => {
     const context = useContext(NavigationContext);
     if (context === undefined) {
-        throw new Error('useNavigation must be used within a NavigationProvider');
+        throw new Error('useNavigationState must be used within a NavigationProvider');
     }
     return context;
 };
