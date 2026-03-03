@@ -9,8 +9,14 @@ import GallerySection from '../src/components/home/GallerySection';
 import SEOHelmet from '../src/components/shared/SEOHelmet';
 import WaveDivider from '../src/components/common/WaveDivider';
 import { getWebSiteSchema, getOrganizationSchema, getFAQSchema } from '../src/utils/structuredData';
+import { GalleryImage } from '../src/types/gallery';
+import { loadGalleryImages } from '../src/utils/dataLoader';
 
-export default function HomePage() {
+interface HomePageProps {
+  initialGalleryImages?: GalleryImage[];
+}
+
+export default function HomePage({ initialGalleryImages }: HomePageProps) {
   const { t, i18n } = useTranslation();
   const faqItems = t('faqs.items', { returnObjects: true, defaultValue: [] }) as unknown;
   const faqs = Array.isArray(faqItems) ? (faqItems as Array<{ q: string; a: string }>) : [];
@@ -33,15 +39,19 @@ export default function HomePage() {
       <WaveDivider className="text-sunlight-glow -mt-[60px] sm:-mt-[100px] relative z-10" />
       <TimelineSection />
       <WaveDivider className="text-golden-sun -mt-[60px] sm:-mt-[100px] relative z-10" />
-      <GallerySection />
+      <GallerySection initialImages={initialGalleryImages} />
     </div>
   );
 }
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
+  const resolvedLocale = locale ?? 'ko';
+  const allImages = loadGalleryImages<GalleryImage>();
+
   return {
     props: {
-      ...(await serverSideTranslations(locale ?? 'ko', ['translation'], nextI18NextConfig)),
+      ...(await serverSideTranslations(resolvedLocale, ['translation'], nextI18NextConfig)),
+      initialGalleryImages: allImages.slice(0, 24),
     },
   };
 }
