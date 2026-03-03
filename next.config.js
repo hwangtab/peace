@@ -26,6 +26,25 @@ const nextConfig = {
       { protocol: 'http', hostname: 'www.newsnjeju.com' },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/musicians',
+        destination: '/album/musicians',
+        permanent: true,
+      },
+      {
+        source: '/tracks',
+        destination: '/album/tracks',
+        permanent: true,
+      },
+      {
+        source: '/camps',
+        destination: '/camps/2026',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
