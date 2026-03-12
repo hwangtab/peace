@@ -221,7 +221,9 @@
         "venue_2026": "Taman Olahraga Gangjeong",
         "keywords_base": "Desa Gangjeong, Musik perdamaian, Gerakan anti-perang",
         "description_2026": "Angin perdamaian terus berhembus. Lagu perdamaian ketiga akan bergema di Gangjeong pada Juni 2026.",
-        "expected_2026": "32 tim musisi telah dikonfirmasi\nSekitar 50–60 tim diperkirakan",
+        "expected_2026": "55 tim musisi telah dikonfirmasi",
+        "lineup_count": "{{count}} tim dikonfirmasi",
+        "ticketing_2026": "Pesan tiket di Tumblbug",
         "brand_line": "Kemah Musik Perdamaian Gangjeong, Jeju"
     },
     "album": {

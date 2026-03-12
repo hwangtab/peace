@@ -221,7 +221,9 @@
         "venue_2026": "江汀体育公园",
         "keywords_base": "江汀村, 和平音乐, 反战运动",
         "description_2026": "和平之风持续吹拂。第三首和平之歌将在2026年6月于江汀响起。",
-        "expected_2026": "已确认32支音乐人团队\n预计约50–60支团队",
+        "expected_2026": "已确认55支音乐人团队",
+        "lineup_count": "已确认{{count}}支团队",
+        "ticketing_2026": "在Tumblbug预订门票",
         "brand_line": "济州 江汀和平音乐营"
     },
     "album": {
