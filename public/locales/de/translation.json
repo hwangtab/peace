@@ -221,7 +221,9 @@
         "venue_2026": "Gangjeong Sportpark",
         "keywords_base": "Dorf Gangjeong, Friedensmusik, Antikriegsbewegung",
         "description_2026": "Der Wind des Friedens weht weiter. Das dritte Friedenslied wird im Juni 2026 in Gangjeong erklingen.",
-        "expected_2026": "32 Musiker-Teams bestätigt\nEtwa 50–60 Teams erwartet",
+        "expected_2026": "55 Musiker-Teams bestätigt",
+        "lineup_count": "{{count}} Teams bestätigt",
+        "ticketing_2026": "Tickets auf Tumblbug buchen",
         "brand_line": "Jeju Gangjeong Peace & Music Camp"
     },
     "album": {

@@ -10,7 +10,7 @@ interface CampCardProps {
 
 const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
   const { t } = useTranslation();
-  const isComingSoon = camp.year === 2026;
+  const isComingSoon = !camp.participants || camp.participants.length === 0;
   const cardContent = (
     <>
       <div className="bg-gradient-to-b from-jeju-ocean to-ocean-mist h-48 flex flex-col items-center justify-center p-4 text-center">

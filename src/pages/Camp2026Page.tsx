@@ -1,24 +1,41 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'next-i18next';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { getCamps } from '../data/camps';
 import PageLayout from '../components/layout/PageLayout';
+import Section from '../components/layout/Section';
 import SectionHeader from '../components/common/SectionHeader';
+import WaveDivider from '../components/common/WaveDivider';
+import CampLineup from '../components/camp/CampLineup';
 import { getEventSchema } from '../utils/structuredData';
 import { getFullUrl } from '../config/env';
 import { formatOrdinal } from '../utils/format';
-
+import { getMusicians } from '../api/musicians';
 import { Musician } from '../types/musician';
 
 interface CampPageProps {
   initialMusicians?: Musician[];
 }
 
-const Camp2026Page: React.FC<CampPageProps> = () => {
+const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => {
   const { t, i18n } = useTranslation();
   const campList = getCamps(i18n.language);
   const camp2026 = campList.find(camp => camp.id === 'camp-2026');
   const ordinalLabel = formatOrdinal(3, i18n.language);
+  const [musicians, setMusicians] = useState<Musician[]>(initialMusicians);
+  const infoRef = useRef(null);
+  const isInfoInView = useInView(infoRef, { once: true, margin: '-100px' });
+  const lineupRef = useRef(null);
+  const isLineupInView = useInView(lineupRef, { once: true, margin: '-100px' });
+
+  useEffect(() => {
+    if (initialMusicians.length > 0) return;
+    const loadMusicians = async () => {
+      const data = await getMusicians(i18n.language);
+      setMusicians(data);
+    };
+    loadMusicians();
+  }, [i18n.language, initialMusicians.length]);
 
   if (!camp2026) {
     return (
@@ -35,7 +52,6 @@ const Camp2026Page: React.FC<CampPageProps> = () => {
     );
   }
 
-  // Event Schema construction
   const eventSchema = getEventSchema({
     name: camp2026.title,
     startDate: camp2026.startDate,
@@ -52,45 +68,109 @@ const Camp2026Page: React.FC<CampPageProps> = () => {
     }))
   }, i18n.language);
 
+  const participantCount = camp2026.participants?.length || 0;
+
   return (
     <PageLayout
-      title={`${t('camp.ordinal', { num: ordinalLabel })} ${t('app.title')} (2026) - ${t('camp.coming_soon')}`}
-      description={t('seo.default.description')}
-      keywords={t('seo.default.keywords')}
-      background="jeju-ocean"
+      title={`${t('camp.ordinal', { num: ordinalLabel })} ${t('app.title')} (2026)`}
+      description={camp2026.description}
+      keywords={`${t('app.title')}, ${t('camp.ordinal', { num: ordinalLabel })}, 2026, ${t('camp.keywords_base')}`}
       structuredData={eventSchema}
+      disableTopPadding={true}
+      disableBottomPadding={true}
     >
-      <div className="container mx-auto px-4 relative z-10 flex flex-col items-center justify-center min-h-[60vh] text-center">
+      {/* Gradient Hero Section */}
+      <section className="relative min-h-[500px] md:min-h-[600px] flex items-center justify-center text-center overflow-hidden bg-ocean-gradient">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20" />
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="inline-block px-5 py-1.5 bg-white/20 backdrop-blur-sm text-white font-bold rounded-full mb-6 text-sm tracking-wider border border-white/30">
+              2026.06.05 — 07
+            </span>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-3xl w-full bg-white/90 backdrop-blur-sm p-12 rounded-3xl shadow-2xl border border-white/50"
-        >
-          <span className="inline-block px-4 py-1 bg-jeju-ocean text-white font-bold rounded-full mb-6 text-sm tracking-wider">
-            2026 {t('camp.coming_soon')}
-          </span>
+            <h1 className="typo-h1 text-white mb-4 hyphens-auto break-words">{camp2026.title}</h1>
+            {camp2026.slogan && (
+              <p className="typo-subtitle text-gray-100 mb-8 hyphens-auto break-words">{camp2026.slogan}</p>
+            )}
 
-          <SectionHeader
-            title={camp2026.title}
-            subtitle={t('camp.description_2026')}
-          />
+            <div className="flex flex-col sm:flex-row justify-center gap-6 text-white mb-8">
+              <div>
+                <p className="text-sm uppercase tracking-wide text-gray-300 mb-1">{t('camp.label_period')}</p>
+                <p className="text-lg font-medium">{t('camp.date_2026')}</p>
+              </div>
+              <div className="hidden sm:block text-gray-400">|</div>
+              <div>
+                <p className="text-sm uppercase tracking-wide text-gray-300 mb-1">{t('camp.label_location')}</p>
+                <p className="text-lg font-medium">{t('camp.venue_2026')}</p>
+              </div>
+            </div>
 
-          <div className="bg-ocean-sand/30 p-10 rounded-2xl mb-10">
-            <h3 className="typo-h3 mb-6 text-jeju-ocean">
-              {t('camp.date_2026')}<br />{t('camp.venue_2026')}
-            </h3>
-            <p className="typo-body text-gray-700 mb-0 leading-relaxed">
-              {t('camp.expected_2026')}
-            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4 items-center">
+              <span className="inline-block px-6 py-2.5 bg-golden-sun text-gray-900 font-bold rounded-full text-sm shadow-lg">
+                {t('camp.lineup_count', { count: participantCount })}
+              </span>
+              <span className="inline-block px-6 py-2.5 bg-white/15 backdrop-blur-sm text-white font-medium rounded-full text-sm border border-white/30">
+                {t('camp.ticketing_2026')}
+              </span>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Overview Section */}
+      <Section background="ocean-sand" ref={infoRef}>
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInfoInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mx-auto"
+          >
+            <div className="bg-white rounded-lg shadow-sm p-8">
+              <SectionHeader title={t('camp.section_overview')} align="left" className="!mb-6" />
+              <p className="typo-body mb-6">
+                {camp2026.description}
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="bg-ocean-sand rounded-xl p-4 text-center">
+                  <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">{t('camp.label_period')}</p>
+                  <p className="text-sm font-semibold text-jeju-ocean">2026.06.05 — 07</p>
+                </div>
+                <div className="bg-ocean-sand rounded-xl p-4 text-center">
+                  <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">{t('camp.label_location')}</p>
+                  <p className="text-sm font-semibold text-jeju-ocean">{camp2026.location}</p>
+                </div>
+                <div className="bg-ocean-sand rounded-xl p-4 text-center">
+                  <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">{t('camp.label_participants')}</p>
+                  <p className="text-sm font-semibold text-jeju-ocean">{participantCount}{i18n.language === 'ko' ? '팀' : ' teams'}</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </Section>
+
+      <WaveDivider className="text-white -mt-[60px] sm:-mt-[100px] relative z-10" />
+
+      {/* Lineup Section */}
+      {camp2026.participants && camp2026.participants.length > 0 && (
+        <Section background="white" ref={lineupRef}>
+          <div className="container mx-auto px-4">
+            <SectionHeader
+              title={t('camp.section_musicians')}
+              subtitle={t('camp.lineup_count', { count: participantCount })}
+              inView={isLineupInView}
+            />
+            <div className="max-w-4xl mx-auto">
+              <CampLineup participants={camp2026.participants} musicians={musicians} inView={isLineupInView} />
+            </div>
           </div>
-
-          <div className="text-gray-500 text-sm font-medium">
-            {t('camp.brand_line')}
-          </div>
-        </motion.div>
-      </div>
+        </Section>
+      )}
     </PageLayout>
   );
 };
