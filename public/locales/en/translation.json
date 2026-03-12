@@ -221,7 +221,9 @@
         "venue_2026": "Gangjeong Sports Park",
         "keywords_base": "Gangjeong Village, Peace Music, Anti-war Movement",
         "description_2026": "The wind of peace continues to blow. The third song of peace will resonate in Gangjeong in June 2026.",
-        "expected_2026": "32 teams of musicians confirmed\nAbout 50-60 teams expected",
+        "expected_2026": "55 teams of musicians confirmed",
+        "lineup_count": "{{count}} teams confirmed",
+        "ticketing_2026": "Book tickets on Tumblbug",
         "brand_line": "Jeju Gangjeong Peace & Music Camp"
     },
     "album": {
