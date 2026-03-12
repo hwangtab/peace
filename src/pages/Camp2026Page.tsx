@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { motion, useInView } from 'framer-motion';
+import Image from 'next/image';
 import { getCamps } from '../data/camps';
 import PageLayout from '../components/layout/PageLayout';
 import Section from '../components/layout/Section';
@@ -79,9 +80,17 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => {
       disableTopPadding={true}
       disableBottomPadding={true}
     >
-      {/* Gradient Hero Section */}
-      <section className="relative min-h-[500px] md:min-h-[600px] flex items-center justify-center text-center overflow-hidden bg-ocean-gradient">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20" />
+      {/* Hero Section with Background Image */}
+      <section className="relative min-h-[500px] md:min-h-[600px] lg:min-h-[700px] flex items-center justify-center text-center overflow-hidden bg-ocean-gradient">
+        <Image
+          src="/images-webp/camps/2023/20230610밤 전쟁을끝내자.webp"
+          alt={camp2026.title}
+          fill
+          sizes="100vw"
+          className="absolute inset-0 w-full h-full object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
