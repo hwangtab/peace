@@ -49,14 +49,14 @@ const CampLineup: React.FC<CampLineupProps> = ({ participants, musicians, inView
               onClick={() => handleParticipantClick(participant)}
               className={`
                 flex items-center justify-center text-center
-                px-3 py-3 rounded-xl border transition-all duration-200
+                h-14 px-2 rounded-xl border transition-all duration-200 overflow-hidden
                 ${clickable
                   ? 'bg-white border-jeju-ocean/20 cursor-pointer hover:bg-jeju-ocean hover:text-white hover:border-jeju-ocean hover:shadow-md'
                   : 'bg-white border-gray-200 hover:border-gray-300'
                 }
               `}
             >
-              <span className={`text-sm sm:text-base font-medium leading-tight ${clickable ? 'text-jeju-ocean group-hover:text-white' : 'text-gray-700'}`}>
+              <span className={`font-medium leading-tight line-clamp-2 ${clickable ? 'text-jeju-ocean group-hover:text-white' : 'text-gray-700'} ${name.length > 10 ? 'text-xs sm:text-sm' : 'text-sm sm:text-base'}`}>
                 {name}
               </span>
             </motion.div>
