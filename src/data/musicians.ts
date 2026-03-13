@@ -120,15 +120,14 @@ export const musicians: Musicians = [
   },
   {
     id: 11,
-    name: "자이(Jai) x HANASH",
-    shortDescription: "슬프지만 힘 있는 목소리로 이야기를 전하는 자이와 실험적인 신디사이징으로 외연을 확장하는 사운드 스케이프를 선보이는 HANASH의 만남",
-    description: "자이의 따뜻한 목소리, HANASH의 혁신적인 전자음악이 만나 새로운 음악적 가능성을 탐구하는 콜라보레이션입니다. 자이는 일상의 이야기를 슬프지만 힘 있는 목소리로 표현하며, HANASH는 세계 각국의 다양한 악기와 장르를 전자음악과 접목시키는 실험을 진행합니다. 두 아티스트의 만남은 전통과 현대의 조화로운 융합을 보여줍니다.",
-    genre: ["일렉트로닉", "월드뮤직"],
+    name: "자이(Jai)",
+    shortDescription: "슬프지만 힘 있는 목소리로 일상의 이야기를 전하는 싱어송라이터입니다",
+    description: "일상의 이야기를 슬프지만 힘 있는 목소리로 표현하는 싱어송라이터입니다. 따뜻한 감성과 진솔한 가사로 청중에게 깊은 울림을 전합니다.",
+    genre: ["포크", "싱어송라이터"],
     trackTitle: "분홍색 패딩 소녀",
     imageUrl: "/images-webp/musicians/11.webp",
     instagramUrls: [
-      "https://www.instagram.com/jai_hyejung/",
-      "https://www.instagram.com/_ashahn/"
+      "https://www.instagram.com/jai_hyejung/"
     ]
   },
   {
@@ -171,7 +170,7 @@ export const musicians: Musicians = [
     description: "싱어송라이터 장현호를 중심으로 2011년 결성된 거리 밴드입니다. 10여 년간 세월호 진상규명, 제주 강정마을 해군기지 반대, KTX 해고 승무원 복직 투쟁 등 수많은 현장과 문화제에서 공연해왔습니다. 2020년 정규앨범 '언제나 전부'를 발매했으며, 'DMZ에서 춤을' 등 평화와 연대를 주제로 한 곡들을 발표하고 있습니다.",
     genre: ["포크", "록", "저항음악"],
     trackTitle: "다시 빛날 우리",
-    imageUrl: "https://cdn.thescoop.co.kr/news/photo/202204/54042_79208_2115.jpg",
+    imageUrl: "/images-webp/musicians/15.webp",
     instagramUrls: ["https://www.instagram.com/gilbandjjang/"]
   },
   {
@@ -481,7 +480,7 @@ export const musicians: Musicians = [
     description: "어둡고 허스키한 목소리와 컨트리 블루스 뿌리를 가진 뮤지션으로, 2018년부터 홍대 음악 씬에서 활동해왔습니다. 모던 고딕 이야기를 음악으로 풀어내며, 서울이라는 대도시 속 소외된 이들의 이야기를 노래합니다.",
     genre: ["컨트리블루스", "고딕포크"],
     trackTitle: "",
-    imageUrl: "https://img.koreatimes.co.kr/upload/newsV2/images/202305/150242982968455cb03969b9c7c6c9db.jpg",
+    imageUrl: "/images-webp/musicians/46.webp",
     instagramUrls: ["https://www.instagram.com/jinukonda"]
   },
   {
@@ -603,5 +602,15 @@ export const musicians: Musicians = [
     trackTitle: "",
     imageUrl: "",
     instagramUrls: ["https://www.instagram.com/dongbaek_school/"]
+  },
+  {
+    id: 59,
+    name: "HANASH",
+    shortDescription: "세계 각국의 다양한 악기와 장르를 전자음악과 접목시키는 실험적 사운드 아티스트입니다",
+    description: "세계 각국의 다양한 악기와 장르를 전자음악과 접목시키는 실험적 사운드 아티스트입니다. 실험적인 신디사이징으로 외연을 확장하는 사운드 스케이프를 선보이며, 전통과 현대의 조화로운 융합을 추구합니다.",
+    genre: ["일렉트로닉", "월드뮤직", "실험음악"],
+    trackTitle: "",
+    imageUrl: "/images-webp/musicians/59.webp",
+    instagramUrls: ["https://www.instagram.com/_ashahn/"]
   }
 ];
