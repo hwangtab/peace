@@ -113,6 +113,7 @@ export default function PressPage({
       title={t('press.page_title')}
       description={t('press.page_desc')}
       keywords={t('press.keywords')}
+      ogImage="/images-webp/camps/2023/DSC00610.webp"
       structuredData={structuredData}
       background="ocean-sand"
       disableTopPadding={true}
