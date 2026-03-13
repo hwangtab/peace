@@ -170,7 +170,7 @@ const campsKo: CampEvent[] = [
       { name: '피움', musicianId: 52 },
       { name: 'HANASH', musicianId: 59 },
       { name: '호와호', musicianId: 53 },
-      { name: '허니 위스키', musicianId: 54 },
+      { name: 'Honey Whiskey', musicianId: 54 },
       { name: '허정혁', musicianId: 55 },
       { name: '황명하', musicianId: 56 },
       { name: '하주원', musicianId: 57 },
