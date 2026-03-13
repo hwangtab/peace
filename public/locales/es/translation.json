@@ -221,10 +221,14 @@
         "venue_2026": "Parque Deportivo de Gangjeong",
         "keywords_base": "Pueblo de Gangjeong, Música por la paz, Movimiento anti‑guerra",
         "description_2026": "El viento de la paz sigue soplando. La tercera canción de paz resonará en Gangjeong en junio de 2026.",
-        "expected_2026": "54 equipos de músicos confirmados",
+        "expected_2026": "53 equipos de músicos confirmados",
         "lineup_count": "{{count}} equipos confirmados",
         "ticketing_2026": "Reservar entradas en Tumblbug",
-        "brand_line": "Campamento de Música por la Paz de Jeju Gangjeong"
+        "brand_line": "Campamento de Música por la Paz de Jeju Gangjeong",
+        "title_2026": "3er Campamento de Música por la Paz de Gangjeong",
+        "slogan_2026": "¡Cantemos, bailemos, acabemos con la guerra!",
+        "date_badge_2026": "5–7 jun 2026",
+        "participant_count": "{{count}} equipos"
     },
     "album": {
         "page_title": "To You in a Distant Place Whose Name I Don't Know - Sobre el álbum",
