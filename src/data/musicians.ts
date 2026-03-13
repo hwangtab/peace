@@ -181,7 +181,7 @@ export const musicians: Musicians = [
     genre: ["인디", "포크"],
     trackTitle: "",
     imageUrl: "/images-webp/musicians/16.webp",
-    instagramUrls: []
+    instagramUrls: ["https://www.instagram.com/59susu"]
   },
   {
     id: 17,
@@ -191,7 +191,7 @@ export const musicians: Musicians = [
     genre: ["인디", "포크", "싱어송라이터"],
     trackTitle: "",
     imageUrl: "https://image.bugsm.co.kr/album/images/500/205313/20531325.jpg",
-    instagramUrls: []
+    instagramUrls: ["https://www.instagram.com/kikoristar"]
   },
   {
     id: 18,
@@ -451,7 +451,7 @@ export const musicians: Musicians = [
     genre: ["인디", "포크", "펑크"],
     trackTitle: "",
     imageUrl: "https://img.khan.co.kr/newsmaker/1354/1354_38.jpg",
-    instagramUrls: []
+    instagramUrls: ["https://www.instagram.com/dopeheadzo1"]
   },
   {
     id: 45,
@@ -501,7 +501,7 @@ export const musicians: Musicians = [
     genre: ["인디"],
     trackTitle: "",
     imageUrl: "/images-webp/musicians/49.webp",
-    instagramUrls: []
+    instagramUrls: ["https://www.instagram.com/blackaftermoon"]
   },
   {
     id: 50,
@@ -511,7 +511,7 @@ export const musicians: Musicians = [
     genre: ["인디", "어쿠스틱", "포크"],
     trackTitle: "",
     imageUrl: "https://i.ytimg.com/vi/kcASkP7C0CM/maxresdefault.jpg",
-    instagramUrls: []
+    instagramUrls: ["https://www.instagram.com/kita_olgen"]
   },
   {
     id: 51,
@@ -561,7 +561,7 @@ export const musicians: Musicians = [
     genre: ["포크", "싱어송라이터"],
     trackTitle: "",
     imageUrl: "https://image.bugsm.co.kr/artist/images/224/200649/20064990.jpg",
-    instagramUrls: []
+    instagramUrls: ["https://www.instagram.com/_hyuk_e"]
   },
   {
     id: 56,
@@ -581,7 +581,7 @@ export const musicians: Musicians = [
     genre: ["인디"],
     trackTitle: "",
     imageUrl: "/images-webp/musicians/57.webp",
-    instagramUrls: []
+    instagramUrls: ["https://www.instagram.com/wonn__e"]
   },
   {
     id: 58,
@@ -591,7 +591,7 @@ export const musicians: Musicians = [
     genre: ["바투카다", "타악기", "월드뮤직"],
     trackTitle: "",
     imageUrl: "https://mblogthumb-phinf.pstatic.net/MjAyMzA5MjRfMTYw/MDAxNjk1NTM5NDg5MTU0.hfy0_56rmwIGsFMtySOw6HPX4F_ywdJMFB0CR3t6jGcg.57jZOi-BeYm4Gf4kl3UTl0nEbHGIao9fa_B6GqCcvAsg.JPEG.minjow1996/IMG%EF%BC%BF20230924%EF%BC%BF155512%EF%BC%BF094.jpg?type=w800",
-    instagramUrls: ["https://www.instagram.com/dongbaek_school/"]
+    instagramUrls: ["https://www.instagram.com/pelagida_oficial", "https://www.instagram.com/dongbaek_school/"]
   },
   {
     id: 59,
