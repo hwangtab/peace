@@ -31,7 +31,7 @@ const MusicianCard = memo(({ musician, index }: MusicianCardProps) => {
       >
         <div className="group relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-[1.02] hover:shadow-xl h-full flex flex-col">
           {/* Image */}
-          <div className="relative w-full pb-[66.666%]">
+          <div className="relative w-full pb-[100%]">
             <div className="absolute inset-0 overflow-hidden">
               {musician.imageUrl ? (
                 <Image
