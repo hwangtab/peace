@@ -571,7 +571,7 @@ export const musicians: Musicians = [
     genre: ["포크", "어쿠스틱"],
     trackTitle: "",
     imageUrl: "https://theplay.or.kr/wp-content/uploads/포크송-가수-황명하-8.jpg",
-    instagramUrls: []
+    instagramUrls: ["https://www.instagram.com/hwang_myungha/"]
   },
   {
     id: 57,
@@ -602,5 +602,15 @@ export const musicians: Musicians = [
     trackTitle: "",
     imageUrl: "/images-webp/musicians/59.webp",
     instagramUrls: ["https://www.instagram.com/_ashahn/"]
+  },
+  {
+    id: 60,
+    name: "TAGI",
+    shortDescription: "일본인 핸드팬 연주자 Taka와 한국인 국악 연주자 민기의 듀오로, 생황·피리·태평소와 핸드팬의 만남을 선보입니다",
+    description: "일본인 핸드팬 연주자 Taka와 한국인 국악기 연주자 민기로 이루어진 듀오입니다. 팀명 'TAGI'는 Taka의 'Ta'와 민기의 'Gi'를 합친 것으로, 한국어로 '타기(ride)'라는 의미도 담고 있습니다. 바람을 타고, 강을 타고, 공기를 타고 소리가 세상을 여행하기를 바라는 마음을 이름에 담았습니다. 민기는 생황, 피리, 태평소 등 한국 전통 관악기를 연주하며, Taka의 핸드팬과 어우러져 동아시아 전통과 현대의 경계를 넘나드는 독특한 사운드를 만들어냅니다.",
+    genre: ["월드뮤직", "국악", "핸드팬"],
+    trackTitle: "",
+    imageUrl: "/images-webp/musicians/60.webp",
+    instagramUrls: ["https://www.instagram.com/tagi_sound"]
   }
 ];
