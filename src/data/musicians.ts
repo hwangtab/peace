@@ -555,12 +555,12 @@ export const musicians: Musicians = [
   },
   {
     id: 54,
-    name: "허니 위스키",
+    name: "Honey Whiskey",
     shortDescription: "수원을 기반으로 활동하는 다국적 라이브 밴드입니다",
     description: "수원에 위치한 크래프트 비어 라이브 음악 펍 'Alleyway Taphouse'의 공식 하우스 밴드로 활동하는 다국적 밴드입니다. 라이브 공연을 중심으로 활동하며, 다양한 장르의 음악을 선보이고 있습니다.",
     genre: ["록", "라이브"],
     trackTitle: "",
-    imageUrl: "",
+    imageUrl: "/images-webp/musicians/54.webp",
     instagramUrls: []
   },
   {
