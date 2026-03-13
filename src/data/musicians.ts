@@ -510,7 +510,7 @@ export const musicians: Musicians = [
     description: "2026 강정피스앤뮤직캠프에 출연합니다.",
     genre: ["인디"],
     trackTitle: "",
-    imageUrl: "",
+    imageUrl: "/images-webp/musicians/49.webp",
     instagramUrls: []
   },
   {
@@ -540,7 +540,7 @@ export const musicians: Musicians = [
     description: "피움(P:UM)은 2026 강정피스앤뮤직캠프에 출연하는 뮤지션입니다.",
     genre: ["인디"],
     trackTitle: "",
-    imageUrl: "",
+    imageUrl: "https://i.ytimg.com/vi/HAm1Jg1LZkY/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AHUBoAC4AOKAgwIABABGGUgYChHMA8=&rs=AOn4CLByTcImvvpBDorL-od7kEHGPWcvBA",
     instagramUrls: ["https://www.instagram.com/a_nicefolksong"]
   },
   {
