@@ -171,7 +171,7 @@ export const musicians: Musicians = [
     description: "싱어송라이터 장현호를 중심으로 2011년 결성된 거리 밴드입니다. 10여 년간 세월호 진상규명, 제주 강정마을 해군기지 반대, KTX 해고 승무원 복직 투쟁 등 수많은 현장과 문화제에서 공연해왔습니다. 2020년 정규앨범 '언제나 전부'를 발매했으며, 'DMZ에서 춤을' 등 평화와 연대를 주제로 한 곡들을 발표하고 있습니다.",
     genre: ["포크", "록", "저항음악"],
     trackTitle: "다시 빛날 우리",
-    imageUrl: "https://ggac.kr/images/artists/janghyunho.png",
+    imageUrl: "https://cdn.thescoop.co.kr/news/photo/202204/54042_79208_2115.jpg",
     instagramUrls: ["https://www.instagram.com/gilbandjjang/"]
   },
   {
