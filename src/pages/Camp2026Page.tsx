@@ -122,9 +122,14 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => {
               <span className="inline-block px-6 py-2.5 bg-golden-sun text-gray-900 font-bold rounded-full text-sm shadow-lg">
                 {t('camp.lineup_count', { count: participantCount })}
               </span>
-              <span className="inline-block px-6 py-2.5 bg-white/15 backdrop-blur-sm text-white font-medium rounded-full text-sm border border-white/30">
+              <a
+                href="https://tumblbug.com/gpmc3"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-6 py-2.5 bg-white/15 backdrop-blur-sm text-white font-medium rounded-full text-sm border border-white/30 hover:bg-white/25 transition-colors"
+              >
                 {t('camp.ticketing_2026')}
-              </span>
+              </a>
             </div>
           </motion.div>
         </div>
