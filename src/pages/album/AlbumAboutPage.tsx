@@ -16,7 +16,7 @@ import { GalleryImage } from '../../types/gallery';
 import { VideoItem } from '../../types/video';
 import { Musician } from '../../types/musician';
 import WaveDivider from '../../components/common/WaveDivider';
-import { getMusicAlbumSchema } from '../../utils/structuredData';
+import { getMusicAlbumSchema, getBreadcrumbSchema } from '../../utils/structuredData';
 import { getFullUrl } from '../../config/env';
 
 interface AlbumAboutPageProps {
@@ -181,7 +181,13 @@ const AlbumAboutPage = ({
       keywords={t('album.keywords')}
       ogImage="/images-webp/album/albumart.png"
       background="jeju-ocean"
-      structuredData={albumSchema}
+      structuredData={[
+        albumSchema,
+        getBreadcrumbSchema([
+          { name: t('nav.home'), url: "https://peaceandmusic.net/" },
+          { name: t('nav.album'), url: "https://peaceandmusic.net/album/about" }
+        ])
+      ]}
       disableTopPadding={true}
       className="!pb-0"
     >

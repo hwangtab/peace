@@ -8,7 +8,7 @@ import Section from '../components/layout/Section';
 import SectionHeader from '../components/common/SectionHeader';
 import WaveDivider from '../components/common/WaveDivider';
 import CampLineup from '../components/camp/CampLineup';
-import { getEventSchema } from '../utils/structuredData';
+import { getEventSchema, getBreadcrumbSchema } from '../utils/structuredData';
 import { getFullUrl } from '../config/env';
 import { formatOrdinal } from '../utils/format';
 import { getMusicians } from '../api/musicians';
@@ -81,7 +81,14 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => {
       description={translatedDescription}
       keywords={`${t('app.title')}, ${t('camp.ordinal', { num: ordinalLabel })}, 2026, ${t('camp.keywords_base')}`}
       ogImage="/images-webp/camps/2026/2026poster1-og.jpg"
-      structuredData={eventSchema}
+      structuredData={[
+        eventSchema,
+        getBreadcrumbSchema([
+          { name: t('nav.home'), url: "https://peaceandmusic.net/" },
+          { name: t('nav.camp'), url: "https://peaceandmusic.net/camps/2026" },
+          { name: "2026", url: "https://peaceandmusic.net/camps/2026" }
+        ])
+      ]}
       disableTopPadding={true}
       disableBottomPadding={true}
     >

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { useTranslation } from 'next-i18next';
 import { GalleryImage } from '../../types/gallery';
 
 interface GalleryImageItemProps {
@@ -9,8 +10,13 @@ interface GalleryImageItemProps {
 }
 
 const GalleryImageItem = React.memo(({ image, priority = false, onClick }: GalleryImageItemProps) => {
+    const { t } = useTranslation();
     // Isolate loading state to this component only
     const [isLoaded, setIsLoaded] = useState(false);
+    const eventLabel = image.eventType === 'camp'
+        ? t('gallery.alt_camp', { year: image.eventYear })
+        : t('gallery.alt_album', { year: image.eventYear });
+    const altText = image.description || eventLabel;
 
     return (
         <div
@@ -28,7 +34,7 @@ const GalleryImageItem = React.memo(({ image, priority = false, onClick }: Galle
 
                 <Image
                     src={image.url}
-                    alt={image.description || `Gallery image ${image.id}`}
+                    alt={altText}
                     fill
                     sizes="(max-width: 768px) 50vw, 33vw"
                     className={`object-cover transition-all duration-700 ease-in-out group-hover:scale-110 ${isLoaded ? 'opacity-100' : 'opacity-0'
