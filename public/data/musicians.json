@@ -327,7 +327,8 @@
         ],
         "trackTitle": "Wings",
         "imageUrl": "/images-webp/musicians/21.webp",
-        "instagramUrls": []
+        "instagramUrls": [],
+        "youtubeUrl": "https://www.youtube.com/@meridiesmetal"
     },
     {
         "id": 22,
@@ -373,7 +374,9 @@
         ],
         "trackTitle": "",
         "imageUrl": "/images-webp/musicians/24.webp",
-        "instagramUrls": []
+        "instagramUrls": [
+            "https://www.instagram.com/materials_pound_official/"
+        ]
     },
     {
         "id": 25,
@@ -401,7 +404,9 @@
         ],
         "trackTitle": "THUNDER ROCKS",
         "imageUrl": "/images-webp/musicians/26.webp",
-        "instagramUrls": []
+        "instagramUrls": [
+            "https://www.instagram.com/sabbaha_kr"
+        ]
     },
     {
         "id": 27,

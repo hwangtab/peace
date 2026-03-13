@@ -6,6 +6,7 @@ import { Musician } from '../../types/musician';
 import { extractInstagramUsername } from '../../utils/instagram';
 import MusicianModal from './MusicianModal';
 import InstagramIcon from '../icons/InstagramIcon';
+import YouTubeIcon from '../icons/YouTubeIcon';
 
 interface MusicianCardProps {
   musician: Musician;
@@ -71,8 +72,8 @@ const MusicianCard = memo(({ musician, index }: MusicianCardProps) => {
             </h3>
             <p className="text-gray-600 mb-4 flex-1 text-pretty break-words">{musician.shortDescription}</p>
 
-            {/* Instagram Links */}
-            {musician.instagramUrls.length > 0 && (
+            {/* Social Links */}
+            {(musician.instagramUrls.length > 0 || musician.youtubeUrl) && (
               <div className="flex flex-wrap gap-2 mb-4">
                 {musician.instagramUrls.map((url) => {
                   const username = extractInstagramUsername(url);
@@ -89,6 +90,17 @@ const MusicianCard = memo(({ musician, index }: MusicianCardProps) => {
                     </a>
                   );
                 })}
+                {musician.youtubeUrl && (
+                  <a
+                    href={musician.youtubeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="inline-flex items-center px-3 py-1 text-sm bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors duration-200"
+                  >
+                    <YouTubeIcon className="w-4 h-4 mr-1" />YouTube
+                  </a>
+                )}
               </div>
             )}
 

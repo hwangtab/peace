@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Musician } from '../../types/musician';
 import { extractInstagramUsername } from '../../utils/instagram';
 import InstagramIcon from '../icons/InstagramIcon';
+import YouTubeIcon from '../icons/YouTubeIcon';
 
 interface MusicianModalProps {
   musician: Musician;
@@ -94,8 +95,8 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                     </div>
 
 
-                    {/* Instagram Links */}
-                    {musician.instagramUrls.length > 0 && (
+                    {/* Social Links */}
+                    {(musician.instagramUrls.length > 0 || musician.youtubeUrl) && (
                       <div className="mt-6">
                         <h4 className="text-lg font-medium text-gray-900 mb-2">
                           {t('common.sns')}
@@ -116,6 +117,17 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                               </a>
                             );
                           })}
+                          {musician.youtubeUrl && (
+                            <a
+                              href={musician.youtubeUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center px-3 py-1 text-sm bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors duration-200"
+                            >
+                              <YouTubeIcon className="w-4 h-4 mr-1" />
+                              YouTube
+                            </a>
+                          )}
                         </div>
                       </div>
                     )}
