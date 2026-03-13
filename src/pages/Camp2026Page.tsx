@@ -80,6 +80,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => {
       title={`${t('camp.ordinal', { num: ordinalLabel })} ${t('app.title')} (2026)`}
       description={translatedDescription}
       keywords={`${t('app.title')}, ${t('camp.ordinal', { num: ordinalLabel })}, 2026, ${t('camp.keywords_base')}`}
+      ogImage="/images-webp/camps/2026/2026poster1-og.jpg"
       structuredData={eventSchema}
       disableTopPadding={true}
       disableBottomPadding={true}

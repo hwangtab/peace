@@ -179,6 +179,7 @@ const AlbumAboutPage = ({
       title={t('album.page_title')}
       description={t('album.page_desc')}
       keywords={t('album.keywords')}
+      ogImage="/images-webp/album/albumart.png"
       background="jeju-ocean"
       structuredData={albumSchema}
       disableTopPadding={true}

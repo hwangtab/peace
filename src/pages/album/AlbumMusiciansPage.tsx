@@ -24,6 +24,7 @@ const AlbumMusiciansPage = ({ initialMusicians = [], initialLocale = 'ko' }: Alb
       title={t('album.musicians_page_title')}
       description={t('album.musicians_page_desc')}
       keywords={t('album.musicians_page_keywords')}
+      ogImage="/images-webp/gallery/2.webp"
       background="sunlight-glow"
       structuredData={collectionSchema}
       disableTopPadding={true}
