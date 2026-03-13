@@ -211,7 +211,7 @@ export const musicians: Musicians = [
     description: "기타리스트 홍성훈을 중심으로 2012년 결성된 록/메탈 밴드입니다. 서던 록, 그런지, 하드코어 펑크 등 다양한 스타일을 혼합하며 선 굵은 리프와 묵직한 사운드를 추구합니다. 2022년 정규앨범 'Drunken Dream'을 발표하여 2023 한국대중음악상 최우수 메탈&하드코어 음반 후보에 올랐으며, 2025년 'Hypocrite'를 발매했습니다.",
     genre: ["서던록", "그런지", "메탈", "하드코어"],
     trackTitle: "Hypocrite",
-    imageUrl: "https://i.namu.wiki/i/eN-QB09JbzdU23D2lQ38vmq6ij-wtq0BWCiM4RwNC2gULC-LE1dGzh3QHZgN0hKarW_7cPN86QBB_WBH-9IL0w.webp",
+    imageUrl: "/images-webp/musicians/19.webp",
     instagramUrls: ["https://www.instagram.com/band_doglastpage/"]
   },
   {
