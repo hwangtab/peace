@@ -231,7 +231,8 @@ export const musicians: Musicians = [
     genre: ["심포닉 블랙 메탈", "데스 메탈"],
     trackTitle: "Wings",
     imageUrl: "/images-webp/musicians/21.webp",
-    instagramUrls: []
+    instagramUrls: [],
+    youtubeUrl: "https://www.youtube.com/@meridiesmetal"
   },
   {
     id: 22,
@@ -261,7 +262,7 @@ export const musicians: Musicians = [
     genre: ["멜로딕 메탈코어", "심포닉 데스코어", "포스트 록"],
     trackTitle: "",
     imageUrl: "/images-webp/musicians/24.webp",
-    instagramUrls: []
+    instagramUrls: ["https://www.instagram.com/materials_pound_official/"]
   },
   {
     id: 25,
@@ -281,7 +282,7 @@ export const musicians: Musicians = [
     genre: ["둠메탈", "드론메탈", "슬러지메탈"],
     trackTitle: "THUNDER ROCKS",
     imageUrl: "/images-webp/musicians/26.webp",
-    instagramUrls: []
+    instagramUrls: ["https://www.instagram.com/sabbaha_kr"]
   },
   {
     id: 27,
