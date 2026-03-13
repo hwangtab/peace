@@ -676,14 +676,17 @@
     {
         "id": 47,
         "name": "찬",
-        "shortDescription": "2026 강정피스앤뮤직캠프에 출연합니다",
-        "description": "2026 강정피스앤뮤직캠프에 출연합니다.",
+        "shortDescription": "Sitar와 Bansuri를 연주하는 명상음악가",
+        "description": "Sitar와 Bansuri를 연주하는 명상음악가. 인도의 고요하고 깊은 소리에 매료되어 여러 스승들에게 배웠으며, 명상음악 앨범을 다수 발매하고 유튜브 채널 Lotus Relaxing Music을 운영하고 있다.",
         "genre": [
-            "인디"
+            "명상음악",
+            "월드뮤직"
         ],
         "trackTitle": "",
-        "imageUrl": "",
-        "instagramUrls": []
+        "imageUrl": "/images-webp/musicians/47.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/chanbhaiya"
+        ]
     },
     {
         "id": 48,
