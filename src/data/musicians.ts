@@ -390,7 +390,7 @@ export const musicians: Musicians = [
     description: "본명 배가영. '괜찮은 밤을 준비하는 마음으로 노래하는' 싱어송라이터입니다. 어쿠스틱 밴드 '초콜릿벤치' 리더, 브라스 밴드 '밴드 흥' 멤버를 거쳐 솔로로 활동 중이며, 여성뮤지션 네트워크 '프로젝트 반했나' 소속으로 공연 기획에도 참여하고 있습니다. 2023년 싱글 'Who you are'을 발매했으며, 100회 이상의 라이브 공연 경력을 지니고 있습니다.",
     genre: ["어쿠스틱", "포크", "싱어송라이터"],
     trackTitle: "",
-    imageUrl: "",
+    imageUrl: "/images-webp/musicians/37.webp",
     instagramUrls: ["https://www.instagram.com/on.gayoung/"]
   },
   {
