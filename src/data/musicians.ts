@@ -191,7 +191,7 @@ export const musicians: Musicians = [
     description: "2026 강정피스앤뮤직캠프에 출연합니다.",
     genre: ["인디", "포크", "싱어송라이터"],
     trackTitle: "",
-    imageUrl: "",
+    imageUrl: "https://image.bugsm.co.kr/album/images/500/205313/20531325.jpg",
     instagramUrls: []
   },
   {
