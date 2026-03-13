@@ -92,11 +92,6 @@ const MusicianCard = memo(({ musician, index }: MusicianCardProps) => {
               </div>
             )}
 
-            {/* Track Title */}
-            <div className="mt-auto pt-4 border-t border-gray-100">
-              <p className="text-sm text-gray-500">{t('common.featured_track')}</p>
-              <p className="text-jeju-ocean font-medium">{musician.trackTitle}</p>
-            </div>
           </div>
         </div>
       </motion.div>
