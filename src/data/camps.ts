@@ -79,7 +79,7 @@ const campsKo: CampEvent[] = [
       { name: '정진석', musicianId: 2 },
       { name: '출장작곡가 김동산', musicianId: 3 },
       { name: '태히언', musicianId: 51 },
-      { name: 'HANASH', musicianId: 11 }
+      { name: 'HANASH', musicianId: 59 }
     ],
     staff: [
       { role: '기획', members: ['장하나', '이상', '황경하'] },
@@ -168,7 +168,7 @@ const campsKo: CampEvent[] = [
       { name: '키타와 올겐', musicianId: 50 },
       { name: '태히언', musicianId: 51 },
       { name: '피움', musicianId: 52 },
-      { name: 'HANASH', musicianId: 11 },
+      { name: 'HANASH', musicianId: 59 },
       { name: '호와호', musicianId: 53 },
       { name: '허니 위스키', musicianId: 54 },
       { name: '허정혁', musicianId: 55 },
@@ -253,7 +253,7 @@ const campsEn: CampEvent[] = [
       { name: 'Jeong Jinseok', musicianId: 2 },
       { name: 'Guest Composer Kim Dongsan', musicianId: 3 },
       { name: 'Taehyeon', musicianId: 51 },
-      { name: 'HANASH', musicianId: 11 }
+      { name: 'HANASH', musicianId: 59 }
     ],
     staff: [
       { role: 'Planning', members: ['Jang Hana', 'Lee Sang', 'Hwang Gyeongha'] },
@@ -342,7 +342,7 @@ const campsEn: CampEvent[] = [
       { name: 'Kita & Olgen', musicianId: 50 },
       { name: 'Taehyeon', musicianId: 51 },
       { name: 'Pium', musicianId: 52 },
-      { name: 'HANASH', musicianId: 11 },
+      { name: 'HANASH', musicianId: 59 },
       { name: 'Howaho', musicianId: 53 },
       { name: 'Honey Whiskey', musicianId: 54 },
       { name: 'Heo Jeonghyeok', musicianId: 55 },
