@@ -216,7 +216,7 @@ export const musicians: Musicians = [
   },
   {
     id: 20,
-    name: "레인보우99",
+    name: "Rainbow99",
     shortDescription: "드림팝, 슈게이즈, 앰비언트 음악을 기반으로 다양한 실험을 이어가는 기타리스트이자 사운드 디자이너입니다",
     description: "본명 류승현, 매직스트로베리사운드 소속의 싱어, 기타리스트, 작곡가, 사운드 & 노이즈 디자이너입니다. 2011년 EP 'Spring, Revolution'으로 솔로 데뷔한 이후 앰비언트, 드림팝, 슈게이즈를 기반으로 꾸준히 앨범을 발표해왔습니다. 제주 오름에서 녹음한 앨범 '오름의 지금'에서는 제주 4.3 사건의 역사적 장소들을 음악으로 기록하는 작업을 진행했습니다.",
     genre: ["드림팝", "슈게이즈", "앰비언트", "전자음악"],
@@ -231,7 +231,7 @@ export const musicians: Musicians = [
     description: "2013년 결성된 1인 프로젝트로, 심포닉 블랙 메탈과 데스 메탈을 기반으로 보컬, 기타, 베이스 등 대부분의 파트를 혼자 연주합니다. 2015년 정규앨범 'On A Submerged Islet'을 시작으로 2020년 '건축무한육면각체'를 발표했으며, 이상 등 한국 문학 작품을 가사로 활용하는 것이 특징입니다.",
     genre: ["심포닉 블랙 메탈", "데스 메탈"],
     trackTitle: "Wings",
-    imageUrl: "",
+    imageUrl: "/images-webp/musicians/21.webp",
     instagramUrls: []
   },
   {
@@ -241,7 +241,7 @@ export const musicians: Musicians = [
     description: "조민규와 이소(e_so)로 구성된 사이키델릭 포크 듀오입니다. 아일랜드에서 2년간 버스킹 활동을 한 조민규와 제주 출신 싱어송라이터 이소가 2022년 태국에서 우연히 만나 결성했습니다. 밴드명은 아일랜드 모허 절벽에서 따왔으며, 2024년 첫 정규앨범 'Kaleidoscope'를 발매하여 펜타포트 슈퍼루키 은상, 형도뮤직페스티벌 대상을 수상했습니다.",
     genre: ["사이키델릭포크", "아이리시포크", "인디포크"],
     trackTitle: "만화경 (Kaleidoscope)",
-    imageUrl: "",
+    imageUrl: "/images-webp/musicians/22.webp",
     instagramUrls: ["https://www.instagram.com/moher_____/"]
   },
   {
@@ -256,7 +256,7 @@ export const musicians: Musicians = [
   },
   {
     id: 24,
-    name: "머티리얼즈 파운드",
+    name: "Materials Pound",
     shortDescription: "멜로딕 메탈코어 기반의 5인조 밴드로, 2025 한국대중음악상 최우수 메탈&하드코어 음반 후보에 올랐습니다",
     description: "2022년 결성된 5인조 밴드로, 멜로딕 메탈코어를 기반으로 심포닉 데스코어, 포스트 록의 요소를 융합합니다. 2024년 첫 EP '전구(電球)'를 발매하여 2025 한국대중음악상 최우수 메탈&하드코어 음반 후보에 올랐으며, 2024 음악취향Y 올해의 앨범/신인 후보에도 선정되었습니다.",
     genre: ["멜로딕 메탈코어", "심포닉 데스코어", "포스트 록"],
@@ -277,10 +277,10 @@ export const musicians: Musicians = [
   {
     id: 26,
     name: "Sabbaha",
-    shortDescription: "둠메탈 뮤지션",
-    description: "2026 강정피스앤뮤직캠프에 출연합니다.",
-    genre: ["둠메탈"],
-    trackTitle: "",
+    shortDescription: "2023년 결성된 둠/드론 메탈 프로젝트로, 코스튬 퍼포먼스와 함께 필연적 파괴와 개인적 절망을 탐구합니다",
+    description: "2023년 5월 결성된 둠메탈/드론메탈 프로젝트입니다. 2013년부터 언더그라운드 밴드(420Saigong, Haaaazy Shaaaaman)에서 활동해온 뮤지션이 시작했으며, 2024년 2월 공식 데뷔했습니다. Sunn O))), Earth, Electric Wizard, Sleep, Om 등에 영향을 받아 드론 메탈, 스토너 둠 메탈, 슬러지 메탈에 그라인드코어와 프리 임프로비제이션을 결합합니다. 전 멤버가 코스튬을 착용하고 공연하는 연극적 라이브가 특징이며, 2024년 9월 첫 정규앨범 'THUNDER ROCKS'를 발표했습니다.",
+    genre: ["둠메탈", "드론메탈", "슬러지메탈"],
+    trackTitle: "THUNDER ROCKS",
     imageUrl: "",
     instagramUrls: []
   },
