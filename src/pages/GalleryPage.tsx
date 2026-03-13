@@ -26,6 +26,7 @@ const GalleryPage = ({ initialImages = [] }: GalleryPageProps) => {
             title={t('gallery.page_title')}
             description={t('gallery.page_desc')}
             keywords={t('gallery.keywords')}
+            ogImage="/images-webp/camps/2023/DSC00528.webp"
             background="golden-sun"
             structuredData={gallerySchema}
             disableTopPadding={true}
