@@ -331,7 +331,7 @@ export const musicians: Musicians = [
     description: "숭실대학교 88학번으로 민중가요 노래패 '두메'에서 음악활동을 시작한 싱어송라이터입니다. 록그룹 '천지인'의 객원가수로 참여해 '청계천 8가'를 불러 큰 주목을 받았으며, '노래이야기' 시리즈를 비롯한 다수의 앨범을 발표했습니다. 아시아 각국의 민중음악에도 깊은 관심을 갖고 미얀마 등의 노래를 한국에 소개하는 활동도 하고 있습니다.",
     genre: ["민중가요", "포크", "싱어송라이터"],
     trackTitle: "청계천 8가",
-    imageUrl: "https://image.bugsm.co.kr/artist/images/200/99/9997.jpg",
+    imageUrl: "https://ojsfile.ohmynews.com/STD_IMG_FILE/2023/1206/IE003236477_STD.jpg",
     instagramUrls: []
   },
   {
