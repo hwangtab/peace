@@ -262,15 +262,18 @@
     },
     {
         "id": 18,
-        "name": "Dear arcadian",
-        "shortDescription": "2026 강정피스앤뮤직캠프에 출연합니다",
-        "description": "2026 강정피스앤뮤직캠프에 출연합니다.",
+        "name": "Dear Arcadian",
+        "shortDescription": "포스트 하드코어 기반의 강렬한 사운드로 사회의 불합리에 맞서는 밴드입니다",
+        "description": "첫 싱글 'EXODUS'로 한국 음악씬에 출사표를 던진 포스트 하드코어 밴드입니다. 일상 속 불합리와 혐오, 차별, 그리고 꿈을 쫓는 자들을 폄하하는 사회에서 벗어나고자 하는 욕망을 음악에 담습니다. 타이트한 랩과 호소력 짙은 보컬, 강렬한 기타와 섬세한 프로덕션으로 해방감과 카타르시스를 선사합니다.",
         "genre": [
-            "인디"
+            "포스트 하드코어",
+            "록"
         ],
-        "trackTitle": "",
-        "imageUrl": "",
-        "instagramUrls": []
+        "trackTitle": "EXODUS",
+        "imageUrl": "/images-webp/musicians/18.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/deararcadian_official/"
+        ]
     },
     {
         "id": 19,
