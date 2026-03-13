@@ -440,8 +440,8 @@ export const musicians: Musicians = [
     description: "2026 강정피스앤뮤직캠프에 출연합니다.",
     genre: ["인디"],
     trackTitle: "",
-    imageUrl: "",
-    instagramUrls: []
+    imageUrl: "/images-webp/musicians/43.webp",
+    instagramUrls: ["https://www.instagram.com/joonlee_jeju/"]
   },
   {
     id: 44,

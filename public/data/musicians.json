@@ -623,8 +623,10 @@
             "인디"
         ],
         "trackTitle": "",
-        "imageUrl": "",
-        "instagramUrls": []
+        "imageUrl": "/images-webp/musicians/43.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/joonlee_jeju/"
+        ]
     },
     {
         "id": 44,
