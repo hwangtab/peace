@@ -231,7 +231,7 @@ export const musicians: Musicians = [
     description: "2013년 결성된 1인 프로젝트로, 심포닉 블랙 메탈과 데스 메탈을 기반으로 보컬, 기타, 베이스 등 대부분의 파트를 혼자 연주합니다. 2015년 정규앨범 'On A Submerged Islet'을 시작으로 2020년 '건축무한육면각체'를 발표했으며, 이상 등 한국 문학 작품을 가사로 활용하는 것이 특징입니다.",
     genre: ["심포닉 블랙 메탈", "데스 메탈"],
     trackTitle: "Wings",
-    imageUrl: "https://i.namu.wiki/i/UvRwOU5aeN-EYwIQpG92GwUTOB45ic91Ke1zFMqKv6EFVFkgjLe6Esbta9IWIk9MEbsYNaNvtVwesoJiz1X3NwwFe_xi_QOlYDCvNmxxjjmdr-93Q9q6qQ66yrRP-t2lInmbzqNpCI0HZfZRYyJg8A.webp",
+    imageUrl: "/images-webp/musicians/21.webp",
     instagramUrls: []
   },
   {
@@ -261,7 +261,7 @@ export const musicians: Musicians = [
     description: "2022년 결성된 5인조 밴드로, 멜로딕 메탈코어를 기반으로 심포닉 데스코어, 포스트 록의 요소를 융합합니다. 2024년 첫 EP '전구(電球)'를 발매하여 2025 한국대중음악상 최우수 메탈&하드코어 음반 후보에 올랐으며, 2024 음악취향Y 올해의 앨범/신인 후보에도 선정되었습니다.",
     genre: ["멜로딕 메탈코어", "심포닉 데스코어", "포스트 록"],
     trackTitle: "",
-    imageUrl: "https://i.namu.wiki/i/KTTGc17vzt1vWJbn6aB7FNivYsfoiQ9X40NN73YQCq0lcl-0ICpokwNYU1rXxoXZKHXM0lZmGB5-L1Fa8EguhQkqPl1wg54UocWWlIqJfZdednd0DlvjNze__KfJqH3qrACiHCZaKBEnJyVW8tO7gg.webp",
+    imageUrl: "/images-webp/musicians/24.webp",
     instagramUrls: []
   },
   {
@@ -281,7 +281,7 @@ export const musicians: Musicians = [
     description: "2023년 5월 결성된 둠메탈/드론메탈 프로젝트입니다. 2013년부터 언더그라운드 밴드(420Saigong, Haaaazy Shaaaaman)에서 활동해온 뮤지션이 시작했으며, 2024년 2월 공식 데뷔했습니다. Sunn O))), Earth, Electric Wizard, Sleep, Om 등에 영향을 받아 드론 메탈, 스토너 둠 메탈, 슬러지 메탈에 그라인드코어와 프리 임프로비제이션을 결합합니다. 전 멤버가 코스튬을 착용하고 공연하는 연극적 라이브가 특징이며, 2024년 9월 첫 정규앨범 'THUNDER ROCKS'를 발표했습니다.",
     genre: ["둠메탈", "드론메탈", "슬러지메탈"],
     trackTitle: "THUNDER ROCKS",
-    imageUrl: "https://i.namu.wiki/i/Pd0u1X9Bc3EtJakoirpwrYbjh5gF3SlOImwyt-e-SWcrA4-_908fVox0nTU6-GPj-D8zFr6U6QvmpJcHla9B7I_PK92JnQ-opdHHisgBsVRCWQ7bB-MNZpzJSOEdaxKbbZcos6WmQiv13OozXI45DQ.webp",
+    imageUrl: "/images-webp/musicians/26.webp",
     instagramUrls: []
   },
   {
@@ -551,7 +551,7 @@ export const musicians: Musicians = [
     description: "각자 싱어송라이터로 활동하던 eeeho와 Mohho가 서로의 독특한 분위기에 영감을 얻어 결성한 듀오입니다. 모든 노래를 함께 쓰며, 시적인 가사와 묵직한 일렉트릭 기타 사운드, 다양한 깊이의 전자 비트와 앰비언트 사운드스케이프를 특징으로 합니다. 첫 앨범 'Unknown Origin'이 제16회 한국대중음악상 최우수 포크 음반 부문에 노미네이트되었으며, 2023년 앨범 'Wave Crest(파고)'를 발표했습니다.",
     genre: ["인디", "포크", "얼터너티브"],
     trackTitle: "파고 (Wave Crest)",
-    imageUrl: "https://i.namu.wiki/i/xiBnZ6I89WP_eQo9ihWExzHrM5LXXgGUohA-tzm-OjKRXNvwu8el9ZYOxGPOMo4J7tTQQARPIa6ir71ukVIPiQ.webp",
+    imageUrl: "/images-webp/musicians/53.webp",
     instagramUrls: ["https://www.instagram.com/howaho_official/"]
   },
   {
