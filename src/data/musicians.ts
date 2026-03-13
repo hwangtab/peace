@@ -156,12 +156,12 @@ export const musicians: Musicians = [
   {
     id: 14,
     name: "강가히말라야",
-    shortDescription: "2026 강정피스앤뮤직캠프에 출연합니다",
-    description: "2026 강정피스앤뮤직캠프에 출연합니다.",
-    genre: ["인디", "포크"],
+    shortDescription: "인도 아우로빌에서 자란 자연과 내면을 잇는 싱어송라이터입니다",
+    description: "인도 아우로빌(Auroville)의 자유로운 토양에서 자란 독보적인 싱어송라이터입니다. 거대한 산맥의 정기와 갠지스 강의 유유한 흐름을 품은 음악을 선보이며, '천천히, 그리고 지속적으로(Slow and Steady)'라는 삶의 철학이 담긴 목소리로 바쁜 현대인의 시간을 잠시 멈추게 합니다.",
+    genre: ["포크", "싱어송라이터", "월드뮤직"],
     trackTitle: "",
     imageUrl: "/images-webp/musicians/14.webp",
-    instagramUrls: []
+    instagramUrls: ["https://www.instagram.com/gangahimalayapark/"]
   },
   {
     id: 15,
