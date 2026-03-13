@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next';
 import MusiciansSection from '../../components/home/MusiciansSection';
 import PageLayout from '../../components/layout/PageLayout';
 import PageHero from '../../components/common/PageHero';
-import { getCollectionPageSchema } from '../../utils/structuredData';
+import { getCollectionPageSchema, getBreadcrumbSchema } from '../../utils/structuredData';
 import { Musician } from '../../types/musician';
 
 interface AlbumMusiciansPageProps {
@@ -26,7 +26,14 @@ const AlbumMusiciansPage = ({ initialMusicians = [], initialLocale = 'ko' }: Alb
       keywords={t('album.musicians_page_keywords')}
       ogImage="/images-webp/gallery/2.webp"
       background="sunlight-glow"
-      structuredData={collectionSchema}
+      structuredData={[
+        collectionSchema,
+        getBreadcrumbSchema([
+          { name: t('nav.home'), url: "https://peaceandmusic.net/" },
+          { name: t('nav.album'), url: "https://peaceandmusic.net/album/about" },
+          { name: t('nav.musician'), url: "https://peaceandmusic.net/album/musicians" }
+        ])
+      ]}
       disableTopPadding={true}
     >
       <PageHero

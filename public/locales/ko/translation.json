@@ -44,7 +44,9 @@
         "no_images": "등록된 사진이 없습니다.",
         "load_more": "더 보기",
         "image_alt_fallback": "년 강정피스앤뮤직캠프 갤러리 이미지",
-        "image_alt_template": "{{year}}년 {{title}} 갤러리 이미지"
+        "image_alt_template": "{{year}}년 {{title}} 갤러리 이미지",
+        "alt_camp": "{{year}}년 강정피스앤뮤직캠프 현장 사진",
+        "alt_album": "{{year}}년 앨범 발매 기념 공연 사진"
     },
     "home": {
         "hero": {
@@ -133,7 +135,12 @@
         "go_home": "홈으로 이동",
         "audio_position": "오디오 재생 위치",
         "label_personnel": "참여진",
-        "label_produced_by": "제작"
+        "label_produced_by": "제작",
+        "track": "수록곡",
+        "about": "소개",
+        "composer": "작곡",
+        "lyricist": "작사",
+        "arranger": "편곡"
     },
     "timeline": {
         "title": "연대의 여정",

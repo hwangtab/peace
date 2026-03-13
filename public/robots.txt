@@ -29,6 +29,3 @@ Allow: /*.css.map$
 
 # Sitemap
 Sitemap: https://peaceandmusic.net/sitemap.xml
-
-# Crawl-delay (1초)
-Crawl-delay: 1
