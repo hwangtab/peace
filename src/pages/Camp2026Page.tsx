@@ -142,25 +142,43 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInfoInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto"
+            className="max-w-5xl mx-auto"
           >
-            <div className="bg-white rounded-lg shadow-sm p-8">
-              <SectionHeader title={t('camp.section_overview')} align="left" className="!mb-6" />
-              <p className="typo-body mb-6">
-                {camp2026.description}
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div className="bg-ocean-sand rounded-xl p-4 text-center">
-                  <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">{t('camp.label_period')}</p>
-                  <p className="text-sm font-semibold text-jeju-ocean">2026.06.05 — 07</p>
-                </div>
-                <div className="bg-ocean-sand rounded-xl p-4 text-center">
-                  <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">{t('camp.label_location')}</p>
-                  <p className="text-sm font-semibold text-jeju-ocean">{camp2026.location}</p>
-                </div>
-                <div className="bg-ocean-sand rounded-xl p-4 text-center">
-                  <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">{t('camp.label_participants')}</p>
-                  <p className="text-sm font-semibold text-jeju-ocean">{participantCount}{i18n.language === 'ko' ? '팀' : ' teams'}</p>
+            <div className="flex flex-col md:flex-row gap-8 items-start">
+              {/* Poster */}
+              <a
+                href="https://tumblbug.com/gpmc3"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full md:w-[360px] flex-shrink-0 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+              >
+                <Image
+                  src="/images-webp/camps/2026/2026poster1.jpeg"
+                  alt={camp2026.title}
+                  width={360}
+                  height={509}
+                  className="w-full h-auto"
+                />
+              </a>
+              {/* Info */}
+              <div className="flex-1 bg-white rounded-lg shadow-sm p-8">
+                <SectionHeader title={t('camp.section_overview')} align="left" className="!mb-6" />
+                <p className="typo-body mb-6">
+                  {camp2026.description}
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="bg-ocean-sand rounded-xl p-4 text-center">
+                    <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">{t('camp.label_period')}</p>
+                    <p className="text-sm font-semibold text-jeju-ocean">2026.06.05 — 07</p>
+                  </div>
+                  <div className="bg-ocean-sand rounded-xl p-4 text-center">
+                    <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">{t('camp.label_location')}</p>
+                    <p className="text-sm font-semibold text-jeju-ocean">{camp2026.location}</p>
+                  </div>
+                  <div className="bg-ocean-sand rounded-xl p-4 text-center">
+                    <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">{t('camp.label_participants')}</p>
+                    <p className="text-sm font-semibold text-jeju-ocean">{participantCount}{i18n.language === 'ko' ? '팀' : ' teams'}</p>
+                  </div>
                 </div>
               </div>
             </div>
