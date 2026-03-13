@@ -119,9 +119,12 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => {
             </div>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4 items-center">
-              <span className="inline-block px-6 py-2.5 bg-golden-sun text-gray-900 font-bold rounded-full text-sm shadow-lg">
+              <a
+                href="#lineup"
+                className="inline-block px-6 py-2.5 bg-golden-sun text-gray-900 font-bold rounded-full text-sm shadow-lg hover:bg-yellow-400 transition-colors cursor-pointer"
+              >
                 {t('camp.lineup_count', { count: participantCount })}
-              </span>
+              </a>
               <a
                 href="https://tumblbug.com/gpmc3"
                 target="_blank"
@@ -190,7 +193,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => {
 
       {/* Lineup Section */}
       {camp2026.participants && camp2026.participants.length > 0 && (
-        <Section background="white" ref={lineupRef}>
+        <Section background="white" ref={lineupRef} id="lineup">
           <div className="container mx-auto px-4">
             <SectionHeader
               title={t('camp.section_musicians')}
