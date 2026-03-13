@@ -161,7 +161,7 @@ export const musicians: Musicians = [
     description: "2026 강정피스앤뮤직캠프에 출연합니다.",
     genre: ["인디", "포크"],
     trackTitle: "",
-    imageUrl: "",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwrygYpOlSdptUVtyLkCzGhPgHEuNSzQhAYw&s",
     instagramUrls: []
   },
   {
@@ -231,7 +231,7 @@ export const musicians: Musicians = [
     description: "2013년 결성된 1인 프로젝트로, 심포닉 블랙 메탈과 데스 메탈을 기반으로 보컬, 기타, 베이스 등 대부분의 파트를 혼자 연주합니다. 2015년 정규앨범 'On A Submerged Islet'을 시작으로 2020년 '건축무한육면각체'를 발표했으며, 이상 등 한국 문학 작품을 가사로 활용하는 것이 특징입니다.",
     genre: ["심포닉 블랙 메탈", "데스 메탈"],
     trackTitle: "Wings",
-    imageUrl: "/images-webp/musicians/21.webp",
+    imageUrl: "https://i.namu.wiki/i/UvRwOU5aeN-EYwIQpG92GwUTOB45ic91Ke1zFMqKv6EFVFkgjLe6Esbta9IWIk9MEbsYNaNvtVwesoJiz1X3NwwFe_xi_QOlYDCvNmxxjjmdr-93Q9q6qQ66yrRP-t2lInmbzqNpCI0HZfZRYyJg8A.webp",
     instagramUrls: []
   },
   {
@@ -241,7 +241,7 @@ export const musicians: Musicians = [
     description: "조민규와 이소(e_so)로 구성된 사이키델릭 포크 듀오입니다. 아일랜드에서 2년간 버스킹 활동을 한 조민규와 제주 출신 싱어송라이터 이소가 2022년 태국에서 우연히 만나 결성했습니다. 밴드명은 아일랜드 모허 절벽에서 따왔으며, 2024년 첫 정규앨범 'Kaleidoscope'를 발매하여 펜타포트 슈퍼루키 은상, 형도뮤직페스티벌 대상을 수상했습니다.",
     genre: ["사이키델릭포크", "아이리시포크", "인디포크"],
     trackTitle: "만화경 (Kaleidoscope)",
-    imageUrl: "/images-webp/musicians/22.webp",
+    imageUrl: "https://street-h.com/wp-content/uploads/2024/11/moher.jpg",
     instagramUrls: ["https://www.instagram.com/moher_____/"]
   },
   {
@@ -321,7 +321,7 @@ export const musicians: Musicians = [
     description: "포크 1세대의 거장 양병집이 발굴한 싱어송라이터로, 2003년 데뷔 앨범 '실화(My Life's Story)'로 음악 활동을 시작했습니다. '한국의 조니 미첼'이라는 별명답게 어떤 특정 장르로 분류할 수 없을 만큼 독창적인 음악 세계를 구축하고 있으며, 시인의 감수성이 엿보이는 노랫말로 자신의 삶을 솔직하고 명료하게 표현합니다. 5장의 정규 앨범을 발매하며 꾸준히 활동하고 있습니다.",
     genre: ["포크", "싱어송라이터"],
     trackTitle: "실화",
-    imageUrl: "https://ojsfile.ohmynews.com/STD_IMG_FILE/2025/0220/IE003418575_STD.jpg",
+    imageUrl: "https://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/014/937/608/14937608_4_600x600.JPG",
     instagramUrls: ["https://www.instagram.com/jy_son_/"]
   },
   {
@@ -341,7 +341,7 @@ export const musicians: Musicians = [
     description: "산골과 바닷가에서 어린 시절을 보내며 쌓은 자연의 감성을 음악에 담는 싱어송라이터입니다. 중학교 때부터 독학으로 기타와 작곡을 익혔으며, 첫 EP '물감'을 발표했습니다. 형 송인효와 함께 음반을 제작하기도 하며, '서울의 밤', '내가 살던 산동네' 등 어린 시절 기억과 도시 생활의 정서를 노래합니다.",
     genre: ["포크", "싱어송라이터"],
     trackTitle: "",
-    imageUrl: "",
+    imageUrl: "https://ojsfile.ohmynews.com/CT_T_IMG/2017/0819/IE002205318_LT.jpg",
     instagramUrls: ["https://www.instagram.com/song_insang"]
   },
   {
@@ -351,7 +351,7 @@ export const musicians: Musicians = [
     description: "개인의 삶의 경험과 내면의 성찰을 음악적 언어로 기록해 나가는 싱어송라이터입니다. 특정한 장르적 기교보다는 직접 살아낸 경험에서 비롯된 감각과 진솔한 서사를 중심으로, 담백한 멜로디와 솔직한 가사, 절제된 표현 속에서 청중에게 삶을 마주하는 또 다른 시선을 제안합니다.",
     genre: ["포크", "싱어송라이터"],
     trackTitle: "하늘과 땅 사이",
-    imageUrl: "",
+    imageUrl: "https://lh5.googleusercontent.com/proxy/oX_irhtfpzHmEbGR-AKKrMIJT1I1WAYuj4G75Vm2eiiotqz8tQjEm9pvuiGx2pmme0TPvoRXIlNlzwaZepyd1LleYzADR1W4PgXDZfShmR-pRdp_cfc94-otTp44lDAZFzrkZIiVF_Y",
     instagramUrls: ["https://www.instagram.com/song_inhyo/"]
   },
   {
@@ -361,7 +361,7 @@ export const musicians: Musicians = [
     description: "전자음악가이자 SF 작가 장호진의 솔로 프로젝트입니다. Depeche Mode, 반젤리스 등에 영감을 받아 예측 불가능한 사운드와 비선형적 작곡을 추구하며, 기존 음악의 규칙을 거부하는 실험적 접근이 특징입니다. 2025년 정규 1집 '디스토피아 2025'를 발표했으며, 젠트리피케이션과 지역 투쟁 현장 등 한국 사회의 구조적 모순을 음악으로 담아냅니다.",
     genre: ["전자음악", "실험음악"],
     trackTitle: "",
-    imageUrl: "https://i2.ruliweb.com/img/25/04/08/19613ee8b27afd4.jpeg",
+    imageUrl: "https://i3.ruliweb.com/img/25/04/08/19613ee8904afd4.jpeg",
     instagramUrls: ["https://www.instagram.com/zeonpasa/"]
   },
   {
