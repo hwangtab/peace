@@ -1,10 +1,9 @@
-import React, { memo, useState, useCallback } from 'react';
+import React, { memo } from 'react';
 import Image from 'next/image';
-import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Musician } from '../../types/musician';
 import { extractInstagramUsername } from '../../utils/instagram';
-import MusicianModal from './MusicianModal';
 import InstagramIcon from '../icons/InstagramIcon';
 import YouTubeIcon from '../icons/YouTubeIcon';
 
@@ -14,12 +13,6 @@ interface MusicianCardProps {
 }
 
 const MusicianCard = memo(({ musician, index }: MusicianCardProps) => {
-  const { t } = useTranslation();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleOpenModal = useCallback(() => setIsModalOpen(true), []);
-  const handleCloseModal = useCallback(() => setIsModalOpen(false), []);
-
   return (
     <>
       <motion.div
@@ -28,8 +21,8 @@ const MusicianCard = memo(({ musician, index }: MusicianCardProps) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: index * 0.1 }}
         className="transform-gpu h-full scroll-mt-24"
-        onClick={handleOpenModal}
       >
+        <Link href={`/album/musicians/${musician.id}`} className="block h-full">
         <div className="group relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-[1.02] hover:shadow-xl h-full flex flex-col">
           {/* Image */}
           <div className="relative w-full pb-[100%]">
@@ -106,10 +99,8 @@ const MusicianCard = memo(({ musician, index }: MusicianCardProps) => {
 
           </div>
         </div>
+        </Link>
       </motion.div>
-
-      {/* Modal */}
-      <MusicianModal musician={musician} isOpen={isModalOpen} onClose={handleCloseModal} />
     </>
   );
 });

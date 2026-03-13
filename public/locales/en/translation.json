@@ -44,7 +44,9 @@
         "no_images": "No photos available.",
         "load_more": "Load More",
         "image_alt_fallback": " Gangjeong Peace Music Camp Gallery Image",
-        "image_alt_template": "{{year}} {{title}} Gallery Image"
+        "image_alt_template": "{{year}} {{title}} Gallery Image",
+        "alt_camp": "Gangjeong Peace Music Camp {{year}} photo",
+        "alt_album": "Album release concert {{year}} photo"
     },
     "home": {
         "hero": {
@@ -133,7 +135,12 @@
         "go_home": "Go to Home",
         "audio_position": "Audio playback position",
         "label_personnel": "Personnel",
-        "label_produced_by": "Produced by"
+        "label_produced_by": "Produced by",
+        "track": "Track",
+        "about": "About",
+        "composer": "Composer",
+        "lyricist": "Lyricist",
+        "arranger": "Arranger"
     },
     "timeline": {
         "title": "Our Journey",

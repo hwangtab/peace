@@ -9,7 +9,7 @@ import EventFilter from '../common/EventFilter';
 import PageLayout from '../layout/PageLayout';
 import PageHero from '../common/PageHero';
 import VideoCard from './VideoCard';
-import { getCollectionPageSchema } from '../../utils/structuredData';
+import { getCollectionPageSchema, getBreadcrumbSchema } from '../../utils/structuredData';
 
 interface VideoPageProps {
   initialVideos?: VideoItem[];
@@ -75,7 +75,13 @@ export default function VideoPage({
       keywords={t('videos.keywords')}
       ogImage="/images-webp/camps/2023/IMG_2064.webp"
       background="sunlight-glow"
-      structuredData={collectionSchema}
+      structuredData={[
+        collectionSchema,
+        getBreadcrumbSchema([
+          { name: t('nav.home'), url: "https://peaceandmusic.net/" },
+          { name: t('videos.page_title'), url: "https://peaceandmusic.net/videos" }
+        ])
+      ]}
       disableTopPadding={true}
     >
       <PageHero

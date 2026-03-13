@@ -2,7 +2,7 @@ import React from 'react';
 import PageLayout from '../components/layout/PageLayout';
 import PageHero from '../components/common/PageHero';
 import GallerySection from '../components/home/GallerySection';
-import { getImageGallerySchema } from '../utils/structuredData';
+import { getImageGallerySchema, getBreadcrumbSchema } from '../utils/structuredData';
 
 import { useTranslation } from 'next-i18next';
 // ...
@@ -28,7 +28,13 @@ const GalleryPage = ({ initialImages = [] }: GalleryPageProps) => {
             keywords={t('gallery.keywords')}
             ogImage="/images-webp/camps/2023/DSC00528.webp"
             background="golden-sun"
-            structuredData={gallerySchema}
+            structuredData={[
+                gallerySchema,
+                getBreadcrumbSchema([
+                    { name: t('nav.home'), url: "https://peaceandmusic.net/" },
+                    { name: t('gallery.page_title'), url: "https://peaceandmusic.net/gallery" }
+                ])
+            ]}
             disableTopPadding={true}
         >
             <PageHero
