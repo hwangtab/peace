@@ -171,7 +171,7 @@ export const musicians: Musicians = [
     description: "싱어송라이터 장현호를 중심으로 2011년 결성된 거리 밴드입니다. 10여 년간 세월호 진상규명, 제주 강정마을 해군기지 반대, KTX 해고 승무원 복직 투쟁 등 수많은 현장과 문화제에서 공연해왔습니다. 2020년 정규앨범 '언제나 전부'를 발매했으며, 'DMZ에서 춤을' 등 평화와 연대를 주제로 한 곡들을 발표하고 있습니다.",
     genre: ["포크", "록", "저항음악"],
     trackTitle: "다시 빛날 우리",
-    imageUrl: "",
+    imageUrl: "https://ggac.kr/images/artists/janghyunho.png",
     instagramUrls: ["https://www.instagram.com/gilbandjjang/"]
   },
   {
@@ -211,7 +211,7 @@ export const musicians: Musicians = [
     description: "기타리스트 홍성훈을 중심으로 2012년 결성된 록/메탈 밴드입니다. 서던 록, 그런지, 하드코어 펑크 등 다양한 스타일을 혼합하며 선 굵은 리프와 묵직한 사운드를 추구합니다. 2022년 정규앨범 'Drunken Dream'을 발표하여 2023 한국대중음악상 최우수 메탈&하드코어 음반 후보에 올랐으며, 2025년 'Hypocrite'를 발매했습니다.",
     genre: ["서던록", "그런지", "메탈", "하드코어"],
     trackTitle: "Hypocrite",
-    imageUrl: "",
+    imageUrl: "https://i.namu.wiki/i/huBWMIKShQEjbL7C3IKzL_4eHEDF2lG2k-gQSXRCqXpi63AnSCGx2SopvS_5UHP0Tly95VNC8PmwJ1miv8IKzZMW9bdBPu9_dN7ly4K7tTYW5ToKkmjwotA1um49ZytZiBlWCIBQb3mRizrWA48yKw.webp",
     instagramUrls: ["https://www.instagram.com/band_doglastpage/"]
   },
   {
@@ -221,7 +221,7 @@ export const musicians: Musicians = [
     description: "본명 류승현, 매직스트로베리사운드 소속의 싱어, 기타리스트, 작곡가, 사운드 & 노이즈 디자이너입니다. 2011년 EP 'Spring, Revolution'으로 솔로 데뷔한 이후 앰비언트, 드림팝, 슈게이즈를 기반으로 꾸준히 앨범을 발표해왔습니다. 제주 오름에서 녹음한 앨범 '오름의 지금'에서는 제주 4.3 사건의 역사적 장소들을 음악으로 기록하는 작업을 진행했습니다.",
     genre: ["드림팝", "슈게이즈", "앰비언트", "전자음악"],
     trackTitle: "오름의 지금",
-    imageUrl: "",
+    imageUrl: "https://kprofiles.com/wp-content/uploads/2020/08/Mgz_Main_Top_20160218193236.jpg",
     instagramUrls: ["https://www.instagram.com/rainbow99gaze/"]
   },
   {
@@ -261,7 +261,7 @@ export const musicians: Musicians = [
     description: "2022년 결성된 5인조 밴드로, 멜로딕 메탈코어를 기반으로 심포닉 데스코어, 포스트 록의 요소를 융합합니다. 2024년 첫 EP '전구(電球)'를 발매하여 2025 한국대중음악상 최우수 메탈&하드코어 음반 후보에 올랐으며, 2024 음악취향Y 올해의 앨범/신인 후보에도 선정되었습니다.",
     genre: ["멜로딕 메탈코어", "심포닉 데스코어", "포스트 록"],
     trackTitle: "",
-    imageUrl: "",
+    imageUrl: "https://i.namu.wiki/i/KTTGc17vzt1vWJbn6aB7FNivYsfoiQ9X40NN73YQCq0lcl-0ICpokwNYU1rXxoXZKHXM0lZmGB5-L1Fa8EguhQkqPl1wg54UocWWlIqJfZdednd0DlvjNze__KfJqH3qrACiHCZaKBEnJyVW8tO7gg.webp",
     instagramUrls: []
   },
   {
@@ -281,7 +281,7 @@ export const musicians: Musicians = [
     description: "2023년 5월 결성된 둠메탈/드론메탈 프로젝트입니다. 2013년부터 언더그라운드 밴드(420Saigong, Haaaazy Shaaaaman)에서 활동해온 뮤지션이 시작했으며, 2024년 2월 공식 데뷔했습니다. Sunn O))), Earth, Electric Wizard, Sleep, Om 등에 영향을 받아 드론 메탈, 스토너 둠 메탈, 슬러지 메탈에 그라인드코어와 프리 임프로비제이션을 결합합니다. 전 멤버가 코스튬을 착용하고 공연하는 연극적 라이브가 특징이며, 2024년 9월 첫 정규앨범 'THUNDER ROCKS'를 발표했습니다.",
     genre: ["둠메탈", "드론메탈", "슬러지메탈"],
     trackTitle: "THUNDER ROCKS",
-    imageUrl: "",
+    imageUrl: "https://i.namu.wiki/i/Pd0u1X9Bc3EtJakoirpwrYbjh5gF3SlOImwyt-e-SWcrA4-_908fVox0nTU6-GPj-D8zFr6U6QvmpJcHla9B7I_PK92JnQ-opdHHisgBsVRCWQ7bB-MNZpzJSOEdaxKbbZcos6WmQiv13OozXI45DQ.webp",
     instagramUrls: []
   },
   {
@@ -321,7 +321,7 @@ export const musicians: Musicians = [
     description: "포크 1세대의 거장 양병집이 발굴한 싱어송라이터로, 2003년 데뷔 앨범 '실화(My Life's Story)'로 음악 활동을 시작했습니다. '한국의 조니 미첼'이라는 별명답게 어떤 특정 장르로 분류할 수 없을 만큼 독창적인 음악 세계를 구축하고 있으며, 시인의 감수성이 엿보이는 노랫말로 자신의 삶을 솔직하고 명료하게 표현합니다. 5장의 정규 앨범을 발매하며 꾸준히 활동하고 있습니다.",
     genre: ["포크", "싱어송라이터"],
     trackTitle: "실화",
-    imageUrl: "",
+    imageUrl: "https://ojsfile.ohmynews.com/STD_IMG_FILE/2025/0220/IE003418575_STD.jpg",
     instagramUrls: ["https://www.instagram.com/jy_son_/"]
   },
   {
@@ -331,7 +331,7 @@ export const musicians: Musicians = [
     description: "숭실대학교 88학번으로 민중가요 노래패 '두메'에서 음악활동을 시작한 싱어송라이터입니다. 록그룹 '천지인'의 객원가수로 참여해 '청계천 8가'를 불러 큰 주목을 받았으며, '노래이야기' 시리즈를 비롯한 다수의 앨범을 발표했습니다. 아시아 각국의 민중음악에도 깊은 관심을 갖고 미얀마 등의 노래를 한국에 소개하는 활동도 하고 있습니다.",
     genre: ["민중가요", "포크", "싱어송라이터"],
     trackTitle: "청계천 8가",
-    imageUrl: "",
+    imageUrl: "https://image.bugsm.co.kr/artist/images/200/99/9997.jpg",
     instagramUrls: []
   },
   {
@@ -361,7 +361,7 @@ export const musicians: Musicians = [
     description: "전자음악가이자 SF 작가 장호진의 솔로 프로젝트입니다. Depeche Mode, 반젤리스 등에 영감을 받아 예측 불가능한 사운드와 비선형적 작곡을 추구하며, 기존 음악의 규칙을 거부하는 실험적 접근이 특징입니다. 2025년 정규 1집 '디스토피아 2025'를 발표했으며, 젠트리피케이션과 지역 투쟁 현장 등 한국 사회의 구조적 모순을 음악으로 담아냅니다.",
     genre: ["전자음악", "실험음악"],
     trackTitle: "",
-    imageUrl: "",
+    imageUrl: "https://i2.ruliweb.com/img/25/04/08/19613ee8b27afd4.jpeg",
     instagramUrls: ["https://www.instagram.com/zeonpasa/"]
   },
   {
@@ -411,7 +411,7 @@ export const musicians: Musicians = [
     description: "포크 싱어송라이터입니다. 2021년 텀블벅 338% 달성으로 화제가 된 첫 EP '그 방을 열고 나올 사람은 나밖에 없네'를 시작으로 '이곳에'(2022), 'Shy Dog'(2023), '기도문'(2025)을 발표하며 꾸준히 활동하고 있습니다. 깊고 캄캄한 숲에서 넓은 바다로, 새벽을 지나 아침이 찾아오는 여정을 그리는 서정적인 스토리텔링이 특징입니다.",
     genre: ["포크", "어쿠스틱", "싱어송라이터"],
     trackTitle: "",
-    imageUrl: "",
+    imageUrl: "https://image.bugsm.co.kr/artist/images/200/200905/20090589.jpg",
     instagramUrls: ["https://www.instagram.com/cyoonseung/"]
   },
   {
@@ -421,7 +421,7 @@ export const musicians: Musicians = [
     description: "서울대 노래패 '메아리'와 대학생 연합 노래모임 '새벽' 출신으로, 1980년대 민주화 운동의 최전선에서 노래한 민중가요의 상징적 인물입니다. '그날이 오면', '저 평등의 땅에', '백두에서 한라, 한라에서 백두로' 등 민중가요 명곡의 여성 목소리 주인공이며, 이후 솔로 앨범 '하산', '아름다운 이야기' 등을 발매하며 활동을 이어왔습니다.",
     genre: ["포크", "민중가요"],
     trackTitle: "그날이 오면",
-    imageUrl: "",
+    imageUrl: "https://ojsfile.ohmynews.com/STD_IMG_FILE/2021/0507/IE002802755_STD.jpg",
     instagramUrls: []
   },
   {
@@ -441,7 +441,7 @@ export const musicians: Musicians = [
     description: "영남대학교 노래패 '예사가락'에서 음악을 시작한 민중가수입니다. 2011년 데뷔 이후 거의 매년 단독 콘서트와 음반을 발표하며, 모든 앨범을 직접 프로듀싱하고 대부분의 수록곡을 작사·작곡합니다. 밀양 송전탑 투쟁, 노동자 고공농성 현장, 세월호 유가족 농성장 등 사회운동 현장의 무대에서 활동하며, 대표곡 '소금꽃나무'는 김진숙의 동명 책에서 영감을 받았습니다.",
     genre: ["민중음악", "포크", "싱어송라이터"],
     trackTitle: "소금꽃나무",
-    imageUrl: "",
+    imageUrl: "https://image.bugsm.co.kr/artist/images/200/800739/80073984.jpg",
     instagramUrls: ["https://www.instagram.com/imjeongdeuk/"]
   },
   {
@@ -461,7 +461,7 @@ export const musicians: Musicians = [
     description: "아나키즘 운동가이자 뮤지션으로, 대추리, 새만금, 강정마을 등에서 평화운동을 해왔습니다. 2011년 제주 강정마을에서 해군기지 건설 반대 운동 중 남방큰돌고래 무리를 만난 것을 계기로 해양환경단체 '핫핑크돌핀스'를 공동 설립하여 아시아 최초 수족관 돌고래 해방운동을 시작했습니다. 솔로 앨범 2장을 발표한 바 있습니다.",
     genre: ["인디", "포크", "펑크"],
     trackTitle: "",
-    imageUrl: "",
+    imageUrl: "https://img.khan.co.kr/newsmaker/1354/1354_38.jpg",
     instagramUrls: []
   },
   {
@@ -471,7 +471,7 @@ export const musicians: Musicians = [
     description: "1998년부터 14년간 민중음악 그룹 '꽃다지'에서 중심보컬로 활동하며 '희망', '호각', '파이터' 등을 작사·작곡한 싱어송라이터입니다. 2012년 솔로 독립 후 제주 서귀포에 정착하여 1집 '시동을 걸었어', 미니앨범 '일상이 아닌 일상을 살며', 2집 'TIME' 등을 발표했습니다. 먹먹한 현실을 위로하는 음악으로 정평이 나 있습니다.",
     genre: ["포크", "민중음악", "싱어송라이터"],
     trackTitle: "시동을 걸었어",
-    imageUrl: "",
+    imageUrl: "https://ojsfile.ohmynews.com/STD_IMG_FILE/2019/0711/IE002521195_STD.jpg",
     instagramUrls: ["https://www.instagram.com/chozzz222/"]
   },
   {
@@ -481,7 +481,7 @@ export const musicians: Musicians = [
     description: "어둡고 허스키한 목소리와 컨트리 블루스 뿌리를 가진 뮤지션으로, 2018년부터 홍대 음악 씬에서 활동해왔습니다. 모던 고딕 이야기를 음악으로 풀어내며, 서울이라는 대도시 속 소외된 이들의 이야기를 노래합니다.",
     genre: ["컨트리블루스", "고딕포크"],
     trackTitle: "",
-    imageUrl: "",
+    imageUrl: "https://img.koreatimes.co.kr/upload/newsV2/images/202305/150242982968455cb03969b9c7c6c9db.jpg",
     instagramUrls: ["https://www.instagram.com/jinukonda"]
   },
   {
@@ -531,7 +531,7 @@ export const musicians: Musicians = [
     description: "루츠 레게, 포크, 블루스, 전통음악이 자연스럽게 스며든 감성적이고 유기적인 싱어송라이터입니다. 런던에서 레게에 빠진 후 한국으로 돌아와 레게 밴드의 보컬리스트이자 기타리스트로 활동을 시작했습니다. 제주로 이주한 후 'Uncle Bongo'라는 이름으로 셀렉터 겸 사운드 엔지니어로도 활동하며, 여행의 기록과 삶의 단상을 리듬 위에 담아냅니다.",
     genre: ["레게", "포크", "블루스"],
     trackTitle: "People Are The Country",
-    imageUrl: "",
+    imageUrl: "https://image.bugsm.co.kr/artist/images/224/800849/80084903.jpg",
     instagramUrls: ["https://www.instagram.com/tehiun/"]
   },
   {
@@ -571,7 +571,7 @@ export const musicians: Musicians = [
     description: "'son of florist(꽃집의 아들)'이라는 예명으로도 활동하는 포크 싱어송라이터입니다. 2017년 제28회 유재하음악경연대회에서 동상을 수상하며 이름을 알렸고, 듀오 '시옷과 바람'으로도 활동하고 있습니다. 2023년 정규 1집 '봉오리 시절'을 발표하여 2024 한국대중음악상 최우수 포크 음반 후보에 선정되었습니다.",
     genre: ["포크", "싱어송라이터"],
     trackTitle: "",
-    imageUrl: "",
+    imageUrl: "https://image.bugsm.co.kr/artist/images/224/200649/20064990.jpg",
     instagramUrls: []
   },
   {
@@ -581,7 +581,7 @@ export const musicians: Musicians = [
     description: "국내에서 보기 드문 매력적인 보이스 컬러로 '한국의 사라 맥라클란'이라 불리는 여성 포크 싱어송라이터입니다. 1,000회 이상의 라이브 공연 경험을 토대로 깊이 있고 힐링이 되는 무대를 선사하며, 감각적인 포크 음악으로 차별화된 매력을 보여주고 있습니다.",
     genre: ["포크", "어쿠스틱"],
     trackTitle: "",
-    imageUrl: "",
+    imageUrl: "https://theplay.or.kr/wp-content/uploads/포크송-가수-황명하-8.jpg",
     instagramUrls: []
   },
   {
