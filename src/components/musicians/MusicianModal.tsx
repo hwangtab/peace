@@ -93,15 +93,6 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                       </p>
                     </div>
 
-                    {/* Track */}
-                    {musician.trackTitle && (
-                      <div className="mt-6">
-                        <h4 className="text-lg font-medium text-gray-900 mb-2">
-                          {t('common.featured_track')}
-                        </h4>
-                        <p className="text-gray-600 break-words">{musician.trackTitle}</p>
-                      </div>
-                    )}
 
                     {/* Instagram Links */}
                     {musician.instagramUrls.length > 0 && (
