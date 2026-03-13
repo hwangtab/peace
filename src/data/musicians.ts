@@ -552,7 +552,7 @@ export const musicians: Musicians = [
     genre: ["록", "라이브"],
     trackTitle: "",
     imageUrl: "/images-webp/camps/2026/464596350_8533558266721540_3682315944236788793_n.jpg",
-    instagramUrls: []
+    instagramUrls: ["https://www.instagram.com/honeywhiskeysuwon/"]
   },
   {
     id: 55,
