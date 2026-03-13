@@ -157,7 +157,7 @@ export const musicians: Musicians = [
   {
     id: 14,
     name: "강가히말라야",
-    shortDescription: "뮤지션",
+    shortDescription: "2026 강정피스앤뮤직캠프에 출연합니다",
     description: "2026 강정피스앤뮤직캠프에 출연합니다.",
     genre: ["인디", "포크"],
     trackTitle: "",
@@ -177,7 +177,7 @@ export const musicians: Musicians = [
   {
     id: 16,
     name: "김수수",
-    shortDescription: "뮤지션",
+    shortDescription: "2026 강정피스앤뮤직캠프에 출연합니다",
     description: "2026 강정피스앤뮤직캠프에 출연합니다.",
     genre: ["인디", "포크"],
     trackTitle: "",
@@ -187,7 +187,7 @@ export const musicians: Musicians = [
   {
     id: 17,
     name: "나무꾼민건",
-    shortDescription: "싱어송라이터",
+    shortDescription: "2026 강정피스앤뮤직캠프에 출연하는 싱어송라이터입니다",
     description: "2026 강정피스앤뮤직캠프에 출연합니다.",
     genre: ["인디", "포크", "싱어송라이터"],
     trackTitle: "",
@@ -197,7 +197,7 @@ export const musicians: Musicians = [
   {
     id: 18,
     name: "Dear arcadian",
-    shortDescription: "뮤지션",
+    shortDescription: "2026 강정피스앤뮤직캠프에 출연합니다",
     description: "2026 강정피스앤뮤직캠프에 출연합니다.",
     genre: ["인디"],
     trackTitle: "",
@@ -247,7 +247,7 @@ export const musicians: Musicians = [
   {
     id: 23,
     name: "뮁",
-    shortDescription: "뮤지션",
+    shortDescription: "2026 강정피스앤뮤직캠프에 출연합니다",
     description: "2026 강정피스앤뮤직캠프에 출연합니다.",
     genre: ["인디", "실험음악"],
     trackTitle: "",
@@ -287,7 +287,7 @@ export const musicians: Musicians = [
   {
     id: 27,
     name: "Saite X Zsthyger",
-    shortDescription: "협업 프로젝트",
+    shortDescription: "2026 강정피스앤뮤직캠프에 출연하는 협업 프로젝트입니다",
     description: "2026 강정피스앤뮤직캠프에 출연합니다.",
     genre: ["일렉트로닉", "사이키델릭"],
     trackTitle: "",
@@ -297,7 +297,7 @@ export const musicians: Musicians = [
   {
     id: 28,
     name: "서민기",
-    shortDescription: "뮤지션",
+    shortDescription: "2026 강정피스앤뮤직캠프에 출연합니다",
     description: "2026 강정피스앤뮤직캠프에 출연합니다.",
     genre: ["인디", "포크"],
     trackTitle: "",
@@ -307,7 +307,7 @@ export const musicians: Musicians = [
   {
     id: 29,
     name: "선경",
-    shortDescription: "뮤지션",
+    shortDescription: "2026 강정피스앤뮤직캠프에 출연합니다",
     description: "2026 강정피스앤뮤직캠프에 출연합니다.",
     genre: ["인디", "포크"],
     trackTitle: "",
@@ -367,7 +367,7 @@ export const musicians: Musicians = [
   {
     id: 35,
     name: "안티스트레스",
-    shortDescription: "밴드",
+    shortDescription: "2026 강정피스앤뮤직캠프에 출연하는 밴드입니다",
     description: "2026 강정피스앤뮤직캠프에 출연합니다.",
     genre: ["인디", "록"],
     trackTitle: "",
@@ -427,7 +427,7 @@ export const musicians: Musicians = [
   {
     id: 41,
     name: "이형주",
-    shortDescription: "뮤지션",
+    shortDescription: "2026 강정피스앤뮤직캠프에 출연합니다",
     description: "인디 뮤지션입니다.",
     genre: ["인디", "포크"],
     trackTitle: "",
@@ -447,7 +447,7 @@ export const musicians: Musicians = [
   {
     id: 43,
     name: "Joon Lee",
-    shortDescription: "뮤지션",
+    shortDescription: "2026 강정피스앤뮤직캠프에 출연합니다",
     description: "2026 강정피스앤뮤직캠프에 출연합니다.",
     genre: ["인디"],
     trackTitle: "",
@@ -487,7 +487,7 @@ export const musicians: Musicians = [
   {
     id: 47,
     name: "찬",
-    shortDescription: "뮤지션",
+    shortDescription: "2026 강정피스앤뮤직캠프에 출연합니다",
     description: "2026 강정피스앤뮤직캠프에 출연합니다.",
     genre: ["인디"],
     trackTitle: "",
@@ -497,7 +497,7 @@ export const musicians: Musicians = [
   {
     id: 48,
     name: "최상돈",
-    shortDescription: "뮤지션",
+    shortDescription: "2026 강정피스앤뮤직캠프에 출연합니다",
     description: "2026 강정피스앤뮤직캠프에 출연합니다.",
     genre: ["인디"],
     trackTitle: "",
@@ -507,7 +507,7 @@ export const musicians: Musicians = [
   {
     id: 49,
     name: "치치",
-    shortDescription: "뮤지션",
+    shortDescription: "2026 강정피스앤뮤직캠프에 출연합니다",
     description: "2026 강정피스앤뮤직캠프에 출연합니다.",
     genre: ["인디"],
     trackTitle: "",
@@ -517,7 +517,7 @@ export const musicians: Musicians = [
   {
     id: 50,
     name: "키타와 올겐",
-    shortDescription: "듀오",
+    shortDescription: "2026 강정피스앤뮤직캠프에 출연하는 듀오입니다",
     description: "2026 강정피스앤뮤직캠프에 출연합니다.",
     genre: ["인디", "어쿠스틱", "포크"],
     trackTitle: "",
@@ -587,7 +587,7 @@ export const musicians: Musicians = [
   {
     id: 57,
     name: "하주원",
-    shortDescription: "뮤지션",
+    shortDescription: "2026 강정피스앤뮤직캠프에 출연합니다",
     description: "2026 강정피스앤뮤직캠프에 출연합니다.",
     genre: ["인디"],
     trackTitle: "",
