@@ -379,7 +379,7 @@
     },
     {
         "id": 26,
-        "name": "사바하",
+        "name": "Sabbaha",
         "shortDescription": "둠메탈 뮤지션",
         "description": "2026 강정피스앤뮤직캠프에 출연합니다.",
         "genre": [
@@ -391,7 +391,7 @@
     },
     {
         "id": 27,
-        "name": "사이트 with 제트싸이저",
+        "name": "Saite X Zsthyger",
         "shortDescription": "협업 프로젝트",
         "description": "2026 강정피스앤뮤직캠프에 출연합니다.",
         "genre": [
@@ -529,15 +529,18 @@
     {
         "id": 37,
         "name": "온가영",
-        "shortDescription": "뮤지션",
-        "description": "2026 강정피스앤뮤직캠프에 출연합니다.",
+        "shortDescription": "부산을 기반으로 활동하는 싱어송라이터로, 따뜻한 음색의 간결한 어쿠스틱 음악을 만들고 부릅니다",
+        "description": "본명 배가영. '괜찮은 밤을 준비하는 마음으로 노래하는' 싱어송라이터입니다. 어쿠스틱 밴드 '초콜릿벤치' 리더, 브라스 밴드 '밴드 흥' 멤버를 거쳐 솔로로 활동 중이며, 여성뮤지션 네트워크 '프로젝트 반했나' 소속으로 공연 기획에도 참여하고 있습니다. 2023년 싱글 'Who you are'을 발매했으며, 100회 이상의 라이브 공연 경력을 지니고 있습니다.",
         "genre": [
-            "인디",
+            "어쿠스틱",
+            "포크",
             "싱어송라이터"
         ],
         "trackTitle": "",
         "imageUrl": "",
-        "instagramUrls": []
+        "instagramUrls": [
+            "https://www.instagram.com/on.gayoung/"
+        ]
     },
     {
         "id": 38,
@@ -557,15 +560,18 @@
     {
         "id": 39,
         "name": "윤숭",
-        "shortDescription": "뮤지션",
-        "description": "2026 강정피스앤뮤직캠프에 출연합니다.",
+        "shortDescription": "생명과 죽음, 절망 속에서도 걸어나가는 여정을 서정적으로 노래하는 포크 싱어송라이터입니다",
+        "description": "포크 싱어송라이터입니다. 2021년 텀블벅 338% 달성으로 화제가 된 첫 EP '그 방을 열고 나올 사람은 나밖에 없네'를 시작으로 '이곳에'(2022), 'Shy Dog'(2023), '기도문'(2025)을 발표하며 꾸준히 활동하고 있습니다. 깊고 캄캄한 숲에서 넓은 바다로, 새벽을 지나 아침이 찾아오는 여정을 그리는 서정적인 스토리텔링이 특징입니다.",
         "genre": [
-            "인디",
+            "포크",
+            "어쿠스틱",
             "싱어송라이터"
         ],
         "trackTitle": "",
         "imageUrl": "",
-        "instagramUrls": []
+        "instagramUrls": [
+            "https://www.instagram.com/cyoonseung/"
+        ]
     },
     {
         "id": 40,
@@ -742,7 +748,9 @@
         ],
         "trackTitle": "",
         "imageUrl": "",
-        "instagramUrls": []
+        "instagramUrls": [
+            "https://www.instagram.com/a_nicefolksong"
+        ]
     },
     {
         "id": 53,
@@ -802,13 +810,12 @@
     {
         "id": 57,
         "name": "하주원",
-        "shortDescription": "싱어송라이터",
-        "description": "'최고의 나', '행복한 나' 등의 곡을 발표한 싱어송라이터입니다.",
+        "shortDescription": "뮤지션",
+        "description": "2026 강정피스앤뮤직캠프에 출연합니다.",
         "genre": [
-            "인디",
-            "싱어송라이터"
+            "인디"
         ],
-        "trackTitle": "최고의 나",
+        "trackTitle": "",
         "imageUrl": "",
         "instagramUrls": []
     },
