@@ -415,15 +415,17 @@
     {
         "id": 29,
         "name": "선경",
-        "shortDescription": "2026 강정피스앤뮤직캠프에 출연합니다",
-        "description": "2026 강정피스앤뮤직캠프에 출연합니다.",
+        "shortDescription": "싱어송라이터이자 도자기 인형 예술가",
+        "description": "선경은 싱어송라이터 뮤지션이면서 우리 주변의 자연과 생명의 이미지를 도자기 인형으로 만드는 예술가이다.",
         "genre": [
-            "인디",
+            "싱어송라이터",
             "포크"
         ],
         "trackTitle": "",
-        "imageUrl": "",
-        "instagramUrls": []
+        "imageUrl": "/images-webp/musicians/29.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/__sun_kyoung/"
+        ]
     },
     {
         "id": 30,
