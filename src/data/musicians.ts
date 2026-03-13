@@ -600,7 +600,7 @@ export const musicians: Musicians = [
     description: "뺄라지다는 2022년 4월부터 제주에서 활동하는 바투카다(브라질 삼바 타악기 앙상블) 밴드로, 브라질 삼바의 원형인 집단 타악기 연주를 선보입니다. 동백작은학교는 제주에 위치한 대안교육기관으로, 생태, 인권, 평화를 핵심 가치로 프로젝트 중심 교육을 실천하며 제주특별자치도 '아름다운학교대상'을 수상했습니다. 지역 커뮤니티와 청소년이 함께 만드는 평화의 리듬을 선보입니다.",
     genre: ["바투카다", "타악기", "월드뮤직"],
     trackTitle: "",
-    imageUrl: "",
+    imageUrl: "https://mblogthumb-phinf.pstatic.net/MjAyMzA5MjRfMTYw/MDAxNjk1NTM5NDg5MTU0.hfy0_56rmwIGsFMtySOw6HPX4F_ywdJMFB0CR3t6jGcg.57jZOi-BeYm4Gf4kl3UTl0nEbHGIao9fa_B6GqCcvAsg.JPEG.minjow1996/IMG%EF%BC%BF20230924%EF%BC%BF155512%EF%BC%BF094.jpg?type=w800",
     instagramUrls: ["https://www.instagram.com/dongbaek_school/"]
   },
   {
