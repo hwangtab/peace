@@ -390,7 +390,7 @@ export const musicians: Musicians = [
     description: "포크 듀오 '나뭇잎들'에서 원걸과 함께 활동하는 싱어송라이터입니다. 맑은 음색이 특징이며, 어쿠스틱 기타와 보컬을 담당합니다. 일상의 작은 순간들을 통해 평화의 가치를 서정적으로 노래하며, 제1회 강정피스앤뮤직캠프에서 디자인 스태프로도 참여한 바 있어 강정 평화운동 커뮤니티와 깊은 인연이 있습니다.",
     genre: ["포크", "어쿠스틱"],
     trackTitle: "눈 앞의 마음",
-    imageUrl: "",
+    imageUrl: "/images-webp/musicians/40.webp",
     instagramUrls: ["https://www.instagram.com/yeoouul/"]
   },
   {
