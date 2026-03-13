@@ -271,7 +271,7 @@ export const musicians: Musicians = [
     description: "2003년 2월 신촌 '러쉬'에서 일본인 뮤지션 사토유키에의 제안으로 시작된 실험음악 정기 발표회입니다. 아방가르드, 즉흥, 실험 등 대중에 잘 알려지지 않은 예술 활동을 다루며, 음악뿐 아니라 춤과 퍼포먼스까지 아우릅니다. 다국적·다장르 아티스트들의 협업 무대로 300회 이상의 발표회를 개최해왔으며, 젊은 실험음악가들을 양성하는 대표적인 발표의 장으로 자리잡고 있습니다.",
     genre: ["즉흥음악", "실험음악", "아방가르드"],
     trackTitle: "",
-    imageUrl: "",
+    imageUrl: "https://i.ytimg.com/vi/fp1kFyL6AxQ/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGHIgYShCMA8=&rs=AOn4CLBSXFkQjBtt-S-9_9rB7Cd2JiqUhA",
     instagramUrls: []
   },
   {
@@ -381,7 +381,7 @@ export const musicians: Musicians = [
     description: "여러 투쟁현장에 음악으로 연대해온 포크 싱어송라이터입니다. 앨범 '시킨건 곧잘한다', '섬의 노래'(2019) 등을 발표했으며, '투쟁하는 마음'은 '새 민중음악 선곡집 Vol.2 - 연대의 노래'(2017)에 수록되었습니다. 제1회부터 강정피스앤뮤직캠프에 꾸준히 출연하고 있습니다.",
     genre: ["포크", "싱어송라이터"],
     trackTitle: "",
-    imageUrl: "",
+    imageUrl: "/images-webp/camps/2025/DSC00723.webp",
     instagramUrls: []
   },
   {
@@ -551,7 +551,7 @@ export const musicians: Musicians = [
     description: "각자 싱어송라이터로 활동하던 eeeho와 Mohho가 서로의 독특한 분위기에 영감을 얻어 결성한 듀오입니다. 모든 노래를 함께 쓰며, 시적인 가사와 묵직한 일렉트릭 기타 사운드, 다양한 깊이의 전자 비트와 앰비언트 사운드스케이프를 특징으로 합니다. 첫 앨범 'Unknown Origin'이 제16회 한국대중음악상 최우수 포크 음반 부문에 노미네이트되었으며, 2023년 앨범 'Wave Crest(파고)'를 발표했습니다.",
     genre: ["인디", "포크", "얼터너티브"],
     trackTitle: "파고 (Wave Crest)",
-    imageUrl: "",
+    imageUrl: "https://i.namu.wiki/i/xiBnZ6I89WP_eQo9ihWExzHrM5LXXgGUohA-tzm-OjKRXNvwu8el9ZYOxGPOMo4J7tTQQARPIa6ir71ukVIPiQ.webp",
     instagramUrls: ["https://www.instagram.com/howaho_official/"]
   },
   {
