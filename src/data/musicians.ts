@@ -530,7 +530,7 @@ export const musicians: Musicians = [
     description: "루츠 레게, 포크, 블루스, 전통음악이 자연스럽게 스며든 감성적이고 유기적인 싱어송라이터입니다. 런던에서 레게에 빠진 후 한국으로 돌아와 레게 밴드의 보컬리스트이자 기타리스트로 활동을 시작했습니다. 제주로 이주한 후 'Uncle Bongo'라는 이름으로 셀렉터 겸 사운드 엔지니어로도 활동하며, 여행의 기록과 삶의 단상을 리듬 위에 담아냅니다.",
     genre: ["레게", "포크", "블루스"],
     trackTitle: "People Are The Country",
-    imageUrl: "https://image.bugsm.co.kr/artist/images/224/800849/80084903.jpg",
+    imageUrl: "/images-webp/musicians/51.webp",
     instagramUrls: ["https://www.instagram.com/tehiun/"]
   },
   {
