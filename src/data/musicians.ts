@@ -286,12 +286,12 @@ export const musicians: Musicians = [
   {
     id: 27,
     name: "Saite X Zsthyger",
-    shortDescription: "2026 강정피스앤뮤직캠프에 출연하는 협업 프로젝트입니다",
-    description: "2026 강정피스앤뮤직캠프에 출연합니다.",
-    genre: ["일렉트로닉", "사이키델릭"],
+    shortDescription: "GBC 우승 비트박서 Sight와 메탈 프로듀서 제트싸이져의 협연",
+    description: "2025 GBC(글로벌 비트박스 챔피언십) 우승자 Sight와 메탈 프로듀서이자 기타리스트 제트싸이져(Zsthyger)의 협연 무대. 비트박스의 강렬한 리듬과 메탈 기타의 파워풀한 사운드가 만나 폭발적인 에너지를 선사한다.",
+    genre: ["비트박스", "메탈"],
     trackTitle: "",
-    imageUrl: "",
-    instagramUrls: []
+    imageUrl: "/images-webp/musicians/27.webp",
+    instagramUrls: ["https://www.instagram.com/beatbox_sight", "https://www.instagram.com/zsthyger/"]
   },
   {
     id: 29,
@@ -356,12 +356,12 @@ export const musicians: Musicians = [
   {
     id: 35,
     name: "안티스트레스",
-    shortDescription: "2026 강정피스앤뮤직캠프에 출연하는 밴드입니다",
-    description: "2026 강정피스앤뮤직캠프에 출연합니다.",
-    genre: ["인디", "록"],
+    shortDescription: "유기농펑크포크 사이와 슈게이즈 기타리스트 Rainbow99의 펑크밴드",
+    description: "유기농펑크포크 가수 사이(Sai)와 드림팝·슈게이즈 아티스트 Rainbow99(류승현)가 합체해 만든 펑크밴드. 투쟁 현장과 농촌을 누비며 자작곡을 부르는 사이의 포크 정신과, 한국 대표 기타리스트로 꼽히며 앰비언트·제너레이티브 음악까지 아우르는 Rainbow99의 실험적 사운드가 만나 거칠고 에너지 넘치는 펑크를 들려준다.",
+    genre: ["펑크", "포크펑크"],
     trackTitle: "",
-    imageUrl: "",
-    instagramUrls: []
+    imageUrl: "/images-webp/musicians/35.webp",
+    instagramUrls: ["https://www.instagram.com/sai.sae.sai/", "https://www.instagram.com/rainbow99gaze/"]
   },
   {
     id: 36,
