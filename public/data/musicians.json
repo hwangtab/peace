@@ -341,15 +341,18 @@
     {
         "id": 23,
         "name": "뮁",
-        "shortDescription": "2026 강정피스앤뮤직캠프에 출연합니다",
-        "description": "2026 강정피스앤뮤직캠프에 출연합니다.",
+        "shortDescription": "기억하고 싶은 순간들을 노래로 만드는 예술가이자 활동가입니다",
+        "description": "2015년부터 노래를 만들고 부르는 예술가이자 활동가입니다. 기억하고 싶은 순간들을 노래로 만들어 듣는 이에게 위로가 되길 바랍니다. 혼자가 아닌 모두가 함께 행복하게 사는 세상을 꿈꿉니다.",
         "genre": [
             "인디",
-            "실험음악"
+            "포크",
+            "싱어송라이터"
         ],
         "trackTitle": "",
-        "imageUrl": "",
-        "instagramUrls": []
+        "imageUrl": "/images-webp/musicians/23.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/mmuueenngg/"
+        ]
     },
     {
         "id": 24,
