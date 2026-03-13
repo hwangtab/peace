@@ -221,10 +221,14 @@
         "venue_2026": "Taman Olahraga Gangjeong",
         "keywords_base": "Desa Gangjeong, Musik perdamaian, Gerakan anti-perang",
         "description_2026": "Angin perdamaian terus berhembus. Lagu perdamaian ketiga akan bergema di Gangjeong pada Juni 2026.",
-        "expected_2026": "54 tim musisi telah dikonfirmasi",
+        "expected_2026": "53 tim musisi telah dikonfirmasi",
         "lineup_count": "{{count}} tim dikonfirmasi",
         "ticketing_2026": "Pesan tiket di Tumblbug",
-        "brand_line": "Kemah Musik Perdamaian Gangjeong, Jeju"
+        "brand_line": "Kemah Musik Perdamaian Gangjeong, Jeju",
+        "title_2026": "Kemah Musik Perdamaian Gangjeong ke-3",
+        "slogan_2026": "Mari bernyanyi, menari, dan akhiri perang!",
+        "date_badge_2026": "5–7 Jun 2026",
+        "participant_count": "{{count}} tim"
     },
     "album": {
         "page_title": "To You in a Distant Place Whose Name I Don't Know - Tentang Album",

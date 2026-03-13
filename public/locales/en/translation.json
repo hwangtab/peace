@@ -221,10 +221,14 @@
         "venue_2026": "Gangjeong Sports Park",
         "keywords_base": "Gangjeong Village, Peace Music, Anti-war Movement",
         "description_2026": "The wind of peace continues to blow. The third song of peace will resonate in Gangjeong in June 2026.",
-        "expected_2026": "54 teams of musicians confirmed",
+        "expected_2026": "53 teams of musicians confirmed",
         "lineup_count": "{{count}} teams confirmed",
         "ticketing_2026": "Book tickets on Tumblbug",
-        "brand_line": "Jeju Gangjeong Peace & Music Camp"
+        "brand_line": "Jeju Gangjeong Peace & Music Camp",
+        "title_2026": "3rd Gangjeong Peace Music Camp",
+        "slogan_2026": "Let's sing, let's dance, end the war!",
+        "date_badge_2026": "Jun 5–7, 2026",
+        "participant_count": "{{count}} teams"
     },
     "album": {
         "page_title": "To You in a Distant Place Whose Name I Don't Know - About Album",

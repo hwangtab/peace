@@ -221,10 +221,14 @@
         "venue_2026": "江汀体育公园",
         "keywords_base": "江汀村, 和平音乐, 反战运动",
         "description_2026": "和平之风持续吹拂。第三首和平之歌将在2026年6月于江汀响起。",
-        "expected_2026": "已确认54支音乐人团队",
+        "expected_2026": "已确认53支音乐人团队",
         "lineup_count": "已确认{{count}}支团队",
         "ticketing_2026": "在Tumblbug预订门票",
-        "brand_line": "济州 江汀和平音乐营"
+        "brand_line": "济州 江汀和平音乐营",
+        "title_2026": "第三届江汀和平音乐营",
+        "slogan_2026": "唱起来，跳起来，终结战争！",
+        "date_badge_2026": "2026年6月5日 — 7日",
+        "participant_count": "{{count}}支团队"
     },
     "album": {
         "page_title": "To You in a Distant Place Whose Name I Don't Know - 专辑介绍",

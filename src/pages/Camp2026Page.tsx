@@ -53,14 +53,18 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => {
     );
   }
 
+  const translatedTitle = t('camp.title_2026');
+  const translatedDescription = t('camp.description_2026');
+  const translatedSlogan = t('camp.slogan_2026');
+
   const eventSchema = getEventSchema({
-    name: camp2026.title,
+    name: translatedTitle,
     startDate: camp2026.startDate,
     endDate: camp2026.endDate || camp2026.startDate,
-    description: camp2026.description,
+    description: translatedDescription,
     location: {
-      name: camp2026.location.split('(')[0]?.trim() || camp2026.location,
-      address: camp2026.location.includes('(') ? (camp2026.location.split('(')[1]?.replace(')', '') || camp2026.location) : camp2026.location
+      name: t('camp.venue_2026'),
+      address: t('camp.venue_2026')
     },
     image: camp2026.images && camp2026.images.length > 0 && camp2026.images[0] ? getFullUrl(camp2026.images[0]) : undefined,
     performers: camp2026.participants?.map(p => ({
@@ -74,7 +78,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => {
   return (
     <PageLayout
       title={`${t('camp.ordinal', { num: ordinalLabel })} ${t('app.title')} (2026)`}
-      description={camp2026.description}
+      description={translatedDescription}
       keywords={`${t('app.title')}, ${t('camp.ordinal', { num: ordinalLabel })}, 2026, ${t('camp.keywords_base')}`}
       structuredData={eventSchema}
       disableTopPadding={true}
@@ -84,7 +88,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => {
       <section className="relative min-h-[500px] md:min-h-[600px] lg:min-h-[700px] flex items-center justify-center text-center overflow-hidden bg-ocean-gradient">
         <Image
           src="/images-webp/camps/2023/20230610밤 전쟁을끝내자.webp"
-          alt={camp2026.title}
+          alt={translatedTitle}
           fill
           sizes="100vw"
           className="absolute inset-0 w-full h-full object-cover"
@@ -98,13 +102,11 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => {
             transition={{ duration: 0.8 }}
           >
             <span className="inline-block px-5 py-1.5 bg-white/20 backdrop-blur-sm text-white font-bold rounded-full mb-6 text-sm tracking-wider border border-white/30">
-              2026.06.05 — 07
+              {t('camp.date_badge_2026')}
             </span>
 
-            <h1 className="typo-h1 text-white mb-4 hyphens-auto break-words">{camp2026.title}</h1>
-            {camp2026.slogan && (
-              <p className="typo-subtitle text-gray-100 mb-8 hyphens-auto break-words">{camp2026.slogan}</p>
-            )}
+            <h1 className="typo-h1 text-white mb-4 hyphens-auto break-words">{translatedTitle}</h1>
+            <p className="typo-subtitle text-gray-100 mb-8 hyphens-auto break-words">{translatedSlogan}</p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-6 text-white mb-8">
               <div>
@@ -157,7 +159,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => {
               >
                 <Image
                   src="/images-webp/camps/2026/2026poster1.jpeg"
-                  alt={camp2026.title}
+                  alt={translatedTitle}
                   width={360}
                   height={509}
                   className="w-full h-auto"
@@ -167,20 +169,20 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => {
               <div className="flex-1 bg-white rounded-lg shadow-sm p-8">
                 <SectionHeader title={t('camp.section_overview')} align="left" className="!mb-6" />
                 <p className="typo-body mb-6">
-                  {camp2026.description}
+                  {translatedDescription}
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div className="bg-ocean-sand rounded-xl p-4 text-center">
                     <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">{t('camp.label_period')}</p>
-                    <p className="text-sm font-semibold text-jeju-ocean">2026.06.05 — 07</p>
+                    <p className="text-sm font-semibold text-jeju-ocean">{t('camp.date_badge_2026')}</p>
                   </div>
                   <div className="bg-ocean-sand rounded-xl p-4 text-center">
                     <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">{t('camp.label_location')}</p>
-                    <p className="text-sm font-semibold text-jeju-ocean">{camp2026.location}</p>
+                    <p className="text-sm font-semibold text-jeju-ocean">{t('camp.venue_2026')}</p>
                   </div>
                   <div className="bg-ocean-sand rounded-xl p-4 text-center">
                     <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">{t('camp.label_participants')}</p>
-                    <p className="text-sm font-semibold text-jeju-ocean">{participantCount}{i18n.language === 'ko' ? '팀' : ' teams'}</p>
+                    <p className="text-sm font-semibold text-jeju-ocean">{t('camp.participant_count', { count: participantCount })}</p>
                   </div>
                 </div>
               </div>
