@@ -500,7 +500,7 @@ export const musicians: Musicians = [
     description: "2026 강정피스앤뮤직캠프에 출연합니다.",
     genre: ["인디"],
     trackTitle: "",
-    imageUrl: "",
+    imageUrl: "https://cdn.jejusori.net/news/photo/201003/77655_84499_4920.jpg",
     instagramUrls: []
   },
   {
