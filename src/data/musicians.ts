@@ -294,16 +294,6 @@ export const musicians: Musicians = [
     instagramUrls: []
   },
   {
-    id: 28,
-    name: "서민기",
-    shortDescription: "2026 강정피스앤뮤직캠프에 출연합니다",
-    description: "2026 강정피스앤뮤직캠프에 출연합니다.",
-    genre: ["인디", "포크"],
-    trackTitle: "",
-    imageUrl: "",
-    instagramUrls: []
-  },
-  {
     id: 29,
     name: "선경",
     shortDescription: "2026 강정피스앤뮤직캠프에 출연합니다",
