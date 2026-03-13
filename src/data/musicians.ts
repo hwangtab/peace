@@ -551,7 +551,7 @@ export const musicians: Musicians = [
     description: "수원에 위치한 크래프트 비어 라이브 음악 펍 'Alleyway Taphouse'의 공식 하우스 밴드로 활동하는 다국적 밴드입니다. 라이브 공연을 중심으로 활동하며, 다양한 장르의 음악을 선보이고 있습니다.",
     genre: ["록", "라이브"],
     trackTitle: "",
-    imageUrl: "/images-webp/musicians/54.webp",
+    imageUrl: "/images-webp/camps/2026/464596350_8533558266721540_3682315944236788793_n.jpg",
     instagramUrls: []
   },
   {
