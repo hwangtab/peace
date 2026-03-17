@@ -90,7 +90,8 @@ const TracksSection: React.FC<TracksSectionProps> = ({
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4 max-w-6xl mx-auto">
           {tracks.map((track) => {
-            const musician = initialMusicians.find(m => m.trackTitle === track.title);
+            const musician = initialMusicians.find(m => m.trackTitle === track.title)
+              || initialMusicians.find(m => m.name === track.artist);
             return (
               <TrackCard
                 key={track.id}
