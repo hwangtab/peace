@@ -33,12 +33,20 @@ export default function MusicianPage({ musician, relatedVideos, otherMusicians, 
     jobTitle: 'Musician',
   }, i18n.language);
 
-  const breadcrumbSchema = getBreadcrumbSchema([
-    { name: t('nav.home'), url: 'https://peaceandmusic.net/' },
-    { name: t('nav.album'), url: 'https://peaceandmusic.net/album/about' },
-    { name: t('nav.musician'), url: 'https://peaceandmusic.net/album/musicians' },
-    { name: musician.name, url: `https://peaceandmusic.net/album/musicians/${musician.id}` },
-  ]);
+  const breadcrumbSchema = getBreadcrumbSchema(
+    musicianCampYear
+      ? [
+          { name: t('nav.home'), url: 'https://peaceandmusic.net/' },
+          { name: t('nav.camp'), url: `https://peaceandmusic.net/camps/${musicianCampYear}` },
+          { name: musician.name, url: `https://peaceandmusic.net/album/musicians/${musician.id}` },
+        ]
+      : [
+          { name: t('nav.home'), url: 'https://peaceandmusic.net/' },
+          { name: t('nav.album'), url: 'https://peaceandmusic.net/album/about' },
+          { name: t('nav.musician'), url: 'https://peaceandmusic.net/album/musicians' },
+          { name: musician.name, url: `https://peaceandmusic.net/album/musicians/${musician.id}` },
+        ]
+  );
 
   return (
     <PageLayout

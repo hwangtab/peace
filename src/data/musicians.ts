@@ -415,16 +415,6 @@ export const musicians: Musicians = [
     instagramUrls: []
   },
   {
-    id: 41,
-    name: "이형주",
-    shortDescription: "2026 강정피스앤뮤직캠프에 출연합니다",
-    description: "인디 뮤지션입니다.",
-    genre: ["인디", "포크"],
-    trackTitle: "",
-    imageUrl: "",
-    instagramUrls: []
-  },
-  {
     id: 42,
     name: "임정득",
     shortDescription: "한국의 투쟁현장에서 노래하는 민중가수이자 싱어송라이터로, '소금꽃나무'로 널리 알려져 있습니다",
