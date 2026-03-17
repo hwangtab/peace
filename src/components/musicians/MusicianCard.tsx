@@ -22,10 +22,9 @@ const MusicianCard = memo(({ musician, index }: MusicianCardProps) => {
         transition={{ delay: index * 0.1 }}
         className="transform-gpu h-full scroll-mt-24"
       >
-        <Link href={`/album/musicians/${musician.id}`} className="block h-full">
-        <div className="group relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-[1.02] hover:shadow-xl h-full flex flex-col">
-          {/* Image */}
-          <div className="relative w-full pb-[100%]">
+        <div className="group relative bg-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col">
+          {/* Image — entire image area links to detail page */}
+          <Link href={`/album/musicians/${musician.id}`} className="block relative w-full pb-[100%] flex-shrink-0">
             <div className="absolute inset-0 overflow-hidden">
               {musician.imageUrl ? (
                 <Image
@@ -56,13 +55,15 @@ const MusicianCard = memo(({ musician, index }: MusicianCardProps) => {
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
-          </div>
+          </Link>
 
           {/* Content */}
           <div className="p-6 flex-1 flex flex-col">
-            <h3 className="text-2xl font-serif text-jeju-ocean group-hover:text-ocean-mist transition-colors duration-200 mb-2 break-words">
-              {musician.name}
-            </h3>
+            <Link href={`/album/musicians/${musician.id}`} className="block mb-2 hover:text-ocean-mist transition-colors duration-200">
+              <h3 className="text-2xl font-serif text-jeju-ocean group-hover:text-ocean-mist transition-colors duration-200 break-words">
+                {musician.name}
+              </h3>
+            </Link>
             <p className="text-gray-600 mb-4 flex-1 text-pretty break-words">{musician.shortDescription}</p>
 
             {/* Social Links */}
@@ -76,7 +77,6 @@ const MusicianCard = memo(({ musician, index }: MusicianCardProps) => {
                       href={url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
                       className="inline-flex items-center px-3 py-1 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors duration-200"
                     >
                       <InstagramIcon className="w-4 h-4 mr-1" />@{username}
@@ -88,7 +88,6 @@ const MusicianCard = memo(({ musician, index }: MusicianCardProps) => {
                     href={musician.youtubeUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
                     className="inline-flex items-center px-3 py-1 text-sm bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors duration-200"
                   >
                     <YouTubeIcon className="w-4 h-4 mr-1" />YouTube
@@ -99,7 +98,6 @@ const MusicianCard = memo(({ musician, index }: MusicianCardProps) => {
 
           </div>
         </div>
-        </Link>
       </motion.div>
     </>
   );

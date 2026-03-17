@@ -42,87 +42,103 @@ export default function MusicianPage({ musician }: MusicianPageProps) {
       structuredData={[profileSchema, breadcrumbSchema]}
       disableTopPadding={true}
     >
-      <div className="bg-gradient-to-b from-jeju-ocean to-ocean-mist pt-32 pb-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-8 items-start">
-            {/* Image */}
-            {musician.imageUrl && (
-              <div className="w-full md:w-[360px] flex-shrink-0">
-                <div className="relative aspect-[3/2] rounded-xl overflow-hidden shadow-2xl">
-                  <Image
-                    src={musician.imageUrl}
-                    alt={musician.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 360px"
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-              </div>
-            )}
-
-            {/* Info */}
-            <div className="flex-1 text-white">
-              <h1 className="typo-h1 mb-4">{musician.name}</h1>
-
-              {/* Genre tags */}
-              <div className="flex flex-wrap gap-2 mb-6">
-                {musician.genre.map((g) => (
-                  <span
-                    key={g}
-                    className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm"
-                  >
-                    {g}
-                  </span>
-                ))}
-              </div>
-
-              {/* Track */}
-              {musician.trackTitle && (
-                <div className="mb-6">
-                  <p className="text-sm uppercase tracking-wide text-white/70 mb-1">
-                    {t('common.track')}
-                  </p>
-                  <Link
-                    href="/album/tracks"
-                    className="text-golden-sun hover:text-yellow-300 transition-colors text-lg font-medium"
-                  >
-                    {musician.trackTitle}
-                  </Link>
+      {/* Hero */}
+      <div className="relative bg-gradient-to-b from-jeju-ocean to-ocean-mist min-h-[420px] flex items-end">
+        {/* Background image blur */}
+        {musician.imageUrl && (
+          <div className="absolute inset-0 overflow-hidden">
+            <Image
+              src={musician.imageUrl}
+              alt=""
+              fill
+              className="object-cover object-center opacity-20 blur-sm scale-105"
+              priority
+              aria-hidden
+            />
+          </div>
+        )}
+        <div className="relative z-10 w-full pt-32 pb-12">
+          <div className="container mx-auto px-4">
+            <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-10 items-end">
+              {/* Profile image */}
+              {musician.imageUrl && (
+                <div className="w-full md:w-[320px] flex-shrink-0">
+                  <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl ring-4 ring-white/20">
+                    <Image
+                      src={musician.imageUrl}
+                      alt={musician.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 320px"
+                      className="object-cover object-center"
+                      priority
+                    />
+                  </div>
                 </div>
               )}
 
-              {/* Social Links */}
-              {(musician.instagramUrls.length > 0 || musician.youtubeUrl) && (
-                <div className="flex flex-wrap gap-2">
-                  {musician.instagramUrls.map((url) => {
-                    const username = extractInstagramUsername(url);
-                    return (
+              {/* Info */}
+              <div className="flex-1 text-white pb-2">
+                {/* Genre tags */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {musician.genre.map((g) => (
+                    <span
+                      key={g}
+                      className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium tracking-wide"
+                    >
+                      {g}
+                    </span>
+                  ))}
+                </div>
+
+                <h1 className="typo-h1 mb-5 leading-tight">{musician.name}</h1>
+
+                {/* Track */}
+                {musician.trackTitle && (
+                  <div className="mb-5">
+                    <p className="text-xs uppercase tracking-widest text-white/60 mb-1">
+                      {t('common.track')}
+                    </p>
+                    <Link
+                      href="/album/tracks"
+                      className="text-golden-sun hover:text-yellow-300 transition-colors text-lg font-medium"
+                    >
+                      {musician.trackTitle}
+                    </Link>
+                  </div>
+                )}
+
+                {/* Social Links */}
+                {(musician.instagramUrls.length > 0 || musician.youtubeUrl) && (
+                  <div className="flex flex-wrap gap-2">
+                    {musician.instagramUrls.map((url) => {
+                      const username = extractInstagramUsername(url);
+                      return (
+                        <a
+                          key={url}
+                          href={url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center px-3 py-1.5 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors"
+                        >
+                          <InstagramIcon className="w-4 h-4 mr-1.5" />
+                          @{username}
+                        </a>
+                      );
+                    })}
+                    {musician.youtubeUrl && (
                       <a
-                        key={url}
-                        href={url}
+                        href={musician.youtubeUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center px-3 py-1 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors"
+                        className="inline-flex items-center px-3 py-1.5 text-sm bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors"
                       >
-                        <InstagramIcon className="w-4 h-4 mr-1" />
-                        @{username}
+                        <YouTubeIcon className="w-4 h-4 mr-1.5" />
+                        YouTube
                       </a>
-                    );
-                  })}
-                  {musician.youtubeUrl && (
-                    <a
-                      href={musician.youtubeUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center px-3 py-1 text-sm bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors"
-                    >
-                      <YouTubeIcon className="w-4 h-4 mr-1" />
-                      YouTube
-                    </a>
-                  )}
-                </div>
-              )}
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
