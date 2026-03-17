@@ -19,7 +19,7 @@
         "location": "서울 홍대 스페이스 한강",
         "eventType": "album",
         "eventYear": 2024,
-        "musicianIds": [2]
+        "musicianIds": [15]
     },
     {
         "id": 3,
@@ -30,7 +30,7 @@
         "location": "서울 홍대 스페이스 한강",
         "eventType": "album",
         "eventYear": 2024,
-        "musicianIds": [7]
+        "musicianIds": [4]
     },
     {
         "id": 4,
@@ -41,7 +41,7 @@
         "location": "서울 홍대 스페이스 한강",
         "eventType": "album",
         "eventYear": 2024,
-        "musicianIds": []
+        "musicianIds": [6]
     },
     {
         "id": 5,
@@ -63,7 +63,7 @@
         "location": "서울 홍대 스페이스 한강",
         "eventType": "album",
         "eventYear": 2024,
-        "musicianIds": [29, 45]
+        "musicianIds": [11, 59]
     },
     {
         "id": 101,
