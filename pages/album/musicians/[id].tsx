@@ -5,20 +5,23 @@ import Image from 'next/image';
 import Link from 'next/link';
 import nextI18NextConfig from '../../../next-i18next.config';
 import { Musician } from '../../../src/types/musician';
+import { VideoItem } from '../../../src/types/video';
 import { loadLocalizedData } from '../../../src/utils/dataLoader';
 import { getProfilePageSchema, getBreadcrumbSchema } from '../../../src/utils/structuredData';
 import { extractInstagramUsername } from '../../../src/utils/instagram';
 import PageLayout from '../../../src/components/layout/PageLayout';
 import MusicianCard from '../../../src/components/musicians/MusicianCard';
+import VideoCard from '../../../src/components/videos/VideoCard';
 import InstagramIcon from '../../../src/components/icons/InstagramIcon';
 import YouTubeIcon from '../../../src/components/icons/YouTubeIcon';
 
 interface MusicianPageProps {
   musician: Musician;
+  relatedVideos: VideoItem[];
   otherMusicians: Musician[];
 }
 
-export default function MusicianPage({ musician, otherMusicians }: MusicianPageProps) {
+export default function MusicianPage({ musician, relatedVideos, otherMusicians }: MusicianPageProps) {
   const { t, i18n } = useTranslation();
 
   const profileSchema = getProfilePageSchema({
@@ -177,6 +180,24 @@ export default function MusicianPage({ musician, otherMusicians }: MusicianPageP
         </div>
       </div>
 
+      {/* Related Videos */}
+      {relatedVideos.length > 0 && (
+        <div className="bg-white border-t border-gray-100 py-16">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="typo-h2 text-jeju-ocean mb-8">
+                {t('nav.video')}
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {relatedVideos.map((video) => (
+                  <VideoCard key={video.id} video={video} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Other Musicians */}
       {otherMusicians.length > 0 && (
         <div className="bg-ocean-sand py-16">
@@ -228,6 +249,20 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
     return { notFound: true };
   }
 
+  // Find related videos
+  const videos = loadLocalizedData<VideoItem>(resolvedLocale, 'videos.json');
+  const directVideos = videos.filter((v) =>
+    v.musicianIds?.includes(musician.id)
+  );
+  const eventVideos = musician.events
+    ? videos.filter((v) =>
+        v.eventType && v.eventYear &&
+        musician.events!.includes(`${v.eventType}-${v.eventYear}`) &&
+        !directVideos.some((dv) => dv.id === v.id)
+      )
+    : [];
+  const relatedVideos = [...directVideos, ...eventVideos];
+
   // Pick 8 other musicians: prioritize same genre, fill with random
   const others = musicians.filter((m) => m.id !== musician.id);
   const sameGenre = others.filter((m) =>
@@ -248,6 +283,7 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
     props: {
       ...(await serverSideTranslations(resolvedLocale, ['translation'], nextI18NextConfig)),
       musician,
+      relatedVideos,
       otherMusicians,
     },
   };
