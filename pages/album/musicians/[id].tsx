@@ -7,6 +7,7 @@ import nextI18NextConfig from '../../../next-i18next.config';
 import { Musician } from '../../../src/types/musician';
 import { VideoItem } from '../../../src/types/video';
 import { loadLocalizedData } from '../../../src/utils/dataLoader';
+import { camps } from '../../../src/data/camps';
 import { getProfilePageSchema, getBreadcrumbSchema } from '../../../src/utils/structuredData';
 import { extractInstagramUsername } from '../../../src/utils/instagram';
 import PageLayout from '../../../src/components/layout/PageLayout';
@@ -19,9 +20,10 @@ interface MusicianPageProps {
   musician: Musician;
   relatedVideos: VideoItem[];
   otherMusicians: Musician[];
+  musicianCampYear: number | null;
 }
 
-export default function MusicianPage({ musician, relatedVideos, otherMusicians }: MusicianPageProps) {
+export default function MusicianPage({ musician, relatedVideos, otherMusicians, musicianCampYear }: MusicianPageProps) {
   const { t, i18n } = useTranslation();
 
   const profileSchema = getProfilePageSchema({
@@ -162,10 +164,10 @@ export default function MusicianPage({ musician, relatedVideos, otherMusicians }
             {/* Navigation */}
             <div className="mt-12 flex flex-wrap gap-4">
               <Link
-                href="/album/musicians"
+                href={musicianCampYear ? `/camps/${musicianCampYear}` : '/album/musicians'}
                 className="inline-flex items-center px-4 py-2 bg-ocean-sand text-jeju-ocean rounded-lg hover:bg-ocean-mist transition-colors text-sm font-medium"
               >
-                &larr; {t('nav.musician')}
+                &larr; {musicianCampYear ? t('nav.camp') : t('nav.musician')}
               </Link>
               {musician.trackTitle && (
                 <Link
@@ -212,10 +214,10 @@ export default function MusicianPage({ musician, relatedVideos, otherMusicians }
             </div>
             <div className="text-center mt-10">
               <Link
-                href="/album/musicians"
+                href={musicianCampYear ? `/camps/${musicianCampYear}` : '/album/musicians'}
                 className="inline-flex items-center px-6 py-3 bg-jeju-ocean text-white rounded-lg hover:bg-ocean-mist transition-colors font-medium"
               >
-                {t('nav.musician')} &rarr;
+                {musicianCampYear ? t('nav.camp') : t('nav.musician')} &rarr;
               </Link>
             </div>
           </div>
@@ -263,21 +265,53 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
     : [];
   const relatedVideos = [...directVideos, ...eventVideos];
 
-  // Pick 8 other musicians: prioritize same genre, fill with random
-  const others = musicians.filter((m) => m.id !== musician.id);
-  const sameGenre = others.filter((m) =>
-    m.genre.some((g) => musician.genre.includes(g))
-  );
-  const diffGenre = others.filter((m) =>
-    !m.genre.some((g) => musician.genre.includes(g))
-  );
+  // Context-aware "other musicians" filtering
+  const isAlbumMusician = Boolean(musician.trackTitle);
 
-  // Deterministic sort based on musician id (consistent per build)
+  // Determine camp year for camp-only musicians
+  const musicianCampYear = isAlbumMusician ? null :
+    camps
+      .filter(c => c.participants?.some(p =>
+        typeof p === 'object' && 'musicianId' in p && p.musicianId === musician.id
+      ))
+      .sort((a, b) => b.year - a.year)[0]?.year ?? null;
+
+  // Exclude self and musicians without images
+  const validMusicians = musicians.filter((m) => m.id !== musician.id && m.imageUrl);
+
+  let candidates: Musician[];
+  if (isAlbumMusician) {
+    // Album context: only show other album musicians (with trackTitle)
+    candidates = validMusicians.filter((m) => m.trackTitle);
+  } else {
+    // Camp context: only show musicians from the same camp(s)
+    const musicianCamps = camps.filter(c =>
+      c.participants?.some(p =>
+        typeof p === 'object' && 'musicianId' in p && p.musicianId === musician.id
+      )
+    );
+    const campMusicianIds = new Set<number>();
+    musicianCamps.forEach(c =>
+      c.participants?.forEach(p => {
+        if (typeof p === 'object' && 'musicianId' in p && p.musicianId && p.musicianId !== musician.id) {
+          campMusicianIds.add(p.musicianId);
+        }
+      })
+    );
+    candidates = validMusicians.filter((m) => campMusicianIds.has(m.id));
+  }
+
+  // Better hash for varied sorting per musician
   const seed = musician.id;
+  const hash = (id: number) => {
+    let h = (id * 2654435761 + seed * 40503) | 0;
+    h = (((h >>> 16) ^ h) * 45679) | 0;
+    return ((h >>> 16) ^ h) | 0;
+  };
   const pseudoSort = (arr: Musician[]) =>
-    [...arr].sort((a, b) => ((a.id * 31 + seed) % 97) - ((b.id * 31 + seed) % 97));
+    [...arr].sort((a, b) => hash(a.id) - hash(b.id));
 
-  const otherMusicians = [...pseudoSort(sameGenre), ...pseudoSort(diffGenre)].slice(0, 8);
+  const otherMusicians = pseudoSort(candidates).slice(0, 8);
 
   return {
     props: {
@@ -285,6 +319,7 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
       musician,
       relatedVideos,
       otherMusicians,
+      musicianCampYear,
     },
   };
 }
