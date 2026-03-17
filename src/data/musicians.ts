@@ -452,7 +452,7 @@ export const musicians: Musicians = [
     genre: ["포크", "민중음악", "싱어송라이터"],
     trackTitle: "시동을 걸었어",
     imageUrl: "https://ojsfile.ohmynews.com/STD_IMG_FILE/2019/0711/IE002521195_STD.jpg",
-    instagramUrls: []
+    instagramUrls: ["https://www.instagram.com/chosungil99/"]
   },
   {
     id: 46,
