@@ -8,9 +8,10 @@ interface CampLineupProps {
   participants: (string | Participant)[];
   musicians: Musician[];
   inView: boolean;
+  campYear?: number;
 }
 
-const CampLineup: React.FC<CampLineupProps> = ({ participants, musicians, inView }) => {
+const CampLineup: React.FC<CampLineupProps> = ({ participants, musicians, inView, campYear }) => {
   const getParticipantName = (participant: string | Participant) => {
     if (!participant) return '';
     return typeof participant === 'string' ? participant : participant.name;
@@ -30,7 +31,12 @@ const CampLineup: React.FC<CampLineupProps> = ({ participants, musicians, inView
 
         if (musician) {
           return (
-            <MusicianCard key={musician.id} musician={musician} index={index} />
+            <MusicianCard
+              key={musician.id}
+              musician={musician}
+              index={index}
+              href={campYear ? `/camps/${campYear}/musicians/${musician.id}` : undefined}
+            />
           );
         }
 

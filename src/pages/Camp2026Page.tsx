@@ -211,7 +211,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => {
               inView={isLineupInView}
             />
             <div className="max-w-4xl mx-auto">
-              <CampLineup participants={camp2026.participants} musicians={musicians} inView={isLineupInView} />
+              <CampLineup participants={camp2026.participants} musicians={musicians} inView={isLineupInView} campYear={2026} />
             </div>
           </div>
         </Section>
