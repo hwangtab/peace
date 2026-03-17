@@ -43,17 +43,19 @@ const AlbumTracksPage = ({ initialTracks = [], initialMusicians = [], initialLoc
         ])
       ]}
       disableTopPadding={true}
+      disableBottomPadding={true}
     >
       <PageHero
         title={t('nav.track')}
         subtitle={t('album.tracks_hero_subtitle')}
         backgroundImage="/images-webp/gallery/152.webp"
       />
-      <div className="pt-12">
+      <div className="pt-16 md:pt-20 pb-12 md:pb-16">
         <TracksSection
           enableSectionWrapper={false}
           hideSectionHeader={true}
           initialTracks={initialTracks}
+          initialMusicians={initialMusicians}
           initialLocale={initialLocale}
         />
       </div>

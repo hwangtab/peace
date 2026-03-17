@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'next-i18next';
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import { Track } from '../../types/track';
 
 const AudioPlayer = dynamic(() => import('./AudioPlayer'), {
@@ -15,6 +16,8 @@ export interface TrackCardProps {
     onToggle: () => void;
     currentlyPlaying: boolean;
     onPlay: () => void;
+    musicianImageUrl?: string;
+    alwaysExpanded?: boolean;
 }
 
 const TrackCard = React.memo(({
@@ -23,63 +26,94 @@ const TrackCard = React.memo(({
     onToggle,
     currentlyPlaying,
     onPlay,
+    musicianImageUrl,
+    alwaysExpanded = false,
 }: TrackCardProps) => {
     const { t } = useTranslation();
 
+    const showContent = alwaysExpanded || isExpanded;
+
     return (
         <motion.div
-            layout
+            layout={!alwaysExpanded}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             className="bg-white rounded-lg shadow-md overflow-hidden"
         >
-            {/* Header */}
-            <div
-                className="p-4 cursor-pointer hover:bg-ocean-sand transition-colors"
-                onClick={() => {
-                    onToggle();
-                    onPlay();
-                }}
-                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onToggle(); onPlay(); } }}
-                role="button"
-                tabIndex={0}
-                aria-expanded={isExpanded}
-            >
-                <div className="flex justify-between items-center">
-                    <div className="flex-grow">
-                        <div className="flex items-center justify-between mb-1">
-                            <h3 className="text-lg font-bold font-serif break-words">{track.title}</h3>
-                            <span className="text-sm text-coastal-gray ml-4">{track.duration}</span>
-                        </div>
-                        <p className="text-jeju-ocean font-serif break-words">{track.artist}</p>
-                    </div>
-                    <motion.button
-                        animate={{ rotate: isExpanded ? 180 : 0 }}
-                        className="text-coastal-gray ml-4"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                        >
-                            <path
-                                fillRule="evenodd"
-                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                clipRule="evenodd"
-                            />
-                        </svg>
-                    </motion.button>
+            {/* Musician Image */}
+            {alwaysExpanded && musicianImageUrl && (
+                <div className="relative h-48 w-full">
+                    <Image
+                        src={musicianImageUrl}
+                        alt={track.artist}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="object-cover"
+                    />
                 </div>
-            </div>
+            )}
 
-            {/* Expanded Content */}
-            {isExpanded && (
+            {/* Header */}
+            {alwaysExpanded ? (
+                <div className="p-4">
+                    <div className="flex justify-between items-center">
+                        <div className="flex-grow">
+                            <div className="flex items-center justify-between mb-1">
+                                <h3 className="text-lg font-bold font-serif break-words">{track.title}</h3>
+                                <span className="text-sm text-coastal-gray ml-4">{track.duration}</span>
+                            </div>
+                            <p className="text-jeju-ocean font-serif break-words">{track.artist}</p>
+                        </div>
+                    </div>
+                </div>
+            ) : (
+                <div
+                    className="p-4 cursor-pointer hover:bg-ocean-sand transition-colors"
+                    onClick={() => {
+                        onToggle();
+                        onPlay();
+                    }}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onToggle(); onPlay(); } }}
+                    role="button"
+                    tabIndex={0}
+                    aria-expanded={isExpanded}
+                >
+                    <div className="flex justify-between items-center">
+                        <div className="flex-grow">
+                            <div className="flex items-center justify-between mb-1">
+                                <h3 className="text-lg font-bold font-serif break-words">{track.title}</h3>
+                                <span className="text-sm text-coastal-gray ml-4">{track.duration}</span>
+                            </div>
+                            <p className="text-jeju-ocean font-serif break-words">{track.artist}</p>
+                        </div>
+                        <motion.button
+                            animate={{ rotate: isExpanded ? 180 : 0 }}
+                            className="text-coastal-gray ml-4"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-5 w-5"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                            >
+                                <path
+                                    fillRule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clipRule="evenodd"
+                                />
+                            </svg>
+                        </motion.button>
+                    </div>
+                </div>
+            )}
+
+            {/* Content */}
+            {showContent && (
                 <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
+                    initial={alwaysExpanded ? false : { opacity: 0, height: 0 }}
+                    animate={alwaysExpanded ? undefined : { opacity: 1, height: "auto" }}
+                    exit={alwaysExpanded ? undefined : { opacity: 0, height: 0 }}
                     className="px-4 pb-4"
                 >
                     {/* Audio Player */}
