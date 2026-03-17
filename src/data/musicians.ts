@@ -110,7 +110,7 @@ export const musicians: Musicians = [
     shortDescription: "재즈의 즉흥성과 실험정신으로 현대사회의 단면을 표현하는 듀오로, 예진 안젤라 박과 황슬기가 만드는 독창적 사운드를 선보입니다",
     description: "예진 안젤라 박과 황슬기로 구성된 재즈 듀오입니다. 재즈를 기반으로 하여 다양하고 아름다운 소리를 탐구하는 음악적 여정을 함께하고 있습니다. 재즈의 즉흥성과 실험정신을 바탕으로, 현대사회의 문제의식을 섬세하게 담아내는 것이 특징이며, 분쟁 지역의 평범한 일상과 그 속에 내재된 긴장감을 음악적으로 표현합니다.",
     genre: ["재즈", "실험음악"],
-    trackTitle: "If this can't be tolerated, what can't be?",
+    trackTitle: "If this can be tolerated, what can't be?",
     imageUrl: "/images-webp/musicians/10.webp",
     instagramUrls: [
       "https://www.instagram.com/yejangelapark/",
