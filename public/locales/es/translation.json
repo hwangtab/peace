@@ -119,6 +119,8 @@
         "lyrics": "Letra",
         "credits": "Créditos",
         "featured_track": "Pista",
+        "album_track_label": "Peace Album Track",
+        "album_track_button": "Listen to Album Tracks",
         "filter_all": "Todo",
         "filter_album_2024": "Álbum 2024",
         "filter_camp_2023": "Campamento 2023",

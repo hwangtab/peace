@@ -119,6 +119,8 @@
         "lyrics": "Paroles",
         "credits": "Crédits",
         "featured_track": "Piste",
+        "album_track_label": "Peace Album Track",
+        "album_track_button": "Listen to Album Tracks",
         "filter_all": "Tout",
         "filter_album_2024": "Album 2024",
         "filter_camp_2023": "Camp 2023",

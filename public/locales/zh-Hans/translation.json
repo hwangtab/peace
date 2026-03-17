@@ -119,6 +119,8 @@
         "lyrics": "歌词",
         "credits": "制作人员",
         "featured_track": "曲目",
+        "album_track_label": "Peace Album Track",
+        "album_track_button": "Listen to Album Tracks",
         "filter_all": "全部",
         "filter_album_2024": "2024 专辑",
         "filter_camp_2023": "2023 营地",
