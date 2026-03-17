@@ -210,7 +210,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => {
               subtitle={t('camp.lineup_count', { count: participantCount })}
               inView={isLineupInView}
             />
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-6xl mx-auto">
               <CampLineup participants={camp2026.participants} musicians={musicians} inView={isLineupInView} campYear={2026} />
             </div>
           </div>
