@@ -25,7 +25,12 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
         const tracks = loadLocalizedData<Track>(resolvedLocale, 'tracks.json');
         const allMusicians = loadLocalizedData<Musician>(resolvedLocale, 'musicians.json');
         const trackTitles = new Set(tracks.map(t => t.title));
-        return allMusicians.filter(m => trackTitles.has(m.trackTitle));
+        const seen = new Set<string>();
+        return allMusicians.filter(m => {
+          if (!trackTitles.has(m.trackTitle) || seen.has(m.trackTitle)) return false;
+          seen.add(m.trackTitle);
+          return true;
+        });
       })(),
       initialLocale: resolvedLocale,
     },
