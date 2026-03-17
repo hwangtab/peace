@@ -5,6 +5,7 @@ import TrackCard from '../tracks/TrackCard';
 import Section from '../layout/Section';
 import { getTracks } from '../../api/tracks';
 import { Track } from '../../types/track';
+import { Musician } from '../../types/musician';
 import Button from '../common/Button';
 import SectionHeader from '../common/SectionHeader';
 import { config } from '../../config/env';
@@ -13,6 +14,7 @@ interface TracksSectionProps {
   enableSectionWrapper?: boolean;
   hideSectionHeader?: boolean;
   initialTracks?: Track[];
+  initialMusicians?: Musician[];
   initialLocale?: string;
 }
 
@@ -20,6 +22,7 @@ const TracksSection: React.FC<TracksSectionProps> = ({
   enableSectionWrapper = true,
   hideSectionHeader = false,
   initialTracks = [],
+  initialMusicians = [],
   initialLocale = 'ko',
 }) => {
   const { t, i18n } = useTranslation();
@@ -86,16 +89,21 @@ const TracksSection: React.FC<TracksSectionProps> = ({
         </div>
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4 max-w-6xl mx-auto">
-          {tracks.map((track) => (
-            <TrackCard
-              key={track.id}
-              track={track}
-              isExpanded={expandedTrackId === track.id}
-              onToggle={() => handleToggle(track.id)}
-              currentlyPlaying={playingTrackId === track.id}
-              onPlay={() => handlePlay(track.id)}
-            />
-          ))}
+          {tracks.map((track) => {
+            const musician = initialMusicians.find(m => m.trackTitle === track.title);
+            return (
+              <TrackCard
+                key={track.id}
+                track={track}
+                isExpanded={hideSectionHeader ? true : expandedTrackId === track.id}
+                onToggle={() => handleToggle(track.id)}
+                currentlyPlaying={playingTrackId === track.id}
+                onPlay={() => handlePlay(track.id)}
+                musicianImageUrl={musician?.imageUrl}
+                alwaysExpanded={hideSectionHeader}
+              />
+            );
+          })}
         </div>
       )}
 
