@@ -186,8 +186,8 @@ export const musicians: Musicians = [
   {
     id: 17,
     name: "나무꾼민건",
-    shortDescription: "2026 강정피스앤뮤직캠프에 출연하는 싱어송라이터입니다",
-    description: "2026 강정피스앤뮤직캠프에 출연합니다.",
+    shortDescription: "꾸밈없는 진심으로 자신의 이야기를 쌓아가는 싱어송라이터",
+    description: "거짓말을 참지 못하는 소년, 나무꾼민건. 가공되지 않은 날것의 감정과 아직 완전하지 않은 마음을 숨김없이 노래합니다. 꾸밈없는 진심으로 자신의 이야기를 쌓아가는 싱어송라이터로, 불완전하기에 더 진짜 같고 위로하기보다 기꺼이 함께 무너져 줍니다.",
     genre: ["인디", "포크", "싱어송라이터"],
     trackTitle: "",
     imageUrl: "https://image.bugsm.co.kr/album/images/500/205313/20531325.jpg",
@@ -567,9 +567,9 @@ export const musicians: Musicians = [
   {
     id: 57,
     name: "하주원",
-    shortDescription: "2026 강정피스앤뮤직캠프에 출연합니다",
-    description: "2026 강정피스앤뮤직캠프에 출연합니다.",
-    genre: ["인디"],
+    shortDescription: "지구 이곳저곳을 떠돌며 핸드팬을 연주하는 뮤지션",
+    description: "지구 이곳저곳을 떠돌며 핸드팬을 연주하는 뮤지션 워니입니다.",
+    genre: ["핸드팬", "월드뮤직"],
     trackTitle: "",
     imageUrl: "/images-webp/musicians/57.webp",
     instagramUrls: ["https://www.instagram.com/wonn__e"]
