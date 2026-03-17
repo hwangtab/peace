@@ -143,8 +143,8 @@ export const musicians: Musicians = [
   {
     id: 13,
     name: "블로꾸 자파리 & 뽈레뽈레",
-    shortDescription: "평범한 사람들의 자기 창조성을 일깨우는 바투카다 밴드와 당신과 우주의 행복에 기여하는 예술단체의 연합 팀",
-    description: "블로꾸 자파리는 평범한 사람들의 자기 창조성을 일깨우는 바투카다 밴드로, 제주 동쪽에서 서식하고 있습니다. '당신과 우주의 행복에 기여하는 예술단체, 뽈레뽈레'와 연합 공연 및 워크숍을 펼치고 있으며, 2026 강정피스앤뮤직캠프에서 함께 오프닝을 맡았습니다.",
+    shortDescription: "바투카다 밴드 블로꾸 자파리와 예술단체 뽈레뽈레가 함께한 연합 팀",
+    description: "'평범한 사람들의 자기 창조성을 일깨우는 바투카다 밴드 블로꾸 자파리'와 '당신과 우주의 행복에 기여하는 예술단체, 뽈레뽈레'가 함께한 연합 팀입니다. 2026 강정피스앤뮤직캠프에서 연대와 환대의 에너지를 담은 공연과 워크숍을 선보입니다.",
     genre: ["바투카다", "퍼포먼스"],
     trackTitle: "오프닝 퍼포먼스",
     imageUrl: "/images-webp/musicians/13.webp",
@@ -176,8 +176,8 @@ export const musicians: Musicians = [
   {
     id: 16,
     name: "김수수",
-    shortDescription: "2026 강정피스앤뮤직캠프에 출연합니다",
-    description: "2026 강정피스앤뮤직캠프에 출연합니다.",
+    shortDescription: "제주 버스킹 문화를 이끄는 대표 뮤지션이자 '제주도의 한대수'로 불리는 자유로운 영혼의 음악가",
+    description: "김수수는 제주 버스킹 문화를 이끄는 대표 뮤지션으로, '제주도의 한대수'라는 별칭으로도 불립니다. 대중에게 친숙한 곡들을 자신만의 색으로 재해석하며, 장르의 경계를 넘나드는 즉흥 잼을 통해 다양한 아티스트와 활발히 교류하고 있습니다. 현재 제주를 기반으로 꾸준한 공연 활동을 이어가고 있습니다.",
     genre: ["인디", "포크"],
     trackTitle: "",
     imageUrl: "/images-webp/musicians/16.webp",
@@ -362,7 +362,7 @@ export const musicians: Musicians = [
     genre: ["펑크", "포크펑크"],
     trackTitle: "",
     imageUrl: "/images-webp/musicians/35.webp",
-    instagramUrls: ["https://www.instagram.com/sai.sae.sai/", "https://www.instagram.com/rainbow99gaze/"]
+    instagramUrls: ["https://www.instagram.com/be2in2023", "https://www.instagram.com/rainbow99gaze/"]
   },
   {
     id: 36,
@@ -462,7 +462,7 @@ export const musicians: Musicians = [
     genre: ["포크", "민중음악", "싱어송라이터"],
     trackTitle: "시동을 걸었어",
     imageUrl: "https://ojsfile.ohmynews.com/STD_IMG_FILE/2019/0711/IE002521195_STD.jpg",
-    instagramUrls: ["https://www.instagram.com/chozzz222/"]
+    instagramUrls: []
   },
   {
     id: 46,
@@ -601,7 +601,7 @@ export const musicians: Musicians = [
     description: "세계 각국의 다양한 악기와 장르를 전자음악과 접목시키는 실험적 사운드 아티스트입니다. 실험적인 신디사이징으로 외연을 확장하는 사운드 스케이프를 선보이며, 전통과 현대의 조화로운 융합을 추구합니다.",
     genre: ["일렉트로닉", "월드뮤직", "실험음악"],
     trackTitle: "",
-    imageUrl: "/images-webp/musicians/59.webp",
+    imageUrl: "/images-webp/camps/2026/KakaoTalk_Photo_2024-11-20-10-06-50 025.png",
     instagramUrls: ["https://www.instagram.com/_ashahn/"]
   },
   {
