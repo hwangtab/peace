@@ -121,6 +121,8 @@
         "lyrics": "가사",
         "credits": "크레딧",
         "featured_track": "수록곡",
+        "album_track_label": "평화음반 참여곡",
+        "album_track_button": "음반 수록곡 듣기",
         "filter_all": "전체",
         "filter_album_2024": "2024 앨범",
         "filter_camp_2023": "2023 캠프",
