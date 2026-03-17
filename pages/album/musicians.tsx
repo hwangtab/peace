@@ -3,6 +3,7 @@ import nextI18NextConfig from '../../next-i18next.config';
 import { GetStaticPropsContext } from 'next';
 import Page from '../../src/pages/album/AlbumMusiciansPage';
 import { Musician } from '../../src/types/musician';
+import { Track } from '../../src/types/track';
 import { loadLocalizedData } from '../../src/utils/dataLoader';
 
 interface MusiciansWrappedPageProps {
@@ -20,7 +21,12 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
   return {
     props: {
       ...(await serverSideTranslations(resolvedLocale, ['translation'], nextI18NextConfig)),
-      initialMusicians: loadLocalizedData<Musician>(resolvedLocale, 'musicians.json'),
+      initialMusicians: (() => {
+        const tracks = loadLocalizedData<Track>(resolvedLocale, 'tracks.json');
+        const allMusicians = loadLocalizedData<Musician>(resolvedLocale, 'musicians.json');
+        const trackTitles = new Set(tracks.map(t => t.title));
+        return allMusicians.filter(m => trackTitles.has(m.trackTitle));
+      })(),
       initialLocale: resolvedLocale,
     },
   };
