@@ -20,8 +20,9 @@ const MusicianCard = memo(({ musician, index, href }: MusicianCardProps) => {
       <motion.div
         id={`musician-${musician.id}`}
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.1 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-50px' }}
+        transition={{ delay: Math.min(index * 0.05, 0.3) }}
         className="transform-gpu h-full scroll-mt-24"
       >
         <div className="group relative bg-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col">
