@@ -286,12 +286,12 @@ export const musicians: Musicians = [
   },
   {
     id: 27,
-    name: "Saite X Zsthyger",
-    shortDescription: "GBC 우승 비트박서 Sight와 메탈 프로듀서 제트싸이져의 협연",
-    description: "2025 GBC(글로벌 비트박스 챔피언십) 우승자 Sight와 메탈 프로듀서이자 기타리스트 제트싸이져(Zsthyger)의 협연 무대. 비트박스의 강렬한 리듬과 메탈 기타의 파워풀한 사운드가 만나 폭발적인 에너지를 선사한다.",
+    name: "Sight X Zsthyger",
+    shortDescription: "글로벌 챔피언 비트박서 Sight와 전격의 아웃라이어 제트싸이져의 협연",
+    description: "최강의 비트박스 크루 TYTD 소속 아티스트 Sight와 강철의 혼, 용기의 스탠드, 필승의 아이콘 Zsthyger. 글로벌 챔피언 비트박서 사이트(Sight)와 전격의 아웃라이어 제트싸이져(Zsthyger)의 협연.",
     genre: ["비트박스", "메탈"],
     trackTitle: "",
-    imageUrl: "/images-webp/musicians/27.webp",
+    imageUrl: "/images-webp/camps/2026/sight.jpeg",
     instagramUrls: ["https://www.instagram.com/beatbox_sight", "https://www.instagram.com/zsthyger/"]
   },
   {

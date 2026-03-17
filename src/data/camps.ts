@@ -140,7 +140,7 @@ const campsKo: CampEvent[] = [
       { name: '블로꾸 자파리 X 뽈레뽈레 X 동백작은학교', musicianId: 13 },
       { name: '불가사리 즉흥세션', musicianId: 25 },
       { name: 'Sabbaha', musicianId: 26 },
-      { name: 'Saite X Zsthyger', musicianId: 27 },
+      { name: 'Sight X Zsthyger', musicianId: 27 },
       { name: '선경', musicianId: 29 },
       { name: '손지연', musicianId: 30 },
       { name: '손현숙', musicianId: 31 },
