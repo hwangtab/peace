@@ -25,7 +25,7 @@ const CampLineup: React.FC<CampLineupProps> = ({ participants, musicians, inView
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {participants.map((participant, index) => {
         const musician = findMusician(participant);
 
