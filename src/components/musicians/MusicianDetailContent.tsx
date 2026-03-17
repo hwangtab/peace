@@ -107,7 +107,7 @@ export default function MusicianDetailContent({
                 {musician.trackTitle && (
                   <div className="mb-5">
                     <p className="text-xs uppercase tracking-widest text-white/60 mb-1">
-                      {t('common.track')}
+                      {t('common.album_track_label')}
                     </p>
                     <Link
                       href="/album/tracks"
@@ -174,7 +174,7 @@ export default function MusicianDetailContent({
                   href="/album/tracks"
                   className="inline-flex items-center px-4 py-2 bg-golden-sun text-gray-900 rounded-lg hover:bg-yellow-400 transition-colors text-sm font-medium"
                 >
-                  {t('nav.track')} &rarr;
+                  {t('common.album_track_button')} &rarr;
                 </Link>
               )}
             </div>
@@ -208,7 +208,7 @@ export default function MusicianDetailContent({
               {t('nav.musician')}
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-              {otherMusicians.map((m, i) => (
+              {otherMusicians.slice(0, Math.floor(otherMusicians.length / 3) * 3).map((m, i) => (
                 <MusicianCard
                   key={m.id}
                   musician={m}

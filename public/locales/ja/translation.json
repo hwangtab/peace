@@ -119,6 +119,8 @@
         "lyrics": "歌詞",
         "credits": "クレジット",
         "featured_track": "トラック",
+        "album_track_label": "平和アルバム収録曲",
+        "album_track_button": "アルバム収録曲を聴く",
         "filter_all": "すべて",
         "filter_album_2024": "2024アルバム",
         "filter_camp_2023": "2023キャンプ",
