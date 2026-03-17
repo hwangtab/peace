@@ -127,7 +127,7 @@ export const musicians: Musicians = [
     trackTitle: "분홍색 패딩 소녀",
     imageUrl: "/images-webp/musicians/11.webp",
     instagramUrls: [
-      "https://www.instagram.com/jai_hyejung/"
+      "https://www.instagram.com/jai.music_official/"
     ]
   },
   {
