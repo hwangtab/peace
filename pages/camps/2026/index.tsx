@@ -1,10 +1,10 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import nextI18NextConfig from '../../next-i18next.config';
+import nextI18NextConfig from '../../../next-i18next.config';
 import { GetStaticPropsContext } from 'next';
-import Page from '../../src/pages/Camp2026Page';
+import Page from '../../../src/pages/Camp2026Page';
 import fs from 'fs';
 import path from 'path';
-import { Musician } from '../../src/types/musician';
+import { Musician } from '../../../src/types/musician';
 
 export default function WrappedPage({ initialMusicians }: { initialMusicians: Musician[] }) {
   return <Page initialMusicians={initialMusicians} />;

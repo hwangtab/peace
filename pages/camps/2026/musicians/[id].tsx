@@ -1,19 +1,20 @@
 import { GetStaticPropsContext, GetStaticPathsContext } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
-import nextI18NextConfig from '../../../next-i18next.config';
-import { Musician } from '../../../src/types/musician';
-import { VideoItem } from '../../../src/types/video';
-import { loadLocalizedData } from '../../../src/utils/dataLoader';
-import MusicianDetailContent from '../../../src/components/musicians/MusicianDetailContent';
+import nextI18NextConfig from '../../../../next-i18next.config';
+import { Musician } from '../../../../src/types/musician';
+import { VideoItem } from '../../../../src/types/video';
+import { loadLocalizedData } from '../../../../src/utils/dataLoader';
+import { camps } from '../../../../src/data/camps';
+import MusicianDetailContent from '../../../../src/components/musicians/MusicianDetailContent';
 
-interface MusicianPageProps {
+interface CampMusicianPageProps {
   musician: Musician;
   relatedVideos: VideoItem[];
   otherMusicians: Musician[];
 }
 
-export default function AlbumMusicianPage({ musician, relatedVideos, otherMusicians }: MusicianPageProps) {
+export default function CampMusicianPage({ musician, relatedVideos, otherMusicians }: CampMusicianPageProps) {
   const { t } = useTranslation();
 
   return (
@@ -21,26 +22,34 @@ export default function AlbumMusicianPage({ musician, relatedVideos, otherMusici
       musician={musician}
       relatedVideos={relatedVideos}
       otherMusicians={otherMusicians}
-      backHref="/album/musicians"
-      backLabel={t('nav.musician')}
+      backHref="/camps/2026"
+      backLabel={t('nav.camp')}
       breadcrumbs={[
         { name: t('nav.home'), url: 'https://peaceandmusic.net/' },
-        { name: t('nav.album'), url: 'https://peaceandmusic.net/album/about' },
-        { name: t('nav.musician'), url: 'https://peaceandmusic.net/album/musicians' },
-        { name: musician.name, url: `https://peaceandmusic.net/album/musicians/${musician.id}` },
+        { name: t('nav.camp'), url: 'https://peaceandmusic.net/camps/2026' },
+        { name: musician.name, url: `https://peaceandmusic.net/camps/2026/musicians/${musician.id}` },
       ]}
-      musicianHrefPrefix="/album/musicians"
+      musicianHrefPrefix="/camps/2026/musicians"
     />
   );
 }
 
+// Get all camp-2026 musician IDs
+function getCamp2026MusicianIds(): number[] {
+  const camp2026 = camps.find(c => c.id === 'camp-2026');
+  if (!camp2026?.participants) return [];
+  return camp2026.participants
+    .filter((p): p is { name: string; musicianId: number } =>
+      typeof p === 'object' && 'musicianId' in p && typeof p.musicianId === 'number'
+    )
+    .map(p => p.musicianId);
+}
+
 export async function getStaticPaths({ locales }: GetStaticPathsContext) {
-  const musicians = loadLocalizedData<Musician>('ko', 'musicians.json');
-  // Only generate pages for album musicians (those with trackTitle)
-  const albumMusicians = musicians.filter((m) => m.trackTitle);
+  const musicianIds = getCamp2026MusicianIds();
   const paths = (locales || ['ko']).flatMap((locale) =>
-    albumMusicians.map((m) => ({
-      params: { id: String(m.id) },
+    musicianIds.map((id) => ({
+      params: { id: String(id) },
       locale,
     }))
   );
@@ -56,7 +65,8 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
   const musicians = loadLocalizedData<Musician>(resolvedLocale, 'musicians.json');
   const musician = musicians.find((m) => String(m.id) === params?.id);
 
-  if (!musician || !musician.trackTitle) {
+  const campMusicianIds = getCamp2026MusicianIds();
+  if (!musician || !campMusicianIds.includes(musician.id)) {
     return { notFound: true };
   }
 
@@ -65,18 +75,12 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
   const directVideos = videos.filter((v) =>
     v.musicianIds?.includes(musician.id)
   );
-  const eventVideos = musician.events
-    ? videos.filter((v) =>
-        v.eventType && v.eventYear &&
-        musician.events!.includes(`${v.eventType}-${v.eventYear}`) &&
-        !directVideos.some((dv) => dv.id === v.id)
-      )
-    : [];
-  const relatedVideos = [...directVideos, ...eventVideos];
+  const relatedVideos = [...directVideos];
 
-  // Other album musicians only (with trackTitle, with image)
+  // Other camp musicians only (same camp, with image)
+  const campMusicianIdSet = new Set(campMusicianIds);
   const candidates = musicians.filter((m) =>
-    m.id !== musician.id && m.trackTitle && m.imageUrl
+    m.id !== musician.id && m.imageUrl && campMusicianIdSet.has(m.id)
   );
 
   const seed = musician.id;
