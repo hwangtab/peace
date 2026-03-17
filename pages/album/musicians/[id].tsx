@@ -41,6 +41,8 @@ export default function MusicianPage({ musician }: MusicianPageProps) {
       ogImage={musician.imageUrl || undefined}
       structuredData={[profileSchema, breadcrumbSchema]}
       disableTopPadding={true}
+      disableBottomPadding={true}
+      className="flex flex-col"
     >
       {/* Hero */}
       <div className="relative bg-gradient-to-b from-jeju-ocean to-ocean-mist min-h-[420px] flex items-end">
@@ -145,7 +147,7 @@ export default function MusicianPage({ musician }: MusicianPageProps) {
       </div>
 
       {/* Description */}
-      <div className="bg-white py-16">
+      <div className="bg-white py-16 flex-1">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <p className="typo-body text-gray-700 leading-relaxed whitespace-pre-wrap text-pretty">
