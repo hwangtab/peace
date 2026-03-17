@@ -9,14 +9,16 @@ import { loadLocalizedData } from '../../../src/utils/dataLoader';
 import { getProfilePageSchema, getBreadcrumbSchema } from '../../../src/utils/structuredData';
 import { extractInstagramUsername } from '../../../src/utils/instagram';
 import PageLayout from '../../../src/components/layout/PageLayout';
+import MusicianCard from '../../../src/components/musicians/MusicianCard';
 import InstagramIcon from '../../../src/components/icons/InstagramIcon';
 import YouTubeIcon from '../../../src/components/icons/YouTubeIcon';
 
 interface MusicianPageProps {
   musician: Musician;
+  otherMusicians: Musician[];
 }
 
-export default function MusicianPage({ musician }: MusicianPageProps) {
+export default function MusicianPage({ musician, otherMusicians }: MusicianPageProps) {
   const { t, i18n } = useTranslation();
 
   const profileSchema = getProfilePageSchema({
@@ -174,6 +176,30 @@ export default function MusicianPage({ musician }: MusicianPageProps) {
           </div>
         </div>
       </div>
+
+      {/* Other Musicians */}
+      {otherMusicians.length > 0 && (
+        <div className="bg-ocean-sand py-16">
+          <div className="container mx-auto px-4">
+            <h2 className="typo-h2 text-jeju-ocean text-center mb-10">
+              {t('nav.musician')}
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+              {otherMusicians.map((m, i) => (
+                <MusicianCard key={m.id} musician={m} index={i} />
+              ))}
+            </div>
+            <div className="text-center mt-10">
+              <Link
+                href="/album/musicians"
+                className="inline-flex items-center px-6 py-3 bg-jeju-ocean text-white rounded-lg hover:bg-ocean-mist transition-colors font-medium"
+              >
+                {t('nav.musician')} &rarr;
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </PageLayout>
   );
 }
@@ -202,10 +228,27 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
     return { notFound: true };
   }
 
+  // Pick 8 other musicians: prioritize same genre, fill with random
+  const others = musicians.filter((m) => m.id !== musician.id);
+  const sameGenre = others.filter((m) =>
+    m.genre.some((g) => musician.genre.includes(g))
+  );
+  const diffGenre = others.filter((m) =>
+    !m.genre.some((g) => musician.genre.includes(g))
+  );
+
+  // Deterministic sort based on musician id (consistent per build)
+  const seed = musician.id;
+  const pseudoSort = (arr: Musician[]) =>
+    [...arr].sort((a, b) => ((a.id * 31 + seed) % 97) - ((b.id * 31 + seed) % 97));
+
+  const otherMusicians = [...pseudoSort(sameGenre), ...pseudoSort(diffGenre)].slice(0, 8);
+
   return {
     props: {
       ...(await serverSideTranslations(resolvedLocale, ['translation'], nextI18NextConfig)),
       musician,
+      otherMusicians,
     },
   };
 }
