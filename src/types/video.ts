@@ -10,4 +10,5 @@ export interface VideoItem {
   eventType?: EventType;
   eventYear?: number;
   thumbnailUrl?: string;
+  musicianIds?: number[];
 }
