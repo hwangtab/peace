@@ -41,7 +41,7 @@ const AlbumMusiciansPage = ({ initialMusicians = [], initialLocale = 'ko' }: Alb
         subtitle={t('album.musicians_hero_subtitle')}
         backgroundImage="/images-webp/gallery/2.webp"
       />
-      <div className="pt-12">
+      <div className="pt-16 md:pt-20">
         <MusiciansSection
           enableSectionWrapper={false}
           hideSectionHeader={true}
