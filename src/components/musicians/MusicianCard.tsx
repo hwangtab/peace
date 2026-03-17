@@ -10,9 +10,11 @@ import YouTubeIcon from '../icons/YouTubeIcon';
 interface MusicianCardProps {
   musician: Musician;
   index: number;
+  href?: string;
 }
 
-const MusicianCard = memo(({ musician, index }: MusicianCardProps) => {
+const MusicianCard = memo(({ musician, index, href }: MusicianCardProps) => {
+  const detailHref = href || `/album/musicians/${musician.id}`;
   return (
     <>
       <motion.div
@@ -24,7 +26,7 @@ const MusicianCard = memo(({ musician, index }: MusicianCardProps) => {
       >
         <div className="group relative bg-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col">
           {/* Image — entire image area links to detail page */}
-          <Link href={`/album/musicians/${musician.id}`} className="block relative w-full pb-[100%] flex-shrink-0">
+          <Link href={detailHref} className="block relative w-full pb-[100%] flex-shrink-0">
             <div className="absolute inset-0 overflow-hidden">
               {musician.imageUrl ? (
                 <Image
@@ -59,7 +61,7 @@ const MusicianCard = memo(({ musician, index }: MusicianCardProps) => {
 
           {/* Content */}
           <div className="p-6 flex-1 flex flex-col">
-            <Link href={`/album/musicians/${musician.id}`} className="block mb-2 hover:text-ocean-mist transition-colors duration-200">
+            <Link href={detailHref} className="block mb-2 hover:text-ocean-mist transition-colors duration-200">
               <h3 className="text-2xl font-serif text-jeju-ocean group-hover:text-ocean-mist transition-colors duration-200 break-words">
                 {musician.name}
               </h3>
