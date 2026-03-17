@@ -59,10 +59,10 @@ export default function MusicianPage({ musician }: MusicianPageProps) {
         )}
         <div className="relative z-10 w-full pt-32 pb-12">
           <div className="container mx-auto px-4">
-            <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-10 items-end">
+            <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-10 items-center">
               {/* Profile image */}
               {musician.imageUrl && (
-                <div className="w-full md:w-[320px] flex-shrink-0">
+                <div className="w-full md:w-[380px] flex-shrink-0">
                   <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl ring-4 ring-white/20">
                     <Image
                       src={musician.imageUrl}
@@ -153,7 +153,7 @@ export default function MusicianPage({ musician }: MusicianPageProps) {
             </p>
 
             {/* Navigation */}
-            <div className="mt-12 pt-8 border-t border-gray-200 flex flex-wrap gap-4">
+            <div className="mt-12 flex flex-wrap gap-4">
               <Link
                 href="/album/musicians"
                 className="inline-flex items-center px-4 py-2 bg-ocean-sand text-jeju-ocean rounded-lg hover:bg-ocean-mist transition-colors text-sm font-medium"
