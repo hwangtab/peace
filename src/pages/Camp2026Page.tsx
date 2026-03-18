@@ -113,9 +113,9 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
-            initial={{ opacity: 0.6, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
+            initial={{ y: 8 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
           >
             <span className="inline-block px-5 py-1.5 bg-white/20 backdrop-blur-sm text-white font-bold rounded-full mb-6 text-sm tracking-wider border border-white/30">
               {t('camp.date_badge_2026')}
