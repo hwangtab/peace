@@ -83,7 +83,7 @@ export default function MusicianDetailContent({
       className="flex flex-col"
     >
       {/* Hero */}
-      <div className="relative bg-gradient-to-b from-jeju-ocean to-ocean-mist min-h-[420px] flex items-end">
+      <div className="relative bg-gradient-to-b from-jeju-ocean to-ocean-mist min-h-[480px] flex items-center">
         {musician.imageUrl && (
           <div className="absolute inset-0 overflow-hidden">
             <Image
@@ -96,7 +96,7 @@ export default function MusicianDetailContent({
             />
           </div>
         )}
-        <div className="relative z-10 w-full pt-32 pb-12">
+        <div className="relative z-10 w-full pt-24 pb-12">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-10 items-center">
               {musician.imageUrl && (
@@ -188,7 +188,7 @@ export default function MusicianDetailContent({
       </div>
 
       {/* Description */}
-      <div className="bg-white py-16 flex-1">
+      <div className="bg-white pt-16 pb-24 sm:pb-32 flex-1">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <p className="typo-body text-gray-700 leading-relaxed whitespace-pre-wrap text-pretty">
