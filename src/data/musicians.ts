@@ -517,8 +517,8 @@ export const musicians: Musicians = [
   {
     id: 52,
     name: "피움",
-    shortDescription: "P:UM이라는 이름으로도 활동하는 뮤지션",
-    description: "피움(P:UM)은 2026 강정피스앤뮤직캠프에 출연하는 뮤지션입니다.",
+    shortDescription: "깊고 탄탄한 중저음과 청량하고 몽환적인 고음이 공존하는 싱어송라이터",
+    description: "깊고 탄탄한 중저음 보이스를 갖고 있으며 그와 대비되는 청량하면서도 몽환적인 고음이 특징이다. 고등학교 때부터 락밴드에서 메인보컬을 하면서 무대 경험을 쌓았고 음악 쪽으로 진로를 희망했으나 부모님의 반대로 영어영문과에 진학했다가 중퇴하고 서울예술대학교 실용음악과에서 보컬을 전공했다.\n\n대학 재학 중에 교환학생 프로그램으로 영국에 있는 드라마스쿨에 잠시 다녔다. 이런 인문학적 배경들은 그녀의 예술관이나 방향성에도 영향을 미치게 되는데, 다른 사람의 언어가 아니라 자기의 언어로 노래하는 데 진정성이 있다고 판단하고 졸업 후에는 기타를 배우고 곡을 쓰기 시작했다.\n\n차곡차곡 쌓아왔던 자작곡들을 하나씩 세상에 내놓는 작업을 하고 있으며 홍대, 강남 일대에서 클럽공연도 정기적으로 하고 있다.",
     genre: ["인디"],
     trackTitle: "",
     imageUrl: "https://i.ytimg.com/vi/HAm1Jg1LZkY/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AHUBoAC4AOKAgwIABABGGUgYChHMA8=&rs=AOn4CLByTcImvvpBDorL-od7kEHGPWcvBA",
