@@ -1,0 +1,235 @@
+[
+  {
+    "id": 1,
+    "title": "Kim Dongsan & Blueeewoot - À toi dans un endroit lointain dont j'ignore le nom (Showcase de Séoul)",
+    "description": "Kim Dongsan & Blueeewoot sont le musicien de folk/blues Kim Dongsan, basé à Suwon, et son groupe. Surnommé le « Woody Guthrie de Corée », Kim Dongsan est connu pour sa musique aux messages sociaux. Il chante pour les travailleurs licenciés et les victimes de la gentrification, et gère la boutique de vinyles et de recyclage « Long Player » près de Janganmun à Suwon, en faisant un espace culturel local.",
+    "youtubeUrl": "https://www.youtube.com/embed/ejTPpS71nX8",
+    "date": "2024-11-02",
+    "location": "Space Hangang, Hongdae, Séoul",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      3
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Wandering Band Jang Hyunho - À toi dans un endroit lointain dont j'ignore le nom (Showcase de Séoul)",
+    "description": "Wandering Band est un « groupe de rue » formé en 2011 autour de l'auteur-compositeur-interprète Jang Hyunho. Ils chantent sur les sites de luttes sociales et de conflits, faisant preuve de solidarité depuis plus d'une décennie lors d'événements tels que le mouvement pour la vérité sur le ferry Sewol, la protestation contre la base navale de Gangjeong, la lutte pour la réintégration des équipages KTX, le sit-in sur le toit de Pinetek et la lutte des travailleurs de Colt/Coltex.",
+    "youtubeUrl": "https://www.youtube.com/embed/Ts_fFqAYLYE",
+    "date": "2024-11-02",
+    "location": "Space Hangang, Hongdae, Séoul",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      15
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Namsu - À toi dans un endroit lointain dont j'ignore le nom (Showcase de Séoul)",
+    "description": "Une artiste solo polyvalente explorant l'indé, le folk/blues, le jazz et le new age. Elle gère l'espace culturel « Woodpecker Bookshop », créant des intersections entre la musique et la littérature. Elle vise à repousser ses limites artistiques en combinant la musique avec l'art visuel et la performance.",
+    "youtubeUrl": "https://www.youtube.com/embed/cHl1I5iJqyA",
+    "date": "2024-11-02",
+    "location": "Space Hangang, Hongdae, Séoul",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      4
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Kim In - À toi dans un endroit lointain dont j'ignore le nom (Showcase de Séoul)",
+    "description": "Une musicienne indépendante qui explore des sons uniques et exprime une profonde affection pour l'environnement et la paix à travers la musique. Elle apprécie divers genres et a construit son propre univers musical distinctif. Avec une musique lyrique inspirée par les étoiles et la lune, elle délivre un message de paix avec une sensibilité délicate et des paroles profondes.",
+    "youtubeUrl": "https://www.youtube.com/embed/8jPAlA7cGtM",
+    "date": "2024-11-02",
+    "location": "Space Hangang, Hongdae, Séoul",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      6
+    ]
+  },
+  {
+    "id": 5,
+    "title": "MOMO - À toi dans un endroit lointain dont j'ignore le nom (Showcase de Séoul)",
+    "description": "Un duo de jazz composé d'Yejin Angela Park et Hwang Seulgi. Enracinés dans le jazz, ils explorent ensemble des sons divers et magnifiques. Par l'improvisation et l'expérimentation, ils capturent délicatement la conscience de la société moderne, exprimant la vie quotidienne ordinaire et les tensions ancrées dans les régions de conflit.",
+    "youtubeUrl": "https://www.youtube.com/embed/hh-MwTiaJxk",
+    "date": "2024-11-02",
+    "location": "Space Hangang, Hongdae, Séoul",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      10
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Jai x HANASH - À toi dans un endroit lointain dont j'ignore le nom (Showcase de Séoul)",
+    "description": "Une collaboration où la voix chaleureuse de Jai rencontre la musique électronique innovante de HANASH pour explorer de nouvelles possibilités. Jai exprime des histoires du quotidien avec une voix triste mais puissante, tandis qu'HANASH expérimente en combinant des instruments et des genres du monde entier avec de la musique électronique. Leur rencontre montre une fusion harmonieuse entre tradition et modernité.",
+    "youtubeUrl": "https://www.youtube.com/embed/ka9DcFOD2fw",
+    "date": "2024-11-02",
+    "location": "Space Hangang, Hongdae, Séoul",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      11,
+      59
+    ]
+  },
+  {
+    "id": 101,
+    "title": "Chaîne humaine",
+    "description": "Une chaîne humaine devant la porte principale de la base navale de Jeju au printemps 2023.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=dF6raNSEkfI",
+    "date": "2023-06-10",
+    "location": "Parc de sports de Gangjeongcheon, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/dF6raNSEkfI/sddefault.jpg"
+  },
+  {
+    "id": 102,
+    "title": "1er Camp de musique pour la paix de Gangjeong 2023",
+    "description": "Images de performances en direct du Camp de musique pour la paix de Gangjeong 2023 au parc de sports de Gangjeongcheon.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=mPeFqepsf_Y",
+    "date": "2023-06-10",
+    "location": "Parc de sports de Gangjeongcheon, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/mPeFqepsf_Y/maxresdefault.jpg"
+  },
+  {
+    "id": 103,
+    "title": "Triple danse de Gangjeong",
+    "description": "Performance de la triple danse de Gangjeong au parc de sports de Gangjeongcheon.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=MzIpAmDAYzk",
+    "date": "2023-06-10",
+    "location": "Parc de sports de Gangjeongcheon, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/MzIpAmDAYzk/maxresdefault.jpg"
+  },
+  {
+    "id": 104,
+    "title": "1er Camp de musique pour la paix de Gangjeong 2023",
+    "description": "Scènes du 1er Camp de musique pour la paix de Gangjeong 2023 au parc de sports de Gangjeongcheon.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=OGKd_pnrul4",
+    "date": "2023-06-10",
+    "location": "Parc de sports de Gangjeongcheon, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/OGKd_pnrul4/maxresdefault.jpg"
+  },
+  {
+    "id": 105,
+    "title": "1er Camp de musique pour la paix de Gangjeong 2023",
+    "description": "Scènes du 1er Camp de musique pour la paix de Gangjeong 2023 au parc de sports de Gangjeongcheon.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=GHSxHVc-b1w",
+    "date": "2023-06-10",
+    "location": "Parc de sports de Gangjeongcheon, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/GHSxHVc-b1w/maxresdefault.jpg"
+  },
+  {
+    "id": 106,
+    "title": "1er Camp de musique pour la paix de Gangjeong 2023",
+    "description": "Scènes du 1er Camp de musique pour la paix de Gangjeong 2023 au parc de sports de Gangjeongcheon.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=1TyLqzoHA7M",
+    "date": "2023-06-10",
+    "location": "Parc de sports de Gangjeongcheon, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/1TyLqzoHA7M/maxresdefault.jpg"
+  },
+  {
+    "id": 107,
+    "title": "1er Camp de musique pour la paix de Gangjeong 2023",
+    "description": "Scènes du 1er Camp de musique pour la paix de Gangjeong 2023 au parc de sports de Gangjeongcheon.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=YwOO627losU",
+    "date": "2023-06-10",
+    "location": "Parc de sports de Gangjeongcheon, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/YwOO627losU/maxresdefault.jpg"
+  },
+  {
+    "id": 108,
+    "title": "1er Camp de Musique pour la Paix de Gangjeong 2023",
+    "description": "Scènes du 1er Camp de Musique pour la Paix de Gangjeong 2023 au Parc Sportif de Gangjeongcheon.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=RH2x3ctcBgU",
+    "date": "2023-06-10",
+    "location": "Parc Sportif de Gangjeongcheon, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/RH2x3ctcBgU/maxresdefault.jpg"
+  },
+  {
+    "id": 109,
+    "title": "1er Camp de Musique pour la Paix de Gangjeong 2023",
+    "description": "Scènes du 1er Camp de Musique pour la Paix de Gangjeong 2023 au Parc Sportif de Gangjeongcheon.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=tFxoLxIDfyM",
+    "date": "2023-06-10",
+    "location": "Parc Sportif de Gangjeongcheon, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/tFxoLxIDfyM/maxresdefault.jpg"
+  },
+  {
+    "id": 110,
+    "title": "1er Camp de Musique pour la Paix de Gangjeong 2023",
+    "description": "Scènes du 1er Camp de Musique pour la Paix de Gangjeong 2023 au Parc Sportif de Gangjeongcheon.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=-PhTNOVdLc0",
+    "date": "2023-06-10",
+    "location": "Parc Sportif de Gangjeongcheon, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/-PhTNOVdLc0/maxresdefault.jpg"
+  },
+  {
+    "id": 111,
+    "title": "1er Camp de Musique pour la Paix de Gangjeong 2023",
+    "description": "Scènes du 1er Camp de Musique pour la Paix de Gangjeong 2023 au Parc Sportif de Gangjeongcheon.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=mC-HJ-VhLOQ",
+    "date": "2023-06-10",
+    "location": "Parc Sportif de Gangjeongcheon, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/mC-HJ-VhLOQ/maxresdefault.jpg"
+  },
+  {
+    "id": 112,
+    "title": "Camp de Musique pour la Paix de Gangjeong",
+    "description": "Le premier Camp de Musique pour la Paix de Gangjeong s'est tenu sous le slogan « Arrêtez la guerre ! »",
+    "youtubeUrl": "https://www.youtube.com/watch?v=crK6y7mJrfY",
+    "date": "2023-06-10",
+    "location": "Parc Sportif de Gangjeongcheon, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/crK6y7mJrfY/maxresdefault.jpg"
+  },
+  {
+    "id": 201,
+    "title": "Le 2ème Camp de Musique pour la Paix de Gangjeong est en préparation !",
+    "description": "Nous travaillons dur ensemble pour préparer le Camp de Musique pour la Paix de Gangjeong de demain !",
+    "youtubeUrl": "https://www.youtube.com/watch?v=pcsM9lxlA24",
+    "date": "2025-06-13",
+    "location": "Autour du restaurant Halmae Water, Gangjeong-dong, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2025,
+    "thumbnailUrl": "https://i.ytimg.com/vi/pcsM9lxlA24/maxresdefault.jpg"
+  },
+  {
+    "id": 202,
+    "title": "2ème Camp de Musique pour la Paix de Gangjeong",
+    "description": "Un festival de musique pour la paix et contre la guerre organisé au village de Gangjeong, Jeju.",
+    "youtubeUrl": "https://youtu.be/DBlCTgWNNKU?si=9QRus6J85pPEqf-F",
+    "date": "2025-06-14",
+    "location": "Autour du restaurant Halmae Water, Gangjeong-dong, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2025,
+    "thumbnailUrl": "https://i.ytimg.com/vi/DBlCTgWNNKU/maxresdefault.jpg"
+  }
+]

@@ -1,0 +1,894 @@
+[
+    {
+        "id": 1,
+        "name": "Project Around Surround",
+        "shortDescription": "Sebuah grup proyek trio yang mengejar harmoni antara mistik Timur dan suara modern",
+        "description": "Sebuah grup proyek beranggotakan tiga orang yang mengejar harmoni antara mistik Timur dan suara modern. Sitar emosional Ritesh Maharjan, desain dan rekayasa suara Kang Kyungdeok yang inovatif dan presisi, serta produksi kreatif Park In menciptakan dunia musik yang mendalam. Dengan memadukan raga India kuno, musik meditatif, dan ambient modern, mereka membangun lanskap suara unik yang mengekspresikan alam dan kedamaian Jeju.",
+        "genre": [
+            "Ambient",
+            "Musik Dunia"
+        ],
+        "trackTitle": "Saat Aku Menatap Cakrawala",
+        "imageUrl": "/images-webp/musicians/1.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/around_surround/",
+            "https://www.instagram.com/lamp.sound/",
+            "https://www.instagram.com/innnbar/"
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Jeong Jinseok",
+        "shortDescription": "Dikenal sebagai \"bintang Soseong-ri,\" mantan seniman visual yang menjadi musisi perdamaian dan aktivis yang memadukan dialek Gyeongsang dan blues untuk menyampaikan pesan perdamaian",
+        "description": "Dikenal sebagai \"bintang Soseong-ri,\" Jeong Jinseok awalnya mempelajari seni rupa. Setelah bencana kapal feri Sewol, ia terlibat dengan masalah sosial dan mulai berdiri bersama penduduk melawan kekerasan dan penghinaan selama penempatan THAAD di Soseong-ri. Ia memindahkan alamatnya ke Soseong-ri dan telah terus melanjutkan aktivisme perdamaian selama hampir delapan tahun, menarik perhatian karena gaya musik unik yang menggabungkan dialek Gyeongsang dengan blues.",
+        "genre": [
+            "Blues",
+            "Folk"
+        ],
+        "trackTitle": "Apakah Ini Tanahmu atau Tanahku",
+        "imageUrl": "/images-webp/musicians/2.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/vincittutto/"
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Kim Dongsan & Blueeewoot",
+        "shortDescription": "Kim Dongsan, seorang musisi folk dan blues yang berbasis di Suwon, dan bandnya Blueeewoot. Musiknya tentang cerita-cerita yang terpinggirkan bertemu dengan penampilan band yang solid.",
+        "description": "Kim Dongsan adalah seorang musisi folk dan blues yang berbasis di Suwon, tampil bersama bandnya Blueeewoot. Dijuluki \"Woody Guthrie-nya Korea,\" ia menarik perhatian karena musiknya yang penuh dengan wawasan mendalam tentang masyarakat. Ia bernyanyi tentang pekerja yang di-PHK dan korban gentrifikasi, serta menjalankan toko piringan hitam dan daur ulang bernama \"Long Player\" di dekat Janganmun di Suwon, mengembangkannya menjadi ruang budaya lokal.",
+        "genre": [
+            "Folk",
+            "Blues"
+        ],
+        "trackTitle": "Gelombang",
+        "imageUrl": "/images-webp/musicians/3.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/long_player_/",
+            "https://www.instagram.com/dongsan_blueeewoot/"
+        ]
+    },
+    {
+        "id": 7,
+        "name": "MoredoSaturday",
+        "shortDescription": "Duo folk yang dibentuk oleh dua musisi yang bertemu dalam gerakan perdamaian Gangjeong, menyampaikan pesan perdamaian melalui sensibilitas yang alami dan murni",
+        "description": "Duo folk beranggotakan dua orang yang dibentuk di Desa Gangjeong, terdiri dari More dan Doto. Seperti namanya, mereka mengejar sensibilitas yang alami dan murni. Pendekatan mereka yang halus dan fleksibel, seperti daun yang bergoyang ditiup angin, dengan lembut menghibur pendengar.",
+        "genre": [
+            "Folk",
+            "Akustik"
+        ],
+        "trackTitle": "Kami akan berlayar untuk kebebasanmu",
+        "imageUrl": "/images-webp/musicians/4.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/saturday_moredo/"
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Namsu",
+        "shortDescription": "Artis solo wanita yang merambah indie hingga jazz yang menjalankan ruang budaya \"Toko Buku Pelatuk\" dan menghubungkan musik serta sastra",
+        "description": "Artis solo wanita serba bisa yang mencakup indie, folk/blues, jazz, dan new age. Ia menjalankan ruang budaya \"Toko Buku Pelatuk,\" menciptakan titik temu antara musik dan sastra. Ia bertujuan untuk memperluas batas artistiknya dengan menggabungkan musik dengan seni visual dan pertunjukan.",
+        "genre": [
+            "Indie",
+            "Folk",
+            "Jazz"
+        ],
+        "trackTitle": "Halo (Untukmu di Tempat yang Jauh)",
+        "imageUrl": "/images-webp/musicians/5.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/namsu_ggu/",
+            "https://www.instagram.com/ddackddaguri__books/"
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Kim In",
+        "shortDescription": "Seorang musisi independen yang menyanyikan tentang alam dan perdamaian, mengekspresikan kasih sayang yang mendalam terhadap lingkungan dan kehidupan melalui eksperimen unik",
+        "description": "Seorang musisi independen yang mengeksplorasi suara-suara unik dan mengekspresikan kasih sayang yang mendalam terhadap lingkungan dan perdamaian melalui musik. Ia menikmati beragam genre dan telah membangun dunia musik khasnya sendiri. Dengan musik liris yang terinspirasi oleh bintang dan bulan, ia menyampaikan pesan perdamaian dengan sensibilitas halus dan lirik yang mendalam.",
+        "genre": [
+            "Indie",
+            "Akustik"
+        ],
+        "trackTitle": "Seseorang yang Pergi Melihat Bintang",
+        "imageUrl": "/images-webp/musicians/6.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/saltycoldanddarkkimin/"
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Caru",
+        "shortDescription": "Seorang penyanyi-penulis lagu yang mengeksplorasi kehidupan ekologis dan perdamaian, menceritakan kisah koeksistensi melalui melodi akustik",
+        "description": "Seorang penyanyi-penulis lagu yang dikenal dengan konser bercerita akustik. Dengan latar belakang pendidikan dan filosofi yang unik, ia terus mempelajari dan merenungkan pekerjaan, keterampilan, dan hubungan untuk menjalani kehidupan yang ia inginkan, menyublimasikan renungan tersebut ke dalam musik. Ia dengan halus menggambarkan masa muda yang terjebak di antara realitas dan idealisme.",
+        "genre": [
+            "Folk",
+            "Akustik"
+        ],
+        "trackTitle": "TRANSISI",
+        "imageUrl": "/images-webp/musicians/7.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/caru1011/"
+        ]
+    },
+    {
+        "id": 8,
+        "name": "Leaves",
+        "shortDescription": "Duo folk dengan resonansi jernih oleh Yeoul dan Wongirl, menawarkan harmoni halus seperti napas alam",
+        "description": "Duo folk yang terbentuk secara alami karena kesamaan selera musik, terdiri dari Yeoul dan Wongirl. Mereka mengejar sensibilitas yang alami dan murni. Pendekatan mereka yang halus dan fleksibel, seperti daun yang bergoyang ditiup angin, dengan lembut menghibur pendengar.",
+        "genre": [
+            "Folk",
+            "Akustik"
+        ],
+        "trackTitle": "Hati di Depan Mataku",
+        "imageUrl": "/images-webp/musicians/8.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/yeoouul/",
+            "https://www.instagram.com/little_boy_on_the_beach/"
+        ]
+    },
+    {
+        "id": 9,
+        "name": "Yeoyu",
+        "shortDescription": "Seorang musisi folk yang menangkap momen sehari-hari dengan tatapan halus, berbagi kisah empati melalui suara lembut dan gitar yang hangat",
+        "description": "Seorang musisi folk yang berbasis di Jeju, dikenal karena menanamkan ketulusan dalam setiap nada. Ia juga merupakan anggota dari duo folk \"Yeoyu dan Seolbin.\" Ia bernyanyi tentang beragam topik, dari cerita harian kecil hingga kekhawatiran hidup yang mendalam, dengan emosi yang halus. Suaranya yang lembut dan gitar akustik yang tenang adalah ciri khasnya.",
+        "genre": [
+            "Folk",
+            "Akustik"
+        ],
+        "trackTitle": "Malam Seoul (feat. Jung Sumin)",
+        "imageUrl": "/images-webp/musicians/9.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/ye0y00/"
+        ]
+    },
+    {
+        "id": 10,
+        "name": "MOMO",
+        "shortDescription": "Duo jazz yang mengekspresikan sisi-sisi masyarakat modern melalui improvisasi dan eksperimen, dengan suara unik oleh Yejin Angela Park dan Hwang Seulgi",
+        "description": "Duo jazz Yejin Angela Park dan Hwang Seulgi. Mereka mengeksplorasi suara yang beragam dan indah yang berakar pada jazz. Dengan improvisasi dan eksperimen, mereka dengan halus menangkap kesadaran masyarakat modern, mengekspresikan kehidupan sehari-hari yang biasa dan ketegangan yang tertanam dalam wilayah konflik.",
+        "genre": [
+            "Jazz",
+            "Eksperimental"
+        ],
+        "trackTitle": "Jika ini tidak bisa ditoleransi, apa yang tidak bisa?",
+        "imageUrl": "/images-webp/musicians/10.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/yejangelapark/",
+            "https://www.instagram.com/basseulgi/",
+            "https://www.instagram.com/momoismothermother/"
+        ]
+    },
+    {
+        "id": 11,
+        "name": "Jai x HANASH",
+        "shortDescription": "Pertemuan Jai, yang bercerita dengan suara sedih namun kuat, dan HANASH, yang memperluas lanskap suara dengan synth eksperimental",
+        "description": "Sebuah kolaborasi di mana suara hangat Jai bertemu dengan musik elektronik inovatif HANASH untuk mengeksplorasi kemungkinan baru. Jai mengekspresikan cerita sehari-hari dengan suara sedih namun kuat, sementara HANASH bereksperimen dengan menggabungkan instrumen dan genre dari seluruh dunia dengan musik elektronik. Pertemuan mereka menunjukkan perpaduan harmonis antara tradisi dan modernitas.",
+        "genre": [
+            "Elektronik",
+            "Musik Dunia"
+        ],
+        "trackTitle": "Gadis Berjaket Merah Muda",
+        "imageUrl": "/images-webp/musicians/11.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/jai.music_official/",
+            "https://www.instagram.com/_ashahn/"
+        ]
+    },
+    {
+        "id": 12,
+        "name": "Lee Seoyoung",
+        "shortDescription": "Seorang penyanyi-penulis lagu dan penerjemah hutan yang mengekspresikan rasa koneksi yang ditemukan di hutan dan alam dengan nada liris yang memikat",
+        "description": "Seorang penyanyi-penulis lagu dan penerjemah hutan yang membangun dunia musik yang unik. Ia menciptakan musik bertema \"koneksi\" yang ditemukan di alam, terutama hutan. Berbasis folk dan dipadukan dengan elektronik dan ambient, ia memberikan suasana liris namun pilu, dicatat karena nada khas yang mengingatkan pada langit fajar yang kebiruan dan kabut.",
+        "genre": [
+            "Folk",
+            "Ambient"
+        ],
+        "trackTitle": "Kami",
+        "imageUrl": "/images-webp/musicians/12.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/leesyoung.kr/"
+        ]
+    },
+    {
+        "id": 13,
+        "name": "Bloco Jafari X PollePolle X Dongbaek Small School",
+        "shortDescription": "Tim kolaborasi yang dibentuk oleh komunitas batucada Bloco Jafari dan kolektif seni PollePolle.",
+        "description": "Tim kolaborasi ini menyatukan Bloco Jafari, komunitas batucada yang membangkitkan kekuatan kreatif orang biasa, dan PollePolle, sebuah kolektif seni yang didedikasikan untuk kebahagiaan orang-orang dan alam semesta. Penampilan mereka membawa energi solidaritas dan keramahtamahan.",
+        "genre": [
+            "Batucada",
+            "Pertunjukan"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/13.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/bloco_japari",
+            "https://www.instagram.com/polepole2014"
+        ]
+    },
+    {
+        "id": 14,
+        "name": "Ganghahimalaya",
+        "shortDescription": "Seorang penyanyi-penulis lagu yang dibesarkan di Auroville, India, menghubungkan alam dan kehidupan batin melalui musik.",
+        "description": "Ganghahimalaya adalah seorang penyanyi-penulis lagu khas yang dibesarkan di lingkungan yang berjiwa bebas di Auroville, India. Musiknya menyimpan vitalitas pegunungan Himalaya dan ketenangan sungai Gangga yang mengalir, dan suaranya mencerminkan filosofi hidup perlahan dan mantap.",
+        "genre": [
+            "Folk",
+            "Penyanyi-Penulis Lagu",
+            "Musik Dunia"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/14.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/gangahimalayapark/"
+        ]
+    },
+    {
+        "id": 15,
+        "name": "Gilganeun Band Janghyeonho",
+        "shortDescription": "Sebuah band jalanan yang dipimpin oleh penyanyi-penulis lagu Janghyeonho, menyanyikan lagu-lagu solidaritas di lokasi buruh dan protes sejak 2011.",
+        "description": "Berpusat pada penyanyi-penulis lagu Janghyeonho, band jalanan ini dibentuk pada tahun 2011 dan telah tampil selama lebih dari satu dekade di rapat umum solidaritas, acara peringatan, dan lokasi protes, termasuk gerakan kebenaran Sewol dan perjuangan anti-pangkalan laut di Gangjeong. Mereka merilis album penuh \"Always, Entirely\" pada tahun 2020 dan terus bernyanyi tentang perdamaian dan solidaritas.",
+        "genre": [
+            "Folk",
+            "Rock",
+            "Musik Protes"
+        ],
+        "trackTitle": "Kami yang Akan Bersinar Kembali",
+        "imageUrl": "/images-webp/musicians/15.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/gilbandjjang/"
+        ]
+    },
+    {
+        "id": 16,
+        "name": "Kim Susu",
+        "shortDescription": "Musisi terkemuka di kancah busking Jeju, dijuluki \"Han Dae-soo-nya Jeju\" karena jiwanya yang bebas.",
+        "description": "Kim Susu dikenal sebagai salah satu tokoh kunci dalam budaya busking Jeju dan terkadang disebut \"Han Dae-soo-nya Jeju.\" Ia menginterpretasikan kembali lagu-lagu yang sudah dikenal dengan gayanya sendiri, bergerak bebas melintasi genre melalui jam session improvisasi, dan tetap aktif di kancah musik live Jeju.",
+        "genre": [
+            "Indie",
+            "Folk"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/16.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/59susu"
+        ]
+    },
+    {
+        "id": 17,
+        "name": "Namukkunmingeon",
+        "shortDescription": "Seorang penyanyi-penulis lagu yang membangun kisahnya sendiri dengan kejujuran yang apa adanya.",
+        "description": "Namukkunmingeon bernyanyi dengan emosi mentah dan hati yang belum selesai yang tidak ia coba sembunyikan. Lagu-lagunya terasa jauh lebih nyata karena ketidaksempurnaan itu, dan alih-alih menawarkan kenyamanan yang mudah, ia bersedia untuk runtuh bersama pendengar dan tetap hadir di saat itu.",
+        "genre": [
+            "Indie",
+            "Folk",
+            "Penyanyi-Penulis Lagu"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/17.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/kikoristar"
+        ]
+    },
+    {
+        "id": 18,
+        "name": "Dear Arcadian",
+        "shortDescription": "Sebuah band yang menghadapi absurditas sosial dengan suara post-hardcore yang intens.",
+        "description": "Dear Arcadian mengumumkan dirinya di kancah Korea dengan single \"EXODUS.\" Melalui rap yang ketat, vokal yang mendesak, gitar yang berat, dan produksi yang mendetail, band ini menyalurkan keinginan untuk melepaskan diri dari ketidakadilan sehari-hari, kebencian, diskriminasi, dan penghinaan yang ditujukan pada orang-orang yang mengejar impian mereka.",
+        "genre": [
+            "Post-Hardcore",
+            "Rock"
+        ],
+        "trackTitle": "EXODUS",
+        "imageUrl": "/images-webp/musicians/18.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/deararcadian_official/"
+        ]
+    },
+    {
+        "id": 19,
+        "name": "Dog Last Page",
+        "shortDescription": "Sebuah band southern rock dan grunge yang dibentuk pada tahun 2012 dan dinominasikan untuk Korean Music Award kategori metal dan hardcore.",
+        "description": "Berpusat pada gitaris Hong Seonghun, Dog Last Page memadukan southern rock, grunge, dan hardcore punk ke dalam riff tebal dan suara band yang berbobot. Album penuh mereka tahun 2022 \"Drunken Dream\" dinominasikan sebagai Album Metal & Hardcore Terbaik di Korean Music Awards 2023, diikuti dengan rilis \"Hypocrite\" pada tahun 2025.",
+        "genre": [
+            "Southern Rock",
+            "Grunge",
+            "Metal",
+            "Hardcore"
+        ],
+        "trackTitle": "Munafik",
+        "imageUrl": "/images-webp/musicians/19.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/band_doglastpage/"
+        ]
+    },
+    {
+        "id": 20,
+        "name": "Rainbow99",
+        "shortDescription": "Seorang gitaris dan desainer suara yang melanjutkan eksperimen luas yang berakar pada dream pop, shoegaze, dan musik ambient.",
+        "description": "Rainbow99, lahir sebagai Ryu Seunghyun, adalah seorang penyanyi, gitaris, komposer, serta desainer suara dan kebisingan di bawah label Magic Strawberry Sound. Sejak EP debut solonya tahun 2011 \"Spring, Revolution,\" ia terus merilis karya berbasis ambient, dream pop, dan shoegaze, dan albumnya \"Saat Ini di Oreum\" merekam situs bersejarah Jeju 4.3 melalui suara.",
+        "genre": [
+            "Dream Pop",
+            "Shoegaze",
+            "Ambient",
+            "Elektronik"
+        ],
+        "trackTitle": "Saat Ini di Oreum",
+        "imageUrl": "/images-webp/musicians/20.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/rainbow99gaze/"
+        ]
+    },
+    {
+        "id": 21,
+        "name": "Meridies",
+        "shortDescription": "Proyek satu orang yang berakar pada symphonic black metal and death metal, mengambil lirik dari sastra Korea.",
+        "description": "Dibentuk pada tahun 2013, Meridies adalah proyek solo di mana satu musisi memainkan sebagian besar bagian, termasuk vokal, gitar, dan bass. Sejak album penuh tahun 2015 \"On A Submerged Islet,\" proyek ini telah menggabungkan extreme metal dengan imajinasi sastra, terutama menggunakan karya Yi Sang dan penulis Korea lainnya dalam liriknya.",
+        "genre": [
+            "Symphonic Black Metal",
+            "Death Metal"
+        ],
+        "trackTitle": "Sayap",
+        "imageUrl": "/images-webp/musicians/21.webp",
+        "instagramUrls": [],
+        "youtubeUrl": "https://www.youtube.com/@meridiesmetal"
+    },
+    {
+        "id": 22,
+        "name": "Moheo",
+        "shortDescription": "Duo folk Irlandia psikedelik yang menggabungkan pengalaman busking di Irlandia dengan warna Jeju.",
+        "description": "Moheo adalah duo folk psikedelik yang terdiri dari Jo Mingyu dan e_so. Jo melakukan busking di Irlandia selama dua tahun, dan penyanyi-penulis lagu kelahiran Jeju e_so bertemu dengannya secara kebetulan di Thailand pada tahun 2022. Dinamai berdasarkan Tebing Moher, duo ini merilis album penuh pertama mereka \"Kaleidoscope\" pada tahun 2024 dan dengan cepat menarik perhatian di sirkuit festival.",
+        "genre": [
+            "Psychedelic Folk",
+            "Folk Irlandia",
+            "Indie Folk"
+        ],
+        "trackTitle": "Mosaik (Kaleidoscope)",
+        "imageUrl": "/images-webp/musicians/22.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/moher_____/"
+        ]
+    },
+    {
+        "id": 23,
+        "name": "Mwing",
+        "shortDescription": "Seorang seniman dan aktivis yang mengubah momen-momen yang layak diingat menjadi lagu.",
+        "description": "Mwing telah menulis dan menyanyikan lagu sejak 2015 baik sebagai seniman maupun aktivis. Musiknya berakar pada momen-momen yang layak diingat dan ditawarkan sebagai sumber kenyamanan, sambil memimpikan dunia di mana semua orang bisa hidup bahagia bersama daripada sendirian.",
+        "genre": [
+            "Indie",
+            "Folk",
+            "Penyanyi-Penulis Lagu"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/23.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/mmuueenngg/"
+        ]
+    },
+    {
+        "id": 24,
+        "name": "Materials Found",
+        "shortDescription": "Band beranggotakan lima orang yang berakar pada melodic metalcore dan dinominasikan untuk Korean Music Award pada tahun 2025.",
+        "description": "Dibentuk pada tahun 2022, Materials Found adalah band beranggotakan lima orang yang memadukan melodic metalcore dengan symphonic deathcore dan post-rock. EP pertama mereka \"Bohlam (電球)\" dirilis pada tahun 2024 dan mendapatkan nominasi Korean Music Award 2025 untuk Album Metal & Hardcore Terbaik, serta pengakuan akhir tahun dari Music Y.",
+        "genre": [
+            "Melodic Metalcore",
+            "Symphonic Deathcore",
+            "Post-Rock"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/24.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/materials_pound_official/"
+        ]
+    },
+    {
+        "id": 25,
+        "name": "Bulgasari Impromptu Session",
+        "shortDescription": "Serangkaian pertunjukan seni avant-garde, improvisasi, dan eksperimental yang telah berlangsung lama dan telah menyelenggarakan lebih dari 300 panggung sejak 2003.",
+        "description": "Bulgasari Impromptu Session dimulai pada Februari 2003 di Rush di Sinchon, setelah saran dari musisi Jepang Satoyuki. Sejak itu telah menjadi salah satu platform utama Korea untuk seni avant-garde, improvisasi, dan eksperimental, menyajikan musik, tari, dan pertunjukan sambil membina seniman eksperimental muda melalui lebih dari 300 acara.",
+        "genre": [
+            "Musik Improvisasi",
+            "Eksperimental",
+            "Avant-Garde"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/25.webp",
+        "instagramUrls": []
+    },
+    {
+        "id": 26,
+        "name": "Sabaha",
+        "shortDescription": "Proyek doom dan drone metal yang dibentuk pada tahun 2023, mengeksplorasi kehancuran dan keputusasaan melalui pertunjukan berkostum teatrikal.",
+        "description": "Sabaha adalah proyek doom dan drone metal yang diluncurkan pada Mei 2023 oleh seorang musisi dengan sejarah panjang di bawah tanah dalam aksi seperti 420Saigong dan Haaaazy Shaaaaman. Dipengaruhi oleh Sunn O))), Earth, Electric Wizard, Sleep, and Om, proyek ini mencampur drone metal, stoner doom, sludge metal, grindcore, dan improvisasi bebas, serta merilis album penuh pertama mereka \"THUNDER ROCKS\" pada tahun 2024.",
+        "genre": [
+            "Doom Metal",
+            "Drone Metal",
+            "Sludge Metal"
+        ],
+        "trackTitle": "THUNDER ROCKS",
+        "imageUrl": "/images-webp/musicians/26.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/sabbaha_kr"
+        ]
+    },
+    {
+        "id": 27,
+        "name": "Site with Jet Sizer",
+        "shortDescription": "Pertunjukan bersama oleh beatboxer juara global Sight dan outsider yang menggetarkan Zsthyger.",
+        "description": "Kolaborasi ini menyatukan Sight, anggota kru beatbox TYTD yang kuat, dengan Zsthyger, seorang metal outsider yang tidak kenal kompromi. Bersama-sama mereka menghadirkan panggung yang penuh dengan presisi teknis, energi teatrikal, dan titik temu yang tidak biasa antara beatbox dan musik berat.",
+        "genre": [
+            "Beatbox",
+            "Metal"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/27.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/beatbox_sight",
+            "https://www.instagram.com/zsthyger/"
+        ]
+    },
+    {
+        "id": 29,
+        "name": "Seongyeong",
+        "shortDescription": "Seorang penyanyi-penulis lagu dan seniman boneka keramik.",
+        "description": "Seongyeong adalah seorang penyanyi-penulis lagu sekaligus seniman yang membuat boneka keramik yang terinspirasi oleh citra alam dan makhluk hidup di sekitar kita.",
+        "genre": [
+            "Penyanyi-Penulis Lagu",
+            "Folk"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/29.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/__sun_kyoung/"
+        ]
+    },
+    {
+        "id": 30,
+        "name": "Son Jiyeon",
+        "shortDescription": "Seorang penyanyi-penulis lagu folk yang sering disebut sebagai \"Joni Mitchell-nya Korea,\" dikenal karena suara dan penulisan lagunya yang unik.",
+        "description": "Ditemukan oleh master folk generasi pertama Yang Byeongjip, Son Jiyeon memulai karirnya dengan album debut tahun 2003 \"My Life's Story.\" Ia telah membangun dunia musik yang sangat orisinal yang sulit dikategorikan dan menulis lagu-lagu yang mengekspresikan hidupnya dengan sensibilitas puitis, kejelasan, dan kejujuran.",
+        "genre": [
+            "Folk",
+            "Penyanyi-Penulis Lagu"
+        ],
+        "trackTitle": "Kisah Nyata",
+        "imageUrl": "/images-webp/musicians/30.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/jy_son_/"
+        ]
+    },
+    {
+        "id": 31,
+        "name": "Son Hyunsuk",
+        "shortDescription": "Seorang penyanyi-penulis lagu yang muncul dari gerakan lagu minjung dan dikenal luas karena lagu \"Cheonggyecheon 8-ga.\"",
+        "description": "Son Hyunsuk mulai bermusik di grup lagu minjung Dume di Universitas Soongsil. Ia kemudian menarik perhatian luas sebagai vokalis tamu untuk grup rock Cheonjiin dalam lagu \"Cheonggyecheon 8-ga,\" dan sejak itu telah merilis beberapa album sambil juga memperkenalkan lagu-lagu rakyat dari negara-negara seperti Myanmar kepada penonton Korea.",
+        "genre": [
+            "Lagu Minjung",
+            "Folk",
+            "Penyanyi-Penulis Lagu"
+        ],
+        "trackTitle": "Cheonggyecheon 8-ga",
+        "imageUrl": "/images-webp/musicians/31.webp",
+        "instagramUrls": []
+    },
+    {
+        "id": 32,
+        "name": "Song Insang",
+        "shortDescription": "Seorang penyanyi-penulis lagu yang melukis fragmen kehidupan dan kenangan berharga melalui lagu.",
+        "description": "Song Insang tumbuh di antara desa pegunungan dan tepi laut, membawa kesan awal tentang alam tersebut ke dalam musiknya. Setelah belajar gitar dan menulis lagu secara otodidak di sekolah menengah pertama, ia merilis EP \"Cat Air\" dan terus menulis lagu yang dibentuk oleh kenangan masa kecil, kehidupan kota, dan kolaborasi keluarga.",
+        "genre": [
+            "Folk",
+            "Penyanyi-Penulis Lagu"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/32.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/song_insang"
+        ]
+    },
+    {
+        "id": 33,
+        "name": "Song Inhyo",
+        "shortDescription": "Seorang penyanyi-penulis lagu yang merekam pengalaman hidup dan refleksi batin melalui melodi sederhana dan lirik yang jujur.",
+        "description": "Song Inhyo mengubah pengalaman pribadi dan refleksi batin menjadi bahasa musik. Alih-alih mengandalkan tampilan gaya, lagu-lagunya dibangun dari sensasi yang dialami, melodi yang jelas, kata-kata yang jujur, dan ekspresi yang terkendali, menawarkan cara lain bagi pendengar untuk menghadapi hidup.",
+        "genre": [
+            "Folk",
+            "Penyanyi-Penulis Lagu"
+        ],
+        "trackTitle": "Antara Langit dan Bumi",
+        "imageUrl": "/images-webp/musicians/33.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/song_inhyo/"
+        ]
+    },
+    {
+        "id": 34,
+        "name": "Samgak Jeonpasa",
+        "shortDescription": "Proyek solo musisi elektronik dan penulis fiksi ilmiah Jang Hojin, mengekspresikan kontradiksi struktural masyarakat melalui musik elektronik eksperimental.",
+        "description": "Samgak Jeonpasa adalah proyek solo musisi elektronik dan penulis fiksi ilmiah Jang Hojin. Terinspirasi oleh artis seperti Depeche Mode dan Vangelis, ia mengejar suara yang tidak terduga dan komposisi nonlinear, dan menyalurkan kontradiksi struktural masyarakat Korea, dari gentrifikasi hingga perjuangan lokal, ke dalam musik elektronik eksperimental.",
+        "genre": [
+            "Elektronik",
+            "Eksperimental"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/34.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/zeonpasa/"
+        ]
+    },
+    {
+        "id": 35,
+        "name": "Anti Stress",
+        "shortDescription": "Sebuah band punk yang dibentuk oleh artis punk-folk organik Sai dan gitaris shoegaze Rainbow99.",
+        "description": "Anti Stress menyatukan Sai, yang dikenal karena menyanyikan lagu-lagu orisinal di lokasi protes dan komunitas pedesaan, dan Rainbow99, salah satu gitaris menonjol Korea dengan palet eksperimental luas yang mencakup ambient dan musik generatif. Kolaborasi mereka mengubah semangat folk dan eksperimen sonik menjadi punk yang kasar dan berenergi tinggi.",
+        "genre": [
+            "Punk",
+            "Folk Punk"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/35.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/be2in2023",
+            "https://www.instagram.com/rainbow99gaze/"
+        ]
+    },
+    {
+        "id": 36,
+        "name": "Oh Jaehwan",
+        "shortDescription": "Seorang penyanyi-penulis lagu folk yang telah berdiri bersama banyak perjuangan melalui musik and telah bergabung dengan Kamp Musik & Perdamaian Gangjeong sejak edisi pertama.",
+        "description": "Oh Jaehwan adalah seorang penyanyi-penulis lagu folk yang telah lama mengekspresikan solidaritas dengan perjuangan sosial melalui musik. Ia telah merilis album termasuk \"Melakukan Apa yang Diperintahkan dengan Baik\" and \"Lagu Pulau,\" and telah tampil secara konsisten di Kamp Musik & Perdamaian Gangjeong sejak tahun pertamanya.",
+        "genre": [
+            "Folk",
+            "Penyanyi-Penulis Lagu"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/36.webp",
+        "instagramUrls": []
+    },
+    {
+        "id": 37,
+        "name": "On Gayeong",
+        "shortDescription": "Seorang penyanyi-penulis lagu yang berbasis di Busan yang menulis dan menyanyikan lagu-lagu akustik ringkas dengan suara hangat.",
+        "description": "On Gayeong, lahir sebagai Bae Gayeong, mendeskripsikan dirinya sebagai seseorang yang bernyanyi sambil bersiap untuk malam yang layak. Setelah bekerja dengan band akustik Chocolate Bench dan grup tiup Band Heung, ia melanjutkan sebagai artis solo, merilis single \"Who you are\" pada tahun 2023, dan membangun pengalaman melalui lebih dari 100 pertunjukan live.",
+        "genre": [
+            "Akustik",
+            "Folk",
+            "Penyanyi-Penulis Lagu"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/37.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/on.gayoung/"
+        ]
+    },
+    {
+        "id": 38,
+        "name": "Yeoul",
+        "shortDescription": "Seorang musisi folk dengan nada yang jernih, dikenal baik sebagai artis solo maupun sebagai anggota duo Leaves.",
+        "description": "Yeoul tampil bersama Wongirl dalam duo folk Leaves sambil juga bekerja sebagai penyanyi-penulis lagu solo. Dengan gitar akustik dan suara yang jernih, ia bernyanyi secara liris tentang perdamaian melalui momen-momen harian kecil, dan ia juga memiliki hubungan mendalam dengan komunitas perdamaian Gangjeong, setelah bergabung dengan kamp pertama sebagai bagian dari staf desain.",
+        "genre": [
+            "Folk",
+            "Akustik"
+        ],
+        "trackTitle": "Hati di Depan Mata",
+        "imageUrl": "/images-webp/musicians/40.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/yeoouul/"
+        ]
+    },
+    {
+        "id": 39,
+        "name": "Yoon Soong",
+        "shortDescription": "Seorang penyanyi-penulis lagu folk yang secara liris menelusuri kehidupan, kematian, dan perjalanan bergerak maju melalui keputusasaan.",
+        "description": "Yoon Soong terus merilis rekaman folk intim sejak kesuksesan terobosan EP \"Hanya Aku yang Bisa Membuka Pintu Itu dan Keluar\" pada tahun 2021. Karyanya menarik perjalanan liris dari hutan gelap ke laut lepas dan dari fajar menuju pagi, mengubah rasa sakit dan kegigihan menjadi lagu.",
+        "genre": [
+            "Folk",
+            "Akustik",
+            "Penyanyi-Penulis Lagu"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/39.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/cyoonseung/"
+        ]
+    },
+    {
+        "id": 40,
+        "name": "Yoon Seonae",
+        "shortDescription": "Suara ikonik lagu minjung yang bernyanyi di garis depan gerakan demokrasi tahun 1980-an.",
+        "description": "Yoon Seonae muncul dari grup menyanyi Universitas Nasional Seoul Meaeri dan koalisi mahasiswa Saebyeok, menjadi salah satu suara wanita penentu lagu minjung selama gerakan demokrasi tahun 1980-an. Ia dikenal karena lagu-lagu bersejarah seperti \"Saat Hari Itu Tiba\" dan telah melanjutkan kehidupan artistiknya melalui album solo kemudian.",
+        "genre": [
+            "Folk",
+            "Lagu Minjung"
+        ],
+        "trackTitle": "Saat Hari Itu Tiba",
+        "imageUrl": "/images-webp/musicians/40.webp",
+        "instagramUrls": []
+    },
+    {
+        "id": 42,
+        "name": "Lim Jeongdeuk",
+        "shortDescription": "Seorang penyanyi-penulis lagu minjung yang dikenal karena bernyanyi di lokasi perjuangan di seluruh Korea dan untuk lagu \"Pohon Bunga Garam.\"",
+        "description": "Lim Jeongdeuk mulai bermusik di grup menyanyi Ye Saga Rak di Universitas Yeungnam dan telah bekerja sebagai penyanyi minjung sejak debutnya tahun 2011. Tampil di lokasi perjuangan buruh, perlawanan anti-penggusuran, dan protes keluarga Sewol, ia menulis, menggubah, dan memproduksi sebagian besar karyanya sendiri, dengan \"Pohon Bunga Garam\" di antara lagu-lagunya yang paling terkenal.",
+        "genre": [
+            "Musik Minjung",
+            "Folk",
+            "Penyanyi-Penulis Lagu"
+        ],
+        "trackTitle": "Pohon Bunga Garam",
+        "imageUrl": "/images-webp/musicians/42.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/imjeongdeuk/"
+        ]
+    },
+    {
+        "id": 43,
+        "name": "Joon Lee",
+        "shortDescription": "Seorang penyanyi-penulis lagu dari Los Angeles yang bergerak di antara Seoul dan Jeju.",
+        "description": "Joon Lee tumbuh di Los Angeles, California, di mana ia belajar gitar, dan telah melanjutkan kehidupan musiknya melintasi Amerika Serikat, Seoul, dan Jeju. Dipengaruhi oleh folk, blues, rock, dan pop, ia membawa rentang nada yang luas ke dalam penulisan lagunya.",
+        "genre": [
+            "Indie"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/43.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/joonlee_jeju/"
+        ]
+    },
+    {
+        "id": 44,
+        "name": "Joyakgol",
+        "shortDescription": "Seorang aktivis perdamaian dan musisi, co-direktur Hot Pink Dolphins, sangat terlibat dalam gerakan perdamaian Gangjeong.",
+        "description": "Joyakgol adalah seorang aktivis anarkis dan musisi yang telah mengambil bagian dalam gerakan perdamaian di Daechuri, Saemangeum, dan Gangjeong. Setelah bertemu dengan sekawanan lumba-lumba hidung botol Indo-Pasifik selama perjuangan anti-pangkalan laut di Gangjeong pada tahun 2011, ia ikut mendirikan kelompok lingkungan laut Hot Pink Dolphins dan membantu meluncurkan gerakan pembebasan lumba-lumba akuarium pertama di Asia.",
+        "genre": [
+            "Indie",
+            "Folk",
+            "Punk"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/44.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/dopeheadzo1"
+        ]
+    },
+    {
+        "id": 45,
+        "name": "Jo Seongil",
+        "shortDescription": "Mantan anggota grup musik minjung Kkotdaji yang sekarang menyanyikan kehidupan dan harapan dari Jeju.",
+        "description": "Jo Seongil menghabiskan empat belas tahun, dimulai pada tahun 1998, sebagai vokalis utama di grup musik minjung Kkotdaji dan menulis lagu-lagu seperti \"Harapan,\" \"Peluit,\" dan \"Petarung.\" Setelah bersolo karir pada tahun 2012, ia menetap di Seogwipo, Jeju, dan terus merilis rekaman yang menawarkan kenyamanan di tengah realitas yang berat.",
+        "genre": [
+            "Folk",
+            "Musik Minjung",
+            "Penyanyi-Penulis Lagu"
+        ],
+        "trackTitle": "Saya Sudah Menyalakan Mesin",
+        "imageUrl": "/images-webp/musicians/45.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/chosungil99/"
+        ]
+    },
+    {
+        "id": 46,
+        "name": "Jinukonda",
+        "shortDescription": "Seorang musisi country blues dengan suara gelap dan serak yang telah menyanyikan kisah-kisah gothic modern di kancah Hongdae sejak 2018.",
+        "description": "Jinukonda adalah musisi dengan akar dalam country blues and suara gelap serta serak. Aktif di Hongdae sejak 2018, ia mengubah kisah-kisah gothic modern menjadi musik and bernyanyi tentang kehidupan orang-orang yang terisolasi di dalam kota besar Seoul.",
+        "genre": [
+            "Country Blues",
+            "Gothic Folk"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/46.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/jinukonda"
+        ]
+    },
+    {
+        "id": 47,
+        "name": "Chan",
+        "shortDescription": "Seorang musisi meditasi yang memainkan sitar dan bansuri.",
+        "description": "Chan adalah seorang musisi meditasi yang memainkan sitar dan bansuri. Tertarik pada kedalaman suara India yang tenang, ia belajar dengan beberapa guru, merilis beberapa album musik meditasi, dan juga mengelola saluran YouTube Lotus Relaxing Music.",
+        "genre": [
+            "Musik Meditasi",
+            "Musik Dunia"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/47.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/chanbhaiya"
+        ]
+    },
+    {
+        "id": 48,
+        "name": "Choi Sangdon",
+        "shortDescription": "Seorang penyanyi-penulis lagu yang mengembangkan kreasi dan pertunjukan melalui ziarah musikal.",
+        "description": "Choi Sangdon adalah seorang penyanyi-penulis lagu yang karyanya tumbuh dari ziarah musikal. Bersama Kim Ganggon pada akordeon and Jo Aeran pada vokal, ia melanjutkan proyek Sanorakhoe and tetap dalam solidaritas berkelanjutan dengan gerakan Gangjeong.",
+        "genre": [
+            "Indie"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/48.webp",
+        "instagramUrls": []
+    },
+    {
+        "id": 49,
+        "name": "Chichi",
+        "shortDescription": "Tampil di Kamp Musik & Perdamaian Gangjeong 2026.",
+        "description": "Chichi adalah bagian dari jajaran pengisi acara untuk Kamp Musik & Perdamaian Gangjeong 2026.",
+        "genre": [
+            "Indie"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/49.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/blackaftermoon"
+        ]
+    },
+    {
+        "id": 50,
+        "name": "Kita & Olgen",
+        "shortDescription": "Duo yang tampil di Kamp Musik & Perdamaian Gangjeong 2026.",
+        "description": "Kita & Olgen tampil sebagai duo di Kamp Musik & Perdamaian Gangjeong 2026.",
+        "genre": [
+            "Indie",
+            "Akustik",
+            "Folk"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/50.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/kita_olgen"
+        ]
+    },
+    {
+        "id": 51,
+        "name": "Taehyeon",
+        "shortDescription": "Seorang penyanyi-penulis lagu yang sangat mendalami reggae akar Jamaika, menerjemahkan suara reggae analog dan pesan perdamaian ke dalam sensibilitas Korea.",
+        "description": "Taehyeon adalah seorang penyanyi-penulis lagu organik yang suaranya secara alami memadukan reggae akar, folk, blues, and musik tradisional. Setelah jatuh cinta pada reggae di London, ia kembali ke Korea untuk tampil sebagai vokalis and gitaris, kemudian pindah ke Jeju and memperluas karyanya sebagai selector and teknisi suara dengan nama Uncle Bongo.",
+        "genre": [
+            "Reggae",
+            "Folk",
+            "Blues"
+        ],
+        "trackTitle": "Rakyat Adalah Negara",
+        "imageUrl": "/images-webp/musicians/51.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/tehiun/"
+        ]
+    },
+    {
+        "id": 52,
+        "name": "Pium",
+        "shortDescription": "Seorang penyanyi-penulis lagu yang register rendahnya yang dalam berdampingan dengan nada tinggi yang cerah dan melamun.",
+        "description": "Pium membangun pengalaman panggung awal sebagai vokalis utama dalam band rock saat masih di sekolah menengah atas. Setelah meninggalkan program sastra Inggris, ia mempelajari pertunjukan vokal di Institut Seni Seoul, mulai belajar gitar and menulis lagu dengan suaranya sendiri, and sekarang secara teratur merilis karya yang ditulis sendiri sambil tampil rutin di sekitar Hongdae and Gangnam.",
+        "genre": [
+            "Indie"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/52.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/a_nicefolksong"
+        ]
+    },
+    {
+        "id": 53,
+        "name": "Howaho",
+        "shortDescription": "Duo dengan lirik puitis dan lanskap suara yang berbobot, dinominasikan untuk Album Folk Terbaik di Korean Music Awards.",
+        "description": "Howaho dibentuk ketika eeeho and Mohho, keduanya aktif sebagai penyanyi-penulis lagu, terinspirasi oleh suasana khas satu sama lain. Menulis semua lagu mereka bersama-sama, mereka menggabungkan lirik puitis, gitar elektrik yang berat, ketukan elektronik, and lanskap suara ambient, and album pertama mereka \"Unknown Origin\" dinominasikan untuk Album Folk Terbaik di Korean Music Awards ke-16.",
+        "genre": [
+            "Indie",
+            "Folk",
+            "Alternatif"
+        ],
+        "trackTitle": "Puncak Gelombang (Wave Crest)",
+        "imageUrl": "/images-webp/musicians/53.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/howaho_official/"
+        ]
+    },
+    {
+        "id": 54,
+        "name": "Honey Whiskey",
+        "shortDescription": "Sebuah live band multinasional yang berbasis di Suwon.",
+        "description": "Honey Whiskey adalah band multinasional yang berfungsi sebagai house band resmi Alleyway Taphouse, sebuah pub bir kerajinan and musik live di Suwon. Berpusat pada pertunjukan live, band ini bermain dalam berbagai gaya.",
+        "genre": [
+            "Rock",
+            "Live Band"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/54.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/honeywhiskeysuwon/"
+        ]
+    },
+    {
+        "id": 55,
+        "name": "Heo Jeonghyeok",
+        "shortDescription": "Seorang penyanyi-penulis lagu folk yang diakui melalui Kompetisi Musik Yoo Jae-ha, dengan album penuhnya \"Budding Days\" dinominasikan sebagai Album Folk Terbaik.",
+        "description": "Heo Jeonghyeok, yang juga tampil dengan alias putra toko bunga, mulai menarik perhatian luas setelah memenangkan perunggu di Kompetisi Musik Yoo Jae-ha ke-28 pada tahun 2017. Ia juga bekerja dalam duo Siot and Angin, and album penuh pertamanya tahun 2023 \"Budding Days\" dinominasikan sebagai Album Folk Terbaik di Korean Music Awards 2024.",
+        "genre": [
+            "Folk",
+            "Penyanyi-Penulis Lagu"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/55.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/_hyuk_e"
+        ]
+    },
+    {
+        "id": 56,
+        "name": "Hwang Myeongha",
+        "shortDescription": "Seorang penyanyi-penulis lagu folk wanita yang disebut sebagai \"Sarah McLachlan-nya Korea,\" dengan lebih dari 1.000 pertunjukan live atas namanya.",
+        "description": "Hwang Myeongha dikenal karena warna suara yang langka and menarik yang membuatnya dijuluki \"Sarah McLachlan-nya Korea.\" Menarik dari lebih dari 1.000 pertunjukan live, ia menyajikan panggung penyembuhan yang mendalam and suara folk yang khas.",
+        "genre": [
+            "Folk",
+            "Akustik"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/56.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/hwang_myungha/"
+        ]
+    },
+    {
+        "id": 57,
+        "name": "Ha Juwon",
+        "shortDescription": "Seorang musisi yang berkeliling dunia memainkan handpan.",
+        "description": "Ha Juwon, juga dikenal sebagai Woni, adalah seorang musisi yang berkelana dari satu tempat ke tempat lain di seluruh dunia memainkan handpan.",
+        "genre": [
+            "Handpan",
+            "Musik Dunia"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/57.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/wonn__e"
+        ]
+    },
+    {
+        "id": 58,
+        "name": "Ppalajida X Dongbaek Small School",
+        "shortDescription": "Panggung kolaborasi antara grup batucada yang berbasis di Jeju, Ppalajida, and Dongbaek Small School, sebuah sekolah alternatif yang berpusat pada ekologi, hak asasi manusia, and perdamaian.",
+        "description": "Ppalajida adalah ansambel batucada yang berbasis di Jeju yang telah aktif sejak 2022, memainkan perkusi samba grup yang berakar pada tradisi Brasil. Dongbaek Small School adalah sekolah alternatif di Jeju yang mempraktikkan pendidikan berbasis proyek seputar ekologi, hak asasi manusia, and perdamaian. Bersama-sama mereka menghadirkan ritme perdamaian yang diciptakan oleh komunitas lokal and kaum muda.",
+        "genre": [
+            "Batucada",
+            "Perkusi",
+            "Musik Dunia"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/58.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/pelagida_oficial",
+            "https://www.instagram.com/dongbaek_school/"
+        ]
+    },
+    {
+        "id": 59,
+        "name": "HANASH",
+        "shortDescription": "Seorang seniman suara eksperimental yang memadukan instrumen dan genre dari seluruh dunia dengan musik elektronik.",
+        "description": "HANASH menciptakan suara eksperimental dengan menggabungkan instrumen and genre dari banyak belahan dunia dengan musik elektronik. Dengan sintesis petualang and lanskap suara yang meluas, karyanya mencari pertemuan harmonis antara tradisi and masa kini.",
+        "genre": [
+            "Elektronik",
+            "Musik Dunia",
+            "Eksperimental"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/59.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/_ashahn/"
+        ]
+    },
+    {
+        "id": 60,
+        "name": "TAGI",
+        "shortDescription": "Duo pemain handpan Jepang Taka dan musisi tradisional Korea Mingi, menyatukan handpan dengan saenghwang, piri, and taepyeongso.",
+        "description": "TAGI adalah duo yang dibentuk oleh pemain handpan Jepang Taka and pemain tiup tradisional Korea Mingi. Namanya menggabungkan suku kata pertama dari nama mereka sekaligus membangkitkan kata Korea untuk menunggangi, membawa harapan bahwa suara akan merambat melalui angin, sungai, and udara. Bersama-sama mereka bergerak melintasi batas antara tradisi Asia Timur and suara kontemporer.",
+        "genre": [
+            "Musik Dunia",
+            "Musik Tradisional Korea",
+            "Handpan"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/60.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/tagi_sound"
+        ]
+    }
+]
