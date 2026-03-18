@@ -427,8 +427,8 @@ export const musicians: Musicians = [
   {
     id: 43,
     name: "Joon Lee",
-    shortDescription: "2026 강정피스앤뮤직캠프에 출연합니다",
-    description: "2026 강정피스앤뮤직캠프에 출연합니다.",
+    shortDescription: "LA 출신, 서울과 제주를 오가는 싱어송라이터",
+    description: "싱어송라이터 준리는 캘리포니아 로스엔젤레스에서 자라며 기타를 전공, 이후 미국에서 서울, 제주도까지 활동을 이어가고 있다. Folk, blues, rock, pop 등 여러 장르의 영향을 받은 다채로운 컬러의 뮤지션이다.",
     genre: ["인디"],
     trackTitle: "",
     imageUrl: "/images-webp/musicians/43.webp",
