@@ -82,10 +82,14 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
     return { notFound: true };
   }
 
-  // Find related videos
-  const videos = loadLocalizedData<VideoItem>(resolvedLocale, 'videos.json');
-  const directVideos = videos.filter((v) => v.musicianIds?.includes(musician.id));
-  const relatedVideos = [...directVideos];
+  // Find related videos — always use KO videos.json for musicianIds matching
+  // (en/videos.json is a partial subset and lacks musicianIds)
+  const koVideos = loadLocalizedData<VideoItem>('ko', 'videos.json');
+  const localizedVideos = loadLocalizedData<VideoItem>(resolvedLocale, 'videos.json');
+  const localizedVideoMap = new Map(localizedVideos.map((v) => [v.id, v]));
+  const relatedVideos = koVideos
+    .filter((v) => v.musicianIds?.includes(musician.id))
+    .map((v) => localizedVideoMap.get(v.id) ?? v);
 
   // Other camp musicians only (same camp, with image)
   const campMusicianIdSet = new Set(campMusicianIds);
