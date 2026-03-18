@@ -44,7 +44,9 @@
         "no_images": "Фотографий нет.",
         "load_more": "Показать ещё",
         "image_alt_fallback": "Изображение галереи Gangjeong Peace Music Camp",
-        "image_alt_template": "Изображение галереи {{year}} — {{title}}"
+        "image_alt_template": "Изображение галереи {{year}} — {{title}}",
+        "alt_album": "Фото концерта по выпуску альбома {{year}}",
+        "alt_camp": "Фото фестиваля мирной музыки в Канджоне {{year}}"
     },
     "home": {
         "hero": {
@@ -135,7 +137,12 @@
         "go_home": "На главную",
         "audio_position": "Позиция воспроизведения аудио",
         "label_personnel": "Состав",
-        "label_produced_by": "Продюсирование"
+        "label_produced_by": "Продюсирование",
+        "about": "О нас",
+        "arranger": "Аранжировщик",
+        "composer": "Композитор",
+        "lyricist": "Автор текста",
+        "track": "Трек"
     },
     "timeline": {
         "title": "Наш путь",
@@ -230,7 +237,8 @@
         "title_2026": "3-й Музыкальный лагерь мира в Канджоне",
         "slogan_2026": "Давайте петь, танцевать и покончим с войной!",
         "date_badge_2026": "5–7 июня 2026",
-        "participant_count": "{{count}} команд"
+        "participant_count": "{{count}} команд",
+        "seo_musician_suffix": "Выступает на 3-м Фестивале мирной музыки в Канджоне, 5–7 июня 2026 года в Спортивном парке Канджон, Чеджу."
     },
     "album": {
         "page_title": "To You in a Distant Place Whose Name I Don't Know — Об альбоме",
