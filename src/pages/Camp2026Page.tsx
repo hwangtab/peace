@@ -101,7 +101,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => {
       disableBottomPadding={true}
     >
       {/* Hero Section with Background Image */}
-      <section className="relative min-h-[500px] md:min-h-[600px] lg:min-h-[700px] flex items-center justify-center text-center overflow-hidden bg-ocean-gradient">
+      <section className="relative min-h-[500px] md:min-h-[600px] lg:min-h-[700px] flex items-center justify-center text-center overflow-hidden bg-ocean-gradient pt-20">
         <Image
           src="/images-webp/camps/2023/20230610밤 전쟁을끝내자.webp"
           alt={translatedTitle}
@@ -117,14 +117,14 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => {
             animate={{ y: 0 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
           >
-            <span className="inline-block px-5 py-1.5 bg-white/20 backdrop-blur-sm text-white font-bold rounded-full mb-6 text-sm tracking-wider border border-white/30">
+            <span className="inline-block px-5 py-1.5 bg-white/20 backdrop-blur-sm text-white font-bold rounded-full mb-4 sm:mb-6 text-sm tracking-wider border border-white/30">
               {t('camp.date_badge_2026')}
             </span>
 
-            <h1 className="typo-h1 text-white mb-4 hyphens-auto break-words">{translatedTitle}</h1>
-            <p className="typo-subtitle text-gray-100 mb-8 hyphens-auto break-words">{translatedSlogan}</p>
+            <h1 className="typo-h1 text-white mb-3 sm:mb-4 hyphens-auto break-words">{translatedTitle}</h1>
+            <p className="typo-subtitle text-gray-100 mb-5 sm:mb-8 hyphens-auto break-words">{translatedSlogan}</p>
 
-            <div className="flex flex-col sm:flex-row justify-center gap-6 text-white mb-8">
+            <div className="flex flex-col sm:flex-row justify-center gap-2 sm:gap-6 text-white mb-5 sm:mb-8">
               <div>
                 <p className="text-sm uppercase tracking-wide text-gray-300 mb-1">{t('camp.label_period')}</p>
                 <p className="text-lg font-medium">{t('camp.date_2026')}</p>

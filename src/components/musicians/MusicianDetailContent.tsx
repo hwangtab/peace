@@ -28,6 +28,7 @@ export interface MusicianDetailContentProps {
   musicianHrefPrefix: string;
   fundingUrl?: string;
   otherMusiciansTitle?: string;
+  pageContext?: 'album' | 'camp';
 }
 
 export default function MusicianDetailContent({
@@ -40,23 +41,41 @@ export default function MusicianDetailContent({
   musicianHrefPrefix,
   fundingUrl,
   otherMusiciansTitle,
+  pageContext,
 }: MusicianDetailContentProps) {
   const { t, i18n } = useTranslation();
+  const isCampPage = pageContext === 'camp';
 
-  const profileSchema = getProfilePageSchema({
-    name: musician.name,
-    description: musician.shortDescription,
-    image: musician.imageUrl ? `https://peaceandmusic.net${musician.imageUrl}` : undefined,
-    jobTitle: 'Musician',
-  }, i18n.language);
+  const pageTitle = isCampPage
+    ? `${musician.name} — ${t('camp.title_2026')} | ${t('nav.logo')}`
+    : `${musician.name} | ${t('app.title')}`;
+
+  const pageDescription = isCampPage
+    ? `${musician.shortDescription} ${t('camp.seo_musician_suffix')}`
+    : musician.shortDescription;
+
+  const baseKeywords = `${musician.name}, ${musician.genre.join(', ')}, ${t('app.title')}`;
+  const pageKeywords = isCampPage
+    ? `${baseKeywords}, 강정피스앤뮤직캠프, 2026, 강정마을, 평화음악축제`
+    : baseKeywords;
+
+  const profileSchema = getProfilePageSchema(
+    {
+      name: musician.name,
+      description: musician.shortDescription,
+      image: musician.imageUrl ? `https://peaceandmusic.net${musician.imageUrl}` : undefined,
+      jobTitle: 'Musician',
+    },
+    i18n.language
+  );
 
   const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs);
 
   return (
     <PageLayout
-      title={`${musician.name} | ${t('app.title')}`}
-      description={musician.shortDescription}
-      keywords={`${musician.name}, ${musician.genre.join(', ')}, ${t('app.title')}`}
+      title={pageTitle}
+      description={pageDescription}
+      keywords={pageKeywords}
       ogImage={musician.imageUrl || undefined}
       structuredData={[profileSchema, breadcrumbSchema]}
       disableTopPadding={true}
@@ -135,8 +154,7 @@ export default function MusicianDetailContent({
                           rel="noopener noreferrer"
                           className="inline-flex items-center px-3 py-1.5 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors"
                         >
-                          <InstagramIcon className="w-4 h-4 mr-1.5" />
-                          @{username}
+                          <InstagramIcon className="w-4 h-4 mr-1.5" />@{username}
                         </a>
                       );
                     })}
@@ -216,9 +234,7 @@ export default function MusicianDetailContent({
         <div className="bg-ocean-sand py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
-              <h2 className="typo-h2 text-jeju-ocean text-center mb-10">
-                {t('nav.video')}
-              </h2>
+              <h2 className="typo-h2 text-jeju-ocean text-center mb-10">{t('nav.video')}</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {relatedVideos.map((video) => (
                   <VideoCard key={video.id} video={video} />
