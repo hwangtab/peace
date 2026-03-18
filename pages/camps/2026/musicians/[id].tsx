@@ -38,7 +38,7 @@ export default function CampMusicianPage({
         },
       ]}
       musicianHrefPrefix="/camps/2026/musicians"
-      otherMusiciansTitle="함께하는 뮤지션"
+      otherMusiciansTitle={t('camp.other_musicians')}
       fundingUrl={camp2026?.fundingUrl}
       pageContext="camp"
     />
