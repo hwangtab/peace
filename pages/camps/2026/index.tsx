@@ -6,8 +6,8 @@ import fs from 'fs';
 import path from 'path';
 import { Musician } from '../../../src/types/musician';
 
-export default function WrappedPage({ initialMusicians }: { initialMusicians: Musician[] }) {
-  return <Page initialMusicians={initialMusicians} />;
+export default function WrappedPage({ initialMusicians, initialLocale }: { initialMusicians: Musician[]; initialLocale: string }) {
+  return <Page initialMusicians={initialMusicians} initialLocale={initialLocale} />;
 }
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
@@ -40,6 +40,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
     props: {
       ...(await serverSideTranslations(lang, ['translation'], nextI18NextConfig)),
       initialMusicians,
+      initialLocale: lang,
     },
     revalidate: 3600,
   };
