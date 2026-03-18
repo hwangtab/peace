@@ -1,0 +1,235 @@
+[
+  {
+    "id": 1,
+    "title": "金东山 & Blueeewoot - 致不知名的远方的你 (首尔 Showcase)",
+    "description": "金东山 & Blueeewoot 是以水原为据点的民谣/布鲁斯音乐人金东山及其乐队。金东山被称为“韩国的伍迪·格斯里”，以传达社会信息的音乐而闻名。他歌唱失业工人和绅士化受害者，并在水原长安门附近经营着黑胶唱片和回收店“Long Player”，将其发展成为当地的文化空间。",
+    "youtubeUrl": "https://www.youtube.com/embed/ejTPpS71nX8",
+    "date": "2024-11-02",
+    "location": "首尔弘大 Space Hangang",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      3
+    ]
+  },
+  {
+    "id": 2,
+    "title": "流浪乐队 张贤浩 - 致不知名的远方的你 (首尔 Showcase)",
+    "description": "流浪乐队是 2011 年以创作歌手张贤浩为中心组建的“街头乐队”。他们在社会斗争和冲突的现场演唱，十多年来一直声援世越号真相调查运动、江汀海军基地抗议、KTX 乘务员复职斗争、Pinetek 屋顶静坐以及 Colt/Coltex 工人斗争等活动。",
+    "youtubeUrl": "https://www.youtube.com/embed/Ts_fFqAYLYE",
+    "date": "2024-11-02",
+    "location": "首尔弘大 Space Hangang",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      15
+    ]
+  },
+  {
+    "id": 3,
+    "title": "南秀 - 致不知名的远方的你 (首尔 Showcase)",
+    "description": "一位跨越独立、民谣/布鲁斯、爵士和新世纪音乐的多才多艺的独奏艺术家。她经营着文化空间“啄木鸟书店”，创造音乐与文学的交汇点。她旨在通过将音乐与视觉艺术和表演相结合来扩展自己的艺术边界。",
+    "youtubeUrl": "https://www.youtube.com/embed/cHl1I5iJqyA",
+    "date": "2024-11-02",
+    "location": "首尔弘大 Space Hangang",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      4
+    ]
+  },
+  {
+    "id": 4,
+    "title": "金仁 - 致不知名的远方的你 (首尔 Showcase)",
+    "description": "一位独立音乐人，探索独特的声响，并通过音乐表达对环境与和平的深厚情感。她喜爱多种流派，并建立了自己的独特音乐世界。凭借受星星和月亮启发的抒情音乐，她以细腻的感触和深刻的歌词传达和平的信息。",
+    "youtubeUrl": "https://www.youtube.com/embed/8jPAlA7cGtM",
+    "date": "2024-11-02",
+    "location": "首尔弘大 Space Hangang",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      6
+    ]
+  },
+  {
+    "id": 5,
+    "title": "MOMO - 致不知名的远方的你 (首尔 Showcase)",
+    "description": "由朴艺珍 (Yejin Angela Park) 和黄瑟琪 (Hwang Seulgi) 组成的爵士二重奏。植根于爵士乐，他们共同探索多样而优美的声音。通过即兴创作和实验，他们细腻地捕捉现代社会的意识，表达平凡的日常生活以及冲突地区中蕴含的紧张局势。",
+    "youtubeUrl": "https://www.youtube.com/embed/hh-MwTiaJxk",
+    "date": "2024-11-02",
+    "location": "首尔弘大 Space Hangang",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      10
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Jai x HANASH - 致不知名的远方的你 (首尔 Showcase)",
+    "description": "Jai 温暖的声音与 HANASH 创新的电子音乐相结合，探索新的可能性。Jai 以忧伤而有力的声音表达日常故事，而 HANASH 则尝试将世界各地的乐器和流派与电子音乐相结合。他们的相遇展示了传统与现代的和谐融合。",
+    "youtubeUrl": "https://www.youtube.com/embed/ka9DcFOD2fw",
+    "date": "2024-11-02",
+    "location": "首尔弘大 Space Hangang",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      11,
+      59
+    ]
+  },
+  {
+    "id": 101,
+    "title": "人类之链",
+    "description": "2023 年春天在济州海军基地正门前举行的人类之链活动。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=dF6raNSEkfI",
+    "date": "2023-06-10",
+    "location": "西归浦江汀川体育公园",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/dF6raNSEkfI/sddefault.jpg"
+  },
+  {
+    "id": 102,
+    "title": "2023 第一届江汀和平音乐露营",
+    "description": "2023 年在江汀川体育公园举行的第一届江汀和平音乐露营现场表演片段。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=mPeFqepsf_Y",
+    "date": "2023-06-10",
+    "location": "西归浦江汀川体育公园",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/mPeFqepsf_Y/maxresdefault.jpg"
+  },
+  {
+    "id": 103,
+    "title": "江汀三段舞",
+    "description": "在江汀川体育公园举行的江汀三段舞表演。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=MzIpAmDAYzk",
+    "date": "2023-06-10",
+    "location": "西归浦江汀川体育公园",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/MzIpAmDAYzk/maxresdefault.jpg"
+  },
+  {
+    "id": 104,
+    "title": "2023 第一届江汀和平音乐露营",
+    "description": "2023 年在江汀川体育公园举行的第一届江汀和平音乐露营场景。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=OGKd_pnrul4",
+    "date": "2023-06-10",
+    "location": "西归浦江汀川体育公园",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/OGKd_pnrul4/maxresdefault.jpg"
+  },
+  {
+    "id": 105,
+    "title": "2023 第一届江汀和平音乐露营",
+    "description": "2023 年在江汀川体育公园举行的第一届江汀和平音乐露营场景。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=GHSxHVc-b1w",
+    "date": "2023-06-10",
+    "location": "西归浦江汀川体育公园",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/GHSxHVc-b1w/maxresdefault.jpg"
+  },
+  {
+    "id": 106,
+    "title": "2023 第一届江汀和平音乐露营",
+    "description": "2023 年在江汀川体育公园举行的第一届江汀和平音乐露营场景。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=1TyLqzoHA7M",
+    "date": "2023-06-10",
+    "location": "西归浦江汀川体育公园",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/1TyLqzoHA7M/maxresdefault.jpg"
+  },
+  {
+    "id": 107,
+    "title": "2023 第一届江汀和平音乐露营",
+    "description": "2023 年在江汀川体育公园举行的第一届江汀和平音乐露营场景。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=YwOO627losU",
+    "date": "2023-06-10",
+    "location": "西归浦江汀川体育公园",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/YwOO627losU/maxresdefault.jpg"
+  },
+  {
+    "id": 108,
+    "title": "2023 第一届江汀和平音乐露营",
+    "description": "2023 年在江汀川体育公园举行的第一届江汀和平音乐露营场景。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=RH2x3ctcBgU",
+    "date": "2023-06-10",
+    "location": "西归浦江汀川体育公园",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/RH2x3ctcBgU/maxresdefault.jpg"
+  },
+  {
+    "id": 109,
+    "title": "2023 第一届江汀和平音乐露营",
+    "description": "2023 年在江汀川体育公园举行的第一届江汀和平音乐露营场景。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=tFxoLxIDfyM",
+    "date": "2023-06-10",
+    "location": "西归浦江汀川体育公园",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/tFxoLxIDfyM/maxresdefault.jpg"
+  },
+  {
+    "id": 110,
+    "title": "2023 第一届江汀和平音乐露营",
+    "description": "2023 年在江汀川体育公园举行的第一届江汀和平音乐露营场景。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=-PhTNOVdLc0",
+    "date": "2023-06-10",
+    "location": "西归浦江汀川体育公园",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/-PhTNOVdLc0/maxresdefault.jpg"
+  },
+  {
+    "id": 111,
+    "title": "2023 第一届江汀和平音乐露营",
+    "description": "2023 年在江汀川体育公园举行的第一届江汀和平音乐露营场景。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=mC-HJ-VhLOQ",
+    "date": "2023-06-10",
+    "location": "西归浦江汀川体育公园",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/mC-HJ-VhLOQ/maxresdefault.jpg"
+  },
+  {
+    "id": 112,
+    "title": "江汀和平音乐露营",
+    "description": "第一届江汀和平音乐露营以“停止战争！”为口号举行。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=crK6y7mJrfY",
+    "date": "2023-06-10",
+    "location": "西归浦江汀川体育公园",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/crK6y7mJrfY/maxresdefault.jpg"
+  },
+  {
+    "id": 201,
+    "title": "第二届江汀和平音乐露营正在筹备中！",
+    "description": "我们正在一起努力为明天的江汀和平音乐露营做准备！",
+    "youtubeUrl": "https://www.youtube.com/watch?v=pcsM9lxlA24",
+    "date": "2025-06-13",
+    "location": "西归浦江汀洞哈尔梅水餐厅（Halmae Water Restaurant）周边",
+    "eventType": "camp",
+    "eventYear": 2025,
+    "thumbnailUrl": "https://i.ytimg.com/vi/pcsM9lxlA24/maxresdefault.jpg"
+  },
+  {
+    "id": 202,
+    "title": "第二届江汀和平音乐露营",
+    "description": "在济州江汀村举行的和平与反战音乐节。",
+    "youtubeUrl": "https://youtu.be/DBlCTgWNNKU?si=9QRus6J85pPEqf-F",
+    "date": "2025-06-14",
+    "location": "西归浦江汀洞哈尔梅水餐厅（Halmae Water Restaurant）周边",
+    "eventType": "camp",
+    "eventYear": 2025,
+    "thumbnailUrl": "https://i.ytimg.com/vi/DBlCTgWNNKU/maxresdefault.jpg"
+  }
+]

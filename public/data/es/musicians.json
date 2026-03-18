@@ -1,0 +1,894 @@
+[
+    {
+        "id": 1,
+        "name": "Project Around Surround",
+        "shortDescription": "Un trío que busca la armonía entre el misticismo oriental y el sonido moderno",
+        "description": "Un grupo de proyecto de tres miembros que busca la armonía entre el misticismo oriental y el sonido moderno. El sitar emotivo de Ritesh Maharjan, el diseño de sonido e ingeniería innovador y preciso de Kang Kyungdeok, y la producción creativa de Park In crean un mundo musical profundo. Al combinar raga indio antiguo, música meditativa y ambient moderno, construyen un paisaje sonoro único que expresa la naturaleza y la paz de Jeju.",
+        "genre": [
+            "Ambient",
+            "Música del mundo"
+        ],
+        "trackTitle": "When I look at the Horizon",
+        "imageUrl": "/images-webp/musicians/1.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/around_surround/",
+            "https://www.instagram.com/lamp.sound/",
+            "https://www.instagram.com/innnbar/"
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Jeong Jinseok",
+        "shortDescription": "Conocido como la \"estrella de Soseong-ri\", un ex artista visual convertido en músico por la paz y activista que mezcla el dialecto de Gyeongsang y el blues para entregar un mensaje de paz",
+        "description": "Conocido como la \"estrella de Soseong-ri\", Jeong Jinseok estudió originalmente bellas artes. Después del desastre del ferry Sewol, se involucró en temas sociales y comenzó a apoyar a los residentes contra la violencia y la humillación durante el despliegue de THAAD en Soseong-ri. Trasladó su dirección a Soseong-ri y ha continuado el activismo por la paz durante casi ocho años, ganando atención por un estilo musical único que combina el dialecto de Gyeongsang con el blues.",
+        "genre": [
+            "Blues",
+            "Folk"
+        ],
+        "trackTitle": "Is This Your Land or Mine",
+        "imageUrl": "/images-webp/musicians/2.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/vincittutto/"
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Kim Dongsan & Blueeewoot",
+        "shortDescription": "Kim Dongsan, un músico de folk y blues con sede en Suwon, y su banda Blueeewoot. Su música sobre historias marginadas se une a la sólida interpretación de la banda.",
+        "description": "Kim Dongsan es un músico de folk y blues con sede en Suwon, que actúa con su banda Blueeewoot. Apodado el \"Woody Guthrie de Corea\", atrae la atención por una música llena de profunda visión de la sociedad. Canta sobre trabajadores despedidos y víctimas de la gentrificación, y dirige una tienda de LP y reciclaje llamada \"Long Player\" cerca de Janganmun en Suwon, convirtiéndola en un espacio cultural local.",
+        "genre": [
+            "Folk",
+            "Blues"
+        ],
+        "trackTitle": "Wave",
+        "imageUrl": "/images-webp/musicians/3.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/long_player_/",
+            "https://www.instagram.com/dongsan_blueeewoot/"
+        ]
+    },
+    {
+        "id": 7,
+        "name": "MoredoSaturday",
+        "shortDescription": "Un dúo de folk formado por dos músicos que se conocieron en el movimiento por la paz de Gangjeong, entregando un mensaje de paz a través de una sensibilidad natural y pura",
+        "description": "Un dúo de folk de dos miembros formado en la aldea de Gangjeong, compuesto por More y Doto. Como sugiere su nombre, buscan una sensibilidad natural y pura. Su enfoque delicado y flexible, como las hojas balanceándose con el viento, consuela suavemente a los oyentes.",
+        "genre": [
+            "Folk",
+            "Acústico"
+        ],
+        "trackTitle": "We will sail for your freedom",
+        "imageUrl": "/images-webp/musicians/4.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/saturday_moredo/"
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Namsu",
+        "shortDescription": "Una artista solista femenina que abarca desde el indie hasta el jazz, dirige el espacio cultural \"Woodpecker Bookshop\" y conecta la música y la literatura",
+        "description": "Una versátil artista solista femenina que cubre indie, folk/blues, jazz y new age. Dirige el espacio cultural \"Woodpecker Bookshop\", creando intersecciones entre la música y la literatura. Su objetivo es expandir sus fronteras artísticas combinando la música con el arte visual y la performance.",
+        "genre": [
+            "Indie",
+            "Folk",
+            "Jazz"
+        ],
+        "trackTitle": "Hello (To You in a Distant Place)",
+        "imageUrl": "/images-webp/musicians/5.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/namsu_ggu/",
+            "https://www.instagram.com/ddackddaguri__books/"
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Kim In",
+        "shortDescription": "Una músico independiente que canta a la naturaleza y la paz, expresando un profundo afecto por el medio ambiente y la vida a través de experimentos únicos",
+        "description": "Una músico independiente que explora sonidos únicos y expresa un profundo afecto por el medio ambiente y la paz a través de la música. Disfruta de diversos géneros y ha construido su propio mundo musical distintivo. Con música lírica inspirada en las estrellas y la luna, entrega un mensaje de paz con una sensibilidad delicada y letras profundas.",
+        "genre": [
+            "Indie",
+            "Acústico"
+        ],
+        "trackTitle": "A Person Who Went to See the Stars",
+        "imageUrl": "/images-webp/musicians/6.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/saltycoldanddarkkimin/"
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Caru",
+        "shortDescription": "Una cantautora que explora la vida ecológica y la paz, contando historias de coexistencia a través de melodías acústicas",
+        "description": "Una cantautora conocida por sus conciertos de narración acústica. Con una formación y filosofía educativas únicas, estudia y reflexiona continuamente sobre el trabajo, las habilidades y las relaciones para vivir la vida que desea, sublimando esas reflexiones en música. Retrata delicadamente a la juventud atrapada entre la realidad y los ideales.",
+        "genre": [
+            "Folk",
+            "Acústico"
+        ],
+        "trackTitle": "TRANSITION",
+        "imageUrl": "/images-webp/musicians/7.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/caru1011/"
+        ]
+    },
+    {
+        "id": 8,
+        "name": "Leaves",
+        "shortDescription": "Un dúo de folk con resonancia clara de Yeoul y Wongirl, que ofrece armonías delicadas como el aliento de la naturaleza",
+        "description": "Un dúo de folk formado naturalmente en torno a gustos musicales compartidos, compuesto por Yeoul y Wongirl. Buscan una sensibilidad natural y pura. Su enfoque delicado y flexible, como las hojas balanceándose con el viento, consuela suavemente a los oyentes.",
+        "genre": [
+            "Folk",
+            "Acústico"
+        ],
+        "trackTitle": "Heart in Front of My Eyes",
+        "imageUrl": "/images-webp/musicians/8.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/yeoouul/",
+            "https://www.instagram.com/little_boy_on_the_beach/"
+        ]
+    },
+    {
+        "id": 9,
+        "name": "Yeoyu",
+        "shortDescription": "Una músico de folk que captura momentos cotidianos con una mirada delicada, compartiendo historias empáticas a través de una voz suave y una guitarra cálida",
+        "description": "Una músico de folk con sede en Jeju, conocida por poner sinceridad en cada nota. También es miembro del dúo de folk \"Yeoyu and Seolbin\". Canta sobre diversos temas, desde pequeñas historias diarias hasta profundas preocupaciones de la vida, con una emoción delicada. Su voz suave y su guitarra acústica gentil son su sello distintivo.",
+        "genre": [
+            "Folk",
+            "Acústico"
+        ],
+        "trackTitle": "Seoul Night (feat. Jung Sumin)",
+        "imageUrl": "/images-webp/musicians/9.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/ye0y00/"
+        ]
+    },
+    {
+        "id": 10,
+        "name": "MOMO",
+        "shortDescription": "Un dúo de jazz que expresa facetas de la sociedad moderna a través de la improvisación y la experimentación, con un sonido único de Yejin Angela Park y Hwang Seulgi",
+        "description": "Un dúo de jazz de Yejin Angela Park y Hwang Seulgi. Exploran sonidos diversos y hermosos basados en el jazz. Con improvisación y experimentación, capturan delicadamente la conciencia de la sociedad moderna, expresando la vida diaria ordinaria y la tensión incrustada dentro de las regiones en conflicto.",
+        "genre": [
+            "Jazz",
+            "Experimental"
+        ],
+        "trackTitle": "If this can't be tolerated, what can't be?",
+        "imageUrl": "/images-webp/musicians/10.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/yejangelapark/",
+            "https://www.instagram.com/basseulgi/",
+            "https://www.instagram.com/momoismothermother/"
+        ]
+    },
+    {
+        "id": 11,
+        "name": "Jai x HANASH",
+        "shortDescription": "Un encuentro entre Jai, quien cuenta historias con una voz triste pero poderosa, y HANASH, quien expande los paisajes sonoros con sintetizadores experimentales",
+        "description": "Una colaboración donde la cálida voz de Jai se encuentra con la innovadora música electrónica de HANASH para explorar nuevas posibilidades. Jai expresa historias cotidianas con una voz triste pero poderosa, mientras que HANASH experimenta combinando instrumentos y géneros de todo el mundo con música electrónica. Su encuentro muestra una fusión armoniosa de tradición y modernidad.",
+        "genre": [
+            "Electrónica",
+            "Música del mundo"
+        ],
+        "trackTitle": "Pink Padded Girl",
+        "imageUrl": "/images-webp/musicians/11.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/jai.music_official/",
+            "https://www.instagram.com/_ashahn/"
+        ]
+    },
+    {
+        "id": 12,
+        "name": "Lee Seoyoung",
+        "shortDescription": "Una cantautora e intérprete de bosques que expresa un sentido de conexión encontrado en los bosques y la naturaleza con un tono lírico y atractivo",
+        "description": "Una cantautora e intérprete de bosques que construye un mundo musical único. Crea música en torno al tema de la \"conexión\" encontrada en la naturaleza, especialmente en los bosques. Basada en el folk y mezclada con electrónica y ambient, entrega un estado de ánimo lírico pero quejumbroso, destacando por un tono distintivo que recuerda al cielo azulado del amanecer y la niebla.",
+        "genre": [
+            "Folk",
+            "Ambient"
+        ],
+        "trackTitle": "We",
+        "imageUrl": "/images-webp/musicians/12.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/leesyoung.kr/"
+        ]
+    },
+    {
+        "id": 13,
+        "name": "Bloco Jafari X PollePolle X Dongbaek Small School",
+        "shortDescription": "Un equipo colaborativo formado por la comunidad de batucada Bloco Jafari y el colectivo artístico PollePolle.",
+        "description": "Este equipo colaborativo reúne a Bloco Jafari, una comunidad de batucada que despierta el poder creativo de la gente común, y PollePolle, un colectivo artístico dedicado a la felicidad de las personas y del universo. Su actuación lleva la energía de la solidaridad y la hospitalidad.",
+        "genre": [
+            "Batucada",
+            "Performance"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/13.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/bloco_japari",
+            "https://www.instagram.com/polepole2014"
+        ]
+    },
+    {
+        "id": 14,
+        "name": "Ganghahimalaya",
+        "shortDescription": "Una cantautora criada en Auroville, India, que conecta la naturaleza y la vida interior a través de la música.",
+        "description": "Ganghahimalaya es una cantautora distintiva criada en el entorno de espíritu libre de Auroville, India. Su música contiene la vitalidad del Himalaya y la calma fluida del Ganges, y su voz refleja una filosofía de vida lenta y constante.",
+        "genre": [
+            "Folk",
+            "Cantautor",
+            "Música del mundo"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/14.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/gangahimalayapark/"
+        ]
+    },
+    {
+        "id": 15,
+        "name": "Gilganeun Band Janghyeonho",
+        "shortDescription": "Una banda callejera liderada por el cantautor Janghyeonho, que canta canciones de solidaridad en sitios de trabajo y protesta desde 2011.",
+        "description": "Centrada en el cantautor Janghyeonho, esta banda callejera se formó en 2011 y ha actuado durante más de una década en mítines de solidaridad, eventos conmemorativos y sitios de protesta, incluyendo el movimiento por la verdad de Sewol y la lucha contra la base naval en Gangjeong. Lanzaron el álbum de larga duración \"Always, Entirely\" en 2020 y continúan cantando sobre la paz y la solidaridad.",
+        "genre": [
+            "Folk",
+            "Rock",
+            "Música de protesta"
+        ],
+        "trackTitle": "다시 빛날 우리",
+        "imageUrl": "/images-webp/musicians/15.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/gilbandjjang/"
+        ]
+    },
+    {
+        "id": 16,
+        "name": "Kim Susu",
+        "shortDescription": "Un músico líder en la escena de busking de Jeju, apodado el \"Han Dae-soo de Jeju\" por su espíritu libre.",
+        "description": "Kim Susu es conocido como una de las figuras clave en la cultura del busking de Jeju y a veces se le llama el \"Han Dae-soo de Jeju\". Reinterpreta canciones familiares a su estilo, se mueve libremente a través de géneros a través de improvisaciones y se mantiene activo en la escena musical en vivo de Jeju.",
+        "genre": [
+            "Indie",
+            "Folk"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/16.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/59susu"
+        ]
+    },
+    {
+        "id": 17,
+        "name": "Namukkunmingeon",
+        "shortDescription": "Un cantautor que construye su propia historia con una honestidad sin adornos.",
+        "description": "Namukkunmingeon canta con emoción cruda y un corazón inacabado que no intenta ocultar. Sus canciones se sienten tanto más reales debido a esa imperfección, y en lugar de ofrecer un consuelo fácil, está dispuesto a colapsar junto con el oyente y permanecer presente en el momento.",
+        "genre": [
+            "Indie",
+            "Folk",
+            "Cantautor"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/17.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/kikoristar"
+        ]
+    },
+    {
+        "id": 18,
+        "name": "Dear Arcadian",
+        "shortDescription": "Una banda que confronta el absurdo social con un intenso sonido post-hardcore.",
+        "description": "Dear Arcadian se anunció a la escena coreana con el sencillo \"EXODUS\". A través de un rap ajustado, voces urgentes, guitarras pesadas y una producción detallada, la banda canaliza un deseo de romper con la injusticia cotidiana, el odio, la discriminación y el desprecio dirigido a las personas que persiguen sus sueños.",
+        "genre": [
+            "Post-Hardcore",
+            "Rock"
+        ],
+        "trackTitle": "EXODUS",
+        "imageUrl": "/images-webp/musicians/18.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/deararcadian_official/"
+        ]
+    },
+    {
+        "id": 19,
+        "name": "Dog Last Page",
+        "shortDescription": "Una banda de southern rock y grunge formada en 2012 y nominada a un Korean Music Award en metal y hardcore.",
+        "description": "Centrada en el guitarrista Hong Seonghun, Dog Last Page mezcla southern rock, grunge y hardcore punk en riffs gruesos y un sonido de banda pesado. Su álbum de larga duración de 2022 \"Drunken Dream\" fue nominado a Mejor Álbum de Metal y Hardcore en los Korean Music Awards de 2023, seguido por el lanzamiento de \"Hypocrite\" en 2025.",
+        "genre": [
+            "Southern Rock",
+            "Grunge",
+            "Metal",
+            "Hardcore"
+        ],
+        "trackTitle": "Hypocrite",
+        "imageUrl": "/images-webp/musicians/19.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/band_doglastpage/"
+        ]
+    },
+    {
+        "id": 20,
+        "name": "Rainbow99",
+        "shortDescription": "Guitarrista y diseñador de sonido que continúa experimentos de gran alcance arraigados en el dream pop, shoegaze y música ambient.",
+        "description": "Rainbow99, nacido Ryu Seunghyun, es cantante, guitarrista, compositor y diseñador de sonido y ruido en el sello Magic Strawberry Sound. Desde su debut en solitario con el EP \"Spring, Revolution\" en 2011, ha lanzado constantemente trabajos basados en ambient, dream pop y shoegaze, y su álbum \"오름의 지금\" registra sitios históricos de Jeju 4.3 a través del sonido.",
+        "genre": [
+            "Dream Pop",
+            "Shoegaze",
+            "Ambient",
+            "Electrónica"
+        ],
+        "trackTitle": "오름의 지금",
+        "imageUrl": "/images-webp/musicians/20.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/rainbow99gaze/"
+        ]
+    },
+    {
+        "id": 21,
+        "name": "Meridies",
+        "shortDescription": "Un proyecto unipersonal arraigado en el metal negro sinfónico y el metal de muerte, tomando letras de la literatura coreana.",
+        "description": "Formado en 2013, Meridies es un proyecto en solitario en el que un músico interpreta la mayoría de las partes, incluyendo voz, guitarra y bajo. Desde el álbum de larga duración de 2015 \"On A Submerged Islet\", el proyecto ha combinado metal extremo con imaginación literaria, notablemente usando obras de Yi Sang y otros escritores coreanos en sus letras.",
+        "genre": [
+            "Symphonic Black Metal",
+            "Death Metal"
+        ],
+        "trackTitle": "Wings",
+        "imageUrl": "/images-webp/musicians/21.webp",
+        "instagramUrls": [],
+        "youtubeUrl": "https://www.youtube.com/@meridiesmetal"
+    },
+    {
+        "id": 22,
+        "name": "Moheo",
+        "shortDescription": "Un dúo de folk irlandés psicodélico que combina la experiencia de busking en Irlanda con los colores de Jeju.",
+        "description": "Moheo es un dúo de folk psicodélico compuesto por Jo Mingyu y e_so. Jo hizo busking en Irlanda durante dos años, y la cantautora nacida en Jeju, e_so, lo conoció por casualidad en Tailandia en 2022. Nombrado en honor a los acantilados de Moher, el dúo lanzó su primer álbum de larga duración \"Kaleidoscope\" en 2024 y rápidamente atrajo la atención en el circuito de festivales.",
+        "genre": [
+            "Psychedelic Folk",
+            "Irish Folk",
+            "Indie Folk"
+        ],
+        "trackTitle": "만화경 (Kaleidoscope)",
+        "imageUrl": "/images-webp/musicians/22.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/moher_____/"
+        ]
+    },
+    {
+        "id": 23,
+        "name": "Mwing",
+        "shortDescription": "Un artista y activista que convierte momentos que vale la pena recordar en canciones.",
+        "description": "Mwing ha estado escribiendo y cantando canciones desde 2015 como artista y activista. La música está arraigada en momentos que vale la pena recordar y se ofrece como una fuente de consuelo, mientras sueña con un mundo donde todos puedan vivir felices juntos en lugar de solos.",
+        "genre": [
+            "Indie",
+            "Folk",
+            "Cantautor"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/23.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/mmuueenngg/"
+        ]
+    },
+    {
+        "id": 24,
+        "name": "Materials Found",
+        "shortDescription": "Una banda de cinco miembros arraigada en el metalcore melódico y nominada a un Korean Music Award en 2025.",
+        "description": "Formada en 2022, Materials Found es una banda de cinco miembros que fusiona el metalcore melódico con el deathcore sinfónico y el post-rock. Su primer EP \"전구(電球)\" fue lanzado en 2024 y obtuvo una nominación al Korean Music Award de 2025 por Mejor Álbum de Metal y Hardcore, así como el reconocimiento de fin de año de Music Y.",
+        "genre": [
+            "Melodic Metalcore",
+            "Symphonic Deathcore",
+            "Post-Rock"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/24.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/materials_pound_official/"
+        ]
+    },
+    {
+        "id": 25,
+        "name": "Bulgasari Impromptu Session",
+        "shortDescription": "Una serie de larga trayectoria de actuaciones de artes de vanguardia, improvisadas y experimentales que ha albergado más de 300 escenarios desde 2003.",
+        "description": "Bulgasari Impromptu Session comenzó en febrero de 2003 en Rush en Sinchon, tras una sugerencia del músico japonés Satoyuki. Desde entonces, se ha convertido en una de las plataformas clave de Corea para el arte de vanguardia, improvisado y experimental, presentando música, danza y performance mientras nutre a jóvenes artistas experimentales a través de más de 300 eventos.",
+        "genre": [
+            "Música improvisada",
+            "Experimental",
+            "Vanguardia"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/25.webp",
+        "instagramUrls": []
+    },
+    {
+        "id": 26,
+        "name": "Sabaha",
+        "shortDescription": "Un proyecto de doom y drone metal formado en 2023, que explora la destrucción y la desesperación a través de representaciones teatrales con disfraces.",
+        "description": "Sabaha es un proyecto de doom y drone metal lanzado en mayo de 2023 por un músico con una larga historia underground en actos como 420Saigong y Haaaazy Shaaaaman. Influenciado por Sunn O))), Earth, Electric Wizard, Sleep y Om, el proyecto mezcla drone metal, stoner doom, sludge metal, grindcore e improvisación libre, y lanzó su primer álbum de larga duración \"THUNDER ROCKS\" en 2024.",
+        "genre": [
+            "Doom Metal",
+            "Drone Metal",
+            "Sludge Metal"
+        ],
+        "trackTitle": "THUNDER ROCKS",
+        "imageUrl": "/images-webp/musicians/26.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/sabbaha_kr"
+        ]
+    },
+    {
+        "id": 27,
+        "name": "Site with Jet Sizer",
+        "shortDescription": "Una actuación conjunta del beatboxer campeón mundial Sight y el electrizante outsider Zsthyger.",
+        "description": "Esta colaboración une a Sight, miembro de la poderosa crew de beatbox TYTD, con Zsthyger, un inflexible marginado del metal. Juntos traen un escenario cargado de precisión técnica, energía teatral y un punto de encuentro inusual entre el beatbox y la música pesada.",
+        "genre": [
+            "Beatbox",
+            "Metal"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/27.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/beatbox_sight",
+            "https://www.instagram.com/zsthyger/"
+        ]
+    },
+    {
+        "id": 29,
+        "name": "Seongyeong",
+        "shortDescription": "Una cantautora y artista de muñecas de cerámica.",
+        "description": "Seongyeong es tanto una cantautora como una artista que crea muñecas de cerámica inspiradas en las imágenes de la naturaleza y los seres vivos que nos rodean.",
+        "genre": [
+            "Cantautor",
+            "Folk"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/29.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/__sun_kyoung/"
+        ]
+    },
+    {
+        "id": 30,
+        "name": "Son Jiyeon",
+        "shortDescription": "Una cantautora de folk a menudo llamada la \"Joni Mitchell coreana\", conocida por su voz y composición únicas.",
+        "description": "Descubierta por el maestro de folk de primera generación Yang Byeongjip, Son Jiyeon comenzó su carrera con el álbum de debut de 2003 \"My Life's Story\". Ha construido un mundo musical profundamente original que resiste la categorización fácil y escribe canciones que expresan su vida con sensibilidad poética, claridad y honestidad.",
+        "genre": [
+            "Folk",
+            "Cantautor"
+        ],
+        "trackTitle": "실화",
+        "imageUrl": "/images-webp/musicians/30.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/jy_son_/"
+        ]
+    },
+    {
+        "id": 31,
+        "name": "Son Hyunsuk",
+        "shortDescription": "Una cantautora que surgió del movimiento de la canción minjung y es ampliamente conocida por \"Cheonggyecheon 8-ga\".",
+        "description": "Son Hyunsuk comenzó a hacer música en el grupo de canciones minjung Dume en la Universidad de Soongsil. Más tarde atrajo una amplia atención como vocalista invitada para el grupo de rock Cheonjiin en la canción \"Cheonggyecheon 8-ga\", y desde entonces ha lanzado múltiples álbumes mientras también introduce canciones de la gente de países como Myanmar a las audiencias coreanas.",
+        "genre": [
+            "Canción Minjung",
+            "Folk",
+            "Cantautor"
+        ],
+        "trackTitle": "청계천 8가",
+        "imageUrl": "/images-webp/musicians/31.webp",
+        "instagramUrls": []
+    },
+    {
+        "id": 32,
+        "name": "Song Insang",
+        "shortDescription": "Un cantautor que pinta fragmentos de vida y recuerdos preciados a través de la canción.",
+        "description": "Song Insang creció entre aldeas de montaña y la orilla del mar, llevando esas primeras impresiones de la naturaleza a su música. Después de aprender guitarra y composición de forma autodidacta en la escuela secundaria, lanzó el EP \"물감\" y ha continuado escribiendo canciones moldeadas por los recuerdos de la infancia, la vida en la ciudad y la colaboración familiar.",
+        "genre": [
+            "Folk",
+            "Cantautor"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/32.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/song_insang"
+        ]
+    },
+    {
+        "id": 33,
+        "name": "Song Inhyo",
+        "shortDescription": "Un cantautor que registra la experiencia vivida y la reflexión interior a través de melodías sencillas y letras honestas.",
+        "description": "Song Inhyo convierte la experiencia personal y la reflexión interior en lenguaje musical. En lugar de apoyarse en la exhibición estilística, las canciones se construyen a partir de la sensación vivida, melodías claras, palabras honestas y expresión contenida, ofreciendo a los oyentes otra forma de enfrentar la vida.",
+        "genre": [
+            "Folk",
+            "Cantautor"
+        ],
+        "trackTitle": "하늘과 땅 사이",
+        "imageUrl": "/images-webp/musicians/33.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/song_inhyo/"
+        ]
+    },
+    {
+        "id": 34,
+        "name": "Samgak Jeonpasa",
+        "shortDescription": "El proyecto en solitario del músico electrónico y escritor de ciencia ficción Jang Hojin, que expresa las contradicciones estructurales de la sociedad a través de música electrónica experimental.",
+        "description": "Samgak Jeonpasa es el proyecto en solitario del músico electrónico y escritor de ciencia ficción Jang Hojin. Inspirado por artistas como Depeche Mode y Vangelis, persigue un sonido impredecible y una composición no lineal, y canaliza las contradicciones estructurales de la sociedad coreana, desde la gentrificación hasta las luchas locales, en música electrónica experimental.",
+        "genre": [
+            "Electrónica",
+            "Experimental"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/34.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/zeonpasa/"
+        ]
+    },
+    {
+        "id": 35,
+        "name": "Anti Stress",
+        "shortDescription": "Una banda de punk formada por el artista de folk-punk orgánico Sai y el guitarrista de shoegaze Rainbow99.",
+        "description": "Anti Stress reúne a Sai, conocido por cantar canciones originales en sitios de protesta y comunidades rurales, y a Rainbow99, uno de los guitarristas más destacados de Corea con una amplia paleta experimental que abarca desde el ambient hasta la música generativa. Su colaboración convierte el espíritu folk y la experimentación sonora en un punk tosco y de alta energía.",
+        "genre": [
+            "Punk",
+            "Folk Punk"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/35.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/be2in2023",
+            "https://www.instagram.com/rainbow99gaze/"
+        ]
+    },
+    {
+        "id": 36,
+        "name": "Oh Jaehwan",
+        "shortDescription": "Un cantautor de folk que se ha mantenido firme en muchas luchas a través de la música y se ha unido al Gangjeong Peace & Music Camp desde la primera edición.",
+        "description": "Oh Jaehwan es un cantautor de folk que ha expresado durante mucho tiempo su solidaridad con las luchas sociales a través de la música. Ha lanzado álbumes que incluyen \"시킨건 곧잘한다\" y \"섬의 노래\", y ha aparecido constantemente en el Gangjeong Peace & Music Camp desde su primer año.",
+        "genre": [
+            "Folk",
+            "Cantautor"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/36.webp",
+        "instagramUrls": []
+    },
+    {
+        "id": 37,
+        "name": "On Gayeong",
+        "shortDescription": "Una cantautora con sede en Busan que escribe y canta canciones acústicas concisas con una voz cálida.",
+        "description": "On Gayeong, nacida como Bae Gayeong, se describe a sí misma como alguien que canta mientras se prepara para una noche decente. Después de trabajar con la banda acústica Chocolate Bench y el grupo de metales Band Heung, continuó como artista solista, lanzó el sencillo \"Who you are\" en 2023 y acumuló experiencia a través de más de 100 actuaciones en vivo.",
+        "genre": [
+            "Acústico",
+            "Folk",
+            "Cantautor"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/37.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/on.gayoung/"
+        ]
+    },
+    {
+        "id": 38,
+        "name": "Yeoul",
+        "shortDescription": "Una músico de folk con un tono claro, conocida tanto como artista solista como miembro del dúo Leaves.",
+        "description": "Yeoul actúa con Wongirl en el dúo de folk Leaves mientras también trabaja como cantautora solista. Con guitarra acústica y una voz clara, canta líricamente sobre la paz a través de pequeños momentos cotidianos, y también tiene una conexión profunda con la comunidad de paz de Gangjeong, habiéndose unido al primer campamento como parte del personal de diseño.",
+        "genre": [
+            "Folk",
+            "Acústico"
+        ],
+        "trackTitle": "눈 앞의 마음",
+        "imageUrl": "/images-webp/musicians/40.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/yeoouul/"
+        ]
+    },
+    {
+        "id": 39,
+        "name": "Yoon Soong",
+        "shortDescription": "Una cantautora de folk que rastrea líricamente la vida, la muerte y el viaje de seguir adelante a través de la desesperación.",
+        "description": "Yoon Soong ha continuado lanzando discos íntimos de folk desde el éxito del EP \"그 방을 열고 나올 사람은 나밖에 없네\" en 2021. Su trabajo dibuja un viaje lírico desde bosques oscuros hasta el mar abierto y desde el amanecer hasta la mañana, convirtiendo el dolor y la persistencia en canción.",
+        "genre": [
+            "Folk",
+            "Acústico",
+            "Cantautor"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/39.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/cyoonseung/"
+        ]
+    },
+    {
+        "id": 40,
+        "name": "Yoon Seonae",
+        "shortDescription": "Una voz icónica de la canción minjung que cantó en las primeras líneas del movimiento por la democracia de la década de 1980.",
+        "description": "Yoon Seonae surgió del grupo de canto Meaeri de la Universidad Nacional de Seúl y de la coalición estudiantil Saebyeok, convirtiéndose en una de las voces femeninas definitorias de la canción minjung durante el movimiento por la democracia de la década de 1980. Es conocida por canciones históricas como \"When That Day Comes\" y ha continuado su vida artística a través de álbumes en solitario posteriores.",
+        "genre": [
+            "Folk",
+            "Canción Minjung"
+        ],
+        "trackTitle": "그날이 오면",
+        "imageUrl": "/images-webp/musicians/40.webp",
+        "instagramUrls": []
+    },
+    {
+        "id": 42,
+        "name": "Lim Jeongdeuk",
+        "shortDescription": "Un cantautor minjung conocido por cantar en sitios de lucha en toda Corea y por la canción \"Salt Flower Tree\".",
+        "description": "Lim Jeongdeuk comenzó la música en el grupo de canto Ye Saga Rak en la Universidad de Yeungnam y ha trabajado como cantante minjung desde su debut en 2011. Actuando en sitios de lucha laboral, resistencia contra los desalojos y protestas de las familias de Sewol, escribe, compone y produce la mayor parte de su propio trabajo, siendo \"Salt Flower Tree\" una de sus canciones más conocidas.",
+        "genre": [
+            "Música Minjung",
+            "Folk",
+            "Cantautor"
+        ],
+        "trackTitle": "소금꽃나무",
+        "imageUrl": "/images-webp/musicians/42.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/imjeongdeuk/"
+        ]
+    },
+    {
+        "id": 43,
+        "name": "Joon Lee",
+        "shortDescription": "Un cantautor de Los Ángeles que se mueve entre Seúl y Jeju.",
+        "description": "Joon Lee creció en Los Ángeles, California, donde estudió guitarra, y ha continuado su vida musical a través de los Estados Unidos, Seúl y Jeju. Influenciado por el folk, blues, rock y pop, aporta un amplio rango tonal a su composición.",
+        "genre": [
+            "Indie"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/43.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/joonlee_jeju/"
+        ]
+    },
+    {
+        "id": 44,
+        "name": "Joyakgol",
+        "shortDescription": "Activista por la paz y músico, codirector de Hot Pink Dolphins, profundamente involucrado en el movimiento por la paz de Gangjeong.",
+        "description": "Joyakgol es un activista anarquista y músico que ha participado en movimientos por la paz en Daechuri, Saemangeum y Gangjeong. Después de encontrar una manada de delfines mulares del Indo-Pacífico durante la lucha contra la base naval en Gangjeong en 2011, cofundó el grupo ambiental marino Hot Pink Dolphins y ayudó a lanzar el primer movimiento de liberación de delfines de acuario en Asia.",
+        "genre": [
+            "Indie",
+            "Folk",
+            "Punk"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/44.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/dopeheadzo1"
+        ]
+    },
+    {
+        "id": 45,
+        "name": "Jo Seongil",
+        "shortDescription": "Ex miembro del grupo de música minjung Kkotdaji que ahora canta sobre la vida y la esperanza desde Jeju.",
+        "description": "Jo Seongil pasó catorce años, comenzando en 1998, como vocalista central en el grupo de música minjung Kkotdaji y escribió canciones como \"Hope\", \"Whistle\" y \"Fighter\". Después de ir en solitario en 2012, se estableció en Seogwipo, Jeju, y ha continuado lanzando discos que ofrecen consuelo en medio de realidades pesadas.",
+        "genre": [
+            "Folk",
+            "Música Minjung",
+            "Cantautor"
+        ],
+        "trackTitle": "시동을 걸었어",
+        "imageUrl": "/images-webp/musicians/45.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/chosungil99/"
+        ]
+    },
+    {
+        "id": 46,
+        "name": "Jinukonda",
+        "shortDescription": "Un músico de country blues con una voz oscura y ronca que ha cantado historias góticas modernas en la escena de Hongdae desde 2018.",
+        "description": "Jinukonda es un músico con raíces en el country blues y una voz oscura y ronca. Activo en Hongdae desde 2018, convierte historias góticas modernas en música y canta sobre las vidas de las personas que quedan aisladas dentro de la vasta ciudad de Seúl.",
+        "genre": [
+            "Country Blues",
+            "Gothic Folk"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/46.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/jinukonda"
+        ]
+    },
+    {
+        "id": 47,
+        "name": "Chan",
+        "shortDescription": "Un músico de meditación que toca el sitar y el bansuri.",
+        "description": "Chan es un músico de meditación que toca el sitar y el bansuri. Atraído por la profundidad silenciosa del sonido indio, estudió con varios maestros, lanzó múltiples álbumes de música de meditación y también dirige el canal de YouTube Lotus Relaxing Music.",
+        "genre": [
+            "Música de meditación",
+            "Música del mundo"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/47.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/chanbhaiya"
+        ]
+    },
+    {
+        "id": 48,
+        "name": "Choi Sangdon",
+        "shortDescription": "Un cantautor que desarrolla la creación y la interpretación a través de peregrinaciones musicales.",
+        "description": "Choi Sangdon es un cantautor cuyo trabajo surge de la peregrinación musical. Junto con Kim Ganggon en el acordeón y Jo Aeran en la voz, ha continuado el proyecto Sanorakhoe y se ha mantenido en solidaridad continua con el movimiento de Gangjeong.",
+        "genre": [
+            "Indie"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/48.webp",
+        "instagramUrls": []
+    },
+    {
+        "id": 49,
+        "name": "Chichi",
+        "shortDescription": "Actuando en el Gangjeong Peace & Music Camp de 2026.",
+        "description": "Chichi forma parte del cartel del Gangjeong Peace & Music Camp de 2026.",
+        "genre": [
+            "Indie"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/49.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/blackaftermoon"
+        ]
+    },
+    {
+        "id": 50,
+        "name": "Kita & Olgen",
+        "shortDescription": "Un dúo que actúa en el Gangjeong Peace & Music Camp de 2026.",
+        "description": "Kita & Olgen aparecen como dúo en el Gangjeong Peace & Music Camp de 2026.",
+        "genre": [
+            "Indie",
+            "Acústico",
+            "Folk"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/50.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/kita_olgen"
+        ]
+    },
+    {
+        "id": 51,
+        "name": "Taehyeon",
+        "shortDescription": "Un cantautor profundamente inmerso en el roots reggae jamaicano, que traduce el sonido analógico del reggae y los mensajes de paz a una sensibilidad coreana.",
+        "description": "Taehyeon es un cantautor orgánico cuyo sonido mezcla naturalmente roots reggae, folk, blues y música tradicional. Después de enamorarse del reggae en Londres, regresó a Corea para actuar como vocalista y guitarrista, mudándose más tarde a Jeju y expandiendo su trabajo como selector e ingeniero de sonido bajo el nombre de Uncle Bongo.",
+        "genre": [
+            "Reggae",
+            "Folk",
+            "Blues"
+        ],
+        "trackTitle": "People Are The Country",
+        "imageUrl": "/images-webp/musicians/51.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/tehiun/"
+        ]
+    },
+    {
+        "id": 52,
+        "name": "Pium",
+        "shortDescription": "Una cantautora cuyo registro grave profundo coexiste con notas altas brillantes y soñadoras.",
+        "description": "Pium acumuló experiencia escénica temprana como vocalista principal en bandas de rock mientras todavía estaba en la escuela secundaria. Después de dejar un programa de literatura inglesa, estudió interpretación vocal en el Instituto de las Artes de Seúl, comenzó a aprender guitarra y a escribir canciones con su propia voz, y ahora lanza constantemente trabajos escritos por ella misma mientras actúa regularmente en Hongdae y Gangnam.",
+        "genre": [
+            "Indie"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/52.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/a_nicefolksong"
+        ]
+    },
+    {
+        "id": 53,
+        "name": "Howaho",
+        "shortDescription": "Un dúo de letras poéticas y paisajes sonoros pesados, nominado a Mejor Álbum de Folk en los Korean Music Awards.",
+        "description": "Howaho se formó cuando eeeho y Mohho, ambos activos como cantautores, se inspiraron en la atmósfera distintiva del otro. Escribiendo todas sus canciones juntos, combinan letras poéticas, guitarra eléctrica pesada, ritmos electrónicos y paisajes sonoros ambient, y su primer álbum \"Unknown Origin\" fue nominado a Mejor Álbum de Folk en la 16ª edición de los Korean Music Awards.",
+        "genre": [
+            "Indie",
+            "Folk",
+            "Alternativo"
+        ],
+        "trackTitle": "파고 (Wave Crest)",
+        "imageUrl": "/images-webp/musicians/53.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/howaho_official/"
+        ]
+    },
+    {
+        "id": 54,
+        "name": "Honey Whiskey",
+        "shortDescription": "Una banda en vivo multinacional con sede en Suwon.",
+        "description": "Honey Whiskey es una banda multinacional que sirve como la banda oficial de Alleyway Taphouse, un pub de cerveza artesanal y música en vivo en Suwon. Centrada en la actuación en vivo, la banda toca en una amplia gama de estilos.",
+        "genre": [
+            "Rock",
+            "Banda en vivo"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/54.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/honeywhiskeysuwon/"
+        ]
+    },
+    {
+        "id": 55,
+        "name": "Heo Jeonghyeok",
+        "shortDescription": "Un cantautor de folk reconocido a través del Concurso de Música Yoo Jae-ha, con su álbum de larga duración \"Budding Days\" nominado a Mejor Álbum de Folk.",
+        "description": "Heo Jeonghyeok, quien también actúa bajo el alias de son of florist, atrajo una atención más amplia tras ganar el bronce en el 28º Concurso de Música Yoo Jae-ha en 2017. También trabaja en el dúo Siot and Wind, y su primer álbum de larga duración de 2023, \"Budding Days\", fue nominado a Mejor Álbum de Folk en los Korean Music Awards de 2024.",
+        "genre": [
+            "Folk",
+            "Cantautor"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/55.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/_hyuk_e"
+        ]
+    },
+    {
+        "id": 56,
+        "name": "Hwang Myeongha",
+        "shortDescription": "Una cantautora de folk llamada la \"Sarah McLachlan coreana\", con más de 1.000 actuaciones en vivo en su haber.",
+        "description": "Hwang Myeongha es conocida por un color de voz raro y atractivo que le ha valido el apodo de \"Sarah McLachlan coreana\". Aprovechando más de 1.000 actuaciones en vivo, presenta escenarios profundos y curativos y un sonido folk distintivo.",
+        "genre": [
+            "Folk",
+            "Acústico"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/56.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/hwang_myungha/"
+        ]
+    },
+    {
+        "id": 57,
+        "name": "Ha Juwon",
+        "shortDescription": "Un músico que vaga por el mundo tocando el handpan.",
+        "description": "Ha Juwon, también conocida como Woni, es una músico que vaga de un lugar a otro por todo el mundo tocando el handpan.",
+        "genre": [
+            "Handpan",
+            "Música del mundo"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/57.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/wonn__e"
+        ]
+    },
+    {
+        "id": 58,
+        "name": "Ppalajida X Dongbaek Small School",
+        "shortDescription": "Un escenario colaborativo entre el grupo de batucada con sede en Jeju Ppalajida y Dongbaek Small School, una escuela alternativa centrada en la ecología, los derechos humanos y la paz.",
+        "description": "Ppalajida es un conjunto de batucada con sede en Jeju que ha estado activo desde 2022, tocando percusión de samba grupal arraigada en la tradición brasileña. Dongbaek Small School es una escuela alternativa en Jeju que practica la educación basada en proyectos en torno a la ecología, los derechos humanos y la paz. Juntos presentan un ritmo de paz creado por una comunidad local y jóvenes.",
+        "genre": [
+            "Batucada",
+            "Percusión",
+            "Música del mundo"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/58.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/pelagida_oficial",
+            "https://www.instagram.com/dongbaek_school/"
+        ]
+    },
+    {
+        "id": 59,
+        "name": "HANASH",
+        "shortDescription": "Un artista sonoro experimental que mezcla instrumentos y géneros de todo el mundo con música electrónica.",
+        "description": "HANASH crea un sonido experimental combinando instrumentos y géneros de muchas partes del mundo con música electrónica. Con una síntesis aventurera y un paisaje sonoro en expansión, el trabajo busca un encuentro armonioso entre la tradición y el presente.",
+        "genre": [
+            "Electrónica",
+            "Música del mundo",
+            "Experimental"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/59.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/_ashahn/"
+        ]
+    },
+    {
+        "id": 60,
+        "name": "TAGI",
+        "shortDescription": "Un dúo formado por el intérprete japonés de handpan Taka y el músico tradicional coreano Mingi, que une el handpan con el saenghwang, el piri y el taepyeongso.",
+        "description": "TAGI es un dúo formado por el intérprete japonés de handpan Taka y el intérprete coreano de viento tradicional Mingi. El nombre combina las primeras sílabas de sus nombres al tiempo que evoca la palabra coreana para montar, llevando la esperanza de que el sonido viaje a través del viento, los ríos y el aire. Juntos se mueven a través de la frontera entre la tradición de Asia oriental y el sonido contemporáneo.",
+        "genre": [
+            "Música del mundo",
+            "Música tradicional coreana",
+            "Handpan"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/60.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/tagi_sound"
+        ]
+    }
+]

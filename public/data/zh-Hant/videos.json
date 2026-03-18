@@ -1,0 +1,235 @@
+[
+  {
+    "id": 1,
+    "title": "金東山 & Blueeewoot - 給遠方不知名的你 (首爾發布會)",
+    "description": "金東山 & Blueeewoot 是以水原為據點的民謠/藍調音樂人金東山及其樂團。金東山被譽為「韓國的伍迪·蓋瑟瑞 (Woody Guthrie)」，以傳達社會訊息的音樂著稱。他為被解僱的勞工和仕紳化受害者歌唱，並在水原長安門附近經營黑膠唱片與資源回收店「Long Player」，將其發展為當地的文化空間。",
+    "youtubeUrl": "https://www.youtube.com/embed/ejTPpS71nX8",
+    "date": "2024-11-02",
+    "location": "首爾弘大 Space Hangang",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      3
+    ]
+  },
+  {
+    "id": 2,
+    "title": "流浪樂團 張賢浩 - 給遠方不知名的你 (首爾發布會)",
+    "description": "流浪樂團 (Wandering Band) 是 2011 年以創作歌手張賢浩為中心組成的「街頭樂團」。他們在社會抗爭與衝突的現場歌唱，十多年來在世越號真相調查運動、江汀海軍基地抗議、KTX 乘務員復職抗爭、Pinetek 屋頂靜坐以及 Colt/Coltex 工人抗爭等事件中表達聲援。",
+    "youtubeUrl": "https://www.youtube.com/embed/Ts_fFqAYLYE",
+    "date": "2024-11-02",
+    "location": "首爾弘大 Space Hangang",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      15
+    ]
+  },
+  {
+    "id": 3,
+    "title": "南秀 - 給遠方不知名的你 (首爾發布會)",
+    "description": "橫跨獨立、民謠/藍調、爵士和新世紀音樂的多才多藝獨奏藝術家。她經營文化空間「啄木鳥書店」，創造音樂與文學的交集。她致力於透過結合音樂與視覺藝術及表演，來擴展她的藝術邊界。",
+    "youtubeUrl": "https://www.youtube.com/embed/cHl1I5iJqyA",
+    "date": "2024-11-02",
+    "location": "首爾弘大 Space Hangang",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      4
+    ]
+  },
+  {
+    "id": 4,
+    "title": "金仁 - 給遠方不知名的你 (首爾發布會)",
+    "description": "一位探索獨特聲音，並透過音樂表達對環境與和平深厚情感的獨立音樂人。她喜愛多樣化的曲風，並建立了自己的音樂世界。憑藉受星月啟發的抒情音樂，她以細膩的感性與深邃的歌詞傳遞和平訊息。",
+    "youtubeUrl": "https://www.youtube.com/embed/8jPAlA7cGtM",
+    "date": "2024-11-02",
+    "location": "首爾弘大 Space Hangang",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      6
+    ]
+  },
+  {
+    "id": 5,
+    "title": "MOMO - 給遠方不知名的你 (首爾發布會)",
+    "description": "由 Yejin Angela Park 和 Hwang Seulgi 組成的爵士二重奏。植根於爵士樂，他們共同探索多樣且美麗的聲音。透過即興與實驗，他們細膩地捕捉現代社會的意識，表達平凡的日常生活以及衝突地區所蘊含的緊張局勢。",
+    "youtubeUrl": "https://www.youtube.com/embed/hh-MwTiaJxk",
+    "date": "2024-11-02",
+    "location": "首爾弘大 Space Hangang",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      10
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Jai x HANASH - 給遠方不知名的你 (首爾發布會)",
+    "description": "Jai 溫暖的嗓音與 HANASH 創新的電子音樂相遇，探索新的可能性。Jai 以憂傷但強而有力的聲音表達日常故事，而 HANASH 則透過結合世界各地的樂器與曲風與電子音樂進行實驗。兩人的邂逅展現了傳統與現代的和諧融合。",
+    "youtubeUrl": "https://www.youtube.com/embed/ka9DcFOD2fw",
+    "date": "2024-11-02",
+    "location": "首爾弘大 Space Hangang",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      11,
+      59
+    ]
+  },
+  {
+    "id": 101,
+    "title": "人類鏈",
+    "description": "2023 年春天在濟州海軍基地正門前的人類鏈。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=dF6raNSEkfI",
+    "date": "2023-06-10",
+    "location": "西歸浦江汀川體育公園",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/dF6raNSEkfI/sddefault.jpg"
+  },
+  {
+    "id": 102,
+    "title": "2023 第一屆江汀和平音樂營",
+    "description": "2023 年江汀和平音樂營在江汀川體育公園的現場表演片段。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=mPeFqepsf_Y",
+    "date": "2023-06-10",
+    "location": "西歸浦江汀川體育公園",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/mPeFqepsf_Y/maxresdefault.jpg"
+  },
+  {
+    "id": 103,
+    "title": "江汀三重舞",
+    "description": "在江汀川體育公園表演的江汀三重舞。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=MzIpAmDAYzk",
+    "date": "2023-06-10",
+    "location": "西歸浦江汀川體育公園",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/MzIpAmDAYzk/maxresdefault.jpg"
+  },
+  {
+    "id": 104,
+    "title": "2023 第一屆江汀和平音樂營",
+    "description": "2023 年第一屆江汀和平音樂營在江汀川體育公園的場景。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=OGKd_pnrul4",
+    "date": "2023-06-10",
+    "location": "西歸浦江汀川體育公園",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/OGKd_pnrul4/maxresdefault.jpg"
+  },
+  {
+    "id": 105,
+    "title": "2023 第一屆江汀和平音樂營",
+    "description": "2023 年第一屆江汀和平音樂營在江汀川體育公園的場景。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=GHSxHVc-b1w",
+    "date": "2023-06-10",
+    "location": "西歸浦江汀川體育公園",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/GHSxHVc-b1w/maxresdefault.jpg"
+  },
+  {
+    "id": 106,
+    "title": "2023 第一屆江汀和平音樂營",
+    "description": "2023 年第一屆江汀和平音樂營在江汀川體育公園的場景。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=1TyLqzoHA7M",
+    "date": "2023-06-10",
+    "location": "西歸浦江汀川體育公園",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/1TyLqzoHA7M/maxresdefault.jpg"
+  },
+  {
+    "id": 107,
+    "title": "2023 第一屆江汀和平音樂營",
+    "description": "2023 年第一屆江汀和平音樂營在江汀川體育公園的場景。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=YwOO627losU",
+    "date": "2023-06-10",
+    "location": "西歸浦江汀川體育公園",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/YwOO627losU/maxresdefault.jpg"
+  },
+  {
+    "id": 108,
+    "title": "2023 第一屆江汀和平音樂營",
+    "description": "2023 年第一屆江汀和平音樂營在江汀川體育公園的場景。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=RH2x3ctcBgU",
+    "date": "2023-06-10",
+    "location": "西歸浦江汀川體育公園",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/RH2x3ctcBgU/maxresdefault.jpg"
+  },
+  {
+    "id": 109,
+    "title": "2023 第一屆江汀和平音樂營",
+    "description": "2023 年第一屆江汀和平音樂營在江汀川體育公園的場景。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=tFxoLxIDfyM",
+    "date": "2023-06-10",
+    "location": "西歸浦江汀川體育公園",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/tFxoLxIDfyM/maxresdefault.jpg"
+  },
+  {
+    "id": 110,
+    "title": "2023 第一屆江汀和平音樂營",
+    "description": "2023 年第一屆江汀和平音樂營在江汀川體育公園的場景。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=-PhTNOVdLc0",
+    "date": "2023-06-10",
+    "location": "西歸浦江汀川體育公園",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/-PhTNOVdLc0/maxresdefault.jpg"
+  },
+  {
+    "id": 111,
+    "title": "2023 第一屆江汀和平音樂營",
+    "description": "2023 年第一屆江汀和平音樂營在江汀川體育公園的場景。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=mC-HJ-VhLOQ",
+    "date": "2023-06-10",
+    "location": "西歸浦江汀川體育公園",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/mC-HJ-VhLOQ/maxresdefault.jpg"
+  },
+  {
+    "id": 112,
+    "title": "江汀和平音樂營",
+    "description": "第一屆江汀和平音樂營在「停止戰爭！」的口號下舉行。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=crK6y7mJrfY",
+    "date": "2023-06-10",
+    "location": "西歸浦江汀川體育公園",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/crK6y7mJrfY/maxresdefault.jpg"
+  },
+  {
+    "id": 201,
+    "title": "第二屆江汀和平音樂營籌備中！",
+    "description": "我們正在共同努力，為明天的江汀和平音樂營做準備！",
+    "youtubeUrl": "https://www.youtube.com/watch?v=pcsM9lxlA24",
+    "date": "2025-06-13",
+    "location": "西歸浦江汀洞 Halmae Water 餐廳周邊",
+    "eventType": "camp",
+    "eventYear": 2025,
+    "thumbnailUrl": "https://i.ytimg.com/vi/pcsM9lxlA24/maxresdefault.jpg"
+  },
+  {
+    "id": 202,
+    "title": "第二屆江汀和平音樂營",
+    "description": "在濟州江汀村舉行的和平與反戰音樂節。",
+    "youtubeUrl": "https://youtu.be/DBlCTgWNNKU?si=9QRus6J85pPEqf-F",
+    "date": "2025-06-14",
+    "location": "西歸浦江汀洞 Halmae Water 餐廳周邊",
+    "eventType": "camp",
+    "eventYear": 2025,
+    "thumbnailUrl": "https://i.ytimg.com/vi/DBlCTgWNNKU/maxresdefault.jpg"
+  }
+]

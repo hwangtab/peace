@@ -1,0 +1,894 @@
+[
+    {
+        "id": 1,
+        "name": "Project Around Surround",
+        "shortDescription": "東洋の神秘と現代的なサウンドの調和を追求するトリオ・プロジェクト・グループ",
+        "description": "東洋の神秘と現代的なサウンドの調和を追求する3人組プロジェクト・グループ。リテシュ・マハルジャンの情緒的なシタール、カン・ギョンドクの革新的で精密なサウンドデザインとエンジニアリング、そしてパク・インのクリエイティブなプロデュースが、深い音楽の世界を創り出す。古代インドのラーガ、瞑想音楽、現代のアンビエントを融合させ、済州の自然と平和を表現する独自のサウンドスケープを構築している。",
+        "genre": [
+            "アンビエント",
+            "ワールドミュージック"
+        ],
+        "trackTitle": "地平線を眺める時",
+        "imageUrl": "/images-webp/musicians/1.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/around_surround/",
+            "https://www.instagram.com/lamp.sound/",
+            "https://www.instagram.com/innnbar/"
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Jeong Jinseok",
+        "shortDescription": "「昭星里（ソソンリ）の星」として知られる、元視覚芸術家の平和ミュージシャン兼活動家。慶尚道の方言とブルースを融合させ、平和のメッセージを届ける",
+        "description": "「昭星里（ソソンリ）の星」として知られるチョン・ジンソクは、もともと美術を学んでいた。セウォル号沈没事故の後、社会問題に関わるようになり、昭星里へのTHAAD配備の際の暴力や屈辱に対し、住民と共に立ち上がった。住所を昭星里に移し、約8年間にわたり平和活動を続けており、慶尚道の方言とブルースを組み合わせた独自の音楽スタイルで注目を集めている。",
+        "genre": [
+            "ブルース",
+            "フォーク"
+        ],
+        "trackTitle": "これはお前の土地か俺の土地か",
+        "imageUrl": "/images-webp/musicians/2.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/vincittutto/"
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Kim Dongsan & Blueeewoot",
+        "shortDescription": "水原を拠点とするフォーク・ブルース・ミュージシャンのキム・ドンサンと、彼のバンドBlueeewoot。疎外された物語を歌う彼の音楽が、バンドの確かな演奏と出会う。",
+        "description": "キム・ドンサンは水原を拠点とするフォーク・ブルース・ミュージシャンで、自身のバンドBlueeewootと共に活動している。「韓国のウディ・ガスリー」の異名を持ち、社会への深い洞察に満ちた音楽で注目を集めている。解雇労働者やジェントリフィケーションの犠牲者について歌い、水原の長安門近くで「ロングプレイヤー」というLPとリサイクルショップを運営し、地域の文化空間として発展させている。",
+        "genre": [
+            "フォーク",
+            "ブルース"
+        ],
+        "trackTitle": "波",
+        "imageUrl": "/images-webp/musicians/3.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/long_player_/",
+            "https://www.instagram.com/dongsan_blueeewoot/"
+        ]
+    },
+    {
+        "id": 7,
+        "name": "MoredoSaturday",
+        "shortDescription": "江汀の平和運動で出会った二人のミュージシャンによるフォーク・デュオ。自然で純粋な感性を通じて平和のメッセージを届ける",
+        "description": "江汀村で結成された、モレとドトによる2人組フォーク・デュオ。その名の通り、自然で純粋な感性を追求している。風に揺れる葉のような繊細で柔軟なアプローチが、聴き手を優しく包み込む。",
+        "genre": [
+            "フォーク",
+            "アコースティック"
+        ],
+        "trackTitle": "君の自由のために航海しよう",
+        "imageUrl": "/images-webp/musicians/4.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/saturday_moredo/"
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Namsu",
+        "shortDescription": "インディーズからジャズまで幅広く活動し、文化空間「キツツキ書店」を運営しながら音楽と文学を繋ぐ女性ソロアーティスト",
+        "description": "インディーズ、フォーク/ブルース、ジャズ、ニューエイジをカバーする多才な女性ソロアーティスト。文化空間「キツツキ書店」を運営し、音楽と文学の接点を作り出している。音楽と視覚芸術、パフォーマンスを組み合わせることで、自身の芸術的境界を広げることを目指している。",
+        "genre": [
+            "インディーズ",
+            "フォーク",
+            "ジャズ"
+        ],
+        "trackTitle": "こんにちは（遠くにいる君へ）",
+        "imageUrl": "/images-webp/musicians/5.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/namsu_ggu/",
+            "https://www.instagram.com/ddackddaguri__books/"
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Kim In",
+        "shortDescription": "自然と平和を歌い、独自の試みを通じて環境と生命への深い愛情を表現する独立系ミュージシャン",
+        "description": "独自のサウンドを探索し、音楽を通じて環境と平和への深い愛情を表現する独立系ミュージシャン。多様なジャンルを楽しみ、自分だけの独特な音楽世界を築いてきた。星や月にインスパイアされた抒情的な音楽で、繊細な感性と深い歌詞と共に平和のメッセージを届ける。",
+        "genre": [
+            "インディーズ",
+            "アコースティック"
+        ],
+        "trackTitle": "星を見に行った人",
+        "imageUrl": "/images-webp/musicians/6.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/saltycoldanddarkkimin/"
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Caru",
+        "shortDescription": "生態学的な生活と平和を追求し、アコースティックなメロディで共生の物語を語るシンガーソングライター",
+        "description": "アコースティックなストーリーテリング・コンサートで知られるシンガーソングライター。独自の教育的背景と哲学を持ち、望む人生を歩むために仕事、技術、人間関係について絶えず学び、考察し、その思索を音楽へと昇華させている。現実と理想の間で揺れ動く若者の姿を繊細に描き出す。",
+        "genre": [
+            "フォーク",
+            "アコースティック"
+        ],
+        "trackTitle": "TRANSITION",
+        "imageUrl": "/images-webp/musicians/7.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/caru1011/"
+        ]
+    },
+    {
+        "id": 8,
+        "name": "Leaves",
+        "shortDescription": "ヨウルとウォンギルによる、澄んだ響きのフォーク・デュオ。自然の息吹のような繊細なハーモニーを奏でる",
+        "description": "音楽の好みが共通していたことから自然に結成された、ヨウルとウォンギルによるフォーク・デュオ。自然で純粋な感性を追求している。風に揺れる葉のような繊細で柔軟なアプローチが、聴き手を優しく包み込む。",
+        "genre": [
+            "フォーク",
+            "アコースティック"
+        ],
+        "trackTitle": "目の前の心",
+        "imageUrl": "/images-webp/musicians/8.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/yeoouul/",
+            "https://www.instagram.com/little_boy_on_the_beach/"
+        ]
+    },
+    {
+        "id": 9,
+        "name": "Yeoyu",
+        "shortDescription": "繊細な眼差しで日常の瞬間を捉え、穏やかな歌声と温かいギターで共感の物語を届けるフォーク・ミュージシャン",
+        "description": "済州を拠点とし、一音一音に真心を込めることで知られるフォーク・ミュージシャン。フォーク・デュオ「余裕と雪（ヨユ・ワ・ソルビン）」のメンバーでもある。日常の小さな物語から人生の深い悩みまで、多様なトピックを繊細な感情で歌う。柔らかな歌声と穏やかなアコースティックギターが彼女のトレードマーク。",
+        "genre": [
+            "フォーク",
+            "アコースティック"
+        ],
+        "trackTitle": "ソウルの夜 (feat. チョン・スミン)",
+        "imageUrl": "/images-webp/musicians/9.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/ye0y00/"
+        ]
+    },
+    {
+        "id": 10,
+        "name": "MOMO",
+        "shortDescription": "即興と実験を通じて現代社会の側面を表現するジャズ・デュオ。イェジン・アンジェラ・パクとファン・スルギによる独自のサウンド",
+        "description": "イェジン・アンジェラ・パクとファン・スルギによるジャズ・デュオ。ジャズをベースに、多様で美しいサウンドを探求している。即興と実験を通じて現代社会の意識を繊細に捉え、平凡な日常生活と紛争地域に潜む緊張感を表現する。",
+        "genre": [
+            "ジャズ",
+            "実験的"
+        ],
+        "trackTitle": "これが許されないなら、何が許されるのか？",
+        "imageUrl": "/images-webp/musicians/10.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/yejangelapark/",
+            "https://www.instagram.com/basseulgi/",
+            "https://www.instagram.com/momoismothermother/"
+        ]
+    },
+    {
+        "id": 11,
+        "name": "Jai x HANASH",
+        "shortDescription": "哀切ながらも力強い歌声で物語を語るJaiと、実験的なシンセサイザーでサウンドスケープを広げるHANASHの出会い",
+        "description": "Jaiの温かい歌声とHANASHの革新的なエレクトロニック・ミュージックが出会い、新たな可能性を模索するコラボレーション。Jaiは日常の物語を悲しくも力強い歌声で表現し、HANASHは世界中の楽器やジャンルを電子音楽と組み合わせる実験を行っている。彼らの出会いは、伝統と現代の調和のとれた融合を示している。",
+        "genre": [
+            "エレクトロニック",
+            "ワールドミュージック"
+        ],
+        "trackTitle": "ピンクのダウンを着た少女",
+        "imageUrl": "/images-webp/musicians/11.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/jai.music_official/",
+            "https://www.instagram.com/_ashahn/"
+        ]
+    },
+    {
+        "id": 12,
+        "name": "Lee Seoyoung",
+        "shortDescription": "森や自然の中で見つけた「繋がり」を抒情的で魅力的な音色で表現する、シンガーソングライター兼森林解説者",
+        "description": "独自の音楽世界を築いているシンガーソングライターであり森林解説者。自然、特に森の中で見つけた「繋がり」をテーマに音楽を制作している。フォークをベースにエレクトロニックやアンビエントを融合させ、抒情的でありながらも哀愁を帯びたムードを醸し出す。青みがかった夜明けの空と霧を連想させる独特の音色で注目されている。",
+        "genre": [
+            "フォーク",
+            "アンビエント"
+        ],
+        "trackTitle": "私たち",
+        "imageUrl": "/images-webp/musicians/12.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/leesyoung.kr/"
+        ]
+    },
+    {
+        "id": 13,
+        "name": "Bloco Jafari X PollePolle X Dongbaek Small School",
+        "shortDescription": "バトゥカーダ・コミュニティ「Bloco Jafari」と芸術集団「PollePolle」によるコラボレーション・チーム。",
+        "description": "一般の人々の創造力を呼び覚ますバトゥカーダ・コミュニティ「Bloco Jafari」と、人々や宇宙の幸福に捧げる芸術集団「PollePolle」が結集したコラボレーション・チーム。彼らのパフォーマンスには、連帯と歓待のエネルギーが込められている。",
+        "genre": [
+            "バトゥカーダ",
+            "パフォーマンス"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/13.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/bloco_japari",
+            "https://www.instagram.com/polepole2014"
+        ]
+    },
+    {
+        "id": 14,
+        "name": "Ganghahimalaya",
+        "shortDescription": "インドのオーロヴィルで育ち、音楽を通じて自然と内面の世界を繋ぐシンガーソングライター。",
+        "description": "インドのオーロヴィルの自由な環境で育った、独特なシンガーソングライター。彼女の音楽にはヒマラヤ의 生命力とガンジス川の流れるような静寂が宿っており、その歌声にはゆっくりと着実に生きるという哲学が反映されている。",
+        "genre": [
+            "フォーク",
+            "シンガーソングライター",
+            "ワールドミュージック"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/14.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/gangahimalayapark/"
+        ]
+    },
+    {
+        "id": 15,
+        "name": "Gilganeun Band Janghyeonho",
+        "shortDescription": "シンガーソングライターのチャン・ヒョンホ率いるストリートバンド。2011年以来、労働現場や抗議現場で連帯の歌を歌い続けている。",
+        "description": "シンガーソングライターのチャン・ヒョンホを中心に、2011年に結成されたストリートバンド。セウォル号の真実を求める運動や、江汀の海軍基地反対闘争など、10年以上にわたり連帯集会や追悼イベント、抗議現場で演奏してきた。2020年にフルアルバム『Always, Entirely』をリリースし、現在も平和と連帯を歌い続けている。",
+        "genre": [
+            "フォーク",
+            "ロック",
+            "プロテストソング"
+        ],
+        "trackTitle": "また輝く私たち",
+        "imageUrl": "/images-webp/musicians/15.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/gilbandjjang/"
+        ]
+    },
+    {
+        "id": 16,
+        "name": "Kim Susu",
+        "shortDescription": "済州のバスキングシーンを牽引するミュージシャン。自由な精神から「済州のハン・デス」の異名を持つ。",
+        "description": "キム・ススは済州のバスキング文化の重要人物の一人として知られ、「済州のハン・デス」と呼ばれることもある。おなじみの曲を自分流に再解釈し、即興のジャムを通じてジャンルを自由に横断しながら、済州のライブ音楽シーンで活動を続けている。",
+        "genre": [
+            "インディーズ",
+            "フォーク"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/16.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/59susu"
+        ]
+    },
+    {
+        "id": 17,
+        "name": "Namukkunmingeon",
+        "shortDescription": "飾らない誠実さで自分だけの物語を築くシンガーソングライター。",
+        "description": "隠そうとしない生々しい感情と未完成の心で歌うナムックンミンゴン。彼の歌はその不完全さゆえに、よりリアルに感じられる。安易な慰めを与える代わりに、聴き手と共に崩れ落ち、その瞬間に留まることを厭わない。",
+        "genre": [
+            "インディーズ",
+            "フォーク",
+            "シンガーソングライター"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/17.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/kikoristar"
+        ]
+    },
+    {
+        "id": 18,
+        "name": "Dear Arcadian",
+        "shortDescription": "強烈なポスト・ハードコア・サウンドで社会の不条理に立ち向かうバンド。",
+        "description": "シングル『EXODUS』で韓国シーンに名乗りを上げたバンド。タイトなラップ、切迫したボーカル、重厚なギター、そして緻密なプロデュースを通じて、日常的な不条理、憎悪、差別、そして夢を追う人々への侮蔑から抜け出したいという渇望を表現している。",
+        "genre": [
+            "ポストハードコア",
+            "ロック"
+        ],
+        "trackTitle": "EXODUS",
+        "imageUrl": "/images-webp/musicians/18.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/deararcadian_official/"
+        ]
+    },
+    {
+        "id": 19,
+        "name": "Dog Last Page",
+        "shortDescription": "2012年に結成されたサザン・ロック/グランジ・バンド。韓国音楽賞のメタル＆ハードコア部門にノミネートされた実績を持つ。",
+        "description": "ギタリストのホン・ソンフンを中心に、サザン・ロック、グランジ、ハードコア・パンクを融合させた厚みのあるリフと重量感のあるバンド・サウンドを奏でる。2022年のフルアルバム『Drunken Dream』は2023年韓国音楽賞の最優秀メタル＆ハードコア・アルバムにノミネートされ、2025年には『Hypocrite』をリリースした。",
+        "genre": [
+            "サザンロック",
+            "グランジ",
+            "メタル",
+            "ハードコア"
+        ],
+        "trackTitle": "偽善者",
+        "imageUrl": "/images-webp/musicians/19.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/band_doglastpage/"
+        ]
+    },
+    {
+        "id": 20,
+        "name": "Rainbow99",
+        "shortDescription": "ドリーム・ポップ、シューゲイザー、アンビエントを軸に幅広い実験を続けるギタリスト兼サウンドデザイナー。",
+        "description": "レーベル「Magic Strawberry Sound」に所属する歌手、ギタリスト、作曲家、サウンド＆ノイズデザイナー。本名はリュ・スンヒョン。2011年のソロデビューEP『Spring, Revolution』以来、アンビエント、ドリーム・ポップ、シューゲイザーをベースにした作品を着実に発表しており、アルバム『オルムの今（오름의 지금）』では済州4.3事件の歴史的現場を音で記録している。",
+        "genre": [
+            "ドリームポップ",
+            "シューゲイザー",
+            "アンビエント",
+            "エレクトロニック"
+        ],
+        "trackTitle": "オルムの今",
+        "imageUrl": "/images-webp/musicians/20.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/rainbow99gaze/"
+        ]
+    },
+    {
+        "id": 21,
+        "name": "Meridies",
+        "shortDescription": "シンフォニック・ブラックメタルとデスメタルを軸に、韓国文学から歌詞を引用する一人プロジェクト。",
+        "description": "2013年に結成されたMeridiesは、ボーカル、ギター、ベースなどほとんどのパートを一人でこなすソロプロジェクトである。2015年のフルアルバム『On A Submerged Islet』以来、エクストリーム・メタルと文学的想像力を融合させており、特に歌詞に李箱（イ・サン）をはじめとする韓国人作家の作品を取り入れている。",
+        "genre": [
+            "シンフォニックブラックメタル",
+            "デスメタル"
+        ],
+        "trackTitle": "翼",
+        "imageUrl": "/images-webp/musicians/21.webp",
+        "instagramUrls": [],
+        "youtubeUrl": "https://www.youtube.com/@meridiesmetal"
+    },
+    {
+        "id": 22,
+        "name": "Moheo",
+        "shortDescription": "アイルランドでのバスキング経験と済州の色彩を融合させた、サイケデリックなアイリッシュ・フォーク・デュオ。",
+        "description": "チョ・ミンギュとe_soによるサイケデリック・フォーク・デュオ。チョはアイルランドで2年間バスキングを行い、済州出身のシンガーソングライターe_soとは2022年にタイで偶然出会った。アイルランドのモハーの断崖にちなんで名付けられたこのデュオは、2024年に初のフルアルバム『Kaleidoscope』をリリースし、フェスティバルシーンで急速に注目を集めた。",
+        "genre": [
+            "サイケデリックフォーク",
+            "アイリッシュフォーク",
+            "インディーフォーク"
+        ],
+        "trackTitle": "万華鏡 (Kaleidoscope)",
+        "imageUrl": "/images-webp/musicians/22.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/moher_____/"
+        ]
+    },
+    {
+        "id": 23,
+        "name": "Mwing",
+        "shortDescription": "記憶すべき瞬間を歌にするアーティスト兼活動家。",
+        "description": "2015年からアーティストおよび活動家として、歌を書き歌い続けている。記憶すべき瞬間に根ざした音楽を安らぎとして提供し、一人ではなく誰もが共に幸せに生きられる世界を夢見ている。",
+        "genre": [
+            "インディーズ",
+            "フォーク",
+            "シンガーソングライター"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/23.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/mmuueenngg/"
+        ]
+    },
+    {
+        "id": 24,
+        "name": "Materials Found",
+        "shortDescription": "メロディック・メタルコアを軸とする5人組バンド。2025年韓国音楽賞にノミネート。",
+        "description": "2022年に結成された5人組バンド。メロディック・メタルコアにシンフォニック・デスコアやポストロックを融合させている。2024年にリリースされた初のEP『電球（전구）』は、2025年韓国音楽賞の最優秀メタル＆ハードコア・アルバムにノミネートされ、Music Yなどの年末アワードでも高く評価された。",
+        "genre": [
+            "メロディックメタルコア",
+            "シンフォニックデスコア",
+            "ポストロック"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/24.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/materials_pound_official/"
+        ]
+    },
+    {
+        "id": 25,
+        "name": "Bulgasari Impromptu Session",
+        "shortDescription": "2003年以来、300回以上のステージを開催してきた、前衛的・即興的・実験的な芸術パフォーマンスの長期シリーズ。",
+        "description": "「プルガサリ即興セッション」は、日本人ミュージシャン里行の提案を受け、2003年2月に新村のRushで始まった。以来、韓国の前衛・即興・実験芸術の主要なプラットフォームの一つとなり、音楽、ダンス、パフォーマンスを披露しながら、300回以上のイベントを通じて若手の実験的アーティストを育成してきた。",
+        "genre": [
+            "即興音楽",
+            "実験的",
+            "アヴァンギャルド"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/25.webp",
+        "instagramUrls": []
+    },
+    {
+        "id": 26,
+        "name": "Sabaha",
+        "shortDescription": "2023年に結成されたドゥーム/ドローン・メタル・プロジェクト。演劇的な衣装を纏ったパフォーマンスで破壊と絶望を表現する。",
+        "description": "420SaigongやHaaaazy Shaaaamanなど、アンダーグラウンドで長い経歴を持つミュージシャンが2023年5月に始動させたドゥーム/ドローン・メタル・プロジェクト。Sunn O)))、Earth、Electric Wizard、Sleep、Omなどの影響を受け、ドローン・メタル、ストーナー・ドゥーム、スラッジ・メタル、グラインドコア、フリー・インプロヴィゼーションをミックスしている。2024年に初のフルアルバム『THUNDER ROCKS』をリリースした。",
+        "genre": [
+            "ドゥームメタル",
+            "ドローンメタル",
+            "スラッジメタル"
+        ],
+        "trackTitle": "THUNDER ROCKS",
+        "imageUrl": "/images-webp/musicians/26.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/sabbaha_kr"
+        ]
+    },
+    {
+        "id": 27,
+        "name": "Site with Jet Sizer",
+        "shortDescription": "ビートボックスのグローバル・チャンピオンSightと、電撃的なアウトサイダーZsthygerによる共同パフォーマンス。",
+        "description": "実力派ビートボックス・クルー「TYTD」のメンバーであるSightと、妥協のないメタルの異端児Zsthygerによるコラボレーション。技術的な精密さ、演劇的なエネルギー、そしてビートボックスとヘヴィ・ミュージックの珍しい接点を活かしたステージを届ける。",
+        "genre": [
+            "ビートボックス",
+            "メタル"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/27.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/beatbox_sight",
+            "https://www.instagram.com/zsthyger/"
+        ]
+    },
+    {
+        "id": 29,
+        "name": "Seongyeong",
+        "shortDescription": "シンガーソングライターであり、セラミックドール・アーティスト。",
+        "description": "ソンギョンはシンガーソングライターであると同時に、私たちの周りの自然や生き物のイメージからインスピレーションを得てセラミックドール（陶器の人形）を制作するアーティストでもある。",
+        "genre": [
+            "シンガーソングライター",
+            "フォーク"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/29.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/__sun_kyoung/"
+        ]
+    },
+    {
+        "id": 30,
+        "name": "Son Jiyeon",
+        "shortDescription": "「韓国のジョニ・ミッチェル」とも称されるフォーク・シンガーソングライター。独特の歌声とソングライティングで知られる。",
+        "description": "第1世代のフォーク界の巨匠ヤン・ビョンジプによって見出されたソン・ジヨンは、2003年のデビューアルバム『My Life's Story』でキャリアをスタートさせた。安易な分類を拒む極めて独創的な音楽世界を築き、詩的な感性と明晰さ、そして誠実さをもって自身の人生を表現する歌を書いている。",
+        "genre": [
+            "フォーク",
+            "シンガーソングライター"
+        ],
+        "trackTitle": "実話",
+        "imageUrl": "/images-webp/musicians/30.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/jy_son_/"
+        ]
+    },
+    {
+        "id": 31,
+        "name": "Son Hyunsuk",
+        "shortDescription": "民衆歌謡運動から登場したシンガーソングライター。「清渓川8街（チョンゲチョン・パルガ）」で広く知られる。",
+        "description": "崇実大学の民衆歌謡グループ「トゥメ」で音楽活動を開始。後にロックグループ「天地人（チョンジイン）」の楽曲「清渓川8街」にゲストボーカルとして参加し、大きな注目を集めた。以来、複数のアルバムをリリースする一方で、ミャンマーなど他国の民衆の歌を韓国の聴衆に紹介する活動も行っている。",
+        "genre": [
+            "民衆歌謡",
+            "フォーク",
+            "シンガーソングライター"
+        ],
+        "trackTitle": "清渓川8街",
+        "imageUrl": "/images-webp/musicians/31.webp",
+        "instagramUrls": []
+    },
+    {
+        "id": 32,
+        "name": "Song Insang",
+        "shortDescription": "人生の断片や大切な記憶を歌で描くシンガーソングライター。",
+        "description": "山間の村と海辺を行き来しながら育ち、その自然の面影を音楽に投影している。中学時代に独学でギターと作曲を始め、EP『絵の具（물감）』をリリース。子供時代の記憶、都市生活、そして家族とのコラボレーションを軸に歌を作り続けている。",
+        "genre": [
+            "フォーク",
+            "シンガーソングライター"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/32.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/song_insang"
+        ]
+    },
+    {
+        "id": 33,
+        "name": "Song Inhyo",
+        "shortDescription": "実体験と内省を、素朴なメロディと誠実な歌詞で記録するシンガーソングライター。",
+        "description": "個人的な経験と内面的な省察を音楽言語へと変換する。スタイルの誇示に頼るのではなく、生の実感、明快なメロディ、誠実な言葉、飾らない表現によって歌を構成し、聴き手に人生と向き合うもう一つの方法を提示している。",
+        "genre": [
+            "フォーク",
+            "シンガーソングライター"
+        ],
+        "trackTitle": "天と地の間",
+        "imageUrl": "/images-webp/musicians/33.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/song_inhyo/"
+        ]
+    },
+    {
+        "id": 34,
+        "name": "Samgak Jeonpasa",
+        "shortDescription": "電子音楽家でありSF作家でもあるチャン・ホジンのソロプロジェクト。実験的な電子音楽を通じて社会の構造的な矛盾を表現する。",
+        "description": "「三角電波社（サムガク・ジョンパサ）」は、電子音楽家でありSF作家でもあるチャン・ホジンのソロプロジェクト。デペッシュ・モードやヴァンゲリスなどのアーティストにインスパイアされ、予測不可能なサウンドと非線形な構成を追求している。ジェントリフィケーションから地域紛争まで、韓国社会の構造的な矛盾を実験的な電子音楽に昇華させている。",
+        "genre": [
+            "エレクトロニック",
+            "実験的"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/34.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/zeonpasa/"
+        ]
+    },
+    {
+        "id": 35,
+        "name": "Anti Stress",
+        "shortDescription": "オーガニック・パンク・フォーク・アーティストのサイと、シューゲイザー・ギタリストのRainbow99によって結成されたパンク・バンド。",
+        "description": "抗議現場や農村共同体でオリジナルの歌を歌ってきたことで知られるサイと、アンビエントからジェネレーティブ・ミュージックまで幅広い実験的パレットを持つ韓国屈指のギタリストRainbow99によるユニット。フォーク精神と音響的な実験を、荒々しくエネルギーに満ちたパンクへと昇華させている。",
+        "genre": [
+            "パンク",
+            "フォークパンク"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/35.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/be2in2023",
+            "https://www.instagram.com/rainbow99gaze/"
+        ]
+    },
+    {
+        "id": 36,
+        "name": "Oh Jaehwan",
+        "shortDescription": "音楽を通じて多くの闘争に寄り添ってきたフォーク・シンガーソングライター。第1回から江汀平和音楽キャンプに参加している。",
+        "description": "オ・ジェファンは、長年にわたり音楽を通じて社会闘争への連帯を表明してきたフォーク・シンガーソングライターである。『言われたことはよくやる（시킨건 곧잘한다）』や『島の歌（섬의 노래）』などのアルバムをリリースしており、江汀平和音楽キャンプにはその初年度から欠かさず出演している。",
+        "genre": [
+            "フォーク",
+            "シンガーソングライター"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/36.webp",
+        "instagramUrls": []
+    },
+    {
+        "id": 37,
+        "name": "On Gayeong",
+        "shortDescription": "釜山を拠点とし、温かい歌声で簡潔なアコースティック・ソングを書き歌うシンガーソングライター。",
+        "description": "オン・ガヨン（本名：ペ・ガヨン）は、自分自身を「まともな夜を準備しながら歌う人」と表現している。アコースティック・バンド「チョコレート・ベンチ」やブラス・グループ「バンド・フン」での活動を経てソロ活動を開始し、2023年にシングル『Who you are』をリリース。100回以上のライブパフォーマンスを通じて経験を積んできた。",
+        "genre": [
+            "アコースティック",
+            "フォーク",
+            "シンガーソングライター"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/37.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/on.gayoung/"
+        ]
+    },
+    {
+        "id": 38,
+        "name": "Yeoul",
+        "shortDescription": "澄んだ音色を持つフォーク・ミュージシャン。ソロアーティストとして、またデュオ「Leaves」のメンバーとしても活動している。",
+        "description": "フォーク・デュオ「Leaves」でウォンギルと共に活動する傍ら、ソロのシンガーソングライターとしても活動している。アコースティックギターと澄んだ歌声で、日常の小さな瞬間を通じた平和を抒情的に歌う。また、第1回キャンプにデザインスタッフとして参加するなど、江汀の平和コミュニティと深い繋がりを持っている。",
+        "genre": [
+            "フォーク",
+            "アコースティック"
+        ],
+        "trackTitle": "目の前の心",
+        "imageUrl": "/images-webp/musicians/40.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/yeoouul/"
+        ]
+    },
+    {
+        "id": 39,
+        "name": "Yoon Soong",
+        "shortDescription": "生と死、และ 絶望の中から前へ進む道のりを抒情的に辿るフォーク・シンガーソングライター。",
+        "description": "2021年のEP『あの部屋を開けて出てこられるのは私しかいない（그 방을 열고 나올 사람은 나밖에 없네）』の成功以来、親密なフォーク・レコードをリリースし続けている。暗い森から開けた海へ、そして夜明けから朝へと向かう抒情的な旅を描き、痛みと執念を歌に変えている。",
+        "genre": [
+            "フォーク",
+            "アコースティック",
+            "シンガーソングライター"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/39.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/cyoonseung/"
+        ]
+    },
+    {
+        "id": 40,
+        "name": "Yoon Seonae",
+        "shortDescription": "1980年代の民主化運動の最前線で歌った、民衆歌謡の象徴的な歌声。",
+        "description": "ソウル大学の歌サークル「メアリ」と学生連合「セビョク」から登場し、1980年代の民主化運動期における民衆歌謡を代表する女性ボーカルの一人となった。歴史的な楽曲「その日が来れば（그날이 오면）」で知られ、後にソロアルバムを通じても芸術活動を続けてきた。",
+        "genre": [
+            "フォーク",
+            "民衆歌謡"
+        ],
+        "trackTitle": "その日が来れば",
+        "imageUrl": "/images-webp/musicians/40.webp",
+        "instagramUrls": []
+    },
+    {
+        "id": 42,
+        "name": "Lim Jeongdeuk",
+        "shortDescription": "韓国各地の闘争現場で歌い、「塩の花の木（ソグムコッナム）」という曲で知られる民衆シンガーソングライター。",
+        "description": "嶺南大学の歌サークル「イェサガラク」で音楽を始め、2011年のデビュー以来、民衆歌手として活動してきた。労働闘争、立ち退き反対、セウォル号遺族の抗議現場などで演奏し、作詞・作曲・プロデュースのほとんどを自ら手がけている。「塩の花の木」は彼の代表曲の一つである。",
+        "genre": [
+            "民衆音楽",
+            "フォーク",
+            "シンガーソングライター"
+        ],
+        "trackTitle": "塩の花の木",
+        "imageUrl": "/images-webp/musicians/42.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/imjeongdeuk/"
+        ]
+    },
+    {
+        "id": 43,
+        "name": "Joon Lee",
+        "shortDescription": "ロサンゼルス出身で、ソウルと済州を行き来しながら活動するシンガーソングライター。",
+        "description": "カリフォルニア州ロサンゼルスで育ち、ギターを学んだ後、アメリカ、ソウル、済州で音楽活動を続けてきた。フォーク、ブルース、ロック、ポップの影響を受け、ソングライティングに幅広い音色の幅をもたらしている。",
+        "genre": [
+            "インディーズ"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/43.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/joonlee_jeju/"
+        ]
+    },
+    {
+        "id": 44,
+        "name": "Joyakgol",
+        "shortDescription": "平和活動家でありミュージシャン。「ホットピンクドルフィンズ」の共同代表を務め、江汀の平和運動に深く関わっている。",
+        "description": "大チュ里、セマングム、江汀での平和運動に参加してきたアナーキスト活動家でありミュージシャン。2011年の江汀海軍基地反対闘争中にミナミハンドウイルカの群れに出会ったことをきっかけに、海洋環境団体「ホットピンクドルフィンズ」を共同設立し、アジア初の水族館イルカ解放運動の立ち上げに貢献した。",
+        "genre": [
+            "インディーズ",
+            "フォーク",
+            "パンク"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/44.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/dopeheadzo1"
+        ]
+    },
+    {
+        "id": 45,
+        "name": "Jo Seongil",
+        "shortDescription": "民衆音楽グループ「コッタジ」の元メンバーで、現在は済州から生と希望を歌う。",
+        "description": "1998年からの14年間、民衆音楽グループ「コッタジ」の中心的ボーカルとして活動し、「希望」「口笛」「闘士」などの楽曲を書いた。2012年にソロに転向した後、済州の西帰浦に移住。重い現実の中でも慰めを与えるレコードをリリースし続けている。",
+        "genre": [
+            "フォーク",
+            "民衆音楽",
+            "シンガーソングライター"
+        ],
+        "trackTitle": "エンジンをかけた",
+        "imageUrl": "/images-webp/musicians/45.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/chosungil99/"
+        ]
+    },
+    {
+        "id": 46,
+        "name": "Jinukonda",
+        "shortDescription": "2018年から弘大（ホンデ）シーンでモダン・ゴシックな物語を歌う、ダークでハスキーな歌声のカントリー・ブルース・ミュージシャン。",
+        "description": "カントリー・ブルースにルーツを持ち、ダークでハスキーな歌声が特徴のミュージシャン。2018年から弘大を中心に活動し、モダン・ゴシックな物語を音楽へと昇華させ、ソウルという巨大な都市の中で孤立した人々の生を歌っている。",
+        "genre": [
+            "カントリーブルース",
+            "ゴシックフォーク"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/46.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/jinukonda"
+        ]
+    },
+    {
+        "id": 47,
+        "name": "Chan",
+        "shortDescription": "シタールとバンスリを演奏する瞑想音楽家。",
+        "description": "シタールとバンスリを演奏する瞑想音楽家。インドの音の静かな深みに惹かれ、複数の師に師事した。数枚の瞑想音楽アルバムをリリースしており、YouTubeチャンネル「Lotus Relaxing Music」も運営している。",
+        "genre": [
+            "瞑想音楽",
+            "ワールドミュージック"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/47.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/chanbhaiya"
+        ]
+    },
+    {
+        "id": 48,
+        "name": "Choi Sangdon",
+        "shortDescription": "音楽の巡礼を通じて創作とパフォーマンスを展開するシンガーソングライター。",
+        "description": "音楽の巡礼から作品を生み出すシンガーソングライター。アコーディオンのキム・ガンゴン、ボーカルのチョ・アランと共にプロジェクト「サノラケ」を継続しており、江汀の運動との連帯を続けている。",
+        "genre": [
+            "インディーズ"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/48.webp",
+        "instagramUrls": []
+    },
+    {
+        "id": 49,
+        "name": "Chichi",
+        "shortDescription": "2026年江汀平和音楽キャンプに出演。",
+        "description": "2026年江汀平和音楽キャンプのラインナップに参加している。",
+        "genre": [
+            "インディーズ"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/49.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/blackaftermoon"
+        ]
+    },
+    {
+        "id": 50,
+        "name": "Kita & Olgen",
+        "shortDescription": "2026年江汀平和音楽キャンプに出演するデュオ。",
+        "description": "2026年江汀平和音楽キャンプにデュオとして出演。",
+        "genre": [
+            "インディーズ",
+            "アコースティック",
+            "フォーク"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/50.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/kita_olgen"
+        ]
+    },
+    {
+        "id": 51,
+        "name": "Taehyeon",
+        "shortDescription": "ジャマイカのルーツ・レゲエに深く心酔し、アナログなレゲエ・サウンドと平和のメッセージを韓国的な感性で表現するシンガーソングライター。",
+        "description": "ルーツ・レゲエ、フォーク、ブルース、伝統音楽を自然に融合させたオーガニック・シンガーソングライター。ロンドンでレゲエに魅了された後、韓国に戻りボーカリスト兼ギタリストとして活動。後に済州へ移住し、セレクターおよびサウンドエンジニア「アンクル・ボンゴ（Uncle Bongo）」としても活動の幅を広げている。",
+        "genre": [
+            "レゲエ",
+            "フォーク",
+            "ブルース"
+        ],
+        "trackTitle": "人は国なり",
+        "imageUrl": "/images-webp/musicians/51.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/tehiun/"
+        ]
+    },
+    {
+        "id": 52,
+        "name": "Pium",
+        "shortDescription": "深みのある低音と明るく幻想的な高音が共存するシンガーソングライター。",
+        "description": "高校時代からロックバンドのメインボーカルとしてステージ経験を積む。英文科を中退後、ソウル芸術大学で実用音楽（ボーカル）を専攻。ギターを学び自らの声で歌を書き始め、現在は弘大や江南（カンナム）で定期的に演奏しながら、自作曲をコンスタントに発表している。",
+        "genre": [
+            "インディーズ"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/52.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/a_nicefolksong"
+        ]
+    },
+    {
+        "id": 53,
+        "name": "Howaho",
+        "shortDescription": "詩的な歌詞と重厚なサウンドスケープを持つデュオ。韓国音楽賞の最優秀フォーク・アルバムにノミネート。",
+        "description": "それぞれシンガーソングライターとして活動していたeeehoとMohhoが、互いの独特な雰囲気に刺激を受け結成された。全楽曲を共作し、詩的な歌詞、重厚なエレクトリックギター、電子ビート、アンビエントなサウンドスケープを組み合わせている。1stアルバム『Unknown Origin』は第16回韓国音楽賞の最優秀フォーク・アルバムにノミネートされた。",
+        "genre": [
+            "インディーズ",
+            "フォーク",
+            "オルタナティブ"
+        ],
+        "trackTitle": "波頭 (Wave Crest)",
+        "imageUrl": "/images-webp/musicians/53.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/howaho_official/"
+        ]
+    },
+    {
+        "id": 54,
+        "name": "Honey Whiskey",
+        "shortDescription": "水原を拠点とする多国籍ライブバンド。",
+        "description": "Honey Whiskeyは、水原にあるクラフトビールとライブ音楽のパブ「Alleyway Taphouse」の公式ハウスバンドを務める多国籍バンド。ライブパフォーマンスを中心に、幅広いスタイルを演奏する。",
+        "genre": [
+            "ロック",
+            "ライブバンド"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/54.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/honeywhiskeysuwon/"
+        ]
+    },
+    {
+        "id": 55,
+        "name": "Heo Jeonghyeok",
+        "shortDescription": "ユ・ジェハ音楽コンテストを通じて認められたフォーク・シンガーソングライター。フルアルバム『Budding Days』は最優秀フォーク・アルバムにノミネート。",
+        "description": "「son of florist」という別名でも活動するホ・ジョンヒョクは、2017年の第28回ユ・ジェハ音楽コンテストで銅賞を受賞し、広く知られるようになった。デュオ「シオッ（ㅅ）と風」のメンバーとしても活動しており、2023年の1stフルアルバム『Budding Days』は2024年韓国音楽賞の最優秀フォーク・アルバムにノミネートされた。",
+        "genre": [
+            "フォーク",
+            "シンガーソングライター"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/55.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/_hyuk_e"
+        ]
+    },
+    {
+        "id": 56,
+        "name": "Hwang Myeongha",
+        "shortDescription": "1,000回以上のライブ公演実績を持ち、「韓国のサラ・マクラクラン」と呼ばれる女性フォーク・シンガーソングライター。",
+        "description": "「韓国のサラ・マクラクラン」という愛称の通り、稀有で魅力的な音色の持ち主として知られるファン・ミョンハ。1,000回を超えるライブパフォーマンスの経験を活かし、深い癒やしのステージと独特のフォークサウンドを披露している。",
+        "genre": [
+            "フォーク",
+            "アコースティック"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/56.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/hwang_myungha/"
+        ]
+    },
+    {
+        "id": 57,
+        "name": "Ha Juwon",
+        "shortDescription": "ハンドパンを演奏しながら世界中を旅するミュージシャン。",
+        "description": "Woniという名でも知られるハ・ジュウォンは、ハンドパンを携えて世界各地を渡り歩くミュージシャンである。",
+        "genre": [
+            "ハンドパン",
+            "ワールドミュージック"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/57.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/wonn__e"
+        ]
+    },
+    {
+        "id": 58,
+        "name": "Ppalajida X Dongbaek Small School",
+        "shortDescription": "済州を拠点とするバトゥカーダ・グループ「Ppalajida」と、生態・人権・平和を軸とする代替学校「ツバキ小中学校（トンベク・スモールスクール）」による共同ステージ。",
+        "description": "「Ppalajida（パラジダ）」は、ブラジルの伝統に根ざしたサンバ打楽器の合奏を行う済州のアンサンブルで、2022年から活動している。「ツバキ小中学校」は、生態・人権・平和をテーマにしたプロジェクト学習を実践する済州の代替学校である。地域コミュニティと若者たちが作り出す平和のリズムを届ける。",
+        "genre": [
+            "バトゥカーダ",
+            "パーカッション",
+            "ワールドミュージック"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/58.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/pelagida_oficial",
+            "https://www.instagram.com/dongbaek_school/"
+        ]
+    },
+    {
+        "id": 59,
+        "name": "HANASH",
+        "shortDescription": "世界中の楽器やジャンルを電子音楽と融合させる、実験的なサウンドアーティスト。",
+        "description": "HANASHは、世界の様々な楽器やジャンルをエレクトロニック・ミュージックと組み合わせることで実験的なサウンドを創り出している。冒険的なシンセシスと広がりゆくサウンドスケープを通じて、伝統と現代の調和のとれた出会いを追求している。",
+        "genre": [
+            "エレクトロニック",
+            "ワールドミュージック",
+            "実験的"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/59.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/_ashahn/"
+        ]
+    },
+    {
+        "id": 60,
+        "name": "TAGI",
+        "shortDescription": "日本人ハンドパン奏者Takaと、韓国伝統音楽家Mingiによるデュオ。ハンドパンに笙、ピリ、太平簫を組み合わせる。",
+        "description": "日本人ハンドパン奏者のTakaと、韓国伝統の管楽器奏者Mingiによるデュオ。「TAGI（タギ）」という名は二人の名前の頭文字を合わせると同時に、音が風や川、空に乗って伝わってほしいという願い（韓国語の「乗る＝タギ」）が込められている。東アジアの伝統と現代のサウンドの境界を自由に行き来する。",
+        "genre": [
+            "ワールドミュージック",
+            "韓国伝統音楽",
+            "ハンドパン"
+        ],
+        "trackTitle": "",
+        "imageUrl": "/images-webp/musicians/60.webp",
+        "instagramUrls": [
+            "https://www.instagram.com/tagi_sound"
+        ]
+    }
+]

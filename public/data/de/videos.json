@@ -1,0 +1,235 @@
+[
+  {
+    "id": 1,
+    "title": "Kim Dongsan & Blueeewoot - An dich an einem fernen Ort, dessen Namen ich nicht kenne (Seoul Showcase)",
+    "description": "Kim Dongsan & Blueeewoot sind der in Suwon ansässige Folk/Blues-Musiker Kim Dongsan und seine Band. Kim Dongsan, der den Spitznamen „Koreas Woody Guthrie“ trägt, ist für Musik mit sozialen Botschaften bekannt. Er singt über entlassene Arbeiter und Opfer von Gentrifizierung und betreibt den LP- und Recyclingladen „Long Player“ in der Nähe von Janganmun in Suwon, den er zu einem lokalen Kulturraum ausgebaut hat.",
+    "youtubeUrl": "https://www.youtube.com/embed/ejTPpS71nX8",
+    "date": "2024-11-02",
+    "location": "Space Hangang, Hongdae, Seoul",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      3
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Wandering Band Jang Hyunho - An dich an einem fernen Ort, dessen Namen ich nicht kenne (Seoul Showcase)",
+    "description": "Wandering Band ist eine „Straßenband“, die 2011 um den Singer-Songwriter Jang Hyunho gegründet wurde. Sie singen an Orten sozialer Kämpfe und Konflikte und zeigen seit über einem Jahrzehnt Solidarität bei Ereignissen wie der Sewol-Fähren-Wahrheitsbewegung, dem Protest gegen den Marinestützpunkt Gangjeong, dem Kampf um die Wiedereinstellung der KTX-Besatzung, dem Pinetek-Dach-Sit-in und dem Kampf der Colt/Coltex-Arbeiter.",
+    "youtubeUrl": "https://www.youtube.com/embed/Ts_fFqAYLYE",
+    "date": "2024-11-02",
+    "location": "Space Hangang, Hongdae, Seoul",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      15
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Namsu - An dich an einem fernen Ort, dessen Namen ich nicht kenne (Seoul Showcase)",
+    "description": "Eine vielseitige Solokünstlerin, die Indie, Folk/Blues, Jazz und New Age umfasst. Sie leitet den Kulturraum „Woodpecker Bookshop“ und schafft Schnittstellen zwischen Musik und Literatur. Ihr Ziel ist es, ihre künstlerischen Grenzen zu erweitern, indem sie Musik mit bildender Kunst und Performance verbindet.",
+    "youtubeUrl": "https://www.youtube.com/embed/cHl1I5iJqyA",
+    "date": "2024-11-02",
+    "location": "Space Hangang, Hongdae, Seoul",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      4
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Kim In - An dich an einem fernen Ort, dessen Namen ich nicht kenne (Seoul Showcase)",
+    "description": "Eine unabhängige Musikerin, die einzigartige Klänge erforscht und durch Musik tiefe Zuneigung für Umwelt und Frieden ausdrückt. Sie liebt verschiedene Genres und hat ihre eigene, unverwechselbare Musikwelt aufgebaut. Mit lyrischer Musik, inspiriert von Sternen und Mond, vermittelt sie eine Friedensbotschaft mit feiner Sensibilität und tiefgründigen Texten.",
+    "youtubeUrl": "https://www.youtube.com/embed/8jPAlA7cGtM",
+    "date": "2024-11-02",
+    "location": "Space Hangang, Hongdae, Seoul",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      6
+    ]
+  },
+  {
+    "id": 5,
+    "title": "MOMO - An dich an einem fernen Ort, dessen Namen ich nicht kenne (Seoul Showcase)",
+    "description": "Ein Jazz-Duo bestehend aus Yejin Angela Park und Hwang Seulgi. Im Jazz verwurzelt, erkunden sie gemeinsam vielfältige und schöne Klänge. Mit Improvisation und Experimentierfreudigkeit fangen sie einfühlsam das Bewusstsein der modernen Gesellschaft ein und drücken den gewöhnlichen Alltag sowie die in Konfliktregionen eingebetteten Spannungen aus.",
+    "youtubeUrl": "https://www.youtube.com/embed/hh-MwTiaJxk",
+    "date": "2024-11-02",
+    "location": "Space Hangang, Hongdae, Seoul",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      10
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Jai x HANASH - An dich an einem fernen Ort, dessen Namen ich nicht kenne (Seoul Showcase)",
+    "description": "Eine Zusammenarbeit, bei der Jais warme Stimme auf HANASHs innovative elektronische Musik trifft, um neue Möglichkeiten zu erkunden. Jai drückt Alltagsgeschichten mit einer traurigen, aber kraftvollen Stimme aus, während HANASH experimentiert, indem er Instrumente und Genres aus aller Welt mit elektronischer Musik kombiniert. Ihr Treffen zeigt eine harmonische Verschmelzung von Tradition und Moderne.",
+    "youtubeUrl": "https://www.youtube.com/embed/ka9DcFOD2fw",
+    "date": "2024-11-02",
+    "location": "Space Hangang, Hongdae, Seoul",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      11,
+      59
+    ]
+  },
+  {
+    "id": 101,
+    "title": "Menschenkette",
+    "description": "Eine Menschenkette vor dem Haupttor des Marinestützpunkts Jeju im Frühjahr 2023.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=dF6raNSEkfI",
+    "date": "2023-06-10",
+    "location": "Gangjeongcheon Sportpark, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/dF6raNSEkfI/sddefault.jpg"
+  },
+  {
+    "id": 102,
+    "title": "1. Gangjeong Friedensmusikcamp 2023",
+    "description": "Live-Performance-Aufnahmen vom Gangjeong Friedensmusikcamp 2023 im Gangjeongcheon Sportpark.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=mPeFqepsf_Y",
+    "date": "2023-06-10",
+    "location": "Gangjeongcheon Sportpark, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/mPeFqepsf_Y/maxresdefault.jpg"
+  },
+  {
+    "id": 103,
+    "title": "Gangjeong Triple Dance",
+    "description": "Gangjeong Triple Dance Performance im Gangjeongcheon Sportpark.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=MzIpAmDAYzk",
+    "date": "2023-06-10",
+    "location": "Gangjeongcheon Sportpark, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/MzIpAmDAYzk/maxresdefault.jpg"
+  },
+  {
+    "id": 104,
+    "title": "1. Gangjeong Friedensmusikcamp 2023",
+    "description": "Szenen vom 1. Gangjeong Friedensmusikcamp 2023 im Gangjeongcheon Sportpark.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=OGKd_pnrul4",
+    "date": "2023-06-10",
+    "location": "Gangjeongcheon Sportpark, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/OGKd_pnrul4/maxresdefault.jpg"
+  },
+  {
+    "id": 105,
+    "title": "1. Gangjeong Friedensmusikcamp 2023",
+    "description": "Szenen vom 1. Gangjeong Friedensmusikcamp 2023 im Gangjeongcheon Sportpark.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=GHSxHVc-b1w",
+    "date": "2023-06-10",
+    "location": "Gangjeongcheon Sportpark, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/GHSxHVc-b1w/maxresdefault.jpg"
+  },
+  {
+    "id": 106,
+    "title": "1. Gangjeong Friedensmusikcamp 2023",
+    "description": "Szenen vom 1. Gangjeong Friedensmusikcamp 2023 im Gangjeongcheon Sportpark.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=1TyLqzoHA7M",
+    "date": "2023-06-10",
+    "location": "Gangjeongcheon Sportpark, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/1TyLqzoHA7M/maxresdefault.jpg"
+  },
+  {
+    "id": 107,
+    "title": "1. Gangjeong Friedensmusikcamp 2023",
+    "description": "Szenen vom 1. Gangjeong Friedensmusikcamp 2023 im Gangjeongcheon Sportpark.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=YwOO627losU",
+    "date": "2023-06-10",
+    "location": "Gangjeongcheon Sportpark, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/YwOO627losU/maxresdefault.jpg"
+  },
+  {
+    "id": 108,
+    "title": "1. Gangjeong Friedensmusikcamp 2023",
+    "description": "Szenen vom 1. Gangjeong Friedensmusikcamp 2023 im Gangjeongcheon Sportpark.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=RH2x3ctcBgU",
+    "date": "2023-06-10",
+    "location": "Gangjeongcheon Sportpark, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/RH2x3ctcBgU/maxresdefault.jpg"
+  },
+  {
+    "id": 109,
+    "title": "1. Gangjeong Friedensmusikcamp 2023",
+    "description": "Szenen vom 1. Gangjeong Friedensmusikcamp 2023 im Gangjeongcheon Sportpark.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=tFxoLxIDfyM",
+    "date": "2023-06-10",
+    "location": "Gangjeongcheon Sportpark, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/tFxoLxIDfyM/maxresdefault.jpg"
+  },
+  {
+    "id": 110,
+    "title": "1. Gangjeong Friedensmusikcamp 2023",
+    "description": "Szenen vom 1. Gangjeong Friedensmusikcamp 2023 im Gangjeongcheon Sportpark.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=-PhTNOVdLc0",
+    "date": "2023-06-10",
+    "location": "Gangjeongcheon Sportpark, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/-PhTNOVdLc0/maxresdefault.jpg"
+  },
+  {
+    "id": 111,
+    "title": "1. Gangjeong Friedensmusikcamp 2023",
+    "description": "Szenen vom 1. Gangjeong Friedensmusikcamp 2023 im Gangjeongcheon Sportpark.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=mC-HJ-VhLOQ",
+    "date": "2023-06-10",
+    "location": "Gangjeongcheon Sportpark, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/mC-HJ-VhLOQ/maxresdefault.jpg"
+  },
+  {
+    "id": 112,
+    "title": "Gangjeong Friedensmusikcamp",
+    "description": "Das erste Gangjeong Friedensmusikcamp stand unter dem Motto „Stoppt den Krieg!“",
+    "youtubeUrl": "https://www.youtube.com/watch?v=crK6y7mJrfY",
+    "date": "2023-06-10",
+    "location": "Gangjeongcheon Sportpark, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/crK6y7mJrfY/maxresdefault.jpg"
+  },
+  {
+    "id": 201,
+    "title": "Das 2. Gangjeong Friedensmusikcamp ist in Vorbereitung!",
+    "description": "Wir arbeiten hart zusammen an der Vorbereitung für das morgige Gangjeong Friedensmusikcamp!",
+    "youtubeUrl": "https://www.youtube.com/watch?v=pcsM9lxlA24",
+    "date": "2025-06-13",
+    "location": "Rund um das Halmae Water Restaurant, Gangjeong-dong, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2025,
+    "thumbnailUrl": "https://i.ytimg.com/vi/pcsM9lxlA24/maxresdefault.jpg"
+  },
+  {
+    "id": 202,
+    "title": "2. Gangjeong Friedensmusikcamp",
+    "description": "Ein Friedens- und Antikriegs-Musikfestival im Dorf Gangjeong, Jeju.",
+    "youtubeUrl": "https://youtu.be/DBlCTgWNNKU?si=9QRus6J85pPEqf-F",
+    "date": "2025-06-14",
+    "location": "Rund um das Halmae Water Restaurant, Gangjeong-dong, Seogwipo",
+    "eventType": "camp",
+    "eventYear": 2025,
+    "thumbnailUrl": "https://i.ytimg.com/vi/DBlCTgWNNKU/maxresdefault.jpg"
+  }
+]

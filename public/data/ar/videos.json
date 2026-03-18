@@ -1,0 +1,235 @@
+[
+  {
+    "id": 1,
+    "title": "كيم دونغسان وBlueeewoot - إليك في مكان بعيد لا أعرف اسمه (عرض سيول)",
+    "description": "كيم دونغسان وBlueeewoot هما موسيقي الفولك/البلوز المقيم في سوون، كيم دونغسان وفرقته. يُلقب كيم دونغسان بـ 'وودي غاثري الكوري'، ويُعرف بموسيقاه التي تحمل رسائل اجتماعية. يغني عن العمال المسرحين وضحايا التحسين الحضري، ويدير متجر 'لونغ بلاير' للأقراص المدمجة وإعادة التدوير بالقرب من جانغانمون في سوون، محولاً إياه إلى مساحة ثقافية محلية.",
+    "youtubeUrl": "https://www.youtube.com/embed/ejTPpS71nX8",
+    "date": "2024-11-02",
+    "location": "سبيس هانغانغ، هونغداي، سيول",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      3
+    ]
+  },
+  {
+    "id": 2,
+    "title": "فرقة واندرينغ جانغ هيونهو - إليك في مكان بعيد لا أعرف اسمه (عرض سيول)",
+    "description": "فرقة واندرينغ هي 'فرقة شارع' تشكلت في عام 2011 حول المغني وكاتب الأغاني جانغ هيونهو. يغنون في مواقع النضال والصراع الاجتماعي، متضامنين لأكثر من عقد في أحداث مثل حركة كشف حقيقة عبارة سيوول، واحتجاجات قاعدة غانغجونغ البحرية، ونضال إعادة طاقم قطار KTX، والاعتصام على سطح بينيتك، ونضال عمال كولت/كولتيكس.",
+    "youtubeUrl": "https://www.youtube.com/embed/Ts_fFqAYLYE",
+    "date": "2024-11-02",
+    "location": "سبيس هانغانغ، هونغداي، سيول",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      15
+    ]
+  },
+  {
+    "id": 3,
+    "title": "نامسو - إليك في مكان بعيد لا أعرف اسمه (عرض سيول)",
+    "description": "فنانة منفردة متعددة المواهب تشمل أنواع الموسيقى المستقلة، والفولك/البلوز، والجاز، والعصر الجديد. تدير المساحة الثقافية 'مكتبة نقار الخشب'، وتخلق تقاطعات بين الموسيقى والأدب. تهدف إلى توسيع حدودها الفنية من خلال دمج الموسيقى مع الفن البصري والأداء.",
+    "youtubeUrl": "https://www.youtube.com/embed/cHl1I5iJqyA",
+    "date": "2024-11-02",
+    "location": "سبيس هانغانغ، هونغداي، سيول",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      4
+    ]
+  },
+  {
+    "id": 4,
+    "title": "كيم إن - إليك في مكان بعيد لا أعرف اسمه (عرض سيول)",
+    "description": "موسيقية مستقلة تستكشف أصواتاً فريدة وتعبر عن مودة عميقة للبيئة والسلام من خلال الموسيقى. تستمتع بأنواع موسيقية متنوعة وبنت عالمها الموسيقي المميز. بموسيقى غنائية مستوحاة من النجوم والقمر، تقدم رسالة سلام بإحساس مرهف وكلمات عميقة.",
+    "youtubeUrl": "https://www.youtube.com/embed/8jPAlA7cGtM",
+    "date": "2024-11-02",
+    "location": "سبيس هانغانغ، هونغداي، سيول",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      6
+    ]
+  },
+  {
+    "id": 5,
+    "title": "مومو - إليك في مكان بعيد لا أعرف اسمه (عرض سيول)",
+    "description": "ثنائي جاز يتكون من ييجين أنجيلا بارك وهوانغ سولغي. بجذورهما في الجاز، يستكشفان معاً أصواتاً متنوعة وجميلة. مع الارتجال والتجريب، يجسدان ببراعة وعي المجتمع الحديث، معبرين عن الحياة اليومية العادية والتوترات المترسخة في مناطق الصراع.",
+    "youtubeUrl": "https://www.youtube.com/embed/hh-MwTiaJxk",
+    "date": "2024-11-02",
+    "location": "سبيس هانغانغ، هونغداي، سيول",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      10
+    ]
+  },
+  {
+    "id": 6,
+    "title": "جاي x هاناش - إليك في مكان بعيد لا أعرف اسمه (عرض سيول)",
+    "description": "تعاون حيث يلتقي صوت جاي الدافئ مع موسيقى هاناش الإلكترونية المبتكرة لاستكشاف إمكانيات جديدة. تعبر جاي عن قصص يومية بصوت حزين ولكنه قوي، بينما يختبر هاناش دمج آلات وأنواع موسيقية من جميع أنحاء العالم مع الموسيقى الإلكترونية. يظهر لقاؤهما اندماجاً متناغماً بين التقليد والحداثة.",
+    "youtubeUrl": "https://www.youtube.com/embed/ka9DcFOD2fw",
+    "date": "2024-11-02",
+    "location": "سبيس هانغانغ، هونغداي، سيول",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      11,
+      59
+    ]
+  },
+  {
+    "id": 101,
+    "title": "سلسلة بشرية",
+    "description": "سلسلة بشرية أمام البوابة الرئيسية لقاعدة جيجو البحرية في ربيع 2023.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=dF6raNSEkfI",
+    "date": "2023-06-10",
+    "location": "منتزه غانغجونغتشيون الرياضي، سوغويبو",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/dF6raNSEkfI/sddefault.jpg"
+  },
+  {
+    "id": 102,
+    "title": "مخيم غانغجونغ الأول لموسيقى السلام 2023",
+    "description": "لقطات أداء مباشر من مخيم غانغجونغ لموسيقى السلام 2023 في منتزه غانغجونغتشيون الرياضي.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=mPeFqepsf_Y",
+    "date": "2023-06-10",
+    "location": "منتزه غانغجونغتشيون الرياضي، سوغويبو",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/mPeFqepsf_Y/maxresdefault.jpg"
+  },
+  {
+    "id": 103,
+    "title": "رقصة غانغجونغ الثلاثية",
+    "description": "أداء رقصة غانغجونغ الثلاثية في منتزه غانغجونغتشيون الرياضي.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=MzIpAmDAYzk",
+    "date": "2023-06-10",
+    "location": "منتزه غانغجونغتشيون الرياضي، سوغويبو",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/MzIpAmDAYzk/maxresdefault.jpg"
+  },
+  {
+    "id": 104,
+    "title": "مخيم غانغجونغ الأول لموسيقى السلام 2023",
+    "description": "مشاهد من مخيم غانغجونغ الأول لموسيقى السلام 2023 في منتزه غانغجونغتشيون الرياضي.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=OGKd_pnrul4",
+    "date": "2023-06-10",
+    "location": "منتزه غانغجونغتشيون الرياضي، سوغويبو",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/OGKd_pnrul4/maxresdefault.jpg"
+  },
+  {
+    "id": 105,
+    "title": "مخيم غانغجونغ الأول لموسيقى السلام 2023",
+    "description": "مشاهد من مخيم غانغجونغ الأول لموسيقى السلام 2023 في منتزه غانغجونغتشيون الرياضي.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=GHSxHVc-b1w",
+    "date": "2023-06-10",
+    "location": "منتزه غانغجونغتشيون الرياضي، سوغويبو",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/GHSxHVc-b1w/maxresdefault.jpg"
+  },
+  {
+    "id": 106,
+    "title": "مخيم غانغجونغ الأول لموسيقى السلام 2023",
+    "description": "مشاهد من مخيم غانغجونغ الأول لموسيقى السلام 2023 في منتزه غانغجونغتشيون الرياضي.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=1TyLqzoHA7M",
+    "date": "2023-06-10",
+    "location": "منتزه غانغجونغتشيون الرياضي، سوغويبو",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/1TyLqzoHA7M/maxresdefault.jpg"
+  },
+  {
+    "id": 107,
+    "title": "مخيم غانغجونغ الأول لموسيقى السلام 2023",
+    "description": "مشاهد من مخيم غانغجونغ الأول لموسيقى السلام 2023 في منتزه غانغجونغتشيون الرياضي.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=YwOO627losU",
+    "date": "2023-06-10",
+    "location": "منتزه غانغجونغتشيون الرياضي، سوغويبو",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/YwOO627losU/maxresdefault.jpg"
+  },
+  {
+    "id": 108,
+    "title": "مخيم غانغجونغ الأول لموسيقى السلام 2023",
+    "description": "مشاهد من مخيم غانغجونغ الأول لموسيقى السلام 2023 في منتزه غانغجونغتشيون الرياضي.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=RH2x3ctcBgU",
+    "date": "2023-06-10",
+    "location": "منتزه غانغجونغتشيون الرياضي، سوغويبو",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/RH2x3ctcBgU/maxresdefault.jpg"
+  },
+  {
+    "id": 109,
+    "title": "مخيم غانغجونغ الأول لموسيقى السلام 2023",
+    "description": "مشاهد من مخيم غانغجونغ الأول لموسيقى السلام 2023 في منتزه غانغجونغتشيون الرياضي.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=tFxoLxIDfyM",
+    "date": "2023-06-10",
+    "location": "منتزه غانغجونغتشيون الرياضي، سوغويبو",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/tFxoLxIDfyM/maxresdefault.jpg"
+  },
+  {
+    "id": 110,
+    "title": "مخيم غانغجونغ الأول لموسيقى السلام 2023",
+    "description": "مشاهد من مخيم غانغجونغ الأول لموسيقى السلام 2023 في منتزه غانغجونغتشيون الرياضي.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=-PhTNOVdLc0",
+    "date": "2023-06-10",
+    "location": "منتزه غانغجونغتشيون الرياضي، سوغويبو",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/-PhTNOVdLc0/maxresdefault.jpg"
+  },
+  {
+    "id": 111,
+    "title": "مخيم غانغجونغ الأول لموسيقى السلام 2023",
+    "description": "مشاهد من مخيم غانغجونغ الأول لموسيقى السلام 2023 في منتزه غانغجونغتشيون الرياضي.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=mC-HJ-VhLOQ",
+    "date": "2023-06-10",
+    "location": "منتزه غانغجونغتشيون الرياضي، سوغويبو",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/mC-HJ-VhLOQ/maxresdefault.jpg"
+  },
+  {
+    "id": 112,
+    "title": "مخيم غانغجونغ لموسيقى السلام",
+    "description": "أقيم أول مخيم غانغجونغ لموسيقى السلام تحت شعار 'أوقفوا الحرب!'",
+    "youtubeUrl": "https://www.youtube.com/watch?v=crK6y7mJrfY",
+    "date": "2023-06-10",
+    "location": "منتزه غانغجونغتشيون الرياضي، سوغويبو",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/crK6y7mJrfY/maxresdefault.jpg"
+  },
+  {
+    "id": 201,
+    "title": "مخيم غانغجونغ الثاني لموسيقى السلام قيد التحضير!",
+    "description": "نحن نعمل بجد معاً للتحضير لمخيم غانغجونغ لموسيقى السلام غداً!",
+    "youtubeUrl": "https://www.youtube.com/watch?v=pcsM9lxlA24",
+    "date": "2025-06-13",
+    "location": "حول مطعم هالمي ووتر، غانغجونغ دونغ، سوغويبو",
+    "eventType": "camp",
+    "eventYear": 2025,
+    "thumbnailUrl": "https://i.ytimg.com/vi/pcsM9lxlA24/maxresdefault.jpg"
+  },
+  {
+    "id": 202,
+    "title": "مخيم غانغجونغ الثاني لموسيقى السلام",
+    "description": "مهرجان موسيقي للسلام ومناهضة الحرب أقيم في قرية غانغجونغ، جيجو.",
+    "youtubeUrl": "https://youtu.be/DBlCTgWNNKU?si=9QRus6J85pPEqf-F",
+    "date": "2025-06-14",
+    "location": "حول مطعم هالمي ووتر، غانغجونغ دونغ، سوغويبو",
+    "eventType": "camp",
+    "eventYear": 2025,
+    "thumbnailUrl": "https://i.ytimg.com/vi/DBlCTgWNNKU/maxresdefault.jpg"
+  }
+]
