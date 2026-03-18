@@ -38,9 +38,9 @@ const CampHero: React.FC<CampHeroProps> = ({ camp }) => {
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ y: 16 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
         >
           <h1 className="typo-h1 text-white mb-4 hyphens-auto break-words">{camp.title}</h1>
           {camp.slogan && <p className="typo-subtitle text-gray-100 mb-6 hyphens-auto break-words">{camp.slogan}</p>}

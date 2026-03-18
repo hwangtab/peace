@@ -46,9 +46,9 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ y: 16 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
         >
           <h1 className="text-[clamp(1.5rem,8vw,5.5rem)] font-partial leading-tight text-cloud-white mb-6 drop-shadow-md text-balance hyphens-auto break-words max-w-5xl mx-auto">
             {t('home.hero.title')}
