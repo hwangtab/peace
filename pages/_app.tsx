@@ -45,7 +45,7 @@ function App({ Component, pageProps }: AppProps) {
     <NavigationProvider>
       <Navigation />
       <main id="main-content">
-        <Component key={router.asPath} {...pageProps} />
+        <Component key={router.pathname} {...pageProps} />
       </main>
       <Footer />
     </NavigationProvider>
