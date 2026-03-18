@@ -995,5 +995,62 @@
         "eventType": "live",
         "musicianIds": [43],
         "thumbnailUrl": "https://i.ytimg.com/vi/IhRHP7c6Eao/maxresdefault.jpg"
+    },
+    {
+        "id": 286,
+        "title": "평화성지 소성리 - 정진석 노래",
+        "description": "소성리 평화성지에서의 정진석 노래입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/zgiWwanjPdI",
+        "eventType": "live",
+        "musicianIds": [2],
+        "thumbnailUrl": "https://i.ytimg.com/vi/zgiWwanjPdI/maxresdefault.jpg"
+    },
+    {
+        "id": 287,
+        "title": "소성리 - 정진석 노래",
+        "description": "소성리에서의 정진석 라이브입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/CCpHFrcSzPw",
+        "date": "2021-01-01",
+        "eventType": "live",
+        "musicianIds": [2],
+        "thumbnailUrl": "https://i.ytimg.com/vi/CCpHFrcSzPw/maxresdefault.jpg"
+    },
+    {
+        "id": 288,
+        "title": "소성리 \"세계적 가수 정진석\" 새노래",
+        "description": "소성리에서의 정진석 새노래 라이브입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/c25pxwnhV0M",
+        "date": "2018-05-30",
+        "eventType": "live",
+        "musicianIds": [2],
+        "thumbnailUrl": "https://i.ytimg.com/vi/c25pxwnhV0M/maxresdefault.jpg"
+    },
+    {
+        "id": 289,
+        "title": "조약골 - 아름다운 바다",
+        "description": "테이크아웃드로잉에서의 조약골 라이브입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/65tDAbqJZaQ",
+        "date": "2016-01-23",
+        "eventType": "live",
+        "musicianIds": [44],
+        "thumbnailUrl": "https://i.ytimg.com/vi/65tDAbqJZaQ/maxresdefault.jpg"
+    },
+    {
+        "id": 290,
+        "title": "조약골 - 평화가 무엇이냐",
+        "description": "황새울 방송국 들소리 제작, 조약골의 평화가 무엇이냐입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/e2Oufxoc7x4",
+        "eventType": "music_video",
+        "musicianIds": [44],
+        "thumbnailUrl": "https://i.ytimg.com/vi/e2Oufxoc7x4/maxresdefault.jpg"
+    },
+    {
+        "id": 291,
+        "title": "동지여 굳세게 - 조약골",
+        "description": "류형선 작사·작곡, 조약골 노래입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/BEEuFDb1GyM",
+        "eventType": "music_video",
+        "musicianIds": [44],
+        "thumbnailUrl": "https://i.ytimg.com/vi/BEEuFDb1GyM/maxresdefault.jpg"
     }
 ]
