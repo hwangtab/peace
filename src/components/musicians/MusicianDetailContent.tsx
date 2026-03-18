@@ -11,6 +11,7 @@ import MusicianCard from './MusicianCard';
 import VideoCard from '../videos/VideoCard';
 import InstagramIcon from '../icons/InstagramIcon';
 import YouTubeIcon from '../icons/YouTubeIcon';
+import WaveDivider from '../common/WaveDivider';
 
 interface BreadcrumbItem {
   name: string;
@@ -168,6 +169,8 @@ export default function MusicianDetailContent({
         </div>
       </div>
 
+      <WaveDivider className="text-white -mt-[60px] sm:-mt-[100px] relative z-10" />
+
       {/* Description */}
       <div className="bg-white py-16 flex-1">
         <div className="container mx-auto px-4">
@@ -206,6 +209,10 @@ export default function MusicianDetailContent({
         </div>
       </div>
 
+      {relatedVideos.length > 0 && (
+        <WaveDivider className="text-ocean-sand -mt-[60px] sm:-mt-[100px] relative z-10" />
+      )}
+
       {/* Related Videos */}
       {relatedVideos.length > 0 && (
         <div className="bg-ocean-sand py-16">
@@ -222,6 +229,10 @@ export default function MusicianDetailContent({
             </div>
           </div>
         </div>
+      )}
+
+      {relatedVideos.length > 0 && otherMusicians.length > 0 && (
+        <WaveDivider className="text-white -mt-[60px] sm:-mt-[100px] relative z-10" />
       )}
 
       {/* Other Musicians */}
