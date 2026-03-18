@@ -1052,5 +1052,281 @@
         "eventType": "music_video",
         "musicianIds": [44],
         "thumbnailUrl": "https://i.ytimg.com/vi/BEEuFDb1GyM/maxresdefault.jpg"
+    },
+    {
+        "id": 292,
+        "title": "으라차차 인터뷰 - 조성일",
+        "description": "꽃다지의 으라차차 인터뷰, 조성일 편입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/EWRiTHzyLyk",
+        "eventType": "interview",
+        "musicianIds": [45],
+        "thumbnailUrl": "https://i.ytimg.com/vi/EWRiTHzyLyk/maxresdefault.jpg"
+    },
+    {
+        "id": 293,
+        "title": "조성일 1집 솔로음반 발매기념 지역순회 미니 콘서트 '시동을 걸었어'",
+        "description": "꽃다지 14년, 조성일 1집 솔로음반 발매기념 콘서트입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/fVC1FS-mfk8",
+        "eventType": "live",
+        "musicianIds": [45],
+        "thumbnailUrl": "https://i.ytimg.com/vi/fVC1FS-mfk8/maxresdefault.jpg"
+    },
+    {
+        "id": 294,
+        "title": "심층인터뷰 싱어송라이터 조성일 - 조성일과 꽃다지",
+        "description": "제주 서귀포 문화공간 '와봔'에서의 심층인터뷰입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/6Jzm8myzTs8",
+        "eventType": "interview",
+        "musicianIds": [45],
+        "thumbnailUrl": "https://i.ytimg.com/vi/6Jzm8myzTs8/maxresdefault.jpg"
+    },
+    {
+        "id": 295,
+        "title": "Jinu Konda - Country Night",
+        "description": "고인물에서의 지누콘다 라이브입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/VTOMLryL6N4",
+        "date": "2020-02-09",
+        "eventType": "live",
+        "musicianIds": [46],
+        "thumbnailUrl": "https://i.ytimg.com/vi/VTOMLryL6N4/maxresdefault.jpg"
+    },
+    {
+        "id": 296,
+        "title": "지누콘다(JINU KONDA) - NEVER STOP Vol.4",
+        "description": "NEVER STOP Vol.4 스페셜 스테이지 지누콘다입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/SnZA3h1h-q4",
+        "eventType": "live",
+        "musicianIds": [46],
+        "thumbnailUrl": "https://i.ytimg.com/vi/SnZA3h1h-q4/maxresdefault.jpg"
+    },
+    {
+        "id": 297,
+        "title": "Jinu Konda - Take Me Home, Country Roads",
+        "description": "예술해방전선 정기 예술회에서의 지누콘다 라이브입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/GV7eaZnT6Ic",
+        "date": "2020-01-31",
+        "eventType": "live",
+        "musicianIds": [46],
+        "thumbnailUrl": "https://i.ytimg.com/vi/GV7eaZnT6Ic/maxresdefault.jpg"
+    },
+    {
+        "id": 298,
+        "title": "제주 4·3의 울림! 민중가수 최상돈",
+        "description": "혼저옵서예, 제주 4·3의 울림을 전하는 민중가수 최상돈입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/UuyqY8xo6Yc",
+        "eventType": "interview",
+        "musicianIds": [48],
+        "thumbnailUrl": "https://i.ytimg.com/vi/UuyqY8xo6Yc/maxresdefault.jpg"
+    },
+    {
+        "id": 299,
+        "title": "잊지말아야할 제주의 기억 4.3을 예술로 승화시킨 최상돈 가수",
+        "description": "의회잇수다, 최상돈 가수와 김경훈 시인 인터뷰입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/exF380sO-mo",
+        "eventType": "interview",
+        "musicianIds": [48],
+        "thumbnailUrl": "https://i.ytimg.com/vi/exF380sO-mo/maxresdefault.jpg"
+    },
+    {
+        "id": 300,
+        "title": "최상돈 - 여기는 우리가 살아 지켜갈곳",
+        "description": "하나마당후야제에서의 최상돈 라이브입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/lcvntjQFwN0",
+        "eventType": "live",
+        "musicianIds": [48],
+        "thumbnailUrl": "https://i.ytimg.com/vi/lcvntjQFwN0/maxresdefault.jpg"
+    },
+    {
+        "id": 301,
+        "title": "키타와올겐 - 노인",
+        "description": "키타와올겐의 라이브 영상입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/HZbpddmeKew",
+        "eventType": "live",
+        "musicianIds": [50],
+        "thumbnailUrl": "https://i.ytimg.com/vi/HZbpddmeKew/maxresdefault.jpg"
+    },
+    {
+        "id": 302,
+        "title": "키타와 올겐 - 2025 삼다콘서트 라이브",
+        "description": "2025 삼다콘서트에서의 키타와 올겐 라이브 공연입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/fyCP5Wd3mcU",
+        "eventType": "live",
+        "musicianIds": [50],
+        "thumbnailUrl": "https://i.ytimg.com/vi/fyCP5Wd3mcU/maxresdefault.jpg"
+    },
+    {
+        "id": 303,
+        "title": "키타와올겐 - 새계절",
+        "description": "키타와올겐의 라이브 영상입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/XEgIJCLbK00",
+        "eventType": "live",
+        "musicianIds": [50],
+        "thumbnailUrl": "https://i.ytimg.com/vi/XEgIJCLbK00/maxresdefault.jpg"
+    },
+    {
+        "id": 304,
+        "title": "태히언 Tehiun - JEBI DABANG LIVE",
+        "description": "제비다방에서의 태히언 풀 라이브입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/m_farkK8yv8",
+        "date": "2026-01-27",
+        "eventType": "live",
+        "musicianIds": [51],
+        "thumbnailUrl": "https://i.ytimg.com/vi/m_farkK8yv8/maxresdefault.jpg"
+    },
+    {
+        "id": 305,
+        "title": "태히언 Tehiun - 올레보자 Olleboja at Momentrip",
+        "description": "2022년 어느 봄, Momentrip에서의 태히언 라이브입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/qv3_Uuxc4r0",
+        "date": "2022-01-01",
+        "eventType": "live",
+        "musicianIds": [51],
+        "thumbnailUrl": "https://i.ytimg.com/vi/qv3_Uuxc4r0/maxresdefault.jpg"
+    },
+    {
+        "id": 306,
+        "title": "태히언 Tehiun - On A Desert (MV)",
+        "description": "태히언의 On A Desert 뮤직비디오입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/-Ez3vTjd314",
+        "eventType": "music_video",
+        "musicianIds": [51],
+        "thumbnailUrl": "https://i.ytimg.com/vi/-Ez3vTjd314/maxresdefault.jpg"
+    },
+    {
+        "id": 307,
+        "title": "피움(P:UM) - 청춘마이크 in 부천",
+        "description": "부천 청춘마이크에서의 피움 라이브입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/HAm1Jg1LZkY",
+        "eventType": "live",
+        "musicianIds": [52],
+        "thumbnailUrl": "https://i.ytimg.com/vi/HAm1Jg1LZkY/maxresdefault.jpg"
+    },
+    {
+        "id": 308,
+        "title": "피움 - 소실점",
+        "description": "싱어송라이터 피움(P:UM)의 구석구석 라이브입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/vK0TvMWcK08",
+        "eventType": "live",
+        "musicianIds": [52],
+        "thumbnailUrl": "https://i.ytimg.com/vi/vK0TvMWcK08/maxresdefault.jpg"
+    },
+    {
+        "id": 309,
+        "title": "피움 - ART KNOCK 아티스트 인터뷰",
+        "description": "어떻게 고유한 모든 존재들을 향해 노래할 수 있을까? 피움 인터뷰입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/t-NDoWVrFZY",
+        "eventType": "interview",
+        "musicianIds": [52],
+        "thumbnailUrl": "https://i.ytimg.com/vi/t-NDoWVrFZY/maxresdefault.jpg"
+    },
+    {
+        "id": 310,
+        "title": "자이 x HANASH - 이름을 모르는 먼 곳의 그대에게 서울 쇼케이스",
+        "description": "자이와 HANASH의 서울 쇼케이스 라이브입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/ka9DcFOD2fw",
+        "date": "2024-11-02",
+        "eventType": "live",
+        "musicianIds": [11, 59],
+        "thumbnailUrl": "https://i.ytimg.com/vi/ka9DcFOD2fw/maxresdefault.jpg"
+    },
+    {
+        "id": 311,
+        "title": "호와호 howaho - JEBI DABANG LIVE",
+        "description": "제비다방에서의 호와호 풀 라이브입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/ybeiVmWBWYw",
+        "date": "2026-02-01",
+        "eventType": "live",
+        "musicianIds": [53],
+        "thumbnailUrl": "https://i.ytimg.com/vi/ybeiVmWBWYw/maxresdefault.jpg"
+    },
+    {
+        "id": 312,
+        "title": "호와호(howaho) - Summer, Somewhere (Lyric Video)",
+        "description": "호와호의 Summer, Somewhere 리릭 비디오입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/fP-ITAf8Za0",
+        "eventType": "music_video",
+        "musicianIds": [53],
+        "thumbnailUrl": "https://i.ytimg.com/vi/fP-ITAf8Za0/maxresdefault.jpg"
+    },
+    {
+        "id": 313,
+        "title": "호와호 - 춤 (온스테이지)",
+        "description": "온스테이지 317회, 호와호의 춤입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/-xjCi1lgtmo",
+        "eventType": "live",
+        "musicianIds": [53],
+        "thumbnailUrl": "https://i.ytimg.com/vi/-xjCi1lgtmo/maxresdefault.jpg"
+    },
+    {
+        "id": 314,
+        "title": "허정혁 - 수풀 (온스테이지)",
+        "description": "온스테이지, 허정혁의 수풀입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/cdMDAmUw-ww",
+        "eventType": "live",
+        "musicianIds": [55],
+        "thumbnailUrl": "https://i.ytimg.com/vi/cdMDAmUw-ww/maxresdefault.jpg"
+    },
+    {
+        "id": 315,
+        "title": "허정혁 - 새로운 길 (Official Audio)",
+        "description": "허정혁의 새로운 길 공식 오디오입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/iVBKvcOnhXQ",
+        "eventType": "music_video",
+        "musicianIds": [55],
+        "thumbnailUrl": "https://i.ytimg.com/vi/iVBKvcOnhXQ/maxresdefault.jpg"
+    },
+    {
+        "id": 316,
+        "title": "허정혁 - 계절따라 (MV)",
+        "description": "허정혁의 계절따라 뮤직비디오입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/9cUem5QHwFg",
+        "eventType": "music_video",
+        "musicianIds": [55],
+        "thumbnailUrl": "https://i.ytimg.com/vi/9cUem5QHwFg/maxresdefault.jpg"
+    },
+    {
+        "id": 317,
+        "title": "황명하 - 다시, 비가내려 (Live. ON)",
+        "description": "LIVE. ON에서의 황명하 라이브입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/B1jwBkQxccU",
+        "eventType": "live",
+        "musicianIds": [56],
+        "thumbnailUrl": "https://i.ytimg.com/vi/B1jwBkQxccU/maxresdefault.jpg"
+    },
+    {
+        "id": 318,
+        "title": "황명하 - 홀로 (포커스 FolkUs)",
+        "description": "포커스(FolkUs) 예선 풀버전, 이하이 원곡 황명하 편입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/q92jHcVWfP4",
+        "eventType": "live",
+        "musicianIds": [56],
+        "thumbnailUrl": "https://i.ytimg.com/vi/q92jHcVWfP4/maxresdefault.jpg"
+    },
+    {
+        "id": 319,
+        "title": "뺄라지다 in 2040 PZI 발대식",
+        "description": "2040 PZI 발대식에서의 뺄라지다 공연입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/3QvZgvH4dDs",
+        "eventType": "live",
+        "musicianIds": [58],
+        "thumbnailUrl": "https://i.ytimg.com/vi/3QvZgvH4dDs/maxresdefault.jpg"
+    },
+    {
+        "id": 320,
+        "title": "동백작은학교 X 뺄라지다 - 윤석열탄핵표결 시위 바투카타",
+        "description": "동백작은학교와 뺄라지다의 탄핵표결 시위 바투카타입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/zv61or_1bls",
+        "eventType": "live",
+        "musicianIds": [58],
+        "thumbnailUrl": "https://i.ytimg.com/vi/zv61or_1bls/maxresdefault.jpg"
+    },
+    {
+        "id": 321,
+        "title": "뺄라지다 in 컬러풀산지 페스티벌",
+        "description": "컬러풀산지 페스티벌에서의 뺄라지다 공연입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/dqnDbaouW6E",
+        "eventType": "live",
+        "musicianIds": [58],
+        "thumbnailUrl": "https://i.ytimg.com/vi/dqnDbaouW6E/maxresdefault.jpg"
     }
 ]
