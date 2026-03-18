@@ -159,7 +159,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => {
       </section>
 
       {/* Overview Section */}
-      <Section background="ocean-sand" ref={infoRef}>
+      <Section background="ocean-sand" ref={infoRef} className="pb-24 md:pb-32">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
