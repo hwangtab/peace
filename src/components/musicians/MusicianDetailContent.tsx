@@ -231,7 +231,7 @@ export default function MusicianDetailContent({
 
       {/* Related Videos */}
       {relatedVideos.length > 0 && (
-        <div className="bg-ocean-sand py-16">
+        <div className="bg-ocean-sand pt-16 pb-24 sm:pb-36">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <h2 className="typo-h2 text-jeju-ocean text-center mb-10">{t('nav.video')}</h2>
