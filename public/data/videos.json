@@ -1328,5 +1328,15 @@
         "eventType": "live",
         "musicianIds": [58],
         "thumbnailUrl": "https://i.ytimg.com/vi/dqnDbaouW6E/maxresdefault.jpg"
+    },
+    {
+        "id": 322,
+        "title": "ELPATRON 엘파트론 - 제트싸이져 기타 라이브",
+        "description": "제트싸이져(Zsthyger)가 엘파트론 기타리스트로 활동하는 영상입니다. TRENDKILL EXTREME FEAST 2012.",
+        "youtubeUrl": "https://www.youtube.com/embed/XTJfNlpoq5Q",
+        "date": "2012-01-01",
+        "eventType": "live",
+        "musicianIds": [27],
+        "thumbnailUrl": "https://i.ytimg.com/vi/XTJfNlpoq5Q/maxresdefault.jpg"
     }
 ]
