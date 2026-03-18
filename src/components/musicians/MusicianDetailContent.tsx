@@ -207,7 +207,7 @@ export default function MusicianDetailContent({
             <h2 className="typo-h2 text-jeju-ocean text-center mb-10">
               {t('nav.musician')}
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
               {otherMusicians.slice(0, Math.floor(otherMusicians.length / 3) * 3).map((m, i) => (
                 <MusicianCard
                   key={m.id}
