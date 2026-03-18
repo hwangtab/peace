@@ -3,12 +3,14 @@ import { FaInstagram } from 'react-icons/fa';
 import { HiOutlineMail } from 'react-icons/hi';
 import { ROUTES } from '../../constants/routes';
 import { SITE_CONFIG } from '../../constants/config';
+import { getCamps } from '../../data/camps';
 
 import { useTranslation } from 'next-i18next';
 // ...
 
 const Footer = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
+    const camp2026 = getCamps(i18n.language).find(c => c.id === 'camp-2026');
 
     const FOOTER_MENU_ITEMS = [
         { nameKey: 'footer.menu.home', path: ROUTES.HOME },
@@ -79,15 +81,17 @@ const Footer = () => {
                                         {t(item.nameKey)}
                                     </Link>
                                 ))}
-                                <a
-                                    href="https://tumblbug.com/gpmc3?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=footer"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="block text-golden-sun hover:text-yellow-300
+                                {camp2026?.fundingUrl && (
+                                    <a
+                                        href={`${camp2026.fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=footer`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="block text-golden-sun hover:text-yellow-300
                                transition-colors duration-200 text-sm font-medium"
-                                >
-                                    {t('camp.ticketing_2026')}
-                                </a>
+                                    >
+                                        {t('camp.ticketing_2026')}
+                                    </a>
+                                )}
                                 {ALBUM_MENU_ITEMS.slice(0, 2).map((item) => (
                                     <Link
                                         key={item.path}
