@@ -101,7 +101,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => {
       disableBottomPadding={true}
     >
       {/* Hero Section with Background Image */}
-      <section className="relative min-h-[500px] md:min-h-[600px] lg:min-h-[700px] flex items-center justify-center text-center overflow-hidden bg-ocean-gradient pt-20">
+      <section className="relative min-h-[500px] md:min-h-[600px] lg:min-h-[700px] flex items-center justify-center text-center overflow-hidden bg-ocean-gradient pt-20 pb-16">
         <Image
           src="/images-webp/camps/2023/20230610밤 전쟁을끝내자.webp"
           alt={translatedTitle}
