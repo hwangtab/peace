@@ -183,6 +183,12 @@ export const getEventSchema = (event: {
   };
   image?: string;
   performers?: Array<{ type: 'Person' | 'MusicGroup'; name: string }>;
+  offers?: {
+    url: string;
+    price?: string;
+    priceCurrency?: string;
+    availability?: string;
+  };
 }, lang: string = 'ko') => ({
   "@context": "https://schema.org",
   "@type": "Event",
@@ -213,7 +219,16 @@ export const getEventSchema = (event: {
     "@type": "Organization",
     "name": lang === 'ko' ? "강정피스앤뮤직캠프" : "Gangjeong Peace Music Camp",
     "url": "https://peaceandmusic.net"
-  }
+  },
+  ...(event.offers ? {
+    "offers": {
+      "@type": "Offer",
+      "url": event.offers.url,
+      "price": event.offers.price || "0",
+      "priceCurrency": event.offers.priceCurrency || "KRW",
+      "availability": event.offers.availability || "https://schema.org/InStock"
+    }
+  } : {})
 });
 
 // ProfilePage Schema - 뮤지션 프로필 페이지

@@ -5,7 +5,7 @@ import nextI18NextConfig from '../../../../next-i18next.config';
 import { Musician } from '../../../../src/types/musician';
 import { VideoItem } from '../../../../src/types/video';
 import { loadLocalizedData } from '../../../../src/utils/dataLoader';
-import { camps } from '../../../../src/data/camps';
+import { camps, getCamps } from '../../../../src/data/camps';
 import MusicianDetailContent from '../../../../src/components/musicians/MusicianDetailContent';
 
 interface CampMusicianPageProps {
@@ -15,7 +15,8 @@ interface CampMusicianPageProps {
 }
 
 export default function CampMusicianPage({ musician, relatedVideos, otherMusicians }: CampMusicianPageProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const camp2026 = getCamps(i18n.language).find(c => c.id === 'camp-2026');
 
   return (
     <MusicianDetailContent
@@ -30,6 +31,7 @@ export default function CampMusicianPage({ musician, relatedVideos, otherMusicia
         { name: musician.name, url: `https://peaceandmusic.net/camps/2026/musicians/${musician.id}` },
       ]}
       musicianHrefPrefix="/camps/2026/musicians"
+      fundingUrl={camp2026?.fundingUrl}
     />
   );
 }

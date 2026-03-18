@@ -70,7 +70,15 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => {
     performers: camp2026.participants?.map(p => ({
       type: 'MusicGroup',
       name: typeof p === 'string' ? p : p.name
-    }))
+    })),
+    ...(camp2026.fundingUrl ? {
+      offers: {
+        url: camp2026.fundingUrl,
+        price: "0",
+        priceCurrency: "KRW",
+        availability: "https://schema.org/InStock"
+      }
+    } : {})
   }, i18n.language);
 
   const participantCount = camp2026.participants?.length || 0;
@@ -135,14 +143,16 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => {
               >
                 {t('camp.lineup_count', { count: participantCount })}
               </a>
-              <a
-                href="https://tumblbug.com/gpmc3"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block px-6 py-2.5 bg-white/15 backdrop-blur-sm text-white font-medium rounded-full text-sm border border-white/30 hover:bg-white/25 transition-colors"
-              >
-                {t('camp.ticketing_2026')}
-              </a>
+              {camp2026.fundingUrl && (
+                <a
+                  href={`${camp2026.fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=hero`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-6 py-2.5 bg-white text-jeju-ocean font-bold rounded-full text-sm shadow-lg hover:bg-gray-100 transition-colors"
+                >
+                  {t('camp.ticketing_2026')}
+                </a>
+              )}
             </div>
           </motion.div>
         </div>
@@ -160,7 +170,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => {
             <div className="flex flex-col md:flex-row gap-8 items-start">
               {/* Poster */}
               <a
-                href="https://tumblbug.com/gpmc3"
+                href={`${camp2026.fundingUrl || '#'}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=poster`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full md:w-[360px] flex-shrink-0 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"

@@ -79,6 +79,15 @@ const Footer = () => {
                                         {t(item.nameKey)}
                                     </Link>
                                 ))}
+                                <a
+                                    href="https://tumblbug.com/gpmc3?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=footer"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="block text-golden-sun hover:text-yellow-300
+                               transition-colors duration-200 text-sm font-medium"
+                                >
+                                    {t('camp.ticketing_2026')}
+                                </a>
                                 {ALBUM_MENU_ITEMS.slice(0, 2).map((item) => (
                                     <Link
                                         key={item.path}
