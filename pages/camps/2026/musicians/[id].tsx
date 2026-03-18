@@ -31,6 +31,7 @@ export default function CampMusicianPage({ musician, relatedVideos, otherMusicia
         { name: musician.name, url: `https://peaceandmusic.net/camps/2026/musicians/${musician.id}` },
       ]}
       musicianHrefPrefix="/camps/2026/musicians"
+      otherMusiciansTitle="함께하는 뮤지션"
       fundingUrl={camp2026?.fundingUrl}
     />
   );
