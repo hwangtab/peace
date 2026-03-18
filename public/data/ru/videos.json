@@ -1,0 +1,235 @@
+[
+  {
+    "id": 1,
+    "title": "Ким Донсан и Blueeewoot - Тебе в далекие края, чьего имени я не знаю (Сеульский шоукейс)",
+    "description": "Ким Донсан и Blueeewoot — это фолк/блюзовый музыкант Ким Донсан из Сувона и его группа. Прозванный «корейским Вуди Гатри», Ким Донсан известен музыкой с социальным подтекстом. Он поет об уволенных рабочих и жертвах джентрификации, а также управляет магазином пластинок и вторичной переработки «Long Player» в Сувоне, превращая его в местное культурное пространство.",
+    "youtubeUrl": "https://www.youtube.com/embed/ejTPpS71nX8",
+    "date": "2024-11-02",
+    "location": "Пространство Ханган, Хондэ, Сеул",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      3
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Wandering Band Чан Хёнхо - Тебе в далекие края, чьего имени я не знаю (Сеульский шоукейс)",
+    "description": "Wandering Band — это «уличная группа», созданная в 2011 году вокруг автора-исполнителя Чан Хёнхо. Они поют в местах социальной борьбы и конфликтов, проявляя солидарность на протяжении более десяти лет на таких мероприятиях, как движение за установление истины о пароме Севоль, протест против военно-морской базы в Канчжоне, борьба за восстановление экипажа KTX и борьба рабочих Colt/Coltex.",
+    "youtubeUrl": "https://www.youtube.com/embed/Ts_fFqAYLYE",
+    "date": "2024-11-02",
+    "location": "Пространство Ханган, Хондэ, Сеул",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      15
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Намсу - Тебе в далекие края, чьего имени я не знаю (Сеульский шоукейс)",
+    "description": "Универсальный сольный артист, охватывающий инди, фолк/блюз, джаз и нью-эйдж. Она руководит культурным пространством «Woodpecker Bookshop», создавая пересечения между музыкой и литературой. Она стремится расширить свои художественные границы, сочетая музыку с визуальным искусством и перформансом.",
+    "youtubeUrl": "https://www.youtube.com/embed/cHl1I5iJqyA",
+    "date": "2024-11-02",
+    "location": "Пространство Ханган, Хондэ, Сеул",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      4
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Ким Ин - Тебе в далекие края, чьего имени я не знаю (Сеульский шоукейс)",
+    "description": "Независимый музыкант, исследующий уникальные звуки и выражающий глубокую привязанность к окружающей среде и миру через музыку. Она работает в различных жанрах и создала свой собственный самобытный музыкальный мир. С лиричной музыкой, вдохновленной звездами и луной, она доносит послание мира с тонкой чувствительностью и глубокими текстами.",
+    "youtubeUrl": "https://www.youtube.com/embed/8jPAlA7cGtM",
+    "date": "2024-11-02",
+    "location": "Пространство Ханган, Хондэ, Сеул",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      6
+    ]
+  },
+  {
+    "id": 5,
+    "title": "MOMO - Тебе в далекие края, чьего имени я не знаю (Сеульский шоукейс)",
+    "description": "Джазовый дуэт Еджин Анжелы Пак и Хван Сыльги. Опираясь на джаз, они вместе исследуют разнообразные и красивые звуки. С помощью импровизации и экспериментов они деликатно улавливают сознание современного общества, выражая обычную повседневную жизнь и напряженность в конфликтных регионах.",
+    "youtubeUrl": "https://www.youtube.com/embed/hh-MwTiaJxk",
+    "date": "2024-11-02",
+    "location": "Пространство Ханган, Хондэ, Сеул",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      10
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Jai x HANASH - Тебе в далекие края, чьего имени я не знаю (Сеульский шоукейс)",
+    "description": "Коллаборация, в которой теплый голос Jai встречается с инновационной электронной музыкой HANASH для исследования новых возможностей. Jai рассказывает повседневные истории печальным, но сильным голосом, в то время как HANASH экспериментирует, сочетая инструменты и жанры со всего мира с электронной музыкой. Их встреча демонстрирует гармоничное слияние традиций и современности.",
+    "youtubeUrl": "https://www.youtube.com/embed/ka9DcFOD2fw",
+    "date": "2024-11-02",
+    "location": "Пространство Ханган, Хондэ, Сеул",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      11,
+      59
+    ]
+  },
+  {
+    "id": 101,
+    "title": "Живая цепь",
+    "description": "Живая цепь перед главными воротами военно-морской базы Чеджу весной 2023 года.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=dF6raNSEkfI",
+    "date": "2023-06-10",
+    "location": "Спортивный парк Канчжончхон, Согвипхо",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/dF6raNSEkfI/sddefault.jpg"
+  },
+  {
+    "id": 102,
+    "title": "2023 1-й Музыкальный лагерь мира в Канчжоне",
+    "description": "Записи живых выступлений с Музыкального лагеря мира в Канчжоне 2023 года в спортивном парке Канчжончхон.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=mPeFqepsf_Y",
+    "date": "2023-06-10",
+    "location": "Спортивный парк Канчжончхон, Согвипхо",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/mPeFqepsf_Y/maxresdefault.jpg"
+  },
+  {
+    "id": 103,
+    "title": "Тройной танец Канчжона",
+    "description": "Выступление «Тройной танец Канчжона» в спортивном парке Канчжончхон.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=MzIpAmDAYzk",
+    "date": "2023-06-10",
+    "location": "Спортивный парк Канчжончхон, Согвипхо",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/MzIpAmDAYzk/maxresdefault.jpg"
+  },
+  {
+    "id": 104,
+    "title": "2023 1-й Музыкальный лагерь мира в Канчжоне",
+    "description": "Сцены из 1-го Музыкального лагеря мира в Канчжоне 2023 года в спортивном парке Канчжончхон.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=OGKd_pnrul4",
+    "date": "2023-06-10",
+    "location": "Спортивный парк Канчжончхон, Согвипхо",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/OGKd_pnrul4/maxresdefault.jpg"
+  },
+  {
+    "id": 105,
+    "title": "2023 1-й Музыкальный лагерь мира в Канчжоне",
+    "description": "Сцены из 1-го Музыкального лагеря мира в Канчжоне 2023 года в спортивном парке Канчжончхон.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=GHSxHVc-b1w",
+    "date": "2023-06-10",
+    "location": "Спортивный парк Канчжончхон, Согвипхо",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/GHSxHVc-b1w/maxresdefault.jpg"
+  },
+  {
+    "id": 106,
+    "title": "2023 1-й Музыкальный лагерь мира в Канчжоне",
+    "description": "Сцены из 1-го Музыкального лагеря мира в Канчжоне 2023 года в спортивном парке Канчжончхон.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=1TyLqzoHA7M",
+    "date": "2023-06-10",
+    "location": "Спортивный парк Канчжончхон, Согвипхо",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/1TyLqzoHA7M/maxresdefault.jpg"
+  },
+  {
+    "id": 107,
+    "title": "2023 1-й Музыкальный лагерь мира в Канчжоне",
+    "description": "Сцены из 1-го Музыкального лагеря мира в Канчжоне 2023 года в спортивном парке Канчжончхон.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=YwOO627losU",
+    "date": "2023-06-10",
+    "location": "Спортивный парк Канчжончхон, Согвипхо",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/YwOO627losU/maxresdefault.jpg"
+  },
+  {
+    "id": 108,
+    "title": "2023 1-й Музыкальный лагерь мира в Канчжоне",
+    "description": "Сцены из 1-го Музыкального лагеря мира в Канчжоне 2023 года в спортивном парке Канчжончхон.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=RH2x3ctcBgU",
+    "date": "2023-06-10",
+    "location": "Спортивный парк Канчжончхон, Согвипхо",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/RH2x3ctcBgU/maxresdefault.jpg"
+  },
+  {
+    "id": 109,
+    "title": "2023 1-й Музыкальный лагерь мира в Канчжоне",
+    "description": "Сцены из 1-го Музыкального лагеря мира в Канчжоне 2023 года в спортивном парке Канчжончхон.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=tFxoLxIDfyM",
+    "date": "2023-06-10",
+    "location": "Спортивный парк Канчжончхон, Согвипхо",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/tFxoLxIDfyM/maxresdefault.jpg"
+  },
+  {
+    "id": 110,
+    "title": "2023 1-й Музыкальный лагерь мира в Канчжоне",
+    "description": "Сцены из 1-го Музыкального лагеря мира в Канчжоне 2023 года в спортивном парке Канчжончхон.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=-PhTNOVdLc0",
+    "date": "2023-06-10",
+    "location": "Спортивный парк Канчжончхон, Согвипхо",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/-PhTNOVdLc0/maxresdefault.jpg"
+  },
+  {
+    "id": 111,
+    "title": "2023 1-й Музыкальный лагерь мира в Канчжоне",
+    "description": "Сцены из 1-го Музыкального лагеря мира в Канчжоне 2023 года в спортивном парке Канчжончхон.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=mC-HJ-VhLOQ",
+    "date": "2023-06-10",
+    "location": "Спортивный парк Канчжончхон, Согвипхо",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/mC-HJ-VhLOQ/maxresdefault.jpg"
+  },
+  {
+    "id": 112,
+    "title": "Музыкальный лагерь мира в Канчжоне",
+    "description": "Первый Музыкальный лагерь мира в Канчжоне прошел под лозунгом «Остановите войну!»",
+    "youtubeUrl": "https://www.youtube.com/watch?v=crK6y7mJrfY",
+    "date": "2023-06-10",
+    "location": "Спортивный парк Канчжончхон, Согвипхо",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/crK6y7mJrfY/maxresdefault.jpg"
+  },
+  {
+    "id": 201,
+    "title": "2-й Музыкальный лагерь мира в Канчжоне готовится!",
+    "description": "Мы усердно работаем вместе, чтобы подготовиться к завтрашнему Музыкальному лагерю мира в Канчжоне!",
+    "youtubeUrl": "https://www.youtube.com/watch?v=pcsM9lxlA24",
+    "date": "2025-06-13",
+    "location": "Рядом с рестораном Halmae Water, Канчжон-дон, Согвипхо",
+    "eventType": "camp",
+    "eventYear": 2025,
+    "thumbnailUrl": "https://i.ytimg.com/vi/pcsM9lxlA24/maxresdefault.jpg"
+  },
+  {
+    "id": 202,
+    "title": "2-й Музыкальный лагерь мира в Канчжоне",
+    "description": "Музыкальный фестиваль мира и против войны, проходящий в деревне Канчжон, Чеджу.",
+    "youtubeUrl": "https://youtu.be/DBlCTgWNNKU?si=9QRus6J85pPEqf-F",
+    "date": "2025-06-14",
+    "location": "Рядом с рестораном Halmae Water, Канчжон-дон, Согвипхо",
+    "eventType": "camp",
+    "eventYear": 2025,
+    "thumbnailUrl": "https://i.ytimg.com/vi/DBlCTgWNNKU/maxresdefault.jpg"
+  }
+]

@@ -1,0 +1,235 @@
+[
+  {
+    "id": 1,
+    "title": "キム・ドンサン & ブルウィット - 名も知らぬ遠き君へ (ソウル・ショーケース)",
+    "description": "キム・ドンサン & ブルウィットは、水原（スウォン）を拠点に活動するフォーク/ブルースミュージシャンのキム・ドンサンと彼のバンドです。「韓国のウディ・ガスリー」の異名を持つキム・ドンサンは、社会的なメッセージを込めた音楽で知られています。解雇された労働者やジェントリフィケーションの犠牲者について歌い、水原の長安門近くでLPとリサイクルショップ「ロングプレーヤー」を運営しながら、そこを地域の文化空間として発展させています。",
+    "youtubeUrl": "https://www.youtube.com/embed/ejTPpS71nX8",
+    "date": "2024-11-02",
+    "location": "スペース漢江、弘大（ホンデ）、ソウル",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      3
+    ]
+  },
+  {
+    "id": 2,
+    "title": "さすらいのバンド チャン・ヒョンホ - 名も知らぬ遠き君へ (ソウル・ショーケース)",
+    "description": "さすらいのバンドは、シンガーソングライターのチャン・ヒョンホを中心に2011年に結成された「ストリートバンド」です。彼らは社会的な闘争や紛争の現場で歌い、セウォル号の真相究明運動、江汀（カンジョン）海軍基地反対デモ、KTX乗務員の復職闘争、パインテックの屋上座り込み、コルト・コルテック労働者の闘争など、10年以上にわたり連帯の声を上げ続けています。",
+    "youtubeUrl": "https://www.youtube.com/embed/Ts_fFqAYLYE",
+    "date": "2024-11-02",
+    "location": "スペース漢江、弘大（ホンデ）、ソウル",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      15
+    ]
+  },
+  {
+    "id": 3,
+    "title": "ナムス - 名も知らぬ遠き君へ (ソウル・ショーケース)",
+    "description": "インディー、フォーク/ブルース、ジャズ、ニューエイジを横断する多才なソロアーティスト。文化空間「キツツキ書店」を運営し、音楽と文学の交差点を生み出しています。音楽と視覚芸術、パフォーマンスを組み合わせることで、自身の芸術적境界を広げることを目指しています。",
+    "youtubeUrl": "https://www.youtube.com/embed/cHl1I5iJqyA",
+    "date": "2024-11-02",
+    "location": "スペース漢江、弘大（ホンデ）、ソウル",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      4
+    ]
+  },
+  {
+    "id": 4,
+    "title": "キム・イン - 名も知らぬ遠き君へ (ソウル・ショーケース)",
+    "description": "独自のサウンドを探求し、音楽を通じて環境と平和への深い愛情を表現するインディペンデント・ミュージシャン。多様なジャンルを楽しみ、独自の音楽世界を築いてきました。星や月をモチーフにした叙情的な音楽で、繊細な感性と深い歌詞とともに平和のメッセージを伝えています。",
+    "youtubeUrl": "https://www.youtube.com/embed/8jPAlA7cGtM",
+    "date": "2024-11-02",
+    "location": "スペース漢江、弘大（ホンデ）、ソウル",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      6
+    ]
+  },
+  {
+    "id": 5,
+    "title": "MOMO - 名も知らぬ遠き君へ (ソウル・ショーケース)",
+    "description": "イェジン・アンジェラ・パクとファン・スルギによるジャズデュオ。ジャズをルーツに、多様で美しいサウンドを共に探求しています。即興演奏と実験的な試みを通じて、現代社会の意識を繊細に捉え、平凡な日常生活や紛争地域に潜む緊張感を表現しています。",
+    "youtubeUrl": "https://www.youtube.com/embed/hh-MwTiaJxk",
+    "date": "2024-11-02",
+    "location": "スペース漢江、弘大（ホンデ）、ソウル",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      10
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Jai x HANASH - 名も知らぬ遠き君へ (ソウル・ショーケース)",
+    "description": "Jaiの温かい歌声とHANASHの革新的な電子音楽が出会い、新たな可能性を探求するコラボレーション。Jaiは日常の物語を悲しくも力強い声で表現し、HANASHは世界中の楽器やジャンルを電子音楽と組み合わせる実験を行っています。二人の出会いは、伝統と現代の調和のとれた融合を示しています。",
+    "youtubeUrl": "https://www.youtube.com/embed/ka9DcFOD2fw",
+    "date": "2024-11-02",
+    "location": "スペース漢江、弘大（ホンデ）、ソウル",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      11,
+      59
+    ]
+  },
+  {
+    "id": 101,
+    "title": "人間鎖",
+    "description": "2023年春、済州海軍基地正門前での人間鎖。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=dF6raNSEkfI",
+    "date": "2023-06-10",
+    "location": "西帰浦市、江汀川（カンジョンチョン）運動公園",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/dF6raNSEkfI/sddefault.jpg"
+  },
+  {
+    "id": 102,
+    "title": "2023 第1回 江汀（カンジョン）平和音楽キャンプ",
+    "description": "江汀川運動公園で開催された2023年江汀平和音楽キャンプのライブ演奏映像。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=mPeFqepsf_Y",
+    "date": "2023-06-10",
+    "location": "西帰浦市、江汀川（カンジョンチョン）運動公園",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/mPeFqepsf_Y/maxresdefault.jpg"
+  },
+  {
+    "id": 103,
+    "title": "江汀（カンジョン）トリプルダンス",
+    "description": "江汀川運動公園での江汀トリプルダンスのパフォーマンス。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=MzIpAmDAYzk",
+    "date": "2023-06-10",
+    "location": "西帰浦市、江汀川（カンジョンチョン）運動公園",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/MzIpAmDAYzk/maxresdefault.jpg"
+  },
+  {
+    "id": 104,
+    "title": "2023 第1回 江汀（カンジョン）平和音楽キャンプ",
+    "description": "江汀川運動公園で開催された2023年第1回江汀平和音楽キャンプの様子。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=OGKd_pnrul4",
+    "date": "2023-06-10",
+    "location": "西帰浦市、江汀川（カンジョンチョン）運動公園",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/OGKd_pnrul4/maxresdefault.jpg"
+  },
+  {
+    "id": 105,
+    "title": "2023 第1回 江汀（カンジョン）平和音楽キャンプ",
+    "description": "江汀川運動公園で開催された2023年第1回江汀平和音楽キャンプの様子。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=GHSxHVc-b1w",
+    "date": "2023-06-10",
+    "location": "西帰浦市、江汀川（カンジョンチョン）運動公園",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/GHSxHVc-b1w/maxresdefault.jpg"
+  },
+  {
+    "id": 106,
+    "title": "2023 第1回 江汀（カンジョン）平和音楽キャンプ",
+    "description": "江汀川運動公園で開催された2023年第1回江汀平和音楽キャンプの様子。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=1TyLqzoHA7M",
+    "date": "2023-06-10",
+    "location": "西帰浦市、江汀川（カンジョンチョン）運動公園",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/1TyLqzoHA7M/maxresdefault.jpg"
+  },
+  {
+    "id": 107,
+    "title": "2023 第1回 江汀（カンジョン）平和音楽キャンプ",
+    "description": "江汀川運動公園で開催された2023年第1回江汀平和音楽キャンプの様子。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=YwOO627losU",
+    "date": "2023-06-10",
+    "location": "西帰浦市、江汀川（カンジョンチョン）運動公園",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/YwOO627losU/maxresdefault.jpg"
+  },
+  {
+    "id": 108,
+    "title": "2023 第1回 江汀（カンジョン）平和音楽キャンプ",
+    "description": "江汀川運動公園で開催された2023年第1回江汀平和音楽キャンプ의様子。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=RH2x3ctcBgU",
+    "date": "2023-06-10",
+    "location": "西帰浦市、江汀川（カンジョンチョン）運動公園",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/RH2x3ctcBgU/maxresdefault.jpg"
+  },
+  {
+    "id": 109,
+    "title": "2023 第1回 江汀（カンジョン）平和音楽キャンプ",
+    "description": "江汀川運動公園で開催された2023年第1回江汀平和音楽キャンプの様子。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=tFxoLxIDfyM",
+    "date": "2023-06-10",
+    "location": "西帰浦市、江汀川（カンジョンチョン）運動公園",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/tFxoLxIDfyM/maxresdefault.jpg"
+  },
+  {
+    "id": 110,
+    "title": "2023 第1回 江汀（カンジョン）平和音楽キャンプ",
+    "description": "江汀川運動公園で開催された2023年第1回江汀平和音楽キャンプの様子。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=-PhTNOVdLc0",
+    "date": "2023-06-10",
+    "location": "西帰浦市、江汀川（カンジョンチョン）運動公園",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/-PhTNOVdLc0/maxresdefault.jpg"
+  },
+  {
+    "id": 111,
+    "title": "2023 第1回 江汀（カンジョン）平和音楽キャンプ",
+    "description": "江汀川運動公園で開催された2023年第1回江汀平和音楽キャンプの様子。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=mC-HJ-VhLOQ",
+    "date": "2023-06-10",
+    "location": "西帰浦市、江汀川（カンジョンチョン）運動公園",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/mC-HJ-VhLOQ/maxresdefault.jpg"
+  },
+  {
+    "id": 112,
+    "title": "江汀（カンジョン）平和音楽キャンプ",
+    "description": "「戦争を止めろ！」というスローガンのもと、第1回江汀平和音楽キャンプが開催されました。",
+    "youtubeUrl": "https://www.youtube.com/watch?v=crK6y7mJrfY",
+    "date": "2023-06-10",
+    "location": "西帰浦市、江汀川（カンジョンチョン）運動公園",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/crK6y7mJrfY/maxresdefault.jpg"
+  },
+  {
+    "id": 201,
+    "title": "第2回 江汀（カンジョン）平和音楽キャンプ準備中！",
+    "description": "明日の江汀平和音楽キャンプに向けて、みんなで一生懸命準備しています！",
+    "youtubeUrl": "https://www.youtube.com/watch?v=pcsM9lxlA24",
+    "date": "2025-06-13",
+    "location": "西帰浦市江汀洞、ハルメムル食堂周辺",
+    "eventType": "camp",
+    "eventYear": 2025,
+    "thumbnailUrl": "https://i.ytimg.com/vi/pcsM9lxlA24/maxresdefault.jpg"
+  },
+  {
+    "id": 202,
+    "title": "第2回 江汀（カンジョン）平和音楽キャンプ",
+    "description": "済州・江汀村で開催された平和と反戦の音楽フェスティバル。",
+    "youtubeUrl": "https://youtu.be/DBlCTgWNNKU?si=9QRus6J85pPEqf-F",
+    "date": "2025-06-14",
+    "location": "西帰浦市江汀洞、ハルメムル食堂周辺",
+    "eventType": "camp",
+    "eventYear": 2025,
+    "thumbnailUrl": "https://i.ytimg.com/vi/DBlCTgWNNKU/maxresdefault.jpg"
+  }
+]
