@@ -14,9 +14,13 @@ interface CampMusicianPageProps {
   otherMusicians: Musician[];
 }
 
-export default function CampMusicianPage({ musician, relatedVideos, otherMusicians }: CampMusicianPageProps) {
+export default function CampMusicianPage({
+  musician,
+  relatedVideos,
+  otherMusicians,
+}: CampMusicianPageProps) {
   const { t, i18n } = useTranslation();
-  const camp2026 = getCamps(i18n.language).find(c => c.id === 'camp-2026');
+  const camp2026 = getCamps(i18n.language).find((c) => c.id === 'camp-2026');
 
   return (
     <MusicianDetailContent
@@ -28,24 +32,29 @@ export default function CampMusicianPage({ musician, relatedVideos, otherMusicia
       breadcrumbs={[
         { name: t('nav.home'), url: 'https://peaceandmusic.net/' },
         { name: t('nav.camp'), url: 'https://peaceandmusic.net/camps/2026' },
-        { name: musician.name, url: `https://peaceandmusic.net/camps/2026/musicians/${musician.id}` },
+        {
+          name: musician.name,
+          url: `https://peaceandmusic.net/camps/2026/musicians/${musician.id}`,
+        },
       ]}
       musicianHrefPrefix="/camps/2026/musicians"
       otherMusiciansTitle="함께하는 뮤지션"
       fundingUrl={camp2026?.fundingUrl}
+      pageContext="camp"
     />
   );
 }
 
 // Get all camp-2026 musician IDs
 function getCamp2026MusicianIds(): number[] {
-  const camp2026 = camps.find(c => c.id === 'camp-2026');
+  const camp2026 = camps.find((c) => c.id === 'camp-2026');
   if (!camp2026?.participants) return [];
   return camp2026.participants
-    .filter((p): p is { name: string; musicianId: number } =>
-      typeof p === 'object' && 'musicianId' in p && typeof p.musicianId === 'number'
+    .filter(
+      (p): p is { name: string; musicianId: number } =>
+        typeof p === 'object' && 'musicianId' in p && typeof p.musicianId === 'number'
     )
-    .map(p => p.musicianId);
+    .map((p) => p.musicianId);
 }
 
 export async function getStaticPaths({ locales }: GetStaticPathsContext) {
@@ -75,15 +84,13 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
 
   // Find related videos
   const videos = loadLocalizedData<VideoItem>(resolvedLocale, 'videos.json');
-  const directVideos = videos.filter((v) =>
-    v.musicianIds?.includes(musician.id)
-  );
+  const directVideos = videos.filter((v) => v.musicianIds?.includes(musician.id));
   const relatedVideos = [...directVideos];
 
   // Other camp musicians only (same camp, with image)
   const campMusicianIdSet = new Set(campMusicianIds);
-  const candidates = musicians.filter((m) =>
-    m.id !== musician.id && m.imageUrl && campMusicianIdSet.has(m.id)
+  const candidates = musicians.filter(
+    (m) => m.id !== musician.id && m.imageUrl && campMusicianIdSet.has(m.id)
   );
 
   const seed = musician.id;
@@ -92,9 +99,7 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
     h = (((h >>> 16) ^ h) * 45679) | 0;
     return ((h >>> 16) ^ h) | 0;
   };
-  const otherMusicians = [...candidates]
-    .sort((a, b) => hash(a.id) - hash(b.id))
-    .slice(0, 8);
+  const otherMusicians = [...candidates].sort((a, b) => hash(a.id) - hash(b.id)).slice(0, 8);
 
   return {
     props: {
