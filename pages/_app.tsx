@@ -45,7 +45,7 @@ function App({ Component, pageProps }: AppProps) {
     <NavigationProvider>
       <Navigation />
       <main id="main-content">
-        <Component key={router.pathname} {...pageProps} />
+        <Component key={router.asPath.split('#')[0]} {...pageProps} />
       </main>
       <Footer />
     </NavigationProvider>
