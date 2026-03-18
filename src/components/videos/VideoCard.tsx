@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
+import Link from 'next/link';
 import { VideoItem } from '../../types/video';
+
+// Camp-2026 participant musicianIds
+const CAMP_2026_MUSICIAN_IDS = new Set([
+  14, 5, 15, 3, 16, 4, 17, 18, 19, 20, 21, 10, 22, 7, 23, 24, 13, 25,
+  26, 27, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 12, 42, 11,
+  43, 2, 44, 45, 46, 47, 48, 49, 50, 51, 52, 60, 59, 53, 54, 55, 56, 57, 58,
+]);
 
 interface VideoCardProps {
   video: VideoItem;
@@ -28,7 +36,7 @@ const getYoutubeWatchUrl = (url: string) =>
   `https://www.youtube.com/watch?v=${getYoutubeVideoId(url)}`;
 
 const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const videoId = getYoutubeVideoId(video.youtubeUrl);
   const [imgSrc, setImgSrc] = useState(
     video.thumbnailUrl || `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
@@ -83,6 +91,16 @@ const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
           </p>
         </div>
       </a>
+      {video.musicianIds && video.musicianIds.some(id => CAMP_2026_MUSICIAN_IDS.has(id)) && (
+        <div className="px-6 pb-4">
+          <Link
+            href={`/camps/2026/musicians/${video.musicianIds.find(id => CAMP_2026_MUSICIAN_IDS.has(id))}`}
+            className="inline-flex items-center text-xs text-jeju-ocean hover:text-ocean-mist transition-colors font-medium"
+          >
+            {t('camp.view_detail')} &rarr;
+          </Link>
+        </div>
+      )}
     </div>
   );
 });

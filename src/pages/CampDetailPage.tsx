@@ -15,6 +15,7 @@ import { getFullUrl } from '../config/env';
 import { getMusicians } from '../api/musicians';
 import { Musician } from '../types/musician';
 import { formatOrdinal } from '../utils/format';
+import Link from 'next/link';
 
 interface CampDetailPageProps {
   campId: string;
@@ -146,6 +147,36 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId, initialMusician
       <WaveDivider className="text-light-beige -mt-[60px] sm:-mt-[100px] relative z-10" />
 
       <CampGallery camp={camp} />
+
+      {/* Next Camp Banner */}
+      {camp.id !== 'camp-2026' && (
+        <div className="bg-jeju-ocean py-12">
+          <div className="container mx-auto px-4 text-center">
+            <h3 className="text-2xl font-bold text-white mb-3">
+              {t('camp.title_2026')}
+            </h3>
+            <p className="text-seafoam mb-6 text-sm">
+              {t('camp.date_badge_2026')} · {t('camp.venue_2026')}
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                href="/camps/2026"
+                className="inline-flex items-center px-6 py-2.5 bg-white/15 text-white font-medium rounded-full text-sm border border-white/30 hover:bg-white/25 transition-colors"
+              >
+                {t('camp.view_detail')}
+              </Link>
+              <a
+                href="https://tumblbug.com/gpmc3?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=past-camp"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-6 py-2.5 bg-golden-sun text-gray-900 font-bold rounded-full text-sm shadow-lg hover:bg-yellow-400 transition-colors"
+              >
+                {t('camp.ticketing_2026')}
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </PageLayout>
   );
 };

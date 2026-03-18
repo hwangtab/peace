@@ -119,6 +119,7 @@ const campsKo: CampEvent[] = [
     location: '강정체육공원',
     startDate: '2026-06-05',
     endDate: '2026-06-07',
+    fundingUrl: 'https://tumblbug.com/gpmc3',
     slogan: '노래하자, 춤추자, 전쟁을 끝내자!',
     participants: [
       { name: '강가히말라야', musicianId: 14 },
@@ -293,6 +294,7 @@ const campsEn: CampEvent[] = [
     location: 'Gangjeong Sports Park',
     startDate: '2026-06-05',
     endDate: '2026-06-07',
+    fundingUrl: 'https://tumblbug.com/gpmc3',
     slogan: "Let's sing, let's dance, end the war!",
     participants: [
       { name: 'Ganghahimalaya', musicianId: 14 },

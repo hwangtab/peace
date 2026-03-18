@@ -25,6 +25,7 @@ export interface CampEvent extends Event {
   collaborators?: string[]; // collaborating organizations
   images: string[]; // image URLs
   description: string;
+  fundingUrl?: string; // external crowdfunding URL (e.g. Tumblbug)
   shortDescription?: string;
 }
 

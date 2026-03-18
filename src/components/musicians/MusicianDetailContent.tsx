@@ -25,6 +25,7 @@ export interface MusicianDetailContentProps {
   backLabel: string;
   breadcrumbs: BreadcrumbItem[];
   musicianHrefPrefix: string;
+  fundingUrl?: string;
 }
 
 export default function MusicianDetailContent({
@@ -35,6 +36,7 @@ export default function MusicianDetailContent({
   backLabel,
   breadcrumbs,
   musicianHrefPrefix,
+  fundingUrl,
 }: MusicianDetailContentProps) {
   const { t, i18n } = useTranslation();
 
@@ -118,7 +120,7 @@ export default function MusicianDetailContent({
                   </div>
                 )}
 
-                {(musician.instagramUrls.length > 0 || musician.youtubeUrl) && (
+                {(musician.instagramUrls.length > 0 || musician.youtubeUrl || fundingUrl) && (
                   <div className="flex flex-wrap gap-2">
                     {musician.instagramUrls.map((url) => {
                       const username = extractInstagramUsername(url);
@@ -146,6 +148,16 @@ export default function MusicianDetailContent({
                         YouTube
                       </a>
                     )}
+                    {fundingUrl && (
+                      <a
+                        href={`${fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=musician-hero-${musician.id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center px-3 py-1.5 text-sm bg-golden-sun text-gray-900 font-medium rounded-full hover:bg-yellow-400 transition-colors"
+                      >
+                        {t('camp.ticketing_2026')}
+                      </a>
+                    )}
                   </div>
                 )}
               </div>
@@ -165,17 +177,27 @@ export default function MusicianDetailContent({
             <div className="mt-12 flex flex-wrap gap-4">
               <Link
                 href={backHref}
-                className="inline-flex items-center px-4 py-2 bg-ocean-sand text-jeju-ocean rounded-lg hover:bg-ocean-mist transition-colors text-sm font-medium"
+                className="inline-flex items-center px-5 py-2.5 bg-ocean-sand text-jeju-ocean rounded-lg hover:bg-ocean-mist transition-colors text-sm font-medium"
               >
                 &larr; {backLabel}
               </Link>
               {musician.trackTitle && (
                 <Link
                   href="/album/tracks"
-                  className="inline-flex items-center px-4 py-2 bg-golden-sun text-gray-900 rounded-lg hover:bg-yellow-400 transition-colors text-sm font-medium"
+                  className="inline-flex items-center px-5 py-2.5 bg-golden-sun text-gray-900 rounded-lg hover:bg-yellow-400 transition-colors text-sm font-medium"
                 >
                   {t('common.album_track_button')} &rarr;
                 </Link>
+              )}
+              {fundingUrl && (
+                <a
+                  href={`${fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=musician-${musician.id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-5 py-2.5 bg-jeju-ocean text-white rounded-lg hover:bg-ocean-mist transition-colors text-sm font-medium"
+                >
+                  {t('camp.ticketing_2026')} &rarr;
+                </a>
               )}
             </div>
           </div>

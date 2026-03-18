@@ -54,6 +54,20 @@ const getDynamicPages = () => {
     });
   });
 
+  // 캠프-2026 뮤지션 개별 페이지 (participant musicianIds from camps.ts)
+  const camp2026MusicianIds = [
+    14, 5, 15, 3, 16, 4, 17, 18, 19, 20, 21, 10, 22, 7, 23, 24, 13, 25,
+    26, 27, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 12, 42, 11,
+    43, 2, 44, 45, 46, 47, 48, 49, 50, 51, 52, 60, 59, 53, 54, 55, 56, 57, 58,
+  ];
+  camp2026MusicianIds.forEach((id) => {
+    dynamicPages.push({
+      path: `/camps/2026/musicians/${id}`,
+      changefreq: 'monthly',
+      priority: '0.7',
+    });
+  });
+
   // 트랙 개별 페이지
   const tracks = loadJsonArray(path.join(dataRoot, 'tracks.json'));
   tracks.forEach((t) => {
