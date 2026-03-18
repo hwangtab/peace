@@ -1,4 +1,3 @@
-import { EventType } from "../types/event";
 import { PressItem } from "../types/press";
 import { getLanguageCode } from "../utils/localization";
 
