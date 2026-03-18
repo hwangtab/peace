@@ -16,7 +16,7 @@ export const useNavigation = () => {
         const handleScroll = () => {
             if (!ticking) {
                 requestAnimationFrame(() => {
-                    setIsScrolled(window.scrollY > 50);
+                    setIsScrolled(prev => prev ? window.scrollY > 40 : window.scrollY > 50);
                     ticking = false;
                 });
                 ticking = true;
