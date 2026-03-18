@@ -238,7 +238,8 @@
         "slogan_2026": "歌おう、踊ろう、戦争を終わらせよう！",
         "date_badge_2026": "2026.06.05 — 07",
         "participant_count": "{{count}}組",
-        "seo_musician_suffix": "2026年6月5〜7日、済州・カンジョン体育公園で開催される第3回カンジョン平和音楽キャンプに出演します。"
+        "seo_musician_suffix": "2026年6月5〜7日、済州・カンジョン体育公園で開催される第3回カンジョン平和音楽キャンプに出演します。",
+        "other_musicians": "共演するミュージシャン"
     },
     "album": {
         "page_title": "To You in a Distant Place Whose Name I Don't Know - アルバム紹介",
