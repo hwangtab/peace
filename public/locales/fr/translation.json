@@ -44,7 +44,9 @@
         "no_images": "Aucune photo disponible.",
         "load_more": "Charger plus",
         "image_alt_fallback": "Image de la galerie du Camp musical pour la paix de Gangjeong",
-        "image_alt_template": "Image de la galerie {{title}} {{year}}"
+        "image_alt_template": "Image de la galerie {{title}} {{year}}",
+        "alt_album": "Photo du concert de sortie d'album {{year}}",
+        "alt_camp": "Photo du Camp de Musique pour la Paix de Gangjeong {{year}}"
     },
     "home": {
         "hero": {
@@ -135,7 +137,12 @@
         "go_home": "Retour à l’accueil",
         "audio_position": "Position de lecture audio",
         "label_personnel": "Personnel",
-        "label_produced_by": "Produit par"
+        "label_produced_by": "Produit par",
+        "about": "À propos",
+        "arranger": "Arrangeur",
+        "composer": "Compositeur",
+        "lyricist": "Parolier",
+        "track": "Piste"
     },
     "timeline": {
         "title": "Notre parcours",
@@ -230,7 +237,8 @@
         "title_2026": "3e Camp musical pour la paix de Gangjeong",
         "slogan_2026": "Chantons, dansons, mettons fin à la guerre !",
         "date_badge_2026": "5–7 juin 2026",
-        "participant_count": "{{count}} équipes"
+        "participant_count": "{{count}} équipes",
+        "seo_musician_suffix": "Se produit au 3e Camp de Musique pour la Paix de Gangjeong, du 5 au 7 juin 2026 au Parc Sportif de Gangjeong, Jeju."
     },
     "album": {
         "page_title": "To You in a Distant Place Whose Name I Don't Know - À propos de l’album",

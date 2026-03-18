@@ -44,7 +44,9 @@
         "no_images": "Tidak ada foto tersedia.",
         "load_more": "Muat lebih banyak",
         "image_alt_fallback": "Gambar galeri Gangjeong Peace Music Camp",
-        "image_alt_template": "Gambar galeri {{title}} {{year}}"
+        "image_alt_template": "Gambar galeri {{title}} {{year}}",
+        "alt_album": "Foto konser rilis album {{year}}",
+        "alt_camp": "Foto Kamp Musik Perdamaian Gangjeong {{year}}"
     },
     "home": {
         "hero": {
@@ -135,7 +137,12 @@
         "go_home": "Ke beranda",
         "audio_position": "Posisi pemutaran audio",
         "label_personnel": "Personel",
-        "label_produced_by": "Diproduksi oleh"
+        "label_produced_by": "Diproduksi oleh",
+        "about": "Tentang",
+        "arranger": "Arranger",
+        "composer": "Komposer",
+        "lyricist": "Penulis lirik",
+        "track": "Lagu"
     },
     "timeline": {
         "title": "Perjalanan Kita",
@@ -230,7 +237,8 @@
         "title_2026": "Kemah Musik Perdamaian Gangjeong ke-3",
         "slogan_2026": "Mari bernyanyi, menari, dan akhiri perang!",
         "date_badge_2026": "5–7 Jun 2026",
-        "participant_count": "{{count}} tim"
+        "participant_count": "{{count}} tim",
+        "seo_musician_suffix": "Tampil di Kamp Musik Perdamaian Gangjeong ke-3, 5-7 Juni 2026 di Taman Olahraga Gangjeong, Jeju."
     },
     "album": {
         "page_title": "To You in a Distant Place Whose Name I Don't Know - Tentang Album",

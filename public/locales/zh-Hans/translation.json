@@ -44,7 +44,9 @@
         "no_images": "暂无照片。",
         "load_more": "加载更多",
         "image_alt_fallback": "江汀和平音乐营画廊图片",
-        "image_alt_template": "{{year}}年 {{title}} 画廊图片"
+        "image_alt_template": "{{year}}年 {{title}} 画廊图片",
+        "alt_album": "{{year}}年专辑发行演唱会照片",
+        "alt_camp": "{{year}}年江汀和平音乐营现场照片"
     },
     "home": {
         "hero": {
@@ -135,7 +137,12 @@
         "go_home": "返回首页",
         "audio_position": "音频播放位置",
         "label_personnel": "参与人员",
-        "label_produced_by": "制作"
+        "label_produced_by": "制作",
+        "about": "关于",
+        "arranger": "编曲",
+        "composer": "作曲",
+        "lyricist": "作词",
+        "track": "曲目"
     },
     "timeline": {
         "title": "连带之路",
@@ -222,7 +229,7 @@
         "date_2026": "2026年6月5日（周五）- 6月7日（周日）",
         "venue_2026": "江汀体育公园",
         "keywords_base": "江汀村, 和平音乐, 反战运动",
-        "description_2026": "2026年6月5日（周五）至7日（周日），第三届江汀和平音乐营将在济州岛西归浦市江汀体育公园举办。值此停战73周年之际，音乐营首次扩展为三天两夜的规模，共有创纪录的54组音乐人参与。在朝鲜半岛军事化和战争威胁加剧的当下，源自江汀村的和平之歌正汇聚成更强大、更坚实的团结力量。在"唱起来，跳起来，结束战争！"的口号下，多种音乐风格的音乐人通过音乐传递反战与和平的讯息。",
+        "description_2026": "2026年6月5日（周五）至7日（周日），第三届江汀和平音乐营将在济州岛西归浦市江汀体育公园举办。值此停战73周年之际，音乐营首次扩展为三天两夜的规模，共有创纪录的54组音乐人参与。在朝鲜半岛军事化和战争威胁加剧的当下，源自江汀村的和平之歌正汇聚成更强大、更坚实的团结力量。在\"唱起来，跳起来，结束战争！\"的口号下，多种音乐风格的音乐人通过音乐传递反战与和平的讯息。",
         "expected_2026": "已确认54支音乐人团队",
         "lineup_count": "已确认{{count}}支团队",
         "ticketing_2026": "在Tumblbug预订门票",
@@ -230,7 +237,8 @@
         "title_2026": "第三届江汀和平音乐营",
         "slogan_2026": "唱起来，跳起来，终结战争！",
         "date_badge_2026": "2026年6月5日 — 7日",
-        "participant_count": "{{count}}支团队"
+        "participant_count": "{{count}}支团队",
+        "seo_musician_suffix": "将于2026年6月5-7日在济州江汀体育公园出演第三届江汀和平音乐营。"
     },
     "album": {
         "page_title": "To You in a Distant Place Whose Name I Don't Know - 专辑介绍",

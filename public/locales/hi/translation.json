@@ -44,7 +44,9 @@
         "no_images": "कोई फोटो उपलब्ध नहीं।",
         "load_more": "और देखें",
         "image_alt_fallback": "गंगजिओंग शांति संगीत शिविर गैलरी छवि",
-        "image_alt_template": "{{year}} {{title}} गैलरी छवि"
+        "image_alt_template": "{{year}} {{title}} गैलरी छवि",
+        "alt_album": "{{year}} एल्बम रिलीज़ कॉन्सर्ट फ़ोटो",
+        "alt_camp": "{{year}} गांगजेओंग शांति संगीत शिविर फ़ोटो"
     },
     "home": {
         "hero": {
@@ -135,7 +137,12 @@
         "go_home": "होम पर जाएँ",
         "audio_position": "ऑडियो प्लेबैक स्थिति",
         "label_personnel": "टीम",
-        "label_produced_by": "निर्माता"
+        "label_produced_by": "निर्माता",
+        "about": "परिचय",
+        "arranger": "अरेंजर",
+        "composer": "संगीतकार",
+        "lyricist": "गीतकार",
+        "track": "ट्रैक"
     },
     "timeline": {
         "title": "एकजुटता की यात्रा",
@@ -230,7 +237,8 @@
         "title_2026": "तीसरा गंगजिओंग शांति संगीत शिविर",
         "slogan_2026": "गाओ, नाचो, युद्ध समाप्त करो!",
         "date_badge_2026": "5–7 जून 2026",
-        "participant_count": "{{count}} टीमें"
+        "participant_count": "{{count}} टीमें",
+        "seo_musician_suffix": "2026 में 5-7 जून को जेजू के गांगजेओंग स्पोर्ट्स पार्क में तीसरे गांगजेओंग पीस म्यूजिक कैंप में प्रदर्शन करेंगे।"
     },
     "album": {
         "page_title": "To You in a Distant Place Whose Name I Don't Know - एल्बम परिचय",
