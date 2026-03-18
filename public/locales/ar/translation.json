@@ -44,7 +44,9 @@
         "no_images": "لا توجد صور متاحة.",
         "load_more": "تحميل المزيد",
         "image_alt_fallback": "صورة من معرض مخيّم موسيقى السلام في كانغجونغ",
-        "image_alt_template": "صورة معرض {{title}} لعام {{year}}"
+        "image_alt_template": "صورة معرض {{title}} لعام {{year}}",
+        "alt_album": "صورة حفل إصدار الألبوم {{year}}",
+        "alt_camp": "صورة مخيم غانغجيونغ للموسيقى السلمية {{year}}"
     },
     "home": {
         "hero": {
@@ -135,7 +137,12 @@
         "go_home": "العودة إلى الرئيسية",
         "audio_position": "موضع تشغيل الصوت",
         "label_personnel": "طاقم العمل",
-        "label_produced_by": "إنتاج"
+        "label_produced_by": "إنتاج",
+        "about": "حول",
+        "arranger": "المرتب",
+        "composer": "الملحن",
+        "lyricist": "كاتب الكلمات",
+        "track": "مسار"
     },
     "timeline": {
         "title": "رحلتنا",
@@ -230,7 +237,8 @@
         "title_2026": "مخيّم موسيقى السلام الثالث في كانغجونغ",
         "slogan_2026": "لنغنِّ، لنرقص، لننهِ الحرب!",
         "date_badge_2026": "5–7 يونيو 2026",
-        "participant_count": "{{count}} فرقة"
+        "participant_count": "{{count}} فرقة",
+        "seo_musician_suffix": "يؤدي في المخيم الثالث لموسيقى السلام في غانغجيونغ، من 5 إلى 7 يونيو 2026 في حديقة غانغجيونغ الرياضية، جيجو."
     },
     "album": {
         "page_title": "إليك في مكان بعيد لا أعرف اسمه - عن الألبوم",

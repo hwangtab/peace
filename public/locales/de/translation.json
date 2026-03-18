@@ -44,7 +44,9 @@
         "no_images": "Keine Fotos vorhanden.",
         "load_more": "Mehr laden",
         "image_alt_fallback": "Galeriebild des Gangjeong Peace Music Camp",
-        "image_alt_template": "{{year}} {{title}} Galeriebild"
+        "image_alt_template": "{{year}} {{title}} Galeriebild",
+        "alt_album": "Konzertfoto zur Albumveröffentlichung {{year}}",
+        "alt_camp": "Foto des Gangjeong Peace Music Camps {{year}}"
     },
     "home": {
         "hero": {
@@ -135,7 +137,12 @@
         "go_home": "Zur Startseite",
         "audio_position": "Position der Audiowiedergabe",
         "label_personnel": "Mitwirkende",
-        "label_produced_by": "Produziert von"
+        "label_produced_by": "Produziert von",
+        "about": "Über",
+        "arranger": "Arrangeur",
+        "composer": "Komponist",
+        "lyricist": "Liedtexter",
+        "track": "Track"
     },
     "timeline": {
         "title": "Unsere Reise",
@@ -222,7 +229,7 @@
         "date_2026": "5. Juni (Fr) – 7. Juni (So) 2026",
         "venue_2026": "Gangjeong Sportpark",
         "keywords_base": "Dorf Gangjeong, Friedensmusik, Antikriegsbewegung",
-        "description_2026": "Das 3. Gangjeong Peace Music Camp findet vom 5. (Freitag) bis 7. Juni (Sonntag) 2026 im Gangjeong Sportpark in Seogwipo, Jeju statt. Zum 73. Jahrestag des Waffenstillstands im Koreakrieg wird das Camp erstmals auf 3 Tage und 2 Nächte erweitert – mit einem Rekord von 53 Musikergruppen. Angesichts der zunehmenden Militarisierung und Kriegsgefahr auf der koreanischen Halbinsel wächst das in Gangjeong geborene Friedenslied zu einer stärkeren und breiteren Solidarität heran. Unter dem Motto „Lasst uns singen, tanzen und den Krieg beenden!" vermitteln Musiker verschiedener Genres Botschaften des Friedens und der Kriegsgegnerschaft durch Musik.",
+        "description_2026": "Das 3. Gangjeong Peace Music Camp findet vom 5. (Freitag) bis 7. Juni (Sonntag) 2026 im Gangjeong Sportpark in Seogwipo, Jeju statt. Zum 73. Jahrestag des Waffenstillstands im Koreakrieg wird das Camp erstmals auf 3 Tage und 2 Nächte erweitert – mit einem Rekord von 53 Musikergruppen. Angesichts der zunehmenden Militarisierung und Kriegsgefahr auf der koreanischen Halbinsel wächst das in Gangjeong geborene Friedenslied zu einer stärkeren und breiteren Solidarität heran. Unter dem Motto „Lasst uns singen, tanzen und den Krieg beenden!\" vermitteln Musiker verschiedener Genres Botschaften des Friedens und der Kriegsgegnerschaft durch Musik.",
         "expected_2026": "54 Musiker-Teams bestätigt",
         "lineup_count": "{{count}} Teams bestätigt",
         "ticketing_2026": "Tickets auf Tumblbug buchen",
@@ -230,7 +237,8 @@
         "title_2026": "3. Gangjeong Peace Music Camp",
         "slogan_2026": "Lasst uns singen, tanzen und den Krieg beenden!",
         "date_badge_2026": "5.–7. Juni 2026",
-        "participant_count": "{{count}} Teams"
+        "participant_count": "{{count}} Teams",
+        "seo_musician_suffix": "Tritt beim 3. Gangjeong Peace Music Camp auf, 5.–7. Juni 2026 im Gangjeong Sportpark, Jeju."
     },
     "album": {
         "page_title": "To You in a Distant Place Whose Name I Don't Know – Album",

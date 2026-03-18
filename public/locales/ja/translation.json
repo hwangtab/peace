@@ -44,7 +44,9 @@
         "no_images": "写真がありません。",
         "load_more": "もっと見る",
         "image_alt_fallback": "ガンジョン平和音楽キャンプのギャラリー画像",
-        "image_alt_template": "{{year}}年 {{title}} ギャラリー画像"
+        "image_alt_template": "{{year}}年 {{title}} ギャラリー画像",
+        "alt_album": "{{year}}年アルバムリリースコンサートの写真",
+        "alt_camp": "{{year}}年カンジョン平和音楽キャンプの写真"
     },
     "home": {
         "hero": {
@@ -135,7 +137,12 @@
         "go_home": "ホームへ",
         "audio_position": "音声の再生位置",
         "label_personnel": "スタッフ",
-        "label_produced_by": "制作"
+        "label_produced_by": "制作",
+        "about": "概要",
+        "arranger": "編曲者",
+        "composer": "作曲者",
+        "lyricist": "作詞者",
+        "track": "収録曲"
     },
     "timeline": {
         "title": "連帯の歩み",
@@ -230,7 +237,8 @@
         "title_2026": "第3回 ガンジョンピース&ミュージックキャンプ",
         "slogan_2026": "歌おう、踊ろう、戦争を終わらせよう！",
         "date_badge_2026": "2026.06.05 — 07",
-        "participant_count": "{{count}}組"
+        "participant_count": "{{count}}組",
+        "seo_musician_suffix": "2026年6月5〜7日、済州・カンジョン体育公園で開催される第3回カンジョン平和音楽キャンプに出演します。"
     },
     "album": {
         "page_title": "To You in a Distant Place Whose Name I Don't Know - アルバム紹介",

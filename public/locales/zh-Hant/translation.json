@@ -44,7 +44,9 @@
         "no_images": "暫無照片。",
         "load_more": "載入更多",
         "image_alt_fallback": "江汀和平音樂營畫廊圖片",
-        "image_alt_template": "{{year}}年 {{title}} 畫廊圖片"
+        "image_alt_template": "{{year}}年 {{title}} 畫廊圖片",
+        "alt_album": "{{year}}年專輯發行演唱會照片",
+        "alt_camp": "{{year}}年江汀和平音樂營現場照片"
     },
     "home": {
         "hero": {
@@ -135,7 +137,12 @@
         "go_home": "返回首頁",
         "audio_position": "音訊播放位置",
         "label_personnel": "參與人員",
-        "label_produced_by": "製作"
+        "label_produced_by": "製作",
+        "about": "關於",
+        "arranger": "編曲",
+        "composer": "作曲",
+        "lyricist": "作詞",
+        "track": "曲目"
     },
     "timeline": {
         "title": "連帶之路",
@@ -230,7 +237,8 @@
         "title_2026": "第三屆江汀和平音樂營",
         "slogan_2026": "唱起來，跳起來，終結戰爭！",
         "date_badge_2026": "2026年6月5日 — 7日",
-        "participant_count": "{{count}}組"
+        "participant_count": "{{count}}組",
+        "seo_musician_suffix": "將於2026年6月5-7日在濟州江汀體育公園出演第三屆江汀和平音樂營。"
     },
     "album": {
         "page_title": "To You in a Distant Place Whose Name I Don't Know - 專輯介紹",
