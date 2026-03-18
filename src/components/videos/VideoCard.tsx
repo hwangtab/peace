@@ -43,12 +43,12 @@ const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
   );
 
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
+    <div className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col transition-all duration-300 hover:shadow-lg hover:scale-[1.02] hover:bg-ocean-mist/10">
       <a
         href={getYoutubeWatchUrl(video.youtubeUrl)}
         target="_blank"
         rel="noopener noreferrer"
-        className="block hover:bg-ocean-mist/10 transition-colors duration-300"
+        className="block"
       >
         <div className="relative aspect-video overflow-hidden rounded-t-xl group">
           <Image
