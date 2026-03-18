@@ -20,6 +20,7 @@ import Link from 'next/link';
 interface CampDetailPageProps {
   campId: string;
   initialMusicians?: Musician[];
+  initialLocale?: string;
 }
 
 const getCampOrdinal = (year: number, campList: Array<{ year: number }>): number => {
@@ -27,7 +28,7 @@ const getCampOrdinal = (year: number, campList: Array<{ year: number }>): number
   return campIndex >= 0 ? campIndex + 1 : 0;
 };
 
-const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId, initialMusicians = [] }) => {
+const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId, initialMusicians = [], initialLocale = 'ko' }) => {
   const { t, i18n } = useTranslation();
   const campList = getCamps(i18n.language);
   const camp = campList.find(c => c.id === campId);
@@ -36,14 +37,16 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId, initialMusician
   const isInfoInView = useInView(infoRef, { once: true, margin: "-100px" });
 
   useEffect(() => {
-    if (initialMusicians.length > 0) return;
-
-    const loadMusicians = async () => {
-      const data = await getMusicians(i18n.language);
-      setMusicians(data);
-    };
-    loadMusicians();
-  }, [i18n.language, initialMusicians.length]);
+    if (i18n.language === initialLocale) {
+      setMusicians(initialMusicians);
+      return;
+    }
+    let isCancelled = false;
+    getMusicians(i18n.language).then((data) => {
+      if (!isCancelled) setMusicians(data);
+    });
+    return () => { isCancelled = true; };
+  }, [i18n.language, initialLocale, initialMusicians]);
 
   if (!camp) {
     return (

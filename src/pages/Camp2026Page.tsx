@@ -16,9 +16,10 @@ import { Musician } from '../types/musician';
 
 interface CampPageProps {
   initialMusicians?: Musician[];
+  initialLocale?: string;
 }
 
-const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => {
+const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialLocale = 'ko' }) => {
   const { t, i18n } = useTranslation();
   const campList = getCamps(i18n.language);
   const camp2026 = campList.find(camp => camp.id === 'camp-2026');
@@ -30,13 +31,16 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [] }) => {
   const isLineupInView = useInView(lineupRef, { once: true, margin: '-100px' });
 
   useEffect(() => {
-    if (initialMusicians.length > 0) return;
-    const loadMusicians = async () => {
-      const data = await getMusicians(i18n.language);
-      setMusicians(data);
-    };
-    loadMusicians();
-  }, [i18n.language, initialMusicians.length]);
+    if (i18n.language === initialLocale) {
+      setMusicians(initialMusicians);
+      return;
+    }
+    let isCancelled = false;
+    getMusicians(i18n.language).then((data) => {
+      if (!isCancelled) setMusicians(data);
+    });
+    return () => { isCancelled = true; };
+  }, [i18n.language, initialLocale, initialMusicians]);
 
   if (!camp2026) {
     return (
