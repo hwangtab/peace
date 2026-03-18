@@ -169,8 +169,6 @@ export default function MusicianDetailContent({
         </div>
       </div>
 
-      <WaveDivider className="text-white -mt-[60px] sm:-mt-[100px] relative z-10" />
-
       {/* Description */}
       <div className="bg-white py-16 flex-1">
         <div className="container mx-auto px-4">
