@@ -3,13 +3,15 @@ import { motion, useInView } from 'framer-motion';
 import { useRef, useCallback, useState } from 'react';
 import Image from 'next/image';
 import Button from '../common/Button';
+import { getCamps } from '../../data/camps';
 
 interface HeroSectionProps {
   imageUrl: string;
 }
 
 const HeroSection = ({ imageUrl }: HeroSectionProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const camp2026 = getCamps(i18n.language).find(c => c.id === 'camp-2026');
   const scrollIndicatorRef = useRef(null);
   const isScrollIndicatorInView = useInView(scrollIndicatorRef);
   const [imageFailed, setImageFailed] = useState(false);
@@ -64,14 +66,16 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
             <Button to="/camps/2026" variant="white-outline">
               {t('home.hero.camp_2026')}
             </Button>
-            <a
-              href="https://tumblbug.com/gpmc3?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=home-hero"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center px-8 py-3 bg-white text-jeju-ocean font-bold rounded-full text-base shadow-lg hover:bg-gray-100 transition-colors"
-            >
-              {t('camp.ticketing_2026')}
-            </a>
+            {camp2026?.fundingUrl && (
+              <a
+                href={`${camp2026.fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=home-hero`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-8 py-3 bg-white text-jeju-ocean font-bold rounded-full text-base shadow-lg hover:bg-gray-100 transition-colors"
+              >
+                {t('camp.ticketing_2026')}
+              </a>
+            )}
           </div>
         </motion.div>
       </div>
