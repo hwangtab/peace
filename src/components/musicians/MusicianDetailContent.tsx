@@ -2,11 +2,14 @@ import React from 'react';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { Musician } from '../../types/musician';
 import { VideoItem } from '../../types/video';
 import { getProfilePageSchema, getBreadcrumbSchema } from '../../utils/structuredData';
 import { extractInstagramUsername } from '../../utils/instagram';
+import { getCamps } from '../../data/camps';
 import PageLayout from '../layout/PageLayout';
+import Section from '../layout/Section';
 import MusicianCard from './MusicianCard';
 import VideoCard from '../videos/VideoCard';
 import InstagramIcon from '../icons/InstagramIcon';
@@ -45,6 +48,7 @@ export default function MusicianDetailContent({
 }: MusicianDetailContentProps) {
   const { t, i18n } = useTranslation();
   const isCampPage = pageContext === 'camp';
+  const camp2026 = isCampPage ? getCamps(i18n.language).find((c) => c.id === 'camp-2026') : undefined;
 
   const pageTitle = isCampPage
     ? `${musician.name} — ${t('camp.title_2026')} | ${t('nav.logo')}`
@@ -221,6 +225,51 @@ export default function MusicianDetailContent({
                 </a>
               )}
             </div>
+
+            {/* Camp Info Card — isCampPage only */}
+            {isCampPage && camp2026 && fundingUrl && (
+              <div className="mt-12 rounded-2xl overflow-hidden border border-ocean-sand shadow-sm flex flex-col sm:flex-row">
+                {camp2026.images?.[0] && (
+                  <a
+                    href={`${fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=musician-camp-info-${musician.id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="sm:w-[140px] flex-shrink-0 block"
+                  >
+                    <div className="relative w-full h-40 sm:h-full min-h-[140px]">
+                      <Image
+                        src={camp2026.images[0]}
+                        alt={t('camp.title_2026')}
+                        fill
+                        sizes="(max-width: 640px) 100vw, 140px"
+                        className="object-cover"
+                      />
+                    </div>
+                  </a>
+                )}
+                <div className="flex-1 bg-ocean-sand px-6 py-5 flex flex-col justify-between gap-4">
+                  <div>
+                    <p className="text-xs uppercase tracking-widest text-jeju-ocean font-semibold mb-2">{t('camp.title_2026')}</p>
+                    <div className="flex flex-wrap gap-3">
+                      <span className="inline-flex items-center gap-1.5 text-sm text-gray-700">
+                        <span className="text-jeju-ocean">📅</span>{t('camp.date_badge_2026')}
+                      </span>
+                      <span className="inline-flex items-center gap-1.5 text-sm text-gray-700">
+                        <span className="text-jeju-ocean">📍</span>{t('camp.venue_2026')}
+                      </span>
+                    </div>
+                  </div>
+                  <a
+                    href={`${fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=musician-camp-info-${musician.id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="self-start inline-flex items-center px-5 py-2.5 bg-jeju-ocean text-white rounded-lg hover:bg-ocean-mist transition-colors text-sm font-medium"
+                  >
+                    {t('camp.ticketing_2026')} &rarr;
+                  </a>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -276,6 +325,34 @@ export default function MusicianDetailContent({
             </div>
           </div>
         </div>
+      )}
+
+      {/* Final CTA — isCampPage only */}
+      {isCampPage && fundingUrl && (
+        <>
+          <WaveDivider className={`${otherMusicians.length === 0 && relatedVideos.length > 0 ? 'text-ocean-sand' : 'text-white'} -mt-[60px] sm:-mt-[100px] relative z-10`} />
+          <Section background="transparent" className="bg-jeju-ocean !py-20 md:!py-28">
+            <div className="container mx-auto px-4 text-center">
+              <motion.div
+                initial={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className="typo-h2 text-white mb-4">{t('camp.cta_final_heading')}</h2>
+                <p className="typo-body text-gray-200 mb-8 max-w-lg mx-auto">{t('camp.cta_final_body')}</p>
+                <a
+                  href={`${fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=musician-final-cta-${musician.id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-8 py-3.5 bg-golden-sun text-gray-900 font-bold rounded-full text-base shadow-lg hover:bg-yellow-400 transition-colors"
+                >
+                  {t('camp.cta_final_button')}
+                </a>
+              </motion.div>
+            </div>
+          </Section>
+        </>
       )}
     </PageLayout>
   );
