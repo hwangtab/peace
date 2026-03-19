@@ -138,7 +138,7 @@ const campsKo: CampEvent[] = [
       { name: '모레도토요일', musicianId: 7 },
       { name: '뮁', musicianId: 23 },
       { name: 'Materials Pound', musicianId: 24 },
-      { name: '블로꾸 자파리 X 뽈레뽈레 X 동백작은학교', musicianId: 13 },
+      { name: '블로꾸 자파리 X 뽈레뽈레 X 북짝북짝', musicianId: 13 },
       { name: '불가사리 즉흥세션', musicianId: 25 },
       { name: 'Sabbaha', musicianId: 26 },
       { name: 'Sight X Zsthyger', musicianId: 27 },
@@ -175,7 +175,7 @@ const campsKo: CampEvent[] = [
       { name: '허정혁', musicianId: 55 },
       { name: '황명하', musicianId: 56 },
       { name: '하주원', musicianId: 57 },
-      { name: '뺄라지다 X 동백작은학교', musicianId: 58 }
+      { name: '뺄라지다 X 북짝북짝', musicianId: 58 }
     ],
     images: []
   }
