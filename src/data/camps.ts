@@ -121,6 +121,11 @@ const campsKo: CampEvent[] = [
     endDate: '2026-06-07',
     fundingUrl: 'https://tumblbug.com/gpmc3',
     slogan: '노래하자, 춤추자, 전쟁을 끝내자!',
+    images: [
+      '/images-webp/camps/2026/2026poster1-og.jpg',
+      '/images-webp/camps/2026/2026poster1.jpeg',
+      '/images-webp/camps/2026/2026poster2.jpeg',
+    ],
     participants: [
       { name: '강가히말라야', musicianId: 14 },
       { name: '까르', musicianId: 5 },
@@ -177,7 +182,6 @@ const campsKo: CampEvent[] = [
       { name: '하주원', musicianId: 57 },
       { name: '뺄라지다 X 북짝북짝', musicianId: 58 }
     ],
-    images: []
   }
 ];
 
@@ -296,6 +300,11 @@ const campsEn: CampEvent[] = [
     endDate: '2026-06-07',
     fundingUrl: 'https://tumblbug.com/gpmc3',
     slogan: "Let's sing, let's dance, end the war!",
+    images: [
+      '/images-webp/camps/2026/2026poster1-og.jpg',
+      '/images-webp/camps/2026/2026poster1.jpeg',
+      '/images-webp/camps/2026/2026poster2.jpeg',
+    ],
     participants: [
       { name: 'Ganghahimalaya', musicianId: 14 },
       { name: 'Caru', musicianId: 5 },
@@ -352,7 +361,6 @@ const campsEn: CampEvent[] = [
       { name: 'Ha Juwon', musicianId: 57 },
       { name: 'Ppalajida X Dongbaek Small School', musicianId: 58 }
     ],
-    images: []
   }
 ];
 
