@@ -239,7 +239,10 @@
         "date_badge_2026": "5–7 juin 2026",
         "participant_count": "{{count}} équipes",
         "seo_musician_suffix": "Se produit au 3e Camp de Musique pour la Paix de Gangjeong, du 5 au 7 juin 2026 au Parc Sportif de Gangjeong, Jeju.",
-        "other_musicians": "Musiciens participants"
+        "other_musicians": "Musiciens participants",
+        "cta_final_heading": "Rejoignez-nous",
+        "cta_final_body": "Aidez la chanson de paix née à Gangjeong à résonner plus loin. Soutenez-nous sur Tumblbug.",
+        "cta_final_button": "Soutenir sur Tumblbug"
     },
     "album": {
         "page_title": "To You in a Distant Place Whose Name I Don't Know - À propos de l’album",
