@@ -198,32 +198,34 @@ export default function MusicianDetailContent({
               {musician.description}
             </p>
 
-            <div className="mt-12 flex flex-wrap gap-4">
-              <Link
-                href={backHref}
-                className="inline-flex items-center px-5 py-2.5 bg-ocean-sand text-jeju-ocean rounded-lg hover:bg-ocean-mist transition-colors text-sm font-medium"
-              >
-                &larr; {backLabel}
-              </Link>
-              {!isCampPage && musician.trackTitle && (
+            {!isCampPage && (
+              <div className="mt-12 flex flex-wrap gap-4">
                 <Link
-                  href="/album/tracks"
-                  className="inline-flex items-center px-5 py-2.5 bg-golden-sun text-gray-900 rounded-lg hover:bg-yellow-400 transition-colors text-sm font-medium"
+                  href={backHref}
+                  className="inline-flex items-center px-5 py-2.5 bg-ocean-sand text-jeju-ocean rounded-lg hover:bg-ocean-mist transition-colors text-sm font-medium"
                 >
-                  {t('common.album_track_button')} &rarr;
+                  &larr; {backLabel}
                 </Link>
-              )}
-              {!isCampPage && fundingUrl && (
-                <a
-                  href={`${fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=musician-${musician.id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-5 py-2.5 bg-jeju-ocean text-white rounded-lg hover:bg-ocean-mist transition-colors text-sm font-medium"
-                >
-                  {t('camp.ticketing_2026')} &rarr;
-                </a>
-              )}
-            </div>
+                {musician.trackTitle && (
+                  <Link
+                    href="/album/tracks"
+                    className="inline-flex items-center px-5 py-2.5 bg-golden-sun text-gray-900 rounded-lg hover:bg-yellow-400 transition-colors text-sm font-medium"
+                  >
+                    {t('common.album_track_button')} &rarr;
+                  </Link>
+                )}
+                {fundingUrl && (
+                  <a
+                    href={`${fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=musician-${musician.id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-5 py-2.5 bg-jeju-ocean text-white rounded-lg hover:bg-ocean-mist transition-colors text-sm font-medium"
+                  >
+                    {t('camp.ticketing_2026')} &rarr;
+                  </a>
+                )}
+              </div>
+            )}
 
             {/* Camp Info Card — isCampPage only */}
             {isCampPage && camp2026 && fundingUrl && (
@@ -329,6 +331,18 @@ export default function MusicianDetailContent({
       {/* Final CTA — isCampPage only */}
       {isCampPage && fundingUrl && (
         <>
+          {otherMusicians.length === 0 && (
+            <div className="bg-white pb-8">
+              <div className="container mx-auto px-4 max-w-3xl">
+                <Link
+                  href={backHref}
+                  className="inline-flex items-center px-5 py-2.5 bg-ocean-sand text-jeju-ocean rounded-lg hover:bg-ocean-mist transition-colors text-sm font-medium"
+                >
+                  &larr; {backLabel}
+                </Link>
+              </div>
+            </div>
+          )}
           <WaveDivider className={`${otherMusicians.length === 0 && relatedVideos.length > 0 ? 'text-ocean-sand' : 'text-white'} -mt-[60px] sm:-mt-[100px] relative z-10`} />
           <section className="bg-jeju-ocean py-20 md:py-28">
             <div className="container mx-auto px-4 text-center">
