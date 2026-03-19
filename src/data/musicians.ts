@@ -335,7 +335,7 @@ export const musicians: Musicians = [
       '최강의 비트박스 크루 TYTD 소속 아티스트 Sight와 강철의 혼, 용기의 스탠드, 필승의 아이콘 Zsthyger. 글로벌 챔피언 비트박서 사이트(Sight)와 전격의 아웃라이어 제트싸이져(Zsthyger)의 협연.',
     genre: ['비트박스', '메탈'],
     trackTitle: '',
-    imageUrl: '/images-webp/musicians/27.webp',
+    imageUrl: '/images-webp/musicians/27.jpeg',
     instagramUrls: [
       'https://www.instagram.com/beatbox_sight',
       'https://www.instagram.com/zsthyger/',
