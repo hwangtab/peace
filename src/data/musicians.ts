@@ -579,8 +579,8 @@ export const musicians: Musicians = [
   {
     id: 50,
     name: '키타와 올겐',
-    shortDescription: '2026 강정피스앤뮤직캠프에 출연하는 듀오입니다',
-    description: '2026 강정피스앤뮤직캠프에 출연합니다.',
+    shortDescription: '삶을 정성 다해 들여다보는 돋보기 같은 듀오',
+    description: '지금 좋아하면 나만 아는 가수 키타와올겐입니다. 삶을 애정 없이 바라보면 지루하고 똑같은 하루하루지만 정성을 다해 자세히 들여다보면 매일매일이 새롭고 특별합니다. 키타와올겐은 돋보기. 키타와올겐을 통해 세상을 바라보세요. 잘 보이죠? 그 시선이 신선하고 흥미롭기를 바랍니다.',
     genre: ['인디', '어쿠스틱', '포크'],
     trackTitle: '',
     imageUrl: '/images-webp/musicians/50.webp',
