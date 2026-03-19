@@ -567,24 +567,6 @@
         "thumbnailUrl": "https://i.ytimg.com/vi/vMsZWHi8EAY/maxresdefault.jpg"
     },
     {
-        "id": 240,
-        "title": "뽈레뽈레 - 마라카투",
-        "description": "뽈레뽈레의 마라카투 공연 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/7TVFkwAItgA",
-        "eventType": "live",
-        "musicianIds": [13],
-        "thumbnailUrl": "https://i.ytimg.com/vi/7TVFkwAItgA/maxresdefault.jpg"
-    },
-    {
-        "id": 241,
-        "title": "뽈레뽈레 - 마라카투 출정식",
-        "description": "뽈레뽈레의 마라카투 출정식 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/Y3x7iKABcUI",
-        "eventType": "live",
-        "musicianIds": [13],
-        "thumbnailUrl": "https://i.ytimg.com/vi/Y3x7iKABcUI/maxresdefault.jpg"
-    },
-    {
         "id": 242,
         "title": "불가사리 즉흥세션 - 나엘, 사토유키에, 희우 즉흥연주 @요기가한주메",
         "description": "나엘, 사토유키에, 희우와 함께한 불가사리 즉흥기타, 장구 실험음악 즉흥연주입니다.",
