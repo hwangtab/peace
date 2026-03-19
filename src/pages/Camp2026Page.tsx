@@ -230,6 +230,34 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
           </div>
         </Section>
       )}
+
+      {/* Final CTA Section */}
+      {camp2026.fundingUrl && (
+        <>
+          <WaveDivider className="text-jeju-ocean -mt-[60px] sm:-mt-[100px] relative z-10" />
+          <Section background="transparent" className="bg-jeju-ocean !py-20 md:!py-28">
+            <div className="container mx-auto px-4 text-center">
+              <motion.div
+                initial={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className="typo-h2 text-white mb-4">{t('camp.cta_final_heading')}</h2>
+                <p className="typo-body text-gray-200 mb-8 max-w-lg mx-auto">{t('camp.cta_final_body')}</p>
+                <a
+                  href={`${camp2026.fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=final-cta`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-8 py-3.5 bg-golden-sun text-gray-900 font-bold rounded-full text-base shadow-lg hover:bg-yellow-400 transition-colors"
+                >
+                  {t('camp.cta_final_button')}
+                </a>
+              </motion.div>
+            </div>
+          </Section>
+        </>
+      )}
     </PageLayout>
   );
 };
