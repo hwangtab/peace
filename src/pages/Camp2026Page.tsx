@@ -235,7 +235,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
       {camp2026.fundingUrl && (
         <>
           <WaveDivider className="text-jeju-ocean -mt-[60px] sm:-mt-[100px] relative z-10" />
-          <Section background="transparent" className="bg-jeju-ocean !py-20 md:!py-28">
+          <section className="bg-jeju-ocean py-20 md:py-28">
             <div className="container mx-auto px-4 text-center">
               <motion.div
                 initial={{ opacity: 1, y: 0 }}
@@ -255,7 +255,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
                 </a>
               </motion.div>
             </div>
-          </Section>
+          </section>
         </>
       )}
     </PageLayout>

@@ -9,7 +9,6 @@ import { getProfilePageSchema, getBreadcrumbSchema } from '../../utils/structure
 import { extractInstagramUsername } from '../../utils/instagram';
 import { getCamps } from '../../data/camps';
 import PageLayout from '../layout/PageLayout';
-import Section from '../layout/Section';
 import MusicianCard from './MusicianCard';
 import VideoCard from '../videos/VideoCard';
 import InstagramIcon from '../icons/InstagramIcon';
@@ -331,7 +330,7 @@ export default function MusicianDetailContent({
       {isCampPage && fundingUrl && (
         <>
           <WaveDivider className={`${otherMusicians.length === 0 && relatedVideos.length > 0 ? 'text-ocean-sand' : 'text-white'} -mt-[60px] sm:-mt-[100px] relative z-10`} />
-          <Section background="transparent" className="bg-jeju-ocean !py-20 md:!py-28">
+          <section className="bg-jeju-ocean py-20 md:py-28">
             <div className="container mx-auto px-4 text-center">
               <motion.div
                 initial={{ opacity: 1, y: 0 }}
@@ -351,7 +350,7 @@ export default function MusicianDetailContent({
                 </a>
               </motion.div>
             </div>
-          </Section>
+          </section>
         </>
       )}
     </PageLayout>
