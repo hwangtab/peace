@@ -118,6 +118,7 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
             <meta property="og:title" content={finalTitle} />
             <meta property="og:description" content={finalDescription} />
             <meta property="og:image" content={fullOgImage} />
+            <meta property="og:image:alt" content={finalTitle} />
             <meta property="og:locale" content={ogLocale} />
 
             {/* Twitter Card */}
@@ -126,6 +127,7 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
             <meta name="twitter:title" content={finalTitle} />
             <meta name="twitter:description" content={finalDescription} />
             <meta name="twitter:image" content={fullOgImage} />
+            <meta name="twitter:image:alt" content={finalTitle} />
 
             {/* Structured Data (JSON-LD) */}
             {structuredDataArray.map((data, index) => (

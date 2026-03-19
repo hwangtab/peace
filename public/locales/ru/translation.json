@@ -239,7 +239,10 @@
         "date_badge_2026": "5–7 июня 2026",
         "participant_count": "{{count}} команд",
         "seo_musician_suffix": "Выступает на 3-м Фестивале мирной музыки в Канджоне, 5–7 июня 2026 года в Спортивном парке Канджон, Чеджу.",
-        "other_musicians": "Другие музыканты"
+        "other_musicians": "Другие музыканты",
+        "cta_final_heading": "Присоединяйтесь к нам",
+        "cta_final_body": "Помогите песне мира из Канджона звучать дальше. Поддержите нас на Tumblbug.",
+        "cta_final_button": "Поддержать на Tumblbug"
     },
     "album": {
         "page_title": "To You in a Distant Place Whose Name I Don't Know — Об альбоме",

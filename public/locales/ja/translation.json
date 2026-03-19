@@ -239,7 +239,10 @@
         "date_badge_2026": "2026.06.05 — 07",
         "participant_count": "{{count}}組",
         "seo_musician_suffix": "2026年6月5〜7日、済州・カンジョン体育公園で開催される第3回カンジョン平和音楽キャンプに出演します。",
-        "other_musicians": "共演するミュージシャン"
+        "other_musicians": "共演するミュージシャン",
+        "cta_final_heading": "一緒に作りましょう",
+        "cta_final_body": "江汀から始まった平和の歌がより遠くへ響き渡るよう、Tumblbugで一緒に応援してください。",
+        "cta_final_button": "Tumblbugで支援する"
     },
     "album": {
         "page_title": "To You in a Distant Place Whose Name I Don't Know - アルバム紹介",
