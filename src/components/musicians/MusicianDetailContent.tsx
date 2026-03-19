@@ -205,7 +205,7 @@ export default function MusicianDetailContent({
               >
                 &larr; {backLabel}
               </Link>
-              {musician.trackTitle && (
+              {!isCampPage && musician.trackTitle && (
                 <Link
                   href="/album/tracks"
                   className="inline-flex items-center px-5 py-2.5 bg-golden-sun text-gray-900 rounded-lg hover:bg-yellow-400 transition-colors text-sm font-medium"
@@ -213,7 +213,7 @@ export default function MusicianDetailContent({
                   {t('common.album_track_button')} &rarr;
                 </Link>
               )}
-              {fundingUrl && (
+              {!isCampPage && fundingUrl && (
                 <a
                   href={`${fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=musician-${musician.id}`}
                   target="_blank"
