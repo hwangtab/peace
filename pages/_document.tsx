@@ -17,6 +17,7 @@ class MyDocument extends Document {
       return (
         <Html lang={currentLocale} dir={dir}>
         <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
           {/* Google Analytics 4 */}
           {GA_MEASUREMENT_ID && (
             <>
