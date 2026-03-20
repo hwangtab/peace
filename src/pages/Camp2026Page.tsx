@@ -143,7 +143,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
             <div className="flex flex-col sm:flex-row justify-center gap-4 items-center">
               <a
                 href="#lineup"
-                className="inline-block px-6 py-2.5 bg-golden-sun text-gray-900 font-bold rounded-full text-sm shadow-lg hover:bg-yellow-400 transition-colors cursor-pointer"
+                className="inline-block px-6 py-2.5 bg-golden-sun text-gray-900 font-bold rounded-full text-sm shadow-lg hover:bg-yellow-400 transition-colors cursor-pointer break-words"
               >
                 {t('camp.lineup_count', { count: participantCount })}
               </a>
@@ -152,7 +152,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
                   href={`${camp2026.fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=hero`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block px-6 py-2.5 bg-white text-jeju-ocean font-bold rounded-full text-sm shadow-lg hover:bg-gray-100 transition-colors"
+                  className="inline-block px-6 py-2.5 bg-white text-jeju-ocean font-bold rounded-full text-sm shadow-lg hover:bg-gray-100 transition-colors break-words"
                 >
                   {t('camp.ticketing_2026')}
                 </a>

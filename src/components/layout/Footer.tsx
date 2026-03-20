@@ -63,7 +63,7 @@ const Footer = () => {
                                         key={item.path}
                                         href={item.path}
                                         className="block text-cloud-white/80 hover:text-golden-sun
-                               transition-colors duration-200 text-sm"
+                               transition-colors duration-200 text-sm break-words"
                                     >
                                         {t(item.nameKey)}
                                     </Link>
@@ -76,7 +76,7 @@ const Footer = () => {
                                         key={item.path}
                                         href={item.path}
                                         className="block text-cloud-white/80 hover:text-golden-sun
-                               transition-colors duration-200 text-sm"
+                               transition-colors duration-200 text-sm break-words"
                                     >
                                         {t(item.nameKey)}
                                     </Link>
@@ -87,7 +87,7 @@ const Footer = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="block text-golden-sun hover:text-yellow-300
-                               transition-colors duration-200 text-sm font-medium"
+                               transition-colors duration-200 text-sm font-medium break-words"
                                     >
                                         {t('camp.ticketing_2026')}
                                     </a>
@@ -97,7 +97,7 @@ const Footer = () => {
                                         key={item.path}
                                         href={item.path}
                                         className="block text-cloud-white/80 hover:text-golden-sun
-                               transition-colors duration-200 text-sm"
+                               transition-colors duration-200 text-sm break-words"
                                     >
                                         {t(item.nameKey)}
                                     </Link>

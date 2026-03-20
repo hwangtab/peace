@@ -57,7 +57,7 @@ const GalleryPage = ({ initialImages = [] }: GalleryPageProps) => {
             {camp2026?.fundingUrl && (
                 <div className="bg-jeju-ocean py-10">
                     <div className="container mx-auto px-4 text-center">
-                        <p className="text-white text-lg font-medium mb-4">{t('camp.title_2026')}</p>
+                        <p className="text-white text-lg font-medium mb-4 break-words">{t('camp.title_2026')}</p>
                         <div className="flex flex-wrap justify-center gap-4">
                             <Link
                                 href="/camps/2026"
