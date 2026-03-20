@@ -180,7 +180,7 @@ const campsKo: CampEvent[] = [
       { name: '허정혁', musicianId: 55 },
       { name: '황명하', musicianId: 56 },
       { name: '하주원', musicianId: 57 },
-      { name: '뺄라지다 X 북짝북짝', musicianId: 58 }
+      { name: '뺄라지다 X 동백작은학교', musicianId: 58 }
     ],
   }
 ];
