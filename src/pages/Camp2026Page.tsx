@@ -8,6 +8,7 @@ import Section from '@/components/layout/Section';
 import SectionHeader from '@/components/common/SectionHeader';
 import WaveDivider from '@/components/common/WaveDivider';
 import CampLineup from '@/components/camp/CampLineup';
+import GangjeongStorySection from '@/components/camp/GangjeongStorySection';
 import { getEventSchema, getBreadcrumbSchema } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
 import { formatOrdinal } from '@/utils/format';
@@ -212,6 +213,9 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
           </motion.div>
         </div>
       </Section>
+
+      {/* Gangjeong Story Section */}
+      <GangjeongStorySection />
 
       <WaveDivider className="text-white -mt-[60px] sm:-mt-[100px] relative z-10" />
 
