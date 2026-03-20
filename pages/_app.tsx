@@ -3,12 +3,12 @@ import { appWithTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import nextI18NextConfig from '../next-i18next.config';
-import '../src/index.css';
-import Navigation from '../src/components/layout/Navigation';
-import Footer from '../src/components/layout/Footer';
-import { getTextDirection } from '../src/utils/rtl';
+import '@/index.css';
+import Navigation from '@/components/layout/Navigation';
+import Footer from '@/components/layout/Footer';
+import { getTextDirection } from '@/utils/rtl';
 
-import { NavigationProvider } from '../src/context/NavigationContext';
+import { NavigationProvider } from '@/context/NavigationContext';
 
 declare global {
   interface Window {

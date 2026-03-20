@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import { config, getFullUrl } from '../../config/env';
+import { config, getFullUrl } from '@/config/env';
 import nextI18NextConfig from '../../../next-i18next.config';
 
 const DEFAULT_LOCALE = nextI18NextConfig.i18n.defaultLocale;

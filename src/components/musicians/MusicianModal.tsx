@@ -2,8 +2,8 @@ import { Fragment } from 'react';
 import { useTranslation } from 'next-i18next';
 import { Dialog, Transition } from '@headlessui/react';
 import Image from 'next/image';
-import { Musician } from '../../types/musician';
-import { extractInstagramUsername } from '../../utils/instagram';
+import { Musician } from '@/types/musician';
+import { extractInstagramUsername } from '@/utils/instagram';
 import InstagramIcon from '../icons/InstagramIcon';
 import YouTubeIcon from '../icons/YouTubeIcon';
 

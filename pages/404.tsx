@@ -1,7 +1,7 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import nextI18NextConfig from '../next-i18next.config';
 import { GetStaticPropsContext } from 'next';
-import Page from '../src/pages/NotFoundPage';
+import Page from '@/pages/NotFoundPage';
 
 export default function WrappedPage() {
   return <Page />;

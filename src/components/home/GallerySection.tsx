@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
-import { GalleryImage } from '../../types/gallery';
-import { useGalleryImages } from '../../hooks/useGalleryImages';
-import { GALLERY_CONFIG } from '../../constants/config';
+import { GalleryImage } from '@/types/gallery';
+import { useGalleryImages } from '@/hooks/useGalleryImages';
+import { GALLERY_CONFIG } from '@/constants/config';
 import EventFilter from '../common/EventFilter';
 import GalleryImageItem from '../gallery/GalleryImageItem';
 import ImageLightbox from '../common/ImageLightbox';

@@ -4,11 +4,11 @@ import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import Link from 'next/link';
 import nextI18NextConfig from '../../../next-i18next.config';
-import { Track } from '../../../src/types/track';
-import { Musician } from '../../../src/types/musician';
-import { loadLocalizedData } from '../../../src/utils/dataLoader';
-import { getMusicRecordingSchema, getBreadcrumbSchema } from '../../../src/utils/structuredData';
-import PageLayout from '../../../src/components/layout/PageLayout';
+import { Track } from '@/types/track';
+import { Musician } from '@/types/musician';
+import { loadLocalizedData } from '@/utils/dataLoader';
+import { getMusicRecordingSchema, getBreadcrumbSchema } from '@/utils/structuredData';
+import PageLayout from '@/components/layout/PageLayout';
 
 interface TrackPageProps {
   track: Track;

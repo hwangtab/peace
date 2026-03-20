@@ -1,15 +1,15 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
-import { getVideos } from '../../api/videos';
-import { VideoItem } from '../../types/video';
-import { filterByEvent, isValidFilter } from '../../utils/filtering';
-import { sortByDateDesc } from '../../utils/sorting';
+import { getVideos } from '@/api/videos';
+import { VideoItem } from '@/types/video';
+import { filterByEvent, isValidFilter } from '@/utils/filtering';
+import { sortByDateDesc } from '@/utils/sorting';
 import EventFilter from '../common/EventFilter';
 import PageLayout from '../layout/PageLayout';
 import PageHero from '../common/PageHero';
 import VideoCard from './VideoCard';
-import { getCollectionPageSchema, getBreadcrumbSchema } from '../../utils/structuredData';
+import { getCollectionPageSchema, getBreadcrumbSchema } from '@/utils/structuredData';
 
 interface VideoPageProps {
   initialVideos?: VideoItem[];

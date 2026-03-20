@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Participant } from '../../types/camp';
+import { Participant } from '@/types/camp';
 import MusicianCard from '../musicians/MusicianCard';
-import { Musician } from '../../types/musician';
+import { Musician } from '@/types/musician';
 
 interface CampLineupProps {
   participants: (string | Participant)[];

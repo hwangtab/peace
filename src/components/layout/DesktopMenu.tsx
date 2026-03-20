@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import NavigationDropdown from './NavigationDropdown';
 import LanguageSwitcher from '../common/LanguageSwitcher';
 import { campItems, albumItems, simpleMenuItems } from './navigationData';
-import { ROUTES } from '../../constants/routes';
+import { ROUTES } from '@/constants/routes';
 
 interface DesktopMenuProps {
     pathname: string;

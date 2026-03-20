@@ -1,9 +1,9 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import nextI18NextConfig from '../next-i18next.config';
 import { GetStaticPropsContext } from 'next';
-import Page from '../src/components/videos/VideoPage';
-import { VideoItem } from '../src/types/video';
-import { loadLocalizedData } from '../src/utils/dataLoader';
+import Page from '@/components/videos/VideoPage';
+import { VideoItem } from '@/types/video';
+import { loadLocalizedData } from '@/utils/dataLoader';
 
 interface VideosWrappedPageProps {
   initialVideos: VideoItem[];

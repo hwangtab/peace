@@ -1,15 +1,15 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
-import { getPressItems } from '../../api/press';
-import { PressItem } from '../../types/press';
+import { getPressItems } from '@/api/press';
+import { PressItem } from '@/types/press';
 import Link from 'next/link';
-import { getBreadcrumbSchema } from '../../utils/structuredData';
-import { getCamps } from '../../data/camps';
-import { filterByEvent } from '../../utils/filtering';
-import { sortByDateDesc } from '../../utils/sorting';
+import { getBreadcrumbSchema } from '@/utils/structuredData';
+import { getCamps } from '@/data/camps';
+import { filterByEvent } from '@/utils/filtering';
+import { sortByDateDesc } from '@/utils/sorting';
 import EventFilter from '../common/EventFilter';
-import PageLayout from '../../components/layout/PageLayout';
+import PageLayout from '@/components/layout/PageLayout';
 import PageHero from '../common/PageHero';
 
 interface PressPageProps {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'next-i18next';
-import { TimelineEvent } from '../../../data/timeline';
+import { TimelineEvent } from '@/data/timeline';
 
 interface TimelineYearLabelProps {
     event: TimelineEvent;

@@ -2,11 +2,11 @@ import { GetStaticPropsContext, GetStaticPathsContext } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import nextI18NextConfig from '../../../../next-i18next.config';
-import { Musician } from '../../../../src/types/musician';
-import { VideoItem } from '../../../../src/types/video';
-import { loadLocalizedData } from '../../../../src/utils/dataLoader';
-import { camps, getCamps } from '../../../../src/data/camps';
-import MusicianDetailContent from '../../../../src/components/musicians/MusicianDetailContent';
+import { Musician } from '@/types/musician';
+import { VideoItem } from '@/types/video';
+import { loadLocalizedData } from '@/utils/dataLoader';
+import { camps, getCamps } from '@/data/camps';
+import MusicianDetailContent from '@/components/musicians/MusicianDetailContent';
 
 interface CampMusicianPageProps {
   musician: Musician;

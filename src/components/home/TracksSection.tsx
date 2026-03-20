@@ -3,12 +3,12 @@ import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import TrackCard from '../tracks/TrackCard';
 import Section from '../layout/Section';
-import { getTracks } from '../../api/tracks';
-import { Track } from '../../types/track';
-import { Musician } from '../../types/musician';
+import { getTracks } from '@/api/tracks';
+import { Track } from '@/types/track';
+import { Musician } from '@/types/musician';
 import Button from '../common/Button';
 import SectionHeader from '../common/SectionHeader';
-import { config } from '../../config/env';
+import { config } from '@/config/env';
 
 interface TracksSectionProps {
   enableSectionWrapper?: boolean;

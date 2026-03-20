@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
-import { GalleryImage } from '../../types/gallery';
+import { GalleryImage } from '@/types/gallery';
 
 interface GalleryImageItemProps {
     image: GalleryImage;

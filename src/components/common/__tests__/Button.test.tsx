@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
 import Button from '../Button';
 
 describe('Button Component', () => {
@@ -31,9 +30,7 @@ describe('Button Component', () => {
     describe('Internal Link (to prop)', () => {
         it('renders as Link component', () => {
             render(
-                <BrowserRouter>
-                    <Button to="/test">Internal Link</Button>
-                </BrowserRouter>
+                <Button to="/test">Internal Link</Button>
             );
             const link = screen.getByRole('link', { name: 'Internal Link' });
             expect(link).toHaveAttribute('href', '/test');

@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, screen } from '../../test-utils';
+import { render, screen } from '@/test-utils';
 import { I18nextProvider } from 'react-i18next';
-import i18n from '../../test-utils/i18n-test';
+import i18n from '@/test-utils/i18n-test';
 import Footer from './Footer';
 
 describe('Footer Component', () => {

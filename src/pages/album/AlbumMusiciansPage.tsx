@@ -1,10 +1,10 @@
 import React from 'react';
 import { useTranslation } from 'next-i18next';
-import MusiciansSection from '../../components/home/MusiciansSection';
-import PageLayout from '../../components/layout/PageLayout';
-import PageHero from '../../components/common/PageHero';
-import { getCollectionPageSchema, getBreadcrumbSchema } from '../../utils/structuredData';
-import { Musician } from '../../types/musician';
+import MusiciansSection from '@/components/home/MusiciansSection';
+import PageLayout from '@/components/layout/PageLayout';
+import PageHero from '@/components/common/PageHero';
+import { getCollectionPageSchema, getBreadcrumbSchema } from '@/utils/structuredData';
+import { Musician } from '@/types/musician';
 
 interface AlbumMusiciansPageProps {
   initialMusicians?: Musician[];

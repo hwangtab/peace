@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next';
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { Track } from '../../types/track';
+import { Track } from '@/types/track';
 
 const AudioPlayer = dynamic(() => import('./AudioPlayer'), {
     loading: () => <div className="h-20 w-full animate-pulse bg-gray-100 rounded-lg" />,

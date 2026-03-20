@@ -1,4 +1,4 @@
-import { ROUTES } from '../../constants/routes';
+import { ROUTES } from '@/constants/routes';
 
 export const simpleMenuItems = [
     { nameKey: 'nav.home', path: ROUTES.HOME },

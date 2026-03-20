@@ -1,5 +1,5 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
-import { getTextDirection } from '../src/utils/rtl';
+import { getTextDirection } from '@/utils/rtl';
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 

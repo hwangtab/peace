@@ -1,6 +1,6 @@
 import { motion, Variants } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
-import { TimelineEvent } from '../../../data/timeline';
+import { TimelineEvent } from '@/data/timeline';
 
 interface TimelineMobileCardProps {
     event: TimelineEvent;

@@ -2,15 +2,15 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import nextI18NextConfig from '../next-i18next.config';
 import { GetStaticPropsContext } from 'next';
-import HeroSection from '../src/components/home/HeroSection';
-import AboutSection from '../src/components/home/AboutSection';
-import TimelineSection from '../src/components/home/TimelineSection';
-import GallerySection from '../src/components/home/GallerySection';
-import SEOHelmet from '../src/components/shared/SEOHelmet';
-import WaveDivider from '../src/components/common/WaveDivider';
-import { getWebSiteSchema, getOrganizationSchema, getFAQSchema } from '../src/utils/structuredData';
-import { GalleryImage } from '../src/types/gallery';
-import { loadGalleryImages } from '../src/utils/dataLoader';
+import HeroSection from '@/components/home/HeroSection';
+import AboutSection from '@/components/home/AboutSection';
+import TimelineSection from '@/components/home/TimelineSection';
+import GallerySection from '@/components/home/GallerySection';
+import SEOHelmet from '@/components/shared/SEOHelmet';
+import WaveDivider from '@/components/common/WaveDivider';
+import { getWebSiteSchema, getOrganizationSchema, getFAQSchema } from '@/utils/structuredData';
+import { GalleryImage } from '@/types/gallery';
+import { loadGalleryImages } from '@/utils/dataLoader';
 
 interface HomePageProps {
   initialGalleryImages?: GalleryImage[];

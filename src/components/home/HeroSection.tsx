@@ -3,7 +3,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef, useCallback, useState } from 'react';
 import Image from 'next/image';
 import Button from '../common/Button';
-import { getCamps } from '../../data/camps';
+import { getCamps } from '@/data/camps';
 
 interface HeroSectionProps {
   imageUrl: string;
