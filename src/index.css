@@ -81,10 +81,15 @@
     --text-line-break: auto;
   }
 
-  html:lang(ko),
+  html:lang(ko) {
+    --text-word-break: keep-all;
+    --text-hyphens: manual;
+    --text-line-break: strict;
+  }
+
   html:lang(ja),
   html:lang(zh) {
-    --text-word-break: keep-all;
+    --text-word-break: normal;
     --text-hyphens: manual;
     --text-line-break: strict;
   }
