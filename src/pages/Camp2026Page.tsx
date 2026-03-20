@@ -107,7 +107,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
       {/* Hero Section with Background Image */}
       <section className="relative min-h-[500px] md:min-h-[600px] lg:min-h-[700px] flex items-center justify-center text-center overflow-hidden bg-ocean-gradient pt-20 pb-16">
         <Image
-          src={camp2026?.images?.[0] || '/images-webp/camps/2026/camp2026-hero.webp'}
+          src={camp2026?.images?.[0] || '/images-webp/camps/2023/DSC00369.webp'}
           alt={translatedTitle}
           fill
           sizes="100vw"
