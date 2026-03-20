@@ -22,8 +22,8 @@ const AudioPlayer = React.memo(({ audioUrl, isPlaying, onPlayPause, title, artis
   } = useAudioPlayer({ audioUrl, isPlaying });
 
   return (
-    <div className="w-full bg-white rounded-lg shadow-md p-4">
-      <div className="flex items-center space-x-4">
+    <div className="w-full bg-white rounded-lg shadow-md p-3 sm:p-4">
+      <div className="flex items-center space-x-3 sm:space-x-4">
         {/* Play/Pause Button */}
         <motion.button
           whileTap={{ scale: 0.95 }}
@@ -55,7 +55,7 @@ const AudioPlayer = React.memo(({ audioUrl, isPlaying, onPlayPause, title, artis
 
       {/* Progress Bar */}
       <div
-        className="mt-2 h-1 bg-gray-200 rounded cursor-pointer"
+        className="mt-2 h-1.5 sm:h-1 bg-gray-200 rounded cursor-pointer"
         onClick={handleSeek}
         onTouchEnd={(e) => {
           const touch = e.changedTouches[0];

@@ -12,12 +12,12 @@ interface TrackHeaderProps {
 export default function TrackHeader({ track, isExpanded, onToggle, onPlay, alwaysExpanded }: TrackHeaderProps) {
   if (alwaysExpanded) {
     return (
-      <div className="p-4">
+      <div className="p-3 sm:p-4">
         <div className="flex justify-between items-center">
           <div className="flex-grow min-w-0">
             <div className="flex items-center justify-between mb-1">
               <h3 className="text-lg font-bold font-serif break-words min-w-0">{track.title}</h3>
-              <span className="text-sm text-coastal-gray ml-4 flex-shrink-0">{track.duration}</span>
+              <span className="text-sm text-coastal-gray ml-2 sm:ml-4 flex-shrink-0">{track.duration}</span>
             </div>
             <p className="text-jeju-ocean font-serif break-words">{track.artist}</p>
           </div>
@@ -28,7 +28,7 @@ export default function TrackHeader({ track, isExpanded, onToggle, onPlay, alway
 
   return (
     <div
-      className="p-4 cursor-pointer hover:bg-ocean-sand transition-colors"
+      className="p-3 sm:p-4 cursor-pointer hover:bg-ocean-sand transition-colors"
       onClick={() => {
         onToggle();
         onPlay();
@@ -42,17 +42,17 @@ export default function TrackHeader({ track, isExpanded, onToggle, onPlay, alway
         <div className="flex-grow min-w-0">
           <div className="flex items-center justify-between mb-1">
             <h3 className="text-lg font-bold font-serif break-words min-w-0">{track.title}</h3>
-            <span className="text-sm text-coastal-gray ml-4 flex-shrink-0">{track.duration}</span>
+            <span className="text-sm text-coastal-gray ml-2 sm:ml-4 flex-shrink-0">{track.duration}</span>
           </div>
           <p className="text-jeju-ocean font-serif break-words">{track.artist}</p>
         </div>
         <motion.button
           animate={{ rotate: isExpanded ? 180 : 0 }}
-          className="text-coastal-gray ml-4"
+          className="text-coastal-gray ml-2 sm:ml-4"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
+            className="h-6 w-6 sm:h-5 sm:w-5"
             viewBox="0 0 20 20"
             fill="currentColor"
           >

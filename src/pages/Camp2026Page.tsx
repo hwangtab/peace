@@ -171,7 +171,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
             transition={{ duration: 0.6 }}
             className="max-w-5xl mx-auto"
           >
-            <div className="flex flex-col md:flex-row gap-8 items-start min-w-0 overflow-hidden">
+            <div className="flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-8 items-start min-w-0 overflow-hidden">
               {/* Poster */}
               <a
                 href={`${camp2026.fundingUrl || '#'}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=poster`}
@@ -188,7 +188,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
                 />
               </a>
               {/* Info */}
-              <div className="flex-1 min-w-0 bg-white rounded-lg shadow-sm p-8">
+              <div className="flex-1 min-w-0 bg-white rounded-lg shadow-sm p-4 sm:p-6 md:p-8">
                 <SectionHeader title={t('camp.section_overview')} align="left" className="!mb-6" />
                 <p className="typo-body mb-6 break-words">
                   {translatedDescription}

@@ -25,7 +25,7 @@ const CampLineup: React.FC<CampLineupProps> = ({ participants, musicians, inView
   };
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
       {participants.map((participant, index) => {
         const musician = findMusician(participant);
 
@@ -47,7 +47,7 @@ const CampLineup: React.FC<CampLineupProps> = ({ participants, musicians, inView
             initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
             transition={{ duration: 0.3, delay: Math.min(index * 0.01, 0.5) }}
-            className="flex items-center justify-center text-center h-full min-h-[200px] px-4 rounded-lg border bg-white border-gray-200 shadow-lg"
+            className="flex items-center justify-center text-center h-full min-h-[120px] sm:min-h-[200px] px-4 rounded-lg border bg-white border-gray-200 shadow-lg"
           >
             <span className="font-medium text-gray-700 text-lg break-words">
               {name}
