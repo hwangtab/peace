@@ -1,19 +1,15 @@
-import React from 'react';
 import { useTranslation } from 'next-i18next';
-import Image from 'next/image';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { Musician } from '@/types/musician';
 import { VideoItem } from '@/types/video';
 import { getProfilePageSchema, getBreadcrumbSchema } from '@/utils/structuredData';
-import { extractInstagramUsername } from '@/utils/instagram';
 import { getCamps } from '@/data/camps';
 import PageLayout from '../layout/PageLayout';
-import MusicianCard from './MusicianCard';
-import VideoCard from '../videos/VideoCard';
-import InstagramIcon from '../icons/InstagramIcon';
-import YouTubeIcon from '../icons/YouTubeIcon';
 import WaveDivider from '../common/WaveDivider';
+import MusicianHeroSection from './MusicianHeroSection';
+import MusicianDescriptionSection from './MusicianDescriptionSection';
+import RelatedVideosSection from './RelatedVideosSection';
+import OtherMusiciansSection from './OtherMusiciansSection';
+import CampFinalCTA from './CampFinalCTA';
 
 interface BreadcrumbItem {
   name: string;
@@ -85,288 +81,49 @@ export default function MusicianDetailContent({
       disableBottomPadding={true}
       className="flex flex-col"
     >
-      {/* Hero */}
-      <div className="relative bg-gradient-to-b from-jeju-ocean to-ocean-mist min-h-[480px] flex items-center">
-        {musician.imageUrl && (
-          <div className="absolute inset-0 overflow-hidden">
-            <Image
-              src={musician.imageUrl}
-              alt=""
-              fill
-              className="object-cover object-center opacity-20 blur-sm scale-105"
-              priority
-              aria-hidden
-            />
-          </div>
-        )}
-        <div className="relative z-10 w-full pt-24 pb-12">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-10 items-center">
-              {musician.imageUrl && (
-                <div className="w-full md:w-[380px] flex-shrink-0">
-                  <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl ring-4 ring-white/20">
-                    <Image
-                      src={musician.imageUrl}
-                      alt={musician.name}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 320px"
-                      className="object-cover object-center"
-                      priority
-                    />
-                  </div>
-                </div>
-              )}
+      <MusicianHeroSection musician={musician} fundingUrl={fundingUrl} isCampPage={isCampPage} />
 
-              <div className="flex-1 text-white pb-2">
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {musician.genre.map((g) => (
-                    <span
-                      key={g}
-                      className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium tracking-wide"
-                    >
-                      {g}
-                    </span>
-                  ))}
-                </div>
-
-                <h1 className="typo-h1 mb-5 leading-tight">{musician.name}</h1>
-
-                {!isCampPage && musician.trackTitle && (
-                  <div className="mb-5">
-                    <p className="text-xs uppercase tracking-widest text-white/60 mb-1">
-                      {t('common.album_track_label')}
-                    </p>
-                    <Link
-                      href="/album/tracks"
-                      className="text-golden-sun hover:text-yellow-300 transition-colors text-lg font-medium"
-                    >
-                      {musician.trackTitle}
-                    </Link>
-                  </div>
-                )}
-
-                {(musician.instagramUrls.length > 0 || musician.youtubeUrl) && (
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {musician.instagramUrls.map((url) => {
-                      const username = extractInstagramUsername(url);
-                      return (
-                        <a
-                          key={url}
-                          href={url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center px-3 py-1.5 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors"
-                        >
-                          <InstagramIcon className="w-4 h-4 mr-1.5" />@{username}
-                        </a>
-                      );
-                    })}
-                    {musician.youtubeUrl && (
-                      <a
-                        href={musician.youtubeUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center px-3 py-1.5 text-sm bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors"
-                      >
-                        <YouTubeIcon className="w-4 h-4 mr-1.5" />
-                        YouTube
-                      </a>
-                    )}
-                  </div>
-                )}
-
-                {fundingUrl && (
-                  <a
-                    href={`${fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=musician-hero-${musician.id}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-5 py-2.5 text-sm bg-golden-sun text-gray-900 font-bold rounded-full hover:bg-yellow-400 transition-colors shadow-md"
-                  >
-                    {t('camp.ticketing_2026')}
-                  </a>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Description */}
-      <div className="bg-white pt-16 pb-16 flex-1">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <p className="typo-body text-gray-700 leading-relaxed whitespace-pre-wrap text-pretty">
-              {musician.description}
-            </p>
-
-            {!isCampPage && (
-              <div className="mt-12 flex flex-wrap gap-4">
-                <Link
-                  href={backHref}
-                  className="inline-flex items-center px-5 py-2.5 bg-ocean-sand text-jeju-ocean rounded-lg hover:bg-ocean-mist transition-colors text-sm font-medium"
-                >
-                  &larr; {backLabel}
-                </Link>
-                {musician.trackTitle && (
-                  <Link
-                    href="/album/tracks"
-                    className="inline-flex items-center px-5 py-2.5 bg-golden-sun text-gray-900 rounded-lg hover:bg-yellow-400 transition-colors text-sm font-medium"
-                  >
-                    {t('common.album_track_button')} &rarr;
-                  </Link>
-                )}
-                {fundingUrl && (
-                  <a
-                    href={`${fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=musician-${musician.id}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-5 py-2.5 bg-jeju-ocean text-white rounded-lg hover:bg-ocean-mist transition-colors text-sm font-medium"
-                  >
-                    {t('camp.ticketing_2026')} &rarr;
-                  </a>
-                )}
-              </div>
-            )}
-
-            {/* Camp Info Card — isCampPage only */}
-            {isCampPage && camp2026 && fundingUrl && (
-              <div className="mt-12 rounded-2xl overflow-hidden border border-ocean-sand shadow-sm flex flex-col sm:flex-row">
-                {camp2026.images?.[0] && (
-                  <a
-                    href={`${fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=musician-camp-info-${musician.id}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="sm:w-[140px] flex-shrink-0 block"
-                  >
-                    <div className="relative w-full h-40 sm:h-full min-h-[140px]">
-                      <Image
-                        src={camp2026.images[0]}
-                        alt={t('camp.title_2026')}
-                        fill
-                        sizes="(max-width: 640px) 100vw, 140px"
-                        className="object-cover"
-                      />
-                    </div>
-                  </a>
-                )}
-                <div className="flex-1 bg-ocean-sand px-6 py-5 flex flex-col justify-between gap-4">
-                  <div>
-                    <p className="text-xs uppercase tracking-widest text-jeju-ocean font-semibold mb-2">{t('camp.title_2026')}</p>
-                    <div className="flex flex-wrap gap-3">
-                      <span className="inline-flex items-center gap-1.5 text-sm text-gray-700">
-                        <span className="text-jeju-ocean">📅</span>{t('camp.date_badge_2026')}
-                      </span>
-                      <span className="inline-flex items-center gap-1.5 text-sm text-gray-700">
-                        <span className="text-jeju-ocean">📍</span>{t('camp.venue_2026')}
-                      </span>
-                    </div>
-                  </div>
-                  <a
-                    href={`${fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=musician-camp-info-${musician.id}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="self-start inline-flex items-center px-5 py-2.5 bg-jeju-ocean text-white rounded-lg hover:bg-ocean-mist transition-colors text-sm font-medium"
-                  >
-                    {t('camp.ticketing_2026')} &rarr;
-                  </a>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
+      <MusicianDescriptionSection
+        musician={musician}
+        backHref={backHref}
+        backLabel={backLabel}
+        fundingUrl={fundingUrl}
+        isCampPage={isCampPage}
+        camp2026={camp2026}
+      />
 
       {relatedVideos.length > 0 && (
         <WaveDivider className="text-ocean-sand -mt-[60px] sm:-mt-[100px] relative z-10" />
       )}
 
-      {/* Related Videos */}
       {relatedVideos.length > 0 && (
-        <div className="bg-ocean-sand pt-16 pb-24 sm:pb-36">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="typo-h2 text-jeju-ocean text-center mb-10">{t('nav.video')}</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {relatedVideos.map((video) => (
-                  <VideoCard key={video.id} video={video} />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+        <RelatedVideosSection relatedVideos={relatedVideos} />
       )}
 
       {otherMusicians.length > 0 && relatedVideos.length > 0 && (
         <WaveDivider className="text-white -mt-[60px] sm:-mt-[100px] relative z-10" />
       )}
 
-      {/* Other Musicians */}
       {otherMusicians.length > 0 && (
-        <div className="bg-white py-16">
-          <div className="container mx-auto px-4">
-            <h2 className="typo-h2 text-jeju-ocean text-center mb-10">
-              {otherMusiciansTitle || t('nav.musician')}
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-              {otherMusicians.slice(0, 6).map((m, i) => (
-                <MusicianCard
-                  key={m.id}
-                  musician={m}
-                  index={i}
-                  href={`${musicianHrefPrefix}/${m.id}`}
-                />
-              ))}
-            </div>
-            <div className="text-center mt-10">
-              <Link
-                href={backHref}
-                className="inline-flex items-center px-6 py-3 bg-jeju-ocean text-white rounded-lg hover:bg-ocean-mist transition-colors font-medium"
-              >
-                {isCampPage ? t('camp.view_full_lineup') : backLabel} &rarr;
-              </Link>
-            </div>
-          </div>
-        </div>
+        <OtherMusiciansSection
+          otherMusicians={otherMusicians}
+          musicianHrefPrefix={musicianHrefPrefix}
+          backHref={backHref}
+          backLabel={backLabel}
+          isCampPage={isCampPage}
+          otherMusiciansTitle={otherMusiciansTitle}
+        />
       )}
 
-      {/* Final CTA — isCampPage only */}
       {isCampPage && fundingUrl && (
-        <>
-          {otherMusicians.length === 0 && (
-            <div className="bg-white pb-8">
-              <div className="container mx-auto px-4 max-w-3xl">
-                <Link
-                  href={backHref}
-                  className="inline-flex items-center px-5 py-2.5 bg-ocean-sand text-jeju-ocean rounded-lg hover:bg-ocean-mist transition-colors text-sm font-medium"
-                >
-                  &larr; {backLabel}
-                </Link>
-              </div>
-            </div>
-          )}
-          <WaveDivider className={`${otherMusicians.length === 0 && relatedVideos.length > 0 ? 'text-ocean-sand' : 'text-white'} -mt-[60px] sm:-mt-[100px] relative z-10`} />
-          <section className="bg-jeju-ocean py-20 md:py-28">
-            <div className="container mx-auto px-4 text-center">
-              <motion.div
-                initial={{ opacity: 1, y: 0 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.6 }}
-              >
-                <h2 className="typo-h2 text-white mb-4">{t('camp.cta_final_heading')}</h2>
-                <p className="typo-body text-gray-200 mb-8 max-w-lg mx-auto">{t('camp.cta_final_body')}</p>
-                <a
-                  href={`${fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=musician-final-cta-${musician.id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block px-8 py-3.5 bg-golden-sun text-gray-900 font-bold rounded-full text-base shadow-lg hover:bg-yellow-400 transition-colors"
-                >
-                  {t('camp.cta_final_button')}
-                </a>
-              </motion.div>
-            </div>
-          </section>
-        </>
+        <CampFinalCTA
+          musicianId={musician.id}
+          fundingUrl={fundingUrl}
+          hasOtherMusicians={otherMusicians.length > 0}
+          hasRelatedVideos={relatedVideos.length > 0}
+          backHref={backHref}
+          backLabel={backLabel}
+        />
       )}
     </PageLayout>
   );
