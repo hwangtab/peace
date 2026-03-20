@@ -43,7 +43,7 @@ describe('Footer Component', () => {
 
     test('renders copyright with 2026', () => {
         renderWithI18n(<Footer />);
-        const copyrightText = screen.getByText(/2026/);
+        const copyrightText = screen.getByText(/© 2026/);
         expect(copyrightText).toBeInTheDocument();
     });
 });
