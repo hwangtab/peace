@@ -157,10 +157,10 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId, initialMusician
         return camp.id !== 'camp-2026' && camp2026?.fundingUrl ? (
           <div className="bg-jeju-ocean py-12">
             <div className="container mx-auto px-4 text-center">
-              <h3 className="text-2xl font-bold text-white mb-3">
+              <h3 className="text-2xl font-bold text-white mb-3 break-words">
                 {t('camp.title_2026')}
               </h3>
-              <p className="text-seafoam mb-6 text-sm">
+              <p className="text-seafoam mb-6 text-sm break-words">
                 {t('camp.date_badge_2026')} · {t('camp.venue_2026')}
               </p>
               <div className="flex flex-wrap justify-center gap-4">
