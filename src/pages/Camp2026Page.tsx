@@ -214,6 +214,8 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
         </div>
       </Section>
 
+      <WaveDivider className="text-ocean-sand -mb-[60px] sm:-mb-[100px] relative z-10" direction="down" />
+
       {/* Gangjeong Story Section */}
       <GangjeongStorySection />
 
