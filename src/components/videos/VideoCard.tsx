@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { VideoItem } from '../../types/video';
+import { VideoItem } from '@/types/video';
 
 // Camp-2026 participant musicianIds
 const CAMP_2026_MUSICIAN_IDS = new Set([

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Participant } from '../../types/camp';
+import { Participant } from '@/types/camp';
 import MusicianModal from '../musicians/MusicianModal';
-import { Musician } from '../../types/musician';
+import { Musician } from '@/types/musician';
 
 interface CampParticipantsProps {
     participants: (string | Participant)[];

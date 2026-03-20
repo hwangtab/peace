@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { FaInstagram } from 'react-icons/fa';
 import { HiOutlineMail } from 'react-icons/hi';
-import { ROUTES } from '../../constants/routes';
-import { SITE_CONFIG } from '../../constants/config';
-import { getCamps } from '../../data/camps';
+import { ROUTES } from '@/constants/routes';
+import { SITE_CONFIG } from '@/constants/config';
+import { getCamps } from '@/data/camps';
 
 import { useTranslation } from 'next-i18next';
 // ...

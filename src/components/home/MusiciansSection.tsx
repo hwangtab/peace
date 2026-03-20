@@ -1,8 +1,8 @@
 import { useTranslation } from 'next-i18next';
 import { useInView } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
-import { getMusicians } from '../../api/musicians';
-import { Musician } from '../../types/musician';
+import { getMusicians } from '@/api/musicians';
+import { Musician } from '@/types/musician';
 import MusicianCard from '../musicians/MusicianCard';
 import Section from '../layout/Section';
 import SectionHeader from '../common/SectionHeader';

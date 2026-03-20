@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'next-i18next';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { CampEvent } from '../../types/camp';
+import { CampEvent } from '@/types/camp';
 
 interface CampHeroProps {
   camp: CampEvent;

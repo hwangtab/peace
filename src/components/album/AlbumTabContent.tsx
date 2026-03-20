@@ -5,8 +5,8 @@ import Image from 'next/image';
 import Button from '../common/Button';
 import VideoCard from '../videos/VideoCard';
 import ConcertCard from './ConcertCard';
-import { GalleryImage } from '../../types/gallery';
-import { VideoItem } from '../../types/video';
+import { GalleryImage } from '@/types/gallery';
+import { VideoItem } from '@/types/video';
 
 interface Performer {
     name: string;

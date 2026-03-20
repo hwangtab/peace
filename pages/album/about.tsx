@@ -1,12 +1,12 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import nextI18NextConfig from '../../next-i18next.config';
 import { GetStaticPropsContext } from 'next';
-import Page from '../../src/pages/album/AlbumAboutPage';
+import Page from '@/pages/album/AlbumAboutPage';
 import fs from 'fs';
 import path from 'path';
-import { VideoItem } from '../../src/types/video';
-import { Musician } from '../../src/types/musician';
-import { GalleryImage } from '../../src/types/gallery';
+import { VideoItem } from '@/types/video';
+import { Musician } from '@/types/musician';
+import { GalleryImage } from '@/types/gallery';
 
 interface WrappedPageProps {
   initialVideos: VideoItem[];
