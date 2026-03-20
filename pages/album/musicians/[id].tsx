@@ -95,7 +95,7 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
   };
   const otherMusicians = [...candidates]
     .sort((a, b) => hash(a.id) - hash(b.id))
-    .slice(0, 8);
+    .slice(0, 6);
 
   return {
     props: {
