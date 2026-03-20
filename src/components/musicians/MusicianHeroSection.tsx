@@ -47,7 +47,7 @@ export default function MusicianHeroSection({ musician, fundingUrl, isCampPage }
               </div>
             )}
 
-            <div className="flex-1 text-white pb-2">
+            <div className="flex-1 min-w-0 text-white pb-2">
               <div className="flex flex-wrap gap-2 mb-4">
                 {musician.genre.map((g) => (
                   <span
@@ -59,7 +59,7 @@ export default function MusicianHeroSection({ musician, fundingUrl, isCampPage }
                 ))}
               </div>
 
-              <h1 className="typo-h1 mb-5 leading-tight">{musician.name}</h1>
+              <h1 className="typo-h1 mb-5 leading-tight break-words">{musician.name}</h1>
 
               {!isCampPage && musician.trackTitle && (
                 <div className="mb-5">
@@ -85,7 +85,7 @@ export default function MusicianHeroSection({ musician, fundingUrl, isCampPage }
                         href={url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center px-3 py-1.5 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors"
+                        className="inline-flex items-center px-3 py-1.5 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors max-w-full"
                       >
                         <InstagramIcon className="w-4 h-4 mr-1.5" />@{username}
                       </a>

@@ -45,8 +45,8 @@ export default function CampFinalCTA({
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="typo-h2 text-white mb-4">{t('camp.cta_final_heading')}</h2>
-            <p className="typo-body text-gray-200 mb-8 max-w-lg mx-auto">{t('camp.cta_final_body')}</p>
+            <h2 className="typo-h2 text-white mb-4 break-words">{t('camp.cta_final_heading')}</h2>
+            <p className="typo-body text-gray-200 mb-8 max-w-lg mx-auto break-words">{t('camp.cta_final_body')}</p>
             <a
               href={`${fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=musician-final-cta-${musicianId}`}
               target="_blank"

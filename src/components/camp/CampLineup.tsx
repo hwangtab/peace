@@ -49,7 +49,7 @@ const CampLineup: React.FC<CampLineupProps> = ({ participants, musicians, inView
             transition={{ duration: 0.3, delay: Math.min(index * 0.02, 1.0) }}
             className="flex items-center justify-center text-center h-full min-h-[200px] px-4 rounded-lg border bg-white border-gray-200 shadow-lg"
           >
-            <span className="font-medium text-gray-700 text-lg">
+            <span className="font-medium text-gray-700 text-lg break-words">
               {name}
             </span>
           </motion.div>
