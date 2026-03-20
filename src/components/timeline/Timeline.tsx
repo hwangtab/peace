@@ -15,7 +15,7 @@ const Timeline = () => {
   const { t } = useTranslation();
 
   return (
-    <Section id="history" background="sunlight-glow" ref={ref}>
+    <Section id="history" background="sunlight-glow" ref={ref} className="pb-24 md:pb-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title={t('timeline.title')}
