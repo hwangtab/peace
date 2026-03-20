@@ -25,7 +25,7 @@ export default function CampFinalCTA({
   return (
     <>
       {!hasOtherMusicians && (
-        <div className="bg-white pb-8">
+        <div className="bg-white pb-24 md:pb-32">
           <div className="container mx-auto px-4 max-w-3xl">
             <Link
               href={backHref}

@@ -23,7 +23,7 @@ export default function OtherMusiciansSection({
   const { t } = useTranslation();
 
   return (
-    <div className="bg-white py-16">
+    <div className="bg-white pt-16 pb-24 md:pb-32">
       <div className="container mx-auto px-4">
         <h2 className="typo-h2 text-jeju-ocean text-center mb-10">
           {otherMusiciansTitle || t('nav.musician')}
