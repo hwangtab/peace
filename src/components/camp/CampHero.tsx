@@ -44,7 +44,7 @@ const CampHero: React.FC<CampHeroProps> = ({ camp }) => {
         >
           <h1 className="typo-h1 text-white mb-4 hyphens-auto break-words">{camp.title}</h1>
           {camp.slogan && <p className="typo-subtitle text-gray-100 mb-6 hyphens-auto break-words">{camp.slogan}</p>}
-          <div className="flex flex-col sm:flex-row justify-center gap-6 text-white">
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-6 text-white">
             <div>
               <p className="text-sm uppercase tracking-wide text-gray-300 mb-1">{t('album.label_date')}</p>
               <p className="text-lg font-medium break-words">{formattedDate}</p>

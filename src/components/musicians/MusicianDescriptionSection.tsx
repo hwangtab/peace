@@ -80,7 +80,7 @@ export default function MusicianDescriptionSection({
                   </div>
                 </a>
               )}
-              <div className="flex-1 bg-gradient-to-br from-ocean-sand to-white px-6 py-6 flex flex-col justify-between gap-4">
+              <div className="flex-1 min-w-0 bg-gradient-to-br from-ocean-sand to-white px-6 py-6 flex flex-col justify-between gap-4">
                 <div>
                   <p className="text-sm uppercase tracking-widest text-jeju-ocean font-bold mb-2">{t('camp.title_2026')}</p>
                   <div className="flex flex-wrap gap-3">
