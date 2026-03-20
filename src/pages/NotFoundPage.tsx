@@ -1,6 +1,6 @@
 import React from 'react';
-import PageLayout from '../components/layout/PageLayout';
-import Button from '../components/common/Button';
+import PageLayout from '@/components/layout/PageLayout';
+import Button from '@/components/common/Button';
 
 import { useTranslation } from 'next-i18next';
 // ...

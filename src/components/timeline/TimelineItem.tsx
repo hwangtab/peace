@@ -80,6 +80,7 @@ const TimelineItem = React.memo<TimelineItemProps>(({ event, isLeft }) => {
                 <div className="w-1 bg-transparent h-full absolute left-1/2 -translate-x-1/2" /> {/* Spacer for line */}
                 <motion.div
                     whileInView={{ scale: 1.2 }}
+                    viewport={{ once: true }}
                     transition={{ duration: 0.4 }}
                     className={`w-6 h-6 rounded-full bg-cloud-white border-4 ${eventTypeBorder[event.eventType]} shadow-md z-10 mt-6`}
                 />

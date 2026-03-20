@@ -2,17 +2,17 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
-import { getCamps } from '../data/camps';
-import PageLayout from '../components/layout/PageLayout';
-import Section from '../components/layout/Section';
-import SectionHeader from '../components/common/SectionHeader';
-import WaveDivider from '../components/common/WaveDivider';
-import CampLineup from '../components/camp/CampLineup';
-import { getEventSchema, getBreadcrumbSchema } from '../utils/structuredData';
-import { getFullUrl } from '../config/env';
-import { formatOrdinal } from '../utils/format';
-import { getMusicians } from '../api/musicians';
-import { Musician } from '../types/musician';
+import { getCamps } from '@/data/camps';
+import PageLayout from '@/components/layout/PageLayout';
+import Section from '@/components/layout/Section';
+import SectionHeader from '@/components/common/SectionHeader';
+import WaveDivider from '@/components/common/WaveDivider';
+import CampLineup from '@/components/camp/CampLineup';
+import { getEventSchema, getBreadcrumbSchema } from '@/utils/structuredData';
+import { getFullUrl } from '@/config/env';
+import { formatOrdinal } from '@/utils/format';
+import { getMusicians } from '@/api/musicians';
+import { Musician } from '@/types/musician';
 
 interface CampPageProps {
   initialMusicians?: Musician[];
@@ -107,7 +107,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
       {/* Hero Section with Background Image */}
       <section className="relative min-h-[500px] md:min-h-[600px] lg:min-h-[700px] flex items-center justify-center text-center overflow-hidden bg-ocean-gradient pt-20 pb-16">
         <Image
-          src="/images-webp/camps/2023/20230610밤 전쟁을끝내자.webp"
+          src={camp2026?.images?.[0] || '/images-webp/camps/2026/camp2026-hero.webp'}
           alt={translatedTitle}
           fill
           sizes="100vw"

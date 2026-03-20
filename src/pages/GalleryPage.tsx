@@ -1,15 +1,15 @@
 import React from 'react';
 import Link from 'next/link';
-import PageLayout from '../components/layout/PageLayout';
-import PageHero from '../components/common/PageHero';
-import GallerySection from '../components/home/GallerySection';
-import { getImageGallerySchema, getBreadcrumbSchema } from '../utils/structuredData';
-import { getCamps } from '../data/camps';
+import PageLayout from '@/components/layout/PageLayout';
+import PageHero from '@/components/common/PageHero';
+import GallerySection from '@/components/home/GallerySection';
+import { getImageGallerySchema, getBreadcrumbSchema } from '@/utils/structuredData';
+import { getCamps } from '@/data/camps';
 
 import { useTranslation } from 'next-i18next';
 // ...
 
-import { GalleryImage } from '../types/gallery';
+import { GalleryImage } from '@/types/gallery';
 
 interface GalleryPageProps {
     initialImages?: GalleryImage[];

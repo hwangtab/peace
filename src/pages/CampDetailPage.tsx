@@ -1,20 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { motion, useInView } from 'framer-motion';
-import CampHero from '../components/camp/CampHero';
-import CampGallery from '../components/camp/CampGallery';
-import CampParticipants from '../components/camp/CampParticipants';
-import CampStaff from '../components/camp/CampStaff';
-import { getCamps } from '../data/camps';
-import PageLayout from '../components/layout/PageLayout';
-import Section from '../components/layout/Section';
-import SectionHeader from '../components/common/SectionHeader';
-import WaveDivider from '../components/common/WaveDivider';
-import { getEventSchema, getBreadcrumbSchema } from '../utils/structuredData';
-import { getFullUrl } from '../config/env';
-import { getMusicians } from '../api/musicians';
-import { Musician } from '../types/musician';
-import { formatOrdinal } from '../utils/format';
+import CampHero from '@/components/camp/CampHero';
+import CampGallery from '@/components/camp/CampGallery';
+import CampParticipants from '@/components/camp/CampParticipants';
+import CampStaff from '@/components/camp/CampStaff';
+import { getCamps } from '@/data/camps';
+import PageLayout from '@/components/layout/PageLayout';
+import Section from '@/components/layout/Section';
+import SectionHeader from '@/components/common/SectionHeader';
+import WaveDivider from '@/components/common/WaveDivider';
+import { getEventSchema, getBreadcrumbSchema } from '@/utils/structuredData';
+import { getFullUrl } from '@/config/env';
+import { getMusicians } from '@/api/musicians';
+import { Musician } from '@/types/musician';
+import { formatOrdinal } from '@/utils/format';
 import Link from 'next/link';
 
 interface CampDetailPageProps {
