@@ -52,7 +52,7 @@ const Footer = () => {
 
                     {/* Center Column - Navigation */}
                     <div className="text-center space-y-4">
-                        <h3 className="text-sm font-semibold text-seafoam uppercase tracking-wider mb-4">
+                        <h3 className="text-sm font-semibold text-seafoam uppercase tracking-wider mb-4 break-words">
                             {t('footer.links')}
                         </h3>
                         <div className="grid grid-cols-2 gap-x-8 gap-y-2">
@@ -108,7 +108,7 @@ const Footer = () => {
 
                     {/* Right Column - Social & Contact */}
                     <div className="text-center md:text-right space-y-4">
-                        <h3 className="text-sm font-semibold text-seafoam uppercase tracking-wider mb-4">
+                        <h3 className="text-sm font-semibold text-seafoam uppercase tracking-wider mb-4 break-words">
                             {t('footer.contact')}
                         </h3>
                         <div className="flex items-center justify-center md:justify-end space-x-4">

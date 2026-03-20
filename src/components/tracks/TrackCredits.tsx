@@ -45,7 +45,7 @@ export default function TrackCredits({ credits }: TrackCreditsProps) {
               <span className="text-sm text-coastal-gray font-medium min-w-[80px]">
                 {role === 'personnel' ? t('common.label_personnel') : role}
               </span>
-              <span className="text-gray-600">
+              <span className="text-gray-600 min-w-0 break-words">
                 {renderValue()}
               </span>
             </div>
