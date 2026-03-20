@@ -122,6 +122,7 @@ const campsKo: CampEvent[] = [
     fundingUrl: 'https://tumblbug.com/gpmc3',
     slogan: '노래하자, 춤추자, 전쟁을 끝내자!',
     images: [
+      '/images-webp/camps/2023/DSC00369.webp',
       '/images-webp/camps/2026/2026poster1-og.jpg',
       '/images-webp/camps/2026/2026poster1.jpeg',
       '/images-webp/camps/2026/2026poster2.jpeg',
@@ -301,6 +302,7 @@ const campsEn: CampEvent[] = [
     fundingUrl: 'https://tumblbug.com/gpmc3',
     slogan: "Let's sing, let's dance, end the war!",
     images: [
+      '/images-webp/camps/2023/DSC00369.webp',
       '/images-webp/camps/2026/2026poster1-og.jpg',
       '/images-webp/camps/2026/2026poster1.jpeg',
       '/images-webp/camps/2026/2026poster2.jpeg',
