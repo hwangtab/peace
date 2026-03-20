@@ -36,13 +36,13 @@ const GangjeongStorySection: React.FC<GangjeongStorySectionProps> = ({
           </h2>
 
           <div className="space-y-5 sm:space-y-6">
-            <p className="typo-body text-gray-200 leading-relaxed break-words text-pretty">
+            <p className="typo-body text-gray-200 leading-relaxed break-words text-balance">
               {t('gangjeong_story.paragraph1')}
             </p>
-            <p className="typo-body text-gray-200 leading-relaxed break-words text-pretty">
+            <p className="typo-body text-gray-200 leading-relaxed break-words text-balance">
               {t('gangjeong_story.paragraph2')}
             </p>
-            <p className="typo-body text-gray-100 leading-relaxed break-words text-pretty font-medium">
+            <p className="typo-body text-gray-100 leading-relaxed break-words text-balance font-medium">
               {t('gangjeong_story.paragraph3')}
             </p>
           </div>
