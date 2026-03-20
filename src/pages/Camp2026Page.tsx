@@ -188,21 +188,21 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
                 />
               </a>
               {/* Info */}
-              <div className="flex-1 min-w-0 bg-white rounded-lg shadow-sm p-8 overflow-hidden">
+              <div className="flex-1 min-w-0 bg-white rounded-lg shadow-sm p-8">
                 <SectionHeader title={t('camp.section_overview')} align="left" className="!mb-6" />
                 <p className="typo-body mb-6 break-words">
                   {translatedDescription}
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <div className="bg-ocean-sand rounded-xl p-4 text-center overflow-hidden">
+                  <div className="bg-ocean-sand rounded-xl p-4 text-center">
                     <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">{t('camp.label_period')}</p>
                     <p className="text-sm font-semibold text-jeju-ocean break-words">{t('camp.date_badge_2026')}</p>
                   </div>
-                  <div className="bg-ocean-sand rounded-xl p-4 text-center overflow-hidden">
+                  <div className="bg-ocean-sand rounded-xl p-4 text-center">
                     <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">{t('camp.label_location')}</p>
                     <p className="text-sm font-semibold text-jeju-ocean break-words">{t('camp.venue_2026')}</p>
                   </div>
-                  <div className="bg-ocean-sand rounded-xl p-4 text-center overflow-hidden">
+                  <div className="bg-ocean-sand rounded-xl p-4 text-center">
                     <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">{t('camp.label_participants')}</p>
                     <p className="text-sm font-semibold text-jeju-ocean break-words">{t('camp.participant_count', { count: participantCount })}</p>
                   </div>

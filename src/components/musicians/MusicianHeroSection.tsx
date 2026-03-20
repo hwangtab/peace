@@ -87,7 +87,7 @@ export default function MusicianHeroSection({ musician, fundingUrl, isCampPage }
                         rel="noopener noreferrer"
                         className="inline-flex items-center px-3 py-1.5 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors max-w-full"
                       >
-                        <InstagramIcon className="w-4 h-4 mr-1.5" />@{username}
+                        <InstagramIcon className="w-4 h-4 mr-1.5 flex-shrink-0" /><span className="truncate">@{username}</span>
                       </a>
                     );
                   })}
