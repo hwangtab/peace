@@ -258,7 +258,7 @@ const AlbumAboutPage = ({
         </div>
       </div>
 
-      <Section background="white">
+      <Section background="white" className="pb-24 md:pb-32">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
             {/* Card 1: Meaning */}
