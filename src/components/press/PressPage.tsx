@@ -145,7 +145,7 @@ export default function PressPage({
         {/* Camp 2026 CTA */}
         {camp2026?.fundingUrl && (
           <div className="mt-16 bg-jeju-ocean rounded-xl py-8 px-6 text-center">
-            <p className="text-white text-lg font-medium mb-4">{t('camp.title_2026')}</p>
+            <p className="text-white text-lg font-medium mb-4 break-words">{t('camp.title_2026')}</p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/camps/2026"

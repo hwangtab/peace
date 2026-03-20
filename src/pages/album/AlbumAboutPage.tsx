@@ -329,7 +329,7 @@ const AlbumAboutPage = ({
             transition={{ duration: 0.8 }}
             className="mt-16 md:mt-24 pt-16 md:pt-20 pb-20 border-t border-jeju-ocean/10 text-center"
           >
-            <p className="text-coastal-gray font-serif text-lg">
+            <p className="text-coastal-gray font-serif text-lg break-words">
               {t('common.label_produced_by')} <span className="text-jeju-ocean font-bold">{t('app.title')}</span> ·
               2024
             </p>
