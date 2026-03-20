@@ -235,7 +235,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
       {camp2026.fundingUrl && (
         <>
           <WaveDivider className="text-jeju-ocean -mt-[60px] sm:-mt-[100px] relative z-10" />
-          <section className="bg-jeju-ocean py-20 md:py-28">
+          <section className="bg-jeju-ocean pt-28 pb-20 md:pt-36 md:pb-28">
             <div className="container mx-auto px-4 text-center">
               <motion.div
                 initial={{ opacity: 1, y: 0 }}
@@ -243,8 +243,8 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6 }}
               >
-                <h2 className="typo-h2 text-white mb-4 break-words">{t('camp.cta_final_heading')}</h2>
-                <p className="typo-body text-gray-200 mb-8 max-w-lg mx-auto break-words">{t('camp.cta_final_body')}</p>
+                <h2 className="typo-h2 text-white mb-4 break-words text-balance">{t('camp.cta_final_heading')}</h2>
+                <p className="typo-body text-gray-200 mb-8 max-w-lg mx-auto break-words text-balance">{t('camp.cta_final_body')}</p>
                 <a
                   href={`${camp2026.fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=final-cta`}
                   target="_blank"
