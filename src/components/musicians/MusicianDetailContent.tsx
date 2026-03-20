@@ -296,7 +296,7 @@ export default function MusicianDetailContent({
         </div>
       )}
 
-      {otherMusicians.length > 0 && (
+      {otherMusicians.length > 0 && relatedVideos.length > 0 && (
         <WaveDivider className="text-white -mt-[60px] sm:-mt-[100px] relative z-10" />
       )}
 
