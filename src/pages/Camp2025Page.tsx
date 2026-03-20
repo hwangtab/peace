@@ -1,5 +1,5 @@
 import CampDetailPage from './CampDetailPage';
-import { Musician } from '../types/musician';
+import { Musician } from '@/types/musician';
 
 interface CampPageProps {
     initialMusicians?: Musician[];
