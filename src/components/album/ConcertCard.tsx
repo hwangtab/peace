@@ -39,7 +39,7 @@ const ConcertCard: React.FC<ConcertCardProps> = ({ concert, onMusicianClick, ind
             <div className="h-2 bg-gradient-to-r from-jeju-ocean to-ocean-mist opacity-80" />
 
             <div className="p-8 flex-1 flex flex-col">
-                <h3 className="typo-h3 text-2xl mb-8 group-hover:text-jeju-ocean transition-colors duration-300">
+                <h3 className="typo-h3 text-2xl mb-8 group-hover:text-jeju-ocean transition-colors duration-300 break-words">
                     {concert.name}
                 </h3>
 
@@ -52,7 +52,7 @@ const ConcertCard: React.FC<ConcertCardProps> = ({ concert, onMusicianClick, ind
                             <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">
                                 {t('album.label_date')}
                             </span>
-                            <span className="font-medium">
+                            <span className="font-medium break-words">
                                 {concert.date}{' '}
                                 <span className="text-coastal-gray text-sm">{concert.time}</span>
                             </span>
@@ -67,7 +67,7 @@ const ConcertCard: React.FC<ConcertCardProps> = ({ concert, onMusicianClick, ind
                             <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">
                                 {t('album.label_venue')}
                             </span>
-                            <span className="font-medium">{concert.venue}</span>
+                            <span className="font-medium break-words">{concert.venue}</span>
                         </div>
                     </div>
                 </div>
@@ -85,14 +85,14 @@ const ConcertCard: React.FC<ConcertCardProps> = ({ concert, onMusicianClick, ind
                                 <button
                                     key={idx}
                                     onClick={() => onMusicianClick(performer.musicianId)}
-                                    className="px-3 py-1.5 bg-ocean-sand text-jeju-ocean rounded-lg text-xs font-medium border border-jeju-ocean/10 hover:border-jeju-ocean hover:bg-jeju-ocean hover:text-white hover:shadow-md transition-all duration-300"
+                                    className="px-3 py-1.5 bg-ocean-sand text-jeju-ocean rounded-lg text-xs font-medium border border-jeju-ocean/10 hover:border-jeju-ocean hover:bg-jeju-ocean hover:text-white hover:shadow-md transition-all duration-300 break-words"
                                 >
                                     {performer.name}
                                 </button>
                             ) : (
                                 <span
                                     key={idx}
-                                    className="px-3 py-1.5 bg-ocean-mist/5 text-ocean-mist/80 rounded-lg text-xs font-medium border border-ocean-mist/10"
+                                    className="px-3 py-1.5 bg-ocean-mist/5 text-ocean-mist/80 rounded-lg text-xs font-medium border border-ocean-mist/10 break-words"
                                 >
                                     {performer.name}
                                 </span>

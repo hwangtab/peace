@@ -115,7 +115,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId, initialMusician
           >
             <div className="bg-white rounded-lg shadow-sm p-8 mb-12">
               <SectionHeader title={t('camp.section_overview')} align="left" className="!mb-6" />
-              <p className="typo-body mb-4">
+              <p className="typo-body mb-4 break-words">
                 {camp.description}
               </p>
             </div>

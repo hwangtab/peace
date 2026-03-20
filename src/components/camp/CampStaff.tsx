@@ -24,7 +24,7 @@ const CampStaff: React.FC<CampStaffProps> = ({ staff, collaborators, inView }) =
                         className="flex items-start gap-2"
                     >
                         <span className="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" />
-                        <p className="font-serif text-base">
+                        <p className="font-serif text-base min-w-0">
                             <span className="text-gray-700">{section.role}:</span>
                             <span className="text-gray-500 ml-2 break-words">{section.members.join(', ')}</span>
                         </p>

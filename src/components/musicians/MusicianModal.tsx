@@ -110,7 +110,7 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                                 href={url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center px-3 py-1 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors duration-200"
+                                className="inline-flex items-center px-3 py-1 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors duration-200 max-w-full truncate"
                               >
                                 <InstagramIcon className="w-4 h-4 mr-1" />
                                 @{username}

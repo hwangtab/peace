@@ -39,7 +39,7 @@ const Navigation = () => {
           <div className="flex justify-between items-center min-h-[4rem] py-2 gap-4">
             <Link
               href="/"
-              className={`text-lg sm:text-xl lg:text-2xl font-bold font-serif transition-colors duration-300 text-balance ${isScrolled
+              className={`text-lg sm:text-xl lg:text-2xl font-bold font-serif transition-colors duration-300 text-balance min-w-0 break-words ${isScrolled
                 ? 'text-jeju-ocean hover:text-ocean-mist'
                 : 'text-cloud-white hover:text-seafoam drop-shadow-md'
                 }`}

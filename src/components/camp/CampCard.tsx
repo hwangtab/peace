@@ -33,11 +33,11 @@ const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
         {!isComingSoon && (
           <>
             <div className="mb-4 space-y-2">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 break-words">
                 <span className="font-semibold">📅 {t('camp.label_period')}:</span> {camp.startDate}
                 {camp.endDate && ` ~ ${camp.endDate}`}
               </p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 break-words">
                 <span className="font-semibold">📍 {t('camp.label_location')}:</span> {camp.location}
               </p>
             </div>
@@ -53,7 +53,7 @@ const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
                     return (
                       <span
                         key={name}
-                        className="bg-ocean-sand text-jeju-ocean px-2 py-1 rounded text-xs font-medium"
+                        className="bg-ocean-sand text-jeju-ocean px-2 py-1 rounded text-xs font-medium break-words"
                       >
                         {name}
                       </span>

@@ -27,7 +27,7 @@ export default function MusicianDescriptionSection({
     <div className={`bg-white pt-16 ${isCampPage && camp2026 && fundingUrl ? 'pb-20' : 'pb-16'} flex-1`}>
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
-          <p className="typo-body text-gray-700 leading-relaxed whitespace-pre-wrap text-pretty">
+          <p className="typo-body text-gray-700 leading-relaxed whitespace-pre-wrap text-pretty break-words">
             {musician.description}
           </p>
 

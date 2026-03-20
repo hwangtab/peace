@@ -241,7 +241,7 @@ const AlbumAboutPage = ({
                 {t('album.hero_title_1')}
                 <br />{t('album.hero_title_2')}
               </h1>
-              <p className="typo-subtitle text-white/90 font-medium mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              <p className="typo-subtitle text-white/90 font-medium mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0 break-words">
                 {t('album.hero_subtitle')}
               </p>
 
@@ -275,7 +275,7 @@ const AlbumAboutPage = ({
                 </span>
                 {t('album.meaning_title')}
               </h3>
-              <p className="typo-body text-gray-700 leading-loose">
+              <p className="typo-body text-gray-700 leading-loose break-words">
                 {t('album.meaning_desc')}
               </p>
             </motion.div>
@@ -294,7 +294,7 @@ const AlbumAboutPage = ({
                 </span>
                 {t('album.voices_title')}
               </h3>
-              <p className="typo-body text-gray-700 leading-loose">
+              <p className="typo-body text-gray-700 leading-loose break-words">
                 {t('album.voices_desc')}
               </p>
             </motion.div>

@@ -128,7 +128,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
             <h1 className="typo-h1 text-white mb-3 sm:mb-4 hyphens-auto break-words">{translatedTitle}</h1>
             <p className="typo-subtitle text-gray-100 mb-5 sm:mb-8 hyphens-auto break-words">{translatedSlogan}</p>
 
-            <div className="flex flex-col sm:flex-row justify-center gap-2 sm:gap-6 text-white mb-5 sm:mb-8">
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-6 text-white mb-5 sm:mb-8">
               <div>
                 <p className="text-sm uppercase tracking-wide text-gray-300 mb-1">{t('camp.label_period')}</p>
                 <p className="text-lg font-medium break-words">{t('camp.date_2026')}</p>
