@@ -117,7 +117,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
-            initial={{ y: 8 }}
+            initial={{ y: 16 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
           >
@@ -238,7 +238,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
           <section className="bg-jeju-ocean pt-28 pb-20 md:pt-36 md:pb-28">
             <div className="container mx-auto px-4 text-center">
               <motion.div
-                initial={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6 }}
