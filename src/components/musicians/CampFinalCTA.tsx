@@ -40,7 +40,7 @@ export default function CampFinalCTA({
       <section className="bg-jeju-ocean py-20 md:py-28">
         <div className="container mx-auto px-4 text-center">
           <motion.div
-            initial={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6 }}
