@@ -18,7 +18,7 @@ const TimelineCardContent: React.FC<TimelineCardContentProps> = ({ event, eventT
             <h3 className="typo-h3 text-jeju-ocean mb-2 text-balance break-words">{t(event.titleKey)}</h3>
             <p className="typo-body text-coastal-gray mb-3 text-sm text-pretty break-words">{t(event.descriptionKey)}</p>
             {event.locationKey && (
-                <p className="text-xs text-ocean-mist flex items-center font-medium">
+                <p className="text-xs text-ocean-mist flex items-center font-medium break-words">
                     <span className="mr-1">📍</span> {t(event.locationKey)}
                 </p>
             )}

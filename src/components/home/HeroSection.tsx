@@ -71,7 +71,7 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
                 href={`${camp2026.fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=home-hero`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-8 py-3 bg-white text-jeju-ocean font-bold rounded-full text-base shadow-lg hover:bg-gray-100 transition-colors"
+                className="inline-flex items-center px-8 py-3 bg-white text-jeju-ocean font-bold rounded-full text-base shadow-lg hover:bg-gray-100 transition-colors break-words"
               >
                 {t('camp.ticketing_2026')}
               </a>
