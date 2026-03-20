@@ -39,10 +39,10 @@ export default function TrackHeader({ track, isExpanded, onToggle, onPlay, alway
       aria-expanded={isExpanded}
     >
       <div className="flex justify-between items-center">
-        <div className="flex-grow">
+        <div className="flex-grow min-w-0">
           <div className="flex items-center justify-between mb-1">
-            <h3 className="text-lg font-bold font-serif break-words">{track.title}</h3>
-            <span className="text-sm text-coastal-gray ml-4">{track.duration}</span>
+            <h3 className="text-lg font-bold font-serif break-words min-w-0">{track.title}</h3>
+            <span className="text-sm text-coastal-gray ml-4 flex-shrink-0">{track.duration}</span>
           </div>
           <p className="text-jeju-ocean font-serif break-words">{track.artist}</p>
         </div>
