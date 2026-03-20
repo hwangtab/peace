@@ -121,7 +121,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
             animate={{ y: 0 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
           >
-            <span className="inline-block px-5 py-1.5 bg-white/20 backdrop-blur-sm text-white font-bold rounded-full mb-4 sm:mb-6 text-sm tracking-wider border border-white/30">
+            <span className="inline-block px-5 py-1.5 bg-white/20 backdrop-blur-sm text-white font-bold rounded-full mb-4 sm:mb-6 text-sm tracking-wider border border-white/30 break-words max-w-full">
               {t('camp.date_badge_2026')}
             </span>
 
@@ -131,12 +131,12 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
             <div className="flex flex-col sm:flex-row justify-center gap-2 sm:gap-6 text-white mb-5 sm:mb-8">
               <div>
                 <p className="text-sm uppercase tracking-wide text-gray-300 mb-1">{t('camp.label_period')}</p>
-                <p className="text-lg font-medium">{t('camp.date_2026')}</p>
+                <p className="text-lg font-medium break-words">{t('camp.date_2026')}</p>
               </div>
               <div className="hidden sm:block text-gray-400">|</div>
               <div>
                 <p className="text-sm uppercase tracking-wide text-gray-300 mb-1">{t('camp.label_location')}</p>
-                <p className="text-lg font-medium">{t('camp.venue_2026')}</p>
+                <p className="text-lg font-medium break-words">{t('camp.venue_2026')}</p>
               </div>
             </div>
 
@@ -243,13 +243,13 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6 }}
               >
-                <h2 className="typo-h2 text-white mb-4">{t('camp.cta_final_heading')}</h2>
-                <p className="typo-body text-gray-200 mb-8 max-w-lg mx-auto">{t('camp.cta_final_body')}</p>
+                <h2 className="typo-h2 text-white mb-4 break-words">{t('camp.cta_final_heading')}</h2>
+                <p className="typo-body text-gray-200 mb-8 max-w-lg mx-auto break-words">{t('camp.cta_final_body')}</p>
                 <a
                   href={`${camp2026.fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=final-cta`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block px-8 py-3.5 bg-golden-sun text-gray-900 font-bold rounded-full text-base shadow-lg hover:bg-yellow-400 transition-colors"
+                  className="inline-block px-8 py-3.5 bg-golden-sun text-gray-900 font-bold rounded-full text-base shadow-lg hover:bg-yellow-400 transition-colors break-words"
                 >
                   {t('camp.cta_final_button')}
                 </a>

@@ -47,12 +47,12 @@ const CampHero: React.FC<CampHeroProps> = ({ camp }) => {
           <div className="flex flex-col sm:flex-row justify-center gap-6 text-white">
             <div>
               <p className="text-sm uppercase tracking-wide text-gray-300 mb-1">{t('album.label_date')}</p>
-              <p className="text-lg font-medium">{formattedDate}</p>
+              <p className="text-lg font-medium break-words">{formattedDate}</p>
             </div>
             <div className="hidden sm:block text-gray-400">|</div>
             <div>
               <p className="text-sm uppercase tracking-wide text-gray-300 mb-1">{t('album.label_venue')}</p>
-              <p className="text-lg font-medium">{camp.location}</p>
+              <p className="text-lg font-medium break-words">{camp.location}</p>
             </div>
           </div>
         </motion.div>
