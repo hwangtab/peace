@@ -217,7 +217,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
 
       {/* Lineup Section */}
       {camp2026.participants && camp2026.participants.length > 0 && (
-        <Section background="white" ref={lineupRef} id="lineup">
+        <Section background="white" ref={lineupRef} id="lineup" className="!pb-32 sm:!pb-40">
           <div className="container mx-auto px-4">
             <SectionHeader
               title={t('camp.section_musicians')}
