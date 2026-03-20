@@ -171,7 +171,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
             transition={{ duration: 0.6 }}
             className="max-w-5xl mx-auto"
           >
-            <div className="flex flex-col md:flex-row gap-8 items-start">
+            <div className="flex flex-col md:flex-row gap-8 items-start min-w-0 overflow-hidden">
               {/* Poster */}
               <a
                 href={`${camp2026.fundingUrl || '#'}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=poster`}
@@ -188,23 +188,23 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
                 />
               </a>
               {/* Info */}
-              <div className="flex-1 bg-white rounded-lg shadow-sm p-8">
+              <div className="flex-1 min-w-0 bg-white rounded-lg shadow-sm p-8 overflow-hidden">
                 <SectionHeader title={t('camp.section_overview')} align="left" className="!mb-6" />
-                <p className="typo-body mb-6">
+                <p className="typo-body mb-6 break-words">
                   {translatedDescription}
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <div className="bg-ocean-sand rounded-xl p-4 text-center">
+                  <div className="bg-ocean-sand rounded-xl p-4 text-center overflow-hidden">
                     <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">{t('camp.label_period')}</p>
-                    <p className="text-sm font-semibold text-jeju-ocean">{t('camp.date_badge_2026')}</p>
+                    <p className="text-sm font-semibold text-jeju-ocean break-words">{t('camp.date_badge_2026')}</p>
                   </div>
-                  <div className="bg-ocean-sand rounded-xl p-4 text-center">
+                  <div className="bg-ocean-sand rounded-xl p-4 text-center overflow-hidden">
                     <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">{t('camp.label_location')}</p>
-                    <p className="text-sm font-semibold text-jeju-ocean">{t('camp.venue_2026')}</p>
+                    <p className="text-sm font-semibold text-jeju-ocean break-words">{t('camp.venue_2026')}</p>
                   </div>
-                  <div className="bg-ocean-sand rounded-xl p-4 text-center">
+                  <div className="bg-ocean-sand rounded-xl p-4 text-center overflow-hidden">
                     <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">{t('camp.label_participants')}</p>
-                    <p className="text-sm font-semibold text-jeju-ocean">{t('camp.participant_count', { count: participantCount })}</p>
+                    <p className="text-sm font-semibold text-jeju-ocean break-words">{t('camp.participant_count', { count: participantCount })}</p>
                   </div>
                 </div>
               </div>
