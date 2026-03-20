@@ -1,10 +1,10 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import nextI18NextConfig from '../../next-i18next.config';
 import { GetStaticPropsContext } from 'next';
-import Page from '../../src/pages/album/AlbumTracksPage';
-import { Track } from '../../src/types/track';
-import { Musician } from '../../src/types/musician';
-import { loadLocalizedData } from '../../src/utils/dataLoader';
+import Page from '@/pages/album/AlbumTracksPage';
+import { Track } from '@/types/track';
+import { Musician } from '@/types/musician';
+import { loadLocalizedData } from '@/utils/dataLoader';
 
 interface TracksWrappedPageProps {
   initialTracks: Track[];

@@ -1,10 +1,10 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import nextI18NextConfig from '../next-i18next.config';
 import { GetStaticPropsContext } from 'next';
-import Page from '../src/pages/GalleryPage';
+import Page from '@/pages/GalleryPage';
 import fs from 'fs';
 import path from 'path';
-import { GalleryImage } from '../src/types/gallery';
+import { GalleryImage } from '@/types/gallery';
 
 const GALLERY_SSG_PREVIEW_COUNT = 24;
 

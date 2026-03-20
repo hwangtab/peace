@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useInView } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import TimelineItem from './TimelineItem';
-import { timelineEvents as timelineData } from '../../data/timeline';
+import { timelineEvents as timelineData } from '@/data/timeline';
 import Section from '../layout/Section';
 import SectionHeader from '../common/SectionHeader';
 

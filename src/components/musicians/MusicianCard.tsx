@@ -2,8 +2,8 @@ import React, { memo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Musician } from '../../types/musician';
-import { extractInstagramUsername } from '../../utils/instagram';
+import { Musician } from '@/types/musician';
+import { extractInstagramUsername } from '@/utils/instagram';
 import InstagramIcon from '../icons/InstagramIcon';
 import YouTubeIcon from '../icons/YouTubeIcon';
 

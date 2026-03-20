@@ -2,22 +2,22 @@ import React, { useRef, useState, useEffect, useMemo, useCallback } from 'react'
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
-import Button from '../../components/common/Button';
-import PageLayout from '../../components/layout/PageLayout';
-import Section from '../../components/layout/Section';
-import SectionHeader from '../../components/common/SectionHeader';
-import { getVideos } from '../../api/videos';
-import { getMusicians } from '../../api/musicians';
-import MusicianModal from '../../components/musicians/MusicianModal';
-import ImageLightbox from '../../components/common/ImageLightbox';
-import AlbumTabContent from '../../components/album/AlbumTabContent';
-import { getGalleryImages } from '../../api/gallery';
-import { GalleryImage } from '../../types/gallery';
-import { VideoItem } from '../../types/video';
-import { Musician } from '../../types/musician';
-import WaveDivider from '../../components/common/WaveDivider';
-import { getMusicAlbumSchema, getBreadcrumbSchema } from '../../utils/structuredData';
-import { getFullUrl } from '../../config/env';
+import Button from '@/components/common/Button';
+import PageLayout from '@/components/layout/PageLayout';
+import Section from '@/components/layout/Section';
+import SectionHeader from '@/components/common/SectionHeader';
+import { getVideos } from '@/api/videos';
+import { getMusicians } from '@/api/musicians';
+import MusicianModal from '@/components/musicians/MusicianModal';
+import ImageLightbox from '@/components/common/ImageLightbox';
+import AlbumTabContent from '@/components/album/AlbumTabContent';
+import { getGalleryImages } from '@/api/gallery';
+import { GalleryImage } from '@/types/gallery';
+import { VideoItem } from '@/types/video';
+import { Musician } from '@/types/musician';
+import WaveDivider from '@/components/common/WaveDivider';
+import { getMusicAlbumSchema, getBreadcrumbSchema } from '@/utils/structuredData';
+import { getFullUrl } from '@/config/env';
 
 interface AlbumAboutPageProps {
   initialVideos?: VideoItem[];

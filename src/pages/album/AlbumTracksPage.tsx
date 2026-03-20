@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react';
 import { useTranslation } from 'next-i18next';
-import TracksSection from '../../components/home/TracksSection';
-import PageLayout from '../../components/layout/PageLayout';
-import PageHero from '../../components/common/PageHero';
-import { getMusicPlaylistSchema, getBreadcrumbSchema } from '../../utils/structuredData';
-import { Musician } from '../../types/musician';
-import { Track } from '../../types/track';
+import TracksSection from '@/components/home/TracksSection';
+import PageLayout from '@/components/layout/PageLayout';
+import PageHero from '@/components/common/PageHero';
+import { getMusicPlaylistSchema, getBreadcrumbSchema } from '@/utils/structuredData';
+import { Musician } from '@/types/musician';
+import { Track } from '@/types/track';
 
 interface AlbumTracksPageProps {
   initialTracks?: Track[];
