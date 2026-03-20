@@ -103,7 +103,7 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
     h = (((h >>> 16) ^ h) * 45679) | 0;
     return ((h >>> 16) ^ h) | 0;
   };
-  const otherMusicians = [...candidates].sort((a, b) => hash(a.id) - hash(b.id)).slice(0, 8);
+  const otherMusicians = [...candidates].sort((a, b) => hash(a.id) - hash(b.id)).slice(0, 6);
 
   return {
     props: {
