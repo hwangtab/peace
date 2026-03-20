@@ -172,7 +172,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
             transition={{ duration: 0.6 }}
             className="max-w-5xl mx-auto"
           >
-            <div className="flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-8 items-start min-w-0 overflow-hidden">
+            <div className="flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-8 items-start min-w-0">
               {/* Poster */}
               <a
                 href={`${camp2026.fundingUrl || '#'}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=poster`}
