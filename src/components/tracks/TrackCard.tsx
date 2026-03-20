@@ -43,7 +43,7 @@ const TrackCard = React.memo(({
             className="bg-white rounded-lg shadow-md overflow-hidden"
         >
             {alwaysExpanded && musicianImageUrl && (
-                <div className="relative h-48 w-full">
+                <div className="relative h-36 sm:h-48 w-full">
                     <Image
                         src={musicianImageUrl}
                         alt={track.artist}
@@ -67,10 +67,10 @@ const TrackCard = React.memo(({
                     initial={alwaysExpanded ? false : { opacity: 0, height: 0 }}
                     animate={alwaysExpanded ? undefined : { opacity: 1, height: "auto" }}
                     exit={alwaysExpanded ? undefined : { opacity: 0, height: 0 }}
-                    className="px-4 pb-4"
+                    className="px-3 pb-3 sm:px-4 sm:pb-4"
                 >
                     {track.audioUrl && (
-                        <div className="mt-4 mb-8">
+                        <div className="mt-4 mb-6 sm:mb-8">
                             <AudioPlayer
                                 audioUrl={track.audioUrl}
                                 isPlaying={currentlyPlaying}
@@ -82,20 +82,20 @@ const TrackCard = React.memo(({
                     )}
 
                     {track.description && (
-                        <div className="mb-8">
+                        <div className="mb-6 sm:mb-8">
                             <div className="flex items-center mb-4">
                                 <h4 className="text-lg font-serif text-jeju-ocean">{t('common.track_desc')}</h4>
-                                <div className="flex-grow ml-4 h-px bg-coastal-gray/20" />
+                                <div className="flex-grow ml-3 sm:ml-4 h-px bg-coastal-gray/20" />
                             </div>
                             <p className="text-gray-600 leading-relaxed whitespace-pre-line break-words">{track.description}</p>
                         </div>
                     )}
 
                     {track.lyrics && (
-                        <div className="mb-8">
+                        <div className="mb-6 sm:mb-8">
                             <div className="flex items-center mb-4">
                                 <h4 className="text-lg font-serif text-jeju-ocean">{t('common.lyrics')}</h4>
-                                <div className="flex-grow ml-4 h-px bg-coastal-gray/20" />
+                                <div className="flex-grow ml-3 sm:ml-4 h-px bg-coastal-gray/20" />
                             </div>
                             <div className="bg-ocean-sand/30 p-4 rounded-lg">
                                 <p className="text-gray-600 whitespace-pre-line leading-relaxed break-words">{track.lyrics}</p>
