@@ -61,7 +61,7 @@ export const useAudioPlayer = ({ audioUrl, isPlaying }: UseAudioPlayerOptions): 
     };
   }, [audioUrl]);
 
-  // 재생/일시정지 제어
+  // 재생/일시정지 제어 (audioUrl 변경 시에도 재실행하여 새 트랙 재생)
   useEffect(() => {
     const sound = soundRef.current;
     if (!sound) return;
@@ -90,7 +90,7 @@ export const useAudioPlayer = ({ audioUrl, isPlaying }: UseAudioPlayerOptions): 
         requestRef.current = null;
       }
     };
-  }, [isPlaying]);
+  }, [isPlaying, audioUrl]);
 
   // NaN/Infinity 방지를 위한 안전한 progress 계산
   const getProgressPercent = useCallback((): number => {

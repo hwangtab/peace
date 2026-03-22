@@ -40,7 +40,7 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
             router.events.off('routeChangeComplete', handleComplete);
             router.events.off('routeChangeError', handleError);
         };
-    }, [router]);
+    }, [router.events, router.asPath]);
 
     return (
         <NavigationContext.Provider value={{ previousPath, isNavigating }}>
