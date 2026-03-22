@@ -104,6 +104,7 @@ const MobileDropdown: React.FC<MobileDropdownProps> = React.memo(({
                 onClick={onToggle}
                 className="w-full text-left py-2 font-serif text-deep-ocean flex justify-between items-center break-words"
                 aria-expanded={isOpen}
+                aria-controls={`mobile-dropdown-${label}`}
             >
                 {label}
                 <motion.span
@@ -117,6 +118,7 @@ const MobileDropdown: React.FC<MobileDropdownProps> = React.memo(({
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
+                        id={`mobile-dropdown-${label}`}
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
