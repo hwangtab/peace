@@ -44,7 +44,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId, initialMusician
     let isCancelled = false;
     getMusicians(i18n.language).then((data) => {
       if (!isCancelled) setMusicians(data);
-    });
+    }).catch(console.error);
     return () => { isCancelled = true; };
   }, [i18n.language, initialLocale, initialMusicians]);
 
