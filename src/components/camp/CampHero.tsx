@@ -11,7 +11,7 @@ interface CampHeroProps {
 const CampHero: React.FC<CampHeroProps> = ({ camp }) => {
   const { t, i18n } = useTranslation();
   const eventDate = new Date(camp.startDate);
-  const formattedDate = eventDate.toLocaleDateString(i18n.language === 'ko' ? 'ko-KR' : 'en-US', {
+  const formattedDate = eventDate.toLocaleDateString(i18n.language, {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
