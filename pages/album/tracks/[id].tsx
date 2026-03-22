@@ -147,7 +147,7 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
                       <p className="text-gray-800">{track.credits.arranger.join(', ')}</p>
                     </div>
                   )}
-                  {track.credits.personnel.map((p, i) => (
+                  {track.credits.personnel?.map((p, i) => (
                     <div key={i}>
                       <span className="text-sm uppercase tracking-wide text-gray-500">{p.role}</span>
                       <p className="text-gray-800">{p.name.join(', ')}</p>
@@ -206,7 +206,7 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
   }
 
   const musicians = loadLocalizedData<Musician>(resolvedLocale, 'musicians.json');
-  const musician = musicians.find((m) => m.id === track.id) || null;
+  const musician = musicians.find((m) => m.trackTitle === track.title) || null;
 
   return {
     props: {

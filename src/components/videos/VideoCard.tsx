@@ -3,13 +3,17 @@ import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { VideoItem } from '@/types/video';
+import { camps } from '@/data/camps';
 
-// Camp-2026 participant musicianIds
-const CAMP_2026_MUSICIAN_IDS = new Set([
-  14, 5, 15, 3, 16, 4, 17, 18, 19, 20, 21, 10, 22, 7, 23, 24, 13, 25,
-  26, 27, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 12, 42, 11,
-  43, 2, 44, 45, 46, 47, 48, 49, 50, 51, 52, 60, 59, 53, 54, 55, 56, 57, 58,
-]);
+// Derive camp-2026 musician IDs from camps data
+const camp2026 = camps.find(c => c.id === 'camp-2026');
+const CAMP_2026_MUSICIAN_IDS = new Set(
+  camp2026?.participants
+    ?.filter((p): p is { name: string; musicianId: number } =>
+      typeof p === 'object' && 'musicianId' in p
+    )
+    .map(p => p.musicianId) ?? []
+);
 
 interface VideoCardProps {
   video: VideoItem;
@@ -76,7 +80,7 @@ const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
           <div className="flex justify-between items-center mb-3 text-xs font-medium text-ocean-mist uppercase tracking-tighter min-w-0">
             <span className="truncate mr-2">{video.location}</span>
             <span className="flex-shrink-0">
-              {new Date(video.date).toLocaleDateString(i18n.language === 'ko' ? 'ko-KR' : 'en-US', {
+              {new Date(video.date).toLocaleDateString(i18n.language, {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric',

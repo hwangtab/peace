@@ -4,6 +4,7 @@ import { motion, useInView } from 'framer-motion';
 import TrackCard from '../tracks/TrackCard';
 import Section from '../layout/Section';
 import { getTracks } from '@/api/tracks';
+import { getMusicians } from '@/api/musicians';
 import { Track } from '@/types/track';
 import { Musician } from '@/types/musician';
 import Button from '../common/Button';
@@ -33,25 +34,31 @@ const TracksSection: React.FC<TracksSectionProps> = ({
   });
 
   const [tracks, setTracks] = useState<Track[]>(initialTracks);
+  const [musicians, setMusicians] = useState<Musician[]>(initialMusicians);
   const [isLoading, setIsLoading] = useState(initialTracks.length === 0);
   const [expandedTrackId, setExpandedTrackId] = useState<number | null>(null);
   const [playingTrackId, setPlayingTrackId] = useState<number | null>(null);
 
-  // Load tracks data on mount or when language changes
+  // Load tracks and musicians data on mount or when language changes
   useEffect(() => {
     if (i18n.language === initialLocale && initialTracks.length > 0) {
       setTracks(initialTracks);
+      setMusicians(initialMusicians);
       return;
     }
 
     let isCancelled = false;
 
-    const loadTracks = async () => {
+    const loadData = async () => {
       setIsLoading(true);
       try {
-        const data = await getTracks(i18n.language);
+        const [tracksData, musiciansData] = await Promise.all([
+          getTracks(i18n.language),
+          getMusicians(i18n.language),
+        ]);
         if (!isCancelled) {
-          setTracks(data);
+          setTracks(tracksData);
+          setMusicians(musiciansData);
         }
       } catch (error) {
         console.error('Failed to load tracks:', error);
@@ -62,12 +69,12 @@ const TracksSection: React.FC<TracksSectionProps> = ({
       }
     };
 
-    loadTracks();
+    loadData();
 
     return () => {
       isCancelled = true;
     };
-  }, [i18n.language, initialLocale, initialTracks]);
+  }, [i18n.language, initialLocale, initialTracks, initialMusicians]);
 
   const handleToggle = useCallback((id: number) => {
     setExpandedTrackId((prev) => (prev === id ? null : id));
@@ -90,8 +97,8 @@ const TracksSection: React.FC<TracksSectionProps> = ({
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4 max-w-6xl mx-auto">
           {tracks.map((track) => {
-            const musician = initialMusicians.find(m => m.trackTitle === track.title)
-              || initialMusicians.find(m => m.name === track.artist);
+            const musician = musicians.find(m => m.trackTitle === track.title)
+              || musicians.find(m => m.name === track.artist);
             return (
               <TrackCard
                 key={track.id}
