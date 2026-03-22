@@ -208,13 +208,9 @@ export const getEventSchema = (event: {
   },
   "image": event.image || "https://peaceandmusic.net/og-image.png",
   "description": event.description,
-  "performer": event.performers?.map(p => ({
-    "@type": p.type,
-    "name": p.name
-  })) || {
-    "@type": "Organization",
-    "name": lang === 'ko' ? "강정피스앤뮤직캠프" : "Gangjeong Peace Music Camp"
-  },
+  "performer": (event.performers && event.performers.length > 0)
+    ? event.performers.map(p => ({ "@type": p.type, "name": p.name }))
+    : { "@type": "Organization", "name": lang === 'ko' ? "강정피스앤뮤직캠프" : "Gangjeong Peace Music Camp" },
   "organizer": {
     "@type": "Organization",
     "name": lang === 'ko' ? "강정피스앤뮤직캠프" : "Gangjeong Peace Music Camp",

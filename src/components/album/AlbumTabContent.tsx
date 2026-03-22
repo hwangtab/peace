@@ -50,10 +50,13 @@ const AlbumTabContent: React.FC<AlbumTabContentProps> = ({
         <>
             {/* Tab Navigation */}
             <div className="flex justify-center mb-12">
-                <div className="inline-flex p-1 bg-white/50 backdrop-blur-sm rounded-2xl shadow-inner border border-white/50">
+                <div role="tablist" className="inline-flex p-1 bg-white/50 backdrop-blur-sm rounded-2xl shadow-inner border border-white/50">
                     {tabs.map((tab) => (
                         <button
                             key={tab.id}
+                            role="tab"
+                            aria-selected={activeTab === tab.id}
+                            aria-controls={`${tab.id}-panel`}
                             onClick={() => setActiveTab(tab.id as 'info' | 'video' | 'photo')}
                             className={`relative px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 ${activeTab === tab.id ? 'text-white' : 'text-coastal-gray hover:text-jeju-ocean'
                                 }`}
@@ -75,6 +78,8 @@ const AlbumTabContent: React.FC<AlbumTabContentProps> = ({
                 {activeTab === 'info' && (
                     <motion.div
                         key="info-tab"
+                        id="info-panel"
+                        role="tabpanel"
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -20 }}
@@ -96,6 +101,8 @@ const AlbumTabContent: React.FC<AlbumTabContentProps> = ({
                 {activeTab === 'video' && (
                     <motion.div
                         key="video-tab"
+                        id="video-panel"
+                        role="tabpanel"
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -20 }}
@@ -124,6 +131,8 @@ const AlbumTabContent: React.FC<AlbumTabContentProps> = ({
                 {activeTab === 'photo' && (
                     <motion.div
                         key="photo-tab"
+                        id="photo-panel"
+                        role="tabpanel"
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -20 }}

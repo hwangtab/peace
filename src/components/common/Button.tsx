@@ -69,14 +69,20 @@ const Button = ({
 
     const content = <>{children}</>;
 
+    const handleClick = disabled
+        ? (e: React.MouseEvent<HTMLElement>) => { e.preventDefault(); }
+        : onClick;
+
     if (to) {
         return (
             <motion.div {...motionProps} className={fullWidth ? 'w-full' : 'inline-block'}>
                 <Link
                     href={to}
                     className={combinedClasses}
-                    onClick={onClick}
+                    onClick={handleClick}
                     aria-label={ariaLabel}
+                    aria-disabled={disabled || undefined}
+                    tabIndex={disabled ? -1 : undefined}
                 >
                     {content}
                 </Link>
@@ -93,8 +99,10 @@ const Button = ({
                         target="_blank"
                         rel="noopener noreferrer"
                         className={combinedClasses}
-                        onClick={onClick}
+                        onClick={handleClick}
                         aria-label={ariaLabel}
+                        aria-disabled={disabled || undefined}
+                        tabIndex={disabled ? -1 : undefined}
                     >
                         {content}
                     </a>
@@ -106,8 +114,10 @@ const Button = ({
                 <a
                     href={href}
                     className={combinedClasses}
-                    onClick={onClick}
+                    onClick={handleClick}
                     aria-label={ariaLabel}
+                    aria-disabled={disabled || undefined}
+                    tabIndex={disabled ? -1 : undefined}
                 >
                     {content}
                 </a>
