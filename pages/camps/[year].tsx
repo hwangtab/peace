@@ -54,6 +54,6 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
       initialMusicians,
       initialLocale: lang,
     },
-    revalidate: camp.year < CURRENT_CAMP_YEAR ? false : 3600,
+    ...(camp.year >= CURRENT_CAMP_YEAR && { revalidate: 3600 }),
   };
 }

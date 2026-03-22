@@ -108,15 +108,6 @@ export function middleware(request: NextRequest) {
       return NextResponse.next();
     }
 
-    // Check if the current pathname already starts with a supported locale
-    const pathnameHasLocale = LOCALES.some(
-      (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-    );
-
-    if (pathnameHasLocale) {
-      return NextResponse.next();
-    }
-
   // Detect the best locale for the user
   const detectedLocale = detectLocale(request);
 

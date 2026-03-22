@@ -5,14 +5,15 @@ interface FilterableItem {
   eventYear?: number;
 }
 
-type FilterId = 'all' | 'album-2024' | 'camp-2023' | 'camp-2025';
+type FilterId = 'all' | 'album-2024' | 'camp-2023' | 'camp-2025' | 'camp-2026';
 
-export const VALID_FILTERS: FilterId[] = ['all', 'album-2024', 'camp-2023', 'camp-2025'];
+export const VALID_FILTERS: FilterId[] = ['all', 'album-2024', 'camp-2023', 'camp-2025', 'camp-2026'];
 
 const filterMap: Record<string, { type: string; year: number }> = {
   'album-2024': { type: 'album', year: 2024 },
   'camp-2023': { type: 'camp', year: 2023 },
   'camp-2025': { type: 'camp', year: 2025 },
+  'camp-2026': { type: 'camp', year: 2026 },
 };
 
 /**

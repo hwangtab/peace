@@ -1,3 +1,4 @@
+import React from 'react';
 import CampDetailPage from './CampDetailPage';
 import { Musician } from '@/types/musician';
 

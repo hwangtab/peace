@@ -165,9 +165,7 @@ const AlbumAboutPage = ({
     image: getFullUrl("/images-webp/album/albumart.png"),
     datePublished: "2024-10-12",
     numTracks: 12,
-    track: musicians.filter(m => m.trackTitle && m.id && m.id <= 13 && m.id !== 13).map(m => ({ // Include all except performance team if needed, but list implies 12 tracks
-      // Actually there are 13 musicians in the list. ID 13 is performance.
-      // Logic: checking if trackTitle exists.
+    track: musicians.filter(m => m.trackTitle && m.id !== 13).map(m => ({
       name: m.trackTitle || "",
       url: "https://peaceandmusic.net/album/tracks"
     }))

@@ -126,7 +126,8 @@
         "filter_all": "All",
         "filter_album_2024": "2024 Album",
         "filter_camp_2023": "2023 Camp",
-        "filter_camp_2025": "2025 Camp",
+        "filter_camp_2025": "2025 Camp"
+        "filter_camp_2026": "2026 Camp",
         "aria_filter": "Event Filter",
         "aria_filter_selected": "filter (selected)",
         "close": "Close",

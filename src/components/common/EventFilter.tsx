@@ -28,6 +28,7 @@ const EventFilter: React.FC<EventFilterProps> = ({
         { id: 'album-2024', label: t('common.filter_album_2024') },
         { id: 'camp-2023', label: t('common.filter_camp_2023') },
         { id: 'camp-2025', label: t('common.filter_camp_2025') },
+        { id: 'camp-2026', label: t('common.filter_camp_2026') },
       ];
     }
 
@@ -36,6 +37,7 @@ const EventFilter: React.FC<EventFilterProps> = ({
       { id: 'camp-2023', label: t('common.filter_camp_2023') },
       { id: 'album-2024', label: t('common.filter_album_2024') },
       { id: 'camp-2025', label: t('common.filter_camp_2025') },
+      { id: 'camp-2026', label: t('common.filter_camp_2026') },
     ];
   }, [filterOrder, t]);
 

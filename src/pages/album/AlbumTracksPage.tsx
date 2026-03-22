@@ -16,16 +16,14 @@ interface AlbumTracksPageProps {
 const AlbumTracksPage = ({ initialTracks = [], initialMusicians = [], initialLocale = 'ko' }: AlbumTracksPageProps) => {
   const { t, i18n } = useTranslation();
 
-  // Playlist Schema
+  // Playlist Schema - built from actual tracks data
   const playlistSchema = useMemo(() => getMusicPlaylistSchema(
-    initialMusicians
-      .filter(m => m.trackTitle && m.id !== 13) // Exclude non-tracks if any
-      .map(m => ({
-        name: m.trackTitle!,
-        url: "https://peaceandmusic.net/album/tracks"
-      })),
+    initialTracks.map(track => ({
+      name: track.title,
+      url: `https://peaceandmusic.net/album/tracks/${track.id}`
+    })),
     i18n.language
-  ), [initialMusicians, i18n.language]);
+  ), [initialTracks, i18n.language]);
 
   return (
     <PageLayout

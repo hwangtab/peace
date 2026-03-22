@@ -41,7 +41,7 @@ const GalleryImageItem = React.memo(({ image, priority = false, onClick }: Galle
                         }`}
                     priority={priority}
                     loading={priority ? 'eager' : 'lazy'}
-                    onLoadingComplete={() => setIsLoaded(true)}
+                    onLoad={() => setIsLoaded(true)}
                 />
 
                 {/* Hover overlay */}
