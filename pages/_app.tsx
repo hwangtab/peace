@@ -1,4 +1,5 @@
 import type { AppProps } from 'next/app';
+import Head from 'next/head';
 import { appWithTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
@@ -43,6 +44,9 @@ function App({ Component, pageProps }: AppProps) {
 
   return (
     <NavigationProvider>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <Navigation />
       <main id="main-content">
         <Component key={router.asPath.split('#')[0]} {...pageProps} />
