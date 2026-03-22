@@ -26,7 +26,7 @@ export const loadLocalizedData = <T>(locale: string, filename: string): T[] => {
 
 export const loadGalleryImages = <T>(): T[] => {
   const root = path.join(process.cwd(), 'public', 'data', 'gallery');
-  const categories = ['album', 'camp2023', 'camp2025'];
+  const categories = ['album', 'camp2023', 'camp2025', 'camp2026'];
   const allImages: T[] = [];
 
   for (const category of categories) {
