@@ -38,7 +38,6 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId, initialMusician
 
   useEffect(() => {
     if (i18n.language === initialLocale) {
-      setMusicians(initialMusicians);
       return;
     }
     let isCancelled = false;
@@ -46,7 +45,8 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId, initialMusician
       if (!isCancelled) setMusicians(data);
     }).catch(console.error);
     return () => { isCancelled = true; };
-  }, [i18n.language, initialLocale, initialMusicians]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [i18n.language, initialLocale]);
 
   if (!camp) {
     return (

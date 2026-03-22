@@ -33,7 +33,6 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
 
   useEffect(() => {
     if (i18n.language === initialLocale) {
-      setMusicians(initialMusicians);
       return;
     }
     let isCancelled = false;
@@ -41,7 +40,8 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
       if (!isCancelled) setMusicians(data);
     }).catch(console.error);
     return () => { isCancelled = true; };
-  }, [i18n.language, initialLocale, initialMusicians]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [i18n.language, initialLocale]);
 
   if (!camp2026) {
     return (
@@ -174,20 +174,32 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
           >
             <div className="flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-8 items-start min-w-0">
               {/* Poster */}
-              <a
-                href={`${camp2026.fundingUrl || '#'}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=poster`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full md:w-[360px] flex-shrink-0 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <Image
-                  src="/images-webp/camps/2026/2026poster1.jpeg"
-                  alt={translatedTitle}
-                  width={360}
-                  height={509}
-                  className="w-full h-auto"
-                />
-              </a>
+              {camp2026.fundingUrl ? (
+                <a
+                  href={`${camp2026.fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=poster`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full md:w-[360px] flex-shrink-0 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+                >
+                  <Image
+                    src="/images-webp/camps/2026/2026poster1.jpeg"
+                    alt={translatedTitle}
+                    width={360}
+                    height={509}
+                    className="w-full h-auto"
+                  />
+                </a>
+              ) : (
+                <div className="w-full md:w-[360px] flex-shrink-0 rounded-xl overflow-hidden shadow-lg">
+                  <Image
+                    src="/images-webp/camps/2026/2026poster1.jpeg"
+                    alt={translatedTitle}
+                    width={360}
+                    height={509}
+                    className="w-full h-auto"
+                  />
+                </div>
+              )}
               {/* Info */}
               <div className="flex-1 min-w-0 bg-white rounded-lg shadow-sm p-4 sm:p-6 md:p-8">
                 <SectionHeader title={t('camp.section_overview')} align="left" className="!mb-6" />
