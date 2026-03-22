@@ -18,6 +18,7 @@ const AudioPlayer = React.memo(({ audioUrl, isPlaying, onPlayPause, title, artis
     duration,
     getProgressPercent,
     handleSeek,
+    seekToPercent,
     formatTime,
   } = useAudioPlayer({ audioUrl, isPlaying });
 
@@ -68,7 +69,10 @@ const AudioPlayer = React.memo(({ audioUrl, isPlaying, onPlayPause, title, artis
             handleSeek(mouseEvent);
           }
         }}
-        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleSeek(e as unknown as React.MouseEvent<HTMLDivElement>); } }}
+        onKeyDown={(e) => {
+          if (e.key === 'ArrowRight') { e.preventDefault(); seekToPercent((getProgressPercent() + 5) / 100); }
+          else if (e.key === 'ArrowLeft') { e.preventDefault(); seekToPercent((getProgressPercent() - 5) / 100); }
+        }}
         role="slider"
         tabIndex={0}
         aria-label={t('common.audio_position')}

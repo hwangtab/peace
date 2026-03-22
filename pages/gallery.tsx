@@ -14,7 +14,7 @@ export default function WrappedPage({ initialImages }: { initialImages: GalleryI
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
   // Fetch images directly from filesystem for SSG
-  const categories = ['album', 'camp2023', 'camp2025'];
+  const categories = ['album', 'camp2023', 'camp2025', 'camp2026'];
   let initialImages: GalleryImage[] = [];
 
   try {
