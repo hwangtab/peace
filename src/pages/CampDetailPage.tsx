@@ -91,7 +91,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId, initialMusician
       title={`${t('camp.ordinal', { num: ordinalLabel })} ${t('app.title')} (${camp.year}) - ${camp.slogan || ''}`}
       description={camp.description}
       keywords={`${t('app.title')}, ${t('camp.ordinal', { num: ordinalLabel })}, ${camp.year}, ${t('camp.keywords_base')}`}
-      ogImage={camp.images[0]}
+      ogImage={camp.images?.[0]}
       structuredData={[
         eventSchema,
         getBreadcrumbSchema([

@@ -11,6 +11,7 @@ interface UseAudioPlayerReturn {
   duration: number;
   getProgressPercent: () => number;
   handleSeek: (e: React.MouseEvent<HTMLDivElement>) => void;
+  seekToPercent: (percent: number) => void;
   formatTime: (time: number) => string;
 }
 
@@ -110,6 +111,15 @@ export const useAudioPlayer = ({ audioUrl, isPlaying }: UseAudioPlayerOptions): 
     setProgress(newTime);
   }, [duration]);
 
+  const seekToPercent = useCallback((percent: number) => {
+    const sound = soundRef.current;
+    if (!sound || !duration || duration <= 0) return;
+    const clamped = Math.max(0, Math.min(1, percent));
+    const newTime = clamped * duration;
+    sound.seek(newTime);
+    setProgress(newTime);
+  }, [duration]);
+
   const formatTime = useCallback((time: number): string => {
     if (!isFinite(time) || time < 0) return '0:00';
     const minutes = Math.floor(time / 60);
@@ -122,6 +132,7 @@ export const useAudioPlayer = ({ audioUrl, isPlaying }: UseAudioPlayerOptions): 
     duration,
     getProgressPercent,
     handleSeek,
+    seekToPercent,
     formatTime,
   };
 };
