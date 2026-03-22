@@ -33,7 +33,7 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
     const finalTitle = title || t('seo.default.title');
     const finalDescription = description || t('seo.default.description');
     const finalKeywords = keywords || t('seo.default.keywords');
-    const asPath = router.asPath.split('?')[0] || '/';
+    const asPath = (router.asPath || '/').split('?')[0] || '/';
     const pathWithoutLocale = LOCALES.some((loc) => asPath === `/${loc}` || asPath.startsWith(`/${loc}/`))
         ? asPath.replace(new RegExp(`^/(${LOCALES.join('|')})`), '') || '/'
         : asPath;

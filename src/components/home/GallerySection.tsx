@@ -65,7 +65,7 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(({
         <motion.div
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12"
         >
-          <AnimatePresence mode='popLayout' initial={false}>
+          <AnimatePresence mode='sync' initial={false}>
             {displayImages.map((image, index) => (
               <VirtualGalleryItem
                 key={image.id}
