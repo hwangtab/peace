@@ -46,9 +46,10 @@ export default function TrackHeader({ track, isExpanded, onToggle, onPlay, alway
           </div>
           <p className="text-jeju-ocean font-serif break-words">{track.artist}</p>
         </div>
-        <motion.button
+        <motion.span
           animate={{ rotate: isExpanded ? 180 : 0 }}
           className="text-coastal-gray ml-2 sm:ml-4"
+          aria-hidden="true"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +63,7 @@ export default function TrackHeader({ track, isExpanded, onToggle, onPlay, alway
               clipRule="evenodd"
             />
           </svg>
-        </motion.button>
+        </motion.span>
       </div>
     </div>
   );

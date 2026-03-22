@@ -12,10 +12,11 @@ export const useNavigation = () => {
     // Scroll detection with requestAnimationFrame throttling
     useEffect(() => {
         let ticking = false;
+        let rafHandle: number | undefined;
 
         const handleScroll = () => {
             if (!ticking) {
-                requestAnimationFrame(() => {
+                rafHandle = requestAnimationFrame(() => {
                     setIsScrolled(prev => prev ? window.scrollY > 40 : window.scrollY > 50);
                     ticking = false;
                 });
@@ -27,7 +28,10 @@ export const useNavigation = () => {
         handleScroll();
 
         window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            if (rafHandle) cancelAnimationFrame(rafHandle);
+        };
     }, []);
 
     const toggleMenu = useCallback(() => {

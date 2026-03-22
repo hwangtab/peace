@@ -8,7 +8,7 @@ export interface ResponsiveImagePaths {
 }
 
 export const getResponsiveImagePath = (imagePath: string): ResponsiveImagePaths => {
-  const basePath = imagePath.replace('.webp', '');
+  const basePath = imagePath.replace(/\.webp$/, '');
   const mobile = `${basePath}-mobile.webp`;
   const tablet = `${basePath}-tablet.webp`;
   const desktop = `${basePath}-desktop.webp`;

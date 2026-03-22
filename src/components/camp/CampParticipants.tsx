@@ -39,10 +39,13 @@ const CampParticipants: React.FC<CampParticipantsProps> = ({ participants, music
                 {participants.map((participant, index) => {
                     const clickable = isClickable(participant);
                     const name = getParticipantName(participant);
+                    const stableKey = typeof participant === 'object' && participant !== null
+                        ? (participant.musicianId ?? participant.name)
+                        : participant;
 
                     return (
                         <motion.div
-                            key={index}
+                            key={stableKey}
                             initial={{ opacity: 0, y: 10 }}
                             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
                             transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
