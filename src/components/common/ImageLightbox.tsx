@@ -5,7 +5,6 @@ import Image from 'next/image';
 interface ImageLightboxProps {
   image: string | { url: string; alt?: string };
   onClose: () => void;
-  variant?: 'simple' | 'animated';
   maxHeight?: string;
 }
 
