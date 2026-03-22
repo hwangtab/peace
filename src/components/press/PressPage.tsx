@@ -46,6 +46,8 @@ const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
               onError={() => {
                 if (imgSrc.endsWith('.jpeg')) {
                   setImgSrc(imgSrc.replace('.jpeg', '.jpg'));
+                } else {
+                  setImgSrc('');
                 }
               }}
             />
