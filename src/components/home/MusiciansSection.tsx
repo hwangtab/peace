@@ -29,7 +29,9 @@ const MusiciansSection: React.FC<MusiciansSectionProps> = React.memo(
 
     // Load musicians data on mount or when language changes
     useEffect(() => {
-      if (i18n.language === initialLocale && musicians.length > 0) {
+      if (i18n.language === initialLocale && initialMusicians.length > 0) {
+        setMusicians(initialMusicians);
+        setIsLoading(false);
         return;
       }
 
@@ -56,8 +58,7 @@ const MusiciansSection: React.FC<MusiciansSectionProps> = React.memo(
       return () => {
         isCancelled = true;
       };
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [i18n.language, initialLocale]);
+    }, [i18n.language, initialLocale, initialMusicians]);
 
     const content = (
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">

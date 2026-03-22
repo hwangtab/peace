@@ -22,7 +22,6 @@ function App({ Component, pageProps }: AppProps) {
   const { locale } = router;
 
   useEffect(() => {
-    if (typeof document === 'undefined') return;
     const dir = getTextDirection(locale || 'ko');
     document.documentElement.setAttribute('dir', dir);
   }, [locale]);

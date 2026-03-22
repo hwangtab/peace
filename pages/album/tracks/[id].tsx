@@ -42,7 +42,7 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
   return (
     <PageLayout
       title={`${track.title} - ${track.artist} | ${t('app.title')}`}
-      description={track.description.slice(0, 160)}
+      description={(track.description || '').slice(0, 160)}
       keywords={`${track.title}, ${track.artist}, ${t('app.title')}, lyrics`}
       ogImage={track.imageUrl || undefined}
       structuredData={[recordingSchema, breadcrumbSchema]}
