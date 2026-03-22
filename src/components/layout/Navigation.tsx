@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { LayoutGroup } from 'framer-motion';
 import { useNavigation } from '@/hooks/useNavigation';
 import DesktopMenu from './DesktopMenu';
 import MobileMenu from './MobileMenu';
@@ -48,12 +49,14 @@ const Navigation = () => {
             </Link>
 
             {/* Desktop Menu */}
-            <DesktopMenu
-              pathname={pathname}
-              desktopOpenDropdown={desktopOpenDropdown}
-              onOpenChange={handleDesktopDropdownChange}
-              isScrolled={isScrolled}
-            />
+            <LayoutGroup>
+              <DesktopMenu
+                pathname={pathname}
+                desktopOpenDropdown={desktopOpenDropdown}
+                onOpenChange={handleDesktopDropdownChange}
+                isScrolled={isScrolled}
+              />
+            </LayoutGroup>
 
             {/* Mobile Menu Button */}
             <div className="md:hidden">

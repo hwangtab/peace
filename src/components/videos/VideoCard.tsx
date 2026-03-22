@@ -95,16 +95,19 @@ const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
           </p>
         </div>
       </a>
-      {video.musicianIds && video.musicianIds.some(id => CAMP_2026_MUSICIAN_IDS.has(id)) && (
-        <div className="px-6 pb-4">
-          <Link
-            href={`/camps/2026/musicians/${video.musicianIds.find(id => CAMP_2026_MUSICIAN_IDS.has(id))}`}
-            className="inline-flex items-center text-xs text-jeju-ocean hover:text-ocean-mist transition-colors font-medium"
-          >
-            {t('camp.view_detail')} &rarr;
-          </Link>
-        </div>
-      )}
+      {(() => {
+        const campMusicianId = video.musicianIds?.find(id => CAMP_2026_MUSICIAN_IDS.has(id));
+        return campMusicianId != null ? (
+          <div className="px-6 pb-4">
+            <Link
+              href={`/camps/2026/musicians/${campMusicianId}`}
+              className="inline-flex items-center text-xs text-jeju-ocean hover:text-ocean-mist transition-colors font-medium"
+            >
+              {t('camp.view_detail')} &rarr;
+            </Link>
+          </div>
+        ) : null;
+      })()}
     </div>
   );
 });
