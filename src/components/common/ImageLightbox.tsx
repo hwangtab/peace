@@ -3,21 +3,24 @@ import { Dialog, Transition } from '@headlessui/react';
 import Image from 'next/image';
 
 interface ImageLightboxProps {
-  image: string | { url: string; alt?: string };
+  image: string | { url: string; alt?: string } | null;
   onClose: () => void;
   maxHeight?: string;
+  show?: boolean;
 }
 
 const ImageLightbox: React.FC<ImageLightboxProps> = ({
   image,
   onClose,
-  maxHeight = '90vh'
+  maxHeight = '90vh',
+  show,
 }) => {
-  const imageUrl = typeof image === 'string' ? image : image.url;
-  const altText = typeof image === 'string' ? 'Lightbox image' : (image.alt || 'Lightbox image');
+  const isVisible = show ?? !!image;
+  const imageUrl = image ? (typeof image === 'string' ? image : image.url) : '';
+  const altText = image ? (typeof image === 'string' ? 'Lightbox image' : (image.alt || 'Lightbox image')) : '';
 
   return (
-    <Transition appear show={true} as={Fragment}>
+    <Transition appear show={isVisible} as={Fragment}>
       <Dialog as="div" className="relative z-50" onClose={onClose}>
         {/* Backdrop */}
         <Transition.Child

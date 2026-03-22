@@ -10,7 +10,14 @@ interface CampHeroProps {
 
 const CampHero: React.FC<CampHeroProps> = ({ camp }) => {
   const { t, i18n } = useTranslation();
-  const eventDate = new Date(camp.startDate);
+  // Parse date parts directly to avoid timezone offset drift
+  // (new Date('2026-06-05') parses as UTC midnight, showing wrong date in western timezones)
+  const dateParts = camp.startDate.split('-');
+  const eventDate = new Date(
+    Number(dateParts[0]),
+    (Number(dateParts[1]) || 1) - 1,
+    Number(dateParts[2]) || 1
+  );
   const formattedDate = eventDate.toLocaleDateString(i18n.language, {
     year: 'numeric',
     month: 'long',
