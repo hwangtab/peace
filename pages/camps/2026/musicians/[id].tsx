@@ -112,5 +112,6 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
       relatedVideos,
       otherMusicians,
     },
+    revalidate: 3600,
   };
 }

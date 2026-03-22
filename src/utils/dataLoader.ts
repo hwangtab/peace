@@ -3,9 +3,13 @@ import path from 'path';
 
 export const readJsonArray = <T,>(filePath: string): T[] => {
   if (!fs.existsSync(filePath)) return [];
-  const content = fs.readFileSync(filePath, 'utf8');
-  const parsed = JSON.parse(content);
-  return Array.isArray(parsed) ? (parsed as T[]) : [];
+  try {
+    const content = fs.readFileSync(filePath, 'utf8');
+    const parsed = JSON.parse(content);
+    return Array.isArray(parsed) ? (parsed as T[]) : [];
+  } catch {
+    return [];
+  }
 };
 
 export const loadLocalizedData = <T>(locale: string, filename: string): T[] => {

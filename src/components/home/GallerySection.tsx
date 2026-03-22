@@ -78,17 +78,16 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(({
         </motion.div>
       )}
 
-      {selectedImage && (
-        <ImageLightbox
-          image={{
-            url: selectedImage.url,
-            alt: selectedImage.description ||
-              `${selectedImage.eventYear || ''}${t('gallery.image_alt_fallback')}`
-          }}
-          onClose={() => setSelectedImage(null)}
-          maxHeight="85vh"
-        />
-      )}
+      <ImageLightbox
+        image={selectedImage ? {
+          url: selectedImage.url,
+          alt: selectedImage.description ||
+            `${selectedImage.eventYear || ''}${t('gallery.image_alt_fallback')}`
+        } : null}
+        show={!!selectedImage}
+        onClose={() => setSelectedImage(null)}
+        maxHeight="85vh"
+      />
     </div>
   );
 

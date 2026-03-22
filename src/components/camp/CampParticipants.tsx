@@ -65,7 +65,7 @@ const CampParticipants: React.FC<CampParticipantsProps> = ({ participants, music
                 <MusicianModal
                     musician={selectedMusician}
                     isOpen={isModalOpen}
-                    onClose={() => setIsModalOpen(false)}
+                    onClose={() => { setIsModalOpen(false); setSelectedMusician(null); }}
                 />
             )}
         </>

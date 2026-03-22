@@ -99,7 +99,7 @@ export const getMusicRecordingSchema = (track: {
   "@type": "MusicRecording",
   "name": track.name,
   "description": track.description || "",
-  "duration": track.duration || "",
+  ...(track.duration ? { "duration": track.duration } : {}),
   "url": track.url || "https://peaceandmusic.net/tracks",
   "byArtist": {
     "@type": "MusicGroup",
@@ -156,6 +156,14 @@ export const getNewsArticleSchema = (article: {
   "author": {
     "@type": "Organization",
     "name": lang === 'ko' ? "이름을 모르는 먼 곳의 그대에게" : "To You in a Distant Place Whose Name I Don't Know"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": lang === 'ko' ? "이름을 모르는 먼 곳의 그대에게" : "To You in a Distant Place Whose Name I Don't Know",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://peaceandmusic.net/logo192.png"
+    }
   }
 });
 
@@ -240,7 +248,7 @@ export const getProfilePageSchema = (person: {
     "@type": "Person",
     "name": person.name,
     "description": person.description,
-    "image": person.image,
+    ...(person.image ? { "image": person.image } : {}),
     "jobTitle": person.jobTitle || "Musician",
     "memberOf": {
       "@type": "Organization",
