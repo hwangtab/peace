@@ -345,16 +345,15 @@ const AlbumAboutPage = ({
           onClose={() => setIsModalOpen(false)}
         />
       )}
-      {selectedImage && (
-        <ImageLightbox
-          image={{
-            url: selectedImage.url,
-            alt: t('album.image_alt_concert', { num: selectedImage.id }),
-          }}
-          onClose={() => setSelectedImage(null)}
-          maxHeight="85vh"
-        />
-      )}
+      <ImageLightbox
+        image={selectedImage ? {
+          url: selectedImage.url,
+          alt: t('album.image_alt_concert', { num: selectedImage.id }),
+        } : null}
+        show={!!selectedImage}
+        onClose={() => setSelectedImage(null)}
+        maxHeight="85vh"
+      />
     </PageLayout>
   );
 };

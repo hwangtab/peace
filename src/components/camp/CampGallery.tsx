@@ -59,15 +59,14 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
         </div>
       </div>
 
-      {selectedImage && (
-        <ImageLightbox
-          image={{
-            url: selectedImage,
-            alt: t('gallery.image_alt_template', { year: camp.year, title: camp.title })
-          }}
-          onClose={() => setSelectedImage(null)}
-        />
-      )}
+      <ImageLightbox
+        image={selectedImage ? {
+          url: selectedImage,
+          alt: t('gallery.image_alt_template', { year: camp.year, title: camp.title })
+        } : null}
+        show={!!selectedImage}
+        onClose={() => setSelectedImage(null)}
+      />
     </Section>
   );
 };

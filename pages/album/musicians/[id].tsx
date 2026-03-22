@@ -68,19 +68,25 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
     return { notFound: true };
   }
 
-  // Find related videos
-  const videos = loadLocalizedData<VideoItem>(resolvedLocale, 'videos.json');
-  const directVideos = videos.filter((v) =>
+  // Find related videos — always use KO videos.json for musicianIds matching
+  // (en/videos.json is a partial subset and may lack musicianIds)
+  const koVideos = loadLocalizedData<VideoItem>('ko', 'videos.json');
+  const localizedVideos = loadLocalizedData<VideoItem>(resolvedLocale, 'videos.json');
+  const localizedVideoMap = new Map(localizedVideos.map((v) => [v.id, v]));
+
+  const directVideos = koVideos.filter((v) =>
     v.musicianIds?.includes(musician.id)
   );
   const eventVideos = musician.events
-    ? videos.filter((v) =>
+    ? koVideos.filter((v) =>
         v.eventType && v.eventYear &&
         musician.events!.includes(`${v.eventType}-${v.eventYear}`) &&
         !directVideos.some((dv) => dv.id === v.id)
       )
     : [];
-  const relatedVideos = [...directVideos, ...eventVideos];
+  const relatedVideos = [...directVideos, ...eventVideos].map(
+    (v) => localizedVideoMap.get(v.id) ?? v
+  );
 
   // Other album musicians only (with trackTitle, with image)
   const candidates = musicians.filter((m) =>
