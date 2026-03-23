@@ -15,7 +15,7 @@ class MyDocument extends Document {
     const dir = getTextDirection(currentLocale);
 
       return (
-        <Html lang={currentLocale} dir={dir}>
+        <Html lang={currentLocale} dir={dir} className="overflow-x-hidden">
         <Head>
           {/* Google Analytics 4 */}
           {GA_MEASUREMENT_ID && (
