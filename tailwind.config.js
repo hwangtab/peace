@@ -37,17 +37,7 @@ module.exports = {
         'coastal-gray': '#6B7C8A',
         'deep-ocean': '#1A2332',
 
-        // Section-Specific
-        'camp-blue': '#0A5F8A',
-        'album-gold': '#FDB44B',
-        'event-coral': '#FF8C69',
-
-        // Legacy colors (for backward compatibility)
-        'sage-gray': '#D3D5D4',
-        'pure-white': '#FFFFFF',
-        'deep-sage': '#9DA39D',
         'light-beige': '#F5F5F5',
-        'text-dark': '#1A1A1A',
       },
       backgroundImage: {
         'ocean-gradient': 'linear-gradient(135deg, #0A5F8A 0%, #4A90B8 100%)',

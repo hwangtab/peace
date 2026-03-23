@@ -23,5 +23,6 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
       initialVideos: loadLocalizedData<VideoItem>(resolvedLocale, 'videos.json'),
       initialLocale: resolvedLocale,
     },
+    revalidate: 3600,
   };
 }
