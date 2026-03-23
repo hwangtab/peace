@@ -58,7 +58,7 @@ const HookStatement: React.FC = () => {
         >
           <motion.h2
             variants={itemVariants}
-            className="font-partial font-normal text-4xl sm:text-5xl md:text-6xl text-golden-sun mb-3 break-words"
+            className="font-partial text-4xl sm:text-5xl md:text-6xl text-golden-sun mb-3 break-words"
           >
             {t('gangjeong_story.hook_headline')}
           </motion.h2>
