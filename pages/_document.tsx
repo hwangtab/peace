@@ -1,7 +1,11 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
 import { getTextDirection } from '@/utils/rtl';
 
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const GA_MEASUREMENT_ID = (() => {
+  const id = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+  if (id && /^G-[A-Z0-9]+$/.test(id)) return id;
+  return undefined;
+})();
 
 class MyDocument extends Document {
   static override async getInitialProps(ctx: DocumentContext) {

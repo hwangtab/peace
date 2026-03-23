@@ -29,7 +29,6 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(({
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
 
   const {
-    displayImages,
     filteredImages,
     selectedFilter,
     setSelectedFilter,
@@ -66,7 +65,7 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(({
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12"
         >
           <AnimatePresence mode='sync' initial={false}>
-            {displayImages.map((image, index) => (
+            {filteredImages.map((image, index) => (
               <VirtualGalleryItem
                 key={image.id}
                 image={image}
@@ -123,7 +122,7 @@ const VirtualGalleryItem: React.FC<{
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
       transition={{ duration: 0.3 }}
-      className="aspect-[4/3] relative bg-gray-100 rounded-lg overflow-hidden"
+      className="aspect-square relative bg-gray-100 rounded-lg overflow-hidden"
     >
       {isInView && (
         <GalleryImageItem

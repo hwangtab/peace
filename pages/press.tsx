@@ -23,5 +23,6 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
       initialPressItems: loadLocalizedData<PressItem>(resolvedLocale, 'press.json'),
       initialLocale: resolvedLocale,
     },
+    revalidate: 3600,
   };
 }

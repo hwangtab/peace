@@ -34,9 +34,13 @@ export default function VideoPage({
     let isCancelled = false;
 
     const loadVideos = async () => {
-      const data = await getVideos(i18n.language);
-      if (!isCancelled) {
-        setVideos(data);
+      try {
+        const data = await getVideos(i18n.language);
+        if (!isCancelled) {
+          setVideos(data);
+        }
+      } catch (error) {
+        console.error('Failed to load videos:', error);
       }
     };
 

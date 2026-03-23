@@ -86,9 +86,13 @@ export default function PressPage({
     let isCancelled = false;
 
     const loadPress = async () => {
-      const data = await getPressItems(i18n.language);
-      if (!isCancelled) {
-        setPressItems(normalizePressItems(data));
+      try {
+        const data = await getPressItems(i18n.language);
+        if (!isCancelled) {
+          setPressItems(normalizePressItems(data));
+        }
+      } catch (error) {
+        console.error('Failed to load press items:', error);
       }
     };
 

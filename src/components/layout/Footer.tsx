@@ -8,28 +8,28 @@ import { getCamps } from '@/data/camps';
 import { useTranslation } from 'next-i18next';
 // ...
 
+const FOOTER_MENU_ITEMS = [
+    { nameKey: 'footer.menu.home', path: ROUTES.HOME },
+    { nameKey: 'footer.menu.gallery', path: ROUTES.GALLERY },
+    { nameKey: 'footer.menu.video', path: ROUTES.VIDEOS },
+    { nameKey: 'footer.menu.press', path: ROUTES.PRESS },
+] as const;
+
+const CAMP_MENU_ITEMS = [
+    { nameKey: 'footer.menu.camp_2023', path: ROUTES.CAMPS.CAMP_2023 },
+    { nameKey: 'footer.menu.camp_2025', path: ROUTES.CAMPS.CAMP_2025 },
+    { nameKey: 'footer.menu.camp_2026', path: ROUTES.CAMPS.CAMP_2026 },
+] as const;
+
+const ALBUM_MENU_ITEMS = [
+    { nameKey: 'footer.menu.album_about', path: ROUTES.ALBUM.ABOUT },
+    { nameKey: 'footer.menu.musicians', path: ROUTES.ALBUM.MUSICIANS },
+    { nameKey: 'footer.menu.tracks', path: ROUTES.ALBUM.TRACKS },
+] as const;
+
 const Footer = () => {
     const { t, i18n } = useTranslation();
     const camp2026 = getCamps(i18n.language).find(c => c.id === 'camp-2026');
-
-    const FOOTER_MENU_ITEMS = [
-        { nameKey: 'footer.menu.home', path: ROUTES.HOME },
-        { nameKey: 'footer.menu.gallery', path: ROUTES.GALLERY },
-        { nameKey: 'footer.menu.video', path: ROUTES.VIDEOS },
-        { nameKey: 'footer.menu.press', path: ROUTES.PRESS },
-    ] as const;
-
-    const CAMP_MENU_ITEMS = [
-        { nameKey: 'footer.menu.camp_2023', path: ROUTES.CAMPS.CAMP_2023 },
-        { nameKey: 'footer.menu.camp_2025', path: ROUTES.CAMPS.CAMP_2025 },
-        { nameKey: 'footer.menu.camp_2026', path: ROUTES.CAMPS.CAMP_2026 },
-    ] as const;
-
-    const ALBUM_MENU_ITEMS = [
-        { nameKey: 'footer.menu.album_about', path: ROUTES.ALBUM.ABOUT },
-        { nameKey: 'footer.menu.musicians', path: ROUTES.ALBUM.MUSICIANS },
-        { nameKey: 'footer.menu.tracks', path: ROUTES.ALBUM.TRACKS },
-    ] as const;
 
     return (
         <footer className="bg-deep-ocean text-cloud-white">

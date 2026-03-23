@@ -7,7 +7,6 @@ import { filterByEvent, isValidFilter } from '../utils/filtering';
 interface UseGalleryImagesReturn {
   images: GalleryImage[];
   filteredImages: GalleryImage[];
-  displayImages: GalleryImage[];
   selectedFilter: string;
   setSelectedFilter: (filter: string) => void;
   isLoading: boolean;
@@ -81,13 +80,9 @@ export const useGalleryImages = (initialImages: GalleryImage[] = EMPTY_GALLERY_I
     [images, selectedFilter]
   );
 
-  // Slice images for display (Now returning all filtered images)
-  const displayImages = filteredImages;
-
   return {
     images,
     filteredImages,
-    displayImages,
     selectedFilter,
     setSelectedFilter,
     isLoading,

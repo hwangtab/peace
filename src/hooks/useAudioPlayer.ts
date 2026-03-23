@@ -43,6 +43,10 @@ export const useAudioPlayer = ({ audioUrl, isPlaying }: UseAudioPlayerOptions): 
         },
         onend: () => {
           setProgress(0);
+          if (requestRef.current) {
+            cancelAnimationFrame(requestRef.current);
+            requestRef.current = null;
+          }
         },
       });
 

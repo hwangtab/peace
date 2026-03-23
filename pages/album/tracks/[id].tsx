@@ -71,7 +71,7 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
             {/* Track info */}
             <div className="flex-1 text-white">
               <p className="text-sm uppercase tracking-wide text-white/70 mb-2">
-                Track {track.id}
+                {t('common.track')} {track.id}
               </p>
               <h1 className="typo-h1 mb-2">{track.title}</h1>
               <p className="text-xl text-golden-sun mb-4">
@@ -214,5 +214,6 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
       track,
       musician,
     },
+    revalidate: 3600,
   };
 }
