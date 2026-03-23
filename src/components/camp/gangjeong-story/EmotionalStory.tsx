@@ -19,7 +19,7 @@ const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey }) =>
     offset: ['start end', 'end start'],
   });
 
-  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '15%']);
+  const bgY = useTransform(scrollYProgress, [0, 1], ['-4%', '4%']);
 
   return (
     <div ref={blockRef} className="relative min-h-[60vh] md:min-h-[70vh] flex items-end overflow-hidden">
@@ -32,7 +32,7 @@ const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey }) =>
           alt={t(altKey)}
           fill
           sizes="100vw"
-          className="object-cover scale-110"
+          className="object-cover scale-[1.15]"
         />
       </motion.div>
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
