@@ -8,7 +8,12 @@ import Section from '@/components/layout/Section';
 import SectionHeader from '@/components/common/SectionHeader';
 import WaveDivider from '@/components/common/WaveDivider';
 import CampLineup from '@/components/camp/CampLineup';
-import GangjeongStorySection from '@/components/camp/GangjeongStorySection';
+import dynamic from 'next/dynamic';
+
+const GangjeongStorySection = dynamic(
+  () => import('@/components/camp/GangjeongStorySection'),
+  { ssr: false }
+);
 import { getEventSchema, getBreadcrumbSchema } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
 import Button from '@/components/common/Button';
