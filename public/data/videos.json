@@ -1329,5 +1329,14 @@
         "eventType": "live",
         "musicianIds": [13],
         "thumbnailUrl": "https://i.ytimg.com/vi/dsh550wEq5k/maxresdefault.jpg"
+    },
+    {
+        "id": 324,
+        "title": "치치",
+        "description": "싱어송라이터, 시인, 영화 감독, 다큐멘터리 제작자로 활동하는 치치의 영상입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/D7LUxDeWJM8?list=PLsEdVViNJAIS-oc1OqYYyCOQ9KtLmVN4V",
+        "eventType": "live",
+        "musicianIds": [49],
+        "thumbnailUrl": "https://i.ytimg.com/vi/D7LUxDeWJM8/maxresdefault.jpg"
     }
 ]
