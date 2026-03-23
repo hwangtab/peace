@@ -30,7 +30,7 @@ const HookStatement: React.FC = () => {
     offset: ['start end', 'end start'],
   });
 
-  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
+  const bgY = useTransform(scrollYProgress, [0, 1], ['-5%', '5%']);
 
   return (
     <div ref={sectionRef} className="relative min-h-[50vh] md:min-h-[70vh] flex items-center justify-center overflow-hidden">
@@ -43,7 +43,7 @@ const HookStatement: React.FC = () => {
           alt=""
           fill
           sizes="100vw"
-          className="object-cover scale-110"
+          className="object-cover scale-[1.15]"
         />
       </motion.div>
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/70" />
