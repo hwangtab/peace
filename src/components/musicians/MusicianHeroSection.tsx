@@ -5,6 +5,7 @@ import { Musician } from '@/types/musician';
 import { extractInstagramUsername } from '@/utils/instagram';
 import InstagramIcon from '../icons/InstagramIcon';
 import YouTubeIcon from '../icons/YouTubeIcon';
+import Button from '../common/Button';
 
 interface MusicianHeroSectionProps {
   musician: Musician;
@@ -106,14 +107,9 @@ export default function MusicianHeroSection({ musician, fundingUrl, isCampPage }
               )}
 
               {fundingUrl && (
-                <a
-                  href={`${fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=musician-hero-${musician.id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-5 py-2.5 text-sm bg-golden-sun text-gray-900 font-bold rounded-full hover:bg-yellow-400 transition-colors shadow-md"
-                >
+                <Button href={fundingUrl} variant="gold" size="sm" external utmContent={`musician-hero-${musician.id}`}>
                   {t('camp.ticketing_2026')}
-                </a>
+                </Button>
               )}
             </div>
           </div>

@@ -1,7 +1,7 @@
-import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 import { Musician } from '@/types/musician';
 import MusicianCard from './MusicianCard';
+import Button from '../common/Button';
 
 interface OtherMusiciansProps {
   otherMusicians: Musician[];
@@ -39,12 +39,9 @@ export default function OtherMusiciansSection({
           ))}
         </div>
         <div className="text-center mt-10">
-          <Link
-            href={backHref}
-            className="inline-flex items-center px-6 py-3 bg-jeju-ocean text-white rounded-lg hover:bg-ocean-mist transition-colors font-medium"
-          >
+          <Button to={backHref} variant="primary" shape="rounded">
             {isCampPage ? t('camp.view_full_lineup') : backLabel} &rarr;
-          </Link>
+          </Button>
         </div>
       </div>
     </div>
