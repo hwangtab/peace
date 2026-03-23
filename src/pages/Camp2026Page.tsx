@@ -11,6 +11,7 @@ import CampLineup from '@/components/camp/CampLineup';
 import GangjeongStorySection from '@/components/camp/GangjeongStorySection';
 import { getEventSchema, getBreadcrumbSchema } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
+import Button from '@/components/common/Button';
 import { formatOrdinal } from '@/utils/format';
 import { getMusicians } from '@/api/musicians';
 import { Musician } from '@/types/musician';
@@ -142,21 +143,13 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
             </div>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4 items-center">
-              <a
-                href="#lineup"
-                className="inline-block px-6 py-2.5 bg-golden-sun text-gray-900 font-bold rounded-full text-sm shadow-lg hover:bg-yellow-400 transition-colors cursor-pointer break-words"
-              >
+              <Button href="#lineup" variant="gold" size="sm">
                 {t('camp.lineup_count', { count: participantCount })}
-              </a>
+              </Button>
               {camp2026.fundingUrl && (
-                <a
-                  href={`${camp2026.fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=hero`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block px-6 py-2.5 bg-white text-jeju-ocean font-bold rounded-full text-sm shadow-lg hover:bg-gray-100 transition-colors break-words"
-                >
+                <Button href={camp2026.fundingUrl} variant="white" size="sm" external utmContent="hero">
                   {t('camp.ticketing_2026')}
-                </a>
+                </Button>
               )}
             </div>
           </motion.div>
@@ -263,14 +256,9 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
               >
                 <h2 className="typo-h2 text-white mb-4 break-words text-balance">{t('camp.cta_final_heading')}</h2>
                 <p className="typo-body text-gray-200 mb-8 max-w-lg mx-auto break-words text-balance">{t('camp.cta_final_body')}</p>
-                <a
-                  href={`${camp2026.fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=final-cta`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block px-8 py-3.5 bg-golden-sun text-gray-900 font-bold rounded-full text-base shadow-lg hover:bg-yellow-400 transition-colors break-words"
-                >
+                <Button href={camp2026.fundingUrl} variant="gold" external utmContent="final-cta">
                   {t('camp.cta_final_button')}
-                </a>
+                </Button>
               </motion.div>
             </div>
           </section>

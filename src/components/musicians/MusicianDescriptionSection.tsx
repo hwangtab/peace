@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 import { Musician } from '@/types/musician';
 import { CampEvent } from '@/types/camp';
+import Button from '../common/Button';
 
 interface MusicianDescriptionSectionProps {
   musician: Musician;
@@ -33,29 +34,18 @@ export default function MusicianDescriptionSection({
 
           {!isCampPage && (
             <div className="mt-12 flex flex-wrap gap-4">
-              <Link
-                href={backHref}
-                className="inline-flex items-center px-5 py-2.5 bg-ocean-sand text-jeju-ocean rounded-lg hover:bg-ocean-mist transition-colors text-sm font-medium"
-              >
+              <Button to={backHref} variant="back" size="sm" shape="rounded">
                 &larr; {backLabel}
-              </Link>
+              </Button>
               {musician.trackTitle && (
-                <Link
-                  href="/album/tracks"
-                  className="inline-flex items-center px-5 py-2.5 bg-golden-sun text-gray-900 rounded-lg hover:bg-yellow-400 transition-colors text-sm font-medium"
-                >
+                <Button to="/album/tracks" variant="gold" size="sm" shape="rounded">
                   {t('common.album_track_button')} &rarr;
-                </Link>
+                </Button>
               )}
               {fundingUrl && (
-                <a
-                  href={`${fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=musician-${musician.id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-5 py-2.5 bg-jeju-ocean text-white rounded-lg hover:bg-ocean-mist transition-colors text-sm font-medium"
-                >
+                <Button href={fundingUrl} variant="primary" size="sm" shape="rounded" external utmContent={`musician-${musician.id}`}>
                   {t('camp.ticketing_2026')} &rarr;
-                </a>
+                </Button>
               )}
             </div>
           )}
@@ -92,14 +82,9 @@ export default function MusicianDescriptionSection({
                     </span>
                   </div>
                 </div>
-                <a
-                  href={`${fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=musician-camp-info-${musician.id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="self-start inline-flex items-center px-5 py-2.5 bg-golden-sun text-gray-900 font-bold rounded-lg hover:bg-yellow-400 transition-colors text-sm shadow-sm"
-                >
+                <Button href={fundingUrl} variant="gold" size="sm" shape="rounded" external utmContent={`musician-camp-info-${musician.id}`} className="self-start">
                   {t('camp.ticketing_2026')} &rarr;
-                </a>
+                </Button>
               </div>
             </div>
           )}

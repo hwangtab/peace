@@ -67,14 +67,9 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
               {t('home.hero.camp_2026')}
             </Button>
             {camp2026?.fundingUrl && (
-              <a
-                href={`${camp2026.fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=home-hero`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-8 py-3 bg-white text-jeju-ocean font-bold rounded-full text-base shadow-lg hover:bg-gray-100 transition-colors break-words"
-              >
+              <Button href={camp2026.fundingUrl} variant="white" external utmContent="home-hero">
                 {t('camp.ticketing_2026')}
-              </a>
+              </Button>
             )}
           </div>
         </motion.div>

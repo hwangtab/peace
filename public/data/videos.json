@@ -1320,5 +1320,14 @@
         "eventType": "live",
         "musicianIds": [27],
         "thumbnailUrl": "https://i.ytimg.com/vi/XTJfNlpoq5Q/maxresdefault.jpg"
+    },
+    {
+        "id": 323,
+        "title": "블로꾸 자파리 X 뽈레뽈레 X 북짝북짝",
+        "description": "바투카다 커뮤니티 블로꾸 자파리, 예술단체 뽈레뽈레, 동백 바투카다 동아리 북짝북짝의 연합 공연 영상입니다.",
+        "youtubeUrl": "https://www.youtube.com/embed/dsh550wEq5k",
+        "eventType": "live",
+        "musicianIds": [13],
+        "thumbnailUrl": "https://i.ytimg.com/vi/dsh550wEq5k/maxresdefault.jpg"
     }
 ]

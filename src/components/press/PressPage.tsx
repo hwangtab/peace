@@ -3,8 +3,8 @@ import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import { getPressItems } from '@/api/press';
 import { PressItem } from '@/types/press';
-import Link from 'next/link';
 import { getBreadcrumbSchema } from '@/utils/structuredData';
+import Button from '@/components/common/Button';
 import { getCamps } from '@/data/camps';
 import { filterByEvent } from '@/utils/filtering';
 import { sortByDateDesc } from '@/utils/sorting';
@@ -149,20 +149,12 @@ export default function PressPage({
           <div className="mt-16 bg-jeju-ocean rounded-xl py-8 px-6 text-center">
             <p className="text-white text-lg font-medium mb-4 break-words">{t('camp.title_2026')}</p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                href="/camps/2026"
-                className="inline-flex items-center px-5 py-2.5 bg-white/15 text-white font-medium rounded-full text-sm border border-white/30 hover:bg-white/25 transition-colors"
-              >
+              <Button to="/camps/2026" variant="ghost-white" size="sm">
                 {t('camp.view_detail')}
-              </Link>
-              <a
-                href={`${camp2026.fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=press`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-5 py-2.5 bg-golden-sun text-gray-900 font-bold rounded-full text-sm hover:bg-yellow-400 transition-colors"
-              >
+              </Button>
+              <Button href={camp2026.fundingUrl} variant="gold" size="sm" external utmContent="press">
                 {t('camp.ticketing_2026')}
-              </a>
+              </Button>
             </div>
           </div>
         )}
