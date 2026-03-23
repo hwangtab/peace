@@ -166,7 +166,7 @@ const AlbumAboutPage = ({
     name: t('album.album_title_full'),
     byArtist: { name: t('app.title') },
     genre: ["Folk", "Rock", "Jazz", "Electronic", "Ambient", "World Music"],
-    image: getFullUrl("/images-webp/album/albumart.png"),
+    image: getFullUrl("/images-webp/album/albumart.webp"),
     datePublished: "2024-10-12",
     numTracks: 12,
     track: musicians.filter(m => m.trackTitle && m.id !== 13).map(m => ({
@@ -180,7 +180,7 @@ const AlbumAboutPage = ({
       title={t('album.page_title')}
       description={t('album.page_desc')}
       keywords={t('album.keywords')}
-      ogImage="/images-webp/album/albumart.png"
+      ogImage="/images-webp/album/albumart.webp"
       background="jeju-ocean"
       structuredData={[
         albumSchema,
@@ -218,7 +218,7 @@ const AlbumAboutPage = ({
               <div className="relative aspect-square rounded-xl shadow-2xl overflow-hidden group">
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500" />
                 <Image
-                  src="/images-webp/album/albumart.png"
+                  src="/images-webp/album/albumart.webp"
                   alt={t('album.image_alt_cover')}
                   fill
                   sizes="(max-width: 1024px) 80vw, 40vw"

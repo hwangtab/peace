@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { HiOutlineMenu, HiOutlineX } from 'react-icons/hi';
 import { LayoutGroup } from 'framer-motion';
 import { useNavigation } from '@/hooks/useNavigation';
 import DesktopMenu from './DesktopMenu';
@@ -70,9 +70,9 @@ const Navigation = () => {
                 aria-expanded={isOpen}
               >
                 {isOpen ? (
-                  <XMarkIcon className="h-6 w-6" />
+                  <HiOutlineX className="h-6 w-6" />
                 ) : (
-                  <Bars3Icon className="h-6 w-6" />
+                  <HiOutlineMenu className="h-6 w-6" />
                 )}
               </button>
             </div>

@@ -2,12 +2,14 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import nextI18NextConfig from '../next-i18next.config';
 import { GetStaticPropsContext } from 'next';
+import dynamic from 'next/dynamic';
 import HeroSection from '@/components/home/HeroSection';
 import AboutSection from '@/components/home/AboutSection';
-import TimelineSection from '@/components/home/TimelineSection';
-import GallerySection from '@/components/home/GallerySection';
 import SEOHelmet from '@/components/shared/SEOHelmet';
 import WaveDivider from '@/components/common/WaveDivider';
+
+const TimelineSection = dynamic(() => import('@/components/home/TimelineSection'));
+const GallerySection = dynamic(() => import('@/components/home/GallerySection'));
 import { getWebSiteSchema, getOrganizationSchema, getFAQSchema } from '@/utils/structuredData';
 import { GalleryImage } from '@/types/gallery';
 import { loadGalleryImages } from '@/utils/dataLoader';
@@ -53,5 +55,6 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
       ...(await serverSideTranslations(resolvedLocale, ['translation'], nextI18NextConfig)),
       initialGalleryImages: allImages.slice(0, 24),
     },
+    revalidate: 3600,
   };
 }

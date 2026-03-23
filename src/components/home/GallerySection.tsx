@@ -15,6 +15,7 @@ interface GallerySectionProps {
   enableSectionWrapper?: boolean;
   hideSectionHeader?: boolean;
   initialImages?: GalleryImage[];
+  skipClientFetch?: boolean;
 }
 
 const EMPTY_GALLERY_IMAGES: GalleryImage[] = [];
@@ -23,7 +24,8 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(({
   className,
   enableSectionWrapper = true,
   hideSectionHeader = false,
-  initialImages = EMPTY_GALLERY_IMAGES
+  initialImages = EMPTY_GALLERY_IMAGES,
+  skipClientFetch = false,
 }) => {
   const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
@@ -32,7 +34,7 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(({
     filteredImages,
     selectedFilter,
     setSelectedFilter,
-  } = useGalleryImages(initialImages);
+  } = useGalleryImages(initialImages, skipClientFetch);
 
   const content = (
     <div className={`container mx-auto px-4 sm:px-6 lg:px-8 ${!enableSectionWrapper ? className : ''}`}>
