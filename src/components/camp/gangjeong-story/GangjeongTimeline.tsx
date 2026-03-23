@@ -12,11 +12,14 @@ interface TimelineNode {
 
 const nodes: TimelineNode[] = [
   { year: '2007', titleKey: 'gangjeong_story.timeline_2007_title', descKey: 'gangjeong_story.timeline_2007_desc', color: 'bg-sunset-coral' },
+  { year: '2009', titleKey: 'gangjeong_story.timeline_2009_title', descKey: 'gangjeong_story.timeline_2009_desc', color: 'bg-sunset-coral' },
   { year: '2012', titleKey: 'gangjeong_story.timeline_2012_title', descKey: 'gangjeong_story.timeline_2012_desc', color: 'bg-sunset-coral' },
+  { year: '2015', titleKey: 'gangjeong_story.timeline_2015_title', descKey: 'gangjeong_story.timeline_2015_desc', color: 'bg-golden-sun' },
   { year: '2016', titleKey: 'gangjeong_story.timeline_2016_title', descKey: 'gangjeong_story.timeline_2016_desc', color: 'bg-coastal-gray' },
+  { year: '2018', titleKey: 'gangjeong_story.timeline_2018_title', descKey: 'gangjeong_story.timeline_2018_desc', color: 'bg-golden-sun' },
   { year: '2023', titleKey: 'gangjeong_story.timeline_2023_title', descKey: 'gangjeong_story.timeline_2023_desc', color: 'bg-jeju-ocean' },
   { year: '2024', titleKey: 'gangjeong_story.timeline_2024_title', descKey: 'gangjeong_story.timeline_2024_desc', color: 'bg-golden-sun' },
-  { year: '2025', titleKey: 'gangjeong_story.timeline_2025_title', descKey: 'gangjeong_story.timeline_2025_desc', color: 'bg-jeju-ocean' },
+  { year: '2025', titleKey: 'gangjeong_story.timeline_2025_title', descKey: 'gangjeong_story.timeline_2025_desc', color: 'bg-sunset-coral' },
   { year: '2026', titleKey: 'gangjeong_story.timeline_2026_title', descKey: 'gangjeong_story.timeline_2026_desc', color: 'bg-golden-sun', badge: 'gangjeong_story.timeline_2026_badge' },
 ];
 
