@@ -40,7 +40,6 @@ const stats = [
   { valueKey: 'gangjeong_story.stat_years_value', suffixKey: 'gangjeong_story.stat_years_suffix', labelKey: 'gangjeong_story.stat_years_label', delay: 0 },
   { valueKey: 'gangjeong_story.stat_days_value', suffixKey: 'gangjeong_story.stat_days_suffix', labelKey: 'gangjeong_story.stat_days_label', delay: 150 },
   { valueKey: 'gangjeong_story.stat_teams_value', suffixKey: 'gangjeong_story.stat_teams_suffix', labelKey: 'gangjeong_story.stat_teams_label', delay: 300 },
-  { valueKey: 'gangjeong_story.stat_countries_value', suffixKey: 'gangjeong_story.stat_countries_suffix', labelKey: 'gangjeong_story.stat_countries_label', delay: 450 },
 ];
 
 const ImpactNumbers: React.FC = () => {
@@ -48,7 +47,7 @@ const ImpactNumbers: React.FC = () => {
     <div className="bg-deep-ocean py-12 sm:py-16 md:py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="h-px bg-gradient-to-r from-transparent via-golden-sun/30 to-transparent mb-10 sm:mb-14" />
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-3 gap-6 sm:gap-8 max-w-3xl mx-auto">
           {stats.map((stat) => (
             <StatCard key={stat.valueKey} {...stat} />
           ))}
