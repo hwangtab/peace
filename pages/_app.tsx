@@ -47,7 +47,7 @@ function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Navigation />
-      <main id="main-content">
+      <main id="main-content" className="overflow-x-hidden">
         <Component key={router.asPath.split('#')[0]} {...pageProps} />
       </main>
       <Footer />
