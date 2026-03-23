@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import Script from 'next/script';
 import { appWithTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
@@ -17,6 +18,12 @@ declare global {
   }
 }
 
+const GA_MEASUREMENT_ID = (() => {
+  const id = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+  if (id && /^G-[A-Z0-9]+$/.test(id)) return id;
+  return undefined;
+})();
+
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const { locale } = router;
@@ -30,7 +37,7 @@ function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     const handleRouteChange = (url: string) => {
       if (window.gtag) {
-        window.gtag('config', process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID, {
+        window.gtag('config', GA_MEASUREMENT_ID, {
           page_path: url,
         });
       }
@@ -46,9 +53,23 @@ function App({ Component, pageProps }: AppProps) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
+
+      {/* GA4: afterInteractive로 렌더링 차단 방지 */}
+      {GA_MEASUREMENT_ID && (
+        <>
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+            strategy="afterInteractive"
+          />
+          <Script id="ga4-config" strategy="afterInteractive">
+            {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_MEASUREMENT_ID}',{page_path:window.location.pathname});`}
+          </Script>
+        </>
+      )}
+
       <Navigation />
       <main id="main-content" className="overflow-x-hidden">
-        <Component key={router.asPath.split('#')[0]} {...pageProps} />
+        <Component {...pageProps} />
       </main>
       <Footer />
     </NavigationProvider>

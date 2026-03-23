@@ -123,9 +123,9 @@ const campsKo: CampEvent[] = [
     slogan: '노래하자, 춤추자, 전쟁을 끝내자!',
     images: [
       '/images-webp/camps/2023/IMG_2064.webp',
-      '/images-webp/camps/2026/2026poster1-og.jpg',
-      '/images-webp/camps/2026/2026poster1.jpeg',
-      '/images-webp/camps/2026/2026poster2.jpeg',
+      '/images-webp/camps/2026/2026poster1-og.webp',
+      '/images-webp/camps/2026/2026poster1.webp',
+      '/images-webp/camps/2026/2026poster2.webp',
     ],
     participants: [
       { name: '강가히말라야', musicianId: 14 },
@@ -303,9 +303,9 @@ const campsEn: CampEvent[] = [
     slogan: "Let's sing, let's dance, end the war!",
     images: [
       '/images-webp/camps/2023/IMG_2064.webp',
-      '/images-webp/camps/2026/2026poster1-og.jpg',
-      '/images-webp/camps/2026/2026poster1.jpeg',
-      '/images-webp/camps/2026/2026poster2.jpeg',
+      '/images-webp/camps/2026/2026poster1-og.webp',
+      '/images-webp/camps/2026/2026poster1.webp',
+      '/images-webp/camps/2026/2026poster2.webp',
     ],
     participants: [
       { name: 'Ganghahimalaya', musicianId: 14 },

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
-import { CalendarIcon, MapPinIcon, UserGroupIcon } from '@heroicons/react/24/outline';
+import { HiOutlineCalendar, HiOutlineLocationMarker, HiOutlineUserGroup } from 'react-icons/hi';
 
 interface Performer {
     name: string;
@@ -46,7 +46,7 @@ const ConcertCard: React.FC<ConcertCardProps> = ({ concert, onMusicianClick, ind
                 <div className="space-y-4 mb-8">
                     <div className="flex items-center gap-4 text-gray-700">
                         <div className="w-10 h-10 rounded-full bg-ocean-sand flex items-center justify-center text-jeju-ocean">
-                            <CalendarIcon className="w-5 h-5" />
+                            <HiOutlineCalendar className="w-5 h-5" />
                         </div>
                         <div className="flex flex-col">
                             <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">
@@ -61,7 +61,7 @@ const ConcertCard: React.FC<ConcertCardProps> = ({ concert, onMusicianClick, ind
 
                     <div className="flex items-center gap-4 text-gray-700">
                         <div className="w-10 h-10 rounded-full bg-ocean-sand flex items-center justify-center text-jeju-ocean">
-                            <MapPinIcon className="w-5 h-5" />
+                            <HiOutlineLocationMarker className="w-5 h-5" />
                         </div>
                         <div className="flex flex-col">
                             <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">
@@ -74,7 +74,7 @@ const ConcertCard: React.FC<ConcertCardProps> = ({ concert, onMusicianClick, ind
 
                 <div className="mt-auto">
                     <div className="flex items-center gap-2 mb-4">
-                        <UserGroupIcon className="w-4 h-4 text-jeju-ocean" />
+                        <HiOutlineUserGroup className="w-4 h-4 text-jeju-ocean" />
                         <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">
                             {t('album.label_performers')}
                         </span>

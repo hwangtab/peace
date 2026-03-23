@@ -158,7 +158,7 @@ export const getNewsArticleSchema = (article: {
   "description": article.description,
   "datePublished": article.datePublished,
   "url": article.url,
-  "image": article.imageUrl || "https://peaceandmusic.net/og-image.png",
+  "image": article.imageUrl || "https://peaceandmusic.net/og-image.webp",
   "author": {
     "@type": "Organization",
     "name": getProjectName(lang)
@@ -220,7 +220,7 @@ export const getEventSchema = (event: {
       "addressCountry": "KR"
     }
   },
-  "image": event.image || "https://peaceandmusic.net/og-image.png",
+  "image": event.image || "https://peaceandmusic.net/og-image.webp",
   "description": event.description,
   "performer": (event.performers && event.performers.length > 0)
     ? event.performers.map(p => ({ "@type": p.type, "name": p.name }))

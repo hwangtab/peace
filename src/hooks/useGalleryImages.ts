@@ -23,7 +23,10 @@ const sortGalleryImages = (items: GalleryImage[]) => items.slice().sort((a, b) =
  * Custom hook for managing gallery image loading, filtering, and pagination.
  * Extracts complex state logic from GallerySection for better maintainability.
  */
-export const useGalleryImages = (initialImages: GalleryImage[] = EMPTY_GALLERY_IMAGES): UseGalleryImagesReturn => {
+export const useGalleryImages = (
+  initialImages: GalleryImage[] = EMPTY_GALLERY_IMAGES,
+  skipClientFetch = false,
+): UseGalleryImagesReturn => {
   const router = useRouter();
   const [images, setImages] = useState<GalleryImage[]>(initialImages);
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
@@ -38,7 +41,7 @@ export const useGalleryImages = (initialImages: GalleryImage[] = EMPTY_GALLERY_I
     }
   }, [router.isReady, router.query.filter]);
 
-  // Always fetch full gallery in background.
+  // Fetch full gallery in background unless skipClientFetch is true.
   // When initialImages exist, render them immediately and replace with full data after fetch.
   useEffect(() => {
     if (initialImages.length > 0) {
@@ -47,6 +50,9 @@ export const useGalleryImages = (initialImages: GalleryImage[] = EMPTY_GALLERY_I
     } else {
       setIsLoading(true);
     }
+
+    // SSG에서 전체 데이터를 이미 받은 경우 클라이언트 fetch 스킵
+    if (skipClientFetch && initialImages.length > 0) return;
 
     let isCancelled = false;
 
@@ -72,7 +78,7 @@ export const useGalleryImages = (initialImages: GalleryImage[] = EMPTY_GALLERY_I
     return () => {
       isCancelled = true;
     };
-  }, [initialImages]);
+  }, [initialImages, skipClientFetch]);
 
   // Filter images based on selected filter
   const filteredImages = useMemo(

@@ -94,7 +94,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
       title={`${t('camp.ordinal', { num: ordinalLabel })} ${t('app.title')} (2026)`}
       description={translatedDescription}
       keywords={`${t('app.title')}, ${t('camp.ordinal', { num: ordinalLabel })}, 2026, ${t('camp.keywords_base')}`}
-      ogImage="/images-webp/camps/2026/2026poster1-og.jpg"
+      ogImage="/images-webp/camps/2026/2026poster1-og.webp"
       structuredData={[
         eventSchema,
         getBreadcrumbSchema([
@@ -175,7 +175,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
                   className="w-full md:w-[360px] flex-shrink-0 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
                 >
                   <Image
-                    src="/images-webp/camps/2026/2026poster1.jpeg"
+                    src="/images-webp/camps/2026/2026poster1.webp"
                     alt={translatedTitle}
                     width={360}
                     height={509}
@@ -185,7 +185,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
               ) : (
                 <div className="w-full md:w-[360px] flex-shrink-0 rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="/images-webp/camps/2026/2026poster1.jpeg"
+                    src="/images-webp/camps/2026/2026poster1.webp"
                     alt={translatedTitle}
                     width={360}
                     height={509}

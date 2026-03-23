@@ -50,6 +50,7 @@ const GalleryPage = ({ initialImages = [] }: GalleryPageProps) => {
                     enableSectionWrapper={false}
                     hideSectionHeader={true}
                     initialImages={initialImages}
+                    skipClientFetch={true}
                 />
             </div>
 
