@@ -18,7 +18,7 @@ export const getOrganizationSchema = (lang: string = 'ko') => ({
   "name": getProjectName(lang),
   "alternateName": "Peace and Music Project",
   "url": "https://peaceandmusic.net",
-  "logo": "https://peaceandmusic.net/logo192.png",
+  "logo": "https://peaceandmusic.net/logo192.webp",
   "description": lang === 'ko'
     ? "전쟁과 폭력이 만연한 세상에서 음악으로 평화의 메시지를 전하는 뮤지션들의 프로젝트"
     : "A project of musicians delivering a message of peace through music in a world where war and violence are prevalent",
@@ -168,7 +168,7 @@ export const getNewsArticleSchema = (article: {
     "name": getProjectName(lang),
     "logo": {
       "@type": "ImageObject",
-      "url": "https://peaceandmusic.net/logo192.png"
+      "url": "https://peaceandmusic.net/logo192.webp"
     }
   }
 });
