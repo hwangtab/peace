@@ -54,19 +54,23 @@ const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
         rel="noopener noreferrer"
         className="block"
       >
-        <div className="relative aspect-video overflow-hidden rounded-t-xl group">
-          <Image
-            src={imgSrc}
-            alt={video.title}
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-            onError={() => {
-              if (imgSrc.includes('maxresdefault')) {
-                setImgSrc(`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`);
-              }
-            }}
-          />
+        <div className="relative aspect-video overflow-hidden rounded-t-xl group bg-gray-200">
+          {imgSrc && (
+            <Image
+              src={imgSrc}
+              alt={video.title}
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              onError={() => {
+                if (imgSrc.includes('maxresdefault')) {
+                  setImgSrc(`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`);
+                } else {
+                  setImgSrc('');
+                }
+              }}
+            />
+          )}
           <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300" />
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-300">

@@ -19,7 +19,7 @@ const filterMap: Record<string, { type: string; year: number }> = {
 /**
  * 이벤트 타입과 연도로 아이템 필터링
  * @param items 필터링할 아이템 배열
- * @param filter 필터 ID ('all', 'album-2024', 'camp-2023', 'camp-2025')
+ * @param filter 필터 ID ('all', 'album-2024', 'camp-2023', 'camp-2025', 'camp-2026')
  * @returns 필터링된 아이템 배열
  */
 export const filterByEvent = <T extends FilterableItem>(items: T[], filter: string): T[] => {
