@@ -119,7 +119,7 @@
   h4,
   h5,
   h6 {
-    @apply font-serif font-bold;
+    @apply font-serif font-normal;
     font-family: 'BookkMyungjo-Bd', serif;
     word-break: var(--text-word-break);
     overflow-wrap: break-word;
