@@ -16,6 +16,7 @@ import { getMusicians } from '@/api/musicians';
 import { Musician } from '@/types/musician';
 import { formatOrdinal } from '@/utils/format';
 import Link from 'next/link';
+import Button from '@/components/common/Button';
 
 interface CampDetailPageProps {
   campId: string;
@@ -164,20 +165,12 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId, initialMusician
                 {t('camp.date_badge_2026')} · {t('camp.venue_2026')}
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <Link
-                  href="/camps/2026"
-                  className="inline-flex items-center px-6 py-2.5 bg-white/15 text-white font-medium rounded-full text-sm border border-white/30 hover:bg-white/25 transition-colors"
-                >
+                <Button to="/camps/2026" variant="ghost-white" size="sm">
                   {t('camp.view_detail')}
-                </Link>
-                <a
-                  href={`${camp2026.fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=past-camp`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-6 py-2.5 bg-golden-sun text-gray-900 font-bold rounded-full text-sm shadow-lg hover:bg-yellow-400 transition-colors"
-                >
+                </Button>
+                <Button href={camp2026.fundingUrl} variant="gold" size="sm" external utmContent="past-camp">
                   {t('camp.ticketing_2026')}
-                </a>
+                </Button>
               </div>
             </div>
           </div>

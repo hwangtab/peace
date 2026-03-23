@@ -1,6 +1,6 @@
 import React from 'react';
-import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
+import Button from '@/components/common/Button';
 import PageHero from '@/components/common/PageHero';
 import GallerySection from '@/components/home/GallerySection';
 import { getImageGallerySchema, getBreadcrumbSchema } from '@/utils/structuredData';
@@ -59,20 +59,12 @@ const GalleryPage = ({ initialImages = [] }: GalleryPageProps) => {
                     <div className="container mx-auto px-4 text-center">
                         <p className="text-white text-lg font-medium mb-4 break-words">{t('camp.title_2026')}</p>
                         <div className="flex flex-wrap justify-center gap-4">
-                            <Link
-                                href="/camps/2026"
-                                className="inline-flex items-center px-5 py-2.5 bg-white/15 text-white font-medium rounded-full text-sm border border-white/30 hover:bg-white/25 transition-colors"
-                            >
+                            <Button to="/camps/2026" variant="ghost-white" size="sm">
                                 {t('camp.view_detail')}
-                            </Link>
-                            <a
-                                href={`${camp2026.fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=gallery`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center px-5 py-2.5 bg-golden-sun text-gray-900 font-bold rounded-full text-sm hover:bg-yellow-400 transition-colors"
-                            >
+                            </Button>
+                            <Button href={camp2026.fundingUrl} variant="gold" size="sm" external utmContent="gallery">
                                 {t('camp.ticketing_2026')}
-                            </a>
+                            </Button>
                         </div>
                     </div>
                 </div>
