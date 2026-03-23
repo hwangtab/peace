@@ -1,12 +1,6 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
 import { getTextDirection } from '@/utils/rtl';
 
-const GA_MEASUREMENT_ID = (() => {
-  const id = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
-  if (id && /^G-[A-Z0-9]+$/.test(id)) return id;
-  return undefined;
-})();
-
 class MyDocument extends Document {
   static override async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx);
@@ -19,33 +13,20 @@ class MyDocument extends Document {
     const dir = getTextDirection(currentLocale);
 
       return (
-        <Html lang={currentLocale} dir={dir} className="overflow-x-hidden">
+        <Html lang={currentLocale} dir={dir}>
         <Head>
-          {/* Google Analytics 4 */}
-          {GA_MEASUREMENT_ID && (
-            <>
-              <script
-                async
-                src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-              />
-              <script
-                dangerouslySetInnerHTML={{
-                  __html: `
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-                    gtag('config', '${GA_MEASUREMENT_ID}', {
-                      page_path: window.location.pathname,
-                    });
-                  `,
-                }}
-              />
-            </>
-          )}
-
           {/* 폰트 CDN preconnect */}
           <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
           <link rel="preconnect" href="https://fastly.jsdelivr.net" crossOrigin="anonymous" />
+
+          {/* Body 폰트 preload (FOUT 방지) */}
+          <link
+            rel="preload"
+            as="font"
+            type="font/woff"
+            crossOrigin="anonymous"
+            href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff"
+          />
 
           {/* Hero 핵심 폰트 preload */}
           <link

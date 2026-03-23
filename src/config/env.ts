@@ -13,7 +13,7 @@ export const config = {
     instagramUrl: process.env.NEXT_PUBLIC_INSTAGRAM_URL || 'https://www.instagram.com/peace_music_in_gangjeong',
 
     // Images
-    ogImage: process.env.NEXT_PUBLIC_OG_IMAGE || '/images-webp/camps/2026/2026poster1-og.jpg',
+    ogImage: process.env.NEXT_PUBLIC_OG_IMAGE || '/images-webp/camps/2026/2026poster1-og.webp',
 } as const;
 
 // Helper function for full URLs
