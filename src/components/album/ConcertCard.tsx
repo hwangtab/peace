@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import { HiOutlineCalendar, HiOutlineLocationMarker, HiOutlineUserGroup } from 'react-icons/hi';
+import Button from '@/components/common/Button';
 
 interface Performer {
     name: string;
@@ -82,13 +83,16 @@ const ConcertCard: React.FC<ConcertCardProps> = ({ concert, onMusicianClick, ind
                     <div className="flex flex-wrap gap-2">
                         {concert.performers.map((performer, idx) =>
                             performer.musicianId ? (
-                                <button
+                                <Button
                                     key={`${performer.name}-${idx}`}
                                     onClick={() => onMusicianClick(performer.musicianId)}
-                                    className="px-3 py-1.5 bg-ocean-sand text-jeju-ocean rounded-lg text-xs font-medium border border-jeju-ocean/10 hover:border-jeju-ocean hover:bg-jeju-ocean hover:text-white hover:shadow-md transition-all duration-300 break-words"
+                                    variant="back"
+                                    size="sm"
+                                    shape="rounded"
+                                    className="!px-3 !py-1.5 !text-xs"
                                 >
                                     {performer.name}
-                                </button>
+                                </Button>
                             ) : (
                                 <span
                                     key={`${performer.name}-${idx}`}
