@@ -39,7 +39,7 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(({
                                 <Link
                                     key={item.path}
                                     href={item.path}
-                                    className={`block py-2 break-words ${pathname === item.path
+                                    className={`block py-2 break-words rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${pathname === item.path
                                         ? 'text-jeju-ocean font-bold'
                                         : 'text-coastal-gray'
                                         } font-serif font-bold`}
@@ -129,7 +129,7 @@ const MobileDropdown: React.FC<MobileDropdownProps> = React.memo(({
                             <Link
                                 key={item.path}
                                 href={item.path}
-                                className="block py-2 text-deep-ocean hover:text-jeju-ocean font-serif font-bold text-sm break-words"
+                                className="block py-2 text-deep-ocean hover:text-jeju-ocean font-serif font-bold text-sm break-words rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
                                 onClick={onClose}
                             >
                                 {t(item.nameKey)}

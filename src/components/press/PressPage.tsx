@@ -32,7 +32,7 @@ const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
       href={press.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="block h-full cursor-pointer"
+      className="block h-full cursor-pointer rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
     >
       <article className="bg-white rounded-xl shadow-md overflow-hidden transition-[box-shadow,transform] duration-300 hover:scale-[1.02] hover:shadow-xl h-full flex flex-col">
         {imgSrc && (

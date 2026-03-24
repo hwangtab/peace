@@ -25,11 +25,11 @@ const StatCard: React.FC<StatCardProps> = ({ valueKey, suffixKey, labelKey, dela
       transition={{ duration: 0.5, delay: delay / 1000 }}
       className="text-center"
     >
-      <p className="font-partial text-2xl sm:text-3xl md:text-4xl text-golden-sun whitespace-nowrap tabular-nums" aria-live="polite">
+      <p className="font-partial font-normal text-2xl sm:text-3xl md:text-4xl text-golden-sun whitespace-nowrap tabular-nums" aria-live="polite">
         {displayValue.toLocaleString()}
         <span className="text-base sm:text-xl md:text-2xl">{t(suffixKey)}</span>
       </p>
-      <p className="font-caption text-xs sm:text-sm text-gray-400 mt-2 break-words">
+      <p className="font-caption font-light text-xs sm:text-sm text-gray-400 mt-2 break-words">
         {t(labelKey)}
       </p>
     </motion.div>

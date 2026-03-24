@@ -52,7 +52,7 @@ const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
         href={getYoutubeWatchUrl(video.youtubeUrl)}
         target="_blank"
         rel="noopener noreferrer"
-        className="block"
+        className="block rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
       >
         <div className="relative aspect-video overflow-hidden rounded-t-xl group bg-gray-200">
           {imgSrc && (
@@ -105,7 +105,7 @@ const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
           <div className="px-6 pb-4">
             <Link
               href={`/camps/2026/musicians/${campMusicianId}`}
-              className="inline-flex items-center text-xs text-jeju-ocean hover:text-ocean-mist transition-colors font-medium"
+              className="inline-flex items-center text-xs text-jeju-ocean hover:text-ocean-mist transition-colors font-medium rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
             >
               {t('camp.view_detail')} &rarr;
             </Link>

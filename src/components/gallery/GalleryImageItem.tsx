@@ -30,7 +30,7 @@ const GalleryImageItem = React.memo(({ image, priority = false, onClick }: Galle
             <div className="relative overflow-hidden rounded-lg aspect-square bg-gray-100 shadow-sm hover:shadow-md transition-shadow">
                 {/* Skeleton pulse - only shown while not loaded */}
                 {!isLoaded && (
-                    <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-lg z-0" />
+                    <div className="absolute inset-0 bg-gray-200 motion-safe:animate-pulse rounded-lg z-0" />
                 )}
 
                 <Image
