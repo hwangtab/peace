@@ -44,6 +44,15 @@ class MyDocument extends Document {
             href="https://cdn.jsdelivr.net/gh/projectnoonnu/2410-1@1.0/BMkkubulimTTF-Regular.woff2"
           />
 
+          {/* BookkMyungjo-Bd 폰트 preload */}
+          <link
+            rel="preload"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+            href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2"
+          />
+
           {/* LCP 히어로 이미지 preload */}
           <link
             rel="preload"

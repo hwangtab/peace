@@ -35,7 +35,7 @@ const GlobalSolidarity: React.FC = () => {
           {/* Declaration */}
           <motion.p
             variants={itemVariants}
-            className="font-display text-xl sm:text-2xl md:text-3xl text-gray-100 leading-relaxed break-words text-balance"
+            className="font-display font-bold text-xl sm:text-2xl md:text-3xl text-gray-100 leading-relaxed break-words text-balance"
           >
             {t('gangjeong_story.solidarity_declaration')}
           </motion.p>
@@ -49,7 +49,7 @@ const GlobalSolidarity: React.FC = () => {
           {/* Closing slogan */}
           <motion.p
             variants={itemVariants}
-            className="font-partial text-2xl sm:text-3xl md:text-5xl text-golden-sun break-words text-balance"
+            className="font-partial font-normal text-2xl sm:text-3xl md:text-5xl text-golden-sun break-words text-balance"
           >
             {t('gangjeong_story.closing_slogan')}
           </motion.p>

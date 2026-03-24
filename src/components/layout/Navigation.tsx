@@ -70,9 +70,9 @@ const Navigation = () => {
                 aria-expanded={isOpen}
               >
                 {isOpen ? (
-                  <HiOutlineX className="h-6 w-6" />
+                  <HiOutlineX aria-hidden="true" className="h-6 w-6" />
                 ) : (
-                  <HiOutlineMenu className="h-6 w-6" />
+                  <HiOutlineMenu aria-hidden="true" className="h-6 w-6" />
                 )}
               </button>
             </div>

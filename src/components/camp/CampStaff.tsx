@@ -24,7 +24,7 @@ const CampStaff: React.FC<CampStaffProps> = ({ staff, collaborators, inView }) =
                         className="flex items-start gap-2"
                     >
                         <span className="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" />
-                        <p className="font-serif text-base min-w-0">
+                        <p className="font-serif font-bold text-base min-w-0">
                             <span className="text-gray-700">{section.role}:</span>
                             <span className="text-gray-500 ml-2 break-words">{section.members.join(', ')}</span>
                         </p>
@@ -40,7 +40,7 @@ const CampStaff: React.FC<CampStaffProps> = ({ staff, collaborators, inView }) =
                     transition={{ duration: 0.4, delay: 0.3 + staff.length * 0.05 }}
                     className="pt-4 border-t border-gray-100"
                 >
-                    <h4 className="font-serif text-base text-gray-600 mb-3">{t('camp.section_collaborators')}</h4>
+                    <h4 className="font-serif font-bold text-base text-gray-600 mb-3">{t('camp.section_collaborators')}</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         {collaborators.map((org, index) => (
                             <motion.div
@@ -51,7 +51,7 @@ const CampStaff: React.FC<CampStaffProps> = ({ staff, collaborators, inView }) =
                                 className="flex items-center gap-2"
                             >
                                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 flex-shrink-0" />
-                                <span className="font-serif text-sm text-gray-600 break-words">{org}</span>
+                                <span className="font-serif font-bold text-sm text-gray-600 break-words">{org}</span>
                             </motion.div>
                         ))}
                     </div>

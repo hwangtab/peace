@@ -117,7 +117,7 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
               <section className="mb-12">
                 <h2 className="typo-h2 text-jeju-ocean mb-4">{t('common.lyrics')}</h2>
                 <div className="bg-ocean-sand/30 rounded-xl p-8">
-                  <p className="text-gray-800 leading-loose whitespace-pre-wrap font-serif text-lg">
+                  <p className="text-gray-800 leading-loose whitespace-pre-wrap font-serif font-bold text-lg">
                     {track.lyrics}
                   </p>
                 </div>

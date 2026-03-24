@@ -27,7 +27,7 @@ const MusicianCard = memo(({ musician, index, href }: MusicianCardProps) => {
       >
         <div className="group relative bg-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col">
           {/* Image — entire image area links to detail page */}
-          <Link href={detailHref} className="block relative w-full pb-[100%] flex-shrink-0">
+          <Link href={detailHref} className="block relative w-full pb-[100%] flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-lg">
             <div className="absolute inset-0 overflow-hidden">
               {musician.imageUrl ? (
                 <Image
@@ -63,7 +63,7 @@ const MusicianCard = memo(({ musician, index, href }: MusicianCardProps) => {
 
           {/* Content */}
           <div className="p-6 flex-1 flex flex-col">
-            <Link href={detailHref} className="block mb-2 hover:text-ocean-mist transition-colors duration-200">
+            <Link href={detailHref} className="block mb-2 hover:text-ocean-mist transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded">
               <h3 className="text-2xl font-serif text-jeju-ocean group-hover:text-ocean-mist transition-colors duration-200 break-words">
                 {musician.name}
               </h3>
@@ -81,7 +81,7 @@ const MusicianCard = memo(({ musician, index, href }: MusicianCardProps) => {
                       href={url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-3 py-1 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors duration-200 max-w-full min-w-0"
+                      className="inline-flex items-center px-3 py-1 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors duration-200 max-w-full min-w-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded"
                     >
                       <InstagramIcon aria-hidden="true" className="w-4 h-4 mr-1 flex-shrink-0" />
                       <span className="truncate">@{username}</span>
@@ -93,7 +93,7 @@ const MusicianCard = memo(({ musician, index, href }: MusicianCardProps) => {
                     href={musician.youtubeUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-3 py-1 text-sm bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors duration-200"
+                    className="inline-flex items-center px-3 py-1 text-sm bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded"
                   >
                     <YouTubeIcon aria-hidden="true" className="w-4 h-4 mr-1" />YouTube
                   </a>

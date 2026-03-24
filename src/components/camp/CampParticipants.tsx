@@ -49,8 +49,9 @@ const CampParticipants: React.FC<CampParticipantsProps> = ({ participants, music
                             initial={{ opacity: 0, y: 10 }}
                             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
                             transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
-                            className={`flex items-start gap-2 min-w-0 ${clickable ? 'cursor-pointer group' : ''}`}
+                            className={`flex items-start gap-2 min-w-0 ${clickable ? 'cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded' : ''}`}
                             role={clickable ? "button" : undefined}
+                            aria-label={clickable ? name : undefined}
                             tabIndex={clickable ? 0 : undefined}
                             onClick={() => handleParticipantClick(participant)}
                             onKeyDown={clickable ? (e: React.KeyboardEvent) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleParticipantClick(participant); } } : undefined}

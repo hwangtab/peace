@@ -109,6 +109,9 @@ export default function VideoPage({
             </div>
           ))}
         </div>
+        {filteredVideos.length === 0 && (
+          <p className="text-center text-gray-500 py-12">{t('common.no_results') || 'No results found.'}</p>
+        )}
       </div>
     </PageLayout>
   );

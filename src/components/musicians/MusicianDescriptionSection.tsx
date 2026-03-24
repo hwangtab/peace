@@ -57,7 +57,7 @@ export default function MusicianDescriptionSection({
                   href={`${fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=musician-camp-info-${musician.id}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="sm:w-[180px] flex-shrink-0 block"
+                  className="sm:w-[180px] flex-shrink-0 block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-lg"
                 >
                   <div className="relative w-full h-44 sm:h-full min-h-[160px]">
                     <Image
@@ -75,10 +75,10 @@ export default function MusicianDescriptionSection({
                   <p className="text-sm uppercase tracking-widest text-jeju-ocean font-bold mb-2">{t('camp.title_2026')}</p>
                   <div className="flex flex-wrap gap-3">
                     <span className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-700">
-                      <span className="text-jeju-ocean">📅</span>{t('camp.date_badge_2026')}
+                      <span className="text-jeju-ocean" aria-hidden="true">📅</span>{t('camp.date_badge_2026')}
                     </span>
                     <span className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-700">
-                      <span className="text-jeju-ocean">📍</span>{t('camp.venue_2026')}
+                      <span className="text-jeju-ocean" aria-hidden="true">📍</span>{t('camp.venue_2026')}
                     </span>
                   </div>
                 </div>

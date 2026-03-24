@@ -42,10 +42,10 @@ const Footer = () => {
                         <h2 className="text-xl md:text-2xl font-serif font-bold break-words">
                             {t('app.title')}
                         </h2>
-                        <p className="text-golden-sun text-sm md:text-base font-stone break-words">
+                        <p className="text-golden-sun text-sm md:text-base font-stone font-normal break-words">
                             {t('footer.slogan')}
                         </p>
-                        <p className="text-seafoam/80 text-sm font-caption leading-relaxed break-words">
+                        <p className="text-seafoam/80 text-sm font-caption font-light leading-relaxed break-words">
                             {t('footer.description')}
                         </p>
                     </div>
@@ -139,7 +139,7 @@ const Footer = () => {
             {/* Bottom Bar */}
             <div className="border-t border-cloud-white/10">
                 <div className="container mx-auto px-4 py-4">
-                    <p className="text-center text-seafoam/60 text-xs md:text-sm font-caption">
+                    <p className="text-center text-seafoam/60 text-xs md:text-sm font-caption font-light" suppressHydrationWarning>
                         © {SITE_CONFIG.COPYRIGHT_YEAR} {t('app.title')}. {t('footer.copyright')}
                     </p>
                 </div>

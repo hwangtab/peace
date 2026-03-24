@@ -45,7 +45,7 @@ const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey }) =>
           transition={{ duration: 0.7 }}
           className="max-w-lg mx-auto md:mx-0"
         >
-          <p className="font-display text-lg sm:text-xl md:text-2xl text-white leading-relaxed break-words text-balance">
+          <p className="font-display font-bold text-lg sm:text-xl md:text-2xl text-white leading-relaxed break-words text-balance">
             {t(textKey)}
           </p>
         </motion.div>

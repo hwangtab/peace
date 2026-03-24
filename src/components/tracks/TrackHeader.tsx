@@ -19,7 +19,7 @@ export default function TrackHeader({ track, isExpanded, onToggle, onPlay, alway
               <h3 className="text-lg font-bold font-serif break-words min-w-0">{track.title}</h3>
               <span className="text-sm text-coastal-gray ml-2 sm:ml-4 flex-shrink-0">{track.duration}</span>
             </div>
-            <p className="text-jeju-ocean font-serif break-words">{track.artist}</p>
+            <p className="text-jeju-ocean font-serif font-bold break-words">{track.artist}</p>
           </div>
         </div>
       </div>
@@ -28,7 +28,7 @@ export default function TrackHeader({ track, isExpanded, onToggle, onPlay, alway
 
   return (
     <div
-      className="p-3 sm:p-4 cursor-pointer hover:bg-ocean-sand transition-colors"
+      className="p-3 sm:p-4 cursor-pointer hover:bg-ocean-sand transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-lg"
       onClick={() => {
         onToggle();
         onPlay();
@@ -44,7 +44,7 @@ export default function TrackHeader({ track, isExpanded, onToggle, onPlay, alway
             <h3 className="text-lg font-bold font-serif break-words min-w-0">{track.title}</h3>
             <span className="text-sm text-coastal-gray ml-2 sm:ml-4 flex-shrink-0">{track.duration}</span>
           </div>
-          <p className="text-jeju-ocean font-serif break-words">{track.artist}</p>
+          <p className="text-jeju-ocean font-serif font-bold break-words">{track.artist}</p>
         </div>
         <motion.span
           animate={{ rotate: isExpanded ? 180 : 0 }}

@@ -37,7 +37,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(({
         <div className="hidden md:flex flex-wrap items-center gap-x-4 lg:gap-x-6 gap-y-2">
             <Link
                 href={ROUTES.HOME}
-                className={`${getTextColor(pathname === ROUTES.HOME)} transition-colors duration-300 font-display relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm`}
+                className={`${getTextColor(pathname === ROUTES.HOME)} transition-colors duration-300 font-display font-bold relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm`}
             >
                 {t('nav.home')}
                 {pathname === ROUTES.HOME && (
@@ -70,7 +70,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(({
                     <Link
                         key={item.path}
                         href={item.path}
-                        className={`${getTextColor(pathname === item.path)} transition-colors duration-300 font-display relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm`}
+                        className={`${getTextColor(pathname === item.path)} transition-colors duration-300 font-display font-bold relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm`}
                     >
                         {t(item.nameKey)}
                         {pathname === item.path && (
