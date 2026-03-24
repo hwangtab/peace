@@ -8,6 +8,7 @@ import AboutSection from '@/components/home/AboutSection';
 import SEOHelmet from '@/components/shared/SEOHelmet';
 import WaveDivider from '@/components/common/WaveDivider';
 
+const GangjeongStorySection = dynamic(() => import('@/components/camp/GangjeongStorySection'), { ssr: false });
 const TimelineSection = dynamic(() => import('@/components/home/TimelineSection'));
 const GallerySection = dynamic(() => import('@/components/home/GallerySection'));
 import { getWebSiteSchema, getOrganizationSchema, getFAQSchema } from '@/utils/structuredData';
@@ -39,6 +40,8 @@ export default function HomePage({ initialGalleryImages }: HomePageProps) {
       <HeroSection imageUrl="/images-webp/camps/2023/DSC00437.webp" />
       <AboutSection />
       <WaveDivider className="text-sunlight-glow -mt-[60px] sm:-mt-[100px] relative z-10" />
+      <GangjeongStorySection />
+      <WaveDivider className="text-golden-sun -mt-[60px] sm:-mt-[100px] relative z-10" />
       <TimelineSection />
       <WaveDivider className="text-golden-sun -mt-[60px] sm:-mt-[100px] relative z-10" />
       <GallerySection initialImages={initialGalleryImages} />
