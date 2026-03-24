@@ -8,7 +8,7 @@ import TrackHeader from './TrackHeader';
 import TrackCredits from './TrackCredits';
 
 const AudioPlayer = dynamic(() => import('./AudioPlayer'), {
-    loading: () => <div className="h-20 w-full animate-pulse bg-gray-100 rounded-lg" />,
+    loading: () => <div className="h-20 w-full motion-safe:animate-pulse bg-gray-100 rounded-lg" />,
     ssr: false,
 });
 
