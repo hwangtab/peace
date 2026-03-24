@@ -60,7 +60,7 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(({
 
       {filteredImages.length === 0 ? (
         <div className="text-center py-20 bg-white/50 rounded-lg">
-          <p className="text-xl text-gray-500 font-serif">{t('gallery.no_images')}</p>
+          <p className="text-xl text-gray-500 font-serif font-bold">{t('gallery.no_images')}</p>
         </div>
       ) : (
         <motion.div

@@ -42,7 +42,7 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(({
                                     className={`block py-2 break-words ${pathname === item.path
                                         ? 'text-jeju-ocean font-bold'
                                         : 'text-coastal-gray'
-                                        } font-serif`}
+                                        } font-serif font-bold`}
                                     onClick={onClose}
                                 >
                                     {t(item.nameKey)}
@@ -102,7 +102,7 @@ const MobileDropdown: React.FC<MobileDropdownProps> = React.memo(({
         <>
             <button
                 onClick={onToggle}
-                className="w-full text-left py-2 font-serif text-deep-ocean flex justify-between items-center break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm"
+                className="w-full text-left py-2 font-serif font-bold text-deep-ocean flex justify-between items-center break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm"
                 aria-expanded={isOpen}
                 aria-controls={`mobile-dropdown-${label}`}
             >
@@ -129,7 +129,7 @@ const MobileDropdown: React.FC<MobileDropdownProps> = React.memo(({
                             <Link
                                 key={item.path}
                                 href={item.path}
-                                className="block py-2 text-deep-ocean hover:text-jeju-ocean font-serif text-sm break-words"
+                                className="block py-2 text-deep-ocean hover:text-jeju-ocean font-serif font-bold text-sm break-words"
                                 onClick={onClose}
                             >
                                 {t(item.nameKey)}

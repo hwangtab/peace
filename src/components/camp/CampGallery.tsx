@@ -32,8 +32,9 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: Math.min(index * 0.1, 0.5) }}
-              className="cursor-pointer overflow-hidden rounded-xl shadow-lg relative group aspect-video"
+              className="cursor-pointer overflow-hidden rounded-xl shadow-lg relative group aspect-video focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
               role="button"
+              aria-label={t('common.view_image') || 'View image'}
               tabIndex={0}
               onClick={() => setSelectedImage(img)}
               onKeyDown={(e: React.KeyboardEvent) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelectedImage(img); } }}

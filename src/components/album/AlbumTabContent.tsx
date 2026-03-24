@@ -58,7 +58,7 @@ const AlbumTabContent: React.FC<AlbumTabContentProps> = ({
                             aria-selected={activeTab === tab.id}
                             aria-controls={`${tab.id}-panel`}
                             onClick={() => setActiveTab(tab.id as 'info' | 'video' | 'photo')}
-                            className={`relative px-6 py-3 rounded-xl text-sm font-bold transition-[color,background-color] duration-300 ${activeTab === tab.id ? 'text-white' : 'text-coastal-gray hover:text-jeju-ocean'
+                            className={`relative px-6 py-3 rounded-xl text-sm font-bold transition-[color,background-color] duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${activeTab === tab.id ? 'text-white' : 'text-coastal-gray hover:text-jeju-ocean'
                                 }`}
                         >
                             {activeTab === tab.id && (
@@ -145,8 +145,9 @@ const AlbumTabContent: React.FC<AlbumTabContentProps> = ({
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     transition={{ duration: 0.4, delay: index * 0.05 }}
-                                    className="aspect-square rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-[box-shadow,transform] duration-300 hover:scale-105 cursor-pointer"
+                                    className="aspect-square rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-[box-shadow,transform] duration-300 hover:scale-105 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
                                     role="button"
+                                    aria-label={t('album.image_alt_concert', { num: index + 1 })}
                                     tabIndex={0}
                                     onClick={() => onImageClick(photo)}
                                     onKeyDown={(e: React.KeyboardEvent) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onImageClick(photo); } }}

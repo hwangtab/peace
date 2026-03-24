@@ -20,10 +20,11 @@ const GalleryImageItem = React.memo(({ image, priority = false, onClick }: Galle
 
     return (
         <div
-            className="cursor-pointer group h-full"
+            className="cursor-pointer group h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-lg"
             onClick={() => onClick(image)}
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(image); } }}
             role="button"
+            aria-label={altText}
             tabIndex={0}
         >
             <div className="relative overflow-hidden rounded-lg aspect-square bg-gray-100 shadow-sm hover:shadow-md transition-shadow">
