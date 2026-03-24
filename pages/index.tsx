@@ -39,9 +39,9 @@ export default function HomePage({ initialGalleryImages }: HomePageProps) {
       />
       <HeroSection imageUrl="/images-webp/camps/2023/DSC00437.webp" />
       <AboutSection />
-      <WaveDivider className="text-sunlight-glow -mt-[60px] sm:-mt-[100px] relative z-10" />
+      <WaveDivider className="text-sky-horizon -mb-[60px] sm:-mb-[100px] relative z-10" direction="down" />
       <GangjeongStorySection />
-      <WaveDivider className="text-golden-sun -mt-[60px] sm:-mt-[100px] relative z-10" />
+      <WaveDivider className="text-sunlight-glow -mt-[60px] sm:-mt-[100px] relative z-10" />
       <TimelineSection />
       <WaveDivider className="text-golden-sun -mt-[60px] sm:-mt-[100px] relative z-10" />
       <GallerySection initialImages={initialGalleryImages} />
