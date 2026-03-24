@@ -35,11 +35,11 @@ const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
           <>
             <div className="mb-4 space-y-2">
               <p className="text-sm text-gray-600 break-words">
-                <span className="font-semibold">📅 {t('camp.label_period')}:</span> {camp.startDate}
+                <span className="font-semibold"><span aria-hidden="true">📅</span> {t('camp.label_period')}:</span> {camp.startDate}
                 {camp.endDate && ` ~ ${camp.endDate}`}
               </p>
               <p className="text-sm text-gray-600 break-words">
-                <span className="font-semibold">📍 {t('camp.label_location')}:</span> {camp.location}
+                <span className="font-semibold"><span aria-hidden="true">📍</span> {t('camp.label_location')}:</span> {camp.location}
               </p>
             </div>
 

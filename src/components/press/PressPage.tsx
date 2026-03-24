@@ -34,7 +34,7 @@ const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
       rel="noopener noreferrer"
       className="block h-full cursor-pointer"
     >
-      <article className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl h-full flex flex-col">
+      <article className="bg-white rounded-xl shadow-md overflow-hidden transition-[box-shadow,transform] duration-300 hover:scale-[1.02] hover:shadow-xl h-full flex flex-col">
         {imgSrc && (
           <div className="relative h-48 overflow-hidden">
             <Image
@@ -43,6 +43,7 @@ const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
               fill
               sizes="(max-width: 1024px) 100vw, 33vw"
               className="object-cover transition-transform duration-500 hover:scale-110"
+              loading="lazy"
               onError={() => {
                 if (imgSrc.endsWith('.jpeg')) {
                   setImgSrc(imgSrc.replace('.jpeg', '.jpg'));

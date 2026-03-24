@@ -1,5 +1,5 @@
 import { useTranslation } from 'next-i18next';
-import React, { useState, useRef, useCallback, useEffect } from 'react';
+import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react';
 import { motion, useInView } from 'framer-motion';
 import TrackCard from '../tracks/TrackCard';
 import Section from '../layout/Section';
@@ -19,7 +19,7 @@ interface TracksSectionProps {
   initialLocale?: string;
 }
 
-const TracksSection: React.FC<TracksSectionProps> = ({
+const TracksSection: React.FC<TracksSectionProps> = React.memo(({
   enableSectionWrapper = true,
   hideSectionHeader = false,
   initialTracks = [],
@@ -84,6 +84,16 @@ const TracksSection: React.FC<TracksSectionProps> = ({
     setPlayingTrackId((prev) => (prev === id ? null : id));
   }, []);
 
+  // 트랙→뮤지션 매핑을 사전 구축하여 O(n*m) → O(n+m)으로 최적화
+  const musicianByKey = useMemo(() => {
+    const map = new Map<string, Musician>();
+    for (const m of musicians) {
+      if (m.trackTitle) map.set(`track:${m.trackTitle}`, m);
+      if (m.name) map.set(`name:${m.name}`, m);
+    }
+    return map;
+  }, [musicians]);
+
   const content = (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
       {!hideSectionHeader && (
@@ -91,14 +101,15 @@ const TracksSection: React.FC<TracksSectionProps> = ({
       )}
 
       {isLoading ? (
-        <div className="flex justify-center items-center py-20">
+        <div className="flex justify-center items-center py-20" role="status">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-jeju-ocean" />
+          <span className="sr-only">{t('common.loading')}</span>
         </div>
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4 max-w-6xl mx-auto">
           {tracks.map((track) => {
-            const musician = musicians.find(m => m.trackTitle === track.title)
-              || musicians.find(m => m.name === track.artist);
+            const musician = musicianByKey.get(`track:${track.title}`)
+              || musicianByKey.get(`name:${track.artist}`);
             return (
               <TrackCard
                 key={track.id}
@@ -137,6 +148,7 @@ const TracksSection: React.FC<TracksSectionProps> = ({
   }
 
   return <div ref={ref}>{content}</div>;
-};
+});
 
+TracksSection.displayName = 'TracksSection';
 export default TracksSection;

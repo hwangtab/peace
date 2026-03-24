@@ -53,7 +53,7 @@ const TimelineMobileCard: React.FC<TimelineMobileCardProps> = ({
             {/* 위치 */}
             {event.locationKey && (
                 <p className="text-xs text-ocean-mist flex items-center font-medium">
-                    <span className="mr-1">📍</span> {t(event.locationKey)}
+                    <span className="mr-1" aria-hidden="true">📍</span> {t(event.locationKey)}
                 </p>
             )}
         </motion.div>

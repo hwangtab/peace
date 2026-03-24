@@ -29,14 +29,15 @@ const AudioPlayer = React.memo(({ audioUrl, isPlaying, onPlayPause, title, artis
         <motion.button
           whileTap={{ scale: 0.95 }}
           onClick={onPlayPause}
+          aria-label={isPlaying ? t('common.pause') : t('common.play')}
           className="w-10 h-10 flex items-center justify-center rounded-full bg-ocean-mist text-white hover:bg-jeju-ocean transition-colors"
         >
           {isPlaying ? (
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
             </svg>
           ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
             </svg>
           )}
@@ -49,14 +50,14 @@ const AudioPlayer = React.memo(({ audioUrl, isPlaying, onPlayPause, title, artis
         </div>
 
         {/* Time */}
-        <div className="text-xs text-gray-500">
+        <div className="text-xs text-gray-500 tabular-nums">
           {formatTime(progress)} / {formatTime(duration)}
         </div>
       </div>
 
       {/* Progress Bar */}
       <div
-        className="mt-2 h-1.5 sm:h-1 bg-gray-200 rounded cursor-pointer"
+        className="mt-2 h-1.5 sm:h-1 bg-gray-200 rounded cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
         onClick={handleSeek}
         onTouchEnd={(e) => {
           const touch = e.changedTouches[0];

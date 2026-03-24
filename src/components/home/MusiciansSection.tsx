@@ -71,8 +71,9 @@ const MusiciansSection: React.FC<MusiciansSectionProps> = React.memo(
         )}
 
         {isLoading ? (
-          <div className="flex justify-center items-center py-20">
+          <div className="flex justify-center items-center py-20" role="status">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-jeju-ocean" />
+            <span className="sr-only">{t('common.loading')}</span>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

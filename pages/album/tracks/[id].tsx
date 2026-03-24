@@ -78,7 +78,7 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
                 {musician ? (
                   <Link
                     href={`/album/musicians/${musician.id}`}
-                    className="hover:text-yellow-300 transition-colors"
+                    className="hover:text-yellow-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded"
                   >
                     {track.artist}
                   </Link>
@@ -161,14 +161,14 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
             <div className="pt-8 border-t border-gray-200 flex flex-wrap gap-4">
               <Link
                 href="/album/tracks"
-                className="inline-flex items-center px-4 py-2 bg-ocean-sand text-jeju-ocean rounded-lg hover:bg-ocean-mist transition-colors text-sm font-medium"
+                className="inline-flex items-center px-4 py-2 bg-ocean-sand text-jeju-ocean rounded-lg hover:bg-ocean-mist transition-colors text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
               >
                 &larr; {t('nav.track')}
               </Link>
               {musician && (
                 <Link
                   href={`/album/musicians/${musician.id}`}
-                  className="inline-flex items-center px-4 py-2 bg-golden-sun text-gray-900 rounded-lg hover:bg-yellow-400 transition-colors text-sm font-medium"
+                  className="inline-flex items-center px-4 py-2 bg-golden-sun text-gray-900 rounded-lg hover:bg-yellow-400 transition-colors text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
                 >
                   {musician.name} &rarr;
                 </Link>

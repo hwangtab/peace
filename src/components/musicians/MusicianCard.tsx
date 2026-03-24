@@ -41,6 +41,7 @@ const MusicianCard = memo(({ musician, index, href }: MusicianCardProps) => {
               ) : (
                 <div className="absolute w-full h-full flex items-center justify-center text-coastal-gray">
                   <svg
+                    aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-12 w-12"
                     fill="none"
@@ -82,7 +83,7 @@ const MusicianCard = memo(({ musician, index, href }: MusicianCardProps) => {
                       rel="noopener noreferrer"
                       className="inline-flex items-center px-3 py-1 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors duration-200 max-w-full min-w-0"
                     >
-                      <InstagramIcon className="w-4 h-4 mr-1 flex-shrink-0" />
+                      <InstagramIcon aria-hidden="true" className="w-4 h-4 mr-1 flex-shrink-0" />
                       <span className="truncate">@{username}</span>
                     </a>
                   );
@@ -94,7 +95,7 @@ const MusicianCard = memo(({ musician, index, href }: MusicianCardProps) => {
                     rel="noopener noreferrer"
                     className="inline-flex items-center px-3 py-1 text-sm bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors duration-200"
                   >
-                    <YouTubeIcon className="w-4 h-4 mr-1" />YouTube
+                    <YouTubeIcon aria-hidden="true" className="w-4 h-4 mr-1" />YouTube
                   </a>
                 )}
               </div>

@@ -102,7 +102,7 @@ const MobileDropdown: React.FC<MobileDropdownProps> = React.memo(({
         <>
             <button
                 onClick={onToggle}
-                className="w-full text-left py-2 font-serif text-deep-ocean flex justify-between items-center break-words"
+                className="w-full text-left py-2 font-serif text-deep-ocean flex justify-between items-center break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm"
                 aria-expanded={isOpen}
                 aria-controls={`mobile-dropdown-${label}`}
             >
@@ -111,6 +111,7 @@ const MobileDropdown: React.FC<MobileDropdownProps> = React.memo(({
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.2 }}
                     className="pointer-events-none"
+                    aria-hidden="true"
                 >
                     ▼
                 </motion.span>
