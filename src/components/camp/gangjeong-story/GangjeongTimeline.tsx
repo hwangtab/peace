@@ -82,7 +82,7 @@ const GangjeongTimeline: React.FC = () => {
                         </span>
                       )}
                     </div>
-                    <h4 className="text-sm font-semibold text-gray-900 break-words">{t(node.titleKey)}</h4>
+                    <h4 className="text-sm font-bold text-gray-900 break-words">{t(node.titleKey)}</h4>
                     <p className="text-xs text-gray-500 mt-0.5 break-words">{t(node.descKey)}</p>
                   </div>
                 </div>
@@ -103,7 +103,7 @@ const GangjeongTimeline: React.FC = () => {
                             {node.year}
                           </span>
                         </div>
-                        <h4 className="text-base font-semibold text-gray-900 break-words">{t(node.titleKey)}</h4>
+                        <h4 className="text-base font-bold text-gray-900 break-words">{t(node.titleKey)}</h4>
                         <p className="text-sm text-gray-500 mt-0.5 break-words">{t(node.descKey)}</p>
                       </div>
                     )}
@@ -128,7 +128,7 @@ const GangjeongTimeline: React.FC = () => {
                             </span>
                           )}
                         </div>
-                        <h4 className="text-base font-semibold text-gray-900 break-words">{t(node.titleKey)}</h4>
+                        <h4 className="text-base font-bold text-gray-900 break-words">{t(node.titleKey)}</h4>
                         <p className="text-sm text-gray-500 mt-0.5 break-words">{t(node.descKey)}</p>
                       </div>
                     )}

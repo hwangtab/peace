@@ -23,9 +23,9 @@ class MyDocument extends Document {
           <link
             rel="preload"
             as="font"
-            type="font/woff"
+            type="font/woff2"
             crossOrigin="anonymous"
-            href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff"
+            href="/fonts/GmarketSansLight.woff2"
           />
 
           {/* Hero 핵심 폰트 preload */}

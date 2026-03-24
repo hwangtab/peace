@@ -83,7 +83,7 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                     {/* Header */}
                     <Dialog.Title
                       as="h3"
-                      className="text-3xl font-medium leading-6 text-gray-900 mb-4 font-serif break-words"
+                      className="text-3xl font-bold leading-6 text-gray-900 mb-4 font-serif break-words"
                     >
                       {musician.name}
                     </Dialog.Title>

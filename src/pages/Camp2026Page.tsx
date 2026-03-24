@@ -207,15 +207,15 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div className="bg-ocean-sand rounded-xl p-4 text-center">
                     <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">{t('camp.label_period')}</p>
-                    <p className="text-sm font-semibold text-jeju-ocean break-words">{t('camp.date_badge_2026')}</p>
+                    <p className="text-sm font-bold text-jeju-ocean break-words">{t('camp.date_badge_2026')}</p>
                   </div>
                   <div className="bg-ocean-sand rounded-xl p-4 text-center">
                     <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">{t('camp.label_location')}</p>
-                    <p className="text-sm font-semibold text-jeju-ocean break-words">{t('camp.venue_2026')}</p>
+                    <p className="text-sm font-bold text-jeju-ocean break-words">{t('camp.venue_2026')}</p>
                   </div>
                   <div className="bg-ocean-sand rounded-xl p-4 text-center">
                     <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">{t('camp.label_participants')}</p>
-                    <p className="text-sm font-semibold text-jeju-ocean break-words">{t('camp.participant_count', { count: participantCount })}</p>
+                    <p className="text-sm font-bold text-jeju-ocean break-words">{t('camp.participant_count', { count: participantCount })}</p>
                   </div>
                 </div>
               </div>

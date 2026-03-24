@@ -112,7 +112,7 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(({
                 key={item.path}
                 href={item.path}
                 className={`block px-4 py-2 whitespace-normal break-words ${router.pathname === item.path
-                  ? 'bg-ocean-sand text-jeju-ocean font-semibold'
+                  ? 'bg-ocean-sand text-jeju-ocean font-bold'
                   : 'text-deep-ocean hover:bg-ocean-sand/50'
                   } transition-colors duration-200 font-serif focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-jeju-ocean`}
                 onClick={() => setOpen(false)}

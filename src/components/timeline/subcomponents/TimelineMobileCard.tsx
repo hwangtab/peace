@@ -41,7 +41,7 @@ const TimelineMobileCard: React.FC<TimelineMobileCardProps> = ({
             </span>
 
             {/* 제목 */}
-            <h3 className="text-lg font-medium text-jeju-ocean mb-2 font-display text-balance break-words">
+            <h3 className="text-lg font-bold text-jeju-ocean mb-2 font-display text-balance break-words">
                 {t(event.titleKey)}
             </h3>
 
