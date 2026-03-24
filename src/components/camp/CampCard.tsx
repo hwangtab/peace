@@ -94,7 +94,7 @@ const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
       ) : (
         <Link
           href={`/camps/${camp.year}`}
-          className="block h-full rounded-lg overflow-hidden shadow-md"
+          className="block h-full rounded-lg overflow-hidden shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
         >
           {cardContent}
         </Link>
