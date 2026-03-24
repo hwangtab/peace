@@ -45,7 +45,7 @@ const AudioPlayer = React.memo(({ audioUrl, isPlaying, onPlayPause, title, artis
 
         {/* Track Info */}
         <div className="flex-1 min-w-0">
-          <div className="text-sm font-semibold truncate">{title}</div>
+          <div className="text-sm font-bold truncate">{title}</div>
           <div className="text-xs text-gray-500 truncate">{artist}</div>
         </div>
 
