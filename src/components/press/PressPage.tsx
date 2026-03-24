@@ -148,6 +148,9 @@ export default function PressPage({
             </div>
           ))}
         </div>
+        {filteredItems.length === 0 && (
+          <p className="text-center text-gray-500 py-12">{t('common.no_results') || 'No results found.'}</p>
+        )}
 
         {/* Camp 2026 CTA */}
         {camp2026?.fundingUrl && (

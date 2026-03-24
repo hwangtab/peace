@@ -70,7 +70,7 @@ const GangjeongTimeline: React.FC = () => {
                 {/* Mobile layout */}
                 <div className="md:hidden flex items-start pl-10">
                   {/* Dot */}
-                  <div className={`absolute left-2.5 top-1.5 w-3.5 h-3.5 rounded-full ${node.color} border-2 border-white shadow-sm ${isLast ? 'ring-4 ring-golden-sun/30 animate-pulse' : ''}`} />
+                  <div className={`absolute left-2.5 top-1.5 w-3.5 h-3.5 rounded-full ${node.color} border-2 border-white shadow-sm ${isLast ? 'ring-4 ring-golden-sun/30 motion-safe:animate-pulse' : ''}`} />
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1 flex-wrap">
                       <span className={`inline-block px-2 py-0.5 ${node.color} text-white text-xs font-bold rounded-full`}>
@@ -111,7 +111,7 @@ const GangjeongTimeline: React.FC = () => {
 
                   {/* Center dot */}
                   <div className="w-2/12 flex justify-center relative">
-                    <div className={`w-4 h-4 rounded-full ${node.color} border-2 border-white shadow-md z-10 ${isLast ? 'ring-4 ring-golden-sun/30 animate-pulse' : ''}`} />
+                    <div className={`w-4 h-4 rounded-full ${node.color} border-2 border-white shadow-md z-10 ${isLast ? 'ring-4 ring-golden-sun/30 motion-safe:animate-pulse' : ''}`} />
                   </div>
 
                   {/* Right content */}
