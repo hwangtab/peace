@@ -56,7 +56,7 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
           <p className="text-[clamp(1rem,4vw,2.25rem)] font-stone leading-tight text-golden-sun mb-6 drop-shadow-sm text-balance hyphens-auto break-words max-w-4xl mx-auto">
             {t('home.hero.subtitle')}
           </p>
-          <p className="text-[clamp(0.8125rem,2.2vw,1.25rem)] font-caption leading-relaxed text-seafoam mb-12 font-medium drop-shadow-sm text-balance hyphens-auto break-words max-w-3xl mx-auto">
+          <p className="text-[clamp(0.8125rem,2.2vw,1.25rem)] font-caption leading-relaxed text-seafoam mb-12 font-light drop-shadow-sm text-balance hyphens-auto break-words max-w-3xl mx-auto">
             {t('home.hero.message')}
           </p>
           <div className="flex flex-wrap justify-center gap-4">

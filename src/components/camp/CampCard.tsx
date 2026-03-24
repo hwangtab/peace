@@ -20,7 +20,7 @@ const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
         </h3>
         <p className="typo-h3 text-white mb-4 text-balance break-words">{camp.title}</p>
         {isComingSoon && (
-          <span className="bg-white text-jeju-ocean px-4 py-2 rounded-full text-sm font-semibold">
+          <span className="bg-white text-jeju-ocean px-4 py-2 rounded-full text-sm font-bold">
             {t('camp.coming_soon')}
           </span>
         )}
@@ -35,17 +35,17 @@ const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
           <>
             <div className="mb-4 space-y-2">
               <p className="text-sm text-gray-600 break-words">
-                <span className="font-semibold"><span aria-hidden="true">📅</span> {t('camp.label_period')}:</span> {camp.startDate}
+                <span className="font-bold"><span aria-hidden="true">📅</span> {t('camp.label_period')}:</span> {camp.startDate}
                 {camp.endDate && ` ~ ${camp.endDate}`}
               </p>
               <p className="text-sm text-gray-600 break-words">
-                <span className="font-semibold"><span aria-hidden="true">📍</span> {t('camp.label_location')}:</span> {camp.location}
+                <span className="font-bold"><span aria-hidden="true">📍</span> {t('camp.label_location')}:</span> {camp.location}
               </p>
             </div>
 
             {camp.participants && camp.participants.length > 0 && (
               <div className="mb-6">
-                <p className="text-sm font-semibold text-gray-900 mb-2">
+                <p className="text-sm font-bold text-gray-900 mb-2">
                   {t('camp.label_participants')} ({camp.participants.length})
                 </p>
                 <div className="flex flex-wrap gap-2">
