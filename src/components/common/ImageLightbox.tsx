@@ -35,7 +35,7 @@ const ImageLightbox: React.FC<ImageLightboxProps> = ({
           <div className="fixed inset-0 bg-black/90 backdrop-blur-sm" aria-hidden="true" />
         </Transition.Child>
 
-        <div className="fixed inset-0 overflow-y-auto">
+        <div className="fixed inset-0 overflow-y-auto overscroll-contain">
           <div className="flex min-h-full items-center justify-center p-4">
             <Transition.Child
               as={Fragment}
@@ -46,7 +46,7 @@ const ImageLightbox: React.FC<ImageLightboxProps> = ({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="relative w-[90vw] max-w-5xl transform overflow-hidden rounded-lg shadow-2xl transition-all">
+              <Dialog.Panel className="relative w-[90vw] max-w-5xl transform overflow-hidden rounded-lg shadow-2xl transition-[transform,opacity]">
                 <div className="relative w-full h-[90vh]" style={{ maxHeight }}>
                   <Image
                     src={imageUrl}
@@ -54,13 +54,13 @@ const ImageLightbox: React.FC<ImageLightboxProps> = ({
                     fill
                     sizes="90vw"
                     className="object-contain rounded-lg"
-                    priority
+                    loading="eager"
                   />
                 </div>
 
                 {/* Close button inside panel for better focus management */}
                 <button
-                  className="absolute top-4 right-4 text-white text-3xl font-light hover:text-jeju-ocean transition-colors bg-black/20 rounded-full w-10 h-10 flex items-center justify-center backdrop-blur-sm"
+                  className="absolute top-4 right-4 text-white text-3xl font-light hover:text-jeju-ocean transition-colors bg-black/20 rounded-full w-10 h-10 flex items-center justify-center backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun"
                   onClick={onClose}
                   aria-label="Close lightbox"
                 >

@@ -11,7 +11,7 @@ const TimelineCardContent: React.FC<TimelineCardContentProps> = ({ event, eventT
     const { t } = useTranslation();
 
     return (
-        <div className="bg-cloud-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all border border-ocean-mist/20">
+        <div className="bg-cloud-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border border-ocean-mist/20">
             <span className={`inline-block px-3 py-1 rounded-full text-white text-xs font-bold ${eventTypeColor[event.eventType]} mb-3 shadow-sm`}>
                 {t(`timeline.labels.${event.eventType}`)}
             </span>
@@ -19,7 +19,7 @@ const TimelineCardContent: React.FC<TimelineCardContentProps> = ({ event, eventT
             <p className="typo-body text-coastal-gray mb-3 text-sm text-pretty break-words">{t(event.descriptionKey)}</p>
             {event.locationKey && (
                 <p className="text-xs text-ocean-mist flex items-center font-medium break-words">
-                    <span className="mr-1">📍</span> {t(event.locationKey)}
+                    <span className="mr-1" aria-hidden="true">📍</span> {t(event.locationKey)}
                 </p>
             )}
         </div>

@@ -94,7 +94,7 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(({
           animate={{ rotate: open ? 180 : 0 }}
           transition={{ duration: 0.2 }}
         >
-          <IoChevronDown className="w-4 h-4 ml-1" />
+          <IoChevronDown aria-hidden="true" className="w-4 h-4 ml-1" />
         </motion.div>
       </button>
 
@@ -114,7 +114,7 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(({
                 className={`block px-4 py-2 whitespace-normal break-words ${router.pathname === item.path
                   ? 'bg-ocean-sand text-jeju-ocean font-semibold'
                   : 'text-deep-ocean hover:bg-ocean-sand/50'
-                  } transition-colors duration-200 font-serif`}
+                  } transition-colors duration-200 font-serif focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-jeju-ocean`}
                 onClick={() => setOpen(false)}
               >
                 {t(item.nameKey)}

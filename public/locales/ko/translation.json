@@ -137,6 +137,8 @@
         "retry": "다시 시도하기",
         "go_home": "홈으로 이동",
         "audio_position": "오디오 재생 위치",
+        "play": "재생",
+        "pause": "일시정지",
         "label_personnel": "참여진",
         "label_produced_by": "제작",
         "track": "수록곡",

@@ -62,7 +62,7 @@ const Navigation = () => {
             <div className="md:hidden">
               <button
                 onClick={toggleMenu}
-                className={`transition-colors duration-300 ${isScrolled
+                className={`transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded ${isScrolled
                   ? 'text-coastal-gray hover:text-jeju-ocean'
                   : 'text-cloud-white hover:text-seafoam'
                   }`}
