@@ -137,6 +137,8 @@
         "retry": "重试",
         "go_home": "返回首页",
         "audio_position": "音频播放位置",
+        "play": "播放",
+        "pause": "暂停",
         "label_personnel": "参与人员",
         "label_produced_by": "制作",
         "about": "关于",

@@ -48,8 +48,13 @@ class MyDocument extends Document {
           <link
             rel="preload"
             as="image"
+            type="image/webp"
             href="/images-webp/camps/2023/DSC00437.webp"
           />
+
+          {/* 테마 & 색상 스킴 */}
+          <meta name="theme-color" content="#0A5F8A" />
+          <meta name="color-scheme" content="light" />
         </Head>
         <body>
           <Main />

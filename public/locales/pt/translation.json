@@ -137,6 +137,8 @@
         "retry": "Tentar novamente",
         "go_home": "Ir para o início",
         "audio_position": "Posição de reprodução de áudio",
+        "play": "Reproduzir",
+        "pause": "Pausar",
         "label_personnel": "Equipe",
         "label_produced_by": "Produzido por",
         "about": "Sobre",

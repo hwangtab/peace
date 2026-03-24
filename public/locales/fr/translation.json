@@ -137,6 +137,8 @@
         "retry": "Réessayer",
         "go_home": "Retour à l’accueil",
         "audio_position": "Position de lecture audio",
+        "play": "Lecture",
+        "pause": "Pause",
         "label_personnel": "Personnel",
         "label_produced_by": "Produit par",
         "about": "À propos",

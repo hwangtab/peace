@@ -13,21 +13,21 @@
 
   @font-face {
     font-family: 'GMarketSans';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    src: url('/fonts/GmarketSansLight.woff2') format('woff2');
     font-weight: 300;
     font-display: swap;
   }
 
   @font-face {
     font-family: 'GMarketSans';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    src: url('/fonts/GmarketSansMedium.woff2') format('woff2');
     font-weight: 500;
     font-display: swap;
   }
 
   @font-face {
     font-family: 'GMarketSans';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    src: url('/fonts/GmarketSansBold.woff2') format('woff2');
     font-weight: 700;
     font-display: swap;
   }
@@ -125,6 +125,8 @@
     overflow-wrap: break-word;
     hyphens: var(--text-hyphens);
     line-break: var(--text-line-break);
+    scroll-margin-top: 5rem;
+    text-wrap: balance;
   }
 
   p,
@@ -146,11 +148,40 @@
     hyphens: var(--text-hyphens);
     line-break: var(--text-line-break);
   }
+
+  button,
+  a,
+  input,
+  select,
+  [role="button"] {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
 @layer components {
   .container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply px-6 py-2 rounded-lg transition-colors duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-jeju-ocean text-cloud-white hover:bg-ocean-mist transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-ocean-mist text-cloud-white hover:bg-jeju-ocean transition-colors duration-200;
+  }
+
+  .btn-accent-gold {
+    @apply bg-golden-sun text-deep-ocean hover:bg-sunset-coral hover:text-cloud-white transition-colors duration-200;
+  }
+
+  .btn-accent-coral {
+    @apply bg-sunset-coral text-cloud-white hover:bg-golden-sun hover:text-deep-ocean transition-colors duration-200;
   }
 
   /* Typography Utilities */
@@ -212,6 +243,10 @@ code {
 
   .text-pretty {
     text-wrap: pretty;
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
   }
 }
 

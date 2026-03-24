@@ -34,7 +34,7 @@ const ConcertCard: React.FC<ConcertCardProps> = ({ concert, onMusicianClick, ind
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: index * 0.2 }}
-            className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col"
+            className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-[box-shadow,border-color] duration-500 border border-gray-100 flex flex-col"
         >
             {/* Card Header Background Decor */}
             <div className="h-2 bg-gradient-to-r from-jeju-ocean to-ocean-mist opacity-80" />
@@ -47,7 +47,7 @@ const ConcertCard: React.FC<ConcertCardProps> = ({ concert, onMusicianClick, ind
                 <div className="space-y-4 mb-8">
                     <div className="flex items-center gap-4 text-gray-700">
                         <div className="w-10 h-10 rounded-full bg-ocean-sand flex items-center justify-center text-jeju-ocean">
-                            <HiOutlineCalendar className="w-5 h-5" />
+                            <HiOutlineCalendar aria-hidden="true" className="w-5 h-5" />
                         </div>
                         <div className="flex flex-col">
                             <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">
@@ -62,7 +62,7 @@ const ConcertCard: React.FC<ConcertCardProps> = ({ concert, onMusicianClick, ind
 
                     <div className="flex items-center gap-4 text-gray-700">
                         <div className="w-10 h-10 rounded-full bg-ocean-sand flex items-center justify-center text-jeju-ocean">
-                            <HiOutlineLocationMarker className="w-5 h-5" />
+                            <HiOutlineLocationMarker aria-hidden="true" className="w-5 h-5" />
                         </div>
                         <div className="flex flex-col">
                             <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">
@@ -75,7 +75,7 @@ const ConcertCard: React.FC<ConcertCardProps> = ({ concert, onMusicianClick, ind
 
                 <div className="mt-auto">
                     <div className="flex items-center gap-2 mb-4">
-                        <HiOutlineUserGroup className="w-4 h-4 text-jeju-ocean" />
+                        <HiOutlineUserGroup aria-hidden="true" className="w-4 h-4 text-jeju-ocean" />
                         <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">
                             {t('album.label_performers')}
                         </span>

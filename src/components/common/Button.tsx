@@ -42,7 +42,7 @@ const Button = ({
     ariaLabel,
     utmContent,
 }: ButtonProps) => {
-    const baseClasses = 'inline-flex items-center justify-center transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean text-center whitespace-normal break-words max-w-full';
+    const baseClasses = 'inline-flex items-center justify-center transition-[color,background-color,box-shadow,transform] duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean text-center whitespace-normal break-words max-w-full';
 
     const variantClasses = {
         primary: 'bg-jeju-ocean text-white font-medium hover:bg-ocean-mist shadow-md hover:shadow-lg',

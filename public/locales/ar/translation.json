@@ -137,6 +137,8 @@
         "retry": "إعادة المحاولة",
         "go_home": "العودة إلى الرئيسية",
         "audio_position": "موضع تشغيل الصوت",
+        "play": "تشغيل",
+        "pause": "إيقاف مؤقت",
         "label_personnel": "طاقم العمل",
         "label_produced_by": "إنتاج",
         "about": "حول",

@@ -30,7 +30,7 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
           <div className="fixed inset-0 bg-black bg-opacity-25" />
         </Transition.Child>
 
-        <div className="fixed inset-0 overflow-y-auto">
+        <div className="fixed inset-0 overflow-y-auto overscroll-contain">
           <div className="flex min-h-full items-center justify-center p-4">
             <Transition.Child
               as={Fragment}
@@ -41,15 +41,16 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white p-6 shadow-xl transition-all">
+              <Dialog.Panel className="w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white p-6 shadow-xl transition-[transform,opacity]">
                 <div className="relative">
                   {/* Close button */}
                   <button
                     onClick={onClose}
-                    className="absolute right-0 top-0 p-2 text-gray-400 hover:text-gray-500"
+                    className="absolute right-0 top-0 p-2 text-gray-400 hover:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded"
                   >
                     <span className="sr-only">{t('common.close')}</span>
                     <svg
+                      aria-hidden="true"
                       className="h-6 w-6"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -112,7 +113,7 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center px-3 py-1 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors duration-200 max-w-full truncate"
                               >
-                                <InstagramIcon className="w-4 h-4 mr-1" />
+                                <InstagramIcon aria-hidden="true" className="w-4 h-4 mr-1" />
                                 @{username}
                               </a>
                             );
@@ -124,7 +125,7 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                               rel="noopener noreferrer"
                               className="inline-flex items-center px-3 py-1 text-sm bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors duration-200"
                             >
-                              <YouTubeIcon className="w-4 h-4 mr-1" />
+                              <YouTubeIcon aria-hidden="true" className="w-4 h-4 mr-1" />
                               YouTube
                             </a>
                           )}

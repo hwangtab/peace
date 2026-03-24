@@ -137,6 +137,8 @@
         "retry": "再試行",
         "go_home": "ホームへ",
         "audio_position": "音声の再生位置",
+        "play": "再生",
+        "pause": "一時停止",
         "label_personnel": "スタッフ",
         "label_produced_by": "制作",
         "about": "概要",

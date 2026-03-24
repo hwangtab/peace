@@ -63,7 +63,7 @@ const Footer = () => {
                                         key={item.path}
                                         href={item.path}
                                         className="block text-cloud-white/80 hover:text-golden-sun
-                               transition-colors duration-200 text-sm break-words"
+                               transition-colors duration-200 text-sm break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun rounded-sm"
                                     >
                                         {t(item.nameKey)}
                                     </Link>
@@ -76,7 +76,7 @@ const Footer = () => {
                                         key={item.path}
                                         href={item.path}
                                         className="block text-cloud-white/80 hover:text-golden-sun
-                               transition-colors duration-200 text-sm break-words"
+                               transition-colors duration-200 text-sm break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun rounded-sm"
                                     >
                                         {t(item.nameKey)}
                                     </Link>
@@ -87,7 +87,7 @@ const Footer = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="block text-golden-sun hover:text-yellow-300
-                               transition-colors duration-200 text-sm font-medium break-words"
+                               transition-colors duration-200 text-sm font-medium break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun rounded-sm"
                                     >
                                         {t('camp.ticketing_2026')}
                                     </a>
@@ -97,7 +97,7 @@ const Footer = () => {
                                         key={item.path}
                                         href={item.path}
                                         className="block text-cloud-white/80 hover:text-golden-sun
-                               transition-colors duration-200 text-sm break-words"
+                               transition-colors duration-200 text-sm break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun rounded-sm"
                                     >
                                         {t(item.nameKey)}
                                     </Link>
@@ -121,10 +121,11 @@ const Footer = () => {
                                     aria-label={t(link.nameKey)}
                                     className="group flex items-center justify-center w-11 h-11 rounded-full
                              bg-cloud-white/10 hover:bg-jeju-ocean
-                             transition-all duration-300 ease-in-out
-                             hover:scale-110 hover:shadow-lg hover:shadow-jeju-ocean/30"
+                             transition-[background-color,transform,box-shadow] duration-300 ease-in-out
+                             hover:scale-110 hover:shadow-lg hover:shadow-jeju-ocean/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun"
                                 >
                                     <link.icon
+                                        aria-hidden="true"
                                         className="w-5 h-5 text-cloud-white group-hover:text-cloud-white
                                transition-colors duration-300"
                                     />

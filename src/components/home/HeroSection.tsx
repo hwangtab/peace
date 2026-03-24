@@ -37,10 +37,10 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
       )}
 
       {/* Gradient Overlay using Bright Ocean Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-jeju-ocean/70 via-ocean-mist/40 to-seafoam/20" />
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-jeju-ocean/70 via-ocean-mist/40 to-seafoam/20" />
 
       {/* Pattern Overlay */}
-      <div className="absolute inset-0 opacity-10">
+      <div aria-hidden="true" className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-repeat opacity-10" />
       </div>
 
@@ -82,6 +82,7 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        aria-hidden="true"
       >
         <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
           <motion.div

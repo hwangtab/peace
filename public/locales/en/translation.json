@@ -137,6 +137,8 @@
         "retry": "Try Again",
         "go_home": "Go to Home",
         "audio_position": "Audio playback position",
+        "play": "Play",
+        "pause": "Pause",
         "label_personnel": "Personnel",
         "label_produced_by": "Produced by",
         "track": "Track",

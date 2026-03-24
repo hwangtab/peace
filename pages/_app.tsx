@@ -4,6 +4,7 @@ import Script from 'next/script';
 import { appWithTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { MotionConfig } from 'framer-motion';
 import nextI18NextConfig from '../next-i18next.config';
 import '@/index.css';
 import Navigation from '@/components/layout/Navigation';
@@ -50,28 +51,30 @@ function App({ Component, pageProps }: AppProps) {
 
   return (
     <NavigationProvider>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
+      <MotionConfig reducedMotion="user">
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+        </Head>
 
-      {/* GA4: afterInteractive로 렌더링 차단 방지 */}
-      {GA_MEASUREMENT_ID && (
-        <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-            strategy="afterInteractive"
-          />
-          <Script id="ga4-config" strategy="afterInteractive">
-            {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_MEASUREMENT_ID}',{page_path:window.location.pathname});`}
-          </Script>
-        </>
-      )}
+        {/* GA4: afterInteractive로 렌더링 차단 방지 */}
+        {GA_MEASUREMENT_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-config" strategy="afterInteractive">
+              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_MEASUREMENT_ID}',{page_path:window.location.pathname});`}
+            </Script>
+          </>
+        )}
 
-      <Navigation />
-      <main id="main-content" className="overflow-x-hidden">
-        <Component {...pageProps} />
-      </main>
-      <Footer />
+        <Navigation />
+        <main id="main-content" className="overflow-x-hidden">
+          <Component {...pageProps} />
+        </main>
+        <Footer />
+      </MotionConfig>
     </NavigationProvider>
   );
 }
