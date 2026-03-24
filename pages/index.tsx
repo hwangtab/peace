@@ -9,7 +9,6 @@ import SEOHelmet from '@/components/shared/SEOHelmet';
 import WaveDivider from '@/components/common/WaveDivider';
 
 const GangjeongStorySection = dynamic(() => import('@/components/camp/GangjeongStorySection'), { ssr: false });
-const TimelineSection = dynamic(() => import('@/components/home/TimelineSection'));
 const GallerySection = dynamic(() => import('@/components/home/GallerySection'));
 import { getWebSiteSchema, getOrganizationSchema, getFAQSchema } from '@/utils/structuredData';
 import { GalleryImage } from '@/types/gallery';
@@ -41,8 +40,6 @@ export default function HomePage({ initialGalleryImages }: HomePageProps) {
       <AboutSection />
       <WaveDivider className="text-sky-horizon -mb-[60px] sm:-mb-[100px] relative z-10" direction="down" />
       <GangjeongStorySection />
-      <WaveDivider className="text-sunlight-glow -mt-[60px] sm:-mt-[100px] relative z-10" />
-      <TimelineSection />
       <WaveDivider className="text-golden-sun -mt-[60px] sm:-mt-[100px] relative z-10" />
       <GallerySection initialImages={initialGalleryImages} />
     </div>
