@@ -55,7 +55,7 @@ export default function MusicianDetailContent({
 
   const baseKeywords = `${musician.name}, ${musician.genre.join(', ')}, ${t('app.title')}`;
   const pageKeywords = isCampPage
-    ? `${baseKeywords}, 강정피스앤뮤직캠프, 2026, 강정마을, 평화음악축제`
+    ? `${baseKeywords}, ${t('camp.title_2026')}, 2026, ${t('camp.keywords_base')}`
     : baseKeywords;
 
   const profileSchema = getProfilePageSchema(
