@@ -23,12 +23,19 @@ const nodes: TimelineNode[] = [
   { year: '2026', titleKey: 'gangjeong_story.timeline_2026_title', descKey: 'gangjeong_story.timeline_2026_desc', color: 'bg-golden-sun', badge: 'gangjeong_story.timeline_2026_badge' },
 ];
 
+const listVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.08 },
+  },
+};
+
 const nodeVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6 },
+    transition: { duration: 0.4 },
   },
 };
 
@@ -56,7 +63,13 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
           {t('gangjeong_story.timeline_title')}
         </motion.h3>
 
-        <ol className="relative max-w-3xl mx-auto">
+        <motion.ol
+          className="relative max-w-3xl mx-auto"
+          variants={listVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
+        >
           {/* Vertical center line — desktop only */}
           <div className={`hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b ${lineGradient}`} />
           {/* Vertical left line — mobile only */}
@@ -70,9 +83,6 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
               <motion.li
                 key={node.year}
                 variants={nodeVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-80px' }}
                 className="relative mb-8 md:mb-12 last:mb-0"
               >
                 {/* Mobile layout */}
@@ -145,7 +155,7 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
               </motion.li>
             );
           })}
-        </ol>
+        </motion.ol>
       </div>
     </div>
   );
