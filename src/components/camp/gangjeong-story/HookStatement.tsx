@@ -20,7 +20,11 @@ const itemVariants = {
   },
 };
 
-const HookStatement: React.FC = () => {
+interface Props {
+  variant?: 'camp' | 'home';
+}
+
+const HookStatement: React.FC<Props> = ({ variant = 'camp' }) => {
   const { t } = useTranslation();
   const sectionRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
@@ -46,7 +50,7 @@ const HookStatement: React.FC = () => {
           className="object-cover scale-[1.15]"
         />
       </motion.div>
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/70" />
+      <div className={`absolute inset-0 bg-gradient-to-b ${variant === 'home' ? 'from-black/60 via-jeju-ocean/50 to-black/70' : 'from-black/70 via-black/55 to-black/70'}`} />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 sm:py-28">
         <motion.div
@@ -58,7 +62,7 @@ const HookStatement: React.FC = () => {
         >
           <motion.h2
             variants={itemVariants}
-            className="font-partial font-normal text-4xl sm:text-5xl md:text-6xl text-golden-sun mb-3 break-words"
+            className={`font-partial font-normal text-4xl sm:text-5xl md:text-6xl ${variant === 'home' ? 'text-jeju-sky' : 'text-golden-sun'} mb-3 break-words`}
           >
             {t('gangjeong_story.hook_headline')}
           </motion.h2>
