@@ -9,7 +9,7 @@ import Camp2025Page from '@/pages/Camp2025Page';
 import Camp2026Page from '@/pages/Camp2026Page';
 import NotFoundPage from '@/pages/NotFoundPage';
 
-const CURRENT_CAMP_YEAR = 2026;
+const CURRENT_CAMP_YEAR = Math.max(...camps.map((c) => c.year));
 
 const pageComponents: Record<string, React.ComponentType<{ initialMusicians?: Musician[]; initialLocale?: string }>> = {
   '2023': Camp2023Page,

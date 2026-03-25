@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 import { Musician } from '@/types/musician';
 import { extractInstagramUsername } from '@/utils/instagram';
+import { camps } from '@/data/camps';
 import InstagramIcon from '../icons/InstagramIcon';
 import YouTubeIcon from '../icons/YouTubeIcon';
 import Button from '../common/Button';
@@ -108,7 +109,7 @@ export default function MusicianHeroSection({ musician, fundingUrl, isCampPage }
 
               {fundingUrl && (
                 <Button href={fundingUrl} variant="gold" size="sm" external utmContent={`musician-hero-${musician.id}`}>
-                  {t('camp.ticketing_2026')}
+                  {t(`camp.ticketing_${camps[camps.length - 1]?.year}`)}
                 </Button>
               )}
             </div>
