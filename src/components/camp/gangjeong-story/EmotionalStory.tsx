@@ -8,10 +8,11 @@ interface StoryBlockProps {
   textKey: string;
   altKey: string;
   align?: 'left' | 'right';
+  imageClassName?: string;
   variant?: 'camp' | 'home';
 }
 
-const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey, align = 'left', variant = 'camp' }) => {
+const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey, align = 'left', imageClassName, variant = 'camp' }) => {
   const { t } = useTranslation();
   const blockRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
@@ -34,7 +35,7 @@ const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey, alig
           alt={t(altKey)}
           fill
           sizes="100vw"
-          className="object-cover scale-[1.15]"
+          className={`object-cover scale-[1.15] ${imageClassName || ''}`}
         />
       </motion.div>
       <div className={`absolute inset-0 bg-gradient-to-t ${variant === 'home' ? 'from-black/75 via-jeju-ocean/40 to-transparent' : 'from-black/80 via-black/30 to-transparent'}`} />
@@ -62,12 +63,14 @@ const blocks: Omit<StoryBlockProps, 'variant'>[] = [
     textKey: 'gangjeong_story.story_block1_text',
     altKey: 'gangjeong_story.story_block1_alt',
     align: 'right',
+    imageClassName: 'grayscale-[0.3] contrast-[0.9] brightness-[0.85] blur-[0.5px]',
   },
   {
     imageSrc: '/images-webp/gangjeong/gangjeong-memory.webp',
     textKey: 'gangjeong_story.story_block2_text',
     altKey: 'gangjeong_story.story_block2_alt',
     align: 'left',
+    imageClassName: 'grayscale-[0.3] contrast-[0.9] brightness-[0.85] blur-[0.5px]',
   },
   {
     imageSrc: '/images-webp/camps/2023/20230610밤 우와악.webp',
