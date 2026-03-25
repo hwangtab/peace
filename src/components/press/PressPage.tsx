@@ -44,6 +44,7 @@ const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
               sizes="(max-width: 1024px) 100vw, 33vw"
               className="object-cover transition-transform duration-500 hover:scale-110"
               loading="lazy"
+              unoptimized
               onError={() => {
                 if (imgSrc.endsWith('.jpeg')) {
                   setImgSrc(imgSrc.replace('.jpeg', '.jpg'));

@@ -324,7 +324,7 @@ const campsEn: CampEvent[] = [
       { name: 'MoredoSaturday', musicianId: 7 },
       { name: 'Mwing', musicianId: 23 },
       { name: 'Materials Pound', musicianId: 24 },
-      { name: 'Bloco Jafari X PollePolle X Dongbaek Small School', musicianId: 13 },
+      { name: 'Bloco Jafari X PollePolle X Bukjakbukjak', musicianId: 13 },
       { name: 'Bulgasari Impromptu Session', musicianId: 25 },
       { name: 'Sabbaha', musicianId: 26 },
       { name: 'Sight X Zsthyger', musicianId: 27 },

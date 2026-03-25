@@ -84,7 +84,7 @@ const Button = ({
     };
 
     const resolvedHref = href && utmContent
-        ? `${href}?${UTM_BASE}&utm_content=${utmContent}`
+        ? `${href}?${UTM_BASE}&utm_content=${encodeURIComponent(utmContent)}`
         : href;
 
     const content = <>{children}</>;

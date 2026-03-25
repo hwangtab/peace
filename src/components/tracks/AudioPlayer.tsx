@@ -80,6 +80,7 @@ const AudioPlayer = React.memo(({ audioUrl, isPlaying, onPlayPause, title, artis
         aria-valuenow={Math.round(progress)}
         aria-valuemin={0}
         aria-valuemax={Math.round(duration)}
+        aria-valuetext={`${formatTime(progress)} / ${formatTime(duration)}`}
       >
         <motion.div
           className="h-full bg-coastal-gray rounded"
