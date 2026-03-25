@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'next-i18next';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { getCamps } from '@/data/camps';
 import PageLayout from '@/components/layout/PageLayout';
@@ -32,10 +32,6 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
   const camp2026 = campList.find(camp => camp.id === 'camp-2026');
   const ordinalLabel = formatOrdinal(3, i18n.language);
   const [musicians, setMusicians] = useState<Musician[]>(initialMusicians);
-  const infoRef = useRef(null);
-  const isInfoInView = useInView(infoRef, { once: true, margin: '-100px' });
-  const lineupRef = useRef(null);
-  const isLineupInView = useInView(lineupRef, { once: true, margin: '-100px' });
 
   useEffect(() => {
     if (i18n.language === initialLocale) {
@@ -162,11 +158,12 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
       </section>
 
       {/* Overview Section */}
-      <Section background="ocean-sand" ref={infoRef} className="pb-24 md:pb-32">
+      <Section background="ocean-sand" className="pb-24 md:pb-32">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={isInfoInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.6 }}
             className="max-w-5xl mx-auto"
           >
@@ -233,14 +230,14 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
 
       {/* Lineup Section */}
       {camp2026.participants && camp2026.participants.length > 0 && (
-        <Section background="white" ref={lineupRef} id="lineup" className="!pb-32 sm:!pb-40">
+        <Section background="white" id="lineup" className="!pb-32 sm:!pb-40">
           <div className="container mx-auto px-4">
             <SectionHeader
               title={t('camp.section_musicians')}
               subtitle={t('camp.lineup_count', { count: participantCount })}
             />
             <div className="max-w-6xl mx-auto">
-              <CampLineup participants={camp2026.participants} musicians={musicians} inView={isLineupInView} campYear={2026} />
+              <CampLineup participants={camp2026.participants} musicians={musicians} campYear={2026} />
             </div>
           </div>
         </Section>
