@@ -169,36 +169,42 @@
     @apply font-partial font-normal text-4xl md:text-5xl lg:text-7xl leading-tight;
     word-break: var(--text-word-break);
     overflow-wrap: break-word;
+    text-wrap: balance;
   }
 
   .typo-h2 {
     @apply font-stone font-normal text-3xl md:text-4xl leading-tight text-gray-900;
     word-break: var(--text-word-break);
     overflow-wrap: break-word;
+    text-wrap: balance;
   }
 
   .typo-h3 {
     @apply font-display font-bold text-xl md:text-2xl text-deep-ocean;
     word-break: var(--text-word-break);
     overflow-wrap: break-word;
+    text-wrap: balance;
   }
 
   .typo-body {
     @apply font-body text-base md:text-lg leading-relaxed text-gray-700;
     word-break: var(--text-word-break);
     overflow-wrap: break-word;
+    text-wrap: balance;
   }
 
   .typo-subtitle {
     @apply font-caption font-light text-lg md:text-xl text-gray-600;
     word-break: var(--text-word-break);
     overflow-wrap: break-word;
+    text-wrap: balance;
   }
 
   .typo-caption {
     @apply font-caption font-light text-sm text-gray-500;
     word-break: var(--text-word-break);
     overflow-wrap: break-word;
+    text-wrap: balance;
   }
 }
 

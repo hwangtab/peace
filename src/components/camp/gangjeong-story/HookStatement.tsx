@@ -74,7 +74,7 @@ const HookStatement: React.FC<Props> = ({ variant = 'camp' }) => {
           </motion.p>
           <motion.p
             variants={itemVariants}
-            className="typo-body text-gray-200 leading-relaxed text-base sm:text-lg break-words text-balance"
+            className="typo-body text-gray-200 leading-relaxed text-base sm:text-lg"
           >
             {t('gangjeong_story.hook_intro')}
           </motion.p>

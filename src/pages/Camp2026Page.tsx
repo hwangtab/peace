@@ -259,8 +259,8 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6 }}
               >
-                <h2 className="typo-h2 text-white mb-4 break-words text-balance">{t('camp.cta_final_heading')}</h2>
-                <p className="typo-body text-gray-200 mb-8 max-w-lg mx-auto break-words text-balance">{t('camp.cta_final_body')}</p>
+                <h2 className="typo-h2 text-white mb-4">{t('camp.cta_final_heading')}</h2>
+                <p className="typo-body text-gray-200 mb-8 max-w-lg mx-auto">{t('camp.cta_final_body')}</p>
                 <Button href={camp2026.fundingUrl} variant="gold" external utmContent="final-cta">
                   {t('camp.cta_final_button')}
                 </Button>
