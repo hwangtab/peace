@@ -8,10 +8,14 @@ export async function fetchLocalData<T>(path: string): Promise<T[]> {
       return [];
     }
     const text = await response.text();
+    if (!text.trim()) {
+      console.warn(`Empty response for ${path}`);
+      return [];
+    }
     try {
       return JSON.parse(text) as T[];
     } catch (parseError) {
-      console.error(`JSON parse error for ${path}:`, parseError);
+      console.error(`JSON parse error for ${path} (corrupted data):`, parseError);
       return [];
     }
   } catch (error) {
