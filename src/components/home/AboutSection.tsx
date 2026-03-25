@@ -40,7 +40,6 @@ const AboutSection = () => {
           <SectionHeader
             title={t('about.title')}
             subtitle={t('about.subtitle')}
-            inView={isInView}
           />
 
           <motion.div variants={itemVariants} className="space-y-8 text-base sm:text-lg text-gray-700 leading-relaxed">

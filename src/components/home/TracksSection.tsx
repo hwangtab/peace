@@ -98,7 +98,7 @@ const TracksSection: React.FC<TracksSectionProps> = React.memo(({
   const content = (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
       {!hideSectionHeader && (
-        <SectionHeader title={t('home.tracks.title')} subtitle={t('home.tracks.subtitle')} inView={inView} />
+        <SectionHeader title={t('home.tracks.title')} subtitle={t('home.tracks.subtitle')} />
       )}
 
       {isLoading ? (

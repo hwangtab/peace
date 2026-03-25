@@ -238,7 +238,6 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
             <SectionHeader
               title={t('camp.section_musicians')}
               subtitle={t('camp.lineup_count', { count: participantCount })}
-              inView={isLineupInView}
             />
             <div className="max-w-6xl mx-auto">
               <CampLineup participants={camp2026.participants} musicians={musicians} inView={isLineupInView} campYear={2026} />
