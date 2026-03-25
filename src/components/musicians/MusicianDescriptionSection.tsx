@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 import { Musician } from '@/types/musician';
 import { CampEvent } from '@/types/camp';

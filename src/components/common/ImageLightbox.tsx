@@ -60,7 +60,7 @@ const ImageLightbox: React.FC<ImageLightboxProps> = ({
 
                 {/* Close button inside panel for better focus management */}
                 <button
-                  className="absolute top-4 right-4 text-white text-3xl font-extralight hover:text-jeju-ocean transition-colors bg-black/20 rounded-full w-10 h-10 flex items-center justify-center backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun"
+                  className="absolute top-4 right-4 text-white text-3xl hover:text-jeju-ocean transition-colors bg-black/20 rounded-full w-10 h-10 flex items-center justify-center backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun"
                   onClick={onClose}
                   aria-label="Close lightbox"
                 >

@@ -43,7 +43,7 @@ const AboutSection = () => {
             inView={isInView}
           />
 
-          <motion.div variants={itemVariants} className="space-y-8 text-base sm:text-lg text-gray-700 leading-relaxed font-extralight">
+          <motion.div variants={itemVariants} className="space-y-8 text-base sm:text-lg text-gray-700 leading-relaxed">
             <p className="text-pretty">
               <Trans i18nKey="about.desc1">
                 제주 강정마을, 거친 바람이 부는 구럼비 바위 앞에서 우리는 처음 노래를 불렀습니다.<br className="hidden md:block" />
