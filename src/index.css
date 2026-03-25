@@ -237,6 +237,23 @@ code {
   }
 }
 
+/* 모바일에서 CSS transition/animation 단축 — JS(Framer Motion) 애니메이션은
+   useReducedMotion()으로 별도 제어하므로 여기서는 CSS 레이어만 제한한다 */
+@media (max-width: 767px) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0ms !important;
+    animation-duration: 0ms !important;
+  }
+
+  /* 호버 효과는 모바일에서 불필요하므로 GPU 레이어 생성 억제 */
+  .group:hover .group-hover\:scale-110,
+  .hover\:scale-110:hover {
+    transform: none !important;
+  }
+}
+
 .subtitle {
   font-family: 'S-CoreDream-3Light', sans-serif;
 }
