@@ -153,22 +153,22 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId, initialMusician
 
       {/* Next Camp Banner */}
       {(() => {
-        const camp2026 = campList.find(c => c.id === 'camp-2026');
-        return camp.id !== 'camp-2026' && camp2026?.fundingUrl ? (
+        const latestCamp = campList[campList.length - 1];
+        return latestCamp && camp.id !== latestCamp.id && latestCamp.fundingUrl ? (
           <div className="bg-jeju-ocean py-12">
             <div className="container mx-auto px-4 text-center">
               <h3 className="text-2xl font-bold text-white mb-3 break-words">
-                {t('camp.title_2026')}
+                {t(`camp.title_${latestCamp.year}`)}
               </h3>
               <p className="text-seafoam mb-6 text-sm break-words">
-                {t('camp.date_badge_2026')} · {t('camp.venue_2026')}
+                {t(`camp.date_badge_${latestCamp.year}`)} · {t(`camp.venue_${latestCamp.year}`)}
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <Button to="/camps/2026" variant="ghost-white" size="sm">
+                <Button to={`/camps/${latestCamp.year}`} variant="ghost-white" size="sm">
                   {t('camp.view_detail')}
                 </Button>
-                <Button href={camp2026.fundingUrl} variant="gold" size="sm" external utmContent="past-camp">
-                  {t('camp.ticketing_2026')}
+                <Button href={latestCamp.fundingUrl} variant="gold" size="sm" external utmContent="past-camp">
+                  {t(`camp.ticketing_${latestCamp.year}`)}
                 </Button>
               </div>
             </div>

@@ -32,7 +32,7 @@ const MusicianCard = memo(({ musician, index, href }: MusicianCardProps) => {
               {musician.imageUrl ? (
                 <Image
                   src={musician.imageUrl}
-                  alt=""
+                  alt={musician.name}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover object-center transition-transform duration-500 group-hover:scale-110"
