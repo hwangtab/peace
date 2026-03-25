@@ -126,11 +126,11 @@ function buildCardHtml(musician, photoDataUri) {
     inset: 0;
     background: linear-gradient(
       to bottom,
-      transparent 25%,
-      rgba(10, 30, 50, 0.15) 40%,
-      rgba(10, 30, 50, 0.55) 55%,
-      rgba(10, 30, 50, 0.85) 70%,
-      rgba(10, 30, 50, 0.96) 85%,
+      transparent 15%,
+      rgba(10, 30, 50, 0.15) 32%,
+      rgba(10, 30, 50, 0.55) 48%,
+      rgba(10, 30, 50, 0.85) 62%,
+      rgba(10, 30, 50, 0.96) 78%,
       rgba(10, 30, 50, 0.99) 100%
     );
   }
@@ -141,10 +141,10 @@ function buildCardHtml(musician, photoDataUri) {
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 0 52px 48px;
+    padding: 0 52px 52px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 16px;
   }
 
   /* ── Genre Tags ── */
@@ -158,9 +158,9 @@ function buildCardHtml(musician, photoDataUri) {
     background: #FDB44B;
     color: #1A2332;
     font-weight: 700;
-    font-size: 17px;
-    padding: 7px 18px;
-    border-radius: 20px;
+    font-size: 26px;
+    padding: 10px 24px;
+    border-radius: 24px;
     letter-spacing: -0.2px;
     white-space: nowrap;
   }
@@ -168,9 +168,9 @@ function buildCardHtml(musician, photoDataUri) {
   /* ── Name ── */
   .name {
     font-weight: 700;
-    font-size: 52px;
+    font-size: 76px;
     color: #fff;
-    line-height: 1.2;
+    line-height: 1.15;
     letter-spacing: -0.5px;
     word-break: keep-all;
     overflow-wrap: break-word;
@@ -179,14 +179,14 @@ function buildCardHtml(musician, photoDataUri) {
   /* ── Description ── */
   .desc {
     font-weight: 500;
-    font-size: 21px;
+    font-size: 32px;
     color: rgba(255, 255, 255, 0.82);
-    line-height: 1.65;
+    line-height: 1.55;
     letter-spacing: -0.2px;
     word-break: keep-all;
     overflow-wrap: break-word;
     display: -webkit-box;
-    -webkit-line-clamp: 5;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
@@ -201,13 +201,13 @@ function buildCardHtml(musician, photoDataUri) {
     align-items: center;
     gap: 12px;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 24px;
     color: rgba(253, 180, 75, 0.85);
     letter-spacing: 0.5px;
   }
   .footer-dot {
-    width: 4px;
-    height: 4px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     background: rgba(253, 180, 75, 0.5);
     flex-shrink: 0;
@@ -263,9 +263,11 @@ async function main() {
   let success = 0;
   let failed = 0;
 
-  for (const musician of camp2026Musicians) {
+  for (let i = 0; i < camp2026Musicians.length; i++) {
+    const musician = camp2026Musicians[i];
+    const seq = i + 1;
     const sanitizedName = musician.name.replace(/[\s/\\?%*:|"<>]/g, '');
-    const filename = `${musician.id}-${sanitizedName}.png`;
+    const filename = `${seq}-${sanitizedName}.png`;
     const outputPath = path.join(OUTPUT_DIR, filename);
 
     try {
