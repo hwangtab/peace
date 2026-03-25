@@ -1,4 +1,3 @@
-# https://www.robotstxt.org/robotstxt.html
 # Googlebot
 User-agent: Googlebot
 Allow: /
@@ -11,21 +10,16 @@ Allow: /
 User-agent: Yandex
 Allow: /
 
-# Naver
+# Yeti
 User-agent: Yeti
 Allow: /
 
-# 모든 봇 기본 설정
+# *
 User-agent: *
 Allow: /
-Allow: /favicon.ico
-Allow: /favicon.png
-Allow: /apple-touch-icon.png
-Allow: /apple-touch-icon-precomposed.png
-Allow: /*.js$
-Allow: /*.css$
-Allow: /*.js.map$
-Allow: /*.css.map$
 
-# Sitemap
+# Host
+Host: https://peaceandmusic.net
+
+# Sitemaps
 Sitemap: https://peaceandmusic.net/sitemap.xml
