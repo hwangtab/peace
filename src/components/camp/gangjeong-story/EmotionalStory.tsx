@@ -41,8 +41,8 @@ const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey, alig
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-12 sm:pb-16 md:pb-20 pt-20">
         <motion.div
-          initial={{ opacity: 0, x: align === 'right' ? 40 : -40, y: 20 }}
-          whileInView={{ opacity: 1, x: 0, y: 0 }}
+          initial={{ opacity: 0, x: align === 'right' ? 40 : -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7 }}
           className={`max-w-lg mx-auto ${align === 'right' ? 'md:ml-auto md:mr-0' : 'md:mx-0'}`}
