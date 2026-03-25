@@ -7,10 +7,11 @@ interface StoryBlockProps {
   imageSrc: string;
   textKey: string;
   altKey: string;
+  align?: 'left' | 'right';
   variant?: 'camp' | 'home';
 }
 
-const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey, variant = 'camp' }) => {
+const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey, align = 'left', variant = 'camp' }) => {
   const { t } = useTranslation();
   const blockRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
@@ -40,11 +41,11 @@ const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey, vari
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-12 sm:pb-16 md:pb-20 pt-20">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: align === 'right' ? 40 : -40, y: 20 }}
+          whileInView={{ opacity: 1, x: 0, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7 }}
-          className="max-w-lg mx-auto md:mx-0"
+          className={`max-w-lg mx-auto ${align === 'right' ? 'md:ml-auto md:mr-0' : 'md:mx-0'}`}
         >
           <p className="font-display font-bold text-lg sm:text-xl md:text-2xl text-white leading-relaxed break-words text-balance">
             {t(textKey)}
@@ -55,21 +56,24 @@ const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey, vari
   );
 };
 
-const blocks = [
+const blocks: Omit<StoryBlockProps, 'variant'>[] = [
   {
     imageSrc: '/images-webp/gangjeong/gurumbi-prayer.webp',
     textKey: 'gangjeong_story.story_block1_text',
     altKey: 'gangjeong_story.story_block1_alt',
+    align: 'right',
   },
   {
     imageSrc: '/images-webp/gangjeong/gangjeong-memory.webp',
     textKey: 'gangjeong_story.story_block2_text',
     altKey: 'gangjeong_story.story_block2_alt',
+    align: 'left',
   },
   {
     imageSrc: '/images-webp/camps/2023/20230610밤 우와악.webp',
     textKey: 'gangjeong_story.story_block3_text',
     altKey: 'gangjeong_story.story_block3_alt',
+    align: 'right',
   },
 ];
 
