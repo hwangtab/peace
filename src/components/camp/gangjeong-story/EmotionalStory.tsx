@@ -57,12 +57,12 @@ const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey, vari
 
 const blocks = [
   {
-    imageSrc: '/images-webp/camps/2023/DSC00267.webp',
+    imageSrc: '/images-webp/gangjeong/gurumbi-prayer.webp',
     textKey: 'gangjeong_story.story_block1_text',
     altKey: 'gangjeong_story.story_block1_alt',
   },
   {
-    imageSrc: '/images-webp/camps/2025/DSC00579.webp',
+    imageSrc: '/images-webp/gangjeong/gangjeong-memory.webp',
     textKey: 'gangjeong_story.story_block2_text',
     altKey: 'gangjeong_story.story_block2_alt',
   },
