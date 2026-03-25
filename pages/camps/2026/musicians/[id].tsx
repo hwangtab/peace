@@ -5,6 +5,7 @@ import nextI18NextConfig from '../../../../next-i18next.config';
 import { Musician } from '@/types/musician';
 import { VideoItem } from '@/types/video';
 import { loadLocalizedData } from '@/utils/dataLoader';
+import { seededHash } from '@/utils/hash';
 import { camps, getCamps } from '@/data/camps';
 import MusicianDetailContent from '@/components/musicians/MusicianDetailContent';
 
@@ -98,12 +99,7 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
   );
 
   const seed = musician.id;
-  const hash = (id: number) => {
-    let h = (id * 2654435761 + seed * 40503) | 0;
-    h = (((h >>> 16) ^ h) * 45679) | 0;
-    return ((h >>> 16) ^ h) | 0;
-  };
-  const otherMusicians = [...candidates].sort((a, b) => hash(a.id) - hash(b.id)).slice(0, 6);
+  const otherMusicians = [...candidates].sort((a, b) => seededHash(a.id, seed) - seededHash(b.id, seed)).slice(0, 6);
 
   return {
     props: {

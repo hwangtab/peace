@@ -1,5 +1,4 @@
 export type { Concert } from './Concert';
-export type { Photo } from './Photo';
 export type { EventType, BaseEvent, Event } from './event';
 export type { GalleryImage, GalleryImages } from './gallery';
 export type { PressItem } from './press';

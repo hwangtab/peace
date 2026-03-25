@@ -43,10 +43,12 @@ export default function MusicianDetailContent({
 }: MusicianDetailContentProps) {
   const { t, i18n } = useTranslation();
   const isCampPage = pageContext === 'camp';
-  const camp2026 = isCampPage ? getCamps(i18n.language).find((c) => c.id === 'camp-2026') : undefined;
+  const campList = isCampPage ? getCamps(i18n.language) : [];
+  const latestCamp = campList.length > 0 ? campList[campList.length - 1] : undefined;
+  const latestCampYear = latestCamp?.year;
 
-  const pageTitle = isCampPage
-    ? `${musician.name} — ${t('camp.title_2026')} | ${t('nav.logo')}`
+  const pageTitle = isCampPage && latestCampYear
+    ? `${musician.name} — ${t(`camp.title_${latestCampYear}`)} | ${t('nav.logo')}`
     : `${musician.name} | ${t('app.title')}`;
 
   const pageDescription = isCampPage
@@ -54,8 +56,8 @@ export default function MusicianDetailContent({
     : musician.shortDescription;
 
   const baseKeywords = `${musician.name}, ${musician.genre.join(', ')}, ${t('app.title')}`;
-  const pageKeywords = isCampPage
-    ? `${baseKeywords}, ${t('camp.title_2026')}, 2026, ${t('camp.keywords_base')}`
+  const pageKeywords = isCampPage && latestCampYear
+    ? `${baseKeywords}, ${t(`camp.title_${latestCampYear}`)}, ${latestCampYear}, ${t('camp.keywords_base')}`
     : baseKeywords;
 
   const profileSchema = getProfilePageSchema(
@@ -89,7 +91,7 @@ export default function MusicianDetailContent({
         backLabel={backLabel}
         fundingUrl={fundingUrl}
         isCampPage={isCampPage}
-        camp2026={camp2026}
+        latestCamp={latestCamp}
       />
 
       {relatedVideos.length > 0 && (
