@@ -204,7 +204,7 @@
   }
 
   .typo-body {
-    @apply font-body font-extralight text-base md:text-lg leading-relaxed text-gray-700;
+    @apply font-body text-base md:text-lg leading-relaxed text-gray-700;
     word-break: var(--text-word-break);
     overflow-wrap: break-word;
   }
