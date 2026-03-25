@@ -15,7 +15,6 @@ import { getFullUrl } from '@/config/env';
 import { getMusicians } from '@/api/musicians';
 import { Musician } from '@/types/musician';
 import { formatOrdinal } from '@/utils/format';
-import Link from 'next/link';
 import Button from '@/components/common/Button';
 
 interface CampDetailPageProps {
