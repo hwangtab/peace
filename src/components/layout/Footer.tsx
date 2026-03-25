@@ -139,7 +139,7 @@ const Footer = () => {
             {/* Bottom Bar */}
             <div className="border-t border-cloud-white/10">
                 <div className="container mx-auto px-4 py-4">
-                    <p className="text-center text-seafoam/60 text-xs md:text-sm font-caption font-light" suppressHydrationWarning>
+                    <p className="text-center text-seafoam/60 text-xs md:text-sm font-caption font-light">
                         © {SITE_CONFIG.COPYRIGHT_YEAR} {t('app.title')}. {t('footer.copyright')}
                     </p>
                 </div>

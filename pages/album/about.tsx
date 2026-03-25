@@ -2,11 +2,11 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import nextI18NextConfig from '../../next-i18next.config';
 import { GetStaticPropsContext } from 'next';
 import Page from '@/pages/album/AlbumAboutPage';
-import fs from 'fs';
 import path from 'path';
 import { VideoItem } from '@/types/video';
 import { Musician } from '@/types/musician';
 import { GalleryImage } from '@/types/gallery';
+import { loadLocalizedData, readJsonArray } from '@/utils/dataLoader';
 
 interface WrappedPageProps {
   initialVideos: VideoItem[];
@@ -21,47 +21,14 @@ export default function WrappedPage(props: WrappedPageProps) {
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
   const lang = locale || 'ko';
-  const dataPath = path.join(process.cwd(), 'public', 'data');
 
-  const getLocalizedData = <T,>(filename: string): T[] => {
-    try {
-      let filePath = path.join(dataPath, filename);
-      if (lang !== 'ko') {
-        const localizedPath = path.join(dataPath, lang, filename);
-        if (fs.existsSync(localizedPath)) {
-          filePath = localizedPath;
-        } else {
-          // Fallback to English if Korean isn't the current and localized doesn't exist
-          const enPath = path.join(dataPath, 'en', filename);
-          if (fs.existsSync(enPath)) {
-            filePath = enPath;
-          }
-        }
-      }
-
-      if (fs.existsSync(filePath)) {
-        return JSON.parse(fs.readFileSync(filePath, 'utf8')) as T[];
-      }
-    } catch (e) {
-      console.error(`Error loading ${filename}:`, e);
-    }
-    return [];
-  };
-
-  const initialVideos = getLocalizedData<VideoItem>('videos.json');
-  const initialMusicians = getLocalizedData<Musician>('musicians.json');
+  const initialVideos = loadLocalizedData<VideoItem>(lang, 'videos.json');
+  const initialMusicians = loadLocalizedData<Musician>(lang, 'musicians.json');
 
   // Gallery preview for SSG payload size optimization (full data is fetched client-side)
-  const categories = ['album'];
-  let initialImages: GalleryImage[] = [];
-  try {
-    initialImages = categories.flatMap(cat => {
-      const p = path.join(dataPath, 'gallery', `${cat}.json`);
-      return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : [];
-    });
-  } catch (e) {
-    console.error('Error loading gallery images for album info:', e);
-  }
+  const initialImages = readJsonArray<GalleryImage>(
+    path.join(process.cwd(), 'public', 'data', 'gallery', 'album.json')
+  );
 
   return {
     props: {

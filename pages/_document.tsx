@@ -17,7 +17,6 @@ class MyDocument extends Document {
         <Head>
           {/* 폰트 CDN preconnect */}
           <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
-          <link rel="preconnect" href="https://fastly.jsdelivr.net" crossOrigin="anonymous" />
 
           {/* Body 폰트 preload (FOUT 방지) */}
           <link
