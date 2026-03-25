@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next';
-import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React, { useState, useCallback, useEffect, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import TrackCard from '../tracks/TrackCard';
 import Section from '../layout/Section';
 import { getTracks } from '@/api/tracks';
@@ -27,11 +27,6 @@ const TracksSection: React.FC<TracksSectionProps> = React.memo(({
   initialLocale = 'ko',
 }) => {
   const { t, i18n } = useTranslation();
-  const ref = useRef(null);
-  const inView = useInView(ref, {
-    once: true,
-    amount: 0.1,
-  });
 
   const [tracks, setTracks] = useState<Track[]>(initialTracks);
   const [musicians, setMusicians] = useState<Musician[]>(initialMusicians);
@@ -129,8 +124,9 @@ const TracksSection: React.FC<TracksSectionProps> = React.memo(({
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-50px' }}
+        transition={{ duration: 0.6 }}
         className="text-center mt-16"
       >
         <Button href={config.smartstoreUrl} variant="primary" size="lg" external>
@@ -142,13 +138,13 @@ const TracksSection: React.FC<TracksSectionProps> = React.memo(({
 
   if (enableSectionWrapper) {
     return (
-      <Section id="tracks" background="sky-horizon" ref={ref}>
+      <Section id="tracks" background="sky-horizon">
         {content}
       </Section>
     );
   }
 
-  return <div ref={ref}>{content}</div>;
+  return <div>{content}</div>;
 });
 
 TracksSection.displayName = 'TracksSection';
