@@ -5,10 +5,12 @@ import { appWithTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { MotionConfig } from 'framer-motion';
+import { ErrorBoundary } from 'react-error-boundary';
 import nextI18NextConfig from '../next-i18next.config';
 import '@/index.css';
 import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/layout/Footer';
+import ErrorFallback from '@/components/common/ErrorFallback';
 import { getTextDirection } from '@/utils/rtl';
 
 import { NavigationProvider } from '@/context/NavigationContext';
@@ -70,9 +72,11 @@ function App({ Component, pageProps }: AppProps) {
         )}
 
         <Navigation />
-        <main id="main-content" className="overflow-x-hidden">
-          <Component {...pageProps} />
-        </main>
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <main id="main-content" className="overflow-x-hidden">
+            <Component {...pageProps} />
+          </main>
+        </ErrorBoundary>
         <Footer />
       </MotionConfig>
     </NavigationProvider>

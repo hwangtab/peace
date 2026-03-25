@@ -48,6 +48,14 @@ export const useAudioPlayer = ({ audioUrl, isPlaying }: UseAudioPlayerOptions): 
             requestRef.current = null;
           }
         },
+        onloaderror: (_id: number, msg: unknown) => {
+          console.warn('Audio load error:', msg);
+          soundRef.current?.stop();
+        },
+        onplayerror: (_id: number, msg: unknown) => {
+          console.warn('Audio play error:', msg);
+          soundRef.current?.stop();
+        },
       });
 
       previousUrlRef.current = audioUrl;
