@@ -7,9 +7,10 @@ interface StoryBlockProps {
   imageSrc: string;
   textKey: string;
   altKey: string;
+  variant?: 'camp' | 'home';
 }
 
-const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey }) => {
+const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey, variant = 'camp' }) => {
   const { t } = useTranslation();
   const blockRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
@@ -35,7 +36,7 @@ const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey }) =>
           className="object-cover scale-[1.15]"
         />
       </motion.div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+      <div className={`absolute inset-0 bg-gradient-to-t ${variant === 'home' ? 'from-black/75 via-jeju-ocean/40 to-transparent' : 'from-black/80 via-black/30 to-transparent'}`} />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-12 sm:pb-16 md:pb-20 pt-20">
         <motion.div
@@ -72,11 +73,15 @@ const blocks = [
   },
 ];
 
-const EmotionalStory: React.FC = () => {
+interface Props {
+  variant?: 'camp' | 'home';
+}
+
+const EmotionalStory: React.FC<Props> = ({ variant = 'camp' }) => {
   return (
     <div>
       {blocks.map((block) => (
-        <StoryBlock key={block.textKey} {...block} />
+        <StoryBlock key={block.textKey} {...block} variant={variant} />
       ))}
     </div>
   );

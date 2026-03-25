@@ -32,27 +32,35 @@ const nodeVariants = {
   },
 };
 
-const GangjeongTimeline: React.FC = () => {
+interface Props {
+  variant?: 'camp' | 'home';
+}
+
+const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
   const { t } = useTranslation();
+  const isHome = variant === 'home';
+  const lineGradient = isHome
+    ? 'from-ocean-mist/40 via-jeju-ocean/40 to-seafoam/40'
+    : 'from-sunset-coral/40 via-jeju-ocean/40 to-golden-sun/40';
 
   return (
-    <div className="bg-white py-16 sm:py-20 md:py-28">
+    <div className={`${isHome ? 'bg-sky-horizon' : 'bg-white'} py-16 sm:py-20 md:py-28`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h3
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className="typo-h2 text-center text-gray-900 mb-12 sm:mb-16"
+          className={`typo-h2 text-center ${isHome ? 'text-jeju-ocean' : 'text-gray-900'} mb-12 sm:mb-16`}
         >
           {t('gangjeong_story.timeline_title')}
         </motion.h3>
 
         <ol className="relative max-w-3xl mx-auto">
           {/* Vertical center line — desktop only */}
-          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-sunset-coral/40 via-jeju-ocean/40 to-golden-sun/40" />
+          <div className={`hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b ${lineGradient}`} />
           {/* Vertical left line — mobile only */}
-          <div className="md:hidden absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-sunset-coral/40 via-jeju-ocean/40 to-golden-sun/40" />
+          <div className={`md:hidden absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b ${lineGradient}`} />
 
           {nodes.map((node, i) => {
             const isLeft = i % 2 === 0;

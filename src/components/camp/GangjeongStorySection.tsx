@@ -8,16 +8,22 @@ import {
   GlobalSolidarity,
 } from './gangjeong-story';
 
-const GangjeongStorySection: React.FC = () => {
+export type GangjeongVariant = 'camp' | 'home';
+
+interface Props {
+  variant?: GangjeongVariant;
+}
+
+const GangjeongStorySection: React.FC<Props> = ({ variant = 'camp' }) => {
   const { t } = useTranslation();
 
   return (
     <section aria-label={t('gangjeong_story.section_aria_label')} className="overflow-hidden">
-      <HookStatement />
-      <ImpactNumbers />
-      <GangjeongTimeline />
-      <EmotionalStory />
-      <GlobalSolidarity />
+      <HookStatement variant={variant} />
+      <ImpactNumbers variant={variant} />
+      <GangjeongTimeline variant={variant} />
+      <EmotionalStory variant={variant} />
+      <GlobalSolidarity variant={variant} />
     </section>
   );
 };
