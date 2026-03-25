@@ -22,17 +22,17 @@ const WaveDivider: React.FC<WaveDividerProps> = ({
         <div className={`w-full leading-none overflow-hidden pointer-events-none ${className}`}>
             <svg
                 aria-hidden="true"
-                data-name="Layer 1"
                 xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 1200 120"
+                viewBox="0 0 1200 124"
                 preserveAspectRatio="none"
                 className="relative block w-full h-[60px] sm:h-[100px]"
                 style={direction === 'down' ? { transform: 'rotate(180deg)' } : undefined}
             >
+                {/* viewBox를 124까지 늘리고 rect로 하단을 채워
+                    sub-pixel 렌더링 시 생기는 1~2px 빈틈을 완전히 덮는다 */}
                 <path
-                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V124H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
                     className="fill-current"
-                    style={{ transformOrigin: 'center', transform: 'scaleY(-1)' }}
                 />
             </svg>
         </div>
