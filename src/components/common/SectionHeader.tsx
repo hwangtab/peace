@@ -10,7 +10,6 @@ interface SectionHeaderProps {
     className?: string;
     titleTag?: 'h1' | 'h2';
     useDivider?: boolean;
-    inView?: boolean;
 }
 
 /**
@@ -27,7 +26,6 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
     className,
     titleTag = 'h2',
     useDivider = true,
-    inView = true,
 }) => {
     const displaySubtitle = subtitle || description;
     const TitleTag = titleTag;
@@ -35,7 +33,8 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.6 }}
             className={classNames(
                 'mb-12 md:mb-16',

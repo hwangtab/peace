@@ -1,5 +1,4 @@
-import React, { useRef } from 'react';
-import { useInView } from 'framer-motion';
+import React from 'react';
 import { useTranslation } from 'next-i18next';
 import TimelineItem from './TimelineItem';
 import { timelineEvents as timelineData } from '@/data/timeline';
@@ -7,20 +6,14 @@ import Section from '../layout/Section';
 import SectionHeader from '../common/SectionHeader';
 
 const Timeline = () => {
-  const ref = useRef(null);
-  const inView = useInView(ref, {
-    once: true,
-    amount: 0.1,
-  });
   const { t } = useTranslation();
 
   return (
-    <Section id="history" background="sunlight-glow" ref={ref} className="pb-24 md:pb-32">
+    <Section id="history" background="sunlight-glow" className="pb-24 md:pb-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title={t('timeline.title')}
           subtitle={t('timeline.subtitle')}
-          inView={inView}
         />
 
         <div className="relative">

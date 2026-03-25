@@ -27,7 +27,7 @@ const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey, alig
   return (
     <div ref={blockRef} className="relative min-h-[60vh] md:min-h-[70vh] flex items-end overflow-hidden">
       <motion.div
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full scale-[1.15]"
         style={prefersReducedMotion ? undefined : { y: bgY }}
       >
         <Image
@@ -35,7 +35,7 @@ const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey, alig
           alt={t(altKey)}
           fill
           sizes="100vw"
-          className={`object-cover scale-[1.15] ${imageClassName || ''}`}
+          className={`object-cover ${imageClassName || ''}`}
         />
       </motion.div>
       <div className={`absolute inset-0 bg-gradient-to-t ${variant === 'home' ? 'from-black/75 via-jeju-ocean/40 to-transparent' : 'from-black/80 via-black/30 to-transparent'}`} />
