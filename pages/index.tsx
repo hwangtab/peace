@@ -8,7 +8,10 @@ import AboutSection from '@/components/home/AboutSection';
 import SEOHelmet from '@/components/shared/SEOHelmet';
 import WaveDivider from '@/components/common/WaveDivider';
 
-const GangjeongStorySection = dynamic(() => import('@/components/camp/GangjeongStorySection'), { ssr: false });
+const GangjeongStorySection = dynamic(() => import('@/components/camp/GangjeongStorySection'), {
+  ssr: false,
+  loading: () => <div className="h-96" />,
+});
 const GallerySection = dynamic(() => import('@/components/home/GallerySection'));
 import { getWebSiteSchema, getOrganizationSchema, getFAQSchema } from '@/utils/structuredData';
 import { GalleryImage } from '@/types/gallery';

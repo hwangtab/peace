@@ -74,7 +74,8 @@ const TracksSection: React.FC<TracksSectionProps> = React.memo(({
     return () => {
       isCancelled = true;
     };
-  }, [i18n.language, initialLocale, initialTracks, initialMusicians]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [i18n.language, initialLocale, initialTracks.length, initialMusicians.length]);
 
   const handleToggle = useCallback((id: number) => {
     setExpandedTrackId((prev) => (prev === id ? null : id));

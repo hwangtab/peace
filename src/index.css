@@ -164,26 +164,6 @@
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 
-  .btn {
-    @apply px-6 py-2 rounded-lg transition-colors duration-300;
-  }
-
-  .btn-primary {
-    @apply bg-jeju-ocean text-cloud-white hover:bg-ocean-mist transition-colors duration-200;
-  }
-
-  .btn-secondary {
-    @apply bg-ocean-mist text-cloud-white hover:bg-jeju-ocean transition-colors duration-200;
-  }
-
-  .btn-accent-gold {
-    @apply bg-golden-sun text-deep-ocean hover:bg-sunset-coral hover:text-cloud-white transition-colors duration-200;
-  }
-
-  .btn-accent-coral {
-    @apply bg-sunset-coral text-cloud-white hover:bg-golden-sun hover:text-deep-ocean transition-colors duration-200;
-  }
-
   /* Typography Utilities */
   .typo-h1 {
     @apply font-partial font-normal text-4xl md:text-5xl lg:text-7xl leading-tight;

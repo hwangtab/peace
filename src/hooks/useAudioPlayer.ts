@@ -24,6 +24,7 @@ export const useAudioPlayer = ({ audioUrl, isPlaying }: UseAudioPlayerOptions): 
   const requestRef = useRef<number | null>(null);
   const previousUrlRef = useRef<string | null>(null);
   const isLoadedRef = useRef(false);
+  const lastProgressUpdateRef = useRef(0);
 
   // audioUrl 변경 시 기존 인스턴스 정리 후 새로 생성 (메모리 누수 방지)
   useEffect(() => {
@@ -94,9 +95,13 @@ export const useAudioPlayer = ({ audioUrl, isPlaying }: UseAudioPlayerOptions): 
         sound.once('load', () => { sound.play(); });
       }
       const animate = () => {
-        const seek = sound.seek();
-        if (typeof seek === 'number') {
-          setProgress(seek);
+        const now = performance.now();
+        if (now - lastProgressUpdateRef.current >= 250) {
+          const seek = sound.seek();
+          if (typeof seek === 'number') {
+            setProgress(seek);
+          }
+          lastProgressUpdateRef.current = now;
         }
         requestRef.current = requestAnimationFrame(animate);
       };

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
+import React, { createContext, useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 
 interface NavigationContextType {
@@ -47,12 +47,4 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
             {children}
         </NavigationContext.Provider>
     );
-};
-
-export const useNavigationState = () => {
-    const context = useContext(NavigationContext);
-    if (context === undefined) {
-        throw new Error('useNavigationState must be used within a NavigationProvider');
-    }
-    return context;
 };

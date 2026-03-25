@@ -81,10 +81,10 @@ const ConcertCard: React.FC<ConcertCardProps> = ({ concert, onMusicianClick, ind
                         </span>
                     </div>
                     <div className="flex flex-wrap gap-2">
-                        {concert.performers.map((performer, idx) =>
+                        {concert.performers.map((performer) =>
                             performer.musicianId ? (
                                 <Button
-                                    key={`${performer.name}-${idx}`}
+                                    key={performer.musicianId}
                                     onClick={() => onMusicianClick(performer.musicianId)}
                                     variant="back"
                                     size="sm"
@@ -95,7 +95,7 @@ const ConcertCard: React.FC<ConcertCardProps> = ({ concert, onMusicianClick, ind
                                 </Button>
                             ) : (
                                 <span
-                                    key={`${performer.name}-${idx}`}
+                                    key={performer.name}
                                     className="px-3 py-1.5 bg-ocean-mist/5 text-ocean-mist/80 rounded-lg text-xs font-medium border border-ocean-mist/10 break-words"
                                 >
                                     {performer.name}
