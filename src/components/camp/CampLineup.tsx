@@ -7,11 +7,10 @@ import { Musician } from '@/types/musician';
 interface CampLineupProps {
   participants: (string | Participant)[];
   musicians: Musician[];
-  inView: boolean;
   campYear?: number;
 }
 
-const CampLineup: React.FC<CampLineupProps> = ({ participants, musicians, inView, campYear }) => {
+const CampLineup: React.FC<CampLineupProps> = ({ participants, musicians, campYear }) => {
   const getParticipantName = (participant: string | Participant) => {
     if (!participant) return '';
     return typeof participant === 'string' ? participant : participant.name;
@@ -45,8 +44,9 @@ const CampLineup: React.FC<CampLineupProps> = ({ participants, musicians, inView
           <motion.div
             key={`plain-${index}`}
             initial={{ opacity: 0, y: 10 }}
-            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-            transition={{ duration: 0.3, delay: Math.min(index * 0.01, 0.5) }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.3 }}
             className="flex items-center justify-center text-center h-full min-h-[120px] sm:min-h-[200px] px-4 rounded-lg border bg-white border-gray-200 shadow-lg"
           >
             <span className="font-medium text-gray-700 text-lg break-words">
