@@ -37,8 +37,8 @@ const PageHero: React.FC<PageHeroProps> = ({ title, subtitle, backgroundImage })
           animate={{ y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
-          <h1 className="typo-h1 text-white mb-4 text-balance hyphens-auto break-words">{title}</h1>
-          {subtitle && <p className="typo-subtitle text-gray-100 mb-6 text-balance hyphens-auto break-words">{subtitle}</p>}
+          <h1 className="typo-h1 text-white mb-4 hyphens-auto">{title}</h1>
+          {subtitle && <p className="typo-subtitle text-gray-100 mb-6 hyphens-auto">{subtitle}</p>}
         </motion.div>
       </div>
     </section>

@@ -57,7 +57,7 @@ const CampParticipants: React.FC<CampParticipantsProps> = ({ participants, music
                             onKeyDown={clickable ? (e: React.KeyboardEvent) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleParticipantClick(participant); } } : undefined}
                         >
                             <span className={`inline-block w-2 h-2 rounded-full transition-colors duration-200 mt-1.5 ${clickable ? 'bg-jeju-ocean group-hover:bg-ocean-mist' : 'bg-jeju-ocean'}`} />
-                            <h3 className={`typo-h3 !text-lg transition-colors duration-200 break-words text-balance ${clickable ? 'text-jeju-ocean group-hover:text-ocean-mist underline underline-offset-4 decoration-jeju-ocean/30' : 'text-coastal-gray'}`}>
+                            <h3 className={`typo-h3 !text-lg transition-colors duration-200 ${clickable ? 'text-jeju-ocean group-hover:text-ocean-mist underline underline-offset-4 decoration-jeju-ocean/30' : 'text-coastal-gray'}`}>
                                 {name}
                             </h3>
                         </motion.div>

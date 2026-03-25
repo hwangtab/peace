@@ -18,7 +18,7 @@ const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
         <h3 className="typo-h2 text-white mb-2">
           {camp.year}
         </h3>
-        <p className="typo-h3 text-white mb-4 text-balance break-words">{camp.title}</p>
+        <p className="typo-h3 text-white mb-4">{camp.title}</p>
         {isComingSoon && (
           <span className="bg-white text-jeju-ocean px-4 py-2 rounded-full text-sm font-bold">
             {t('camp.coming_soon')}
