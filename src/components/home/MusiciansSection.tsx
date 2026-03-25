@@ -1,6 +1,5 @@
 import { useTranslation } from 'next-i18next';
-import { useInView } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { getMusicians } from '@/api/musicians';
 import { Musician } from '@/types/musician';
 import MusicianCard from '../musicians/MusicianCard';
@@ -18,11 +17,6 @@ interface MusiciansSectionProps {
 const MusiciansSection: React.FC<MusiciansSectionProps> = React.memo(
   ({ enableSectionWrapper = true, hideSectionHeader = false, initialMusicians = [], initialLocale = 'ko' }) => {
     const { t, i18n } = useTranslation();
-    const ref = useRef(null);
-    const inView = useInView(ref, {
-      once: true,
-      amount: 0.1,
-    });
 
     const [musicians, setMusicians] = useState<Musician[]>(initialMusicians);
     const [isLoading, setIsLoading] = useState(initialMusicians.length === 0);
@@ -67,7 +61,6 @@ const MusiciansSection: React.FC<MusiciansSectionProps> = React.memo(
           <SectionHeader
             title={t('home.musicians.title')}
             subtitle={t('home.musicians.subtitle')}
-            inView={inView}
           />
         )}
 
@@ -88,13 +81,13 @@ const MusiciansSection: React.FC<MusiciansSectionProps> = React.memo(
 
     if (enableSectionWrapper) {
       return (
-        <Section id="musicians" background="white" ref={ref}>
+        <Section id="musicians" background="white">
           {content}
         </Section>
       );
     }
 
-    return <div ref={ref}>{content}</div>;
+    return <div>{content}</div>;
   }
 );
 
