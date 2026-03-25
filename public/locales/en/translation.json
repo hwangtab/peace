@@ -145,7 +145,9 @@
         "about": "About",
         "composer": "Composer",
         "lyricist": "Lyricist",
-        "arranger": "Arranger"
+        "arranger": "Arranger",
+        "view_image": "View image",
+        "no_results": "No results found."
     },
     "timeline": {
         "title": "Our Journey",

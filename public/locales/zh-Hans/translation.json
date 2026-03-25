@@ -145,7 +145,9 @@
         "arranger": "编曲",
         "composer": "作曲",
         "lyricist": "作词",
-        "track": "曲目"
+        "track": "曲目",
+        "view_image": "查看图片",
+        "no_results": "未找到结果。"
     },
     "timeline": {
         "title": "连带之路",

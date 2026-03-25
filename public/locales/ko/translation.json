@@ -145,7 +145,9 @@
         "about": "소개",
         "composer": "작곡",
         "lyricist": "작사",
-        "arranger": "편곡"
+        "arranger": "편곡",
+        "view_image": "이미지 보기",
+        "no_results": "검색 결과가 없습니다."
     },
     "timeline": {
         "title": "연대의 여정",
