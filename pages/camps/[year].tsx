@@ -7,6 +7,7 @@ import { loadLocalizedData } from '@/utils/dataLoader';
 import Camp2023Page from '@/pages/Camp2023Page';
 import Camp2025Page from '@/pages/Camp2025Page';
 import Camp2026Page from '@/pages/Camp2026Page';
+import NotFoundPage from '@/pages/NotFoundPage';
 
 const CURRENT_CAMP_YEAR = 2026;
 
@@ -24,7 +25,7 @@ interface CampPageProps {
 
 export default function CampPage({ year, initialMusicians, initialLocale }: CampPageProps) {
   const Component = pageComponents[year];
-  if (!Component) return null;
+  if (!Component) return <NotFoundPage />;
   return <Component initialMusicians={initialMusicians} initialLocale={initialLocale} />;
 }
 

@@ -9,6 +9,7 @@ interface UseAudioPlayerOptions {
 interface UseAudioPlayerReturn {
   progress: number;
   duration: number;
+  error: string | null;
   getProgressPercent: () => number;
   handleSeek: (e: React.MouseEvent<HTMLDivElement>) => void;
   seekToPercent: (percent: number) => void;
@@ -18,9 +19,11 @@ interface UseAudioPlayerReturn {
 export const useAudioPlayer = ({ audioUrl, isPlaying }: UseAudioPlayerOptions): UseAudioPlayerReturn => {
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [error, setError] = useState<string | null>(null);
   const soundRef = useRef<Howl | null>(null);
   const requestRef = useRef<number | null>(null);
   const previousUrlRef = useRef<string | null>(null);
+  const isLoadedRef = useRef(false);
 
   // audioUrl 변경 시 기존 인스턴스 정리 후 새로 생성 (메모리 누수 방지)
   useEffect(() => {
@@ -33,11 +36,14 @@ export const useAudioPlayer = ({ audioUrl, isPlaying }: UseAudioPlayerOptions): 
         soundRef.current.unload();
         soundRef.current = null;
       }
+      isLoadedRef.current = false;
+      setError(null);
 
       soundRef.current = new Howl({
         src: [audioUrl],
         html5: true,
         onload: () => {
+          isLoadedRef.current = true;
           const dur = soundRef.current?.duration() ?? 0;
           setDuration(dur);
         },
@@ -50,10 +56,13 @@ export const useAudioPlayer = ({ audioUrl, isPlaying }: UseAudioPlayerOptions): 
         },
         onloaderror: (_id: number, msg: unknown) => {
           console.warn('Audio load error:', msg);
+          isLoadedRef.current = false;
+          setError(String(msg || 'Failed to load audio'));
           soundRef.current?.stop();
         },
         onplayerror: (_id: number, msg: unknown) => {
           console.warn('Audio play error:', msg);
+          setError(String(msg || 'Failed to play audio'));
           soundRef.current?.stop();
         },
       });
@@ -79,7 +88,11 @@ export const useAudioPlayer = ({ audioUrl, isPlaying }: UseAudioPlayerOptions): 
     if (!sound) return;
 
     if (isPlaying) {
-      sound.play();
+      if (isLoadedRef.current) {
+        sound.play();
+      } else {
+        sound.once('load', () => { sound.play(); });
+      }
       const animate = () => {
         const seek = sound.seek();
         if (typeof seek === 'number') {
@@ -142,6 +155,7 @@ export const useAudioPlayer = ({ audioUrl, isPlaying }: UseAudioPlayerOptions): 
   return {
     progress,
     duration,
+    error,
     getProgressPercent,
     handleSeek,
     seekToPercent,

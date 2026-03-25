@@ -25,7 +25,7 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(({
     const { t } = useTranslation();
 
     return (
-        <div className="mobile-menu-wrapper" data-testid="mobile-menu">
+        <div id="mobile-menu" className="mobile-menu-wrapper" data-testid="mobile-menu">
             <AnimatePresence initial={false}>
                 {isOpen && (
                     <motion.div

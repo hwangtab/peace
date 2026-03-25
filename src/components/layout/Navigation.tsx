@@ -68,6 +68,7 @@ const Navigation = () => {
                   }`}
                 aria-label={isOpen ? t('nav.close_menu') : t('nav.open_menu')}
                 aria-expanded={isOpen}
+                aria-controls="mobile-menu"
               >
                 {isOpen ? (
                   <HiOutlineX aria-hidden="true" className="h-6 w-6" />
