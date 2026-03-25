@@ -5,6 +5,7 @@ import { appWithTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { MotionConfig } from 'framer-motion';
+import { useIsMobile } from '@/hooks/useIsMobile';
 import { ErrorBoundary } from 'react-error-boundary';
 import nextI18NextConfig from '../next-i18next.config';
 import '@/index.css';
@@ -30,6 +31,7 @@ const GA_MEASUREMENT_ID = (() => {
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const { locale } = router;
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const dir = getTextDirection(locale || 'ko');
@@ -53,7 +55,7 @@ function App({ Component, pageProps }: AppProps) {
 
   return (
     <NavigationProvider>
-      <MotionConfig reducedMotion="user">
+      <MotionConfig reducedMotion={isMobile ? 'always' : 'user'}>
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
