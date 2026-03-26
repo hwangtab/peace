@@ -1,1342 +1,1597 @@
 [
-    {
-        "id": 1,
-        "title": "김동산과 블루이웃 - 이름을 모르는 먼 곳의 그대에게 서울 쇼케이스",
-        "description": "김동산과 블루이웃은 수원을 기반으로 활동하는 포크, 블루스 뮤지션 김동산과 밴드 블루이웃입니다. 김동산은 \"한국의 우디거스리\"라는 별명처럼 사회적 메시지를 담은 음악으로 주목받고 있습니다. 해고 노동자, 젠트리피케이션 피해상인 등 소외된 이들의 이야기를 음악으로 전하며, 현재는 수원 장안문 근처에서 LP, 리사이클링 샵 \"롱플레이어\"를 운영하며 지역 문화공간으로 발전시키고 있습니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/ejTPpS71nX8",
-        "date": "2024-11-02",
-        "location": "서울 홍대 스페이스 한강",
-        "eventType": "album",
-        "eventYear": 2024,
-        "musicianIds": [3]
-    },
-    {
-        "id": 2,
-        "title": "길가는 밴드 장현호 - 이름을 모르는 먼 곳의 그대에게 서울 쇼케이스",
-        "description": "길가는 밴드는 싱어송라이터인 장현호를 중심으로 2011년 결성되어 현재까지 활동하고 있는 '거리형 밴드' 입니다. 사회적 투쟁과 갈등의 현장에서 노래하는 그들은 10년째 세월호 참사 진상규명, 제주 해군기지 강정마을 투쟁, KTX 해고 승무원 복직투쟁, 파인텍 굴뚝농성, 콜트콜텍 해고노동자 투쟁 등 셀 수 없는 현장, 문화제 등에서 노래로 연대해 왔습니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/Ts_fFqAYLYE",
-        "date": "2024-11-02",
-        "location": "서울 홍대 스페이스 한강",
-        "eventType": "album",
-        "eventYear": 2024,
-        "musicianIds": [15]
-    },
-    {
-        "id": 3,
-        "title": "남수 - 이름을 모르는 먼 곳의 그대에게 서울 쇼케이스",
-        "description": "다재다능한 여성 솔로 아티스트로, 인디음악, 포크/블루스, 재즈, 뉴에이지 등 다양한 장르를 아우르는 음악을 선보입니다. \"딱따구리 책방\"이라는 문화공간을 운영하며 음악과 문학의 접점을 만들어가고 있습니다. 앞으로 음악뿐만 아니라 미술, 퍼포먼스 등 다양한 예술 형태를 결합한 작업을 통해 자신의 예술적 경계를 확장해 나가고자 합니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/cHl1I5iJqyA",
-        "date": "2024-11-02",
-        "location": "서울 홍대 스페이스 한강",
-        "eventType": "album",
-        "eventYear": 2024,
-        "musicianIds": [4]
-    },
-    {
-        "id": 4,
-        "title": "김인 - 이름을 모르는 먼 곳의 그대에게 서울 쇼케이스",
-        "description": "독특한 소리를 탐구하며 환경과 평화에 대한 깊은 애정을 음악으로 표현하는 독립 음악가입니다. 다양한 장르의 음악을 즐기며 자신만의 독특한 음악 세계를 꾸준히 구축해왔습니다. 밤하늘의 별과 달을 모티프로 한 서정적인 음악을 통해 평화의 메시지를 전달하며, 섬세한 감성과 깊이 있는 가사로 주목받고 있습니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/8jPAlA7cGtM",
-        "date": "2024-11-02",
-        "location": "서울 홍대 스페이스 한강",
-        "eventType": "album",
-        "eventYear": 2024,
-        "musicianIds": [6]
-    },
-    {
-        "id": 5,
-        "title": "모모 - 이름을 모르는 먼 곳의 그대에게 서울 쇼케이스",
-        "description": "예진 안젤라 박과 황슬기로 구성된 재즈 듀오입니다. 재즈를 기반으로 하여 다양하고 아름다운 소리를 탐구하는 음악적 여정을 함께하고 있습니다. 재즈의 즉흥성과 실험정신을 바탕으로, 현대사회의 문제의식을 섬세하게 담아내는 것이 특징이며, 분쟁 지역의 평범한 일상과 그 속에 내재된 긴장감을 음악적으로 표현합니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/hh-MwTiaJxk",
-        "date": "2024-11-02",
-        "location": "서울 홍대 스페이스 한강",
-        "eventType": "album",
-        "eventYear": 2024,
-        "musicianIds": [10]
-    },
-    {
-        "id": 6,
-        "title": "자이 x HANASH - 이름을 모르는 먼 곳의 그대에게 서울 쇼케이스",
-        "description": "자이의 따뜻한 목소리, HANASH의 혁신적인 전자음악이 만나 새로운 음악적 가능성을 탐구하는 콜라보레이션입니다. 자이는 일상의 이야기를 슬프지만 힘 있는 목소리로 표현하며, HANASH는 세계 각국의 다양한 악기와 장르를 전자음악과 접목시키는 실험을 진행합니다. 두 아티스트의 만남은 전통과 현대의 조화로운 융합을 보여줍니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/ka9DcFOD2fw",
-        "date": "2024-11-02",
-        "location": "서울 홍대 스페이스 한강",
-        "eventType": "album",
-        "eventYear": 2024,
-        "musicianIds": [11, 59]
-    },
-    {
-        "id": 101,
-        "title": "인간띠잇기",
-        "description": "2023년 봄 제주해군기지 정문 앞 인간띠잇기",
-        "youtubeUrl": "https://www.youtube.com/watch?v=dF6raNSEkfI",
-        "date": "2023-06-10",
-        "location": "서귀포시 강정천 체육공원",
-        "eventType": "camp",
-        "eventYear": 2023,
-        "thumbnailUrl": "https://i.ytimg.com/vi/dF6raNSEkfI/sddefault.jpg"
-    },
-    {
-        "id": 102,
-        "title": "2023 제1회 강정피스앤뮤직캠프",
-        "description": "강정천 체육공원에서 펼쳐진 2023 강정피스앤뮤직캠프 공연 실황입니다.",
-        "youtubeUrl": "https://www.youtube.com/watch?v=mPeFqepsf_Y",
-        "date": "2023-06-10",
-        "location": "서귀포시 강정천 체육공원",
-        "eventType": "camp",
-        "eventYear": 2023,
-        "thumbnailUrl": "https://i.ytimg.com/vi/mPeFqepsf_Y/maxresdefault.jpg"
-    },
-    {
-        "id": 103,
-        "title": "3강정3종댄스",
-        "description": "강정천 체육공원에서 펼쳐진 3강정3종댄스입니다.",
-        "youtubeUrl": "https://www.youtube.com/watch?v=MzIpAmDAYzk",
-        "date": "2023-06-10",
-        "location": "서귀포시 강정천 체육공원",
-        "eventType": "camp",
-        "eventYear": 2023,
-        "thumbnailUrl": "https://i.ytimg.com/vi/MzIpAmDAYzk/maxresdefault.jpg"
-    },
-    {
-        "id": 104,
-        "title": "2023 제1회 강정피스앤뮤직캠프",
-        "description": "강정천 체육공원에서 펼쳐진 2023 제1회 강정피스앤뮤직캠프 현장입니다.",
-        "youtubeUrl": "https://www.youtube.com/watch?v=OGKd_pnrul4",
-        "date": "2023-06-10",
-        "location": "서귀포시 강정천 체육공원",
-        "eventType": "camp",
-        "eventYear": 2023,
-        "thumbnailUrl": "https://i.ytimg.com/vi/OGKd_pnrul4/maxresdefault.jpg"
-    },
-    {
-        "id": 105,
-        "title": "2023 제1회 강정피스앤뮤직캠프",
-        "description": "강정천 체육공원에서 펼쳐진 2023 제1회 강정피스앤뮤직캠프 현장입니다.",
-        "youtubeUrl": "https://www.youtube.com/watch?v=GHSxHVc-b1w",
-        "date": "2023-06-10",
-        "location": "서귀포시 강정천 체육공원",
-        "eventType": "camp",
-        "eventYear": 2023,
-        "thumbnailUrl": "https://i.ytimg.com/vi/GHSxHVc-b1w/maxresdefault.jpg"
-    },
-    {
-        "id": 106,
-        "title": "2023 제1회 강정피스앤뮤직캠프",
-        "description": "강정천 체육공원에서 펼쳐진 2023 제1회 강정피스앤뮤직캠프 현장입니다.",
-        "youtubeUrl": "https://www.youtube.com/watch?v=1TyLqzoHA7M",
-        "date": "2023-06-10",
-        "location": "서귀포시 강정천 체육공원",
-        "eventType": "camp",
-        "eventYear": 2023,
-        "thumbnailUrl": "https://i.ytimg.com/vi/1TyLqzoHA7M/maxresdefault.jpg"
-    },
-    {
-        "id": 107,
-        "title": "2023 제1회 강정피스앤뮤직캠프",
-        "description": "강정천 체육공원에서 펼쳐진 2023 제1회 강정피스앤뮤직캠프 현장입니다.",
-        "youtubeUrl": "https://www.youtube.com/watch?v=YwOO627losU",
-        "date": "2023-06-10",
-        "location": "서귀포시 강정천 체육공원",
-        "eventType": "camp",
-        "eventYear": 2023,
-        "thumbnailUrl": "https://i.ytimg.com/vi/YwOO627losU/maxresdefault.jpg"
-    },
-    {
-        "id": 108,
-        "title": "2023 제1회 강정피스앤뮤직캠프",
-        "description": "강정천 체육공원에서 펼쳐진 2023 제1회 강정피스앤뮤직캠프 현장입니다.",
-        "youtubeUrl": "https://www.youtube.com/watch?v=RH2x3ctcBgU",
-        "date": "2023-06-10",
-        "location": "서귀포시 강정천 체육공원",
-        "eventType": "camp",
-        "eventYear": 2023,
-        "thumbnailUrl": "https://i.ytimg.com/vi/RH2x3ctcBgU/maxresdefault.jpg"
-    },
-    {
-        "id": 109,
-        "title": "2023 제1회 강정피스앤뮤직캠프",
-        "description": "강정천 체육공원에서 펼쳐진 2023 제1회 강정피스앤뮤직캠프 현장입니다.",
-        "youtubeUrl": "https://www.youtube.com/watch?v=tFxoLxIDfyM",
-        "date": "2023-06-10",
-        "location": "서귀포시 강정천 체육공원",
-        "eventType": "camp",
-        "eventYear": 2023,
-        "thumbnailUrl": "https://i.ytimg.com/vi/tFxoLxIDfyM/maxresdefault.jpg"
-    },
-    {
-        "id": 110,
-        "title": "2023 제1회 강정피스앤뮤직캠프",
-        "description": "강정천 체육공원에서 펼쳐진 2023 제1회 강정피스앤뮤직캠프 현장입니다.",
-        "youtubeUrl": "https://www.youtube.com/watch?v=-PhTNOVdLc0",
-        "date": "2023-06-10",
-        "location": "서귀포시 강정천 체육공원",
-        "eventType": "camp",
-        "eventYear": 2023,
-        "thumbnailUrl": "https://i.ytimg.com/vi/-PhTNOVdLc0/maxresdefault.jpg"
-    },
-    {
-        "id": 111,
-        "title": "2023 제1회 강정피스앤뮤직캠프",
-        "description": "강정천 체육공원에서 펼쳐진 2023 제1회 강정피스앤뮤직캠프 현장입니다.",
-        "youtubeUrl": "https://www.youtube.com/watch?v=mC-HJ-VhLOQ",
-        "date": "2023-06-10",
-        "location": "서귀포시 강정천 체육공원",
-        "eventType": "camp",
-        "eventYear": 2023,
-        "thumbnailUrl": "https://i.ytimg.com/vi/mC-HJ-VhLOQ/maxresdefault.jpg"
-    },
-    {
-        "id": 112,
-        "title": "강정피스앤뮤직캠프",
-        "description": "전쟁을 멈추자라는 슬로건을 내세운 강정피스앤뮤직캠프가 처음 열렸다!",
-        "youtubeUrl": "https://www.youtube.com/watch?v=crK6y7mJrfY",
-        "date": "2023-06-10",
-        "location": "서귀포시 강정천 체육공원",
-        "eventType": "camp",
-        "eventYear": 2023,
-        "thumbnailUrl": "https://i.ytimg.com/vi/crK6y7mJrfY/maxresdefault.jpg"
-    },
-    {
-        "id": 201,
-        "title": "제2회 강정피스앤뮤직캠프는 준비중!",
-        "description": "내일 열리는 강정피스앤뮤직캠프 여럿이서 열심히 준비하고 있습니다!",
-        "youtubeUrl": "https://www.youtube.com/watch?v=pcsM9lxlA24",
-        "date": "2025-06-14",
-        "location": "서귀포시 강정동 할망물식당 일대",
-        "eventType": "camp",
-        "eventYear": 2025,
-        "thumbnailUrl": "https://i.ytimg.com/vi/pcsM9lxlA24/maxresdefault.jpg"
-    },
-    {
-        "id": 202,
-        "title": "제2회 강정피스앤뮤직캠프",
-        "description": "제주 강정마을에서 열리는 평화와 반전의 음악 축제",
-        "youtubeUrl": "https://youtu.be/DBlCTgWNNKU?si=9QRus6J85pPEqf-F",
-        "date": "2025-06-14",
-        "location": "서귀포시 강정동 할망물식당 일대",
-        "eventType": "camp",
-        "eventYear": 2025,
-        "thumbnailUrl": "https://i.ytimg.com/vi/DBlCTgWNNKU/maxresdefault.jpg"
-    },
-    {
-        "id": 203,
-        "title": "강가히말라야 (2026.1.17 @DOT 새, 나뭇잎, 고양이 그리고 강)",
-        "description": "2026년 1월 17일 DOT에서 열린 '새, 나뭇잎, 고양이 그리고 강' 공연에서의 강가히말라야 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/yiLOO-wo1P8",
-        "date": "2026-01-17",
-        "eventType": "live",
-        "musicianIds": [14],
-        "thumbnailUrl": "https://i.ytimg.com/vi/yiLOO-wo1P8/maxresdefault.jpg"
-    },
-    {
-        "id": 204,
-        "title": "강가히말라야 - 강 (River)",
-        "description": "강가히말라야의 '강 (River)' 뮤직비디오입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/Qzca0IjWW6I",
-        "eventType": "music_video",
-        "musicianIds": [14],
-        "thumbnailUrl": "https://i.ytimg.com/vi/Qzca0IjWW6I/maxresdefault.jpg"
-    },
-    {
-        "id": 205,
-        "title": "강가히말라야 - Free Palestine",
-        "description": "강가히말라야의 'Free Palestine' 뮤직비디오입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/DFkKHIbQvb8",
-        "eventType": "music_video",
-        "musicianIds": [14],
-        "thumbnailUrl": "https://i.ytimg.com/vi/DFkKHIbQvb8/maxresdefault.jpg"
-    },
-    {
-        "id": 206,
-        "title": "까르 - [O: 정 '情'] Pre-view 선공개!",
-        "description": "까르의 앨범 [O: 정 '情'] 선공개 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/5Ak9Ze363kI",
-        "eventType": "music_video",
-        "musicianIds": [5],
-        "thumbnailUrl": "https://i.ytimg.com/vi/5Ak9Ze363kI/maxresdefault.jpg"
-    },
-    {
-        "id": 207,
-        "title": "까르 - [O : 원 '原'] pre-view 선공개!",
-        "description": "까르의 앨범 [O : 원 '原'] 선공개 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/r2w4FI17I-g",
-        "eventType": "music_video",
-        "musicianIds": [5],
-        "thumbnailUrl": "https://i.ytimg.com/vi/r2w4FI17I-g/maxresdefault.jpg"
-    },
-    {
-        "id": 208,
-        "title": "까르 - '친구' @제주 강정마을 (강정피스뮤직캠프)",
-        "description": "강정피스뮤직캠프에서 공연한 까르의 '친구' 라이브 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/i4L1HCBtTy4",
-        "eventType": "camp",
-        "musicianIds": [5],
-        "thumbnailUrl": "https://i.ytimg.com/vi/i4L1HCBtTy4/maxresdefault.jpg"
-    },
-    {
-        "id": 209,
-        "title": "길가는 밴드 - 75m위 (뮤직비디오)",
-        "description": "길가는 밴드의 '75m위' 뮤직비디오입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/bmDyt0mr1Kw",
-        "eventType": "music_video",
-        "musicianIds": [15],
-        "thumbnailUrl": "https://i.ytimg.com/vi/bmDyt0mr1Kw/maxresdefault.jpg"
-    },
-    {
-        "id": 210,
-        "title": "길가는 밴드 장현호 라이브 @풍천리 잣나무골 음악회",
-        "description": "양수발전소를 막아내려는 사람들의 풍천리 잣나무골 음악회와 마을잔치에서의 길가는 밴드 장현호 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/8ModRyX5ddk",
-        "date": "2025-07-12",
-        "eventType": "live",
-        "musicianIds": [15],
-        "thumbnailUrl": "https://i.ytimg.com/vi/8ModRyX5ddk/maxresdefault.jpg"
-    },
-    {
-        "id": 211,
-        "title": "김동산과 블루이웃 라이브 @풍천리 잣나무골 음악회",
-        "description": "양수발전소를 막아내려는 사람들의 풍천리 잣나무골 음악회와 마을잔치에서의 김동산과 블루이웃 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/kMT7Fjzjlpo",
-        "date": "2025-07-12",
-        "eventType": "live",
-        "musicianIds": [3],
-        "thumbnailUrl": "https://i.ytimg.com/vi/kMT7Fjzjlpo/maxresdefault.jpg"
-    },
-    {
-        "id": 212,
-        "title": "김동산과 블루이웃 - 통영생선구이 블루스 @생기스튜디오",
-        "description": "Old Roots, New Voices 시리즈, 생기스튜디오에서의 김동산과 블루이웃 '통영생선구이 블루스' 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/FFkb2KC6StY",
-        "date": "2026-02-07",
-        "eventType": "live",
-        "musicianIds": [3],
-        "thumbnailUrl": "https://i.ytimg.com/vi/FFkb2KC6StY/maxresdefault.jpg"
-    },
-    {
-        "id": 213,
-        "title": "김수수 - 제5회 시월의 마지막 밤 시민음악회",
-        "description": "제5회 시월의 마지막 밤 시민음악회에서의 김수수 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/tncRXF8ZZWw",
-        "eventType": "live",
-        "musicianIds": [16],
-        "thumbnailUrl": "https://i.ytimg.com/vi/tncRXF8ZZWw/maxresdefault.jpg"
-    },
-    {
-        "id": 214,
-        "title": "따뜻한 다채로움, 예술잡화상 남수를 만나다 | 정장희의 말벗",
-        "description": "싱어송라이터 남수의 인터뷰 및 음악 이야기를 담은 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/Cl759nQHYQc",
-        "eventType": "interview",
-        "musicianIds": [4],
-        "thumbnailUrl": "https://i.ytimg.com/vi/Cl759nQHYQc/maxresdefault.jpg"
-    },
-    {
-        "id": 215,
-        "title": "남수 - 꼴찌를 위하여 @동서울터미널 상인연대",
-        "description": "동서울터미널에서 쫓겨난 상인들과 함께한 남수의 '꼴찌를 위하여' 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/rqZmYu_kvVQ",
-        "date": "2024-06-13",
-        "eventType": "live",
-        "musicianIds": [4],
-        "thumbnailUrl": "https://i.ytimg.com/vi/rqZmYu_kvVQ/maxresdefault.jpg"
-    },
-    {
-        "id": 216,
-        "title": "나무꾼민건 - 나무꾼민건1 (Official Music Video)",
-        "description": "나무꾼민건의 '나무꾼민건1' 공식 뮤직비디오입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/uz1TC6KHV1k",
-        "eventType": "music_video",
-        "musicianIds": [17],
-        "thumbnailUrl": "https://i.ytimg.com/vi/uz1TC6KHV1k/maxresdefault.jpg"
-    },
-    {
-        "id": 217,
-        "title": "나무꾼민건 - Oh Princess (Official Video)",
-        "description": "나무꾼민건의 'Oh Princess' 공식 뮤직비디오입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/S00qseiuV1k",
-        "eventType": "music_video",
-        "musicianIds": [17],
-        "thumbnailUrl": "https://i.ytimg.com/vi/S00qseiuV1k/maxresdefault.jpg"
-    },
-    {
-        "id": 218,
-        "title": "나무꾼민건 - 허상 @DOT 라이브",
-        "description": "DOT에서 공연한 나무꾼민건의 '허상' 라이브 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/jCKosnfRPFE",
-        "date": "2025-09-27",
-        "eventType": "live",
-        "musicianIds": [17],
-        "thumbnailUrl": "https://i.ytimg.com/vi/jCKosnfRPFE/maxresdefault.jpg"
-    },
-    {
-        "id": 219,
-        "title": "Dear Arcadian - Messiah @옥타바리움 라이브홀",
-        "description": "홍대 옥타바리움 라이브홀에서의 Dear Arcadian 'Messiah' 라이브 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/DDpinMmeXuY",
-        "date": "2025-12-13",
-        "eventType": "live",
-        "musicianIds": [18],
-        "thumbnailUrl": "https://i.ytimg.com/vi/DDpinMmeXuY/maxresdefault.jpg"
-    },
-    {
-        "id": 220,
-        "title": "Dear Arcadian - Exodus (Official Video)",
-        "description": "Dear Arcadian의 'Exodus' 공식 뮤직비디오입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/ggmMqQwZ8Js",
-        "eventType": "music_video",
-        "musicianIds": [18],
-        "thumbnailUrl": "https://i.ytimg.com/vi/ggmMqQwZ8Js/maxresdefault.jpg"
-    },
-    {
-        "id": 221,
-        "title": "Dog Last Page - Full Live @Club FF (도라페스트 11)",
-        "description": "Club FF에서 열린 도라페스트 11에서의 Dog Last Page 풀 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/5xAgVErwFok",
-        "date": "2024-04-21",
-        "eventType": "live",
-        "musicianIds": [19],
-        "thumbnailUrl": "https://i.ytimg.com/vi/5xAgVErwFok/maxresdefault.jpg"
-    },
-    {
-        "id": 222,
-        "title": "Dog Last Page - Psychosocial Full Live @Club FF",
-        "description": "Club FF에서의 Dog Last Page 'Psychosocial' 풀 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/JjkwiQZbp48",
-        "date": "2026-03-08",
-        "eventType": "live",
-        "musicianIds": [19],
-        "thumbnailUrl": "https://i.ytimg.com/vi/JjkwiQZbp48/maxresdefault.jpg"
-    },
-    {
-        "id": 223,
-        "title": "Dog Last Page - Drunken Dream @CLUB A.O.R (도라페스트 9)",
-        "description": "CLUB A.O.R에서 열린 도라페스트 9에서의 Dog Last Page 'Drunken Dream' 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/9QKifYm2ZAE",
-        "date": "2023-05-28",
-        "eventType": "live",
-        "musicianIds": [19],
-        "thumbnailUrl": "https://i.ytimg.com/vi/9QKifYm2ZAE/maxresdefault.jpg"
-    },
-    {
-        "id": 224,
-        "title": "Rainbow99 - 오름의 지금 (MV)",
-        "description": "Rainbow99의 '오름의 지금' 뮤직비디오입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/oDibl6gzhfU",
-        "eventType": "music_video",
-        "musicianIds": [20],
-        "thumbnailUrl": "https://i.ytimg.com/vi/oDibl6gzhfU/maxresdefault.jpg"
-    },
-    {
-        "id": 225,
-        "title": "Rainbow99 - 상생이 (MV)",
-        "description": "Rainbow99의 '상생이' 뮤직비디오입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/YX9Yt6q6f6Q",
-        "eventType": "music_video",
-        "musicianIds": [20],
-        "thumbnailUrl": "https://i.ytimg.com/vi/YX9Yt6q6f6Q/maxresdefault.jpg"
-    },
-    {
-        "id": 226,
-        "title": "Rainbow99 - Artist Film",
-        "description": "Rainbow99의 아티스트 필름입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/mR4MnE9aINA",
-        "eventType": "music_video",
-        "musicianIds": [20],
-        "thumbnailUrl": "https://i.ytimg.com/vi/mR4MnE9aINA/maxresdefault.jpg"
-    },
-    {
-        "id": 227,
-        "title": "Meridies - Full Live @ACME Live Show 1",
-        "description": "ACME Live Show 1에서의 Meridies 풀 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/kiWunuJQ9OQ",
-        "date": "2022-08-06",
-        "eventType": "live",
-        "musicianIds": [21],
-        "thumbnailUrl": "https://i.ytimg.com/vi/kiWunuJQ9OQ/maxresdefault.jpg"
-    },
-    {
-        "id": 228,
-        "title": "Meridies - INVASION Full Live @Alleyway Taphouse",
-        "description": "Alleyway Taphouse에서의 Meridies 'INVASION' 풀 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/bL7MGI65I2E",
-        "date": "2025-03-15",
-        "eventType": "live",
-        "musicianIds": [21],
-        "thumbnailUrl": "https://i.ytimg.com/vi/bL7MGI65I2E/maxresdefault.jpg"
-    },
-    {
-        "id": 229,
-        "title": "Meridies - On a Submerged Islet (Official Audio)",
-        "description": "Meridies의 'On a Submerged Islet' 공식 오디오입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/ww4Cwk5knrI",
-        "eventType": "music_video",
-        "musicianIds": [21],
-        "thumbnailUrl": "https://i.ytimg.com/vi/ww4Cwk5knrI/maxresdefault.jpg"
-    },
-    {
-        "id": 230,
-        "title": "모허 - 빛과 그림자 (Live)",
-        "description": "모허의 '빛과 그림자' 라이브 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/YXxDCqKa4fs",
-        "eventType": "live",
-        "musicianIds": [22],
-        "thumbnailUrl": "https://i.ytimg.com/vi/YXxDCqKa4fs/maxresdefault.jpg"
-    },
-    {
-        "id": 231,
-        "title": "모허 - 부지깽이 (4K 360° VR MV)",
-        "description": "모허의 '부지깽이' 4K 360° VR 뮤직비디오입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/_JzOoJJxq48",
-        "eventType": "music_video",
-        "musicianIds": [22],
-        "thumbnailUrl": "https://i.ytimg.com/vi/_JzOoJJxq48/maxresdefault.jpg"
-    },
-    {
-        "id": 232,
-        "title": "모허 - 박수기정 Live @Be IN",
-        "description": "Be IN에서의 모허 '박수기정' 라이브 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/LaQL07oGfig",
-        "eventType": "live",
-        "musicianIds": [22],
-        "thumbnailUrl": "https://i.ytimg.com/vi/LaQL07oGfig/maxresdefault.jpg"
-    },
-    {
-        "id": 233,
-        "title": "모레도토요일 - 얼굴에 계절 (Live Video)",
-        "description": "모레도토요일의 '얼굴에 계절' 라이브 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/iniFJkG_YfM",
-        "eventType": "live",
-        "musicianIds": [7],
-        "thumbnailUrl": "https://i.ytimg.com/vi/iniFJkG_YfM/maxresdefault.jpg"
-    },
-    {
-        "id": 234,
-        "title": "모레도토요일 - 팽나무 (첫번째 자작곡)",
-        "description": "모레도토요일의 첫번째 자작곡 '팽나무' 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/ikG_D-BNnUE",
-        "eventType": "music_video",
-        "musicianIds": [7],
-        "thumbnailUrl": "https://i.ytimg.com/vi/ikG_D-BNnUE/maxresdefault.jpg"
-    },
-    {
-        "id": 235,
-        "title": "모레도토요일 - We Will Sail for Your Freedom",
-        "description": "모레도토요일의 'We Will Sail for Your Freedom' 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/r4-T5eGeKns",
-        "eventType": "music_video",
-        "musicianIds": [7],
-        "thumbnailUrl": "https://i.ytimg.com/vi/r4-T5eGeKns/maxresdefault.jpg"
-    },
-    {
-        "id": 236,
-        "title": "Materials Pound - Full Live @Club Victim (4K)",
-        "description": "Club Victim에서의 Materials Pound 풀 라이브 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/Oj68xP1Y4Lc",
-        "date": "2026-02-28",
-        "eventType": "live",
-        "musicianIds": [24],
-        "thumbnailUrl": "https://i.ytimg.com/vi/Oj68xP1Y4Lc/maxresdefault.jpg"
-    },
-    {
-        "id": 237,
-        "title": "Materials Pound - Eternal Flames",
-        "description": "Materials Pound의 'Eternal Flames' 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/5VOsu-ANcA8",
-        "eventType": "music_video",
-        "musicianIds": [24],
-        "thumbnailUrl": "https://i.ytimg.com/vi/5VOsu-ANcA8/maxresdefault.jpg"
-    },
-    {
-        "id": 238,
-        "title": "Materials Pound - 404 Not Found (Official Music Video)",
-        "description": "Materials Pound의 '404 Not Found' 공식 뮤직비디오입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/Gdp83HQ0gG0",
-        "eventType": "music_video",
-        "musicianIds": [24],
-        "thumbnailUrl": "https://i.ytimg.com/vi/Gdp83HQ0gG0/maxresdefault.jpg"
-    },
-    {
-        "id": 239,
-        "title": "뽈레뽈레 - 2019 ACC 광주프린지인터내셔널",
-        "description": "2019 ACC 광주프린지인터내셔널에서의 뽈레뽈레 공연 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/vMsZWHi8EAY",
-        "date": "2019-01-01",
-        "eventType": "live",
-        "musicianIds": [13],
-        "thumbnailUrl": "https://i.ytimg.com/vi/vMsZWHi8EAY/maxresdefault.jpg"
-    },
-    {
-        "id": 242,
-        "title": "불가사리 즉흥세션 - 나엘, 사토유키에, 희우 즉흥연주 @요기가한주메",
-        "description": "나엘, 사토유키에, 희우와 함께한 불가사리 즉흥기타, 장구 실험음악 즉흥연주입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/fp1kFyL6AxQ",
-        "eventType": "live",
-        "musicianIds": [25],
-        "thumbnailUrl": "https://i.ytimg.com/vi/fp1kFyL6AxQ/maxresdefault.jpg"
-    },
-    {
-        "id": 243,
-        "title": "불가사리 - 이한주 @요기가 표현 갤러리",
-        "description": "요기가 표현 갤러리에서의 이한주 '불가사리' 공연입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/6FctiuWeSh4",
-        "date": "2015-11-29",
-        "eventType": "live",
-        "musicianIds": [25],
-        "thumbnailUrl": "https://i.ytimg.com/vi/6FctiuWeSh4/maxresdefault.jpg"
-    },
-    {
-        "id": 244,
-        "title": "불가사리 24년 1월",
-        "description": "2024년 1월 불가사리 즉흥세션 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/dqpRNHvWRTw",
-        "date": "2024-01-01",
-        "eventType": "live",
-        "musicianIds": [25],
-        "thumbnailUrl": "https://i.ytimg.com/vi/dqpRNHvWRTw/maxresdefault.jpg"
-    },
-    {
-        "id": 245,
-        "title": "Sabbaha - Full Live @HUKEZ Seoul (4K)",
-        "description": "서울 HUKEZ에서의 Sabbaha 풀 라이브 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/YvVlvKCmfZk",
-        "date": "2025-11-22",
-        "eventType": "live",
-        "musicianIds": [26],
-        "thumbnailUrl": "https://i.ytimg.com/vi/YvVlvKCmfZk/maxresdefault.jpg"
-    },
-    {
-        "id": 246,
-        "title": "Sabbaha - Full Live in Daejeon (WHAT IS FEEDBACK?)",
-        "description": "대전에서의 Sabbaha 풀 라이브 'WHAT IS FEEDBACK?' 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/zLCic-wzbys",
-        "date": "2024-02-03",
-        "eventType": "live",
-        "musicianIds": [26],
-        "thumbnailUrl": "https://i.ytimg.com/vi/zLCic-wzbys/maxresdefault.jpg"
-    },
-    {
-        "id": 247,
-        "title": "Sabbaha - Debt Shroud @ACME Studio",
-        "description": "ACME Studio에서의 Sabbaha 'Debt Shroud' 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/F8JH5d9pOt8",
-        "date": "2025-10-12",
-        "eventType": "live",
-        "musicianIds": [26],
-        "thumbnailUrl": "https://i.ytimg.com/vi/F8JH5d9pOt8/maxresdefault.jpg"
-    },
-    {
-        "id": 248,
-        "title": "Sight - Korea Beatbox Championship 2024 Elimination",
-        "description": "Korea Beatbox Championship 2024 Elimination 라운드에서의 Sight 비트박스 퍼포먼스입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/-zYUMKm2a6g",
-        "date": "2024-01-01",
-        "eventType": "live",
-        "musicianIds": [27],
-        "thumbnailUrl": "https://i.ytimg.com/vi/-zYUMKm2a6g/maxresdefault.jpg"
-    },
-    {
-        "id": 249,
-        "title": "선경 - 모래의 낮 (Day of Sand) MV",
-        "description": "선경의 '모래의 낮 (Day of Sand)' 뮤직비디오입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/c8Pal7z6niI",
-        "eventType": "music_video",
-        "musicianIds": [29],
-        "thumbnailUrl": "https://i.ytimg.com/vi/c8Pal7z6niI/maxresdefault.jpg"
-    },
-    {
-        "id": 250,
-        "title": "선경 - 물들 (Dyed) MV",
-        "description": "선경의 '물들 (Dyed)' 뮤직비디오입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/P_4b6Ah21tA",
-        "eventType": "music_video",
-        "musicianIds": [29],
-        "thumbnailUrl": "https://i.ytimg.com/vi/P_4b6Ah21tA/maxresdefault.jpg"
-    },
-    {
-        "id": 251,
-        "title": "손지연 - 오다가다",
-        "description": "손지연의 '오다가다' 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/ll0UBvsTN3Q",
-        "eventType": "music_video",
-        "musicianIds": [30],
-        "thumbnailUrl": "https://i.ytimg.com/vi/ll0UBvsTN3Q/maxresdefault.jpg"
-    },
-    {
-        "id": 252,
-        "title": "손지연 - 한동안 (Live ver.) | 오프더레코드",
-        "description": "오프더레코드에서의 손지연 '한동안' 라이브 버전입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/G-R3fFhAmdw",
-        "eventType": "live",
-        "musicianIds": [30],
-        "thumbnailUrl": "https://i.ytimg.com/vi/G-R3fFhAmdw/maxresdefault.jpg"
-    },
-    {
-        "id": 253,
-        "title": "손지연 - 실화 (Lalala 출연)",
-        "description": "MBC Lalala에 출연한 손지연의 '실화' 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/9KB5lzwXiA8",
-        "date": "2009-02-12",
-        "eventType": "live",
-        "musicianIds": [30],
-        "thumbnailUrl": "https://i.ytimg.com/vi/9KB5lzwXiA8/maxresdefault.jpg"
-    },
-    {
-        "id": 254,
-        "title": "손현숙 - CHOICEMUSIC M/V",
-        "description": "손현숙의 CHOICEMUSIC 뮤직비디오입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/BrXA0hvrQFg",
-        "eventType": "music_video",
-        "musicianIds": [31],
-        "thumbnailUrl": "https://i.ytimg.com/vi/BrXA0hvrQFg/maxresdefault.jpg"
-    },
-    {
-        "id": 255,
-        "title": "손현숙 - 청계천 8가 (2020 오월의노래 상설음악회)",
-        "description": "2020 오월의노래 상설음악회에서의 손현숙 '청계천 8가' 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/Xl65oXeVazU",
-        "date": "2020-05-22",
-        "eventType": "live",
-        "musicianIds": [31],
-        "thumbnailUrl": "https://i.ytimg.com/vi/Xl65oXeVazU/maxresdefault.jpg"
-    },
-    {
-        "id": 256,
-        "title": "김현성 x 손현숙 - 효도하는 날 (윤도현의 러브레터)",
-        "description": "KBS 윤도현의 러브레터에 출연한 김현성 x 손현숙의 '효도하는 날' 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/yQIDuxkbWM4",
-        "date": "2004-03-05",
-        "eventType": "live",
-        "musicianIds": [31],
-        "thumbnailUrl": "https://i.ytimg.com/vi/yQIDuxkbWM4/maxresdefault.jpg"
-    },
-    {
-        "id": 257,
-        "title": "송인상 - 무제 @을지로 작은물 싱어송라이터 포크 페스타",
-        "description": "을지로 작은물 싱어송라이터 포크 페스타 2020에서의 송인상 '무제' 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/fnHiEEa1i7Q",
-        "date": "2020-04-18",
-        "eventType": "live",
-        "musicianIds": [32],
-        "thumbnailUrl": "https://i.ytimg.com/vi/fnHiEEa1i7Q/maxresdefault.jpg"
-    },
-    {
-        "id": 258,
-        "title": "송인상 - Teardrop (cover) | 모시는잔치 Live",
-        "description": "배부른잔치 모시는잔치에서의 송인상 'Teardrop' 커버 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/RObCzfuKt1c",
-        "eventType": "live",
-        "musicianIds": [32],
-        "thumbnailUrl": "https://i.ytimg.com/vi/RObCzfuKt1c/maxresdefault.jpg"
-    },
-    {
-        "id": 259,
-        "title": "송인효, 송인상 - 속삭임 | 배부른잔치 Live",
-        "description": "배부른잔치에서의 송인효, 송인상 '속삭임' 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/edqSHjYalVo",
-        "eventType": "live",
-        "musicianIds": [32, 33],
-        "thumbnailUrl": "https://i.ytimg.com/vi/edqSHjYalVo/maxresdefault.jpg"
-    },
-    {
-        "id": 260,
-        "title": "송인효 - 호랑이 | 배부른잔치 Live",
-        "description": "배부른잔치에서의 송인효 '호랑이' 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/b7HqMDA-0RA",
-        "eventType": "live",
-        "musicianIds": [33],
-        "thumbnailUrl": "https://i.ytimg.com/vi/b7HqMDA-0RA/maxresdefault.jpg"
-    },
-    {
-        "id": 261,
-        "title": "송인효 - 조율 (원곡 한영애) | 포커스(FolkUs)",
-        "description": "Mnet 포커스(FolkUs) 본선에서의 송인효 '조율' 풀버전입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/eELKLFdvhx8",
-        "eventType": "live",
-        "musicianIds": [33],
-        "thumbnailUrl": "https://i.ytimg.com/vi/eELKLFdvhx8/maxresdefault.jpg"
-    },
-    {
-        "id": 262,
-        "title": "삼각전파사 - Dystopia 2025 (Full Album)",
-        "description": "삼각전파사의 'Dystopia 2025' 풀 앨범 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/6-v5l1jL8TY",
-        "eventType": "music_video",
-        "musicianIds": [34],
-        "thumbnailUrl": "https://i.ytimg.com/vi/6-v5l1jL8TY/maxresdefault.jpg"
-    },
-    {
-        "id": 263,
-        "title": "삼각전파사 - Dystopia 2025 (Teaser)",
-        "description": "삼각전파사의 'Dystopia 2025' 티저 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/KOxJb6Ro_O8",
-        "eventType": "music_video",
-        "musicianIds": [34],
-        "thumbnailUrl": "https://i.ytimg.com/vi/KOxJb6Ro_O8/maxresdefault.jpg"
-    },
-    {
-        "id": 264,
-        "title": "삼각전파사 - 물결 (Official MV)",
-        "description": "삼각전파사의 '물결' 공식 뮤직비디오입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/9t3w8vDNNIw",
-        "eventType": "music_video",
-        "musicianIds": [34],
-        "thumbnailUrl": "https://i.ytimg.com/vi/9t3w8vDNNIw/maxresdefault.jpg"
-    },
-    {
-        "id": 265,
-        "title": "온가영 - 인형의 꿈 (Live, 봄의 길 해운대)",
-        "description": "해운대 봄의 길에서의 온가영 '인형의 꿈' 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/lEUa5rV2Ok8",
-        "eventType": "live",
-        "musicianIds": [37],
-        "thumbnailUrl": "https://i.ytimg.com/vi/lEUa5rV2Ok8/maxresdefault.jpg"
-    },
-    {
-        "id": 266,
-        "title": "온가영 - 라랄라 (2022 청년작당페스티벌)",
-        "description": "2022 청년작당페스티벌에서 가야금 정수유, 퍼커션 배보성과 함께한 온가영 '라랄라' 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/H4SKWbU3i-c",
-        "date": "2022-01-01",
-        "eventType": "live",
-        "musicianIds": [37],
-        "thumbnailUrl": "https://i.ytimg.com/vi/H4SKWbU3i-c/maxresdefault.jpg"
-    },
-    {
-        "id": 267,
-        "title": "온가영 - Who You Are",
-        "description": "온가영의 'Who You Are' 음원 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/4iXquyRr7rE",
-        "eventType": "music_video",
-        "musicianIds": [37],
-        "thumbnailUrl": "https://i.ytimg.com/vi/4iXquyRr7rE/maxresdefault.jpg"
-    },
-    {
-        "id": 268,
-        "title": "여울 (2026.1.17 @DOT 새, 나뭇잎, 고양이 그리고 강)",
-        "description": "2026년 1월 17일 DOT에서 열린 '새, 나뭇잎, 고양이 그리고 강' 공연에서의 여울 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/1xMOBB2Sfj8",
-        "date": "2026-01-17",
-        "eventType": "live",
-        "musicianIds": [38],
-        "thumbnailUrl": "https://i.ytimg.com/vi/1xMOBB2Sfj8/maxresdefault.jpg"
-    },
-    {
-        "id": 269,
-        "title": "윤숭 - 더 낮은 곳으로 (FM Live, 언니네살롱)",
-        "description": "국악방송 최고은의 밤은 음악이야 언니네살롱에서의 윤숭 '더 낮은 곳으로' 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/NbNeoOi5SEc",
-        "eventType": "live",
-        "musicianIds": [39],
-        "thumbnailUrl": "https://i.ytimg.com/vi/NbNeoOi5SEc/maxresdefault.jpg"
-    },
-    {
-        "id": 270,
-        "title": "윤숭 - 무제 | 막주금라이브",
-        "description": "막주금라이브에서의 윤숭 '무제' 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/PlPrqOScHIY",
-        "eventType": "live",
-        "musicianIds": [39],
-        "thumbnailUrl": "https://i.ytimg.com/vi/PlPrqOScHIY/maxresdefault.jpg"
-    },
-    {
-        "id": 271,
-        "title": "윤숭 - 숨어 (Hide) Official Music Video",
-        "description": "윤숭의 '숨어 (Hide)' 공식 뮤직비디오입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/XDZeAaGyRu4",
-        "eventType": "music_video",
-        "musicianIds": [39],
-        "thumbnailUrl": "https://i.ytimg.com/vi/XDZeAaGyRu4/maxresdefault.jpg"
-    },
-    {
-        "id": 272,
-        "title": "윤선애 - 그날이 오면 (MV)",
-        "description": "윤선애의 '그날이 오면' 뮤직비디오입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/ZE2sBhYgql0",
-        "eventType": "music_video",
-        "musicianIds": [40],
-        "thumbnailUrl": "https://i.ytimg.com/vi/ZE2sBhYgql0/maxresdefault.jpg"
-    },
-    {
-        "id": 273,
-        "title": "윤선애 - 우리가 어느 별에서",
-        "description": "윤선애의 '우리가 어느 별에서' 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/gEtKkt5ucqc",
-        "eventType": "music_video",
-        "musicianIds": [40],
-        "thumbnailUrl": "https://i.ytimg.com/vi/gEtKkt5ucqc/maxresdefault.jpg"
-    },
-    {
-        "id": 274,
-        "title": "윤선애 - 그날이 오면 (KBS 열린 음악회)",
-        "description": "노래를 찾는 사람들, 김광석, 안치환, 권진원과 함께한 KBS 열린 음악회에서의 '그날이 오면' 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/0maMqofDaQE",
-        "date": "2020-04-19",
-        "eventType": "live",
-        "musicianIds": [40],
-        "thumbnailUrl": "https://i.ytimg.com/vi/0maMqofDaQE/maxresdefault.jpg"
-    },
-    {
-        "id": 275,
-        "title": "이서영 - 인사 (옛 노량진수산시장 상인을 위한 노래)",
-        "description": "옛 노량진수산시장 상인을 위한 노래, 이서영의 '인사' 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/KDu1FxmyEz0",
-        "eventType": "music_video",
-        "musicianIds": [12],
-        "thumbnailUrl": "https://i.ytimg.com/vi/KDu1FxmyEz0/maxresdefault.jpg"
-    },
-    {
-        "id": 276,
-        "title": "이서영 단독공연 - 곁의 소리",
-        "description": "이서영 단독공연 '곁의 소리' 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/ixHdv6fq8nw",
-        "eventType": "live",
-        "musicianIds": [12],
-        "thumbnailUrl": "https://i.ytimg.com/vi/ixHdv6fq8nw/maxresdefault.jpg"
-    },
-    {
-        "id": 277,
-        "title": "이서영 - 인사 @노량진수산시장 예술해방전선",
-        "description": "노량진수산시장 예술해방전선에서의 이서영 '인사' 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/BVJBFdlcZXY",
-        "date": "2024-03-15",
-        "eventType": "live",
-        "musicianIds": [12],
-        "thumbnailUrl": "https://i.ytimg.com/vi/BVJBFdlcZXY/maxresdefault.jpg"
-    },
-    {
-        "id": 278,
-        "title": "임정득 - 당신이 살지 않았던 세계 (가사)",
-        "description": "임정득의 '당신이 살지 않았던 세계' 가사 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/SLiSo_OH9tg",
-        "eventType": "music_video",
-        "musicianIds": [42],
-        "thumbnailUrl": "https://i.ytimg.com/vi/SLiSo_OH9tg/maxresdefault.jpg"
-    },
-    {
-        "id": 279,
-        "title": "임정득이 이야기하는 꽃다지 | 꽃터뷰",
-        "description": "노래하는 임정득이 이야기하는 꽃다지 인터뷰 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/qyZeA94z0Hk",
-        "eventType": "interview",
-        "musicianIds": [42],
-        "thumbnailUrl": "https://i.ytimg.com/vi/qyZeA94z0Hk/maxresdefault.jpg"
-    },
-    {
-        "id": 280,
-        "title": "임정득 - Bella Ciao (제16차 범국민행동의 날)",
-        "description": "제16차 범국민행동의 날에서의 임정득 'Bella Ciao' 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/xCNaTfscohY",
-        "eventType": "live",
-        "musicianIds": [42],
-        "thumbnailUrl": "https://i.ytimg.com/vi/xCNaTfscohY/maxresdefault.jpg"
-    },
-    {
-        "id": 281,
-        "title": "자이 라이브 2025 리허설 - 앨범기념 콘서트 @스페이스 반줄",
-        "description": "스페이스 반줄에서의 자이 앨범기념 콘서트 리허설 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/sAsJNwS59vU",
-        "date": "2025-01-01",
-        "eventType": "live",
-        "musicianIds": [11],
-        "thumbnailUrl": "https://i.ytimg.com/vi/sAsJNwS59vU/maxresdefault.jpg"
-    },
-    {
-        "id": 282,
-        "title": "자이 - 떠난 뒤 (Nabal Acoustic)",
-        "description": "김광석거리에서의 자이 '떠난 뒤' 어쿠스틱 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/qYpwV_p-Azw",
-        "eventType": "live",
-        "musicianIds": [11],
-        "thumbnailUrl": "https://i.ytimg.com/vi/qYpwV_p-Azw/maxresdefault.jpg"
-    },
-    {
-        "id": 283,
-        "title": "자이 - Golden Hour (Full Album)",
-        "description": "자이의 'Golden Hour' 풀 앨범 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/04q6-vyvg94",
-        "eventType": "music_video",
-        "musicianIds": [11],
-        "thumbnailUrl": "https://i.ytimg.com/vi/04q6-vyvg94/maxresdefault.jpg"
-    },
-    {
-        "id": 284,
-        "title": "Joon Lee (준리)",
-        "description": "준리의 라이브 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/EWJvD1-otlo",
-        "eventType": "live",
-        "musicianIds": [43],
-        "thumbnailUrl": "https://i.ytimg.com/vi/EWJvD1-otlo/maxresdefault.jpg"
-    },
-    {
-        "id": 285,
-        "title": "Joon Lee (준리) - 제주인디 어쿠스틱 콘서트",
-        "description": "제주인디 어쿠스틱 콘서트에서의 준리 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/IhRHP7c6Eao",
-        "date": "2023-10-06",
-        "eventType": "live",
-        "musicianIds": [43],
-        "thumbnailUrl": "https://i.ytimg.com/vi/IhRHP7c6Eao/maxresdefault.jpg"
-    },
-    {
-        "id": 286,
-        "title": "평화성지 소성리 - 정진석 노래",
-        "description": "소성리 평화성지에서의 정진석 노래입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/zgiWwanjPdI",
-        "eventType": "live",
-        "musicianIds": [2],
-        "thumbnailUrl": "https://i.ytimg.com/vi/zgiWwanjPdI/maxresdefault.jpg"
-    },
-    {
-        "id": 287,
-        "title": "소성리 - 정진석 노래",
-        "description": "소성리에서의 정진석 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/CCpHFrcSzPw",
-        "date": "2021-01-01",
-        "eventType": "live",
-        "musicianIds": [2],
-        "thumbnailUrl": "https://i.ytimg.com/vi/CCpHFrcSzPw/maxresdefault.jpg"
-    },
-    {
-        "id": 288,
-        "title": "소성리 \"세계적 가수 정진석\" 새노래",
-        "description": "소성리에서의 정진석 새노래 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/c25pxwnhV0M",
-        "date": "2018-05-30",
-        "eventType": "live",
-        "musicianIds": [2],
-        "thumbnailUrl": "https://i.ytimg.com/vi/c25pxwnhV0M/maxresdefault.jpg"
-    },
-    {
-        "id": 289,
-        "title": "조약골 - 아름다운 바다",
-        "description": "테이크아웃드로잉에서의 조약골 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/65tDAbqJZaQ",
-        "date": "2016-01-23",
-        "eventType": "live",
-        "musicianIds": [44],
-        "thumbnailUrl": "https://i.ytimg.com/vi/65tDAbqJZaQ/maxresdefault.jpg"
-    },
-    {
-        "id": 290,
-        "title": "조약골 - 평화가 무엇이냐",
-        "description": "황새울 방송국 들소리 제작, 조약골의 평화가 무엇이냐입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/e2Oufxoc7x4",
-        "eventType": "music_video",
-        "musicianIds": [44],
-        "thumbnailUrl": "https://i.ytimg.com/vi/e2Oufxoc7x4/maxresdefault.jpg"
-    },
-    {
-        "id": 291,
-        "title": "동지여 굳세게 - 조약골",
-        "description": "류형선 작사·작곡, 조약골 노래입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/BEEuFDb1GyM",
-        "eventType": "music_video",
-        "musicianIds": [44],
-        "thumbnailUrl": "https://i.ytimg.com/vi/BEEuFDb1GyM/maxresdefault.jpg"
-    },
-    {
-        "id": 292,
-        "title": "으라차차 인터뷰 - 조성일",
-        "description": "꽃다지의 으라차차 인터뷰, 조성일 편입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/EWRiTHzyLyk",
-        "eventType": "interview",
-        "musicianIds": [45],
-        "thumbnailUrl": "https://i.ytimg.com/vi/EWRiTHzyLyk/maxresdefault.jpg"
-    },
-    {
-        "id": 293,
-        "title": "조성일 1집 솔로음반 발매기념 지역순회 미니 콘서트 '시동을 걸었어'",
-        "description": "꽃다지 14년, 조성일 1집 솔로음반 발매기념 콘서트입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/fVC1FS-mfk8",
-        "eventType": "live",
-        "musicianIds": [45],
-        "thumbnailUrl": "https://i.ytimg.com/vi/fVC1FS-mfk8/maxresdefault.jpg"
-    },
-    {
-        "id": 294,
-        "title": "심층인터뷰 싱어송라이터 조성일 - 조성일과 꽃다지",
-        "description": "제주 서귀포 문화공간 '와봔'에서의 심층인터뷰입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/6Jzm8myzTs8",
-        "eventType": "interview",
-        "musicianIds": [45],
-        "thumbnailUrl": "https://i.ytimg.com/vi/6Jzm8myzTs8/maxresdefault.jpg"
-    },
-    {
-        "id": 295,
-        "title": "Jinu Konda - Country Night",
-        "description": "고인물에서의 지누콘다 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/VTOMLryL6N4",
-        "date": "2020-02-09",
-        "eventType": "live",
-        "musicianIds": [46],
-        "thumbnailUrl": "https://i.ytimg.com/vi/VTOMLryL6N4/maxresdefault.jpg"
-    },
-    {
-        "id": 296,
-        "title": "지누콘다(JINU KONDA) - NEVER STOP Vol.4",
-        "description": "NEVER STOP Vol.4 스페셜 스테이지 지누콘다입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/SnZA3h1h-q4",
-        "eventType": "live",
-        "musicianIds": [46],
-        "thumbnailUrl": "https://i.ytimg.com/vi/SnZA3h1h-q4/maxresdefault.jpg"
-    },
-    {
-        "id": 297,
-        "title": "Jinu Konda - Take Me Home, Country Roads",
-        "description": "예술해방전선 정기 예술회에서의 지누콘다 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/GV7eaZnT6Ic",
-        "date": "2020-01-31",
-        "eventType": "live",
-        "musicianIds": [46],
-        "thumbnailUrl": "https://i.ytimg.com/vi/GV7eaZnT6Ic/maxresdefault.jpg"
-    },
-    {
-        "id": 298,
-        "title": "제주 4·3의 울림! 민중가수 최상돈",
-        "description": "혼저옵서예, 제주 4·3의 울림을 전하는 민중가수 최상돈입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/UuyqY8xo6Yc",
-        "eventType": "interview",
-        "musicianIds": [48],
-        "thumbnailUrl": "https://i.ytimg.com/vi/UuyqY8xo6Yc/maxresdefault.jpg"
-    },
-    {
-        "id": 299,
-        "title": "잊지말아야할 제주의 기억 4.3을 예술로 승화시킨 최상돈 가수",
-        "description": "의회잇수다, 최상돈 가수와 김경훈 시인 인터뷰입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/exF380sO-mo",
-        "eventType": "interview",
-        "musicianIds": [48],
-        "thumbnailUrl": "https://i.ytimg.com/vi/exF380sO-mo/maxresdefault.jpg"
-    },
-    {
-        "id": 300,
-        "title": "최상돈 - 여기는 우리가 살아 지켜갈곳",
-        "description": "하나마당후야제에서의 최상돈 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/lcvntjQFwN0",
-        "eventType": "live",
-        "musicianIds": [48],
-        "thumbnailUrl": "https://i.ytimg.com/vi/lcvntjQFwN0/maxresdefault.jpg"
-    },
-    {
-        "id": 301,
-        "title": "키타와올겐 - 노인",
-        "description": "키타와올겐의 라이브 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/HZbpddmeKew",
-        "eventType": "live",
-        "musicianIds": [50],
-        "thumbnailUrl": "https://i.ytimg.com/vi/HZbpddmeKew/maxresdefault.jpg"
-    },
-    {
-        "id": 302,
-        "title": "키타와 올겐 - 2025 삼다콘서트 라이브",
-        "description": "2025 삼다콘서트에서의 키타와 올겐 라이브 공연입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/fyCP5Wd3mcU",
-        "eventType": "live",
-        "musicianIds": [50],
-        "thumbnailUrl": "https://i.ytimg.com/vi/fyCP5Wd3mcU/maxresdefault.jpg"
-    },
-    {
-        "id": 303,
-        "title": "키타와올겐 - 새계절",
-        "description": "키타와올겐의 라이브 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/XEgIJCLbK00",
-        "eventType": "live",
-        "musicianIds": [50],
-        "thumbnailUrl": "https://i.ytimg.com/vi/XEgIJCLbK00/maxresdefault.jpg"
-    },
-    {
-        "id": 304,
-        "title": "태히언 Tehiun - JEBI DABANG LIVE",
-        "description": "제비다방에서의 태히언 풀 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/m_farkK8yv8",
-        "date": "2026-01-27",
-        "eventType": "live",
-        "musicianIds": [51],
-        "thumbnailUrl": "https://i.ytimg.com/vi/m_farkK8yv8/maxresdefault.jpg"
-    },
-    {
-        "id": 305,
-        "title": "태히언 Tehiun - 올레보자 Olleboja at Momentrip",
-        "description": "2022년 어느 봄, Momentrip에서의 태히언 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/qv3_Uuxc4r0",
-        "date": "2022-01-01",
-        "eventType": "live",
-        "musicianIds": [51],
-        "thumbnailUrl": "https://i.ytimg.com/vi/qv3_Uuxc4r0/maxresdefault.jpg"
-    },
-    {
-        "id": 306,
-        "title": "태히언 Tehiun - On A Desert (MV)",
-        "description": "태히언의 On A Desert 뮤직비디오입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/-Ez3vTjd314",
-        "eventType": "music_video",
-        "musicianIds": [51],
-        "thumbnailUrl": "https://i.ytimg.com/vi/-Ez3vTjd314/maxresdefault.jpg"
-    },
-    {
-        "id": 307,
-        "title": "피움(P:UM) - 청춘마이크 in 부천",
-        "description": "부천 청춘마이크에서의 피움 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/HAm1Jg1LZkY",
-        "eventType": "live",
-        "musicianIds": [52],
-        "thumbnailUrl": "https://i.ytimg.com/vi/HAm1Jg1LZkY/maxresdefault.jpg"
-    },
-    {
-        "id": 308,
-        "title": "피움 - 소실점",
-        "description": "싱어송라이터 피움(P:UM)의 구석구석 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/vK0TvMWcK08",
-        "eventType": "live",
-        "musicianIds": [52],
-        "thumbnailUrl": "https://i.ytimg.com/vi/vK0TvMWcK08/maxresdefault.jpg"
-    },
-    {
-        "id": 309,
-        "title": "피움 - ART KNOCK 아티스트 인터뷰",
-        "description": "어떻게 고유한 모든 존재들을 향해 노래할 수 있을까? 피움 인터뷰입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/t-NDoWVrFZY",
-        "eventType": "interview",
-        "musicianIds": [52],
-        "thumbnailUrl": "https://i.ytimg.com/vi/t-NDoWVrFZY/maxresdefault.jpg"
-    },
-    {
-        "id": 310,
-        "title": "자이 x HANASH - 이름을 모르는 먼 곳의 그대에게 서울 쇼케이스",
-        "description": "자이와 HANASH의 서울 쇼케이스 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/ka9DcFOD2fw",
-        "date": "2024-11-02",
-        "eventType": "live",
-        "musicianIds": [11, 59],
-        "thumbnailUrl": "https://i.ytimg.com/vi/ka9DcFOD2fw/maxresdefault.jpg"
-    },
-    {
-        "id": 311,
-        "title": "호와호 howaho - JEBI DABANG LIVE",
-        "description": "제비다방에서의 호와호 풀 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/ybeiVmWBWYw",
-        "date": "2026-02-01",
-        "eventType": "live",
-        "musicianIds": [53],
-        "thumbnailUrl": "https://i.ytimg.com/vi/ybeiVmWBWYw/maxresdefault.jpg"
-    },
-    {
-        "id": 312,
-        "title": "호와호(howaho) - Summer, Somewhere (Lyric Video)",
-        "description": "호와호의 Summer, Somewhere 리릭 비디오입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/fP-ITAf8Za0",
-        "eventType": "music_video",
-        "musicianIds": [53],
-        "thumbnailUrl": "https://i.ytimg.com/vi/fP-ITAf8Za0/maxresdefault.jpg"
-    },
-    {
-        "id": 313,
-        "title": "호와호 - 춤 (온스테이지)",
-        "description": "온스테이지 317회, 호와호의 춤입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/-xjCi1lgtmo",
-        "eventType": "live",
-        "musicianIds": [53],
-        "thumbnailUrl": "https://i.ytimg.com/vi/-xjCi1lgtmo/maxresdefault.jpg"
-    },
-    {
-        "id": 314,
-        "title": "허정혁 - 수풀 (온스테이지)",
-        "description": "온스테이지, 허정혁의 수풀입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/cdMDAmUw-ww",
-        "eventType": "live",
-        "musicianIds": [55],
-        "thumbnailUrl": "https://i.ytimg.com/vi/cdMDAmUw-ww/maxresdefault.jpg"
-    },
-    {
-        "id": 315,
-        "title": "허정혁 - 새로운 길 (Official Audio)",
-        "description": "허정혁의 새로운 길 공식 오디오입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/iVBKvcOnhXQ",
-        "eventType": "music_video",
-        "musicianIds": [55],
-        "thumbnailUrl": "https://i.ytimg.com/vi/iVBKvcOnhXQ/maxresdefault.jpg"
-    },
-    {
-        "id": 316,
-        "title": "허정혁 - 계절따라 (MV)",
-        "description": "허정혁의 계절따라 뮤직비디오입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/9cUem5QHwFg",
-        "eventType": "music_video",
-        "musicianIds": [55],
-        "thumbnailUrl": "https://i.ytimg.com/vi/9cUem5QHwFg/maxresdefault.jpg"
-    },
-    {
-        "id": 317,
-        "title": "황명하 - 다시, 비가내려 (Live. ON)",
-        "description": "LIVE. ON에서의 황명하 라이브입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/B1jwBkQxccU",
-        "eventType": "live",
-        "musicianIds": [56],
-        "thumbnailUrl": "https://i.ytimg.com/vi/B1jwBkQxccU/maxresdefault.jpg"
-    },
-    {
-        "id": 318,
-        "title": "황명하 - 홀로 (포커스 FolkUs)",
-        "description": "포커스(FolkUs) 예선 풀버전, 이하이 원곡 황명하 편입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/q92jHcVWfP4",
-        "eventType": "live",
-        "musicianIds": [56],
-        "thumbnailUrl": "https://i.ytimg.com/vi/q92jHcVWfP4/maxresdefault.jpg"
-    },
-    {
-        "id": 319,
-        "title": "뺄라지다 in 2040 PZI 발대식",
-        "description": "2040 PZI 발대식에서의 뺄라지다 공연입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/3QvZgvH4dDs",
-        "eventType": "live",
-        "musicianIds": [58],
-        "thumbnailUrl": "https://i.ytimg.com/vi/3QvZgvH4dDs/maxresdefault.jpg"
-    },
-    {
-        "id": 320,
-        "title": "동백작은학교 X 뺄라지다 - 윤석열탄핵표결 시위 바투카타",
-        "description": "동백작은학교와 뺄라지다의 탄핵표결 시위 바투카타입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/zv61or_1bls",
-        "eventType": "live",
-        "musicianIds": [58],
-        "thumbnailUrl": "https://i.ytimg.com/vi/zv61or_1bls/maxresdefault.jpg"
-    },
-    {
-        "id": 321,
-        "title": "뺄라지다 in 컬러풀산지 페스티벌",
-        "description": "컬러풀산지 페스티벌에서의 뺄라지다 공연입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/dqnDbaouW6E",
-        "eventType": "live",
-        "musicianIds": [58],
-        "thumbnailUrl": "https://i.ytimg.com/vi/dqnDbaouW6E/maxresdefault.jpg"
-    },
-    {
-        "id": 322,
-        "title": "ELPATRON 엘파트론 - 제트싸이져 기타 라이브",
-        "description": "제트싸이져(Zsthyger)가 엘파트론 기타리스트로 활동하는 영상입니다. TRENDKILL EXTREME FEAST 2012.",
-        "youtubeUrl": "https://www.youtube.com/embed/XTJfNlpoq5Q",
-        "date": "2012-01-01",
-        "eventType": "live",
-        "musicianIds": [27],
-        "thumbnailUrl": "https://i.ytimg.com/vi/XTJfNlpoq5Q/maxresdefault.jpg"
-    },
-    {
-        "id": 323,
-        "title": "블로꾸 자파리 X 뽈레뽈레 X 북짝북짝",
-        "description": "바투카다 커뮤니티 블로꾸 자파리, 예술단체 뽈레뽈레, 동백 바투카다 동아리 북짝북짝의 연합 공연 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/dsh550wEq5k",
-        "eventType": "live",
-        "musicianIds": [13],
-        "thumbnailUrl": "https://i.ytimg.com/vi/dsh550wEq5k/maxresdefault.jpg"
-    },
-    {
-        "id": 324,
-        "title": "치치",
-        "description": "싱어송라이터, 시인, 영화 감독, 다큐멘터리 제작자로 활동하는 치치의 영상입니다.",
-        "youtubeUrl": "https://www.youtube.com/embed/D7LUxDeWJM8?list=PLsEdVViNJAIS-oc1OqYYyCOQ9KtLmVN4V",
-        "eventType": "live",
-        "musicianIds": [49],
-        "thumbnailUrl": "https://i.ytimg.com/vi/D7LUxDeWJM8/maxresdefault.jpg"
-    }
+  {
+    "id": 1,
+    "title": "김동산과 블루이웃 - 이름을 모르는 먼 곳의 그대에게 서울 쇼케이스",
+    "description": "김동산과 블루이웃은 수원을 기반으로 활동하는 포크, 블루스 뮤지션 김동산과 밴드 블루이웃입니다. 김동산은 \"한국의 우디거스리\"라는 별명처럼 사회적 메시지를 담은 음악으로 주목받고 있습니다. 해고 노동자, 젠트리피케이션 피해상인 등 소외된 이들의 이야기를 음악으로 전하며, 현재는 수원 장안문 근처에서 LP, 리사이클링 샵 \"롱플레이어\"를 운영하며 지역 문화공간으로 발전시키고 있습니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/ejTPpS71nX8",
+    "date": "2024-11-02",
+    "location": "서울 홍대 스페이스 한강",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      3
+    ]
+  },
+  {
+    "id": 2,
+    "title": "길가는 밴드 장현호 - 이름을 모르는 먼 곳의 그대에게 서울 쇼케이스",
+    "description": "길가는 밴드는 싱어송라이터인 장현호를 중심으로 2011년 결성되어 현재까지 활동하고 있는 '거리형 밴드' 입니다. 사회적 투쟁과 갈등의 현장에서 노래하는 그들은 10년째 세월호 참사 진상규명, 제주 해군기지 강정마을 투쟁, KTX 해고 승무원 복직투쟁, 파인텍 굴뚝농성, 콜트콜텍 해고노동자 투쟁 등 셀 수 없는 현장, 문화제 등에서 노래로 연대해 왔습니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/Ts_fFqAYLYE",
+    "date": "2024-11-02",
+    "location": "서울 홍대 스페이스 한강",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      15
+    ]
+  },
+  {
+    "id": 3,
+    "title": "남수 - 이름을 모르는 먼 곳의 그대에게 서울 쇼케이스",
+    "description": "다재다능한 여성 솔로 아티스트로, 인디음악, 포크/블루스, 재즈, 뉴에이지 등 다양한 장르를 아우르는 음악을 선보입니다. \"딱따구리 책방\"이라는 문화공간을 운영하며 음악과 문학의 접점을 만들어가고 있습니다. 앞으로 음악뿐만 아니라 미술, 퍼포먼스 등 다양한 예술 형태를 결합한 작업을 통해 자신의 예술적 경계를 확장해 나가고자 합니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/cHl1I5iJqyA",
+    "date": "2024-11-02",
+    "location": "서울 홍대 스페이스 한강",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      4
+    ]
+  },
+  {
+    "id": 4,
+    "title": "김인 - 이름을 모르는 먼 곳의 그대에게 서울 쇼케이스",
+    "description": "독특한 소리를 탐구하며 환경과 평화에 대한 깊은 애정을 음악으로 표현하는 독립 음악가입니다. 다양한 장르의 음악을 즐기며 자신만의 독특한 음악 세계를 꾸준히 구축해왔습니다. 밤하늘의 별과 달을 모티프로 한 서정적인 음악을 통해 평화의 메시지를 전달하며, 섬세한 감성과 깊이 있는 가사로 주목받고 있습니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/8jPAlA7cGtM",
+    "date": "2024-11-02",
+    "location": "서울 홍대 스페이스 한강",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      6
+    ]
+  },
+  {
+    "id": 5,
+    "title": "모모 - 이름을 모르는 먼 곳의 그대에게 서울 쇼케이스",
+    "description": "예진 안젤라 박과 황슬기로 구성된 재즈 듀오입니다. 재즈를 기반으로 하여 다양하고 아름다운 소리를 탐구하는 음악적 여정을 함께하고 있습니다. 재즈의 즉흥성과 실험정신을 바탕으로, 현대사회의 문제의식을 섬세하게 담아내는 것이 특징이며, 분쟁 지역의 평범한 일상과 그 속에 내재된 긴장감을 음악적으로 표현합니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/hh-MwTiaJxk",
+    "date": "2024-11-02",
+    "location": "서울 홍대 스페이스 한강",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      10
+    ]
+  },
+  {
+    "id": 6,
+    "title": "자이 x HANASH - 이름을 모르는 먼 곳의 그대에게 서울 쇼케이스",
+    "description": "자이의 따뜻한 목소리, HANASH의 혁신적인 전자음악이 만나 새로운 음악적 가능성을 탐구하는 콜라보레이션입니다. 자이는 일상의 이야기를 슬프지만 힘 있는 목소리로 표현하며, HANASH는 세계 각국의 다양한 악기와 장르를 전자음악과 접목시키는 실험을 진행합니다. 두 아티스트의 만남은 전통과 현대의 조화로운 융합을 보여줍니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/ka9DcFOD2fw",
+    "date": "2024-11-02",
+    "location": "서울 홍대 스페이스 한강",
+    "eventType": "album",
+    "eventYear": 2024,
+    "musicianIds": [
+      11,
+      59
+    ]
+  },
+  {
+    "id": 101,
+    "title": "인간띠잇기",
+    "description": "2023년 봄 제주해군기지 정문 앞 인간띠잇기",
+    "youtubeUrl": "https://www.youtube.com/watch?v=dF6raNSEkfI",
+    "date": "2023-06-10",
+    "location": "서귀포시 강정천 체육공원",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/dF6raNSEkfI/sddefault.jpg"
+  },
+  {
+    "id": 102,
+    "title": "2023 제1회 강정피스앤뮤직캠프",
+    "description": "강정천 체육공원에서 펼쳐진 2023 강정피스앤뮤직캠프 공연 실황입니다.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=mPeFqepsf_Y",
+    "date": "2023-06-10",
+    "location": "서귀포시 강정천 체육공원",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/mPeFqepsf_Y/maxresdefault.jpg"
+  },
+  {
+    "id": 103,
+    "title": "3강정3종댄스",
+    "description": "강정천 체육공원에서 펼쳐진 3강정3종댄스입니다.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=MzIpAmDAYzk",
+    "date": "2023-06-10",
+    "location": "서귀포시 강정천 체육공원",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/MzIpAmDAYzk/maxresdefault.jpg"
+  },
+  {
+    "id": 104,
+    "title": "2023 제1회 강정피스앤뮤직캠프",
+    "description": "강정천 체육공원에서 펼쳐진 2023 제1회 강정피스앤뮤직캠프 현장입니다.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=OGKd_pnrul4",
+    "date": "2023-06-10",
+    "location": "서귀포시 강정천 체육공원",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/OGKd_pnrul4/maxresdefault.jpg"
+  },
+  {
+    "id": 105,
+    "title": "2023 제1회 강정피스앤뮤직캠프",
+    "description": "강정천 체육공원에서 펼쳐진 2023 제1회 강정피스앤뮤직캠프 현장입니다.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=GHSxHVc-b1w",
+    "date": "2023-06-10",
+    "location": "서귀포시 강정천 체육공원",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/GHSxHVc-b1w/maxresdefault.jpg"
+  },
+  {
+    "id": 106,
+    "title": "2023 제1회 강정피스앤뮤직캠프",
+    "description": "강정천 체육공원에서 펼쳐진 2023 제1회 강정피스앤뮤직캠프 현장입니다.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=1TyLqzoHA7M",
+    "date": "2023-06-10",
+    "location": "서귀포시 강정천 체육공원",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/1TyLqzoHA7M/maxresdefault.jpg"
+  },
+  {
+    "id": 107,
+    "title": "2023 제1회 강정피스앤뮤직캠프",
+    "description": "강정천 체육공원에서 펼쳐진 2023 제1회 강정피스앤뮤직캠프 현장입니다.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=YwOO627losU",
+    "date": "2023-06-10",
+    "location": "서귀포시 강정천 체육공원",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/YwOO627losU/maxresdefault.jpg"
+  },
+  {
+    "id": 108,
+    "title": "2023 제1회 강정피스앤뮤직캠프",
+    "description": "강정천 체육공원에서 펼쳐진 2023 제1회 강정피스앤뮤직캠프 현장입니다.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=RH2x3ctcBgU",
+    "date": "2023-06-10",
+    "location": "서귀포시 강정천 체육공원",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/RH2x3ctcBgU/maxresdefault.jpg"
+  },
+  {
+    "id": 109,
+    "title": "2023 제1회 강정피스앤뮤직캠프",
+    "description": "강정천 체육공원에서 펼쳐진 2023 제1회 강정피스앤뮤직캠프 현장입니다.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=tFxoLxIDfyM",
+    "date": "2023-06-10",
+    "location": "서귀포시 강정천 체육공원",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/tFxoLxIDfyM/maxresdefault.jpg"
+  },
+  {
+    "id": 110,
+    "title": "2023 제1회 강정피스앤뮤직캠프",
+    "description": "강정천 체육공원에서 펼쳐진 2023 제1회 강정피스앤뮤직캠프 현장입니다.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=-PhTNOVdLc0",
+    "date": "2023-06-10",
+    "location": "서귀포시 강정천 체육공원",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/-PhTNOVdLc0/maxresdefault.jpg"
+  },
+  {
+    "id": 111,
+    "title": "2023 제1회 강정피스앤뮤직캠프",
+    "description": "강정천 체육공원에서 펼쳐진 2023 제1회 강정피스앤뮤직캠프 현장입니다.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=mC-HJ-VhLOQ",
+    "date": "2023-06-10",
+    "location": "서귀포시 강정천 체육공원",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/mC-HJ-VhLOQ/maxresdefault.jpg"
+  },
+  {
+    "id": 112,
+    "title": "강정피스앤뮤직캠프",
+    "description": "전쟁을 멈추자라는 슬로건을 내세운 강정피스앤뮤직캠프가 처음 열렸다!",
+    "youtubeUrl": "https://www.youtube.com/watch?v=crK6y7mJrfY",
+    "date": "2023-06-10",
+    "location": "서귀포시 강정천 체육공원",
+    "eventType": "camp",
+    "eventYear": 2023,
+    "thumbnailUrl": "https://i.ytimg.com/vi/crK6y7mJrfY/maxresdefault.jpg"
+  },
+  {
+    "id": 201,
+    "title": "제2회 강정피스앤뮤직캠프는 준비중!",
+    "description": "내일 열리는 강정피스앤뮤직캠프 여럿이서 열심히 준비하고 있습니다!",
+    "youtubeUrl": "https://www.youtube.com/watch?v=pcsM9lxlA24",
+    "date": "2025-06-14",
+    "location": "서귀포시 강정동 할망물식당 일대",
+    "eventType": "camp",
+    "eventYear": 2025,
+    "thumbnailUrl": "https://i.ytimg.com/vi/pcsM9lxlA24/maxresdefault.jpg"
+  },
+  {
+    "id": 202,
+    "title": "제2회 강정피스앤뮤직캠프",
+    "description": "제주 강정마을에서 열리는 평화와 반전의 음악 축제",
+    "youtubeUrl": "https://youtu.be/DBlCTgWNNKU?si=9QRus6J85pPEqf-F",
+    "date": "2025-06-14",
+    "location": "서귀포시 강정동 할망물식당 일대",
+    "eventType": "camp",
+    "eventYear": 2025,
+    "thumbnailUrl": "https://i.ytimg.com/vi/DBlCTgWNNKU/maxresdefault.jpg"
+  },
+  {
+    "id": 203,
+    "title": "강가히말라야 (2026.1.17 @DOT 새, 나뭇잎, 고양이 그리고 강)",
+    "description": "2026년 1월 17일 DOT에서 열린 '새, 나뭇잎, 고양이 그리고 강' 공연에서의 강가히말라야 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/yiLOO-wo1P8",
+    "date": "2026-01-17",
+    "eventType": "live",
+    "musicianIds": [
+      14
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/yiLOO-wo1P8/maxresdefault.jpg"
+  },
+  {
+    "id": 204,
+    "title": "강가히말라야 - 강 (River)",
+    "description": "강가히말라야의 '강 (River)' 뮤직비디오입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/Qzca0IjWW6I",
+    "eventType": "music_video",
+    "musicianIds": [
+      14
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/Qzca0IjWW6I/maxresdefault.jpg"
+  },
+  {
+    "id": 205,
+    "title": "강가히말라야 - Free Palestine",
+    "description": "강가히말라야의 'Free Palestine' 뮤직비디오입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/DFkKHIbQvb8",
+    "eventType": "music_video",
+    "musicianIds": [
+      14
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/DFkKHIbQvb8/maxresdefault.jpg"
+  },
+  {
+    "id": 206,
+    "title": "까르 - [O: 정 '情'] Pre-view 선공개!",
+    "description": "까르의 앨범 [O: 정 '情'] 선공개 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/5Ak9Ze363kI",
+    "eventType": "music_video",
+    "musicianIds": [
+      5
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/5Ak9Ze363kI/maxresdefault.jpg"
+  },
+  {
+    "id": 207,
+    "title": "까르 - [O : 원 '原'] pre-view 선공개!",
+    "description": "까르의 앨범 [O : 원 '原'] 선공개 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/r2w4FI17I-g",
+    "eventType": "music_video",
+    "musicianIds": [
+      5
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/r2w4FI17I-g/maxresdefault.jpg"
+  },
+  {
+    "id": 208,
+    "title": "까르 - '친구' @제주 강정마을 (강정피스뮤직캠프)",
+    "description": "강정피스뮤직캠프에서 공연한 까르의 '친구' 라이브 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/i4L1HCBtTy4",
+    "eventType": "camp",
+    "musicianIds": [
+      5
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/i4L1HCBtTy4/maxresdefault.jpg"
+  },
+  {
+    "id": 209,
+    "title": "길가는 밴드 - 75m위 (뮤직비디오)",
+    "description": "길가는 밴드의 '75m위' 뮤직비디오입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/bmDyt0mr1Kw",
+    "eventType": "music_video",
+    "musicianIds": [
+      15
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/bmDyt0mr1Kw/maxresdefault.jpg"
+  },
+  {
+    "id": 210,
+    "title": "길가는 밴드 장현호 라이브 @풍천리 잣나무골 음악회",
+    "description": "양수발전소를 막아내려는 사람들의 풍천리 잣나무골 음악회와 마을잔치에서의 길가는 밴드 장현호 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/8ModRyX5ddk",
+    "date": "2025-07-12",
+    "eventType": "live",
+    "musicianIds": [
+      15
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/8ModRyX5ddk/maxresdefault.jpg"
+  },
+  {
+    "id": 211,
+    "title": "김동산과 블루이웃 라이브 @풍천리 잣나무골 음악회",
+    "description": "양수발전소를 막아내려는 사람들의 풍천리 잣나무골 음악회와 마을잔치에서의 김동산과 블루이웃 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/kMT7Fjzjlpo",
+    "date": "2025-07-12",
+    "eventType": "live",
+    "musicianIds": [
+      3
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/kMT7Fjzjlpo/maxresdefault.jpg"
+  },
+  {
+    "id": 212,
+    "title": "김동산과 블루이웃 - 통영생선구이 블루스 @생기스튜디오",
+    "description": "Old Roots, New Voices 시리즈, 생기스튜디오에서의 김동산과 블루이웃 '통영생선구이 블루스' 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/FFkb2KC6StY",
+    "date": "2026-02-07",
+    "eventType": "live",
+    "musicianIds": [
+      3
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/FFkb2KC6StY/maxresdefault.jpg"
+  },
+  {
+    "id": 213,
+    "title": "김수수 - 제5회 시월의 마지막 밤 시민음악회",
+    "description": "제5회 시월의 마지막 밤 시민음악회에서의 김수수 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/tncRXF8ZZWw",
+    "eventType": "live",
+    "musicianIds": [
+      16
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/tncRXF8ZZWw/maxresdefault.jpg"
+  },
+  {
+    "id": 214,
+    "title": "따뜻한 다채로움, 예술잡화상 남수를 만나다 | 정장희의 말벗",
+    "description": "싱어송라이터 남수의 인터뷰 및 음악 이야기를 담은 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/Cl759nQHYQc",
+    "eventType": "interview",
+    "musicianIds": [
+      4
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/Cl759nQHYQc/maxresdefault.jpg"
+  },
+  {
+    "id": 215,
+    "title": "남수 - 꼴찌를 위하여 @동서울터미널 상인연대",
+    "description": "동서울터미널에서 쫓겨난 상인들과 함께한 남수의 '꼴찌를 위하여' 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/rqZmYu_kvVQ",
+    "date": "2024-06-13",
+    "eventType": "live",
+    "musicianIds": [
+      4
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/rqZmYu_kvVQ/maxresdefault.jpg"
+  },
+  {
+    "id": 216,
+    "title": "나무꾼민건 - 나무꾼민건1 (Official Music Video)",
+    "description": "나무꾼민건의 '나무꾼민건1' 공식 뮤직비디오입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/uz1TC6KHV1k",
+    "eventType": "music_video",
+    "musicianIds": [
+      17
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/uz1TC6KHV1k/maxresdefault.jpg"
+  },
+  {
+    "id": 217,
+    "title": "나무꾼민건 - Oh Princess (Official Video)",
+    "description": "나무꾼민건의 'Oh Princess' 공식 뮤직비디오입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/S00qseiuV1k",
+    "eventType": "music_video",
+    "musicianIds": [
+      17
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/S00qseiuV1k/maxresdefault.jpg"
+  },
+  {
+    "id": 218,
+    "title": "나무꾼민건 - 허상 @DOT 라이브",
+    "description": "DOT에서 공연한 나무꾼민건의 '허상' 라이브 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/jCKosnfRPFE",
+    "date": "2025-09-27",
+    "eventType": "live",
+    "musicianIds": [
+      17
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/jCKosnfRPFE/maxresdefault.jpg"
+  },
+  {
+    "id": 219,
+    "title": "Dear Arcadian - Messiah @옥타바리움 라이브홀",
+    "description": "홍대 옥타바리움 라이브홀에서의 Dear Arcadian 'Messiah' 라이브 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/DDpinMmeXuY",
+    "date": "2025-12-13",
+    "eventType": "live",
+    "musicianIds": [
+      18
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/DDpinMmeXuY/maxresdefault.jpg"
+  },
+  {
+    "id": 220,
+    "title": "Dear Arcadian - Exodus (Official Video)",
+    "description": "Dear Arcadian의 'Exodus' 공식 뮤직비디오입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/ggmMqQwZ8Js",
+    "eventType": "music_video",
+    "musicianIds": [
+      18
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/ggmMqQwZ8Js/maxresdefault.jpg"
+  },
+  {
+    "id": 221,
+    "title": "Dog Last Page - Full Live @Club FF (도라페스트 11)",
+    "description": "Club FF에서 열린 도라페스트 11에서의 Dog Last Page 풀 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/5xAgVErwFok",
+    "date": "2024-04-21",
+    "eventType": "live",
+    "musicianIds": [
+      19
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/5xAgVErwFok/maxresdefault.jpg"
+  },
+  {
+    "id": 222,
+    "title": "Dog Last Page - Psychosocial Full Live @Club FF",
+    "description": "Club FF에서의 Dog Last Page 'Psychosocial' 풀 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/JjkwiQZbp48",
+    "date": "2026-03-08",
+    "eventType": "live",
+    "musicianIds": [
+      19
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/JjkwiQZbp48/maxresdefault.jpg"
+  },
+  {
+    "id": 223,
+    "title": "Dog Last Page - Drunken Dream @CLUB A.O.R (도라페스트 9)",
+    "description": "CLUB A.O.R에서 열린 도라페스트 9에서의 Dog Last Page 'Drunken Dream' 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/9QKifYm2ZAE",
+    "date": "2023-05-28",
+    "eventType": "live",
+    "musicianIds": [
+      19
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/9QKifYm2ZAE/maxresdefault.jpg"
+  },
+  {
+    "id": 224,
+    "title": "Rainbow99 - 오름의 지금 (MV)",
+    "description": "Rainbow99의 '오름의 지금' 뮤직비디오입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/oDibl6gzhfU",
+    "eventType": "music_video",
+    "musicianIds": [
+      20
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/oDibl6gzhfU/maxresdefault.jpg"
+  },
+  {
+    "id": 225,
+    "title": "Rainbow99 - 상생이 (MV)",
+    "description": "Rainbow99의 '상생이' 뮤직비디오입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/YX9Yt6q6f6Q",
+    "eventType": "music_video",
+    "musicianIds": [
+      20
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/YX9Yt6q6f6Q/maxresdefault.jpg"
+  },
+  {
+    "id": 226,
+    "title": "Rainbow99 - Artist Film",
+    "description": "Rainbow99의 아티스트 필름입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/mR4MnE9aINA",
+    "eventType": "music_video",
+    "musicianIds": [
+      20
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/mR4MnE9aINA/maxresdefault.jpg"
+  },
+  {
+    "id": 227,
+    "title": "Meridies - Full Live @ACME Live Show 1",
+    "description": "ACME Live Show 1에서의 Meridies 풀 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/kiWunuJQ9OQ",
+    "date": "2022-08-06",
+    "eventType": "live",
+    "musicianIds": [
+      21
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/kiWunuJQ9OQ/maxresdefault.jpg"
+  },
+  {
+    "id": 228,
+    "title": "Meridies - INVASION Full Live @Alleyway Taphouse",
+    "description": "Alleyway Taphouse에서의 Meridies 'INVASION' 풀 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/bL7MGI65I2E",
+    "date": "2025-03-15",
+    "eventType": "live",
+    "musicianIds": [
+      21
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/bL7MGI65I2E/maxresdefault.jpg"
+  },
+  {
+    "id": 229,
+    "title": "Meridies - On a Submerged Islet (Official Audio)",
+    "description": "Meridies의 'On a Submerged Islet' 공식 오디오입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/ww4Cwk5knrI",
+    "eventType": "music_video",
+    "musicianIds": [
+      21
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/ww4Cwk5knrI/maxresdefault.jpg"
+  },
+  {
+    "id": 230,
+    "title": "모허 - 빛과 그림자 (Live)",
+    "description": "모허의 '빛과 그림자' 라이브 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/YXxDCqKa4fs",
+    "eventType": "live",
+    "musicianIds": [
+      22
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/YXxDCqKa4fs/maxresdefault.jpg"
+  },
+  {
+    "id": 231,
+    "title": "모허 - 부지깽이 (4K 360° VR MV)",
+    "description": "모허의 '부지깽이' 4K 360° VR 뮤직비디오입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/_JzOoJJxq48",
+    "eventType": "music_video",
+    "musicianIds": [
+      22
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/_JzOoJJxq48/maxresdefault.jpg"
+  },
+  {
+    "id": 232,
+    "title": "모허 - 박수기정 Live @Be IN",
+    "description": "Be IN에서의 모허 '박수기정' 라이브 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/LaQL07oGfig",
+    "eventType": "live",
+    "musicianIds": [
+      22
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/LaQL07oGfig/maxresdefault.jpg"
+  },
+  {
+    "id": 233,
+    "title": "모레도토요일 - 얼굴에 계절 (Live Video)",
+    "description": "모레도토요일의 '얼굴에 계절' 라이브 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/iniFJkG_YfM",
+    "eventType": "live",
+    "musicianIds": [
+      7
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/iniFJkG_YfM/maxresdefault.jpg"
+  },
+  {
+    "id": 234,
+    "title": "모레도토요일 - 팽나무 (첫번째 자작곡)",
+    "description": "모레도토요일의 첫번째 자작곡 '팽나무' 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/ikG_D-BNnUE",
+    "eventType": "music_video",
+    "musicianIds": [
+      7
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/ikG_D-BNnUE/maxresdefault.jpg"
+  },
+  {
+    "id": 235,
+    "title": "모레도토요일 - We Will Sail for Your Freedom",
+    "description": "모레도토요일의 'We Will Sail for Your Freedom' 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/r4-T5eGeKns",
+    "eventType": "music_video",
+    "musicianIds": [
+      7
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/r4-T5eGeKns/maxresdefault.jpg"
+  },
+  {
+    "id": 236,
+    "title": "Materials Pound - Full Live @Club Victim (4K)",
+    "description": "Club Victim에서의 Materials Pound 풀 라이브 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/Oj68xP1Y4Lc",
+    "date": "2026-02-28",
+    "eventType": "live",
+    "musicianIds": [
+      24
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/Oj68xP1Y4Lc/maxresdefault.jpg"
+  },
+  {
+    "id": 237,
+    "title": "Materials Pound - Eternal Flames",
+    "description": "Materials Pound의 'Eternal Flames' 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/5VOsu-ANcA8",
+    "eventType": "music_video",
+    "musicianIds": [
+      24
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/5VOsu-ANcA8/maxresdefault.jpg"
+  },
+  {
+    "id": 238,
+    "title": "Materials Pound - 404 Not Found (Official Music Video)",
+    "description": "Materials Pound의 '404 Not Found' 공식 뮤직비디오입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/Gdp83HQ0gG0",
+    "eventType": "music_video",
+    "musicianIds": [
+      24
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/Gdp83HQ0gG0/maxresdefault.jpg"
+  },
+  {
+    "id": 239,
+    "title": "뽈레뽈레 - 2019 ACC 광주프린지인터내셔널",
+    "description": "2019 ACC 광주프린지인터내셔널에서의 뽈레뽈레 공연 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/vMsZWHi8EAY",
+    "date": "2019-01-01",
+    "eventType": "live",
+    "musicianIds": [
+      13
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/vMsZWHi8EAY/maxresdefault.jpg"
+  },
+  {
+    "id": 242,
+    "title": "불가사리 즉흥세션 - 나엘, 사토유키에, 희우 즉흥연주 @요기가한주메",
+    "description": "나엘, 사토유키에, 희우와 함께한 불가사리 즉흥기타, 장구 실험음악 즉흥연주입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/fp1kFyL6AxQ",
+    "eventType": "live",
+    "musicianIds": [
+      25
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/fp1kFyL6AxQ/maxresdefault.jpg"
+  },
+  {
+    "id": 243,
+    "title": "불가사리 - 이한주 @요기가 표현 갤러리",
+    "description": "요기가 표현 갤러리에서의 이한주 '불가사리' 공연입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/6FctiuWeSh4",
+    "date": "2015-11-29",
+    "eventType": "live",
+    "musicianIds": [
+      25
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/6FctiuWeSh4/maxresdefault.jpg"
+  },
+  {
+    "id": 244,
+    "title": "불가사리 24년 1월",
+    "description": "2024년 1월 불가사리 즉흥세션 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/dqpRNHvWRTw",
+    "date": "2024-01-01",
+    "eventType": "live",
+    "musicianIds": [
+      25
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/dqpRNHvWRTw/maxresdefault.jpg"
+  },
+  {
+    "id": 245,
+    "title": "Sabbaha - Full Live @HUKEZ Seoul (4K)",
+    "description": "서울 HUKEZ에서의 Sabbaha 풀 라이브 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/YvVlvKCmfZk",
+    "date": "2025-11-22",
+    "eventType": "live",
+    "musicianIds": [
+      26
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/YvVlvKCmfZk/maxresdefault.jpg"
+  },
+  {
+    "id": 246,
+    "title": "Sabbaha - Full Live in Daejeon (WHAT IS FEEDBACK?)",
+    "description": "대전에서의 Sabbaha 풀 라이브 'WHAT IS FEEDBACK?' 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/zLCic-wzbys",
+    "date": "2024-02-03",
+    "eventType": "live",
+    "musicianIds": [
+      26
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/zLCic-wzbys/maxresdefault.jpg"
+  },
+  {
+    "id": 247,
+    "title": "Sabbaha - Debt Shroud @ACME Studio",
+    "description": "ACME Studio에서의 Sabbaha 'Debt Shroud' 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/F8JH5d9pOt8",
+    "date": "2025-10-12",
+    "eventType": "live",
+    "musicianIds": [
+      26
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/F8JH5d9pOt8/maxresdefault.jpg"
+  },
+  {
+    "id": 248,
+    "title": "Sight - Korea Beatbox Championship 2024 Elimination",
+    "description": "Korea Beatbox Championship 2024 Elimination 라운드에서의 Sight 비트박스 퍼포먼스입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/-zYUMKm2a6g",
+    "date": "2024-01-01",
+    "eventType": "live",
+    "musicianIds": [
+      27
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/-zYUMKm2a6g/maxresdefault.jpg"
+  },
+  {
+    "id": 249,
+    "title": "선경 - 모래의 낮 (Day of Sand) MV",
+    "description": "선경의 '모래의 낮 (Day of Sand)' 뮤직비디오입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/c8Pal7z6niI",
+    "eventType": "music_video",
+    "musicianIds": [
+      29
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/c8Pal7z6niI/maxresdefault.jpg"
+  },
+  {
+    "id": 250,
+    "title": "선경 - 물들 (Dyed) MV",
+    "description": "선경의 '물들 (Dyed)' 뮤직비디오입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/P_4b6Ah21tA",
+    "eventType": "music_video",
+    "musicianIds": [
+      29
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/P_4b6Ah21tA/maxresdefault.jpg"
+  },
+  {
+    "id": 251,
+    "title": "손지연 - 오다가다",
+    "description": "손지연의 '오다가다' 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/ll0UBvsTN3Q",
+    "eventType": "music_video",
+    "musicianIds": [
+      30
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/ll0UBvsTN3Q/maxresdefault.jpg"
+  },
+  {
+    "id": 252,
+    "title": "손지연 - 한동안 (Live ver.) | 오프더레코드",
+    "description": "오프더레코드에서의 손지연 '한동안' 라이브 버전입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/G-R3fFhAmdw",
+    "eventType": "live",
+    "musicianIds": [
+      30
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/G-R3fFhAmdw/maxresdefault.jpg"
+  },
+  {
+    "id": 253,
+    "title": "손지연 - 실화 (Lalala 출연)",
+    "description": "MBC Lalala에 출연한 손지연의 '실화' 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/9KB5lzwXiA8",
+    "date": "2009-02-12",
+    "eventType": "live",
+    "musicianIds": [
+      30
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/9KB5lzwXiA8/maxresdefault.jpg"
+  },
+  {
+    "id": 254,
+    "title": "손현숙 - CHOICEMUSIC M/V",
+    "description": "손현숙의 CHOICEMUSIC 뮤직비디오입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/BrXA0hvrQFg",
+    "eventType": "music_video",
+    "musicianIds": [
+      31
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/BrXA0hvrQFg/maxresdefault.jpg"
+  },
+  {
+    "id": 255,
+    "title": "손현숙 - 청계천 8가 (2020 오월의노래 상설음악회)",
+    "description": "2020 오월의노래 상설음악회에서의 손현숙 '청계천 8가' 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/Xl65oXeVazU",
+    "date": "2020-05-22",
+    "eventType": "live",
+    "musicianIds": [
+      31
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/Xl65oXeVazU/maxresdefault.jpg"
+  },
+  {
+    "id": 256,
+    "title": "김현성 x 손현숙 - 효도하는 날 (윤도현의 러브레터)",
+    "description": "KBS 윤도현의 러브레터에 출연한 김현성 x 손현숙의 '효도하는 날' 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/yQIDuxkbWM4",
+    "date": "2004-03-05",
+    "eventType": "live",
+    "musicianIds": [
+      31
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/yQIDuxkbWM4/maxresdefault.jpg"
+  },
+  {
+    "id": 257,
+    "title": "송인상 - 무제 @을지로 작은물 싱어송라이터 포크 페스타",
+    "description": "을지로 작은물 싱어송라이터 포크 페스타 2020에서의 송인상 '무제' 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/fnHiEEa1i7Q",
+    "date": "2020-04-18",
+    "eventType": "live",
+    "musicianIds": [
+      32
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/fnHiEEa1i7Q/maxresdefault.jpg"
+  },
+  {
+    "id": 258,
+    "title": "송인상 - Teardrop (cover) | 모시는잔치 Live",
+    "description": "배부른잔치 모시는잔치에서의 송인상 'Teardrop' 커버 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/RObCzfuKt1c",
+    "eventType": "live",
+    "musicianIds": [
+      32
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/RObCzfuKt1c/maxresdefault.jpg"
+  },
+  {
+    "id": 259,
+    "title": "송인효, 송인상 - 속삭임 | 배부른잔치 Live",
+    "description": "배부른잔치에서의 송인효, 송인상 '속삭임' 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/edqSHjYalVo",
+    "eventType": "live",
+    "musicianIds": [
+      32,
+      33
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/edqSHjYalVo/maxresdefault.jpg"
+  },
+  {
+    "id": 260,
+    "title": "송인효 - 호랑이 | 배부른잔치 Live",
+    "description": "배부른잔치에서의 송인효 '호랑이' 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/b7HqMDA-0RA",
+    "eventType": "live",
+    "musicianIds": [
+      33
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/b7HqMDA-0RA/maxresdefault.jpg"
+  },
+  {
+    "id": 261,
+    "title": "송인효 - 조율 (원곡 한영애) | 포커스(FolkUs)",
+    "description": "Mnet 포커스(FolkUs) 본선에서의 송인효 '조율' 풀버전입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/eELKLFdvhx8",
+    "eventType": "live",
+    "musicianIds": [
+      33
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/eELKLFdvhx8/maxresdefault.jpg"
+  },
+  {
+    "id": 262,
+    "title": "삼각전파사 - Dystopia 2025 (Full Album)",
+    "description": "삼각전파사의 'Dystopia 2025' 풀 앨범 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/6-v5l1jL8TY",
+    "eventType": "music_video",
+    "musicianIds": [
+      34
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/6-v5l1jL8TY/maxresdefault.jpg"
+  },
+  {
+    "id": 263,
+    "title": "삼각전파사 - Dystopia 2025 (Teaser)",
+    "description": "삼각전파사의 'Dystopia 2025' 티저 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/KOxJb6Ro_O8",
+    "eventType": "music_video",
+    "musicianIds": [
+      34
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/KOxJb6Ro_O8/maxresdefault.jpg"
+  },
+  {
+    "id": 264,
+    "title": "삼각전파사 - 물결 (Official MV)",
+    "description": "삼각전파사의 '물결' 공식 뮤직비디오입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/9t3w8vDNNIw",
+    "eventType": "music_video",
+    "musicianIds": [
+      34
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/9t3w8vDNNIw/maxresdefault.jpg"
+  },
+  {
+    "id": 265,
+    "title": "온가영 - 인형의 꿈 (Live, 봄의 길 해운대)",
+    "description": "해운대 봄의 길에서의 온가영 '인형의 꿈' 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/lEUa5rV2Ok8",
+    "eventType": "live",
+    "musicianIds": [
+      37
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/lEUa5rV2Ok8/maxresdefault.jpg"
+  },
+  {
+    "id": 266,
+    "title": "온가영 - 라랄라 (2022 청년작당페스티벌)",
+    "description": "2022 청년작당페스티벌에서 가야금 정수유, 퍼커션 배보성과 함께한 온가영 '라랄라' 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/H4SKWbU3i-c",
+    "date": "2022-01-01",
+    "eventType": "live",
+    "musicianIds": [
+      37
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/H4SKWbU3i-c/maxresdefault.jpg"
+  },
+  {
+    "id": 267,
+    "title": "온가영 - Who You Are",
+    "description": "온가영의 'Who You Are' 음원 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/4iXquyRr7rE",
+    "eventType": "music_video",
+    "musicianIds": [
+      37
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/4iXquyRr7rE/maxresdefault.jpg"
+  },
+  {
+    "id": 268,
+    "title": "여울 (2026.1.17 @DOT 새, 나뭇잎, 고양이 그리고 강)",
+    "description": "2026년 1월 17일 DOT에서 열린 '새, 나뭇잎, 고양이 그리고 강' 공연에서의 여울 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/1xMOBB2Sfj8",
+    "date": "2026-01-17",
+    "eventType": "live",
+    "musicianIds": [
+      38
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/1xMOBB2Sfj8/maxresdefault.jpg"
+  },
+  {
+    "id": 269,
+    "title": "윤숭 - 더 낮은 곳으로 (FM Live, 언니네살롱)",
+    "description": "국악방송 최고은의 밤은 음악이야 언니네살롱에서의 윤숭 '더 낮은 곳으로' 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/NbNeoOi5SEc",
+    "eventType": "live",
+    "musicianIds": [
+      39
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/NbNeoOi5SEc/maxresdefault.jpg"
+  },
+  {
+    "id": 270,
+    "title": "윤숭 - 무제 | 막주금라이브",
+    "description": "막주금라이브에서의 윤숭 '무제' 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/PlPrqOScHIY",
+    "eventType": "live",
+    "musicianIds": [
+      39
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/PlPrqOScHIY/maxresdefault.jpg"
+  },
+  {
+    "id": 271,
+    "title": "윤숭 - 숨어 (Hide) Official Music Video",
+    "description": "윤숭의 '숨어 (Hide)' 공식 뮤직비디오입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/XDZeAaGyRu4",
+    "eventType": "music_video",
+    "musicianIds": [
+      39
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/XDZeAaGyRu4/maxresdefault.jpg"
+  },
+  {
+    "id": 272,
+    "title": "윤선애 - 그날이 오면 (MV)",
+    "description": "윤선애의 '그날이 오면' 뮤직비디오입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/ZE2sBhYgql0",
+    "eventType": "music_video",
+    "musicianIds": [
+      40
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/ZE2sBhYgql0/maxresdefault.jpg"
+  },
+  {
+    "id": 273,
+    "title": "윤선애 - 우리가 어느 별에서",
+    "description": "윤선애의 '우리가 어느 별에서' 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/gEtKkt5ucqc",
+    "eventType": "music_video",
+    "musicianIds": [
+      40
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/gEtKkt5ucqc/maxresdefault.jpg"
+  },
+  {
+    "id": 274,
+    "title": "윤선애 - 그날이 오면 (KBS 열린 음악회)",
+    "description": "노래를 찾는 사람들, 김광석, 안치환, 권진원과 함께한 KBS 열린 음악회에서의 '그날이 오면' 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/0maMqofDaQE",
+    "date": "2020-04-19",
+    "eventType": "live",
+    "musicianIds": [
+      40
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/0maMqofDaQE/maxresdefault.jpg"
+  },
+  {
+    "id": 275,
+    "title": "이서영 - 인사 (옛 노량진수산시장 상인을 위한 노래)",
+    "description": "옛 노량진수산시장 상인을 위한 노래, 이서영의 '인사' 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/KDu1FxmyEz0",
+    "eventType": "music_video",
+    "musicianIds": [
+      12
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/KDu1FxmyEz0/maxresdefault.jpg"
+  },
+  {
+    "id": 276,
+    "title": "이서영 단독공연 - 곁의 소리",
+    "description": "이서영 단독공연 '곁의 소리' 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/ixHdv6fq8nw",
+    "eventType": "live",
+    "musicianIds": [
+      12
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/ixHdv6fq8nw/maxresdefault.jpg"
+  },
+  {
+    "id": 277,
+    "title": "이서영 - 인사 @노량진수산시장 예술해방전선",
+    "description": "노량진수산시장 예술해방전선에서의 이서영 '인사' 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/BVJBFdlcZXY",
+    "date": "2024-03-15",
+    "eventType": "live",
+    "musicianIds": [
+      12
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/BVJBFdlcZXY/maxresdefault.jpg"
+  },
+  {
+    "id": 278,
+    "title": "임정득 - 당신이 살지 않았던 세계 (가사)",
+    "description": "임정득의 '당신이 살지 않았던 세계' 가사 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/SLiSo_OH9tg",
+    "eventType": "music_video",
+    "musicianIds": [
+      42
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/SLiSo_OH9tg/maxresdefault.jpg"
+  },
+  {
+    "id": 279,
+    "title": "임정득이 이야기하는 꽃다지 | 꽃터뷰",
+    "description": "노래하는 임정득이 이야기하는 꽃다지 인터뷰 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/qyZeA94z0Hk",
+    "eventType": "interview",
+    "musicianIds": [
+      42
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/qyZeA94z0Hk/maxresdefault.jpg"
+  },
+  {
+    "id": 280,
+    "title": "임정득 - Bella Ciao (제16차 범국민행동의 날)",
+    "description": "제16차 범국민행동의 날에서의 임정득 'Bella Ciao' 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/xCNaTfscohY",
+    "eventType": "live",
+    "musicianIds": [
+      42
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/xCNaTfscohY/maxresdefault.jpg"
+  },
+  {
+    "id": 281,
+    "title": "자이 라이브 2025 리허설 - 앨범기념 콘서트 @스페이스 반줄",
+    "description": "스페이스 반줄에서의 자이 앨범기념 콘서트 리허설 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/sAsJNwS59vU",
+    "date": "2025-01-01",
+    "eventType": "live",
+    "musicianIds": [
+      11
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/sAsJNwS59vU/maxresdefault.jpg"
+  },
+  {
+    "id": 282,
+    "title": "자이 - 떠난 뒤 (Nabal Acoustic)",
+    "description": "김광석거리에서의 자이 '떠난 뒤' 어쿠스틱 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/qYpwV_p-Azw",
+    "eventType": "live",
+    "musicianIds": [
+      11
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/qYpwV_p-Azw/maxresdefault.jpg"
+  },
+  {
+    "id": 283,
+    "title": "자이 - Golden Hour (Full Album)",
+    "description": "자이의 'Golden Hour' 풀 앨범 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/04q6-vyvg94",
+    "eventType": "music_video",
+    "musicianIds": [
+      11
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/04q6-vyvg94/maxresdefault.jpg"
+  },
+  {
+    "id": 284,
+    "title": "Joon Lee (준리)",
+    "description": "준리의 라이브 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/EWJvD1-otlo",
+    "eventType": "live",
+    "musicianIds": [
+      43
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/EWJvD1-otlo/maxresdefault.jpg"
+  },
+  {
+    "id": 285,
+    "title": "Joon Lee (준리) - 제주인디 어쿠스틱 콘서트",
+    "description": "제주인디 어쿠스틱 콘서트에서의 준리 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/IhRHP7c6Eao",
+    "date": "2023-10-06",
+    "eventType": "live",
+    "musicianIds": [
+      43
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/IhRHP7c6Eao/maxresdefault.jpg"
+  },
+  {
+    "id": 286,
+    "title": "평화성지 소성리 - 정진석 노래",
+    "description": "소성리 평화성지에서의 정진석 노래입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/zgiWwanjPdI",
+    "eventType": "live",
+    "musicianIds": [
+      2
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/zgiWwanjPdI/maxresdefault.jpg"
+  },
+  {
+    "id": 287,
+    "title": "소성리 - 정진석 노래",
+    "description": "소성리에서의 정진석 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/CCpHFrcSzPw",
+    "date": "2021-01-01",
+    "eventType": "live",
+    "musicianIds": [
+      2
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/CCpHFrcSzPw/maxresdefault.jpg"
+  },
+  {
+    "id": 288,
+    "title": "소성리 \"세계적 가수 정진석\" 새노래",
+    "description": "소성리에서의 정진석 새노래 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/c25pxwnhV0M",
+    "date": "2018-05-30",
+    "eventType": "live",
+    "musicianIds": [
+      2
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/c25pxwnhV0M/maxresdefault.jpg"
+  },
+  {
+    "id": 289,
+    "title": "조약골 - 아름다운 바다",
+    "description": "테이크아웃드로잉에서의 조약골 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/65tDAbqJZaQ",
+    "date": "2016-01-23",
+    "eventType": "live",
+    "musicianIds": [
+      44
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/65tDAbqJZaQ/maxresdefault.jpg"
+  },
+  {
+    "id": 290,
+    "title": "조약골 - 평화가 무엇이냐",
+    "description": "황새울 방송국 들소리 제작, 조약골의 평화가 무엇이냐입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/e2Oufxoc7x4",
+    "eventType": "music_video",
+    "musicianIds": [
+      44
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/e2Oufxoc7x4/maxresdefault.jpg"
+  },
+  {
+    "id": 291,
+    "title": "동지여 굳세게 - 조약골",
+    "description": "류형선 작사·작곡, 조약골 노래입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/BEEuFDb1GyM",
+    "eventType": "music_video",
+    "musicianIds": [
+      44
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/BEEuFDb1GyM/maxresdefault.jpg"
+  },
+  {
+    "id": 292,
+    "title": "으라차차 인터뷰 - 조성일",
+    "description": "꽃다지의 으라차차 인터뷰, 조성일 편입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/EWRiTHzyLyk",
+    "eventType": "interview",
+    "musicianIds": [
+      45
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/EWRiTHzyLyk/maxresdefault.jpg"
+  },
+  {
+    "id": 293,
+    "title": "조성일 1집 솔로음반 발매기념 지역순회 미니 콘서트 '시동을 걸었어'",
+    "description": "꽃다지 14년, 조성일 1집 솔로음반 발매기념 콘서트입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/fVC1FS-mfk8",
+    "eventType": "live",
+    "musicianIds": [
+      45
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/fVC1FS-mfk8/maxresdefault.jpg"
+  },
+  {
+    "id": 294,
+    "title": "심층인터뷰 싱어송라이터 조성일 - 조성일과 꽃다지",
+    "description": "제주 서귀포 문화공간 '와봔'에서의 심층인터뷰입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/6Jzm8myzTs8",
+    "eventType": "interview",
+    "musicianIds": [
+      45
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/6Jzm8myzTs8/maxresdefault.jpg"
+  },
+  {
+    "id": 295,
+    "title": "Jinu Konda - Country Night",
+    "description": "고인물에서의 지누콘다 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/VTOMLryL6N4",
+    "date": "2020-02-09",
+    "eventType": "live",
+    "musicianIds": [
+      46
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/VTOMLryL6N4/maxresdefault.jpg"
+  },
+  {
+    "id": 296,
+    "title": "지누콘다(JINU KONDA) - NEVER STOP Vol.4",
+    "description": "NEVER STOP Vol.4 스페셜 스테이지 지누콘다입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/SnZA3h1h-q4",
+    "eventType": "live",
+    "musicianIds": [
+      46
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/SnZA3h1h-q4/maxresdefault.jpg"
+  },
+  {
+    "id": 297,
+    "title": "Jinu Konda - Take Me Home, Country Roads",
+    "description": "예술해방전선 정기 예술회에서의 지누콘다 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/GV7eaZnT6Ic",
+    "date": "2020-01-31",
+    "eventType": "live",
+    "musicianIds": [
+      46
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/GV7eaZnT6Ic/maxresdefault.jpg"
+  },
+  {
+    "id": 298,
+    "title": "제주 4·3의 울림! 민중가수 최상돈",
+    "description": "혼저옵서예, 제주 4·3의 울림을 전하는 민중가수 최상돈입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/UuyqY8xo6Yc",
+    "eventType": "interview",
+    "musicianIds": [
+      48
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/UuyqY8xo6Yc/maxresdefault.jpg"
+  },
+  {
+    "id": 299,
+    "title": "잊지말아야할 제주의 기억 4.3을 예술로 승화시킨 최상돈 가수",
+    "description": "의회잇수다, 최상돈 가수와 김경훈 시인 인터뷰입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/exF380sO-mo",
+    "eventType": "interview",
+    "musicianIds": [
+      48
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/exF380sO-mo/maxresdefault.jpg"
+  },
+  {
+    "id": 300,
+    "title": "최상돈 - 여기는 우리가 살아 지켜갈곳",
+    "description": "하나마당후야제에서의 최상돈 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/lcvntjQFwN0",
+    "eventType": "live",
+    "musicianIds": [
+      48
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/lcvntjQFwN0/maxresdefault.jpg"
+  },
+  {
+    "id": 301,
+    "title": "키타와올겐 - 노인",
+    "description": "키타와올겐의 라이브 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/HZbpddmeKew",
+    "eventType": "live",
+    "musicianIds": [
+      50
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/HZbpddmeKew/maxresdefault.jpg"
+  },
+  {
+    "id": 302,
+    "title": "키타와 올겐 - 2025 삼다콘서트 라이브",
+    "description": "2025 삼다콘서트에서의 키타와 올겐 라이브 공연입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/fyCP5Wd3mcU",
+    "eventType": "live",
+    "musicianIds": [
+      50
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/fyCP5Wd3mcU/maxresdefault.jpg"
+  },
+  {
+    "id": 303,
+    "title": "키타와올겐 - 새계절",
+    "description": "키타와올겐의 라이브 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/XEgIJCLbK00",
+    "eventType": "live",
+    "musicianIds": [
+      50
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/XEgIJCLbK00/maxresdefault.jpg"
+  },
+  {
+    "id": 304,
+    "title": "태히언 Tehiun - JEBI DABANG LIVE",
+    "description": "제비다방에서의 태히언 풀 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/m_farkK8yv8",
+    "date": "2026-01-27",
+    "eventType": "live",
+    "musicianIds": [
+      51
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/m_farkK8yv8/maxresdefault.jpg"
+  },
+  {
+    "id": 305,
+    "title": "태히언 Tehiun - 올레보자 Olleboja at Momentrip",
+    "description": "2022년 어느 봄, Momentrip에서의 태히언 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/qv3_Uuxc4r0",
+    "date": "2022-01-01",
+    "eventType": "live",
+    "musicianIds": [
+      51
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/qv3_Uuxc4r0/maxresdefault.jpg"
+  },
+  {
+    "id": 306,
+    "title": "태히언 Tehiun - On A Desert (MV)",
+    "description": "태히언의 On A Desert 뮤직비디오입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/-Ez3vTjd314",
+    "eventType": "music_video",
+    "musicianIds": [
+      51
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/-Ez3vTjd314/maxresdefault.jpg"
+  },
+  {
+    "id": 307,
+    "title": "피움(P:UM) - 청춘마이크 in 부천",
+    "description": "부천 청춘마이크에서의 피움 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/HAm1Jg1LZkY",
+    "eventType": "live",
+    "musicianIds": [
+      52
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/HAm1Jg1LZkY/maxresdefault.jpg"
+  },
+  {
+    "id": 308,
+    "title": "피움 - 소실점",
+    "description": "싱어송라이터 피움(P:UM)의 구석구석 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/vK0TvMWcK08",
+    "eventType": "live",
+    "musicianIds": [
+      52
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/vK0TvMWcK08/maxresdefault.jpg"
+  },
+  {
+    "id": 309,
+    "title": "피움 - ART KNOCK 아티스트 인터뷰",
+    "description": "어떻게 고유한 모든 존재들을 향해 노래할 수 있을까? 피움 인터뷰입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/t-NDoWVrFZY",
+    "eventType": "interview",
+    "musicianIds": [
+      52
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/t-NDoWVrFZY/maxresdefault.jpg"
+  },
+  {
+    "id": 310,
+    "title": "자이 x HANASH - 이름을 모르는 먼 곳의 그대에게 서울 쇼케이스",
+    "description": "자이와 HANASH의 서울 쇼케이스 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/ka9DcFOD2fw",
+    "date": "2024-11-02",
+    "eventType": "live",
+    "musicianIds": [
+      11,
+      59
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/ka9DcFOD2fw/maxresdefault.jpg"
+  },
+  {
+    "id": 311,
+    "title": "호와호 howaho - JEBI DABANG LIVE",
+    "description": "제비다방에서의 호와호 풀 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/ybeiVmWBWYw",
+    "date": "2026-02-01",
+    "eventType": "live",
+    "musicianIds": [
+      53
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/ybeiVmWBWYw/maxresdefault.jpg"
+  },
+  {
+    "id": 312,
+    "title": "호와호(howaho) - Summer, Somewhere (Lyric Video)",
+    "description": "호와호의 Summer, Somewhere 리릭 비디오입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/fP-ITAf8Za0",
+    "eventType": "music_video",
+    "musicianIds": [
+      53
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/fP-ITAf8Za0/maxresdefault.jpg"
+  },
+  {
+    "id": 313,
+    "title": "호와호 - 춤 (온스테이지)",
+    "description": "온스테이지 317회, 호와호의 춤입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/-xjCi1lgtmo",
+    "eventType": "live",
+    "musicianIds": [
+      53
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/-xjCi1lgtmo/maxresdefault.jpg"
+  },
+  {
+    "id": 314,
+    "title": "허정혁 - 수풀 (온스테이지)",
+    "description": "온스테이지, 허정혁의 수풀입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/cdMDAmUw-ww",
+    "eventType": "live",
+    "musicianIds": [
+      55
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/cdMDAmUw-ww/maxresdefault.jpg"
+  },
+  {
+    "id": 315,
+    "title": "허정혁 - 새로운 길 (Official Audio)",
+    "description": "허정혁의 새로운 길 공식 오디오입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/iVBKvcOnhXQ",
+    "eventType": "music_video",
+    "musicianIds": [
+      55
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/iVBKvcOnhXQ/maxresdefault.jpg"
+  },
+  {
+    "id": 316,
+    "title": "허정혁 - 계절따라 (MV)",
+    "description": "허정혁의 계절따라 뮤직비디오입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/9cUem5QHwFg",
+    "eventType": "music_video",
+    "musicianIds": [
+      55
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/9cUem5QHwFg/maxresdefault.jpg"
+  },
+  {
+    "id": 317,
+    "title": "황명하 - 다시, 비가내려 (Live. ON)",
+    "description": "LIVE. ON에서의 황명하 라이브입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/B1jwBkQxccU",
+    "eventType": "live",
+    "musicianIds": [
+      56
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/B1jwBkQxccU/maxresdefault.jpg"
+  },
+  {
+    "id": 318,
+    "title": "황명하 - 홀로 (포커스 FolkUs)",
+    "description": "포커스(FolkUs) 예선 풀버전, 이하이 원곡 황명하 편입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/q92jHcVWfP4",
+    "eventType": "live",
+    "musicianIds": [
+      56
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/q92jHcVWfP4/maxresdefault.jpg"
+  },
+  {
+    "id": 319,
+    "title": "뺄라지다 in 2040 PZI 발대식",
+    "description": "2040 PZI 발대식에서의 뺄라지다 공연입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/3QvZgvH4dDs",
+    "eventType": "live",
+    "musicianIds": [
+      58
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/3QvZgvH4dDs/maxresdefault.jpg"
+  },
+  {
+    "id": 320,
+    "title": "동백작은학교 X 뺄라지다 - 윤석열탄핵표결 시위 바투카타",
+    "description": "동백작은학교와 뺄라지다의 탄핵표결 시위 바투카타입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/zv61or_1bls",
+    "eventType": "live",
+    "musicianIds": [
+      58
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/zv61or_1bls/maxresdefault.jpg"
+  },
+  {
+    "id": 321,
+    "title": "뺄라지다 in 컬러풀산지 페스티벌",
+    "description": "컬러풀산지 페스티벌에서의 뺄라지다 공연입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/dqnDbaouW6E",
+    "eventType": "live",
+    "musicianIds": [
+      58
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/dqnDbaouW6E/maxresdefault.jpg"
+  },
+  {
+    "id": 322,
+    "title": "ELPATRON 엘파트론 - 제트싸이져 기타 라이브",
+    "description": "제트싸이져(Zsthyger)가 엘파트론 기타리스트로 활동하는 영상입니다. TRENDKILL EXTREME FEAST 2012.",
+    "youtubeUrl": "https://www.youtube.com/embed/XTJfNlpoq5Q",
+    "date": "2012-01-01",
+    "eventType": "live",
+    "musicianIds": [
+      27
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/XTJfNlpoq5Q/maxresdefault.jpg"
+  },
+  {
+    "id": 323,
+    "title": "블로꾸 자파리 X 뽈레뽈레",
+    "description": "바투카다 커뮤니티 블로꾸 자파리와 예술단체 뽈레뽈레의 공연 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/dsh550wEq5k",
+    "eventType": "live",
+    "musicianIds": [
+      13
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/dsh550wEq5k/maxresdefault.jpg"
+  },
+  {
+    "id": 324,
+    "title": "치치",
+    "description": "싱어송라이터, 시인, 영화 감독, 다큐멘터리 제작자로 활동하는 치치의 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/D7LUxDeWJM8?list=PLsEdVViNJAIS-oc1OqYYyCOQ9KtLmVN4V",
+    "eventType": "live",
+    "musicianIds": [
+      49
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/D7LUxDeWJM8/maxresdefault.jpg"
+  }
 ]
