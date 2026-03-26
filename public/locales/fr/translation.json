@@ -412,7 +412,15 @@
     "howto_step4_name": "Visiter le Parc sportif de Gangjeong",
     "howto_step4_text": "Arrivez au Parc sportif de Gangjeong et entrez gratuitement. Pas besoin de billets ni de réservation.",
     "howto_step5_name": "Profiter de la musique et de la paix",
-    "howto_step5_text": "Assistez aux performances de musiciens de genres divers et partagez l'esprit de solidarité pour la paix."
+    "howto_step5_text": "Assistez aux performances de musiciens de genres divers et partagez l'esprit de solidarité pour la paix.",
+    "project_name": "À toi, dans un lieu lointain dont j'ignore le nom",
+    "camp_name": "Camp musical pour la paix de Gangjeong",
+    "description": "Un projet de musiciens portant un message de paix à travers la musique dans un monde où la guerre et la violence prédominent",
+    "music_group_desc": "Un projet musical chantant pour la paix",
+    "playlist_name": "Chansons pour la paix",
+    "playlist_desc": "Collection musicale du projet 'À toi, dans un lieu lointain dont j'ignore le nom'",
+    "gallery_name": "Galerie",
+    "gallery_desc": "Galerie photo du projet 'À toi, dans un lieu lointain dont j'ignore le nom'"
   },
   "camp_data": {
     "camp-2023": {
