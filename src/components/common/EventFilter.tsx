@@ -60,7 +60,7 @@ const EventFilter: React.FC<EventFilterProps> = ({
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="flex flex-wrap gap-1.5 sm:gap-2 md:gap-3 justify-center mb-6 sm:mb-8"
+      className="flex flex-wrap gap-2 justify-center mb-8"
     >
       {filters.map((filter) => {
         const isActive = selectedFilter === filter.id;
@@ -73,7 +73,7 @@ const EventFilter: React.FC<EventFilterProps> = ({
             whileTap={{ scale: 0.95 }}
             aria-pressed={isActive}
             aria-label={`${filter.label} ${isActive ? t('common.aria_filter_selected') : ''}`}
-            className={`px-2.5 py-2 sm:px-4 sm:py-2.5 md:px-6 rounded-full text-xs sm:text-sm md:text-base font-medium transition-colors min-h-[44px] sm:min-h-0 text-center whitespace-normal text-balance focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${getColorClasses(isActive)}`}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors min-h-[44px] text-center whitespace-normal text-balance focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${getColorClasses(isActive)}`}
           >
             {filter.label}
           </motion.button>
