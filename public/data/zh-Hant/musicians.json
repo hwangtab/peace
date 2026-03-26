@@ -1,894 +1,894 @@
 [
-    {
-        "id": 1,
-        "name": "Project Around Surround",
-        "shortDescription": "追求東方神祕感與現代音效和諧的跨界三人組合",
-        "description": "追求東方神祕感與現代音效和諧的三人組合。Ritesh Maharjan 富有情感的西塔琴、康慶德（Kang Kyungdeok）創新且精確的音效設計與工程，以及朴仁（Park In）的創意製作，共同創造出深邃的音樂世界。透過融合古代印度拉格（raga）、冥想音樂與現代環境音樂，他們構建了獨特的音景，表達了濟州島的自然與和平。",
-        "genre": [
-            "環境音樂",
-            "世界音樂"
-        ],
-        "trackTitle": "當我望向地平線",
-        "imageUrl": "/images-webp/musicians/1.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/around_surround/",
-            "https://www.instagram.com/lamp.sound/",
-            "https://www.instagram.com/innnbar/"
-        ]
-    },
-    {
-        "id": 2,
-        "name": "Jeong Jinseok",
-        "shortDescription": "被稱為「韶成里之星」，前視覺藝術家轉型的和平音樂家與活動家，融合慶尚道方言與藍調以傳遞和平訊息",
-        "description": "被稱為「韶成里之星」的鄭鎮錫（Jeong Jinseok）最初學習美術。世越號災難後，他開始關注社會問題，並在韶成里部署薩德（THAAD）期間，與居民一同反對暴力與羞辱。他將戶籍遷至韶成里，並持續參與和平活動近八年，其結合慶尚道方言與藍調的獨特音樂風格備受關注。",
-        "genre": [
-            "藍調",
-            "民謠"
-        ],
-        "trackTitle": "這是你的土地還是我的",
-        "imageUrl": "/images-webp/musicians/2.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/vincittutto/"
-        ]
-    },
-    {
-        "id": 3,
-        "name": "Kim Dongsan & Blueeewoot",
-        "shortDescription": "以水原為基地的民謠與藍調音樂家金東山（Kim Dongsan）及其樂團 Blueeewoot。他關於邊緣化故事的音樂與樂團紮實的演奏相得益彰。",
-        "description": "金東山是以水原為基地的民謠與藍調音樂家，與其樂團 Blueeewoot 一同演出。他被暱稱為「韓國的伍迪·蓋瑟瑞」（Woody Guthrie），因其充滿對社會深刻洞察的音樂而受到關注。他歌唱被裁員的工人與士紳化（gentrification）的受害者，並在水原長安門附近經營一家名為「Long Player」的黑膠與回收店，將其發展為當地的文化空間。",
-        "genre": [
-            "民謠",
-            "藍調"
-        ],
-        "trackTitle": "浪",
-        "imageUrl": "/images-webp/musicians/3.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/long_player_/",
-            "https://www.instagram.com/dongsan_blueeewoot/"
-        ]
-    },
-    {
-        "id": 7,
-        "name": "MoredoSaturday",
-        "shortDescription": "由兩位在江汀和平運動中相遇的音樂家組成的民謠二重唱，透過自然與純粹的感性傳遞和平訊息",
-        "description": "在江汀村組成的二人民謠組合，由 More 和 Doto 組成。正如其名，他們追求自然與純粹的感性。他們細膩且靈活的風格，如同隨風搖曳的葉子，輕輕撫慰著聽眾。",
-        "genre": [
-            "民謠",
-            "不插電"
-        ],
-        "trackTitle": "我們將為你的自由啟航",
-        "imageUrl": "/images-webp/musicians/4.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/saturday_moredo/"
-        ]
-    },
-    {
-        "id": 4,
-        "name": "Namsu",
-        "shortDescription": "跨足獨立音樂到爵士樂的女歌手，經營文化空間「啄木鳥書店」並連結音樂與文學",
-        "description": "涵蓋獨立、民謠/藍調、爵士與新世紀音樂的全才女歌手。她經營文化空間「啄木鳥書店」，創造音樂與文學的交集。她旨在透過將音樂與視覺藝術及表演結合，擴展其藝術邊界。",
-        "genre": [
-            "獨立",
-            "民謠",
-            "爵士"
-        ],
-        "trackTitle": "你好（致遠方的你）",
-        "imageUrl": "/images-webp/musicians/5.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/namsu_ggu/",
-            "https://www.instagram.com/ddackddaguri__books/"
-        ]
-    },
-    {
-        "id": 6,
-        "name": "Kim In",
-        "shortDescription": "歌頌自然與和平的獨立音樂家，透過獨特的實驗表達對環境與生命的深厚情感",
-        "description": "探索獨特聲音並透過音樂表達對環境與和平深厚情感的獨立音樂家。她喜愛多元流派，並建立了自己的獨特音樂世界。透過受星辰與月亮啟發的抒情音樂，她以細膩的感性與深刻的歌詞傳遞和平訊息。",
-        "genre": [
-            "獨立",
-            "不插電"
-        ],
-        "trackTitle": "去看星星的人",
-        "imageUrl": "/images-webp/musicians/6.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/saltycoldanddarkkimin/"
-        ]
-    },
-    {
-        "id": 5,
-        "name": "Caru",
-        "shortDescription": "探索生態生活與和平的創作歌手，透過不插電旋律訴說共存的故事",
-        "description": "以不插電敘事音樂會聞名的創作歌手。憑藉獨特的教育背景與哲學，她不斷研究與反思工作、技能與關係，以過上自己渴望的生活，並將這些反思昇華為音樂。她細膩地描繪了夾在現實與理想之間的青年。",
-        "genre": [
-            "民謠",
-            "不插電"
-        ],
-        "trackTitle": "轉變",
-        "imageUrl": "/images-webp/musicians/7.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/caru1011/"
-        ]
-    },
-    {
-        "id": 8,
-        "name": "Leaves",
-        "shortDescription": "由 Yeoul 與 Wongirl 組成、帶有清澈共鳴的民謠二重唱，提供如同大自然呼吸般細膩的合聲",
-        "description": "基於共同音樂品味自然形成的民謠二重唱，由 Yeoul 和 Wongirl 組成。他們追求自然與純粹的感性。他們細膩且靈活的風格，如同隨風搖曳的葉子，輕輕撫慰著聽眾。",
-        "genre": [
-            "民謠",
-            "不插電"
-        ],
-        "trackTitle": "眼前的心",
-        "imageUrl": "/images-webp/musicians/8.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/yeoouul/",
-            "https://www.instagram.com/little_boy_on_the_beach/"
-        ]
-    },
-    {
-        "id": 9,
-        "name": "Yeoyu",
-        "shortDescription": "以細膩目光捕捉日常瞬間的民謠音樂家，透過溫柔嗓音與溫暖吉他分享共鳴故事",
-        "description": "以濟州為基地的民謠音樂家，以將真誠融入每個音符而聞名。她也是民謠二重唱「Yeoyu and Seolbin」的成員。她歌唱多元主題，從細小的日常故事到深刻的人生憂慮，情感細膩。柔和的嗓音與溫柔的不插電吉他是她的標誌。",
-        "genre": [
-            "民謠",
-            "不插電"
-        ],
-        "trackTitle": "首爾之夜 (feat. Jung Sumin)",
-        "imageUrl": "/images-webp/musicians/9.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/ye0y00/"
-        ]
-    },
-    {
-        "id": 10,
-        "name": "MOMO",
-        "shortDescription": "透過即興與實驗表達現代社會面貌的爵士二重唱，由 Yejin Angela Park 與 Hwang Seulgi 呈現獨特聲音",
-        "description": "由 Yejin Angela Park 與 Hwang Seulgi 組成的爵士二重唱。他們探索根植於爵士樂的多元且美妙的聲音。透過即興與實驗，他們細膩地捕捉現代社會的意識，表達平凡的日常生活以及嵌入衝突地區的緊張感。",
-        "genre": [
-            "爵士",
-            "實驗"
-        ],
-        "trackTitle": "如果這都不能忍受，還有什麼不能？",
-        "imageUrl": "/images-webp/musicians/10.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/yejangelapark/",
-            "https://www.instagram.com/basseulgi/",
-            "https://www.instagram.com/momoismothermother/"
-        ]
-    },
-    {
-        "id": 11,
-        "name": "Jai x HANASH",
-        "shortDescription": "以哀婉而有力嗓音訴說故事的 Jai，與透過實驗性合成器擴展音景的 HANASH 的相遇",
-        "description": "Jai 溫暖的嗓音與 HANASH 創新的電子音樂結合，探索新的可能性。Jai 以憂傷但有力的聲音表達日常故事，而 HANASH 則嘗試將來自世界各地的樂器與流派與電子音樂相結合。他們的相遇展示了傳統與現代的和諧融合。",
-        "genre": [
-            "電子",
-            "世界音樂"
-        ],
-        "trackTitle": "粉紅羽絨服少女",
-        "imageUrl": "/images-webp/musicians/11.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/jai.music_official/",
-            "https://www.instagram.com/_ashahn/"
-        ]
-    },
-    {
-        "id": 12,
-        "name": "Lee Seoyoung",
-        "shortDescription": "創作歌手兼森林解說員，以抒情且迷人的音色表達在森林與自然中發現的連結感",
-        "description": "正在建立獨特音樂世界的創作歌手兼森林解說員。她圍繞在自然（特別是森林）中發現的「連結」主題創作音樂。以民謠為基礎並融合電子與環境音樂，她傳遞出一種抒情而哀婉的情緒，以讓人聯想到藍色黎明天空與薄霧的獨特音色著稱。",
-        "genre": [
-            "民謠",
-            "環境音樂"
-        ],
-        "trackTitle": "我們",
-        "imageUrl": "/images-webp/musicians/12.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/leesyoung.kr/"
-        ]
-    },
-    {
-        "id": 13,
-        "name": "Bloco Jafari X PollePolle X Dongbaek Small School",
-        "shortDescription": "由 batucada 社群 Bloco Jafari 與藝術團體 PollePolle 組成的合作團隊。",
-        "description": "這個合作團隊匯集了喚醒普通人創造力的 batucada 社群 Bloco Jafari，以及致力於人類與宇宙幸福的藝術團體 PollePolle。他們的表演攜帶著團結與熱情的能量。",
-        "genre": [
-            "Batucada",
-            "表演"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/13.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/bloco_japari",
-            "https://www.instagram.com/polepole2014"
-        ]
-    },
-    {
-        "id": 14,
-        "name": "Ganghahimalaya",
-        "shortDescription": "在印度曙光村（Auroville）長大的創作歌手，透過音樂連結自然與內在生活。",
-        "description": "Ganghahimalaya 是一位獨特的創作歌手，在印度曙光村自由奔放的環境中長大。她的音樂蘊含著喜馬拉雅山的生命力與恆河的奔流平靜，她的聲音反映了一種從容穩定生活的哲學。",
-        "genre": [
-            "民謠",
-            "創作歌手",
-            "世界音樂"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/14.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/gangahimalayapark/"
-        ]
-    },
-    {
-        "id": 15,
-        "name": "Gilganeun Band Janghyeonho",
-        "shortDescription": "由創作歌手 Janghyeonho 領導的街頭樂團，自 2011 年起在勞工與抗爭現場歌唱團結之歌。",
-        "description": "以創作歌手 Janghyeonho 為中心，這支街頭樂團成立於 2011 年，十多年來一直在團結集會、紀念活動和抗爭現場演出，包括世越號真相運動和江汀反海軍基地鬥爭。他們於 2020 年發行了完整專輯《始終，完全》，並繼續歌唱和平與團結。",
-        "genre": [
-            "民謠",
-            "搖滾",
-            "抗議音樂"
-        ],
-        "trackTitle": "再次發光的我們",
-        "imageUrl": "/images-webp/musicians/15.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/gilbandjjang/"
-        ]
-    },
-    {
-        "id": 16,
-        "name": "Kim Susu",
-        "shortDescription": "濟州街頭表演界的領軍音樂家，因其自由精神被暱稱為「濟州的韓大洙」。",
-        "description": "金秀秀（Kim Susu）被認為是濟州街頭表演文化的關鍵人物之一，有時被稱為「濟州的韓大洙」。他以自己的風格重新詮釋熟悉的歌曲，透過即興演奏自由穿梭於流派之間，並活躍於濟州的現場音樂界。",
-        "genre": [
-            "獨立",
-            "民謠"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/16.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/59susu"
-        ]
-    },
-    {
-        "id": 17,
-        "name": "Namukkunmingeon",
-        "shortDescription": "以不加修飾的誠實建立自己故事的創作歌手。",
-        "description": "Namukkunmingeon 以原始的情感和他不試圖隱藏的未完成之心歌唱。他的歌曲因那種不完美而顯得更加真實，他並不提供輕易的安慰，而是願意與聽眾一同崩潰，並停留於當下。",
-        "genre": [
-            "獨立",
-            "民謠",
-            "創作歌手"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/17.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/kikoristar"
-        ]
-    },
-    {
-        "id": 18,
-        "name": "Dear Arcadian",
-        "shortDescription": "以強烈的後硬核音效面對社會荒謬的樂團。",
-        "description": "Dear Arcadian 以單曲《EXODUS》向韓國樂壇宣告。透過緊湊的饒舌、急迫的歌聲、沉重的吉他和細膩的製作，樂團引導出一種渴望，試圖從日常的不公、仇恨、歧視以及針對追夢者的輕視中解脫出來。",
-        "genre": [
-            "後硬核",
-            "搖滾"
-        ],
-        "trackTitle": "出埃及記",
-        "imageUrl": "/images-webp/musicians/18.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/deararcadian_official/"
-        ]
-    },
-    {
-        "id": 19,
-        "name": "Dog Last Page",
-        "shortDescription": "成立於 2012 年的南方搖滾與垃圾搖滾樂團，曾入圍韓國音樂大獎金屬與硬核類別。",
-        "description": "以吉他手 Hong Seonghun 為中心，Dog Last Page 將南方搖滾、垃圾搖滾和硬核龐克融合進厚重的節奏與紮實的樂團音效中。他們 2022 年的完整專輯《Drunken Dream》入圍了 2023 年韓國音樂大獎最佳金屬與硬核專輯，隨後於 2025 年發行了《Hypocrite》。",
-        "genre": [
-            "南方搖滾",
-            "垃圾搖滾",
-            "金屬",
-            "硬核"
-        ],
-        "trackTitle": "偽善者",
-        "imageUrl": "/images-webp/musicians/19.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/band_doglastpage/"
-        ]
-    },
-    {
-        "id": 20,
-        "name": "Rainbow99",
-        "shortDescription": "延續以夢幻流行、鞋瞪搖滾和環境音樂為根基的廣泛實驗的吉他手與音效設計師。",
-        "description": "Rainbow99（本名柳承賢）是 Magic Strawberry Sound 廠牌旗下的歌手、吉他手、作曲家以及音效與噪音設計師。自 2011 年首張個人 EP《Spring, Revolution》以來，他持續發布基於環境音樂、夢幻流行和鞋瞪搖滾的作品，其專輯《岳的現在》透過聲音記錄了濟州 4.3 事件的歷史遺址。",
-        "genre": [
-            "夢幻流行",
-            "鞋瞪搖滾",
-            "環境音樂",
-            "電子"
-        ],
-        "trackTitle": "岳的現在",
-        "imageUrl": "/images-webp/musicians/20.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/rainbow99gaze/"
-        ]
-    },
-    {
-        "id": 21,
-        "name": "Meridies",
-        "shortDescription": "以交響黑金屬和死亡金屬為根基的個人企劃，歌詞取材自韓國文學。",
-        "description": "Meridies 成立於 2013 年，是一個由一位音樂家負責大部分聲部（包括主唱、吉他和貝斯）的個人企劃。自 2015 年完整專輯《On A Submerged Islet》以來，該企劃將極端金屬與文學想像相結合，特別是在歌詞中使用了李箱（Yi Sang）等韓國作家的作品。",
-        "genre": [
-            "交響黑金屬",
-            "死亡金屬"
-        ],
-        "trackTitle": "翅膀",
-        "imageUrl": "/images-webp/musicians/21.webp",
-        "instagramUrls": [],
-        "youtubeUrl": "https://www.youtube.com/@meridiesmetal"
-    },
-    {
-        "id": 22,
-        "name": "Moheo",
-        "shortDescription": "結合愛爾蘭街頭表演經驗與濟州色彩的迷幻愛爾蘭民謠二重唱。",
-        "description": "Moheo 是由 Jo Mingyu 和 e_so 組成的迷幻民謠二重唱。Jo 在愛爾蘭街頭表演了兩年，而濟州出生的創作歌手 e_so 則於 2022 年在泰國偶然遇見了他。這對以莫赫懸崖命名的二重唱在 2024 年發行了首張完整專輯《萬花筒》，並迅速在音樂節巡迴中受到關注。",
-        "genre": [
-            "迷幻民謠",
-            "愛爾蘭民謠",
-            "獨立民謠"
-        ],
-        "trackTitle": "萬花筒",
-        "imageUrl": "/images-webp/musicians/22.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/moher_____/"
-        ]
-    },
-    {
-        "id": 23,
-        "name": "Mwing",
-        "shortDescription": "將值得記憶的瞬間化為歌曲的藝術家與活動家。",
-        "description": "自 2015 年以來，Mwing 一直以藝術家和活動家的身份創作與演唱歌曲。其音樂植根於值得記憶的瞬間，並作為一種安慰提供，同時夢想著一個每個人都能共同幸福生活而非孤獨的世界。",
-        "genre": [
-            "獨立",
-            "民謠",
-            "創作歌手"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/23.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/mmuueenngg/"
-        ]
-    },
-    {
-        "id": 24,
-        "name": "Materials Found",
-        "shortDescription": "紮根於旋律金屬核的五人樂團，曾入圍 2025 年韓國音樂大獎。",
-        "description": "Materials Found 成立於 2022 年，是一支融合了旋律金屬核、交響死亡核和後搖滾的五人樂團。他們的首張 EP《電球》於 2024 年發行，並獲得 2025 年韓國音樂大獎最佳金屬與硬核專輯提名，同時獲得 Music Y 的年終認可。",
-        "genre": [
-            "旋律金屬核",
-            "交響死亡核",
-            "後搖滾"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/24.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/materials_pound_official/"
-        ]
-    },
-    {
-        "id": 25,
-        "name": "Bulgasari Impromptu Session",
-        "shortDescription": "自 2003 年以來已舉辦超過 300 場舞台的長青前衛、即興及實驗藝術表演系列。",
-        "description": "Bulgasari Impromptu Session 於 2003 年 2 月在首爾新村的 Rush 開始，源於日本音樂家 Satoyuki 的建議。此後，它成為韓國前衛、即興及實驗藝術的關鍵平台之一，在呈現音樂、舞蹈和表演的同時，透過 300 多場活動培育年輕的實驗藝術家。",
-        "genre": [
-            "即興音樂",
-            "實驗",
-            "前衛"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/25.webp",
-        "instagramUrls": []
-    },
-    {
-        "id": 26,
-        "name": "Sabaha",
-        "shortDescription": "成立於 2023 年的厄運與無人機金屬企劃，透過戲劇性的服裝表演探索破壞與絕望。",
-        "description": "Sabaha 是由一位在 420Saigong 和 Haaaazy Shaaaaman 等地下樂團擁有豐富歷史的音樂家於 2023 年 5 月推出的厄運與無人機金屬企劃。受 Sunn O)))、Earth、Electric Wizard、Sleep 和 Om 的影響，該企劃混合了無人機金屬、迷幻厄運、污泥金屬、碾核和自由即興，並於 2024 年發行了首張完整專輯《THUNDER ROCKS》。",
-        "genre": [
-            "厄運金屬",
-            "無人機金屬",
-            "污泥金屬"
-        ],
-        "trackTitle": "雷岩",
-        "imageUrl": "/images-webp/musicians/26.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/sabbaha_kr"
-        ]
-    },
-    {
-        "id": 27,
-        "name": "Site with Jet Sizer",
-        "shortDescription": "全球冠軍節奏口技手 Sight 與充滿電能的外行 Zsthyger 的聯合表演。",
-        "description": "這次合作聯合了強大節奏口技團體 TYTD 的成員 Sight 與不妥寫的金屬異類 Zsthyger。他們共同帶來一個充滿技術精準度、戲劇張力以及節奏口技與重型音樂不尋常交匯點的舞台。",
-        "genre": [
-            "節奏口技",
-            "金屬"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/27.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/beatbox_sight",
-            "https://www.instagram.com/zsthyger/"
-        ]
-    },
-    {
-        "id": 29,
-        "name": "Seongyeong",
-        "shortDescription": "創作歌手兼陶瓷娃娃藝術家。",
-        "description": "宣慶（Seongyeong）既是一位創作歌手，也是一位受我們周圍自然與生物形象啟發而創作陶瓷娃娃的藝術家。",
-        "genre": [
-            "創作歌手",
-            "民謠"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/29.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/__sun_kyoung/"
-        ]
-    },
-    {
-        "id": 30,
-        "name": "Son Jiyeon",
-        "shortDescription": "常被稱為「韓國的瓊妮·蜜雪兒」（Joni Mitchell）的民謠創作歌手，以其獨特的嗓音和創作聞名。",
-        "description": "由第一代民謠大師梁秉集發掘，孫智妍（Son Jiyeon）以 2003 年的首張專輯《我的人生故事》開始了她的職業生涯。她建立了一個極具原創性且難以輕易分類的音樂世界，並以詩意的感性、清晰與誠實譜寫表達人生的歌曲。",
-        "genre": [
-            "民謠",
-            "創作歌手"
-        ],
-        "trackTitle": "實話",
-        "imageUrl": "/images-webp/musicians/30.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/jy_son_/"
-        ]
-    },
-    {
-        "id": 31,
-        "name": "Son Hyunsuk",
-        "shortDescription": "從民眾歌謠運動中脫穎而出，以《清溪川 8 街》廣為人知的創作歌手。",
-        "description": "孫賢淑（Son Hyunsuk）在崇實大學的民眾歌謠團體 Dume 開始製作音樂。後來她作為搖滾團體 Cheonjiin 的客座主唱，憑藉歌曲《清溪川 8 街》引起廣泛關注，此後發行了多張專輯，同時也向韓國觀眾介紹緬甸等國家的民眾歌曲。",
-        "genre": [
-            "民眾歌謠",
-            "民謠",
-            "創作歌手"
-        ],
-        "trackTitle": "清溪川 8 街",
-        "imageUrl": "/images-webp/musicians/31.webp",
-        "instagramUrls": []
-    },
-    {
-        "id": 32,
-        "name": "Song Insang",
-        "shortDescription": "透過歌曲描繪生活片段與珍貴回憶的創作歌手。",
-        "description": "宋仁相（Song Insang）在山村與海邊之間長大，將那些早期對大自然的印象帶入音樂中。在中學自學吉人和作曲後，他發行了 EP《顏料》，並持續創作由童年記憶、城市生活和家庭合作塑造的歌曲。",
-        "genre": [
-            "民謠",
-            "創作歌手"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/32.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/song_insang"
-        ]
-    },
-    {
-        "id": 33,
-        "name": "Song Inhyo",
-        "shortDescription": "透過平實的旋律與誠實的歌詞記錄生活經驗與內在反思的創作歌手。",
-        "description": "宋仁孝（Song Inhyo）將個人經驗與內在反思轉化為音樂語言。這些歌曲並非依賴風格化的展示，而是建立在生活感知、清晰的旋律、誠實的文字和克制的表達之上，為聽眾提供另一種面對生活的方式。",
-        "genre": [
-            "民謠",
-            "創作歌手"
-        ],
-        "trackTitle": "天地之間",
-        "imageUrl": "/images-webp/musicians/33.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/song_inhyo/"
-        ]
-    },
-    {
-        "id": 34,
-        "name": "Samgak Jeonpasa",
-        "shortDescription": "電子音樂家兼科幻作家 Jang Hojin 的個人企劃，透過實驗電子音樂表達社會的結構性矛盾。",
-        "description": "三角電波（Samgak Jeonpasa）是電子音樂家兼科幻作家 Jang Hojin 的個人企劃。受 Depeche Mode 和 Vangelis 等藝術家的啟發，他追求不可預測的聲音與非線性構思，並將韓國社會從士紳化到地方抗爭的結構性矛盾融入實驗電子音樂中。",
-        "genre": [
-            "電子",
-            "實驗"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/34.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/zeonpasa/"
-        ]
-    },
-    {
-        "id": 35,
-        "name": "Anti Stress",
-        "shortDescription": "由有機龐克民謠藝術家 Sai 與鞋瞪搖滾吉他手 Rainbow99 組成的龐克樂團。",
-        "description": "Anti Stress 匯集了以在抗爭現場和農村社區演唱原創歌曲聞名的 Sai，以及韓國傑出的吉他手之一、擁有涵蓋環境與生成音樂的廣泛實驗調色盤的 Rainbow99。他們的合作將民謠精神與聲音實驗轉化為粗獷、高能量的龐克。",
-        "genre": [
-            "龐克",
-            "民謠龐克"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/35.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/be2in2023",
-            "https://www.instagram.com/rainbow99gaze/"
-        ]
-    },
-    {
-        "id": 36,
-        "name": "Oh Jaehwan",
-        "shortDescription": "透過音樂支持多場抗爭的民謠創作歌手，自首屆起便加入江汀和平音樂營。",
-        "description": "吳在煥（Oh Jaehwan）是一位長期透過音樂表達對社會抗爭支持的民謠創作歌手。他發行了包括《叫我做的我就做得好》和《島之歌》在內的專輯，並自江汀和平音樂營第一年起便持續參與。",
-        "genre": [
-            "民謠",
-            "創作歌手"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/36.webp",
-        "instagramUrls": []
-    },
-    {
-        "id": 37,
-        "name": "On Gayeong",
-        "shortDescription": "以釜山為基地的創作歌手，以溫暖的嗓音創作並演唱簡潔的不插電歌曲。",
-        "description": "溫佳英（On Gayeong，本名裴佳英）形容自己是一個在準備體面的夜晚時唱歌的人。在與不插電樂團 Chocolate Bench 及銅管團體 Band Heung 合作後，她以個人藝術家身份繼續發展，於 2023 年發行單曲《Who you are》，並透過 100 多場現場表演積累經驗。",
-        "genre": [
-            "不插電",
-            "民謠",
-            "創作歌手"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/37.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/on.gayoung/"
-        ]
-    },
-    {
-        "id": 38,
-        "name": "Yeoul",
-        "shortDescription": "音色清澈的民謠音樂家，既是個人藝術家，也是二重唱 Leaves 的成員。",
-        "description": "呂蔚（Yeoul）與 Wongirl 在民謠二重唱 Leaves 中演出，同時也作為個人創作歌手活動。憑藉不插電吉他和清澈的嗓音，她透過微小的日常瞬間抒情地歌唱和平，她與江汀和平社群也有著深厚的連結，曾作為設計工作人員參與了第一屆音樂營。",
-        "genre": [
-            "民謠",
-            "不插電"
-        ],
-        "trackTitle": "眼前的心",
-        "imageUrl": "/images-webp/musicians/40.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/yeoouul/"
-        ]
-    },
-    {
-        "id": 39,
-        "name": "Yoon Soong",
-        "shortDescription": "抒情地追溯生命、死亡以及在絕望中前行旅程的民謠創作歌手。",
-        "description": "自 2021 年 EP《除了我沒有人能打開那扇門出來》大獲成功以來，尹崇（Yoon Soong）持續發布私密的民謠紀錄。她的作品描繪了從黑暗森林到開闊海洋、從黎明到早晨的抒情旅程，將痛苦與堅持轉化為歌。",
-        "genre": [
-            "民謠",
-            "不插電",
-            "創作歌手"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/39.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/cyoonseung/"
-        ]
-    },
-    {
-        "id": 40,
-        "name": "Yoon Seonae",
-        "shortDescription": "在 1980 年代民主化運動前線歌唱的民眾歌謠標誌性嗓音。",
-        "description": "尹善愛（Yoon Seonae）出身於首爾大學的歌唱團體 Meaeri 和學生聯盟 Saebyeok，成為 1980 年代民主化運動期間民眾歌謠的定義性女性嗓音之一。她以《當那天到來》等歷史性歌曲聞名，並透過後來的個人專輯延續其藝術生命。",
-        "genre": [
-            "民謠",
-            "民眾歌謠"
-        ],
-        "trackTitle": "當那天到來",
-        "imageUrl": "/images-webp/musicians/40.webp",
-        "instagramUrls": []
-    },
-    {
-        "id": 42,
-        "name": "Lim Jeongdeuk",
-        "shortDescription": "以在韓國各處抗爭現場歌唱及歌曲《鹽花樹》聞名的民眾歌謠創作歌手。",
-        "description": "任正得（Lim Jeongdeuk）在嶺南大學的 Ye Saga Rak 歌唱團體開始音樂活動，自 2011 年出道以來一直作為民眾歌手工作。他在勞工鬥爭、反迫遷抗爭和世越號家屬抗議現場演出，親自創作、作曲並製作大部分作品，《鹽花樹》是其最著名的歌曲之一。",
-        "genre": [
-            "民眾音樂",
-            "民謠",
-            "創作歌手"
-        ],
-        "trackTitle": "鹽花樹",
-        "imageUrl": "/images-webp/musicians/42.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/imjeongdeuk/"
-        ]
-    },
-    {
-        "id": 43,
-        "name": "Joon Lee",
-        "shortDescription": "來自洛杉磯、往返於首爾與濟州之間的創作歌手。",
-        "description": "Joon Lee 在加州洛杉磯長大並學習吉他，並在美國、首爾和濟州持續其音樂生活。受民謠、藍調、搖滾和流行音樂影響，他為自己的創作帶來了廣泛的音調範圍。",
-        "genre": [
-            "獨立"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/43.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/joonlee_jeju/"
-        ]
-    },
-    {
-        "id": 44,
-        "name": "Joyakgol",
-        "shortDescription": "和平活動家兼音樂家，Hot Pink Dolphins 共同代表，深度參與江汀和平運動。",
-        "description": "鵝卵石（Joyakgol）是一位無政府主義活動家兼音樂家，曾參與大秋里、新萬金和江汀的和平運動。在 2011 年江汀反海軍基地鬥爭期間遇到一群印太瓶鼻海豚後，他共同創立了海洋環保團體 Hot Pink Dolphins，並協助發起了亞洲首個水族館海豚解放運動。",
-        "genre": [
-            "獨立",
-            "民謠",
-            "龐克"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/44.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/dopeheadzo1"
-        ]
-    },
-    {
-        "id": 45,
-        "name": "Jo Seongil",
-        "shortDescription": "前民眾音樂團體 Kkotdaji 成員，現於濟州歌唱生命與希望。",
-        "description": "趙成日（Jo Seongil）從 1998 年開始在民眾音樂團體 Kkotdaji 擔任核心主唱十四年，並創作了《希望》、《口哨》和《戰士》等歌曲。2012 年單飛後定居濟州西歸浦，並持續發布在沉重現實中提供安慰的紀錄。",
-        "genre": [
-            "民謠",
-            "民眾音樂",
-            "創作歌手"
-        ],
-        "trackTitle": "發動了",
-        "imageUrl": "/images-webp/musicians/45.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/chosungil99/"
-        ]
-    },
-    {
-        "id": 46,
-        "name": "Jinukonda",
-        "shortDescription": "擁有一副低沉沙啞嗓音的鄉村藍調音樂家，自 2018 年起在弘大樂壇歌唱現代哥德故事。",
-        "description": "Jinukonda 是一位紮根於鄉村藍調、擁有一副低沉沙啞嗓音的音樂家。自 2018 年起活躍於弘大，他將現代哥德故事轉化為音樂，歌唱被孤立在龐大首爾市內的人們的生活。",
-        "genre": [
-            "鄉村藍調",
-            "哥德民謠"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/46.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/jinukonda"
-        ]
-    },
-    {
-        "id": 47,
-        "name": "Chan",
-        "shortDescription": "演奏西塔琴與班蘇里笛（bansuri）的冥想音樂家。",
-        "description": "Chan 是一位演奏西塔琴與班蘇里笛的冥想音樂家。被印度聲音安靜的深度所吸引，他向多位老師學習，發行了多張冥想音樂專輯，並經營著 YouTube 頻道 Lotus Relaxing Music。",
-        "genre": [
-            "冥想音樂",
-            "世界音樂"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/47.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/chanbhaiya"
-        ]
-    },
-    {
-        "id": 48,
-        "name": "Choi Sangdon",
-        "shortDescription": "透過音樂朝聖發展創作與表演的創作歌手。",
-        "description": "崔尚敦（Choi Sangdon）是一位作品源於音樂朝聖的創作歌手。他與負責手風琴的金剛坤（Kim Ganggon）和負責演唱的趙愛蘭（Jo Aeran）共同延續了 Sanorakhoe 企劃，並與江汀運動保持著持續的團結。",
-        "genre": [
-            "獨立"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/48.webp",
-        "instagramUrls": []
-    },
-    {
-        "id": 49,
-        "name": "Chichi",
-        "shortDescription": "將在 2026 江汀和平音樂營演出。",
-        "description": "Chichi 是 2026 江汀和平音樂營陣容的一部分。",
-        "genre": [
-            "獨立"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/49.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/blackaftermoon"
-        ]
-    },
-    {
-        "id": 50,
-        "name": "Kita & Olgen",
-        "shortDescription": "將在 2026 江汀和平音樂營演出的二重唱。",
-        "description": "Kita & Olgen 以二重唱形式出現在 2026 江汀和平音樂營。",
-        "genre": [
-            "獨立",
-            "不插電",
-            "民謠"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/50.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/kita_olgen"
-        ]
-    },
-    {
-        "id": 51,
-        "name": "Taehyeon",
-        "shortDescription": "深度沉浸於牙買加根源雷鬼（roots reggae）的創作歌手，將類比雷鬼音效與和平訊息轉化為韓國感性。",
-        "description": "Taehyeon 是一位有機創作歌手，其音效自然融合了根源雷鬼、民謠、藍調與傳統音樂。在倫敦愛上雷鬼後，他回到韓國擔任主唱與吉他手，後來移居濟州，並以 Uncle Bongo 之名擴展其作為選曲人（selector）與音響工程師的工作。",
-        "genre": [
-            "雷鬼",
-            "民謠",
-            "藍調"
-        ],
-        "trackTitle": "人民即國家",
-        "imageUrl": "/images-webp/musicians/51.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/tehiun/"
-        ]
-    },
-    {
-        "id": 52,
-        "name": "Pium",
-        "shortDescription": "深沉低音與明亮夢幻高音並存的創作歌手。",
-        "description": "Pium 在高中時期便作為搖滾樂團主唱積累了早期舞台經驗。離開英文系後，她在首爾藝術大學學習聲樂，開始學習吉他並以自己的聲音創作歌曲，現在穩定發布自創作品，並定期在弘大與江南演出。",
-        "genre": [
-            "獨立"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/52.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/a_nicefolksong"
-        ]
-    },
-    {
-        "id": 53,
-        "name": "Howaho",
-        "shortDescription": "擁有詩意歌詞與沉重音景的二重唱，曾入圍韓國音樂大獎最佳民謠專輯。",
-        "description": "Howaho 是由同樣作為創作歌手活動的 eeeho 和 Mohho 在被彼此獨特的氛圍啟發後組成的。他們共同創作所有歌曲，結合了詩意的歌詞、沉重的電吉他、電子節拍與環境音景，其首張專輯《不明來源》入圍了第 16 屆韓國音樂大獎最佳民謠專輯。",
-        "genre": [
-            "獨立",
-            "民謠",
-            "另類"
-        ],
-        "trackTitle": "浪尖",
-        "imageUrl": "/images-webp/musicians/53.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/howaho_official/"
-        ]
-    },
-    {
-        "id": 54,
-        "name": "Honey Whiskey",
-        "shortDescription": "以水原為基地的多國籍現場樂團。",
-        "description": "Honey Whiskey 是一支多國籍樂團，擔任水原精釀啤酒與現場音樂酒吧 Alleyway Taphouse 的官方駐場樂團。樂團以現場表演為核心，演奏風格廣泛。",
-        "genre": [
-            "搖滾",
-            "現場樂團"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/54.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/honeywhiskeysuwon/"
-        ]
-    },
-    {
-        "id": 55,
-        "name": "Heo Jeonghyeok",
-        "shortDescription": "透過柳在夏音樂大賽獲得認可的民謠創作歌手，其完整專輯《萌芽之日》入圍最佳民謠專輯。",
-        "description": "Heo Jeonghyeok（也以 son of florist 為化名演出）在 2017 年獲得第 28 屆柳在夏音樂大賽銅獎後受到廣泛關注。他也在二重唱 Siot and Wind 中工作，其 2023 年首張完整專輯《萌芽之日》入圍了 2024 年韓國音樂大獎最佳民謠專輯。",
-        "genre": [
-            "民謠",
-            "創作歌手"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/55.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/_hyuk_e"
-        ]
-    },
-    {
-        "id": 56,
-        "name": "Hwang Myeongha",
-        "shortDescription": "被稱為「韓國的莎拉·拉克蘭」（Sarah McLachlan）的女性民謠創作歌手，擁有超過 1,000 場現場表演經歷。",
-        "description": "黃明河（Hwang Myeongha）以罕見且迷人的音色聞名，這為她贏得了「韓國的莎拉·拉克蘭」的暱稱。憑藉 1,000 多場現場表演的經驗，她呈現了深沉療癒的舞台和獨特的民謠音效。",
-        "genre": [
-            "民謠",
-            "不插電"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/56.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/hwang_myungha/"
-        ]
-    },
-    {
-        "id": 57,
-        "name": "Ha Juwon",
-        "shortDescription": "演奏手碟（handpan）遊走於世界各地的音樂家。",
-        "description": "夏珠元（Ha Juwon，也稱為 Woni）是一位遊走於世界各地演奏手碟的音樂家。",
-        "genre": [
-            "手碟",
-            "世界音樂"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/57.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/wonn__e"
-        ]
-    },
-    {
-        "id": 58,
-        "name": "Ppalajida X Dongbaek Small School",
-        "shortDescription": "以濟州為基地的 batucada 團體 Ppalajida 與專注於生態、人權與和平的替代學校冬柏小學（Dongbaek Small School）的合作舞台。",
-        "description": "Ppalajida 是自 2022 年起活躍的濟州 batucada 樂團，演奏紮根於巴西傳統的集體森巴打擊樂。冬柏小學是濟州的一所替代學校，圍繞生態、人權與和平開展專案式教育。他們共同呈現了一種由當地社區與年輕人創造的和平節奏。",
-        "genre": [
-            "Batucada",
-            "打擊樂",
-            "世界音樂"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/58.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/pelagida_oficial",
-            "https://www.instagram.com/dongbaek_school/"
-        ]
-    },
-    {
-        "id": 59,
-        "name": "HANASH",
-        "shortDescription": "將世界各地的樂器與流派與電子音樂相融合的實驗音效藝術家。",
-        "description": "HANASH 透過將來自世界許多地區的樂器與流派與電子音樂相結合，創造實驗性的聲音。憑藉冒險性的合成與不斷擴展的音景，作品尋求傳統與當下的和諧相遇。",
-        "genre": [
-            "電子",
-            "世界音樂",
-            "實驗"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/59.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/_ashahn/"
-        ]
-    },
-    {
-        "id": 60,
-        "name": "TAGI",
-        "shortDescription": "由日本手碟演奏者 Taka 與韓國傳統音樂家 Mingi 組成的二重唱，將手碟與笙、篳篥和大笒結合。",
-        "description": "TAGI 是由日本手碟演奏者 Taka 與韓國傳統管樂演奏者 Mingi 組成的二重唱。名字結合了他們名字的首音節，同時讓人聯想到韓語中的「搭乘」，寄託著聲音將隨風、河流與空氣傳播的希望。他們共同跨越東亞傳統與當代音效之間的邊界。",
-        "genre": [
-            "世界音樂",
-            "韓國傳統音樂",
-            "手碟"
-        ],
-        "trackTitle": "",
-        "imageUrl": "/images-webp/musicians/60.webp",
-        "instagramUrls": [
-            "https://www.instagram.com/tagi_sound"
-        ]
-    }
+  {
+    "id": 1,
+    "name": "Project Around Surround",
+    "shortDescription": "追求東方神祕感與現代音效和諧的跨界三人組合",
+    "description": "追求東方神祕感與現代音效和諧的三人組合。Ritesh Maharjan 富有情感的西塔琴、康慶德（Kang Kyungdeok）創新且精確的音效設計與工程，以及朴仁（Park In）的創意製作，共同創造出深邃的音樂世界。透過融合古代印度拉格（raga）、冥想音樂與現代環境音樂，他們構建了獨特的音景，表達了濟州島的自然與和平。",
+    "genre": [
+      "環境音樂",
+      "世界音樂"
+    ],
+    "trackTitle": "當我望向地平線",
+    "imageUrl": "/images-webp/musicians/1.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/around_surround/",
+      "https://www.instagram.com/lamp.sound/",
+      "https://www.instagram.com/innnbar/"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Jeong Jinseok",
+    "shortDescription": "被稱為「韶成里之星」，前視覺藝術家轉型的和平音樂家與活動家，融合慶尚道方言與藍調以傳遞和平訊息",
+    "description": "被稱為「韶成里之星」的鄭鎮錫（Jeong Jinseok）最初學習美術。世越號災難後，他開始關注社會問題，並在韶成里部署薩德（THAAD）期間，與居民一同反對暴力與羞辱。他將戶籍遷至韶成里，並持續參與和平活動近八年，其結合慶尚道方言與藍調的獨特音樂風格備受關注。",
+    "genre": [
+      "藍調",
+      "民謠"
+    ],
+    "trackTitle": "這是你的土地還是我的",
+    "imageUrl": "/images-webp/musicians/2.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/vincittutto/"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Kim Dongsan & Blueeewoot",
+    "shortDescription": "以水原為基地的民謠與藍調音樂家金東山（Kim Dongsan）及其樂團 Blueeewoot。他關於邊緣化故事的音樂與樂團紮實的演奏相得益彰。",
+    "description": "金東山是以水原為基地的民謠與藍調音樂家，與其樂團 Blueeewoot 一同演出。他被暱稱為「韓國的伍迪·蓋瑟瑞」（Woody Guthrie），因其充滿對社會深刻洞察的音樂而受到關注。他歌唱被裁員的工人與士紳化（gentrification）的受害者，並在水原長安門附近經營一家名為「Long Player」的黑膠與回收店，將其發展為當地的文化空間。",
+    "genre": [
+      "民謠",
+      "藍調"
+    ],
+    "trackTitle": "浪",
+    "imageUrl": "/images-webp/musicians/3.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/long_player_/",
+      "https://www.instagram.com/dongsan_blueeewoot/"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "MoredoSaturday",
+    "shortDescription": "由兩位在江汀和平運動中相遇的音樂家組成的民謠二重唱，透過自然與純粹的感性傳遞和平訊息",
+    "description": "在江汀村組成的二人民謠組合，由 More 和 Doto 組成。正如其名，他們追求自然與純粹的感性。他們細膩且靈活的風格，如同隨風搖曳的葉子，輕輕撫慰著聽眾。",
+    "genre": [
+      "民謠",
+      "不插電"
+    ],
+    "trackTitle": "我們將為你的自由啟航",
+    "imageUrl": "/images-webp/musicians/4.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/saturday_moredo/"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Namsu",
+    "shortDescription": "跨足獨立音樂到爵士樂的女歌手，經營文化空間「啄木鳥書店」並連結音樂與文學",
+    "description": "涵蓋獨立、民謠/藍調、爵士與新世紀音樂的全才女歌手。她經營文化空間「啄木鳥書店」，創造音樂與文學的交集。她旨在透過將音樂與視覺藝術及表演結合，擴展其藝術邊界。",
+    "genre": [
+      "獨立",
+      "民謠",
+      "爵士"
+    ],
+    "trackTitle": "你好（致遠方的你）",
+    "imageUrl": "/images-webp/musicians/5.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/namsu_ggu/",
+      "https://www.instagram.com/ddackddaguri__books/"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Kim In",
+    "shortDescription": "歌頌自然與和平的獨立音樂家，透過獨特的實驗表達對環境與生命的深厚情感",
+    "description": "探索獨特聲音並透過音樂表達對環境與和平深厚情感的獨立音樂家。她喜愛多元流派，並建立了自己的獨特音樂世界。透過受星辰與月亮啟發的抒情音樂，她以細膩的感性與深刻的歌詞傳遞和平訊息。",
+    "genre": [
+      "獨立",
+      "不插電"
+    ],
+    "trackTitle": "去看星星的人",
+    "imageUrl": "/images-webp/musicians/6.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/saltycoldanddarkkimin/"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Caru",
+    "shortDescription": "探索生態生活與和平的創作歌手，透過不插電旋律訴說共存的故事",
+    "description": "以不插電敘事音樂會聞名的創作歌手。憑藉獨特的教育背景與哲學，她不斷研究與反思工作、技能與關係，以過上自己渴望的生活，並將這些反思昇華為音樂。她細膩地描繪了夾在現實與理想之間的青年。",
+    "genre": [
+      "民謠",
+      "不插電"
+    ],
+    "trackTitle": "轉變",
+    "imageUrl": "/images-webp/musicians/7.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/caru1011/"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Leaves",
+    "shortDescription": "由 Yeoul 與 Wongirl 組成、帶有清澈共鳴的民謠二重唱，提供如同大自然呼吸般細膩的合聲",
+    "description": "基於共同音樂品味自然形成的民謠二重唱，由 Yeoul 和 Wongirl 組成。他們追求自然與純粹的感性。他們細膩且靈活的風格，如同隨風搖曳的葉子，輕輕撫慰著聽眾。",
+    "genre": [
+      "民謠",
+      "不插電"
+    ],
+    "trackTitle": "眼前的心",
+    "imageUrl": "/images-webp/musicians/8.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/yeoouul/",
+      "https://www.instagram.com/little_boy_on_the_beach/"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Yeoyu",
+    "shortDescription": "以細膩目光捕捉日常瞬間的民謠音樂家，透過溫柔嗓音與溫暖吉他分享共鳴故事",
+    "description": "以濟州為基地的民謠音樂家，以將真誠融入每個音符而聞名。她也是民謠二重唱「Yeoyu and Seolbin」的成員。她歌唱多元主題，從細小的日常故事到深刻的人生憂慮，情感細膩。柔和的嗓音與溫柔的不插電吉他是她的標誌。",
+    "genre": [
+      "民謠",
+      "不插電"
+    ],
+    "trackTitle": "首爾之夜 (feat. Jung Sumin)",
+    "imageUrl": "/images-webp/musicians/9.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/ye0y00/"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "MOMO",
+    "shortDescription": "透過即興與實驗表達現代社會面貌的爵士二重唱，由 Yejin Angela Park 與 Hwang Seulgi 呈現獨特聲音",
+    "description": "由 Yejin Angela Park 與 Hwang Seulgi 組成的爵士二重唱。他們探索根植於爵士樂的多元且美妙的聲音。透過即興與實驗，他們細膩地捕捉現代社會的意識，表達平凡的日常生活以及嵌入衝突地區的緊張感。",
+    "genre": [
+      "爵士",
+      "實驗"
+    ],
+    "trackTitle": "如果這都不能忍受，還有什麼不能？",
+    "imageUrl": "/images-webp/musicians/10.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/yejangelapark/",
+      "https://www.instagram.com/basseulgi/",
+      "https://www.instagram.com/momoismothermother/"
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Jai x HANASH",
+    "shortDescription": "以哀婉而有力嗓音訴說故事的 Jai，與透過實驗性合成器擴展音景的 HANASH 的相遇",
+    "description": "Jai 溫暖的嗓音與 HANASH 創新的電子音樂結合，探索新的可能性。Jai 以憂傷但有力的聲音表達日常故事，而 HANASH 則嘗試將來自世界各地的樂器與流派與電子音樂相結合。他們的相遇展示了傳統與現代的和諧融合。",
+    "genre": [
+      "電子",
+      "世界音樂"
+    ],
+    "trackTitle": "粉紅羽絨服少女",
+    "imageUrl": "/images-webp/musicians/11.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/jai.music_official/",
+      "https://www.instagram.com/_ashahn/"
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Lee Seoyoung",
+    "shortDescription": "創作歌手兼森林解說員，以抒情且迷人的音色表達在森林與自然中發現的連結感",
+    "description": "正在建立獨特音樂世界的創作歌手兼森林解說員。她圍繞在自然（特別是森林）中發現的「連結」主題創作音樂。以民謠為基礎並融合電子與環境音樂，她傳遞出一種抒情而哀婉的情緒，以讓人聯想到藍色黎明天空與薄霧的獨特音色著稱。",
+    "genre": [
+      "民謠",
+      "環境音樂"
+    ],
+    "trackTitle": "我們",
+    "imageUrl": "/images-webp/musicians/12.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/leesyoung.kr/"
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Bloco Jafari X PollePolle X Dongbaek Small School",
+    "shortDescription": "由 batucada 社群 Bloco Jafari 與藝術團體 PollePolle 組成的合作團隊。",
+    "description": "這個合作團隊匯集了喚醒普通人創造力的 batucada 社群 Bloco Jafari，以及致力於人類與宇宙幸福的藝術團體 PollePolle。他們的表演攜帶著團結與熱情的能量。",
+    "genre": [
+      "Batucada",
+      "表演"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/13.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/bloco_japari",
+      "https://www.instagram.com/polepole2014"
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Ganghahimalaya",
+    "shortDescription": "在印度曙光村（Auroville）長大的創作歌手，透過音樂連結自然與內在生活。",
+    "description": "Ganghahimalaya 是一位獨特的創作歌手，在印度曙光村自由奔放的環境中長大。她的音樂蘊含著喜馬拉雅山的生命力與恆河的奔流平靜，她的聲音反映了一種從容穩定生活的哲學。",
+    "genre": [
+      "民謠",
+      "創作歌手",
+      "世界音樂"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/14.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/gangahimalayapark/"
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Gilganeun Band Janghyeonho",
+    "shortDescription": "由創作歌手 Janghyeonho 領導的街頭樂團，自 2011 年起在勞工與抗爭現場歌唱團結之歌。",
+    "description": "以創作歌手 Janghyeonho 為中心，這支街頭樂團成立於 2011 年，十多年來一直在團結集會、紀念活動和抗爭現場演出，包括世越號真相運動和江汀反海軍基地鬥爭。他們於 2020 年發行了完整專輯《始終，完全》，並繼續歌唱和平與團結。",
+    "genre": [
+      "民謠",
+      "搖滾",
+      "抗議音樂"
+    ],
+    "trackTitle": "再次發光的我們",
+    "imageUrl": "/images-webp/musicians/15.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/gilbandjjang/"
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Kim Susu",
+    "shortDescription": "濟州街頭表演界的領軍音樂家，因其自由精神被暱稱為「濟州的韓大洙」。",
+    "description": "金秀秀（Kim Susu）被認為是濟州街頭表演文化的關鍵人物之一，有時被稱為「濟州的韓大洙」。他以自己的風格重新詮釋熟悉的歌曲，透過即興演奏自由穿梭於流派之間，並活躍於濟州的現場音樂界。",
+    "genre": [
+      "獨立",
+      "民謠"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/16.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/59susu"
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Namukkunmingeon",
+    "shortDescription": "以不加修飾的誠實建立自己故事的創作歌手。",
+    "description": "Namukkunmingeon 以原始的情感和他不試圖隱藏的未完成之心歌唱。他的歌曲因那種不完美而顯得更加真實，他並不提供輕易的安慰，而是願意與聽眾一同崩潰，並停留於當下。",
+    "genre": [
+      "獨立",
+      "民謠",
+      "創作歌手"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/17.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/kikoristar"
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Dear Arcadian",
+    "shortDescription": "以強烈的後硬核音效面對社會荒謬的樂團。",
+    "description": "Dear Arcadian 以單曲《EXODUS》向韓國樂壇宣告。透過緊湊的饒舌、急迫的歌聲、沉重的吉他和細膩的製作，樂團引導出一種渴望，試圖從日常的不公、仇恨、歧視以及針對追夢者的輕視中解脫出來。",
+    "genre": [
+      "後硬核",
+      "搖滾"
+    ],
+    "trackTitle": "出埃及記",
+    "imageUrl": "/images-webp/musicians/18.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/deararcadian_official/"
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Dog Last Page",
+    "shortDescription": "成立於 2012 年的南方搖滾與垃圾搖滾樂團，曾入圍韓國音樂大獎金屬與硬核類別。",
+    "description": "以吉他手 Hong Seonghun 為中心，Dog Last Page 將南方搖滾、垃圾搖滾和硬核龐克融合進厚重的節奏與紮實的樂團音效中。他們 2022 年的完整專輯《Drunken Dream》入圍了 2023 年韓國音樂大獎最佳金屬與硬核專輯，隨後於 2025 年發行了《Hypocrite》。",
+    "genre": [
+      "南方搖滾",
+      "垃圾搖滾",
+      "金屬",
+      "硬核"
+    ],
+    "trackTitle": "偽善者",
+    "imageUrl": "/images-webp/musicians/19.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/band_doglastpage/"
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Rainbow99",
+    "shortDescription": "延續以夢幻流行、鞋瞪搖滾和環境音樂為根基的廣泛實驗的吉他手與音效設計師。",
+    "description": "Rainbow99（本名柳承賢）是 Magic Strawberry Sound 廠牌旗下的歌手、吉他手、作曲家以及音效與噪音設計師。自 2011 年首張個人 EP《Spring, Revolution》以來，他持續發布基於環境音樂、夢幻流行和鞋瞪搖滾的作品，其專輯《岳的現在》透過聲音記錄了濟州 4.3 事件的歷史遺址。",
+    "genre": [
+      "夢幻流行",
+      "鞋瞪搖滾",
+      "環境音樂",
+      "電子"
+    ],
+    "trackTitle": "岳的現在",
+    "imageUrl": "/images-webp/musicians/20.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/rainbow99gaze/"
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Meridies",
+    "shortDescription": "以交響黑金屬和死亡金屬為根基的個人企劃，歌詞取材自韓國文學。",
+    "description": "Meridies 成立於 2013 年，是一個由一位音樂家負責大部分聲部（包括主唱、吉他和貝斯）的個人企劃。自 2015 年完整專輯《On A Submerged Islet》以來，該企劃將極端金屬與文學想像相結合，特別是在歌詞中使用了李箱（Yi Sang）等韓國作家的作品。",
+    "genre": [
+      "交響黑金屬",
+      "死亡金屬"
+    ],
+    "trackTitle": "翅膀",
+    "imageUrl": "/images-webp/musicians/21.webp",
+    "instagramUrls": [],
+    "youtubeUrl": "https://www.youtube.com/@meridiesmetal"
+  },
+  {
+    "id": 22,
+    "name": "Moheo",
+    "shortDescription": "結合愛爾蘭街頭表演經驗與濟州色彩的迷幻愛爾蘭民謠二重唱。",
+    "description": "Moheo 是由 Jo Mingyu 和 e_so 組成的迷幻民謠二重唱。Jo 在愛爾蘭街頭表演了兩年，而濟州出生的創作歌手 e_so 則於 2022 年在泰國偶然遇見了他。這對以莫赫懸崖命名的二重唱在 2024 年發行了首張完整專輯《萬花筒》，並迅速在音樂節巡迴中受到關注。",
+    "genre": [
+      "迷幻民謠",
+      "愛爾蘭民謠",
+      "獨立民謠"
+    ],
+    "trackTitle": "萬花筒",
+    "imageUrl": "/images-webp/musicians/22.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/moher_____/"
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Mwing",
+    "shortDescription": "將值得記憶的瞬間化為歌曲的藝術家與活動家。",
+    "description": "自 2015 年以來，Mwing 一直以藝術家和活動家的身份創作與演唱歌曲。其音樂植根於值得記憶的瞬間，並作為一種安慰提供，同時夢想著一個每個人都能共同幸福生活而非孤獨的世界。",
+    "genre": [
+      "獨立",
+      "民謠",
+      "創作歌手"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/23.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/mmuueenngg/"
+    ]
+  },
+  {
+    "id": 24,
+    "name": "Materials Found",
+    "shortDescription": "紮根於旋律金屬核的五人樂團，曾入圍 2025 年韓國音樂大獎。",
+    "description": "Materials Found 成立於 2022 年，是一支融合了旋律金屬核、交響死亡核和後搖滾的五人樂團。他們的首張 EP《電球》於 2024 年發行，並獲得 2025 年韓國音樂大獎最佳金屬與硬核專輯提名，同時獲得 Music Y 的年終認可。",
+    "genre": [
+      "旋律金屬核",
+      "交響死亡核",
+      "後搖滾"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/24.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/materials_pound_official/"
+    ]
+  },
+  {
+    "id": 25,
+    "name": "Bulgasari Impromptu Session",
+    "shortDescription": "自 2003 年以來已舉辦超過 300 場舞台的長青前衛、即興及實驗藝術表演系列。",
+    "description": "Bulgasari Impromptu Session 於 2003 年 2 月在首爾新村的 Rush 開始，源於日本音樂家 Satoyuki 的建議。此後，它成為韓國前衛、即興及實驗藝術的關鍵平台之一，在呈現音樂、舞蹈和表演的同時，透過 300 多場活動培育年輕的實驗藝術家。",
+    "genre": [
+      "即興音樂",
+      "實驗",
+      "前衛"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/25.webp",
+    "instagramUrls": []
+  },
+  {
+    "id": 26,
+    "name": "Sabaha",
+    "shortDescription": "成立於 2023 年的厄運與無人機金屬企劃，透過戲劇性的服裝表演探索破壞與絕望。",
+    "description": "Sabaha 是由一位在 420Saigong 和 Haaaazy Shaaaaman 等地下樂團擁有豐富歷史的音樂家於 2023 年 5 月推出的厄運與無人機金屬企劃。受 Sunn O)))、Earth、Electric Wizard、Sleep 和 Om 的影響，該企劃混合了無人機金屬、迷幻厄運、污泥金屬、碾核和自由即興，並於 2024 年發行了首張完整專輯《THUNDER ROCKS》。",
+    "genre": [
+      "厄運金屬",
+      "無人機金屬",
+      "污泥金屬"
+    ],
+    "trackTitle": "雷岩",
+    "imageUrl": "/images-webp/musicians/26.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/sabbaha_kr"
+    ]
+  },
+  {
+    "id": 27,
+    "name": "Site with Jet Sizer",
+    "shortDescription": "全球冠軍節奏口技手 Sight 與充滿電能的外行 Zsthyger 的聯合表演。",
+    "description": "這次合作聯合了強大節奏口技團體 TYTD 的成員 Sight 與不妥寫的金屬異類 Zsthyger。他們共同帶來一個充滿技術精準度、戲劇張力以及節奏口技與重型音樂不尋常交匯點的舞台。",
+    "genre": [
+      "節奏口技",
+      "金屬"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/27.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/beatbox_sight",
+      "https://www.instagram.com/zsthyger/"
+    ]
+  },
+  {
+    "id": 29,
+    "name": "Seongyeong",
+    "shortDescription": "創作歌手兼陶瓷娃娃藝術家。",
+    "description": "宣慶（Seongyeong）既是一位創作歌手，也是一位受我們周圍自然與生物形象啟發而創作陶瓷娃娃的藝術家。",
+    "genre": [
+      "創作歌手",
+      "民謠"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/29.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/__sun_kyoung/"
+    ]
+  },
+  {
+    "id": 30,
+    "name": "Son Jiyeon",
+    "shortDescription": "常被稱為「韓國的瓊妮·蜜雪兒」（Joni Mitchell）的民謠創作歌手，以其獨特的嗓音和創作聞名。",
+    "description": "由第一代民謠大師梁秉集發掘，孫智妍（Son Jiyeon）以 2003 年的首張專輯《我的人生故事》開始了她的職業生涯。她建立了一個極具原創性且難以輕易分類的音樂世界，並以詩意的感性、清晰與誠實譜寫表達人生的歌曲。",
+    "genre": [
+      "民謠",
+      "創作歌手"
+    ],
+    "trackTitle": "實話",
+    "imageUrl": "/images-webp/musicians/30.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/jy_son_/"
+    ]
+  },
+  {
+    "id": 31,
+    "name": "Son Hyunsuk",
+    "shortDescription": "從民眾歌謠運動中脫穎而出，以《清溪川 8 街》廣為人知的創作歌手。",
+    "description": "孫賢淑（Son Hyunsuk）在崇實大學的民眾歌謠團體 Dume 開始製作音樂。後來她作為搖滾團體 Cheonjiin 的客座主唱，憑藉歌曲《清溪川 8 街》引起廣泛關注，此後發行了多張專輯，同時也向韓國觀眾介紹緬甸等國家的民眾歌曲。",
+    "genre": [
+      "民眾歌謠",
+      "民謠",
+      "創作歌手"
+    ],
+    "trackTitle": "清溪川 8 街",
+    "imageUrl": "/images-webp/musicians/31.webp",
+    "instagramUrls": []
+  },
+  {
+    "id": 32,
+    "name": "Song Insang",
+    "shortDescription": "透過歌曲描繪生活片段與珍貴回憶的創作歌手。",
+    "description": "宋仁相（Song Insang）在山村與海邊之間長大，將那些早期對大自然的印象帶入音樂中。在中學自學吉人和作曲後，他發行了 EP《顏料》，並持續創作由童年記憶、城市生活和家庭合作塑造的歌曲。",
+    "genre": [
+      "民謠",
+      "創作歌手"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/32.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/song_insang"
+    ]
+  },
+  {
+    "id": 33,
+    "name": "Song Inhyo",
+    "shortDescription": "透過平實的旋律與誠實的歌詞記錄生活經驗與內在反思的創作歌手。",
+    "description": "宋仁孝（Song Inhyo）將個人經驗與內在反思轉化為音樂語言。這些歌曲並非依賴風格化的展示，而是建立在生活感知、清晰的旋律、誠實的文字和克制的表達之上，為聽眾提供另一種面對生活的方式。",
+    "genre": [
+      "民謠",
+      "創作歌手"
+    ],
+    "trackTitle": "天地之間",
+    "imageUrl": "/images-webp/musicians/33.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/song_inhyo/"
+    ]
+  },
+  {
+    "id": 34,
+    "name": "Samgak Jeonpasa",
+    "shortDescription": "電子音樂家兼科幻作家 Jang Hojin 的個人企劃，透過實驗電子音樂表達社會的結構性矛盾。",
+    "description": "三角電波（Samgak Jeonpasa）是電子音樂家兼科幻作家 Jang Hojin 的個人企劃。受 Depeche Mode 和 Vangelis 等藝術家的啟發，他追求不可預測的聲音與非線性構思，並將韓國社會從士紳化到地方抗爭的結構性矛盾融入實驗電子音樂中。",
+    "genre": [
+      "電子",
+      "實驗"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/34.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/zeonpasa/"
+    ]
+  },
+  {
+    "id": 35,
+    "name": "Anti Stress",
+    "shortDescription": "由有機龐克民謠藝術家 Sai 與鞋瞪搖滾吉他手 Rainbow99 組成的龐克樂團。",
+    "description": "Anti Stress 匯集了以在抗爭現場和農村社區演唱原創歌曲聞名的 Sai，以及韓國傑出的吉他手之一、擁有涵蓋環境與生成音樂的廣泛實驗調色盤的 Rainbow99。他們的合作將民謠精神與聲音實驗轉化為粗獷、高能量的龐克。",
+    "genre": [
+      "龐克",
+      "民謠龐克"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/35.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/be2in2023",
+      "https://www.instagram.com/rainbow99gaze/"
+    ]
+  },
+  {
+    "id": 36,
+    "name": "Oh Jaehwan",
+    "shortDescription": "透過音樂支持多場抗爭的民謠創作歌手，自首屆起便加入江汀和平音樂營。",
+    "description": "吳在煥（Oh Jaehwan）是一位長期透過音樂表達對社會抗爭支持的民謠創作歌手。他發行了包括《叫我做的我就做得好》和《島之歌》在內的專輯，並自江汀和平音樂營第一年起便持續參與。",
+    "genre": [
+      "民謠",
+      "創作歌手"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/36.webp",
+    "instagramUrls": []
+  },
+  {
+    "id": 37,
+    "name": "On Gayeong",
+    "shortDescription": "以釜山為基地的創作歌手，以溫暖的嗓音創作並演唱簡潔的不插電歌曲。",
+    "description": "溫佳英（On Gayeong，本名裴佳英）形容自己是一個在準備體面的夜晚時唱歌的人。在與不插電樂團 Chocolate Bench 及銅管團體 Band Heung 合作後，她以個人藝術家身份繼續發展，於 2023 年發行單曲《Who you are》，並透過 100 多場現場表演積累經驗。",
+    "genre": [
+      "不插電",
+      "民謠",
+      "創作歌手"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/37.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/on.gayoung/"
+    ]
+  },
+  {
+    "id": 38,
+    "name": "Yeoul",
+    "shortDescription": "音色清澈的民謠音樂家，既是個人藝術家，也是二重唱 Leaves 的成員。",
+    "description": "呂蔚（Yeoul）與 Wongirl 在民謠二重唱 Leaves 中演出，同時也作為個人創作歌手活動。憑藉不插電吉他和清澈的嗓音，她透過微小的日常瞬間抒情地歌唱和平，她與江汀和平社群也有著深厚的連結，曾作為設計工作人員參與了第一屆音樂營。",
+    "genre": [
+      "民謠",
+      "不插電"
+    ],
+    "trackTitle": "眼前的心",
+    "imageUrl": "/images-webp/musicians/40.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/yeoouul/"
+    ]
+  },
+  {
+    "id": 39,
+    "name": "Yoon Soong",
+    "shortDescription": "抒情地追溯生命、死亡以及在絕望中前行旅程的民謠創作歌手。",
+    "description": "自 2021 年 EP《除了我沒有人能打開那扇門出來》大獲成功以來，尹崇（Yoon Soong）持續發布私密的民謠紀錄。她的作品描繪了從黑暗森林到開闊海洋、從黎明到早晨的抒情旅程，將痛苦與堅持轉化為歌。",
+    "genre": [
+      "民謠",
+      "不插電",
+      "創作歌手"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/39.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/cyoonseung/"
+    ]
+  },
+  {
+    "id": 40,
+    "name": "Yoon Seonae",
+    "shortDescription": "在 1980 年代民主化運動前線歌唱的民眾歌謠標誌性嗓音。",
+    "description": "尹善愛（Yoon Seonae）出身於首爾大學的歌唱團體 Meaeri 和學生聯盟 Saebyeok，成為 1980 年代民主化運動期間民眾歌謠的定義性女性嗓音之一。她以《當那天到來》等歷史性歌曲聞名，並透過後來的個人專輯延續其藝術生命。",
+    "genre": [
+      "民謠",
+      "民眾歌謠"
+    ],
+    "trackTitle": "當那天到來",
+    "imageUrl": "/images-webp/musicians/40.webp",
+    "instagramUrls": []
+  },
+  {
+    "id": 42,
+    "name": "Lim Jeongdeuk",
+    "shortDescription": "以在韓國各處抗爭現場歌唱及歌曲《鹽花樹》聞名的民眾歌謠創作歌手。",
+    "description": "任正得（Lim Jeongdeuk）在嶺南大學的 Ye Saga Rak 歌唱團體開始音樂活動，自 2011 年出道以來一直作為民眾歌手工作。他在勞工鬥爭、反迫遷抗爭和世越號家屬抗議現場演出，親自創作、作曲並製作大部分作品，《鹽花樹》是其最著名的歌曲之一。",
+    "genre": [
+      "民眾音樂",
+      "民謠",
+      "創作歌手"
+    ],
+    "trackTitle": "鹽花樹",
+    "imageUrl": "/images-webp/musicians/42.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/imjeongdeuk/"
+    ]
+  },
+  {
+    "id": 43,
+    "name": "Joon Lee",
+    "shortDescription": "來自洛杉磯、往返於首爾與濟州之間的創作歌手。",
+    "description": "Joon Lee 在加州洛杉磯長大並學習吉他，並在美國、首爾和濟州持續其音樂生活。受民謠、藍調、搖滾和流行音樂影響，他為自己的創作帶來了廣泛的音調範圍。",
+    "genre": [
+      "獨立"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/43.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/joonlee_jeju/"
+    ]
+  },
+  {
+    "id": 44,
+    "name": "Joyakgol",
+    "shortDescription": "和平活動家兼音樂家，Hot Pink Dolphins 共同代表，深度參與江汀和平運動。",
+    "description": "鵝卵石（Joyakgol）是一位無政府主義活動家兼音樂家，曾參與大秋里、新萬金和江汀的和平運動。在 2011 年江汀反海軍基地鬥爭期間遇到一群印太瓶鼻海豚後，他共同創立了海洋環保團體 Hot Pink Dolphins，並協助發起了亞洲首個水族館海豚解放運動。",
+    "genre": [
+      "獨立",
+      "民謠",
+      "龐克"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/44.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/dopeheadzo1"
+    ]
+  },
+  {
+    "id": 45,
+    "name": "Jo Seongil",
+    "shortDescription": "前民眾音樂團體 Kkotdaji 成員，現於濟州歌唱生命與希望。",
+    "description": "趙成日（Jo Seongil）從 1998 年開始在民眾音樂團體 Kkotdaji 擔任核心主唱十四年，並創作了《希望》、《口哨》和《戰士》等歌曲。2012 年單飛後定居濟州西歸浦，並持續發布在沉重現實中提供安慰的紀錄。",
+    "genre": [
+      "民謠",
+      "民眾音樂",
+      "創作歌手"
+    ],
+    "trackTitle": "發動了",
+    "imageUrl": "/images-webp/musicians/45.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/chosungil99/"
+    ]
+  },
+  {
+    "id": 46,
+    "name": "Jinukonda",
+    "shortDescription": "擁有一副低沉沙啞嗓音的鄉村藍調音樂家，自 2018 年起在弘大樂壇歌唱現代哥德故事。",
+    "description": "Jinukonda 是一位紮根於鄉村藍調、擁有一副低沉沙啞嗓音的音樂家。自 2018 年起活躍於弘大，他將現代哥德故事轉化為音樂，歌唱被孤立在龐大首爾市內的人們的生活。",
+    "genre": [
+      "鄉村藍調",
+      "哥德民謠"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/46.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/jinukonda"
+    ]
+  },
+  {
+    "id": 47,
+    "name": "Chan",
+    "shortDescription": "演奏西塔琴與班蘇里笛（bansuri）的冥想音樂家。",
+    "description": "Chan 是一位演奏西塔琴與班蘇里笛的冥想音樂家。被印度聲音安靜的深度所吸引，他向多位老師學習，發行了多張冥想音樂專輯，並經營著 YouTube 頻道 Lotus Relaxing Music。",
+    "genre": [
+      "冥想音樂",
+      "世界音樂"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/47.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/chanbhaiya"
+    ]
+  },
+  {
+    "id": 48,
+    "name": "Choi Sangdon",
+    "shortDescription": "透過音樂朝聖發展創作與表演的創作歌手。",
+    "description": "崔尚敦（Choi Sangdon）是一位作品源於音樂朝聖的創作歌手。他與負責手風琴的金剛坤（Kim Ganggon）和負責演唱的趙愛蘭（Jo Aeran）共同延續了 Sanorakhoe 企劃，並與江汀運動保持著持續的團結。",
+    "genre": [
+      "獨立"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/48.webp",
+    "instagramUrls": []
+  },
+  {
+    "id": 49,
+    "name": "Chichi",
+    "shortDescription": "將在 2026 江汀和平音樂營演出。",
+    "description": "Chichi 是 2026 江汀和平音樂營陣容的一部分。",
+    "genre": [
+      "獨立"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/49.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/blackaftermoon"
+    ]
+  },
+  {
+    "id": 50,
+    "name": "Kita & Olgen",
+    "shortDescription": "將在 2026 江汀和平音樂營演出的二重唱。",
+    "description": "Kita & Olgen 以二重唱形式出現在 2026 江汀和平音樂營。",
+    "genre": [
+      "獨立",
+      "不插電",
+      "民謠"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/50.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/kita_olgen"
+    ]
+  },
+  {
+    "id": 51,
+    "name": "Taehyeon",
+    "shortDescription": "深度沉浸於牙買加根源雷鬼（roots reggae）的創作歌手，將類比雷鬼音效與和平訊息轉化為韓國感性。",
+    "description": "Taehyeon 是一位有機創作歌手，其音效自然融合了根源雷鬼、民謠、藍調與傳統音樂。在倫敦愛上雷鬼後，他回到韓國擔任主唱與吉他手，後來移居濟州，並以 Uncle Bongo 之名擴展其作為選曲人（selector）與音響工程師的工作。",
+    "genre": [
+      "雷鬼",
+      "民謠",
+      "藍調"
+    ],
+    "trackTitle": "人民即國家",
+    "imageUrl": "/images-webp/musicians/51.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/tehiun/"
+    ]
+  },
+  {
+    "id": 52,
+    "name": "Pium",
+    "shortDescription": "深沉低音與明亮夢幻高音並存的創作歌手。",
+    "description": "Pium 在高中時期便作為搖滾樂團主唱積累了早期舞台經驗。離開英文系後，她在首爾藝術大學學習聲樂，開始學習吉他並以自己的聲音創作歌曲，現在穩定發布自創作品，並定期在弘大與江南演出。",
+    "genre": [
+      "獨立"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/52.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/a_nicefolksong"
+    ]
+  },
+  {
+    "id": 53,
+    "name": "Howaho",
+    "shortDescription": "擁有詩意歌詞與沉重音景的二重唱，曾入圍韓國音樂大獎最佳民謠專輯。",
+    "description": "Howaho 是由同樣作為創作歌手活動的 eeeho 和 Mohho 在被彼此獨特的氛圍啟發後組成的。他們共同創作所有歌曲，結合了詩意的歌詞、沉重的電吉他、電子節拍與環境音景，其首張專輯《不明來源》入圍了第 16 屆韓國音樂大獎最佳民謠專輯。",
+    "genre": [
+      "獨立",
+      "民謠",
+      "另類"
+    ],
+    "trackTitle": "浪尖",
+    "imageUrl": "/images-webp/musicians/53.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/howaho_official/"
+    ]
+  },
+  {
+    "id": 54,
+    "name": "Honey Whiskey",
+    "shortDescription": "以水原為基地的多國籍現場樂團。",
+    "description": "Honey Whiskey 是一支多國籍樂團，擔任水原精釀啤酒與現場音樂酒吧 Alleyway Taphouse 的官方駐場樂團。樂團以現場表演為核心，演奏風格廣泛。",
+    "genre": [
+      "搖滾",
+      "現場樂團"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/54.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/honeywhiskeysuwon/"
+    ]
+  },
+  {
+    "id": 55,
+    "name": "Heo Jeonghyeok",
+    "shortDescription": "透過柳在夏音樂大賽獲得認可的民謠創作歌手，其完整專輯《萌芽之日》入圍最佳民謠專輯。",
+    "description": "Heo Jeonghyeok（也以 son of florist 為化名演出）在 2017 年獲得第 28 屆柳在夏音樂大賽銅獎後受到廣泛關注。他也在二重唱 Siot and Wind 中工作，其 2023 年首張完整專輯《萌芽之日》入圍了 2024 年韓國音樂大獎最佳民謠專輯。",
+    "genre": [
+      "民謠",
+      "創作歌手"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/55.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/_hyuk_e"
+    ]
+  },
+  {
+    "id": 56,
+    "name": "Hwang Myeongha",
+    "shortDescription": "被稱為「韓國的莎拉·拉克蘭」（Sarah McLachlan）的女性民謠創作歌手，擁有超過 1,000 場現場表演經歷。",
+    "description": "黃明河（Hwang Myeongha）以罕見且迷人的音色聞名，這為她贏得了「韓國的莎拉·拉克蘭」的暱稱。憑藉 1,000 多場現場表演的經驗，她呈現了深沉療癒的舞台和獨特的民謠音效。",
+    "genre": [
+      "民謠",
+      "不插電"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/56.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/hwang_myungha/"
+    ]
+  },
+  {
+    "id": 57,
+    "name": "Ha Juwon",
+    "shortDescription": "演奏手碟（handpan）遊走於世界各地的音樂家。",
+    "description": "夏珠元（Ha Juwon，也稱為 Woni）是一位遊走於世界各地演奏手碟的音樂家。",
+    "genre": [
+      "手碟",
+      "世界音樂"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/57.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/wonn__e"
+    ]
+  },
+  {
+    "id": 58,
+    "name": "Ppalajida X Dongbaek Small School",
+    "shortDescription": "以巴西打擊樂演奏濟州的巴圖卡達團體「Ppalajida」與以生態、人權和和平為核心價值的替代學校「冬柏小學校」的合作舞台。",
+    "description": "Ppalajida是一個自2022年4月起在濟州以巴圖卡達敲擊心靈、以藝術追求自立的社會藝術共同體，為青少年的成長與自立創造良性循環。\n\n冬柏小學校是位於濟州的替代教育機構，以生態、人權和和平為核心價值實践專案式教育，曾獲濟州特別自治道「美麗學校大獎」。\n\n制度與非制度、講師與學生、青少年與成人之間——他們呈現打破這些界限的和平節奏。",
+    "genre": [
+      "Batucada",
+      "打擊樂",
+      "世界音樂"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/58.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/pelagida_oficial",
+      "https://www.instagram.com/dongbaek_school/"
+    ]
+  },
+  {
+    "id": 59,
+    "name": "HANASH",
+    "shortDescription": "將世界各地的樂器與流派與電子音樂相融合的實驗音效藝術家。",
+    "description": "HANASH 透過將來自世界許多地區的樂器與流派與電子音樂相結合，創造實驗性的聲音。憑藉冒險性的合成與不斷擴展的音景，作品尋求傳統與當下的和諧相遇。",
+    "genre": [
+      "電子",
+      "世界音樂",
+      "實驗"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/59.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/_ashahn/"
+    ]
+  },
+  {
+    "id": 60,
+    "name": "TAGI",
+    "shortDescription": "由日本手碟演奏者 Taka 與韓國傳統音樂家 Mingi 組成的二重唱，將手碟與笙、篳篥和大笒結合。",
+    "description": "TAGI 是由日本手碟演奏者 Taka 與韓國傳統管樂演奏者 Mingi 組成的二重唱。名字結合了他們名字的首音節，同時讓人聯想到韓語中的「搭乘」，寄託著聲音將隨風、河流與空氣傳播的希望。他們共同跨越東亞傳統與當代音效之間的邊界。",
+    "genre": [
+      "世界音樂",
+      "韓國傳統音樂",
+      "手碟"
+    ],
+    "trackTitle": "",
+    "imageUrl": "/images-webp/musicians/60.webp",
+    "instagramUrls": [
+      "https://www.instagram.com/tagi_sound"
+    ]
+  }
 ]
