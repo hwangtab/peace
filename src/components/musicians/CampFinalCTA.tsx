@@ -1,5 +1,6 @@
 import { useTranslation } from 'next-i18next';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import WaveDivider from '../common/WaveDivider';
 import Button from '../common/Button';
 
@@ -34,8 +35,17 @@ export default function CampFinalCTA({
         </div>
       )}
       <WaveDivider className={`${!hasOtherMusicians && hasRelatedVideos ? 'text-ocean-sand' : 'text-white'} -mt-[60px] sm:-mt-[100px] relative z-10`} />
-      <section className="bg-jeju-ocean py-20 md:py-28">
-        <div className="container mx-auto px-4 text-center">
+      <section className="relative py-20 md:py-28 overflow-hidden">
+        <Image
+          src="/images-webp/camps/2023/20230610밤 전쟁을끝내자.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-jeju-ocean/80" aria-hidden="true" />
+        <div className="container mx-auto px-4 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
