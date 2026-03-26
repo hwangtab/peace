@@ -44,7 +44,7 @@ export default function CampFinalCTA({
           className="object-cover"
           aria-hidden="true"
         />
-        <div className="absolute inset-0 bg-jeju-ocean/80" aria-hidden="true" />
+        <div className="absolute inset-0 bg-jeju-ocean/90" aria-hidden="true" />
         <div className="container mx-auto px-4 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
