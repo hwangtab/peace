@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { isRouteActive } from '@/utils/routeMatch';
 
 export type NavigationDropdownKey = 'camps' | 'album';
 
@@ -11,7 +12,7 @@ export const useNavigation = () => {
   const [mobileOpenDropdown, setMobileOpenDropdown] = useState<NavigationDropdownKey | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const router = useRouter();
-  const pathname = router.pathname;
+  const currentPath = router.asPath;
 
   // Scroll detection with requestAnimationFrame throttling
   useEffect(() => {
@@ -62,12 +63,18 @@ export const useNavigation = () => {
     []
   );
 
+  const isPathActive = useCallback(
+    (path: string, exact = false): boolean =>
+      isRouteActive(currentPath, path, { exact, locale: router.locale }),
+    [currentPath, router.locale]
+  );
+
   return {
     isOpen,
     isScrolled,
     desktopOpenDropdown,
     mobileOpenDropdown,
-    pathname,
+    isPathActive,
     toggleMenu,
     closeMenu,
     toggleMobileDropdown,

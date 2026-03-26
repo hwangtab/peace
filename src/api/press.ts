@@ -5,7 +5,7 @@ import { PressItem } from '../types/press';
 // Set to 2024 as the project start year
 const DEFAULT_EVENT_YEAR = 2024;
 
-const applyDefaults = (items: PressItem[]) =>
+export const normalizePressItems = (items: PressItem[]): PressItem[] =>
   items.map((item) => ({
     ...item,
     eventType: item.eventType ?? 'album',
@@ -14,5 +14,5 @@ const applyDefaults = (items: PressItem[]) =>
 
 export async function getPressItems(language?: string): Promise<PressItem[]> {
   const items = await fetchLocalizedData<PressItem>('/data/press.json', language);
-  return applyDefaults(items);
+  return normalizePressItems(items);
 }

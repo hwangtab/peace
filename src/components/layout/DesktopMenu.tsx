@@ -9,14 +9,14 @@ import { ROUTES } from '@/constants/routes';
 import { NavigationDropdownKey } from '@/hooks/useNavigation';
 
 interface DesktopMenuProps {
-  pathname: string;
+  isPathActive: (path: string, exact?: boolean) => boolean;
   desktopOpenDropdown: NavigationDropdownKey | null;
   onOpenChange: (dropdown: NavigationDropdownKey, isOpen: boolean) => void;
   isScrolled: boolean;
 }
 
 const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(
-  ({ pathname, desktopOpenDropdown, onOpenChange, isScrolled }) => {
+  ({ isPathActive, desktopOpenDropdown, onOpenChange, isScrolled }) => {
     const { t } = useTranslation();
 
     const getTextColor = (isActive: boolean) => {
@@ -32,10 +32,10 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(
       <div className="hidden md:flex flex-wrap items-center gap-x-4 lg:gap-x-6 gap-y-2">
         <Link
           href={ROUTES.HOME}
-          className={`${getTextColor(pathname === ROUTES.HOME)} transition-colors duration-300 font-display font-bold relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm`}
+          className={`${getTextColor(isPathActive(ROUTES.HOME, true))} transition-colors duration-300 font-display font-bold relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm`}
         >
           {t('nav.home')}
-          {pathname === ROUTES.HOME && (
+          {isPathActive(ROUTES.HOME, true) && (
             <motion.div
               className={`absolute bottom-[-4px] left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
               layoutId="underline-home"
@@ -64,10 +64,10 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(
             <Link
               key={item.path}
               href={item.path}
-              className={`${getTextColor(pathname === item.path)} transition-colors duration-300 font-display font-bold relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm`}
+              className={`${getTextColor(isPathActive(item.path))} transition-colors duration-300 font-display font-bold relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm`}
             >
               {t(item.nameKey)}
-              {pathname === item.path && (
+              {isPathActive(item.path) && (
                 <motion.div
                   className={`absolute bottom-[-4px] left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
                   layoutId={`underline-${item.path}`}

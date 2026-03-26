@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { AnimatePresence, motion } from 'framer-motion';
 import { IoChevronDown } from 'react-icons/io5';
 import { useTranslation } from 'next-i18next';
+import { isRouteActive } from '@/utils/routeMatch';
 
 interface DropdownItem {
   nameKey: string;
@@ -18,115 +19,119 @@ interface NavigationDropdownProps {
   isScrolled?: boolean;
 }
 
-const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(({
-  label,
-  items,
-  isOpen,
-  onOpenChange,
-  isScrolled
-}) => {
-  const { t } = useTranslation();
-  const router = useRouter();
-  const [internalOpen, setInternalOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(
+  ({ label, items, isOpen, onOpenChange, isScrolled }) => {
+    const { t } = useTranslation();
+    const router = useRouter();
+    const [internalOpen, setInternalOpen] = useState(false);
+    const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Controlled vs Uncontrolled state
-  const isControlled = isOpen !== undefined && onOpenChange !== undefined;
-  const open = isControlled ? isOpen : internalOpen;
+    // Controlled vs Uncontrolled state
+    const isControlled = isOpen !== undefined && onOpenChange !== undefined;
+    const open = isControlled ? isOpen : internalOpen;
 
-  const setOpen = React.useCallback((newOpen: boolean) => {
-    if (isControlled) {
-      if (onOpenChange) onOpenChange(newOpen);
-    } else {
-      setInternalOpen(newOpen);
-    }
-  }, [isControlled, onOpenChange]);
+    const setOpen = React.useCallback(
+      (newOpen: boolean) => {
+        if (isControlled) {
+          if (onOpenChange) onOpenChange(newOpen);
+        } else {
+          setInternalOpen(newOpen);
+        }
+      },
+      [isControlled, onOpenChange]
+    );
 
-  // Close when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setOpen(false);
+    // Close when clicking outside
+    useEffect(() => {
+      const handleClickOutside = (event: MouseEvent) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+          setOpen(false);
+        }
+      };
+
+      if (open) {
+        document.addEventListener('mousedown', handleClickOutside);
       }
-    };
 
-    if (open) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, [open, setOpen]);
 
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [open, setOpen]);
+    const currentPath = router.asPath;
 
-  // Check if any item is active
-  const isActive = items.some(item => router.pathname === item.path);
+    // Check if any item is active
+    const isActive = items.some((item) =>
+      isRouteActive(currentPath, item.path, { locale: router.locale })
+    );
 
-  const getTextColor = () => {
-    if (isScrolled) {
+    const getTextColor = () => {
+      if (isScrolled) {
+        return isActive || open
+          ? 'text-jeju-ocean font-bold'
+          : 'text-coastal-gray hover:text-jeju-ocean';
+      }
       return isActive || open
-        ? 'text-jeju-ocean font-bold'
-        : 'text-coastal-gray hover:text-jeju-ocean';
-    }
-    return isActive || open
-      ? 'text-cloud-white font-bold drop-shadow-md'
-      : 'text-cloud-white/90 hover:text-cloud-white drop-shadow-md';
-  };
+        ? 'text-cloud-white font-bold drop-shadow-md'
+        : 'text-cloud-white/90 hover:text-cloud-white drop-shadow-md';
+    };
 
-  return (
-    <div className="relative group" ref={dropdownRef}>
-      <button
-        onClick={() => setOpen(!open)}
-        onKeyDown={(e) => { if (e.key === 'Escape') setOpen(false); }}
-        className={`flex items-center gap-1 ${getTextColor()} transition-colors duration-300 font-display font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm text-balance`}
-        aria-expanded={open}
-        aria-haspopup="menu"
-      >
-        <span className="relative">
-          {label}
-          {isActive && (
-            <motion.div
-              className={`absolute bottom-[-4px] left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
-              layoutId={`underline-${label}`}
-            />
-          )}
-        </span>
-        <motion.div
-          animate={{ rotate: open ? 180 : 0 }}
-          transition={{ duration: 0.2 }}
+    return (
+      <div className="relative group" ref={dropdownRef}>
+        <button
+          type="button"
+          onClick={() => setOpen(!open)}
+          onKeyDown={(e) => {
+            if (e.key === 'Escape') setOpen(false);
+          }}
+          className={`flex items-center gap-1 ${getTextColor()} transition-colors duration-300 font-display font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm text-balance`}
+          aria-expanded={open}
+          aria-haspopup="menu"
         >
-          <IoChevronDown aria-hidden="true" className="w-4 h-4 ml-1" />
-        </motion.div>
-      </button>
-
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="absolute top-full left-0 mt-2 min-w-[12rem] max-w-[18rem] w-max bg-white/95 backdrop-blur-md shadow-lg rounded-lg overflow-hidden py-2 border border-ocean-mist/20 z-50 text-left"
-          >
-            {items.map((item) => (
-              <Link
-                key={item.path}
-                href={item.path}
-                className={`block px-4 py-2 whitespace-normal break-words ${router.pathname === item.path
-                  ? 'bg-ocean-sand text-jeju-ocean font-bold'
-                  : 'text-deep-ocean hover:bg-ocean-sand/50'
-                  } transition-colors duration-200 font-serif font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-jeju-ocean`}
-                onClick={() => setOpen(false)}
-              >
-                {t(item.nameKey)}
-              </Link>
-            ))}
+          <span className="relative">
+            {label}
+            {isActive && (
+              <motion.div
+                className={`absolute bottom-[-4px] left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
+                layoutId={`underline-${label}`}
+              />
+            )}
+          </span>
+          <motion.div animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.2 }}>
+            <IoChevronDown aria-hidden="true" className="w-4 h-4 ml-1" />
           </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-});
+        </button>
+
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="absolute top-full left-0 mt-2 min-w-[12rem] max-w-[18rem] w-max bg-white/95 backdrop-blur-md shadow-lg rounded-lg overflow-hidden py-2 border border-ocean-mist/20 z-50 text-left"
+            >
+              {items.map((item) => (
+                <Link
+                  key={item.path}
+                  href={item.path}
+                  className={`block px-4 py-2 whitespace-normal break-words ${
+                    isRouteActive(currentPath, item.path, { locale: router.locale })
+                      ? 'bg-ocean-sand text-jeju-ocean font-bold'
+                      : 'text-deep-ocean hover:bg-ocean-sand/50'
+                  } transition-colors duration-200 font-serif font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-jeju-ocean`}
+                  onClick={() => setOpen(false)}
+                >
+                  {t(item.nameKey)}
+                </Link>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    );
+  }
+);
 
 NavigationDropdown.displayName = 'NavigationDropdown';
 export default NavigationDropdown;

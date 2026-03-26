@@ -84,12 +84,17 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
           filterOrder="videos"
         />
 
+        {videosResource.isLoading && (
+          <p className="text-center text-gray-500 py-12" role="status">
+            {t('common.loading')}
+          </p>
+        )}
         {videosResource.error && (
           <p className="text-center text-gray-500 py-12" role="alert">
             {t('common.no_results')}
           </p>
         )}
-        {!videosResource.error && (
+        {!videosResource.error && !videosResource.isLoading && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {filteredVideos.map((video) => (
               <div key={video.id} className="h-full">
@@ -98,7 +103,7 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
             ))}
           </div>
         )}
-        {filteredVideos.length === 0 && !videosResource.error && (
+        {filteredVideos.length === 0 && !videosResource.error && !videosResource.isLoading && (
           <p className="text-center text-gray-500 py-12">
             {t('common.no_results') || 'No results found.'}
           </p>
