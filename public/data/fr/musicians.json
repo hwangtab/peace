@@ -427,8 +427,8 @@
   {
     "id": 29,
     "name": "Seongyeong",
-    "shortDescription": "Une auteure-compositrice-interprète et artiste de poupées en céramique.",
-    "description": "Seongyeong est à la fois une auteure-compositrice-interprète et une artiste qui crée des poupées en céramique inspirées par les images de la nature et des êtres vivants qui nous entourent.",
+    "shortDescription": "Auteure-compositrice-interprète",
+    "description": "Elle capture les émotions fugaces comme l’ombre d’un oiseau en vol et les transforme en chansons.\nComme un chant d’oiseau entendu au loin, elle continue de chanter quelque part.",
     "genre": [
       "Auteur-compositeur-interprète",
       "Folk"
@@ -592,8 +592,8 @@
   {
     "id": 40,
     "name": "Yoon Seonae",
-    "shortDescription": "Une voix emblématique de la chanson minjung qui a chanté sur les lignes de front du mouvement pour la démocratie des années 1980.",
-    "description": "Yoon Seonae est issue du groupe de chant Meaeri de l'Université Nationale de Séoul et de la coalition étudiante Saebyeok, devenant l'une des voix féminines déterminantes de la chanson minjung pendant le mouvement pour la démocratie des années 1980. Elle est connue pour des chansons historiques telles que « When That Day Comes » et a poursuivi sa vie artistique à travers des albums solo ultérieurs.",
+    "shortDescription": "Une musicienne folk qui chante des chansons lyriques en résonance avec les joies et les peines de la vie et l’esprit du temps",
+    "description": "Yun Seon-ae a commencé son parcours de chanteuse au milieu des années 1980 via le club universitaire « Meari » et le groupe de chant « Saebyeok », et chante depuis des chansons lyriques en résonance avec les joies et les peines de la vie et l’esprit du temps.\n\nElle s’est fait connaître par des chansons comme « Quand ce jour viendra » et « Vers la terre de l’égalité » lors de ses activités avec Saebyeok, et a chanté d’une voix sans artifice qui apaise les vies éprouvées dans de nombreux spectacles. Elle a publié les albums solos « Hasan », « Une belle histoire » et « Ce parfum me manque », les singles numériques « Il y aura un jour où nous nous reverrons » et « J’irai là-bas », la chanson de fin « Lettre » du film « Anniversaire » et « Chanson de la démocratie », entre autres.",
     "genre": [
       "Folk",
       "Chant Minjung"

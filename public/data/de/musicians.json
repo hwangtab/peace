@@ -427,8 +427,8 @@
   {
     "id": 29,
     "name": "Seongyeong",
-    "shortDescription": "Eine Singer-Songwriterin und Keramikpuppenkünstlerin.",
-    "description": "Seongyeong ist sowohl eine Singer-Songwriterin als auch eine Künstlerin, die Keramikpuppen erschafft, inspiriert von Bildern der Natur und der Lebewesen um uns herum.",
+    "shortDescription": "Singer-Songwriterin",
+    "description": "Sie fängt flüchtige Emotionen wie den Schatten eines fliegenden Vogels ein und verwandelt sie in Lieder.\nWie Vogelgesang aus der Ferne singt sie irgendwo weiter.",
     "genre": [
       "Singer-Songwriter",
       "Folk"
@@ -592,8 +592,8 @@
   {
     "id": 40,
     "name": "Yoon Seonae",
-    "shortDescription": "Eine ikonische Stimme des Minjung-Liedes, die an vorderster Front der Demokratiebewegung der 1980er Jahre sang.",
-    "description": "Yoon Seonae ging aus der Gesangsgruppe Meaeri der Seoul National University und dem Studentenbund Saebyeok hervor und wurde zu einer der prägenden weiblichen Stimmen des Minjung-Liedes während der Demokratiebewegung der 1980er Jahre. Sie ist bekannt für historische Lieder wie „When That Day Comes“ (Wenn jener Tag kommt) und hat ihr künstlerisches Leben durch spätere Soloalben fortgesetzt.",
+    "shortDescription": "Eine Folk-Musikerin, die lyrische Lieder singt, die mit den Freuden und Sorgen des Lebens und dem Zeitgeist mitschwingen",
+    "description": "Yun Seon-ae begann ihren Weg als Sängerin Mitte der 1980er Jahre über den Universitätsclub „Meari“ und die Gesangsgruppe „Saebyeok“ und singt bis heute lyrische Lieder, die mit den Freuden und Sorgen des Lebens und dem Zeitgeist mitschwingen.\n\nSie machte sich während ihrer Saebyeok-Aktivitäten mit Liedern wie „Wenn dieser Tag kommt“ und „Zum Land der Gleichheit“ einen Namen und hat in zahlreichen Aufführungen mit einer schlichten Stimme gesungen, die müde Leben tröstet. Sie veröffentlichte die Soloalben „Hasan“, „Eine schöne Geschichte“ und „Diesen Duft vermissend“, die digitalen Singles „Es wird einen Tag geben, an dem wir uns wiedersehen“ und „Ich werde dorthin gehen“, den Abspannsong „Brief“ des Films „Geburtstag“ und „Lied der Demokratie“, unter anderem.",
     "genre": [
       "Folk",
       "Minjung-Lied"
