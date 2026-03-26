@@ -47,8 +47,9 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(({
 
       <motion.div
         initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-50px' }}
+        transition={{ duration: 0.4 }}
       >
         <EventFilter
           selectedFilter={selectedFilter}

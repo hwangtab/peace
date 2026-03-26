@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'next-i18next';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import CampHero from '@/components/camp/CampHero';
 import CampGallery from '@/components/camp/CampGallery';
 import CampParticipants from '@/components/camp/CampParticipants';
@@ -33,8 +33,6 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId, initialMusician
   const campList = getCamps(i18n.language);
   const camp = campList.find(c => c.id === campId);
   const [musicians, setMusicians] = useState<Musician[]>(initialMusicians);
-  const infoRef = useRef(null);
-  const isInfoInView = useInView(infoRef, { once: true, margin: "-100px" });
 
   useEffect(() => {
     if (i18n.language === initialLocale) {
@@ -105,45 +103,48 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({ campId, initialMusician
     >
       <CampHero camp={camp} />
 
-      <Section background="ocean-sand" ref={infoRef} className="pb-24 md:pb-32">
+      <Section background="ocean-sand" className="pb-24 md:pb-32">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInfoInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto"
-          >
-            <div className="bg-white rounded-lg shadow-sm p-8 mb-12">
+          <div className="max-w-3xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-100px' }}
+              transition={{ duration: 0.6 }}
+              className="bg-white rounded-lg shadow-sm p-8 mb-12"
+            >
               <SectionHeader title={t('camp.section_overview')} align="left" className="!mb-6" />
               <p className="typo-body mb-4 break-words">
                 {camp.description}
               </p>
-            </div>
+            </motion.div>
 
             {camp.participants && camp.participants.length > 0 && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
-                animate={isInfoInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-100px' }}
+                transition={{ duration: 0.6 }}
                 className="bg-white rounded-lg shadow-sm p-8 mb-8"
               >
                 <SectionHeader title={t('camp.section_musicians')} align="left" className="!mb-6" />
-                <CampParticipants participants={camp.participants} musicians={musicians} inView={isInfoInView} />
+                <CampParticipants participants={camp.participants} musicians={musicians} />
               </motion.div>
             )}
 
             {camp.staff && camp.staff.length > 0 && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
-                animate={isInfoInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-100px' }}
+                transition={{ duration: 0.6 }}
                 className="bg-white rounded-lg shadow-sm p-8"
               >
                 <SectionHeader title={t('camp.section_staff')} align="left" className="!mb-6" />
-                <CampStaff staff={camp.staff} collaborators={camp.collaborators} inView={isInfoInView} />
+                <CampStaff staff={camp.staff} collaborators={camp.collaborators} />
               </motion.div>
             )}
-          </motion.div>
+          </div>
         </div>
       </Section>
 

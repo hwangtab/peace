@@ -7,10 +7,9 @@ import { Musician } from '@/types/musician';
 interface CampParticipantsProps {
     participants: (string | Participant)[];
     musicians: Musician[];
-    inView: boolean;
 }
 
-const CampParticipants: React.FC<CampParticipantsProps> = ({ participants, musicians, inView }) => {
+const CampParticipants: React.FC<CampParticipantsProps> = ({ participants, musicians }) => {
     const [selectedMusician, setSelectedMusician] = useState<Musician | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -36,7 +35,7 @@ const CampParticipants: React.FC<CampParticipantsProps> = ({ participants, music
     return (
         <>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                {participants.map((participant, index) => {
+                {participants.map((participant) => {
                     const clickable = isClickable(participant);
                     const name = getParticipantName(participant);
                     const stableKey = typeof participant === 'object' && participant !== null
@@ -47,8 +46,9 @@ const CampParticipants: React.FC<CampParticipantsProps> = ({ participants, music
                         <motion.div
                             key={stableKey}
                             initial={{ opacity: 0, y: 10 }}
-                            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-                            transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: '-50px' }}
+                            transition={{ duration: 0.4 }}
                             className={`flex items-start gap-2 min-w-0 ${clickable ? 'cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded' : ''}`}
                             role={clickable ? "button" : undefined}
                             aria-label={clickable ? name : undefined}
