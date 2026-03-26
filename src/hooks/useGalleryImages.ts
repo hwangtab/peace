@@ -2,22 +2,23 @@ import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import { GalleryImage } from '../types/gallery';
 import { getGalleryImages } from '../api/gallery';
-import { filterByEvent, isValidFilter } from '../utils/filtering';
+import { FilterId, filterByEvent, isValidFilter } from '../utils/filtering';
 
 interface UseGalleryImagesReturn {
   images: GalleryImage[];
   filteredImages: GalleryImage[];
-  selectedFilter: string;
-  setSelectedFilter: (filter: string) => void;
+  selectedFilter: FilterId;
+  setSelectedFilter: (filter: FilterId) => void;
   isLoading: boolean;
 }
 
 const EMPTY_GALLERY_IMAGES: GalleryImage[] = [];
 
-const sortGalleryImages = (items: GalleryImage[]) => items.slice().sort((a, b) => {
-  if (a.eventYear !== b.eventYear) return (b.eventYear || 0) - (a.eventYear || 0);
-  return b.id - a.id;
-});
+const sortGalleryImages = (items: GalleryImage[]) =>
+  items.slice().sort((a, b) => {
+    if (a.eventYear !== b.eventYear) return (b.eventYear || 0) - (a.eventYear || 0);
+    return b.id - a.id;
+  });
 
 /**
  * Custom hook for managing gallery image loading, filtering, and pagination.
@@ -25,11 +26,11 @@ const sortGalleryImages = (items: GalleryImage[]) => items.slice().sort((a, b) =
  */
 export const useGalleryImages = (
   initialImages: GalleryImage[] = EMPTY_GALLERY_IMAGES,
-  skipClientFetch = false,
+  skipClientFetch = false
 ): UseGalleryImagesReturn => {
   const router = useRouter();
   const [images, setImages] = useState<GalleryImage[]>(initialImages);
-  const [selectedFilter, setSelectedFilter] = useState<string>('all');
+  const [selectedFilter, setSelectedFilter] = useState<FilterId>('all');
   const [isLoading, setIsLoading] = useState<boolean>(initialImages.length === 0);
 
   // Sync filter with query parameter on mount

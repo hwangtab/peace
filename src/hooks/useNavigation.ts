@@ -1,69 +1,76 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
+export type NavigationDropdownKey = 'camps' | 'album';
+
 export const useNavigation = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [desktopOpenDropdown, setDesktopOpenDropdown] = useState<string | null>(null);
-    const [mobileOpenDropdown, setMobileOpenDropdown] = useState<string | null>(null);
-    const [isScrolled, setIsScrolled] = useState(false);
-    const router = useRouter();
-    const pathname = router.pathname;
+  const [isOpen, setIsOpen] = useState(false);
+  const [desktopOpenDropdown, setDesktopOpenDropdown] = useState<NavigationDropdownKey | null>(
+    null
+  );
+  const [mobileOpenDropdown, setMobileOpenDropdown] = useState<NavigationDropdownKey | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const router = useRouter();
+  const pathname = router.pathname;
 
-    // Scroll detection with requestAnimationFrame throttling
-    useEffect(() => {
-        let ticking = false;
-        let rafHandle: number | undefined;
+  // Scroll detection with requestAnimationFrame throttling
+  useEffect(() => {
+    let ticking = false;
+    let rafHandle: number | undefined;
 
-        const handleScroll = () => {
-            if (!ticking) {
-                rafHandle = requestAnimationFrame(() => {
-                    setIsScrolled(prev => prev ? window.scrollY > 40 : window.scrollY > 50);
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        };
-
-        // Check initial state
-        handleScroll();
-
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-            if (rafHandle) cancelAnimationFrame(rafHandle);
-        };
-    }, []);
-
-    const toggleMenu = useCallback(() => {
-        setIsOpen((prev) => {
-            const newState = !prev;
-            if (newState) setMobileOpenDropdown(null);
-            return newState;
+    const handleScroll = () => {
+      if (!ticking) {
+        rafHandle = requestAnimationFrame(() => {
+          setIsScrolled((prev) => (prev ? window.scrollY > 40 : window.scrollY > 50));
+          ticking = false;
         });
-    }, []);
-
-    const closeMenu = useCallback(() => {
-        setIsOpen(false);
-        setMobileOpenDropdown(null);
-    }, []);
-
-    const toggleMobileDropdown = useCallback((dropdown: string) => {
-        setMobileOpenDropdown((prev) => (prev === dropdown ? null : dropdown));
-    }, []);
-
-    const handleDesktopDropdownChange = useCallback((dropdown: string, isOpen: boolean) => {
-        setDesktopOpenDropdown(isOpen ? dropdown : null);
-    }, []);
-
-    return {
-        isOpen,
-        isScrolled,
-        desktopOpenDropdown,
-        mobileOpenDropdown,
-        pathname,
-        toggleMenu,
-        closeMenu,
-        toggleMobileDropdown,
-        handleDesktopDropdownChange,
+        ticking = true;
+      }
     };
+
+    // Check initial state
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafHandle) cancelAnimationFrame(rafHandle);
+    };
+  }, []);
+
+  const toggleMenu = useCallback(() => {
+    setIsOpen((prev) => {
+      const newState = !prev;
+      if (newState) setMobileOpenDropdown(null);
+      return newState;
+    });
+  }, []);
+
+  const closeMenu = useCallback(() => {
+    setIsOpen(false);
+    setMobileOpenDropdown(null);
+  }, []);
+
+  const toggleMobileDropdown = useCallback((dropdown: NavigationDropdownKey) => {
+    setMobileOpenDropdown((prev) => (prev === dropdown ? null : dropdown));
+  }, []);
+
+  const handleDesktopDropdownChange = useCallback(
+    (dropdown: NavigationDropdownKey, isOpen: boolean) => {
+      setDesktopOpenDropdown(isOpen ? dropdown : null);
+    },
+    []
+  );
+
+  return {
+    isOpen,
+    isScrolled,
+    desktopOpenDropdown,
+    mobileOpenDropdown,
+    pathname,
+    toggleMenu,
+    closeMenu,
+    toggleMobileDropdown,
+    handleDesktopDropdownChange,
+  };
 };

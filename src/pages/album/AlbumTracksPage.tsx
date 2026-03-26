@@ -6,6 +6,7 @@ import PageHero from '@/components/common/PageHero';
 import { getMusicPlaylistSchema, getBreadcrumbSchema } from '@/utils/structuredData';
 import { Musician } from '@/types/musician';
 import { Track } from '@/types/track';
+import { getFullUrl } from '@/config/env';
 
 interface AlbumTracksPageProps {
   initialTracks?: Track[];
@@ -13,17 +14,25 @@ interface AlbumTracksPageProps {
   initialLocale?: string;
 }
 
-const AlbumTracksPage = ({ initialTracks = [], initialMusicians = [], initialLocale = 'ko' }: AlbumTracksPageProps) => {
+const AlbumTracksPage = ({
+  initialTracks = [],
+  initialMusicians = [],
+  initialLocale = 'ko',
+}: AlbumTracksPageProps) => {
   const { t, i18n } = useTranslation();
 
   // Playlist Schema - built from actual tracks data
-  const playlistSchema = useMemo(() => getMusicPlaylistSchema(
-    initialTracks.map(track => ({
-      name: track.title,
-      url: `https://peaceandmusic.net/album/tracks/${track.id}`
-    })),
-    i18n.language
-  ), [initialTracks, i18n.language]);
+  const playlistSchema = useMemo(
+    () =>
+      getMusicPlaylistSchema(
+        initialTracks.map((track) => ({
+          name: track.title,
+          url: getFullUrl(`/album/tracks/${track.id}`),
+        })),
+        i18n.language
+      ),
+    [initialTracks, i18n.language]
+  );
 
   return (
     <PageLayout
@@ -35,10 +44,10 @@ const AlbumTracksPage = ({ initialTracks = [], initialMusicians = [], initialLoc
       structuredData={[
         playlistSchema,
         getBreadcrumbSchema([
-          { name: t('nav.home'), url: "https://peaceandmusic.net/" },
-          { name: t('nav.album'), url: "https://peaceandmusic.net/album/about" },
-          { name: t('nav.track'), url: "https://peaceandmusic.net/album/tracks" }
-        ])
+          { name: t('nav.home'), url: getFullUrl('/') },
+          { name: t('nav.album'), url: getFullUrl('/album/about') },
+          { name: t('nav.track'), url: getFullUrl('/album/tracks') },
+        ]),
       ]}
       disableTopPadding={true}
       disableBottomPadding={true}

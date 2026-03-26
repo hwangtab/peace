@@ -16,6 +16,7 @@ describe('EventFilter Component', () => {
       expect(screen.getByText('2023 캠프')).toBeInTheDocument();
       expect(screen.getByText('2024 앨범')).toBeInTheDocument();
       expect(screen.getByText('2025 캠프')).toBeInTheDocument();
+      expect(screen.getByText(/2026 캠프|common\.filter_camp_2026/)).toBeInTheDocument();
     });
 
     it('renders press filter order correctly', () => {
@@ -28,6 +29,7 @@ describe('EventFilter Component', () => {
       expect(buttons[1]).toHaveTextContent('2024 앨범');
       expect(buttons[2]).toHaveTextContent('2023 캠프');
       expect(buttons[3]).toHaveTextContent('2025 캠프');
+      expect(buttons[4]).toHaveTextContent(/2026 캠프|common\.filter_camp_2026/);
     });
   });
 

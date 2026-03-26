@@ -3,8 +3,6 @@
  */
 
 export const GALLERY_CONFIG = {
-  INITIAL_VISIBLE_COUNT: 12,
-  LOAD_MORE_COUNT: 12,
   PRIORITY_IMAGE_THRESHOLD: 8,
 } as const;
 

@@ -4,6 +4,7 @@ export interface Musician {
   shortDescription: string;
   description: string;
   genre: string[];
+  trackId?: number;
   trackTitle: string;
   imageUrl: string;
   instagramUrls: string[];

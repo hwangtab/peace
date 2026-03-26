@@ -18,6 +18,7 @@ import { Musician } from '@/types/musician';
 import WaveDivider from '@/components/common/WaveDivider';
 import { getMusicAlbumSchema, getBreadcrumbSchema } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
+import { useLocalizedResource } from '@/hooks/useLocalizedResource';
 
 interface AlbumAboutPageProps {
   initialVideos?: VideoItem[];
@@ -39,8 +40,25 @@ const AlbumAboutPage = ({
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [images, setImages] = useState<GalleryImage[]>(initialImages);
-  const [videos, setVideos] = useState<VideoItem[]>(initialVideos);
-  const [musicians, setMusicians] = useState<Musician[]>(initialMusicians);
+  const fetchVideos = useCallback((locale: string) => getVideos(locale), []);
+  const fetchMusicians = useCallback((locale: string) => getMusicians(locale), []);
+
+  const videosResource = useLocalizedResource<VideoItem>({
+    initialData: initialVideos,
+    initialLocale,
+    currentLocale: i18n.language,
+    fetchResource: fetchVideos,
+  });
+
+  const musiciansResource = useLocalizedResource<Musician>({
+    initialData: initialMusicians,
+    initialLocale,
+    currentLocale: i18n.language,
+    fetchResource: fetchMusicians,
+  });
+
+  const videos = videosResource.data;
+  const musicians = musiciansResource.data;
 
   // Load images (language-independent) if not provided
   useEffect(() => {
@@ -49,47 +67,24 @@ const AlbumAboutPage = ({
       getGalleryImages().then((data) => {
         if (!isCancelled) setImages(data);
       });
-      return () => { isCancelled = true; };
+      return () => {
+        isCancelled = true;
+      };
     }
   }, [initialImages]);
 
-  // Keep SSG-provided locale data in sync, fetch only when client locale differs.
-  useEffect(() => {
-    if (i18n.language === initialLocale) {
-      setVideos(initialVideos);
-      setMusicians(initialMusicians);
-      return;
-    }
-
-    let isCancelled = false;
-
-    const loadData = async () => {
-      const [allVideos, allMusicians] = await Promise.all([
-        getVideos(i18n.language),
-        getMusicians(i18n.language),
-      ]);
-      if (!isCancelled) {
-        setVideos(allVideos);
-        setMusicians(allMusicians);
+  const handleMusicianClick = useCallback(
+    (musicianId: number | null) => {
+      if (musicianId) {
+        const musician = musicians.find((m) => m.id === musicianId);
+        if (musician) {
+          setSelectedMusician(musician);
+          setIsModalOpen(true);
+        }
       }
-    };
-
-    loadData();
-
-    return () => {
-      isCancelled = true;
-    };
-  }, [i18n.language, initialLocale, initialMusicians, initialVideos]);
-
-  const handleMusicianClick = useCallback((musicianId: number | null) => {
-    if (musicianId) {
-      const musician = musicians.find((m) => m.id === musicianId);
-      if (musician) {
-        setSelectedMusician(musician);
-        setIsModalOpen(true);
-      }
-    }
-  }, [musicians]);
+    },
+    [musicians]
+  );
 
   const fadeUpVariants = useMemo(
     () => ({
@@ -109,47 +104,63 @@ const AlbumAboutPage = ({
     []
   );
 
-  const resolveMusicianName = useCallback((fallbackName: string, musicianId?: number | null) => {
-    if (!musicianId) return fallbackName;
-    return musicians.find((m) => m.id === musicianId)?.name || fallbackName;
-  }, [musicians]);
+  const resolveMusicianName = useCallback(
+    (fallbackName: string, musicianId?: number | null) => {
+      if (!musicianId) return fallbackName;
+      return musicians.find((m) => m.id === musicianId)?.name || fallbackName;
+    },
+    [musicians]
+  );
 
-  const fallbackName = useCallback((ko: string, en: string) => (
-    i18n.language.startsWith('ko') ? ko : en
-  ), [i18n.language]);
+  const fallbackName = useCallback(
+    (ko: string, en: string) => (i18n.language.startsWith('ko') ? ko : en),
+    [i18n.language]
+  );
 
   // Concert data with musician IDs for linking
-  const concerts = useMemo(() => ([
-    {
-      id: 'gangjeong',
-      name: t('album.concert_gangjeong'),
-      date: t('album.concert_gangjeong_date'),
-      time: t('album.concert_time'),
-      venue: t('album.venue_gangjeong'),
-      performers: [
-        { name: resolveMusicianName('Project Around Surround', 1), musicianId: 1 },
-        { name: resolveMusicianName(fallbackName('정진석', 'Jeong Jinseok'), 2), musicianId: 2 },
-        { name: resolveMusicianName(fallbackName('남수', 'Namsu'), 4), musicianId: 4 },
-        { name: resolveMusicianName(fallbackName('모레도토요일', 'MoredoSaturday'), 7), musicianId: 7 },
-        { name: resolveMusicianName('Jai x HANASH', 11), musicianId: 11 },
-      ],
-    },
-    {
-      id: 'hongdae',
-      name: t('album.concert_hongdae'),
-      date: t('album.concert_hongdae_date'),
-      time: t('album.concert_time'),
-      venue: t('album.venue_hongdae'),
-      performers: [
-        { name: resolveMusicianName(fallbackName('김인', 'Kim In'), 6), musicianId: 6 },
-        { name: resolveMusicianName(fallbackName('모모', 'MOMO'), 10), musicianId: 10 },
-        { name: resolveMusicianName(fallbackName('남수', 'Namsu'), 4), musicianId: 4 },
-        { name: resolveMusicianName('Jai x HANASH', 11), musicianId: 11 },
-        { name: t('album.performer_gilganeun_band'), musicianId: null },
-        { name: resolveMusicianName(fallbackName('김동산과 블루이웃', 'Kim Dongsan & Blueeewoot'), 3), musicianId: 3 },
-      ],
-    },
-  ]), [fallbackName, resolveMusicianName, t]);
+  const concerts = useMemo(
+    () => [
+      {
+        id: 'gangjeong',
+        name: t('album.concert_gangjeong'),
+        date: t('album.concert_gangjeong_date'),
+        time: t('album.concert_time'),
+        venue: t('album.venue_gangjeong'),
+        performers: [
+          { name: resolveMusicianName('Project Around Surround', 1), musicianId: 1 },
+          { name: resolveMusicianName(fallbackName('정진석', 'Jeong Jinseok'), 2), musicianId: 2 },
+          { name: resolveMusicianName(fallbackName('남수', 'Namsu'), 4), musicianId: 4 },
+          {
+            name: resolveMusicianName(fallbackName('모레도토요일', 'MoredoSaturday'), 7),
+            musicianId: 7,
+          },
+          { name: resolveMusicianName('Jai x HANASH', 11), musicianId: 11 },
+        ],
+      },
+      {
+        id: 'hongdae',
+        name: t('album.concert_hongdae'),
+        date: t('album.concert_hongdae_date'),
+        time: t('album.concert_time'),
+        venue: t('album.venue_hongdae'),
+        performers: [
+          { name: resolveMusicianName(fallbackName('김인', 'Kim In'), 6), musicianId: 6 },
+          { name: resolveMusicianName(fallbackName('모모', 'MOMO'), 10), musicianId: 10 },
+          { name: resolveMusicianName(fallbackName('남수', 'Namsu'), 4), musicianId: 4 },
+          { name: resolveMusicianName('Jai x HANASH', 11), musicianId: 11 },
+          { name: t('album.performer_gilganeun_band'), musicianId: null },
+          {
+            name: resolveMusicianName(
+              fallbackName('김동산과 블루이웃', 'Kim Dongsan & Blueeewoot'),
+              3
+            ),
+            musicianId: 3,
+          },
+        ],
+      },
+    ],
+    [fallbackName, resolveMusicianName, t]
+  );
 
   // Filter album photos and videos
   const albumPhotos = useMemo(
@@ -162,18 +173,24 @@ const AlbumAboutPage = ({
   );
 
   // MusicAlbum Schema
-  const albumSchema = useMemo(() => getMusicAlbumSchema({
-    name: t('album.album_title_full'),
-    byArtist: { name: t('app.title') },
-    genre: ["Folk", "Rock", "Jazz", "Electronic", "Ambient", "World Music"],
-    image: getFullUrl("/images-webp/album/albumart.webp"),
-    datePublished: "2024-10-12",
-    numTracks: 12,
-    track: musicians.filter(m => m.trackTitle && m.id !== 13).map(m => ({
-      name: m.trackTitle || "",
-      url: "https://peaceandmusic.net/album/tracks"
-    }))
-  }), [musicians, t]);
+  const albumSchema = useMemo(
+    () =>
+      getMusicAlbumSchema({
+        name: t('album.album_title_full'),
+        byArtist: { name: t('app.title') },
+        genre: ['Folk', 'Rock', 'Jazz', 'Electronic', 'Ambient', 'World Music'],
+        image: getFullUrl('/images-webp/album/albumart.webp'),
+        datePublished: '2024-10-12',
+        numTracks: 12,
+        track: musicians
+          .filter((m) => m.trackTitle && m.id !== 13)
+          .map((m) => ({
+            name: m.trackTitle || '',
+            url: getFullUrl('/album/tracks'),
+          })),
+      }),
+    [musicians, t]
+  );
 
   return (
     <PageLayout
@@ -185,9 +202,9 @@ const AlbumAboutPage = ({
       structuredData={[
         albumSchema,
         getBreadcrumbSchema([
-          { name: t('nav.home'), url: "https://peaceandmusic.net/" },
-          { name: t('nav.album'), url: "https://peaceandmusic.net/album/about" }
-        ])
+          { name: t('nav.home'), url: getFullUrl('/') },
+          { name: t('nav.album'), url: getFullUrl('/album/about') },
+        ]),
       ]}
       disableTopPadding={true}
       className="!pb-0"
@@ -240,7 +257,8 @@ const AlbumAboutPage = ({
               </span>
               <h1 className="typo-h1 text-white mb-6 leading-tight">
                 {t('album.hero_title_1')}
-                <br />{t('album.hero_title_2')}
+                <br />
+                {t('album.hero_title_2')}
               </h1>
               <p className="typo-subtitle text-white/90 font-medium mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0 break-words">
                 {t('album.hero_subtitle')}
@@ -331,8 +349,8 @@ const AlbumAboutPage = ({
             className="mt-16 md:mt-24 pt-16 md:pt-20 pb-20 border-t border-jeju-ocean/10 text-center"
           >
             <p className="text-coastal-gray font-serif font-bold text-lg break-words">
-              {t('common.label_produced_by')} <span className="text-jeju-ocean font-bold">{t('app.title')}</span> ·
-              2024
+              {t('common.label_produced_by')}{' '}
+              <span className="text-jeju-ocean font-bold">{t('app.title')}</span> · 2024
             </p>
           </motion.div>
         </div>
@@ -346,10 +364,14 @@ const AlbumAboutPage = ({
         />
       )}
       <ImageLightbox
-        image={selectedImage ? {
-          url: selectedImage.url,
-          alt: t('album.image_alt_concert', { num: selectedImage.id }),
-        } : null}
+        image={
+          selectedImage
+            ? {
+                url: selectedImage.url,
+                alt: t('album.image_alt_concert', { num: selectedImage.id }),
+              }
+            : null
+        }
         show={!!selectedImage}
         onClose={() => setSelectedImage(null)}
         maxHeight="85vh"

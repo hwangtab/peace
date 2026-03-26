@@ -5,18 +5,22 @@ import PageLayout from '@/components/layout/PageLayout';
 import PageHero from '@/components/common/PageHero';
 import { getCollectionPageSchema, getBreadcrumbSchema } from '@/utils/structuredData';
 import { Musician } from '@/types/musician';
+import { getFullUrl } from '@/config/env';
 
 interface AlbumMusiciansPageProps {
   initialMusicians?: Musician[];
   initialLocale?: string;
 }
 
-const AlbumMusiciansPage = ({ initialMusicians = [], initialLocale = 'ko' }: AlbumMusiciansPageProps) => {
+const AlbumMusiciansPage = ({
+  initialMusicians = [],
+  initialLocale = 'ko',
+}: AlbumMusiciansPageProps) => {
   const { t } = useTranslation();
   const collectionSchema = getCollectionPageSchema({
     name: t('album.musicians_page_title'),
     description: t('album.musicians_page_desc'),
-    url: "https://peaceandmusic.net/album/musicians"
+    url: getFullUrl('/album/musicians'),
   });
 
   return (
@@ -29,10 +33,10 @@ const AlbumMusiciansPage = ({ initialMusicians = [], initialLocale = 'ko' }: Alb
       structuredData={[
         collectionSchema,
         getBreadcrumbSchema([
-          { name: t('nav.home'), url: "https://peaceandmusic.net/" },
-          { name: t('nav.album'), url: "https://peaceandmusic.net/album/about" },
-          { name: t('nav.musician'), url: "https://peaceandmusic.net/album/musicians" }
-        ])
+          { name: t('nav.home'), url: getFullUrl('/') },
+          { name: t('nav.album'), url: getFullUrl('/album/about') },
+          { name: t('nav.musician'), url: getFullUrl('/album/musicians') },
+        ]),
       ]}
       disableTopPadding={true}
     >

@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import { getPressItems } from '@/api/press';
@@ -6,23 +6,18 @@ import { PressItem } from '@/types/press';
 import { getBreadcrumbSchema } from '@/utils/structuredData';
 import Button from '@/components/common/Button';
 import { getCamps } from '@/data/camps';
-import { filterByEvent } from '@/utils/filtering';
+import { FilterId, filterByEvent } from '@/utils/filtering';
 import { sortByDateDesc } from '@/utils/sorting';
 import EventFilter from '../common/EventFilter';
 import PageLayout from '@/components/layout/PageLayout';
 import PageHero from '../common/PageHero';
+import { getFullUrl } from '@/config/env';
+import { useLocalizedResource } from '@/hooks/useLocalizedResource';
 
 interface PressPageProps {
   initialPressItems?: PressItem[];
   initialLocale?: string;
 }
-
-const normalizePressItems = (items: PressItem[]): PressItem[] =>
-  items.map((item) => ({
-    ...item,
-    eventType: item.eventType ?? 'album',
-    eventYear: item.eventYear ?? 2024,
-  }));
 
 const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
   const [imgSrc, setImgSrc] = useState(press.imageUrl || '');
@@ -75,47 +70,28 @@ export default function PressPage({
   initialLocale = 'ko',
 }: PressPageProps) {
   const { t, i18n } = useTranslation();
-  const camp2026 = getCamps(i18n.language).find(c => c.id === 'camp-2026');
-  const [selectedFilter, setSelectedFilter] = useState<string>('all');
-  const [pressItems, setPressItems] = useState<PressItem[]>(normalizePressItems(initialPressItems));
+  const camp2026 = getCamps(i18n.language).find((c) => c.id === 'camp-2026');
+  const [selectedFilter, setSelectedFilter] = useState<FilterId>('all');
 
-  useEffect(() => {
-    if (i18n.language === initialLocale) {
-      setPressItems(normalizePressItems(initialPressItems));
-      return;
-    }
+  const fetchPress = useCallback((locale: string) => getPressItems(locale), []);
+  const pressResource = useLocalizedResource<PressItem>({
+    initialData: initialPressItems,
+    initialLocale,
+    currentLocale: i18n.language,
+    fetchResource: fetchPress,
+  });
 
-    let isCancelled = false;
-
-    const loadPress = async () => {
-      try {
-        const data = await getPressItems(i18n.language);
-        if (!isCancelled) {
-          setPressItems(normalizePressItems(data));
-        }
-      } catch (error) {
-        console.error('Failed to load press items:', error);
-      }
-    };
-
-    loadPress();
-
-    return () => {
-      isCancelled = true;
-    };
-  }, [i18n.language, initialLocale, initialPressItems]);
+  const pressItems = pressResource.data;
 
   const breadcrumbs = [
-    { name: t('press.breadcrumb_home'), url: "https://peaceandmusic.net/" },
-    { name: t('press.breadcrumb_press'), url: "https://peaceandmusic.net/press" }
+    { name: t('press.breadcrumb_home'), url: getFullUrl('/') },
+    { name: t('press.breadcrumb_press'), url: getFullUrl('/press') },
   ];
 
-  const structuredData = [
-    getBreadcrumbSchema(breadcrumbs)
-  ];
+  const structuredData = [getBreadcrumbSchema(breadcrumbs)];
 
-  const filteredItems = useMemo(() =>
-    sortByDateDesc(filterByEvent(pressItems, selectedFilter)),
+  const filteredItems = useMemo(
+    () => sortByDateDesc(filterByEvent(pressItems, selectedFilter)),
     [pressItems, selectedFilter]
   );
 
@@ -142,26 +118,43 @@ export default function PressPage({
           colorScheme="orange"
           filterOrder="press"
         />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredItems.map((press) => (
-            <div key={press.id} className="h-full">
-              <PressCard press={press} />
-            </div>
-          ))}
-        </div>
-        {filteredItems.length === 0 && (
-          <p className="text-center text-gray-500 py-12">{t('common.no_results') || 'No results found.'}</p>
+        {!pressResource.error && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredItems.map((press) => (
+              <div key={press.id} className="h-full">
+                <PressCard press={press} />
+              </div>
+            ))}
+          </div>
+        )}
+        {pressResource.error && (
+          <p className="text-center text-gray-500 py-12" role="alert">
+            {t('common.no_results')}
+          </p>
+        )}
+        {filteredItems.length === 0 && !pressResource.error && (
+          <p className="text-center text-gray-500 py-12">
+            {t('common.no_results') || 'No results found.'}
+          </p>
         )}
 
         {/* Camp 2026 CTA */}
         {camp2026?.fundingUrl && (
           <div className="mt-16 bg-jeju-ocean rounded-xl py-8 px-6 text-center">
-            <p className="text-white text-lg font-medium mb-4 break-words">{t('camp.title_2026')}</p>
+            <p className="text-white text-lg font-medium mb-4 break-words">
+              {t('camp.title_2026')}
+            </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button to="/camps/2026" variant="ghost-white" size="sm">
                 {t('camp.view_detail')}
               </Button>
-              <Button href={camp2026.fundingUrl} variant="gold" size="sm" external utmContent="press">
+              <Button
+                href={camp2026.fundingUrl}
+                variant="gold"
+                size="sm"
+                external
+                utmContent="press"
+              >
                 {t('camp.ticketing_2026')}
               </Button>
             </div>

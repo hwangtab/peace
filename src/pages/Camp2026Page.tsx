@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback } from 'react';
 import { useTranslation } from 'next-i18next';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -10,16 +10,16 @@ import WaveDivider from '@/components/common/WaveDivider';
 import CampLineup from '@/components/camp/CampLineup';
 import dynamic from 'next/dynamic';
 
-const GangjeongStorySection = dynamic(
-  () => import('@/components/camp/GangjeongStorySection'),
-  { ssr: false }
-);
+const GangjeongStorySection = dynamic(() => import('@/components/camp/GangjeongStorySection'), {
+  ssr: false,
+});
 import { getEventSchema, getBreadcrumbSchema } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
 import Button from '@/components/common/Button';
 import { formatOrdinal } from '@/utils/format';
 import { getMusicians } from '@/api/musicians';
 import { Musician } from '@/types/musician';
+import { useLocalizedResource } from '@/hooks/useLocalizedResource';
 
 interface CampPageProps {
   initialMusicians?: Musician[];
@@ -29,21 +29,16 @@ interface CampPageProps {
 const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialLocale = 'ko' }) => {
   const { t, i18n } = useTranslation();
   const campList = getCamps(i18n.language);
-  const camp2026 = campList.find(camp => camp.id === 'camp-2026');
+  const camp2026 = campList.find((camp) => camp.id === 'camp-2026');
   const ordinalLabel = formatOrdinal(3, i18n.language);
-  const [musicians, setMusicians] = useState<Musician[]>(initialMusicians);
-
-  useEffect(() => {
-    if (i18n.language === initialLocale) {
-      return;
-    }
-    let isCancelled = false;
-    getMusicians(i18n.language).then((data) => {
-      if (!isCancelled) setMusicians(data);
-    }).catch(console.error);
-    return () => { isCancelled = true; };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [i18n.language, initialLocale]);
+  const fetchMusicians = useCallback((locale: string) => getMusicians(locale), []);
+  const musiciansResource = useLocalizedResource<Musician>({
+    initialData: initialMusicians,
+    initialLocale,
+    currentLocale: i18n.language,
+    fetchResource: fetchMusicians,
+  });
+  const musicians = musiciansResource.data;
 
   if (!camp2026) {
     return (
@@ -64,29 +59,37 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
   const translatedDescription = t('camp.description_2026');
   const translatedSlogan = t('camp.slogan_2026');
 
-  const eventSchema = getEventSchema({
-    name: translatedTitle,
-    startDate: camp2026.startDate,
-    endDate: camp2026.endDate || camp2026.startDate,
-    description: translatedDescription,
-    location: {
-      name: t('camp.venue_2026'),
-      address: t('camp.venue_2026')
+  const eventSchema = getEventSchema(
+    {
+      name: translatedTitle,
+      startDate: camp2026.startDate,
+      endDate: camp2026.endDate || camp2026.startDate,
+      description: translatedDescription,
+      location: {
+        name: t('camp.venue_2026'),
+        address: t('camp.venue_2026'),
+      },
+      image:
+        camp2026.images && camp2026.images.length > 0 && camp2026.images[0]
+          ? getFullUrl(camp2026.images[0])
+          : undefined,
+      performers: camp2026.participants?.map((p) => ({
+        type: 'MusicGroup',
+        name: typeof p === 'string' ? p : p.name,
+      })),
+      ...(camp2026.fundingUrl
+        ? {
+            offers: {
+              url: camp2026.fundingUrl,
+              price: '0',
+              priceCurrency: 'KRW',
+              availability: 'https://schema.org/InStock',
+            },
+          }
+        : {}),
     },
-    image: camp2026.images && camp2026.images.length > 0 && camp2026.images[0] ? getFullUrl(camp2026.images[0]) : undefined,
-    performers: camp2026.participants?.map(p => ({
-      type: 'MusicGroup',
-      name: typeof p === 'string' ? p : p.name
-    })),
-    ...(camp2026.fundingUrl ? {
-      offers: {
-        url: camp2026.fundingUrl,
-        price: "0",
-        priceCurrency: "KRW",
-        availability: "https://schema.org/InStock"
-      }
-    } : {})
-  }, i18n.language);
+    i18n.language
+  );
 
   const participantCount = camp2026.participants?.length || 0;
 
@@ -99,10 +102,10 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
       structuredData={[
         eventSchema,
         getBreadcrumbSchema([
-          { name: t('nav.home'), url: "https://peaceandmusic.net/" },
-          { name: t('nav.camp'), url: "https://peaceandmusic.net/camps/2026" },
-          { name: "2026", url: "https://peaceandmusic.net/camps/2026" }
-        ])
+          { name: t('nav.home'), url: getFullUrl('/') },
+          { name: t('nav.camp'), url: getFullUrl('/camps/2026') },
+          { name: '2026', url: getFullUrl('/camps/2026') },
+        ]),
       ]}
       disableTopPadding={true}
       disableBottomPadding={true}
@@ -128,17 +131,25 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
               {t('camp.date_badge_2026')}
             </span>
 
-            <h1 className="typo-h1 text-white mb-3 sm:mb-4 hyphens-auto break-words">{translatedTitle}</h1>
-            <p className="typo-subtitle text-gray-100 mb-5 sm:mb-8 hyphens-auto break-words">{translatedSlogan}</p>
+            <h1 className="typo-h1 text-white mb-3 sm:mb-4 hyphens-auto break-words">
+              {translatedTitle}
+            </h1>
+            <p className="typo-subtitle text-gray-100 mb-5 sm:mb-8 hyphens-auto break-words">
+              {translatedSlogan}
+            </p>
 
             <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-6 text-white mb-5 sm:mb-8">
               <div>
-                <p className="text-sm uppercase tracking-wide text-gray-300 mb-1">{t('camp.label_period')}</p>
+                <p className="text-sm uppercase tracking-wide text-gray-300 mb-1">
+                  {t('camp.label_period')}
+                </p>
                 <p className="text-lg font-medium break-words">{t('camp.date_2026')}</p>
               </div>
               <div className="hidden sm:block text-gray-400">|</div>
               <div>
-                <p className="text-sm uppercase tracking-wide text-gray-300 mb-1">{t('camp.label_location')}</p>
+                <p className="text-sm uppercase tracking-wide text-gray-300 mb-1">
+                  {t('camp.label_location')}
+                </p>
                 <p className="text-lg font-medium break-words">{t('camp.venue_2026')}</p>
               </div>
             </div>
@@ -148,7 +159,13 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
                 {t('camp.lineup_count', { count: participantCount })}
               </Button>
               {camp2026.fundingUrl && (
-                <Button href={camp2026.fundingUrl} variant="white" size="sm" external utmContent="hero">
+                <Button
+                  href={camp2026.fundingUrl}
+                  variant="white"
+                  size="sm"
+                  external
+                  utmContent="hero"
+                >
                   {t('camp.ticketing_2026')}
                 </Button>
               )}
@@ -198,21 +215,31 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
               {/* Info */}
               <div className="flex-1 min-w-0 bg-white rounded-lg shadow-sm p-4 sm:p-6 md:p-8">
                 <SectionHeader title={t('camp.section_overview')} align="left" className="!mb-6" />
-                <p className="typo-body mb-6 break-words">
-                  {translatedDescription}
-                </p>
+                <p className="typo-body mb-6 break-words">{translatedDescription}</p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div className="bg-ocean-sand rounded-xl p-4 text-center">
-                    <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">{t('camp.label_period')}</p>
-                    <p className="text-sm font-bold text-jeju-ocean break-words">{t('camp.date_badge_2026')}</p>
+                    <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">
+                      {t('camp.label_period')}
+                    </p>
+                    <p className="text-sm font-bold text-jeju-ocean break-words">
+                      {t('camp.date_badge_2026')}
+                    </p>
                   </div>
                   <div className="bg-ocean-sand rounded-xl p-4 text-center">
-                    <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">{t('camp.label_location')}</p>
-                    <p className="text-sm font-bold text-jeju-ocean break-words">{t('camp.venue_2026')}</p>
+                    <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">
+                      {t('camp.label_location')}
+                    </p>
+                    <p className="text-sm font-bold text-jeju-ocean break-words">
+                      {t('camp.venue_2026')}
+                    </p>
                   </div>
                   <div className="bg-ocean-sand rounded-xl p-4 text-center">
-                    <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">{t('camp.label_participants')}</p>
-                    <p className="text-sm font-bold text-jeju-ocean break-words">{t('camp.participant_count', { count: participantCount })}</p>
+                    <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">
+                      {t('camp.label_participants')}
+                    </p>
+                    <p className="text-sm font-bold text-jeju-ocean break-words">
+                      {t('camp.participant_count', { count: participantCount })}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -221,7 +248,10 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
         </div>
       </Section>
 
-      <WaveDivider className="text-ocean-sand -mb-[60px] sm:-mb-[100px] relative z-10" direction="down" />
+      <WaveDivider
+        className="text-ocean-sand -mb-[60px] sm:-mb-[100px] relative z-10"
+        direction="down"
+      />
 
       {/* Gangjeong Story Section */}
       <GangjeongStorySection />
@@ -237,7 +267,11 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
               subtitle={t('camp.lineup_count', { count: participantCount })}
             />
             <div className="max-w-6xl mx-auto">
-              <CampLineup participants={camp2026.participants} musicians={musicians} campYear={2026} />
+              <CampLineup
+                participants={camp2026.participants}
+                musicians={musicians}
+                campYear={2026}
+              />
             </div>
           </div>
         </Section>
@@ -256,7 +290,9 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
                 transition={{ duration: 0.6 }}
               >
                 <h2 className="typo-h2 text-white mb-4">{t('camp.cta_final_heading')}</h2>
-                <p className="typo-body text-gray-200 mb-8 max-w-lg mx-auto">{t('camp.cta_final_body')}</p>
+                <p className="typo-body text-gray-200 mb-8 max-w-lg mx-auto">
+                  {t('camp.cta_final_body')}
+                </p>
                 <Button href={camp2026.fundingUrl} variant="gold" external utmContent="final-cta">
                   {t('camp.cta_final_button')}
                 </Button>

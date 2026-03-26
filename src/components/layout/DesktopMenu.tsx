@@ -6,88 +6,83 @@ import NavigationDropdown from './NavigationDropdown';
 import LanguageSwitcher from '../common/LanguageSwitcher';
 import { campItems, albumItems, simpleMenuItems } from './navigationData';
 import { ROUTES } from '@/constants/routes';
+import { NavigationDropdownKey } from '@/hooks/useNavigation';
 
 interface DesktopMenuProps {
-    pathname: string;
-    desktopOpenDropdown: string | null;
-    onOpenChange: (dropdown: string, isOpen: boolean) => void;
-    isScrolled: boolean;
+  pathname: string;
+  desktopOpenDropdown: NavigationDropdownKey | null;
+  onOpenChange: (dropdown: NavigationDropdownKey, isOpen: boolean) => void;
+  isScrolled: boolean;
 }
 
-const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(({
-    pathname,
-    desktopOpenDropdown,
-    onOpenChange,
-    isScrolled,
-}) => {
+const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(
+  ({ pathname, desktopOpenDropdown, onOpenChange, isScrolled }) => {
     const { t } = useTranslation();
 
     const getTextColor = (isActive: boolean) => {
-        if (isScrolled) {
-            return isActive
-                ? 'text-jeju-ocean font-bold'
-                : 'text-coastal-gray hover:text-jeju-ocean';
-        }
-        return isActive
-            ? 'text-cloud-white font-bold drop-shadow-md'
-            : 'text-cloud-white/90 hover:text-cloud-white drop-shadow-md';
+      if (isScrolled) {
+        return isActive ? 'text-jeju-ocean font-bold' : 'text-coastal-gray hover:text-jeju-ocean';
+      }
+      return isActive
+        ? 'text-cloud-white font-bold drop-shadow-md'
+        : 'text-cloud-white/90 hover:text-cloud-white drop-shadow-md';
     };
 
     return (
-        <div className="hidden md:flex flex-wrap items-center gap-x-4 lg:gap-x-6 gap-y-2">
+      <div className="hidden md:flex flex-wrap items-center gap-x-4 lg:gap-x-6 gap-y-2">
+        <Link
+          href={ROUTES.HOME}
+          className={`${getTextColor(pathname === ROUTES.HOME)} transition-colors duration-300 font-display font-bold relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm`}
+        >
+          {t('nav.home')}
+          {pathname === ROUTES.HOME && (
+            <motion.div
+              className={`absolute bottom-[-4px] left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
+              layoutId="underline-home"
+            />
+          )}
+        </Link>
+
+        <NavigationDropdown
+          label={t('nav.camp')}
+          items={campItems}
+          isOpen={desktopOpenDropdown === 'camps'}
+          onOpenChange={(isOpen) => onOpenChange('camps', isOpen)}
+          isScrolled={isScrolled}
+        />
+        <NavigationDropdown
+          label={t('nav.album')}
+          items={albumItems}
+          isOpen={desktopOpenDropdown === 'album'}
+          onOpenChange={(isOpen) => onOpenChange('album', isOpen)}
+          isScrolled={isScrolled}
+        />
+
+        {simpleMenuItems
+          .filter((item) => item.path !== ROUTES.HOME) // '홈'은 별도 처리
+          .map((item) => (
             <Link
-                href={ROUTES.HOME}
-                className={`${getTextColor(pathname === ROUTES.HOME)} transition-colors duration-300 font-display font-bold relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm`}
+              key={item.path}
+              href={item.path}
+              className={`${getTextColor(pathname === item.path)} transition-colors duration-300 font-display font-bold relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm`}
             >
-                {t('nav.home')}
-                {pathname === ROUTES.HOME && (
-                    <motion.div
-                        className={`absolute bottom-[-4px] left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
-                        layoutId="underline-home"
-                    />
-                )}
+              {t(item.nameKey)}
+              {pathname === item.path && (
+                <motion.div
+                  className={`absolute bottom-[-4px] left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
+                  layoutId={`underline-${item.path}`}
+                />
+              )}
             </Link>
+          ))}
 
-            <NavigationDropdown
-                label={t('nav.camp')}
-                items={campItems}
-                isOpen={desktopOpenDropdown === 'camps'}
-                onOpenChange={(isOpen) => onOpenChange('camps', isOpen)}
-                isScrolled={isScrolled}
-            />
-            <NavigationDropdown
-                label={t('nav.album')}
-                items={albumItems}
-                isOpen={desktopOpenDropdown === 'album'}
-                onOpenChange={(isOpen) => onOpenChange('album', isOpen)}
-                isScrolled={isScrolled}
-            />
-
-
-            {simpleMenuItems
-                .filter(item => item.path !== ROUTES.HOME) // '홈'은 별도 처리
-                .map((item) => (
-                    <Link
-                        key={item.path}
-                        href={item.path}
-                        className={`${getTextColor(pathname === item.path)} transition-colors duration-300 font-display font-bold relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm`}
-                    >
-                        {t(item.nameKey)}
-                        {pathname === item.path && (
-                            <motion.div
-                                className={`absolute bottom-[-4px] left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
-                                layoutId={`underline-${item.path}`}
-                            />
-                        )}
-                    </Link>
-                ))}
-
-            <div className="pl-2 ml-2 sm:pl-4 sm:ml-4 border-l border-white/30">
-                <LanguageSwitcher isScrolled={isScrolled} />
-            </div>
+        <div className="pl-2 ml-2 sm:pl-4 sm:ml-4 border-l border-white/30">
+          <LanguageSwitcher isScrolled={isScrolled} />
         </div>
+      </div>
     );
-});
+  }
+);
 
 DesktopMenu.displayName = 'DesktopMenu';
 export default DesktopMenu;

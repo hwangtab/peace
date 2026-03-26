@@ -8,6 +8,7 @@ import { loadLocalizedData } from '@/utils/dataLoader';
 import { seededHash } from '@/utils/hash';
 import { camps, getCamps } from '@/data/camps';
 import MusicianDetailContent from '@/components/musicians/MusicianDetailContent';
+import { getFullUrl } from '@/config/env';
 
 interface CampMusicianPageProps {
   musician: Musician;
@@ -31,11 +32,11 @@ export default function CampMusicianPage({
       backHref="/camps/2026"
       backLabel={t('nav.camp')}
       breadcrumbs={[
-        { name: t('nav.home'), url: 'https://peaceandmusic.net/' },
-        { name: t('nav.camp'), url: 'https://peaceandmusic.net/camps/2026' },
+        { name: t('nav.home'), url: getFullUrl('/') },
+        { name: t('nav.camp'), url: getFullUrl('/camps/2026') },
         {
           name: musician.name,
-          url: `https://peaceandmusic.net/camps/2026/musicians/${musician.id}`,
+          url: getFullUrl(`/camps/2026/musicians/${musician.id}`),
         },
       ]}
       musicianHrefPrefix="/camps/2026/musicians"
@@ -99,7 +100,9 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
   );
 
   const seed = musician.id;
-  const otherMusicians = [...candidates].sort((a, b) => seededHash(a.id, seed) - seededHash(b.id, seed)).slice(0, 6);
+  const otherMusicians = [...candidates]
+    .sort((a, b) => seededHash(a.id, seed) - seededHash(b.id, seed))
+    .slice(0, 6);
 
   return {
     props: {

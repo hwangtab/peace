@@ -1,55 +1,37 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useCallback } from 'react';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { getVideos } from '@/api/videos';
 import { VideoItem } from '@/types/video';
-import { filterByEvent, isValidFilter } from '@/utils/filtering';
+import { FilterId, filterByEvent, isValidFilter } from '@/utils/filtering';
 import { sortByDateDesc } from '@/utils/sorting';
 import EventFilter from '../common/EventFilter';
 import PageLayout from '../layout/PageLayout';
 import PageHero from '../common/PageHero';
 import VideoCard from './VideoCard';
 import { getCollectionPageSchema, getBreadcrumbSchema } from '@/utils/structuredData';
+import { getFullUrl } from '@/config/env';
+import { useLocalizedResource } from '@/hooks/useLocalizedResource';
 
 interface VideoPageProps {
   initialVideos?: VideoItem[];
   initialLocale?: string;
 }
 
-export default function VideoPage({
-  initialVideos = [],
-  initialLocale = 'ko',
-}: VideoPageProps) {
+export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: VideoPageProps) {
   const { t, i18n } = useTranslation();
   const router = useRouter();
-  const [selectedFilter, setSelectedFilter] = useState<string>('all');
-  const [videos, setVideos] = useState<VideoItem[]>(initialVideos);
+  const [selectedFilter, setSelectedFilter] = useState<FilterId>('all');
 
-  useEffect(() => {
-    if (i18n.language === initialLocale) {
-      setVideos(initialVideos);
-      return;
-    }
+  const fetchVideos = useCallback((locale: string) => getVideos(locale), []);
+  const videosResource = useLocalizedResource<VideoItem>({
+    initialData: initialVideos,
+    initialLocale,
+    currentLocale: i18n.language,
+    fetchResource: fetchVideos,
+  });
 
-    let isCancelled = false;
-
-    const loadVideos = async () => {
-      try {
-        const data = await getVideos(i18n.language);
-        if (!isCancelled) {
-          setVideos(data);
-        }
-      } catch (error) {
-        console.error('Failed to load videos:', error);
-      }
-    };
-
-    loadVideos();
-
-    return () => {
-      isCancelled = true;
-    };
-  }, [i18n.language, initialLocale, initialVideos]);
+  const videos = videosResource.data;
 
   // Sync filter with query parameter on mount
   useEffect(() => {
@@ -69,7 +51,7 @@ export default function VideoPage({
   const collectionSchema = getCollectionPageSchema({
     name: t('videos.page_title'),
     description: t('videos.page_desc'),
-    url: "https://peaceandmusic.net/videos"
+    url: getFullUrl('/videos'),
   });
 
   return (
@@ -82,9 +64,9 @@ export default function VideoPage({
       structuredData={[
         collectionSchema,
         getBreadcrumbSchema([
-          { name: t('nav.home'), url: "https://peaceandmusic.net/" },
-          { name: t('videos.page_title'), url: "https://peaceandmusic.net/videos" }
-        ])
+          { name: t('nav.home'), url: getFullUrl('/') },
+          { name: t('videos.page_title'), url: getFullUrl('/videos') },
+        ]),
       ]}
       disableTopPadding={true}
     >
@@ -102,15 +84,24 @@ export default function VideoPage({
           filterOrder="videos"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {filteredVideos.map((video) => (
-            <div key={video.id} className="h-full">
-              <VideoCard video={video} />
-            </div>
-          ))}
-        </div>
-        {filteredVideos.length === 0 && (
-          <p className="text-center text-gray-500 py-12">{t('common.no_results') || 'No results found.'}</p>
+        {videosResource.error && (
+          <p className="text-center text-gray-500 py-12" role="alert">
+            {t('common.no_results')}
+          </p>
+        )}
+        {!videosResource.error && (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {filteredVideos.map((video) => (
+              <div key={video.id} className="h-full">
+                <VideoCard video={video} />
+              </div>
+            ))}
+          </div>
+        )}
+        {filteredVideos.length === 0 && !videosResource.error && (
+          <p className="text-center text-gray-500 py-12">
+            {t('common.no_results') || 'No results found.'}
+          </p>
         )}
       </div>
     </PageLayout>

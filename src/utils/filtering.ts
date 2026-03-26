@@ -5,11 +5,19 @@ interface FilterableItem {
   eventYear?: number;
 }
 
-type FilterId = 'all' | 'album-2024' | 'camp-2023' | 'camp-2025' | 'camp-2026';
+export type FilterId = 'all' | 'album-2024' | 'camp-2023' | 'camp-2025' | 'camp-2026';
 
-export const VALID_FILTERS: FilterId[] = ['all', 'album-2024', 'camp-2023', 'camp-2025', 'camp-2026'];
+export const VALID_FILTERS: FilterId[] = [
+  'all',
+  'album-2024',
+  'camp-2023',
+  'camp-2025',
+  'camp-2026',
+];
 
-const filterMap: Record<string, { type: string; year: number }> = {
+type SpecificFilterId = Exclude<FilterId, 'all'>;
+
+const filterMap: Record<SpecificFilterId, { type: string; year: number }> = {
   'album-2024': { type: 'album', year: 2024 },
   'camp-2023': { type: 'camp', year: 2023 },
   'camp-2025': { type: 'camp', year: 2025 },
@@ -22,10 +30,13 @@ const filterMap: Record<string, { type: string; year: number }> = {
  * @param filter 필터 ID ('all', 'album-2024', 'camp-2023', 'camp-2025', 'camp-2026')
  * @returns 필터링된 아이템 배열
  */
-export const filterByEvent = <T extends FilterableItem>(items: T[], filter: string): T[] => {
+export const filterByEvent = <T extends FilterableItem>(
+  items: T[],
+  filter: FilterId | string
+): T[] => {
   if (filter === 'all') return items;
 
-  const config = filterMap[filter];
+  const config = filterMap[filter as SpecificFilterId];
   if (!config) return items;
 
   return items.filter((item) => item.eventType === config.type && item.eventYear === config.year);

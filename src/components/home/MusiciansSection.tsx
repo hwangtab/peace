@@ -1,11 +1,12 @@
 import { useTranslation } from 'next-i18next';
-import { useState, useEffect } from 'react';
+import { useCallback } from 'react';
 import { getMusicians } from '@/api/musicians';
 import { Musician } from '@/types/musician';
 import MusicianCard from '../musicians/MusicianCard';
 import Section from '../layout/Section';
 import SectionHeader from '../common/SectionHeader';
 import React from 'react';
+import { useLocalizedResource } from '@/hooks/useLocalizedResource';
 
 interface MusiciansSectionProps {
   enableSectionWrapper?: boolean;
@@ -15,45 +16,25 @@ interface MusiciansSectionProps {
 }
 
 const MusiciansSection: React.FC<MusiciansSectionProps> = React.memo(
-  ({ enableSectionWrapper = true, hideSectionHeader = false, initialMusicians = [], initialLocale = 'ko' }) => {
+  ({
+    enableSectionWrapper = true,
+    hideSectionHeader = false,
+    initialMusicians = [],
+    initialLocale = 'ko',
+  }) => {
     const { t, i18n } = useTranslation();
 
-    const [musicians, setMusicians] = useState<Musician[]>(initialMusicians);
-    const [isLoading, setIsLoading] = useState(initialMusicians.length === 0);
+    const fetchMusicians = useCallback((locale: string) => getMusicians(locale), []);
+    const musiciansResource = useLocalizedResource<Musician>({
+      initialData: initialMusicians,
+      initialLocale,
+      currentLocale: i18n.language,
+      fetchResource: fetchMusicians,
+    });
 
-    // Load musicians data on mount or when language changes
-    useEffect(() => {
-      if (i18n.language === initialLocale && initialMusicians.length > 0) {
-        setMusicians(initialMusicians);
-        setIsLoading(false);
-        return;
-      }
-
-      let isCancelled = false;
-
-      const loadMusicians = async () => {
-        setIsLoading(true);
-        try {
-          const data = await getMusicians(i18n.language);
-          if (!isCancelled) {
-            setMusicians(data);
-          }
-        } catch (error) {
-          console.error('Failed to load musicians:', error);
-        } finally {
-          if (!isCancelled) {
-            setIsLoading(false);
-          }
-        }
-      };
-
-      loadMusicians();
-
-      return () => {
-        isCancelled = true;
-      };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [i18n.language, initialLocale, initialMusicians.length]);
+    const musicians = musiciansResource.data;
+    const isLoading = musiciansResource.isLoading;
+    const loadingError = musiciansResource.error;
 
     const content = (
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -69,6 +50,10 @@ const MusiciansSection: React.FC<MusiciansSectionProps> = React.memo(
             <div className="motion-safe:animate-spin rounded-full h-12 w-12 border-b-2 border-jeju-ocean" />
             <span className="sr-only">{t('common.loading')}</span>
           </div>
+        ) : loadingError ? (
+          <p className="text-center text-gray-600 py-10" role="alert">
+            {t('common.no_results')}
+          </p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {musicians.map((musician, index) => (

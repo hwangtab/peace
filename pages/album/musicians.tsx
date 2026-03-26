@@ -5,13 +5,17 @@ import Page from '@/pages/album/AlbumMusiciansPage';
 import { Musician } from '@/types/musician';
 import { Track } from '@/types/track';
 import { loadLocalizedData } from '@/utils/dataLoader';
+import { buildTrackMusicianRelation } from '@/utils/trackMusician';
 
 interface MusiciansWrappedPageProps {
   initialMusicians: Musician[];
   initialLocale: string;
 }
 
-export default function WrappedPage({ initialMusicians, initialLocale }: MusiciansWrappedPageProps) {
+export default function WrappedPage({
+  initialMusicians,
+  initialLocale,
+}: MusiciansWrappedPageProps) {
   return <Page initialMusicians={initialMusicians} initialLocale={initialLocale} />;
 }
 
@@ -22,15 +26,14 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
     props: {
       ...(await serverSideTranslations(resolvedLocale, ['translation'], nextI18NextConfig)),
       initialMusicians: (() => {
-        const tracks = loadLocalizedData<Track>(resolvedLocale, 'tracks.json');
-        const allMusicians = loadLocalizedData<Musician>(resolvedLocale, 'musicians.json');
-        const trackTitles = new Set(tracks.map(t => t.title));
-        const seen = new Set<string>();
-        return allMusicians.filter(m => {
-          if (!trackTitles.has(m.trackTitle) || seen.has(m.trackTitle)) return false;
-          seen.add(m.trackTitle);
-          return true;
-        });
+        const canonicalTracks = loadLocalizedData<Track>('ko', 'tracks.json');
+        const canonicalMusicians = loadLocalizedData<Musician>('ko', 'musicians.json');
+        const canonicalRelation = buildTrackMusicianRelation(canonicalTracks, canonicalMusicians);
+
+        const albumMusicianIds = new Set(canonicalRelation.trackByMusicianId.keys());
+        const localizedMusicians = loadLocalizedData<Musician>(resolvedLocale, 'musicians.json');
+
+        return localizedMusicians.filter((musician) => albumMusicianIds.has(musician.id));
       })(),
       initialLocale: resolvedLocale,
     },
