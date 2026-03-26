@@ -13,7 +13,8 @@ const GangjeongStorySection = dynamic(() => import('@/components/camp/GangjeongS
   loading: () => <div className="h-96" />,
 });
 const GallerySection = dynamic(() => import('@/components/home/GallerySection'));
-import { getWebSiteSchema, getOrganizationSchema, getFAQSchema } from '@/utils/structuredData';
+import { getWebSiteSchema, getOrganizationSchema, getFAQSchema, getWebPageSchema } from '@/utils/structuredData';
+import { getFullUrl } from '@/config/env';
 import { GalleryImage } from '@/types/gallery';
 import { loadGalleryImages } from '@/utils/dataLoader';
 
@@ -29,6 +30,11 @@ export default function HomePage({ initialGalleryImages }: HomePageProps) {
     getWebSiteSchema(i18n.language, t),
     getOrganizationSchema(i18n.language, t),
     getFAQSchema(faqs.map(f => ({ question: f.q, answer: f.a }))),
+    getWebPageSchema({
+      name: t('seo.default.title'),
+      description: t('seo.default.description'),
+      url: getFullUrl('/'),
+    }),
   ];
 
   return (
