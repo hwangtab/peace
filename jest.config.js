@@ -7,7 +7,25 @@ const createJestConfig = nextJest({
 const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.tsx'],
   testEnvironment: 'jest-environment-jsdom',
-  testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/', '/\\._'],
+  testPathIgnorePatterns: [
+    '<rootDir>/node_modules/',
+    '<rootDir>/.next/',
+    '/\\._',
+    '<rootDir>/naughty-carson/',
+    '<rootDir>/friendly-northcutt/',
+    '<rootDir>/elated-montalcini/',
+    '<rootDir>/goofy-merkle/',
+    '<rootDir>/jolly-ritchie/',
+    '<rootDir>/xenodochial-beaver/',
+  ],
+  modulePathIgnorePatterns: [
+    '<rootDir>/naughty-carson/',
+    '<rootDir>/friendly-northcutt/',
+    '<rootDir>/elated-montalcini/',
+    '<rootDir>/goofy-merkle/',
+    '<rootDir>/jolly-ritchie/',
+    '<rootDir>/xenodochial-beaver/',
+  ],
 };
 
 module.exports = createJestConfig(customJestConfig);

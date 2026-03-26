@@ -1,7 +1,7 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import nextI18NextConfig from '../next-i18next.config';
 import { GetStaticPropsContext } from 'next';
-import Page from '@/components/videos/VideoPage';
+import Page from '@/pages/VideosPage';
 import { VideoItem } from '@/types/video';
 import { loadLocalizedData } from '@/utils/dataLoader';
 

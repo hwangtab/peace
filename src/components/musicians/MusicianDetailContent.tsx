@@ -3,6 +3,7 @@ import { Musician } from '@/types/musician';
 import { VideoItem } from '@/types/video';
 import { getProfilePageSchema, getBreadcrumbSchema } from '@/utils/structuredData';
 import { getCamps } from '@/data/camps';
+import { getFullUrl } from '@/config/env';
 import PageLayout from '../layout/PageLayout';
 import WaveDivider from '../common/WaveDivider';
 import MusicianHeroSection from './MusicianHeroSection';
@@ -47,24 +48,26 @@ export default function MusicianDetailContent({
   const latestCamp = campList.length > 0 ? campList[campList.length - 1] : undefined;
   const latestCampYear = latestCamp?.year;
 
-  const pageTitle = isCampPage && latestCampYear
-    ? `${musician.name} — ${t(`camp.title_${latestCampYear}`)} | ${t('nav.logo')}`
-    : `${musician.name} | ${t('app.title')}`;
+  const pageTitle =
+    isCampPage && latestCampYear
+      ? `${musician.name} — ${t(`camp.title_${latestCampYear}`)} | ${t('nav.logo')}`
+      : `${musician.name} | ${t('app.title')}`;
 
   const pageDescription = isCampPage
     ? `${musician.shortDescription} ${t('camp.seo_musician_suffix')}`
     : musician.shortDescription;
 
   const baseKeywords = `${musician.name}, ${musician.genre.join(', ')}, ${t('app.title')}`;
-  const pageKeywords = isCampPage && latestCampYear
-    ? `${baseKeywords}, ${t(`camp.title_${latestCampYear}`)}, ${latestCampYear}, ${t('camp.keywords_base')}`
-    : baseKeywords;
+  const pageKeywords =
+    isCampPage && latestCampYear
+      ? `${baseKeywords}, ${t(`camp.title_${latestCampYear}`)}, ${latestCampYear}, ${t('camp.keywords_base')}`
+      : baseKeywords;
 
   const profileSchema = getProfilePageSchema(
     {
       name: musician.name,
       description: musician.shortDescription,
-      image: musician.imageUrl ? `https://peaceandmusic.net${musician.imageUrl}` : undefined,
+      image: musician.imageUrl ? getFullUrl(musician.imageUrl) : undefined,
       jobTitle: 'Musician',
     },
     i18n.language
@@ -98,9 +101,7 @@ export default function MusicianDetailContent({
         <WaveDivider className="text-ocean-sand -mt-[60px] sm:-mt-[100px] relative z-10" />
       )}
 
-      {relatedVideos.length > 0 && (
-        <RelatedVideosSection relatedVideos={relatedVideos} />
-      )}
+      {relatedVideos.length > 0 && <RelatedVideosSection relatedVideos={relatedVideos} />}
 
       {otherMusicians.length > 0 && relatedVideos.length > 0 && (
         <WaveDivider className="text-white -mt-[60px] sm:-mt-[100px] relative z-10" />

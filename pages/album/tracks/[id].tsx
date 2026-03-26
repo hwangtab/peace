@@ -9,6 +9,8 @@ import { Musician } from '@/types/musician';
 import { loadLocalizedData } from '@/utils/dataLoader';
 import { getMusicRecordingSchema, getBreadcrumbSchema } from '@/utils/structuredData';
 import PageLayout from '@/components/layout/PageLayout';
+import { getFullUrl } from '@/config/env';
+import { buildTrackMusicianRelation } from '@/utils/trackMusician';
 
 interface TrackPageProps {
   track: Track;
@@ -19,24 +21,27 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
   const { t, i18n } = useTranslation();
 
   const recordingSchema = {
-    ...getMusicRecordingSchema({
-      name: track.title,
-      description: track.description,
-      duration: track.duration,
-      url: `https://peaceandmusic.net/album/tracks/${track.id}`,
-    }, i18n.language),
+    ...getMusicRecordingSchema(
+      {
+        name: track.title,
+        description: track.description,
+        duration: track.duration,
+        url: getFullUrl(`/album/tracks/${track.id}`),
+      },
+      i18n.language
+    ),
     audio: {
       '@type': 'AudioObject',
-      contentUrl: `https://peaceandmusic.net${track.audioUrl}`,
+      contentUrl: getFullUrl(track.audioUrl),
       encodingFormat: 'audio/mpeg',
     },
   };
 
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: t('nav.home'), url: 'https://peaceandmusic.net/' },
-    { name: t('nav.album'), url: 'https://peaceandmusic.net/album/about' },
-    { name: t('nav.track'), url: 'https://peaceandmusic.net/album/tracks' },
-    { name: track.title, url: `https://peaceandmusic.net/album/tracks/${track.id}` },
+    { name: t('nav.home'), url: getFullUrl('/') },
+    { name: t('nav.album'), url: getFullUrl('/album/about') },
+    { name: t('nav.track'), url: getFullUrl('/album/tracks') },
+    { name: track.title, url: getFullUrl(`/album/tracks/${track.id}`) },
   ]);
 
   return (
@@ -90,9 +95,14 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
 
               {/* Audio player */}
               <div className="mt-6">
-                {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
                 <audio controls className="w-full" preload="none">
                   <source src={track.audioUrl} type="audio/mpeg" />
+                  <track
+                    kind="captions"
+                    src={`${track.audioUrl}.vtt`}
+                    srcLang={i18n.language}
+                    label={t('common.lyrics')}
+                  />
                 </audio>
               </div>
             </div>
@@ -131,25 +141,33 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
                 <div className="space-y-3">
                   {track.credits.composer && track.credits.composer.length > 0 && (
                     <div>
-                      <span className="text-sm uppercase tracking-wide text-gray-500">{t('common.composer')}</span>
+                      <span className="text-sm uppercase tracking-wide text-gray-500">
+                        {t('common.composer')}
+                      </span>
                       <p className="text-gray-800">{track.credits.composer.join(', ')}</p>
                     </div>
                   )}
                   {track.credits.lyricist && track.credits.lyricist.length > 0 && (
                     <div>
-                      <span className="text-sm uppercase tracking-wide text-gray-500">{t('common.lyricist')}</span>
+                      <span className="text-sm uppercase tracking-wide text-gray-500">
+                        {t('common.lyricist')}
+                      </span>
                       <p className="text-gray-800">{track.credits.lyricist.join(', ')}</p>
                     </div>
                   )}
                   {track.credits.arranger && track.credits.arranger.length > 0 && (
                     <div>
-                      <span className="text-sm uppercase tracking-wide text-gray-500">{t('common.arranger')}</span>
+                      <span className="text-sm uppercase tracking-wide text-gray-500">
+                        {t('common.arranger')}
+                      </span>
                       <p className="text-gray-800">{track.credits.arranger.join(', ')}</p>
                     </div>
                   )}
-                  {track.credits.personnel?.map((p, i) => (
-                    <div key={i}>
-                      <span className="text-sm uppercase tracking-wide text-gray-500">{p.role}</span>
+                  {track.credits.personnel?.map((p) => (
+                    <div key={`${p.role}-${p.name.join('-')}`}>
+                      <span className="text-sm uppercase tracking-wide text-gray-500">
+                        {p.role}
+                      </span>
                       <p className="text-gray-800">{p.name.join(', ')}</p>
                     </div>
                   ))}
@@ -205,8 +223,16 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
     return { notFound: true };
   }
 
+  const canonicalTracks = loadLocalizedData<Track>('ko', 'tracks.json');
+  const canonicalMusicians = loadLocalizedData<Musician>('ko', 'musicians.json');
+  const canonicalRelation = buildTrackMusicianRelation(canonicalTracks, canonicalMusicians);
+  const canonicalMusicianId = canonicalRelation.musicianByTrackId.get(track.id)?.id;
+
   const musicians = loadLocalizedData<Musician>(resolvedLocale, 'musicians.json');
-  const musician = musicians.find((m) => m.trackTitle === track.title) || null;
+  const musician =
+    typeof canonicalMusicianId === 'number'
+      ? (musicians.find((item) => item.id === canonicalMusicianId) ?? null)
+      : null;
 
   return {
     props: {

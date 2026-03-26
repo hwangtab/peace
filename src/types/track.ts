@@ -1,5 +1,6 @@
 export interface Track {
   id: number;
+  musicianId?: number;
   title: string;
   artist: string;
   duration: string;

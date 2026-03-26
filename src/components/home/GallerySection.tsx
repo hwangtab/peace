@@ -20,96 +20,98 @@ interface GallerySectionProps {
 
 const EMPTY_GALLERY_IMAGES: GalleryImage[] = [];
 
-const GallerySection: React.FC<GallerySectionProps> = React.memo(({
-  className,
-  enableSectionWrapper = true,
-  hideSectionHeader = false,
-  initialImages = EMPTY_GALLERY_IMAGES,
-  skipClientFetch = false,
-}) => {
-  const { t } = useTranslation();
-  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
+const GallerySection: React.FC<GallerySectionProps> = React.memo(
+  ({
+    className,
+    enableSectionWrapper = true,
+    hideSectionHeader = false,
+    initialImages = EMPTY_GALLERY_IMAGES,
+    skipClientFetch = false,
+  }) => {
+    const { t } = useTranslation();
+    const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
 
-  const {
-    filteredImages,
-    selectedFilter,
-    setSelectedFilter,
-  } = useGalleryImages(initialImages, skipClientFetch);
-
-  const content = (
-    <div className={`container mx-auto px-4 sm:px-6 lg:px-8 ${!enableSectionWrapper ? className : ''}`}>
-      {!hideSectionHeader && (
-        <SectionHeader
-          title={t('gallery.section_title')}
-          subtitle={t('gallery.section_subtitle')}
-        />
-      )}
-
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-      >
-        <EventFilter
-          selectedFilter={selectedFilter}
-          onFilterChange={setSelectedFilter}
-          colorScheme="ocean"
-          filterOrder="gallery"
-        />
-      </motion.div>
-
-      {filteredImages.length === 0 ? (
-        <div className="text-center py-20 bg-white/50 rounded-lg">
-          <p className="text-xl text-gray-500 font-serif font-bold">{t('gallery.no_images')}</p>
-        </div>
-      ) : (
-        <motion.div
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12"
-        >
-          <AnimatePresence mode='popLayout' initial={false}>
-            {filteredImages.map((image, index) => (
-              <VirtualGalleryItem
-                key={image.id}
-                image={image}
-                priority={index < GALLERY_CONFIG.PRIORITY_IMAGE_THRESHOLD}
-                onClick={setSelectedImage}
-              />
-            ))}
-          </AnimatePresence>
-        </motion.div>
-      )}
-
-      <ImageLightbox
-        image={selectedImage ? {
-          url: selectedImage.url,
-          alt: selectedImage.description ||
-            `${selectedImage.eventYear || ''}${t('gallery.image_alt_fallback')}`
-        } : null}
-        show={!!selectedImage}
-        onClose={() => setSelectedImage(null)}
-        maxHeight="85vh"
-      />
-    </div>
-  );
-
-  if (enableSectionWrapper) {
-    return (
-      <Section id="gallery" background="golden-sun" className={className}>
-        {content}
-      </Section>
+    const { filteredImages, selectedFilter, setSelectedFilter } = useGalleryImages(
+      initialImages,
+      skipClientFetch
     );
-  }
 
-  return content;
-});
+    const content = (
+      <div
+        className={`container mx-auto px-4 sm:px-6 lg:px-8 ${!enableSectionWrapper ? className : ''}`}
+      >
+        {!hideSectionHeader && (
+          <SectionHeader
+            title={t('gallery.section_title')}
+            subtitle={t('gallery.section_subtitle')}
+          />
+        )}
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+        >
+          <EventFilter
+            selectedFilter={selectedFilter}
+            onFilterChange={setSelectedFilter}
+            colorScheme="ocean"
+            filterOrder="gallery"
+          />
+        </motion.div>
+
+        {filteredImages.length === 0 ? (
+          <div className="text-center py-20 bg-white/50 rounded-lg">
+            <p className="text-xl text-gray-500 font-serif font-bold">{t('gallery.no_images')}</p>
+          </div>
+        ) : (
+          <motion.div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
+            <AnimatePresence mode="popLayout" initial={false}>
+              {filteredImages.map((image, index) => (
+                <AnimatedGalleryItem
+                  key={image.id}
+                  image={image}
+                  priority={index < GALLERY_CONFIG.PRIORITY_IMAGE_THRESHOLD}
+                  onClick={setSelectedImage}
+                />
+              ))}
+            </AnimatePresence>
+          </motion.div>
+        )}
+
+        <ImageLightbox
+          image={
+            selectedImage
+              ? {
+                  url: selectedImage.url,
+                  alt:
+                    selectedImage.description ||
+                    `${selectedImage.eventYear || ''}${t('gallery.image_alt_fallback')}`,
+                }
+              : null
+          }
+          show={!!selectedImage}
+          onClose={() => setSelectedImage(null)}
+          maxHeight="85vh"
+        />
+      </div>
+    );
+
+    if (enableSectionWrapper) {
+      return (
+        <Section id="gallery" background="golden-sun" className={className}>
+          {content}
+        </Section>
+      );
+    }
+
+    return content;
+  }
+);
 
 GallerySection.displayName = 'GallerySection';
 
-/**
- * Sub-component for virtualized gallery rendering.
- * Only renders the actual content when in or near the viewport.
- */
-const VirtualGalleryItem: React.FC<{
+const AnimatedGalleryItem: React.FC<{
   image: GalleryImage;
   priority: boolean;
   onClick: (image: GalleryImage) => void;
@@ -118,20 +120,16 @@ const VirtualGalleryItem: React.FC<{
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "200px 0px" }}
+      viewport={{ once: true, margin: '200px 0px' }}
       exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
       transition={{ duration: 0.3 }}
       className="aspect-square relative bg-gray-100 rounded-lg overflow-hidden"
     >
-      <GalleryImageItem
-        image={image}
-        priority={priority}
-        onClick={onClick}
-      />
+      <GalleryImageItem image={image} priority={priority} onClick={onClick} />
     </motion.div>
   );
 });
 
-VirtualGalleryItem.displayName = 'VirtualGalleryItem';
+AnimatedGalleryItem.displayName = 'AnimatedGalleryItem';
 
 export default GallerySection;

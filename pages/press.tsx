@@ -1,7 +1,7 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import nextI18NextConfig from '../next-i18next.config';
 import { GetStaticPropsContext } from 'next';
-import Page from '@/components/press/PressPage';
+import Page from '@/pages/PressPage';
 import { PressItem } from '@/types/press';
 import { loadLocalizedData } from '@/utils/dataLoader';
 

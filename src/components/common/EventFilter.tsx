@@ -1,16 +1,17 @@
 import React, { useMemo, useCallback } from 'react';
 import { useTranslation } from 'next-i18next';
 import { motion } from 'framer-motion';
+import { FilterId } from '@/utils/filtering';
 
 interface EventFilterProps {
-  selectedFilter: string;
-  onFilterChange: (filter: string) => void;
+  selectedFilter: FilterId;
+  onFilterChange: (filter: FilterId) => void;
   colorScheme?: 'ocean' | 'orange';
   filterOrder?: 'gallery' | 'press' | 'videos';
 }
 
 interface FilterItem {
-  id: string;
+  id: FilterId;
   label: string;
 }
 
@@ -41,17 +42,20 @@ const EventFilter: React.FC<EventFilterProps> = ({
     ];
   }, [filterOrder, t]);
 
-  const getColorClasses = useCallback((isActive: boolean): string => {
-    if (colorScheme === 'orange') {
-      return isActive
-        ? 'bg-orange-600 text-white shadow-md'
-        : 'bg-white text-orange-600 border-2 border-orange-600 hover:bg-orange-600 hover:text-white';
-    }
+  const getColorClasses = useCallback(
+    (isActive: boolean): string => {
+      if (colorScheme === 'orange') {
+        return isActive
+          ? 'bg-orange-600 text-white shadow-md'
+          : 'bg-white text-orange-600 border-2 border-orange-600 hover:bg-orange-600 hover:text-white';
+      }
 
-    return isActive
-      ? 'bg-jeju-ocean text-white shadow-md'
-      : 'bg-white text-jeju-ocean border-2 border-jeju-ocean hover:bg-jeju-ocean hover:text-white';
-  }, [colorScheme]);
+      return isActive
+        ? 'bg-jeju-ocean text-white shadow-md'
+        : 'bg-white text-jeju-ocean border-2 border-jeju-ocean hover:bg-jeju-ocean hover:text-white';
+    },
+    [colorScheme]
+  );
 
   return (
     <motion.div
