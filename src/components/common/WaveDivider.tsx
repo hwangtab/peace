@@ -19,7 +19,7 @@ const WaveDivider: React.FC<WaveDividerProps> = ({
     direction = 'up'
 }) => {
     return (
-        <div className={`w-full leading-none overflow-hidden pointer-events-none -mb-px ${className}`}>
+        <div className={`w-full leading-none overflow-hidden pointer-events-none ${className}`}>
             <svg
                 aria-hidden="true"
                 data-name="Layer 1"
