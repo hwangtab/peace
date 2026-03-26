@@ -412,7 +412,15 @@
     "howto_step4_name": "Gangjeong Sportpark besuchen",
     "howto_step4_text": "Kommen Sie zum Gangjeong Sportpark und treten Sie kostenlos ein. Keine Tickets oder Reservierungen nötig.",
     "howto_step5_name": "Musik und Frieden genießen",
-    "howto_step5_text": "Genießen Sie Auftritte von Musikern verschiedener Genres und teilen Sie den Geist der Friedenssolidarität."
+    "howto_step5_text": "Genießen Sie Auftritte von Musikern verschiedener Genres und teilen Sie den Geist der Friedenssolidarität.",
+    "project_name": "An dich, an einem fernen Ort, dessen Namen ich nicht kenne",
+    "camp_name": "Gangjeong Friedensmusikcamp",
+    "description": "Ein Projekt von Musikern, die in einer von Krieg und Gewalt geprägten Welt eine Botschaft des Friedens durch Musik vermitteln",
+    "music_group_desc": "Ein musikalisches Projekt, das für den Frieden singt",
+    "playlist_name": "Lieder für den Frieden",
+    "playlist_desc": "Musiksammlung des Projekts 'An dich, an einem fernen Ort, dessen Namen ich nicht kenne'",
+    "gallery_name": "Galerie",
+    "gallery_desc": "Fotogalerie des Projekts 'An dich, an einem fernen Ort, dessen Namen ich nicht kenne'"
   },
   "camp_data": {
     "camp-2023": {
