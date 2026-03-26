@@ -119,7 +119,12 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
             <meta property="og:description" content={finalDescription} />
             <meta property="og:image" content={fullOgImage} />
             <meta property="og:image:alt" content={finalTitle} />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="630" />
             <meta property="og:locale" content={ogLocale} />
+            {LOCALES.filter(loc => loc !== locale).map(loc => (
+                <meta key={`og-alt-${loc}`} property="og:locale:alternate" content={ogLocaleMap[loc] || loc.replace('-', '_')} />
+            ))}
 
             {/* Twitter Card */}
             <meta name="twitter:card" content="summary_large_image" />

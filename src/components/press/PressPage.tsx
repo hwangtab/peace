@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import { getPressItems, normalizePressItems } from '@/api/press';
 import { PressItem } from '@/types/press';
-import { getBreadcrumbSchema } from '@/utils/structuredData';
+import { getBreadcrumbSchema, getNewsArticleSchema } from '@/utils/structuredData';
 import Button from '@/components/common/Button';
 import { getCamps } from '@/data/camps';
 import { FilterId, filterByEvent } from '@/utils/filtering';
@@ -88,7 +88,18 @@ export default function PressPage({
     { name: t('press.breadcrumb_press'), url: getFullUrl('/press') },
   ];
 
-  const structuredData = [getBreadcrumbSchema(breadcrumbs)];
+  const structuredData = [
+    getBreadcrumbSchema(breadcrumbs),
+    ...pressItems.slice(0, 10).map(item =>
+      getNewsArticleSchema({
+        headline: item.title,
+        description: item.description || '',
+        datePublished: item.date,
+        url: item.url,
+        imageUrl: item.imageUrl,
+      }, i18n.language, t)
+    ),
+  ];
 
   const filteredItems = useMemo(
     () => sortByDateDesc(filterByEvent(pressItems, selectedFilter)),

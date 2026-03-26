@@ -13,7 +13,7 @@ import dynamic from 'next/dynamic';
 const GangjeongStorySection = dynamic(() => import('@/components/camp/GangjeongStorySection'), {
   ssr: false,
 });
-import { getEventSchema, getBreadcrumbSchema } from '@/utils/structuredData';
+import { getEventSchema, getBreadcrumbSchema, getHowToSchema } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
 import Button from '@/components/common/Button';
 import { formatOrdinal } from '@/utils/format';
@@ -108,6 +108,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
           { name: t('nav.camp'), url: getFullUrl('/camps/2026') },
           { name: '2026', url: getFullUrl('/camps/2026') },
         ]),
+        getHowToSchema(i18n.language, t),
       ]}
       disableTopPadding={true}
       disableBottomPadding={true}
