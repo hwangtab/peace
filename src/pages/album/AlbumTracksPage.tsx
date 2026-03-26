@@ -29,9 +29,10 @@ const AlbumTracksPage = ({
           name: track.title,
           url: getFullUrl(`/album/tracks/${track.id}`),
         })),
-        i18n.language
+        i18n.language,
+        t
       ),
-    [initialTracks, i18n.language]
+    [initialTracks, i18n.language, t]
   );
 
   return (

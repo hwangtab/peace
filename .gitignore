@@ -27,3 +27,11 @@ yarn-debug.log*
 yarn-error.log*
 .gstack/
 output/
+
+# gstack worktree copies
+naughty-carson/
+friendly-northcutt/
+elated-montalcini/
+goofy-merkle/
+jolly-ritchie/
+xenodochial-beaver/

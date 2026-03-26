@@ -35,7 +35,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
   initialLocale = 'ko',
 }) => {
   const { t, i18n } = useTranslation();
-  const campList = getCamps(i18n.language);
+  const campList = getCamps(i18n.language, t);
   const camp = campList.find((c) => c.id === campId);
   const fetchMusicians = useCallback((locale: string) => getMusicians(locale), []);
   const musiciansResource = useLocalizedResource<Musician>({
@@ -82,11 +82,12 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
           ? getFullUrl(camp.images[0])
           : undefined,
       performers: camp.participants?.map((p) => ({
-        type: 'MusicGroup', // Default to MusicGroup for simplicity
+        type: 'MusicGroup',
         name: typeof p === 'string' ? p : p.name,
       })),
     },
-    i18n.language
+    i18n.language,
+    t
   );
 
   return (

@@ -5,9 +5,9 @@ import nextI18NextConfig from '../../../../next-i18next.config';
 import { Musician } from '@/types/musician';
 import { VideoItem } from '@/types/video';
 import { loadLocalizedData } from '@/utils/dataLoader';
-import { seededHash } from '@/utils/hash';
 import { camps, getCamps } from '@/data/camps';
 import MusicianDetailContent from '@/components/musicians/MusicianDetailContent';
+import { loadRelatedVideos, selectOtherMusicians } from '@/utils/musicianPageUtils';
 import { getFullUrl } from '@/config/env';
 
 interface CampMusicianPageProps {
@@ -22,7 +22,7 @@ export default function CampMusicianPage({
   otherMusicians,
 }: CampMusicianPageProps) {
   const { t, i18n } = useTranslation();
-  const camp2026 = getCamps(i18n.language).find((c) => c.id === 'camp-2026');
+  const camp2026 = getCamps(i18n.language, t).find((c) => c.id === 'camp-2026');
 
   return (
     <MusicianDetailContent
@@ -84,25 +84,13 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
     return { notFound: true };
   }
 
-  // Find related videos — always use KO videos.json for musicianIds matching
-  // (en/videos.json is a partial subset and lacks musicianIds)
-  const koVideos = loadLocalizedData<VideoItem>('ko', 'videos.json');
-  const localizedVideos = loadLocalizedData<VideoItem>(resolvedLocale, 'videos.json');
-  const localizedVideoMap = new Map(localizedVideos.map((v) => [v.id, v]));
-  const relatedVideos = koVideos
-    .filter((v) => v.musicianIds?.includes(musician.id))
-    .map((v) => localizedVideoMap.get(v.id) ?? v);
+  const relatedVideos = loadRelatedVideos(musician.id, resolvedLocale);
 
-  // Other camp musicians only (same camp, with image)
   const campMusicianIdSet = new Set(campMusicianIds);
   const candidates = musicians.filter(
     (m) => m.id !== musician.id && m.imageUrl && campMusicianIdSet.has(m.id)
   );
-
-  const seed = musician.id;
-  const otherMusicians = [...candidates]
-    .sort((a, b) => seededHash(a.id, seed) - seededHash(b.id, seed))
-    .slice(0, 6);
+  const otherMusicians = selectOtherMusicians(musician.id, candidates);
 
   return {
     props: {

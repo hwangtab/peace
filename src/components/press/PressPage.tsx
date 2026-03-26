@@ -70,7 +70,7 @@ export default function PressPage({
   initialLocale = 'ko',
 }: PressPageProps) {
   const { t, i18n } = useTranslation();
-  const camp2026 = getCamps(i18n.language).find((c) => c.id === 'camp-2026');
+  const camp2026 = getCamps(i18n.language, t).find((c) => c.id === 'camp-2026');
   const [selectedFilter, setSelectedFilter] = useState<FilterId>('all');
 
   const fetchPress = useCallback((locale: string) => getPressItems(locale), []);

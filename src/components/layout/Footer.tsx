@@ -1,35 +1,15 @@
 import Link from 'next/link';
 import { FaInstagram } from 'react-icons/fa';
 import { HiOutlineMail } from 'react-icons/hi';
-import { ROUTES } from '@/constants/routes';
 import { SITE_CONFIG } from '@/constants/config';
 import { getCamps } from '@/data/camps';
+import { simpleMenuItems, campItems, albumItems } from './navigationData';
 
 import { useTranslation } from 'next-i18next';
-// ...
-
-const FOOTER_MENU_ITEMS = [
-    { nameKey: 'footer.menu.home', path: ROUTES.HOME },
-    { nameKey: 'footer.menu.gallery', path: ROUTES.GALLERY },
-    { nameKey: 'footer.menu.video', path: ROUTES.VIDEOS },
-    { nameKey: 'footer.menu.press', path: ROUTES.PRESS },
-] as const;
-
-const CAMP_MENU_ITEMS = [
-    { nameKey: 'footer.menu.camp_2023', path: ROUTES.CAMPS.CAMP_2023 },
-    { nameKey: 'footer.menu.camp_2025', path: ROUTES.CAMPS.CAMP_2025 },
-    { nameKey: 'footer.menu.camp_2026', path: ROUTES.CAMPS.CAMP_2026 },
-] as const;
-
-const ALBUM_MENU_ITEMS = [
-    { nameKey: 'footer.menu.album_about', path: ROUTES.ALBUM.ABOUT },
-    { nameKey: 'footer.menu.musicians', path: ROUTES.ALBUM.MUSICIANS },
-    { nameKey: 'footer.menu.tracks', path: ROUTES.ALBUM.TRACKS },
-] as const;
 
 const Footer = () => {
     const { t, i18n } = useTranslation();
-    const camp2026 = getCamps(i18n.language).find(c => c.id === 'camp-2026');
+    const camp2026 = getCamps(i18n.language, t).find(c => c.id === 'camp-2026');
 
     return (
         <footer className="bg-deep-ocean text-cloud-white">
@@ -58,7 +38,7 @@ const Footer = () => {
                         <div className="grid grid-cols-2 gap-x-8 gap-y-2">
                             {/* Left - Main Menu */}
                             <div className="space-y-2 text-right">
-                                {FOOTER_MENU_ITEMS.map((item) => (
+                                {simpleMenuItems.map((item) => (
                                     <Link
                                         key={item.path}
                                         href={item.path}
@@ -71,7 +51,7 @@ const Footer = () => {
                             </div>
                             {/* Right - Camp & Album */}
                             <div className="space-y-2 text-left">
-                                {CAMP_MENU_ITEMS.slice(0, 2).map((item) => (
+                                {campItems.slice(0, 2).map((item) => (
                                     <Link
                                         key={item.path}
                                         href={item.path}
@@ -92,7 +72,7 @@ const Footer = () => {
                                         {t('camp.ticketing_2026')}
                                     </a>
                                 )}
-                                {ALBUM_MENU_ITEMS.slice(0, 2).map((item) => (
+                                {albumItems.slice(0, 2).map((item) => (
                                     <Link
                                         key={item.path}
                                         href={item.path}

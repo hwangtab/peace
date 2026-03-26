@@ -26,9 +26,9 @@ export default function HomePage({ initialGalleryImages }: HomePageProps) {
   const faqItems = t('faqs.items', { returnObjects: true, defaultValue: [] }) as unknown;
   const faqs = Array.isArray(faqItems) ? (faqItems as Array<{ q: string; a: string }>) : [];
   const structuredData = [
-    getWebSiteSchema(i18n.language),
-    getOrganizationSchema(i18n.language),
-    getFAQSchema(faqs.map(f => ({ question: f.q, answer: f.a })))
+    getWebSiteSchema(i18n.language, t),
+    getOrganizationSchema(i18n.language, t),
+    getFAQSchema(faqs.map(f => ({ question: f.q, answer: f.a }))),
   ];
 
   return (

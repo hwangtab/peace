@@ -28,7 +28,8 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
         duration: track.duration,
         url: getFullUrl(`/album/tracks/${track.id}`),
       },
-      i18n.language
+      i18n.language,
+      t
     ),
     audio: {
       '@type': 'AudioObject',

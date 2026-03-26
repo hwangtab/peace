@@ -18,7 +18,7 @@ interface GalleryPageProps {
 
 const GalleryPage = ({ initialImages = [] }: GalleryPageProps) => {
   const { t, i18n } = useTranslation();
-  const camp2026 = getCamps(i18n.language).find((c) => c.id === 'camp-2026');
+  const camp2026 = getCamps(i18n.language, t).find((c) => c.id === 'camp-2026');
   // Basic ImageGallery Schema - real images are loaded dynamically, so providing static fallback or main images
   const gallerySchema = getImageGallerySchema(
     [
@@ -28,7 +28,8 @@ const GalleryPage = ({ initialImages = [] }: GalleryPageProps) => {
       },
       { url: getFullUrl('/images-webp/camps/2023/DSC00437.webp'), caption: t('gallery.page_desc') },
     ],
-    i18n.language
+    i18n.language,
+    t
   );
 
   return (

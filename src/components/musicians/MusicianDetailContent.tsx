@@ -44,7 +44,7 @@ export default function MusicianDetailContent({
 }: MusicianDetailContentProps) {
   const { t, i18n } = useTranslation();
   const isCampPage = pageContext === 'camp';
-  const campList = isCampPage ? getCamps(i18n.language) : [];
+  const campList = isCampPage ? getCamps(i18n.language, t) : [];
   const latestCamp = campList.length > 0 ? campList[campList.length - 1] : undefined;
   const latestCampYear = latestCamp?.year;
 
@@ -70,7 +70,8 @@ export default function MusicianDetailContent({
       image: musician.imageUrl ? getFullUrl(musician.imageUrl) : undefined,
       jobTitle: 'Musician',
     },
-    i18n.language
+    i18n.language,
+    t
   );
 
   const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs);
