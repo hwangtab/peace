@@ -5,7 +5,6 @@ import { appWithTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { MotionConfig } from 'framer-motion';
-import { useIsMobile } from '@/hooks/useIsMobile';
 import { ErrorBoundary } from 'react-error-boundary';
 import nextI18NextConfig from '../next-i18next.config';
 import '@/index.css';
@@ -31,8 +30,6 @@ const GA_MEASUREMENT_ID = (() => {
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const { locale } = router;
-  const isMobile = useIsMobile();
-
   useEffect(() => {
     const dir = getTextDirection(locale || 'ko');
     document.documentElement.setAttribute('dir', dir);
@@ -55,7 +52,9 @@ function App({ Component, pageProps }: AppProps) {
 
   return (
     <NavigationProvider>
-      <MotionConfig reducedMotion={isMobile ? 'always' : 'user'}>
+      {/* reducedMotion="user": OS의 prefers-reduced-motion 설정을 존중.
+           모바일 CSS 애니메이션은 index.css @media (max-width: 767px)에서 별도 처리. */}
+      <MotionConfig reducedMotion="user">
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>

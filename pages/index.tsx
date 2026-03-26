@@ -50,7 +50,7 @@ export default function HomePage({ initialGalleryImages }: HomePageProps) {
       <WaveDivider className="text-sky-horizon -mb-[60px] sm:-mb-[100px] relative z-10" direction="down" />
       <GangjeongStorySection variant="home" />
       <WaveDivider className="text-golden-sun -mt-[60px] sm:-mt-[100px] relative z-10" />
-      <GallerySection initialImages={initialGalleryImages} />
+      <GallerySection initialImages={initialGalleryImages} skipClientFetch />
     </div>
   );
 }

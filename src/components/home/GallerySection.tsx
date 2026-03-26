@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import { GalleryImage } from '@/types/gallery';
@@ -6,9 +7,10 @@ import { useGalleryImages } from '@/hooks/useGalleryImages';
 import { GALLERY_CONFIG } from '@/constants/config';
 import EventFilter from '../common/EventFilter';
 import GalleryImageItem from '../gallery/GalleryImageItem';
-import ImageLightbox from '../common/ImageLightbox';
 import Section from '../layout/Section';
 import SectionHeader from '../common/SectionHeader';
+
+const ImageLightbox = dynamic(() => import('../common/ImageLightbox'), { ssr: false });
 
 interface GallerySectionProps {
   className?: string;
@@ -65,8 +67,8 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
             <p className="text-xl text-gray-500 font-serif font-bold">{t('gallery.no_images')}</p>
           </div>
         ) : (
-          <motion.div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
-            <AnimatePresence mode="popLayout" initial={false}>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
+            <AnimatePresence mode="sync" initial={false}>
               {filteredImages.map((image, index) => (
                 <AnimatedGalleryItem
                   key={image.id}
@@ -76,7 +78,7 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
                 />
               ))}
             </AnimatePresence>
-          </motion.div>
+          </div>
         )}
 
         <ImageLightbox
@@ -118,11 +120,11 @@ const AnimatedGalleryItem: React.FC<{
 }> = React.memo(({ image, priority, onClick }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '200px 0px' }}
-      exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
-      transition={{ duration: 0.3 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, transition: { duration: 0.15 } }}
+      transition={{ duration: 0.25 }}
+      layout={false}
       className="aspect-square relative bg-gray-100 rounded-lg overflow-hidden"
     >
       <GalleryImageItem image={image} priority={priority} onClick={onClick} />

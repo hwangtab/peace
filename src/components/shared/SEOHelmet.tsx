@@ -18,6 +18,38 @@ export interface SEOHelmetProps {
     structuredData?: object | object[];
 }
 
+const OG_LOCALE_MAP: Record<string, string> = {
+    ko: 'ko_KR',
+    en: 'en_US',
+    es: 'es_ES',
+    fr: 'fr_FR',
+    de: 'de_DE',
+    pt: 'pt_BR',
+    ru: 'ru_RU',
+    ar: 'ar_AR',
+    ja: 'ja_JP',
+    'zh-Hans': 'zh_CN',
+    'zh-Hant': 'zh_TW',
+    hi: 'hi_IN',
+    id: 'id_ID',
+};
+
+const LANGUAGE_NAME_MAP: Record<string, string> = {
+    ko: 'Korean',
+    en: 'English',
+    es: 'Spanish',
+    fr: 'French',
+    de: 'German',
+    pt: 'Portuguese',
+    ru: 'Russian',
+    ar: 'Arabic',
+    ja: 'Japanese',
+    'zh-Hans': 'Chinese (Simplified)',
+    'zh-Hant': 'Chinese (Traditional)',
+    hi: 'Hindi',
+    id: 'Indonesian',
+};
+
 const SEOHelmet: React.FC<SEOHelmetProps> = ({
     title,
     description,
@@ -48,40 +80,8 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
         ? (Array.isArray(structuredData) ? structuredData : [structuredData])
         : [];
 
-    const ogLocaleMap: Record<string, string> = {
-        ko: 'ko_KR',
-        en: 'en_US',
-        es: 'es_ES',
-        fr: 'fr_FR',
-        de: 'de_DE',
-        pt: 'pt_BR',
-        ru: 'ru_RU',
-        ar: 'ar_AR',
-        ja: 'ja_JP',
-        'zh-Hans': 'zh_CN',
-        'zh-Hant': 'zh_TW',
-        hi: 'hi_IN',
-        id: 'id_ID',
-    };
-
-    const languageNameMap: Record<string, string> = {
-        ko: 'Korean',
-        en: 'English',
-        es: 'Spanish',
-        fr: 'French',
-        de: 'German',
-        pt: 'Portuguese',
-        ru: 'Russian',
-        ar: 'Arabic',
-        ja: 'Japanese',
-        'zh-Hans': 'Chinese (Simplified)',
-        'zh-Hant': 'Chinese (Traditional)',
-        hi: 'Hindi',
-        id: 'Indonesian',
-    };
-
-    const ogLocale = ogLocaleMap[locale] || locale.replace('-', '_');
-    const languageName = languageNameMap[locale] || locale;
+    const ogLocale = OG_LOCALE_MAP[locale] || locale.replace('-', '_');
+    const languageName = LANGUAGE_NAME_MAP[locale] || locale;
 
     const alternateLinks = LOCALES.map((loc) => ({
         locale: loc,
@@ -123,7 +123,7 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
             <meta property="og:image:height" content="630" />
             <meta property="og:locale" content={ogLocale} />
             {LOCALES.filter(loc => loc !== locale).map(loc => (
-                <meta key={`og-alt-${loc}`} property="og:locale:alternate" content={ogLocaleMap[loc] || loc.replace('-', '_')} />
+                <meta key={`og-alt-${loc}`} property="og:locale:alternate" content={OG_LOCALE_MAP[loc] || loc.replace('-', '_')} />
             ))}
 
             {/* Twitter Card */}

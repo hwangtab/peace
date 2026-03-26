@@ -27,21 +27,8 @@ class MyDocument extends Document {
             href="/fonts/GmarketSansLight.woff2"
           />
 
-          {/* Hero 핵심 폰트 preload */}
-          <link
-            rel="preload"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-            href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/PartialSansKR-Regular.woff2"
-          />
-          <link
-            rel="preload"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-            href="https://cdn.jsdelivr.net/gh/projectnoonnu/2410-1@1.0/BMkkubulimTTF-Regular.woff2"
-          />
+          {/* PartialSans, KkuBulLim — hero/stone 전용 폰트이므로 preload 생략.
+               font-display: swap이 적용되어 있어 FOUT 없이 자연스럽게 로딩됨. */}
 
           {/* BookkMyungjo-Bd 폰트 preload */}
           <link
@@ -57,7 +44,7 @@ class MyDocument extends Document {
             rel="preload"
             as="image"
             type="image/webp"
-            href="/images-webp/camps/2026/2026poster1.webp"
+            href="/images-webp/camps/2023/DSC00437.webp"
           />
 
           {/* 테마 & 색상 스킴 */}
