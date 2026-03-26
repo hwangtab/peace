@@ -243,8 +243,8 @@ code {
   *,
   *::before,
   *::after {
-    transition-duration: 0ms !important;
-    animation-duration: 0ms !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
   }
 
   /* 호버 효과는 모바일에서 불필요하므로 GPU 레이어 생성 억제 */
