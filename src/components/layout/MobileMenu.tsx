@@ -8,14 +8,14 @@ import { NavigationDropdownKey } from '@/hooks/useNavigation';
 
 interface MobileMenuProps {
   isOpen: boolean;
-  pathname: string;
+  isPathActive: (path: string, exact?: boolean) => boolean;
   mobileOpenDropdown: NavigationDropdownKey | null;
   onClose: () => void;
   onToggleDropdown: (dropdown: NavigationDropdownKey) => void;
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = React.memo(
-  ({ isOpen, pathname, mobileOpenDropdown, onClose, onToggleDropdown }) => {
+  ({ isOpen, isPathActive, mobileOpenDropdown, onClose, onToggleDropdown }) => {
     const { t } = useTranslation();
 
     return (
@@ -34,7 +34,7 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(
                     key={item.path}
                     href={item.path}
                     className={`block py-2 break-words rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${
-                      pathname === item.path ? 'text-jeju-ocean font-bold' : 'text-coastal-gray'
+                      isPathActive(item.path) ? 'text-jeju-ocean font-bold' : 'text-coastal-gray'
                     } font-serif font-bold`}
                     onClick={onClose}
                   >
@@ -49,6 +49,7 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(
                     items={campItems}
                     isOpen={mobileOpenDropdown === 'camps'}
                     onToggle={() => onToggleDropdown('camps')}
+                    isPathActive={isPathActive}
                     onClose={onClose}
                   />
 
@@ -57,6 +58,7 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(
                     items={albumItems}
                     isOpen={mobileOpenDropdown === 'album'}
                     onToggle={() => onToggleDropdown('album')}
+                    isPathActive={isPathActive}
                     onClose={onClose}
                   />
                 </div>
@@ -83,11 +85,12 @@ interface MobileDropdownProps {
   items: { nameKey: string; path: string }[];
   isOpen: boolean;
   onToggle: () => void;
+  isPathActive: (path: string, exact?: boolean) => boolean;
   onClose: () => void;
 }
 
 const MobileDropdown: React.FC<MobileDropdownProps> = React.memo(
-  ({ label, items, isOpen, onToggle, onClose }) => {
+  ({ label, items, isOpen, onToggle, isPathActive, onClose }) => {
     const { t } = useTranslation();
 
     return (
@@ -122,7 +125,11 @@ const MobileDropdown: React.FC<MobileDropdownProps> = React.memo(
                 <Link
                   key={item.path}
                   href={item.path}
-                  className="block py-2 text-deep-ocean hover:text-jeju-ocean font-serif font-bold text-sm break-words rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
+                  className={`block py-2 font-serif font-bold text-sm break-words rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${
+                    isPathActive(item.path)
+                      ? 'text-jeju-ocean bg-ocean-sand/70'
+                      : 'text-deep-ocean hover:text-jeju-ocean'
+                  }`}
                   onClick={onClose}
                 >
                   {t(item.nameKey)}

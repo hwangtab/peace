@@ -4,6 +4,7 @@ import { GetStaticPropsContext } from 'next';
 import Page from '@/pages/PressPage';
 import { PressItem } from '@/types/press';
 import { loadLocalizedData } from '@/utils/dataLoader';
+import { normalizePressItems } from '@/api/press';
 
 interface PressWrappedPageProps {
   initialPressItems: PressItem[];
@@ -20,7 +21,9 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
   return {
     props: {
       ...(await serverSideTranslations(resolvedLocale, ['translation'], nextI18NextConfig)),
-      initialPressItems: loadLocalizedData<PressItem>(resolvedLocale, 'press.json'),
+      initialPressItems: normalizePressItems(
+        loadLocalizedData<PressItem>(resolvedLocale, 'press.json')
+      ),
       initialLocale: resolvedLocale,
     },
     revalidate: 3600,

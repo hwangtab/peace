@@ -44,7 +44,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
     currentLocale: i18n.language,
     fetchResource: fetchMusicians,
   });
-  const musicians = musiciansResource.data;
+  const musicians = musiciansResource.isLoading ? [] : musiciansResource.data;
   const infoRef = useRef(null);
   const isInfoInView = useInView(infoRef, { once: true, margin: '-100px' });
 
@@ -129,11 +129,21 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
                 className="bg-white rounded-lg shadow-sm p-8 mb-8"
               >
                 <SectionHeader title={t('camp.section_musicians')} align="left" className="!mb-6" />
-                <CampParticipants
-                  participants={camp.participants}
-                  musicians={musicians}
-                  inView={isInfoInView}
-                />
+                {musiciansResource.isLoading ? (
+                  <p className="text-gray-600" role="status">
+                    {t('common.loading')}
+                  </p>
+                ) : musiciansResource.error ? (
+                  <p className="text-gray-600" role="alert">
+                    {t('common.no_results')}
+                  </p>
+                ) : (
+                  <CampParticipants
+                    participants={camp.participants}
+                    musicians={musicians}
+                    inView={isInfoInView}
+                  />
+                )}
               </motion.div>
             )}
 

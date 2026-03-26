@@ -12,7 +12,7 @@ const Navigation = () => {
   const {
     isScrolled,
     isOpen,
-    pathname,
+    isPathActive,
     desktopOpenDropdown,
     mobileOpenDropdown,
     toggleMenu,
@@ -31,19 +31,19 @@ const Navigation = () => {
         {t('nav.skip_to_main')}
       </a>
       <nav
-        className={`fixed w-full z-50 transition-[background-color,box-shadow] duration-300 ${isScrolled
-          ? 'bg-cloud-white/90 backdrop-blur-md shadow-sm'
-          : 'bg-transparent'
-          }`}
+        className={`fixed w-full z-50 transition-[background-color,box-shadow] duration-300 ${
+          isScrolled ? 'bg-cloud-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
+        }`}
       >
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center min-h-[4rem] py-2 gap-4">
             <Link
               href="/"
-              className={`text-lg sm:text-xl lg:text-2xl font-bold font-serif transition-colors duration-300 text-balance min-w-0 break-words rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${isScrolled
-                ? 'text-jeju-ocean hover:text-ocean-mist'
-                : 'text-cloud-white hover:text-seafoam drop-shadow-md'
-                }`}
+              className={`text-lg sm:text-xl lg:text-2xl font-bold font-serif transition-colors duration-300 text-balance min-w-0 break-words rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${
+                isScrolled
+                  ? 'text-jeju-ocean hover:text-ocean-mist'
+                  : 'text-cloud-white hover:text-seafoam drop-shadow-md'
+              }`}
             >
               {t('nav.logo')}
             </Link>
@@ -51,7 +51,7 @@ const Navigation = () => {
             {/* Desktop Menu */}
             <LayoutGroup>
               <DesktopMenu
-                pathname={pathname}
+                isPathActive={isPathActive}
                 desktopOpenDropdown={desktopOpenDropdown}
                 onOpenChange={handleDesktopDropdownChange}
                 isScrolled={isScrolled}
@@ -61,11 +61,13 @@ const Navigation = () => {
             {/* Mobile Menu Button */}
             <div className="md:hidden">
               <button
+                type="button"
                 onClick={toggleMenu}
-                className={`transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded ${isScrolled
-                  ? 'text-coastal-gray hover:text-jeju-ocean'
-                  : 'text-cloud-white hover:text-seafoam'
-                  }`}
+                className={`transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded ${
+                  isScrolled
+                    ? 'text-coastal-gray hover:text-jeju-ocean'
+                    : 'text-cloud-white hover:text-seafoam'
+                }`}
                 aria-label={isOpen ? t('nav.close_menu') : t('nav.open_menu')}
                 aria-expanded={isOpen}
                 aria-controls="mobile-menu"
@@ -83,7 +85,7 @@ const Navigation = () => {
         {/* Mobile Menu */}
         <MobileMenu
           isOpen={isOpen}
-          pathname={pathname}
+          isPathActive={isPathActive}
           mobileOpenDropdown={mobileOpenDropdown}
           onClose={closeMenu}
           onToggleDropdown={toggleMobileDropdown}
@@ -92,11 +94,7 @@ const Navigation = () => {
 
       {/* Backdrop — closes menu when tapping outside */}
       {isOpen && (
-        <div
-          className="fixed inset-0 z-40 md:hidden"
-          onClick={closeMenu}
-          aria-hidden="true"
-        />
+        <div className="fixed inset-0 z-40 md:hidden" onClick={closeMenu} aria-hidden="true" />
       )}
     </>
   );

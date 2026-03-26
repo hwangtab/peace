@@ -11,6 +11,24 @@ type TranslationOptions = {
   returnObjects?: boolean;
 };
 
+type MockRouterState = {
+  pathname: string;
+  route: string;
+  query: Record<string, unknown>;
+  asPath: string;
+  isReady: boolean;
+  locale: string;
+  push: jest.Mock;
+  replace: jest.Mock;
+  prefetch: jest.Mock;
+  events: {
+    on: jest.Mock;
+    off: jest.Mock;
+    emit: jest.Mock;
+  };
+  isFallback: boolean;
+};
+
 const testFaqItems = [{ q: 'FAQ question', a: 'FAQ answer' }];
 
 const testTranslations: Record<string, string> = {
@@ -32,6 +50,7 @@ const testTranslations: Record<string, string> = {
   'common.filter_camp_2023': '2023 캠프',
   'common.filter_album_2024': '2024 앨범',
   'common.filter_camp_2025': '2025 캠프',
+  'common.filter_camp_2026': '2026 캠프',
   'common.aria_filter': '이벤트 필터',
   'common.aria_filter_selected': '필터(선택됨)',
   'footer.sns_aria': 'Instagram',
@@ -66,25 +85,38 @@ jest.mock('next-i18next', () => ({
   Trans: ({ children }: { children: React.ReactNode }) => <>{children}</>,
 }));
 
+const createRouterState = (): MockRouterState => ({
+  pathname: '/',
+  route: '/',
+  query: {},
+  asPath: '/',
+  isReady: true,
+  locale: 'ko',
+  push: jest.fn(),
+  replace: jest.fn(),
+  prefetch: jest.fn().mockResolvedValue(undefined),
+  events: {
+    on: jest.fn(),
+    off: jest.fn(),
+    emit: jest.fn(),
+  },
+  isFallback: false,
+});
+
+const mockRouterState = createRouterState();
+
+const setMockRouterState = (overrides: Partial<MockRouterState>): void => {
+  Object.assign(mockRouterState, overrides);
+};
+
 jest.mock('next/router', () => ({
-  useRouter: () => ({
-    pathname: '/',
-    route: '/',
-    query: {},
-    asPath: '/',
-    isReady: true,
-    locale: 'ko',
-    push: jest.fn(),
-    replace: jest.fn(),
-    prefetch: jest.fn().mockResolvedValue(undefined),
-    events: {
-      on: jest.fn(),
-      off: jest.fn(),
-      emit: jest.fn(),
-    },
-    isFallback: false,
-  }),
+  useRouter: () => mockRouterState,
+  __setMockRouterState: setMockRouterState,
 }));
+
+beforeEach(() => {
+  Object.assign(mockRouterState, createRouterState());
+});
 
 jest.mock('react-error-boundary', () => ({
   ErrorBoundary: ({ children }: { children: React.ReactNode }) => <div>{children} </div>,

@@ -24,6 +24,7 @@ interface AlbumAboutPageProps {
   initialVideos?: VideoItem[];
   initialMusicians?: Musician[];
   initialImages?: GalleryImage[];
+  initialAlbumMusicianIds?: number[];
   initialLocale?: string;
 }
 
@@ -31,6 +32,7 @@ const AlbumAboutPage = ({
   initialVideos = [],
   initialMusicians = [],
   initialImages = [],
+  initialAlbumMusicianIds = [],
   initialLocale = 'ko',
 }: AlbumAboutPageProps) => {
   const { t, i18n } = useTranslation();
@@ -59,6 +61,21 @@ const AlbumAboutPage = ({
 
   const videos = videosResource.data;
   const musicians = musiciansResource.data;
+  const isLocaleDataLoading = videosResource.isLoading || musiciansResource.isLoading;
+  const localeDataError = videosResource.error ?? musiciansResource.error;
+  const shouldHideLocaleData = isLocaleDataLoading || Boolean(localeDataError);
+  const visibleVideos = useMemo(
+    () => (shouldHideLocaleData ? [] : videos),
+    [shouldHideLocaleData, videos]
+  );
+  const visibleMusicians = useMemo(
+    () => (shouldHideLocaleData ? [] : musicians),
+    [shouldHideLocaleData, musicians]
+  );
+  const albumMusicianIds = useMemo(
+    () => new Set(initialAlbumMusicianIds),
+    [initialAlbumMusicianIds]
+  );
 
   // Load images (language-independent) if not provided
   useEffect(() => {
@@ -76,14 +93,14 @@ const AlbumAboutPage = ({
   const handleMusicianClick = useCallback(
     (musicianId: number | null) => {
       if (musicianId) {
-        const musician = musicians.find((m) => m.id === musicianId);
+        const musician = visibleMusicians.find((m) => m.id === musicianId);
         if (musician) {
           setSelectedMusician(musician);
           setIsModalOpen(true);
         }
       }
     },
-    [musicians]
+    [visibleMusicians]
   );
 
   const fadeUpVariants = useMemo(
@@ -107,9 +124,9 @@ const AlbumAboutPage = ({
   const resolveMusicianName = useCallback(
     (fallbackName: string, musicianId?: number | null) => {
       if (!musicianId) return fallbackName;
-      return musicians.find((m) => m.id === musicianId)?.name || fallbackName;
+      return visibleMusicians.find((m) => m.id === musicianId)?.name || fallbackName;
     },
-    [musicians]
+    [visibleMusicians]
   );
 
   const fallbackName = useCallback(
@@ -168,8 +185,8 @@ const AlbumAboutPage = ({
     [images]
   );
   const albumVideos = useMemo(
-    () => videos.filter((video) => video.eventType === 'album' && video.eventYear === 2024),
-    [videos]
+    () => visibleVideos.filter((video) => video.eventType === 'album' && video.eventYear === 2024),
+    [visibleVideos]
   );
 
   // MusicAlbum Schema
@@ -181,15 +198,15 @@ const AlbumAboutPage = ({
         genre: ['Folk', 'Rock', 'Jazz', 'Electronic', 'Ambient', 'World Music'],
         image: getFullUrl('/images-webp/album/albumart.webp'),
         datePublished: '2024-10-12',
-        numTracks: 12,
-        track: musicians
-          .filter((m) => m.trackTitle && m.id !== 13)
+        numTracks: albumMusicianIds.size,
+        track: visibleMusicians
+          .filter((m) => m.trackTitle && albumMusicianIds.has(m.id))
           .map((m) => ({
             name: m.trackTitle || '',
             url: getFullUrl('/album/tracks'),
           })),
       }),
-    [musicians, t]
+    [albumMusicianIds, t, visibleMusicians]
   );
 
   return (
@@ -217,6 +234,20 @@ const AlbumAboutPage = ({
       */}
 
       <div className="relative overflow-hidden">
+        {isLocaleDataLoading && (
+          <div className="container mx-auto px-4 pt-28">
+            <p className="text-center text-white/90" role="status">
+              {t('common.loading')}
+            </p>
+          </div>
+        )}
+        {localeDataError && (
+          <div className="container mx-auto px-4 pt-28">
+            <p className="text-center text-white/90" role="alert">
+              {t('common.no_results')}
+            </p>
+          </div>
+        )}
         {/* Background Decorative Elements - reimplemented inside container or just kept here */}
         <div className="absolute top-[-20%] right-[-10%] w-2/3 h-[120%] bg-ocean-mist/20 rounded-full blur-3xl z-0 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-1/2 h-2/3 bg-golden-sun/10 rounded-full blur-3xl z-0" />

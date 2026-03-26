@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
-import { getPressItems } from '@/api/press';
+import { getPressItems, normalizePressItems } from '@/api/press';
 import { PressItem } from '@/types/press';
 import { getBreadcrumbSchema } from '@/utils/structuredData';
 import Button from '@/components/common/Button';
@@ -81,7 +81,7 @@ export default function PressPage({
     fetchResource: fetchPress,
   });
 
-  const pressItems = pressResource.data;
+  const pressItems = useMemo(() => normalizePressItems(pressResource.data), [pressResource.data]);
 
   const breadcrumbs = [
     { name: t('press.breadcrumb_home'), url: getFullUrl('/') },
@@ -118,7 +118,12 @@ export default function PressPage({
           colorScheme="orange"
           filterOrder="press"
         />
-        {!pressResource.error && (
+        {pressResource.isLoading && (
+          <p className="text-center text-gray-500 py-12" role="status">
+            {t('common.loading')}
+          </p>
+        )}
+        {!pressResource.error && !pressResource.isLoading && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredItems.map((press) => (
               <div key={press.id} className="h-full">
@@ -132,7 +137,7 @@ export default function PressPage({
             {t('common.no_results')}
           </p>
         )}
-        {filteredItems.length === 0 && !pressResource.error && (
+        {filteredItems.length === 0 && !pressResource.error && !pressResource.isLoading && (
           <p className="text-center text-gray-500 py-12">
             {t('common.no_results') || 'No results found.'}
           </p>

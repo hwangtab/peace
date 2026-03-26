@@ -38,7 +38,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
     currentLocale: i18n.language,
     fetchResource: fetchMusicians,
   });
-  const musicians = musiciansResource.data;
+  const musicians = musiciansResource.isLoading ? [] : musiciansResource.data;
 
   if (!camp2026) {
     return (
@@ -267,11 +267,21 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
               subtitle={t('camp.lineup_count', { count: participantCount })}
             />
             <div className="max-w-6xl mx-auto">
-              <CampLineup
-                participants={camp2026.participants}
-                musicians={musicians}
-                campYear={2026}
-              />
+              {musiciansResource.isLoading ? (
+                <p className="text-center text-gray-500 py-10" role="status">
+                  {t('common.loading')}
+                </p>
+              ) : musiciansResource.error ? (
+                <p className="text-center text-gray-500 py-10" role="alert">
+                  {t('common.no_results')}
+                </p>
+              ) : (
+                <CampLineup
+                  participants={camp2026.participants}
+                  musicians={musicians}
+                  campYear={2026}
+                />
+              )}
             </div>
           </div>
         </Section>

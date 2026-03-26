@@ -6,12 +6,15 @@ import path from 'path';
 import { VideoItem } from '@/types/video';
 import { Musician } from '@/types/musician';
 import { GalleryImage } from '@/types/gallery';
+import { Track } from '@/types/track';
 import { loadLocalizedData, readJsonArray } from '@/utils/dataLoader';
+import { buildTrackMusicianRelation } from '@/utils/trackMusician';
 
 interface WrappedPageProps {
   initialVideos: VideoItem[];
   initialMusicians: Musician[];
   initialImages: GalleryImage[];
+  initialAlbumMusicianIds: number[];
   initialLocale: string;
 }
 
@@ -24,6 +27,10 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
 
   const initialVideos = loadLocalizedData<VideoItem>(lang, 'videos.json');
   const initialMusicians = loadLocalizedData<Musician>(lang, 'musicians.json');
+  const canonicalTracks = loadLocalizedData<Track>('ko', 'tracks.json');
+  const canonicalMusicians = loadLocalizedData<Musician>('ko', 'musicians.json');
+  const canonicalRelation = buildTrackMusicianRelation(canonicalTracks, canonicalMusicians);
+  const initialAlbumMusicianIds = [...canonicalRelation.trackByMusicianId.keys()];
 
   // Gallery preview for SSG payload size optimization (full data is fetched client-side)
   const initialImages = readJsonArray<GalleryImage>(
@@ -36,6 +43,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
       initialVideos,
       initialMusicians,
       initialImages,
+      initialAlbumMusicianIds,
       initialLocale: lang,
     },
     revalidate: 3600,
