@@ -427,8 +427,8 @@
   {
     "id": 29,
     "name": "Seongyeong",
-    "shortDescription": "Una cantautora y artista de muñecas de cerámica.",
-    "description": "Seongyeong es tanto una cantautora como una artista que crea muñecas de cerámica inspiradas en las imágenes de la naturaleza y los seres vivos que nos rodean.",
+    "shortDescription": "Cantautora",
+    "description": "Atrapa emociones fugaces como la sombra de un pájaro en vuelo y las convierte en canciones.\nComo el canto de un pájaro escuchado a lo lejos, continúa cantando desde algún lugar.",
     "genre": [
       "Cantautor",
       "Folk"
@@ -592,8 +592,8 @@
   {
     "id": 40,
     "name": "Yoon Seonae",
-    "shortDescription": "Una voz icónica de la canción minjung que cantó en las primeras líneas del movimiento por la democracia de la década de 1980.",
-    "description": "Yoon Seonae surgió del grupo de canto Meaeri de la Universidad Nacional de Seúl y de la coalición estudiantil Saebyeok, convirtiéndose en una de las voces femeninas definitorias de la canción minjung durante el movimiento por la democracia de la década de 1980. Es conocida por canciones históricas como \"When That Day Comes\" y ha continuado su vida artística a través de álbumes en solitario posteriores.",
+    "shortDescription": "Una música folk que ha cantado canciones líricas que resuenan con las alegrías y penas de la vida y el espíritu de los tiempos",
+    "description": "Yun Seon-ae comenzó su camino como cantante a mediados de los años 80 a través del club universitario 'Meari' y el grupo de canto 'Saebyeok', y ha estado cantando canciones líricas que resuenan con las alegrías y penas de la vida y el espíritu de los tiempos hasta hoy.\n\nDio a conocer su voz con canciones como 'Cuando llegue ese día' y 'A la tierra de la igualdad' durante sus actividades con Saebyeok, y ha cantado con una voz sin adornos que consuela las vidas agotadas en numerosas actuaciones. Ha publicado los álbumes en solitario 'Hasan', 'Una bella historia' y 'Añorando ese aroma', los sencillos digitales 'Habrá un día en que nos reencontremos' e 'Iré allí', la canción final 'Carta' de la película 'Cumpleaños' y 'Canción de la democracia', entre otros.",
     "genre": [
       "Folk",
       "Canción Minjung"
