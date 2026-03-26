@@ -1593,5 +1593,38 @@
       49
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/D7LUxDeWJM8/maxresdefault.jpg"
+  },
+  {
+    "id": 325,
+    "title": "뺄라지다 - 2025 제주대안교육협의회 문화어울림",
+    "description": "2025 제주대안교육협의회 문화어울림에서의 뺄라지다 공연 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/cS0tehlO-7I",
+    "eventType": "live",
+    "musicianIds": [
+      58
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/cS0tehlO-7I/maxresdefault.jpg"
+  },
+  {
+    "id": 326,
+    "title": "뺄라지다 - 제4회 신성 뮤지컬 콘테스트",
+    "description": "제4회 신성 뮤지컬 콘테스트에서의 뺄라지다 공연 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/6Yj7ZTt7GdQ",
+    "eventType": "live",
+    "musicianIds": [
+      58
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/6Yj7ZTt7GdQ/maxresdefault.jpg"
+  },
+  {
+    "id": 327,
+    "title": "뺄라지다 - 세월호 10+1주기 추모공연",
+    "description": "세월호 10+1주기 추모공연에서의 뺄라지다 공연 영상입니다.",
+    "youtubeUrl": "https://www.youtube.com/embed/bt_aJ75LS4Y",
+    "eventType": "live",
+    "musicianIds": [
+      58
+    ],
+    "thumbnailUrl": "https://i.ytimg.com/vi/bt_aJ75LS4Y/maxresdefault.jpg"
   }
 ]
