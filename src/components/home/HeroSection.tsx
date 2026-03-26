@@ -11,7 +11,7 @@ interface HeroSectionProps {
 
 const HeroSection = ({ imageUrl }: HeroSectionProps) => {
   const { t, i18n } = useTranslation();
-  const camp2026 = getCamps(i18n.language).find(c => c.id === 'camp-2026');
+  const camp2026 = getCamps(i18n.language, t).find(c => c.id === 'camp-2026');
   const scrollIndicatorRef = useRef(null);
   const isScrollIndicatorInView = useInView(scrollIndicatorRef);
   const [imageFailed, setImageFailed] = useState(false);

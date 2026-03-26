@@ -5,80 +5,36 @@ export interface StructuredDataProps {
   [key: string]: unknown;
 }
 
-const projectNames: Record<string, string> = {
-  ko: "이름을 모르는 먼 곳의 그대에게",
-  ja: "名前も知らない遠くのあなたへ",
-  'zh-Hans': "致远方不知名的你",
-  'zh-Hant': "致遠方不知名的你",
-  en: "To You in a Distant Place Whose Name I Don't Know",
-  es: "Para ti, en un lugar lejano cuyo nombre desconozco",
-  fr: "À toi, dans un lieu lointain dont j'ignore le nom",
-  de: "An dich, an einem fernen Ort, dessen Namen ich nicht kenne",
-  pt: "Para você, em um lugar distante cujo nome desconheço",
-  ru: "Тебе, в далёком месте, чьё имя мне неизвестно",
-  ar: "إليك، في مكان بعيد لا أعرف اسمه",
-  hi: "तुम्हें, उस दूर जगह जिसका नाम मैं नहीं जानता",
-  id: "Untukmu, di tempat jauh yang tak kuketahui namanya",
-};
+type TranslationFn = (key: string) => string;
 
-const campNames: Record<string, string> = {
-  ko: "강정피스앤뮤직캠프",
-  ja: "江汀ピース＆ミュージックキャンプ",
-  'zh-Hans': "江汀和平音乐营",
-  'zh-Hant': "江汀和平音樂營",
-  en: "Gangjeong Peace Music Camp",
-  es: "Campamento de Música por la Paz de Gangjeong",
-  fr: "Camp musical pour la paix de Gangjeong",
-  de: "Gangjeong Friedensmusikcamp",
-  pt: "Acampamento de Música pela Paz de Gangjeong",
-  ru: "Музыкальный лагерь мира в Канджоне",
-  ar: "مخيم كانججونغ للموسيقى والسلام",
-  hi: "गांगजोंग शांति संगीत शिविर",
-  id: "Kemah Musik Perdamaian Gangjeong",
-};
-
-const descriptions: Record<string, string> = {
-  ko: "전쟁과 폭력이 만연한 세상에서 음악으로 평화의 메시지를 전하는 뮤지션들의 프로젝트",
-  ja: "戦争と暴力が蔓延する世界で、音楽を通じて平和のメッセージを届けるミュージシャンたちのプロジェクト",
-  'zh-Hans': "在战争与暴力盛行的世界中，通过音乐传递和平信息的音乐人项目",
-  'zh-Hant': "在戰爭與暴力盛行的世界中，透過音樂傳遞和平訊息的音樂人計畫",
-  en: "A project of musicians delivering a message of peace through music in a world where war and violence are prevalent",
-  es: "Un proyecto de músicos que transmiten un mensaje de paz a través de la música en un mundo donde prevalecen la guerra y la violencia",
-  fr: "Un projet de musiciens portant un message de paix à travers la musique dans un monde où la guerre et la violence prédominent",
-  de: "Ein Projekt von Musikern, die in einer von Krieg und Gewalt geprägten Welt eine Botschaft des Friedens durch Musik vermitteln",
-  pt: "Um projeto de músicos que transmitem uma mensagem de paz através da música em um mundo onde a guerra e a violência prevalecem",
-  ru: "Проект музыкантов, несущих послание мира через музыку в мире, где царят война и насилие",
-  ar: "مشروع لموسيقيين ينقلون رسالة سلام من خلال الموسيقى في عالم يسوده الحرب والعنف",
-  hi: "युद्ध और हिंसा से भरी दुनिया में संगीत के माध्यम से शांति का संदेश देने वाले संगीतकारों का प्रोजेक्ट",
-  id: "Proyek musisi yang menyampaikan pesan perdamaian melalui musik di dunia yang penuh perang dan kekerasan",
-};
-
-const getProjectName = (lang: string) => projectNames[lang] || projectNames.en;
-const getCampName = (lang: string) => campNames[lang] || campNames.en;
-const getDescription = (lang: string) => descriptions[lang] || descriptions.en;
+const getProjectName = (t: TranslationFn) => t('structured_data.project_name');
+const getCampName = (t: TranslationFn) => t('structured_data.camp_name');
+const getDescription = (t: TranslationFn) => t('structured_data.description');
 
 // Organization Schema - 조직 정보
-export const getOrganizationSchema = (lang: string = 'ko') => ({
+export const getOrganizationSchema = (lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": getProjectName(lang),
+  "name": t ? getProjectName(t) : '',
   "alternateName": "Peace and Music Project",
   "url": "https://peaceandmusic.net",
   "logo": "https://peaceandmusic.net/logo192.webp",
-  "description": getDescription(lang),
-  "foundingDate": "2024",
+  "description": t ? getDescription(t) : '',
+  "foundingDate": "2023",
   "sameAs": [
-    // 소셜 미디어 링크가 있다면 여기에 추가
+    "https://www.instagram.com/peace_music_in_gangjeong",
+    "https://smartstore.naver.com/peaceandmusic",
+    "https://tumblbug.com/gpmc3",
   ]
 });
 
 // WebSite Schema - 웹사이트 정보
-export const getWebSiteSchema = (lang: string = 'ko') => ({
+export const getWebSiteSchema = (lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": getProjectName(lang),
+  "name": t ? getProjectName(t) : '',
   "url": "https://peaceandmusic.net",
-  "description": getDescription(lang),
+  "description": t ? getDescription(t) : '',
   "inLanguage": ({
     ko: "ko-KR",
     en: "en-US",
@@ -96,21 +52,20 @@ export const getWebSiteSchema = (lang: string = 'ko') => ({
   } as Record<string, string>)[lang] || "en-US",
   "publisher": {
     "@type": "Organization",
-    "name": getProjectName(lang)
+    "name": t ? getProjectName(t) : ''
+  },
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["h1", ".typo-subtitle"]
   }
 });
 
 // MusicGroup Schema - 음악 그룹 정보
-export const getMusicGroupSchema = (lang: string = 'ko') => ({
+export const getMusicGroupSchema = (lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "MusicGroup",
-  "name": getProjectName(lang),
-  "description": ({
-    ko: "평화를 노래하는 음악 프로젝트",
-    ja: "平和を歌う音楽プロジェクト",
-    'zh-Hans': "为和平歌唱的音乐项目",
-    'zh-Hant': "為和平歌唱的音樂計畫",
-  } as Record<string, string>)[lang] || "A musical project singing for peace",
+  "name": t ? getProjectName(t) : '',
+  "description": t ? t('structured_data.music_group_desc') : '',
   "genre": lang === 'ko' ? ["평화운동", "사회운동", "인디음악"] : ["Peace Movement", "Social Movement", "Indie Music"],
   "url": "https://peaceandmusic.net"
 });
@@ -147,7 +102,7 @@ export const getMusicRecordingSchema = (track: {
   description?: string;
   duration?: string;
   url?: string;
-}, lang: string = 'ko') => ({
+}, lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "MusicRecording",
   "name": track.name,
@@ -156,34 +111,16 @@ export const getMusicRecordingSchema = (track: {
   "url": track.url || "https://peaceandmusic.net/tracks",
   "byArtist": {
     "@type": "MusicGroup",
-    "name": getProjectName(lang)
+    "name": t ? getProjectName(t) : ''
   }
 });
 
 // MusicPlaylist Schema - 음악 재생목록
-export const getMusicPlaylistSchema = (tracks: Array<{ name: string; url?: string }>, lang: string = 'ko') => ({
+export const getMusicPlaylistSchema = (tracks: Array<{ name: string; url?: string }>, lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "MusicPlaylist",
-  "name": ({
-    ko: "평화를 노래하는 음악",
-    ja: "平和を歌う音楽",
-    'zh-Hans': "为和平歌唱的音乐",
-    'zh-Hant': "為和平歌唱的音樂",
-    es: "Canciones que cantan por la paz",
-    fr: "Chansons pour la paix",
-    de: "Lieder für den Frieden",
-    pt: "Canções pela paz",
-    ru: "Песни о мире",
-    ar: "أغانٍ تغني للسلام",
-    hi: "शांति के लिए गीत",
-    id: "Lagu-lagu untuk perdamaian",
-  } as Record<string, string>)[lang] || "Songs Singing for Peace",
-  "description": ({
-    ko: "이름을 모르는 먼 곳의 그대에게 프로젝트의 음악 모음",
-    ja: "「名前も知らない遠くのあなたへ」プロジェクトの音楽コレクション",
-    'zh-Hans': '\u201c致远方不知名的你\u201d项目音乐合辑',
-    'zh-Hant': '「致遠方不知名的你」計畫音樂合輯',
-  } as Record<string, string>)[lang] || "Collection of music from the project 'To You in a Distant Place Whose Name I Don't Know'",
+  "name": t ? t('structured_data.playlist_name') : '',
+  "description": t ? t('structured_data.playlist_desc') : '',
   "numTracks": tracks.length,
   "track": tracks.map(track => ({
     "@type": "MusicRecording",
@@ -193,29 +130,11 @@ export const getMusicPlaylistSchema = (tracks: Array<{ name: string; url?: strin
 });
 
 // ImageGallery Schema - 갤러리
-export const getImageGallerySchema = (images: Array<{ url: string; caption?: string }>, lang: string = 'ko') => ({
+export const getImageGallerySchema = (images: Array<{ url: string; caption?: string }>, lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "ImageGallery",
-  "name": ({
-    ko: "갤러리",
-    ja: "ギャラリー",
-    'zh-Hans': "画廊",
-    'zh-Hant': "畫廊",
-    es: "Galería",
-    fr: "Galerie",
-    de: "Galerie",
-    pt: "Galeria",
-    ru: "Галерея",
-    ar: "معرض الصور",
-    hi: "गैलरी",
-    id: "Galeri",
-  } as Record<string, string>)[lang] || "Gallery",
-  "description": ({
-    ko: "이름을 모르는 먼 곳의 그대에게 프로젝트의 사진 갤러리",
-    ja: "「名前も知らない遠くのあなたへ」プロジェクトのフォトギャラリー",
-    'zh-Hans': '\u201c致远方不知名的你\u201d项目照片集',
-    'zh-Hant': '「致遠方不知名的你」計畫照片集',
-  } as Record<string, string>)[lang] || "Photo gallery of the project 'To You in a Distant Place Whose Name I Don't Know'",
+  "name": t ? t('structured_data.gallery_name') : '',
+  "description": t ? t('structured_data.gallery_desc') : '',
   "image": images.map(img => ({
     "@type": "ImageObject",
     "url": img.url,
@@ -230,7 +149,7 @@ export const getNewsArticleSchema = (article: {
   datePublished: string;
   url: string;
   imageUrl?: string;
-}, lang: string = 'ko') => ({
+}, lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "NewsArticle",
   "headline": article.headline,
@@ -240,11 +159,11 @@ export const getNewsArticleSchema = (article: {
   "image": article.imageUrl || "https://peaceandmusic.net/og-image.webp",
   "author": {
     "@type": "Organization",
-    "name": getProjectName(lang)
+    "name": t ? getProjectName(t) : ''
   },
   "publisher": {
     "@type": "Organization",
-    "name": getProjectName(lang),
+    "name": t ? getProjectName(t) : '',
     "logo": {
       "@type": "ImageObject",
       "url": "https://peaceandmusic.net/logo192.webp"
@@ -264,6 +183,7 @@ export const getCollectionPageSchema = (collection: {
   "description": collection.description,
   "url": collection.url
 });
+
 // Event Schema - 공연/캠프 정보
 export const getEventSchema = (event: {
   name: string;
@@ -282,12 +202,14 @@ export const getEventSchema = (event: {
     priceCurrency?: string;
     availability?: string;
   };
-}, lang: string = 'ko') => ({
+  dateModified?: string;
+}, lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "Event",
   "name": event.name,
   "startDate": event.startDate,
   "endDate": event.endDate,
+  ...(event.dateModified ? { "dateModified": event.dateModified } : {}),
   "eventStatus": "https://schema.org/EventScheduled",
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
   "location": {
@@ -303,10 +225,10 @@ export const getEventSchema = (event: {
   "description": event.description,
   "performer": (event.performers && event.performers.length > 0)
     ? event.performers.map(p => ({ "@type": p.type, "name": p.name }))
-    : { "@type": "Organization", "name": getCampName(lang) },
+    : { "@type": "Organization", "name": t ? getCampName(t) : '' },
   "organizer": {
     "@type": "Organization",
-    "name": getCampName(lang),
+    "name": t ? getCampName(t) : '',
     "url": "https://peaceandmusic.net"
   },
   ...(event.offers ? {
@@ -326,7 +248,7 @@ export const getProfilePageSchema = (person: {
   description: string;
   image?: string;
   jobTitle?: string;
-}, lang: string = 'ko') => ({
+}, lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "ProfilePage",
   "mainEntity": {
@@ -337,9 +259,45 @@ export const getProfilePageSchema = (person: {
     "jobTitle": person.jobTitle || "Musician",
     "memberOf": {
       "@type": "Organization",
-      "name": getCampName(lang)
+      "name": t ? getCampName(t) : ''
     }
   }
+});
+
+// WebPage Schema with about/mentions - GEO 최적화 (AI 인용 확률 향상)
+export const getWebPageSchema = (page: {
+  name: string;
+  description: string;
+  url: string;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": page.name,
+  "description": page.description,
+  "url": page.url,
+  "about": [
+    { "@type": "Thing", "name": "Peace movement", "sameAs": "https://en.wikipedia.org/wiki/Peace_movement" },
+    { "@type": "Place", "name": "Gangjeong Village", "sameAs": "https://en.wikipedia.org/wiki/Gangjeong" }
+  ],
+  "mentions": [
+    { "@type": "Thing", "name": "Jeju Naval Base", "sameAs": "https://en.wikipedia.org/wiki/Jeju_Naval_Base" },
+    { "@type": "Event", "name": "Anti-war movement", "sameAs": "https://en.wikipedia.org/wiki/Anti-war_movement" }
+  ]
+});
+
+// HowTo Schema - 캠프 참여 방법 (AEO 최적화)
+export const getHowToSchema = (lang: string = 'ko', t?: TranslationFn) => ({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": t ? t('structured_data.howto_name') : 'How to Attend Gangjeong Peace Music Camp',
+  "description": t ? getDescription(t) : '',
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": t ? t('structured_data.howto_step1_name') : 'Check the schedule', "text": t ? t('structured_data.howto_step1_text') : 'Visit peaceandmusic.net to check the camp dates and lineup.' },
+    { "@type": "HowToStep", "position": 2, "name": t ? t('structured_data.howto_step2_name') : 'Travel to Gangjeong Village', "text": t ? t('structured_data.howto_step2_text') : 'Take a bus or taxi from Jeju Airport to Gangjeong Village.' },
+    { "@type": "HowToStep", "position": 3, "name": t ? t('structured_data.howto_step3_name') : 'Support the camp (optional)', "text": t ? t('structured_data.howto_step3_text') : 'Support the camp through crowdfunding at tumblbug.com/gpmc3.' },
+    { "@type": "HowToStep", "position": 4, "name": t ? t('structured_data.howto_step4_name') : 'Visit Gangjeong Sports Park', "text": t ? t('structured_data.howto_step4_text') : 'Arrive at Gangjeong Sports Park and enter for free.' },
+    { "@type": "HowToStep", "position": 5, "name": t ? t('structured_data.howto_step5_name') : 'Enjoy music and peace', "text": t ? t('structured_data.howto_step5_text') : 'Watch performances and share in the spirit of peace solidarity.' },
+  ],
 });
 
 // MusicAlbum Schema - 음악 앨범

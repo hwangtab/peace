@@ -97,8 +97,7 @@ describe('Navigation Component', () => {
     setRouterPath('/camps/2026/musicians/[id]', '/camps/2026/musicians/14');
     renderWithI18n(<Navigation />);
 
-    const campTriggers = screen.getAllByText(i18n.t('nav.camp'));
-    const campTrigger = campTriggers[0];
+    const campTrigger = screen.getAllByRole('button', { name: i18n.t('nav.camp') })[0];
     expect(campTrigger).toBeDefined();
     if (campTrigger) {
       fireEvent.click(campTrigger);

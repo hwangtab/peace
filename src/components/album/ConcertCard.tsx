@@ -4,12 +4,12 @@ import { useTranslation } from 'next-i18next';
 import { HiOutlineCalendar, HiOutlineLocationMarker, HiOutlineUserGroup } from 'react-icons/hi';
 import Button from '@/components/common/Button';
 
-interface Performer {
+export interface Performer {
     name: string;
     musicianId: number | null;
 }
 
-interface Concert {
+export interface Concert {
     id: string;
     name: string;
     date: string;

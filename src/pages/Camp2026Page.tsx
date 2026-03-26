@@ -28,7 +28,7 @@ interface CampPageProps {
 
 const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialLocale = 'ko' }) => {
   const { t, i18n } = useTranslation();
-  const campList = getCamps(i18n.language);
+  const campList = getCamps(i18n.language, t);
   const camp2026 = campList.find((camp) => camp.id === 'camp-2026');
   const ordinalLabel = formatOrdinal(3, i18n.language);
   const fetchMusicians = useCallback((locale: string) => getMusicians(locale), []);
@@ -87,8 +87,10 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
             },
           }
         : {}),
+      dateModified: '2026-03-26',
     },
-    i18n.language
+    i18n.language,
+    t
   );
 
   const participantCount = camp2026.participants?.length || 0;

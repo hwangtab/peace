@@ -6,10 +6,10 @@ import { Musician } from '@/types/musician';
 import { VideoItem } from '@/types/video';
 import { Track } from '@/types/track';
 import { loadLocalizedData } from '@/utils/dataLoader';
-import { seededHash } from '@/utils/hash';
 import { camps } from '@/data/camps';
 import MusicianDetailContent from '@/components/musicians/MusicianDetailContent';
 import { buildTrackMusicianRelation } from '@/utils/trackMusician';
+import { loadRelatedVideos, selectOtherMusicians } from '@/utils/musicianPageUtils';
 import { getFullUrl } from '@/config/env';
 
 interface MusicianPageProps {
@@ -84,34 +84,15 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
     return { notFound: true };
   }
 
-  // Find related videos — always use KO videos.json for musicianIds matching
-  // (en/videos.json is a partial subset and may lack musicianIds)
-  const koVideos = loadLocalizedData<VideoItem>('ko', 'videos.json');
-  const localizedVideos = loadLocalizedData<VideoItem>(resolvedLocale, 'videos.json');
-  const localizedVideoMap = new Map(localizedVideos.map((v) => [v.id, v]));
-
-  const directVideos = koVideos.filter((v) => v.musicianIds?.includes(musician.id));
-  const eventVideos = musician.events
-    ? koVideos.filter(
-        (v) =>
-          v.eventType &&
-          v.eventYear &&
-          musician.events!.includes(`${v.eventType}-${v.eventYear}`) &&
-          !directVideos.some((dv) => dv.id === v.id)
-      )
-    : [];
-  const relatedVideos = [...directVideos, ...eventVideos].map(
-    (v) => localizedVideoMap.get(v.id) ?? v
-  );
+  const relatedVideos = loadRelatedVideos(musician.id, resolvedLocale, {
+    includeEventVideos: true,
+    events: musician.events,
+  });
 
   const candidates = musicians.filter(
     (m) => m.id !== musician.id && m.imageUrl && albumMusicianIds.has(m.id)
   );
-
-  const seed = musician.id;
-  const otherMusicians = [...candidates]
-    .sort((a, b) => seededHash(a.id, seed) - seededHash(b.id, seed))
-    .slice(0, 6);
+  const otherMusicians = selectOtherMusicians(musician.id, candidates);
 
   return {
     props: {
