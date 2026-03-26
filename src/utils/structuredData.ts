@@ -12,7 +12,7 @@ const getCampName = (t: TranslationFn) => t('structured_data.camp_name');
 const getDescription = (t: TranslationFn) => t('structured_data.description');
 
 // Organization Schema - 조직 정보
-export const getOrganizationSchema = (lang: string = 'ko', t?: TranslationFn) => ({
+export const getOrganizationSchema = (_lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": t ? getProjectName(t) : '',
@@ -102,7 +102,7 @@ export const getMusicRecordingSchema = (track: {
   description?: string;
   duration?: string;
   url?: string;
-}, lang: string = 'ko', t?: TranslationFn) => ({
+}, _lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "MusicRecording",
   "name": track.name,
@@ -116,7 +116,7 @@ export const getMusicRecordingSchema = (track: {
 });
 
 // MusicPlaylist Schema - 음악 재생목록
-export const getMusicPlaylistSchema = (tracks: Array<{ name: string; url?: string }>, lang: string = 'ko', t?: TranslationFn) => ({
+export const getMusicPlaylistSchema = (tracks: Array<{ name: string; url?: string }>, _lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "MusicPlaylist",
   "name": t ? t('structured_data.playlist_name') : '',
@@ -130,7 +130,7 @@ export const getMusicPlaylistSchema = (tracks: Array<{ name: string; url?: strin
 });
 
 // ImageGallery Schema - 갤러리
-export const getImageGallerySchema = (images: Array<{ url: string; caption?: string }>, lang: string = 'ko', t?: TranslationFn) => ({
+export const getImageGallerySchema = (images: Array<{ url: string; caption?: string }>, _lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "ImageGallery",
   "name": t ? t('structured_data.gallery_name') : '',
@@ -149,7 +149,7 @@ export const getNewsArticleSchema = (article: {
   datePublished: string;
   url: string;
   imageUrl?: string;
-}, lang: string = 'ko', t?: TranslationFn) => ({
+}, _lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "NewsArticle",
   "headline": article.headline,
@@ -203,7 +203,7 @@ export const getEventSchema = (event: {
     availability?: string;
   };
   dateModified?: string;
-}, lang: string = 'ko', t?: TranslationFn) => ({
+}, _lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "Event",
   "name": event.name,
@@ -248,7 +248,7 @@ export const getProfilePageSchema = (person: {
   description: string;
   image?: string;
   jobTitle?: string;
-}, lang: string = 'ko', t?: TranslationFn) => ({
+}, _lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "ProfilePage",
   "mainEntity": {
@@ -286,7 +286,7 @@ export const getWebPageSchema = (page: {
 });
 
 // HowTo Schema - 캠프 참여 방법 (AEO 최적화)
-export const getHowToSchema = (lang: string = 'ko', t?: TranslationFn) => ({
+export const getHowToSchema = (_lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "HowTo",
   "name": t ? t('structured_data.howto_name') : 'How to Attend Gangjeong Peace Music Camp',
