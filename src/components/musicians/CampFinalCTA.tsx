@@ -1,6 +1,5 @@
 import { useTranslation } from 'next-i18next';
 import { motion } from 'framer-motion';
-import WaveDivider from '../common/WaveDivider';
 import Button from '../common/Button';
 
 interface CampFinalCTAProps {
@@ -16,7 +15,6 @@ export default function CampFinalCTA({
   musicianId,
   fundingUrl,
   hasOtherMusicians,
-  hasRelatedVideos,
   backHref,
   backLabel,
 }: CampFinalCTAProps) {
@@ -33,8 +31,10 @@ export default function CampFinalCTA({
           </div>
         </div>
       )}
-      <WaveDivider className={`${!hasOtherMusicians && hasRelatedVideos ? 'text-ocean-sand' : 'text-white'} -mt-[60px] sm:-mt-[100px] relative z-10`} />
-      <section className="bg-jeju-ocean py-20 md:py-28">
+      <section
+        className="py-20 md:py-28 bg-cover bg-center bg-deep-ocean"
+        style={{ backgroundImage: 'url(/images-webp/camps/2023/IMG_3565.webp)' }}
+      >
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
