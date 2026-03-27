@@ -294,16 +294,15 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
       {camp2026.fundingUrl && (
         <>
           <WaveDivider className="text-jeju-ocean -mt-[60px] sm:-mt-[100px] relative z-10" />
-          <section className="relative z-0 pt-28 pb-20 md:pt-36 md:pb-28">
+          <section className="bg-jeju-ocean relative pt-28 pb-20 md:pt-36 md:pb-28">
             <Image
               src="/images-webp/camps/2023/20230610밤 전쟁을끝내자.webp"
               alt=""
               fill
               sizes="100vw"
-              className="object-cover"
+              className="object-cover opacity-20"
               aria-hidden="true"
             />
-            <div className="absolute inset-0 bg-jeju-ocean/90" aria-hidden="true" />
             <div className="container mx-auto px-4 text-center relative z-10">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
