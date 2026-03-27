@@ -33,12 +33,14 @@ export default function CampFinalCTA({
           </div>
         </div>
       )}
-      <WaveDivider className={`${!hasOtherMusicians && hasRelatedVideos ? 'text-ocean-sand' : 'text-white'} -mt-[60px] sm:-mt-[100px] relative z-10`} />
       <section
-        className="py-20 md:py-28 bg-cover bg-bottom bg-deep-ocean"
+        className="relative py-20 md:py-28 bg-cover bg-center bg-deep-ocean"
         style={{ backgroundImage: 'url(/images-webp/camps/2023/IMG_3565.webp)' }}
       >
-        <div className="container mx-auto px-4 text-center">
+        <div className="absolute top-0 left-0 right-0 z-10">
+          <WaveDivider className={!hasOtherMusicians && hasRelatedVideos ? 'text-ocean-sand' : 'text-white'} />
+        </div>
+        <div className="container mx-auto px-4 text-center pt-8 sm:pt-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
