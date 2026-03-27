@@ -116,14 +116,14 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
       {/* Hero Section with Background Image */}
       <section className="relative min-h-[500px] md:min-h-[600px] lg:min-h-[700px] flex items-center justify-center text-center overflow-hidden bg-ocean-gradient pt-20 pb-16">
         <Image
-          src={camp2026?.images?.[0] || '/images-webp/camps/2023/IMG_2064.webp'}
+          src="/images-webp/camps/2023/IMG_3565.webp"
           alt={translatedTitle}
           fill
           sizes="100vw"
           className="absolute inset-0 w-full h-full object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
+        <div className="absolute inset-0 bg-radial-[ellipse_at_center] from-black/60 via-black/30 to-transparent" />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ y: 16 }}
@@ -295,9 +295,9 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
         <>
           <section
             className="relative py-20 md:py-28 bg-cover bg-center bg-deep-ocean"
-            style={{ backgroundImage: 'url(/images-webp/camps/2023/IMG_3565.webp)' }}
+            style={{ backgroundImage: `url(${camp2026?.images?.[0] || '/images-webp/camps/2026/2026poster1-og.webp'})` }}
           >
-            <div className="absolute inset-0 bg-radial-[ellipse_at_center] from-black/60 via-black/30 to-transparent" aria-hidden="true" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" aria-hidden="true" />
             <div className="container mx-auto px-4 text-center relative z-10">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
