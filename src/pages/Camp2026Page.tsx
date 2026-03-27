@@ -293,14 +293,9 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
       {/* Final CTA Section */}
       {camp2026.fundingUrl && (
         <>
-          <section
-            className="relative pt-20 pb-20 md:pt-28 md:pb-28 bg-cover bg-center bg-deep-ocean"
-            style={{ backgroundImage: 'url(/images-webp/camps/2023/IMG_3565.webp)' }}
-          >
-            <div className="absolute top-0 left-0 right-0 z-10">
-              <WaveDivider className="text-white" />
-            </div>
-            <div className="container mx-auto px-4 text-center pt-8 sm:pt-12">
+          <WaveDivider className="text-jeju-ocean -mt-[60px] sm:-mt-[100px] relative z-10" />
+          <section className="bg-jeju-ocean pt-28 pb-20 md:pt-36 md:pb-28">
+            <div className="container mx-auto px-4 text-center">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
