@@ -35,7 +35,7 @@ export default function CampFinalCTA({
         </div>
       )}
       <WaveDivider className={`${!hasOtherMusicians && hasRelatedVideos ? 'text-ocean-sand' : 'text-white'} -mt-[60px] sm:-mt-[100px] relative z-10`} />
-      <section className="relative py-20 md:py-28 overflow-hidden">
+      <section className="relative py-20 md:py-28">
         <Image
           src="/images-webp/camps/2023/20230610밤 전쟁을끝내자.webp"
           alt=""
