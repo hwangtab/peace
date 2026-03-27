@@ -296,7 +296,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
           <WaveDivider className="text-white -mt-[60px] sm:-mt-[100px] relative z-10" />
           <section
             className="pt-28 pb-20 md:pt-36 md:pb-28 bg-cover bg-center bg-deep-ocean"
-            style={{ backgroundImage: 'url(/images-webp/camps/2023/20230610%EB%B0%A4%20%EC%A0%84%EC%9F%81%EC%9D%84%EB%81%9D%EB%82%B4%EC%9E%90.webp)' }}
+            style={{ backgroundImage: 'url(/images-webp/camps/2023/IMG_3565.webp)' }}
           >
             <div className="container mx-auto px-4 text-center">
               <motion.div

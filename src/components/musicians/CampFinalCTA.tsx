@@ -36,7 +36,7 @@ export default function CampFinalCTA({
       <WaveDivider className={`${!hasOtherMusicians && hasRelatedVideos ? 'text-ocean-sand' : 'text-white'} -mt-[60px] sm:-mt-[100px] relative z-10`} />
       <section
         className="py-20 md:py-28 bg-cover bg-center bg-deep-ocean"
-        style={{ backgroundImage: 'url(/images-webp/camps/2023/20230610%EB%B0%A4%20%EC%A0%84%EC%9F%81%EC%9D%84%EB%81%9D%EB%82%B4%EC%9E%90.webp)' }}
+        style={{ backgroundImage: 'url(/images-webp/camps/2023/IMG_3565.webp)' }}
       >
         <div className="container mx-auto px-4 text-center">
           <motion.div
