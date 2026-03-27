@@ -294,32 +294,25 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
       {camp2026.fundingUrl && (
         <>
           <WaveDivider className="text-jeju-ocean -mt-[60px] sm:-mt-[100px] relative z-10" />
-          <section className="bg-jeju-ocean pt-28 pb-20 md:pt-36 md:pb-28">
-            <div className="relative">
-              <Image
-                src="/images-webp/camps/2023/20230610밤 전쟁을끝내자.webp"
-                alt=""
-                fill
-                sizes="100vw"
-                className="object-cover opacity-20"
-                aria-hidden="true"
-              />
-              <div className="container mx-auto px-4 text-center relative z-10">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-80px' }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <h2 className="typo-h2 text-white mb-4">{t('camp.cta_final_heading')}</h2>
-                  <p className="typo-body text-gray-200 mb-8 max-w-lg mx-auto">
-                    {t('camp.cta_final_body')}
-                  </p>
-                  <Button href={camp2026.fundingUrl} variant="gold" external utmContent="final-cta">
-                    {t('camp.cta_final_button')}
-                  </Button>
-                </motion.div>
-              </div>
+          <section
+            className="bg-jeju-ocean pt-28 pb-20 md:pt-36 md:pb-28 bg-cover bg-center"
+            style={{ backgroundImage: 'url(/images-webp/camps/2023/20230610%EB%B0%A4%20%EC%A0%84%EC%9F%81%EC%9D%84%EB%81%9D%EB%82%B4%EC%9E%90.webp)', backgroundBlendMode: 'overlay' }}
+          >
+            <div className="container mx-auto px-4 text-center">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className="typo-h2 text-white mb-4">{t('camp.cta_final_heading')}</h2>
+                <p className="typo-body text-gray-200 mb-8 max-w-lg mx-auto">
+                  {t('camp.cta_final_body')}
+                </p>
+                <Button href={camp2026.fundingUrl} variant="gold" external utmContent="final-cta">
+                  {t('camp.cta_final_button')}
+                </Button>
+              </motion.div>
             </div>
           </section>
         </>
