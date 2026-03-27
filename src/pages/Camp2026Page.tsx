@@ -294,10 +294,11 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
       {camp2026.fundingUrl && (
         <>
           <section
-            className="pt-28 pb-20 md:pt-36 md:pb-28 bg-cover bg-center bg-deep-ocean"
+            className="relative pt-28 pb-20 md:pt-36 md:pb-28 bg-cover bg-center bg-deep-ocean"
             style={{ backgroundImage: 'url(/images-webp/camps/2023/IMG_3565.webp)' }}
           >
-            <div className="container mx-auto px-4 text-center">
+            <div className="absolute inset-0 bg-black/50" aria-hidden="true" />
+            <div className="container mx-auto px-4 text-center relative z-10">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
