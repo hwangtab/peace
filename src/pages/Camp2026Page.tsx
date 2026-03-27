@@ -134,10 +134,10 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
               {t('camp.date_badge_2026')}
             </span>
 
-            <h1 className="typo-h1 text-white mb-3 sm:mb-4 hyphens-auto break-words">
+            <h1 className="typo-h1 text-white mb-3 sm:mb-4 text-3xl">
               {translatedTitle}
             </h1>
-            <p className="typo-subtitle text-gray-100 mb-5 sm:mb-8 hyphens-auto break-words">
+            <p className="typo-subtitle text-gray-100 mb-5 sm:mb-8">
               {translatedSlogan}
             </p>
 
