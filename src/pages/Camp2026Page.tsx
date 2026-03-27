@@ -294,7 +294,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
       {camp2026.fundingUrl && (
         <>
           <WaveDivider className="text-jeju-ocean -mt-[60px] sm:-mt-[100px] relative z-10" />
-          <section className="relative pt-28 pb-20 md:pt-36 md:pb-28">
+          <section className="relative z-0 pt-28 pb-20 md:pt-36 md:pb-28">
             <Image
               src="/images-webp/camps/2023/20230610밤 전쟁을끝내자.webp"
               alt=""
