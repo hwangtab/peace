@@ -294,7 +294,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
       {camp2026.fundingUrl && (
         <>
           <section
-            className="relative pt-20 pb-20 md:pt-24 md:pb-28 bg-cover bg-center bg-deep-ocean"
+            className="relative py-20 md:py-28 bg-cover bg-center bg-deep-ocean"
             style={{ backgroundImage: 'url(/images-webp/camps/2023/IMG_3565.webp)' }}
           >
             <div className="absolute inset-0 bg-radial-[ellipse_at_center] from-black/60 via-black/30 to-transparent" aria-hidden="true" />
