@@ -8,6 +8,7 @@ import Section from '@/components/layout/Section';
 import SectionHeader from '@/components/common/SectionHeader';
 import WaveDivider from '@/components/common/WaveDivider';
 import CampLineup from '@/components/camp/CampLineup';
+import CampHero from '@/components/camp/CampHero';
 import dynamic from 'next/dynamic';
 
 const GangjeongStorySection = dynamic(() => import('@/components/camp/GangjeongStorySection'), {
@@ -57,7 +58,6 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
 
   const translatedTitle = t('camp.title_2026');
   const translatedDescription = t('camp.description_2026');
-  const translatedSlogan = t('camp.slogan_2026');
 
   const eventSchema = getEventSchema(
     {
@@ -113,69 +113,27 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
       disableTopPadding={true}
       disableBottomPadding={true}
     >
-      {/* Hero Section with Background Image */}
-      <section className="relative min-h-[500px] md:min-h-[600px] lg:min-h-[700px] flex items-center justify-center text-center overflow-hidden bg-ocean-gradient pt-20 pb-16">
-        <Image
-          src={camp2026?.images?.[0] || '/images-webp/camps/2023/IMG_2064.webp'}
-          alt={translatedTitle}
-          fill
-          sizes="100vw"
-          className="absolute inset-0 w-full h-full object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ y: 16 }}
-            animate={{ y: 0 }}
-            transition={{ duration: 0.4, ease: 'easeOut' }}
+      <CampHero
+        camp={camp2026}
+        featured
+        dateBadge={t('camp.date_badge_2026')}
+        dateDisplay={t('camp.date_2026')}
+      >
+        <Button href="#lineup" variant="gold" size="sm">
+          {t('camp.lineup_count', { count: participantCount })}
+        </Button>
+        {camp2026.fundingUrl && (
+          <Button
+            href={camp2026.fundingUrl}
+            variant="white"
+            size="sm"
+            external
+            utmContent="hero"
           >
-            <span className="inline-block px-5 py-1.5 bg-white/20 backdrop-blur-sm text-white font-bold rounded-full mb-4 sm:mb-6 text-sm tracking-wider border border-white/30 break-words max-w-full">
-              {t('camp.date_badge_2026')}
-            </span>
-
-            <h1 className="typo-h1 text-white mb-3 sm:mb-4 text-3xl">
-              {translatedTitle}
-            </h1>
-            <p className="typo-subtitle text-gray-100 mb-5 sm:mb-8">
-              {translatedSlogan}
-            </p>
-
-            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-6 text-white mb-5 sm:mb-8">
-              <div>
-                <p className="text-sm uppercase tracking-wide text-gray-300 mb-1">
-                  {t('camp.label_period')}
-                </p>
-                <p className="text-lg font-medium break-words">{t('camp.date_2026')}</p>
-              </div>
-              <div className="hidden sm:block text-gray-400">|</div>
-              <div>
-                <p className="text-sm uppercase tracking-wide text-gray-300 mb-1">
-                  {t('camp.label_location')}
-                </p>
-                <p className="text-lg font-medium break-words">{t('camp.venue_2026')}</p>
-              </div>
-            </div>
-
-            <div className="flex flex-col sm:flex-row justify-center gap-4 items-center">
-              <Button href="#lineup" variant="gold" size="sm">
-                {t('camp.lineup_count', { count: participantCount })}
-              </Button>
-              {camp2026.fundingUrl && (
-                <Button
-                  href={camp2026.fundingUrl}
-                  variant="white"
-                  size="sm"
-                  external
-                  utmContent="hero"
-                >
-                  {t('camp.ticketing_2026')}
-                </Button>
-              )}
-            </div>
-          </motion.div>
-        </div>
-      </section>
+            {t('camp.ticketing_2026')}
+          </Button>
+        )}
+      </CampHero>
 
       {/* Overview Section */}
       <Section background="ocean-sand" className="pb-24 md:pb-32">
