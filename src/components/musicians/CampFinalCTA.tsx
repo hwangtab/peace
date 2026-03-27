@@ -33,9 +33,9 @@ export default function CampFinalCTA({
       )}
       <section
         className="relative py-20 md:py-28 bg-cover bg-center bg-deep-ocean"
-        style={{ backgroundImage: 'url(/images-webp/camps/2026/2026poster1-og.webp)' }}
+        style={{ backgroundImage: 'url(/images-webp/camps/2023/IMG_3565.webp)' }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" aria-hidden="true" />
+        <div className="absolute inset-0 bg-radial-[ellipse_at_center] from-black/60 via-black/30 to-transparent" aria-hidden="true" />
         <div className="container mx-auto px-4 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
