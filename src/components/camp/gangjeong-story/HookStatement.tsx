@@ -43,14 +43,14 @@ const HookStatement: React.FC<Props> = ({ variant = 'camp' }) => {
         style={prefersReducedMotion ? undefined : { y: bgY }}
       >
         <Image
-          src="/images-webp/camps/2023/20230610밤 전쟁을끝내자.webp"
+          src="/images-webp/camps/2023/IMG_3565.webp"
           alt=""
           fill
           sizes="100vw"
           className="object-cover scale-[1.15]"
         />
       </motion.div>
-      <div className={`absolute inset-0 bg-gradient-to-b ${variant === 'home' ? 'from-black/60 via-jeju-ocean/50 to-black/70' : 'from-black/70 via-black/55 to-black/70'}`} />
+      <div className={`absolute inset-0 bg-radial-[ellipse_at_center] ${variant === 'home' ? 'from-black/60 via-jeju-ocean/40 to-transparent' : 'from-black/60 via-black/30 to-transparent'}`} />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 sm:py-28">
         <motion.div
