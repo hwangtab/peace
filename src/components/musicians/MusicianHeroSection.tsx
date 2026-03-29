@@ -25,6 +25,7 @@ export default function MusicianHeroSection({ musician, fundingUrl, isCampPage }
             src={musician.imageUrl}
             alt=""
             fill
+            quality={90}
             className="object-cover object-center opacity-20 blur-sm scale-105"
             priority
             aria-hidden="true"
@@ -42,6 +43,7 @@ export default function MusicianHeroSection({ musician, fundingUrl, isCampPage }
                     alt={musician.name}
                     fill
                     sizes="(max-width: 768px) 100vw, 320px"
+                    quality={90}
                     className="object-cover object-center"
                     priority
                   />

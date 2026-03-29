@@ -35,6 +35,7 @@ const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey, alig
           alt={t(altKey)}
           fill
           sizes="100vw"
+          quality={90}
           className={`object-cover ${imageClassName || ''}`}
         />
       </motion.div>
