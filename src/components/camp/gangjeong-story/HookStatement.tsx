@@ -47,6 +47,7 @@ const HookStatement: React.FC<Props> = ({ variant = 'camp' }) => {
           alt=""
           fill
           sizes="100vw"
+          quality={90}
           className="object-cover scale-[1.15]"
         />
       </motion.div>
