@@ -23,7 +23,6 @@ const PageHero: React.FC<PageHeroProps> = ({ title, subtitle, backgroundImage })
         alt={title}
         fill
         sizes="100vw"
-        quality={90}
         className="absolute inset-0 w-full h-full object-cover"
         priority
       />

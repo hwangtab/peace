@@ -30,7 +30,6 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
           alt={t('home.hero.image_alt')}
           fill
           sizes="100vw"
-          quality={90}
           className="absolute inset-0 w-full h-full object-cover object-center"
           priority
           onError={() => setImageFailed(true)}
