@@ -72,7 +72,7 @@ const CampHero: React.FC<CampHeroProps> = ({ camp, featured, dateBadge, dateDisp
             </span>
           )}
 
-          <h1 className="typo-h1 text-white mb-3 sm:mb-4 text-3xl">{camp.title}</h1>
+          <h1 className="typo-h1 text-white mb-3 sm:mb-4">{camp.title}</h1>
           {camp.slogan && <p className="typo-subtitle text-gray-100 mb-5 sm:mb-8">{camp.slogan}</p>}
 
           <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-6 text-white mb-5 sm:mb-8">
