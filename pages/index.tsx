@@ -45,7 +45,7 @@ export default function HomePage({ initialGalleryImages }: HomePageProps) {
         keywords={t('seo.default.keywords')}
         structuredData={structuredData}
       />
-      <HeroSection imageUrl="/images-webp/camps/2023/20230610밤 전쟁을끝내자.webp" />
+      <HeroSection imageUrl="/images-webp/camps/2023/DSC00437.webp" />
       <AboutSection />
       <WaveDivider className="text-sky-horizon -mb-[60px] sm:-mb-[100px] relative z-10" direction="down" />
       <GangjeongStorySection variant="home" />
