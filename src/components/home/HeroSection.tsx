@@ -36,8 +36,8 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
         />
       )}
 
-      {/* Gradient Overlay using Bright Ocean Gradient */}
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-jeju-ocean/70 via-ocean-mist/40 to-seafoam/20" />
+      {/* Dark Overlay */}
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/20" />
 
       {/* Pattern Overlay */}
       <div aria-hidden="true" className="absolute inset-0 opacity-10">
