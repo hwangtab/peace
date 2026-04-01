@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { execFileSync } = require('child_process');
 const { i18n } = require('./next-i18next.config');
 
 const siteUrl = 'https://peaceandmusic.net';
@@ -7,6 +8,8 @@ const locales = i18n.locales;
 const defaultLocale = i18n.defaultLocale;
 const rootDir = __dirname;
 const dataDir = path.join(rootDir, 'public', 'data');
+const localeDir = path.join(rootDir, 'public', 'locales');
+const gitLastmodCache = new Map();
 
 const getExistingFiles = (filePaths) => filePaths.filter((filePath) => fs.existsSync(filePath));
 
@@ -22,6 +25,11 @@ const getGalleryFiles = () => {
   return fs.readdirSync(galleryDir).map((fileName) => path.join(galleryDir, fileName));
 };
 
+const getTranslationFiles = () =>
+  getExistingFiles(
+    locales.map((locale) => path.join(localeDir, locale, 'translation.json')),
+  );
+
 const toIsoString = (mtimeMs) => new Date(mtimeMs).toISOString();
 
 const getLatestMtime = (filePaths) => {
@@ -32,6 +40,34 @@ const getLatestMtime = (filePaths) => {
     Math.max(...existingFiles.map((filePath) => fs.statSync(filePath).mtimeMs)),
   );
 };
+
+const getGitLastmod = (filePaths) => {
+  const existingFiles = getExistingFiles(filePaths);
+  if (existingFiles.length === 0) return undefined;
+
+  const cacheKey = existingFiles.slice().sort().join('|');
+  if (gitLastmodCache.has(cacheKey)) {
+    return gitLastmodCache.get(cacheKey);
+  }
+
+  try {
+    const relativeFiles = existingFiles.map((filePath) => path.relative(rootDir, filePath));
+    const gitLastmod = execFileSync(
+      'git',
+      ['log', '-1', '--format=%cI', '--', ...relativeFiles],
+      { cwd: rootDir, encoding: 'utf8' },
+    ).trim();
+
+    const result = gitLastmod || undefined;
+    gitLastmodCache.set(cacheKey, result);
+    return result;
+  } catch {
+    gitLastmodCache.set(cacheKey, undefined);
+    return undefined;
+  }
+};
+
+const getLastmod = (filePaths) => getGitLastmod(filePaths) || getLatestMtime(filePaths);
 
 const stripLocalePrefix = (pagePath) => {
   const sortedLocales = [...locales].sort((a, b) => b.length - a.length);
@@ -73,11 +109,13 @@ const buildAlternateRefs = (pagePath) => {
 
 const getLastmodForPath = (pagePath) => {
   const normalizedPath = stripLocalePrefix(pagePath);
+  const translationFiles = getTranslationFiles();
 
   if (normalizedPath === '/') {
-    return getLatestMtime([
+    return getLastmod([
       path.join(rootDir, 'src', 'data', 'timeline.ts'),
       path.join(rootDir, 'src', 'data', 'camps.ts'),
+      ...translationFiles,
       ...getLocalizedDataFiles('musicians'),
       ...getLocalizedDataFiles('tracks'),
       ...getLocalizedDataFiles('videos'),
@@ -86,20 +124,30 @@ const getLastmodForPath = (pagePath) => {
   }
 
   if (normalizedPath === '/gallery') {
-    return getLatestMtime(getGalleryFiles());
+    return getLastmod([
+      ...translationFiles,
+      ...getGalleryFiles(),
+    ]);
   }
 
   if (normalizedPath === '/press') {
-    return getLatestMtime(getLocalizedDataFiles('press'));
+    return getLastmod([
+      ...translationFiles,
+      ...getLocalizedDataFiles('press'),
+    ]);
   }
 
   if (normalizedPath === '/videos') {
-    return getLatestMtime(getLocalizedDataFiles('videos'));
+    return getLastmod([
+      ...translationFiles,
+      ...getLocalizedDataFiles('videos'),
+    ]);
   }
 
   if (normalizedPath === '/album/about') {
-    return getLatestMtime([
+    return getLastmod([
       path.join(rootDir, 'src', 'pages', 'album', 'AlbumAboutPage.tsx'),
+      ...translationFiles,
     ]);
   }
 
@@ -107,9 +155,10 @@ const getLastmodForPath = (pagePath) => {
     normalizedPath === '/album/musicians' ||
     normalizedPath.startsWith('/album/musicians/')
   ) {
-    return getLatestMtime([
+    return getLastmod([
       path.join(rootDir, 'src', 'pages', 'album', 'AlbumMusiciansPage.tsx'),
       path.join(rootDir, 'src', 'pages', 'CampDetailPage.tsx'),
+      ...translationFiles,
       ...getLocalizedDataFiles('musicians'),
     ]);
   }
@@ -118,24 +167,27 @@ const getLastmodForPath = (pagePath) => {
     normalizedPath === '/album/tracks' ||
     normalizedPath.startsWith('/album/tracks/')
   ) {
-    return getLatestMtime([
+    return getLastmod([
       path.join(rootDir, 'src', 'pages', 'album', 'AlbumTracksPage.tsx'),
+      ...translationFiles,
       ...getLocalizedDataFiles('tracks'),
     ]);
   }
 
   if (normalizedPath === '/camps/2023') {
-    return getLatestMtime([
+    return getLastmod([
       path.join(rootDir, 'src', 'data', 'camps.ts'),
       path.join(rootDir, 'src', 'pages', 'Camp2023Page.tsx'),
+      ...translationFiles,
       path.join(dataDir, 'gallery', 'camp2023.json'),
     ]);
   }
 
   if (normalizedPath === '/camps/2025') {
-    return getLatestMtime([
+    return getLastmod([
       path.join(rootDir, 'src', 'data', 'camps.ts'),
       path.join(rootDir, 'src', 'pages', 'Camp2025Page.tsx'),
+      ...translationFiles,
       path.join(dataDir, 'gallery', 'camp2025.json'),
     ]);
   }
@@ -144,10 +196,11 @@ const getLastmodForPath = (pagePath) => {
     normalizedPath === '/camps/2026' ||
     normalizedPath.startsWith('/camps/2026/musicians/')
   ) {
-    return getLatestMtime([
+    return getLastmod([
       path.join(rootDir, 'src', 'data', 'camps.ts'),
       path.join(rootDir, 'src', 'pages', 'Camp2026Page.tsx'),
       path.join(rootDir, 'src', 'pages', 'CampDetailPage.tsx'),
+      ...translationFiles,
       path.join(dataDir, 'gallery', 'camp2026.json'),
       ...getLocalizedDataFiles('musicians'),
     ]);
@@ -184,18 +237,19 @@ module.exports = {
     ],
   },
   transform: async (config, path) => {
+    const normalizedPath = stripLocalePrefix(path);
     const lastmod = getLastmodForPath(path);
     const alternateRefs = buildAlternateRefs(path);
 
     // Camp 2026 pages get higher priority
-    if (path === '/camps/2026') {
+    if (normalizedPath === '/camps/2026') {
       return { loc: path, changefreq: 'weekly', priority: 0.9, lastmod, alternateRefs };
     }
-    if (path.startsWith('/camps/2026/musicians/')) {
+    if (normalizedPath.startsWith('/camps/2026/musicians/')) {
       return { loc: path, changefreq: 'monthly', priority: 0.7, lastmod, alternateRefs };
     }
     // Home page
-    if (path === '/') {
+    if (normalizedPath === '/') {
       return { loc: path, changefreq: 'weekly', priority: 1.0, lastmod, alternateRefs };
     }
     // Default
