@@ -6,6 +6,8 @@ interface SectionProps {
     id?: string;
     className?: string; // For additional custom styles if absolutely necessary
     background?: 'white' | 'ocean-sand' | 'sky-horizon' | 'sunlight-glow' | 'seafoam' | 'light-beige' | 'transparent' | 'golden-sun';
+    ariaLabel?: string;
+    ariaLabelledby?: string;
 }
 
 /**
@@ -18,7 +20,9 @@ const Section = React.forwardRef<HTMLElement, SectionProps>(({
     children,
     id,
     className,
-    background = 'white'
+    background = 'white',
+    ariaLabel,
+    ariaLabelledby,
 }, ref) => {
     const bgClasses = {
         'white': 'bg-white',
@@ -35,6 +39,8 @@ const Section = React.forwardRef<HTMLElement, SectionProps>(({
         <section
             ref={ref}
             id={id}
+            aria-label={ariaLabel}
+            aria-labelledby={ariaLabelledby}
             className={classNames(
                 // The core consistent padding rule (formerly .section)
                 'py-16 md:py-24',

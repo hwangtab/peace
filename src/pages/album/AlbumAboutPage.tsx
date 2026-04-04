@@ -210,6 +210,11 @@ const AlbumAboutPage = ({
     [albumMusicianIds, t, visibleMusicians]
   );
 
+  const breadcrumbs = [
+    { name: t('nav.home'), url: getFullUrl('/') },
+    { name: t('nav.album'), url: getFullUrl('/album/about') },
+  ];
+
   return (
     <PageLayout
       title={t('album.page_title')}
@@ -217,13 +222,8 @@ const AlbumAboutPage = ({
       keywords={t('album.keywords')}
       ogImage="/images-webp/album/albumart.webp"
       background="jeju-ocean"
-      structuredData={[
-        albumSchema,
-        getBreadcrumbSchema([
-          { name: t('nav.home'), url: getFullUrl('/') },
-          { name: t('nav.album'), url: getFullUrl('/album/about') },
-        ]),
-      ]}
+      structuredData={[albumSchema, getBreadcrumbSchema(breadcrumbs)]}
+      breadcrumbs={breadcrumbs}
       disableTopPadding={true}
       className="!pb-0"
     >

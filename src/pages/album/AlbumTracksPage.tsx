@@ -35,6 +35,12 @@ const AlbumTracksPage = ({
     [initialTracks, i18n.language, t]
   );
 
+  const breadcrumbs = [
+    { name: t('nav.home'), url: getFullUrl('/') },
+    { name: t('nav.album'), url: getFullUrl('/album/about') },
+    { name: t('nav.track'), url: getFullUrl('/album/tracks') },
+  ];
+
   return (
     <PageLayout
       title={t('album.tracks_page_title')}
@@ -42,14 +48,8 @@ const AlbumTracksPage = ({
       keywords={t('album.tracks_page_keywords')}
       ogImage="/images-webp/gallery/152.webp"
       background="sky-horizon"
-      structuredData={[
-        playlistSchema,
-        getBreadcrumbSchema([
-          { name: t('nav.home'), url: getFullUrl('/') },
-          { name: t('nav.album'), url: getFullUrl('/album/about') },
-          { name: t('nav.track'), url: getFullUrl('/album/tracks') },
-        ]),
-      ]}
+      structuredData={[playlistSchema, getBreadcrumbSchema(breadcrumbs)]}
+      breadcrumbs={breadcrumbs}
       disableTopPadding={true}
       disableBottomPadding={true}
     >

@@ -30,6 +30,10 @@ const GalleryPage = ({ initialImages = [] }: GalleryPageProps) => {
     );
   }
   const gallerySchema = getImageGallerySchema(schemaImages, i18n.language, t);
+  const breadcrumbs = [
+    { name: t('nav.home'), url: getFullUrl('/') },
+    { name: t('gallery.page_title'), url: getFullUrl('/gallery') },
+  ];
 
   return (
     <PageLayout
@@ -38,13 +42,8 @@ const GalleryPage = ({ initialImages = [] }: GalleryPageProps) => {
       keywords={t('gallery.keywords')}
       ogImage="/images-webp/camps/2023/DSC00528.webp"
       background="golden-sun"
-      structuredData={[
-        gallerySchema,
-        getBreadcrumbSchema([
-          { name: t('nav.home'), url: getFullUrl('/') },
-          { name: t('gallery.page_title'), url: getFullUrl('/gallery') },
-        ]),
-      ]}
+      structuredData={[gallerySchema, getBreadcrumbSchema(breadcrumbs)]}
+      breadcrumbs={breadcrumbs}
       disableTopPadding={true}
     >
       <PageHero

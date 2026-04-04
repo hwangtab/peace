@@ -23,6 +23,12 @@ const AlbumMusiciansPage = ({
     url: getFullUrl('/album/musicians'),
   });
 
+  const breadcrumbs = [
+    { name: t('nav.home'), url: getFullUrl('/') },
+    { name: t('nav.album'), url: getFullUrl('/album/about') },
+    { name: t('nav.musician'), url: getFullUrl('/album/musicians') },
+  ];
+
   return (
     <PageLayout
       title={t('album.musicians_page_title')}
@@ -30,14 +36,8 @@ const AlbumMusiciansPage = ({
       keywords={t('album.musicians_page_keywords')}
       ogImage="/images-webp/gallery/2.webp"
       background="sunlight-glow"
-      structuredData={[
-        collectionSchema,
-        getBreadcrumbSchema([
-          { name: t('nav.home'), url: getFullUrl('/') },
-          { name: t('nav.album'), url: getFullUrl('/album/about') },
-          { name: t('nav.musician'), url: getFullUrl('/album/musicians') },
-        ]),
-      ]}
+      structuredData={[collectionSchema, getBreadcrumbSchema(breadcrumbs)]}
+      breadcrumbs={breadcrumbs}
       disableTopPadding={true}
     >
       <PageHero

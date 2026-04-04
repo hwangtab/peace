@@ -4,6 +4,7 @@ import Script from 'next/script';
 import { appWithTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import reportWebVitals from '../src/reportWebVitals';
 import { MotionConfig } from 'framer-motion';
 import { ErrorBoundary } from 'react-error-boundary';
 import nextI18NextConfig from '../next-i18next.config';
@@ -34,6 +35,20 @@ function App({ Component, pageProps }: AppProps) {
     const dir = getTextDirection(locale || 'ko');
     document.documentElement.setAttribute('dir', dir);
   }, [locale]);
+
+  // Core Web Vitals → GA4 보고
+  useEffect(() => {
+    reportWebVitals((metric) => {
+      if (window.gtag) {
+        window.gtag('event', metric.name, {
+          event_category: 'Web Vitals',
+          event_label: metric.id,
+          value: Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value),
+          non_interaction: true,
+        });
+      }
+    });
+  }, []);
 
   // GA4 클라이언트 사이드 네비게이션 추적
   useEffect(() => {

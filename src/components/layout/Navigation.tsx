@@ -31,6 +31,7 @@ const Navigation = () => {
         {t('nav.skip_to_main')}
       </a>
       <nav
+        aria-label="Main"
         className={`fixed w-full z-50 transition-[background-color,box-shadow] duration-300 ${
           isScrolled ? 'bg-cloud-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
         }`}
