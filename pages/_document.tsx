@@ -44,7 +44,7 @@ class MyDocument extends Document {
             rel="preload"
             as="image"
             type="image/webp"
-            href="/images-webp/camps/2023/DSC00437.webp"
+            href="/images-webp/camps/2026/2026poster1-og.webp"
           />
 
           {/* 테마 & 색상 스킴 */}
