@@ -19,18 +19,17 @@ interface GalleryPageProps {
 const GalleryPage = ({ initialImages = [] }: GalleryPageProps) => {
   const { t, i18n } = useTranslation();
   const camp2026 = getCamps(i18n.language, t).find((c) => c.id === 'camp-2026');
-  // Basic ImageGallery Schema - real images are loaded dynamically, so providing static fallback or main images
-  const gallerySchema = getImageGallerySchema(
-    [
-      {
-        url: getFullUrl('/images-webp/camps/2023/DSC00528.webp'),
-        caption: t('gallery.hero_subtitle'),
-      },
-      { url: getFullUrl('/images-webp/camps/2023/DSC00437.webp'), caption: t('gallery.page_desc') },
-    ],
-    i18n.language,
-    t
-  );
+  const schemaImages = initialImages.slice(0, 20).map((img) => ({
+    url: getFullUrl(img.url),
+    caption: t('gallery.hero_subtitle'),
+  }));
+  if (schemaImages.length === 0) {
+    schemaImages.push(
+      { url: getFullUrl('/images-webp/camps/2023/DSC00528.webp'), caption: t('gallery.hero_subtitle') },
+      { url: getFullUrl('/images-webp/camps/2023/DSC00437.webp'), caption: t('gallery.page_desc') }
+    );
+  }
+  const gallerySchema = getImageGallerySchema(schemaImages, i18n.language, t);
 
   return (
     <PageLayout

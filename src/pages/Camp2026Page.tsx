@@ -87,7 +87,6 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
             },
           }
         : {}),
-      dateModified: '2026-03-26',
     },
     i18n.language,
     t

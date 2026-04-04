@@ -217,7 +217,8 @@ module.exports = {
   changefreq: 'weekly',
   priority: 0.7,
   sitemapSize: 7000,
-  exclude: ['/404', '/*/404'],
+  exclude: ['/404', '/*/404', '/image-sitemap.xml'],
+  additionalSitemaps: [`${siteUrl}/image-sitemap.xml`],
   robotsTxtOptions: {
     policies: [
       { userAgent: 'Googlebot', allow: '/' },
