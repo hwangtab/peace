@@ -5,17 +5,13 @@ import { getProfilePageSchema, getBreadcrumbSchema } from '@/utils/structuredDat
 import { getCamps } from '@/data/camps';
 import { getFullUrl } from '@/config/env';
 import PageLayout from '../layout/PageLayout';
+import { BreadcrumbItem } from '../shared/BreadcrumbNav';
 import WaveDivider from '../common/WaveDivider';
 import MusicianHeroSection from './MusicianHeroSection';
 import MusicianDescriptionSection from './MusicianDescriptionSection';
 import RelatedVideosSection from './RelatedVideosSection';
 import OtherMusiciansSection from './OtherMusiciansSection';
 import CampFinalCTA from './CampFinalCTA';
-
-interface BreadcrumbItem {
-  name: string;
-  url: string;
-}
 
 export interface MusicianDetailContentProps {
   musician: Musician;
@@ -83,6 +79,7 @@ export default function MusicianDetailContent({
       keywords={pageKeywords}
       ogImage={musician.imageUrl || undefined}
       structuredData={[profileSchema, breadcrumbSchema]}
+      breadcrumbs={breadcrumbs}
       disableTopPadding={true}
       disableBottomPadding={true}
       className="flex flex-col"

@@ -90,20 +90,19 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
     t
   );
 
+  const breadcrumbs = [
+    { name: t('nav.home'), url: getFullUrl('/') },
+    { name: `${t('nav.camp')} ${camp.year}`, url: getFullUrl(`/camps/${camp.year}`) },
+  ];
+
   return (
     <PageLayout
       title={`${t('camp.ordinal', { num: ordinalLabel })} ${t('app.title')} (${camp.year}) - ${camp.slogan || ''}`}
       description={camp.description}
       keywords={`${t('app.title')}, ${t('camp.ordinal', { num: ordinalLabel })}, ${camp.year}, ${t('camp.keywords_base')}`}
       ogImage={camp.images?.[0]}
-      structuredData={[
-        eventSchema,
-        getBreadcrumbSchema([
-          { name: t('nav.home'), url: getFullUrl('/') },
-          { name: t('nav.camp'), url: getFullUrl(`/camps/${camp.year}`) },
-          { name: `${camp.year}`, url: getFullUrl(`/camps/${camp.year}`) },
-        ]),
-      ]}
+      structuredData={[eventSchema, getBreadcrumbSchema(breadcrumbs)]}
+      breadcrumbs={breadcrumbs}
       disableTopPadding={true}
       disableBottomPadding={true}
     >

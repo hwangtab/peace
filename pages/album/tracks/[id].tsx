@@ -38,12 +38,12 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
     },
   };
 
-  const breadcrumbSchema = getBreadcrumbSchema([
+  const breadcrumbs = [
     { name: t('nav.home'), url: getFullUrl('/') },
     { name: t('nav.album'), url: getFullUrl('/album/about') },
     { name: t('nav.track'), url: getFullUrl('/album/tracks') },
     { name: track.title, url: getFullUrl(`/album/tracks/${track.id}`) },
-  ]);
+  ];
 
   return (
     <PageLayout
@@ -51,7 +51,8 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
       description={(track.description || '').slice(0, 160)}
       keywords={`${track.title}, ${track.artist}, ${t('app.title')}, lyrics`}
       ogImage={track.imageUrl || undefined}
-      structuredData={[recordingSchema, breadcrumbSchema]}
+      structuredData={[recordingSchema, getBreadcrumbSchema(breadcrumbs)]}
+      breadcrumbs={breadcrumbs}
       disableTopPadding={true}
     >
       {/* Hero */}

@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import SEOHelmet, { SEOHelmetProps } from '../shared/SEOHelmet';
+import BreadcrumbNav, { BreadcrumbItem } from '../shared/BreadcrumbNav';
 
 interface PageLayoutProps extends SEOHelmetProps {
     children: ReactNode;
@@ -8,6 +9,7 @@ interface PageLayoutProps extends SEOHelmetProps {
     background?: 'white' | 'ocean-sand' | 'seafoam' | 'sunlight-glow' | 'sky-horizon' | 'light-beige' | 'jeju-ocean' | 'golden-sun';
     disableTopPadding?: boolean;
     disableBottomPadding?: boolean;
+    breadcrumbs?: BreadcrumbItem[];
 }
 
 /**
@@ -24,11 +26,12 @@ const PageLayout: React.FC<PageLayoutProps> = ({
     background = 'ocean-sand',
     disableTopPadding = false,
     disableBottomPadding = false,
+    breadcrumbs,
     ...seoProps
 }) => {
     return (
         <div className={classNames(
-            'min-h-screen',
+            'min-h-screen relative',
             {
                 'bg-white': background === 'white',
                 'bg-ocean-sand': background === 'ocean-sand',
@@ -49,6 +52,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
             className
         )}>
             <SEOHelmet {...seoProps} />
+            {breadcrumbs && <BreadcrumbNav items={breadcrumbs} />}
             {children}
         </div>
     );

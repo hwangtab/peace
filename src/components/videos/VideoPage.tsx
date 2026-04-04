@@ -54,6 +54,11 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
     url: getFullUrl('/videos'),
   });
 
+  const videoBreadcrumbs = [
+    { name: t('nav.home'), url: getFullUrl('/') },
+    { name: t('videos.page_title'), url: getFullUrl('/videos') },
+  ];
+
   return (
     <PageLayout
       title={t('videos.page_title')}
@@ -63,11 +68,9 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
       background="sunlight-glow"
       structuredData={[
         collectionSchema,
-        getBreadcrumbSchema([
-          { name: t('nav.home'), url: getFullUrl('/') },
-          { name: t('videos.page_title'), url: getFullUrl('/videos') },
-        ]),
+        getBreadcrumbSchema(videoBreadcrumbs),
       ]}
+      breadcrumbs={videoBreadcrumbs}
       disableTopPadding={true}
     >
       <PageHero
