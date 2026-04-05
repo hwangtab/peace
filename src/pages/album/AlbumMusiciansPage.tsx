@@ -21,6 +21,7 @@ const AlbumMusiciansPage = ({
     name: t('album.musicians_page_title'),
     description: t('album.musicians_page_desc'),
     url: getFullUrl('/album/musicians'),
+    hasPart: initialMusicians.map((m) => ({ "@id": getFullUrl(`/album/musicians/${m.id}`) })),
   });
 
   const breadcrumbs = [
