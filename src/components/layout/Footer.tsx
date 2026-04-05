@@ -51,7 +51,7 @@ const Footer = () => {
                             </div>
                             {/* Right - Camp & Album */}
                             <div className="space-y-2 text-left">
-                                {campItems.slice(0, 2).map((item) => (
+                                {campItems.map((item) => (
                                     <Link
                                         key={item.path}
                                         href={item.path}

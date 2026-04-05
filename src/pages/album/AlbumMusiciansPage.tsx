@@ -34,6 +34,7 @@ const AlbumMusiciansPage = ({
       title={t('album.musicians_page_title')}
       description={t('album.musicians_page_desc')}
       ogImage="/images-webp/gallery/2.webp"
+      ogType="music.playlist"
       background="sunlight-glow"
       structuredData={[collectionSchema, getBreadcrumbSchema(breadcrumbs)]}
       breadcrumbs={breadcrumbs}

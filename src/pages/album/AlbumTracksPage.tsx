@@ -46,6 +46,7 @@ const AlbumTracksPage = ({
       title={t('album.tracks_page_title')}
       description={t('album.tracks_page_desc')}
       ogImage="/images-webp/gallery/152.webp"
+      ogType="music.playlist"
       background="sky-horizon"
       structuredData={[playlistSchema, getBreadcrumbSchema(breadcrumbs)]}
       breadcrumbs={breadcrumbs}
