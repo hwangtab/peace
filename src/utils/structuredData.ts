@@ -263,6 +263,7 @@ export const getEventSchema = (event: {
   },
   "image": event.image || "https://peaceandmusic.net/og-image.webp",
   "description": event.description,
+  "isAccessibleForFree": true,
   "performer": (event.performers && event.performers.length > 0)
     ? event.performers.map(p => ({ "@type": p.type, "name": p.name }))
     : { "@type": "Organization", "name": t ? getCampName(t) : '' },
@@ -378,3 +379,28 @@ export const getMusicAlbumSchema = (album: {
     "url": t.url
   }))
 });
+
+// VideoObject Schema - YouTube 동영상
+export const getVideoObjectSchema = (video: {
+  name: string;
+  description: string;
+  youtubeUrl: string;
+  uploadDate: string;
+}) => {
+  const videoId = video.youtubeUrl.split('/embed/')[1]?.split('?')[0] ?? '';
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": video.name,
+    "description": video.description,
+    "thumbnailUrl": `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
+    "uploadDate": video.uploadDate,
+    "embedUrl": video.youtubeUrl,
+    "url": `https://www.youtube.com/watch?v=${videoId}`,
+    "publisher": {
+      "@type": "Organization",
+      "name": "강정피스앤뮤직캠프",
+      "url": "https://peaceandmusic.net"
+    }
+  };
+};
