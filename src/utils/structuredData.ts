@@ -320,6 +320,7 @@ export const getProfilePageSchema = (person: {
     ...(person.genre && person.genre.length > 0 ? { "genre": person.genre } : {}),
     "memberOf": {
       "@type": "Organization",
+      "@id": "https://peaceandmusic.net/#organization",
       "name": t ? getCampName(t) : ''
     },
     ...(person.url ? { "url": person.url } : {}),
@@ -340,6 +341,7 @@ export const getWebPageSchema = (page: {
   "name": page.name,
   "description": page.description,
   "url": page.url,
+  "isPartOf": { "@id": "https://peaceandmusic.net/#website" },
   "about": [
     { "@type": "Thing", "name": "Peace movement", "sameAs": "https://en.wikipedia.org/wiki/Peace_movement" },
     { "@type": "Place", "name": "Gangjeong Village", "sameAs": "https://en.wikipedia.org/wiki/Gangjeong" }
