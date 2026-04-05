@@ -105,6 +105,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
       ogImage={camp.images?.[0]}
       structuredData={[eventSchema, getBreadcrumbSchema(breadcrumbs)]}
       breadcrumbs={breadcrumbs}
+      ogType="event"
       disableTopPadding={true}
       disableBottomPadding={true}
     >
