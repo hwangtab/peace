@@ -14,6 +14,8 @@ export interface SEOHelmetProps {
     ogImage?: string;
     ogType?: string;
     ogAudio?: string;
+    ogMusicAlbum?: string;
+    ogMusicMusician?: string;
     canonicalUrl?: string;
     structuredData?: object | object[];
 }
@@ -40,6 +42,8 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
     ogImage = getFullUrl(config.ogImage),
     ogType = "website",
     ogAudio,
+    ogMusicAlbum,
+    ogMusicMusician,
     canonicalUrl,
     structuredData,
 }) => {
@@ -117,6 +121,8 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
                     <meta property="og:audio:type" content="audio/mpeg" />
                 </>
             )}
+            {ogMusicAlbum && <meta property="music:album" content={ogMusicAlbum} />}
+            {ogMusicMusician && <meta property="music:musician" content={ogMusicMusician} />}
 
             {/* Twitter Card */}
             <meta name="twitter:card" content="summary_large_image" />
