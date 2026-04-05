@@ -36,6 +36,7 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
       i18n.language,
       t
     ),
+    datePublished: '2024-10-12',
     audio: {
       '@type': 'AudioObject',
       contentUrl: getFullUrl(track.audioUrl),
