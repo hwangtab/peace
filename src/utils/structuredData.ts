@@ -124,6 +124,7 @@ export const getMusicRecordingSchema = (track: {
   duration?: string;
   url?: string;
   inAlbum?: { name: string; url?: string };
+  byArtist?: { name: string; url?: string };
 }, _lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "MusicRecording",
@@ -131,10 +132,9 @@ export const getMusicRecordingSchema = (track: {
   "description": track.description || "",
   ...(track.duration ? { "duration": durationToISO8601(track.duration) } : {}),
   "url": track.url || "https://peaceandmusic.net/tracks",
-  "byArtist": {
-    "@type": "MusicGroup",
-    "name": t ? getProjectName(t) : ''
-  },
+  "byArtist": track.byArtist
+    ? { "@type": "Person", "name": track.byArtist.name, ...(track.byArtist.url ? { "url": track.byArtist.url } : {}) }
+    : { "@type": "MusicGroup", "name": t ? getProjectName(t) : '' },
   ...(track.inAlbum ? {
     "inAlbum": {
       "@type": "MusicAlbum",
@@ -248,9 +248,16 @@ export const getEventSchema = (event: {
   "location": {
     "@type": "Place",
     "name": event.location.name,
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "33.2247",
+      "longitude": "126.5664"
+    },
     "address": {
       "@type": "PostalAddress",
       "streetAddress": event.location.address,
+      "addressLocality": "Seogwipo",
+      "addressRegion": "Jeju",
       "addressCountry": "KR"
     }
   },

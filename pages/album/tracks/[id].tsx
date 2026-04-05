@@ -31,6 +31,7 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
           name: t('structured_data.playlist_name'),
           url: getFullUrl('/album/about'),
         },
+        ...(musician ? { byArtist: { name: musician.name, url: getFullUrl(`/album/musicians/${musician.id}`) } } : {}),
       },
       i18n.language,
       t
