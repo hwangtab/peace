@@ -90,7 +90,7 @@ export default function PressPage({
 
   const structuredData = [
     getBreadcrumbSchema(breadcrumbs),
-    ...pressItems.slice(0, 10).map(item =>
+    ...pressItems.slice(0, 20).map(item =>
       getNewsArticleSchema({
         headline: item.title,
         description: item.description || '',
