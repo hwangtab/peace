@@ -28,7 +28,7 @@ export default function HomePage({ initialGalleryImages }: HomePageProps) {
   const structuredData = [
     getWebSiteSchema(i18n.language, t),
     getOrganizationSchema(i18n.language, t),
-    getFAQSchema(faqs.map(f => ({ question: f.q, answer: f.a }))),
+    ...(faqs.length > 0 ? [getFAQSchema(faqs.map(f => ({ question: f.q, answer: f.a })))] : []),
     getWebPageSchema({
       name: t('seo.default.title'),
       description: t('seo.default.description'),

@@ -51,6 +51,8 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
       <video:description>${escapeXml(description)}</video:description>
       <video:player_loc>${escapeXml(playerUrl)}</video:player_loc>
       <video:publication_date>${video.date}</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
     </video:video>`;
     })
     .filter(Boolean);

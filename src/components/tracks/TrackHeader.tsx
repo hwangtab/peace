@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Track } from '@/types/track';
 
@@ -16,7 +17,11 @@ export default function TrackHeader({ track, isExpanded, onToggle, onPlay, alway
         <div className="flex justify-between items-center">
           <div className="flex-grow min-w-0">
             <div className="flex items-center justify-between mb-1">
-              <h3 className="text-lg font-bold font-serif break-words min-w-0">{track.title}</h3>
+              <h3 className="text-lg font-bold font-serif break-words min-w-0">
+                <Link href={`/album/tracks/${track.id}`} className="hover:text-jeju-ocean transition-colors focus-visible:outline-none focus-visible:underline">
+                  {track.title}
+                </Link>
+              </h3>
               <span className="text-sm text-coastal-gray ml-2 sm:ml-4 flex-shrink-0">{track.duration}</span>
             </div>
             <p className="text-jeju-ocean font-serif font-bold break-words">{track.artist}</p>
@@ -41,7 +46,11 @@ export default function TrackHeader({ track, isExpanded, onToggle, onPlay, alway
       <div className="flex justify-between items-center">
         <div className="flex-grow min-w-0">
           <div className="flex items-center justify-between mb-1">
-            <h3 className="text-lg font-bold font-serif break-words min-w-0">{track.title}</h3>
+            <h3 className="text-lg font-bold font-serif break-words min-w-0">
+              <Link href={`/album/tracks/${track.id}`} className="hover:text-jeju-ocean transition-colors focus-visible:outline-none focus-visible:underline" onClick={(e) => e.stopPropagation()}>
+                {track.title}
+              </Link>
+            </h3>
             <span className="text-sm text-coastal-gray ml-2 sm:ml-4 flex-shrink-0">{track.duration}</span>
           </div>
           <p className="text-jeju-ocean font-serif font-bold break-words">{track.artist}</p>

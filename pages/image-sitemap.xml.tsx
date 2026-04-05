@@ -31,16 +31,17 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 
   const urlEntries: string[] = [];
 
+  const buildImageTag = (img: GalleryImage) =>
+    `    <image:image>
+      <image:loc>${escapeXml(`${SITE_URL}${img.url}`)}</image:loc>${
+      img.description ? `\n      <image:caption>${escapeXml(img.description)}</image:caption>` : ''
+    }
+    </image:image>`;
+
   // Gallery index page — top 20 images
   const topImages = allImages.slice(0, 20);
   if (topImages.length > 0) {
-    const imageXml = topImages
-      .map(
-        (img) => `    <image:image>
-      <image:loc>${escapeXml(`${SITE_URL}${img.url}`)}</image:loc>
-    </image:image>`
-      )
-      .join('\n');
+    const imageXml = topImages.map(buildImageTag).join('\n');
     urlEntries.push(`  <url>
     <loc>${SITE_URL}/gallery</loc>
 ${imageXml}
@@ -57,11 +58,7 @@ ${imageXml}
 
     const imageXml = images
       .slice(0, 30)
-      .map(
-        (img) => `    <image:image>
-      <image:loc>${escapeXml(`${SITE_URL}${img.url}`)}</image:loc>
-    </image:image>`
-      )
+      .map(buildImageTag)
       .join('\n');
 
     urlEntries.push(`  <url>

@@ -56,6 +56,19 @@ class MyDocument extends Document {
           {/* 테마 & 색상 스킴 */}
           <meta name="theme-color" content="#0A5F8A" />
           <meta name="color-scheme" content="light" />
+
+          {/* Favicon & PWA */}
+          <link rel="icon" href="/favicon.ico" sizes="any" />
+          <link rel="apple-touch-icon" href="/logo192.png" />
+          <link rel="manifest" href="/manifest.json" />
+
+          {/* Naver Search Console 인증 */}
+          <meta name="naver-site-verification" content="68980c84460ca49f3268a96ad5832da513b55bca" />
+
+          {/* YouTube DNS-prefetch (비디오 페이지 LCP 개선) */}
+          <link rel="dns-prefetch" href="//www.youtube.com" />
+          <link rel="dns-prefetch" href="//img.youtube.com" />
+          <link rel="preconnect" href="https://img.youtube.com" crossOrigin="anonymous" />
         </Head>
         <body>
           <Main />
