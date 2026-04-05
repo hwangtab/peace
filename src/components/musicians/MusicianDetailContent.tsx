@@ -66,6 +66,7 @@ export default function MusicianDetailContent({
       jobTitle: 'Musician',
       url: getFullUrl(`${musicianHrefPrefix}/${musician.id}`),
       sameAs: musicianSameAs.length > 0 ? musicianSameAs : undefined,
+      genre: musician.genre.length > 0 ? musician.genre : undefined,
     },
     i18n.language,
     t
