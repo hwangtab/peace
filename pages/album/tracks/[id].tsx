@@ -63,6 +63,7 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
       description={(track.description || '').slice(0, 160)}
       ogImage={track.imageUrl || '/images-webp/album/albumart.webp'}
       ogType="music.song"
+      ogAudio={getFullUrl(track.audioUrl)}
       structuredData={[recordingSchema, getBreadcrumbSchema(breadcrumbs)]}
       breadcrumbs={breadcrumbs}
       disableTopPadding={true}

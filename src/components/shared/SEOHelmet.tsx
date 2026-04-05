@@ -13,6 +13,7 @@ export interface SEOHelmetProps {
     description?: string;
     ogImage?: string;
     ogType?: string;
+    ogAudio?: string;
     canonicalUrl?: string;
     structuredData?: object | object[];
 }
@@ -38,6 +39,7 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
     description,
     ogImage = getFullUrl(config.ogImage),
     ogType = "website",
+    ogAudio,
     canonicalUrl,
     structuredData,
 }) => {
@@ -108,6 +110,13 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
             {LOCALES.filter(loc => loc !== locale).map(loc => (
                 <meta key={`og-alt-${loc}`} property="og:locale:alternate" content={OG_LOCALE_MAP[loc] || loc.replace('-', '_')} />
             ))}
+            {ogAudio && (
+                <>
+                    <meta property="og:audio" content={ogAudio} />
+                    <meta property="og:audio:secure_url" content={ogAudio} />
+                    <meta property="og:audio:type" content="audio/mpeg" />
+                </>
+            )}
 
             {/* Twitter Card */}
             <meta name="twitter:card" content="summary_large_image" />
