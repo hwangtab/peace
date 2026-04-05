@@ -25,11 +25,13 @@
     "desc3": "Quando cantamos, dançamos e nos abraçamos juntos, a guerra para e as ondas da paz se espalham mais longe.",
     "card1": {
       "title": "Paz Duradoura",
-      "desc": "O primeiro acorde começou no verão de 2023. Nosso festival continuará não como um evento único, mas como um ritual de paz persistente e belo que guarda o verão de Gangjeong todos os anos."
+      "desc": "O primeiro acorde começou no verão de 2023. Nosso festival continuará não como um evento único, mas como um ritual de paz persistente e belo que guarda o verão de Gangjeong todos os anos.",
+      "link": "Ver Campo 2026"
     },
     "card2": {
       "title": "Solidariedade Sem Fronteiras",
-      "desc": "Lembramos zonas de conflito do Gaza, na Palestina, à Ucrânia. O Gangjeong Peace Music Camp vai além de um simples concerto; é um poderoso espaço de solidariedade ao lado de quem sofre e deseja a paz."
+      "desc": "Lembramos zonas de conflito do Gaza, na Palestina, à Ucrânia. O Gangjeong Peace Music Camp vai além de um simples concerto; é um poderoso espaço de solidariedade ao lado de quem sofre e deseja a paz.",
+      "link": "Ver Cobertura de Imprensa"
     }
   },
   "gallery": {
@@ -327,22 +329,70 @@
   "faqs": {
     "title": "Perguntas Frequentes",
     "items": [
-      {"q": "Que tipo de evento é o Acampamento de Música pela Paz de Gangjeong?", "a": "O Acampamento de Música pela Paz de Gangjeong é um projeto musical pela paz nascido na aldeia de Gangjeong, Jeju. É um festival de música antiguerra pela paz onde músicos de diversos gêneros se reúnem para cantar e demonstrar solidariedade pela paz em regiões de conflito ao redor do mundo."},
-      {"q": "Quando será realizado o Acampamento de Música pela Paz de Gangjeong?", "a": "O 3.º Acampamento de Música pela Paz de Gangjeong será realizado durante 3 dias, de 5 de junho (sexta) a 7 de junho (domingo) de 2026."},
-      {"q": "Onde será realizado o Acampamento de Música pela Paz de Gangjeong?", "a": "Será realizado no Parque Esportivo de Gangjeong e arredores da aldeia de Gangjeong, em Seogwipo-si, Província Autônoma Especial de Jeju."},
-      {"q": "Quais músicos participarão?", "a": "Participarão músicos de diversos gêneros como rock, folk, jazz e eletrônica. No acampamento de 2026, mais de 54 grupos foram confirmados."},
-      {"q": "Há cobrança de entrada?", "a": "O Acampamento de Música pela Paz de Gangjeong é um festival aberto e gratuito para todos que amam a paz. Doações voluntárias e vendas de produtos serão realizadas para a sustentabilidade do evento."},
-      {"q": "O que é o projeto 'Para você, em um lugar distante cujo nome desconheço'?", "a": "'Para você, em um lugar distante cujo nome desconheço' é o nome do projeto de álbum omnibus de 2024 do Acampamento de Música pela Paz de Gangjeong. Contém 12 músicas com mensagens de solidariedade para os que sofrem com a guerra na Ucrânia, Palestina e outros lugares."},
-      {"q": "Onde fica a aldeia de Gangjeong e como chegar?", "a": "A aldeia de Gangjeong fica na costa sul de Seogwipo-si, na ilha de Jeju. Você pode ir do aeroporto de Jeju de ônibus (cerca de 90 minutos), táxi (cerca de 60 minutos) ou carro alugado. Fica a cerca de 15 minutos do centro de Seogwipo."},
-      {"q": "Há hospedagem ou é possível acampar?", "a": "Não há hospedagem no local do acampamento, mas há diversas opções como casas de hóspedes, pousadas e hotéis próximos à aldeia de Gangjeong e Seogwipo. Recomendamos reservar hospedagem com antecedência."},
-      {"q": "Crianças podem participar?", "a": "Sim, o Acampamento de Música pela Paz de Gangjeong é um festival para toda a família. Realizado ao ar livre, crianças podem entrar gratuitamente."},
-      {"q": "Como posso ser voluntário?", "a": "Se deseja ser voluntário, envie uma DM no Instagram (@peace_music_in_gangjeong) ou entre em contato por e-mail em gpmc0625@gmail.com."},
-      {"q": "Como é o clima em Jeju em junho?", "a": "Junho em Jeju é quente com temperaturas médias de 20-25°C, pouco antes do início da estação chuvosa. Chuvas ocasionais são possíveis, então recomendamos levar capa de chuva ou guarda-chuva."},
-      {"q": "Onde posso comprar o álbum?", "a": "O álbum 'Para você, em um lugar distante cujo nome desconheço' pode ser comprado na Naver SmartStore (smartstore.naver.com/peaceandmusic)."},
-      {"q": "Qual é a história do movimento pela paz da aldeia de Gangjeong?", "a": "A aldeia de Gangjeong é símbolo do movimento pela paz há quase 20 anos desde a decisão de construir a base naval em 2007. A rocha Gureombi, protegida pela UNESCO, foi destruída em 2012, e a aldeia recebeu o Prêmio de Paz Sean MacBride do IPB em 2015. Os moradores mantêm orações diárias pela paz por mais de 7.000 dias consecutivos."},
-      {"q": "Como posso me candidatar para tocar como músico?", "a": "Músicos que desejam se apresentar podem nos contatar via Instagram (@peace_music_in_gangjeong) ou e-mail (gpmc0625@gmail.com). A equipe de planejamento analisará e orientará."},
-      {"q": "O festival é acessível para pessoas com deficiência?", "a": "O Acampamento de Música pela Paz de Gangjeong se esforça para ser acessível a todos. Devido à natureza do local ao ar livre, pode haver algumas limitações de mobilidade. Entre em contato antecipadamente por e-mail (gpmc0625@gmail.com) e forneceremos o maior suporte possível."},
-      {"q": "Como posso apoiar financeiramente o acampamento?", "a": "Você pode nos apoiar através de financiamento coletivo no Tumblbug (tumblbug.com/gpmc3). A compra de produtos ou álbuns na nossa Naver SmartStore também ajuda muito na sustentabilidade do acampamento."}
+      {
+        "q": "Que tipo de evento é o Acampamento de Música pela Paz de Gangjeong?",
+        "a": "O Acampamento de Música pela Paz de Gangjeong é um projeto musical pela paz nascido na aldeia de Gangjeong, Jeju. É um festival de música antiguerra pela paz onde músicos de diversos gêneros se reúnem para cantar e demonstrar solidariedade pela paz em regiões de conflito ao redor do mundo."
+      },
+      {
+        "q": "Quando será realizado o Acampamento de Música pela Paz de Gangjeong?",
+        "a": "O 3.º Acampamento de Música pela Paz de Gangjeong será realizado durante 3 dias, de 5 de junho (sexta) a 7 de junho (domingo) de 2026."
+      },
+      {
+        "q": "Onde será realizado o Acampamento de Música pela Paz de Gangjeong?",
+        "a": "Será realizado no Parque Esportivo de Gangjeong e arredores da aldeia de Gangjeong, em Seogwipo-si, Província Autônoma Especial de Jeju."
+      },
+      {
+        "q": "Quais músicos participarão?",
+        "a": "Participarão músicos de diversos gêneros como rock, folk, jazz e eletrônica. No acampamento de 2026, mais de 54 grupos foram confirmados."
+      },
+      {
+        "q": "Há cobrança de entrada?",
+        "a": "O Acampamento de Música pela Paz de Gangjeong é um festival aberto e gratuito para todos que amam a paz. Doações voluntárias e vendas de produtos serão realizadas para a sustentabilidade do evento."
+      },
+      {
+        "q": "O que é o projeto 'Para você, em um lugar distante cujo nome desconheço'?",
+        "a": "'Para você, em um lugar distante cujo nome desconheço' é o nome do projeto de álbum omnibus de 2024 do Acampamento de Música pela Paz de Gangjeong. Contém 12 músicas com mensagens de solidariedade para os que sofrem com a guerra na Ucrânia, Palestina e outros lugares."
+      },
+      {
+        "q": "Onde fica a aldeia de Gangjeong e como chegar?",
+        "a": "A aldeia de Gangjeong fica na costa sul de Seogwipo-si, na ilha de Jeju. Você pode ir do aeroporto de Jeju de ônibus (cerca de 90 minutos), táxi (cerca de 60 minutos) ou carro alugado. Fica a cerca de 15 minutos do centro de Seogwipo."
+      },
+      {
+        "q": "Há hospedagem ou é possível acampar?",
+        "a": "Não há hospedagem no local do acampamento, mas há diversas opções como casas de hóspedes, pousadas e hotéis próximos à aldeia de Gangjeong e Seogwipo. Recomendamos reservar hospedagem com antecedência."
+      },
+      {
+        "q": "Crianças podem participar?",
+        "a": "Sim, o Acampamento de Música pela Paz de Gangjeong é um festival para toda a família. Realizado ao ar livre, crianças podem entrar gratuitamente."
+      },
+      {
+        "q": "Como posso ser voluntário?",
+        "a": "Se deseja ser voluntário, envie uma DM no Instagram (@peace_music_in_gangjeong) ou entre em contato por e-mail em gpmc0625@gmail.com."
+      },
+      {
+        "q": "Como é o clima em Jeju em junho?",
+        "a": "Junho em Jeju é quente com temperaturas médias de 20-25°C, pouco antes do início da estação chuvosa. Chuvas ocasionais são possíveis, então recomendamos levar capa de chuva ou guarda-chuva."
+      },
+      {
+        "q": "Onde posso comprar o álbum?",
+        "a": "O álbum 'Para você, em um lugar distante cujo nome desconheço' pode ser comprado na Naver SmartStore (smartstore.naver.com/peaceandmusic)."
+      },
+      {
+        "q": "Qual é a história do movimento pela paz da aldeia de Gangjeong?",
+        "a": "A aldeia de Gangjeong é símbolo do movimento pela paz há quase 20 anos desde a decisão de construir a base naval em 2007. A rocha Gureombi, protegida pela UNESCO, foi destruída em 2012, e a aldeia recebeu o Prêmio de Paz Sean MacBride do IPB em 2015. Os moradores mantêm orações diárias pela paz por mais de 7.000 dias consecutivos."
+      },
+      {
+        "q": "Como posso me candidatar para tocar como músico?",
+        "a": "Músicos que desejam se apresentar podem nos contatar via Instagram (@peace_music_in_gangjeong) ou e-mail (gpmc0625@gmail.com). A equipe de planejamento analisará e orientará."
+      },
+      {
+        "q": "O festival é acessível para pessoas com deficiência?",
+        "a": "O Acampamento de Música pela Paz de Gangjeong se esforça para ser acessível a todos. Devido à natureza do local ao ar livre, pode haver algumas limitações de mobilidade. Entre em contato antecipadamente por e-mail (gpmc0625@gmail.com) e forneceremos o maior suporte possível."
+      },
+      {
+        "q": "Como posso apoiar financeiramente o acampamento?",
+        "a": "Você pode nos apoiar através de financiamento coletivo no Tumblbug (tumblbug.com/gpmc3). A compra de produtos ou álbuns na nossa Naver SmartStore também ajuda muito na sustentabilidade do acampamento."
+      }
     ]
   },
   "camp_data": {

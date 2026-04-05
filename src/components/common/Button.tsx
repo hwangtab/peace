@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import classNames from 'classnames';
 
 type ButtonVariant = 'primary' | 'secondary' | 'gold' | 'outline' | 'white-outline' | 'white' | 'ghost-white' | 'back';
@@ -42,7 +41,7 @@ const Button = ({
     ariaLabel,
     utmContent,
 }: ButtonProps) => {
-    const baseClasses = 'inline-flex items-center justify-center transition-[color,background-color,box-shadow,transform] duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean text-center whitespace-normal break-words max-w-full';
+    const baseClasses = 'inline-flex items-center justify-center transition-[color,background-color,box-shadow,transform] duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean text-center whitespace-normal break-words max-w-full active:scale-95 hover:scale-105';
 
     const variantClasses = {
         primary: 'bg-jeju-ocean text-white font-medium hover:bg-ocean-mist shadow-md hover:shadow-lg',
@@ -73,15 +72,10 @@ const Button = ({
         shapeClasses[shape],
         {
             'w-full': fullWidth,
-            'opacity-50 cursor-not-allowed': disabled,
+            'opacity-50 cursor-not-allowed hover:scale-100 active:scale-100': disabled,
         },
         className
     );
-
-    const motionProps = {
-        whileHover: disabled ? {} : { scale: 1.05 },
-        whileTap: disabled ? {} : { scale: 0.95 },
-    };
 
     const resolvedHref = href && utmContent
         ? `${href}?${UTM_BASE}&utm_content=${encodeURIComponent(utmContent)}`
@@ -93,9 +87,11 @@ const Button = ({
         ? (e: React.MouseEvent<HTMLElement>) => { e.preventDefault(); }
         : onClick;
 
+    const wrapperClasses = fullWidth ? 'w-full' : 'inline-block';
+
     if (to) {
         return (
-            <motion.div {...motionProps} className={fullWidth ? 'w-full' : 'inline-block'}>
+            <div className={wrapperClasses}>
                 <Link
                     href={to}
                     className={combinedClasses}
@@ -106,14 +102,14 @@ const Button = ({
                 >
                     {content}
                 </Link>
-            </motion.div >
+            </div>
         );
     }
 
     if (resolvedHref) {
         if (external || utmContent) {
             return (
-                <motion.div {...motionProps} className={fullWidth ? 'w-full' : 'inline-block'}>
+                <div className={wrapperClasses}>
                     <a
                         href={resolvedHref}
                         target="_blank"
@@ -126,11 +122,11 @@ const Button = ({
                     >
                         {content}
                     </a>
-                </motion.div>
+                </div>
             );
         }
         return (
-            <motion.div {...motionProps} className={fullWidth ? 'w-full' : 'inline-block'}>
+            <div className={wrapperClasses}>
                 <a
                     href={resolvedHref}
                     className={combinedClasses}
@@ -141,13 +137,12 @@ const Button = ({
                 >
                     {content}
                 </a>
-            </motion.div>
+            </div>
         );
     }
 
     return (
-        <motion.button
-            {...motionProps}
+        <button
             type={type}
             className={combinedClasses}
             onClick={onClick}
@@ -155,7 +150,7 @@ const Button = ({
             aria-label={ariaLabel}
         >
             {content}
-        </motion.button>
+        </button>
     );
 };
 

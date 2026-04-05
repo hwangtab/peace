@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useTranslation, Trans } from 'next-i18next';
 import Section from '../layout/Section';
@@ -62,26 +63,38 @@ const AboutSection = () => {
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8 mt-12 text-left">
-            <motion.div variants={itemVariants} className="bg-ocean-sand/30 p-8 rounded-2xl hover:bg-ocean-sand/50 transition-colors duration-300">
+            <motion.div variants={itemVariants} className="bg-ocean-sand/30 p-8 rounded-2xl hover:bg-ocean-sand/50 transition-colors duration-300 flex flex-col">
               <h3 className="typo-h3 mb-4">{t('about.card1.title')}</h3>
-              <p className="typo-body text-coastal-gray text-pretty">
+              <p className="typo-body text-coastal-gray text-pretty flex-1">
                 <Trans i18nKey="about.card1.desc">
                   2023년 여름, 첫 번째 화음이 시작되었습니다.<br className="hidden lg:block" />
                   우리의 축제는 일회성 이벤트가 아닌, 매년 강정의 여름을 지키는<br className="hidden lg:block" />
                   끈질기고 아름다운 평화의 의식(Ritual)으로 계속될 것입니다.
                 </Trans>
               </p>
+              <Link
+                href="/camps/2026"
+                className="mt-4 inline-flex items-center text-sm font-medium text-jeju-ocean hover:text-ocean-mist transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded"
+              >
+                {t('about.card1.link')} →
+              </Link>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="bg-ocean-sand/30 p-8 rounded-2xl hover:bg-ocean-sand/50 transition-colors duration-300">
+            <motion.div variants={itemVariants} className="bg-ocean-sand/30 p-8 rounded-2xl hover:bg-ocean-sand/50 transition-colors duration-300 flex flex-col">
               <h3 className="typo-h3 mb-4">{t('about.card2.title')}</h3>
-              <p className="typo-body text-coastal-gray text-pretty">
+              <p className="typo-body text-coastal-gray text-pretty flex-1">
                 <Trans i18nKey="about.card2.desc">
                   팔레스타인 가자지구에서 우크라이나까지, 분쟁 지역을 기억합니다.<br className="hidden lg:block" />
                   강정피스앤뮤직캠프는 단순한 음악회를 넘어, 고통받는 이들과 함께하며<br className="hidden lg:block" />
                   평화를 염원하는 강력한 연대의 장입니다.
                 </Trans>
               </p>
+              <Link
+                href="/press"
+                className="mt-4 inline-flex items-center text-sm font-medium text-jeju-ocean hover:text-ocean-mist transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded"
+              >
+                {t('about.card2.link')} →
+              </Link>
             </motion.div>
           </div>
         </motion.div>

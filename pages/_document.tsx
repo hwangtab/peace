@@ -53,14 +53,6 @@ class MyDocument extends Document {
             href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2"
           />
 
-          {/* LCP 히어로 이미지 preload */}
-          <link
-            rel="preload"
-            as="image"
-            type="image/webp"
-            href="/images-webp/camps/2026/2026poster1-og.webp"
-          />
-
           {/* 테마 & 색상 스킴 */}
           <meta name="theme-color" content="#0A5F8A" />
           <meta name="color-scheme" content="light" />

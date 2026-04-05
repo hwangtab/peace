@@ -25,11 +25,13 @@
     "desc3": "Saat kita bernyanyi, menari, dan saling berpelukan, perang akan berhenti dan gelombang perdamaian menyebar lebih jauh.",
     "card1": {
       "title": "Perdamaian Berkelanjutan",
-      "desc": "Harmoni pertama dimulai pada musim panas 2023. Festival kami akan terus berlanjut bukan sebagai acara sekali saja, melainkan sebagai ritual perdamaian yang gigih dan indah, menjaga musim panas Gangjeong setiap tahun."
+      "desc": "Harmoni pertama dimulai pada musim panas 2023. Festival kami akan terus berlanjut bukan sebagai acara sekali saja, melainkan sebagai ritual perdamaian yang gigih dan indah, menjaga musim panas Gangjeong setiap tahun.",
+      "link": "Lihat Kamp 2026"
     },
     "card2": {
       "title": "Solidaritas Tanpa Batas",
-      "desc": "Kami mengingat wilayah konflik dari Gaza di Palestina hingga Ukraina. Gangjeong Peace Music Camp bukan sekadar konser; ini adalah ruang solidaritas yang kuat, berdiri bersama mereka yang menderita dan merindukan perdamaian."
+      "desc": "Kami mengingat wilayah konflik dari Gaza di Palestina hingga Ukraina. Gangjeong Peace Music Camp bukan sekadar konser; ini adalah ruang solidaritas yang kuat, berdiri bersama mereka yang menderita dan merindukan perdamaian.",
+      "link": "Lihat Liputan Pers"
     }
   },
   "gallery": {
@@ -327,22 +329,70 @@
   "faqs": {
     "title": "Pertanyaan yang Sering Diajukan",
     "items": [
-      {"q": "Acara apa itu Kemah Musik Perdamaian Gangjeong?", "a": "Kemah Musik Perdamaian Gangjeong adalah proyek musik untuk perdamaian yang lahir di Desa Gangjeong, Jeju. Ini adalah festival musik anti-perang untuk perdamaian di mana musisi dari berbagai genre berkumpul untuk bernyanyi dan menunjukkan solidaritas untuk perdamaian di wilayah konflik di seluruh dunia."},
-      {"q": "Kapan Kemah Musik Perdamaian Gangjeong diadakan?", "a": "Kemah Musik Perdamaian Gangjeong ke-3 akan diadakan selama 3 hari dari 5 Juni (Jumat) hingga 7 Juni (Minggu) 2026."},
-      {"q": "Di mana Kemah Musik Perdamaian Gangjeong diadakan?", "a": "Akan diadakan di Taman Olahraga Gangjeong dan sekitar Desa Gangjeong, di Seogwipo-si, Provinsi Otonomi Khusus Jeju."},
-      {"q": "Musisi apa saja yang akan berpartisipasi?", "a": "Musisi dari berbagai genre seperti rock, folk, jazz, dan elektronik akan berpartisipasi. Pada kemah 2026, lebih dari 54 grup telah dikonfirmasi."},
-      {"q": "Apakah ada biaya masuk?", "a": "Kemah Musik Perdamaian Gangjeong adalah festival terbuka dan gratis untuk semua pecinta perdamaian. Namun, donasi sukarela dan penjualan merchandise akan diadakan untuk keberlanjutan acara."},
-      {"q": "Apa itu proyek 'Untukmu, di tempat jauh yang tak kuketahui namanya'?", "a": "'Untukmu, di tempat jauh yang tak kuketahui namanya' adalah nama proyek album omnibus 2024 Kemah Musik Perdamaian Gangjeong. Berisi 12 lagu dengan pesan solidaritas untuk mereka yang menderita akibat perang di Ukraina, Palestina, dan tempat lainnya."},
-      {"q": "Di mana Desa Gangjeong dan bagaimana cara ke sana?", "a": "Desa Gangjeong terletak di pantai selatan Seogwipo-si, Pulau Jeju. Anda bisa bepergian dari Bandara Jeju dengan bus (sekitar 90 menit), taksi (sekitar 60 menit), atau mobil sewaan. Jaraknya sekitar 15 menit dari pusat kota Seogwipo."},
-      {"q": "Apakah tersedia akomodasi atau bisa berkemah?", "a": "Tidak ada fasilitas akomodasi di lokasi kemah, tetapi ada berbagai pilihan seperti guesthouse, penginapan, dan hotel di dekat Desa Gangjeong dan Seogwipo. Kami menyarankan untuk memesan akomodasi terlebih dahulu."},
-      {"q": "Apakah anak-anak bisa hadir?", "a": "Ya, Kemah Musik Perdamaian Gangjeong adalah festival untuk seluruh keluarga. Diadakan di luar ruangan, dan anak-anak bisa masuk gratis."},
-      {"q": "Bagaimana cara menjadi sukarelawan?", "a": "Jika ingin menjadi sukarelawan, silakan kirim DM di Instagram (@peace_music_in_gangjeong) atau hubungi kami melalui email di gpmc0625@gmail.com."},
-      {"q": "Bagaimana cuaca di Jeju pada bulan Juni?", "a": "Juni di Jeju hangat dengan suhu rata-rata 20-25°C, tepat sebelum musim hujan dimulai. Hujan sesekali mungkin terjadi, jadi kami menyarankan membawa jas hujan atau payung."},
-      {"q": "Di mana saya bisa membeli albumnya?", "a": "Album 'Untukmu, di tempat jauh yang tak kuketahui namanya' bisa dibeli di Naver SmartStore (smartstore.naver.com/peaceandmusic)."},
-      {"q": "Apa sejarah gerakan perdamaian Desa Gangjeong?", "a": "Desa Gangjeong telah menjadi simbol gerakan perdamaian selama hampir 20 tahun sejak keputusan pembangunan pangkalan angkatan laut pada 2007. Batu Gureombi yang dilindungi UNESCO diledakkan pada 2012, dan desa ini menerima Penghargaan Perdamaian Sean MacBride IPB pada 2015. Penduduk telah mempertahankan doa perdamaian harian selama lebih dari 7.000 hari berturut-turut."},
-      {"q": "Bagaimana cara mendaftar untuk tampil sebagai musisi?", "a": "Musisi yang ingin tampil bisa menghubungi kami melalui Instagram (@peace_music_in_gangjeong) atau email (gpmc0625@gmail.com). Tim perencanaan akan meninjau dan memberikan panduan."},
-      {"q": "Apakah festival ini ramah disabilitas?", "a": "Kemah Musik Perdamaian Gangjeong berupaya agar dapat diakses oleh semua orang. Karena sifat venue outdoor, mungkin ada beberapa keterbatasan mobilitas. Silakan hubungi kami terlebih dahulu melalui email (gpmc0625@gmail.com) dan kami akan memberikan dukungan semaksimal mungkin."},
-      {"q": "Bagaimana cara mendukung kemah secara finansial?", "a": "Anda bisa mendukung kami melalui crowdfunding di Tumblbug (tumblbug.com/gpmc3). Membeli merchandise atau album dari Naver SmartStore kami juga sangat membantu keberlanjutan kemah."}
+      {
+        "q": "Acara apa itu Kemah Musik Perdamaian Gangjeong?",
+        "a": "Kemah Musik Perdamaian Gangjeong adalah proyek musik untuk perdamaian yang lahir di Desa Gangjeong, Jeju. Ini adalah festival musik anti-perang untuk perdamaian di mana musisi dari berbagai genre berkumpul untuk bernyanyi dan menunjukkan solidaritas untuk perdamaian di wilayah konflik di seluruh dunia."
+      },
+      {
+        "q": "Kapan Kemah Musik Perdamaian Gangjeong diadakan?",
+        "a": "Kemah Musik Perdamaian Gangjeong ke-3 akan diadakan selama 3 hari dari 5 Juni (Jumat) hingga 7 Juni (Minggu) 2026."
+      },
+      {
+        "q": "Di mana Kemah Musik Perdamaian Gangjeong diadakan?",
+        "a": "Akan diadakan di Taman Olahraga Gangjeong dan sekitar Desa Gangjeong, di Seogwipo-si, Provinsi Otonomi Khusus Jeju."
+      },
+      {
+        "q": "Musisi apa saja yang akan berpartisipasi?",
+        "a": "Musisi dari berbagai genre seperti rock, folk, jazz, dan elektronik akan berpartisipasi. Pada kemah 2026, lebih dari 54 grup telah dikonfirmasi."
+      },
+      {
+        "q": "Apakah ada biaya masuk?",
+        "a": "Kemah Musik Perdamaian Gangjeong adalah festival terbuka dan gratis untuk semua pecinta perdamaian. Namun, donasi sukarela dan penjualan merchandise akan diadakan untuk keberlanjutan acara."
+      },
+      {
+        "q": "Apa itu proyek 'Untukmu, di tempat jauh yang tak kuketahui namanya'?",
+        "a": "'Untukmu, di tempat jauh yang tak kuketahui namanya' adalah nama proyek album omnibus 2024 Kemah Musik Perdamaian Gangjeong. Berisi 12 lagu dengan pesan solidaritas untuk mereka yang menderita akibat perang di Ukraina, Palestina, dan tempat lainnya."
+      },
+      {
+        "q": "Di mana Desa Gangjeong dan bagaimana cara ke sana?",
+        "a": "Desa Gangjeong terletak di pantai selatan Seogwipo-si, Pulau Jeju. Anda bisa bepergian dari Bandara Jeju dengan bus (sekitar 90 menit), taksi (sekitar 60 menit), atau mobil sewaan. Jaraknya sekitar 15 menit dari pusat kota Seogwipo."
+      },
+      {
+        "q": "Apakah tersedia akomodasi atau bisa berkemah?",
+        "a": "Tidak ada fasilitas akomodasi di lokasi kemah, tetapi ada berbagai pilihan seperti guesthouse, penginapan, dan hotel di dekat Desa Gangjeong dan Seogwipo. Kami menyarankan untuk memesan akomodasi terlebih dahulu."
+      },
+      {
+        "q": "Apakah anak-anak bisa hadir?",
+        "a": "Ya, Kemah Musik Perdamaian Gangjeong adalah festival untuk seluruh keluarga. Diadakan di luar ruangan, dan anak-anak bisa masuk gratis."
+      },
+      {
+        "q": "Bagaimana cara menjadi sukarelawan?",
+        "a": "Jika ingin menjadi sukarelawan, silakan kirim DM di Instagram (@peace_music_in_gangjeong) atau hubungi kami melalui email di gpmc0625@gmail.com."
+      },
+      {
+        "q": "Bagaimana cuaca di Jeju pada bulan Juni?",
+        "a": "Juni di Jeju hangat dengan suhu rata-rata 20-25°C, tepat sebelum musim hujan dimulai. Hujan sesekali mungkin terjadi, jadi kami menyarankan membawa jas hujan atau payung."
+      },
+      {
+        "q": "Di mana saya bisa membeli albumnya?",
+        "a": "Album 'Untukmu, di tempat jauh yang tak kuketahui namanya' bisa dibeli di Naver SmartStore (smartstore.naver.com/peaceandmusic)."
+      },
+      {
+        "q": "Apa sejarah gerakan perdamaian Desa Gangjeong?",
+        "a": "Desa Gangjeong telah menjadi simbol gerakan perdamaian selama hampir 20 tahun sejak keputusan pembangunan pangkalan angkatan laut pada 2007. Batu Gureombi yang dilindungi UNESCO diledakkan pada 2012, dan desa ini menerima Penghargaan Perdamaian Sean MacBride IPB pada 2015. Penduduk telah mempertahankan doa perdamaian harian selama lebih dari 7.000 hari berturut-turut."
+      },
+      {
+        "q": "Bagaimana cara mendaftar untuk tampil sebagai musisi?",
+        "a": "Musisi yang ingin tampil bisa menghubungi kami melalui Instagram (@peace_music_in_gangjeong) atau email (gpmc0625@gmail.com). Tim perencanaan akan meninjau dan memberikan panduan."
+      },
+      {
+        "q": "Apakah festival ini ramah disabilitas?",
+        "a": "Kemah Musik Perdamaian Gangjeong berupaya agar dapat diakses oleh semua orang. Karena sifat venue outdoor, mungkin ada beberapa keterbatasan mobilitas. Silakan hubungi kami terlebih dahulu melalui email (gpmc0625@gmail.com) dan kami akan memberikan dukungan semaksimal mungkin."
+      },
+      {
+        "q": "Bagaimana cara mendukung kemah secara finansial?",
+        "a": "Anda bisa mendukung kami melalui crowdfunding di Tumblbug (tumblbug.com/gpmc3). Membeli merchandise atau album dari Naver SmartStore kami juga sangat membantu keberlanjutan kemah."
+      }
     ]
   },
   "camp_data": {
