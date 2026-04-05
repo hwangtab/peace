@@ -17,7 +17,7 @@ import { GalleryImage } from '@/types/gallery';
 import { VideoItem } from '@/types/video';
 import { Musician } from '@/types/musician';
 import WaveDivider from '@/components/common/WaveDivider';
-import { getMusicAlbumSchema, getBreadcrumbSchema } from '@/utils/structuredData';
+import { getMusicAlbumSchema, getMusicGroupSchema, getBreadcrumbSchema } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
 import { useLocalizedResource } from '@/hooks/useLocalizedResource';
 
@@ -224,7 +224,7 @@ const AlbumAboutPage = ({
       ogImage="/images-webp/album/albumart.webp"
       ogType="music.album"
       background="jeju-ocean"
-      structuredData={[albumSchema, getBreadcrumbSchema(breadcrumbs)]}
+      structuredData={[albumSchema, getMusicGroupSchema(i18n.language, t), getBreadcrumbSchema(breadcrumbs)]}
       breadcrumbs={breadcrumbs}
       disableTopPadding={true}
       className="!pb-0"
