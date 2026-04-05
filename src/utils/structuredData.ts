@@ -170,6 +170,7 @@ export const getMusicPlaylistSchema = (tracks: Array<{ name: string; url?: strin
   "numTracks": tracks.length,
   "track": tracks.map(track => ({
     "@type": "MusicRecording",
+    ...(track.url ? { "@id": track.url } : {}),
     "name": track.name,
     "url": track.url || "https://peaceandmusic.net/tracks",
     ...(track.duration ? { "duration": durationToISO8601(track.duration) } : {}),
