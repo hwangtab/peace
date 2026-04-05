@@ -65,7 +65,7 @@ const Footer = () => {
                                     <a
                                         href={`${camp2026.fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=footer`}
                                         target="_blank"
-                                        rel="noopener noreferrer"
+                                        rel="noopener noreferrer nofollow"
                                         className="block text-golden-sun hover:text-yellow-300
                                transition-colors duration-200 text-sm font-medium break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun rounded-sm"
                                     >
@@ -97,7 +97,7 @@ const Footer = () => {
                                     key={link.name}
                                     href={link.href}
                                     target={link.external ? '_blank' : undefined}
-                                    rel={link.external ? 'noopener noreferrer' : undefined}
+                                    rel={link.external ? 'noopener noreferrer nofollow' : undefined}
                                     aria-label={t(link.nameKey)}
                                     className="group flex items-center justify-center w-12 h-12 rounded-full
                              bg-cloud-white/10 hover:bg-jeju-ocean

@@ -61,7 +61,7 @@ export default function MusicianDescriptionSection({
                 <a
                   href={`${fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=musician-camp-info-${musician.id}`}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer nofollow"
                   className="sm:w-[180px] flex-shrink-0 block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-lg"
                 >
                   <div className="relative w-full h-44 sm:h-full min-h-[160px]">
