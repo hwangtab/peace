@@ -40,7 +40,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ className = '', isS
                 id="language-switcher"
                 value={currentLocale}
                 onChange={handleChange}
-                className={`font-serif font-bold text-xs sm:text-sm px-2 py-1 pr-8 border rounded transition-colors duration-300 bg-transparent appearance-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${toneClasses} ${borderClasses}`}
+                className={`font-serif font-bold text-xs sm:text-sm px-2 py-2 pr-8 border rounded transition-colors duration-300 bg-transparent appearance-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${toneClasses} ${borderClasses}`}
                 aria-label={t('nav.switch_language')}
             >
                 {LOCALES.map((locale) => (

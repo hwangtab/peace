@@ -113,6 +113,7 @@ export const getMusicRecordingSchema = (track: {
   description?: string;
   duration?: string;
   url?: string;
+  inAlbum?: { name: string; url?: string };
 }, _lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "MusicRecording",
@@ -123,7 +124,14 @@ export const getMusicRecordingSchema = (track: {
   "byArtist": {
     "@type": "MusicGroup",
     "name": t ? getProjectName(t) : ''
-  }
+  },
+  ...(track.inAlbum ? {
+    "inAlbum": {
+      "@type": "MusicAlbum",
+      "name": track.inAlbum.name,
+      ...(track.inAlbum.url ? { "url": track.inAlbum.url } : {})
+    }
+  } : {})
 });
 
 // MusicPlaylist Schema - 음악 재생목록
@@ -343,6 +351,8 @@ export const getMusicAlbumSchema = (album: {
   "genre": album.genre,
   "image": album.image,
   "datePublished": album.datePublished,
+  "albumProductionType": "https://schema.org/StudioAlbum",
+  "albumReleaseType": "https://schema.org/AlbumRelease",
   "numTracks": album.numTracks || (album.track ? album.track.length : 0),
   "track": album.track?.map(t => ({
     "@type": "MusicRecording",

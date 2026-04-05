@@ -72,7 +72,7 @@ const Footer = () => {
                                         {t('camp.ticketing_2026')}
                                     </a>
                                 )}
-                                {albumItems.slice(0, 2).map((item) => (
+                                {albumItems.map((item) => (
                                     <Link
                                         key={item.path}
                                         href={item.path}
@@ -99,7 +99,7 @@ const Footer = () => {
                                     target={link.external ? '_blank' : undefined}
                                     rel={link.external ? 'noopener noreferrer' : undefined}
                                     aria-label={t(link.nameKey)}
-                                    className="group flex items-center justify-center w-11 h-11 rounded-full
+                                    className="group flex items-center justify-center w-12 h-12 rounded-full
                              bg-cloud-white/10 hover:bg-jeju-ocean
                              transition-[background-color,transform,box-shadow] duration-300 ease-in-out
                              hover:scale-110 hover:shadow-lg hover:shadow-jeju-ocean/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun"

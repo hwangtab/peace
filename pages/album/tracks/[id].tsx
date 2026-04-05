@@ -27,6 +27,10 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
         description: track.description,
         duration: track.duration,
         url: getFullUrl(`/album/tracks/${track.id}`),
+        inAlbum: {
+          name: t('structured_data.playlist_name'),
+          url: getFullUrl('/album/about'),
+        },
       },
       i18n.language,
       t
