@@ -34,12 +34,13 @@ const BreadcrumbNav: React.FC<BreadcrumbNavProps> = ({ items }) => {
                                 </span>
                             )}
                             {isLast ? (
-                                <span aria-current="page" className="text-white/90 font-medium truncate max-w-[200px]">
+                                <span aria-current="page" title={item.name} className="text-white/90 font-medium truncate max-w-[200px]">
                                     {item.name}
                                 </span>
                             ) : (
                                 <Link
                                     href={item.url.startsWith('http') ? new URL(item.url).pathname : item.url}
+                                    title={item.name}
                                     className="hover:text-white transition-colors duration-150 truncate max-w-[200px]"
                                 >
                                     {item.name}

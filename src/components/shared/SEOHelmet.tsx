@@ -100,6 +100,7 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
             <meta property="og:title" content={finalTitle} />
             <meta property="og:description" content={finalDescription} />
             <meta property="og:image" content={fullOgImage} />
+            <meta property="og:image:secure_url" content={fullOgImage} />
             <meta property="og:image:alt" content={finalDescription} />
             <meta property="og:image:width" content="1200" />
             <meta property="og:image:height" content="630" />
