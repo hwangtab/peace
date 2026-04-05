@@ -26,6 +26,7 @@ interface AlbumAboutPageProps {
   initialMusicians?: Musician[];
   initialImages?: GalleryImage[];
   initialAlbumMusicianIds?: number[];
+  initialMusicianTrackIds?: Record<number, number>;
   initialLocale?: string;
 }
 
@@ -34,6 +35,7 @@ const AlbumAboutPage = ({
   initialMusicians = [],
   initialImages = [],
   initialAlbumMusicianIds = [],
+  initialMusicianTrackIds = {},
   initialLocale = 'ko',
 }: AlbumAboutPageProps) => {
   const { t, i18n } = useTranslation();
@@ -204,7 +206,7 @@ const AlbumAboutPage = ({
           .filter((m) => m.trackTitle && albumMusicianIds.has(m.id))
           .map((m) => ({
             name: m.trackTitle || '',
-            url: getFullUrl('/album/tracks'),
+            url: getFullUrl(`/album/tracks/${initialMusicianTrackIds[m.id] ?? m.id}`),
           })),
       }),
     [albumMusicianIds, t, visibleMusicians]

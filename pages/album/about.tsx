@@ -15,6 +15,7 @@ interface WrappedPageProps {
   initialMusicians: Musician[];
   initialImages: GalleryImage[];
   initialAlbumMusicianIds: number[];
+  initialMusicianTrackIds: Record<number, number>;
   initialLocale: string;
 }
 
@@ -31,6 +32,9 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
   const canonicalMusicians = loadLocalizedData<Musician>('ko', 'musicians.json');
   const canonicalRelation = buildTrackMusicianRelation(canonicalTracks, canonicalMusicians);
   const initialAlbumMusicianIds = [...canonicalRelation.trackByMusicianId.keys()];
+  const initialMusicianTrackIds: Record<number, number> = Object.fromEntries(
+    [...canonicalRelation.trackByMusicianId.entries()].map(([mid, track]) => [mid, track.id])
+  );
 
   // Gallery preview for SSG payload size optimization (full data is fetched client-side)
   const initialImages = readJsonArray<GalleryImage>(
@@ -44,6 +48,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
       initialMusicians,
       initialImages,
       initialAlbumMusicianIds,
+      initialMusicianTrackIds,
       initialLocale: lang,
     },
     revalidate: 3600,
