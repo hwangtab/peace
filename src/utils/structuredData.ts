@@ -145,7 +145,7 @@ export const getMusicRecordingSchema = (track: {
 });
 
 // MusicPlaylist Schema - 음악 재생목록
-export const getMusicPlaylistSchema = (tracks: Array<{ name: string; url?: string }>, _lang: string = 'ko', t?: TranslationFn) => ({
+export const getMusicPlaylistSchema = (tracks: Array<{ name: string; url?: string; duration?: string }>, _lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "MusicPlaylist",
   "name": t ? t('structured_data.playlist_name') : '',
@@ -154,7 +154,8 @@ export const getMusicPlaylistSchema = (tracks: Array<{ name: string; url?: strin
   "track": tracks.map(track => ({
     "@type": "MusicRecording",
     "name": track.name,
-    "url": track.url || "https://peaceandmusic.net/tracks"
+    "url": track.url || "https://peaceandmusic.net/tracks",
+    ...(track.duration ? { "duration": durationToISO8601(track.duration) } : {}),
   }))
 });
 

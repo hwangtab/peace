@@ -28,6 +28,7 @@ const AlbumTracksPage = ({
         initialTracks.map((track) => ({
           name: track.title,
           url: getFullUrl(`/album/tracks/${track.id}`),
+          duration: track.duration,
         })),
         i18n.language,
         t
