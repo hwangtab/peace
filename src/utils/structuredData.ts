@@ -95,10 +95,15 @@ export const getWebSiteSchema = (lang: string = 'ko', t?: TranslationFn) => ({
 export const getMusicGroupSchema = (lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "MusicGroup",
+  "@id": "https://peaceandmusic.net/#music-group",
   "name": t ? getProjectName(t) : '',
   "description": t ? t('structured_data.music_group_desc') : '',
   "genre": lang === 'ko' ? ["평화운동", "사회운동", "인디음악"] : ["Peace Movement", "Social Movement", "Indie Music"],
-  "url": "https://peaceandmusic.net"
+  "url": "https://peaceandmusic.net",
+  "sameAs": [
+    "https://www.instagram.com/peace_music_in_gangjeong",
+    "https://smartstore.naver.com/peaceandmusic"
+  ]
 });
 
 // BreadcrumbList Schema - 페이지 계층 구조
@@ -138,6 +143,7 @@ export const getMusicRecordingSchema = (track: {
 }, _lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "MusicRecording",
+  ...(track.url ? { "@id": track.url } : {}),
   "name": track.name,
   "description": track.description || "",
   ...(track.duration ? { "duration": durationToISO8601(track.duration) } : {}),
@@ -314,6 +320,7 @@ export const getProfilePageSchema = (person: {
 }, _lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "ProfilePage",
+  ...(person.url ? { "@id": person.url } : {}),
   "mainEntity": {
     "@type": "Person",
     "name": person.name,
