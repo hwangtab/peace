@@ -319,12 +319,12 @@ const AlbumAboutPage = ({
               transition={{ duration: 0.6 }}
               className="bg-ocean-sand/30 p-10 rounded-3xl"
             >
-              <h3 className="typo-h3 text-jeju-ocean mb-6 flex items-center gap-3">
+              <h2 className="typo-h3 text-jeju-ocean mb-6 flex items-center gap-3">
                 <span className="w-8 h-8 rounded-full bg-golden-sun flex items-center justify-center text-white text-sm">
                   01
                 </span>
                 {t('album.meaning_title')}
-              </h3>
+              </h2>
               <p className="typo-body text-gray-700 leading-loose break-words">
                 {t('album.meaning_desc')}
               </p>
@@ -338,12 +338,12 @@ const AlbumAboutPage = ({
               transition={{ duration: 0.6, delay: 0.2 }}
               className="bg-ocean-sand/30 p-10 rounded-3xl"
             >
-              <h3 className="typo-h3 text-jeju-ocean mb-6 flex items-center gap-3">
+              <h2 className="typo-h3 text-jeju-ocean mb-6 flex items-center gap-3">
                 <span className="w-8 h-8 rounded-full bg-jeju-ocean flex items-center justify-center text-white text-sm">
                   02
                 </span>
                 {t('album.voices_title')}
-              </h3>
+              </h2>
               <p className="typo-body text-gray-700 leading-loose break-words">
                 {t('album.voices_desc')}
               </p>

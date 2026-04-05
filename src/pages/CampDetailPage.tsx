@@ -85,6 +85,9 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
         type: 'MusicGroup',
         name: typeof p === 'string' ? p : p.name,
       })),
+      eventStatus: camp.year < 2026
+        ? "https://schema.org/EventCompleted"
+        : "https://schema.org/EventScheduled",
     },
     i18n.language,
     t
