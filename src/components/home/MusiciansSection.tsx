@@ -1,5 +1,6 @@
 import { useTranslation } from 'next-i18next';
 import { useCallback } from 'react';
+import Link from 'next/link';
 import { getMusicians } from '@/api/musicians';
 import { Musician } from '@/types/musician';
 import MusicianCard from '../musicians/MusicianCard';
@@ -55,11 +56,23 @@ const MusiciansSection: React.FC<MusiciansSectionProps> = React.memo(
             {t('common.no_results')}
           </p>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {musicians.map((musician, index) => (
-              <MusicianCard key={musician.id} musician={musician} index={index} />
-            ))}
-          </div>
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {musicians.map((musician, index) => (
+                <MusicianCard key={musician.id} musician={musician} index={index} />
+              ))}
+            </div>
+            {enableSectionWrapper && (
+              <div className="text-center mt-8">
+                <Link
+                  href="/album/musicians"
+                  className="inline-flex items-center gap-1 text-jeju-ocean hover:text-ocean-mist font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded"
+                >
+                  {t('nav.musician')} →
+                </Link>
+              </div>
+            )}
+          </>
         )}
       </div>
     );

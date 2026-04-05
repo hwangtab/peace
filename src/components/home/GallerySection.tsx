@@ -5,6 +5,7 @@ import { useTranslation } from 'next-i18next';
 import { GalleryImage } from '@/types/gallery';
 import { useGalleryImages } from '@/hooks/useGalleryImages';
 import { GALLERY_CONFIG } from '@/constants/config';
+import Link from 'next/link';
 import EventFilter from '../common/EventFilter';
 import GalleryImageItem from '../gallery/GalleryImageItem';
 import Section from '../layout/Section';
@@ -78,6 +79,17 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
                 />
               ))}
             </AnimatePresence>
+          </div>
+        )}
+
+        {enableSectionWrapper && (
+          <div className="text-center mb-8">
+            <Link
+              href="/gallery"
+              className="inline-flex items-center gap-1 text-jeju-ocean hover:text-ocean-mist font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded"
+            >
+              {t('nav.gallery')} →
+            </Link>
           </div>
         )}
 
