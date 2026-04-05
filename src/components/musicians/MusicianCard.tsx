@@ -80,7 +80,7 @@ const MusicianCard = memo(({ musician, index, href }: MusicianCardProps) => {
                       key={url}
                       href={url}
                       target="_blank"
-                      rel="noopener noreferrer"
+                      rel="noopener noreferrer nofollow"
                       className="inline-flex items-center px-3 py-1 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors duration-200 max-w-full min-w-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded"
                     >
                       <InstagramIcon aria-hidden="true" className="w-4 h-4 mr-1 flex-shrink-0" />
@@ -92,7 +92,7 @@ const MusicianCard = memo(({ musician, index, href }: MusicianCardProps) => {
                   <a
                     href={musician.youtubeUrl}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener noreferrer nofollow"
                     className="inline-flex items-center px-3 py-1 text-sm bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded"
                   >
                     <YouTubeIcon aria-hidden="true" className="w-4 h-4 mr-1" />YouTube

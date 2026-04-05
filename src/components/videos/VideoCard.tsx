@@ -51,7 +51,7 @@ const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
       <a
         href={getYoutubeWatchUrl(video.youtubeUrl)}
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener noreferrer nofollow"
         className="block rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
       >
         <div className="relative aspect-video overflow-hidden rounded-t-xl group bg-gray-200">
