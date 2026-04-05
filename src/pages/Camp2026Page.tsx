@@ -11,9 +11,7 @@ import CampLineup from '@/components/camp/CampLineup';
 import CampHero from '@/components/camp/CampHero';
 import dynamic from 'next/dynamic';
 
-const GangjeongStorySection = dynamic(() => import('@/components/camp/GangjeongStorySection'), {
-  ssr: false,
-});
+const GangjeongStorySection = dynamic(() => import('@/components/camp/GangjeongStorySection'));
 import { getEventSchema, getBreadcrumbSchema, getHowToSchema } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
 import Button from '@/components/common/Button';

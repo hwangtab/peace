@@ -33,7 +33,7 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(
                   <Link
                     key={item.path}
                     href={item.path}
-                    className={`block py-2 break-words rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${
+                    className={`block py-3 break-words rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${
                       isPathActive(item.path) ? 'text-jeju-ocean font-bold' : 'text-coastal-gray'
                     } font-serif font-bold`}
                     onClick={onClose}
@@ -98,7 +98,7 @@ const MobileDropdown: React.FC<MobileDropdownProps> = React.memo(
         <button
           type="button"
           onClick={onToggle}
-          className="w-full text-left py-2 font-serif font-bold text-deep-ocean flex justify-between items-center break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm"
+          className="w-full text-left py-3 font-serif font-bold text-deep-ocean flex justify-between items-center break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm"
           aria-expanded={isOpen}
           aria-controls={`mobile-dropdown-${label}`}
         >
@@ -125,7 +125,7 @@ const MobileDropdown: React.FC<MobileDropdownProps> = React.memo(
                 <Link
                   key={item.path}
                   href={item.path}
-                  className={`block py-2 font-serif font-bold text-sm break-words rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${
+                  className={`block py-3 font-serif font-bold text-sm break-words rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${
                     isPathActive(item.path)
                       ? 'text-jeju-ocean bg-ocean-sand/70'
                       : 'text-deep-ocean hover:text-jeju-ocean'

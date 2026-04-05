@@ -53,12 +53,19 @@ export default function MusicianDetailContent({
     ? `${musician.shortDescription} ${t('camp.seo_musician_suffix')}`
     : musician.shortDescription;
 
+  const musicianSameAs = [
+    ...musician.instagramUrls,
+    ...(musician.youtubeUrl ? [musician.youtubeUrl] : []),
+  ];
+
   const profileSchema = getProfilePageSchema(
     {
       name: musician.name,
       description: musician.shortDescription,
       image: musician.imageUrl ? getFullUrl(musician.imageUrl) : undefined,
       jobTitle: 'Musician',
+      url: getFullUrl(`${musicianHrefPrefix}/${musician.id}`),
+      sameAs: musicianSameAs.length > 0 ? musicianSameAs : undefined,
     },
     i18n.language,
     t
@@ -70,7 +77,7 @@ export default function MusicianDetailContent({
     <PageLayout
       title={pageTitle}
       description={pageDescription}
-      ogImage={musician.imageUrl || undefined}
+      ogImage={musician.imageUrl || '/images-webp/album/albumart.webp'}
       structuredData={[profileSchema, breadcrumbSchema]}
       breadcrumbs={breadcrumbs}
       disableTopPadding={true}

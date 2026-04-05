@@ -25,7 +25,18 @@ export const getOrganizationSchema = (_lang: string = 'ko', t?: TranslationFn) =
     "https://www.instagram.com/peace_music_in_gangjeong",
     "https://smartstore.naver.com/peaceandmusic",
     "https://tumblbug.com/gpmc3",
-  ]
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "gpmc0625@gmail.com",
+    "contactType": "customer support"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Seogwipo",
+    "addressRegion": "Jeju",
+    "addressCountry": "KR"
+  }
 });
 
 // WebSite Schema - 웹사이트 정보
@@ -206,6 +217,7 @@ export const getEventSchema = (event: {
     availability?: string;
   };
   dateModified?: string;
+  eventStatus?: string;
 }, _lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "Event",
@@ -213,7 +225,7 @@ export const getEventSchema = (event: {
   "startDate": event.startDate,
   "endDate": event.endDate,
   ...(event.dateModified ? { "dateModified": event.dateModified } : {}),
-  "eventStatus": "https://schema.org/EventScheduled",
+  "eventStatus": event.eventStatus || "https://schema.org/EventScheduled",
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
   "location": {
     "@type": "Place",
@@ -251,6 +263,8 @@ export const getProfilePageSchema = (person: {
   description: string;
   image?: string;
   jobTitle?: string;
+  url?: string;
+  sameAs?: string[];
 }, _lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "ProfilePage",
@@ -263,7 +277,9 @@ export const getProfilePageSchema = (person: {
     "memberOf": {
       "@type": "Organization",
       "name": t ? getCampName(t) : ''
-    }
+    },
+    ...(person.url ? { "url": person.url } : {}),
+    ...(person.sameAs && person.sameAs.length > 0 ? { "sameAs": person.sameAs } : {})
   }
 });
 

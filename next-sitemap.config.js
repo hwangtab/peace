@@ -220,6 +220,10 @@ module.exports = {
   exclude: ['/404', '/*/404', '/image-sitemap.xml', '/video-sitemap.xml'],
   additionalSitemaps: [`${siteUrl}/image-sitemap.xml`, `${siteUrl}/video-sitemap.xml`],
   robotsTxtOptions: {
+    additionalSitemaps: [
+      `${siteUrl}/image-sitemap.xml`,
+      `${siteUrl}/video-sitemap.xml`,
+    ],
     policies: [
       { userAgent: 'Googlebot', allow: '/' },
       { userAgent: 'Bingbot', allow: '/' },

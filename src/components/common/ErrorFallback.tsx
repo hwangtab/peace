@@ -9,9 +9,9 @@ const ErrorFallback: React.FC<FallbackProps> = ({ error, resetErrorBoundary }) =
     return (
         <Section background="light-beige" className="min-h-screen flex items-center justify-center">
             <div className="text-center max-w-lg mx-auto px-4">
-                <h2 className="font-display text-2xl md:text-3xl text-jeju-ocean mb-4">
+                <h1 className="font-display text-2xl md:text-3xl text-jeju-ocean mb-4">
                     {t('common.error_title')}
-                </h2>
+                </h1>
                 <p className="font-serif font-bold text-coastal-gray mb-8 whitespace-pre-line break-words">
                     {t('common.error_message')}
                 </p>
