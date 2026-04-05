@@ -44,7 +44,7 @@ const HookStatement: React.FC<Props> = ({ variant = 'camp' }) => {
       >
         <Image
           src="/images-webp/camps/2023/IMG_3565.webp"
-          alt="제주 강정마을 평화 음악 캠프 풍경"
+          alt={t('gangjeong_story.hook_image_alt')}
           fill
           sizes="100vw"
           className="object-cover scale-[1.15]"
