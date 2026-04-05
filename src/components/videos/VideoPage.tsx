@@ -47,17 +47,17 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
     [videos, selectedFilter]
   );
 
+  const eligibleVideos = videos.filter((v) => v.youtubeUrl && v.date).slice(0, 20);
+  const videoSchemas = eligibleVideos
+    .map((v) => getVideoObjectSchema({ name: v.title, description: v.description || '', youtubeUrl: v.youtubeUrl, uploadDate: v.date, id: String(v.id) }));
+
   // Collection Page Schema
   const collectionSchema = getCollectionPageSchema({
     name: t('videos.page_title'),
     description: t('videos.page_desc'),
     url: getFullUrl('/videos'),
+    hasPart: eligibleVideos.map((v) => ({ "@id": `https://peaceandmusic.net/videos#video-${String(v.id)}` })),
   });
-
-  const videoSchemas = videos
-    .filter((v) => v.youtubeUrl && v.date)
-    .slice(0, 20)
-    .map((v) => getVideoObjectSchema({ name: v.title, description: v.description || '', youtubeUrl: v.youtubeUrl, uploadDate: v.date }));
 
   const videoBreadcrumbs = [
     { name: t('nav.home'), url: getFullUrl('/') },
