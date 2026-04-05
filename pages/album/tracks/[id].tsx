@@ -37,10 +37,16 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
       t
     ),
     datePublished: '2024-10-12',
+    ...(track.imageUrl ? { image: getFullUrl(track.imageUrl) } : {}),
+    ...(track.lyrics ? { lyrics: { '@type': 'CreativeWork', text: track.lyrics } } : {}),
     audio: {
       '@type': 'AudioObject',
       contentUrl: getFullUrl(track.audioUrl),
       encodingFormat: 'audio/mpeg',
+    },
+    potentialAction: {
+      '@type': 'ListenAction',
+      target: getFullUrl(track.audioUrl),
     },
   };
 
