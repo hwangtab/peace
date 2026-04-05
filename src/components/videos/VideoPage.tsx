@@ -9,7 +9,7 @@ import EventFilter from '../common/EventFilter';
 import PageLayout from '../layout/PageLayout';
 import PageHero from '../common/PageHero';
 import VideoCard from './VideoCard';
-import { getCollectionPageSchema, getBreadcrumbSchema } from '@/utils/structuredData';
+import { getCollectionPageSchema, getBreadcrumbSchema, getVideoObjectSchema } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
 import { useLocalizedResource } from '@/hooks/useLocalizedResource';
 
@@ -54,6 +54,11 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
     url: getFullUrl('/videos'),
   });
 
+  const videoSchemas = videos
+    .filter((v) => v.youtubeUrl && v.date)
+    .slice(0, 20)
+    .map((v) => getVideoObjectSchema({ name: v.title, description: v.description || '', youtubeUrl: v.youtubeUrl, uploadDate: v.date }));
+
   const videoBreadcrumbs = [
     { name: t('nav.home'), url: getFullUrl('/') },
     { name: t('videos.page_title'), url: getFullUrl('/videos') },
@@ -68,6 +73,7 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
       structuredData={[
         collectionSchema,
         getBreadcrumbSchema(videoBreadcrumbs),
+        ...videoSchemas,
       ]}
       breadcrumbs={videoBreadcrumbs}
       disableTopPadding={true}
