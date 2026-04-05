@@ -148,6 +148,7 @@ export const getMusicRecordingSchema = (track: {
   ...(track.inAlbum ? {
     "inAlbum": {
       "@type": "MusicAlbum",
+      "@id": "https://peaceandmusic.net/album/about#album",
       "name": track.inAlbum.name,
       ...(track.inAlbum.url ? { "url": track.inAlbum.url } : {})
     }
@@ -218,12 +219,14 @@ export const getCollectionPageSchema = (collection: {
   description: string;
   url: string;
   dateModified?: string;
+  hasPart?: Array<{ "@id": string }>;
 }) => ({
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "name": collection.name,
   "description": collection.description,
   "url": collection.url,
+  ...(collection.hasPart && collection.hasPart.length > 0 ? { "hasPart": collection.hasPart } : {}),
   ...(collection.dateModified ? { "dateModified": collection.dateModified } : {})
 });
 
@@ -381,6 +384,7 @@ export const getMusicAlbumSchema = (album: {
 }) => ({
   "@context": "https://schema.org",
   "@type": "MusicAlbum",
+  "@id": "https://peaceandmusic.net/album/about#album",
   "name": album.name,
   "byArtist": {
     "@type": "MusicGroup",
@@ -406,11 +410,13 @@ export const getVideoObjectSchema = (video: {
   description: string;
   youtubeUrl: string;
   uploadDate: string;
+  id?: string;
 }) => {
   const videoId = video.youtubeUrl.split('/embed/')[1]?.split('?')[0] ?? '';
   return {
     "@context": "https://schema.org",
     "@type": "VideoObject",
+    "@id": `https://peaceandmusic.net/videos#video-${video.id ?? videoId}`,
     "name": video.name,
     "description": video.description,
     "thumbnailUrl": `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
