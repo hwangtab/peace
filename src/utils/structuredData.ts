@@ -37,6 +37,13 @@ export const getOrganizationSchema = (_lang: string = 'ko', t?: TranslationFn) =
     "https://smartstore.naver.com/peaceandmusic",
     "https://tumblbug.com/gpmc3",
   ],
+  "knowsAbout": [
+    "Peace movement",
+    "Gangjeong Village",
+    "Jeju Naval Base controversy",
+    "Korean independent music",
+    "Anti-war music festival"
+  ],
   "contactPoint": {
     "@type": "ContactPoint",
     "email": "gpmc0625@gmail.com",
