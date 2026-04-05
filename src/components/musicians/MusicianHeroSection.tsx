@@ -87,7 +87,7 @@ export default function MusicianHeroSection({ musician, fundingUrl, isCampPage }
                         key={url}
                         href={url}
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel="noopener noreferrer nofollow"
                         className="inline-flex items-center px-3 py-1.5 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors max-w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun rounded"
                       >
                         <InstagramIcon aria-hidden="true" className="w-4 h-4 mr-1.5 flex-shrink-0" /><span className="truncate">@{username}</span>
@@ -98,7 +98,7 @@ export default function MusicianHeroSection({ musician, fundingUrl, isCampPage }
                     <a
                       href={musician.youtubeUrl}
                       target="_blank"
-                      rel="noopener noreferrer"
+                      rel="noopener noreferrer nofollow"
                       className="inline-flex items-center px-3 py-1.5 text-sm bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun rounded"
                     >
                       <YouTubeIcon aria-hidden="true" className="w-4 h-4 mr-1.5" />
