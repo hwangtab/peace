@@ -238,7 +238,7 @@ export const getEventSchema = (event: {
   eventStatus?: string;
 }, _lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
-  "@type": "Event",
+  "@type": "MusicEvent",
   "name": event.name,
   "startDate": event.startDate,
   "endDate": event.endDate,
