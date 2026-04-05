@@ -219,7 +219,6 @@ const AlbumAboutPage = ({
     <PageLayout
       title={t('album.page_title')}
       description={t('album.page_desc')}
-      keywords={t('album.keywords')}
       ogImage="/images-webp/album/albumart.webp"
       background="jeju-ocean"
       structuredData={[albumSchema, getBreadcrumbSchema(breadcrumbs)]}

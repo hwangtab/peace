@@ -63,7 +63,6 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
     <PageLayout
       title={t('videos.page_title')}
       description={t('videos.page_desc')}
-      keywords={t('videos.keywords')}
       ogImage="/images-webp/camps/2023/IMG_2064.webp"
       background="sunlight-glow"
       structuredData={[

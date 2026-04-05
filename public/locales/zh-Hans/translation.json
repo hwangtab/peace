@@ -35,7 +35,6 @@
   "gallery": {
     "page_title": "画廊 | 江汀和平音乐营",
     "page_desc": "我们为和平歌唱的瞬间。浏览江汀和平音乐营的生动现场照片。",
-    "keywords": "画廊, 相册, 活动照片, 和平营照片, 江汀村",
     "seo_keywords": "画廊照片",
     "hero_title": "画廊",
     "hero_subtitle": "在那里遇见的和平",
@@ -183,14 +182,12 @@
   "seo": {
     "default": {
       "title": "江汀和平音乐营 | 歌唱、舞动、结束战争",
-      "description": "从济州江汀村开始的和平音乐计划。2026年6月5–7日在江汀体育公园举行的反战和平音乐节。我们一起歌唱，祈愿世界冲突地区的和平。",
-      "keywords": "江汀和平音乐营, 和平节, 济州节庆, 音乐营, 反战和平, 江汀村, 2026演出, 独立乐队演出, 和平运动, 济州演出"
+      "description": "从济州江汀村开始的和平音乐计划。2026年6月5–7日在江汀体育公园举行的反战和平音乐节。我们一起歌唱，祈愿世界冲突地区的和平。"
     }
   },
   "press": {
     "page_title": "报道 | To You in a Distant Place Whose Name I Don't Know",
     "page_desc": "我们为和平歌唱的故事。查看关于“To You in a Distant Place Whose Name I Don't Know”项目的媒体报道与文章。",
-    "keywords": "报道, 文章, 新闻, 和平项目",
     "hero_title": "报道",
     "hero_subtitle": "我们为和平歌唱的故事",
     "breadcrumb_home": "首页",
@@ -199,7 +196,6 @@
   "videos": {
     "page_title": "视频 - 江汀和平音乐营",
     "page_desc": "江汀和平音乐营演出视频合集。观看为和平歌唱的音乐人表演。",
-    "keywords": "演出视频, 江汀和平音乐营, 和平演唱会, 音乐人演出, YouTube视频",
     "hero_title": "视频",
     "hero_subtitle": "为和平歌唱的瞬间",
     "all_videos": "查看全部视频"
@@ -221,7 +217,6 @@
     "label_participants": "参与者",
     "date_2026": "2026年6月5日（周五）- 6月7日（周日）",
     "venue_2026": "江汀体育公园",
-    "keywords_base": "江汀村, 和平音乐, 反战运动",
     "description_2026": "2026年6月5日（周五）至7日（周日），第三届江汀和平音乐营将在济州岛西归浦市江汀体育公园举办。值此停战73周年之际，音乐营首次扩展为三天两夜的规模，共有创纪录的54组音乐人参与。在朝鲜半岛军事化和战争威胁加剧的当下，源自江汀村的和平之歌正汇聚成更强大、更坚实的团结力量。在\"唱起来，跳起来，结束战争！\"的口号下，多种音乐风格的音乐人通过音乐传递反战与和平的讯息。",
     "expected_2026": "已确认54支音乐人团队",
     "lineup_count": "已确认{{count}}支团队",
@@ -292,7 +287,6 @@
   "album": {
     "page_title": "To You in a Distant Place Whose Name I Don't Know - 专辑介绍",
     "page_desc": "江汀和平音乐营2024年专辑项目。12首终结战争、歌唱和平的音乐旅程。",
-    "keywords": "To You in a Distant Place Whose Name I Don't Know, 江汀和平音乐营, 专辑, 和平音乐",
     "hero_title_1": "To You In A",
     "hero_title_2": "Distant Place",
     "hero_subtitle": "从充满战争与暴力的世界寄出的和平之信。12组音乐人自江汀村发出的音乐波澜。",
@@ -323,11 +317,9 @@
     "all_photos": "查看所有演出照片",
     "musicians_page_title": "参演音乐人 - To You in a Distant Place Whose Name I Don't Know",
     "musicians_page_desc": "参与江汀和平音乐营专辑项目的12组音乐人。包括Caru、Kim Dongsan、Namsu、MoredoSaturday等歌唱和平的艺术家。",
-    "musicians_page_keywords": "参演音乐人, 专辑参与, 和平音乐人, 江汀和平音乐营, 艺术家",
     "musicians_hero_subtitle": "12种声音，一个和平",
     "tracks_page_title": "曲目 - To You in a Distant Place Whose Name I Don't Know",
     "tracks_page_desc": "江汀和平音乐营专辑全部曲目。12首承载和平与连带讯息的歌曲。",
-    "tracks_page_keywords": "曲目, 曲目列表, 和平歌曲, 音乐列表, 江汀和平音乐营",
     "tracks_hero_subtitle": "To You in a Distant Place Whose Name I Don't Know",
     "image_alt_cover": "《To You in a Distant Place Whose Name I Don't Know》专辑封面",
     "image_alt_concert": "专辑发行纪念演出现场 {{num}}"

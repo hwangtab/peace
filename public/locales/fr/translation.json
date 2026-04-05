@@ -35,7 +35,6 @@
   "gallery": {
     "page_title": "Galerie | Camp musical pour la paix de Gangjeong",
     "page_desc": "Moments où nous chantons pour la paix. Découvrez des photos vibrantes du Camp musical pour la paix de Gangjeong.",
-    "keywords": "Galerie, Album photo, Photos d’événements, Photos du camp pour la paix, Village de Gangjeong",
     "seo_keywords": "photos galerie",
     "hero_title": "Galerie",
     "hero_subtitle": "La paix trouvée là‑bas",
@@ -183,14 +182,12 @@
   "seo": {
     "default": {
       "title": "Camp musical pour la paix de Gangjeong | Chanter, danser, mettre fin à la guerre",
-      "description": "Un projet musical pour la paix né au village de Gangjeong, Jeju. Festival musical pacifiste organisé au parc sportif de Gangjeong du 5 au 7 juin 2026. Nous chantons ensemble en souhaitant la paix dans les zones de conflit du monde entier.",
-      "keywords": "Camp musical pour la paix de Gangjeong, Festival de paix, Festival de Jeju, Camp musical, Paix anti‑guerre, Village de Gangjeong, Concert 2026, Concert de groupes indie, Mouvement pour la paix, Concert à Jeju"
+      "description": "Un projet musical pour la paix né au village de Gangjeong, Jeju. Festival musical pacifiste organisé au parc sportif de Gangjeong du 5 au 7 juin 2026. Nous chantons ensemble en souhaitant la paix dans les zones de conflit du monde entier."
     }
   },
   "press": {
     "page_title": "Presse | To You in a Distant Place Whose Name I Don't Know",
     "page_desc": "Notre histoire en chantant pour la paix. Découvrez les articles et la couverture médiatique du projet “To You in a Distant Place Whose Name I Don't Know”.",
-    "keywords": "Presse, Articles, Actualités, Reportage sur le projet de paix",
     "hero_title": "Presse",
     "hero_subtitle": "Notre histoire en chantant pour la paix",
     "breadcrumb_home": "Accueil",
@@ -199,7 +196,6 @@
   "videos": {
     "page_title": "Vidéos - Camp musical pour la paix de Gangjeong",
     "page_desc": "Collection de vidéos de performances du Camp musical pour la paix de Gangjeong. Découvrez les vidéos des musiciens qui chantent pour la paix.",
-    "keywords": "Vidéos de performance, Camp musical pour la paix de Gangjeong, Concert pour la paix, Performance de musiciens, Vidéos YouTube",
     "hero_title": "Vidéos",
     "hero_subtitle": "Moments de chant pour la paix",
     "all_videos": "Voir toutes les vidéos"
@@ -221,7 +217,6 @@
     "label_participants": "Participants",
     "date_2026": "5 juin (ven) – 7 juin (dim) 2026",
     "venue_2026": "Parc sportif de Gangjeong",
-    "keywords_base": "Village de Gangjeong, Musique pour la paix, Mouvement anti‑guerre",
     "description_2026": "Le 3e Camp Paix et Musique de Gangjeong se tiendra du 5 (vendredi) au 7 (dimanche) juin 2026 au Parc Sportif de Gangjeong, à Seogwipo, Jeju. À l'occasion du 73e anniversaire de l'armistice de la guerre de Corée, le camp s'étend pour la première fois sur 3 jours et 2 nuits, avec un nombre record de 53 groupes de musiciens. Alors que la militarisation et la menace de guerre s'intensifient sur la péninsule coréenne, le chant de paix né au village de Gangjeong se transforme en une solidarité plus forte et plus large. Sous le slogan « Chantons, dansons, mettons fin à la guerre ! », des musiciens de genres divers transmettent des messages de paix et d'anti-guerre à travers la musique.",
     "expected_2026": "54 équipes de musiciens confirmées",
     "lineup_count": "{{count}} équipes confirmées",
@@ -292,7 +287,6 @@
   "album": {
     "page_title": "To You in a Distant Place Whose Name I Don't Know - À propos de l’album",
     "page_desc": "Projet d’album 2024 du Camp musical pour la paix de Gangjeong. Un voyage musical de 12 chansons qui mettent fin à la guerre et chantent la paix.",
-    "keywords": "To You in a Distant Place Whose Name I Don't Know, Camp musical pour la paix de Gangjeong, Album, Musique pour la paix",
     "hero_title_1": "To You In A",
     "hero_title_2": "Distant Place",
     "hero_subtitle": "Une lettre de paix envoyée depuis un monde rempli de guerre et de violence. Des vagues de musique lancées depuis le village de Gangjeong par 12 équipes de musiciens.",
@@ -323,11 +317,9 @@
     "all_photos": "Voir toutes les photos du concert",
     "musicians_page_title": "Musiciens participants - To You in a Distant Place Whose Name I Don't Know",
     "musicians_page_desc": "12 équipes de musiciens ayant participé au projet d’album du Camp musical pour la paix de Gangjeong. Des artistes qui chantent pour la paix comme Caru, Kim Dong-san, Nam-su et MoredoSaturday.",
-    "musicians_page_keywords": "Musiciens participants, Participation à l’album, Musiciens pour la paix, Camp musical pour la paix de Gangjeong, Artiste",
     "musicians_hero_subtitle": "12 voix, une paix",
     "tracks_page_title": "Pistes - To You in a Distant Place Whose Name I Don't Know",
     "tracks_page_desc": "Toutes les pistes de l’album du Camp musical pour la paix de Gangjeong. 12 chansons portant des messages de paix et de solidarité.",
-    "tracks_page_keywords": "Pistes, Liste des chansons, Chansons pour la paix, Liste musicale, Camp musical pour la paix de Gangjeong",
     "tracks_hero_subtitle": "To You in a Distant Place Whose Name I Don't Know",
     "image_alt_cover": "Pochette de l’album “To You in a Distant Place Whose Name I Don't Know”",
     "image_alt_concert": "Scène du concert de sortie de l’album {{num}}"

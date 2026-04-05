@@ -45,7 +45,6 @@ const AlbumTracksPage = ({
     <PageLayout
       title={t('album.tracks_page_title')}
       description={t('album.tracks_page_desc')}
-      keywords={t('album.tracks_page_keywords')}
       ogImage="/images-webp/gallery/152.webp"
       background="sky-horizon"
       structuredData={[playlistSchema, getBreadcrumbSchema(breadcrumbs)]}

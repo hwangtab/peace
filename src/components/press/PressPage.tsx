@@ -97,6 +97,7 @@ export default function PressPage({
         datePublished: item.date,
         url: item.url,
         imageUrl: item.imageUrl,
+        publisher: item.publisher,
       }, i18n.language, t)
     ),
   ];
@@ -110,7 +111,6 @@ export default function PressPage({
     <PageLayout
       title={t('press.page_title')}
       description={t('press.page_desc')}
-      keywords={t('press.keywords')}
       ogImage="/images-webp/camps/2023/DSC00610.webp"
       structuredData={structuredData}
       breadcrumbs={breadcrumbs}

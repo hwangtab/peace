@@ -42,7 +42,6 @@ export default function HomePage({ initialGalleryImages }: HomePageProps) {
       <SEOHelmet
         title={t('seo.default.title')}
         description={t('seo.default.description')}
-        keywords={t('seo.default.keywords')}
         structuredData={structuredData}
       />
       <HeroSection imageUrl="/images-webp/camps/2023/DSC00437.webp" />
