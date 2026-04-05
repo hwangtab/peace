@@ -29,7 +29,7 @@ const GalleryPage = ({ initialImages = [] }: GalleryPageProps) => {
       { url: getFullUrl('/images-webp/camps/2023/DSC00437.webp'), caption: t('gallery.page_desc') }
     );
   }
-  const gallerySchema = getImageGallerySchema(schemaImages, i18n.language, t);
+  const gallerySchema = getImageGallerySchema(schemaImages, i18n.language, t, initialImages.length);
   const breadcrumbs = [
     { name: t('nav.home'), url: getFullUrl('/') },
     { name: t('gallery.page_title'), url: getFullUrl('/gallery') },
