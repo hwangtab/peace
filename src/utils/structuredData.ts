@@ -25,6 +25,7 @@ const getDescription = (t: TranslationFn) => t('structured_data.description');
 export const getOrganizationSchema = (_lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": "https://peaceandmusic.net/#organization",
   "name": t ? getProjectName(t) : '',
   "alternateName": "Peace and Music Project",
   "url": "https://peaceandmusic.net",
@@ -53,6 +54,7 @@ export const getOrganizationSchema = (_lang: string = 'ko', t?: TranslationFn) =
 export const getWebSiteSchema = (lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": "https://peaceandmusic.net/#website",
   "name": t ? getProjectName(t) : '',
   "url": "https://peaceandmusic.net",
   "description": t ? getDescription(t) : '',
@@ -73,6 +75,7 @@ export const getWebSiteSchema = (lang: string = 'ko', t?: TranslationFn) => ({
   } as Record<string, string>)[lang] || "en-US",
   "publisher": {
     "@type": "Organization",
+    "@id": "https://peaceandmusic.net/#organization",
     "name": t ? getProjectName(t) : ''
   },
   "speakable": {
@@ -274,6 +277,7 @@ export const getEventSchema = (event: {
     : { "@type": "Organization", "name": t ? getCampName(t) : '' },
   "organizer": {
     "@type": "Organization",
+    "@id": "https://peaceandmusic.net/#organization",
     "name": t ? getCampName(t) : '',
     "url": "https://peaceandmusic.net"
   },
@@ -406,6 +410,7 @@ export const getVideoObjectSchema = (video: {
     "url": `https://www.youtube.com/watch?v=${videoId}`,
     "publisher": {
       "@type": "Organization",
+      "@id": "https://peaceandmusic.net/#organization",
       "name": "강정피스앤뮤직캠프",
       "url": "https://peaceandmusic.net"
     }
