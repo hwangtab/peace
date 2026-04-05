@@ -265,6 +265,10 @@ export const getEventSchema = (event: {
   "image": event.image || "https://peaceandmusic.net/og-image.webp",
   "description": event.description,
   "isAccessibleForFree": true,
+  "about": [
+    { "@type": "Thing", "name": "Peace movement", "sameAs": "https://en.wikipedia.org/wiki/Peace_movement" },
+    { "@type": "Place", "name": "Gangjeong Village", "sameAs": "https://en.wikipedia.org/wiki/Gangjeong" }
+  ],
   "performer": (event.performers && event.performers.length > 0)
     ? event.performers.map(p => ({ "@type": p.type, "name": p.name }))
     : { "@type": "Organization", "name": t ? getCampName(t) : '' },
@@ -292,6 +296,7 @@ export const getProfilePageSchema = (person: {
   jobTitle?: string;
   url?: string;
   sameAs?: string[];
+  genre?: string[];
 }, _lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "ProfilePage",
@@ -301,6 +306,7 @@ export const getProfilePageSchema = (person: {
     "description": person.description,
     ...(person.image ? { "image": person.image } : {}),
     "jobTitle": person.jobTitle || "Musician",
+    ...(person.genre && person.genre.length > 0 ? { "genre": person.genre } : {}),
     "memberOf": {
       "@type": "Organization",
       "name": t ? getCampName(t) : ''
