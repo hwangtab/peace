@@ -153,6 +153,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
                     alt={translatedTitle}
                     width={360}
                     height={509}
+                    sizes="(max-width: 768px) 100vw, 360px"
                     className="w-full h-auto"
                   />
                 </a>
@@ -163,6 +164,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
                     alt={translatedTitle}
                     width={360}
                     height={509}
+                    sizes="(max-width: 768px) 100vw, 360px"
                     className="w-full h-auto"
                   />
                 </div>

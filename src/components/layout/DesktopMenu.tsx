@@ -33,6 +33,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(
         <Link
           href={ROUTES.HOME}
           className={`${getTextColor(isPathActive(ROUTES.HOME, true))} transition-colors duration-300 font-display font-bold relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm`}
+          aria-current={isPathActive(ROUTES.HOME, true) ? 'page' : undefined}
         >
           {t('nav.home')}
           {isPathActive(ROUTES.HOME, true) && (
@@ -65,6 +66,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(
               key={item.path}
               href={item.path}
               className={`${getTextColor(isPathActive(item.path))} transition-colors duration-300 font-display font-bold relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm`}
+              aria-current={isPathActive(item.path) ? 'page' : undefined}
             >
               {t(item.nameKey)}
               {isPathActive(item.path) && (

@@ -36,6 +36,7 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(
                     className={`block py-3 break-words rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${
                       isPathActive(item.path) ? 'text-jeju-ocean font-bold' : 'text-coastal-gray'
                     } font-serif font-bold`}
+                    aria-current={isPathActive(item.path) ? 'page' : undefined}
                     onClick={onClose}
                   >
                     {t(item.nameKey)}
@@ -130,6 +131,7 @@ const MobileDropdown: React.FC<MobileDropdownProps> = React.memo(
                       ? 'text-jeju-ocean bg-ocean-sand/70'
                       : 'text-deep-ocean hover:text-jeju-ocean'
                   }`}
+                  aria-current={isPathActive(item.path) ? 'page' : undefined}
                   onClick={onClose}
                 >
                   {t(item.nameKey)}
