@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import { useTranslation } from 'next-i18next';
 import { Dialog, Transition } from '@headlessui/react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Musician } from '@/types/musician';
 import { extractInstagramUsername } from '@/utils/instagram';
 import InstagramIcon from '../icons/InstagramIcon';
@@ -110,7 +111,7 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                                 key={url}
                                 href={url}
                                 target="_blank"
-                                rel="noopener noreferrer"
+                                rel="noopener noreferrer nofollow"
                                 className="inline-flex items-center px-3 py-1 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors duration-200 max-w-full truncate focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded"
                               >
                                 <InstagramIcon aria-hidden="true" className="w-4 h-4 mr-1" />
@@ -122,7 +123,7 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                             <a
                               href={musician.youtubeUrl}
                               target="_blank"
-                              rel="noopener noreferrer"
+                              rel="noopener noreferrer nofollow"
                               className="inline-flex items-center px-3 py-1 text-sm bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded"
                             >
                               <YouTubeIcon aria-hidden="true" className="w-4 h-4 mr-1" />
@@ -130,6 +131,17 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                             </a>
                           )}
                         </div>
+                      </div>
+                    )}
+                    {musician.trackId !== undefined && (
+                      <div className="mt-6 pt-4 border-t border-gray-100">
+                        <Link
+                          href={`/album/musicians/${musician.id}`}
+                          className="inline-flex items-center text-sm font-medium text-jeju-ocean hover:text-ocean-mist transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded"
+                          onClick={onClose}
+                        >
+                          {t('nav.musician')} →
+                        </Link>
                       </div>
                     )}
                   </div>
