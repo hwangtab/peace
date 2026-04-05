@@ -21,6 +21,7 @@ const NotFoundPage = () => {
         <PageLayout title={t('notFound.title')} description={t('notFound.desc')}>
             <Head>
                 <meta name="robots" content="noindex, nofollow" />
+                <meta name="googlebot" content="noindex, nofollow" />
             </Head>
             <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
                 <h1 className="text-6xl font-serif text-jeju-ocean mb-6">404</h1>

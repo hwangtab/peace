@@ -78,6 +78,7 @@ export default function MusicianDetailContent({
       title={pageTitle}
       description={pageDescription}
       ogImage={musician.imageUrl || '/images-webp/album/albumart.webp'}
+      ogType="profile"
       structuredData={[profileSchema, breadcrumbSchema]}
       breadcrumbs={breadcrumbs}
       disableTopPadding={true}

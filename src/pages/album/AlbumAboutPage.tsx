@@ -220,6 +220,7 @@ const AlbumAboutPage = ({
       title={t('album.page_title')}
       description={t('album.page_desc')}
       ogImage="/images-webp/album/albumart.webp"
+      ogType="music.album"
       background="jeju-ocean"
       structuredData={[albumSchema, getBreadcrumbSchema(breadcrumbs)]}
       breadcrumbs={breadcrumbs}
