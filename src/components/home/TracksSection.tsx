@@ -114,6 +114,11 @@ const TracksSection: React.FC<TracksSectionProps> = React.memo(
           <Button href={config.smartstoreUrl} variant="primary" size="lg" external>
             {t('home.tracks.buy_album')}
           </Button>
+          {enableSectionWrapper && (
+            <Button to="/album/tracks" variant="outline" size="sm" className="ml-4">
+              {t('nav.track')} →
+            </Button>
+          )}
         </motion.div>
       </div>
     );
