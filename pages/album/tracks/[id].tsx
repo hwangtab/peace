@@ -49,7 +49,6 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
     <PageLayout
       title={`${track.title} - ${track.artist} | ${t('app.title')}`}
       description={(track.description || '').slice(0, 160)}
-      keywords={`${track.title}, ${track.artist}, ${t('app.title')}, lyrics`}
       ogImage={track.imageUrl || undefined}
       structuredData={[recordingSchema, getBreadcrumbSchema(breadcrumbs)]}
       breadcrumbs={breadcrumbs}

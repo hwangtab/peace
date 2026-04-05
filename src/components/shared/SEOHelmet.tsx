@@ -11,7 +11,6 @@ const LOCALES = nextI18NextConfig.i18n.locales;
 export interface SEOHelmetProps {
     title?: string;
     description?: string;
-    keywords?: string;
     ogImage?: string;
     ogType?: string;
     canonicalUrl?: string;
@@ -34,26 +33,9 @@ const OG_LOCALE_MAP: Record<string, string> = {
     id: 'id_ID',
 };
 
-const LANGUAGE_NAME_MAP: Record<string, string> = {
-    ko: 'Korean',
-    en: 'English',
-    es: 'Spanish',
-    fr: 'French',
-    de: 'German',
-    pt: 'Portuguese',
-    ru: 'Russian',
-    ar: 'Arabic',
-    ja: 'Japanese',
-    'zh-Hans': 'Chinese (Simplified)',
-    'zh-Hant': 'Chinese (Traditional)',
-    hi: 'Hindi',
-    id: 'Indonesian',
-};
-
 const SEOHelmet: React.FC<SEOHelmetProps> = ({
     title,
     description,
-    keywords,
     ogImage = getFullUrl(config.ogImage),
     ogType = "website",
     canonicalUrl,
@@ -64,7 +46,6 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
     const locale = router.locale || i18n.language || DEFAULT_LOCALE;
     const finalTitle = title || t('seo.default.title');
     const finalDescription = description || t('seo.default.description');
-    const finalKeywords = keywords || t('seo.default.keywords');
     const asPath = (router.asPath || '/').split('?')[0] || '/';
     const pathWithoutLocale = LOCALES.some((loc) => asPath === `/${loc}` || asPath.startsWith(`/${loc}/`))
         ? asPath.replace(new RegExp(`^/(${LOCALES.join('|')})`), '') || '/'
@@ -81,7 +62,6 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
         : [];
 
     const ogLocale = OG_LOCALE_MAP[locale] || locale.replace('-', '_');
-    const languageName = LANGUAGE_NAME_MAP[locale] || locale;
 
     const alternateLinks = LOCALES.map((loc) => ({
         locale: loc,
@@ -93,7 +73,6 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
             {/* 기본 메타 태그 */}
             <title>{finalTitle}</title>
             <meta name="description" content={finalDescription} />
-            <meta name="keywords" content={finalKeywords} />
             <meta name="author" content={t('nav.logo')} />
 
             {/* Canonical URL */}
@@ -104,12 +83,9 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
             <link rel="alternate" hrefLang="x-default" href={getFullUrl(pathWithoutLocale)} />
 
             {/* 로봇 메타 태그 */}
-            <meta name="robots" content="index, follow" />
-            <meta name="googlebot" content="index, follow" />
+            <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+            <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
             <meta name="rating" content="general" />
-
-            {/* 언어 */}
-            <meta name="language" content={languageName} />
 
             {/* Open Graph / Facebook */}
             <meta property="og:type" content={ogType} />
@@ -118,7 +94,7 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
             <meta property="og:title" content={finalTitle} />
             <meta property="og:description" content={finalDescription} />
             <meta property="og:image" content={fullOgImage} />
-            <meta property="og:image:alt" content={finalTitle} />
+            <meta property="og:image:alt" content={finalDescription} />
             <meta property="og:image:width" content="1200" />
             <meta property="og:image:height" content="630" />
             <meta property="og:locale" content={ogLocale} />
@@ -132,7 +108,7 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
             <meta name="twitter:title" content={finalTitle} />
             <meta name="twitter:description" content={finalDescription} />
             <meta name="twitter:image" content={fullOgImage} />
-            <meta name="twitter:image:alt" content={finalTitle} />
+            <meta name="twitter:image:alt" content={finalDescription} />
 
             {/* Structured Data (JSON-LD) */}
             {structuredDataArray.map((data, index) => (

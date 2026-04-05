@@ -35,7 +35,6 @@
   "gallery": {
     "page_title": "Galeri | Kemah Musik Perdamaian Gangjeong",
     "page_desc": "Momen-momen kami bernyanyi untuk perdamaian. Jelajahi foto-foto hidup dari Gangjeong Peace Music Camp.",
-    "keywords": "Galeri, Album foto, Foto acara, Foto kamp perdamaian, Desa Gangjeong",
     "seo_keywords": "foto galeri",
     "hero_title": "Galeri",
     "hero_subtitle": "Perdamaian yang ditemukan di sana",
@@ -183,14 +182,12 @@
   "seo": {
     "default": {
       "title": "Kemah Musik Perdamaian Gangjeong | Bernyanyi, menari, akhiri perang",
-      "description": "Proyek musik untuk perdamaian yang dimulai dari Desa Gangjeong, Jeju. Festival musik perdamaian anti-perang yang diadakan di Taman Olahraga Gangjeong pada 5–7 Juni 2026. Kita bernyanyi bersama demi perdamaian di wilayah konflik dunia.",
-      "keywords": "Kemah Musik Perdamaian Gangjeong, Festival Perdamaian, Festival Jeju, Kemah Musik, Perdamaian anti-perang, Desa Gangjeong, Konser 2026, Konser band indie, Gerakan perdamaian, Konser Jeju"
+      "description": "Proyek musik untuk perdamaian yang dimulai dari Desa Gangjeong, Jeju. Festival musik perdamaian anti-perang yang diadakan di Taman Olahraga Gangjeong pada 5–7 Juni 2026. Kita bernyanyi bersama demi perdamaian di wilayah konflik dunia."
     }
   },
   "press": {
     "page_title": "Pers | To You in a Distant Place Whose Name I Don't Know",
     "page_desc": "Kisah kami bernyanyi untuk perdamaian. Lihat liputan pers dan artikel tentang proyek 'To You in a Distant Place Whose Name I Don't Know'.",
-    "keywords": "Pers, Artikel, Berita, Proyek perdamaian",
     "hero_title": "Pers",
     "hero_subtitle": "Kisah kami bernyanyi untuk perdamaian",
     "breadcrumb_home": "Beranda",
@@ -199,7 +196,6 @@
   "videos": {
     "page_title": "Video - Kemah Musik Perdamaian Gangjeong",
     "page_desc": "Koleksi video penampilan Gangjeong Peace Music Camp. Temui video penampilan musisi yang bernyanyi untuk perdamaian.",
-    "keywords": "Video penampilan, Gangjeong Peace Music Camp, Konser perdamaian, Penampilan musisi, Video YouTube",
     "hero_title": "Video",
     "hero_subtitle": "Momen bernyanyi untuk perdamaian",
     "all_videos": "Lihat semua video"
@@ -221,7 +217,6 @@
     "label_participants": "Peserta",
     "date_2026": "5 Juni (Jum) – 7 Juni (Min), 2026",
     "venue_2026": "Taman Olahraga Gangjeong",
-    "keywords_base": "Desa Gangjeong, Musik perdamaian, Gerakan anti-perang",
     "description_2026": "Kemah Musik Perdamaian Gangjeong ke-3 akan diselenggarakan dari 5 (Jumat) hingga 7 (Minggu) Juni 2026 di Taman Olahraga Gangjeong, Seogwipo, Jeju. Memperingati 73 tahun gencatan senjata Perang Korea, kemah ini untuk pertama kalinya diperluas menjadi format 3 hari 2 malam dengan rekor 53 kelompok musisi. Di tengah meningkatnya militerisasi dan ancaman perang di Semenanjung Korea, nyanyian perdamaian yang lahir di Desa Gangjeong berkembang menjadi solidaritas yang lebih kuat dan luas. Di bawah slogan \"Mari bernyanyi, menari, dan akhiri perang!\", musisi dari berbagai genre menyampaikan pesan perdamaian dan anti-perang melalui musik.",
     "expected_2026": "54 tim musisi telah dikonfirmasi",
     "lineup_count": "{{count}} tim dikonfirmasi",
@@ -292,7 +287,6 @@
   "album": {
     "page_title": "To You in a Distant Place Whose Name I Don't Know - Tentang Album",
     "page_desc": "Proyek album 2024 dari Gangjeong Peace Music Camp. Perjalanan musik 12 lagu yang mengakhiri perang dan bernyanyi untuk perdamaian.",
-    "keywords": "To You in a Distant Place Whose Name I Don't Know, Gangjeong Peace Music Camp, Album, Musik perdamaian",
     "hero_title_1": "To You In A",
     "hero_title_2": "Distant Place",
     "hero_subtitle": "Surat perdamaian dari dunia yang dipenuhi perang dan kekerasan. Gelombang musik yang diluncurkan dari Desa Gangjeong oleh 12 tim musisi.",
@@ -323,11 +317,9 @@
     "all_photos": "Lihat semua foto konser",
     "musicians_page_title": "Musisi yang berpartisipasi - To You in a Distant Place Whose Name I Don't Know",
     "musicians_page_desc": "12 tim musisi yang berpartisipasi dalam proyek album Gangjeong Peace Music Camp. Artis yang bernyanyi untuk perdamaian seperti Caru, Kim Dongsan, Namsu, dan MoredoSaturday.",
-    "musicians_page_keywords": "Musisi yang berpartisipasi, Partisipasi album, Musisi perdamaian, Gangjeong Peace Music Camp, Artis",
     "musicians_hero_subtitle": "12 suara, satu perdamaian",
     "tracks_page_title": "Track - To You in a Distant Place Whose Name I Don't Know",
     "tracks_page_desc": "Semua track dari album Gangjeong Peace Music Camp. 12 lagu dengan pesan perdamaian dan solidaritas.",
-    "tracks_page_keywords": "Track, Daftar track, Lagu perdamaian, Daftar musik, Gangjeong Peace Music Camp",
     "tracks_hero_subtitle": "To You in a Distant Place Whose Name I Don't Know",
     "image_alt_cover": "Sampul album 'To You in a Distant Place Whose Name I Don't Know'",
     "image_alt_concert": "Adegan konser rilis album {{num}}"

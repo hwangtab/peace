@@ -103,7 +103,6 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
     <PageLayout
       title={`${t('camp.ordinal', { num: ordinalLabel })} ${t('app.title')} (2026)`}
       description={translatedDescription}
-      keywords={`${t('app.title')}, ${t('camp.ordinal', { num: ordinalLabel })}, 2026, ${t('camp.keywords_base')}`}
       ogImage={camp2026?.images?.[0] || '/images-webp/camps/2023/IMG_2064.webp'}
       structuredData={[eventSchema, getBreadcrumbSchema(breadcrumbs), getHowToSchema(i18n.language, t)]}
       breadcrumbs={breadcrumbs}

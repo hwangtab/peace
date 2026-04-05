@@ -149,6 +149,7 @@ export const getNewsArticleSchema = (article: {
   datePublished: string;
   url: string;
   imageUrl?: string;
+  publisher?: string;
 }, _lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "NewsArticle",
@@ -159,7 +160,7 @@ export const getNewsArticleSchema = (article: {
   "image": article.imageUrl || "https://peaceandmusic.net/og-image.webp",
   "author": {
     "@type": "Organization",
-    "name": t ? getProjectName(t) : ''
+    "name": article.publisher || (t ? getProjectName(t) : '')
   },
   "publisher": {
     "@type": "Organization",
@@ -176,12 +177,14 @@ export const getCollectionPageSchema = (collection: {
   name: string;
   description: string;
   url: string;
+  dateModified?: string;
 }) => ({
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "name": collection.name,
   "description": collection.description,
-  "url": collection.url
+  "url": collection.url,
+  ...(collection.dateModified ? { "dateModified": collection.dateModified } : {})
 });
 
 // Event Schema - 공연/캠프 정보
@@ -269,6 +272,8 @@ export const getWebPageSchema = (page: {
   name: string;
   description: string;
   url: string;
+  datePublished?: string;
+  dateModified?: string;
 }) => ({
   "@context": "https://schema.org",
   "@type": "WebPage",
@@ -282,7 +287,9 @@ export const getWebPageSchema = (page: {
   "mentions": [
     { "@type": "Thing", "name": "Jeju Naval Base", "sameAs": "https://en.wikipedia.org/wiki/Jeju_Naval_Base" },
     { "@type": "Event", "name": "Anti-war movement", "sameAs": "https://en.wikipedia.org/wiki/Anti-war_movement" }
-  ]
+  ],
+  ...(page.datePublished ? { "datePublished": page.datePublished } : {}),
+  ...(page.dateModified ? { "dateModified": page.dateModified } : {})
 });
 
 // HowTo Schema - 캠프 참여 방법 (AEO 최적화)

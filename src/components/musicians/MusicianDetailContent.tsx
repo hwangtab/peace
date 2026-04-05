@@ -53,12 +53,6 @@ export default function MusicianDetailContent({
     ? `${musician.shortDescription} ${t('camp.seo_musician_suffix')}`
     : musician.shortDescription;
 
-  const baseKeywords = `${musician.name}, ${musician.genre.join(', ')}, ${t('app.title')}`;
-  const pageKeywords =
-    isCampPage && latestCampYear
-      ? `${baseKeywords}, ${t(`camp.title_${latestCampYear}`)}, ${latestCampYear}, ${t('camp.keywords_base')}`
-      : baseKeywords;
-
   const profileSchema = getProfilePageSchema(
     {
       name: musician.name,
@@ -76,7 +70,6 @@ export default function MusicianDetailContent({
     <PageLayout
       title={pageTitle}
       description={pageDescription}
-      keywords={pageKeywords}
       ogImage={musician.imageUrl || undefined}
       structuredData={[profileSchema, breadcrumbSchema]}
       breadcrumbs={breadcrumbs}
