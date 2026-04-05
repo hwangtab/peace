@@ -113,7 +113,7 @@ const Button = ({
                     <a
                         href={resolvedHref}
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel="noopener noreferrer nofollow"
                         className={combinedClasses}
                         onClick={handleClick}
                         aria-label={ariaLabel}
