@@ -178,11 +178,12 @@ export const getMusicPlaylistSchema = (tracks: Array<{ name: string; url?: strin
 });
 
 // ImageGallery Schema - 갤러리
-export const getImageGallerySchema = (images: Array<{ url: string; caption?: string }>, _lang: string = 'ko', t?: TranslationFn) => ({
+export const getImageGallerySchema = (images: Array<{ url: string; caption?: string }>, _lang: string = 'ko', t?: TranslationFn, totalCount?: number) => ({
   "@context": "https://schema.org",
   "@type": "ImageGallery",
   "name": t ? t('structured_data.gallery_name') : '',
   "description": t ? t('structured_data.gallery_desc') : '',
+  "numberOfItems": totalCount ?? images.length,
   "image": images.map(img => ({
     "@type": "ImageObject",
     "url": img.url,
