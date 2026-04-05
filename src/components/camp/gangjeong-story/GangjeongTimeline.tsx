@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
 
 interface TimelineNode {
   year: string;
@@ -8,6 +9,7 @@ interface TimelineNode {
   descKey: string;
   color: string;
   badge?: string;
+  href?: string;
 }
 
 const nodes: TimelineNode[] = [
@@ -17,11 +19,11 @@ const nodes: TimelineNode[] = [
   { year: '2015', titleKey: 'gangjeong_story.timeline_2015_title', descKey: 'gangjeong_story.timeline_2015_desc', color: 'bg-golden-sun' },
   { year: '2016', titleKey: 'gangjeong_story.timeline_2016_title', descKey: 'gangjeong_story.timeline_2016_desc', color: 'bg-coastal-gray' },
   { year: '2018', titleKey: 'gangjeong_story.timeline_2018_title', descKey: 'gangjeong_story.timeline_2018_desc', color: 'bg-sunset-coral' },
-  { year: '2023', titleKey: 'gangjeong_story.timeline_2023_title', descKey: 'gangjeong_story.timeline_2023_desc', color: 'bg-jeju-ocean' },
+  { year: '2023', titleKey: 'gangjeong_story.timeline_2023_title', descKey: 'gangjeong_story.timeline_2023_desc', color: 'bg-jeju-ocean', href: '/camps/2023' },
   { year: '2024', titleKey: 'gangjeong_story.timeline_2024_title', descKey: 'gangjeong_story.timeline_2024_desc', color: 'bg-golden-sun' },
   { year: '2025', titleKey: 'gangjeong_story.timeline_2025_title', descKey: 'gangjeong_story.timeline_2025_desc', color: 'bg-sunset-coral' },
-  { year: '2025', titleKey: 'gangjeong_story.timeline_2025b_title', descKey: 'gangjeong_story.timeline_2025b_desc', color: 'bg-jeju-ocean' },
-  { year: '2026', titleKey: 'gangjeong_story.timeline_2026_title', descKey: 'gangjeong_story.timeline_2026_desc', color: 'bg-golden-sun', badge: 'gangjeong_story.timeline_2026_badge' },
+  { year: '2025', titleKey: 'gangjeong_story.timeline_2025b_title', descKey: 'gangjeong_story.timeline_2025b_desc', color: 'bg-jeju-ocean', href: '/camps/2025' },
+  { year: '2026', titleKey: 'gangjeong_story.timeline_2026_title', descKey: 'gangjeong_story.timeline_2026_desc', color: 'bg-golden-sun', badge: 'gangjeong_story.timeline_2026_badge', href: '/camps/2026' },
 ];
 
 const listVariants = {
@@ -101,7 +103,9 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
                         </span>
                       )}
                     </div>
-                    <h4 className="text-sm font-bold text-gray-900 break-words">{t(node.titleKey)}</h4>
+                    <h4 className="text-sm font-bold text-gray-900 break-words">
+                      {node.href ? <Link href={node.href} className="hover:text-jeju-ocean transition-colors">{t(node.titleKey)}</Link> : t(node.titleKey)}
+                    </h4>
                     <p className="text-xs text-gray-500 mt-0.5 break-words">{t(node.descKey)}</p>
                   </div>
                 </div>
@@ -122,7 +126,9 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
                             {node.year}
                           </span>
                         </div>
-                        <h4 className="text-base font-bold text-gray-900 break-words">{t(node.titleKey)}</h4>
+                        <h4 className="text-base font-bold text-gray-900 break-words">
+                          {node.href ? <Link href={node.href} className="hover:text-jeju-ocean transition-colors">{t(node.titleKey)}</Link> : t(node.titleKey)}
+                        </h4>
                         <p className="text-sm text-gray-500 mt-0.5 break-words">{t(node.descKey)}</p>
                       </div>
                     )}
@@ -147,7 +153,9 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
                             </span>
                           )}
                         </div>
-                        <h4 className="text-base font-bold text-gray-900 break-words">{t(node.titleKey)}</h4>
+                        <h4 className="text-base font-bold text-gray-900 break-words">
+                          {node.href ? <Link href={node.href} className="hover:text-jeju-ocean transition-colors">{t(node.titleKey)}</Link> : t(node.titleKey)}
+                        </h4>
                         <p className="text-sm text-gray-500 mt-0.5 break-words">{t(node.descKey)}</p>
                       </div>
                     )}
