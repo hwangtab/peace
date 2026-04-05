@@ -87,6 +87,12 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
             <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
             <meta name="rating" content="general" />
 
+            {/* 지역 SEO (강정마을, 제주) */}
+            <meta name="geo.region" content="KR-49" />
+            <meta name="geo.placename" content="Gangjeong Village, Seogwipo, Jeju" />
+            <meta name="geo.position" content="33.2247;126.5664" />
+            <meta name="ICBM" content="33.2247, 126.5664" />
+
             {/* Open Graph / Facebook */}
             <meta property="og:type" content={ogType} />
             <meta property="og:url" content={fullCanonicalUrl} />

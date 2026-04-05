@@ -172,7 +172,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
 
       <CampGallery camp={camp} />
 
-      {/* Next Camp Banner */}
+      {/* Next Camp Banner — 현재 캠프가 최신이 아니고 fundingUrl이 있을 때만 표시 */}
       {(() => {
         const latestCamp = campList[campList.length - 1];
         return latestCamp && camp.id !== latestCamp.id && latestCamp.fundingUrl ? (
@@ -201,6 +201,28 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
             </div>
           </div>
         ) : null;
+      })()}
+
+      {/* 다른 연도 캠프 내비게이션 */}
+      {(() => {
+        const otherCamps = campList.filter((c) => c.id !== camp.id);
+        if (otherCamps.length === 0) return null;
+        return (
+          <div className="bg-ocean-sand py-8">
+            <div className="container mx-auto px-4 text-center">
+              <p className="text-sm font-medium text-coastal-gray uppercase tracking-wider mb-4">
+                {t('camp.other_years')}
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                {otherCamps.map((c) => (
+                  <Button key={c.id} to={`/camps/${c.year}`} variant="outline" size="sm" shape="rounded">
+                    {c.year}
+                  </Button>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
       })()}
     </PageLayout>
   );
