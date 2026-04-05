@@ -38,7 +38,12 @@ export default function MusicianDescriptionSection({
                 &larr; {backLabel}
               </Button>
               {musician.trackTitle && (
-                <Button to="/album/tracks" variant="gold" size="sm" shape="rounded">
+                <Button
+                  to={musician.trackId ? `/album/tracks/${musician.trackId}` : '/album/tracks'}
+                  variant="gold"
+                  size="sm"
+                  shape="rounded"
+                >
                   {t('common.album_track_button')} &rarr;
                 </Button>
               )}

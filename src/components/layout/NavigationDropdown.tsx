@@ -120,6 +120,7 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(
                       ? 'bg-ocean-sand text-jeju-ocean font-bold'
                       : 'text-deep-ocean hover:bg-ocean-sand/50'
                   } transition-colors duration-200 font-serif font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-jeju-ocean`}
+                  aria-current={isRouteActive(currentPath, item.path, { locale: router.locale }) ? 'page' : undefined}
                   onClick={() => setOpen(false)}
                 >
                   {t(item.nameKey)}
