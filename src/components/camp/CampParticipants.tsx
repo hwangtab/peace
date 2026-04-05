@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { Participant } from '@/types/camp';
 import MusicianModal from '../musicians/MusicianModal';
 import { Musician } from '@/types/musician';
@@ -43,6 +44,13 @@ const CampParticipants: React.FC<CampParticipantsProps> = ({ participants, music
                         ? (participant.musicianId ?? participant.name)
                         : participant;
 
+                    const musician = clickable
+                        ? musicians.find(m => typeof participant === 'object' && m.id === participant.musicianId)
+                        : undefined;
+                    const albumHref = musician?.trackId !== undefined
+                        ? `/album/musicians/${musician.id}`
+                        : undefined;
+
                     return (
                         <motion.div
                             key={stableKey}
@@ -58,7 +66,11 @@ const CampParticipants: React.FC<CampParticipantsProps> = ({ participants, music
                         >
                             <span className={`inline-block w-2 h-2 rounded-full transition-colors duration-200 mt-1.5 ${clickable ? 'bg-jeju-ocean group-hover:bg-ocean-mist' : 'bg-jeju-ocean'}`} />
                             <h3 className={`typo-h3 !text-lg transition-colors duration-200 ${clickable ? 'text-jeju-ocean group-hover:text-ocean-mist underline underline-offset-4 decoration-jeju-ocean/30' : 'text-coastal-gray'}`}>
-                                {name}
+                                {albumHref ? (
+                                    <Link href={albumHref} onClick={(e) => e.preventDefault()}>
+                                        {name}
+                                    </Link>
+                                ) : name}
                             </h3>
                         </motion.div>
                     );
