@@ -88,7 +88,9 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
                   url: selectedImage.url,
                   alt:
                     selectedImage.description ||
-                    `${selectedImage.eventYear || ''}${t('gallery.image_alt_fallback')}`,
+                    (selectedImage.eventType === 'camp'
+                      ? t('gallery.alt_camp', { year: selectedImage.eventYear })
+                      : t('gallery.alt_album', { year: selectedImage.eventYear })),
                 }
               : null
           }

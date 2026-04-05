@@ -7,6 +7,16 @@ export interface StructuredDataProps {
 
 type TranslationFn = (key: string) => string;
 
+// "M:SS" 또는 "MM:SS" 형식을 ISO 8601 duration 형식("PTnMnS")으로 변환
+const durationToISO8601 = (duration: string): string => {
+  const parts = duration.split(':');
+  if (parts.length !== 2) return duration;
+  const minutes = parseInt(parts[0] ?? '', 10);
+  const seconds = parseInt(parts[1] ?? '', 10);
+  if (isNaN(minutes) || isNaN(seconds)) return duration;
+  return `PT${minutes}M${seconds}S`;
+};
+
 const getProjectName = (t: TranslationFn) => t('structured_data.project_name');
 const getCampName = (t: TranslationFn) => t('structured_data.camp_name');
 const getDescription = (t: TranslationFn) => t('structured_data.description');
@@ -119,7 +129,7 @@ export const getMusicRecordingSchema = (track: {
   "@type": "MusicRecording",
   "name": track.name,
   "description": track.description || "",
-  ...(track.duration ? { "duration": track.duration } : {}),
+  ...(track.duration ? { "duration": durationToISO8601(track.duration) } : {}),
   "url": track.url || "https://peaceandmusic.net/tracks",
   "byArtist": {
     "@type": "MusicGroup",
@@ -357,7 +367,7 @@ export const getMusicAlbumSchema = (album: {
   "track": album.track?.map(t => ({
     "@type": "MusicRecording",
     "name": t.name,
-    "duration": t.duration,
+    ...(t.duration ? { "duration": durationToISO8601(t.duration) } : {}),
     "url": t.url
   }))
 });

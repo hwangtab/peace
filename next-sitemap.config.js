@@ -253,6 +253,13 @@ module.exports = {
     if (normalizedPath.startsWith('/camps/2026/musicians/')) {
       return { loc: path, changefreq: 'monthly', priority: 0.7, lastmod, alternateRefs };
     }
+    // Historical camp musician pages — evergreen content
+    if (
+      normalizedPath.startsWith('/camps/2023/musicians/') ||
+      normalizedPath.startsWith('/camps/2025/musicians/')
+    ) {
+      return { loc: path, changefreq: 'yearly', priority: 0.6, lastmod, alternateRefs };
+    }
     // Home page
     if (normalizedPath === '/') {
       return { loc: path, changefreq: 'weekly', priority: 1.0, lastmod, alternateRefs };
