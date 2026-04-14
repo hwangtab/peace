@@ -184,11 +184,11 @@
   "seo": {
     "default": {
       "title": "Campamento de Música por la Paz de Gangjeong | Canta, baila y termina la guerra",
-      "description": "Un proyecto musical por la paz que comienza en el pueblo de Gangjeong, Jeju. Festival musical pacifista celebrado en el Parque Deportivo de Gangjeong del 5 al 7 de junio de 2026. Cantamos juntos deseando la paz en zonas de conflicto de todo el mundo."
+      "description": "Proyecto musical por la paz desde Gangjeong, Jeju. Festival pacifista en el Parque de Gangjeong, 5–7 junio 2026. Cantamos por la paz en zonas de conflicto."
     }
   },
   "press": {
-    "page_title": "Prensa | To You in a Distant Place Whose Name I Don't Know",
+    "page_title": "Prensa | Campamento de Música por la Paz de Gangjeong",
     "page_desc": "Nuestra historia cantando por la paz. Consulta la cobertura de prensa y los artículos sobre el proyecto 'To You in a Distant Place Whose Name I Don't Know'.",
     "hero_title": "Prensa",
     "hero_subtitle": "Nuestra historia cantando por la paz",
@@ -196,7 +196,7 @@
     "breadcrumb_press": "Prensa"
   },
   "videos": {
-    "page_title": "Videos - Campamento de Música por la Paz de Gangjeong",
+    "page_title": "Videos | Campamento de Música por la Paz de Gangjeong",
     "page_desc": "Colección de videos de actuaciones del Campamento de Música por la Paz de Gangjeong. Conoce los videos de músicos que cantan por la paz.",
     "hero_title": "Videos",
     "hero_subtitle": "Momentos cantando por la paz",
@@ -289,7 +289,7 @@
     "hook_image_alt": "Paisaje del Campamento de Música por la Paz en Gangjeong, Jeju"
   },
   "album": {
-    "page_title": "To You in a Distant Place Whose Name I Don't Know - Sobre el álbum",
+    "page_title": "To You in a Distant Place Whose Name I Don't Know | Sobre el álbum",
     "page_desc": "Proyecto de álbum 2024 del Campamento de Música por la Paz de Gangjeong. Un viaje musical de 12 canciones que terminan la guerra y cantan por la paz.",
     "hero_title_1": "To You In A",
     "hero_title_2": "Distant Place",
@@ -319,10 +319,10 @@
     "release_official": "LANZAMIENTO OFICIAL 2024",
     "album_title_full": "To You in a Distant Place Whose Name I Don't Know",
     "all_photos": "Ver todas las fotos del concierto",
-    "musicians_page_title": "Músicos participantes - To You in a Distant Place Whose Name I Don't Know",
+    "musicians_page_title": "Músicos participantes | To You in a Distant Place Whose Name I Don't Know",
     "musicians_page_desc": "12 equipos de músicos que participaron en el proyecto del álbum del Campamento de Música por la Paz de Gangjeong. Artistas que cantan por la paz como Caru, Kim Dong-san, Nam-su y MoredoSaturday.",
     "musicians_hero_subtitle": "12 voces, una paz",
-    "tracks_page_title": "Pistas - To You in a Distant Place Whose Name I Don't Know",
+    "tracks_page_title": "Pistas | To You in a Distant Place Whose Name I Don't Know",
     "tracks_page_desc": "Todas las pistas del álbum del Campamento de Música por la Paz de Gangjeong. 12 canciones con mensajes de paz y solidaridad.",
     "tracks_hero_subtitle": "To You in a Distant Place Whose Name I Don't Know",
     "image_alt_cover": "Portada del álbum 'To You in a Distant Place Whose Name I Don't Know'",

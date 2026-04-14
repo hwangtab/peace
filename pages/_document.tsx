@@ -18,13 +18,21 @@ class MyDocument extends Document {
           {/* 폰트 CDN preconnect */}
           <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
 
-          {/* Body 폰트 preload (FOUT 방지) */}
+          {/* Google Analytics preconnect (GA4 렌더링 차단 방지) */}
+          <link rel="preconnect" href="https://www.googletagmanager.com" />
+          <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+          <link rel="preconnect" href="https://www.google-analytics.com" />
+          <link rel="dns-prefetch" href="//www.google-analytics.com" />
+
+          {/* Body 폰트 preload (FOUT 방지) — fetchpriority로 LCP 개선 */}
           <link
             rel="preload"
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
             href="/fonts/GmarketSansLight.woff2"
+            // @ts-expect-error — fetchpriority is a valid HTML attribute (React 18.3+)
+            fetchpriority="high"
           />
 
           {/* PartialSans (h1 hero 폰트) preload — CLS 방지 */}
@@ -34,6 +42,8 @@ class MyDocument extends Document {
             type="font/woff2"
             crossOrigin="anonymous"
             href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/PartialSansKR-Regular.woff2"
+            // @ts-expect-error — fetchpriority is a valid HTML attribute (React 18.3+)
+            fetchpriority="high"
           />
           {/* KkuBulLim (h2 stone 폰트) preload — CLS 방지 */}
           <link
@@ -56,11 +66,16 @@ class MyDocument extends Document {
           {/* 테마 & 색상 스킴 */}
           <meta name="theme-color" content="#0A5F8A" />
           <meta name="color-scheme" content="light" />
+          <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
+          <meta name="application-name" content="강정피스앤뮤직캠프" />
 
           {/* Favicon & PWA */}
           <link rel="icon" href="/favicon.ico" sizes="any" />
           <link rel="apple-touch-icon" href="/logo192.png" />
           <link rel="manifest" href="/manifest.json" />
+
+          {/* Sitemap 광고 (Googlebot 등이 HTML에서 직접 발견 가능) */}
+          <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
           {/* Naver Search Console 인증 */}
           <meta name="naver-site-verification" content="68980c84460ca49f3268a96ad5832da513b55bca" />

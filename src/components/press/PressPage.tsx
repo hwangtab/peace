@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import { getPressItems, normalizePressItems } from '@/api/press';
 import { PressItem } from '@/types/press';
-import { getBreadcrumbSchema, getNewsArticleSchema } from '@/utils/structuredData';
+import { getBreadcrumbSchema, getNewsArticleSchema, getWebPageSchema } from '@/utils/structuredData';
 import Button from '@/components/common/Button';
 import { getCamps } from '@/data/camps';
 import { FilterId, filterByEvent } from '@/utils/filtering';
@@ -90,6 +90,11 @@ export default function PressPage({
 
   const structuredData = [
     getBreadcrumbSchema(breadcrumbs),
+    getWebPageSchema({
+      name: t('press.page_title'),
+      description: t('press.page_desc'),
+      url: getFullUrl('/press'),
+    }),
     ...pressItems.slice(0, 20).map(item =>
       getNewsArticleSchema({
         headline: item.title,
@@ -112,6 +117,7 @@ export default function PressPage({
       title={t('press.page_title')}
       description={t('press.page_desc')}
       ogImage="/images-webp/camps/2023/DSC00610.webp"
+      ogImageAlt={t('press.page_title')}
       structuredData={structuredData}
       breadcrumbs={breadcrumbs}
       background="ocean-sand"

@@ -7,7 +7,7 @@ import nextI18NextConfig from '../../../next-i18next.config';
 import { Track } from '@/types/track';
 import { Musician } from '@/types/musician';
 import { loadLocalizedData } from '@/utils/dataLoader';
-import { getMusicRecordingSchema, getBreadcrumbSchema } from '@/utils/structuredData';
+import { getMusicRecordingSchema, getBreadcrumbSchema, getWebPageSchema } from '@/utils/structuredData';
 import PageLayout from '@/components/layout/PageLayout';
 import { getFullUrl } from '@/config/env';
 import { buildTrackMusicianRelation } from '@/utils/trackMusician';
@@ -62,11 +62,17 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
       title={`${track.title} - ${track.artist} | ${t('app.title')}`}
       description={(track.description || '').slice(0, 160)}
       ogImage={track.imageUrl || '/images-webp/album/albumart.webp'}
+      ogImageAlt={track.title}
       ogType="music.song"
       ogAudio={getFullUrl(track.audioUrl)}
       ogMusicAlbum={getFullUrl('/album/about')}
       ogMusicMusician={musician ? getFullUrl(`/album/musicians/${musician.id}`) : undefined}
-      structuredData={[recordingSchema, getBreadcrumbSchema(breadcrumbs)]}
+      structuredData={[recordingSchema, getBreadcrumbSchema(breadcrumbs), getWebPageSchema({
+        name: `${track.title} | ${t('app.title')}`,
+        description: (track.description || '').slice(0, 160),
+        url: getFullUrl(`/album/tracks/${track.id}`),
+        datePublished: '2024-10-12',
+      })]}
       breadcrumbs={breadcrumbs}
       disableTopPadding={true}
     >
