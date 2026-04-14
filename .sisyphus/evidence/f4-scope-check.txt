@@ -1,0 +1,51 @@
+git diff --name-only HEAD
+pages/camps/2026/musicians/[id].tsx
+public/data/musicians.json
+public/locales/en/translation.json
+public/locales/ko/translation.json
+src/data/musicians.ts
+
+git status --short
+ M pages/camps/2026/musicians/[id].tsx
+ M public/data/musicians.json
+ M public/locales/en/translation.json
+ M public/locales/ko/translation.json
+ M src/data/musicians.ts
+?? .sisyphus/boulder.json
+?? .sisyphus/evidence/
+?? .sisyphus/notepads/
+?? .sisyphus/plans/
+?? "docs/제3회 강정피스아트뮤직캠프 참여뮤지션 체크리스트 (1).pdf"
+?? public/images-webp/musicians/17.webp
+?? public/images-webp/musicians/20.webp
+?? public/images-webp/musicians/25.webp
+?? public/images-webp/musicians/30.webp
+?? public/images-webp/musicians/31.webp
+?? public/images-webp/musicians/32.webp
+?? public/images-webp/musicians/33.webp
+?? public/images-webp/musicians/34.webp
+?? public/images-webp/musicians/36.webp
+?? public/images-webp/musicians/39.webp
+?? public/images-webp/musicians/42.webp
+?? public/images-webp/musicians/44.webp
+?? public/images-webp/musicians/45.webp
+?? public/images-webp/musicians/48.webp
+?? public/images-webp/musicians/50.webp
+?? public/images-webp/musicians/52.webp
+?? public/images-webp/musicians/55.webp
+?? public/images-webp/musicians/56.webp
+?? public/images-webp/musicians/58.webp
+?? scripts/download-musician-images.js
+
+Allowed scope check
+- In scope: pages/camps/2026/musicians/[id].tsx
+- In scope: public/data/musicians.json
+- In scope: public/locales/en/translation.json
+- In scope: public/locales/ko/translation.json
+- In scope: src/data/musicians.ts
+- In scope: .sisyphus/**
+- In scope: public/images-webp/musicians/*.webp
+- In scope: scripts/download-musician-images.js
+- Out of scope: docs/제3회 강정피스아트뮤직캠프 참여뮤지션 체크리스트 (1).pdf
+
+Scope verdict: 1 issue

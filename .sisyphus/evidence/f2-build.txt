@@ -1,0 +1,70 @@
+
+> dear-stranger-archive@0.1.0 prebuild
+> node scripts/generateSitemap.js
+
+✅ sitemap.xml이 성공적으로 생성되었습니다!
+   위치: /Users/hwang-gyeongha/peace/public/sitemap.xml
+   정적 페이지: 10, 동적 페이지: 125
+   총 URL 수: 1755 (135 pages x 13 locales)
+   생성 날짜: 2026-03-18
+
+> dear-stranger-archive@0.1.0 build
+> next build
+
+  ▲ Next.js 14.2.35
+
+   Linting and checking validity of types ...
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Collecting page data ...
+   Generating static pages (0/1392) ...
+   Generating static pages (348/1392) 
+   Generating static pages (696/1392) 
+   Generating static pages (1044/1392) 
+ ✓ Generating static pages (1392/1392)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (pages)                              Size     First Load JS
+┌ ● /                                      7.54 kB         190 kB
+├   /_app                                  0 B             159 kB
+├ ○ /404                                   3.09 kB         162 kB
+├ ● /album/about                           5.93 kB         192 kB
+├ ● /album/musicians                       3.97 kB         171 kB
+├ ● /album/musicians/[id] (14784 ms)       590 B           171 kB
+├   ├ /ko/album/musicians/1
+├   ├ /ko/album/musicians/2
+├   ├ /ko/album/musicians/3
+├   └ [+361 more paths]
+├ ● /album/tracks                          5.62 kB         172 kB
+├ ● /album/tracks/[id] (9063 ms)           4.66 kB         168 kB
+├   ├ /ko/album/tracks/2 (333 ms)
+├   ├ /ko/album/tracks/5 (326 ms)
+├   ├ /ko/album/tracks/7 (324 ms)
+├   ├ /ko/album/tracks/1 (318 ms)
+├   ├ /ko/album/tracks/3 (315 ms)
+├   ├ /ko/album/tracks/4
+├   ├ /ko/album/tracks/6
+├   └ [+162 more paths]
+├ ● /camps/2023                            336 B           189 kB
+├ ● /camps/2025                            337 B           189 kB
+├ ● /camps/2026                            5.5 kB          172 kB
+├ ● /camps/2026/musicians/[id] (30234 ms)  590 B           171 kB
+├   ├ /ko/camps/2026/musicians/14
+├   ├ /ko/camps/2026/musicians/5
+├   ├ /ko/camps/2026/musicians/15
+├   └ [+699 more paths]
+├ ● /gallery                               4.27 kB         186 kB
+├ ● /press                                 1.87 kB         169 kB
+└ ● /videos                                2.3 kB          170 kB
++ First Load JS shared by all              167 kB
+  ├ chunks/framework-64ad27b21261a9ce.js   44.9 kB
+  ├ chunks/main-178fdb4d8eabf08c.js        35.3 kB
+  ├ chunks/pages/_app-3faa73b0dd416508.js  76.6 kB
+  └ other shared chunks (total)            10.5 kB
+
+ƒ Middleware                               27.1 kB
+
+○  (Static)  prerendered as static content
+●  (SSG)     prerendered as static HTML (uses getStaticProps)
+
