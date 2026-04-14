@@ -1,0 +1,13 @@
+git diff HEAD -- pages/album/musicians/[id].tsx | wc -l
+0
+
+git diff HEAD -- src/components/shared/SEOHelmet.tsx | wc -l
+0
+
+git diff HEAD -- public/sitemap.xml | wc -l
+0
+
+git diff HEAD -- scripts/generateSitemap.js | wc -l
+0
+
+Must NOT verdict: 4/4 clean

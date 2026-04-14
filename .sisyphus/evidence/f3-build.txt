@@ -1,0 +1,5 @@
+ƒ Middleware                                27.1 kB
+
+○  (Static)  prerendered as static content
+●  (SSG)     prerendered as static HTML (uses getStaticProps)
+

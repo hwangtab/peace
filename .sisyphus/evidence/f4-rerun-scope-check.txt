@@ -1,0 +1,11 @@
+F4 Re-run Scope Fidelity Check
+Only M/A entries from git status --short; ?? excluded by rule.
+
+Checked entries:
+ M pages/camps/2026/musicians/[id].tsx | ALLOW
+ M public/data/musicians.json | ALLOW
+ M public/locales/en/translation.json | ALLOW
+ M public/locales/ko/translation.json | ALLOW
+ M src/data/musicians.ts | ALLOW
+
+Scope verdict: CLEAN
