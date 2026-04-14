@@ -12,7 +12,7 @@ import CampHero from '@/components/camp/CampHero';
 import dynamic from 'next/dynamic';
 
 const GangjeongStorySection = dynamic(() => import('@/components/camp/GangjeongStorySection'));
-import { getEventSchema, getBreadcrumbSchema, getHowToSchema } from '@/utils/structuredData';
+import { getEventSchema, getBreadcrumbSchema, getHowToSchema, getWebPageSchema } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
 import Button from '@/components/common/Button';
 import { formatOrdinal } from '@/utils/format';
@@ -71,10 +71,14 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
         camp2026.images && camp2026.images.length > 0 && camp2026.images[0]
           ? getFullUrl(camp2026.images[0])
           : undefined,
-      performers: camp2026.participants?.map((p) => ({
-        type: 'MusicGroup',
-        name: typeof p === 'string' ? p : p.name,
-      })),
+      performers: camp2026.participants?.map((p) => {
+        const musicianId = typeof p === 'object' ? p.musicianId : undefined;
+        return {
+          type: 'MusicGroup' as const,
+          name: typeof p === 'string' ? p : p.name,
+          ...(musicianId ? { url: getFullUrl(`/camps/2026/musicians/${musicianId}`) } : {}),
+        };
+      }),
       ...(camp2026.fundingUrl
         ? {
             offers: {
@@ -102,7 +106,13 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
       title={`${t('camp.ordinal', { num: ordinalLabel })} ${t('app.title')} (2026)`}
       description={translatedDescription}
       ogImage={camp2026?.images?.[0] || '/images-webp/camps/2023/IMG_2064.webp'}
-      structuredData={[eventSchema, getBreadcrumbSchema(breadcrumbs), getHowToSchema(i18n.language, t)]}
+      ogImageAlt={translatedTitle}
+      structuredData={[eventSchema, getBreadcrumbSchema(breadcrumbs), getHowToSchema(i18n.language, t), getWebPageSchema({
+          name: `${t('camp.ordinal', { num: ordinalLabel })} ${t('app.title')} (2026)`,
+          description: translatedDescription,
+          url: getFullUrl('/camps/2026'),
+          datePublished: camp2026.startDate,
+        })]}
       breadcrumbs={breadcrumbs}
       ogType="event"
       disableTopPadding={true}

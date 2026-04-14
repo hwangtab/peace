@@ -31,12 +31,19 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 
   const urlEntries: string[] = [];
 
-  const buildImageTag = (img: GalleryImage) =>
-    `    <image:image>
-      <image:loc>${escapeXml(`${SITE_URL}${img.url}`)}</image:loc>${
-      img.description ? `\n      <image:caption>${escapeXml(img.description)}</image:caption>` : ''
-    }
+  const buildImageTag = (img: GalleryImage) => {
+    const loc = escapeXml(`${SITE_URL}${img.url}`);
+    const baseTitle = img.eventType === 'album'
+      ? `${img.eventYear} 앨범 발매 기념 공연 — 강정피스앤뮤직캠프`
+      : `${img.eventYear} 강정피스앤뮤직캠프`;
+    const title = escapeXml(img.description ? `${baseTitle} — ${img.description}` : baseTitle);
+    const caption = img.description ? `\n      <image:caption>${escapeXml(img.description)}</image:caption>` : '';
+    return `    <image:image>
+      <image:loc>${loc}</image:loc>
+      <image:title>${title}</image:title>${caption}
+      <image:geo_location>Gangjeong Village, Seogwipo, Jeju, South Korea</image:geo_location>
     </image:image>`;
+  };
 
   // Gallery index page — top 20 images
   const topImages = allImages.slice(0, 20);
@@ -51,10 +58,7 @@ ${imageXml}
   // Per-year camp pages
   for (const [year, images] of byYear.entries()) {
     if (!year) continue;
-    const campPath = year === 2023 || year === 2025 || year === 2026
-      ? `/camps/${year}`
-      : null;
-    if (!campPath) continue;
+    const campPath = `/camps/${year}`;
 
     const imageXml = images
       .slice(0, 30)

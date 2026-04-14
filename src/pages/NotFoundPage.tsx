@@ -1,5 +1,4 @@
 import React from 'react';
-import Head from 'next/head';
 import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
 import Button from '@/components/common/Button';
@@ -18,11 +17,7 @@ const NotFoundPage = () => {
     ];
 
     return (
-        <PageLayout title={t('notFound.title')} description={t('notFound.desc')}>
-            <Head>
-                <meta name="robots" content="noindex, nofollow" />
-                <meta name="googlebot" content="noindex, nofollow" />
-            </Head>
+        <PageLayout title={t('notFound.title')} description={t('notFound.desc')} noIndex>
             <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
                 <h1 className="text-6xl font-serif text-jeju-ocean mb-6">404</h1>
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">{t('notFound.title')}</h2>
