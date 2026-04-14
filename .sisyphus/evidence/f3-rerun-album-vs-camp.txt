@@ -1,0 +1,8 @@
+=== ID 2 CAMP ===
+<title>정진석 — 제3회 강정피스앤뮤직캠프 | 강정피스앤뮤직캠프</title>
+=== ID 2 ALBUM ===
+<title>정진석 | 강정피스앤뮤직캠프</title>
+=== ID 5 CAMP ===
+<title>까르 — 제3회 강정피스앤뮤직캠프 | 강정피스앤뮤직캠프</title>
+=== ID 5 ALBUM ===
+<title>까르 | 강정피스앤뮤직캠프</title>
