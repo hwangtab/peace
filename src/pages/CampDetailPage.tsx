@@ -10,7 +10,7 @@ import PageLayout from '@/components/layout/PageLayout';
 import Section from '@/components/layout/Section';
 import SectionHeader from '@/components/common/SectionHeader';
 import WaveDivider from '@/components/common/WaveDivider';
-import { getEventSchema, getBreadcrumbSchema } from '@/utils/structuredData';
+import { getEventSchema, getBreadcrumbSchema, getHowToSchema, getWebPageSchema } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
 import { getMusicians } from '@/api/musicians';
 import { Musician } from '@/types/musician';
@@ -103,7 +103,13 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
       title={`${t('camp.ordinal', { num: ordinalLabel })} ${t('app.title')} (${camp.year}) - ${camp.slogan || ''}`}
       description={camp.description}
       ogImage={camp.images?.[0]}
-      structuredData={[eventSchema, getBreadcrumbSchema(breadcrumbs)]}
+      ogImageAlt={`${t('camp.ordinal', { num: ordinalLabel })} ${t('app.title')} (${camp.year})`}
+      structuredData={[eventSchema, getBreadcrumbSchema(breadcrumbs), ...(camp.year >= 2026 ? [getHowToSchema(i18n.language, t)] : []), getWebPageSchema({
+          name: `${t('camp.ordinal', { num: ordinalLabel })} ${t('app.title')} (${camp.year})`,
+          description: camp.description,
+          url: getFullUrl(`/camps/${camp.year}`),
+          datePublished: camp.startDate,
+        })]}
       breadcrumbs={breadcrumbs}
       ogType="event"
       disableTopPadding={true}

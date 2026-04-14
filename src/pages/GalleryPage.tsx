@@ -3,7 +3,7 @@ import PageLayout from '@/components/layout/PageLayout';
 import Button from '@/components/common/Button';
 import PageHero from '@/components/common/PageHero';
 import GallerySection from '@/components/home/GallerySection';
-import { getImageGallerySchema, getBreadcrumbSchema } from '@/utils/structuredData';
+import { getImageGallerySchema, getBreadcrumbSchema, getWebPageSchema } from '@/utils/structuredData';
 import { getCamps } from '@/data/camps';
 import { getFullUrl } from '@/config/env';
 
@@ -21,7 +21,7 @@ const GalleryPage = ({ initialImages = [] }: GalleryPageProps) => {
   const camp2026 = getCamps(i18n.language, t).find((c) => c.id === 'camp-2026');
   const schemaImages = initialImages.slice(0, 20).map((img) => ({
     url: getFullUrl(img.url),
-    caption: t('gallery.hero_subtitle'),
+    caption: img.description || t('gallery.hero_subtitle'),
   }));
   if (schemaImages.length === 0) {
     schemaImages.push(
@@ -40,8 +40,13 @@ const GalleryPage = ({ initialImages = [] }: GalleryPageProps) => {
       title={t('gallery.page_title')}
       description={t('gallery.page_desc')}
       ogImage="/images-webp/camps/2023/DSC00528.webp"
+      ogImageAlt={t('gallery.page_title')}
       background="golden-sun"
-      structuredData={[gallerySchema, getBreadcrumbSchema(breadcrumbs)]}
+      structuredData={[gallerySchema, getBreadcrumbSchema(breadcrumbs), getWebPageSchema({
+        name: t('gallery.page_title'),
+        description: t('gallery.page_desc'),
+        url: getFullUrl('/gallery'),
+      })]}
       breadcrumbs={breadcrumbs}
       disableTopPadding={true}
     >

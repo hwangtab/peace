@@ -22,28 +22,41 @@ const BreadcrumbNav: React.FC<BreadcrumbNavProps> = ({ items }) => {
         <nav
             aria-label="Breadcrumb"
             className="absolute top-20 md:top-24 left-0 right-0 z-20 py-1.5"
+            itemScope
+            itemType="https://schema.org/BreadcrumbList"
         >
             <ol className="container mx-auto flex flex-wrap items-center gap-1 text-sm text-white/70">
                 {items.map((item, index) => {
                     const isLast = index === items.length - 1;
                     return (
-                        <li key={item.url} className="flex items-center gap-1">
+                        <li
+                            key={item.url}
+                            className="flex items-center gap-1"
+                            itemProp="itemListElement"
+                            itemScope
+                            itemType="https://schema.org/ListItem"
+                        >
+                            <meta itemProp="position" content={String(index + 1)} />
                             {index > 0 && (
                                 <span aria-hidden="true" className="text-white/40 select-none">
                                     {separator}
                                 </span>
                             )}
                             {isLast ? (
-                                <span aria-current="page" title={item.name} className="text-white/90 font-medium truncate max-w-[200px]">
-                                    {item.name}
-                                </span>
+                                <>
+                                    <meta itemProp="item" content={item.url} />
+                                    <span aria-current="page" title={item.name} className="text-white/90 font-medium truncate max-w-[200px]" itemProp="name">
+                                        {item.name}
+                                    </span>
+                                </>
                             ) : (
                                 <Link
                                     href={item.url.startsWith('http') ? new URL(item.url).pathname : item.url}
                                     title={item.name}
                                     className="hover:text-white transition-colors duration-150 truncate max-w-[200px]"
+                                    itemProp="item"
                                 >
-                                    {item.name}
+                                    <span itemProp="name">{item.name}</span>
                                 </Link>
                             )}
                         </li>

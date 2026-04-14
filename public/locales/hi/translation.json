@@ -184,11 +184,11 @@
   "seo": {
     "default": {
       "title": "गंगजिओंग शांति संगीत शिविर | गाओ, नाचो, युद्ध खत्म करो",
-      "description": "जेजू के गंगजिओंग गाँव से शुरू होने वाला शांति का संगीत प्रोजेक्ट। 5–7 जून 2026 को गंगजिओंग स्पोर्ट्स पार्क में होने वाला युद्ध‑विरोधी शांति संगीत महोत्सव। हम साथ गाकर दुनिया के संघर्ष क्षेत्रों के लिए शांति की कामना करते हैं।"
+      "description": "जेजू के गंगजिओंग गाँव से शुरू होने वाला शांति का संगीत प्रोजेक्ट। 5–7 जून 2026 को गंगजिओंग स्पोर्ट्स पार्क में युद्ध‑विरोधी शांति संगीत महोत्सव।"
     }
   },
   "press": {
-    "page_title": "प्रेस | To You in a Distant Place Whose Name I Don't Know",
+    "page_title": "प्रेस | गंगजिओंग शांति संगीत शिविर",
     "page_desc": "शांति के लिए गाने वाली हमारी कहानी। 'To You in a Distant Place Whose Name I Don't Know' प्रोजेक्ट पर प्रेस कवरेज और लेख देखें।",
     "hero_title": "प्रेस",
     "hero_subtitle": "शांति के लिए गाने वाली हमारी कहानी",
@@ -196,7 +196,7 @@
     "breadcrumb_press": "प्रेस"
   },
   "videos": {
-    "page_title": "वीडियो - गंगजिओंग शांति संगीत शिविर",
+    "page_title": "वीडियो | गंगजिओंग शांति संगीत शिविर",
     "page_desc": "गंगजिओंग शांति संगीत शिविर के प्रदर्शन वीडियो का संग्रह। शांति के लिए गाने वाले संगीतकारों के प्रदर्शन देखें।",
     "hero_title": "वीडियो",
     "hero_subtitle": "शांति के लिए गाने के क्षण",
@@ -289,7 +289,7 @@
     "hook_image_alt": "जेजू गांगजेओंग गांव शांति संगीत शिविर का दृश्य"
   },
   "album": {
-    "page_title": "To You in a Distant Place Whose Name I Don't Know - एल्बम परिचय",
+    "page_title": "To You in a Distant Place Whose Name I Don't Know | एल्बम परिचय",
     "page_desc": "गंगजिओंग शांति संगीत शिविर का 2024 एल्बम प्रोजेक्ट। युद्ध समाप्त कर शांति गाने वाले 12 गीतों की संगीत यात्रा।",
     "hero_title_1": "To You In A",
     "hero_title_2": "Distant Place",
@@ -319,10 +319,10 @@
     "release_official": "2024 आधिकारिक रिलीज़",
     "album_title_full": "To You in a Distant Place Whose Name I Don't Know",
     "all_photos": "सभी कॉन्सर्ट फोटो देखें",
-    "musicians_page_title": "भाग लेने वाले संगीतकार - To You in a Distant Place Whose Name I Don't Know",
+    "musicians_page_title": "भाग लेने वाले संगीतकार | To You in a Distant Place Whose Name I Don't Know",
     "musicians_page_desc": "गंगजिओंग शांति संगीत शिविर के एल्बम प्रोजेक्ट में भाग लेने वाली 12 संगीतकार टीमें। Caru, Kim Dongsan, Namsu, MoredoSaturday जैसे शांति गाने वाले कलाकार।",
     "musicians_hero_subtitle": "12 आवाज़ें, एक शांति",
-    "tracks_page_title": "ट्रैक - To You in a Distant Place Whose Name I Don't Know",
+    "tracks_page_title": "ट्रैक | To You in a Distant Place Whose Name I Don't Know",
     "tracks_page_desc": "गंगजिओंग शांति संगीत शिविर एल्बम के सभी ट्रैक। शांति और एकजुटता का संदेश लिए 12 गीत।",
     "tracks_hero_subtitle": "To You in a Distant Place Whose Name I Don't Know",
     "image_alt_cover": "'To You in a Distant Place Whose Name I Don't Know' एल्बम कवर",

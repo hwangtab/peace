@@ -184,11 +184,11 @@
   "seo": {
     "default": {
       "title": "Gangjeong Peace Music Camp | Sing, Dance, End the War",
-      "description": "A music project for peace starting from Gangjeong Village, Jeju. Anti-war peace music festival held at Gangjeong Sports Park on June 5-7, 2026. Singing together wishing for peace in conflict zones around the world."
+      "description": "A music project for peace starting from Gangjeong Village, Jeju. Anti-war peace music festival held at Gangjeong Sports Park on June 5-7, 2026."
     }
   },
   "press": {
-    "page_title": "Press | To You in a Distant Place Whose Name I Don't Know",
+    "page_title": "Press | Gangjeong Peace Music Camp",
     "page_desc": "Our story singing for peace. Check out the press coverage and articles about the project 'To You in a Distant Place Whose Name I Don't Know'.",
     "hero_title": "Press",
     "hero_subtitle": "Our Story Singing for Peace",
@@ -196,7 +196,7 @@
     "breadcrumb_press": "Press"
   },
   "videos": {
-    "page_title": "Videos - Gangjeong Peace Music Camp",
+    "page_title": "Videos | Gangjeong Peace Music Camp",
     "page_desc": "Collection of performance videos from Gangjeong Peace Music Camp. Meet the performance videos of musicians singing for peace.",
     "hero_title": "Videos",
     "hero_subtitle": "Moments Singing for Peace",
@@ -289,7 +289,7 @@
     "hook_image_alt": "Gangjeong Village Peace Music Camp scenery in Jeju"
   },
   "album": {
-    "page_title": "To You in a Distant Place Whose Name I Don't Know - About Album",
+    "page_title": "To You in a Distant Place Whose Name I Don't Know | About Album",
     "page_desc": "2024 Album Project of Gangjeong Peace Music Camp. A musical journey of 12 songs ending war and singing for peace.",
     "hero_title_1": "To You In A",
     "hero_title_2": "Distant Place",
@@ -319,10 +319,10 @@
     "release_official": "2024 OFFICIAL RELEASE",
     "album_title_full": "To You in a Distant Place Whose Name I Don't Know",
     "all_photos": "View All Concert Photos",
-    "musicians_page_title": "Participating Musicians - To You in a Distant Place Whose Name I Don't Know",
+    "musicians_page_title": "Participating Musicians | To You in a Distant Place Whose Name I Don't Know",
     "musicians_page_desc": "12 teams of musicians who participated in the Gangjeong Peace Music Camp album project. Artists singing for peace such as Caru, Kim Dong-san, Nam-su, and Saturday even on Monday.",
     "musicians_hero_subtitle": "12 Voices, One Peace",
-    "tracks_page_title": "Tracks - To You in a Distant Place Whose Name I Don't Know",
+    "tracks_page_title": "Tracks | To You in a Distant Place Whose Name I Don't Know",
     "tracks_page_desc": "All tracks from the Gangjeong Peace Music Camp album. 12 songs containing messages of peace and solidarity.",
     "tracks_hero_subtitle": "To You in a Distant Place Whose Name I Don't Know",
     "image_alt_cover": "Album cover for 'To You in a Distant Place Whose Name I Don't Know'",

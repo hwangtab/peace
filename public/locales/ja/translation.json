@@ -188,7 +188,7 @@
     }
   },
   "press": {
-    "page_title": "メディア | To You in a Distant Place Whose Name I Don't Know",
+    "page_title": "メディア | ガンジョン平和音楽キャンプ",
     "page_desc": "平和を歌う私たちの物語。『To You in a Distant Place Whose Name I Don't Know』プロジェクトに関する報道・記事をご覧ください。",
     "hero_title": "メディア",
     "hero_subtitle": "平和を歌う私たちの物語",
@@ -196,7 +196,7 @@
     "breadcrumb_press": "メディア"
   },
   "videos": {
-    "page_title": "動画 - ガンジョン平和音楽キャンプ",
+    "page_title": "動画 | ガンジョン平和音楽キャンプ",
     "page_desc": "ガンジョン平和音楽キャンプのパフォーマンス動画集。平和を歌うミュージシャンたちの映像をご覧ください。",
     "hero_title": "動画",
     "hero_subtitle": "平和を歌う瞬間",
@@ -289,7 +289,7 @@
     "hook_image_alt": "済州江汀村の平和音楽キャンプの風景"
   },
   "album": {
-    "page_title": "To You in a Distant Place Whose Name I Don't Know - アルバム紹介",
+    "page_title": "To You in a Distant Place Whose Name I Don't Know | アルバム紹介",
     "page_desc": "ガンジョン平和音楽キャンプの2024年アルバムプロジェクト。戦争を終わらせ平和を歌う12曲の音楽の旅。",
     "hero_title_1": "To You In A",
     "hero_title_2": "Distant Place",
@@ -319,10 +319,10 @@
     "release_official": "2024 OFFICIAL RELEASE",
     "album_title_full": "To You in a Distant Place Whose Name I Don't Know",
     "all_photos": "公演写真をすべて見る",
-    "musicians_page_title": "参加ミュージシャン - To You in a Distant Place Whose Name I Don't Know",
+    "musicians_page_title": "参加ミュージシャン | To You in a Distant Place Whose Name I Don't Know",
     "musicians_page_desc": "ガンジョン平和音楽キャンプのアルバムプロジェクトに参加した12組のミュージシャン。Caru、Kim Dongsan、Namsu、MoredoSaturdayなど、平和を歌うアーティストたち。",
     "musicians_hero_subtitle": "12の声、ひとつの平和",
-    "tracks_page_title": "収録曲 - To You in a Distant Place Whose Name I Don't Know",
+    "tracks_page_title": "収録曲 | To You in a Distant Place Whose Name I Don't Know",
     "tracks_page_desc": "ガンジョン平和音楽キャンプのアルバム全曲。平和と連帯のメッセージを込めた12曲。",
     "tracks_hero_subtitle": "To You in a Distant Place Whose Name I Don't Know",
     "image_alt_cover": "『To You in a Distant Place Whose Name I Don't Know』アルバムカバー",

@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next';
 import { Musician } from '@/types/musician';
 import { VideoItem } from '@/types/video';
-import { getProfilePageSchema, getBreadcrumbSchema } from '@/utils/structuredData';
+import { getProfilePageSchema, getBreadcrumbSchema, getWebPageSchema } from '@/utils/structuredData';
 import { getCamps } from '@/data/camps';
 import { getFullUrl } from '@/config/env';
 import PageLayout from '../layout/PageLayout';
@@ -73,14 +73,20 @@ export default function MusicianDetailContent({
   );
 
   const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs);
+  const webPageSchema = getWebPageSchema({
+    name: pageTitle,
+    description: pageDescription,
+    url: getFullUrl(`${musicianHrefPrefix}/${musician.id}`),
+  });
 
   return (
     <PageLayout
       title={pageTitle}
       description={pageDescription}
       ogImage={musician.imageUrl || '/images-webp/album/albumart.webp'}
+      ogImageAlt={musician.name}
       ogType="profile"
-      structuredData={[profileSchema, breadcrumbSchema]}
+      structuredData={[profileSchema, breadcrumbSchema, webPageSchema]}
       breadcrumbs={breadcrumbs}
       disableTopPadding={true}
       disableBottomPadding={true}

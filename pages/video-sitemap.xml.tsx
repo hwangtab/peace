@@ -45,14 +45,23 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
       const playerUrl = `https://www.youtube.com/embed/${videoId}`;
       const description = (video.description || '').slice(0, 2048);
 
+      // Build contextual tags for better topic classification
+      const tags = ['강정피스앤뮤직캠프', 'Peace Music', 'Anti-war'];
+      if (video.location) tags.push(escapeXml(video.location));
+      if (video.eventType === 'camp') tags.push('Music Festival', '평화음악캠프');
+      if (video.eventType === 'album') tags.push('Album Release', '앨범 발매');
+      if (video.eventYear) tags.push(String(video.eventYear));
+      const tagXml = tags.map(tag => `      <video:tag>${tag}</video:tag>`).join('\n');
+
       return `    <video:video>
       <video:thumbnail_loc>${escapeXml(thumbnailUrl)}</video:thumbnail_loc>
       <video:title>${escapeXml(video.title)}</video:title>
       <video:description>${escapeXml(description)}</video:description>
-      <video:player_loc>${escapeXml(playerUrl)}</video:player_loc>
+      <video:player_loc allow_embed="yes">${escapeXml(playerUrl)}</video:player_loc>
       <video:publication_date>${video.date}</video:publication_date>
       <video:family_friendly>yes</video:family_friendly>
       <video:live>no</video:live>
+${tagXml}
     </video:video>`;
     })
     .filter(Boolean);

@@ -17,7 +17,7 @@ import { GalleryImage } from '@/types/gallery';
 import { VideoItem } from '@/types/video';
 import { Musician } from '@/types/musician';
 import WaveDivider from '@/components/common/WaveDivider';
-import { getMusicAlbumSchema, getMusicGroupSchema, getBreadcrumbSchema } from '@/utils/structuredData';
+import { getMusicAlbumSchema, getMusicGroupSchema, getBreadcrumbSchema, getWebPageSchema } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
 import { useLocalizedResource } from '@/hooks/useLocalizedResource';
 
@@ -209,7 +209,7 @@ const AlbumAboutPage = ({
             url: getFullUrl(`/album/tracks/${initialMusicianTrackIds[m.id] ?? m.id}`),
           })),
       }),
-    [albumMusicianIds, t, visibleMusicians]
+    [albumMusicianIds, t, visibleMusicians, initialMusicianTrackIds]
   );
 
   const breadcrumbs = [
@@ -222,9 +222,20 @@ const AlbumAboutPage = ({
       title={t('album.page_title')}
       description={t('album.page_desc')}
       ogImage="/images-webp/album/albumart.webp"
+      ogImageAlt={t('album.page_title')}
       ogType="music.album"
       background="jeju-ocean"
-      structuredData={[albumSchema, getMusicGroupSchema(i18n.language, t), getBreadcrumbSchema(breadcrumbs)]}
+      structuredData={[
+        albumSchema,
+        getMusicGroupSchema(i18n.language, t),
+        getBreadcrumbSchema(breadcrumbs),
+        getWebPageSchema({
+          name: t('album.page_title'),
+          description: t('album.page_desc'),
+          url: getFullUrl('/album/about'),
+          datePublished: '2024-10-12',
+        }),
+      ]}
       breadcrumbs={breadcrumbs}
       disableTopPadding={true}
       className="!pb-0"

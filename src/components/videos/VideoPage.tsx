@@ -9,7 +9,7 @@ import EventFilter from '../common/EventFilter';
 import PageLayout from '../layout/PageLayout';
 import PageHero from '../common/PageHero';
 import VideoCard from './VideoCard';
-import { getCollectionPageSchema, getBreadcrumbSchema, getVideoObjectSchema } from '@/utils/structuredData';
+import { getCollectionPageSchema, getBreadcrumbSchema, getVideoObjectSchema, getWebPageSchema } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
 import { useLocalizedResource } from '@/hooks/useLocalizedResource';
 
@@ -47,9 +47,9 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
     [videos, selectedFilter]
   );
 
-  const eligibleVideos = videos.filter((v) => v.youtubeUrl && v.date).slice(0, 20);
+  const eligibleVideos = videos.filter((v) => v.youtubeUrl && v.date).slice(0, 10);
   const videoSchemas = eligibleVideos
-    .map((v) => getVideoObjectSchema({ name: v.title, description: v.description || '', youtubeUrl: v.youtubeUrl, uploadDate: v.date, id: String(v.id) }));
+    .map((v) => getVideoObjectSchema({ name: v.title, description: v.description || '', youtubeUrl: v.youtubeUrl, uploadDate: v.date, id: String(v.id), duration: v.duration }, t));
 
   // Collection Page Schema
   const collectionSchema = getCollectionPageSchema({
@@ -69,10 +69,17 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
       title={t('videos.page_title')}
       description={t('videos.page_desc')}
       ogImage="/images-webp/camps/2023/IMG_2064.webp"
+      ogImageAlt={t('videos.page_title')}
+      ogType="video.other"
       background="sunlight-glow"
       structuredData={[
         collectionSchema,
         getBreadcrumbSchema(videoBreadcrumbs),
+        getWebPageSchema({
+          name: t('videos.page_title'),
+          description: t('videos.page_desc'),
+          url: getFullUrl('/videos'),
+        }),
         ...videoSchemas,
       ]}
       breadcrumbs={videoBreadcrumbs}

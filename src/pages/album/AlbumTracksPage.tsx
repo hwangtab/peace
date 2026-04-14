@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next';
 import TracksSection from '@/components/home/TracksSection';
 import PageLayout from '@/components/layout/PageLayout';
 import PageHero from '@/components/common/PageHero';
-import { getMusicPlaylistSchema, getBreadcrumbSchema } from '@/utils/structuredData';
+import { getMusicPlaylistSchema, getBreadcrumbSchema, getWebPageSchema } from '@/utils/structuredData';
 import { Musician } from '@/types/musician';
 import { Track } from '@/types/track';
 import { getFullUrl } from '@/config/env';
@@ -47,9 +47,15 @@ const AlbumTracksPage = ({
       title={t('album.tracks_page_title')}
       description={t('album.tracks_page_desc')}
       ogImage="/images-webp/gallery/152.webp"
+      ogImageAlt={t('album.tracks_page_title')}
       ogType="music.playlist"
       background="sky-horizon"
-      structuredData={[playlistSchema, getBreadcrumbSchema(breadcrumbs)]}
+      structuredData={[playlistSchema, getBreadcrumbSchema(breadcrumbs), getWebPageSchema({
+        name: t('album.tracks_page_title'),
+        description: t('album.tracks_page_desc'),
+        url: getFullUrl('/album/tracks'),
+        datePublished: '2024-10-12',
+      })]}
       breadcrumbs={breadcrumbs}
       disableTopPadding={true}
       disableBottomPadding={true}

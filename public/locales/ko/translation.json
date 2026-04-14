@@ -188,7 +188,7 @@
     }
   },
   "press": {
-    "page_title": "언론보도 | 이름을 모르는 먼 곳의 그대에게",
+    "page_title": "언론보도 | 강정피스앤뮤직캠프",
     "page_desc": "평화를 노래하는 우리들의 이야기. 이름을 모르는 먼 곳의 그대에게 프로젝트에 대한 언론 보도와 기사를 확인하세요.",
     "hero_title": "언론보도",
     "hero_subtitle": "평화를 노래하는 우리들의 이야기",
@@ -196,7 +196,7 @@
     "breadcrumb_press": "언론보도"
   },
   "videos": {
-    "page_title": "비디오 - 강정피스앤뮤직캠프",
+    "page_title": "비디오 | 강정피스앤뮤직캠프",
     "page_desc": "강정피스앤뮤직캠프의 공연영상 모음. 평화를 노래하는 뮤지션들의 공연 영상을 만나보세요.",
     "hero_title": "비디오",
     "hero_subtitle": "평화를 노래하는 순간들",
@@ -289,7 +289,7 @@
     "hook_image_alt": "제주 강정마을 평화 음악 캠프 풍경"
   },
   "album": {
-    "page_title": "이름을 모르는 먼 곳의 그대에게 - 앨범 소개",
+    "page_title": "이름을 모르는 먼 곳의 그대에게 | 앨범 소개",
     "page_desc": "강정피스앤뮤직캠프의 2024년 음반 프로젝트. 전쟁을 끝내고 평화를 노래하는 12곡의 음악 여정.",
     "hero_title_1": "이름을 모르는",
     "hero_title_2": "먼 곳의 그대에게",
@@ -319,10 +319,10 @@
     "release_official": "2024 공식 발매",
     "album_title_full": "이름을 모르는 먼 곳의 그대에게",
     "all_photos": "공연 사진 전체 보기",
-    "musicians_page_title": "참여 뮤지션 - 이름을 모르는 먼 곳의 그대에게",
+    "musicians_page_title": "참여 뮤지션 | 이름을 모르는 먼 곳의 그대에게",
     "musicians_page_desc": "강정피스앤뮤직캠프 음반 프로젝트에 참여한 12팀의 뮤지션. 까르, 출장작곡가 김동산, 남수, 모레도토요일 등 평화를 노래하는 아티스트.",
     "musicians_hero_subtitle": "12개의 목소리, 하나의 평화",
-    "tracks_page_title": "수록곡 - 이름을 모르는 먼 곳의 그대에게",
+    "tracks_page_title": "수록곡 | 이름을 모르는 먼 곳의 그대에게",
     "tracks_page_desc": "강정피스앤뮤직캠프 음반의 전체 수록곡. 평화와 연대의 메시지를 담은 12곡의 음악.",
     "tracks_hero_subtitle": "이름을 모르는 먼 곳의 그대에게",
     "image_alt_cover": "이름을 모르는 먼 곳의 그대에게 앨범 커버",

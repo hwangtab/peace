@@ -58,7 +58,7 @@ const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
           {imgSrc && (
             <Image
               src={imgSrc}
-              alt={video.title}
+              alt={video.location ? `${video.title} — ${video.location}` : video.title}
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover transition-transform duration-500 group-hover:scale-105"

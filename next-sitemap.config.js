@@ -264,6 +264,45 @@ module.exports = {
     if (normalizedPath === '/') {
       return { loc: path, changefreq: 'weekly', priority: 1.0, lastmod, alternateRefs };
     }
+    // Gallery — 시각적 콘텐츠 허브
+    if (normalizedPath === '/gallery') {
+      return { loc: path, changefreq: 'monthly', priority: 0.8, lastmod, alternateRefs };
+    }
+    // Videos — 동영상 콘텐츠 허브
+    if (normalizedPath === '/videos') {
+      return { loc: path, changefreq: 'monthly', priority: 0.8, lastmod, alternateRefs };
+    }
+    // Press — 언론 보도
+    if (normalizedPath === '/press') {
+      return { loc: path, changefreq: 'monthly', priority: 0.75, lastmod, alternateRefs };
+    }
+    // Album about page — high-value evergreen content
+    if (normalizedPath === '/album/about') {
+      return { loc: path, changefreq: 'monthly', priority: 0.85, lastmod, alternateRefs };
+    }
+    // Album musicians list
+    if (normalizedPath === '/album/musicians') {
+      return { loc: path, changefreq: 'monthly', priority: 0.8, lastmod, alternateRefs };
+    }
+    // Individual album musician pages
+    if (normalizedPath.startsWith('/album/musicians/')) {
+      return { loc: path, changefreq: 'yearly', priority: 0.7, lastmod, alternateRefs };
+    }
+    // Album tracks list
+    if (normalizedPath === '/album/tracks') {
+      return { loc: path, changefreq: 'monthly', priority: 0.75, lastmod, alternateRefs };
+    }
+    // Individual track pages
+    if (normalizedPath.startsWith('/album/tracks/')) {
+      return { loc: path, changefreq: 'yearly', priority: 0.65, lastmod, alternateRefs };
+    }
+    // Historical camps
+    if (normalizedPath === '/camps/2025') {
+      return { loc: path, changefreq: 'monthly', priority: 0.8, lastmod, alternateRefs };
+    }
+    if (normalizedPath === '/camps/2023') {
+      return { loc: path, changefreq: 'yearly', priority: 0.7, lastmod, alternateRefs };
+    }
     // Default
     return {
       loc: path,

@@ -12,12 +12,16 @@ export interface SEOHelmetProps {
     title?: string;
     description?: string;
     ogImage?: string;
+    ogImageAlt?: string;
     ogType?: string;
     ogAudio?: string;
     ogMusicAlbum?: string;
     ogMusicMusician?: string;
     canonicalUrl?: string;
     structuredData?: object | object[];
+    noIndex?: boolean;
+    datePublished?: string;
+    dateModified?: string;
 }
 
 const OG_LOCALE_MAP: Record<string, string> = {
@@ -40,12 +44,16 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
     title,
     description,
     ogImage = getFullUrl(config.ogImage),
+    ogImageAlt,
     ogType = "website",
     ogAudio,
     ogMusicAlbum,
     ogMusicMusician,
     canonicalUrl,
     structuredData,
+    noIndex = false,
+    datePublished,
+    dateModified,
 }) => {
     const { t, i18n } = useTranslation();
     const router = useRouter();
@@ -61,6 +69,17 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
 
     // Ensure ogImage is a full URL (if it's a relative path, convert it)
     const fullOgImage = ogImage.startsWith('http') ? ogImage : getFullUrl(ogImage);
+
+    // Derive MIME type from image extension
+    const ogImageExt = fullOgImage.split('.').pop()?.toLowerCase() ?? '';
+    const ogImageType = ogImageExt === 'webp' ? 'image/webp'
+        : ogImageExt === 'avif' ? 'image/avif'
+        : ogImageExt === 'png' ? 'image/png'
+        : ogImageExt === 'gif' ? 'image/gif'
+        : 'image/jpeg';
+
+    // Use dedicated alt text if provided, otherwise use title for concise alt
+    const finalOgImageAlt = ogImageAlt || finalTitle;
 
     // Structured Data를 배열로 변환 (단일 객체 또는 배열 모두 지원)
     const structuredDataArray = structuredData
@@ -89,8 +108,8 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
             <link rel="alternate" hrefLang="x-default" href={getFullUrl(pathWithoutLocale)} />
 
             {/* 로봇 메타 태그 */}
-            <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-            <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+            <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"} />
+            <meta name="googlebot" content={noIndex ? "noindex, nofollow" : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"} />
             <meta name="rating" content="general" />
 
             {/* 지역 SEO (강정마을, 제주) */}
@@ -107,7 +126,8 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
             <meta property="og:description" content={finalDescription} />
             <meta property="og:image" content={fullOgImage} />
             <meta property="og:image:secure_url" content={fullOgImage} />
-            <meta property="og:image:alt" content={finalDescription} />
+            <meta property="og:image:type" content={ogImageType} />
+            <meta property="og:image:alt" content={finalOgImageAlt} />
             <meta property="og:image:width" content="1200" />
             <meta property="og:image:height" content="630" />
             <meta property="og:locale" content={ogLocale} />
@@ -123,6 +143,15 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
             )}
             {ogMusicAlbum && <meta property="music:album" content={ogMusicAlbum} />}
             {ogMusicMusician && <meta property="music:musician" content={ogMusicMusician} />}
+            {(ogType === 'article' || ogType === 'news') && (
+                <meta property="article:author" content={t('nav.logo')} />
+            )}
+            {(ogType === 'article' || ogType === 'news') && datePublished && (
+                <meta property="article:published_time" content={datePublished} />
+            )}
+            {(ogType === 'article' || ogType === 'news') && dateModified && (
+                <meta property="article:modified_time" content={dateModified} />
+            )}
 
             {/* Twitter Card */}
             <meta name="twitter:card" content="summary_large_image" />
@@ -130,7 +159,7 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
             <meta name="twitter:title" content={finalTitle} />
             <meta name="twitter:description" content={finalDescription} />
             <meta name="twitter:image" content={fullOgImage} />
-            <meta name="twitter:image:alt" content={finalDescription} />
+            <meta name="twitter:image:alt" content={finalOgImageAlt} />
 
             {/* Structured Data (JSON-LD) */}
             {structuredDataArray.map((data, index) => (

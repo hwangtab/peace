@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next';
 import MusiciansSection from '@/components/home/MusiciansSection';
 import PageLayout from '@/components/layout/PageLayout';
 import PageHero from '@/components/common/PageHero';
-import { getCollectionPageSchema, getBreadcrumbSchema } from '@/utils/structuredData';
+import { getCollectionPageSchema, getBreadcrumbSchema, getWebPageSchema } from '@/utils/structuredData';
 import { Musician } from '@/types/musician';
 import { getFullUrl } from '@/config/env';
 
@@ -35,9 +35,15 @@ const AlbumMusiciansPage = ({
       title={t('album.musicians_page_title')}
       description={t('album.musicians_page_desc')}
       ogImage="/images-webp/gallery/2.webp"
+      ogImageAlt={t('album.musicians_page_title')}
       ogType="music.playlist"
       background="sunlight-glow"
-      structuredData={[collectionSchema, getBreadcrumbSchema(breadcrumbs)]}
+      structuredData={[collectionSchema, getBreadcrumbSchema(breadcrumbs), getWebPageSchema({
+        name: t('album.musicians_page_title'),
+        description: t('album.musicians_page_desc'),
+        url: getFullUrl('/album/musicians'),
+        datePublished: '2024-10-12',
+      })]}
       breadcrumbs={breadcrumbs}
       disableTopPadding={true}
     >

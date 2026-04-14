@@ -29,7 +29,12 @@ export const getOrganizationSchema = (_lang: string = 'ko', t?: TranslationFn) =
   "name": t ? getProjectName(t) : '',
   "alternateName": "Peace and Music Project",
   "url": "https://peaceandmusic.net",
-  "logo": "https://peaceandmusic.net/logo192.webp",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://peaceandmusic.net/logo192.webp",
+    "width": 192,
+    "height": 192
+  },
   "description": t ? getDescription(t) : '',
   "foundingDate": "2023",
   "sameAs": [
@@ -54,6 +59,24 @@ export const getOrganizationSchema = (_lang: string = 'ko', t?: TranslationFn) =
     "addressLocality": "Seogwipo",
     "addressRegion": "Jeju",
     "addressCountry": "KR"
+  },
+  "areaServed": [
+    {
+      "@type": "Country",
+      "name": "South Korea",
+      "sameAs": "https://en.wikipedia.org/wiki/South_Korea"
+    },
+    {
+      "@type": "Place",
+      "name": "Gangjeong Village, Jeju",
+      "sameAs": "https://en.wikipedia.org/wiki/Gangjeong"
+    }
+  ],
+  "event": {
+    "@type": "MusicEvent",
+    "@id": "https://peaceandmusic.net/camps/2026#event",
+    "name": t ? t('camp.title_2026') : '제3회 강정피스앤뮤직캠프',
+    "url": "https://peaceandmusic.net/camps/2026"
   }
 });
 
@@ -65,21 +88,7 @@ export const getWebSiteSchema = (lang: string = 'ko', t?: TranslationFn) => ({
   "name": t ? getProjectName(t) : '',
   "url": "https://peaceandmusic.net",
   "description": t ? getDescription(t) : '',
-  "inLanguage": ({
-    ko: "ko-KR",
-    en: "en-US",
-    es: "es-ES",
-    fr: "fr-FR",
-    de: "de-DE",
-    pt: "pt-PT",
-    ru: "ru-RU",
-    ar: "ar",
-    ja: "ja-JP",
-    "zh-Hans": "zh-Hans",
-    "zh-Hant": "zh-Hant",
-    hi: "hi-IN",
-    id: "id-ID"
-  } as Record<string, string>)[lang] || "en-US",
+  "inLanguage": ["ko-KR", "en-US", "es-ES", "fr-FR", "de-DE", "pt-PT", "ru-RU", "ar", "ja-JP", "zh-Hans", "zh-Hant", "hi-IN", "id-ID"],
   "publisher": {
     "@type": "Organization",
     "@id": "https://peaceandmusic.net/#organization",
@@ -88,6 +97,14 @@ export const getWebSiteSchema = (lang: string = 'ko', t?: TranslationFn) => ({
   "speakable": {
     "@type": "SpeakableSpecification",
     "cssSelector": ["h1", ".typo-subtitle"]
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://peaceandmusic.net/videos?filter={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
   }
 });
 
@@ -100,6 +117,8 @@ export const getMusicGroupSchema = (lang: string = 'ko', t?: TranslationFn) => (
   "description": t ? t('structured_data.music_group_desc') : '',
   "genre": lang === 'ko' ? ["평화운동", "사회운동", "인디음악"] : ["Peace Movement", "Social Movement", "Indie Music"],
   "url": "https://peaceandmusic.net",
+  "image": "https://peaceandmusic.net/images-webp/camps/2023/IMG_2064.webp",
+  "foundingDate": "2023",
   "sameAs": [
     "https://www.instagram.com/peace_music_in_gangjeong",
     "https://smartstore.naver.com/peaceandmusic"
@@ -165,8 +184,10 @@ export const getMusicRecordingSchema = (track: {
 export const getMusicPlaylistSchema = (tracks: Array<{ name: string; url?: string; duration?: string }>, _lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "MusicPlaylist",
+  "@id": "https://peaceandmusic.net/album/tracks#playlist",
   "name": t ? t('structured_data.playlist_name') : '',
   "description": t ? t('structured_data.playlist_desc') : '',
+  "url": "https://peaceandmusic.net/album/tracks",
   "numTracks": tracks.length,
   "track": tracks.map(track => ({
     "@type": "MusicRecording",
@@ -184,12 +205,18 @@ export const getImageGallerySchema = (images: Array<{ url: string; caption?: str
   "name": t ? t('structured_data.gallery_name') : '',
   "description": t ? t('structured_data.gallery_desc') : '',
   "numberOfItems": totalCount ?? images.length,
-  "image": images.map(img => ({
+  "image": images.map((img, idx) => ({
     "@type": "ImageObject",
+    "@id": `${img.url}#image-${idx}`,
     "url": img.url,
     "caption": img.caption || ""
   }))
 });
+
+const normalizeDate = (d: string): string => {
+  const m = d.match(/^(\d{4})[.\-\/](\d{1,2})[.\-\/](\d{1,2})$/);
+  return m ? `${m[1]}-${m[2]!.padStart(2, '0')}-${m[3]!.padStart(2, '0')}` : d;
+};
 
 // NewsArticle Schema - 언론 보도
 export const getNewsArticleSchema = (article: {
@@ -204,20 +231,33 @@ export const getNewsArticleSchema = (article: {
   "@type": "NewsArticle",
   "headline": article.headline,
   "description": article.description,
-  "datePublished": article.datePublished,
+  "datePublished": normalizeDate(article.datePublished),
   "url": article.url,
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://peaceandmusic.net/press"
+  },
   "image": article.imageUrl || "https://peaceandmusic.net/og-image.webp",
   "author": {
     "@type": "Organization",
+    "@id": "https://peaceandmusic.net/#organization",
     "name": article.publisher || (t ? getProjectName(t) : '')
   },
   "publisher": {
     "@type": "Organization",
+    "@id": "https://peaceandmusic.net/#organization",
     "name": t ? getProjectName(t) : '',
     "logo": {
       "@type": "ImageObject",
-      "url": "https://peaceandmusic.net/logo192.webp"
+      "url": "https://peaceandmusic.net/logo192.webp",
+      "width": 192,
+      "height": 192
     }
+  },
+  "isAccessibleForFree": true,
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://peaceandmusic.net/#website"
   }
 });
 
@@ -234,7 +274,10 @@ export const getCollectionPageSchema = (collection: {
   "name": collection.name,
   "description": collection.description,
   "url": collection.url,
-  ...(collection.hasPart && collection.hasPart.length > 0 ? { "hasPart": collection.hasPart } : {}),
+  ...(collection.hasPart && collection.hasPart.length > 0 ? {
+    "hasPart": collection.hasPart,
+    "numberOfItems": collection.hasPart.length
+  } : {}),
   ...(collection.dateModified ? { "dateModified": collection.dateModified } : {})
 });
 
@@ -249,7 +292,7 @@ export const getEventSchema = (event: {
     address: string;
   };
   image?: string;
-  performers?: Array<{ type: 'Person' | 'MusicGroup'; name: string }>;
+  performers?: Array<{ type: 'Person' | 'MusicGroup'; name: string; url?: string }>;
   offers?: {
     url: string;
     price?: string;
@@ -269,6 +312,7 @@ export const getEventSchema = (event: {
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
   "location": {
     "@type": "Place",
+    "@id": "https://peaceandmusic.net/#gangjeong-sports-park",
     "name": event.location.name,
     "geo": {
       "@type": "GeoCoordinates",
@@ -291,7 +335,7 @@ export const getEventSchema = (event: {
     { "@type": "Place", "name": "Gangjeong Village", "sameAs": "https://en.wikipedia.org/wiki/Gangjeong" }
   ],
   "performer": (event.performers && event.performers.length > 0)
-    ? event.performers.map(p => ({ "@type": p.type, "name": p.name }))
+    ? event.performers.map(p => ({ "@type": p.type, "name": p.name, ...(p.url ? { "url": p.url } : {}) }))
     : { "@type": "Organization", "name": t ? getCampName(t) : '' },
   "organizer": {
     "@type": "Organization",
@@ -329,7 +373,7 @@ export const getProfilePageSchema = (person: {
     "description": person.description,
     ...(person.image ? { "image": person.image } : {}),
     "jobTitle": person.jobTitle || "Musician",
-    ...(person.genre && person.genre.length > 0 ? { "genre": person.genre } : {}),
+    ...(person.genre && person.genre.length > 0 ? { "genre": person.genre, "knowsAbout": person.genre } : {}),
     "memberOf": {
       "@type": "Organization",
       "@id": "https://peaceandmusic.net/#organization",
@@ -340,7 +384,7 @@ export const getProfilePageSchema = (person: {
   }
 });
 
-// WebPage Schema with about/mentions - GEO 최적화 (AI 인용 확률 향상)
+// WebPage Schema with about/mentions/speakable - GEO 최적화 (AI 인용 확률 향상)
 export const getWebPageSchema = (page: {
   name: string;
   description: string;
@@ -354,6 +398,13 @@ export const getWebPageSchema = (page: {
   "description": page.description,
   "url": page.url,
   "isPartOf": { "@id": "https://peaceandmusic.net/#website" },
+  "publisher": { "@id": "https://peaceandmusic.net/#organization" },
+  "copyrightHolder": { "@id": "https://peaceandmusic.net/#organization" },
+  "copyrightYear": 2024,
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["h1", ".typo-subtitle", "h2:first-of-type"]
+  },
   "about": [
     { "@type": "Thing", "name": "Peace movement", "sameAs": "https://en.wikipedia.org/wiki/Peace_movement" },
     { "@type": "Place", "name": "Gangjeong Village", "sameAs": "https://en.wikipedia.org/wiki/Gangjeong" }
@@ -373,11 +424,11 @@ export const getHowToSchema = (_lang: string = 'ko', t?: TranslationFn) => ({
   "name": t ? t('structured_data.howto_name') : 'How to Attend Gangjeong Peace Music Camp',
   "description": t ? getDescription(t) : '',
   "step": [
-    { "@type": "HowToStep", "position": 1, "name": t ? t('structured_data.howto_step1_name') : 'Check the schedule', "text": t ? t('structured_data.howto_step1_text') : 'Visit peaceandmusic.net to check the camp dates and lineup.' },
-    { "@type": "HowToStep", "position": 2, "name": t ? t('structured_data.howto_step2_name') : 'Travel to Gangjeong Village', "text": t ? t('structured_data.howto_step2_text') : 'Take a bus or taxi from Jeju Airport to Gangjeong Village.' },
-    { "@type": "HowToStep", "position": 3, "name": t ? t('structured_data.howto_step3_name') : 'Support the camp (optional)', "text": t ? t('structured_data.howto_step3_text') : 'Support the camp through crowdfunding at tumblbug.com/gpmc3.' },
-    { "@type": "HowToStep", "position": 4, "name": t ? t('structured_data.howto_step4_name') : 'Visit Gangjeong Sports Park', "text": t ? t('structured_data.howto_step4_text') : 'Arrive at Gangjeong Sports Park and enter for free.' },
-    { "@type": "HowToStep", "position": 5, "name": t ? t('structured_data.howto_step5_name') : 'Enjoy music and peace', "text": t ? t('structured_data.howto_step5_text') : 'Watch performances and share in the spirit of peace solidarity.' },
+    { "@type": "HowToStep", "position": 1, "name": t ? t('structured_data.howto_step1_name') : 'Check the schedule', "text": t ? t('structured_data.howto_step1_text') : 'Visit peaceandmusic.net to check the camp dates and lineup.', "url": "https://peaceandmusic.net/camps/2026" },
+    { "@type": "HowToStep", "position": 2, "name": t ? t('structured_data.howto_step2_name') : 'Travel to Gangjeong Village', "text": t ? t('structured_data.howto_step2_text') : 'Take a bus or taxi from Jeju Airport to Gangjeong Village.', "url": "https://peaceandmusic.net/camps/2026" },
+    { "@type": "HowToStep", "position": 3, "name": t ? t('structured_data.howto_step3_name') : 'Support the camp (optional)', "text": t ? t('structured_data.howto_step3_text') : 'Support the camp through crowdfunding at tumblbug.com/gpmc3.', "url": "https://peaceandmusic.net/camps/2026" },
+    { "@type": "HowToStep", "position": 4, "name": t ? t('structured_data.howto_step4_name') : 'Visit Gangjeong Sports Park', "text": t ? t('structured_data.howto_step4_text') : 'Arrive at Gangjeong Sports Park and enter for free.', "url": "https://peaceandmusic.net/camps/2026" },
+    { "@type": "HowToStep", "position": 5, "name": t ? t('structured_data.howto_step5_name') : 'Enjoy music and peace', "text": t ? t('structured_data.howto_step5_text') : 'Watch performances and share in the spirit of peace solidarity.', "url": "https://peaceandmusic.net/gallery" },
   ],
 });
 
@@ -397,6 +448,7 @@ export const getMusicAlbumSchema = (album: {
   "name": album.name,
   "byArtist": {
     "@type": "MusicGroup",
+    "@id": "https://peaceandmusic.net/#music-group",
     "name": album.byArtist.name
   },
   "genre": album.genre,
@@ -405,8 +457,19 @@ export const getMusicAlbumSchema = (album: {
   "albumProductionType": "https://schema.org/StudioAlbum",
   "albumReleaseType": "https://schema.org/AlbumRelease",
   "numTracks": album.numTracks || (album.track ? album.track.length : 0),
+  "offers": {
+    "@type": "Offer",
+    "url": "https://smartstore.naver.com/peaceandmusic",
+    "priceCurrency": "KRW",
+    "availability": "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "@id": "https://peaceandmusic.net/#organization"
+    }
+  },
   "track": album.track?.map(t => ({
     "@type": "MusicRecording",
+    ...(t.url ? { "@id": t.url } : {}),
     "name": t.name,
     ...(t.duration ? { "duration": durationToISO8601(t.duration) } : {}),
     "url": t.url
@@ -420,7 +483,8 @@ export const getVideoObjectSchema = (video: {
   youtubeUrl: string;
   uploadDate: string;
   id?: string;
-}) => {
+  duration?: string;
+}, t?: TranslationFn) => {
   const videoId = video.youtubeUrl.split('/embed/')[1]?.split('?')[0] ?? '';
   return {
     "@context": "https://schema.org",
@@ -432,10 +496,11 @@ export const getVideoObjectSchema = (video: {
     "uploadDate": video.uploadDate,
     "embedUrl": video.youtubeUrl,
     "url": `https://www.youtube.com/watch?v=${videoId}`,
+    ...(video.duration ? { "duration": durationToISO8601(video.duration) } : {}),
     "publisher": {
       "@type": "Organization",
       "@id": "https://peaceandmusic.net/#organization",
-      "name": "강정피스앤뮤직캠프",
+      "name": t ? getProjectName(t) : "강정피스앤뮤직캠프",
       "url": "https://peaceandmusic.net"
     }
   };
