@@ -39,7 +39,9 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(
           {isPathActive(ROUTES.HOME, true) && (
             <motion.div
               className={`absolute bottom-[-4px] left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
-              layoutId="underline-home"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 0.2 }}
             />
           )}
         </Link>
@@ -72,7 +74,9 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(
               {isPathActive(item.path) && (
                 <motion.div
                   className={`absolute bottom-[-4px] left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
-                  layoutId={`underline-${item.path}`}
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 0.2 }}
                 />
               )}
             </Link>

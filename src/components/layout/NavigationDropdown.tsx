@@ -93,7 +93,10 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(
             {isActive && (
               <motion.div
                 className={`absolute bottom-[-4px] left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
-                layoutId={`underline-${label}`}
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                exit={{ scaleX: 0 }}
+                transition={{ duration: 0.2 }}
               />
             )}
           </span>
