@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { HiOutlineMenu, HiOutlineX } from 'react-icons/hi';
-import { LayoutGroup } from 'framer-motion';
 import { useNavigation } from '@/hooks/useNavigation';
 import DesktopMenu from './DesktopMenu';
 import MobileMenu from './MobileMenu';
@@ -50,14 +49,12 @@ const Navigation = () => {
             </Link>
 
             {/* Desktop Menu */}
-            <LayoutGroup>
-              <DesktopMenu
-                isPathActive={isPathActive}
-                desktopOpenDropdown={desktopOpenDropdown}
-                onOpenChange={handleDesktopDropdownChange}
-                isScrolled={isScrolled}
-              />
-            </LayoutGroup>
+            <DesktopMenu
+              isPathActive={isPathActive}
+              desktopOpenDropdown={desktopOpenDropdown}
+              onOpenChange={handleDesktopDropdownChange}
+              isScrolled={isScrolled}
+            />
 
             {/* Mobile Menu Button */}
             <div className="md:hidden">
