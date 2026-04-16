@@ -18,7 +18,7 @@ export default function MusicianHeroSection({ musician, fundingUrl, isCampPage }
   const { t } = useTranslation();
 
   return (
-    <div className="relative bg-gradient-to-b from-jeju-ocean to-ocean-mist min-h-[480px] flex items-center">
+    <div className="relative bg-gradient-to-b from-jeju-ocean to-ocean-mist min-h-0 md:min-h-[480px] flex items-center">
       {musician.imageUrl && (
         <div className="absolute inset-0 overflow-hidden">
           <Image
@@ -32,11 +32,11 @@ export default function MusicianHeroSection({ musician, fundingUrl, isCampPage }
           />
         </div>
       )}
-      <div className="relative z-10 w-full pt-24 pb-12">
+      <div className="relative z-10 w-full pt-28 sm:pt-24 pb-8 sm:pb-12">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-10 items-center">
+          <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-6 md:gap-10 items-center">
             {musician.imageUrl && (
-              <div className="w-full md:w-[380px] flex-shrink-0">
+              <div className="w-3/4 sm:w-72 md:w-[380px] flex-shrink-0 mx-auto md:mx-0">
                 <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl ring-4 ring-white/20">
                   <Image
                     src={musician.imageUrl}
@@ -50,8 +50,8 @@ export default function MusicianHeroSection({ musician, fundingUrl, isCampPage }
               </div>
             )}
 
-            <div className="flex-1 min-w-0 text-white pb-2">
-              <div className="flex flex-wrap gap-2 mb-4">
+            <div className="flex-1 min-w-0 text-white pb-2 text-center md:text-left">
+              <div className="flex flex-wrap gap-2 mb-4 justify-center md:justify-start">
                 {musician.genre.map((g) => (
                   <span
                     key={g}
@@ -79,7 +79,7 @@ export default function MusicianHeroSection({ musician, fundingUrl, isCampPage }
               )}
 
               {(musician.instagramUrls.length > 0 || musician.youtubeUrl) && (
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2 mb-4 justify-center md:justify-start">
                   {musician.instagramUrls.map((url) => {
                     const username = extractInstagramUsername(url);
                     return (
