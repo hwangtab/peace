@@ -75,10 +75,10 @@ export default function MusicianDescriptionSection({
                   </div>
                 </a>
               )}
-              <div className="flex-1 min-w-0 bg-gradient-to-br from-ocean-sand to-white px-6 py-6 flex flex-col justify-between gap-4 text-center sm:text-left items-center sm:items-start">
+              <div className="flex-1 min-w-0 bg-gradient-to-br from-ocean-sand to-white px-6 py-6 flex flex-col justify-between gap-4 text-center items-center">
                 <div>
                   <p className="text-sm uppercase tracking-widest text-jeju-ocean font-bold mb-2">{t(`camp.title_${latestCamp?.year}`)}</p>
-                  <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
+                  <div className="flex flex-wrap gap-3 justify-center">
                     <span className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-700">
                       <span className="text-jeju-ocean" aria-hidden="true">📅</span>{t(`camp.date_badge_${latestCamp?.year}`)}
                     </span>
@@ -87,7 +87,7 @@ export default function MusicianDescriptionSection({
                     </span>
                   </div>
                 </div>
-                <Button href={fundingUrl} variant="gold" size="sm" shape="rounded" external utmContent={`musician-camp-info-${musician.id}`} className="self-center sm:self-start">
+                <Button href={fundingUrl} variant="gold" size="sm" shape="rounded" external utmContent={`musician-camp-info-${musician.id}`} className="self-center">
                   {t(`camp.ticketing_${latestCamp?.year}`)} &rarr;
                 </Button>
               </div>
