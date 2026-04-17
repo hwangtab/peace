@@ -62,7 +62,8 @@ const EventFilter: React.FC<EventFilterProps> = ({
       role="group"
       aria-label={t('common.aria_filter')}
       initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.4 }}
       className="flex flex-wrap gap-2 justify-center mb-8"
     >
