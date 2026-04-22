@@ -42,7 +42,8 @@
     "dev": "next dev",
     "i18n:extract": "i18next-parser",
     "i18n:check": "i18next-parser --fail-on-warnings",
-    "build:timetable": "ts-node --compiler-options '{\"module\":\"commonjs\"}' scripts/convert-timetable.ts"
+    "build:timetable": "ts-node --compiler-options '{\"module\":\"commonjs\"}' scripts/convert-timetable.ts",
+    "fonts:subset": "python3 scripts/subset-fonts.py"
   },
   "browserslist": {
     "production": [
