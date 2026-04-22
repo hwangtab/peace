@@ -57,6 +57,8 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
 
   const translatedTitle = t('camp.title_2026');
   const translatedDescription = t('camp.description_2026');
+  const seoTitle = t('camp.seo_title_2026');
+  const seoDescription = t('camp.seo_description_2026');
 
   const subEvents = timetable2026.days.flatMap((day) =>
     day.acts
@@ -214,8 +216,8 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
 
   return (
     <PageLayout
-      title={`${t('camp.ordinal', { num: ordinalLabel })} ${t('app.title')} (2026)`}
-      description={translatedDescription}
+      title={seoTitle}
+      description={seoDescription}
       ogImage={camp2026?.images?.[0] || '/images-webp/camps/2023/IMG_2064.webp'}
       ogImageAlt={translatedTitle}
       structuredData={[eventSchema, eventSeriesSchema, getBreadcrumbSchema(breadcrumbs), getHowToSchema(i18n.language, t), getWebPageSchema({
