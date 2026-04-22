@@ -84,6 +84,13 @@ class MyDocument extends Document {
           <link rel="dns-prefetch" href="//www.youtube.com" />
           <link rel="dns-prefetch" href="//img.youtube.com" />
           <link rel="preconnect" href="https://img.youtube.com" crossOrigin="anonymous" />
+
+          {/* 외부 링크 도메인 preconnect/dns-prefetch (CTA 전환 개선) */}
+          <link rel="dns-prefetch" href="//tumblbug.com" />
+          <link rel="preconnect" href="https://tumblbug.com" crossOrigin="anonymous" />
+          <link rel="dns-prefetch" href="//www.instagram.com" />
+          <link rel="preconnect" href="https://www.instagram.com" crossOrigin="anonymous" />
+          <link rel="dns-prefetch" href="//smartstore.naver.com" />
         </Head>
         <body>
           <Main />
