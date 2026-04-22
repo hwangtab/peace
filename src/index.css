@@ -3,9 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  /* 모든 폰트는 scripts/subset-fonts.py 로 프로젝트 사용 글자만 남긴 서브셋 버전. */
   @font-face {
     font-family: 'BookkMyungjo-Bd';
-    src: url('/fonts/BookkMyungjo-Bd.woff2') format('woff2');
+    src: url('/fonts/BookkMyungjo-Bd.subset.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -13,28 +14,28 @@
 
   @font-face {
     font-family: 'GMarketSans';
-    src: url('/fonts/GmarketSansLight.woff2') format('woff2');
+    src: url('/fonts/GmarketSansLight.subset.woff2') format('woff2');
     font-weight: 200;
     font-display: swap;
   }
 
   @font-face {
     font-family: 'GMarketSans';
-    src: url('/fonts/GmarketSansMedium.woff2') format('woff2');
+    src: url('/fonts/GmarketSansMedium.subset.woff2') format('woff2');
     font-weight: 500;
     font-display: swap;
   }
 
   @font-face {
     font-family: 'GMarketSans';
-    src: url('/fonts/GmarketSansBold.woff2') format('woff2');
+    src: url('/fonts/GmarketSansBold.subset.woff2') format('woff2');
     font-weight: 700;
     font-display: swap;
   }
 
   @font-face {
     font-family: 'S-CoreDream-3Light';
-    src: url('/fonts/S-CoreDream-3Light.woff') format('woff');
+    src: url('/fonts/S-CoreDream-3Light.subset.woff2') format('woff2');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -42,14 +43,14 @@
 
   @font-face {
     font-family: 'PartialSans';
-    src: url('/fonts/PartialSansKR-Regular.woff2') format('woff2');
+    src: url('/fonts/PartialSansKR-Regular.subset.woff2') format('woff2');
     font-weight: normal;
     font-display: swap;
   }
 
   @font-face {
     font-family: 'KkuBulLim';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2410-1@1.0/BMkkubulimTTF-Regular.woff2') format('woff2');
+    src: url('/fonts/BMkkubulim-Regular.subset.woff2') format('woff2');
     font-weight: normal;
     font-display: swap;
   }
