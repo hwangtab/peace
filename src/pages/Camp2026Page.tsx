@@ -58,6 +58,21 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
   const translatedTitle = t('camp.title_2026');
   const translatedDescription = t('camp.description_2026');
 
+  const subEvents = timetable2026.days.flatMap((day) =>
+    day.acts
+      .filter((a) => a.type === 'performance')
+      .map((a) => ({
+        name: a.name,
+        startDate: `${day.date}T${a.start}:00+09:00`,
+        endDate: `${day.date}T${a.end}:00+09:00`,
+        performerName: a.name,
+        performerUrl:
+          a.musicianIds && a.musicianIds.length === 1
+            ? getFullUrl(`/camps/2026/musicians/${a.musicianIds[0]}`)
+            : undefined,
+      }))
+  );
+
   const eventSchema = getEventSchema(
     {
       name: translatedTitle,
@@ -90,6 +105,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
             },
           }
         : {}),
+      subEvents,
     },
     i18n.language,
     t
