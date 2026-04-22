@@ -8,14 +8,20 @@ interface TimetableDayViewProps {
   day: TimetableDay;
   musicianById: Map<number, Musician>;
   campYear: number;
+  railClassName?: string;
 }
 
-const TimetableDayView: React.FC<TimetableDayViewProps> = ({ day, musicianById, campYear }) => {
+const TimetableDayView: React.FC<TimetableDayViewProps> = ({
+  day,
+  musicianById,
+  campYear,
+  railClassName = 'bg-ocean-gradient',
+}) => {
   let perfIndex = 0;
   return (
     <div className="relative flex flex-col gap-3 pl-0 sm:pl-16 lg:pl-20">
       <div
-        className="pointer-events-none absolute left-6 top-0 hidden h-full w-1 rounded-full bg-ocean-gradient sm:block lg:left-8"
+        className={`pointer-events-none absolute left-6 top-0 hidden h-full w-1 rounded-full opacity-60 sm:block lg:left-8 ${railClassName}`}
         aria-hidden="true"
       />
       {day.acts.map((act, i) => {

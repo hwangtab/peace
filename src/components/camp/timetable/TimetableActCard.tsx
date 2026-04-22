@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Musician } from '@/types/musician';
 import { TimetableAct } from './types';
-import ScaleBadge from './ScaleBadge';
 
 interface TimetableActCardProps {
   act: TimetableAct;
@@ -14,7 +13,6 @@ interface TimetableActCardProps {
 }
 
 function getInitials(name: string): string {
-  // For short names (<=2 chars), show only first char to avoid duplicating full name
   if (name.length <= 2) return name.slice(0, 1);
   return name.slice(0, 2);
 }
@@ -35,15 +33,31 @@ const TimetableActCard: React.FC<TimetableActCardProps> = ({ act, musicianById, 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.3, delay: Math.min(index * 0.03, 0.3) }}
-      className="flex items-center gap-4 rounded-xl bg-white p-4 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg"
+      className="group flex items-center gap-3 rounded-xl bg-white p-3 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg sm:gap-4 sm:p-4"
     >
+      <div className="flex w-12 flex-shrink-0 flex-col items-center text-center sm:w-16">
+        <time
+          dateTime={act.start}
+          className="text-lg font-bold leading-none tabular-nums text-jeju-ocean sm:text-xl"
+        >
+          {act.start}
+        </time>
+        <span aria-hidden="true" className="mt-1 block h-px w-4 bg-coastal-gray/30 sm:w-6" />
+        <time
+          dateTime={act.end}
+          className="mt-1 text-[11px] leading-none tabular-nums text-coastal-gray/70 sm:text-xs"
+        >
+          {act.end}
+        </time>
+      </div>
+
       <div className="relative flex-shrink-0">
         {musicians.length > 0 ? (
           <div className="flex">
             {musicians.map((m, i) => (
               <div
                 key={m.id}
-                className={`h-16 w-16 overflow-hidden rounded-full border-2 border-white sm:h-20 sm:w-20 ${i > 0 ? '-ml-4' : ''}`}
+                className={`h-14 w-14 overflow-hidden rounded-full border-2 border-white sm:h-20 sm:w-20 ${i > 0 ? '-ml-4' : ''}`}
                 style={{ zIndex: musicians.length - i }}
               >
                 <Image
@@ -51,7 +65,7 @@ const TimetableActCard: React.FC<TimetableActCardProps> = ({ act, musicianById, 
                   alt={m.name}
                   width={80}
                   height={80}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
                 />
               </div>
@@ -59,24 +73,22 @@ const TimetableActCard: React.FC<TimetableActCardProps> = ({ act, musicianById, 
           </div>
         ) : (
           <div
-            className="flex h-16 w-16 items-center justify-center rounded-full bg-jeju-ocean text-lg font-bold text-white sm:h-20 sm:w-20"
+            className="flex h-14 w-14 items-center justify-center rounded-full bg-jeju-ocean text-base font-bold text-white sm:h-20 sm:w-20 sm:text-lg"
             aria-hidden="true"
           >
             {getInitials(act.name)}
           </div>
         )}
       </div>
+
       <div className="flex min-w-0 flex-1 flex-col gap-1">
-        <p className="truncate text-lg font-bold text-deep-ocean">{act.name}</p>
-        <p className="text-sm text-coastal-gray">
-          <time dateTime={act.start}>{act.start}</time>
-          {' – '}
-          <time dateTime={act.end}>{act.end}</time>
+        <p className="break-words text-base font-bold leading-tight text-deep-ocean sm:text-lg">
+          {act.name}
         </p>
-        {act.scale && (
-          <div>
-            <ScaleBadge scale={act.scale} />
-          </div>
+        {primary?.shortDescription && (
+          <p className="break-words text-pretty text-sm text-gray-600 transition-colors group-hover:text-gray-800">
+            {primary.shortDescription}
+          </p>
         )}
       </div>
     </motion.div>
