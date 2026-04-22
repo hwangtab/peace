@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState, useCallback } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import { Musician } from '@/types/musician';
-import { Timetable } from './types';
+import { Timetable, Weekday } from './types';
 import TimetableDayView from './TimetableDayView';
 
 interface CampTimetableProps {
@@ -10,6 +10,24 @@ interface CampTimetableProps {
   musicians: Musician[];
   campYear: number;
 }
+
+const DAY_MOOD: Record<Weekday, { activeTab: string; rail: string; panelTint: string }> = {
+  fri: {
+    activeTab: 'bg-gradient-to-br from-jeju-ocean to-deep-ocean text-white',
+    rail: 'bg-gradient-to-b from-jeju-ocean to-deep-ocean',
+    panelTint: 'bg-gradient-to-b from-seafoam/10 via-transparent to-transparent',
+  },
+  sat: {
+    activeTab: 'bg-ocean-gradient text-white',
+    rail: 'bg-ocean-gradient',
+    panelTint: 'bg-gradient-to-b from-seafoam/20 via-transparent to-transparent',
+  },
+  sun: {
+    activeTab: 'bg-sunset-gradient text-white',
+    rail: 'bg-sunset-gradient',
+    panelTint: 'bg-gradient-to-b from-golden-sun/10 via-transparent to-transparent',
+  },
+};
 
 function hashForDate(date: string): string {
   return `timetable-day-${date}`;
@@ -67,6 +85,7 @@ const CampTimetable: React.FC<CampTimetableProps> = ({ data, musicians, campYear
       <div role="tablist" aria-label={t('timetable.title')} className="mb-6 grid grid-cols-3 overflow-hidden rounded-xl border border-seafoam bg-white">
         {data.days.map((day, i) => {
           const isActive = i === activeIndex;
+          const mood = DAY_MOOD[day.weekday];
           return (
             <button
               key={day.date}
@@ -78,10 +97,8 @@ const CampTimetable: React.FC<CampTimetableProps> = ({ data, musicians, campYear
               tabIndex={isActive ? 0 : -1}
               onClick={() => selectTab(i)}
               onKeyDown={(e) => onKeyDown(e, i)}
-              className={`relative px-2 py-3 text-center text-xs sm:text-sm transition-colors ${
-                isActive
-                  ? 'bg-jeju-ocean text-white'
-                  : 'bg-white text-coastal-gray hover:bg-ocean-sand'
+              className={`relative px-2 py-3 text-center text-xs transition-colors sm:text-sm ${
+                isActive ? mood.activeTab : 'bg-white text-coastal-gray hover:bg-ocean-sand'
               }`}
             >
               <span className="block font-bold">
@@ -110,8 +127,14 @@ const CampTimetable: React.FC<CampTimetableProps> = ({ data, musicians, campYear
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
+          className={`rounded-xl px-2 py-4 sm:px-4 ${DAY_MOOD[activeDay.weekday].panelTint}`}
         >
-          <TimetableDayView day={activeDay} musicianById={musicianById} campYear={campYear} />
+          <TimetableDayView
+            day={activeDay}
+            musicianById={musicianById}
+            campYear={campYear}
+            railClassName={DAY_MOOD[activeDay.weekday].rail}
+          />
         </motion.div>
       </AnimatePresence>
     </div>
