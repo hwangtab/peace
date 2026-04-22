@@ -348,14 +348,13 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
         direction="down"
       />
 
-      {/* Gangjeong Story Section */}
-      <GangjeongStorySection />
-
-      <WaveDivider className="text-white -mt-[60px] sm:-mt-[100px] relative z-10" />
-
-      {/* Lineup Section */}
+      {/* Lineup / Timetable Section */}
       {camp2026.participants && camp2026.participants.length > 0 && (
-        <Section background="white" id="lineup">
+        <Section
+          background="sky-horizon"
+          id="lineup"
+          className="pt-24 md:pt-32 pb-24 md:pb-32"
+        >
           <div className="container mx-auto px-4">
             <SectionHeader
               title={t('camp.section_musicians')}
@@ -381,6 +380,14 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
           </div>
         </Section>
       )}
+
+      <WaveDivider
+        className="text-sky-horizon -mb-[60px] sm:-mb-[100px] relative z-10"
+        direction="down"
+      />
+
+      {/* Gangjeong Story Section */}
+      <GangjeongStorySection />
 
       {/* Final CTA Section */}
       {camp2026.fundingUrl && (
