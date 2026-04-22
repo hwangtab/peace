@@ -25,7 +25,7 @@ function readHashIndex(dates: string[]): number {
 const CampTimetable: React.FC<CampTimetableProps> = ({ data, musicians, campYear }) => {
   const { t } = useTranslation();
   const dates = useMemo(() => data.days.map((d) => d.date), [data.days]);
-  const [activeIndex, setActiveIndex] = useState<number>(() => readHashIndex(dates));
+  const [activeIndex, setActiveIndex] = useState<number>(0);
 
   const musicianById = useMemo(() => {
     const m = new Map<number, Musician>();
@@ -53,9 +53,10 @@ const CampTimetable: React.FC<CampTimetableProps> = ({ data, musicians, campYear
   }, [dates.length, selectTab]);
 
   useEffect(() => {
-    const onHashChange = () => setActiveIndex(readHashIndex(dates));
-    window.addEventListener('hashchange', onHashChange);
-    return () => window.removeEventListener('hashchange', onHashChange);
+    const sync = () => setActiveIndex(readHashIndex(dates));
+    sync(); // reconcile on mount
+    window.addEventListener('hashchange', sync);
+    return () => window.removeEventListener('hashchange', sync);
   }, [dates]);
 
   const activeDay = data.days[activeIndex] ?? data.days[0];
