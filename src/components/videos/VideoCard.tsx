@@ -36,9 +36,6 @@ const getYoutubeVideoId = (url: string): string => {
   return url.split('/').pop() || '';
 };
 
-const getYoutubeWatchUrl = (url: string) =>
-  `https://www.youtube.com/watch?v=${getYoutubeVideoId(url)}`;
-
 const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
   const { t, i18n } = useTranslation();
   const videoId = getYoutubeVideoId(video.youtubeUrl);
@@ -48,11 +45,10 @@ const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
 
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col transition-[box-shadow,transform] duration-300 hover:shadow-lg hover:scale-[1.02] hover:bg-ocean-mist/10">
-      <a
-        href={getYoutubeWatchUrl(video.youtubeUrl)}
-        target="_blank"
-        rel="noopener noreferrer nofollow"
+      <Link
+        href={`/videos/${video.id}`}
         className="block rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
+        aria-label={video.title}
       >
         <div className="relative aspect-video overflow-hidden rounded-t-xl group bg-gray-200">
           {imgSrc && (
@@ -98,7 +94,7 @@ const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
             {video.description}
           </p>
         </div>
-      </a>
+      </Link>
       {(() => {
         const campMusicianId = video.musicianIds?.find(id => CAMP_2026_MUSICIAN_IDS.has(id));
         return campMusicianId != null ? (

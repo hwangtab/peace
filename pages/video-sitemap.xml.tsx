@@ -26,7 +26,22 @@ function getYoutubeVideoId(url: string): string {
   return url.split('/').pop() || '';
 }
 
-// This component is never rendered — the page serves raw XML
+// "M:SS"/"MM:SS" → 초 단위 정수
+function durationToSeconds(duration?: string): number | null {
+  if (!duration) return null;
+  const parts = duration.split(':').map((p) => parseInt(p, 10));
+  if (parts.some(Number.isNaN)) return null;
+  if (parts.length === 2) {
+    const [m, s] = parts as [number, number];
+    return m * 60 + s;
+  }
+  if (parts.length === 3) {
+    const [h, m, s] = parts as [number, number, number];
+    return h * 3600 + m * 60 + s;
+  }
+  return null;
+}
+
 export default function VideoSitemapXml() {
   return null;
 }
@@ -34,26 +49,33 @@ export default function VideoSitemapXml() {
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const videos = loadLocalizedData<VideoItem>('ko', 'videos.json');
 
-  const videoEntries = videos
+  const urlEntries = videos
     .map((video) => {
       const videoId = getYoutubeVideoId(video.youtubeUrl);
       if (!videoId) return null;
 
+      const pageUrl = `${SITE_URL}/videos/${video.id}`;
       const thumbnailUrl =
         video.thumbnailUrl ||
         `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
       const playerUrl = `https://www.youtube.com/embed/${videoId}`;
-      const description = (video.description || '').slice(0, 2048);
+      const description = (video.description || video.title || '').slice(0, 2048);
+      const durationSec = durationToSeconds(video.duration);
 
-      // Build contextual tags for better topic classification
-      const tags = ['강정피스앤뮤직캠프', 'Peace Music', 'Anti-war'];
-      if (video.location) tags.push(escapeXml(video.location));
+      const tags: string[] = ['강정피스앤뮤직캠프', 'Peace Music', 'Anti-war'];
+      if (video.location) tags.push(video.location);
       if (video.eventType === 'camp') tags.push('Music Festival', '평화음악캠프');
       if (video.eventType === 'album') tags.push('Album Release', '앨범 발매');
       if (video.eventYear) tags.push(String(video.eventYear));
-      const tagXml = tags.map(tag => `      <video:tag>${tag}</video:tag>`).join('\n');
+      const tagXml = tags
+        .slice(0, 32) // Google limit
+        .map((tag) => `      <video:tag>${escapeXml(tag)}</video:tag>`)
+        .join('\n');
 
-      return `    <video:video>
+      return `  <url>
+    <loc>${escapeXml(pageUrl)}</loc>
+    <lastmod>${video.date}</lastmod>
+    <video:video>
       <video:thumbnail_loc>${escapeXml(thumbnailUrl)}</video:thumbnail_loc>
       <video:title>${escapeXml(video.title)}</video:title>
       <video:description>${escapeXml(description)}</video:description>
@@ -61,20 +83,21 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
       <video:publication_date>${video.date}</video:publication_date>
       <video:family_friendly>yes</video:family_friendly>
       <video:live>no</video:live>
-${tagXml}
-    </video:video>`;
+      <video:requires_subscription>no</video:requires_subscription>
+      <video:platform relationship="allow">web mobile tv</video:platform>
+${durationSec ? `      <video:duration>${durationSec}</video:duration>\n` : ''}${tagXml}
+    </video:video>
+  </url>`;
     })
-    .filter(Boolean);
+    .filter(Boolean)
+    .join('\n');
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
 >
-  <url>
-    <loc>${SITE_URL}/videos</loc>
-${videoEntries.join('\n')}
-  </url>
+${urlEntries}
 </urlset>`;
 
   res.setHeader('Content-Type', 'application/xml');
