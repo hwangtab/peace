@@ -138,6 +138,15 @@
     "view_image": "Просмотр изображения",
     "no_results": "Результатов не найдено."
   },
+  "timetable": {
+    "title": "Расписание",
+    "subtitle_count": "{{count}} выступлений · 3 дня",
+    "tab_day_label": "{{date}} {{weekday}} · {{count}} выступлений",
+    "tab_day_time": "{{start}} – {{end}}",
+    "transition": "⟶ {{minutes}} мин перерыв",
+    "scale": { "solo": "SOLO", "band": "BAND", "big_band": "BIG BAND", "ensemble": "ENSEMBLE" },
+    "weekday": { "fri": "Пт", "sat": "Сб", "sun": "Вс" }
+  },
   "timeline": {
     "title": "Наш путь",
     "subtitle": "Хроника мира, начавшаяся в Канджоне",

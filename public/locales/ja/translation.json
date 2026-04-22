@@ -138,6 +138,15 @@
     "view_image": "画像を見る",
     "no_results": "結果が見つかりません。"
   },
+  "timetable": {
+    "title": "タイムテーブル",
+    "subtitle_count": "{{count}}組 · 3日間",
+    "tab_day_label": "{{date}} {{weekday}} · {{count}}組",
+    "tab_day_time": "{{start}} – {{end}}",
+    "transition": "⟶ {{minutes}}分転換",
+    "scale": { "solo": "SOLO", "band": "BAND", "big_band": "BIG BAND", "ensemble": "ENSEMBLE" },
+    "weekday": { "fri": "金", "sat": "土", "sun": "日" }
+  },
   "timeline": {
     "title": "連帯の歩み",
     "subtitle": "ガンジョンから始まった平和の記録",

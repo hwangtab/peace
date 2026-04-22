@@ -138,6 +138,15 @@
     "view_image": "查看图片",
     "no_results": "未找到结果。"
   },
+  "timetable": {
+    "title": "演出时刻表",
+    "subtitle_count": "{{count}}组 · 3天",
+    "tab_day_label": "{{date}} {{weekday}} · {{count}}组",
+    "tab_day_time": "{{start}} – {{end}}",
+    "transition": "⟶ {{minutes}}分钟换场",
+    "scale": { "solo": "SOLO", "band": "BAND", "big_band": "BIG BAND", "ensemble": "ENSEMBLE" },
+    "weekday": { "fri": "周五", "sat": "周六", "sun": "周日" }
+  },
   "timeline": {
     "title": "连带之路",
     "subtitle": "从江汀开始的和平记录",
