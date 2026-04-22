@@ -38,3 +38,10 @@ xenodochial-beaver/
 
 # git worktrees
 .worktrees/
+
+# Playwright MCP test artifacts
+.playwright-mcp/
+
+# 개인정보(전화번호, 연락처) 포함 운영 파일 — 푸시 금지
+scripts/sms/
+docs/2026캠프 운영/
