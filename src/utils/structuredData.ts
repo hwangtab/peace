@@ -71,13 +71,7 @@ export const getOrganizationSchema = (_lang: string = 'ko', t?: TranslationFn) =
       "name": "Gangjeong Village, Jeju",
       "sameAs": "https://en.wikipedia.org/wiki/Gangjeong"
     }
-  ],
-  "event": {
-    "@type": "MusicEvent",
-    "@id": "https://peaceandmusic.net/camps/2026#event",
-    "name": t ? t('camp.title_2026') : '제3회 강정피스앤뮤직캠프',
-    "url": "https://peaceandmusic.net/camps/2026"
-  }
+  ]
 });
 
 // WebSite Schema - 웹사이트 정보
@@ -551,8 +545,21 @@ export const getEventSeriesSchema = (series: {
     startDate: string;
     endDate?: string;
     url?: string;
+    description?: string;
+    image?: string;
+    locationName: string;
+    locationAddress?: string;
+    eventStatus?: string;
+    offers?: {
+      url: string;
+      price?: string;
+      priceCurrency?: string;
+      availability?: string;
+      validFrom?: string;
+      validThrough?: string;
+    };
   }>;
-}) => ({
+}, t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "EventSeries",
   "@id": "https://peaceandmusic.net/#event-series",
@@ -566,7 +573,46 @@ export const getEventSeriesSchema = (series: {
     "@id": e["@id"],
     "name": e.name,
     "startDate": e.startDate,
-    ...(e.endDate ? { "endDate": e.endDate } : {}),
+    "endDate": e.endDate || e.startDate,
+    "eventStatus": e.eventStatus || "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "description": e.description || series.description,
+    "image": e.image || "https://peaceandmusic.net/og-image.webp",
+    "location": {
+      "@type": "Place",
+      "@id": "https://peaceandmusic.net/#gangjeong-sports-park",
+      "name": e.locationName,
+      "address": {
+        "@type": "PostalAddress",
+        ...(e.locationAddress ? { "streetAddress": e.locationAddress } : {}),
+        "addressLocality": "Seogwipo",
+        "addressRegion": "Jeju",
+        "addressCountry": "KR"
+      }
+    },
+    "performer": {
+      "@type": "Organization",
+      "@id": "https://peaceandmusic.net/#organization",
+      "name": t ? getCampName(t) : ''
+    },
+    "organizer": { "@id": "https://peaceandmusic.net/#organization" },
+    "offers": e.offers
+      ? {
+          "@type": "Offer",
+          "url": e.offers.url,
+          "price": e.offers.price || "0",
+          "priceCurrency": e.offers.priceCurrency || "KRW",
+          "availability": e.offers.availability || "https://schema.org/InStock",
+          ...(e.offers.validFrom ? { "validFrom": e.offers.validFrom } : {}),
+          ...(e.offers.validThrough ? { "validThrough": e.offers.validThrough } : {})
+        }
+      : {
+          "@type": "Offer",
+          "url": e.url || "https://peaceandmusic.net",
+          "price": "0",
+          "priceCurrency": "KRW",
+          "availability": "https://schema.org/InStock"
+        },
     ...(e.url ? { "url": e.url } : {})
   }))
 });
@@ -672,19 +718,25 @@ export const getVideoObjectSchema = (video: {
   uploadDate: string;
   id?: string;
   duration?: string;
+  pageUrl?: string; // canonical page URL hosting this video (e.g. /videos/42)
 }, t?: TranslationFn) => {
   const videoId = video.youtubeUrl.split('/embed/')[1]?.split('?')[0] ?? '';
+  const canonicalPageUrl =
+    video.pageUrl ?? `https://peaceandmusic.net/videos/${video.id ?? videoId}`;
   return {
     "@context": "https://schema.org",
     "@type": "VideoObject",
-    "@id": `https://peaceandmusic.net/videos#video-${video.id ?? videoId}`,
+    "@id": `${canonicalPageUrl}#video`,
     "name": video.name,
     "description": video.description,
     "thumbnailUrl": `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
     "uploadDate": video.uploadDate,
     "embedUrl": video.youtubeUrl,
-    "url": `https://www.youtube.com/watch?v=${videoId}`,
+    "url": canonicalPageUrl,
+    "contentUrl": `https://www.youtube.com/watch?v=${videoId}`,
     ...(video.duration ? { "duration": durationToISO8601(video.duration) } : {}),
+    "isFamilyFriendly": true,
+    "inLanguage": "ko",
     "publisher": {
       "@type": "Organization",
       "@id": "https://peaceandmusic.net/#organization",

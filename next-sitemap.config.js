@@ -137,7 +137,7 @@ const getLastmodForPath = (pagePath) => {
     ]);
   }
 
-  if (normalizedPath === '/videos') {
+  if (normalizedPath === '/videos' || normalizedPath.startsWith('/videos/')) {
     return getLastmod([
       ...translationFiles,
       ...getLocalizedDataFiles('videos'),
@@ -271,6 +271,10 @@ module.exports = {
     // Videos — 동영상 콘텐츠 허브
     if (normalizedPath === '/videos') {
       return { loc: path, changefreq: 'monthly', priority: 0.8, lastmod, alternateRefs };
+    }
+    // Individual video detail pages — each gets its own URL for proper video indexing
+    if (normalizedPath.startsWith('/videos/')) {
+      return { loc: path, changefreq: 'yearly', priority: 0.7, lastmod, alternateRefs };
     }
     // Press — 언론 보도
     if (normalizedPath === '/press') {
