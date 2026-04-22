@@ -13,7 +13,7 @@ import CampHero from '@/components/camp/CampHero';
 import dynamic from 'next/dynamic';
 
 const GangjeongStorySection = dynamic(() => import('@/components/camp/GangjeongStorySection'));
-import { getEventSchema, getBreadcrumbSchema, getHowToSchema, getWebPageSchema, getFAQSchema, getItemListSchema } from '@/utils/structuredData';
+import { getEventSchema, getBreadcrumbSchema, getHowToSchema, getWebPageSchema, getFAQSchema, getItemListSchema, getEventSeriesSchema } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
 import Button from '@/components/common/Button';
 import { formatOrdinal } from '@/utils/format';
@@ -170,11 +170,40 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
           }
         : {}),
       url: getFullUrl('/camps/2026'),
+      id: 'https://peaceandmusic.net/camps/2026#event',
+      superEventId: 'https://peaceandmusic.net/#event-series',
       subEvents,
     },
     i18n.language,
     t
   );
+
+  const eventSeriesSchema = getEventSeriesSchema({
+    name: t('app.title'),
+    description: t('seo.default.description'),
+    url: getFullUrl('/'),
+    events: [
+      {
+        "@id": 'https://peaceandmusic.net/camps/2023#event',
+        name: t('timeline.events.camp_2023.title'),
+        startDate: '2023-06-10',
+        url: getFullUrl('/camps/2023'),
+      },
+      {
+        "@id": 'https://peaceandmusic.net/camps/2025#event',
+        name: t('timeline.events.camp_2025.title'),
+        startDate: '2025-06-14',
+        url: getFullUrl('/camps/2025'),
+      },
+      {
+        "@id": 'https://peaceandmusic.net/camps/2026#event',
+        name: translatedTitle,
+        startDate: camp2026.startDate,
+        endDate: camp2026.endDate || camp2026.startDate,
+        url: getFullUrl('/camps/2026'),
+      },
+    ],
+  });
 
   const participantCount = camp2026.participants?.length || 0;
 
@@ -189,12 +218,14 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
       description={translatedDescription}
       ogImage={camp2026?.images?.[0] || '/images-webp/camps/2023/IMG_2064.webp'}
       ogImageAlt={translatedTitle}
-      structuredData={[eventSchema, getBreadcrumbSchema(breadcrumbs), getHowToSchema(i18n.language, t), getWebPageSchema({
+      structuredData={[eventSchema, eventSeriesSchema, getBreadcrumbSchema(breadcrumbs), getHowToSchema(i18n.language, t), getWebPageSchema({
           name: `${t('camp.ordinal', { num: ordinalLabel })} ${t('app.title')} (2026)`,
           description: translatedDescription,
           url: getFullUrl('/camps/2026'),
           datePublished: '2026-01-15',
           dateModified: new Date().toISOString().slice(0, 10),
+          mainEntityId: 'https://peaceandmusic.net/camps/2026#event',
+          primaryImageUrl: getFullUrl('/images-webp/camps/2026/2026poster1.webp'),
         }), faqSchema, itemListSchema]}
       breadcrumbs={breadcrumbs}
       ogType="event"

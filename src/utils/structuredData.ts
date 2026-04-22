@@ -291,7 +291,7 @@ interface SubEventInput {
   id?: string;                      // optional custom @id; else auto-generated
   description?: string;             // optional per-act description
   performerSameAs?: string[];       // Instagram/YouTube URLs
-  image?: string;                   // absolute URL to musician profile image
+  image?: string;                   // absolute URL to musician profile image (also used for performer)
   url?: string;                     // canonical URL for this specific act (e.g. page#act-anchor)
 }
 
@@ -328,6 +328,8 @@ export const getEventSchema = (event: {
   subEvents?: SubEventInput[];
   url?: string;
   doorTime?: string;
+  id?: string;                       // explicit @id for the main event (defaults to `${url}#event`)
+  superEventId?: string;             // reference to parent EventSeries @id
 }, _lang: string = 'ko', t?: TranslationFn) => {
   const location = {
     "@type": "Place",
@@ -347,9 +349,13 @@ export const getEventSchema = (event: {
     }
   };
 
+  const eventId = event.id ?? (event.url ? `${event.url}#event` : undefined);
+
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "MusicEvent",
+    ...(eventId ? { "@id": eventId } : {}),
+    ...(event.superEventId ? { "superEvent": { "@id": event.superEventId } } : {}),
     "name": event.name,
     ...(event.alternateName ? { "alternateName": event.alternateName } : {}),
     "startDate": event.startDate,
@@ -422,7 +428,8 @@ export const getEventSchema = (event: {
         "@type": "MusicGroup",
         "name": se.performerName,
         ...(se.performerUrl ? { "url": se.performerUrl } : {}),
-        ...(se.performerSameAs && se.performerSameAs.length > 0 ? { "sameAs": se.performerSameAs } : {})
+        ...(se.performerSameAs && se.performerSameAs.length > 0 ? { "sameAs": se.performerSameAs } : {}),
+        ...(se.image ? { "image": se.image } : {})
       },
       "organizer": {
         "@type": "Organization",
@@ -485,9 +492,13 @@ export const getWebPageSchema = (page: {
   url: string;
   datePublished?: string;
   dateModified?: string;
+  mainEntityId?: string;          // e.g. "https://peaceandmusic.net/camps/2026#event"
+  id?: string;                    // explicit @id for this WebPage (defaults to url + "#webpage")
+  primaryImageUrl?: string;       // absolute URL for primaryImageOfPage
 }) => ({
   "@context": "https://schema.org",
   "@type": "WebPage",
+  "@id": page.id ?? `${page.url}#webpage`,
   "name": page.name,
   "description": page.description,
   "url": page.url,
@@ -513,8 +524,46 @@ export const getWebPageSchema = (page: {
     { "@type": "Thing", "name": "Jeju Naval Base", "sameAs": "https://en.wikipedia.org/wiki/Jeju_Naval_Base" },
     { "@type": "Event", "name": "Anti-war movement", "sameAs": "https://en.wikipedia.org/wiki/Anti-war_movement" }
   ],
+  ...(page.mainEntityId ? { "mainEntity": { "@id": page.mainEntityId } } : {}),
+  ...(page.primaryImageUrl ? {
+    "primaryImageOfPage": {
+      "@type": "ImageObject",
+      "url": page.primaryImageUrl
+    }
+  } : {}),
   ...(page.datePublished ? { "datePublished": page.datePublished } : {}),
   ...(page.dateModified ? { "dateModified": page.dateModified } : {})
+});
+
+// EventSeries Schema - 연례 시리즈 이벤트 (2023, 2025, 2026)
+export const getEventSeriesSchema = (series: {
+  name: string;
+  description: string;
+  url?: string;
+  events: Array<{
+    "@id": string;
+    name: string;
+    startDate: string;
+    endDate?: string;
+    url?: string;
+  }>;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "EventSeries",
+  "@id": "https://peaceandmusic.net/#event-series",
+  "name": series.name,
+  "description": series.description,
+  ...(series.url ? { "url": series.url } : {}),
+  "organizer": { "@id": "https://peaceandmusic.net/#organization" },
+  "location": { "@id": "https://peaceandmusic.net/#gangjeong-sports-park" },
+  "subEvent": series.events.map((e) => ({
+    "@type": "MusicEvent",
+    "@id": e["@id"],
+    "name": e.name,
+    "startDate": e.startDate,
+    ...(e.endDate ? { "endDate": e.endDate } : {}),
+    ...(e.url ? { "url": e.url } : {})
+  }))
 });
 
 // ItemList Schema - 타임테이블의 순서 있는 리스트 (AI 엔진에 명시적 신호)
