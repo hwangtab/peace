@@ -1,4 +1,5 @@
 import { GetStaticPropsContext, GetStaticPathsContext } from 'next';
+import { useMemo } from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
@@ -20,42 +21,54 @@ interface TrackPageProps {
 export default function TrackPage({ track, musician }: TrackPageProps) {
   const { t, i18n } = useTranslation();
 
-  const recordingSchema = {
-    ...getMusicRecordingSchema(
-      {
-        name: track.title,
-        description: track.description,
-        duration: track.duration,
-        url: getFullUrl(`/album/tracks/${track.id}`),
-        inAlbum: {
-          name: t('structured_data.playlist_name'),
-          url: getFullUrl('/album/about'),
-        },
-        ...(musician ? { byArtist: { name: musician.name, url: getFullUrl(`/album/musicians/${musician.id}`) } } : {}),
-      },
-      i18n.language,
-      t
-    ),
-    datePublished: '2024-10-12',
-    ...(track.imageUrl ? { image: getFullUrl(track.imageUrl) } : {}),
-    ...(track.lyrics ? { lyrics: { '@type': 'CreativeWork', text: track.lyrics } } : {}),
-    audio: {
-      '@type': 'AudioObject',
-      contentUrl: getFullUrl(track.audioUrl),
-      encodingFormat: 'audio/mpeg',
-    },
-    potentialAction: {
-      '@type': 'ListenAction',
-      target: getFullUrl(track.audioUrl),
-    },
-  };
-
-  const breadcrumbs = [
+  const breadcrumbs = useMemo(() => [
     { name: t('nav.home'), url: getFullUrl('/') },
     { name: t('nav.album'), url: getFullUrl('/album/about') },
     { name: t('nav.track'), url: getFullUrl('/album/tracks') },
     { name: track.title, url: getFullUrl(`/album/tracks/${track.id}`) },
-  ];
+  ], [t, track.title, track.id]);
+
+  const structuredData = useMemo(() => {
+    const recordingSchema = {
+      ...getMusicRecordingSchema(
+        {
+          name: track.title,
+          description: track.description,
+          duration: track.duration,
+          url: getFullUrl(`/album/tracks/${track.id}`),
+          inAlbum: {
+            name: t('structured_data.playlist_name'),
+            url: getFullUrl('/album/about'),
+          },
+          ...(musician ? { byArtist: { name: musician.name, url: getFullUrl(`/album/musicians/${musician.id}`) } } : {}),
+        },
+        i18n.language,
+        t
+      ),
+      datePublished: '2024-10-12',
+      ...(track.imageUrl ? { image: getFullUrl(track.imageUrl) } : {}),
+      ...(track.lyrics ? { lyrics: { '@type': 'CreativeWork', text: track.lyrics } } : {}),
+      audio: {
+        '@type': 'AudioObject',
+        contentUrl: getFullUrl(track.audioUrl),
+        encodingFormat: 'audio/mpeg',
+      },
+      potentialAction: {
+        '@type': 'ListenAction',
+        target: getFullUrl(track.audioUrl),
+      },
+    };
+    return [
+      recordingSchema,
+      getBreadcrumbSchema(breadcrumbs),
+      getWebPageSchema({
+        name: `${track.title} | ${t('app.title')}`,
+        description: (track.description || '').slice(0, 160),
+        url: getFullUrl(`/album/tracks/${track.id}`),
+        datePublished: '2024-10-12',
+      }),
+    ];
+  }, [track, musician, i18n.language, t, breadcrumbs]);
 
   return (
     <PageLayout
@@ -67,12 +80,7 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
       ogAudio={getFullUrl(track.audioUrl)}
       ogMusicAlbum={getFullUrl('/album/about')}
       ogMusicMusician={musician ? getFullUrl(`/album/musicians/${musician.id}`) : undefined}
-      structuredData={[recordingSchema, getBreadcrumbSchema(breadcrumbs), getWebPageSchema({
-        name: `${track.title} | ${t('app.title')}`,
-        description: (track.description || '').slice(0, 160),
-        url: getFullUrl(`/album/tracks/${track.id}`),
-        datePublished: '2024-10-12',
-      })]}
+      structuredData={structuredData}
       breadcrumbs={breadcrumbs}
       disableTopPadding={true}
     >

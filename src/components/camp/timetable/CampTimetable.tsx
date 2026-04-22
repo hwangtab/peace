@@ -2,7 +2,8 @@ import React, { useEffect, useMemo, useState, useCallback } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import { Musician } from '@/types/musician';
-import { Timetable, Weekday } from './types';
+import { Timetable } from './types';
+import { DAY_MOOD } from '@/data/timetableTokens';
 import TimetableDayView from './TimetableDayView';
 
 interface CampTimetableProps {
@@ -10,24 +11,6 @@ interface CampTimetableProps {
   musicians: Musician[];
   campYear: number;
 }
-
-const DAY_MOOD: Record<Weekday, { activeTab: string; rail: string; panelTint: string }> = {
-  fri: {
-    activeTab: 'bg-gradient-to-br from-jeju-ocean to-deep-ocean text-white',
-    rail: 'bg-gradient-to-b from-jeju-ocean to-deep-ocean',
-    panelTint: 'bg-gradient-to-b from-seafoam/10 via-transparent to-transparent',
-  },
-  sat: {
-    activeTab: 'bg-ocean-gradient text-white',
-    rail: 'bg-ocean-gradient',
-    panelTint: 'bg-gradient-to-b from-seafoam/20 via-transparent to-transparent',
-  },
-  sun: {
-    activeTab: 'bg-sunset-gradient text-white',
-    rail: 'bg-sunset-gradient',
-    panelTint: 'bg-gradient-to-b from-golden-sun/10 via-transparent to-transparent',
-  },
-};
 
 function hashForDate(date: string): string {
   return `timetable-day-${date}`;
@@ -134,6 +117,8 @@ const CampTimetable: React.FC<CampTimetableProps> = ({ data, musicians, campYear
             musicianById={musicianById}
             campYear={campYear}
             railClassName={DAY_MOOD[activeDay.weekday].rail}
+            accentTimeClass={DAY_MOOD[activeDay.weekday].accentTime}
+            accentRuleClass={DAY_MOOD[activeDay.weekday].accentRule}
           />
         </motion.div>
       </AnimatePresence>

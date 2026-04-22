@@ -21,6 +21,8 @@ export default function MusicianHeroSection({ musician, fundingUrl, isCampPage }
     <div className="relative bg-gradient-to-b from-jeju-ocean to-ocean-mist min-h-0 md:min-h-[480px] flex items-center">
       {musician.imageUrl && (
         <div className="absolute inset-0 overflow-hidden">
+          {/* Decorative backdrop — the foreground image below carries the real alt.
+              Empty alt + aria-hidden prevents screen readers from announcing it twice. */}
           <Image
             src={musician.imageUrl}
             alt=""

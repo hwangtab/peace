@@ -26,7 +26,7 @@ const AboutSection = () => {
   const { t } = useTranslation();
 
   return (
-    <Section id="about" background="sky-horizon" className="pb-24 md:pb-32">
+    <Section id="about" background="sky-horizon" paddingBottom="loose">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}

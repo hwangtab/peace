@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'next-i18next';
 import MusiciansSection from '@/components/home/MusiciansSection';
 import PageLayout from '@/components/layout/PageLayout';
 import PageHero from '@/components/common/PageHero';
+import PageIntroSection from '@/components/common/PageIntroSection';
 import { getCollectionPageSchema, getBreadcrumbSchema, getWebPageSchema } from '@/utils/structuredData';
 import { Musician } from '@/types/musician';
 import { getFullUrl } from '@/config/env';
@@ -17,28 +18,24 @@ const AlbumMusiciansPage = ({
   initialLocale = 'ko',
 }: AlbumMusiciansPageProps) => {
   const { t } = useTranslation();
-  const collectionSchema = getCollectionPageSchema({
-    name: t('album.musicians_page_title'),
-    description: t('album.musicians_page_desc'),
-    url: getFullUrl('/album/musicians'),
-    hasPart: initialMusicians.map((m) => ({ "@id": getFullUrl(`/album/musicians/${m.id}`) })),
-  });
 
-  const breadcrumbs = [
+  const breadcrumbs = useMemo(() => [
     { name: t('nav.home'), url: getFullUrl('/') },
     { name: t('nav.album'), url: getFullUrl('/album/about') },
     { name: t('nav.musician'), url: getFullUrl('/album/musicians') },
-  ];
+  ], [t]);
 
-  return (
-    <PageLayout
-      title={t('album.musicians_page_title')}
-      description={t('album.musicians_page_desc')}
-      ogImage="/images-webp/gallery/2.webp"
-      ogImageAlt={t('album.musicians_page_title')}
-      ogType="music.playlist"
-      background="sunlight-glow"
-      structuredData={[collectionSchema, getBreadcrumbSchema(breadcrumbs), getWebPageSchema({
+  const structuredData = useMemo(() => {
+    const collectionSchema = getCollectionPageSchema({
+      name: t('album.musicians_page_title'),
+      description: t('album.musicians_page_desc'),
+      url: getFullUrl('/album/musicians'),
+      hasPart: initialMusicians.map((m) => ({ "@id": getFullUrl(`/album/musicians/${m.id}`) })),
+    });
+    return [
+      collectionSchema,
+      getBreadcrumbSchema(breadcrumbs),
+      getWebPageSchema({
         name: t('album.musicians_page_title'),
         description: t('album.musicians_page_desc'),
         url: getFullUrl('/album/musicians'),
@@ -53,7 +50,19 @@ const AlbumMusiciansPage = ({
           'GPMC artists',
           '강정 아티스트',
         ],
-      })]}
+      }),
+    ];
+  }, [t, initialMusicians, breadcrumbs]);
+
+  return (
+    <PageLayout
+      title={t('album.musicians_page_title')}
+      description={t('album.musicians_page_desc')}
+      ogImage="/images-webp/gallery/2.webp"
+      ogImageAlt={t('album.musicians_page_title')}
+      ogType="music.playlist"
+      background="sunlight-glow"
+      structuredData={structuredData}
       breadcrumbs={breadcrumbs}
       disableTopPadding={true}
     >
@@ -61,6 +70,16 @@ const AlbumMusiciansPage = ({
         title={t('nav.musician')}
         subtitle={t('album.musicians_hero_subtitle')}
         backgroundImage="/images-webp/gallery/2.webp"
+      />
+      <PageIntroSection
+        eyebrow={t('album.musicians_intro.eyebrow')}
+        heading={t('album.musicians_intro.heading')}
+        paragraphs={[
+          t('album.musicians_intro.p1'),
+          t('album.musicians_intro.p2'),
+          t('album.musicians_intro.p3'),
+        ]}
+        background="white"
       />
       <div className="pt-16 md:pt-20">
         <MusiciansSection

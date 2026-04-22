@@ -173,4 +173,10 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
     );
 };
 
-export default SEOHelmet;
+/**
+ * Wrap in `React.memo` so that when a parent page re-renders but its
+ * SEO props are stable (e.g. locale unchanged), we skip the costly
+ * JSON.stringify for every JSON-LD node. The memo relies on callers
+ * passing a stable `structuredData` reference (use `useMemo` in the page).
+ */
+export default React.memo(SEOHelmet);

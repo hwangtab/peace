@@ -5,7 +5,8 @@ import nextI18NextConfig from '../../../../next-i18next.config';
 import { Musician } from '@/types/musician';
 import { VideoItem } from '@/types/video';
 import { loadLocalizedData } from '@/utils/dataLoader';
-import { camps, getCamps } from '@/data/camps';
+import { camps } from '@/data/camps';
+import { useCamp } from '@/hooks/useCamps';
 import MusicianDetailContent from '@/components/musicians/MusicianDetailContent';
 import { loadRelatedVideos, selectOtherMusicians } from '@/utils/musicianPageUtils';
 import { getFullUrl } from '@/config/env';
@@ -21,8 +22,8 @@ export default function CampMusicianPage({
   relatedVideos,
   otherMusicians,
 }: CampMusicianPageProps) {
-  const { t, i18n } = useTranslation();
-  const camp2026 = getCamps(i18n.language, t).find((c) => c.id === 'camp-2026');
+  const { t } = useTranslation();
+  const camp2026 = useCamp('camp-2026');
 
   return (
     <MusicianDetailContent

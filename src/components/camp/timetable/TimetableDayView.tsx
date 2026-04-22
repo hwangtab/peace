@@ -9,6 +9,8 @@ interface TimetableDayViewProps {
   musicianById: Map<number, Musician>;
   campYear: number;
   railClassName?: string;
+  accentTimeClass?: string;
+  accentRuleClass?: string;
 }
 
 const TimetableDayView: React.FC<TimetableDayViewProps> = ({
@@ -16,6 +18,8 @@ const TimetableDayView: React.FC<TimetableDayViewProps> = ({
   musicianById,
   campYear,
   railClassName = 'bg-ocean-gradient',
+  accentTimeClass = 'text-jeju-ocean',
+  accentRuleClass = 'bg-coastal-gray/30',
 }) => {
   let perfIndex = 0;
   return (
@@ -41,6 +45,8 @@ const TimetableDayView: React.FC<TimetableDayViewProps> = ({
             musicianById={musicianById}
             campYear={campYear}
             index={idx}
+            accentTimeClass={accentTimeClass}
+            accentRuleClass={accentRuleClass}
           />
         );
       })}
