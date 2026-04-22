@@ -38,7 +38,10 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
     currentLocale: i18n.language,
     fetchResource: fetchMusicians,
   });
-  const musicians = musiciansResource.isLoading ? [] : musiciansResource.data;
+  const musicians = useMemo(
+    () => (musiciansResource.isLoading ? [] : musiciansResource.data),
+    [musiciansResource.isLoading, musiciansResource.data],
+  );
 
   const breadcrumbs = useMemo(() => [
     { name: t('nav.home'), url: getFullUrl('/') },
