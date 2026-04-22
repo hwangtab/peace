@@ -7,7 +7,8 @@ import PageLayout from '@/components/layout/PageLayout';
 import Section from '@/components/layout/Section';
 import SectionHeader from '@/components/common/SectionHeader';
 import WaveDivider from '@/components/common/WaveDivider';
-import CampLineup from '@/components/camp/CampLineup';
+import { CampTimetable } from '@/components/camp/timetable';
+import { timetable2026 } from '@/data/timetable-2026';
 import CampHero from '@/components/camp/CampHero';
 import dynamic from 'next/dynamic';
 
@@ -234,7 +235,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
               title={t('camp.section_musicians')}
               subtitle={t('camp.lineup_count', { count: participantCount })}
             />
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-5xl mx-auto">
               {musiciansResource.isLoading ? (
                 <p className="text-center text-gray-500 py-10" role="status">
                   {t('common.loading')}
@@ -244,8 +245,8 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
                   {t('common.no_results')}
                 </p>
               ) : (
-                <CampLineup
-                  participants={camp2026.participants}
+                <CampTimetable
+                  data={timetable2026}
                   musicians={musicians}
                   campYear={2026}
                 />
