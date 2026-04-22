@@ -35,3 +35,6 @@ elated-montalcini/
 goofy-merkle/
 jolly-ritchie/
 xenodochial-beaver/
+
+# git worktrees
+.worktrees/
