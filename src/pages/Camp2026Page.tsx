@@ -13,7 +13,7 @@ import CampHero from '@/components/camp/CampHero';
 import dynamic from 'next/dynamic';
 
 const GangjeongStorySection = dynamic(() => import('@/components/camp/GangjeongStorySection'));
-import { getEventSchema, getBreadcrumbSchema, getHowToSchema, getWebPageSchema, getFAQSchema } from '@/utils/structuredData';
+import { getEventSchema, getBreadcrumbSchema, getHowToSchema, getWebPageSchema, getFAQSchema, getItemListSchema } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
 import Button from '@/components/common/Button';
 import { formatOrdinal } from '@/utils/format';
@@ -65,8 +65,10 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
         const musician = a.musicianIds && a.musicianIds.length === 1
           ? musicians.find((m) => m.id === a.musicianIds![0])
           : undefined;
+        const actId = `https://peaceandmusic.net/camps/2026#act-${day.date}-${a.order}`;
         return {
-          id: `https://peaceandmusic.net/camps/2026#act-${day.date}-${a.order}`,
+          id: actId,
+          url: actId,
           name: a.name,
           startDate: `${day.date}T${a.start}:00+09:00`,
           endDate: `${day.date}T${a.end}:00+09:00`,
@@ -76,9 +78,36 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
               ? getFullUrl(`/camps/2026/musicians/${a.musicianIds[0]}`)
               : undefined,
           performerSameAs: musician?.instagramUrls?.length ? musician.instagramUrls : undefined,
+          image: musician?.imageUrl ? getFullUrl(musician.imageUrl) : undefined,
         };
       })
   );
+
+  let actPosition = 0;
+  const timetableItems = timetable2026.days.flatMap((day) =>
+    day.acts
+      .filter((a) => a.type === 'performance')
+      .map((a) => {
+        actPosition += 1;
+        const musician = a.musicianIds && a.musicianIds.length === 1
+          ? musicians.find((m) => m.id === a.musicianIds![0])
+          : undefined;
+        return {
+          position: actPosition,
+          name: a.name,
+          url: `https://peaceandmusic.net/camps/2026#act-${day.date}-${a.order}`,
+          image: musician?.imageUrl ? getFullUrl(musician.imageUrl) : undefined,
+          startDate: `${day.date}T${a.start}:00+09:00`,
+        };
+      })
+  );
+
+  const itemListSchema = getItemListSchema({
+    name: t('timetable.title'),
+    description: t('camp.description_2026'),
+    url: getFullUrl('/camps/2026#lineup'),
+    items: timetableItems,
+  });
 
   const campFaqs = [
     { question: t('camp_faq_2026.q1'), answer: t('camp_faq_2026.a1') },
@@ -93,6 +122,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
   const eventSchema = getEventSchema(
     {
       name: translatedTitle,
+      alternateName: ['GPMC3', 'Gangjeong Peace and Music Camp 3'],
       startDate: camp2026.startDate,
       endDate: camp2026.endDate || camp2026.startDate,
       description: translatedDescription,
@@ -104,6 +134,21 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
         camp2026.images && camp2026.images.length > 0 && camp2026.images[0]
           ? getFullUrl(camp2026.images[0])
           : undefined,
+      images: camp2026.images?.map((img) => getFullUrl(img)),
+      previousEvent: [
+        {
+          "@id": "https://peaceandmusic.net/camps/2023#event",
+          name: t('timeline.events.camp_2023.title'),
+          startDate: '2023-06-10',
+        },
+        {
+          "@id": "https://peaceandmusic.net/camps/2025#event",
+          name: t('timeline.events.camp_2025.title'),
+          startDate: '2025-06-14',
+        },
+      ],
+      isFamilyFriendly: true,
+      typicalAgeRange: '0-',
       performers: camp2026.participants?.map((p) => {
         const musicianId = typeof p === 'object' ? p.musicianId : undefined;
         return {
@@ -119,6 +164,8 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
               price: '0',
               priceCurrency: 'KRW',
               availability: 'https://schema.org/InStock',
+              validFrom: '2026-01-01T00:00:00+09:00',
+              validThrough: '2026-06-07T23:59:59+09:00',
             },
           }
         : {}),
@@ -146,8 +193,9 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
           name: `${t('camp.ordinal', { num: ordinalLabel })} ${t('app.title')} (2026)`,
           description: translatedDescription,
           url: getFullUrl('/camps/2026'),
-          datePublished: camp2026.startDate,
-        }), faqSchema]}
+          datePublished: '2026-01-15',
+          dateModified: new Date().toISOString().slice(0, 10),
+        }), faqSchema, itemListSchema]}
       breadcrumbs={breadcrumbs}
       ogType="event"
       disableTopPadding={true}
