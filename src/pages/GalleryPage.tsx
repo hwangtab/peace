@@ -46,6 +46,16 @@ const GalleryPage = ({ initialImages = [] }: GalleryPageProps) => {
         name: t('gallery.page_title'),
         description: t('gallery.page_desc'),
         url: getFullUrl('/gallery'),
+        keywords: [
+          '강정피스앤뮤직캠프 갤러리',
+          'Gangjeong Peace Music Camp gallery',
+          '페스티벌 사진',
+          'festival photos',
+          '제주 음악',
+          'Jeju music',
+          '평화 이미지',
+          'peace music images',
+        ],
       })]}
       breadcrumbs={breadcrumbs}
       disableTopPadding={true}

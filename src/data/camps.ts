@@ -358,3 +358,12 @@ export const getCamps = (language?: string, t?: TranslationFn): CampEvent[] => {
 
 /** Convenience: structural data only (for getStaticProps where only IDs/dates matter) */
 export const camps = getCamps();
+
+// Exposed for build scripts: 2026 한국어 참가자 이름 ↔ musicianId 매핑
+export function getCamp2026ParticipantsKo(): Array<{ name: string; musicianId?: number }> {
+  const entries = localizedData.ko?.['camp-2026']?.participants ?? [];
+  return entries.map((p) => {
+    if (typeof p === 'string') return { name: p };
+    return { name: p.name, musicianId: p.musicianId };
+  });
+}

@@ -36,6 +36,20 @@ export default function HomePage({ initialGalleryImages }: HomePageProps) {
       description: t('seo.default.description'),
       url: getFullUrl('/'),
       datePublished: '2024-01-01',
+      keywords: [
+        '강정피스앤뮤직캠프',
+        'Gangjeong Peace Music Camp',
+        '평화음악',
+        '제주 음악 페스티벌',
+        'peace music',
+        'Jeju festival',
+        '인디 음악',
+        'Korean indie music',
+        '반전 음악',
+        'anti-war music',
+        '제주 강정마을',
+        'Gangjeong Village',
+      ],
     }),
   ];
 

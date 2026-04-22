@@ -43,6 +43,16 @@ const AlbumMusiciansPage = ({
         description: t('album.musicians_page_desc'),
         url: getFullUrl('/album/musicians'),
         datePublished: '2024-10-12',
+        keywords: [
+          '강정피스앤뮤직캠프 뮤지션',
+          'Gangjeong Peace Music Camp musicians',
+          '한국 인디 뮤지션',
+          'Korean indie musicians',
+          '평화음악가',
+          'peace musicians',
+          'GPMC artists',
+          '강정 아티스트',
+        ],
       })]}
       breadcrumbs={breadcrumbs}
       disableTopPadding={true}

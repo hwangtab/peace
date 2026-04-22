@@ -79,6 +79,16 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
           name: t('videos.page_title'),
           description: t('videos.page_desc'),
           url: getFullUrl('/videos'),
+          keywords: [
+            '강정피스앤뮤직캠프 영상',
+            'Gangjeong Peace Music Camp videos',
+            '라이브 영상',
+            'live performance videos',
+            '인디 음악 영상',
+            'Korean indie videos',
+            '평화음악 공연',
+            'peace music performances',
+          ],
         }),
         ...videoSchemas,
       ]}
