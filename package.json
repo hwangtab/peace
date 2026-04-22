@@ -41,7 +41,8 @@
     "analyze": "source-map-explorer '.next/static/chunks/*.js'",
     "dev": "next dev",
     "i18n:extract": "i18next-parser",
-    "i18n:check": "i18next-parser --fail-on-warnings"
+    "i18n:check": "i18next-parser --fail-on-warnings",
+    "build:timetable": "ts-node scripts/convert-timetable.ts"
   },
   "browserslist": {
     "production": [
@@ -83,6 +84,7 @@
     "puppeteer": "^24.40.0",
     "sharp": "^0.33.5",
     "source-map-explorer": "^2.5.3",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "xlsx": "^0.18.5"
   }
 }
