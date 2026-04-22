@@ -228,6 +228,17 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
           dateModified: new Date().toISOString().slice(0, 10),
           mainEntityId: 'https://peaceandmusic.net/camps/2026#event',
           primaryImageUrl: getFullUrl('/images-webp/camps/2026/2026poster1.webp'),
+          keywords: [
+            '강정피스앤뮤직캠프',
+            'Gangjeong Peace Music Camp',
+            '평화음악제',
+            '제주 음악 페스티벌',
+            '2026 캠프',
+            '인디 음악',
+            '강정마을',
+            'peace music festival',
+            'Jeju festival 2026',
+          ],
         }), faqSchema, itemListSchema]}
       breadcrumbs={breadcrumbs}
       ogType="event"
