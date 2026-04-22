@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { HiOutlineCalendar, HiOutlineLocationMarker } from 'react-icons/hi';
 import { CampEvent } from '@/types/camp';
 import Button from '@/components/common/Button';
 
@@ -34,12 +35,18 @@ const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
         {!isComingSoon && (
           <>
             <div className="mb-4 space-y-2">
-              <p className="text-sm text-gray-600 break-words">
-                <span className="font-bold"><span aria-hidden="true">📅</span> {t('camp.label_period')}:</span> {camp.startDate}
-                {camp.endDate && ` ~ ${camp.endDate}`}
+              <p className="text-sm text-gray-600 flex items-start gap-2">
+                <HiOutlineCalendar aria-hidden="true" className="w-4 h-4 mt-0.5 flex-shrink-0 text-jeju-ocean" />
+                <span className="min-w-0 break-words">
+                  <span className="font-bold">{t('camp.label_period')}:</span> {camp.startDate}
+                  {camp.endDate && ` ~ ${camp.endDate}`}
+                </span>
               </p>
-              <p className="text-sm text-gray-600 break-words">
-                <span className="font-bold"><span aria-hidden="true">📍</span> {t('camp.label_location')}:</span> {camp.location}
+              <p className="text-sm text-gray-600 flex items-start gap-2">
+                <HiOutlineLocationMarker aria-hidden="true" className="w-4 h-4 mt-0.5 flex-shrink-0 text-jeju-ocean" />
+                <span className="min-w-0 break-words">
+                  <span className="font-bold">{t('camp.label_location')}:</span> {camp.location}
+                </span>
               </p>
             </div>
 

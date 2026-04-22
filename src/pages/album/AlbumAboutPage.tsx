@@ -16,7 +16,7 @@ import { getGalleryImages } from '@/api/gallery';
 import { GalleryImage } from '@/types/gallery';
 import { VideoItem } from '@/types/video';
 import { Musician } from '@/types/musician';
-import WaveDivider from '@/components/common/WaveDivider';
+import SectionWave from '@/components/layout/SectionWave';
 import { getMusicAlbumSchema, getMusicGroupSchema, getBreadcrumbSchema, getWebPageSchema } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
 import { useLocalizedResource } from '@/hooks/useLocalizedResource';
@@ -332,7 +332,7 @@ const AlbumAboutPage = ({
         </div>
       </div>
 
-      <Section background="white" className="pb-24 md:pb-32">
+      <Section background="white" paddingBottom="loose">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
             {/* Card 1: Meaning */}
@@ -376,10 +376,10 @@ const AlbumAboutPage = ({
         </div>
       </Section>
 
-      <WaveDivider className="text-ocean-sand -mt-[60px] sm:-mt-[100px] relative z-10" />
+      <SectionWave color="ocean-sand" flow="up" />
 
       {/* Release Commemoration Concerts - Integrated Tab Section */}
-      <Section background="ocean-sand" className="!pb-0">
+      <Section background="ocean-sand" paddingBottom="none">
         <div className="container mx-auto px-4">
           <SectionHeader
             title={t('album.concert_title')}

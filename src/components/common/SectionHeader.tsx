@@ -63,7 +63,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
             {useDivider && (
                 <div className={classNames(
                     'w-24 h-1.5 rounded-full',
-                    'bg-gradient-to-r from-jeju-ocean to-emerald-500',
+                    'bg-gradient-to-r from-jeju-ocean via-ocean-mist to-golden-sun',
                     {
                         'mx-auto': align === 'center',
                         'mr-auto': align === 'left',

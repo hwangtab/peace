@@ -5,12 +5,13 @@ import { getPressItems, normalizePressItems } from '@/api/press';
 import { PressItem } from '@/types/press';
 import { getBreadcrumbSchema, getNewsArticleSchema, getWebPageSchema } from '@/utils/structuredData';
 import Button from '@/components/common/Button';
-import { getCamps } from '@/data/camps';
+import { useCamp } from '@/hooks/useCamps';
 import { FilterId, filterByEvent } from '@/utils/filtering';
 import { sortByDateDesc } from '@/utils/sorting';
 import EventFilter from '../common/EventFilter';
 import PageLayout from '@/components/layout/PageLayout';
 import PageHero from '../common/PageHero';
+import PageIntroSection from '../common/PageIntroSection';
 import { getFullUrl } from '@/config/env';
 import { useLocalizedResource } from '@/hooks/useLocalizedResource';
 
@@ -70,7 +71,7 @@ export default function PressPage({
   initialLocale = 'ko',
 }: PressPageProps) {
   const { t, i18n } = useTranslation();
-  const camp2026 = getCamps(i18n.language, t).find((c) => c.id === 'camp-2026');
+  const camp2026 = useCamp('camp-2026');
   const [selectedFilter, setSelectedFilter] = useState<FilterId>('all');
 
   const fetchPress = useCallback((locale: string) => getPressItems(locale), []);
@@ -83,12 +84,12 @@ export default function PressPage({
 
   const pressItems = useMemo(() => normalizePressItems(pressResource.data), [pressResource.data]);
 
-  const breadcrumbs = [
+  const breadcrumbs = useMemo(() => [
     { name: t('press.breadcrumb_home'), url: getFullUrl('/') },
     { name: t('press.breadcrumb_press'), url: getFullUrl('/press') },
-  ];
+  ], [t]);
 
-  const structuredData = [
+  const structuredData = useMemo(() => [
     getBreadcrumbSchema(breadcrumbs),
     getWebPageSchema({
       name: t('press.page_title'),
@@ -115,7 +116,7 @@ export default function PressPage({
         publisher: item.publisher,
       }, i18n.language, t)
     ),
-  ];
+  ], [breadcrumbs, pressItems, i18n.language, t]);
 
   const filteredItems = useMemo(
     () => sortByDateDesc(filterByEvent(pressItems, selectedFilter)),
@@ -137,6 +138,17 @@ export default function PressPage({
         title={t('press.hero_title')}
         subtitle={t('press.hero_subtitle')}
         backgroundImage="/images-webp/camps/2023/DSC00610.webp"
+      />
+
+      <PageIntroSection
+        eyebrow={t('press.intro.eyebrow')}
+        heading={t('press.intro.heading')}
+        paragraphs={[
+          t('press.intro.p1'),
+          t('press.intro.p2'),
+          t('press.intro.p3'),
+        ]}
+        background="white"
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-12">

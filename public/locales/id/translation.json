@@ -47,7 +47,14 @@
     "image_alt_fallback": "Gambar galeri Gangjeong Peace Music Camp",
     "image_alt_template": "Gambar galeri {{title}} {{year}}",
     "alt_album": "Foto konser rilis album {{year}}",
-    "alt_camp": "Foto Kamp Musik Perdamaian Gangjeong {{year}}"
+    "alt_camp": "Foto Kamp Musik Perdamaian Gangjeong {{year}}",
+    "intro": {
+      "eyebrow": "Catatan foto",
+      "heading": "Foto-foto di titik pertemuan Desa Gangjeong, musik, dan perdamaian",
+      "p1": "Gangjeong berada di pesisir selatan Jeju, menghadap pulau kecil Beomseom di bawah bayang Gunung Halla. Puluhan tahun setelah pembantaian 4·3, sejak 2007 lapisan sejarah baru dimulai ketika warga menolak pembangunan pangkalan angkatan laut. Galeri ini merekam suasana konser-konser yang digelar tepat di tepi pantai itu.",
+      "p2": "Foto-foto ini mencakup kamp 2023, 2025, dan 2026 yang sedang berjalan. Selain musisi di atas panggung, terlihat haenyeo (penyelam perempuan Jeju), aktivis batu Gureombi, anak-anak di antara penonton, dan relawan Peace Center — komunitas yang lebih luas daripada festival itu sendiri.",
+      "p3": "Mengetuk kartu akan membuka gambar beresolusi penuh di lightbox. Penggunaan non-komersial dalam konteks gerakan perdamaian dan musik dipersilakan dengan mencantumkan sumbernya."
+    }
   },
   "home": {
     "hero": {
@@ -144,8 +151,17 @@
     "tab_day_label": "{{date}} {{weekday}} · {{count}} penampil",
     "tab_day_time": "{{start}} – {{end}}",
     "transition": "⟶ {{minutes}} menit transisi",
-    "scale": { "solo": "SOLO", "band": "BAND", "big_band": "BIG BAND", "ensemble": "ENSEMBLE" },
-    "weekday": { "fri": "Jum", "sat": "Sab", "sun": "Min" }
+    "scale": {
+      "solo": "SOLO",
+      "band": "BAND",
+      "big_band": "BIG BAND",
+      "ensemble": "ENSEMBLE"
+    },
+    "weekday": {
+      "fri": "Jum",
+      "sat": "Sab",
+      "sun": "Min"
+    }
   },
   "timeline": {
     "title": "Perjalanan Kita",
@@ -202,14 +218,34 @@
     "hero_title": "Pers",
     "hero_subtitle": "Kisah kami bernyanyi untuk perdamaian",
     "breadcrumb_home": "Beranda",
-    "breadcrumb_press": "Pers"
+    "breadcrumb_press": "Pers",
+    "intro": {
+      "eyebrow": "Arsip pers",
+      "heading": "Bagaimana media mencatat musik perdamaian di Desa Gangjeong",
+      "p1": "Gangjeong Peace and Music Camp adalah festival independen tahunan di Desa Gangjeong, sebuah desa kecil di Pulau Jeju yang sejak 2007 menolak pembangunan pangkalan angkatan laut. Arsip ini mengumpulkan liputan dari harian Korea, webzine musik independen, dan media perdamaian internasional sejak edisi pertama pada 2023.",
+      "p2": "Tulisan berbahasa Korea cenderung menyelami sejarah Jeju pascaperistiwa 4·3 dan kisah komunitas desa, sementara liputan Inggris dan Jepang mengaitkan kamp ini dengan pergulatan pangkalan militer lain di Okinawa, Guam, dan Filipina. Setiap kartu membuka artikel asli di situs penerbitnya.",
+      "p3": "Liputan memuncak di sekitar tiap edisi festival; tautan-tautan berikut menyimpan susunan pengisi acara, capaian pendanaan kolektif, dan foto-foto di lokasi. Gunakan tombol filter untuk menyaring berdasarkan tahun atau acara."
+    }
   },
   "videos": {
     "page_title": "Video | Kemah Musik Perdamaian Gangjeong",
     "page_desc": "Koleksi video penampilan Gangjeong Peace Music Camp. Temui video penampilan musisi yang bernyanyi untuk perdamaian.",
     "hero_title": "Video",
     "hero_subtitle": "Momen bernyanyi untuk perdamaian",
-    "all_videos": "Lihat semua video"
+    "all_videos": "Lihat semua video",
+    "detail": {
+      "watch_on_youtube": "Tonton di YouTube",
+      "back_to_list": "Kembali ke daftar video",
+      "related_musicians": "Musisi yang tampil",
+      "more_videos": "Video lain dari acara ini"
+    },
+    "intro": {
+      "eyebrow": "Arsip video",
+      "heading": "Penampilan langsung dari sebuah desa yang menolak diam",
+      "p1": "Sebagian besar klip di sini adalah rekaman lapangan dari Desa Gangjeong dan ruang-ruang kecil di seluruh Korea. Berbeda dengan festival komersial, hanya ada satu-dua kamera, suara langsung dari PA, dan penonton sering menari sambil berhadapan dengan pangkalan angkatan laut di balik panggung.",
+      "p2": "Musisi indie, folk, punk, dan tradisi Korea menyampaikan pesan antiperang, antipangkalan, dan lingkungan dalam bahasa masing-masing. Anda akan mendengar akar Nepali-Korea Ritesh Maharjan, blues protes penulis lagu keliling Kim Dong-san, hingga set langsung DJ Josuganman — spektrumnya memang sengaja dibuat luas.",
+      "p3": "Gunakan tombol filter untuk menyaring ke kamp 2023, 2025, atau 2026, atau ke album 2024. Mengeklik kartu akan membuka halaman detail di situs ini — lengkap dengan tanggal, lokasi, dan konteks pemusik — alih-alih langsung menuju YouTube."
+    }
   },
   "camp": {
     "ordinal": "{{num}}",
@@ -250,6 +286,7 @@
   "gangjeong_story": {
     "section_title": "Mengapa Gangjeong",
     "section_aria_label": "Mengapa Gangjeong — Kisah Desa Gangjeong",
+    "home_cta": "Lihat kisah lengkap Gangjeong",
     "hook_headline": "Akhiri perang!",
     "hook_subline": "Bermain, menari, bernyanyi!",
     "hook_intro": "Kisah perdamaian selama hampir 20 tahun dari Desa Gangjeong, Jeju. Dan festival musik yang dibangun di atasnya.",
@@ -337,7 +374,14 @@
     "tracks_page_desc": "Semua track dari album Gangjeong Peace Music Camp. 12 lagu dengan pesan perdamaian dan solidaritas.",
     "tracks_hero_subtitle": "To You in a Distant Place Whose Name I Don't Know",
     "image_alt_cover": "Sampul album 'To You in a Distant Place Whose Name I Don't Know'",
-    "image_alt_concert": "Adegan konser rilis album {{num}}"
+    "image_alt_concert": "Adegan konser rilis album {{num}}",
+    "musicians_intro": {
+      "eyebrow": "Kenali para musisinya",
+      "heading": "Musisi di balik album perdamaian 2024",
+      "p1": "Album \"Untukmu, Orang Asing di Tempat yang Jauh\" yang rilis pada 2024 adalah rekaman studio resmi proyek Gangjeong Peace and Music. Empat belas proyek Korea — melintasi indie, folk, jazz, dan elektronik — menyumbang masing-masing satu lagu dengan tema perdamaian yang dibayangkan untuk orang asing yang mungkin tak pernah ditemui.",
+      "p2": "Daftar ini hanya mencakup musisi yang menyumbang satu lagu untuk album. Susunan lengkap pengisi acara tiap tahun tersedia di halaman kamp tahunnya masing-masing.",
+      "p3": "Setiap kartu membuka profil musisi dengan tautan Instagram/YouTube, rekaman panggung terkait, dan rekomendasi musisi lain. Lagu-lagu album dapat diputar langsung dari menu \"Lagu\"."
+    }
   },
   "faqs": {
     "title": "Pertanyaan yang Sering Diajukan",

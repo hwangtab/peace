@@ -47,7 +47,14 @@
     "image_alt_fallback": "江汀和平音乐营画廊图片",
     "image_alt_template": "{{year}}年 {{title}} 画廊图片",
     "alt_album": "{{year}}年专辑发行演唱会照片",
-    "alt_camp": "{{year}}年江汀和平音乐营现场照片"
+    "alt_camp": "{{year}}年江汀和平音乐营现场照片",
+    "intro": {
+      "eyebrow": "影像记录",
+      "heading": "捕捉江汀村、音乐与和平交汇瞬间的照片",
+      "p1": "江汀位于济州岛南岸，隔海望着虎岛，背倚汉拏山。继4·3事件数十年之后，2007年起居民反对海军基地建设的日常成为新的历史。本图集留存了那片海岸边举行的演出气息。",
+      "p2": "影像跨越2023、2025与正在举办的2026年三届音乐营。除了舞台上的音乐人，还能看到海女、具龙岩活动者、观众里的孩子与和平中心志愿者——让人看见节庆之外的社群。",
+      "p3": "点击任意图片卡片，即可在灯箱中查看高解析原图。在标注出处的前提下，欢迎用于非营利的和平与音乐运动场景。"
+    }
   },
   "home": {
     "hero": {
@@ -144,8 +151,17 @@
     "tab_day_label": "{{date}} {{weekday}} · {{count}}组",
     "tab_day_time": "{{start}} – {{end}}",
     "transition": "⟶ {{minutes}}分钟换场",
-    "scale": { "solo": "SOLO", "band": "BAND", "big_band": "BIG BAND", "ensemble": "ENSEMBLE" },
-    "weekday": { "fri": "周五", "sat": "周六", "sun": "周日" }
+    "scale": {
+      "solo": "SOLO",
+      "band": "BAND",
+      "big_band": "BIG BAND",
+      "ensemble": "ENSEMBLE"
+    },
+    "weekday": {
+      "fri": "周五",
+      "sat": "周六",
+      "sun": "周日"
+    }
   },
   "timeline": {
     "title": "连带之路",
@@ -202,14 +218,34 @@
     "hero_title": "报道",
     "hero_subtitle": "我们为和平歌唱的故事",
     "breadcrumb_home": "首页",
-    "breadcrumb_press": "报道"
+    "breadcrumb_press": "报道",
+    "intro": {
+      "eyebrow": "媒体档案",
+      "heading": "媒体如何记录江汀村的和平音乐运动",
+      "p1": "江汀和平音乐营是自2007年以来反对海军基地建设的济州江汀村每年举办的独立音乐节。本档案收录了2023年首届以来，韩国日报、独立音乐网站以及国际和平媒体所留下的报道。",
+      "p2": "韩文报道多深入挖掘济州四·三事件以来的历史与村落叙事；日文与英文报道则常将江汀与冲绳、关岛、菲律宾等东亚基地议题连结在一起。点击任一卡片即可前往原发布媒体阅读全文。",
+      "p3": "每届音乐营前后的报道数量都会激增；链接里保存了当届阵容、群众募资成果与现场照片。可使用筛选按钮按年份或活动缩小结果。"
+    }
   },
   "videos": {
     "page_title": "视频 | 江汀和平音乐营",
     "page_desc": "江汀和平音乐营演出视频合集。观看为和平歌唱的音乐人表演。",
     "hero_title": "视频",
     "hero_subtitle": "为和平歌唱的瞬间",
-    "all_videos": "查看全部视频"
+    "all_videos": "查看全部视频",
+    "detail": {
+      "watch_on_youtube": "在 YouTube 观看",
+      "back_to_list": "返回视频列表",
+      "related_musicians": "参演音乐人",
+      "more_videos": "同一活动的其他视频"
+    },
+    "intro": {
+      "eyebrow": "影像档案",
+      "heading": "来自江汀——一个不愿沉默的村落——的现场演出影像",
+      "p1": "此处收录的影像多为在江汀村及韩国各地小型空间录制的现场记录。与商业音乐节不同，镜头只有一两台、声音来自现场PA，观众常在海军基地的视线中起舞。",
+      "p2": "韩国独立、民谣、庞克与传统音乐人以各自的语言表达反战、反基地与环境的讯息。你会听到 Ritesh Maharjan 交织的尼泊尔–韩国根源音乐、巡演创作者金东山的抗议蓝调，以及 DJ Josuganman 的现场混音——音乐光谱刻意铺得很广。",
+      "p3": "可用筛选按钮聚焦2023、2025、2026年音乐营或2024年专辑曲目影像。点击任一卡片将打开本站独立详细页，集中呈现演出日期、场地与参与者信息，而非直接跳转至YouTube。"
+    }
   },
   "camp": {
     "ordinal": "{{num}}",
@@ -250,6 +286,7 @@
   "gangjeong_story": {
     "section_title": "为什么是江汀",
     "section_aria_label": "为什么是江汀——江汀村的故事",
+    "home_cta": "查看江汀的完整故事",
     "hook_headline": "终结战争！",
     "hook_subline": "玩耍、舞蹈、歌唱！",
     "hook_intro": "来自济州江汀村的近20年和平故事，以及在此基础上建立的音乐节。",
@@ -337,7 +374,14 @@
     "tracks_page_desc": "江汀和平音乐营专辑全部曲目。12首承载和平与连带讯息的歌曲。",
     "tracks_hero_subtitle": "To You in a Distant Place Whose Name I Don't Know",
     "image_alt_cover": "《To You in a Distant Place Whose Name I Don't Know》专辑封面",
-    "image_alt_concert": "专辑发行纪念演出现场 {{num}}"
+    "image_alt_concert": "专辑发行纪念演出现场 {{num}}",
+    "musicians_intro": {
+      "eyebrow": "音乐人介绍",
+      "heading": "参与 2024 和平专辑《致远方素不相识的你》的音乐人",
+      "p1": "《致远方素不相识的你》于2024年发行，是江汀和平与音乐计划的官方专辑。跨越独立、民谣、爵士与电子边界的14组韩国音乐人各献一曲，围绕\"为素未谋面的你所祈愿的和平\"主题创作。",
+      "p2": "此处仅列出为专辑贡献曲目的音乐人。各届音乐营的完整演出阵容，请查看对应年份的营地页面。",
+      "p3": "点击任一卡片即可进入音乐人个人页，查看 Instagram/YouTube 链接、相关现场影像与可一并聆听的其他音乐人。专辑曲目可在\"曲目\"菜单中直接收听。"
+    }
   },
   "faqs": {
     "title": "常见问题",

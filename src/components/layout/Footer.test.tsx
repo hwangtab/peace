@@ -24,7 +24,7 @@ describe('Footer Component', () => {
         expect(instagramLink).toBeInTheDocument();
         expect(instagramLink).toHaveAttribute('href', 'https://www.instagram.com/peace_music_in_gangjeong');
         expect(instagramLink).toHaveAttribute('target', '_blank');
-        expect(instagramLink).toHaveAttribute('rel', 'noopener noreferrer');
+        expect(instagramLink).toHaveAttribute('rel', 'noopener noreferrer nofollow');
     });
 
     test('renders Email link with correct mailto', () => {

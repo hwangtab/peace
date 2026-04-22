@@ -47,7 +47,14 @@
     "image_alt_fallback": "Imagem da galeria do Gangjeong Peace Music Camp",
     "image_alt_template": "Imagem da galeria {{title}} {{year}}",
     "alt_album": "Foto do concerto de lançamento do álbum {{year}}",
-    "alt_camp": "Foto do Campo de Música pela Paz de Gangjeong {{year}}"
+    "alt_camp": "Foto do Campo de Música pela Paz de Gangjeong {{year}}",
+    "intro": {
+      "eyebrow": "Registro fotográfico",
+      "heading": "Imagens do encontro entre Gangjeong, a música e a paz",
+      "p1": "Gangjeong fica no litoral sul de Jeju, de frente para a ilhota Beomseom, com o monte Halla ao fundo. Décadas após o massacre de 4·3, em 2007 começou uma nova camada da história com a resistência dos moradores contra uma base naval. Esta galeria preserva o ar dos concertos realizados exatamente nesse litoral.",
+      "p2": "As imagens cobrem os campamentos de 2023, 2025 e o atual de 2026. Ao lado dos músicos no palco aparecem as haenyeo (mergulhadoras de Jeju), ativistas da rocha Gureombi, crianças na plateia e voluntários do Peace Center — um retrato da comunidade para além do festival.",
+      "p3": "Ao tocar em um card, a imagem em alta resolução abre em uma lightbox. Uso não comercial em contextos do movimento pela paz e pela música é bem-vindo com atribuição."
+    }
   },
   "home": {
     "hero": {
@@ -144,8 +151,17 @@
     "tab_day_label": "{{date}} {{weekday}} · {{count}} atos",
     "tab_day_time": "{{start}} – {{end}}",
     "transition": "⟶ {{minutes}} min de transição",
-    "scale": { "solo": "SOLO", "band": "BAND", "big_band": "BIG BAND", "ensemble": "ENSEMBLE" },
-    "weekday": { "fri": "Sex", "sat": "Sáb", "sun": "Dom" }
+    "scale": {
+      "solo": "SOLO",
+      "band": "BAND",
+      "big_band": "BIG BAND",
+      "ensemble": "ENSEMBLE"
+    },
+    "weekday": {
+      "fri": "Sex",
+      "sat": "Sáb",
+      "sun": "Dom"
+    }
   },
   "timeline": {
     "title": "Nossa Jornada",
@@ -202,14 +218,34 @@
     "hero_title": "Imprensa",
     "hero_subtitle": "Nossa história cantando pela paz",
     "breadcrumb_home": "Início",
-    "breadcrumb_press": "Imprensa"
+    "breadcrumb_press": "Imprensa",
+    "intro": {
+      "eyebrow": "Arquivo de imprensa",
+      "heading": "Como a imprensa cobriu a música pela paz em Gangjeong",
+      "p1": "O Gangjeong Peace and Music Camp é um festival independente anual em Gangjeong, uma pequena aldeia na Ilha de Jeju que resiste à construção de uma base naval desde 2007. Este arquivo reúne a cobertura de diários coreanos, webzines independentes e meios internacionais de paz desde a primeira edição em 2023.",
+      "p2": "Os textos em coreano costumam aprofundar-se na história de Jeju após o 4·3 e na narrativa comunitária do vilarejo, enquanto a cobertura em japonês e inglês situa o campamento ao lado de outras lutas contra bases militares no Leste Asiático — Okinawa, Guam e Filipinas. Cada card abre o artigo original no site do veículo.",
+      "p3": "A cobertura dispara em torno de cada edição e os links abaixo preservam line-ups, marcos de financiamento coletivo e registros fotográficos. Use os filtros para recortar por ano ou evento."
+    }
   },
   "videos": {
     "page_title": "Vídeos | Acampamento de Música pela Paz de Gangjeong",
     "page_desc": "Coleção de vídeos de apresentações do Gangjeong Peace Music Camp. Conheça as apresentações dos músicos que cantam pela paz.",
     "hero_title": "Vídeos",
     "hero_subtitle": "Momentos cantando pela paz",
-    "all_videos": "Ver todos os vídeos"
+    "all_videos": "Ver todos os vídeos",
+    "detail": {
+      "watch_on_youtube": "Ver no YouTube",
+      "back_to_list": "Voltar aos vídeos",
+      "related_musicians": "Músicos em destaque",
+      "more_videos": "Mais vídeos deste evento"
+    },
+    "intro": {
+      "eyebrow": "Arquivo de vídeos",
+      "heading": "Apresentações ao vivo de uma aldeia que se recusou a calar",
+      "p1": "A maior parte destes vídeos são registros de campo feitos em Gangjeong e em pequenos espaços por toda a Coreia. Diferente de festivais comerciais, há uma ou duas câmeras, o som vem da PA ao vivo e o público dança com a base naval visível ao fundo do palco.",
+      "p2": "Músicos coreanos de indie, folk, punk e tradição entregam mensagens antiguerra, antibases e ambientais em sua própria língua. Você ouvirá a fusão nepali-coreana de Ritesh Maharjan, o blues de protesto do compositor itinerante Kim Dong-san e sets ao vivo do DJ Josuganman — o espectro é deliberadamente amplo.",
+      "p3": "Use os filtros para recortar entre os camps de 2023, 2025 e 2026, ou o álbum de 2024. Cada card abre uma página dedicada dentro do site — com data, local e contexto do artista — em vez de ir direto ao YouTube."
+    }
   },
   "camp": {
     "ordinal": "{{num}}",
@@ -250,6 +286,7 @@
   "gangjeong_story": {
     "section_title": "Por que Gangjeong",
     "section_aria_label": "Por que Gangjeong — A história da vila de Gangjeong",
+    "home_cta": "Ver a história completa de Gangjeong",
     "hook_headline": "Acabem com a guerra!",
     "hook_subline": "Brincar, dançar, cantar!",
     "hook_intro": "Uma história de quase 20 anos de paz da vila de Gangjeong, Jeju. E o festival de música construído sobre ela.",
@@ -337,7 +374,14 @@
     "tracks_page_desc": "Todas as faixas do álbum do Gangjeong Peace Music Camp. 12 canções com mensagens de paz e solidariedade.",
     "tracks_hero_subtitle": "To You in a Distant Place Whose Name I Don't Know",
     "image_alt_cover": "Capa do álbum 'To You in a Distant Place Whose Name I Don't Know'",
-    "image_alt_concert": "Cena do show de lançamento do álbum {{num}}"
+    "image_alt_concert": "Cena do show de lançamento do álbum {{num}}",
+    "musicians_intro": {
+      "eyebrow": "Conheça os músicos",
+      "heading": "Os músicos por trás do álbum pela paz de 2024",
+      "p1": "Lançado em 2024, o álbum \"A Você, Estranho de um Lugar Distante\" é o disco oficial do projeto Gangjeong Peace and Music. Quatorze projetos coreanos — entre indie, folk, jazz e eletrônico — contribuíram cada um com uma faixa ao redor da ideia de uma paz imaginada para alguém que talvez nunca se encontre.",
+      "p2": "Esta lista inclui apenas os artistas que contribuíram com uma faixa para o álbum. A escalação completa de cada Camp ao vivo está na respectiva página anual do camp.",
+      "p3": "Cada card abre um perfil de musicista com links de Instagram/YouTube, vídeos ao vivo relacionados e outros artistas para ouvir em seguida. As faixas do álbum tocam no menu \"Faixas\"."
+    }
   },
   "faqs": {
     "title": "Perguntas Frequentes",

@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import nextI18NextConfig from '../next-i18next.config';
@@ -6,7 +7,7 @@ import dynamic from 'next/dynamic';
 import HeroSection from '@/components/home/HeroSection';
 import AboutSection from '@/components/home/AboutSection';
 import SEOHelmet from '@/components/shared/SEOHelmet';
-import WaveDivider from '@/components/common/WaveDivider';
+import SectionWave from '@/components/layout/SectionWave';
 
 const GangjeongStorySection = dynamic(() => import('@/components/camp/GangjeongStorySection'), {
   loading: () => <div className="h-96" />,
@@ -23,35 +24,37 @@ interface HomePageProps {
 
 export default function HomePage({ initialGalleryImages }: HomePageProps) {
   const { t, i18n } = useTranslation();
-  const faqItems = t('faqs.items', { returnObjects: true, defaultValue: [] }) as unknown;
-  const faqs = Array.isArray(faqItems) ? (faqItems as Array<{ q: string; a: string }>) : [];
-  const structuredData = [
-    getWebSiteSchema(i18n.language, t),
-    getOrganizationSchema(i18n.language, t),
-    ...(faqs.length > 0 ? [getFAQSchema(faqs.map(f => ({ question: f.q, answer: f.a })))] : []),
-    getHowToSchema(i18n.language, t),
-    getMusicGroupSchema(i18n.language, t),
-    getWebPageSchema({
-      name: t('seo.default.title'),
-      description: t('seo.default.description'),
-      url: getFullUrl('/'),
-      datePublished: '2024-01-01',
-      keywords: [
-        '강정피스앤뮤직캠프',
-        'Gangjeong Peace Music Camp',
-        '평화음악',
-        '제주 음악 페스티벌',
-        'peace music',
-        'Jeju festival',
-        '인디 음악',
-        'Korean indie music',
-        '반전 음악',
-        'anti-war music',
-        '제주 강정마을',
-        'Gangjeong Village',
-      ],
-    }),
-  ];
+  const structuredData = useMemo(() => {
+    const faqItems = t('faqs.items', { returnObjects: true, defaultValue: [] }) as unknown;
+    const faqs = Array.isArray(faqItems) ? (faqItems as Array<{ q: string; a: string }>) : [];
+    return [
+      getWebSiteSchema(i18n.language, t),
+      getOrganizationSchema(i18n.language, t),
+      ...(faqs.length > 0 ? [getFAQSchema(faqs.map(f => ({ question: f.q, answer: f.a })))] : []),
+      getHowToSchema(i18n.language, t),
+      getMusicGroupSchema(i18n.language, t),
+      getWebPageSchema({
+        name: t('seo.default.title'),
+        description: t('seo.default.description'),
+        url: getFullUrl('/'),
+        datePublished: '2024-01-01',
+        keywords: [
+          '강정피스앤뮤직캠프',
+          'Gangjeong Peace Music Camp',
+          '평화음악',
+          '제주 음악 페스티벌',
+          'peace music',
+          'Jeju festival',
+          '인디 음악',
+          'Korean indie music',
+          '반전 음악',
+          'anti-war music',
+          '제주 강정마을',
+          'Gangjeong Village',
+        ],
+      }),
+    ];
+  }, [t, i18n.language]);
 
   return (
     <div>
@@ -62,9 +65,9 @@ export default function HomePage({ initialGalleryImages }: HomePageProps) {
       />
       <HeroSection imageUrl="/images-webp/camps/2023/DSC00437.webp" />
       <AboutSection />
-      <WaveDivider className="text-sky-horizon -mb-[60px] sm:-mb-[100px] relative z-10" direction="down" />
+      <SectionWave color="sky-horizon" />
       <GangjeongStorySection variant="home" />
-      <WaveDivider className="text-golden-sun -mt-[60px] sm:-mt-[100px] relative z-10" />
+      <SectionWave color="golden-sun" flow="up" />
       <GallerySection initialImages={initialGalleryImages} skipClientFetch />
     </div>
   );

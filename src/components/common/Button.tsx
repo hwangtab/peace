@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import Link from 'next/link';
 import classNames from 'classnames';
+import { buildUtmUrl } from '@/utils/utm';
 
 type ButtonVariant = 'primary' | 'secondary' | 'gold' | 'outline' | 'white-outline' | 'white' | 'ghost-white' | 'back';
 type ButtonSize = 'sm' | 'md' | 'lg';
@@ -22,8 +23,6 @@ interface ButtonProps {
     ariaLabel?: string;
     utmContent?: string;
 }
-
-const UTM_BASE = 'utm_source=website&utm_medium=cta&utm_campaign=gpmc3';
 
 const Button = ({
     children,
@@ -78,7 +77,7 @@ const Button = ({
     );
 
     const resolvedHref = href && utmContent
-        ? `${href}?${UTM_BASE}&utm_content=${encodeURIComponent(utmContent)}`
+        ? buildUtmUrl(href, utmContent)
         : href;
 
     const content = <>{children}</>;
