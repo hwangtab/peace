@@ -281,6 +281,15 @@ export const getCollectionPageSchema = (collection: {
   ...(collection.dateModified ? { "dateModified": collection.dateModified } : {})
 });
 
+// SubEvent input - 공연 내 개별 공연(subEvent) 입력 타입
+interface SubEventInput {
+  name: string;
+  startDate: string; // ISO 8601
+  endDate: string;
+  performerName: string;
+  performerUrl?: string;
+}
+
 // Event Schema - 공연/캠프 정보
 export const getEventSchema = (event: {
   name: string;
@@ -301,16 +310,9 @@ export const getEventSchema = (event: {
   };
   dateModified?: string;
   eventStatus?: string;
-}, _lang: string = 'ko', t?: TranslationFn) => ({
-  "@context": "https://schema.org",
-  "@type": "MusicEvent",
-  "name": event.name,
-  "startDate": event.startDate,
-  "endDate": event.endDate,
-  ...(event.dateModified ? { "dateModified": event.dateModified } : {}),
-  "eventStatus": event.eventStatus || "https://schema.org/EventScheduled",
-  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-  "location": {
+  subEvents?: SubEventInput[];
+}, _lang: string = 'ko', t?: TranslationFn) => {
+  const location = {
     "@type": "Place",
     "@id": "https://peaceandmusic.net/#gangjeong-sports-park",
     "name": event.location.name,
@@ -326,33 +328,62 @@ export const getEventSchema = (event: {
       "addressRegion": "Jeju",
       "addressCountry": "KR"
     }
-  },
-  "image": event.image || "https://peaceandmusic.net/og-image.webp",
-  "description": event.description,
-  "isAccessibleForFree": true,
-  "about": [
-    { "@type": "Thing", "name": "Peace movement", "sameAs": "https://en.wikipedia.org/wiki/Peace_movement" },
-    { "@type": "Place", "name": "Gangjeong Village", "sameAs": "https://en.wikipedia.org/wiki/Gangjeong" }
-  ],
-  "performer": (event.performers && event.performers.length > 0)
-    ? event.performers.map(p => ({ "@type": p.type, "name": p.name, ...(p.url ? { "url": p.url } : {}) }))
-    : { "@type": "Organization", "name": t ? getCampName(t) : '' },
-  "organizer": {
-    "@type": "Organization",
-    "@id": "https://peaceandmusic.net/#organization",
-    "name": t ? getCampName(t) : '',
-    "url": "https://peaceandmusic.net"
-  },
-  ...(event.offers ? {
-    "offers": {
-      "@type": "Offer",
-      "url": event.offers.url,
-      "price": event.offers.price || "0",
-      "priceCurrency": event.offers.priceCurrency || "KRW",
-      "availability": event.offers.availability || "https://schema.org/InStock"
-    }
-  } : {})
-});
+  };
+
+  const schema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "MusicEvent",
+    "name": event.name,
+    "startDate": event.startDate,
+    "endDate": event.endDate,
+    ...(event.dateModified ? { "dateModified": event.dateModified } : {}),
+    "eventStatus": event.eventStatus || "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "location": location,
+    "image": event.image || "https://peaceandmusic.net/og-image.webp",
+    "description": event.description,
+    "isAccessibleForFree": true,
+    "about": [
+      { "@type": "Thing", "name": "Peace movement", "sameAs": "https://en.wikipedia.org/wiki/Peace_movement" },
+      { "@type": "Place", "name": "Gangjeong Village", "sameAs": "https://en.wikipedia.org/wiki/Gangjeong" }
+    ],
+    "performer": (event.performers && event.performers.length > 0)
+      ? event.performers.map(p => ({ "@type": p.type, "name": p.name, ...(p.url ? { "url": p.url } : {}) }))
+      : { "@type": "Organization", "name": t ? getCampName(t) : '' },
+    "organizer": {
+      "@type": "Organization",
+      "@id": "https://peaceandmusic.net/#organization",
+      "name": t ? getCampName(t) : '',
+      "url": "https://peaceandmusic.net"
+    },
+    ...(event.offers ? {
+      "offers": {
+        "@type": "Offer",
+        "url": event.offers.url,
+        "price": event.offers.price || "0",
+        "priceCurrency": event.offers.priceCurrency || "KRW",
+        "availability": event.offers.availability || "https://schema.org/InStock"
+      }
+    } : {})
+  };
+
+  if (event.subEvents && event.subEvents.length > 0) {
+    schema.subEvent = event.subEvents.map((se) => ({
+      "@type": "Event",
+      "name": se.name,
+      "startDate": se.startDate,
+      "endDate": se.endDate,
+      "location": location,
+      "performer": {
+        "@type": "MusicGroup",
+        "name": se.performerName,
+        ...(se.performerUrl ? { "url": se.performerUrl } : {})
+      }
+    }));
+  }
+
+  return schema;
+};
 
 // ProfilePage Schema - 뮤지션 프로필 페이지
 export const getProfilePageSchema = (person: {
