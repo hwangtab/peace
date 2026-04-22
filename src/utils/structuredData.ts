@@ -470,6 +470,7 @@ export const getProfilePageSchema = (person: {
   ...(person.url ? { "@id": person.url } : {}),
   "mainEntity": {
     "@type": "Person",
+    ...(person.url ? { "@id": `${person.url}#person` } : {}),
     "name": person.name,
     "description": person.description,
     ...(person.image ? { "image": person.image } : {}),
@@ -495,6 +496,8 @@ export const getWebPageSchema = (page: {
   mainEntityId?: string;          // e.g. "https://peaceandmusic.net/camps/2026#event"
   id?: string;                    // explicit @id for this WebPage (defaults to url + "#webpage")
   primaryImageUrl?: string;       // absolute URL for primaryImageOfPage
+  keywords?: string[];            // optional keywords for SEO
+  breadcrumbId?: string;          // optional @id reference to breadcrumb
 }) => ({
   "@context": "https://schema.org",
   "@type": "WebPage",
@@ -531,6 +534,8 @@ export const getWebPageSchema = (page: {
       "url": page.primaryImageUrl
     }
   } : {}),
+  ...(page.keywords && page.keywords.length > 0 ? { "keywords": page.keywords.join(', ') } : {}),
+  ...(page.breadcrumbId ? { "breadcrumb": { "@id": page.breadcrumbId } } : {}),
   ...(page.datePublished ? { "datePublished": page.datePublished } : {}),
   ...(page.dateModified ? { "dateModified": page.dateModified } : {})
 });
