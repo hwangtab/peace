@@ -234,6 +234,16 @@ const AlbumAboutPage = ({
           description: t('album.page_desc'),
           url: getFullUrl('/album/about'),
           datePublished: '2024-10-12',
+          keywords: [
+            '이름을 모르는 먼 곳의 그대에게',
+            'To You in a Distant Place Whose Name I Do Not Know',
+            '평화음악 앨범',
+            'peace music album',
+            '강정피스앤뮤직캠프 앨범',
+            'GPMC album',
+            '한국 인디 컴필레이션',
+            'Korean indie compilation',
+          ],
         }),
       ]}
       breadcrumbs={breadcrumbs}

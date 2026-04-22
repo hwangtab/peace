@@ -96,6 +96,34 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
     { name: `${t('nav.camp')} ${camp.year}`, url: getFullUrl(`/camps/${camp.year}`) },
   ];
 
+  // Generate keywords based on camp year
+  const getKeywordsForCamp = (year: number): string[] => {
+    if (year === 2023) {
+      return [
+        '제1회 강정피스앤뮤직캠프',
+        '1st Gangjeong Peace Music Camp 2023',
+        '강정 평화음악제',
+        'Gangjeong peace festival',
+        '2023 캠프',
+        'Jeju music 2023',
+        '첫 번째 캠프',
+        'first camp',
+      ];
+    } else if (year === 2025) {
+      return [
+        '제2회 강정피스앤뮤직캠프',
+        '2nd Gangjeong Peace Music Camp 2025',
+        '강정 평화음악제',
+        'Gangjeong peace festival',
+        '2025 캠프',
+        'Jeju music 2025',
+        '두 번째 캠프',
+        'second camp',
+      ];
+    }
+    return [];
+  };
+
   return (
     <PageLayout
       title={`${t('camp.ordinal', { num: ordinalLabel })} ${t('app.title')} (${camp.year}) - ${camp.slogan || ''}`}
@@ -107,6 +135,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
           description: camp.description,
           url: getFullUrl(`/camps/${camp.year}`),
           datePublished: camp.startDate,
+          ...(camp.year < 2026 && { keywords: getKeywordsForCamp(camp.year) }),
         })]}
       breadcrumbs={breadcrumbs}
       ogType="event"

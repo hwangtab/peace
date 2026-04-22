@@ -55,6 +55,16 @@ const AlbumTracksPage = ({
         description: t('album.tracks_page_desc'),
         url: getFullUrl('/album/tracks'),
         datePublished: '2024-10-12',
+        keywords: [
+          '강정피스앤뮤직캠프 수록곡',
+          'Gangjeong Peace Music Camp tracks',
+          '평화 음악 수록곡',
+          'peace music tracks',
+          '앨범 트랙리스트',
+          'album tracklist',
+          '한국 인디 음악',
+          'Korean indie music',
+        ],
       })]}
       breadcrumbs={breadcrumbs}
       disableTopPadding={true}
