@@ -425,7 +425,22 @@
     "playlist_name": "Chansons pour la paix",
     "playlist_desc": "Collection musicale du projet 'À toi, dans un lieu lointain dont j'ignore le nom'",
     "gallery_name": "Galerie",
-    "gallery_desc": "Galerie photo du projet 'À toi, dans un lieu lointain dont j'ignore le nom'"
+    "gallery_desc": "Galerie photo du projet 'À toi, dans un lieu lointain dont j'ignore le nom'",
+    "audience_general": "Grand public"
+  },
+  "camp_faq_2026": {
+    "q1": "Quand se tient le 3ème Gangjeong Peace and Music Camp ?",
+    "a1": "Du 5 au 7 juin 2026, un festival de musique pour la paix de trois jours dans le village de Gangjeong avec 54 groupes.",
+    "q2": "Où se déroule-t-il ?",
+    "a2": "Au Parc sportif de Gangjeong, dans le village de Gangjeong, Seogwipo, Île de Jeju, Corée du Sud. Accessible en bus ou taxi depuis l'aéroport de Jeju.",
+    "q3": "L'entrée est-elle payante ?",
+    "a3": "Non. Le Gangjeong Peace and Music Camp est gratuit et ouvert au public. Il soutient le mouvement contre la base navale de Jeju.",
+    "q4": "Comment puis-je soutenir le camp ?",
+    "a4": "Via le financement participatif sur tumblbug.com/gpmc3. Le camp est soutenu par des contributions volontaires, pas par la vente de billets.",
+    "q5": "Qui se produit ?",
+    "a5": "54 artistes indé coréens de divers genres, dont Yun Sunae, Jeong Jinseok, Choi Sangdon, Kim Dongsan & Blue Neighbors, Dear Arcadian, Taehyeon, HANASH et TAGI.",
+    "q6": "Où puis-je voir le programme complet ?",
+    "a6": "Le planning complet des 3 jours est sur peaceandmusic.net/camps/2026, classé chronologiquement par heure de représentation."
   },
   "camp_data": {
     "camp-2023": {
