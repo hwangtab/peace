@@ -25,6 +25,27 @@
 - Press: https://peaceandmusic.net/press
 - Videos: https://peaceandmusic.net/videos
 
+## Camp 2026 Timetable (3rd Gangjeong Peace Music Camp)
+
+The 3rd Gangjeong Peace Music Camp runs three consecutive days. Each performance is 25 minutes, separated by 5–10 minute transitions. Admission is free.
+
+- Day 1 — Friday, June 5, 2026 · 17:00–22:57 KST · 12 acts · https://peaceandmusic.net/camps/2026#timetable-day-2026-06-05
+- Day 2 — Saturday, June 6, 2026 · 12:00–22:37 KST · 21 acts · https://peaceandmusic.net/camps/2026#timetable-day-2026-06-06
+- Day 3 — Sunday, June 7, 2026 · 11:00–21:30 KST · 21 acts · https://peaceandmusic.net/camps/2026#timetable-day-2026-06-07
+
+Each individual performance has a deep-link anchor in the form `#act-YYYY-MM-DD-N` (e.g. `#act-2026-06-05-3` is the 3rd act on day 1). Performer profiles live at `https://peaceandmusic.net/camps/2026/musicians/{id}`.
+
+Participating artists span Korean indie, folk, blues, rock, ambient, electronic, and world music — including Yun Sunae (윤선애), Jeong Jinseok (정진석), Choi Sangdon (최상돈), Kim Dongsan & Blue Neighbors, Dear Arcadian, Honey Whiskey, Materials Pound, Dog Last Page, Taehyeon (태히언), HANASH, TAGI, Rainbow99, Sabbaha (사바하), Meridies (메리디에스), and 40+ others.
+
+## Structured Data (schema.org)
+
+Every camp page exposes JSON-LD for:
+- `MusicEvent` for the full festival plus 54 individual `MusicEvent` subEvents (one per performance, each linked to the performer's profile and tagged with start/end time in KST)
+- `FAQPage` with 6 common questions (when/where/free/support/lineup/schedule)
+- `BreadcrumbList`, `ItemList` (ordered timetable), `HowTo` (attendance steps), `WebPage`, `Organization`, `WebSite`
+
+Each musician profile page exposes `ProfilePage` schema with genre, social links, and organization affiliation.
+
 ## Context
 Gangjeong Village in Jeju Island has been the site of nearly 20 years of peace resistance since the 2007 designation of a naval base construction site. Despite 94% resident opposition, the Jeju Naval Base was built, destroying the UNESCO-protected Gureombi Rock in 2012. The village received the IPB Sean MacBride Peace Award in 2015, recognized globally for its nonviolent peace movement. Residents have maintained daily peace prayers for over 7,000 consecutive days.
 

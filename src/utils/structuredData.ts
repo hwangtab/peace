@@ -281,6 +281,20 @@ export const getCollectionPageSchema = (collection: {
   ...(collection.dateModified ? { "dateModified": collection.dateModified } : {})
 });
 
+// SubEvent input - 공연 내 개별 공연(subEvent) 입력 타입
+interface SubEventInput {
+  name: string;
+  startDate: string; // ISO 8601
+  endDate: string;
+  performerName: string;
+  performerUrl?: string;
+  id?: string;                      // optional custom @id; else auto-generated
+  description?: string;             // optional per-act description
+  performerSameAs?: string[];       // Instagram/YouTube URLs
+  image?: string;                   // absolute URL to musician profile image (also used for performer)
+  url?: string;                     // canonical URL for this specific act (e.g. page#act-anchor)
+}
+
 // Event Schema - 공연/캠프 정보
 export const getEventSchema = (event: {
   name: string;
@@ -292,25 +306,32 @@ export const getEventSchema = (event: {
     address: string;
   };
   image?: string;
+  images?: string[];
+  alternateName?: string | string[];
+  previousEvent?:
+    | { "@id": string; name: string; startDate?: string }
+    | Array<{ "@id": string; name: string; startDate?: string }>;
+  isFamilyFriendly?: boolean;
+  typicalAgeRange?: string;
+  maximumAttendeeCapacity?: number;
   performers?: Array<{ type: 'Person' | 'MusicGroup'; name: string; url?: string }>;
   offers?: {
     url: string;
     price?: string;
     priceCurrency?: string;
     availability?: string;
+    validFrom?: string;
+    validThrough?: string;
   };
   dateModified?: string;
   eventStatus?: string;
-}, _lang: string = 'ko', t?: TranslationFn) => ({
-  "@context": "https://schema.org",
-  "@type": "MusicEvent",
-  "name": event.name,
-  "startDate": event.startDate,
-  "endDate": event.endDate,
-  ...(event.dateModified ? { "dateModified": event.dateModified } : {}),
-  "eventStatus": event.eventStatus || "https://schema.org/EventScheduled",
-  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-  "location": {
+  subEvents?: SubEventInput[];
+  url?: string;
+  doorTime?: string;
+  id?: string;                       // explicit @id for the main event (defaults to `${url}#event`)
+  superEventId?: string;             // reference to parent EventSeries @id
+}, _lang: string = 'ko', t?: TranslationFn) => {
+  const location = {
     "@type": "Place",
     "@id": "https://peaceandmusic.net/#gangjeong-sports-park",
     "name": event.location.name,
@@ -326,33 +347,113 @@ export const getEventSchema = (event: {
       "addressRegion": "Jeju",
       "addressCountry": "KR"
     }
-  },
-  "image": event.image || "https://peaceandmusic.net/og-image.webp",
-  "description": event.description,
-  "isAccessibleForFree": true,
-  "about": [
-    { "@type": "Thing", "name": "Peace movement", "sameAs": "https://en.wikipedia.org/wiki/Peace_movement" },
-    { "@type": "Place", "name": "Gangjeong Village", "sameAs": "https://en.wikipedia.org/wiki/Gangjeong" }
-  ],
-  "performer": (event.performers && event.performers.length > 0)
-    ? event.performers.map(p => ({ "@type": p.type, "name": p.name, ...(p.url ? { "url": p.url } : {}) }))
-    : { "@type": "Organization", "name": t ? getCampName(t) : '' },
-  "organizer": {
-    "@type": "Organization",
-    "@id": "https://peaceandmusic.net/#organization",
-    "name": t ? getCampName(t) : '',
-    "url": "https://peaceandmusic.net"
-  },
-  ...(event.offers ? {
-    "offers": {
-      "@type": "Offer",
-      "url": event.offers.url,
-      "price": event.offers.price || "0",
-      "priceCurrency": event.offers.priceCurrency || "KRW",
-      "availability": event.offers.availability || "https://schema.org/InStock"
-    }
-  } : {})
-});
+  };
+
+  const eventId = event.id ?? (event.url ? `${event.url}#event` : undefined);
+
+  const schema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "MusicEvent",
+    ...(eventId ? { "@id": eventId } : {}),
+    ...(event.superEventId ? { "superEvent": { "@id": event.superEventId } } : {}),
+    "name": event.name,
+    ...(event.alternateName ? { "alternateName": event.alternateName } : {}),
+    "startDate": event.startDate,
+    "endDate": event.endDate,
+    ...(event.dateModified ? { "dateModified": event.dateModified } : {}),
+    "eventStatus": event.eventStatus || "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "location": location,
+    "image":
+      event.images && event.images.length > 0
+        ? event.images
+        : (event.image || "https://peaceandmusic.net/og-image.webp"),
+    "description": event.description,
+    "isAccessibleForFree": true,
+    "inLanguage": _lang === 'ko' ? 'ko' : _lang,
+    "audience": {
+      "@type": "Audience",
+      "audienceType": t ? t('structured_data.audience_general') : "General audience"
+    },
+    ...(event.isFamilyFriendly !== undefined ? { "isFamilyFriendly": event.isFamilyFriendly } : {}),
+    ...(event.typicalAgeRange ? { "typicalAgeRange": event.typicalAgeRange } : {}),
+    ...(event.maximumAttendeeCapacity ? { "maximumAttendeeCapacity": event.maximumAttendeeCapacity } : {}),
+    ...(event.previousEvent ? { "previousEvent": event.previousEvent } : {}),
+    ...(event.doorTime ? { "doorTime": event.doorTime } : {}),
+    "about": [
+      { "@type": "Thing", "name": "Peace movement", "sameAs": "https://en.wikipedia.org/wiki/Peace_movement" },
+      { "@type": "Place", "name": "Gangjeong Village", "sameAs": "https://en.wikipedia.org/wiki/Gangjeong" }
+    ],
+    "performer": (event.performers && event.performers.length > 0)
+      ? event.performers.map(p => ({ "@type": p.type, "name": p.name, ...(p.url ? { "url": p.url } : {}) }))
+      : { "@type": "Organization", "name": t ? getCampName(t) : '' },
+    "organizer": {
+      "@type": "Organization",
+      "@id": "https://peaceandmusic.net/#organization",
+      "name": t ? getCampName(t) : '',
+      "url": "https://peaceandmusic.net",
+      "sameAs": [
+        "https://www.instagram.com/peace_music_in_gangjeong",
+        "https://tumblbug.com/gpmc3"
+      ]
+    },
+    ...(event.offers ? {
+      "offers": {
+        "@type": "Offer",
+        "url": event.offers.url,
+        "price": event.offers.price || "0",
+        "priceCurrency": event.offers.priceCurrency || "KRW",
+        "availability": event.offers.availability || "https://schema.org/InStock",
+        ...(event.offers.validFrom ? { "validFrom": event.offers.validFrom } : {}),
+        ...(event.offers.validThrough ? { "validThrough": event.offers.validThrough } : {})
+      }
+    } : {})
+  };
+
+  if (event.subEvents && event.subEvents.length > 0) {
+    schema.subEvent = event.subEvents.map((se, idx) => ({
+      "@type": "MusicEvent",
+      ...(se.id ? { "@id": se.id } : { "@id": `${event.url ?? 'https://peaceandmusic.net/camps/2026'}#act-${idx + 1}` }),
+      "name": se.name,
+      "startDate": se.startDate,
+      "endDate": se.endDate,
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": location,
+      ...(se.image ? { "image": se.image } : {}),
+      ...(se.url ? { "url": se.url } : {}),
+      "isAccessibleForFree": true,
+      "inLanguage": _lang === 'ko' ? 'ko' : _lang,
+      "performer": {
+        "@type": "MusicGroup",
+        "name": se.performerName,
+        ...(se.performerUrl ? { "url": se.performerUrl } : {}),
+        ...(se.performerSameAs && se.performerSameAs.length > 0 ? { "sameAs": se.performerSameAs } : {}),
+        ...(se.image ? { "image": se.image } : {})
+      },
+      "organizer": {
+        "@type": "Organization",
+        "@id": "https://peaceandmusic.net/#organization",
+        "name": t ? getCampName(t) : '',
+        "url": "https://peaceandmusic.net"
+      },
+      ...(event.offers ? {
+        "offers": {
+          "@type": "Offer",
+          "url": event.offers.url,
+          "price": event.offers.price || "0",
+          "priceCurrency": event.offers.priceCurrency || "KRW",
+          "availability": event.offers.availability || "https://schema.org/InStock",
+          ...(event.offers.validFrom ? { "validFrom": event.offers.validFrom } : {}),
+          ...(event.offers.validThrough ? { "validThrough": event.offers.validThrough } : {})
+        }
+      } : {}),
+      ...(se.description ? { "description": se.description } : {})
+    }));
+  }
+
+  return schema;
+};
 
 // ProfilePage Schema - 뮤지션 프로필 페이지
 export const getProfilePageSchema = (person: {
@@ -369,6 +470,7 @@ export const getProfilePageSchema = (person: {
   ...(person.url ? { "@id": person.url } : {}),
   "mainEntity": {
     "@type": "Person",
+    ...(person.url ? { "@id": `${person.url}#person` } : {}),
     "name": person.name,
     "description": person.description,
     ...(person.image ? { "image": person.image } : {}),
@@ -391,9 +493,15 @@ export const getWebPageSchema = (page: {
   url: string;
   datePublished?: string;
   dateModified?: string;
+  mainEntityId?: string;          // e.g. "https://peaceandmusic.net/camps/2026#event"
+  id?: string;                    // explicit @id for this WebPage (defaults to url + "#webpage")
+  primaryImageUrl?: string;       // absolute URL for primaryImageOfPage
+  keywords?: string[];            // optional keywords for SEO
+  breadcrumbId?: string;          // optional @id reference to breadcrumb
 }) => ({
   "@context": "https://schema.org",
   "@type": "WebPage",
+  "@id": page.id ?? `${page.url}#webpage`,
   "name": page.name,
   "description": page.description,
   "url": page.url,
@@ -403,7 +511,13 @@ export const getWebPageSchema = (page: {
   "copyrightYear": 2024,
   "speakable": {
     "@type": "SpeakableSpecification",
-    "cssSelector": ["h1", ".typo-subtitle", "h2:first-of-type"]
+    "cssSelector": [
+      "h1",
+      ".typo-subtitle",
+      "h2:first-of-type",
+      "[data-speakable]",
+      ".seo-summary"
+    ]
   },
   "about": [
     { "@type": "Thing", "name": "Peace movement", "sameAs": "https://en.wikipedia.org/wiki/Peace_movement" },
@@ -413,8 +527,82 @@ export const getWebPageSchema = (page: {
     { "@type": "Thing", "name": "Jeju Naval Base", "sameAs": "https://en.wikipedia.org/wiki/Jeju_Naval_Base" },
     { "@type": "Event", "name": "Anti-war movement", "sameAs": "https://en.wikipedia.org/wiki/Anti-war_movement" }
   ],
+  ...(page.mainEntityId ? { "mainEntity": { "@id": page.mainEntityId } } : {}),
+  ...(page.primaryImageUrl ? {
+    "primaryImageOfPage": {
+      "@type": "ImageObject",
+      "url": page.primaryImageUrl
+    }
+  } : {}),
+  ...(page.keywords && page.keywords.length > 0 ? { "keywords": page.keywords.join(', ') } : {}),
+  ...(page.breadcrumbId ? { "breadcrumb": { "@id": page.breadcrumbId } } : {}),
   ...(page.datePublished ? { "datePublished": page.datePublished } : {}),
   ...(page.dateModified ? { "dateModified": page.dateModified } : {})
+});
+
+// EventSeries Schema - 연례 시리즈 이벤트 (2023, 2025, 2026)
+export const getEventSeriesSchema = (series: {
+  name: string;
+  description: string;
+  url?: string;
+  events: Array<{
+    "@id": string;
+    name: string;
+    startDate: string;
+    endDate?: string;
+    url?: string;
+  }>;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "EventSeries",
+  "@id": "https://peaceandmusic.net/#event-series",
+  "name": series.name,
+  "description": series.description,
+  ...(series.url ? { "url": series.url } : {}),
+  "organizer": { "@id": "https://peaceandmusic.net/#organization" },
+  "location": { "@id": "https://peaceandmusic.net/#gangjeong-sports-park" },
+  "subEvent": series.events.map((e) => ({
+    "@type": "MusicEvent",
+    "@id": e["@id"],
+    "name": e.name,
+    "startDate": e.startDate,
+    ...(e.endDate ? { "endDate": e.endDate } : {}),
+    ...(e.url ? { "url": e.url } : {})
+  }))
+});
+
+// ItemList Schema - 타임테이블의 순서 있는 리스트 (AI 엔진에 명시적 신호)
+export const getItemListSchema = (list: {
+  name: string;
+  description?: string;
+  url?: string;
+  items: Array<{
+    position: number;
+    name: string;
+    url?: string;
+    image?: string;
+    startDate?: string;
+  }>;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": list.name,
+  ...(list.description ? { "description": list.description } : {}),
+  ...(list.url ? { "url": list.url } : {}),
+  "numberOfItems": list.items.length,
+  "itemListOrder": "https://schema.org/ItemListOrderAscending",
+  "itemListElement": list.items.map((item) => ({
+    "@type": "ListItem",
+    "position": item.position,
+    ...(item.url ? { "url": item.url } : {}),
+    "item": {
+      "@type": "MusicEvent",
+      "name": item.name,
+      ...(item.url ? { "url": item.url } : {}),
+      ...(item.image ? { "image": item.image } : {}),
+      ...(item.startDate ? { "startDate": item.startDate } : {}),
+    }
+  }))
 });
 
 // HowTo Schema - 캠프 참여 방법 (AEO 최적화)
