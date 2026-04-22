@@ -13,7 +13,7 @@ import CampHero from '@/components/camp/CampHero';
 import dynamic from 'next/dynamic';
 
 const GangjeongStorySection = dynamic(() => import('@/components/camp/GangjeongStorySection'));
-import { getEventSchema, getBreadcrumbSchema, getHowToSchema, getWebPageSchema } from '@/utils/structuredData';
+import { getEventSchema, getBreadcrumbSchema, getHowToSchema, getWebPageSchema, getFAQSchema } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
 import Button from '@/components/common/Button';
 import { formatOrdinal } from '@/utils/format';
@@ -61,17 +61,34 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
   const subEvents = timetable2026.days.flatMap((day) =>
     day.acts
       .filter((a) => a.type === 'performance')
-      .map((a) => ({
-        name: a.name,
-        startDate: `${day.date}T${a.start}:00+09:00`,
-        endDate: `${day.date}T${a.end}:00+09:00`,
-        performerName: a.name,
-        performerUrl:
-          a.musicianIds && a.musicianIds.length === 1
-            ? getFullUrl(`/camps/2026/musicians/${a.musicianIds[0]}`)
-            : undefined,
-      }))
+      .map((a) => {
+        const musician = a.musicianIds && a.musicianIds.length === 1
+          ? musicians.find((m) => m.id === a.musicianIds![0])
+          : undefined;
+        return {
+          id: `https://peaceandmusic.net/camps/2026#act-${day.date}-${a.order}`,
+          name: a.name,
+          startDate: `${day.date}T${a.start}:00+09:00`,
+          endDate: `${day.date}T${a.end}:00+09:00`,
+          performerName: a.name,
+          performerUrl:
+            a.musicianIds && a.musicianIds.length === 1
+              ? getFullUrl(`/camps/2026/musicians/${a.musicianIds[0]}`)
+              : undefined,
+          performerSameAs: musician?.instagramUrls?.length ? musician.instagramUrls : undefined,
+        };
+      })
   );
+
+  const campFaqs = [
+    { question: t('camp_faq_2026.q1'), answer: t('camp_faq_2026.a1') },
+    { question: t('camp_faq_2026.q2'), answer: t('camp_faq_2026.a2') },
+    { question: t('camp_faq_2026.q3'), answer: t('camp_faq_2026.a3') },
+    { question: t('camp_faq_2026.q4'), answer: t('camp_faq_2026.a4') },
+    { question: t('camp_faq_2026.q5'), answer: t('camp_faq_2026.a5') },
+    { question: t('camp_faq_2026.q6'), answer: t('camp_faq_2026.a6') },
+  ];
+  const faqSchema = getFAQSchema(campFaqs);
 
   const eventSchema = getEventSchema(
     {
@@ -105,6 +122,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
             },
           }
         : {}),
+      url: getFullUrl('/camps/2026'),
       subEvents,
     },
     i18n.language,
@@ -129,7 +147,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
           description: translatedDescription,
           url: getFullUrl('/camps/2026'),
           datePublished: camp2026.startDate,
-        })]}
+        }), faqSchema]}
       breadcrumbs={breadcrumbs}
       ogType="event"
       disableTopPadding={true}
