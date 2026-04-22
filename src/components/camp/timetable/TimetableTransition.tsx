@@ -9,13 +9,14 @@ const TimetableTransition: React.FC<TimetableTransitionProps> = ({ minutes }) =>
   const { t } = useTranslation();
   return (
     <div
-      className="flex items-center gap-2 py-2 pl-4 text-xs text-coastal-gray/70"
+      className="flex items-center justify-center py-1"
       role="presentation"
       aria-hidden="true"
     >
-      <span className="flex-1 border-t border-dashed border-coastal-gray/30" />
-      <span className="whitespace-nowrap">{t('timetable.transition', { minutes })}</span>
-      <span className="flex-1 border-t border-dashed border-coastal-gray/30" />
+      <span className="inline-flex items-center gap-1 rounded-full bg-ocean-sand px-2.5 py-0.5 text-[11px] font-medium text-coastal-gray">
+        <span aria-hidden="true" className="text-jeju-ocean/60">↓</span>
+        {t('timetable.transition', { minutes })}
+      </span>
     </div>
   );
 };
