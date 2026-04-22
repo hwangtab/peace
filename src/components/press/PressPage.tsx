@@ -94,6 +94,16 @@ export default function PressPage({
       name: t('press.page_title'),
       description: t('press.page_desc'),
       url: getFullUrl('/press'),
+      keywords: [
+        '강정피스앤뮤직캠프 언론보도',
+        'Gangjeong Peace Music Camp press',
+        '평화음악 뉴스',
+        'peace music news',
+        '제주 강정마을',
+        'Gangjeong Village',
+        '평화 운동',
+        'peace movement',
+      ],
     }),
     ...pressItems.slice(0, 20).map(item =>
       getNewsArticleSchema({
