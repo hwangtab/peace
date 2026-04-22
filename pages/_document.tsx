@@ -15,16 +15,13 @@ class MyDocument extends Document {
       return (
         <Html lang={currentLocale} dir={dir}>
         <Head>
-          {/* 폰트 CDN preconnect */}
-          <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
-
           {/* Google Analytics preconnect (GA4 렌더링 차단 방지) */}
           <link rel="preconnect" href="https://www.googletagmanager.com" />
           <link rel="dns-prefetch" href="//www.googletagmanager.com" />
           <link rel="preconnect" href="https://www.google-analytics.com" />
           <link rel="dns-prefetch" href="//www.google-analytics.com" />
 
-          {/* Body 폰트 preload (FOUT 방지) — fetchpriority로 LCP 개선 */}
+          {/* Body 폰트 preload (FOUT 방지) — LCP 히어로 본문에 사용 */}
           <link
             rel="preload"
             as="font"
@@ -35,32 +32,15 @@ class MyDocument extends Document {
             fetchpriority="high"
           />
 
-          {/* PartialSans (h1 hero 폰트) preload — CLS 방지 */}
+          {/* PartialSans (h1 hero 폰트) preload — LCP 폰트이므로 최우선 */}
           <link
             rel="preload"
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
-            href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/PartialSansKR-Regular.woff2"
+            href="/fonts/PartialSansKR-Regular.woff2"
             // @ts-expect-error — fetchpriority is a valid HTML attribute (React 18.3+)
             fetchpriority="high"
-          />
-          {/* KkuBulLim (h2 stone 폰트) preload — CLS 방지 */}
-          <link
-            rel="preload"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-            href="https://cdn.jsdelivr.net/gh/projectnoonnu/2410-1@1.0/BMkkubulimTTF-Regular.woff2"
-          />
-
-          {/* BookkMyungjo-Bd 폰트 preload */}
-          <link
-            rel="preload"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-            href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2"
           />
 
           {/* 테마 & 색상 스킴 */}

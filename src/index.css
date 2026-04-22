@@ -5,7 +5,7 @@
 @layer base {
   @font-face {
     font-family: 'BookkMyungjo-Bd';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2') format('woff2');
+    src: url('/fonts/BookkMyungjo-Bd.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -34,7 +34,7 @@
 
   @font-face {
     font-family: 'S-CoreDream-3Light';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    src: url('/fonts/S-CoreDream-3Light.woff') format('woff');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -42,7 +42,7 @@
 
   @font-face {
     font-family: 'PartialSans';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/PartialSansKR-Regular.woff2') format('woff2');
+    src: url('/fonts/PartialSansKR-Regular.woff2') format('woff2');
     font-weight: normal;
     font-display: swap;
   }
