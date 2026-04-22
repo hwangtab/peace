@@ -14,6 +14,8 @@ interface TimetableActCardProps {
 }
 
 function getInitials(name: string): string {
+  // For short names (<=2 chars), show only first char to avoid duplicating full name
+  if (name.length <= 2) return name.slice(0, 1);
   return name.slice(0, 2);
 }
 
