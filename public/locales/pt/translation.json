@@ -138,6 +138,15 @@
     "view_image": "Ver imagem",
     "no_results": "Nenhum resultado encontrado."
   },
+  "timetable": {
+    "title": "Programação",
+    "subtitle_count": "{{count}} atos · 3 dias",
+    "tab_day_label": "{{date}} {{weekday}} · {{count}} atos",
+    "tab_day_time": "{{start}} – {{end}}",
+    "transition": "⟶ {{minutes}} min de transição",
+    "scale": { "solo": "SOLO", "band": "BAND", "big_band": "BIG BAND", "ensemble": "ENSEMBLE" },
+    "weekday": { "fri": "Sex", "sat": "Sáb", "sun": "Dom" }
+  },
   "timeline": {
     "title": "Nossa Jornada",
     "subtitle": "Um registro de paz que começa em Gangjeong",
