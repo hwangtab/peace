@@ -291,6 +291,8 @@ interface SubEventInput {
   id?: string;                      // optional custom @id; else auto-generated
   description?: string;             // optional per-act description
   performerSameAs?: string[];       // Instagram/YouTube URLs
+  image?: string;                   // absolute URL to musician profile image
+  url?: string;                     // canonical URL for this specific act (e.g. page#act-anchor)
 }
 
 // Event Schema - 공연/캠프 정보
@@ -304,12 +306,22 @@ export const getEventSchema = (event: {
     address: string;
   };
   image?: string;
+  images?: string[];
+  alternateName?: string | string[];
+  previousEvent?:
+    | { "@id": string; name: string; startDate?: string }
+    | Array<{ "@id": string; name: string; startDate?: string }>;
+  isFamilyFriendly?: boolean;
+  typicalAgeRange?: string;
+  maximumAttendeeCapacity?: number;
   performers?: Array<{ type: 'Person' | 'MusicGroup'; name: string; url?: string }>;
   offers?: {
     url: string;
     price?: string;
     priceCurrency?: string;
     availability?: string;
+    validFrom?: string;
+    validThrough?: string;
   };
   dateModified?: string;
   eventStatus?: string;
@@ -339,13 +351,17 @@ export const getEventSchema = (event: {
     "@context": "https://schema.org",
     "@type": "MusicEvent",
     "name": event.name,
+    ...(event.alternateName ? { "alternateName": event.alternateName } : {}),
     "startDate": event.startDate,
     "endDate": event.endDate,
     ...(event.dateModified ? { "dateModified": event.dateModified } : {}),
     "eventStatus": event.eventStatus || "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
     "location": location,
-    "image": event.image || "https://peaceandmusic.net/og-image.webp",
+    "image":
+      event.images && event.images.length > 0
+        ? event.images
+        : (event.image || "https://peaceandmusic.net/og-image.webp"),
     "description": event.description,
     "isAccessibleForFree": true,
     "inLanguage": _lang === 'ko' ? 'ko' : _lang,
@@ -353,6 +369,10 @@ export const getEventSchema = (event: {
       "@type": "Audience",
       "audienceType": t ? t('structured_data.audience_general') : "General audience"
     },
+    ...(event.isFamilyFriendly !== undefined ? { "isFamilyFriendly": event.isFamilyFriendly } : {}),
+    ...(event.typicalAgeRange ? { "typicalAgeRange": event.typicalAgeRange } : {}),
+    ...(event.maximumAttendeeCapacity ? { "maximumAttendeeCapacity": event.maximumAttendeeCapacity } : {}),
+    ...(event.previousEvent ? { "previousEvent": event.previousEvent } : {}),
     ...(event.doorTime ? { "doorTime": event.doorTime } : {}),
     "about": [
       { "@type": "Thing", "name": "Peace movement", "sameAs": "https://en.wikipedia.org/wiki/Peace_movement" },
@@ -377,7 +397,9 @@ export const getEventSchema = (event: {
         "url": event.offers.url,
         "price": event.offers.price || "0",
         "priceCurrency": event.offers.priceCurrency || "KRW",
-        "availability": event.offers.availability || "https://schema.org/InStock"
+        "availability": event.offers.availability || "https://schema.org/InStock",
+        ...(event.offers.validFrom ? { "validFrom": event.offers.validFrom } : {}),
+        ...(event.offers.validThrough ? { "validThrough": event.offers.validThrough } : {})
       }
     } : {})
   };
@@ -392,6 +414,8 @@ export const getEventSchema = (event: {
       "eventStatus": "https://schema.org/EventScheduled",
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "location": location,
+      ...(se.image ? { "image": se.image } : {}),
+      ...(se.url ? { "url": se.url } : {}),
       "isAccessibleForFree": true,
       "inLanguage": _lang === 'ko' ? 'ko' : _lang,
       "performer": {
@@ -412,7 +436,9 @@ export const getEventSchema = (event: {
           "url": event.offers.url,
           "price": event.offers.price || "0",
           "priceCurrency": event.offers.priceCurrency || "KRW",
-          "availability": event.offers.availability || "https://schema.org/InStock"
+          "availability": event.offers.availability || "https://schema.org/InStock",
+          ...(event.offers.validFrom ? { "validFrom": event.offers.validFrom } : {}),
+          ...(event.offers.validThrough ? { "validThrough": event.offers.validThrough } : {})
         }
       } : {}),
       ...(se.description ? { "description": se.description } : {})
@@ -471,7 +497,13 @@ export const getWebPageSchema = (page: {
   "copyrightYear": 2024,
   "speakable": {
     "@type": "SpeakableSpecification",
-    "cssSelector": ["h1", ".typo-subtitle", "h2:first-of-type"]
+    "cssSelector": [
+      "h1",
+      ".typo-subtitle",
+      "h2:first-of-type",
+      "[data-speakable]",
+      ".seo-summary"
+    ]
   },
   "about": [
     { "@type": "Thing", "name": "Peace movement", "sameAs": "https://en.wikipedia.org/wiki/Peace_movement" },
@@ -483,6 +515,40 @@ export const getWebPageSchema = (page: {
   ],
   ...(page.datePublished ? { "datePublished": page.datePublished } : {}),
   ...(page.dateModified ? { "dateModified": page.dateModified } : {})
+});
+
+// ItemList Schema - 타임테이블의 순서 있는 리스트 (AI 엔진에 명시적 신호)
+export const getItemListSchema = (list: {
+  name: string;
+  description?: string;
+  url?: string;
+  items: Array<{
+    position: number;
+    name: string;
+    url?: string;
+    image?: string;
+    startDate?: string;
+  }>;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": list.name,
+  ...(list.description ? { "description": list.description } : {}),
+  ...(list.url ? { "url": list.url } : {}),
+  "numberOfItems": list.items.length,
+  "itemListOrder": "https://schema.org/ItemListOrderAscending",
+  "itemListElement": list.items.map((item) => ({
+    "@type": "ListItem",
+    "position": item.position,
+    ...(item.url ? { "url": item.url } : {}),
+    "item": {
+      "@type": "MusicEvent",
+      "name": item.name,
+      ...(item.url ? { "url": item.url } : {}),
+      ...(item.image ? { "image": item.image } : {}),
+      ...(item.startDate ? { "startDate": item.startDate } : {}),
+    }
+  }))
 });
 
 // HowTo Schema - 캠프 참여 방법 (AEO 최적화)
