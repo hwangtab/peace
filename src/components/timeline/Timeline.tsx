@@ -9,7 +9,7 @@ const Timeline = () => {
   const { t } = useTranslation();
 
   return (
-    <Section id="history" background="sunlight-glow" className="pb-24 md:pb-32">
+    <Section id="history" background="sunlight-glow" paddingBottom="loose">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title={t('timeline.title')}

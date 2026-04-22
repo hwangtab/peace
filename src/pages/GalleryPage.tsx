@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PageLayout from '@/components/layout/PageLayout';
 import Button from '@/components/common/Button';
 import PageHero from '@/components/common/PageHero';
+import PageIntroSection from '@/components/common/PageIntroSection';
 import GallerySection from '@/components/home/GallerySection';
 import { getImageGallerySchema, getBreadcrumbSchema, getWebPageSchema } from '@/utils/structuredData';
-import { getCamps } from '@/data/camps';
+import { useCamp } from '@/hooks/useCamps';
 import { getFullUrl } from '@/config/env';
 
 import { useTranslation } from 'next-i18next';
@@ -18,7 +19,7 @@ interface GalleryPageProps {
 
 const GalleryPage = ({ initialImages = [] }: GalleryPageProps) => {
   const { t, i18n } = useTranslation();
-  const camp2026 = getCamps(i18n.language, t).find((c) => c.id === 'camp-2026');
+  const camp2026 = useCamp('camp-2026');
   const schemaImages = initialImages.slice(0, 20).map((img) => ({
     url: getFullUrl(img.url),
     caption: img.description || t('gallery.hero_subtitle'),
@@ -29,11 +30,29 @@ const GalleryPage = ({ initialImages = [] }: GalleryPageProps) => {
       { url: getFullUrl('/images-webp/camps/2023/DSC00437.webp'), caption: t('gallery.page_desc') }
     );
   }
-  const gallerySchema = getImageGallerySchema(schemaImages, i18n.language, t, initialImages.length);
-  const breadcrumbs = [
+  const breadcrumbs = useMemo(() => [
     { name: t('nav.home'), url: getFullUrl('/') },
     { name: t('gallery.page_title'), url: getFullUrl('/gallery') },
-  ];
+  ], [t]);
+
+  const structuredData = useMemo(() => {
+    const gallerySchema = getImageGallerySchema(schemaImages, i18n.language, t, initialImages.length);
+    return [gallerySchema, getBreadcrumbSchema(breadcrumbs), getWebPageSchema({
+      name: t('gallery.page_title'),
+      description: t('gallery.page_desc'),
+      url: getFullUrl('/gallery'),
+      keywords: [
+        '강정피스앤뮤직캠프 갤러리',
+        'Gangjeong Peace Music Camp gallery',
+        '페스티벌 사진',
+        'festival photos',
+        '제주 음악',
+        'Jeju music',
+        '평화 이미지',
+        'peace music images',
+      ],
+    })];
+  }, [schemaImages, i18n.language, t, initialImages.length, breadcrumbs]);
 
   return (
     <PageLayout
@@ -42,21 +61,7 @@ const GalleryPage = ({ initialImages = [] }: GalleryPageProps) => {
       ogImage="/images-webp/camps/2023/DSC00528.webp"
       ogImageAlt={t('gallery.page_title')}
       background="golden-sun"
-      structuredData={[gallerySchema, getBreadcrumbSchema(breadcrumbs), getWebPageSchema({
-        name: t('gallery.page_title'),
-        description: t('gallery.page_desc'),
-        url: getFullUrl('/gallery'),
-        keywords: [
-          '강정피스앤뮤직캠프 갤러리',
-          'Gangjeong Peace Music Camp gallery',
-          '페스티벌 사진',
-          'festival photos',
-          '제주 음악',
-          'Jeju music',
-          '평화 이미지',
-          'peace music images',
-        ],
-      })]}
+      structuredData={structuredData}
       breadcrumbs={breadcrumbs}
       disableTopPadding={true}
     >
@@ -64,6 +69,16 @@ const GalleryPage = ({ initialImages = [] }: GalleryPageProps) => {
         title={t('gallery.hero_title')}
         subtitle={t('gallery.hero_subtitle')}
         backgroundImage="/images-webp/camps/2023/DSC00528.webp"
+      />
+      <PageIntroSection
+        eyebrow={t('gallery.intro.eyebrow')}
+        heading={t('gallery.intro.heading')}
+        paragraphs={[
+          t('gallery.intro.p1'),
+          t('gallery.intro.p2'),
+          t('gallery.intro.p3'),
+        ]}
+        background="white"
       />
       <div className="pt-12">
         <GallerySection

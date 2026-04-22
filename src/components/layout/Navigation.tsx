@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { HiOutlineMenu, HiOutlineX } from 'react-icons/hi';
 import { useNavigation } from '@/hooks/useNavigation';
+import WaveLogoMark from '@/components/icons/WaveLogoMark';
 import DesktopMenu from './DesktopMenu';
 import MobileMenu from './MobileMenu';
 
@@ -39,13 +40,14 @@ const Navigation = () => {
           <div className="flex justify-between items-center min-h-[4rem] py-2 gap-4">
             <Link
               href="/"
-              className={`text-lg sm:text-xl lg:text-2xl font-bold font-serif transition-colors duration-300 text-balance min-w-0 break-words rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${
+              className={`group inline-flex items-center gap-2 text-lg sm:text-xl lg:text-2xl font-bold font-serif transition-colors duration-300 min-w-0 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${
                 isScrolled
                   ? 'text-jeju-ocean hover:text-ocean-mist'
                   : 'text-cloud-white hover:text-seafoam drop-shadow-md'
               }`}
             >
-              {t('nav.logo')}
+              <WaveLogoMark className="h-4 sm:h-5 w-auto flex-shrink-0 transition-transform duration-500 group-hover:-translate-y-0.5" />
+              <span className="min-w-0 text-balance break-words">{t('nav.logo')}</span>
             </Link>
 
             {/* Desktop Menu */}

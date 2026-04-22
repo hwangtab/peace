@@ -8,6 +8,7 @@ import { sortByDateDesc } from '@/utils/sorting';
 import EventFilter from '../common/EventFilter';
 import PageLayout from '../layout/PageLayout';
 import PageHero from '../common/PageHero';
+import PageIntroSection from '../common/PageIntroSection';
 import VideoCard from './VideoCard';
 import { getCollectionPageSchema, getBreadcrumbSchema, getVideoObjectSchema, getWebPageSchema } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
@@ -47,22 +48,43 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
     [videos, selectedFilter]
   );
 
-  const eligibleVideos = videos.filter((v) => v.youtubeUrl && v.date).slice(0, 10);
-  const videoSchemas = eligibleVideos
-    .map((v) => getVideoObjectSchema({ name: v.title, description: v.description || '', youtubeUrl: v.youtubeUrl, uploadDate: v.date, id: String(v.id), duration: v.duration }, t));
-
-  // Collection Page Schema
-  const collectionSchema = getCollectionPageSchema({
-    name: t('videos.page_title'),
-    description: t('videos.page_desc'),
-    url: getFullUrl('/videos'),
-    hasPart: eligibleVideos.map((v) => ({ "@id": `https://peaceandmusic.net/videos#video-${String(v.id)}` })),
-  });
-
-  const videoBreadcrumbs = [
+  const videoBreadcrumbs = useMemo(() => [
     { name: t('nav.home'), url: getFullUrl('/') },
     { name: t('videos.page_title'), url: getFullUrl('/videos') },
-  ];
+  ], [t]);
+
+  const structuredData = useMemo(() => {
+    const eligibleVideos = videos.filter((v) => v.youtubeUrl && v.date).slice(0, 10);
+    const videoSchemas = eligibleVideos.map((v) =>
+      getVideoObjectSchema({ name: v.title, description: v.description || '', youtubeUrl: v.youtubeUrl, uploadDate: v.date, id: String(v.id), duration: v.duration, pageUrl: getFullUrl(`/videos/${v.id}`) }, t)
+    );
+    const collectionSchema = getCollectionPageSchema({
+      name: t('videos.page_title'),
+      description: t('videos.page_desc'),
+      url: getFullUrl('/videos'),
+      hasPart: eligibleVideos.map((v) => ({ "@id": `https://peaceandmusic.net/videos/${v.id}#video` })),
+    });
+    return [
+      collectionSchema,
+      getBreadcrumbSchema(videoBreadcrumbs),
+      getWebPageSchema({
+        name: t('videos.page_title'),
+        description: t('videos.page_desc'),
+        url: getFullUrl('/videos'),
+        keywords: [
+          '강정피스앤뮤직캠프 영상',
+          'Gangjeong Peace Music Camp videos',
+          '라이브 영상',
+          'live performance videos',
+          '인디 음악 영상',
+          'Korean indie videos',
+          '평화음악 공연',
+          'peace music performances',
+        ],
+      }),
+      ...videoSchemas,
+    ];
+  }, [videos, t, videoBreadcrumbs]);
 
   return (
     <PageLayout
@@ -72,26 +94,7 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
       ogImageAlt={t('videos.page_title')}
       ogType="video.other"
       background="sunlight-glow"
-      structuredData={[
-        collectionSchema,
-        getBreadcrumbSchema(videoBreadcrumbs),
-        getWebPageSchema({
-          name: t('videos.page_title'),
-          description: t('videos.page_desc'),
-          url: getFullUrl('/videos'),
-          keywords: [
-            '강정피스앤뮤직캠프 영상',
-            'Gangjeong Peace Music Camp videos',
-            '라이브 영상',
-            'live performance videos',
-            '인디 음악 영상',
-            'Korean indie videos',
-            '평화음악 공연',
-            'peace music performances',
-          ],
-        }),
-        ...videoSchemas,
-      ]}
+      structuredData={structuredData}
       breadcrumbs={videoBreadcrumbs}
       disableTopPadding={true}
     >
@@ -99,6 +102,17 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
         title={t('videos.hero_title')}
         subtitle={t('videos.hero_subtitle')}
         backgroundImage="/images-webp/camps/2023/IMG_2064.webp"
+      />
+
+      <PageIntroSection
+        eyebrow={t('videos.intro.eyebrow')}
+        heading={t('videos.intro.heading')}
+        paragraphs={[
+          t('videos.intro.p1'),
+          t('videos.intro.p2'),
+          t('videos.intro.p3'),
+        ]}
+        background="white"
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-12">

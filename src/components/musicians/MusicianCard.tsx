@@ -64,7 +64,7 @@ const MusicianCard = memo(({ musician, index, href }: MusicianCardProps) => {
           {/* Content */}
           <div className="p-6 flex-1 flex flex-col">
             <Link href={detailHref} className="block mb-2 hover:text-ocean-mist transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded">
-              <h3 className="text-2xl font-serif text-jeju-ocean group-hover:text-ocean-mist transition-colors duration-200 break-words">
+              <h3 className="typo-h3 !text-jeju-ocean group-hover:!text-ocean-mist transition-colors duration-200 break-words">
                 {musician.name}
               </h3>
             </Link>

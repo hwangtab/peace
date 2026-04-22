@@ -2,14 +2,15 @@ import Link from 'next/link';
 import { FaInstagram } from 'react-icons/fa';
 import { HiOutlineMail } from 'react-icons/hi';
 import { SITE_CONFIG } from '@/constants/config';
-import { getCamps } from '@/data/camps';
+import { useCamp } from '@/hooks/useCamps';
+import { buildUtmUrl } from '@/utils/utm';
 import { simpleMenuItems, campItems, albumItems } from './navigationData';
 
 import { useTranslation } from 'next-i18next';
 
 const Footer = () => {
-    const { t, i18n } = useTranslation();
-    const camp2026 = getCamps(i18n.language, t).find(c => c.id === 'camp-2026');
+    const { t } = useTranslation();
+    const camp2026 = useCamp('camp-2026');
 
     return (
         <footer className="bg-deep-ocean text-cloud-white">
@@ -63,7 +64,7 @@ const Footer = () => {
                                 ))}
                                 {camp2026?.fundingUrl && (
                                     <a
-                                        href={`${camp2026.fundingUrl}?utm_source=website&utm_medium=cta&utm_campaign=gpmc3&utm_content=footer`}
+                                        href={buildUtmUrl(camp2026.fundingUrl, 'footer')}
                                         target="_blank"
                                         rel="noopener noreferrer nofollow"
                                         className="block text-golden-sun hover:text-yellow-300

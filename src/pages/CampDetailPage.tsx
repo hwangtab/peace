@@ -1,15 +1,15 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useTranslation } from 'next-i18next';
 import { motion } from 'framer-motion';
 import CampHero from '@/components/camp/CampHero';
 import CampGallery from '@/components/camp/CampGallery';
 import CampParticipants from '@/components/camp/CampParticipants';
 import CampStaff from '@/components/camp/CampStaff';
-import { getCamps } from '@/data/camps';
+import { useCamps } from '@/hooks/useCamps';
 import PageLayout from '@/components/layout/PageLayout';
 import Section from '@/components/layout/Section';
 import SectionHeader from '@/components/common/SectionHeader';
-import WaveDivider from '@/components/common/WaveDivider';
+import SectionWave from '@/components/layout/SectionWave';
 import { getEventSchema, getBreadcrumbSchema, getHowToSchema, getWebPageSchema } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
 import { getMusicians } from '@/api/musicians';
@@ -35,7 +35,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
   initialLocale = 'ko',
 }) => {
   const { t, i18n } = useTranslation();
-  const campList = getCamps(i18n.language, t);
+  const campList = useCamps();
   const camp = campList.find((c) => c.id === campId);
   const fetchMusicians = useCallback((locale: string) => getMusicians(locale), []);
   const musiciansResource = useLocalizedResource<Musician>({
@@ -45,6 +45,102 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
     fetchResource: fetchMusicians,
   });
   const musicians = musiciansResource.isLoading ? [] : musiciansResource.data;
+
+  const ordinalLabel = useMemo(() => {
+    if (!camp) return '';
+    return formatOrdinal(getCampOrdinal(camp.year, campList), i18n.language);
+  }, [camp, campList, i18n.language]);
+
+  const breadcrumbs = useMemo(() => {
+    if (!camp) return [];
+    return [
+      { name: t('nav.home'), url: getFullUrl('/') },
+      { name: `${t('nav.camp')} ${camp.year}`, url: getFullUrl(`/camps/${camp.year}`) },
+    ];
+  }, [camp, t]);
+
+  const structuredData = useMemo(() => {
+    if (!camp) return [];
+
+    const getKeywordsForCamp = (year: number): string[] => {
+      if (year === 2023) {
+        return [
+          '제1회 강정피스앤뮤직캠프',
+          '1st Gangjeong Peace Music Camp 2023',
+          '강정 평화음악제',
+          'Gangjeong peace festival',
+          '2023 캠프',
+          'Jeju music 2023',
+          '첫 번째 캠프',
+          'first camp',
+        ];
+      } else if (year === 2025) {
+        return [
+          '제2회 강정피스앤뮤직캠프',
+          '2nd Gangjeong Peace Music Camp 2025',
+          '강정 평화음악제',
+          'Gangjeong peace festival',
+          '2025 캠프',
+          'Jeju music 2025',
+          '두 번째 캠프',
+          'second camp',
+        ];
+      }
+      return [];
+    };
+
+    const eventSchema = getEventSchema(
+      {
+        name: camp.title,
+        startDate: camp.startDate,
+        endDate: camp.endDate || camp.startDate,
+        description: camp.description,
+        location: {
+          name: camp.location.split('(')[0]?.trim() || camp.location,
+          address: camp.location.includes('(')
+            ? camp.location.split('(')[1]?.replace(')', '') || camp.location
+            : camp.location,
+        },
+        image:
+          camp.images && camp.images.length > 0 && camp.images[0]
+            ? getFullUrl(camp.images[0])
+            : undefined,
+        performers: camp.participants?.map((p) => ({
+          type: 'MusicGroup',
+          name: typeof p === 'string' ? p : p.name,
+        })),
+        eventStatus: camp.year < 2026
+          ? "https://schema.org/EventCompleted"
+          : "https://schema.org/EventScheduled",
+        offers: {
+          url: getFullUrl(`/camps/${camp.year}`),
+          price: '0',
+          priceCurrency: 'KRW',
+          availability: camp.year < 2026
+            ? 'https://schema.org/SoldOut'
+            : 'https://schema.org/InStock',
+        },
+        url: getFullUrl(`/camps/${camp.year}`),
+        id: `https://peaceandmusic.net/camps/${camp.year}#event`,
+        superEventId: 'https://peaceandmusic.net/#event-series',
+      },
+      i18n.language,
+      t
+    );
+
+    return [
+      eventSchema,
+      getBreadcrumbSchema(breadcrumbs),
+      ...(camp.year >= 2026 ? [getHowToSchema(i18n.language, t)] : []),
+      getWebPageSchema({
+        name: `${t('camp.ordinal', { num: ordinalLabel })} ${t('app.title')} (${camp.year})`,
+        description: camp.description,
+        url: getFullUrl(`/camps/${camp.year}`),
+        datePublished: camp.startDate,
+        ...(camp.year < 2026 && { keywords: getKeywordsForCamp(camp.year) }),
+      }),
+    ];
+  }, [camp, breadcrumbs, i18n.language, t, ordinalLabel]);
 
   if (!camp) {
     return (
@@ -59,84 +155,13 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
     );
   }
 
-  const ordinal = getCampOrdinal(camp.year, campList);
-  const ordinalLabel = formatOrdinal(ordinal, i18n.language);
-
-  // Event Schema construction
-  const eventSchema = getEventSchema(
-    {
-      name: camp.title,
-      startDate: camp.startDate,
-      endDate: camp.endDate || camp.startDate,
-      description: camp.description,
-      location: {
-        name: camp.location.split('(')[0]?.trim() || camp.location,
-        address: camp.location.includes('(')
-          ? camp.location.split('(')[1]?.replace(')', '') || camp.location
-          : camp.location,
-      },
-      image:
-        camp.images && camp.images.length > 0 && camp.images[0]
-          ? getFullUrl(camp.images[0])
-          : undefined,
-      performers: camp.participants?.map((p) => ({
-        type: 'MusicGroup',
-        name: typeof p === 'string' ? p : p.name,
-      })),
-      eventStatus: camp.year < 2026
-        ? "https://schema.org/EventCompleted"
-        : "https://schema.org/EventScheduled",
-    },
-    i18n.language,
-    t
-  );
-
-  const breadcrumbs = [
-    { name: t('nav.home'), url: getFullUrl('/') },
-    { name: `${t('nav.camp')} ${camp.year}`, url: getFullUrl(`/camps/${camp.year}`) },
-  ];
-
-  // Generate keywords based on camp year
-  const getKeywordsForCamp = (year: number): string[] => {
-    if (year === 2023) {
-      return [
-        '제1회 강정피스앤뮤직캠프',
-        '1st Gangjeong Peace Music Camp 2023',
-        '강정 평화음악제',
-        'Gangjeong peace festival',
-        '2023 캠프',
-        'Jeju music 2023',
-        '첫 번째 캠프',
-        'first camp',
-      ];
-    } else if (year === 2025) {
-      return [
-        '제2회 강정피스앤뮤직캠프',
-        '2nd Gangjeong Peace Music Camp 2025',
-        '강정 평화음악제',
-        'Gangjeong peace festival',
-        '2025 캠프',
-        'Jeju music 2025',
-        '두 번째 캠프',
-        'second camp',
-      ];
-    }
-    return [];
-  };
-
   return (
     <PageLayout
       title={`${t('camp.ordinal', { num: ordinalLabel })} ${t('app.title')} (${camp.year}) - ${camp.slogan || ''}`}
       description={camp.description}
       ogImage={camp.images?.[0]}
       ogImageAlt={`${t('camp.ordinal', { num: ordinalLabel })} ${t('app.title')} (${camp.year})`}
-      structuredData={[eventSchema, getBreadcrumbSchema(breadcrumbs), ...(camp.year >= 2026 ? [getHowToSchema(i18n.language, t)] : []), getWebPageSchema({
-          name: `${t('camp.ordinal', { num: ordinalLabel })} ${t('app.title')} (${camp.year})`,
-          description: camp.description,
-          url: getFullUrl(`/camps/${camp.year}`),
-          datePublished: camp.startDate,
-          ...(camp.year < 2026 && { keywords: getKeywordsForCamp(camp.year) }),
-        })]}
+      structuredData={structuredData}
       breadcrumbs={breadcrumbs}
       ogType="event"
       disableTopPadding={true}
@@ -144,7 +169,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
     >
       <CampHero camp={camp} />
 
-      <Section background="ocean-sand" className="pb-24 md:pb-32">
+      <Section background="ocean-sand" paddingBottom="loose">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -203,7 +228,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
         </div>
       </Section>
 
-      <WaveDivider className="text-light-beige -mt-[60px] sm:-mt-[100px] relative z-10" />
+      <SectionWave color="light-beige" flow="up" />
 
       <CampGallery camp={camp} />
 

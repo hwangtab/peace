@@ -10,6 +10,7 @@ const customJestConfig = {
   testPathIgnorePatterns: [
     '<rootDir>/node_modules/',
     '<rootDir>/.next/',
+    '<rootDir>/.worktrees/',
     '/\\._',
     '<rootDir>/naughty-carson/',
     '<rootDir>/friendly-northcutt/',
@@ -19,6 +20,7 @@ const customJestConfig = {
     '<rootDir>/xenodochial-beaver/',
   ],
   modulePathIgnorePatterns: [
+    '<rootDir>/.worktrees/',
     '<rootDir>/naughty-carson/',
     '<rootDir>/friendly-northcutt/',
     '<rootDir>/elated-montalcini/',

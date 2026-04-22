@@ -10,6 +10,8 @@ interface TimetableActCardProps {
   musicianById: Map<number, Musician>;
   campYear: number;
   index?: number;
+  accentTimeClass?: string;
+  accentRuleClass?: string;
 }
 
 function getInitials(name: string): string {
@@ -22,7 +24,14 @@ function resolveMusicians(ids: number[] | undefined, lookup: Map<number, Musicia
   return ids.map((id) => lookup.get(id)).filter((m): m is Musician => m !== undefined);
 }
 
-const TimetableActCard: React.FC<TimetableActCardProps> = ({ act, musicianById, campYear, index = 0 }) => {
+const TimetableActCard: React.FC<TimetableActCardProps> = ({
+  act,
+  musicianById,
+  campYear,
+  index = 0,
+  accentTimeClass = 'text-jeju-ocean',
+  accentRuleClass = 'bg-coastal-gray/30',
+}) => {
   const musicians = resolveMusicians(act.musicianIds, musicianById);
   const primary = musicians[0];
   const isLinkable = musicians.length === 1 && primary !== undefined;
@@ -38,11 +47,11 @@ const TimetableActCard: React.FC<TimetableActCardProps> = ({ act, musicianById, 
       <div className="flex w-12 flex-shrink-0 flex-col items-center text-center sm:w-16">
         <time
           dateTime={act.start}
-          className="text-lg font-bold leading-none tabular-nums text-jeju-ocean sm:text-xl"
+          className={`text-lg font-bold leading-none tabular-nums sm:text-xl ${accentTimeClass}`}
         >
           {act.start}
         </time>
-        <span aria-hidden="true" className="mt-1 block h-px w-4 bg-coastal-gray/30 sm:w-6" />
+        <span aria-hidden="true" className={`mt-1 block h-px w-4 sm:w-6 ${accentRuleClass}`} />
         <time
           dateTime={act.end}
           className="mt-1 text-[11px] leading-none tabular-nums text-coastal-gray/70 sm:text-xs"

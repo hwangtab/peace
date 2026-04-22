@@ -2,11 +2,11 @@ import { useTranslation } from 'next-i18next';
 import { Musician } from '@/types/musician';
 import { VideoItem } from '@/types/video';
 import { getProfilePageSchema, getBreadcrumbSchema, getWebPageSchema } from '@/utils/structuredData';
-import { getCamps } from '@/data/camps';
+import { useCamps } from '@/hooks/useCamps';
 import { getFullUrl } from '@/config/env';
 import PageLayout from '../layout/PageLayout';
 import { BreadcrumbItem } from '../shared/BreadcrumbNav';
-import WaveDivider from '../common/WaveDivider';
+import SectionWave from '../layout/SectionWave';
 import MusicianHeroSection from './MusicianHeroSection';
 import MusicianDescriptionSection from './MusicianDescriptionSection';
 import RelatedVideosSection from './RelatedVideosSection';
@@ -40,7 +40,8 @@ export default function MusicianDetailContent({
 }: MusicianDetailContentProps) {
   const { t, i18n } = useTranslation();
   const isCampPage = pageContext === 'camp';
-  const campList = isCampPage ? getCamps(i18n.language, t) : [];
+  const allCamps = useCamps();
+  const campList = isCampPage ? allCamps : [];
   const latestCamp = campList.length > 0 ? campList[campList.length - 1] : undefined;
   const latestCampYear = latestCamp?.year;
 
@@ -104,13 +105,13 @@ export default function MusicianDetailContent({
       />
 
       {relatedVideos.length > 0 && (
-        <WaveDivider className="text-ocean-sand -mt-[60px] sm:-mt-[100px] relative z-10" />
+        <SectionWave color="ocean-sand" flow="up" />
       )}
 
       {relatedVideos.length > 0 && <RelatedVideosSection relatedVideos={relatedVideos} />}
 
       {otherMusicians.length > 0 && relatedVideos.length > 0 && (
-        <WaveDivider className="text-white -mt-[60px] sm:-mt-[100px] relative z-10" />
+        <SectionWave color="white" flow="up" />
       )}
 
       {otherMusicians.length > 0 && (

@@ -47,7 +47,14 @@
     "image_alt_fallback": "Image de la galerie du Camp musical pour la paix de Gangjeong",
     "image_alt_template": "Image de la galerie {{title}} {{year}}",
     "alt_album": "Photo du concert de sortie d'album {{year}}",
-    "alt_camp": "Photo du Camp de Musique pour la Paix de Gangjeong {{year}}"
+    "alt_camp": "Photo du Camp de Musique pour la Paix de Gangjeong {{year}}",
+    "intro": {
+      "eyebrow": "Archives photo",
+      "heading": "Images du point de rencontre entre Gangjeong, la musique et la paix",
+      "p1": "Gangjeong est niché sur la côte sud de Jeju, face à l'îlot Beomseom, au pied du mont Halla. Des décennies après le massacre du 4·3, une nouvelle couche d'histoire s'est ouverte en 2007 avec la résistance des habitants contre une base navale. Cette galerie conserve l'atmosphère des concerts donnés sur ce même rivage.",
+      "p2": "Les photos couvrent les camps 2023, 2025 et l'édition 2026 en cours. Aux côtés des musicien·ne·s sur scène apparaissent les haenyeo (plongeuses de Jeju), les militant·e·s du rocher Gureombi, les enfants du public et les bénévoles du Centre de la paix — une communauté qui déborde le simple festival.",
+      "p3": "Un clic ouvre l'image haute résolution dans une lightbox. Usage non commercial bienvenu pour les mouvements de paix et musicaux, avec mention de la source."
+    }
   },
   "home": {
     "hero": {
@@ -144,8 +151,17 @@
     "tab_day_label": "{{date}} {{weekday}} · {{count}} groupes",
     "tab_day_time": "{{start}} – {{end}}",
     "transition": "⟶ {{minutes}} min de transition",
-    "scale": { "solo": "SOLO", "band": "BAND", "big_band": "BIG BAND", "ensemble": "ENSEMBLE" },
-    "weekday": { "fri": "Ven", "sat": "Sam", "sun": "Dim" }
+    "scale": {
+      "solo": "SOLO",
+      "band": "BAND",
+      "big_band": "BIG BAND",
+      "ensemble": "ENSEMBLE"
+    },
+    "weekday": {
+      "fri": "Ven",
+      "sat": "Sam",
+      "sun": "Dim"
+    }
   },
   "timeline": {
     "title": "Notre parcours",
@@ -202,14 +218,34 @@
     "hero_title": "Presse",
     "hero_subtitle": "Notre histoire en chantant pour la paix",
     "breadcrumb_home": "Accueil",
-    "breadcrumb_press": "Presse"
+    "breadcrumb_press": "Presse",
+    "intro": {
+      "eyebrow": "Archives de presse",
+      "heading": "Comment la presse a couvert le festival de paix de Gangjeong",
+      "p1": "Le Gangjeong Peace and Music Camp est un festival indépendant annuel à Gangjeong, un village de l'île de Jeju qui résiste à la construction d'une base navale depuis 2007. Ces archives rassemblent la couverture des quotidiens coréens, des webzines musicaux indépendants et de médias internationaux de paix depuis la première édition en 2023.",
+      "p2": "Les articles en coréen creusent souvent l'histoire de Jeju après le 4·3 et les récits du village, tandis que la couverture en japonais et anglais relie le camp aux autres luttes contre les bases militaires en Asie de l'Est — Okinawa, Guam, Philippines. Chaque carte ouvre l'article original sur le site de l'éditeur.",
+      "p3": "La couverture s'intensifie autour de chaque édition, et les liens ci-dessous conservent la programmation, les étapes du financement participatif et les photos du terrain. Utilisez les filtres pour affiner par année ou par événement."
+    }
   },
   "videos": {
     "page_title": "Vidéos | Camp musical pour la paix de Gangjeong",
     "page_desc": "Collection de vidéos de performances du Camp musical pour la paix de Gangjeong. Découvrez les vidéos des musiciens qui chantent pour la paix.",
     "hero_title": "Vidéos",
     "hero_subtitle": "Moments de chant pour la paix",
-    "all_videos": "Voir toutes les vidéos"
+    "all_videos": "Voir toutes les vidéos",
+    "detail": {
+      "watch_on_youtube": "Voir sur YouTube",
+      "back_to_list": "Retour aux vidéos",
+      "related_musicians": "Musiciens en vedette",
+      "more_videos": "Autres vidéos de cet événement"
+    },
+    "intro": {
+      "eyebrow": "Archives vidéo",
+      "heading": "Concerts filmés dans un village qui refuse de se taire",
+      "p1": "La plupart de ces captations sont des enregistrements de terrain réalisés à Gangjeong et dans de petites salles à travers la Corée. Loin des festivals commerciaux, une ou deux caméras seulement, le son direct de la façade PA, et un public qui danse face à une base navale toute proche.",
+      "p2": "Des musiciens coréens indé, folk, punk et traditionnels délivrent des messages anti-guerre, anti-bases et écologiques dans leur propre langue. On y entend la musique racines népali-coréenne de Ritesh Maharjan, le blues contestataire du compositeur itinérant Kim Dong-san et les sets live du DJ Josuganman — l'éventail est volontairement large.",
+      "p3": "Les filtres permettent de réduire aux camps 2023, 2025 ou 2026, ou à l'album 2024. Chaque carte ouvre une page dédiée sur ce site — date, lieu, contexte du/de la musicien·ne — plutôt que de renvoyer directement vers YouTube."
+    }
   },
   "camp": {
     "ordinal": "{{num}}",
@@ -250,6 +286,7 @@
   "gangjeong_story": {
     "section_title": "Pourquoi Gangjeong",
     "section_aria_label": "Pourquoi Gangjeong — L'histoire du village de Gangjeong",
+    "home_cta": "Voir l'histoire complète de Gangjeong",
     "hook_headline": "Mettons fin à la guerre !",
     "hook_subline": "Jouons, dansons, chantons !",
     "hook_intro": "Une histoire de paix de près de 20 ans née au village de Gangjeong, Jeju. Et le festival de musique bâti sur cette histoire.",
@@ -337,7 +374,14 @@
     "tracks_page_desc": "Toutes les pistes de l’album du Camp musical pour la paix de Gangjeong. 12 chansons portant des messages de paix et de solidarité.",
     "tracks_hero_subtitle": "To You in a Distant Place Whose Name I Don't Know",
     "image_alt_cover": "Pochette de l’album “To You in a Distant Place Whose Name I Don't Know”",
-    "image_alt_concert": "Scène du concert de sortie de l’album {{num}}"
+    "image_alt_concert": "Scène du concert de sortie de l’album {{num}}",
+    "musicians_intro": {
+      "eyebrow": "Les musicien·ne·s",
+      "heading": "Les musicien·ne·s de l'album pour la paix 2024",
+      "p1": "Sorti en 2024, l'album « À toi, inconnu·e d'un lointain ailleurs » est le disque officiel du projet Gangjeong Peace and Music. Quatorze formations coréennes — indé, folk, jazz, électro — ont chacune offert un titre sur l'idée d'une paix imaginée pour un·e inconnu·e que l'on ne rencontrera peut-être jamais.",
+      "p2": "Cette liste se limite aux artistes ayant contribué à l'album. La programmation annuelle complète des artistes en live est consultable sur la page de chaque camp.",
+      "p3": "Chaque carte ouvre un profil avec liens Instagram/YouTube, captations en concert et suggestions d'autres artistes. Les titres de l'album s'écoutent directement depuis le menu « Titres »."
+    }
   },
   "faqs": {
     "title": "Questions Fréquentes",

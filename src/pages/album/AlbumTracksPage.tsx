@@ -36,11 +36,32 @@ const AlbumTracksPage = ({
     [initialTracks, i18n.language, t]
   );
 
-  const breadcrumbs = [
+  const breadcrumbs = useMemo(() => [
     { name: t('nav.home'), url: getFullUrl('/') },
     { name: t('nav.album'), url: getFullUrl('/album/about') },
     { name: t('nav.track'), url: getFullUrl('/album/tracks') },
-  ];
+  ], [t]);
+
+  const structuredData = useMemo(() => [
+    playlistSchema,
+    getBreadcrumbSchema(breadcrumbs),
+    getWebPageSchema({
+      name: t('album.tracks_page_title'),
+      description: t('album.tracks_page_desc'),
+      url: getFullUrl('/album/tracks'),
+      datePublished: '2024-10-12',
+      keywords: [
+        '강정피스앤뮤직캠프 수록곡',
+        'Gangjeong Peace Music Camp tracks',
+        '평화 음악 수록곡',
+        'peace music tracks',
+        '앨범 트랙리스트',
+        'album tracklist',
+        '한국 인디 음악',
+        'Korean indie music',
+      ],
+    }),
+  ], [playlistSchema, breadcrumbs, t]);
 
   return (
     <PageLayout
@@ -50,22 +71,7 @@ const AlbumTracksPage = ({
       ogImageAlt={t('album.tracks_page_title')}
       ogType="music.playlist"
       background="sky-horizon"
-      structuredData={[playlistSchema, getBreadcrumbSchema(breadcrumbs), getWebPageSchema({
-        name: t('album.tracks_page_title'),
-        description: t('album.tracks_page_desc'),
-        url: getFullUrl('/album/tracks'),
-        datePublished: '2024-10-12',
-        keywords: [
-          '강정피스앤뮤직캠프 수록곡',
-          'Gangjeong Peace Music Camp tracks',
-          '평화 음악 수록곡',
-          'peace music tracks',
-          '앨범 트랙리스트',
-          'album tracklist',
-          '한국 인디 음악',
-          'Korean indie music',
-        ],
-      })]}
+      structuredData={structuredData}
       breadcrumbs={breadcrumbs}
       disableTopPadding={true}
       disableBottomPadding={true}

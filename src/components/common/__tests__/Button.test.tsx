@@ -43,7 +43,7 @@ describe('Button Component', () => {
         </Button>
       );
       const link = screen.getByRole('link', { name: 'External Link' });
-      expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+      expect(link).toHaveAttribute('rel', 'noopener noreferrer nofollow');
       expect(link).toHaveAttribute('target', '_blank');
     });
 

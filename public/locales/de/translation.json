@@ -47,7 +47,14 @@
     "image_alt_fallback": "Galeriebild des Gangjeong Peace Music Camp",
     "image_alt_template": "{{year}} {{title}} Galeriebild",
     "alt_album": "Konzertfoto zur Albumveröffentlichung {{year}}",
-    "alt_camp": "Foto des Gangjeong Peace Music Camps {{year}}"
+    "alt_camp": "Foto des Gangjeong Peace Music Camps {{year}}",
+    "intro": {
+      "eyebrow": "Fotodokumentation",
+      "heading": "Bilder, wo Gangjeong, Musik und Frieden zusammentreffen",
+      "p1": "Gangjeong liegt an der Südküste Jejus, blickt auf das Inselchen Beomseom und wird vom Hallasan gerahmt. Jahrzehnte nach dem 4.·3.-Massaker begann 2007 eine neue Geschichtsschicht: der Widerstand der Bewohner:innen gegen einen Marinestützpunkt. Diese Galerie bewahrt die Stimmung der Konzerte an genau diesem Ufer.",
+      "p2": "Die Bilder umfassen die Camps 2023, 2025 und das laufende 2026. Neben den Musiker:innen auf der Bühne erscheinen Haenyeo (Taucherinnen von Jeju), Aktivist:innen am Gureombi-Felsen, Kinder im Publikum und Freiwillige des Peace Center — eine Community, die weit über das Festival hinausgeht.",
+      "p3": "Ein Klick öffnet das Bild in voller Auflösung in einer Lightbox. Nicht-kommerzielle Nutzung im Kontext der Friedens- und Musikbewegung ist unter Nennung der Quelle willkommen."
+    }
   },
   "home": {
     "hero": {
@@ -144,8 +151,17 @@
     "tab_day_label": "{{date}} {{weekday}} · {{count}} Acts",
     "tab_day_time": "{{start}} – {{end}}",
     "transition": "⟶ {{minutes}} Min Umbau",
-    "scale": { "solo": "SOLO", "band": "BAND", "big_band": "BIG BAND", "ensemble": "ENSEMBLE" },
-    "weekday": { "fri": "Fr", "sat": "Sa", "sun": "So" }
+    "scale": {
+      "solo": "SOLO",
+      "band": "BAND",
+      "big_band": "BIG BAND",
+      "ensemble": "ENSEMBLE"
+    },
+    "weekday": {
+      "fri": "Fr",
+      "sat": "Sa",
+      "sun": "So"
+    }
   },
   "timeline": {
     "title": "Unsere Reise",
@@ -202,14 +218,34 @@
     "hero_title": "Presse",
     "hero_subtitle": "Unsere Geschichte, die für den Frieden singt",
     "breadcrumb_home": "Startseite",
-    "breadcrumb_press": "Presse"
+    "breadcrumb_press": "Presse",
+    "intro": {
+      "eyebrow": "Pressearchiv",
+      "heading": "Wie Redaktionen über das Friedensmusik-Camp in Gangjeong berichten",
+      "p1": "Das Gangjeong Peace and Music Camp ist ein jährliches, unabhängiges Festival in Gangjeong, einem Dorf auf Jeju, das sich seit 2007 gegen den Bau eines Marinestützpunkts wehrt. Dieses Archiv bündelt die Berichterstattung koreanischer Tageszeitungen, unabhängiger Musikmagazine und internationaler Friedensmedien seit der ersten Ausgabe 2023.",
+      "p2": "Koreanische Texte vertiefen häufig die Geschichte Jejus nach dem 4.·3.-Massaker und die Erzählung der Dorfgemeinschaft, während englische und japanische Berichte das Camp neben anderen ostasiatischen Basiskonflikten (Okinawa, Guam, Philippinen) verorten. Ein Klick auf eine Karte öffnet den Originalartikel auf der Seite der Redaktion.",
+      "p3": "Rund um jede Ausgabe steigt die Berichterstattung sprunghaft an; die Links unten bewahren Line-ups, Crowdfunding-Meilensteine und Festivalfotos. Filter-Chips grenzen die Auswahl nach Jahr oder Event ein."
+    }
   },
   "videos": {
     "page_title": "Videos | Gangjeong Friedensmusikcamp",
     "page_desc": "Sammlung von Auftrittsvideos des Gangjeong Peace Music Camp. Entdecke die Auftritte der Musiker:innen, die für den Frieden singen.",
     "hero_title": "Videos",
     "hero_subtitle": "Momente, in denen wir für den Frieden singen",
-    "all_videos": "Alle Videos ansehen"
+    "all_videos": "Alle Videos ansehen",
+    "detail": {
+      "watch_on_youtube": "Auf YouTube ansehen",
+      "back_to_list": "Zurück zu den Videos",
+      "related_musicians": "Mitwirkende Musiker",
+      "more_videos": "Weitere Videos dieses Events"
+    },
+    "intro": {
+      "eyebrow": "Videoarchiv",
+      "heading": "Live-Auftritte aus einem Dorf, das nicht schweigen will",
+      "p1": "Die Clips hier sind überwiegend Feldaufnahmen aus Gangjeong und kleinen Spielstätten in ganz Korea. Anders als auf kommerziellen Festivals gibt es nur ein oder zwei Kameras, der Ton kommt direkt von der Live-PA, und das Publikum tanzt oft im Angesicht des angrenzenden Marinestützpunkts.",
+      "p2": "Koreanische Indie-, Folk-, Punk- und Traditionsmusiker:innen tragen Antikriegs-, Basis- und Umweltbotschaften in ihrer eigenen Sprache vor. Zu hören: die nepalesisch-koreanische Roots-Musik von Ritesh Maharjan, der Protestblues des Tour-Songwriters Kim Dong-san und Live-Sets von DJ Josuganman — das Spektrum ist bewusst weit gefasst.",
+      "p3": "Mit den Filtern lässt sich auf die Camps 2023, 2025 oder 2026 bzw. das Studioalbum 2024 eingrenzen. Jede Karte öffnet eine eigene Detailseite auf dieser Website — mit Datum, Ort und Kontext zur Künstlerin oder zum Künstler — statt direkt zu YouTube zu springen."
+    }
   },
   "camp": {
     "ordinal": "{{num}}",
@@ -250,6 +286,7 @@
   "gangjeong_story": {
     "section_title": "Warum Gangjeong",
     "section_aria_label": "Warum Gangjeong — Die Geschichte des Dorfes Gangjeong",
+    "home_cta": "Die ganze Gangjeong-Geschichte lesen",
     "hook_headline": "Beendet den Krieg!",
     "hook_subline": "Spielen, tanzen, singen!",
     "hook_intro": "Eine Friedensgeschichte von fast 20 Jahren aus dem Dorf Gangjeong, Jeju. Und das Musikfestival, das darauf aufgebaut ist.",
@@ -337,7 +374,14 @@
     "tracks_page_desc": "Alle Tracks des Gangjeong Peace Music Camp Albums. 12 Songs mit Botschaften von Frieden und Solidarität.",
     "tracks_hero_subtitle": "To You in a Distant Place Whose Name I Don't Know",
     "image_alt_cover": "Albumcover von 'To You in a Distant Place Whose Name I Don't Know'",
-    "image_alt_concert": "Szene des Album-Release-Konzerts {{num}}"
+    "image_alt_concert": "Szene des Album-Release-Konzerts {{num}}",
+    "musicians_intro": {
+      "eyebrow": "Musiker:innen",
+      "heading": "Die Musiker:innen hinter dem Friedensalbum 2024",
+      "p1": "2024 erschienen, ist das Album „An dich, Fremde:r in weiter Ferne\" die offizielle Studioaufnahme des Gangjeong-Peace-and-Music-Projekts. Vierzehn koreanische Acts — zwischen Indie, Folk, Jazz und Elektronik — steuerten je einen Song zum Thema eines Friedens bei, den sie sich für eine nie begegnete Person vorstellen.",
+      "p2": "Aufgelistet sind nur Künstler:innen mit einem eigenen Track auf dem Album. Das vollständige Live-Line-up jedes Camps findet sich auf der jeweiligen Camp-Seite.",
+      "p3": "Jede Karte öffnet ein Musiker:innenprofil mit Links zu Instagram/YouTube, Live-Mitschnitten und Empfehlungen für den nächsten Hördurchlauf. Die Albumtracks laufen direkt im Menü „Tracks\"."
+    }
   },
   "faqs": {
     "title": "Häufig gestellte Fragen",
