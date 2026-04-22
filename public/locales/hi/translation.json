@@ -138,6 +138,15 @@
     "view_image": "छवि देखें",
     "no_results": "कोई परिणाम नहीं मिला।"
   },
+  "timetable": {
+    "title": "टाइमटेबल",
+    "subtitle_count": "{{count}} कार्यक्रम · 3 दिन",
+    "tab_day_label": "{{date}} {{weekday}} · {{count}} कार्यक्रम",
+    "tab_day_time": "{{start}} – {{end}}",
+    "transition": "⟶ {{minutes}} मिनट का अंतराल",
+    "scale": { "solo": "SOLO", "band": "BAND", "big_band": "BIG BAND", "ensemble": "ENSEMBLE" },
+    "weekday": { "fri": "शुक्र", "sat": "शनि", "sun": "रवि" }
+  },
   "timeline": {
     "title": "एकजुटता की यात्रा",
     "subtitle": "गंगजिओंग से शुरू हुआ शांति का रिकॉर्ड",
