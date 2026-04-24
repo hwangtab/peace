@@ -156,7 +156,7 @@ function writeOutput(data: Timetable, outPath: string): void {
 
 // Entry point
 if (require.main === module) {
-  const xlsxPath = path.resolve(__dirname, '../docs/2026캠프 운영/timetable_v5.xlsx');
+  const xlsxPath = path.resolve(__dirname, '../docs/2026캠프 운영/timetable_v6.xlsx');
   const outPath = path.resolve(__dirname, '../src/data/timetable-2026.ts');
 
   if (!fs.existsSync(xlsxPath)) {
