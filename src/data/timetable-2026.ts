@@ -249,7 +249,7 @@ export const timetable2026: Timetable = {
       "date": "2026-06-06",
       "dayLabel": "6/6 (토)",
       "weekday": "sat",
-      "teamCount": 20,
+      "teamCount": 19,
       "startTime": "12:00",
       "endTime": "22:37",
       "acts": [
@@ -287,34 +287,14 @@ export const timetable2026: Timetable = {
         {
           "order": null,
           "start": "12:55",
-          "end": "13:05",
-          "type": "transition",
-          "name": "⟶ 10분 (다음: Dear arcadian - 대형밴드)",
-          "transitionMinutes": 10,
-          "nextActName": "Dear arcadian"
-        },
-        {
-          "order": 3,
-          "start": "13:05",
-          "end": "13:30",
-          "type": "performance",
-          "name": "Dear arcadian",
-          "scale": "big-band",
-          "musicianIds": [
-            18
-          ]
-        },
-        {
-          "order": null,
-          "start": "13:30",
           "end": "13:37",
           "type": "transition",
-          "name": "⟶ 7분 (다음: 사바하 - 중형밴드)",
-          "transitionMinutes": 7,
+          "name": "⟶ 42분 (다음: 사바하 - 중형밴드 여유세팅)",
+          "transitionMinutes": 42,
           "nextActName": "사바하"
         },
         {
-          "order": 4,
+          "order": 3,
           "start": "13:37",
           "end": "14:02",
           "type": "performance",
@@ -334,7 +314,7 @@ export const timetable2026: Timetable = {
           "nextActName": "머티리얼즈 파운드"
         },
         {
-          "order": 5,
+          "order": 4,
           "start": "14:12",
           "end": "14:37",
           "type": "performance",
@@ -354,7 +334,7 @@ export const timetable2026: Timetable = {
           "nextActName": "허니위스키"
         },
         {
-          "order": 6,
+          "order": 5,
           "start": "15:22",
           "end": "15:47",
           "type": "performance",
@@ -374,7 +354,7 @@ export const timetable2026: Timetable = {
           "nextActName": "이서영"
         },
         {
-          "order": 7,
+          "order": 6,
           "start": "15:52",
           "end": "16:17",
           "type": "performance",
@@ -394,7 +374,7 @@ export const timetable2026: Timetable = {
           "nextActName": "길가는밴드 장현호"
         },
         {
-          "order": 8,
+          "order": 7,
           "start": "16:22",
           "end": "16:47",
           "type": "performance",
@@ -414,7 +394,7 @@ export const timetable2026: Timetable = {
           "nextActName": "윤숭"
         },
         {
-          "order": 9,
+          "order": 8,
           "start": "16:52",
           "end": "17:17",
           "type": "performance",
@@ -434,7 +414,7 @@ export const timetable2026: Timetable = {
           "nextActName": "조약골"
         },
         {
-          "order": 10,
+          "order": 9,
           "start": "17:22",
           "end": "17:47",
           "type": "performance",
@@ -454,7 +434,7 @@ export const timetable2026: Timetable = {
           "nextActName": "지누콘다"
         },
         {
-          "order": 11,
+          "order": 10,
           "start": "17:52",
           "end": "18:17",
           "type": "performance",
@@ -474,7 +454,7 @@ export const timetable2026: Timetable = {
           "nextActName": "호와호"
         },
         {
-          "order": 12,
+          "order": 11,
           "start": "18:22",
           "end": "18:47",
           "type": "performance",
@@ -494,7 +474,7 @@ export const timetable2026: Timetable = {
           "nextActName": "안티스트레스"
         },
         {
-          "order": 13,
+          "order": 12,
           "start": "18:52",
           "end": "19:17",
           "type": "performance",
@@ -514,7 +494,7 @@ export const timetable2026: Timetable = {
           "nextActName": "손현숙"
         },
         {
-          "order": 14,
+          "order": 13,
           "start": "19:22",
           "end": "19:47",
           "type": "performance",
@@ -534,7 +514,7 @@ export const timetable2026: Timetable = {
           "nextActName": "모모"
         },
         {
-          "order": 15,
+          "order": 14,
           "start": "19:52",
           "end": "20:17",
           "type": "performance",
@@ -554,7 +534,7 @@ export const timetable2026: Timetable = {
           "nextActName": "송인효"
         },
         {
-          "order": 16,
+          "order": 15,
           "start": "20:22",
           "end": "20:47",
           "type": "performance",
@@ -574,7 +554,7 @@ export const timetable2026: Timetable = {
           "nextActName": "송인상"
         },
         {
-          "order": 17,
+          "order": 16,
           "start": "20:52",
           "end": "21:07",
           "type": "performance",
@@ -594,7 +574,7 @@ export const timetable2026: Timetable = {
           "nextActName": "허정혁"
         },
         {
-          "order": 18,
+          "order": 17,
           "start": "21:12",
           "end": "21:37",
           "type": "performance",
@@ -614,7 +594,7 @@ export const timetable2026: Timetable = {
           "nextActName": "피움"
         },
         {
-          "order": 19,
+          "order": 18,
           "start": "21:42",
           "end": "22:07",
           "type": "performance",
@@ -634,7 +614,7 @@ export const timetable2026: Timetable = {
           "nextActName": "강가히말라야"
         },
         {
-          "order": 20,
+          "order": 19,
           "start": "22:12",
           "end": "22:37",
           "type": "performance",
