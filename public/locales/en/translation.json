@@ -264,14 +264,14 @@
     "label_participants": "Participants",
     "date_2026": "June 5 (Fri) - June 7 (Sun), 2026",
     "venue_2026": "Gangjeong Sports Park",
-    "description_2026": "The 3rd Gangjeong Peace Music Camp will be held from June 5 (Fri) to June 7 (Sun), 2026, at Gangjeong Sports Park in Seogwipo, Jeju. Marking the 73rd anniversary of the Korean War armistice, the camp expands for the first time into a 3-day, 2-night format with a record 54 teams of musicians. As militarization and the threat of war intensify on the Korean Peninsula, the song of peace that began in Gangjeong Village grows into a stronger and wider solidarity. Under the slogan \"Let's sing, let's dance, end the war!\", musicians from diverse genres deliver messages of peace and anti-war through music.",
-    "expected_2026": "54 teams of musicians confirmed",
+    "description_2026": "The 3rd Gangjeong Peace Music Camp will be held from June 5 (Fri) to June 7 (Sun), 2026, at Gangjeong Sports Park in Seogwipo, Jeju. Marking the 73rd anniversary of the Korean War armistice, the camp expands for the first time into a 3-day, 2-night format with 51 acts. As militarization and the threat of war intensify on the Korean Peninsula, the song of peace that began in Gangjeong Village grows into a stronger and wider solidarity. Under the slogan \"Let's sing, let's dance, end the war!\", musicians from diverse genres deliver messages of peace and anti-war through music. Tickets are on sale at tumblbug.com/gpmc3.",
+    "expected_2026": "51 acts confirmed",
     "lineup_count": "{{count}} teams confirmed",
     "ticketing_2026": "Book tickets on Tumblbug",
     "brand_line": "Jeju Gangjeong Peace & Music Camp",
     "title_2026": "3rd Gangjeong Peace Music Camp",
-    "seo_title_2026": "3rd Gangjeong Peace Music Camp 2026 · Jun 5-7 · Jeju · 54 Acts",
-    "seo_description_2026": "The 3rd Gangjeong Peace and Music Camp — June 5-7, 2026 at Gangjeong Village, Jeju Island. 54 Korean indie acts across three days of peace music. Free admission, open to all.",
+    "seo_title_2026": "3rd Gangjeong Peace Music Camp 2026 · Jun 5–7 · Jeju · 51 Acts",
+    "seo_description_2026": "The 3rd Gangjeong Peace and Music Camp — June 5–7, 2026 at Gangjeong Village, Jeju Island. 51 Korean indie acts across three days of peace music at Gangjeong Sports Park. Tickets ₩30,000 via Tumblbug (tumblbug.com/gpmc3).",
     "slogan_2026": "Let's sing, let's dance, end the war!",
     "date_badge_2026": "Jun 5–7, 2026",
     "participant_count": "{{count}} teams",
@@ -281,7 +281,8 @@
     "cta_final_heading": "Join Us",
     "cta_final_body": "Help the song of peace that began in Gangjeong reach further. Support us on Tumblbug.",
     "cta_final_button": "Support on Tumblbug",
-    "other_years": "Other Camps"
+    "other_years": "Other Camps",
+    "timeline_2026_title": "3rd Camp (51 acts)"
   },
   "gangjeong_story": {
     "section_title": "Why Gangjeong",
@@ -320,7 +321,7 @@
     "timeline_2025_desc": "Naval base upgraded to Fleet Command. US Navy vessels begin regular port calls, integrating Jeju into US military strategy",
     "timeline_2025b_title": "2nd Camp (11 acts)",
     "timeline_2025b_desc": "Songs of peace resound again in Gangjeong",
-    "timeline_2026_title": "3rd Camp (54 teams)",
+    "timeline_2026_title": "3rd Camp (51 acts)",
     "timeline_2026_desc": "10 years since base completion, largest ever 3-day festival",
     "timeline_2026_badge": "This Year",
     "story_block1_text": "Gureombi Rock, the symbol of Gangjeong. This lava formation, shaped by waves over tens of thousands of years, was blasted in 2012 to make way for the naval base.",
@@ -400,11 +401,11 @@
       },
       {
         "q": "What musicians will participate?",
-        "a": "Musicians from various genres such as rock, folk, jazz, and electronic will participate. In the 2026 camp, 54 or more teams have been confirmed to perform."
+        "a": "Musicians from various genres such as rock, folk, jazz, and electronic will participate. In the 2026 camp, 51 acts have been confirmed to perform."
       },
       {
         "q": "Is there an admission fee?",
-        "a": "Gangjeong Peace Music Camp aims for an open festival that anyone who loves peace can enjoy for free. However, voluntary donations and goods sales will be held for the sustainability of the event."
+        "a": "The Gangjeong Peace and Music Camp is a ticketed festival; tickets are ₩30,000 (KRW) via Tumblbug (tumblbug.com/gpmc3). Proceeds fund the festival and peace solidarity work."
       },
       {
         "q": "What is the 'To You in a Distant Place Whose Name I Don't Know' project?",
@@ -420,7 +421,7 @@
       },
       {
         "q": "Can children attend?",
-        "a": "Yes, Gangjeong Peace Music Camp is a festival for the whole family. It is held outdoors, and children can enter for free."
+        "a": "Yes, the Gangjeong Peace and Music Camp is a family-friendly outdoor festival. For details on bringing children, see the Tumblbug ticket page (tumblbug.com/gpmc3)."
       },
       {
         "q": "How can I volunteer?",
@@ -470,7 +471,7 @@
     "camp-2026": {
       "title": "3rd Gangjeong Peace Music Camp",
       "short_description": "June 5–7, 2026, Gangjeong Sports Park",
-      "description": "The 3rd Gangjeong Peace Music Camp will be held from June 5 (Fri) to June 7 (Sun), 2026, at Gangjeong Sports Park in Seogwipo, Jeju. Marking the 73rd anniversary of the Korean War armistice, the camp expands for the first time into a 3-day, 2-night format with a record 54 teams of musicians. As militarization and the threat of war intensify on the Korean Peninsula, the song of peace that began in Gangjeong Village grows into a stronger and wider solidarity. Under the slogan \"Let's sing, let's dance, end the war!\", musicians from diverse genres deliver messages of peace and anti-war through music.",
+      "description": "The 3rd Gangjeong Peace Music Camp will be held from June 5 (Fri) to June 7 (Sun), 2026, at Gangjeong Sports Park in Seogwipo, Jeju. Marking the 73rd anniversary of the Korean War armistice, the camp expands for the first time into a 3-day, 2-night format with 51 acts. As militarization and the threat of war intensify on the Korean Peninsula, the song of peace that began in Gangjeong Village grows into a stronger and wider solidarity. Under the slogan \"Let's sing, let's dance, end the war!\", musicians from diverse genres deliver messages of peace and anti-war through music. Tickets are on sale at tumblbug.com/gpmc3.",
       "location": "Gangjeong Sports Park",
       "slogan": "Let's sing, let's dance, end the war!"
     }
@@ -489,25 +490,25 @@
     "howto_step1_text": "Visit peaceandmusic.net to check the camp dates and lineup. The 3rd camp in 2026 runs from June 5 (Fri) to June 7 (Sun).",
     "howto_step2_name": "Travel to Gangjeong Village, Jeju",
     "howto_step2_text": "Take a bus or taxi from Jeju Airport to Gangjeong Village in Seogwipo. Car rental is also available.",
-    "howto_step3_name": "Support the camp (optional)",
-    "howto_step3_text": "You can support the camp through crowdfunding at tumblbug.com/gpmc3.",
-    "howto_step4_name": "Visit Gangjeong Sports Park",
-    "howto_step4_text": "Arrive at Gangjeong Sports Park and enter for free. No tickets or reservations needed.",
+    "howto_step3_name": "Get your Tumblbug ticket",
+    "howto_step3_text": "Buy a ticket through Tumblbug crowdfunding (tumblbug.com/gpmc3); your purchase directly supports the camp.",
+    "howto_step4_name": "Enter Gangjeong Sports Park",
+    "howto_step4_text": "Arrive at Gangjeong Sports Park and enter with the Tumblbug ticket you purchased.",
     "howto_step5_name": "Enjoy music and peace",
     "howto_step5_text": "Watch performances by musicians of diverse genres and share in the spirit of peace solidarity.",
     "audience_general": "General audience"
   },
   "camp_faq_2026": {
     "q1": "When is the 3rd Gangjeong Peace and Music Camp?",
-    "a1": "June 5–7, 2026, a three-day peace music festival in Gangjeong Village with 54 acts.",
+    "a1": "June 5–7, 2026, a three-day peace music festival in Gangjeong Village with 51 acts.",
     "q2": "Where is it held?",
     "a2": "Gangjeong Sports Park in Gangjeong Village, Seogwipo, Jeju Island, South Korea. Accessible by bus or taxi from Jeju Airport.",
     "q3": "Is there an admission fee?",
-    "a3": "No. The Gangjeong Peace and Music Camp is free and open to the public. It stands in solidarity with the anti-Jeju Naval Base peace movement.",
+    "a3": "Yes — admission is ticketed. Tickets are ₩30,000 (KRW) via Tumblbug crowdfunding (tumblbug.com/gpmc3); proceeds fund the festival and peace solidarity work.",
     "q4": "How can I support the camp?",
-    "a4": "Through crowdfunding at tumblbug.com/gpmc3. The camp is sustained by voluntary contributions, not ticket sales.",
+    "a4": "Buying a ticket on Tumblbug (tumblbug.com/gpmc3) directly supports the camp. You can also help by buying merchandise on site.",
     "q5": "Who is performing?",
-    "a5": "54 Korean indie artists across genres including Yun Sunae, Jeong Jinseok, Choi Sangdon, Kim Dongsan & Blue Neighbors, Dear Arcadian, Taehyeon, HANASH, and TAGI.",
+    "a5": "51 Korean indie artists across genres including Yun Sunae, Jeong Jinseok, Choi Sangdon, Kim Dongsan & Blue Neighbors, Lim Jeongdeuk, Taehyeon, HANASH, and TAGI.",
     "q6": "Where can I see the full timetable?",
     "a6": "The complete 3-day schedule is at peaceandmusic.net/camps/2026, sorted chronologically by performance time."
   }

@@ -15,12 +15,14 @@ interface CampMusicianPageProps {
   musician: Musician;
   relatedVideos: VideoItem[];
   otherMusicians: Musician[];
+  nativeName: string | null;
 }
 
 export default function CampMusicianPage({
   musician,
   relatedVideos,
   otherMusicians,
+  nativeName,
 }: CampMusicianPageProps) {
   const { t } = useTranslation();
   const camp2026 = useCamp('camp-2026');
@@ -44,6 +46,7 @@ export default function CampMusicianPage({
       otherMusiciansTitle={t('camp.other_musicians')}
       fundingUrl={camp2026?.fundingUrl}
       pageContext="camp"
+      nativeName={nativeName ?? undefined}
     />
   );
 }
@@ -85,6 +88,10 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
     return { notFound: true };
   }
 
+  const koMusicians =
+    resolvedLocale === 'ko' ? musicians : loadLocalizedData<Musician>('ko', 'musicians.json');
+  const nativeName = koMusicians.find((m) => m.id === musician.id)?.name;
+
   const relatedVideos = loadRelatedVideos(musician.id, resolvedLocale);
 
   const campMusicianIdSet = new Set(campMusicianIds);
@@ -99,6 +106,7 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
       musician,
       relatedVideos,
       otherMusicians,
+      nativeName: nativeName ?? null,
     },
     revalidate: 3600,
   };

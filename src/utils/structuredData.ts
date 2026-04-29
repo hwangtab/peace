@@ -309,6 +309,7 @@ export const getEventSchema = (event: {
   typicalAgeRange?: string;
   maximumAttendeeCapacity?: number;
   performers?: Array<{ type: 'Person' | 'MusicGroup'; name: string; url?: string }>;
+  isAccessibleForFree?: boolean;
   offers?: {
     url: string;
     price?: string;
@@ -363,7 +364,7 @@ export const getEventSchema = (event: {
         ? event.images
         : (event.image || "https://peaceandmusic.net/og-image.webp"),
     "description": event.description,
-    "isAccessibleForFree": true,
+    "isAccessibleForFree": event.isAccessibleForFree ?? true,
     "inLanguage": _lang === 'ko' ? 'ko' : _lang,
     "audience": {
       "@type": "Audience",
@@ -395,7 +396,7 @@ export const getEventSchema = (event: {
       "offers": {
         "@type": "Offer",
         "url": event.offers.url,
-        "price": event.offers.price || "0",
+        ...(event.offers.price !== undefined ? { "price": event.offers.price } : {}),
         "priceCurrency": event.offers.priceCurrency || "KRW",
         "availability": event.offers.availability || "https://schema.org/InStock",
         ...(event.offers.validFrom ? { "validFrom": event.offers.validFrom } : {}),
@@ -416,7 +417,7 @@ export const getEventSchema = (event: {
       "location": location,
       ...(se.image ? { "image": se.image } : {}),
       ...(se.url ? { "url": se.url } : {}),
-      "isAccessibleForFree": true,
+      "isAccessibleForFree": event.isAccessibleForFree ?? true,
       "inLanguage": _lang === 'ko' ? 'ko' : _lang,
       "performer": {
         "@type": "MusicGroup",
@@ -596,23 +597,19 @@ export const getEventSeriesSchema = (series: {
       "name": t ? getCampName(t) : ''
     },
     "organizer": { "@id": "https://peaceandmusic.net/#organization" },
-    "offers": e.offers
+    ...(e.offers
       ? {
-          "@type": "Offer",
-          "url": e.offers.url,
-          "price": e.offers.price || "0",
-          "priceCurrency": e.offers.priceCurrency || "KRW",
-          "availability": e.offers.availability || "https://schema.org/InStock",
-          ...(e.offers.validFrom ? { "validFrom": e.offers.validFrom } : {}),
-          ...(e.offers.validThrough ? { "validThrough": e.offers.validThrough } : {})
+          "offers": {
+            "@type": "Offer",
+            "url": e.offers.url,
+            ...(e.offers.price !== undefined ? { "price": e.offers.price } : {}),
+            "priceCurrency": e.offers.priceCurrency || "KRW",
+            "availability": e.offers.availability || "https://schema.org/InStock",
+            ...(e.offers.validFrom ? { "validFrom": e.offers.validFrom } : {}),
+            ...(e.offers.validThrough ? { "validThrough": e.offers.validThrough } : {})
+          }
         }
-      : {
-          "@type": "Offer",
-          "url": e.url || "https://peaceandmusic.net",
-          "price": "0",
-          "priceCurrency": "KRW",
-          "availability": "https://schema.org/InStock"
-        },
+      : {}),
     ...(e.url ? { "url": e.url } : {})
   }))
 });
@@ -660,8 +657,8 @@ export const getHowToSchema = (_lang: string = 'ko', t?: TranslationFn) => ({
   "step": [
     { "@type": "HowToStep", "position": 1, "name": t ? t('structured_data.howto_step1_name') : 'Check the schedule', "text": t ? t('structured_data.howto_step1_text') : 'Visit peaceandmusic.net to check the camp dates and lineup.', "url": "https://peaceandmusic.net/camps/2026" },
     { "@type": "HowToStep", "position": 2, "name": t ? t('structured_data.howto_step2_name') : 'Travel to Gangjeong Village', "text": t ? t('structured_data.howto_step2_text') : 'Take a bus or taxi from Jeju Airport to Gangjeong Village.', "url": "https://peaceandmusic.net/camps/2026" },
-    { "@type": "HowToStep", "position": 3, "name": t ? t('structured_data.howto_step3_name') : 'Support the camp (optional)', "text": t ? t('structured_data.howto_step3_text') : 'Support the camp through crowdfunding at tumblbug.com/gpmc3.', "url": "https://peaceandmusic.net/camps/2026" },
-    { "@type": "HowToStep", "position": 4, "name": t ? t('structured_data.howto_step4_name') : 'Visit Gangjeong Sports Park', "text": t ? t('structured_data.howto_step4_text') : 'Arrive at Gangjeong Sports Park and enter for free.', "url": "https://peaceandmusic.net/camps/2026" },
+    { "@type": "HowToStep", "position": 3, "name": t ? t('structured_data.howto_step3_name') : 'Get your Tumblbug ticket', "text": t ? t('structured_data.howto_step3_text') : 'Buy a ticket through Tumblbug crowdfunding (tumblbug.com/gpmc3); your purchase directly supports the camp.', "url": "https://peaceandmusic.net/camps/2026" },
+    { "@type": "HowToStep", "position": 4, "name": t ? t('structured_data.howto_step4_name') : 'Enter Gangjeong Sports Park', "text": t ? t('structured_data.howto_step4_text') : 'Arrive at Gangjeong Sports Park and enter with the Tumblbug ticket you purchased.', "url": "https://peaceandmusic.net/camps/2026" },
     { "@type": "HowToStep", "position": 5, "name": t ? t('structured_data.howto_step5_name') : 'Enjoy music and peace', "text": t ? t('structured_data.howto_step5_text') : 'Watch performances and share in the spirit of peace solidarity.', "url": "https://peaceandmusic.net/gallery" },
   ],
 });

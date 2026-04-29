@@ -264,14 +264,14 @@
     "label_participants": "参与者",
     "date_2026": "2026年6月5日（周五）- 6月7日（周日）",
     "venue_2026": "江汀体育公园",
-    "description_2026": "2026年6月5日（周五）至7日（周日），第三届江汀和平音乐营将在济州岛西归浦市江汀体育公园举办。值此停战73周年之际，音乐营首次扩展为三天两夜的规模，共有创纪录的54组音乐人参与。在朝鲜半岛军事化和战争威胁加剧的当下，源自江汀村的和平之歌正汇聚成更强大、更坚实的团结力量。在\"唱起来，跳起来，结束战争！\"的口号下，多种音乐风格的音乐人通过音乐传递反战与和平的讯息。",
-    "expected_2026": "已确认54支音乐人团队",
+    "description_2026": "2026年6月5日（周五）至7日（周日），第三届江汀和平音乐营将在济州岛西归浦市江汀体育公园举办。值此停战73周年之际，音乐营首次扩展为三天两夜的规模，共有51组音乐人参与。在朝鲜半岛军事化和战争威胁加剧的当下，源自江汀村的和平之歌正汇聚成更强大、更坚实的团结力量。在\"唱起来，跳起来，结束战争！\"的口号下，多种音乐风格的音乐人通过音乐传递反战与和平的讯息。门票现已在tumblbug.com/gpmc3发售。",
+    "expected_2026": "已确认51组演出",
     "lineup_count": "已确认{{count}}支团队",
     "ticketing_2026": "在Tumblbug预订门票",
     "brand_line": "济州 江汀和平音乐营",
     "title_2026": "第三届江汀和平音乐营",
-    "seo_title_2026": "第三届Gangjeong和平音乐营 2026 · 6月5-7日 · 济州 · 54组",
-    "seo_description_2026": "第三届Gangjeong和平音乐营 — 2026年6月5-7日在韩国济州岛江汀村举行。54组韩国独立音乐人，三天和平音乐演出。免费入场，欢迎所有人。",
+    "seo_title_2026": "第三届江汀和平音乐营 2026 · 6月5–7日 · 济州 · 51组",
+    "seo_description_2026": "第三届江汀和平音乐营 — 2026年6月5–7日在韩国济州岛江汀村举行。51组韩国独立音乐人，三天和平音乐演出。门票30,000韩元，通过Tumblbug（tumblbug.com/gpmc3）发售。",
     "slogan_2026": "唱起来，跳起来，终结战争！",
     "date_badge_2026": "2026年6月5日 — 7日",
     "participant_count": "{{count}}支团队",
@@ -281,7 +281,8 @@
     "cta_final_heading": "加入我们",
     "cta_final_body": "帮助从江汀出发的和平之歌传播得更远。请在Tumblbug上支持我们。",
     "cta_final_button": "在Tumblbug上支持",
-    "other_years": "其他营地"
+    "other_years": "其他营地",
+    "timeline_2026_title": "第三届营地（51组）"
   },
   "gangjeong_story": {
     "section_title": "为什么是江汀",
@@ -320,7 +321,7 @@
     "timeline_2025_desc": "海军基地升格为机动舰队司令部。美国海军舰艇开始定期靠港，济州被纳入美国军事战略体系",
     "timeline_2025b_title": "第2届营地（11组）",
     "timeline_2025b_desc": "和平之歌再次在江汀响起",
-    "timeline_2026_title": "第三届营地（54组）",
+    "timeline_2026_title": "第三届营地（51组）",
     "timeline_2026_desc": "基地建成10周年，史上最大规模3天音乐节",
     "timeline_2026_badge": "今年",
     "story_block1_text": "古龙鼻岩，江汀的象征。这块经数万年海浪雕琢的熔岩，于2012年为建设海军基地而被炸毁。",
@@ -404,7 +405,7 @@
       },
       {
         "q": "需要购票吗？",
-        "a": "江汀和平音乐营致力于打造任何热爱和平的人都能免费参与的开放式节庆。但为维持活动的持续性，会进行自愿捐助与周边销售。"
+        "a": "江汀和平音乐营是凭票入场的活动；门票为30,000韩元，通过Tumblbug（tumblbug.com/gpmc3）发售。收入用于音乐节运营和和平团结活动。"
       },
       {
         "q": "“To You in a Distant Place Whose Name I Don't Know”项目是什么？",
@@ -430,7 +431,7 @@
     "camp-2026": {
       "title": "3rd Gangjeong Peace Music Camp",
       "short_description": "June 5–7, 2026, Gangjeong Sports Park",
-      "description": "The 3rd Gangjeong Peace Music Camp will be held from June 5 (Fri) to June 7 (Sun), 2026, at Gangjeong Sports Park in Seogwipo, Jeju.",
+      "description": "2026年6月5日（周五）至7日（周日），第三届江汀和平音乐营将在济州岛西归浦市江汀体育公园举办。值此停战73周年之际，音乐营首次扩展为三天两夜的规模，共有51组音乐人参与。在朝鲜半岛军事化和战争威胁加剧的当下，源自江汀村的和平之歌正汇聚成更强大、更坚实的团结力量。在\"唱起来，跳起来，结束战争！\"的口号下，多种音乐风格的音乐人通过音乐传递反战与和平的讯息。门票现已在tumblbug.com/gpmc3发售。",
       "location": "Gangjeong Sports Park",
       "slogan": "Let's sing, let's dance, end the war!"
     }
@@ -449,25 +450,25 @@
     "howto_step1_text": "访问peaceandmusic.net查看营地日期和阵容。2026年第三届营地于6月5日（周五）至6月7日（周日）举行。",
     "howto_step2_name": "前往济州岛江汀村",
     "howto_step2_text": "从济州机场乘坐巴士或出租车前往西归浦市江汀村。也可以租车。",
-    "howto_step3_name": "支持营地（可选）",
-    "howto_step3_text": "您可以通过tumblbug.com/gpmc3的众筹来支持营地。",
-    "howto_step4_name": "参观江汀体育公园",
-    "howto_step4_text": "到达江汀体育公园，免费入场。无需门票或预约。",
+    "howto_step3_name": "在Tumblbug购买门票",
+    "howto_step3_text": "通过tumblbug.com/gpmc3的众筹购票，您的购票将直接支持音乐营。",
+    "howto_step4_name": "进入江汀体育公园",
+    "howto_step4_text": "到达江汀体育公园，凭在Tumblbug购买的门票入场。",
     "howto_step5_name": "享受音乐与和平",
     "howto_step5_text": "观看各种流派音乐人的表演，分享和平团结的精神。",
     "audience_general": "普通观众"
   },
   "camp_faq_2026": {
     "q1": "第三届Gangjeong和平音乐营何时举行？",
-    "a1": "2026年6月5日至7日，为期三天的和平音乐节，在江汀村举行，共54组音乐人参加。",
+    "a1": "2026年6月5日至7日，为期三天的和平音乐节，在江汀村举行，共51组音乐人参加。",
     "q2": "在哪里举行？",
     "a2": "韩国济州岛西归浦市江汀村的江汀体育公园。可从济州机场乘巴士或出租车前往。",
     "q3": "有入场费吗？",
-    "a3": "没有。Gangjeong和平音乐营免费向公众开放。该活动声援反对济州海军基地的和平运动。",
+    "a3": "需要购票。门票为30,000韩元，通过Tumblbug众筹（tumblbug.com/gpmc3）发售；收入用于音乐节运营和和平团结活动。",
     "q4": "我如何支持音乐营？",
-    "a4": "通过tumblbug.com/gpmc3众筹支持。音乐营依靠自愿捐款运营，不靠门票销售。",
+    "a4": "通过Tumblbug（tumblbug.com/gpmc3）购票即直接支持音乐营。您也可以在现场购买周边商品来支持。",
     "q5": "有哪些音乐人演出？",
-    "a5": "54组韩国独立音乐人，涵盖多种风格，包括Yun Sunae、Jeong Jinseok、Choi Sangdon、Kim Dongsan & Blue Neighbors、Dear Arcadian、Taehyeon、HANASH和TAGI。",
+    "a5": "51组韩国独立音乐人，涵盖多种风格，包括Yun Sunae、Jeong Jinseok、Choi Sangdon、Kim Dongsan & Blue Neighbors、Lim Jeongdeuk、Taehyeon、HANASH和TAGI。",
     "q6": "在哪里可以看到完整的演出时刻表？",
     "a6": "完整的3天演出时刻表在peaceandmusic.net/camps/2026，按演出时间排序。"
   }
