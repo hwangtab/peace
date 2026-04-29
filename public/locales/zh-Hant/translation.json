@@ -264,14 +264,14 @@
     "label_participants": "參與者",
     "date_2026": "2026年6月5日（週五）- 6月7日（週日）",
     "venue_2026": "江汀體育公園",
-    "description_2026": "2026年6月5日（週五）至7日（週日），第三屆江汀和平音樂營將在濟州島西歸浦市江汀體育公園舉辦。值此停戰73週年之際，音樂營首次擴展為三天兩夜的規模，共有創紀錄的54組音樂人參與。在朝鮮半島軍事化和戰爭威脅加劇的當下，源自江汀村的和平之歌正匯聚成更強大、更堅實的團結力量。在「唱起來，跳起來，結束戰爭！」的口號下，多種音樂風格的音樂人透過音樂傳遞反戰與和平的訊息。",
-    "expected_2026": "已確認54支音樂人團隊",
+    "description_2026": "2026年6月5日（週五）至7日（週日），第三屆江汀和平音樂營將在濟州島西歸浦市江汀體育公園舉辦。值此停戰73週年之際，音樂營首次擴展為三天兩夜的規模，共有51組音樂人參與。在朝鮮半島軍事化和戰爭威脅加劇的當下，源自江汀村的和平之歌正匯聚成更強大、更堅實的團結力量。在「唱起來，跳起來，結束戰爭！」的口號下，多種音樂風格的音樂人透過音樂傳遞反戰與和平的訊息。票券現已於tumblbug.com/gpmc3發售。",
+    "expected_2026": "已確認51組演出",
     "lineup_count": "已確認{{count}}支團隊",
     "ticketing_2026": "在Tumblbug預訂門票",
     "brand_line": "濟州 江汀和平音樂營",
     "title_2026": "第三屆江汀和平音樂營",
-    "seo_title_2026": "第三屆Gangjeong和平音樂營 2026 · 6月5-7日 · 濟州 · 54組",
-    "seo_description_2026": "第三屆Gangjeong和平音樂營 — 2026年6月5-7日在韓國濟州島江汀村舉行。54組韓國獨立音樂人，三天和平音樂演出。免費入場，歡迎所有人。",
+    "seo_title_2026": "第三屆江汀和平音樂營 2026 · 6月5–7日 · 濟州 · 51組",
+    "seo_description_2026": "第三屆江汀和平音樂營 — 2026年6月5–7日在韓國濟州島江汀村舉行。51組韓國獨立音樂人，三天和平音樂演出。票券30,000韓元，透過Tumblbug（tumblbug.com/gpmc3）販售。",
     "slogan_2026": "唱起來，跳起來，終結戰爭！",
     "date_badge_2026": "2026年6月5日 — 7日",
     "participant_count": "{{count}}組",
@@ -281,7 +281,8 @@
     "cta_final_heading": "加入我們",
     "cta_final_body": "幫助從江汀出發的和平之歌傳播得更遠。請在Tumblbug上支持我們。",
     "cta_final_button": "在Tumblbug上支持",
-    "other_years": "其他營地"
+    "other_years": "其他營地",
+    "timeline_2026_title": "第三屆營地（51組）"
   },
   "gangjeong_story": {
     "section_title": "為什麼是江汀",
@@ -320,7 +321,7 @@
     "timeline_2025_desc": "海軍基地升格為機動艦隊司令部。美國海軍艦艇開始定期靠港，濟州被納入美國軍事戰略體系",
     "timeline_2025b_title": "第2屆營地（11組）",
     "timeline_2025b_desc": "和平之歌再次在江汀響起",
-    "timeline_2026_title": "第三屆營地（54組）",
+    "timeline_2026_title": "第三屆營地（51組）",
     "timeline_2026_desc": "基地建成10週年，史上最大規模3天音樂節",
     "timeline_2026_badge": "今年",
     "story_block1_text": "古龍鼻岩，江汀的象徵。這塊經數萬年海浪雕琢的熔岩，於2012年為建設海軍基地而被炸毀。",
@@ -400,11 +401,11 @@
       },
       {
         "q": "有哪些音樂人參加？",
-        "a": "搖滾、民謠、爵士、電子等多種流派的音樂人將參加。2026年音樂營已確認54組以上音樂人參演。"
+        "a": "搖滾、民謠、爵士、電子等多種流派的音樂人將參加。2026年音樂營已確認51組音樂人參演。"
       },
       {
         "q": "需要門票嗎？",
-        "a": "江汀和平音樂營是一個向所有熱愛和平的人免費開放的節日。不過，為了活動的永續性，將進行自願捐款和周邊商品銷售。"
+        "a": "江汀和平音樂營是憑票入場的活動；票券為30,000韓元，透過Tumblbug（tumblbug.com/gpmc3）販售。收入用於音樂節營運和和平連帶活動。"
       },
       {
         "q": "「致遠方不知名的你」計畫是什麼？",
@@ -420,7 +421,7 @@
       },
       {
         "q": "兒童可以參加嗎？",
-        "a": "可以，江汀和平音樂營是適合全家參與的節日。活動在戶外舉行，兒童可免費入場。"
+        "a": "可以，江汀和平音樂營是適合全家參與的戶外節日。兒童入場詳情請參閱Tumblbug票券頁（tumblbug.com/gpmc3）。"
       },
       {
         "q": "如何申請做志工？",
@@ -470,7 +471,7 @@
     "camp-2026": {
       "title": "3rd Gangjeong Peace Music Camp",
       "short_description": "June 5–7, 2026, Gangjeong Sports Park",
-      "description": "The 3rd Gangjeong Peace Music Camp will be held from June 5 (Fri) to June 7 (Sun), 2026, at Gangjeong Sports Park in Seogwipo, Jeju. Marking the 73rd anniversary of the Korean War armistice, the camp expands for the first time into a 3-day, 2-night format with a record 54 teams of musicians. As militarization and the threat of war intensify on the Korean Peninsula, the song of peace that began in Gangjeong Village grows into a stronger and wider solidarity. Under the slogan \"Let's sing, let's dance, end the war!\", musicians from diverse genres deliver messages of peace and anti-war through music.",
+      "description": "2026年6月5日（週五）至7日（週日），第三屆江汀和平音樂營將在濟州島西歸浦市江汀體育公園舉辦。值此停戰73週年之際，音樂營首次擴展為三天兩夜的規模，共有51組音樂人參與。在朝鮮半島軍事化和戰爭威脅加劇的當下，源自江汀村的和平之歌正匯聚成更強大、更堅實的團結力量。在「唱起來，跳起來，結束戰爭！」的口號下，多種音樂風格的音樂人透過音樂傳遞反戰與和平的訊息。票券現已於tumblbug.com/gpmc3發售。",
       "location": "Gangjeong Sports Park",
       "slogan": "Let's sing, let's dance, end the war!"
     }
@@ -489,25 +490,25 @@
     "howto_step1_text": "訪問peaceandmusic.net查看營地日期和陣容。2026年第三屆營地於6月5日（週五）至6月7日（週日）舉行。",
     "howto_step2_name": "前往濟州島江汀村",
     "howto_step2_text": "從濟州機場搭乘巴士或計程車前往西歸浦市江汀村。也可以租車。",
-    "howto_step3_name": "支持營地（可選）",
-    "howto_step3_text": "您可以透過tumblbug.com/gpmc3的群眾募資來支持營地。",
-    "howto_step4_name": "參觀江汀體育公園",
-    "howto_step4_text": "到達江汀體育公園，免費入場。無需門票或預約。",
+    "howto_step3_name": "於Tumblbug購買票券",
+    "howto_step3_text": "透過tumblbug.com/gpmc3的群眾募資購票，您的購票將直接支持音樂營。",
+    "howto_step4_name": "進入江汀體育公園",
+    "howto_step4_text": "到達江汀體育公園，憑於Tumblbug購買的票券入場。",
     "howto_step5_name": "享受音樂與和平",
     "howto_step5_text": "觀看各種流派音樂人的表演，分享和平團結的精神。",
     "audience_general": "普通觀眾"
   },
   "camp_faq_2026": {
     "q1": "第三屆Gangjeong和平音樂營何時舉行？",
-    "a1": "2026年6月5日至7日，為期三天的和平音樂節，在江汀村舉行，共54組音樂人參加。",
+    "a1": "2026年6月5日至7日，為期三天的和平音樂節，在江汀村舉行，共51組音樂人參加。",
     "q2": "在哪裡舉行？",
     "a2": "韓國濟州島西歸浦市江汀村的江汀體育公園。可從濟州機場乘巴士或計程車前往。",
     "q3": "有入場費嗎？",
-    "a3": "沒有。Gangjeong和平音樂營免費向公眾開放。該活動聲援反對濟州海軍基地的和平運動。",
+    "a3": "需要購票。票券為30,000韓元，透過Tumblbug群眾募資（tumblbug.com/gpmc3）販售；收入用於音樂節營運和和平連帶活動。",
     "q4": "我如何支持音樂營？",
-    "a4": "通過tumblbug.com/gpmc3群眾集資支持。音樂營依靠自願捐款運營，不靠門票銷售。",
+    "a4": "透過Tumblbug（tumblbug.com/gpmc3）購票即直接支持音樂營。您也可以在現場購買周邊商品來支持。",
     "q5": "有哪些音樂人演出？",
-    "a5": "54組韓國獨立音樂人，涵蓋多種風格，包括Yun Sunae、Jeong Jinseok、Choi Sangdon、Kim Dongsan & Blue Neighbors、Dear Arcadian、Taehyeon、HANASH和TAGI。",
+    "a5": "51組韓國獨立音樂人，涵蓋多種風格，包括Yun Sunae、Jeong Jinseok、Choi Sangdon、Kim Dongsan & Blue Neighbors、Lim Jeongdeuk、Taehyeon、HANASH和TAGI。",
     "q6": "在哪裡可以看到完整的演出時刻表？",
     "a6": "完整的3天演出時刻表在peaceandmusic.net/camps/2026，按演出時間排序。"
   }
