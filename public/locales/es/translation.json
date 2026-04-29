@@ -264,14 +264,14 @@
     "label_participants": "Participantes",
     "date_2026": "5 de junio (vie) – 7 de junio (dom) de 2026",
     "venue_2026": "Parque Deportivo de Gangjeong",
-    "description_2026": "El 3er Campamento de Paz y Música de Gangjeong se celebrará del 5 (viernes) al 7 (domingo) de junio de 2026 en el Parque Deportivo de Gangjeong, Seogwipo, Jeju. En el 73.º aniversario del armisticio de la Guerra de Corea, el campamento se amplía por primera vez a un formato de 3 días y 2 noches con un récord de 53 grupos de músicos. Ante la creciente militarización y la amenaza de guerra en la península coreana, el canto de paz nacido en la aldea de Gangjeong se convierte en una solidaridad más fuerte y amplia. Bajo el lema \"¡Cantemos, bailemos, acabemos con la guerra!\", músicos de diversos géneros transmiten mensajes de paz y antimilitarismo a través de la música.",
-    "expected_2026": "54 equipos de músicos confirmados",
+    "description_2026": "El 3.º Gangjeong Peace Music Camp se celebrará del 5 (vie.) al 7 (dom.) de junio de 2026 en el Parque Deportivo de Gangjeong, Seogwipo, Jeju. En el 73.º aniversario del armisticio de la Guerra de Corea, el campamento se amplía por primera vez a un formato de tres días y dos noches con 51 grupos. Mientras se intensifica la militarización y la amenaza de guerra en la península coreana, el canto de paz nacido en la aldea de Gangjeong se transforma en una solidaridad más fuerte y amplia. Bajo el lema \"¡Cantemos, bailemos, acabemos con la guerra!\", músicos de géneros diversos comparten mensajes de paz y antibelicismo. Las entradas están a la venta en tumblbug.com/gpmc3.",
+    "expected_2026": "51 grupos confirmados",
     "lineup_count": "{{count}} equipos confirmados",
     "ticketing_2026": "Reservar entradas en Tumblbug",
     "brand_line": "Campamento de Música por la Paz de Jeju Gangjeong",
     "title_2026": "3er Campamento de Música por la Paz de Gangjeong",
-    "seo_title_2026": "3º Gangjeong Peace Music Camp 2026 · 5-7 Jun · Jeju · 54 grupos",
-    "seo_description_2026": "El 3º Gangjeong Peace and Music Camp — 5-7 de junio de 2026 en la aldea de Gangjeong, Jeju. 54 grupos indie coreanos en tres días de música por la paz. Entrada gratuita.",
+    "seo_title_2026": "3.º Gangjeong Peace Music Camp 2026 · 5–7 jun · Jeju · 51 grupos",
+    "seo_description_2026": "El 3.º Gangjeong Peace and Music Camp — del 5 al 7 de junio de 2026 en la aldea de Gangjeong, Jeju. 51 grupos indie coreanos en tres días de música por la paz. Entradas ₩30.000 KRW en Tumblbug (tumblbug.com/gpmc3).",
     "slogan_2026": "¡Cantemos, bailemos, acabemos con la guerra!",
     "date_badge_2026": "5–7 jun 2026",
     "participant_count": "{{count}} equipos",
@@ -281,7 +281,8 @@
     "cta_final_heading": "Únete a nosotros",
     "cta_final_body": "Ayuda a que la canción de paz que comenzó en Gangjeong llegue más lejos. Apóyanos en Tumblbug.",
     "cta_final_button": "Apoyar en Tumblbug",
-    "other_years": "Otros Campamentos"
+    "other_years": "Otros Campamentos",
+    "timeline_2026_title": "3.º Camp (51 grupos)"
   },
   "gangjeong_story": {
     "section_title": "Por qué Gangjeong",
@@ -320,7 +321,7 @@
     "timeline_2025_desc": "La base naval asciende a Comando de Flota. Buques de la Armada de EE.UU. comienzan escalas regulares, integrando Jeju en la estrategia militar estadounidense",
     "timeline_2025b_title": "2.º Campamento (11 grupos)",
     "timeline_2025b_desc": "Las canciones de paz resuenan de nuevo en Gangjeong",
-    "timeline_2026_title": "3er Camp (54 grupos)",
+    "timeline_2026_title": "3.º Camp (51 grupos)",
     "timeline_2026_desc": "10 años desde la finalización de la base, el mayor festival de 3 días",
     "timeline_2026_badge": "Este año",
     "story_block1_text": "La Roca Gureombi, símbolo de Gangjeong. Esta formación de lava, moldeada por las olas durante decenas de miles de años, fue dinamitada en 2012 para dar paso a la base naval.",
@@ -400,11 +401,11 @@
       },
       {
         "q": "¿Qué músicos participarán?",
-        "a": "Participarán músicos de diversos géneros como rock, folk, jazz y electrónica. En el campamento de 2026, se han confirmado más de 54 grupos."
+        "a": "Participarán músicos de diversos géneros como rock, folk, jazz y electrónica. En el campamento de 2026, hay 51 grupos confirmados."
       },
       {
         "q": "¿Hay que pagar entrada?",
-        "a": "El Campamento de Música por la Paz de Gangjeong es un festival abierto y gratuito para todos los amantes de la paz. Sin embargo, se realizarán donaciones voluntarias y ventas de productos para la sostenibilidad del evento."
+        "a": "El Gangjeong Peace and Music Camp es un festival con entrada de pago; las entradas cuestan ₩30.000 KRW y se venden en Tumblbug (tumblbug.com/gpmc3). Los ingresos financian el festival y el trabajo de solidaridad por la paz."
       },
       {
         "q": "¿Qué es el proyecto 'Para ti, en un lugar lejano cuyo nombre desconozco'?",
@@ -420,7 +421,7 @@
       },
       {
         "q": "¿Pueden asistir niños?",
-        "a": "Sí, el Campamento de Música por la Paz de Gangjeong es un festival para toda la familia. Se celebra al aire libre y los niños pueden entrar gratis."
+        "a": "Sí, el Gangjeong Peace and Music Camp es un festival al aire libre apto para familias. Para detalles sobre la entrada de menores, consulta la página de Tumblbug (tumblbug.com/gpmc3)."
       },
       {
         "q": "¿Cómo puedo ser voluntario?",
@@ -470,7 +471,7 @@
     "camp-2026": {
       "title": "3rd Gangjeong Peace Music Camp",
       "short_description": "June 5–7, 2026, Gangjeong Sports Park",
-      "description": "The 3rd Gangjeong Peace Music Camp will be held from June 5 (Fri) to June 7 (Sun), 2026, at Gangjeong Sports Park in Seogwipo, Jeju. Marking the 73rd anniversary of the Korean War armistice, the camp expands for the first time into a 3-day, 2-night format with a record 54 teams of musicians. As militarization and the threat of war intensify on the Korean Peninsula, the song of peace that began in Gangjeong Village grows into a stronger and wider solidarity. Under the slogan \"Let's sing, let's dance, end the war!\", musicians from diverse genres deliver messages of peace and anti-war through music.",
+      "description": "El 3.º Gangjeong Peace Music Camp se celebrará del 5 (vie.) al 7 (dom.) de junio de 2026 en el Parque Deportivo de Gangjeong, Seogwipo, Jeju. En el 73.º aniversario del armisticio de la Guerra de Corea, el campamento se amplía por primera vez a un formato de tres días y dos noches con 51 grupos. Mientras se intensifica la militarización y la amenaza de guerra en la península coreana, el canto de paz nacido en la aldea de Gangjeong se transforma en una solidaridad más fuerte y amplia. Bajo el lema \"¡Cantemos, bailemos, acabemos con la guerra!\", músicos de géneros diversos comparten mensajes de paz y antibelicismo. Las entradas están a la venta en tumblbug.com/gpmc3.",
       "location": "Gangjeong Sports Park",
       "slogan": "Let's sing, let's dance, end the war!"
     }
@@ -489,25 +490,25 @@
     "howto_step1_text": "Visita peaceandmusic.net para consultar las fechas y el cartel del campamento. El 3.er campamento de 2026 se celebra del 5 de junio (viernes) al 7 de junio (domingo).",
     "howto_step2_name": "Viaja a la aldea de Gangjeong, Jeju",
     "howto_step2_text": "Toma un autobús o taxi desde el aeropuerto de Jeju hasta la aldea de Gangjeong en Seogwipo. También puedes alquilar un coche.",
-    "howto_step3_name": "Apoya el campamento (opcional)",
-    "howto_step3_text": "Puedes apoyar el campamento mediante financiación colectiva en tumblbug.com/gpmc3.",
-    "howto_step4_name": "Visita el Parque Deportivo de Gangjeong",
-    "howto_step4_text": "Llega al Parque Deportivo de Gangjeong y entra gratis. No se necesitan entradas ni reservas.",
+    "howto_step3_name": "Compra tu entrada en Tumblbug",
+    "howto_step3_text": "Compra una entrada mediante el crowdfunding en tumblbug.com/gpmc3; tu compra apoya directamente al campamento.",
+    "howto_step4_name": "Entra al Parque Deportivo de Gangjeong",
+    "howto_step4_text": "Llega al Parque Deportivo de Gangjeong y entra con la entrada de Tumblbug que compraste.",
     "howto_step5_name": "Disfruta de la música y la paz",
     "howto_step5_text": "Disfruta de las actuaciones de músicos de diversos géneros y comparte el espíritu de solidaridad por la paz.",
     "audience_general": "Público general"
   },
   "camp_faq_2026": {
     "q1": "¿Cuándo es el 3er Gangjeong Peace and Music Camp?",
-    "a1": "Del 5 al 7 de junio de 2026, un festival de música de paz de tres días en la aldea de Gangjeong con 54 grupos.",
+    "a1": "Del 5 al 7 de junio de 2026, un festival de música por la paz de tres días en la aldea de Gangjeong con 51 grupos.",
     "q2": "¿Dónde se celebra?",
     "a2": "En el Parque Deportivo de Gangjeong, en la aldea de Gangjeong, Seogwipo, Isla de Jeju, Corea del Sur. Accesible en autobús o taxi desde el aeropuerto de Jeju.",
     "q3": "¿Hay entrada?",
-    "a3": "No. El Gangjeong Peace and Music Camp es gratuito y abierto al público. Se solidariza con el movimiento anti-base naval de Jeju.",
+    "a3": "Sí, hay entrada. Las entradas cuestan ₩30.000 KRW y se venden mediante el crowdfunding de Tumblbug (tumblbug.com/gpmc3); los ingresos sostienen el festival y el trabajo de solidaridad por la paz.",
     "q4": "¿Cómo puedo apoyar el campamento?",
-    "a4": "A través del crowdfunding en tumblbug.com/gpmc3. El campamento se sostiene con contribuciones voluntarias, no con venta de entradas.",
+    "a4": "Comprar una entrada en Tumblbug (tumblbug.com/gpmc3) apoya directamente al campamento. También puedes ayudar comprando merchandising en el lugar.",
     "q5": "¿Quiénes actúan?",
-    "a5": "54 artistas indie coreanos de diversos géneros, incluyendo Yun Sunae, Jeong Jinseok, Choi Sangdon, Kim Dongsan & Blue Neighbors, Dear Arcadian, Taehyeon, HANASH y TAGI.",
+    "a5": "51 artistas indie coreanos de diversos géneros, incluyendo Yun Sunae, Jeong Jinseok, Choi Sangdon, Kim Dongsan & Blue Neighbors, Lim Jeongdeuk, Taehyeon, HANASH y TAGI.",
     "q6": "¿Dónde puedo ver el programa completo?",
     "a6": "El cronograma completo de 3 días está en peaceandmusic.net/camps/2026, ordenado cronológicamente por hora de actuación."
   }

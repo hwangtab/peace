@@ -264,14 +264,14 @@
     "label_participants": "Peserta",
     "date_2026": "5 Juni (Jum) – 7 Juni (Min), 2026",
     "venue_2026": "Taman Olahraga Gangjeong",
-    "description_2026": "Kemah Musik Perdamaian Gangjeong ke-3 akan diselenggarakan dari 5 (Jumat) hingga 7 (Minggu) Juni 2026 di Taman Olahraga Gangjeong, Seogwipo, Jeju. Memperingati 73 tahun gencatan senjata Perang Korea, kemah ini untuk pertama kalinya diperluas menjadi format 3 hari 2 malam dengan rekor 53 kelompok musisi. Di tengah meningkatnya militerisasi dan ancaman perang di Semenanjung Korea, nyanyian perdamaian yang lahir di Desa Gangjeong berkembang menjadi solidaritas yang lebih kuat dan luas. Di bawah slogan \"Mari bernyanyi, menari, dan akhiri perang!\", musisi dari berbagai genre menyampaikan pesan perdamaian dan anti-perang melalui musik.",
-    "expected_2026": "54 tim musisi telah dikonfirmasi",
+    "description_2026": "Gangjeong Peace Music Camp ke-3 berlangsung dari 5 (Jum.) hingga 7 (Min.) Juni 2026 di Taman Olahraga Gangjeong, Seogwipo, Jeju. Memperingati 73 tahun gencatan senjata Perang Korea, kamp untuk pertama kalinya berkembang menjadi format tiga hari dua malam dengan 51 grup. Di tengah meningkatnya militerisasi dan ancaman perang di Semenanjung Korea, lagu perdamaian yang lahir di Desa Gangjeong tumbuh menjadi solidaritas yang lebih kuat dan luas. Di bawah slogan \"Mari bernyanyi, mari menari, akhiri perang!\", musisi dari beragam genre menyampaikan pesan perdamaian dan anti-perang. Tiket dijual di tumblbug.com/gpmc3.",
+    "expected_2026": "51 grup terkonfirmasi",
     "lineup_count": "{{count}} tim dikonfirmasi",
     "ticketing_2026": "Pesan tiket di Tumblbug",
     "brand_line": "Kemah Musik Perdamaian Gangjeong, Jeju",
     "title_2026": "Kemah Musik Perdamaian Gangjeong ke-3",
-    "seo_title_2026": "Gangjeong Peace Music Camp ke-3 2026 · 5-7 Juni · Jeju · 54 penampil",
-    "seo_description_2026": "Gangjeong Peace and Music Camp ke-3 — 5-7 Juni 2026 di Desa Gangjeong, Pulau Jeju. 54 artis indie Korea dalam tiga hari musik perdamaian. Masuk gratis, terbuka untuk semua.",
+    "seo_title_2026": "Gangjeong Peace Music Camp ke-3 2026 · 5–7 Juni · Jeju · 51 grup",
+    "seo_description_2026": "Gangjeong Peace and Music Camp ke-3 — 5–7 Juni 2026 di Desa Gangjeong, Pulau Jeju. 51 grup indie Korea, tiga hari musik perdamaian. Tiket ₩30.000 KRW via Tumblbug (tumblbug.com/gpmc3).",
     "slogan_2026": "Mari bernyanyi, menari, dan akhiri perang!",
     "date_badge_2026": "5–7 Jun 2026",
     "participant_count": "{{count}} tim",
@@ -281,7 +281,8 @@
     "cta_final_heading": "Bergabunglah dengan kami",
     "cta_final_body": "Bantu lagu perdamaian yang lahir di Gangjeong untuk menjangkau lebih jauh. Dukung kami di Tumblbug.",
     "cta_final_button": "Dukung di Tumblbug",
-    "other_years": "Kamp Lainnya"
+    "other_years": "Kamp Lainnya",
+    "timeline_2026_title": "Camp ke-3 (51 grup)"
   },
   "gangjeong_story": {
     "section_title": "Mengapa Gangjeong",
@@ -320,7 +321,7 @@
     "timeline_2025_desc": "Pangkalan angkatan laut ditingkatkan menjadi Komando Armada. Kapal-kapal AL AS mulai berlabuh secara rutin, mengintegrasikan Jeju ke dalam strategi militer AS",
     "timeline_2025b_title": "Kamp ke-2 (11 grup)",
     "timeline_2025b_desc": "Lagu-lagu perdamaian kembali berkumandang di Gangjeong",
-    "timeline_2026_title": "Kamp ke-3 (54 tim)",
+    "timeline_2026_title": "Camp ke-3 (51 grup)",
     "timeline_2026_desc": "10 tahun sejak pembangunan pangkalan selesai, festival 3 hari terbesar",
     "timeline_2026_badge": "Tahun ini",
     "story_block1_text": "Batu Gureombi, simbol Gangjeong. Formasi lava ini, yang terbentuk oleh gelombang selama puluhan ribu tahun, diledakkan pada 2012 untuk memberi jalan bagi pangkalan angkatan laut.",
@@ -400,11 +401,11 @@
       },
       {
         "q": "Musisi apa saja yang akan berpartisipasi?",
-        "a": "Musisi dari berbagai genre seperti rock, folk, jazz, dan elektronik akan berpartisipasi. Pada kemah 2026, lebih dari 54 grup telah dikonfirmasi."
+        "a": "Musisi dari berbagai genre seperti rock, folk, jazz, dan elektronik akan tampil. Untuk kamp 2026, 51 grup telah dikonfirmasi."
       },
       {
         "q": "Apakah ada biaya masuk?",
-        "a": "Kemah Musik Perdamaian Gangjeong adalah festival terbuka dan gratis untuk semua pecinta perdamaian. Namun, donasi sukarela dan penjualan merchandise akan diadakan untuk keberlanjutan acara."
+        "a": "Gangjeong Peace and Music Camp adalah festival berbayar; tiket berharga ₩30.000 KRW dan dijual via Tumblbug (tumblbug.com/gpmc3). Hasilnya mendanai festival dan kerja solidaritas perdamaian."
       },
       {
         "q": "Apa itu proyek 'Untukmu, di tempat jauh yang tak kuketahui namanya'?",
@@ -420,7 +421,7 @@
       },
       {
         "q": "Apakah anak-anak bisa hadir?",
-        "a": "Ya, Kemah Musik Perdamaian Gangjeong adalah festival untuk seluruh keluarga. Diadakan di luar ruangan, dan anak-anak bisa masuk gratis."
+        "a": "Ya, Gangjeong Peace and Music Camp adalah festival luar ruang yang ramah keluarga. Untuk informasi masuknya anak-anak, lihat halaman tiket Tumblbug (tumblbug.com/gpmc3)."
       },
       {
         "q": "Bagaimana cara menjadi sukarelawan?",
@@ -470,7 +471,7 @@
     "camp-2026": {
       "title": "3rd Gangjeong Peace Music Camp",
       "short_description": "June 5–7, 2026, Gangjeong Sports Park",
-      "description": "The 3rd Gangjeong Peace Music Camp will be held from June 5 (Fri) to June 7 (Sun), 2026, at Gangjeong Sports Park in Seogwipo, Jeju. Marking the 73rd anniversary of the Korean War armistice, the camp expands for the first time into a 3-day, 2-night format with a record 54 teams of musicians. As militarization and the threat of war intensify on the Korean Peninsula, the song of peace that began in Gangjeong Village grows into a stronger and wider solidarity. Under the slogan \"Let's sing, let's dance, end the war!\", musicians from diverse genres deliver messages of peace and anti-war through music.",
+      "description": "Gangjeong Peace Music Camp ke-3 berlangsung dari 5 (Jum.) hingga 7 (Min.) Juni 2026 di Taman Olahraga Gangjeong, Seogwipo, Jeju. Memperingati 73 tahun gencatan senjata Perang Korea, kamp untuk pertama kalinya berkembang menjadi format tiga hari dua malam dengan 51 grup. Di tengah meningkatnya militerisasi dan ancaman perang di Semenanjung Korea, lagu perdamaian yang lahir di Desa Gangjeong tumbuh menjadi solidaritas yang lebih kuat dan luas. Di bawah slogan \"Mari bernyanyi, mari menari, akhiri perang!\", musisi dari beragam genre menyampaikan pesan perdamaian dan anti-perang. Tiket dijual di tumblbug.com/gpmc3.",
       "location": "Gangjeong Sports Park",
       "slogan": "Let's sing, let's dance, end the war!"
     }
@@ -489,25 +490,25 @@
     "howto_step1_text": "Kunjungi peaceandmusic.net untuk melihat tanggal dan lineup kemah. Kemah ke-3 pada 2026 berlangsung dari 5 Juni (Jumat) hingga 7 Juni (Minggu).",
     "howto_step2_name": "Perjalanan ke Desa Gangjeong, Jeju",
     "howto_step2_text": "Naik bus atau taksi dari Bandara Jeju ke Desa Gangjeong di Seogwipo. Penyewaan mobil juga tersedia.",
-    "howto_step3_name": "Dukung kemah (opsional)",
-    "howto_step3_text": "Anda bisa mendukung kemah melalui crowdfunding di tumblbug.com/gpmc3.",
-    "howto_step4_name": "Kunjungi Taman Olahraga Gangjeong",
-    "howto_step4_text": "Tiba di Taman Olahraga Gangjeong dan masuk gratis. Tidak perlu tiket atau reservasi.",
+    "howto_step3_name": "Beli tiket di Tumblbug",
+    "howto_step3_text": "Beli tiket melalui crowdfunding di tumblbug.com/gpmc3 — pembelian Anda langsung mendukung kamp.",
+    "howto_step4_name": "Masuk ke Taman Olahraga Gangjeong",
+    "howto_step4_text": "Tiba di Taman Olahraga Gangjeong dan masuk dengan tiket Tumblbug yang sudah dibeli.",
     "howto_step5_name": "Nikmati musik dan perdamaian",
     "howto_step5_text": "Saksikan pertunjukan musisi dari berbagai genre dan bagikan semangat solidaritas perdamaian.",
     "audience_general": "Audiens umum"
   },
   "camp_faq_2026": {
     "q1": "Kapan Gangjeong Peace and Music Camp ke-3 diadakan?",
-    "a1": "5–7 Juni 2026, festival musik perdamaian tiga hari di Desa Gangjeong dengan 54 grup.",
+    "a1": "5–7 Juni 2026, festival musik perdamaian tiga hari di Desa Gangjeong dengan 51 grup.",
     "q2": "Di mana diadakan?",
     "a2": "Di Taman Olahraga Gangjeong, Desa Gangjeong, Seogwipo, Pulau Jeju, Korea Selatan. Dapat diakses dengan bus atau taksi dari Bandara Jeju.",
     "q3": "Apakah ada biaya masuk?",
-    "a3": "Tidak. Gangjeong Peace and Music Camp gratis dan terbuka untuk umum. Mendukung gerakan perdamaian anti-Pangkalan Angkatan Laut Jeju.",
+    "a3": "Ya, masuk dengan tiket. Tiket berharga ₩30.000 KRW dan dijual melalui crowdfunding Tumblbug (tumblbug.com/gpmc3); hasil penjualan mendanai festival dan kerja solidaritas perdamaian.",
     "q4": "Bagaimana cara mendukung kamp?",
-    "a4": "Melalui crowdfunding di tumblbug.com/gpmc3. Kamp ini dibiayai oleh kontribusi sukarela, bukan penjualan tiket.",
+    "a4": "Membeli tiket di Tumblbug (tumblbug.com/gpmc3) langsung mendukung kamp. Anda juga bisa membantu dengan membeli merchandise di lokasi.",
     "q5": "Siapa saja yang tampil?",
-    "a5": "54 artis indie Korea dari berbagai genre, termasuk Yun Sunae, Jeong Jinseok, Choi Sangdon, Kim Dongsan & Blue Neighbors, Dear Arcadian, Taehyeon, HANASH, dan TAGI.",
+    "a5": "51 artis indie Korea dari berbagai genre, termasuk Yun Sunae, Jeong Jinseok, Choi Sangdon, Kim Dongsan & Blue Neighbors, Lim Jeongdeuk, Taehyeon, HANASH, dan TAGI.",
     "q6": "Di mana saya bisa melihat jadwal lengkap?",
     "a6": "Jadwal lengkap 3 hari ada di peaceandmusic.net/camps/2026, diurutkan kronologis berdasarkan waktu penampilan."
   }

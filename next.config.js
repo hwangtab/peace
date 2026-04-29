@@ -58,6 +58,12 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.peaceandmusic.net' }],
+        destination: 'https://peaceandmusic.net/:path*',
+        permanent: true,
+      },
+      {
         source: '/musicians',
         destination: '/album/musicians',
         permanent: true,

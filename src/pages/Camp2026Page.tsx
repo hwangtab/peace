@@ -145,6 +145,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
         ],
         isFamilyFriendly: true,
         typicalAgeRange: '0-',
+        isAccessibleForFree: false,
         performers: camp2026.participants?.map((p) => {
           const musicianId = typeof p === 'object' ? p.musicianId : undefined;
           return {
@@ -157,7 +158,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
           ? {
               offers: {
                 url: camp2026.fundingUrl,
-                price: '0',
+                price: '30000',
                 priceCurrency: 'KRW',
                 availability: 'https://schema.org/InStock',
                 validFrom: '2026-01-01T00:00:00+09:00',
@@ -228,7 +229,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
               ? {
                   offers: {
                     url: camp2026.fundingUrl,
-                    price: '0',
+                    price: '30000',
                     priceCurrency: 'KRW',
                     availability: 'https://schema.org/InStock',
                     validFrom: '2026-01-01T00:00:00+09:00',

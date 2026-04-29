@@ -24,6 +24,10 @@ export interface MusicianDetailContentProps {
   fundingUrl?: string;
   otherMusiciansTitle?: string;
   pageContext?: 'album' | 'camp';
+  /**
+   * 한글 본명. 비-한국어 로케일에서 검색 매칭률을 높이기 위해 타이틀에 병기한다.
+   */
+  nativeName?: string;
 }
 
 export default function MusicianDetailContent({
@@ -37,6 +41,7 @@ export default function MusicianDetailContent({
   fundingUrl,
   otherMusiciansTitle,
   pageContext,
+  nativeName,
 }: MusicianDetailContentProps) {
   const { t, i18n } = useTranslation();
   const isCampPage = pageContext === 'camp';
@@ -45,10 +50,16 @@ export default function MusicianDetailContent({
   const latestCamp = campList.length > 0 ? campList[campList.length - 1] : undefined;
   const latestCampYear = latestCamp?.year;
 
+  const showNativeName =
+    !!nativeName && nativeName !== musician.name && i18n.language !== 'ko';
+  const displayName = showNativeName
+    ? `${musician.name} (${nativeName})`
+    : musician.name;
+
   const pageTitle =
     isCampPage && latestCampYear
-      ? `${musician.name} — ${t(`camp.title_${latestCampYear}`)} | ${t('nav.logo')}`
-      : `${musician.name} | ${t('app.title')}`;
+      ? `${displayName} — ${t(`camp.title_${latestCampYear}`)} ${latestCampYear} | ${t('nav.logo')}`
+      : `${displayName} | ${t('app.title')}`;
 
   const pageDescription = isCampPage
     ? `${musician.shortDescription} ${t('camp.seo_musician_suffix')}`
