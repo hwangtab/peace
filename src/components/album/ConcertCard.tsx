@@ -32,8 +32,8 @@ const ConcertCard: React.FC<ConcertCardProps> = ({ concert, onMusicianClick, ind
             key={concert.id}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: index * 0.2 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.4, delay: Math.min(index * 0.08, 0.4) }}
             className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-[box-shadow,border-color] duration-500 border border-gray-100 flex flex-col"
         >
             {/* Card Header Background Decor */}
