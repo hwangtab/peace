@@ -55,9 +55,11 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
 
   const structuredData = useMemo(() => {
     const eligibleVideos = videos.filter((v) => v.youtubeUrl && v.date).slice(0, 10);
-    const videoSchemas = eligibleVideos.map((v) =>
-      getVideoObjectSchema({ name: v.title, description: v.description || '', youtubeUrl: v.youtubeUrl, uploadDate: v.date, id: String(v.id), duration: v.duration, pageUrl: getFullUrl(`/videos/${v.id}`) }, t)
-    );
+    const videoSchemas = eligibleVideos
+      .map((v) =>
+        getVideoObjectSchema({ name: v.title, description: v.description || '', youtubeUrl: v.youtubeUrl, uploadDate: v.date, id: String(v.id), duration: v.duration, pageUrl: getFullUrl(`/videos/${v.id}`) }, t)
+      )
+      .filter((schema): schema is NonNullable<typeof schema> => schema !== null);
     const collectionSchema = getCollectionPageSchema({
       name: t('videos.page_title'),
       description: t('videos.page_desc'),
@@ -90,7 +92,7 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
     <PageLayout
       title={t('videos.page_title')}
       description={t('videos.page_desc')}
-      ogImage="/images-webp/camps/2023/IMG_2064.webp"
+      ogImage="/images/og/peace-camp-og.jpg"
       ogImageAlt={t('videos.page_title')}
       ogType="video.other"
       background="sunlight-glow"
