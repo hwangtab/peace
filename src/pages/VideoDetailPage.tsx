@@ -102,7 +102,7 @@ const VideoDetailPage: React.FC<VideoDetailPageProps> = ({
       ogImageAlt={video.title}
       ogType="video.other"
       canonicalUrl={pageUrl}
-      structuredData={[videoSchema, getBreadcrumbSchema(breadcrumbs), webPageSchema]}
+      structuredData={[videoSchema, getBreadcrumbSchema(breadcrumbs), webPageSchema].filter((s): s is NonNullable<typeof s> => s !== null)}
       breadcrumbs={breadcrumbs}
       background="white"
       disableTopPadding={false}

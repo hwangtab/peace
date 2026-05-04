@@ -298,7 +298,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
     <PageLayout
       title={seoTitle}
       description={seoDescription}
-      ogImage={camp2026?.images?.[0] || '/images-webp/camps/2023/IMG_2064.webp'}
+      ogImage="/images/og/peace-camp-og.jpg"
       ogImageAlt={translatedTitle}
       structuredData={structuredData}
       breadcrumbs={breadcrumbs}

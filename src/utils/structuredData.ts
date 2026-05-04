@@ -111,7 +111,7 @@ export const getMusicGroupSchema = (lang: string = 'ko', t?: TranslationFn) => (
   "description": t ? t('structured_data.music_group_desc') : '',
   "genre": lang === 'ko' ? ["평화운동", "사회운동", "인디음악"] : ["Peace Movement", "Social Movement", "Indie Music"],
   "url": "https://peaceandmusic.net",
-  "image": "https://peaceandmusic.net/images-webp/camps/2023/IMG_2064.webp",
+  "image": "https://peaceandmusic.net/images/og/peace-camp-og.jpg",
   "foundingDate": "2023",
   "sameAs": [
     "https://www.instagram.com/peace_music_in_gangjeong",
@@ -406,45 +406,55 @@ export const getEventSchema = (event: {
   };
 
   if (event.subEvents && event.subEvents.length > 0) {
-    schema.subEvent = event.subEvents.map((se, idx) => ({
-      "@type": "MusicEvent",
-      ...(se.id ? { "@id": se.id } : { "@id": `${event.url ?? 'https://peaceandmusic.net/camps/2026'}#act-${idx + 1}` }),
-      "name": se.name,
-      "startDate": se.startDate,
-      "endDate": se.endDate,
-      "eventStatus": "https://schema.org/EventScheduled",
-      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-      "location": location,
-      ...(se.image ? { "image": se.image } : {}),
-      ...(se.url ? { "url": se.url } : {}),
-      "isAccessibleForFree": event.isAccessibleForFree ?? true,
-      "inLanguage": _lang === 'ko' ? 'ko' : _lang,
-      "performer": {
-        "@type": "MusicGroup",
-        "name": se.performerName,
-        ...(se.performerUrl ? { "url": se.performerUrl } : {}),
-        ...(se.performerSameAs && se.performerSameAs.length > 0 ? { "sameAs": se.performerSameAs } : {}),
-        ...(se.image ? { "image": se.image } : {})
-      },
-      "organizer": {
-        "@type": "Organization",
-        "@id": "https://peaceandmusic.net/#organization",
-        "name": t ? getCampName(t) : '',
-        "url": "https://peaceandmusic.net"
-      },
-      ...(event.offers ? {
-        "offers": {
-          "@type": "Offer",
-          "url": event.offers.url,
-          "price": event.offers.price || "0",
-          "priceCurrency": event.offers.priceCurrency || "KRW",
-          "availability": event.offers.availability || "https://schema.org/InStock",
-          ...(event.offers.validFrom ? { "validFrom": event.offers.validFrom } : {}),
-          ...(event.offers.validThrough ? { "validThrough": event.offers.validThrough } : {})
-        }
-      } : {}),
-      ...(se.description ? { "description": se.description } : {})
-    }));
+    // 출연자가 여러 명이라 musician 단일 이미지가 없는 act는 부모 캠프 이미지로 fallback,
+    // act별 설명이 없으면 "출연자 — 캠프명" 형태로 생성해 GSC description warning 제거.
+    const fallbackImage =
+      (event.images && event.images.length > 0 ? event.images[0] : undefined) ||
+      event.image ||
+      "https://peaceandmusic.net/og-image.webp";
+    schema.subEvent = event.subEvents.map((se, idx) => {
+      const image = se.image || fallbackImage;
+      const description = se.description || `${se.performerName} — ${event.name}`;
+      return {
+        "@type": "MusicEvent",
+        ...(se.id ? { "@id": se.id } : { "@id": `${event.url ?? 'https://peaceandmusic.net/camps/2026'}#act-${idx + 1}` }),
+        "name": se.name,
+        "startDate": se.startDate,
+        "endDate": se.endDate,
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": location,
+        "image": image,
+        ...(se.url ? { "url": se.url } : {}),
+        "isAccessibleForFree": event.isAccessibleForFree ?? true,
+        "inLanguage": _lang === 'ko' ? 'ko' : _lang,
+        "performer": {
+          "@type": "MusicGroup",
+          "name": se.performerName,
+          ...(se.performerUrl ? { "url": se.performerUrl } : {}),
+          ...(se.performerSameAs && se.performerSameAs.length > 0 ? { "sameAs": se.performerSameAs } : {}),
+          "image": image
+        },
+        "organizer": {
+          "@type": "Organization",
+          "@id": "https://peaceandmusic.net/#organization",
+          "name": t ? getCampName(t) : '',
+          "url": "https://peaceandmusic.net"
+        },
+        ...(event.offers ? {
+          "offers": {
+            "@type": "Offer",
+            "url": event.offers.url,
+            "price": event.offers.price || "0",
+            "priceCurrency": event.offers.priceCurrency || "KRW",
+            "availability": event.offers.availability || "https://schema.org/InStock",
+            ...(event.offers.validFrom ? { "validFrom": event.offers.validFrom } : {}),
+            ...(event.offers.validThrough ? { "validThrough": event.offers.validThrough } : {})
+          }
+        } : {}),
+        "description": description
+      };
+    });
   }
 
   return schema;
@@ -615,6 +625,15 @@ export const getEventSeriesSchema = (series: {
 });
 
 // ItemList Schema - 타임테이블의 순서 있는 리스트 (AI 엔진에 명시적 신호)
+//
+// 의도적으로 nested `item` (MusicEvent) 을 두지 않는다. Camp 2026의 각 act는
+// 이미 EventSchema의 `subEvent`로 location/endDate/performer 등 필수 필드와
+// 함께 정식 정의되어 있다. ListItem 안에 동일 act를 type만 다시 선언하면
+// Google이 별개의 부분 MusicEvent로 보고 location/endDate/eventStatus/performer/
+// organizer 누락으로 critical/warning을 발생시킨다 (GSC 2026-04 회귀의 직접 원인).
+//
+// 따라서 ListItem 자체의 url/name/image만 노출해 ItemList 의미는 유지하면서
+// MusicEvent 검증을 트리거하지 않게 한다. 표시·순서 신호로는 충분하다.
 export const getItemListSchema = (list: {
   name: string;
   description?: string;
@@ -637,14 +656,9 @@ export const getItemListSchema = (list: {
   "itemListElement": list.items.map((item) => ({
     "@type": "ListItem",
     "position": item.position,
+    "name": item.name,
     ...(item.url ? { "url": item.url } : {}),
-    "item": {
-      "@type": "MusicEvent",
-      "name": item.name,
-      ...(item.url ? { "url": item.url } : {}),
-      ...(item.image ? { "image": item.image } : {}),
-      ...(item.startDate ? { "startDate": item.startDate } : {}),
-    }
+    ...(item.image ? { "image": item.image } : {}),
   }))
 });
 
@@ -707,7 +721,29 @@ export const getMusicAlbumSchema = (album: {
   }))
 });
 
+// uploadDate를 ISO 8601(timezone 포함) 형식으로 정규화한다.
+// - "YYYY-MM-DD" → "YYYY-MM-DDT00:00:00+09:00"
+// - 이미 시간·timezone이 포함된 값은 그대로 사용
+// - 파싱 불가능하면 null (호출 측이 schema를 생략하도록)
+const normalizeUploadDate = (raw?: string): string | null => {
+  if (!raw) return null;
+  const value = raw.trim();
+  if (!value) return null;
+  const dateOnly = value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (dateOnly) {
+    return `${value}T00:00:00+09:00`;
+  }
+  // 이미 시간 포함 (T 또는 공백). timezone (Z 또는 ±HH:MM) 검증
+  const isoWithTz = /^\d{4}-\d{2}-\d{2}[T\s]\d{2}:\d{2}(:\d{2})?(\.\d+)?(Z|[+-]\d{2}:?\d{2})$/;
+  if (isoWithTz.test(value)) return value.replace(' ', 'T');
+  // 시간은 있으나 timezone이 없으면 KST 부여
+  const noTz = /^\d{4}-\d{2}-\d{2}[T\s]\d{2}:\d{2}(:\d{2})?(\.\d+)?$/;
+  if (noTz.test(value)) return `${value.replace(' ', 'T')}+09:00`;
+  return null;
+};
+
 // VideoObject Schema - YouTube 동영상
+// uploadDate가 유효하지 않으면 null 반환. 호출 측에서 .filter(Boolean) 등으로 제거.
 export const getVideoObjectSchema = (video: {
   name: string;
   description: string;
@@ -717,6 +753,8 @@ export const getVideoObjectSchema = (video: {
   duration?: string;
   pageUrl?: string; // canonical page URL hosting this video (e.g. /videos/42)
 }, t?: TranslationFn) => {
+  const uploadDate = normalizeUploadDate(video.uploadDate);
+  if (!uploadDate) return null;
   const videoId = video.youtubeUrl.split('/embed/')[1]?.split('?')[0] ?? '';
   const canonicalPageUrl =
     video.pageUrl ?? `https://peaceandmusic.net/videos/${video.id ?? videoId}`;
@@ -727,7 +765,7 @@ export const getVideoObjectSchema = (video: {
     "name": video.name,
     "description": video.description,
     "thumbnailUrl": `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
-    "uploadDate": video.uploadDate,
+    "uploadDate": uploadDate,
     "embedUrl": video.youtubeUrl,
     "url": canonicalPageUrl,
     "contentUrl": `https://www.youtube.com/watch?v=${videoId}`,
