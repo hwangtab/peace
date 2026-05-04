@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 
 interface TimetableTransitionProps {
@@ -8,7 +9,11 @@ interface TimetableTransitionProps {
 const TimetableTransition: React.FC<TimetableTransitionProps> = ({ minutes }) => {
   const { t } = useTranslation();
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 6 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.25, delay: 0.05 }}
       className="flex items-center justify-center py-1"
       role="presentation"
       aria-hidden="true"
@@ -17,7 +22,7 @@ const TimetableTransition: React.FC<TimetableTransitionProps> = ({ minutes }) =>
         <span aria-hidden="true" className="text-jeju-ocean/60">↓</span>
         {t('timetable.transition', { minutes })}
       </span>
-    </div>
+    </motion.div>
   );
 };
 
