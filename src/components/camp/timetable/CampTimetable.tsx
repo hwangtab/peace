@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState, useCallback } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import { Musician } from '@/types/musician';
 import { Timetable } from './types';
@@ -100,28 +99,21 @@ const CampTimetable: React.FC<CampTimetableProps> = ({ data, musicians, campYear
         })}
       </div>
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={activeDay.date}
-          id={`timetable-panel-${activeIndex}`}
-          role="tabpanel"
-          aria-labelledby={`timetable-tab-${activeIndex}`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
-          className={`rounded-xl px-2 py-4 sm:px-4 ${DAY_MOOD[activeDay.weekday].panelTint}`}
-        >
-          <TimetableDayView
-            day={activeDay}
-            musicianById={musicianById}
-            campYear={campYear}
-            railClassName={DAY_MOOD[activeDay.weekday].rail}
-            accentTimeClass={DAY_MOOD[activeDay.weekday].accentTime}
-            accentRuleClass={DAY_MOOD[activeDay.weekday].accentRule}
-          />
-        </motion.div>
-      </AnimatePresence>
+      <div
+        id={`timetable-panel-${activeIndex}`}
+        role="tabpanel"
+        aria-labelledby={`timetable-tab-${activeIndex}`}
+        className={`rounded-xl px-2 py-4 transition-colors duration-200 sm:px-4 ${DAY_MOOD[activeDay.weekday].panelTint}`}
+      >
+        <TimetableDayView
+          day={activeDay}
+          musicianById={musicianById}
+          campYear={campYear}
+          railClassName={DAY_MOOD[activeDay.weekday].rail}
+          accentTimeClass={DAY_MOOD[activeDay.weekday].accentTime}
+          accentRuleClass={DAY_MOOD[activeDay.weekday].accentRule}
+        />
+      </div>
     </div>
   );
 };
