@@ -25,7 +25,7 @@ interface ConcertCardProps {
 }
 
 const ConcertCard: React.FC<ConcertCardProps> = ({ concert, onMusicianClick, index }) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('album');
 
     return (
         <motion.div
@@ -51,7 +51,7 @@ const ConcertCard: React.FC<ConcertCardProps> = ({ concert, onMusicianClick, ind
                         </div>
                         <div className="flex flex-col">
                             <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">
-                                {t('album.label_date')}
+                                {t('label_date')}
                             </span>
                             <span className="font-medium break-words">
                                 {concert.date}{' '}
@@ -66,7 +66,7 @@ const ConcertCard: React.FC<ConcertCardProps> = ({ concert, onMusicianClick, ind
                         </div>
                         <div className="flex flex-col">
                             <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">
-                                {t('album.label_venue')}
+                                {t('label_venue')}
                             </span>
                             <span className="font-medium break-words">{concert.venue}</span>
                         </div>
@@ -77,7 +77,7 @@ const ConcertCard: React.FC<ConcertCardProps> = ({ concert, onMusicianClick, ind
                     <div className="flex items-center gap-2 mb-4">
                         <HiOutlineUserGroup aria-hidden="true" className="w-4 h-4 text-jeju-ocean" />
                         <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">
-                            {t('album.label_performers')}
+                            {t('label_performers')}
                         </span>
                     </div>
                     <div className="flex flex-wrap gap-2">
