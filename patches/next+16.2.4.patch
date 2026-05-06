@@ -1,0 +1,11 @@
+diff --git a/node_modules/next/dist/build/polyfills/polyfill-module.js b/node_modules/next/dist/build/polyfills/polyfill-module.js
+index bb732b0..ff3a108 100644
+--- a/node_modules/next/dist/build/polyfills/polyfill-module.js
++++ b/node_modules/next/dist/build/polyfills/polyfill-module.js
+@@ -1 +1,5 @@
+-"trimStart"in String.prototype||(String.prototype.trimStart=String.prototype.trimLeft),"trimEnd"in String.prototype||(String.prototype.trimEnd=String.prototype.trimRight),"description"in Symbol.prototype||Object.defineProperty(Symbol.prototype,"description",{configurable:!0,get:function(){var t=/\((.*)\)/.exec(this.toString());return t?t[1]:void 0}}),Array.prototype.flat||(Array.prototype.flat=function(t,r){return r=this.concat.apply([],this),t>1&&r.some(Array.isArray)?r.flat(t-1):r},Array.prototype.flatMap=function(t,r){return this.map(t,r).flat()}),Promise.prototype.finally||(Promise.prototype.finally=function(t){if("function"!=typeof t)return this.then(t,t);var r=this.constructor||Promise;return this.then(function(n){return r.resolve(t()).then(function(){return n})},function(n){return r.resolve(t()).then(function(){throw n})})}),Object.fromEntries||(Object.fromEntries=function(t){return Array.from(t).reduce(function(t,r){return t[r[0]]=r[1],t},{})}),Array.prototype.at||(Array.prototype.at=function(t){var r=Math.trunc(t)||0;if(r<0&&(r+=this.length),!(r<0||r>=this.length))return this[r]}),Object.hasOwn||(Object.hasOwn=function(t,r){if(null==t)throw new TypeError("Cannot convert undefined or null to object");return Object.prototype.hasOwnProperty.call(Object(t),r)}),"canParse"in URL||(URL.canParse=function(t,r){try{return!!new URL(t,r)}catch(t){return!1}});
++// Emptied by project patch (see patches/next+16.2.4.patch).
++// browserslist 가 Chrome 93+, Safari 15.4+, Firefox 92+ baseline-modern 으로
++// 설정되어 있어 이 파일이 polyfill 하던 모든 API (Array.at, Object.hasOwn,
++// Object.fromEntries, String.trimStart/End, Symbol.description, Promise.finally,
++// URL.canParse, Array.flat/flatMap) 가 모두 네이티브 지원됨. 1.4KB 인라인 삭제.
