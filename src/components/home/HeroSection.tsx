@@ -39,6 +39,7 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
             fill
             sizes="100vw"
             className="object-cover object-center"
+            quality={60}
             priority
             onError={() => setImageFailed(true)}
           />

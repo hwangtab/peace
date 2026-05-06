@@ -8,8 +8,9 @@ import Section from '@/components/layout/Section';
 import SectionHeader from '@/components/common/SectionHeader';
 import { getVideos } from '@/api/videos';
 import { getMusicians } from '@/api/musicians';
-import MusicianModal from '@/components/musicians/MusicianModal';
 import dynamic from 'next/dynamic';
+// 모달·라이트박스는 클릭 시점에만 필요 — 초기 번들 분리.
+const MusicianModal = dynamic(() => import('@/components/musicians/MusicianModal'), { ssr: false });
 const ImageLightbox = dynamic(() => import('@/components/common/ImageLightbox'), { ssr: false });
 import AlbumTabContent from '@/components/album/AlbumTabContent';
 import { getGalleryImages } from '@/api/gallery';
