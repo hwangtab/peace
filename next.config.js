@@ -101,12 +101,9 @@ const nextConfig = {
       },
     ];
   },
-  // Next 16 은 Turbopack 이 기본. 14.x 시절 webpack alias 로 빈 모듈 대체했던
-  // next/dist/build/polyfills/polyfill-module (Array.at 등 1.4KB 인라인) 은
-  // Turbopack 의 resolveAlias 가 next 내부 경로에 적용되지 않아 그대로 인라인됨.
-  // 영향 미미하므로 향후 Turbopack alias API 가 nested next/* 패턴을 지원하면
-  // 다시 해당 alias 추가 (scripts/empty-polyfill.js 는 보존).
-  turbopack: {},
+  // Polyfill module 은 patches/next+16.2.4.patch 로 빈 파일로 패치됨
+  // (postinstall: patch-package 가 자동 적용). browserslist baseline-modern
+  // 에서 모두 네이티브 지원되어 1.4KB 인라인 불필요.
 };
 
 module.exports = withBundleAnalyzer(nextConfig);
