@@ -97,6 +97,17 @@ const nextConfig = {
       },
     ];
   },
+  webpack: (config) => {
+    // Next.js 가 ES-modular 브라우저까지 항상 main.js 에 끼워 넣는 모던 API 폴리필
+    // (Array.at / Object.hasOwn / Object.fromEntries 등) 을 빈 파일로 대체.
+    // browserslist (Chrome 93+, Safari 15.4+ 등) 에서 모두 네이티브 지원되어 불필요.
+    // 절대 경로로 alias 해야 next/dist/client/index.js 의 상대 import 까지 잡힘.
+    // PageSpeed 'Legacy JavaScript 13KiB' 경고 해소.
+    const path = require('path');
+    const polyfillModulePath = require.resolve('next/dist/build/polyfills/polyfill-module');
+    config.resolve.alias[polyfillModulePath] = path.resolve(__dirname, 'scripts/empty-polyfill.js');
+    return config;
+  },
 };
 
 module.exports = withBundleAnalyzer(nextConfig);
