@@ -13,17 +13,17 @@ interface TimelineNode {
 }
 
 const nodes: TimelineNode[] = [
-  { year: '2007', titleKey: 'gangjeong_story.timeline_2007_title', descKey: 'gangjeong_story.timeline_2007_desc', color: 'bg-sunset-coral' },
-  { year: '2009', titleKey: 'gangjeong_story.timeline_2009_title', descKey: 'gangjeong_story.timeline_2009_desc', color: 'bg-sunset-coral' },
-  { year: '2012', titleKey: 'gangjeong_story.timeline_2012_title', descKey: 'gangjeong_story.timeline_2012_desc', color: 'bg-sunset-coral' },
-  { year: '2015', titleKey: 'gangjeong_story.timeline_2015_title', descKey: 'gangjeong_story.timeline_2015_desc', color: 'bg-golden-sun' },
-  { year: '2016', titleKey: 'gangjeong_story.timeline_2016_title', descKey: 'gangjeong_story.timeline_2016_desc', color: 'bg-coastal-gray' },
-  { year: '2018', titleKey: 'gangjeong_story.timeline_2018_title', descKey: 'gangjeong_story.timeline_2018_desc', color: 'bg-sunset-coral' },
-  { year: '2023', titleKey: 'gangjeong_story.timeline_2023_title', descKey: 'gangjeong_story.timeline_2023_desc', color: 'bg-jeju-ocean', href: '/camps/2023' },
-  { year: '2024', titleKey: 'gangjeong_story.timeline_2024_title', descKey: 'gangjeong_story.timeline_2024_desc', color: 'bg-golden-sun' },
-  { year: '2025', titleKey: 'gangjeong_story.timeline_2025_title', descKey: 'gangjeong_story.timeline_2025_desc', color: 'bg-sunset-coral' },
-  { year: '2025', titleKey: 'gangjeong_story.timeline_2025b_title', descKey: 'gangjeong_story.timeline_2025b_desc', color: 'bg-jeju-ocean', href: '/camps/2025' },
-  { year: '2026', titleKey: 'gangjeong_story.timeline_2026_title', descKey: 'gangjeong_story.timeline_2026_desc', color: 'bg-golden-sun', badge: 'gangjeong_story.timeline_2026_badge', href: '/camps/2026' },
+  { year: '2007', titleKey: 'timeline_2007_title', descKey: 'timeline_2007_desc', color: 'bg-sunset-coral' },
+  { year: '2009', titleKey: 'timeline_2009_title', descKey: 'timeline_2009_desc', color: 'bg-sunset-coral' },
+  { year: '2012', titleKey: 'timeline_2012_title', descKey: 'timeline_2012_desc', color: 'bg-sunset-coral' },
+  { year: '2015', titleKey: 'timeline_2015_title', descKey: 'timeline_2015_desc', color: 'bg-golden-sun' },
+  { year: '2016', titleKey: 'timeline_2016_title', descKey: 'timeline_2016_desc', color: 'bg-coastal-gray' },
+  { year: '2018', titleKey: 'timeline_2018_title', descKey: 'timeline_2018_desc', color: 'bg-sunset-coral' },
+  { year: '2023', titleKey: 'timeline_2023_title', descKey: 'timeline_2023_desc', color: 'bg-jeju-ocean', href: '/camps/2023' },
+  { year: '2024', titleKey: 'timeline_2024_title', descKey: 'timeline_2024_desc', color: 'bg-golden-sun' },
+  { year: '2025', titleKey: 'timeline_2025_title', descKey: 'timeline_2025_desc', color: 'bg-sunset-coral' },
+  { year: '2025', titleKey: 'timeline_2025b_title', descKey: 'timeline_2025b_desc', color: 'bg-jeju-ocean', href: '/camps/2025' },
+  { year: '2026', titleKey: 'timeline_2026_title', descKey: 'timeline_2026_desc', color: 'bg-golden-sun', badge: 'timeline_2026_badge', href: '/camps/2026' },
 ];
 
 const listVariants = {
@@ -47,7 +47,7 @@ interface Props {
 }
 
 const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('gangjeong');
   const isHome = variant === 'home';
   const lineGradient = isHome
     ? 'from-ocean-mist/40 via-jeju-ocean/40 to-seafoam/40'
@@ -63,7 +63,7 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
           transition={{ duration: 0.6 }}
           className={`typo-h2 text-center ${isHome ? 'text-jeju-ocean' : 'text-gray-900'} mb-12 sm:mb-16`}
         >
-          {t('gangjeong_story.timeline_title')}
+          {t('timeline_title')}
         </motion.h3>
 
         <div className="relative max-w-3xl mx-auto">

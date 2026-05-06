@@ -24,7 +24,7 @@ interface Props {
 }
 
 const GlobalSolidarity: React.FC<Props> = ({ variant = 'camp' }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('gangjeong');
   const isHome = variant === 'home';
 
   return (
@@ -42,7 +42,7 @@ const GlobalSolidarity: React.FC<Props> = ({ variant = 'camp' }) => {
             variants={itemVariants}
             className={`font-display font-bold text-xl sm:text-2xl md:text-3xl ${isHome ? 'text-white' : 'text-gray-100'} leading-relaxed break-words text-balance`}
           >
-            {t('gangjeong_story.solidarity_declaration')}
+            {t('solidarity_declaration')}
           </motion.p>
 
           {/* Divider */}
@@ -56,7 +56,7 @@ const GlobalSolidarity: React.FC<Props> = ({ variant = 'camp' }) => {
             variants={itemVariants}
             className={`font-partial font-normal text-2xl sm:text-3xl md:text-5xl ${isHome ? 'text-jeju-sky' : 'text-golden-sun'} break-words text-balance`}
           >
-            {t('gangjeong_story.closing_slogan')}
+            {t('closing_slogan')}
           </motion.p>
         </motion.div>
       </div>
