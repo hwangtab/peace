@@ -1,0 +1,24 @@
+{
+  "gallery": {
+    "page_title": "Galerie | Camp musical pour la paix de Gangjeong",
+    "page_desc": "Moments où nous chantons pour la paix. Découvrez des photos vibrantes du Camp musical pour la paix de Gangjeong.",
+    "seo_keywords": "photos galerie",
+    "hero_title": "Galerie",
+    "hero_subtitle": "La paix trouvée là‑bas",
+    "section_title": "Moments de paix",
+    "section_subtitle": "Les vents et les chants de Gangjeong en images",
+    "no_images": "Aucune photo disponible.",
+    "load_more": "Charger plus",
+    "image_alt_fallback": "Image de la galerie du Camp musical pour la paix de Gangjeong",
+    "image_alt_template": "Image de la galerie {{title}} {{year}}",
+    "alt_album": "Photo du concert de sortie d'album {{year}}",
+    "alt_camp": "Photo du Camp de Musique pour la Paix de Gangjeong {{year}}",
+    "intro": {
+      "eyebrow": "Archives photo",
+      "heading": "Images du point de rencontre entre Gangjeong, la musique et la paix",
+      "p1": "Gangjeong est niché sur la côte sud de Jeju, face à l'îlot Beomseom, au pied du mont Halla. Des décennies après le massacre du 4·3, une nouvelle couche d'histoire s'est ouverte en 2007 avec la résistance des habitants contre une base navale. Cette galerie conserve l'atmosphère des concerts donnés sur ce même rivage.",
+      "p2": "Les photos couvrent les camps 2023, 2025 et l'édition 2026 en cours. Aux côtés des musicien·ne·s sur scène apparaissent les haenyeo (plongeuses de Jeju), les militant·e·s du rocher Gureombi, les enfants du public et les bénévoles du Centre de la paix — une communauté qui déborde le simple festival.",
+      "p3": "Un clic ouvre l'image haute résolution dans une lightbox. Usage non commercial bienvenu pour les mouvements de paix et musicaux, avec mention de la source."
+    }
+  }
+}

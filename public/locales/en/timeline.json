@@ -1,0 +1,45 @@
+{
+  "timeline": {
+    "title": "Our Journey",
+    "subtitle": "A record of peace beginning in Gangjeong",
+    "labels": {
+      "camp": "Camp",
+      "album": "Album",
+      "milestone": "Milestone"
+    },
+    "events": {
+      "camp_2023": {
+        "title": "1st Gangjeong Peace Music Camp",
+        "desc": "The first peace music camp in Gangjeong Village.",
+        "location": "Gangjeong Sports Park"
+      },
+      "album_2024": {
+        "title": "Album Release Concert",
+        "desc": "Showcase for the album “To You in a Distant Place Whose Name I Don't Know.”",
+        "location": "Gangjeong Peace Center · Space Hangang"
+      },
+      "camp_2025": {
+        "title": "2nd Gangjeong Peace Music Camp",
+        "desc": "Peace message on the 73rd anniversary of the armistice.",
+        "location": "Around Gangjeong Village"
+      },
+      "camp_2026": {
+        "title": "3rd Gangjeong Peace Music Camp",
+        "desc": "Scheduled for June 5–7, 2026.",
+        "location": "Gangjeong Sports Park"
+      }
+    },
+    "month_1": "January",
+    "month_2": "February",
+    "month_3": "March",
+    "month_4": "April",
+    "month_5": "May",
+    "month_6": "June",
+    "month_7": "July",
+    "month_8": "August",
+    "month_9": "September",
+    "month_10": "October",
+    "month_11": "November",
+    "month_12": "December"
+  }
+}

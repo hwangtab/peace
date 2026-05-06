@@ -20,7 +20,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
 
   return {
     props: {
-      ...(await serverSideTranslations(resolvedLocale, ['translation'], nextI18NextConfig)),
+      ...(await serverSideTranslations(resolvedLocale, ['translation', 'press'], nextI18NextConfig)),
       initialPressItems: normalizePressItems(
         loadLocalizedData<PressItem>(resolvedLocale, 'press.json')
       ),

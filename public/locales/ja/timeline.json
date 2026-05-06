@@ -1,0 +1,45 @@
+{
+  "timeline": {
+    "title": "連帯の歩み",
+    "subtitle": "ガンジョンから始まった平和の記録",
+    "labels": {
+      "camp": "キャンプ",
+      "album": "アルバム",
+      "milestone": "節目"
+    },
+    "events": {
+      "camp_2023": {
+        "title": "第1回 ガンジョン平和音楽キャンプ",
+        "desc": "ガンジョン村で初めて開かれた平和音楽キャンプ。",
+        "location": "ガンジョン体育公園"
+      },
+      "album_2024": {
+        "title": "アルバム発売公演",
+        "desc": "アルバム「To You in a Distant Place Whose Name I Don't Know」ショーケース。",
+        "location": "ガンジョン平和センター · Space Hangang"
+      },
+      "camp_2025": {
+        "title": "第2回 ガンジョン平和音楽キャンプ",
+        "desc": "休戦73周年の平和メッセージ。",
+        "location": "ガンジョン村一帯"
+      },
+      "camp_2026": {
+        "title": "第3回 ガンジョン平和音楽キャンプ",
+        "desc": "2026年6月5日〜7日開催予定。",
+        "location": "ガンジョン体育公園"
+      }
+    },
+    "month_1": "1月",
+    "month_2": "2月",
+    "month_3": "3月",
+    "month_4": "4月",
+    "month_5": "5月",
+    "month_6": "6月",
+    "month_7": "7月",
+    "month_8": "8月",
+    "month_9": "9月",
+    "month_10": "10月",
+    "month_11": "11月",
+    "month_12": "12月"
+  }
+}

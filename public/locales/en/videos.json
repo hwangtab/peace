@@ -1,0 +1,22 @@
+{
+  "videos": {
+    "page_title": "Videos | Gangjeong Peace Music Camp",
+    "page_desc": "Collection of performance videos from Gangjeong Peace Music Camp. Meet the performance videos of musicians singing for peace.",
+    "hero_title": "Videos",
+    "hero_subtitle": "Moments Singing for Peace",
+    "all_videos": "View All Videos",
+    "detail": {
+      "watch_on_youtube": "Watch on YouTube",
+      "back_to_list": "Back to videos",
+      "related_musicians": "Featured musicians",
+      "more_videos": "More videos from this event"
+    },
+    "intro": {
+      "eyebrow": "Video archive",
+      "heading": "Live performances from a village that refused to stay silent",
+      "p1": "Most clips gathered here are field recordings from Gangjeong village and small spaces across Korea. Unlike commercial festivals, the cameras are one or two, the sound is raw PA, and the audience often dances while facing a naval base just beyond the stage.",
+      "p2": "Korean indie, folk, punk, and traditional musicians deliver anti-war, anti-base, and environmental messages in their own language. You'll hear Ritesh Maharjan weaving Nepali-Korean roots music, the protest blues of touring songwriter Kim Dong-san, and live DJ sets by Josuganman — the spectrum is deliberately wide.",
+      "p3": "Use the filter chips to narrow to the 2023, 2025, or 2026 camps, or to the 2024 studio album. Selecting any card opens a dedicated page on this site — with performance date, venue, and performer context — rather than jumping straight to YouTube."
+    }
+  }
+}
