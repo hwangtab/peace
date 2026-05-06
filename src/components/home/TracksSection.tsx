@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next';
 import React, { useState, useCallback, useMemo } from 'react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import TrackCard from '../tracks/TrackCard';
 import Section from '../layout/Section';
 import { getTracks } from '@/api/tracks';
