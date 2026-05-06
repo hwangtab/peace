@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { HiOutlineMenu, HiOutlineX } from 'react-icons/hi';
+import { HiOutlineMenu, HiOutlineX } from '@/components/icons/SiteIcons';
 import { useNavigation } from '@/hooks/useNavigation';
 import WaveLogoMark from '@/components/icons/WaveLogoMark';
 import DesktopMenu from './DesktopMenu';
