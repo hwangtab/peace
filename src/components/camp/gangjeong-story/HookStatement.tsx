@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
+import { m as motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { Participant } from '@/types/camp';

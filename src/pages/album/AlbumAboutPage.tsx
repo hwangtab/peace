@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect, useMemo, useCallback } from 'react';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
-import { motion, useInView } from 'framer-motion';
+import { m as motion, useInView } from 'framer-motion';
 import Button from '@/components/common/Button';
 import PageLayout from '@/components/layout/PageLayout';
 import Section from '@/components/layout/Section';

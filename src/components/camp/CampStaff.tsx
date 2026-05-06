@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'next-i18next';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { StaffSection } from '@/types/camp';
 
 interface CampStaffProps {

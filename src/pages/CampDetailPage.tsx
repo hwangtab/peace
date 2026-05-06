@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 import { useTranslation } from 'next-i18next';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import CampHero from '@/components/camp/CampHero';
 import CampGallery from '@/components/camp/CampGallery';
 import CampParticipants from '@/components/camp/CampParticipants';

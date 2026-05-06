@@ -1,5 +1,5 @@
 import { useTranslation } from 'next-i18next';
-import { motion, useInView, useReducedMotion } from 'framer-motion';
+import { m as motion, useInView, useReducedMotion } from 'framer-motion';
 import { useRef, useCallback, useState } from 'react';
 import Image from 'next/image';
 import Button from '../common/Button';
