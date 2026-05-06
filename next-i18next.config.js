@@ -20,7 +20,8 @@ module.exports = {
   // - gangjeong : home / camps/2026 (GangjeongStorySection)
   // - album     : /album/about, /album/musicians, /album/tracks, /album/tracks/[id],
   //               /album/musicians/[id]
-  ns: ['translation', 'gangjeong', 'album'],
+  // - faqs      : home (FAQ schema 만 사용. 다른 페이지에서 ~2KB 절감)
+  ns: ['translation', 'gangjeong', 'album', 'faqs'],
   use: [stressPostProcessor],
   postProcess: isStressEnabled ? ['stress'] : [],
   serializeConfig: false,
