@@ -72,13 +72,10 @@ const nextConfig = {
     ];
   },
   async redirects() {
+    // www → non-www 리다이렉트는 Vercel Domains 의 'Connect to an environment'
+    // 로 양 도메인이 동일 콘텐츠 직접 서빙 (302/308 round-trip 제거). canonical
+    // <link> 가 검색엔진에 primary 도메인을 알려주므로 SEO 영향 없음.
     return [
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'www.peaceandmusic.net' }],
-        destination: 'https://peaceandmusic.net/:path*',
-        permanent: true,
-      },
       {
         source: '/musicians',
         destination: '/album/musicians',
