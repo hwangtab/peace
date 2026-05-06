@@ -8,6 +8,7 @@ jest.mock('next-i18next', () => ({
 }));
 
 jest.mock('next/image', () => {
+  // eslint-disable-next-line @next/next/no-img-element -- next/image mock for jsdom; intentional plain <img>
   const Image = ({ alt, src }: { alt: string; src: string }) => <img alt={alt} src={src} />;
   return { __esModule: true, default: Image };
 });
