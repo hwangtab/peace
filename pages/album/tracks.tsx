@@ -19,12 +19,25 @@ export default function WrappedPage({ initialTracks, initialMusicians, initialLo
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
   const resolvedLocale = locale ?? 'ko';
 
-  // pageProps 절감: 트랙 리스트는 musician.imageUrl/name 만 사용하므로 description 제거.
-  // 모달이 없는 화면이라 클라이언트 가시 영향 없음. 로케일 변경 시 useLocalizedResource 가
-  // 전체 데이터를 다시 가져옴.
-  const initialMusicians = loadLocalizedData<Musician>(resolvedLocale, 'musicians.json').map(
-    (m) => ({ ...m, description: '' }),
-  );
+  // pageProps 절감: 트랙 리스트는 buildTrackMusicianRelation 으로 트랙↔뮤지션을
+  // 매핑한 뒤 musician.imageUrl 만 화면에 그린다 (모달 없음). 매핑에 필요한 5개
+  // 필드 외 description / shortDescription / genre / instagramUrls / youtubeUrl 등
+  // 무거운 필드는 제거. 로케일 변경 시 useLocalizedResource 가 풀 데이터를 다시
+  // 가져옴.
+  const initialMusicians: Musician[] = loadLocalizedData<Musician>(
+    resolvedLocale,
+    'musicians.json',
+  ).map((m) => ({
+    id: m.id,
+    name: m.name,
+    imageUrl: m.imageUrl,
+    trackTitle: m.trackTitle,
+    ...(m.trackId !== undefined ? { trackId: m.trackId } : {}),
+    shortDescription: '',
+    description: '',
+    genre: [],
+    instagramUrls: [],
+  }));
 
   return {
     props: {
