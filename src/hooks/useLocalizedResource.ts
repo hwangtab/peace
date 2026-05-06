@@ -6,6 +6,12 @@ interface UseLocalizedResourceOptions<T> {
   currentLocale: string;
   fetchResource: (locale: string) => Promise<T[]>;
   enabled?: boolean;
+  /**
+   * true 시 초기 로케일이 일치하더라도 클라이언트 마운트 후 풀 데이터를 다시 가져온다.
+   * SSG 단계에서 pageProps 절감을 위해 일부 필드를 제거한 부분 데이터만 보낸 경우,
+   * 모달 등 필드를 요구하는 UI 가 마운트 후 정상 동작하도록 보강하는 용도.
+   */
+  alwaysRefetch?: boolean;
 }
 
 interface UseLocalizedResourceResult<T> {
@@ -20,6 +26,7 @@ export const useLocalizedResource = <T>({
   currentLocale,
   fetchResource,
   enabled = true,
+  alwaysRefetch = false,
 }: UseLocalizedResourceOptions<T>): UseLocalizedResourceResult<T> => {
   const [data, setData] = useState<T[]>(initialData);
   const [error, setError] = useState<Error | null>(null);
@@ -33,7 +40,7 @@ export const useLocalizedResource = <T>({
       return;
     }
 
-    if (currentLocale === initialLocale) {
+    if (currentLocale === initialLocale && !alwaysRefetch) {
       setData(initialData);
       setError(null);
       setIsLoading(false);
@@ -67,7 +74,7 @@ export const useLocalizedResource = <T>({
     return () => {
       isCancelled = true;
     };
-  }, [currentLocale, enabled, fetchResource, initialData, initialLocale]);
+  }, [currentLocale, enabled, fetchResource, initialData, initialLocale, alwaysRefetch]);
 
   return { data, isLoading, error };
 };

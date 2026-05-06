@@ -32,7 +32,12 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
   const initialVideos = loadLocalizedData<VideoItem>(lang, 'videos.json').filter(
     (v) => v.eventType === 'album' && v.eventYear === 2024,
   );
-  const initialMusicians = loadLocalizedData<Musician>(lang, 'musicians.json');
+  // pageProps 절감: musician.description (35–55KB 차지) 을 제거. AlbumAboutPage 가
+  // alwaysRefetch=true 로 마운트 후 풀 데이터를 가져와 모달에서 정상 표시.
+  const initialMusicians = loadLocalizedData<Musician>(lang, 'musicians.json').map((m) => ({
+    ...m,
+    description: '',
+  }));
   const canonicalTracks = loadLocalizedData<Track>('ko', 'tracks.json');
   const canonicalMusicians = loadLocalizedData<Musician>('ko', 'musicians.json');
   const canonicalRelation = buildTrackMusicianRelation(canonicalTracks, canonicalMusicians);

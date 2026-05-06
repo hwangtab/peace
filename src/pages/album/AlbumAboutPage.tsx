@@ -56,11 +56,15 @@ const AlbumAboutPage = ({
     fetchResource: fetchVideos,
   });
 
+  // SSG 단계에서 description 을 제거해 pageProps 를 줄였으므로 마운트 후 풀 데이터를
+  // 한 번 가져와 모달이 정상 동작하도록 함. about 페이지는 진입 후 모달 클릭 까지
+  // 통상 수 초 이상 지연이 있어 그 안에 fetch 완료됨.
   const musiciansResource = useLocalizedResource<Musician>({
     initialData: initialMusicians,
     initialLocale,
     currentLocale: i18n.language,
     fetchResource: fetchMusicians,
+    alwaysRefetch: true,
   });
 
   const videos = videosResource.data;
