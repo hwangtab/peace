@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { Participant } from '@/types/camp';
 import MusicianCard from '../musicians/MusicianCard';
 import { Musician } from '@/types/musician';

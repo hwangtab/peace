@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 import { useTranslation } from 'next-i18next';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import Image from 'next/image';
 import { useCamp } from '@/hooks/useCamps';
 import PageLayout from '@/components/layout/PageLayout';

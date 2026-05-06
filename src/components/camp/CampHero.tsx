@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'next-i18next';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import Image from 'next/image';
 import { CampEvent } from '@/types/camp';
 

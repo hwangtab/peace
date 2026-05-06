@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import { simpleMenuItems, campItems, albumItems } from './navigationData';
 import LanguageSwitcher from '../common/LanguageSwitcher';
 import { NavigationDropdownKey } from '@/hooks/useNavigation';

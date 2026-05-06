@@ -5,7 +5,12 @@ import { appWithTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import reportWebVitals from '../src/reportWebVitals';
-import { MotionConfig } from 'framer-motion';
+import { LazyMotion, MotionConfig } from 'framer-motion';
+
+// framer-motion 의 features 를 비동기 청크로 분리해 _app 첫 페인트에서 19KB 의
+// projection/drag/layout 코드를 빼낸다. m.* 컴포넌트(가벼운 변형)와 짝을 이룸.
+// domMax 는 layoutId(AlbumTabContent) 와 layout=true(TrackCard) 사용을 지원.
+const loadDomMaxFeatures = () => import('framer-motion').then((mod) => mod.domMax);
 import { ErrorBoundary } from 'react-error-boundary';
 import nextI18NextConfig from '../next-i18next.config';
 import '@/index.css';
@@ -69,6 +74,7 @@ function App({ Component, pageProps }: AppProps) {
     <NavigationProvider>
       {/* reducedMotion="user": OS의 prefers-reduced-motion 설정을 존중.
            모바일 CSS 애니메이션은 index.css @media (max-width: 767px)에서 별도 처리. */}
+      <LazyMotion features={loadDomMaxFeatures} strict>
       <MotionConfig reducedMotion="user">
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -95,6 +101,7 @@ function App({ Component, pageProps }: AppProps) {
         </ErrorBoundary>
         <Footer />
       </MotionConfig>
+      </LazyMotion>
     </NavigationProvider>
   );
 }

@@ -146,18 +146,59 @@ const stripMotionProps = (props: MotionComponentProps): React.HTMLAttributes<HTM
   return sanitized;
 };
 
+// LazyMotion + m 전환 후에도 동일하게 동작하도록 m / motion 둘 다 export.
+const motionMock = {
+  div: ({ children, ...props }: MotionComponentProps) => (
+    <div {...stripMotionProps(props)}>{children}</div>
+  ),
+  span: ({ children, ...props }: MotionComponentProps) => (
+    <span {...stripMotionProps(props)}>{children}</span>
+  ),
+  button: ({ children, ...props }: MotionComponentProps) => (
+    <button {...stripMotionProps(props)}>{children}</button>
+  ),
+  h1: ({ children, ...props }: MotionComponentProps) => (
+    <h1 {...stripMotionProps(props)}>{children}</h1>
+  ),
+  h2: ({ children, ...props }: MotionComponentProps) => (
+    <h2 {...stripMotionProps(props)}>{children}</h2>
+  ),
+  h3: ({ children, ...props }: MotionComponentProps) => (
+    <h3 {...stripMotionProps(props)}>{children}</h3>
+  ),
+  p: ({ children, ...props }: MotionComponentProps) => (
+    <p {...stripMotionProps(props)}>{children}</p>
+  ),
+  li: ({ children, ...props }: MotionComponentProps) => (
+    <li {...stripMotionProps(props)}>{children}</li>
+  ),
+  ol: ({ children, ...props }: MotionComponentProps) => (
+    <ol {...stripMotionProps(props)}>{children}</ol>
+  ),
+  ul: ({ children, ...props }: MotionComponentProps) => (
+    <ul {...stripMotionProps(props)}>{children}</ul>
+  ),
+  section: ({ children, ...props }: MotionComponentProps) => (
+    <section {...stripMotionProps(props)}>{children}</section>
+  ),
+  nav: ({ children, ...props }: MotionComponentProps) => (
+    <nav {...stripMotionProps(props)}>{children}</nav>
+  ),
+  a: ({ children, ...props }: MotionComponentProps) => (
+    <a {...stripMotionProps(props)}>{children}</a>
+  ),
+};
+
 jest.mock('framer-motion', () => ({
-  motion: {
-    div: ({ children, ...props }: MotionComponentProps) => (
-      <div {...stripMotionProps(props)}>{children}</div>
-    ),
-    span: ({ children, ...props }: MotionComponentProps) => (
-      <span {...stripMotionProps(props)}>{children}</span>
-    ),
-    button: ({ children, ...props }: MotionComponentProps) => (
-      <button {...stripMotionProps(props)}>{children}</button>
-    ),
-  },
+  motion: motionMock,
+  m: motionMock,
+  LazyMotion: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+  MotionConfig: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+  domAnimation: {},
+  domMax: {},
   useInView: jest.fn(() => true),
+  useReducedMotion: jest.fn(() => false),
+  useScroll: jest.fn(() => ({ scrollY: { get: () => 0 }, scrollYProgress: { get: () => 0 } })),
+  useTransform: jest.fn(() => '0'),
   AnimatePresence: ({ children }: { children: React.ReactNode }) => <>{children}</>,
 }));

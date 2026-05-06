@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { useTranslation, Trans } from 'next-i18next';
 import Section from '../layout/Section';
 import SectionHeader from '../common/SectionHeader';

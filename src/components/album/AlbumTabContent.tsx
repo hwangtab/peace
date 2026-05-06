@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import { GalleryImage } from '@/types/gallery';
 import { VideoItem } from '@/types/video';
