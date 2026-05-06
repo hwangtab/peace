@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { HiOutlineCalendar, HiOutlineLocationMarker } from 'react-icons/hi';
+import { HiOutlineCalendar, HiOutlineLocationMarker } from '@/components/icons/SiteIcons';
 import { CampEvent } from '@/types/camp';
 import Button from '@/components/common/Button';
 
