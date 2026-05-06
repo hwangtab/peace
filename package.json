@@ -7,6 +7,9 @@
     "*.css",
     "*.scss"
   ],
+  "overrides": {
+    "postcss": "^8.5.14"
+  },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
     "autoprefixer": "^10.4.20",
@@ -16,7 +19,7 @@
     "i18next": "^25.8.1",
     "next": "^16.2.4",
     "next-i18next": "^15.3.1",
-    "postcss": "^8.4.49",
+    "postcss": "^8.5.14",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-error-boundary": "^6.0.0",
