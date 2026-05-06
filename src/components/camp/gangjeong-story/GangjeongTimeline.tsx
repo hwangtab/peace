@@ -66,18 +66,19 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
           {t('gangjeong_story.timeline_title')}
         </motion.h3>
 
-        <motion.ol
-          className="relative max-w-3xl mx-auto"
-          variants={listVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-80px' }}
-        >
-          {/* Vertical center line — desktop only */}
-          <div className={`hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b ${lineGradient}`} />
+        <div className="relative max-w-3xl mx-auto">
+          {/* Vertical center line — desktop only. ol 외부로 빼서 a11y(ol 자식은 li만) 준수 */}
+          <div aria-hidden="true" className={`hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b ${lineGradient}`} />
           {/* Vertical left line — mobile only */}
-          <div className={`md:hidden absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b ${lineGradient}`} />
+          <div aria-hidden="true" className={`md:hidden absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b ${lineGradient}`} />
 
+          <motion.ol
+            className="relative"
+            variants={listVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+          >
           {nodes.map((node, i) => {
             const isLeft = i % 2 === 0;
             const isLast = i === nodes.length - 1;
@@ -165,6 +166,7 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
             );
           })}
         </motion.ol>
+        </div>
       </div>
     </div>
   );
