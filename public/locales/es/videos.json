@@ -1,0 +1,22 @@
+{
+  "videos": {
+    "page_title": "Videos | Campamento de Música por la Paz de Gangjeong",
+    "page_desc": "Colección de videos de actuaciones del Campamento de Música por la Paz de Gangjeong. Conoce los videos de músicos que cantan por la paz.",
+    "hero_title": "Videos",
+    "hero_subtitle": "Momentos cantando por la paz",
+    "all_videos": "Ver todos los videos",
+    "detail": {
+      "watch_on_youtube": "Ver en YouTube",
+      "back_to_list": "Volver a los videos",
+      "related_musicians": "Músicos destacados",
+      "more_videos": "Más videos de este evento"
+    },
+    "intro": {
+      "eyebrow": "Archivo audiovisual",
+      "heading": "Actuaciones en vivo desde una aldea que se negó a callar",
+      "p1": "La mayoría de estos clips son grabaciones de campo en Gangjeong y en espacios pequeños por toda Corea. A diferencia de los festivales comerciales, hay una o dos cámaras, el sonido sale de un PA de directo y el público baila frente a una base naval visible desde el escenario.",
+      "p2": "Músicos coreanos de indie, folk, punk y tradición transmiten mensajes antibélicos, antimilitaristas y ecológicos en su propio idioma. Aquí sonará la raíz nepalí-coreana de Ritesh Maharjan, el blues de protesta del compositor itinerante Kim Dong-san y sesiones en vivo del DJ Josuganman — el abanico es deliberadamente amplio.",
+      "p3": "Usa los filtros para acotar a los campamentos de 2023, 2025 o 2026, o al álbum de 2024. Cada tarjeta abre una página dedicada dentro del sitio —con fecha, lugar y contexto del intérprete— en lugar de saltar directamente a YouTube."
+    }
+  }
+}

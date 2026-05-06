@@ -1,0 +1,45 @@
+{
+  "timeline": {
+    "title": "Nossa Jornada",
+    "subtitle": "Um registro de paz que começa em Gangjeong",
+    "labels": {
+      "camp": "Acampamento",
+      "album": "Álbum",
+      "milestone": "Marco"
+    },
+    "events": {
+      "camp_2023": {
+        "title": "1º Acampamento de Música pela Paz de Gangjeong",
+        "desc": "O primeiro acampamento musical pela paz na vila de Gangjeong.",
+        "location": "Parque Esportivo de Gangjeong"
+      },
+      "album_2024": {
+        "title": "Show de lançamento do álbum",
+        "desc": "Showcase do álbum “To You in a Distant Place Whose Name I Don't Know”.",
+        "location": "Centro de Paz de Gangjeong · Space Hangang"
+      },
+      "camp_2025": {
+        "title": "2º Acampamento de Música pela Paz de Gangjeong",
+        "desc": "Mensagem de paz no 73º aniversário do armistício.",
+        "location": "Em torno da vila de Gangjeong"
+      },
+      "camp_2026": {
+        "title": "3º Acampamento de Música pela Paz de Gangjeong",
+        "desc": "Programado para 5–7 de junho de 2026.",
+        "location": "Parque Esportivo de Gangjeong"
+      }
+    },
+    "month_1": "Janeiro",
+    "month_2": "Fevereiro",
+    "month_3": "Março",
+    "month_4": "Abril",
+    "month_5": "Maio",
+    "month_6": "Junho",
+    "month_7": "Julho",
+    "month_8": "Agosto",
+    "month_9": "Setembro",
+    "month_10": "Outubro",
+    "month_11": "Novembro",
+    "month_12": "Dezembro"
+  }
+}

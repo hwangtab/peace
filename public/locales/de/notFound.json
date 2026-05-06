@@ -1,0 +1,8 @@
+{
+  "notFound": {
+    "title": "Seite nicht gefunden",
+    "desc": "Die angeforderte Seite existiert nicht.",
+    "message": "Entschuldigung, die Seite wurde möglicherweise entfernt, umbenannt oder ist vorübergehend nicht verfügbar.",
+    "homeButton": "Zur Startseite"
+  }
+}

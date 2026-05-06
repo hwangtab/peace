@@ -1,0 +1,19 @@
+{
+  "about": {
+    "title": "À propos",
+    "subtitle": "Nos chansons pour la paix",
+    "desc1": "Nous avons chanté pour la première fois devant le rocher de Gureombi, dans le village de Gangjeong à Jeju, là où soufflent des vents puissants. Nous avons compris que la paix n’est pas un grand slogan, mais qu’elle commence au moment où nous écoutons la voix des autres.",
+    "desc2": "Le Camp musical pour la paix de Gangjeong est une solidarité et une fête de musiciens qui rêvent d’un monde sans guerre. Au‑delà des frontières et des langues, nous parlons de paix avec la musique, la plus belle des armes.",
+    "desc3": "Quand nous chantons, dansons et nous étreignons ensemble, la guerre s’arrête et les vagues de paix s’étendent plus loin.",
+    "card1": {
+      "title": "Paix durable",
+      "desc": "La première harmonie a commencé à l’été 2023. Notre festival se poursuivra non comme un événement unique, mais comme un rituel de paix persistant et magnifique qui protège l’été de Gangjeong chaque année.",
+      "link": "Voir le Camp 2026"
+    },
+    "card2": {
+      "title": "Solidarité sans frontières",
+      "desc": "Nous nous souvenons des zones de conflit, de Gaza en Palestine jusqu’à l’Ukraine. Le Camp musical pour la paix de Gangjeong dépasse le simple concert ; c’est une puissante plateforme de solidarité avec celles et ceux qui souffrent et aspirent à la paix.",
+      "link": "Voir la Couverture Presse"
+    }
+  }
+}

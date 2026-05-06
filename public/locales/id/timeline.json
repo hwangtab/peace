@@ -1,0 +1,45 @@
+{
+  "timeline": {
+    "title": "Perjalanan Kita",
+    "subtitle": "Catatan perdamaian yang dimulai dari Gangjeong",
+    "labels": {
+      "camp": "Kamp",
+      "album": "Album",
+      "milestone": "Tonggak"
+    },
+    "events": {
+      "camp_2023": {
+        "title": "Kemah Musik Perdamaian Gangjeong ke-1",
+        "desc": "Kemah musik perdamaian pertama di Desa Gangjeong.",
+        "location": "Taman Olahraga Gangjeong"
+      },
+      "album_2024": {
+        "title": "Konser rilis album",
+        "desc": "Showcase album “To You in a Distant Place Whose Name I Don't Know”.",
+        "location": "Gangjeong Peace Center · Space Hangang"
+      },
+      "camp_2025": {
+        "title": "Kemah Musik Perdamaian Gangjeong ke-2",
+        "desc": "Pesan perdamaian pada peringatan 73 tahun gencatan senjata.",
+        "location": "Sekitar Desa Gangjeong"
+      },
+      "camp_2026": {
+        "title": "Kemah Musik Perdamaian Gangjeong ke-3",
+        "desc": "Dijadwalkan 5–7 Juni 2026.",
+        "location": "Taman Olahraga Gangjeong"
+      }
+    },
+    "month_1": "Januari",
+    "month_2": "Februari",
+    "month_3": "Maret",
+    "month_4": "April",
+    "month_5": "Mei",
+    "month_6": "Juni",
+    "month_7": "Juli",
+    "month_8": "Agustus",
+    "month_9": "September",
+    "month_10": "Oktober",
+    "month_11": "November",
+    "month_12": "Desember"
+  }
+}

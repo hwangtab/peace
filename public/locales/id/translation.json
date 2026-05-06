@@ -17,45 +17,6 @@
     "hi": "हिन्दी",
     "id": "Bahasa Indonesia"
   },
-  "about": {
-    "title": "Tentang",
-    "subtitle": "Lagu-lagu Kami untuk Perdamaian",
-    "desc1": "Kami pertama kali bernyanyi di depan Batu Gureombi di Desa Gangjeong, Jeju, tempat angin kencang berembus. Kami menyadari bahwa perdamaian bukan slogan besar, melainkan dimulai saat kita saling mendengarkan.",
-    "desc2": "Gangjeong Peace Music Camp adalah solidaritas dan festival para musisi yang memimpikan dunia tanpa perang. Melampaui batas dan bahasa, kami berbicara tentang perdamaian melalui musik, senjata paling indah.",
-    "desc3": "Saat kita bernyanyi, menari, dan saling berpelukan, perang akan berhenti dan gelombang perdamaian menyebar lebih jauh.",
-    "card1": {
-      "title": "Perdamaian Berkelanjutan",
-      "desc": "Harmoni pertama dimulai pada musim panas 2023. Festival kami akan terus berlanjut bukan sebagai acara sekali saja, melainkan sebagai ritual perdamaian yang gigih dan indah, menjaga musim panas Gangjeong setiap tahun.",
-      "link": "Lihat Kamp 2026"
-    },
-    "card2": {
-      "title": "Solidaritas Tanpa Batas",
-      "desc": "Kami mengingat wilayah konflik dari Gaza di Palestina hingga Ukraina. Gangjeong Peace Music Camp bukan sekadar konser; ini adalah ruang solidaritas yang kuat, berdiri bersama mereka yang menderita dan merindukan perdamaian.",
-      "link": "Lihat Liputan Pers"
-    }
-  },
-  "gallery": {
-    "page_title": "Galeri | Kemah Musik Perdamaian Gangjeong",
-    "page_desc": "Momen-momen kami bernyanyi untuk perdamaian. Jelajahi foto-foto hidup dari Gangjeong Peace Music Camp.",
-    "seo_keywords": "foto galeri",
-    "hero_title": "Galeri",
-    "hero_subtitle": "Perdamaian yang ditemukan di sana",
-    "section_title": "Momen Perdamaian",
-    "section_subtitle": "Catatan angin dan nyanyian Gangjeong",
-    "no_images": "Tidak ada foto tersedia.",
-    "load_more": "Muat lebih banyak",
-    "image_alt_fallback": "Gambar galeri Gangjeong Peace Music Camp",
-    "image_alt_template": "Gambar galeri {{title}} {{year}}",
-    "alt_album": "Foto konser rilis album {{year}}",
-    "alt_camp": "Foto Kamp Musik Perdamaian Gangjeong {{year}}",
-    "intro": {
-      "eyebrow": "Catatan foto",
-      "heading": "Foto-foto di titik pertemuan Desa Gangjeong, musik, dan perdamaian",
-      "p1": "Gangjeong berada di pesisir selatan Jeju, menghadap pulau kecil Beomseom di bawah bayang Gunung Halla. Puluhan tahun setelah pembantaian 4·3, sejak 2007 lapisan sejarah baru dimulai ketika warga menolak pembangunan pangkalan angkatan laut. Galeri ini merekam suasana konser-konser yang digelar tepat di tepi pantai itu.",
-      "p2": "Foto-foto ini mencakup kamp 2023, 2025, dan 2026 yang sedang berjalan. Selain musisi di atas panggung, terlihat haenyeo (penyelam perempuan Jeju), aktivis batu Gureombi, anak-anak di antara penonton, dan relawan Peace Center — komunitas yang lebih luas daripada festival itu sendiri.",
-      "p3": "Mengetuk kartu akan membuka gambar beresolusi penuh di lightbox. Penggunaan non-komersial dalam konteks gerakan perdamaian dan musik dipersilakan dengan mencantumkan sumbernya."
-    }
-  },
   "home": {
     "hero": {
       "title": "Kemah Musik Perdamaian Gangjeong",
@@ -83,12 +44,6 @@
     "copyright": "Hak cipta dilindungi.",
     "sns_aria": "Ikuti Gangjeong Peace Music Camp di Instagram",
     "email_aria": "Hubungi melalui email"
-  },
-  "notFound": {
-    "title": "Halaman tidak ditemukan",
-    "desc": "Halaman yang Anda minta tidak ada.",
-    "message": "Maaf, halaman yang Anda cari mungkin telah dihapus, berganti nama, atau sementara tidak tersedia.",
-    "homeButton": "Kembali ke beranda"
   },
   "nav": {
     "home": "Beranda",
@@ -163,88 +118,10 @@
       "sun": "Min"
     }
   },
-  "timeline": {
-    "title": "Perjalanan Kita",
-    "subtitle": "Catatan perdamaian yang dimulai dari Gangjeong",
-    "labels": {
-      "camp": "Kamp",
-      "album": "Album",
-      "milestone": "Tonggak"
-    },
-    "events": {
-      "camp_2023": {
-        "title": "Kemah Musik Perdamaian Gangjeong ke-1",
-        "desc": "Kemah musik perdamaian pertama di Desa Gangjeong.",
-        "location": "Taman Olahraga Gangjeong"
-      },
-      "album_2024": {
-        "title": "Konser rilis album",
-        "desc": "Showcase album “To You in a Distant Place Whose Name I Don't Know”.",
-        "location": "Gangjeong Peace Center · Space Hangang"
-      },
-      "camp_2025": {
-        "title": "Kemah Musik Perdamaian Gangjeong ke-2",
-        "desc": "Pesan perdamaian pada peringatan 73 tahun gencatan senjata.",
-        "location": "Sekitar Desa Gangjeong"
-      },
-      "camp_2026": {
-        "title": "Kemah Musik Perdamaian Gangjeong ke-3",
-        "desc": "Dijadwalkan 5–7 Juni 2026.",
-        "location": "Taman Olahraga Gangjeong"
-      }
-    },
-    "month_1": "Januari",
-    "month_2": "Februari",
-    "month_3": "Maret",
-    "month_4": "April",
-    "month_5": "Mei",
-    "month_6": "Juni",
-    "month_7": "Juli",
-    "month_8": "Agustus",
-    "month_9": "September",
-    "month_10": "Oktober",
-    "month_11": "November",
-    "month_12": "Desember"
-  },
   "seo": {
     "default": {
       "title": "Kemah Musik Perdamaian Gangjeong 2026 | Festival Musik Anti-Perang di Jeju",
       "description": "Proyek musik untuk perdamaian yang dimulai dari Desa Gangjeong, Jeju. Festival musik damai dan anti-perang di Taman Olahraga Gangjeong, 5–7 Juni 2026."
-    }
-  },
-  "press": {
-    "page_title": "Pers | Kemah Musik Perdamaian Gangjeong",
-    "page_desc": "Kisah kami bernyanyi untuk perdamaian. Lihat liputan pers dan artikel tentang proyek 'To You in a Distant Place Whose Name I Don't Know'.",
-    "hero_title": "Pers",
-    "hero_subtitle": "Kisah kami bernyanyi untuk perdamaian",
-    "breadcrumb_home": "Beranda",
-    "breadcrumb_press": "Pers",
-    "intro": {
-      "eyebrow": "Arsip pers",
-      "heading": "Bagaimana media mencatat musik perdamaian di Desa Gangjeong",
-      "p1": "Gangjeong Peace and Music Camp adalah festival independen tahunan di Desa Gangjeong, sebuah desa kecil di Pulau Jeju yang sejak 2007 menolak pembangunan pangkalan angkatan laut. Arsip ini mengumpulkan liputan dari harian Korea, webzine musik independen, dan media perdamaian internasional sejak edisi pertama pada 2023.",
-      "p2": "Tulisan berbahasa Korea cenderung menyelami sejarah Jeju pascaperistiwa 4·3 dan kisah komunitas desa, sementara liputan Inggris dan Jepang mengaitkan kamp ini dengan pergulatan pangkalan militer lain di Okinawa, Guam, dan Filipina. Setiap kartu membuka artikel asli di situs penerbitnya.",
-      "p3": "Liputan memuncak di sekitar tiap edisi festival; tautan-tautan berikut menyimpan susunan pengisi acara, capaian pendanaan kolektif, dan foto-foto di lokasi. Gunakan tombol filter untuk menyaring berdasarkan tahun atau acara."
-    }
-  },
-  "videos": {
-    "page_title": "Video | Kemah Musik Perdamaian Gangjeong",
-    "page_desc": "Koleksi video penampilan Gangjeong Peace Music Camp. Temui video penampilan musisi yang bernyanyi untuk perdamaian.",
-    "hero_title": "Video",
-    "hero_subtitle": "Momen bernyanyi untuk perdamaian",
-    "all_videos": "Lihat semua video",
-    "detail": {
-      "watch_on_youtube": "Tonton di YouTube",
-      "back_to_list": "Kembali ke daftar video",
-      "related_musicians": "Musisi yang tampil",
-      "more_videos": "Video lain dari acara ini"
-    },
-    "intro": {
-      "eyebrow": "Arsip video",
-      "heading": "Penampilan langsung dari sebuah desa yang menolak diam",
-      "p1": "Sebagian besar klip di sini adalah rekaman lapangan dari Desa Gangjeong dan ruang-ruang kecil di seluruh Korea. Berbeda dengan festival komersial, hanya ada satu-dua kamera, suara langsung dari PA, dan penonton sering menari sambil berhadapan dengan pangkalan angkatan laut di balik panggung.",
-      "p2": "Musisi indie, folk, punk, dan tradisi Korea menyampaikan pesan antiperang, antipangkalan, dan lingkungan dalam bahasa masing-masing. Anda akan mendengar akar Nepali-Korea Ritesh Maharjan, blues protes penulis lagu keliling Kim Dong-san, hingga set langsung DJ Josuganman — spektrumnya memang sengaja dibuat luas.",
-      "p3": "Gunakan tombol filter untuk menyaring ke kamp 2023, 2025, atau 2026, atau ke album 2024. Mengeklik kartu akan membuka halaman detail di situs ini — lengkap dengan tanggal, lokasi, dan konteks pemusik — alih-alih langsung menuju YouTube."
     }
   },
   "camp": {
@@ -328,19 +205,5 @@
     "howto_step5_name": "Nikmati musik dan perdamaian",
     "howto_step5_text": "Saksikan pertunjukan musisi dari berbagai genre dan bagikan semangat solidaritas perdamaian.",
     "audience_general": "Audiens umum"
-  },
-  "camp_faq_2026": {
-    "q1": "Kapan Gangjeong Peace and Music Camp ke-3 diadakan?",
-    "a1": "5–7 Juni 2026, festival musik perdamaian tiga hari di Desa Gangjeong dengan 51 grup.",
-    "q2": "Di mana diadakan?",
-    "a2": "Di Taman Olahraga Gangjeong, Desa Gangjeong, Seogwipo, Pulau Jeju, Korea Selatan. Dapat diakses dengan bus atau taksi dari Bandara Jeju.",
-    "q3": "Apakah ada biaya masuk?",
-    "a3": "Ya, masuk dengan tiket. Tiket berharga ₩30.000 KRW dan dijual melalui crowdfunding Tumblbug (tumblbug.com/gpmc3); hasil penjualan mendanai festival dan kerja solidaritas perdamaian.",
-    "q4": "Bagaimana cara mendukung kamp?",
-    "a4": "Membeli tiket di Tumblbug (tumblbug.com/gpmc3) langsung mendukung kamp. Anda juga bisa membantu dengan membeli merchandise di lokasi.",
-    "q5": "Siapa saja yang tampil?",
-    "a5": "51 artis indie Korea dari berbagai genre, termasuk Yun Sunae, Jeong Jinseok, Choi Sangdon, Kim Dongsan & Blue Neighbors, Lim Jeongdeuk, Taehyeon, HANASH, dan TAGI.",
-    "q6": "Di mana saya bisa melihat jadwal lengkap?",
-    "a6": "Jadwal lengkap 3 hari ada di peaceandmusic.net/camps/2026, diurutkan kronologis berdasarkan waktu penampilan."
   }
 }

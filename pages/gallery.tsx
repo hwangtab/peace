@@ -28,7 +28,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale ?? 'ko', ['translation'], nextI18NextConfig)),
+      ...(await serverSideTranslations(locale ?? 'ko', ['translation', 'gallery'], nextI18NextConfig)),
       initialImages: all.slice(0, SSR_PREVIEW_COUNT),
       totalImageCount: all.length,
     },

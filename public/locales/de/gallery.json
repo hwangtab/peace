@@ -1,0 +1,24 @@
+{
+  "gallery": {
+    "page_title": "Galerie | Gangjeong Friedensmusikcamp",
+    "page_desc": "Momente, in denen wir für den Frieden singen. Entdecke lebendige Fotos vom Gangjeong Peace Music Camp.",
+    "seo_keywords": "Galeriefoto",
+    "hero_title": "Galerie",
+    "hero_subtitle": "Frieden, den wir dort fanden",
+    "section_title": "Momente des Friedens",
+    "section_subtitle": "Wind und Lieder aus Gangjeong — eine Aufzeichnung",
+    "no_images": "Keine Fotos vorhanden.",
+    "load_more": "Mehr laden",
+    "image_alt_fallback": "Galeriebild des Gangjeong Peace Music Camp",
+    "image_alt_template": "{{year}} {{title}} Galeriebild",
+    "alt_album": "Konzertfoto zur Albumveröffentlichung {{year}}",
+    "alt_camp": "Foto des Gangjeong Peace Music Camps {{year}}",
+    "intro": {
+      "eyebrow": "Fotodokumentation",
+      "heading": "Bilder, wo Gangjeong, Musik und Frieden zusammentreffen",
+      "p1": "Gangjeong liegt an der Südküste Jejus, blickt auf das Inselchen Beomseom und wird vom Hallasan gerahmt. Jahrzehnte nach dem 4.·3.-Massaker begann 2007 eine neue Geschichtsschicht: der Widerstand der Bewohner:innen gegen einen Marinestützpunkt. Diese Galerie bewahrt die Stimmung der Konzerte an genau diesem Ufer.",
+      "p2": "Die Bilder umfassen die Camps 2023, 2025 und das laufende 2026. Neben den Musiker:innen auf der Bühne erscheinen Haenyeo (Taucherinnen von Jeju), Aktivist:innen am Gureombi-Felsen, Kinder im Publikum und Freiwillige des Peace Center — eine Community, die weit über das Festival hinausgeht.",
+      "p3": "Ein Klick öffnet das Bild in voller Auflösung in einer Lightbox. Nicht-kommerzielle Nutzung im Kontext der Friedens- und Musikbewegung ist unter Nennung der Quelle willkommen."
+    }
+  }
+}
