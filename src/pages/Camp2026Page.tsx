@@ -353,6 +353,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
                     width={360}
                     height={509}
                     sizes="(max-width: 768px) 100vw, 360px"
+                    quality={65}
                     className="w-full h-auto"
                   />
                 </a>
@@ -364,6 +365,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
                     width={360}
                     height={509}
                     sizes="(max-width: 768px) 100vw, 360px"
+                    quality={65}
                     className="w-full h-auto"
                   />
                 </div>
@@ -374,7 +376,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
                 <p className="typo-body mb-6 break-words">{translatedDescription}</p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div className="bg-sky-horizon/60 border border-seafoam/40 rounded-xl p-4 text-center">
-                    <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">
+                    <p className="text-xs uppercase tracking-wide text-gray-700 mb-1">
                       {t('camp.label_period')}
                     </p>
                     <p className="text-sm font-bold text-jeju-ocean break-words">
@@ -382,7 +384,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
                     </p>
                   </div>
                   <div className="bg-sky-horizon/60 border border-seafoam/40 rounded-xl p-4 text-center">
-                    <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">
+                    <p className="text-xs uppercase tracking-wide text-gray-700 mb-1">
                       {t('camp.label_location')}
                     </p>
                     <p className="text-sm font-bold text-jeju-ocean break-words">
@@ -390,7 +392,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
                     </p>
                   </div>
                   <div className="bg-sky-horizon/60 border border-seafoam/40 rounded-xl p-4 text-center">
-                    <p className="text-xs uppercase tracking-wide text-gray-500 mb-1">
+                    <p className="text-xs uppercase tracking-wide text-gray-700 mb-1">
                       {t('camp.label_participants')}
                     </p>
                     <p className="text-sm font-bold text-jeju-ocean break-words">

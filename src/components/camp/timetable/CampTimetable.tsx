@@ -80,7 +80,7 @@ const CampTimetable: React.FC<CampTimetableProps> = ({ data, musicians, campYear
               onClick={() => selectTab(i)}
               onKeyDown={(e) => onKeyDown(e, i)}
               className={`relative px-2 py-3 text-center text-xs transition-colors sm:text-sm ${
-                isActive ? mood.activeTab : 'bg-white text-coastal-gray hover:bg-ocean-sand'
+                isActive ? mood.activeTab : 'bg-white text-deep-ocean hover:bg-ocean-sand'
               }`}
             >
               <span className="block font-bold">
@@ -90,7 +90,7 @@ const CampTimetable: React.FC<CampTimetableProps> = ({ data, musicians, campYear
                   count: day.teamCount,
                 })}
               </span>
-              <span className="mt-0.5 block text-[10px] opacity-80 sm:text-xs">
+              <span className="mt-0.5 block text-[10px] sm:text-xs">
                 {t('timetable.tab_day_time', { start: day.startTime, end: day.endTime })}
               </span>
               {isActive && <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[2px] bg-golden-sun" />}

@@ -75,6 +75,8 @@ const TimetableActCard: React.FC<TimetableActCardProps> = ({
                   alt={m.name}
                   width={80}
                   height={80}
+                  sizes="80px"
+                  quality={55}
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
                 />
