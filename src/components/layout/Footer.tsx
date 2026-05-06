@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { FaInstagram } from 'react-icons/fa';
-import { HiOutlineMail } from 'react-icons/hi';
+import InstagramIcon from '@/components/icons/InstagramIcon';
+import { HiOutlineMail } from '@/components/icons/SiteIcons';
 import { SITE_CONFIG } from '@/constants/config';
 import { useCamp } from '@/hooks/useCamps';
 import { buildUtmUrl } from '@/utils/utm';
@@ -133,7 +133,7 @@ const SOCIAL_LINKS = [
     {
         name: 'Instagram',
         href: 'https://www.instagram.com/peace_music_in_gangjeong',
-        icon: FaInstagram,
+        icon: InstagramIcon,
         nameKey: 'footer.sns_aria',
         external: true,
     },

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { AnimatePresence, motion } from 'framer-motion';
-import { IoChevronDown } from 'react-icons/io5';
+import { IoChevronDown } from '@/components/icons/SiteIcons';
 import { useTranslation } from 'next-i18next';
 import { isRouteActive } from '@/utils/routeMatch';
 
