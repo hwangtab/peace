@@ -1,0 +1,24 @@
+{
+  "gallery": {
+    "page_title": "Gallery | Gangjeong Peace Music Camp",
+    "page_desc": "Moments of us singing for peace. Explore vivid photos from the Gangjeong Peace Music Camp.",
+    "seo_keywords": "gallery photo",
+    "hero_title": "Gallery",
+    "hero_subtitle": "Peace Found There",
+    "section_title": "Moments of Peace",
+    "section_subtitle": "A record of the wind and songs of Gangjeong",
+    "no_images": "No photos available.",
+    "load_more": "Load More",
+    "image_alt_fallback": " Gangjeong Peace Music Camp Gallery Image",
+    "image_alt_template": "{{year}} {{title}} Gallery Image",
+    "alt_camp": "Gangjeong Peace Music Camp {{year}} photo",
+    "alt_album": "Album release concert {{year}} photo",
+    "intro": {
+      "eyebrow": "Photo record",
+      "heading": "Photographs from where Gangjeong village, music, and peace meet",
+      "p1": "Gangjeong sits on the southern coast of Jeju, looking out to Beomseom islet beneath Mount Halla. Decades after the 4·3 massacre, a new layer of history began in 2007 when residents started resisting a naval base. This gallery preserves the atmosphere of concerts held on that very shoreline.",
+      "p2": "The images span the 2023, 2025, and the ongoing 2026 camps. Alongside musicians on stage you will find haenyeo (Jeju women divers), Gureombi-rock activists, children in the crowd, and Peace Center volunteers — all hinting at the community beyond the festival itself.",
+      "p3": "Tapping a card opens the full-resolution image in a lightbox. Non-commercial use for peace and music movement contexts is welcome with attribution."
+    }
+  }
+}

@@ -17,45 +17,6 @@
     "hi": "हिन्दी",
     "id": "Bahasa Indonesia"
   },
-  "about": {
-    "title": "À propos",
-    "subtitle": "Nos chansons pour la paix",
-    "desc1": "Nous avons chanté pour la première fois devant le rocher de Gureombi, dans le village de Gangjeong à Jeju, là où soufflent des vents puissants. Nous avons compris que la paix n’est pas un grand slogan, mais qu’elle commence au moment où nous écoutons la voix des autres.",
-    "desc2": "Le Camp musical pour la paix de Gangjeong est une solidarité et une fête de musiciens qui rêvent d’un monde sans guerre. Au‑delà des frontières et des langues, nous parlons de paix avec la musique, la plus belle des armes.",
-    "desc3": "Quand nous chantons, dansons et nous étreignons ensemble, la guerre s’arrête et les vagues de paix s’étendent plus loin.",
-    "card1": {
-      "title": "Paix durable",
-      "desc": "La première harmonie a commencé à l’été 2023. Notre festival se poursuivra non comme un événement unique, mais comme un rituel de paix persistant et magnifique qui protège l’été de Gangjeong chaque année.",
-      "link": "Voir le Camp 2026"
-    },
-    "card2": {
-      "title": "Solidarité sans frontières",
-      "desc": "Nous nous souvenons des zones de conflit, de Gaza en Palestine jusqu’à l’Ukraine. Le Camp musical pour la paix de Gangjeong dépasse le simple concert ; c’est une puissante plateforme de solidarité avec celles et ceux qui souffrent et aspirent à la paix.",
-      "link": "Voir la Couverture Presse"
-    }
-  },
-  "gallery": {
-    "page_title": "Galerie | Camp musical pour la paix de Gangjeong",
-    "page_desc": "Moments où nous chantons pour la paix. Découvrez des photos vibrantes du Camp musical pour la paix de Gangjeong.",
-    "seo_keywords": "photos galerie",
-    "hero_title": "Galerie",
-    "hero_subtitle": "La paix trouvée là‑bas",
-    "section_title": "Moments de paix",
-    "section_subtitle": "Les vents et les chants de Gangjeong en images",
-    "no_images": "Aucune photo disponible.",
-    "load_more": "Charger plus",
-    "image_alt_fallback": "Image de la galerie du Camp musical pour la paix de Gangjeong",
-    "image_alt_template": "Image de la galerie {{title}} {{year}}",
-    "alt_album": "Photo du concert de sortie d'album {{year}}",
-    "alt_camp": "Photo du Camp de Musique pour la Paix de Gangjeong {{year}}",
-    "intro": {
-      "eyebrow": "Archives photo",
-      "heading": "Images du point de rencontre entre Gangjeong, la musique et la paix",
-      "p1": "Gangjeong est niché sur la côte sud de Jeju, face à l'îlot Beomseom, au pied du mont Halla. Des décennies après le massacre du 4·3, une nouvelle couche d'histoire s'est ouverte en 2007 avec la résistance des habitants contre une base navale. Cette galerie conserve l'atmosphère des concerts donnés sur ce même rivage.",
-      "p2": "Les photos couvrent les camps 2023, 2025 et l'édition 2026 en cours. Aux côtés des musicien·ne·s sur scène apparaissent les haenyeo (plongeuses de Jeju), les militant·e·s du rocher Gureombi, les enfants du public et les bénévoles du Centre de la paix — une communauté qui déborde le simple festival.",
-      "p3": "Un clic ouvre l'image haute résolution dans une lightbox. Usage non commercial bienvenu pour les mouvements de paix et musicaux, avec mention de la source."
-    }
-  },
   "home": {
     "hero": {
       "title": "Camp musical pour la paix de Gangjeong",
@@ -83,12 +44,6 @@
     "copyright": "Tous droits réservés.",
     "sns_aria": "Suivre le Camp musical pour la paix de Gangjeong sur Instagram",
     "email_aria": "Contacter par e‑mail"
-  },
-  "notFound": {
-    "title": "Page introuvable",
-    "desc": "La page que vous avez demandée n’existe pas.",
-    "message": "Désolé, la page que vous recherchez a peut‑être été supprimée, renommée ou temporairement indisponible.",
-    "homeButton": "Retour à l’accueil"
   },
   "nav": {
     "home": "Accueil",
@@ -163,88 +118,10 @@
       "sun": "Dim"
     }
   },
-  "timeline": {
-    "title": "Notre parcours",
-    "subtitle": "Un récit de paix né à Gangjeong",
-    "labels": {
-      "camp": "Camp",
-      "album": "Album",
-      "milestone": "Étape"
-    },
-    "events": {
-      "camp_2023": {
-        "title": "1er Camp musical pour la paix de Gangjeong",
-        "desc": "Le premier camp musical pour la paix dans le village de Gangjeong.",
-        "location": "Parc sportif de Gangjeong"
-      },
-      "album_2024": {
-        "title": "Concert de sortie de l’album",
-        "desc": "Showcase de l’album “To You in a Distant Place Whose Name I Don't Know”.",
-        "location": "Centre de paix de Gangjeong · Space Hangang"
-      },
-      "camp_2025": {
-        "title": "2e Camp musical pour la paix de Gangjeong",
-        "desc": "Message de paix pour le 73e anniversaire de l’armistice.",
-        "location": "Autour du village de Gangjeong"
-      },
-      "camp_2026": {
-        "title": "3e Camp musical pour la paix de Gangjeong",
-        "desc": "Prévu du 5 au 7 juin 2026.",
-        "location": "Parc sportif de Gangjeong"
-      }
-    },
-    "month_1": "Janvier",
-    "month_2": "Février",
-    "month_3": "Mars",
-    "month_4": "Avril",
-    "month_5": "Mai",
-    "month_6": "Juin",
-    "month_7": "Juillet",
-    "month_8": "Août",
-    "month_9": "Septembre",
-    "month_10": "Octobre",
-    "month_11": "Novembre",
-    "month_12": "Décembre"
-  },
   "seo": {
     "default": {
       "title": "Camp musical pour la paix de Gangjeong 2026 | Festival pacifiste à Jeju",
       "description": "Un projet musical pour la paix né au village de Gangjeong, Jeju. Festival musical pacifiste au parc sportif de Gangjeong du 5 au 7 juin 2026."
-    }
-  },
-  "press": {
-    "page_title": "Presse | Camp musical pour la paix de Gangjeong",
-    "page_desc": "Notre histoire en chantant pour la paix. Découvrez les articles et la couverture médiatique du projet “To You in a Distant Place Whose Name I Don't Know”.",
-    "hero_title": "Presse",
-    "hero_subtitle": "Notre histoire en chantant pour la paix",
-    "breadcrumb_home": "Accueil",
-    "breadcrumb_press": "Presse",
-    "intro": {
-      "eyebrow": "Archives de presse",
-      "heading": "Comment la presse a couvert le festival de paix de Gangjeong",
-      "p1": "Le Gangjeong Peace and Music Camp est un festival indépendant annuel à Gangjeong, un village de l'île de Jeju qui résiste à la construction d'une base navale depuis 2007. Ces archives rassemblent la couverture des quotidiens coréens, des webzines musicaux indépendants et de médias internationaux de paix depuis la première édition en 2023.",
-      "p2": "Les articles en coréen creusent souvent l'histoire de Jeju après le 4·3 et les récits du village, tandis que la couverture en japonais et anglais relie le camp aux autres luttes contre les bases militaires en Asie de l'Est — Okinawa, Guam, Philippines. Chaque carte ouvre l'article original sur le site de l'éditeur.",
-      "p3": "La couverture s'intensifie autour de chaque édition, et les liens ci-dessous conservent la programmation, les étapes du financement participatif et les photos du terrain. Utilisez les filtres pour affiner par année ou par événement."
-    }
-  },
-  "videos": {
-    "page_title": "Vidéos | Camp musical pour la paix de Gangjeong",
-    "page_desc": "Collection de vidéos de performances du Camp musical pour la paix de Gangjeong. Découvrez les vidéos des musiciens qui chantent pour la paix.",
-    "hero_title": "Vidéos",
-    "hero_subtitle": "Moments de chant pour la paix",
-    "all_videos": "Voir toutes les vidéos",
-    "detail": {
-      "watch_on_youtube": "Voir sur YouTube",
-      "back_to_list": "Retour aux vidéos",
-      "related_musicians": "Musiciens en vedette",
-      "more_videos": "Autres vidéos de cet événement"
-    },
-    "intro": {
-      "eyebrow": "Archives vidéo",
-      "heading": "Concerts filmés dans un village qui refuse de se taire",
-      "p1": "La plupart de ces captations sont des enregistrements de terrain réalisés à Gangjeong et dans de petites salles à travers la Corée. Loin des festivals commerciaux, une ou deux caméras seulement, le son direct de la façade PA, et un public qui danse face à une base navale toute proche.",
-      "p2": "Des musiciens coréens indé, folk, punk et traditionnels délivrent des messages anti-guerre, anti-bases et écologiques dans leur propre langue. On y entend la musique racines népali-coréenne de Ritesh Maharjan, le blues contestataire du compositeur itinérant Kim Dong-san et les sets live du DJ Josuganman — l'éventail est volontairement large.",
-      "p3": "Les filtres permettent de réduire aux camps 2023, 2025 ou 2026, ou à l'album 2024. Chaque carte ouvre une page dédiée sur ce site — date, lieu, contexte du/de la musicien·ne — plutôt que de renvoyer directement vers YouTube."
     }
   },
   "camp": {
@@ -305,20 +182,6 @@
     "gallery_name": "Galerie",
     "gallery_desc": "Galerie photo du projet 'À toi, dans un lieu lointain dont j'ignore le nom'",
     "audience_general": "Grand public"
-  },
-  "camp_faq_2026": {
-    "q1": "Quand se tient le 3ème Gangjeong Peace and Music Camp ?",
-    "a1": "Du 5 au 7 juin 2026, un festival de musique pour la paix de trois jours dans le village de Gangjeong avec 51 groupes.",
-    "q2": "Où se déroule-t-il ?",
-    "a2": "Au Parc sportif de Gangjeong, dans le village de Gangjeong, Seogwipo, Île de Jeju, Corée du Sud. Accessible en bus ou taxi depuis l'aéroport de Jeju.",
-    "q3": "L'entrée est-elle payante ?",
-    "a3": "Oui, l'entrée est payante. Les billets coûtent ₩30 000 KRW et sont vendus via le financement participatif Tumblbug (tumblbug.com/gpmc3) ; les recettes financent le festival et le travail de solidarité pour la paix.",
-    "q4": "Comment puis-je soutenir le camp ?",
-    "a4": "Acheter un billet sur Tumblbug (tumblbug.com/gpmc3) soutient directement le camp. Vous pouvez aussi aider en achetant des produits dérivés sur place.",
-    "q5": "Qui se produit ?",
-    "a5": "51 artistes indé coréens de divers genres, dont Yun Sunae, Jeong Jinseok, Choi Sangdon, Kim Dongsan & Blue Neighbors, Lim Jeongdeuk, Taehyeon, HANASH et TAGI.",
-    "q6": "Où puis-je voir le programme complet ?",
-    "a6": "Le planning complet des 3 jours est sur peaceandmusic.net/camps/2026, classé chronologiquement par heure de représentation."
   },
   "camp_data": {
     "camp-2023": {

@@ -63,7 +63,11 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
 
   return {
     props: {
-      ...(await serverSideTranslations(lang, ['translation', 'gangjeong'], nextI18NextConfig)),
+      ...(await serverSideTranslations(
+        lang,
+        ['translation', 'gangjeong', 'camp_faq_2026', 'timeline', 'gallery'],
+        nextI18NextConfig,
+      )),
       year,
       initialMusicians,
       initialLocale: lang,

@@ -1,0 +1,45 @@
+{
+  "timeline": {
+    "title": "連帶之路",
+    "subtitle": "從江汀開始的和平記錄",
+    "labels": {
+      "camp": "營地",
+      "album": "專輯",
+      "milestone": "里程碑"
+    },
+    "events": {
+      "camp_2023": {
+        "title": "第一屆江汀和平音樂營",
+        "desc": "江汀村首次舉辦的和平音樂營。",
+        "location": "江汀體育公園"
+      },
+      "album_2024": {
+        "title": "專輯發行演出",
+        "desc": "專輯《To You in a Distant Place Whose Name I Don't Know》發表演出。",
+        "location": "江汀和平中心 · Space Hangang"
+      },
+      "camp_2025": {
+        "title": "第二屆江汀和平音樂營",
+        "desc": "停戰73週年的和平訊息。",
+        "location": "江汀村一帶"
+      },
+      "camp_2026": {
+        "title": "第三屆江汀和平音樂營",
+        "desc": "預計於2026年6月5–7日舉行。",
+        "location": "江汀體育公園"
+      }
+    },
+    "month_1": "1月",
+    "month_2": "2月",
+    "month_3": "3月",
+    "month_4": "4月",
+    "month_5": "5月",
+    "month_6": "6月",
+    "month_7": "7月",
+    "month_8": "8月",
+    "month_9": "9月",
+    "month_10": "10月",
+    "month_11": "11月",
+    "month_12": "12月"
+  }
+}

@@ -19,7 +19,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
 
   return {
     props: {
-      ...(await serverSideTranslations(resolvedLocale, ['translation'], nextI18NextConfig)),
+      ...(await serverSideTranslations(resolvedLocale, ['translation', 'videos'], nextI18NextConfig)),
       initialVideos: loadLocalizedData<VideoItem>(resolvedLocale, 'videos.json'),
       initialLocale: resolvedLocale,
     },

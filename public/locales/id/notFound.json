@@ -1,0 +1,8 @@
+{
+  "notFound": {
+    "title": "Halaman tidak ditemukan",
+    "desc": "Halaman yang Anda minta tidak ada.",
+    "message": "Maaf, halaman yang Anda cari mungkin telah dihapus, berganti nama, atau sementara tidak tersedia.",
+    "homeButton": "Kembali ke beranda"
+  }
+}
