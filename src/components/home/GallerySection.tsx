@@ -87,7 +87,7 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
           <div className="text-center mb-8">
             <Link
               href="/gallery"
-              className="inline-flex items-center gap-1 text-jeju-ocean hover:text-ocean-mist font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded"
+              className="inline-flex items-center gap-1 text-deep-ocean hover:text-jeju-ocean font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded"
             >
               {t('nav.gallery')} →
             </Link>

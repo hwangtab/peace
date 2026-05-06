@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { Participant } from '@/types/camp';
-import MusicianModal from '../musicians/MusicianModal';
 import { Musician } from '@/types/musician';
+
+// 모달은 클릭 시점에만 필요 — 초기 번들에서 분리해 캠프 페이지 LCP 단축.
+const MusicianModal = dynamic(() => import('../musicians/MusicianModal'), { ssr: false });
 
 interface CampParticipantsProps {
     participants: (string | Participant)[];

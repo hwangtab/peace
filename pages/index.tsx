@@ -80,7 +80,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
   return {
     props: {
       ...(await serverSideTranslations(resolvedLocale, ['translation'], nextI18NextConfig)),
-      initialGalleryImages: allImages.slice(0, 24),
+      initialGalleryImages: allImages.slice(0, 12),
     },
     revalidate: 3600,
   };
