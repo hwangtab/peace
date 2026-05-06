@@ -48,6 +48,7 @@ const CampHero: React.FC<CampHeroProps> = ({ camp, featured, dateBadge, dateDisp
           fill
           sizes="100vw"
           className="absolute inset-0 w-full h-full object-cover"
+          quality={60}
           priority
         />
       )}
