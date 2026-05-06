@@ -39,7 +39,7 @@ const AlbumAboutPage = ({
   initialMusicianTrackIds = {},
   initialLocale = 'ko',
 }: AlbumAboutPageProps) => {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation(['album', 'translation']);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [selectedMusician, setSelectedMusician] = useState<Musician | null>(null);
@@ -147,10 +147,10 @@ const AlbumAboutPage = ({
     () => [
       {
         id: 'gangjeong',
-        name: t('album.concert_gangjeong'),
-        date: t('album.concert_gangjeong_date'),
-        time: t('album.concert_time'),
-        venue: t('album.venue_gangjeong'),
+        name: t('concert_gangjeong'),
+        date: t('concert_gangjeong_date'),
+        time: t('concert_time'),
+        venue: t('venue_gangjeong'),
         performers: [
           { name: resolveMusicianName('Project Around Surround', 1), musicianId: 1 },
           { name: resolveMusicianName(fallbackName('정진석', 'Jeong Jinseok'), 2), musicianId: 2 },
@@ -164,16 +164,16 @@ const AlbumAboutPage = ({
       },
       {
         id: 'hongdae',
-        name: t('album.concert_hongdae'),
-        date: t('album.concert_hongdae_date'),
-        time: t('album.concert_time'),
-        venue: t('album.venue_hongdae'),
+        name: t('concert_hongdae'),
+        date: t('concert_hongdae_date'),
+        time: t('concert_time'),
+        venue: t('venue_hongdae'),
         performers: [
           { name: resolveMusicianName(fallbackName('김인', 'Kim In'), 6), musicianId: 6 },
           { name: resolveMusicianName(fallbackName('모모', 'MOMO'), 10), musicianId: 10 },
           { name: resolveMusicianName(fallbackName('남수', 'Namsu'), 4), musicianId: 4 },
           { name: resolveMusicianName('Jai x HANASH', 11), musicianId: 11 },
-          { name: t('album.performer_gilganeun_band'), musicianId: null },
+          { name: t('performer_gilganeun_band'), musicianId: null },
           {
             name: resolveMusicianName(
               fallbackName('김동산과 블루이웃', 'Kim Dongsan & Blueeewoot'),
@@ -201,7 +201,7 @@ const AlbumAboutPage = ({
   const albumSchema = useMemo(
     () =>
       getMusicAlbumSchema({
-        name: t('album.album_title_full'),
+        name: t('album_title_full'),
         byArtist: { name: t('app.title') },
         genre: ['Folk', 'Rock', 'Jazz', 'Electronic', 'Ambient', 'World Music'],
         image: getFullUrl('/images-webp/album/albumart.webp'),
@@ -224,10 +224,10 @@ const AlbumAboutPage = ({
 
   return (
     <PageLayout
-      title={t('album.page_title')}
-      description={t('album.page_desc')}
+      title={t('page_title')}
+      description={t('page_desc')}
       ogImage="/images-webp/album/albumart.webp"
-      ogImageAlt={t('album.page_title')}
+      ogImageAlt={t('page_title')}
       ogType="music.album"
       background="jeju-ocean"
       structuredData={[
@@ -235,8 +235,8 @@ const AlbumAboutPage = ({
         getMusicGroupSchema(i18n.language, t),
         getBreadcrumbSchema(breadcrumbs),
         getWebPageSchema({
-          name: t('album.page_title'),
-          description: t('album.page_desc'),
+          name: t('page_title'),
+          description: t('page_desc'),
           url: getFullUrl('/album/about'),
           datePublished: '2024-10-12',
           keywords: [
@@ -296,7 +296,7 @@ const AlbumAboutPage = ({
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500" />
                 <Image
                   src="/images-webp/album/albumart.webp"
-                  alt={t('album.image_alt_cover')}
+                  alt={t('image_alt_cover')}
                   fill
                   sizes="(max-width: 1024px) 80vw, 40vw"
                   className="object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700"
@@ -313,23 +313,23 @@ const AlbumAboutPage = ({
               className="w-full lg:w-7/12 text-center lg:text-left"
             >
               <span className="inline-block px-3 py-1 bg-jeju-ocean text-white text-sm font-bold tracking-wider rounded-full mb-6">
-                {t('album.release_official')}
+                {t('release_official')}
               </span>
               <h1 className="typo-h1 text-white mb-6 leading-tight">
-                {t('album.hero_title_1')}
+                {t('hero_title_1')}
                 <br />
-                {t('album.hero_title_2')}
+                {t('hero_title_2')}
               </h1>
               <p className="typo-subtitle text-white/90 font-medium mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0 break-words">
-                {t('album.hero_subtitle')}
+                {t('hero_subtitle')}
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Button to="/album/tracks" variant="gold">
-                  {t('album.listen_tracks')}
+                  {t('listen_tracks')}
                 </Button>
                 <Button to="/album/musicians" variant="white-outline">
-                  {t('album.intro_musicians')}
+                  {t('intro_musicians')}
                 </Button>
               </div>
             </motion.div>
@@ -352,10 +352,10 @@ const AlbumAboutPage = ({
                 <span className="w-8 h-8 rounded-full bg-golden-sun flex items-center justify-center text-white text-sm">
                   01
                 </span>
-                {t('album.meaning_title')}
+                {t('meaning_title')}
               </h2>
               <p className="typo-body text-gray-700 leading-loose break-words">
-                {t('album.meaning_desc')}
+                {t('meaning_desc')}
               </p>
             </motion.div>
 
@@ -371,10 +371,10 @@ const AlbumAboutPage = ({
                 <span className="w-8 h-8 rounded-full bg-jeju-ocean flex items-center justify-center text-white text-sm">
                   02
                 </span>
-                {t('album.voices_title')}
+                {t('voices_title')}
               </h2>
               <p className="typo-body text-gray-700 leading-loose break-words">
-                {t('album.voices_desc')}
+                {t('voices_desc')}
               </p>
             </motion.div>
           </div>
@@ -387,8 +387,8 @@ const AlbumAboutPage = ({
       <Section background="ocean-sand" paddingBottom="none">
         <div className="container mx-auto px-4">
           <SectionHeader
-            title={t('album.concert_title')}
-            subtitle={t('album.concert_subtitle')}
+            title={t('concert_title')}
+            subtitle={t('concert_subtitle')}
             className="!mb-8"
           />
 
@@ -428,7 +428,7 @@ const AlbumAboutPage = ({
           selectedImage
             ? {
                 url: selectedImage.url,
-                alt: t('album.image_alt_concert', { num: selectedImage.id }),
+                alt: t('image_alt_concert', { num: selectedImage.id }),
               }
             : null
         }

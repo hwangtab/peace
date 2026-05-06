@@ -32,12 +32,24 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
   const initialVideos = loadLocalizedData<VideoItem>(lang, 'videos.json').filter(
     (v) => v.eventType === 'album' && v.eventYear === 2024,
   );
-  // pageProps 절감: musician.description (35–55KB 차지) 을 제거. AlbumAboutPage 가
-  // alwaysRefetch=true 로 마운트 후 풀 데이터를 가져와 모달에서 정상 표시.
-  const initialMusicians = loadLocalizedData<Musician>(lang, 'musicians.json').map((m) => ({
-    ...m,
-    description: '',
-  }));
+  // pageProps 절감: AlbumAboutPage 는 alwaysRefetch=true 로 마운트 직후 풀 musician
+  // 데이터를 다시 가져오므로, SSG 단계에서는 SEO 검색 봇과 첫 페인트에 필요한 최소
+  // 필드(id/name/imageUrl/trackTitle/trackId) 만 인라인. 무거운 description /
+  // shortDescription / genre / instagramUrls / youtubeUrl 등은 비워서 보낸다 (대형
+  // 로케일에서 30–55KB 절감).
+  const initialMusicians: Musician[] = loadLocalizedData<Musician>(lang, 'musicians.json').map(
+    (m) => ({
+      id: m.id,
+      name: m.name,
+      imageUrl: m.imageUrl,
+      trackTitle: m.trackTitle,
+      ...(m.trackId !== undefined ? { trackId: m.trackId } : {}),
+      shortDescription: '',
+      description: '',
+      genre: [],
+      instagramUrls: [],
+    }),
+  );
   const canonicalTracks = loadLocalizedData<Track>('ko', 'tracks.json');
   const canonicalMusicians = loadLocalizedData<Musician>('ko', 'musicians.json');
   const canonicalRelation = buildTrackMusicianRelation(canonicalTracks, canonicalMusicians);
@@ -53,7 +65,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
 
   return {
     props: {
-      ...(await serverSideTranslations(lang, ['translation'], nextI18NextConfig)),
+      ...(await serverSideTranslations(lang, ['translation', 'album'], nextI18NextConfig)),
       initialVideos,
       initialMusicians,
       initialImages,

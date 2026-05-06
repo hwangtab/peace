@@ -30,13 +30,13 @@ const AlbumTabContent: React.FC<AlbumTabContentProps> = ({
     onMusicianClick,
     onImageClick
 }) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('album');
     const [activeTab, setActiveTab] = useState<'info' | 'video' | 'photo'>('info');
 
     const tabs = [
-        { id: 'info', label: t('album.tab_info') },
-        { id: 'video', label: t('album.tab_video') },
-        { id: 'photo', label: t('album.tab_photo') },
+        { id: 'info', label: t('tab_info') },
+        { id: 'video', label: t('tab_video') },
+        { id: 'photo', label: t('tab_photo') },
     ];
 
     return (

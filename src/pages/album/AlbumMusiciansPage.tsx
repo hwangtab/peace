@@ -17,7 +17,8 @@ const AlbumMusiciansPage = ({
   initialMusicians = [],
   initialLocale = 'ko',
 }: AlbumMusiciansPageProps) => {
-  const { t, i18n } = useTranslation();
+  // album 을 default 로 두되 nav/common/app 같은 공유 키도 fallback 으로 조회.
+  const { t, i18n } = useTranslation(['album', 'translation']);
 
   const breadcrumbs = useMemo(() => [
     { name: t('nav.home'), url: getFullUrl('/') },
@@ -27,8 +28,8 @@ const AlbumMusiciansPage = ({
 
   const structuredData = useMemo(() => {
     const collectionSchema = getCollectionPageSchema({
-      name: t('album.musicians_page_title'),
-      description: t('album.musicians_page_desc'),
+      name: t('musicians_page_title'),
+      description: t('musicians_page_desc'),
       url: getFullUrl('/album/musicians'),
       hasPart: initialMusicians.map((m) => ({ "@id": getFullUrl(`/album/musicians/${m.id}`) })),
     });
@@ -36,8 +37,8 @@ const AlbumMusiciansPage = ({
       collectionSchema,
       getBreadcrumbSchema(breadcrumbs),
       getWebPageSchema({
-        name: t('album.musicians_page_title'),
-        description: t('album.musicians_page_desc'),
+        name: t('musicians_page_title'),
+        description: t('musicians_page_desc'),
         url: getFullUrl('/album/musicians'),
         datePublished: '2024-10-12',
         keywords: [
@@ -57,10 +58,10 @@ const AlbumMusiciansPage = ({
 
   return (
     <PageLayout
-      title={t('album.musicians_page_title')}
-      description={t('album.musicians_page_desc')}
+      title={t('musicians_page_title')}
+      description={t('musicians_page_desc')}
       ogImage="/images-webp/gallery/2.webp"
-      ogImageAlt={t('album.musicians_page_title')}
+      ogImageAlt={t('musicians_page_title')}
       ogType="music.playlist"
       background="sunlight-glow"
       structuredData={structuredData}
@@ -69,16 +70,16 @@ const AlbumMusiciansPage = ({
     >
       <PageHero
         title={t('nav.musician')}
-        subtitle={t('album.musicians_hero_subtitle')}
+        subtitle={t('musicians_hero_subtitle')}
         backgroundImage="/images-webp/gallery/2.webp"
       />
       <PageIntroSection
-        eyebrow={t('album.musicians_intro.eyebrow')}
-        heading={t('album.musicians_intro.heading')}
+        eyebrow={t('musicians_intro.eyebrow')}
+        heading={t('musicians_intro.heading')}
         paragraphs={[
-          t('album.musicians_intro.p1'),
-          t('album.musicians_intro.p2'),
-          t('album.musicians_intro.p3'),
+          t('musicians_intro.p1'),
+          t('musicians_intro.p2'),
+          t('musicians_intro.p3'),
         ]}
         background="white"
       />

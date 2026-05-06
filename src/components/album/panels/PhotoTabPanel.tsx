@@ -11,7 +11,7 @@ interface PhotoTabPanelProps {
 }
 
 const PhotoTabPanel: React.FC<PhotoTabPanelProps> = ({ albumPhotos, onImageClick }) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('album');
 
     return (
         <>
@@ -25,7 +25,7 @@ const PhotoTabPanel: React.FC<PhotoTabPanelProps> = ({ albumPhotos, onImageClick
                         transition={{ duration: 0.4, delay: index * 0.05 }}
                         className="aspect-square rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
                         role="button"
-                        aria-label={t('album.image_alt_concert', { num: index + 1 })}
+                        aria-label={t('image_alt_concert', { num: index + 1 })}
                         tabIndex={0}
                         onClick={() => onImageClick(photo)}
                         onKeyDown={(e: React.KeyboardEvent) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onImageClick(photo); } }}
@@ -33,7 +33,7 @@ const PhotoTabPanel: React.FC<PhotoTabPanelProps> = ({ albumPhotos, onImageClick
                         <div className="relative w-full h-full">
                             <Image
                                 src={photo.url}
-                                alt={t('album.image_alt_concert', { num: index + 1 })}
+                                alt={t('image_alt_concert', { num: index + 1 })}
                                 fill
                                 sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                                 className="object-cover"
@@ -45,7 +45,7 @@ const PhotoTabPanel: React.FC<PhotoTabPanelProps> = ({ albumPhotos, onImageClick
             </div>
             <div className="text-center mt-12">
                 <Button to="/gallery?filter=album-2024" variant="primary">
-                    {t('album.all_photos')}
+                    {t('all_photos')}
                 </Button>
             </div>
         </>
