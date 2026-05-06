@@ -17,7 +17,7 @@ interface VariantColors {
 }
 
 const StatCard: React.FC<StatCardProps & { colors: VariantColors }> = ({ valueKey, suffixKey, labelKey, delay = 0, colors }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('gangjeong');
   const raw = parseInt(t(valueKey), 10);
   const target = isNaN(raw) ? 0 : raw;
   const { ref, displayValue } = useCountUp({ target, duration: 2000, delay });
@@ -43,9 +43,9 @@ const StatCard: React.FC<StatCardProps & { colors: VariantColors }> = ({ valueKe
 };
 
 const stats = [
-  { valueKey: 'gangjeong_story.stat_years_value', suffixKey: 'gangjeong_story.stat_years_suffix', labelKey: 'gangjeong_story.stat_years_label', delay: 0 },
-  { valueKey: 'gangjeong_story.stat_days_value', suffixKey: 'gangjeong_story.stat_days_suffix', labelKey: 'gangjeong_story.stat_days_label', delay: 150 },
-  { valueKey: 'gangjeong_story.stat_teams_value', suffixKey: 'gangjeong_story.stat_teams_suffix', labelKey: 'gangjeong_story.stat_teams_label', delay: 300 },
+  { valueKey: 'stat_years_value', suffixKey: 'stat_years_suffix', labelKey: 'stat_years_label', delay: 0 },
+  { valueKey: 'stat_days_value', suffixKey: 'stat_days_suffix', labelKey: 'stat_days_label', delay: 150 },
+  { valueKey: 'stat_teams_value', suffixKey: 'stat_teams_suffix', labelKey: 'stat_teams_label', delay: 300 },
 ];
 
 interface Props {

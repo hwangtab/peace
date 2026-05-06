@@ -25,7 +25,7 @@ interface Props {
 }
 
 const HookStatement: React.FC<Props> = ({ variant = 'camp' }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('gangjeong');
   const sectionRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
 
@@ -44,7 +44,7 @@ const HookStatement: React.FC<Props> = ({ variant = 'camp' }) => {
       >
         <Image
           src="/images-webp/camps/2023/IMG_3565.webp"
-          alt={t('gangjeong_story.hook_image_alt')}
+          alt={t('hook_image_alt')}
           fill
           sizes="100vw"
           className="object-cover scale-[1.15]"
@@ -64,19 +64,19 @@ const HookStatement: React.FC<Props> = ({ variant = 'camp' }) => {
             variants={itemVariants}
             className={`font-partial font-normal text-4xl sm:text-5xl md:text-6xl ${variant === 'home' ? 'text-jeju-sky' : 'text-golden-sun'} mb-3 break-words`}
           >
-            {t('gangjeong_story.hook_headline')}
+            {t('hook_headline')}
           </motion.h2>
           <motion.p
             variants={itemVariants}
             className="font-partial font-normal text-xl sm:text-2xl md:text-3xl text-white mb-6 sm:mb-8 break-words"
           >
-            {t('gangjeong_story.hook_subline')}
+            {t('hook_subline')}
           </motion.p>
           <motion.p
             variants={itemVariants}
             className="typo-body text-gray-200 leading-relaxed text-base sm:text-lg"
           >
-            {t('gangjeong_story.hook_intro')}
+            {t('hook_intro')}
           </motion.p>
         </motion.div>
       </div>
