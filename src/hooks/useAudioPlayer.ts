@@ -1,5 +1,15 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { Howl } from 'howler';
+import type { Howl } from 'howler';
+
+// Howler.js (35KB) 는 audio 재생 시점에만 필요. dynamic import 로 tracks 페이지
+// 첫 페인트 JS 페이로드에서 빼고, 첫 click play 직전에 가져온다.
+let HowlClassPromise: Promise<typeof Howl> | null = null;
+const loadHowl = () => {
+  if (!HowlClassPromise) {
+    HowlClassPromise = import('howler').then((m) => m.Howl);
+  }
+  return HowlClassPromise;
+};
 
 interface UseAudioPlayerOptions {
   audioUrl: string;
@@ -20,6 +30,9 @@ export const useAudioPlayer = ({ audioUrl, isPlaying }: UseAudioPlayerOptions): 
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
   const [error, setError] = useState<string | null>(null);
+  // soundReady 는 Howler 비동기 로드 + sound 생성 완료를 알린다. 재생/일시정지
+  // 제어 effect 가 이 값에 의존해 sound 가 생기는 즉시 재트리거되도록 함.
+  const [soundReady, setSoundReady] = useState(0);
   const soundRef = useRef<Howl | null>(null);
   const requestRef = useRef<number | null>(null);
   const previousUrlRef = useRef<string | null>(null);
@@ -29,18 +42,21 @@ export const useAudioPlayer = ({ audioUrl, isPlaying }: UseAudioPlayerOptions): 
   // audioUrl 변경 시 기존 인스턴스 정리 후 새로 생성 (메모리 누수 방지)
   useEffect(() => {
     if (!audioUrl) return;
+    if (previousUrlRef.current === audioUrl) return;
 
-    // URL이 변경되었을 때만 새 인스턴스 생성
-    if (previousUrlRef.current !== audioUrl) {
-      // 기존 인스턴스 정리
-      if (soundRef.current) {
-        soundRef.current.unload();
-        soundRef.current = null;
-      }
-      isLoadedRef.current = false;
-      setError(null);
+    // 기존 인스턴스 정리
+    if (soundRef.current) {
+      soundRef.current.unload();
+      soundRef.current = null;
+    }
+    isLoadedRef.current = false;
+    setError(null);
+    previousUrlRef.current = audioUrl;
 
-      soundRef.current = new Howl({
+    let cancelled = false;
+    loadHowl().then((HowlClass) => {
+      if (cancelled || previousUrlRef.current !== audioUrl) return;
+      const newSound = new HowlClass({
         src: [audioUrl],
         html5: true,
         onload: () => {
@@ -67,11 +83,12 @@ export const useAudioPlayer = ({ audioUrl, isPlaying }: UseAudioPlayerOptions): 
           soundRef.current?.stop();
         },
       });
-
-      previousUrlRef.current = audioUrl;
-    }
+      soundRef.current = newSound;
+      setSoundReady((n) => n + 1);
+    });
 
     return () => {
+      cancelled = true;
       if (soundRef.current) {
         soundRef.current.unload();
         soundRef.current = null;
@@ -120,7 +137,9 @@ export const useAudioPlayer = ({ audioUrl, isPlaying }: UseAudioPlayerOptions): 
         requestRef.current = null;
       }
     };
-  }, [isPlaying, audioUrl]);
+    // soundReady 가 deps 에 들어가야 Howler 비동기 로드 후 sound 가 생기는
+    // 시점에 isPlaying=true 였던 사용자 의도가 반영됨.
+  }, [isPlaying, audioUrl, soundReady]);
 
   // NaN/Infinity 방지를 위한 안전한 progress 계산
   const getProgressPercent = useCallback((): number => {
