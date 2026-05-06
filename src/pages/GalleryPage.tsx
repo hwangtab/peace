@@ -59,7 +59,8 @@ const GalleryPage = ({ initialImages = [], totalImageCount }: GalleryPageProps) 
         'peace music images',
       ],
     })];
-  }, [schemaImages, i18n.language, t, totalImageCount, initialImages.length, breadcrumbs]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [schemaImages, i18n.language, totalImageCount, initialImages.length, breadcrumbs]);
 
   return (
     <PageLayout

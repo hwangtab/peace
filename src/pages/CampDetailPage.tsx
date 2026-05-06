@@ -57,7 +57,9 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
       { name: t('nav.home'), url: getFullUrl('/') },
       { name: `${t('nav.camp')} ${camp.year}`, url: getFullUrl(`/camps/${camp.year}`) },
     ];
-  }, [camp, t]);
+    // t 는 매 렌더 새 reference. i18n.language 만으로 충분 (홈 페이지와 동일 패턴).
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [camp, i18n.language]);
 
   const structuredData = useMemo(() => {
     if (!camp) return [];
@@ -140,7 +142,8 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
         ...(camp.year < 2026 && { keywords: getKeywordsForCamp(camp.year) }),
       }),
     ];
-  }, [camp, breadcrumbs, i18n.language, t, ordinalLabel]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [camp, breadcrumbs, i18n.language, ordinalLabel]);
 
   if (!camp) {
     return (
