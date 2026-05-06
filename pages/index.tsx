@@ -54,7 +54,8 @@ export default function HomePage({ initialGalleryImages }: HomePageProps) {
         ],
       }),
     ];
-  }, [t, i18n.language]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [i18n.language]);
 
   return (
     <div>

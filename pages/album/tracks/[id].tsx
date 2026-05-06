@@ -68,7 +68,8 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
         datePublished: '2024-10-12',
       }),
     ];
-  }, [track, musician, i18n.language, t, breadcrumbs]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [track, musician, i18n.language, breadcrumbs]);
 
   return (
     <PageLayout

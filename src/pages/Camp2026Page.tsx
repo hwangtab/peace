@@ -43,10 +43,13 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
     [musiciansResource.isLoading, musiciansResource.data],
   );
 
+  // t 는 매 렌더 새 reference 라 deps 에 두면 useMemo 가 캐싱을 못함. 로케일이
+  // 같으면 결과도 같으므로 i18n.language 만 의존시켜 51-act schema 재계산 회피.
   const breadcrumbs = useMemo(() => [
     { name: t('nav.home'), url: getFullUrl('/') },
     { name: `${t('nav.camp')} 2026`, url: getFullUrl('/camps/2026') },
-  ], [t]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  ], [i18n.language]);
 
   const structuredData = useMemo(() => {
     if (!camp2026) return [];
@@ -271,7 +274,8 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
       faqSchema,
       itemListSchema,
     ];
-  }, [camp2026, musicians, breadcrumbs, i18n.language, t, ordinalLabel]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [camp2026, musicians, breadcrumbs, i18n.language, ordinalLabel]);
 
   if (!camp2026) {
     return (

@@ -17,7 +17,7 @@ const AlbumMusiciansPage = ({
   initialMusicians = [],
   initialLocale = 'ko',
 }: AlbumMusiciansPageProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const breadcrumbs = useMemo(() => [
     { name: t('nav.home'), url: getFullUrl('/') },
@@ -52,7 +52,8 @@ const AlbumMusiciansPage = ({
         ],
       }),
     ];
-  }, [t, initialMusicians, breadcrumbs]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [i18n.language, initialMusicians, breadcrumbs]);
 
   return (
     <PageLayout
