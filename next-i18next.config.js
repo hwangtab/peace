@@ -15,7 +15,11 @@ module.exports = {
   reloadOnPrerender: false,
   fallbackLng: DEFAULT_LOCALE,
   defaultNS: 'translation',
-  ns: ['translation'],
+  // gangjeong: Home / Camp 2026 페이지에서만 GangjeongStorySection 이 사용하는 키 그룹.
+  //   다른 페이지(/album, /gallery, /press, /videos, /404 등) 의 SSG payload 에서
+  //   2.5–4KB 절감 (큰 로케일에서 더 큼). 각 페이지의 getStaticProps 가
+  //   serverSideTranslations 호출 시 필요한 namespace 만 명시.
+  ns: ['translation', 'gangjeong'],
   use: [stressPostProcessor],
   postProcess: isStressEnabled ? ['stress'] : [],
   serializeConfig: false,
