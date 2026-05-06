@@ -41,6 +41,7 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
             className="object-cover object-center"
             quality={60}
             priority
+            fetchPriority="high"
             onError={() => setImageFailed(true)}
           />
         </motion.div>
