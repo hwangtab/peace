@@ -75,7 +75,7 @@ export const getOrganizationSchema = (_lang: string = 'ko', t?: TranslationFn) =
 });
 
 // WebSite Schema - 웹사이트 정보
-export const getWebSiteSchema = (lang: string = 'ko', t?: TranslationFn) => ({
+export const getWebSiteSchema = (_lang: string = 'ko', t?: TranslationFn) => ({
   "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": "https://peaceandmusic.net/#website",
