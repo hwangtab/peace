@@ -46,7 +46,20 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
     return { notFound: true };
   }
 
-  const initialMusicians = loadLocalizedData<Musician>(lang, 'musicians.json');
+  // pageProps 절감: (1) 이 캠프 참가자로 등록된 musicianId 만 추리고
+  // (2) Camp 2026 은 모달 대신 전용 musician 페이지로 이동하므로 가장 무거운
+  // description 필드를 제거. 다른 페이지(2023/2025)는 CampParticipants→MusicianModal
+  // 에서 description 을 사용하므로 그대로 유지.
+  const allMusicians = loadLocalizedData<Musician>(lang, 'musicians.json');
+  const referencedIds = new Set<number>(
+    (camp.participants ?? [])
+      .map((p) => (typeof p === 'object' && p !== null && 'musicianId' in p ? p.musicianId : undefined))
+      .filter((id): id is number => typeof id === 'number'),
+  );
+  const isCurrentCamp = camp.year >= CURRENT_CAMP_YEAR;
+  const initialMusicians = allMusicians
+    .filter((m) => referencedIds.has(m.id))
+    .map((m) => (isCurrentCamp ? { ...m, description: '' } : m));
 
   return {
     props: {
@@ -55,6 +68,6 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
       initialMusicians,
       initialLocale: lang,
     },
-    ...(camp.year >= CURRENT_CAMP_YEAR && { revalidate: 3600 }),
+    ...(isCurrentCamp && { revalidate: 3600 }),
   };
 }

@@ -15,9 +15,11 @@ import { GalleryImage } from '@/types/gallery';
 
 interface GalleryPageProps {
   initialImages?: GalleryImage[];
+  /** SSR preview 외 전체 이미지 수 — schema numberOfItems 정확도용 */
+  totalImageCount?: number;
 }
 
-const GalleryPage = ({ initialImages = [] }: GalleryPageProps) => {
+const GalleryPage = ({ initialImages = [], totalImageCount }: GalleryPageProps) => {
   const { t, i18n } = useTranslation();
   const camp2026 = useCamp('camp-2026');
   const schemaImages = initialImages.slice(0, 20).map((img) => ({
@@ -36,7 +38,12 @@ const GalleryPage = ({ initialImages = [] }: GalleryPageProps) => {
   ], [t]);
 
   const structuredData = useMemo(() => {
-    const gallerySchema = getImageGallerySchema(schemaImages, i18n.language, t, initialImages.length);
+    const gallerySchema = getImageGallerySchema(
+      schemaImages,
+      i18n.language,
+      t,
+      totalImageCount ?? initialImages.length,
+    );
     return [gallerySchema, getBreadcrumbSchema(breadcrumbs), getWebPageSchema({
       name: t('gallery.page_title'),
       description: t('gallery.page_desc'),
@@ -52,7 +59,7 @@ const GalleryPage = ({ initialImages = [] }: GalleryPageProps) => {
         'peace music images',
       ],
     })];
-  }, [schemaImages, i18n.language, t, initialImages.length, breadcrumbs]);
+  }, [schemaImages, i18n.language, t, totalImageCount, initialImages.length, breadcrumbs]);
 
   return (
     <PageLayout
@@ -85,7 +92,6 @@ const GalleryPage = ({ initialImages = [] }: GalleryPageProps) => {
           enableSectionWrapper={false}
           hideSectionHeader={true}
           initialImages={initialImages}
-          skipClientFetch={true}
         />
       </div>
 
