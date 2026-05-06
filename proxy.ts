@@ -8,10 +8,12 @@ const detectLocale = (request: NextRequest): string =>
   resolveLocale({
     cookieLocale: request.cookies.get('NEXT_LOCALE')?.value,
     acceptLanguage: request.headers.get('accept-language'),
-    country: request.headers.get('x-vercel-ip-country') || request.geo?.country || '',
+    // Next 15 에서 request.geo 가 제거됨. Vercel 환경에선 'x-vercel-ip-country'
+    // 헤더가 동일 정보를 제공하므로 단일 소스로 단순화.
+    country: request.headers.get('x-vercel-ip-country') || '',
   });
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   try {
     const { pathname } = request.nextUrl;
 
