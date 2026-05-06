@@ -19,7 +19,7 @@ const AlbumTracksPage = ({
   initialMusicians = [],
   initialLocale = 'ko',
 }: AlbumTracksPageProps) => {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation(['album', 'translation']);
 
   // Playlist Schema - built from actual tracks data
   const playlistSchema = useMemo(
@@ -46,8 +46,8 @@ const AlbumTracksPage = ({
     playlistSchema,
     getBreadcrumbSchema(breadcrumbs),
     getWebPageSchema({
-      name: t('album.tracks_page_title'),
-      description: t('album.tracks_page_desc'),
+      name: t('tracks_page_title'),
+      description: t('tracks_page_desc'),
       url: getFullUrl('/album/tracks'),
       datePublished: '2024-10-12',
       keywords: [
@@ -65,10 +65,10 @@ const AlbumTracksPage = ({
 
   return (
     <PageLayout
-      title={t('album.tracks_page_title')}
-      description={t('album.tracks_page_desc')}
+      title={t('tracks_page_title')}
+      description={t('tracks_page_desc')}
       ogImage="/images-webp/gallery/152.webp"
-      ogImageAlt={t('album.tracks_page_title')}
+      ogImageAlt={t('tracks_page_title')}
       ogType="music.playlist"
       background="sky-horizon"
       structuredData={structuredData}
@@ -78,7 +78,7 @@ const AlbumTracksPage = ({
     >
       <PageHero
         title={t('nav.track')}
-        subtitle={t('album.tracks_hero_subtitle')}
+        subtitle={t('tracks_hero_subtitle')}
         backgroundImage="/images-webp/gallery/152.webp"
       />
       <div className="pt-16 md:pt-20 pb-12 md:pb-16">
