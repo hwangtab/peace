@@ -24,7 +24,9 @@ const PageHero: React.FC<PageHeroProps> = ({ title, subtitle, backgroundImage })
         fill
         sizes="100vw"
         className="absolute inset-0 w-full h-full object-cover"
+        quality={60}
         priority
+        fetchPriority="high"
       />
 
       {/* Dark Overlay - Same as CampHero */}

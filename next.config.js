@@ -24,6 +24,10 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // Next 16 부터 images.qualities 기본값이 [75] 라 quality prop 의 다른 값이
+    // findClosestQuality 에 의해 75 로 강제 변환됨. 우리가 사용하는 모든 quality
+    // 값을 명시적으로 등록해야 그대로 적용된다.
+    qualities: [55, 60, 65, 75],
     remotePatterns: [
       {
         protocol: 'https',
