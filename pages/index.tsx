@@ -25,7 +25,7 @@ interface HomePageProps {
 export default function HomePage({ initialGalleryImages }: HomePageProps) {
   const { t, i18n } = useTranslation();
   const structuredData = useMemo(() => {
-    const faqItems = t('faqs.items', { returnObjects: true, defaultValue: [] }) as unknown;
+    const faqItems = t('items', { ns: 'faqs', returnObjects: true, defaultValue: [] }) as unknown;
     const faqs = Array.isArray(faqItems) ? (faqItems as Array<{ q: string; a: string }>) : [];
     return [
       getWebSiteSchema(i18n.language, t),
@@ -80,7 +80,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
 
   return {
     props: {
-      ...(await serverSideTranslations(resolvedLocale, ['translation', 'gangjeong'], nextI18NextConfig)),
+      ...(await serverSideTranslations(resolvedLocale, ['translation', 'gangjeong', 'faqs'], nextI18NextConfig)),
       initialGalleryImages: allImages.slice(0, 12),
     },
     revalidate: 3600,
