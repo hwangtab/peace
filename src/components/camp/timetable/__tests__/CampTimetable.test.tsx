@@ -16,6 +16,7 @@ jest.mock('next-i18next', () => ({
   }),
 }));
 
+// eslint-disable-next-line @next/next/no-img-element -- next/image mock for jsdom; intentional plain <img>
 jest.mock('next/image', () => ({ __esModule: true, default: ({ alt }: { alt: string }) => <img alt={alt} /> }));
 
 const musicians: Musician[] = [];
