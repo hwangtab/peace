@@ -28,6 +28,9 @@ const nextConfig = {
     // findClosestQuality 에 의해 75 로 강제 변환됨. 우리가 사용하는 모든 quality
     // 값을 명시적으로 등록해야 그대로 적용된다.
     qualities: [55, 60, 65, 75],
+    // /_next/image 의 변환 결과를 한 달 캐시 (기본 4시간 → 30일). 정적 이미지가
+    // 변하지 않으므로 cold-cache miss 비율을 낮춰 LCP 이미지 fetch 지연 감소.
+    minimumCacheTTL: 60 * 60 * 24 * 30,
     remotePatterns: [
       {
         protocol: 'https',
