@@ -69,7 +69,14 @@ export default function HomePage({ initialGalleryImages }: HomePageProps) {
       <SectionWave color="sky-horizon" />
       <GangjeongStorySection variant="home" />
       <SectionWave color="golden-sun" flow="up" />
-      <GallerySection initialImages={initialGalleryImages} skipClientFetch />
+      {/* home 의 갤러리는 fold 아래에 위치. priorityFirstImages=false 로
+          첫 8개 타일의 preload 링크를 끊어 Hero H1 의 LCP element render delay
+          (이전에 ~2.5s) 를 해소. */}
+      <GallerySection
+        initialImages={initialGalleryImages}
+        skipClientFetch
+        priorityFirstImages={false}
+      />
     </div>
   );
 }
