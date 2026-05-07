@@ -412,6 +412,13 @@ export const getEventSchema = (event: {
       (event.images && event.images.length > 0 ? event.images[0] : undefined) ||
       event.image ||
       "https://peaceandmusic.net/og-image.webp";
+    // 51개 subEvent 모두에 같은 location / organizer Place·Organization 객체를
+    // 인라인하면 JSON-LD 가 ~25KB 부풀어 LCP 이미지 preload 가 head 끝쪽으로
+    // 밀려남. 부모 Event 의 location 과 OrganizationSchema 이 이미 같은 @id 로
+    // 정의되어 있으므로 subEvent 에선 @id 참조만 출력해 스캐너가 preload 를
+    // 빨리 발견하도록 한다.
+    const locationRef = { "@id": "https://peaceandmusic.net/#gangjeong-sports-park" };
+    const organizerRef = { "@id": "https://peaceandmusic.net/#organization" };
     schema.subEvent = event.subEvents.map((se, idx) => {
       const image = se.image || fallbackImage;
       const description = se.description || `${se.performerName} — ${event.name}`;
@@ -423,7 +430,7 @@ export const getEventSchema = (event: {
         "endDate": se.endDate,
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": location,
+        "location": locationRef,
         "image": image,
         ...(se.url ? { "url": se.url } : {}),
         "isAccessibleForFree": event.isAccessibleForFree ?? true,
@@ -435,12 +442,7 @@ export const getEventSchema = (event: {
           ...(se.performerSameAs && se.performerSameAs.length > 0 ? { "sameAs": se.performerSameAs } : {}),
           "image": image
         },
-        "organizer": {
-          "@type": "Organization",
-          "@id": "https://peaceandmusic.net/#organization",
-          "name": t ? getCampName(t) : '',
-          "url": "https://peaceandmusic.net"
-        },
+        "organizer": organizerRef,
         ...(event.offers ? {
           "offers": {
             "@type": "Offer",
