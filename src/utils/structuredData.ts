@@ -412,13 +412,12 @@ export const getEventSchema = (event: {
       (event.images && event.images.length > 0 ? event.images[0] : undefined) ||
       event.image ||
       "https://peaceandmusic.net/og-image.webp";
-    // 51개 subEvent 모두에 같은 location / organizer Place·Organization 객체를
-    // 인라인하면 JSON-LD 가 ~25KB 부풀어 LCP 이미지 preload 가 head 끝쪽으로
-    // 밀려남. 부모 Event 의 location 과 OrganizationSchema 이 이미 같은 @id 로
-    // 정의되어 있으므로 subEvent 에선 @id 참조만 출력해 스캐너가 preload 를
-    // 빨리 발견하도록 한다.
+    // 51개 subEvent 의 redundant 필드(eventStatus / eventAttendanceMode /
+    // isAccessibleForFree / inLanguage / organizer / offers)를 제거.
+    // 모두 부모 MusicEvent 와 동일한 값으로 schema.org 'inherits from parent'
+    // 기본 동작에 의해 SEO 봇이 파악 가능. 51× 인라인 시 ~15KB 차지하던 중복
+    // 데이터를 빼서 HTML 페이로드 축소 → LCP 이미지 fetch 시작·전송 가속.
     const locationRef = { "@id": "https://peaceandmusic.net/#gangjeong-sports-park" };
-    const organizerRef = { "@id": "https://peaceandmusic.net/#organization" };
     schema.subEvent = event.subEvents.map((se, idx) => {
       const image = se.image || fallbackImage;
       const description = se.description || `${se.performerName} — ${event.name}`;
@@ -428,13 +427,9 @@ export const getEventSchema = (event: {
         "name": se.name,
         "startDate": se.startDate,
         "endDate": se.endDate,
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": locationRef,
         "image": image,
         ...(se.url ? { "url": se.url } : {}),
-        "isAccessibleForFree": event.isAccessibleForFree ?? true,
-        "inLanguage": _lang === 'ko' ? 'ko' : _lang,
         "performer": {
           "@type": "MusicGroup",
           "name": se.performerName,
@@ -442,18 +437,6 @@ export const getEventSchema = (event: {
           ...(se.performerSameAs && se.performerSameAs.length > 0 ? { "sameAs": se.performerSameAs } : {}),
           "image": image
         },
-        "organizer": organizerRef,
-        ...(event.offers ? {
-          "offers": {
-            "@type": "Offer",
-            "url": event.offers.url,
-            "price": event.offers.price || "0",
-            "priceCurrency": event.offers.priceCurrency || "KRW",
-            "availability": event.offers.availability || "https://schema.org/InStock",
-            ...(event.offers.validFrom ? { "validFrom": event.offers.validFrom } : {}),
-            ...(event.offers.validThrough ? { "validThrough": event.offers.validThrough } : {})
-          }
-        } : {}),
         "description": description
       };
     });

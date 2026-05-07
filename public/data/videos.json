@@ -821,17 +821,6 @@
     "thumbnailUrl": "https://i.ytimg.com/vi/9KB5lzwXiA8/maxresdefault.jpg"
   },
   {
-    "id": 254,
-    "title": "손현숙 - CHOICEMUSIC M/V",
-    "description": "손현숙의 CHOICEMUSIC 뮤직비디오입니다.",
-    "youtubeUrl": "https://www.youtube.com/embed/BrXA0hvrQFg",
-    "eventType": "music_video",
-    "musicianIds": [
-      31
-    ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/BrXA0hvrQFg/maxresdefault.jpg"
-  },
-  {
     "id": 255,
     "title": "손현숙 - 청계천 8가 (2020 오월의노래 상설음악회)",
     "description": "2020 오월의노래 상설음악회에서의 손현숙 '청계천 8가' 라이브입니다.",
