@@ -538,6 +538,7 @@ export const getEventSeriesSchema = (series: {
   events: Array<{
     "@id": string;
     name: string;
+    alternateName?: string[];
     startDate: string;
     endDate?: string;
     url?: string;
@@ -568,24 +569,16 @@ export const getEventSeriesSchema = (series: {
     "@type": "MusicEvent",
     "@id": e["@id"],
     "name": e.name,
+    ...(e.alternateName && e.alternateName.length > 0 ? { "alternateName": e.alternateName } : {}),
     "startDate": e.startDate,
     "endDate": e.endDate || e.startDate,
     "eventStatus": e.eventStatus || "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
     "description": e.description || series.description,
     "image": e.image || "https://peaceandmusic.net/og-image.webp",
-    "location": {
-      "@type": "Place",
-      "@id": "https://peaceandmusic.net/#gangjeong-sports-park",
-      "name": e.locationName,
-      "address": {
-        "@type": "PostalAddress",
-        ...(e.locationAddress ? { "streetAddress": e.locationAddress } : {}),
-        "addressLocality": "Seogwipo",
-        "addressRegion": "Jeju",
-        "addressCountry": "KR"
-      }
-    },
+    // 부모 EventSeries 가 location 을 @id 로 정의하므로 여기서도 참조만
+    // (이전엔 Place 객체를 3번 인라인 — 중복 ~600바이트 절감).
+    "location": { "@id": "https://peaceandmusic.net/#gangjeong-sports-park" },
     "performer": {
       "@type": "Organization",
       "@id": "https://peaceandmusic.net/#organization",

@@ -121,7 +121,12 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
     const eventSchema = getEventSchema(
       {
         name: translatedTitle,
-        alternateName: ['GPMC3', 'Gangjeong Peace and Music Camp 3'],
+        alternateName: [
+          'GPMC3',
+          'Gangjeong Peace and Music Camp 3',
+          'Jeju Peace Music Festival 2026',
+          '제주 평화 음악 페스티벌',
+        ],
         startDate: camp2026.startDate,
         endDate: camp2026.endDate || camp2026.startDate,
         description: translatedDescription,
@@ -187,6 +192,12 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
           {
             "@id": 'https://peaceandmusic.net/camps/2023#event',
             name: t('timeline.events.camp_2023.title'),
+            alternateName: [
+              'GPMC1',
+              'Gangjeong Peace and Music Camp 1',
+              '1st Gangjeong Peace and Music Camp',
+              '제1회 강정피스앤뮤직캠프',
+            ],
             startDate: '2023-06-10',
             endDate: '2023-06-10',
             url: getFullUrl('/camps/2023'),
@@ -204,6 +215,12 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
           {
             "@id": 'https://peaceandmusic.net/camps/2025#event',
             name: t('timeline.events.camp_2025.title'),
+            alternateName: [
+              'GPMC2',
+              'Gangjeong Peace and Music Camp 2',
+              '2nd Gangjeong Peace and Music Camp',
+              '제2회 강정피스앤뮤직캠프',
+            ],
             startDate: '2025-06-14',
             endDate: '2025-06-14',
             url: getFullUrl('/camps/2025'),
@@ -221,6 +238,14 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
           {
             "@id": 'https://peaceandmusic.net/camps/2026#event',
             name: translatedTitle,
+            alternateName: [
+              'GPMC3',
+              'Gangjeong Peace and Music Camp 3',
+              '3rd Gangjeong Peace and Music Camp',
+              'Jeju Peace Music Festival 2026',
+              '제3회 강정피스앤뮤직캠프',
+              '제주 평화 음악 페스티벌',
+            ],
             startDate: camp2026.startDate,
             endDate: camp2026.endDate || camp2026.startDate,
             url: getFullUrl('/camps/2026'),
@@ -353,7 +378,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
                 >
                   <Image
                     src="/images-webp/camps/2026/2026poster1.webp"
-                    alt={translatedTitle}
+                    alt={t('camp.poster_alt_2026')}
                     width={360}
                     height={509}
                     sizes="(max-width: 768px) 100vw, 360px"
@@ -365,7 +390,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
                 <div className="w-full md:w-[360px] flex-shrink-0 rounded-xl overflow-hidden shadow-lg">
                   <Image
                     src="/images-webp/camps/2026/2026poster1.webp"
-                    alt={translatedTitle}
+                    alt={t('camp.poster_alt_2026')}
                     width={360}
                     height={509}
                     sizes="(max-width: 768px) 100vw, 360px"
@@ -376,7 +401,12 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
               )}
               {/* Info */}
               <div className="flex-1 min-w-0 bg-white rounded-lg shadow-sm p-4 sm:p-6 md:p-8">
-                <SectionHeader title={t('camp.section_overview')} align="left" className="!mb-6" />
+                <SectionHeader
+                  title={t('camp.section_overview')}
+                  subtitle={t('camp.section_overview_subtitle')}
+                  align="left"
+                  className="!mb-6"
+                />
                 <p className="typo-body mb-6 break-words">{translatedDescription}</p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div className="bg-sky-horizon/60 border border-seafoam/40 rounded-xl p-4 text-center">
