@@ -162,7 +162,8 @@
     "timeline_2026_title": "第三屆營地（51組）",
     "section_overview_subtitle": "濟州島的和平音樂節",
     "poster_alt_2026": "第三屆江汀和平音樂營 2026 官方海報 — 6月5–7日，韓國濟州江汀村，51組演出",
-    "hero_alt": "{{year}}年江汀和平音樂營演出現場"
+    "hero_alt": "{{year}}年江汀和平音樂營演出現場",
+    "cta_final_image_alt": "江汀和平音樂營夜晚 — 和平燭光與「結束戰爭」的訊息"
   },
   "camp_data": {
     "camp-2023": {
@@ -170,14 +171,36 @@
       "short_description": "The first camp singing for peace in Gangjeong Village",
       "description": "The first Peace Music Camp held in Gangjeong Village on June 10, 2023. Under the slogan \"End the war! Play, dance, and sing!\", we shared solidarity and friendship within the Gangjeong peace movement.",
       "location": "Gangjeong Sports Park (669 Ieodo-ro, Seogwipo-si, Jeju)",
-      "slogan": "End the war! Play, dance, and sing!"
+      "slogan": "End the war! Play, dance, and sing!",
+      "image_alts": {
+        "0": "第一屆江汀和平音樂營主舞台",
+        "1": "在營地周邊商品攤位挑選手工項鍊的觀眾",
+        "2": "夜晚燭光 — 「結束戰爭」的訊息",
+        "3": "江汀村舞台上的現場演出",
+        "4": "音樂人「여울과(Yeoulgwa)」現場演出",
+        "5": "音樂人「지슬(Jiseul)」舞台",
+        "6": "江汀和平文化跳蚤市場攤位",
+        "7": "聚集在江汀營地的觀眾",
+        "8": "一同合唱的觀眾們"
+      }
     },
     "camp-2025": {
       "title": "2nd Gangjeong Peace Music Camp",
       "short_description": "On the 72nd anniversary of the armistice, raise the voices for peace",
       "description": "The second Peace Music Camp held across Gangjeong Village, Jeju, on June 14, 2025. Marking the 72nd anniversary of the armistice, it delivered a message of peace against the intensifying militarization of the Korean Peninsula.",
       "location": "Gangjeong Sports Park (2661, Gangjeong-dong, Seogwipo-si, Jeju) and around Gangjeong Village",
-      "slogan": "Let's sing, let's dance, end the war!"
+      "slogan": "Let's sing, let's dance, end the war!",
+      "image_alts": {
+        "0": "第二屆江汀和平音樂營標誌性畫面",
+        "1": "江汀體育公園戶外舞台的現場演出",
+        "2": "觀眾擠滿江汀體育公園",
+        "3": "傳遞停戰72週年和平訊息的舞台",
+        "4": "第二屆營地的主舞台",
+        "5": "演出中的音樂人特寫",
+        "6": "一起合唱的觀眾",
+        "7": "江汀營地的戶外舞台與觀眾席",
+        "8": "第二屆營地的收尾合唱"
+      }
     },
     "camp-2026": {
       "title": "3rd Gangjeong Peace Music Camp",

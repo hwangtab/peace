@@ -162,7 +162,8 @@
     "timeline_2026_title": "3. Camp (51 Acts)",
     "section_overview_subtitle": "Friedensmusikfestival auf Jeju",
     "poster_alt_2026": "Offizielles Plakat des 3. Gangjeong Peace Music Camp 2026 — 5.–7. Juni, Dorf Gangjeong, Insel Jeju, 51 Acts",
-    "hero_alt": "Auftritt beim Gangjeong Peace Music Camp {{year}}"
+    "hero_alt": "Auftritt beim Gangjeong Peace Music Camp {{year}}",
+    "cta_final_image_alt": "Gangjeong Peace Music Camp bei Nacht — Friedenskerzen mit der Botschaft „Beendet den Krieg“"
   },
   "structured_data": {
     "howto_name": "So nehmen Sie am Gangjeong Friedensmusikcamp teil",
@@ -192,14 +193,36 @@
       "short_description": "The first camp singing for peace in Gangjeong Village",
       "description": "The first Peace Music Camp held in Gangjeong Village on June 10, 2023. Under the slogan \"End the war! Play, dance, and sing!\", we shared solidarity and friendship within the Gangjeong peace movement.",
       "location": "Gangjeong Sports Park (669 Ieodo-ro, Seogwipo-si, Jeju)",
-      "slogan": "End the war! Play, dance, and sing!"
+      "slogan": "End the war! Play, dance, and sing!",
+      "image_alts": {
+        "0": "Hauptbühne beim 1. Gangjeong Peace Music Camp",
+        "1": "Auswahl handgefertigter Halsketten am Camp-Stand",
+        "2": "Kerzenmahnwache nachts — Botschaft „Beendet den Krieg“",
+        "3": "Live-Auftritt auf der Bühne in Gangjeong",
+        "4": "Yeoulgwa live beim Camp",
+        "5": "Jiseul auf der Bühne",
+        "6": "Friedenskultur-Flohmarkt von Gangjeong",
+        "7": "Publikum versammelt im Gangjeong-Camp",
+        "8": "Mitsingendes Publikum"
+      }
     },
     "camp-2025": {
       "title": "2nd Gangjeong Peace Music Camp",
       "short_description": "On the 72nd anniversary of the armistice, raise the voices for peace",
       "description": "The second Peace Music Camp held across Gangjeong Village, Jeju, on June 14, 2025. Marking the 72nd anniversary of the armistice, it delivered a message of peace against the intensifying militarization of the Korean Peninsula.",
       "location": "Gangjeong Sports Park (2661, Gangjeong-dong, Seogwipo-si, Jeju) and around Gangjeong Village",
-      "slogan": "Let's sing, let's dance, end the war!"
+      "slogan": "Let's sing, let's dance, end the war!",
+      "image_alts": {
+        "0": "Schlüsselbild des 2. Gangjeong Peace Music Camp",
+        "1": "Live-Konzert auf der Freilichtbühne im Gangjeong Sports Park",
+        "2": "Publikum füllt den Gangjeong Sports Park",
+        "3": "Bühne mit Friedensbotschaft zum 72. Waffenstillstand",
+        "4": "Hauptbühne des 2. Camps",
+        "5": "Nahaufnahme musizierender Künstler",
+        "6": "Mitsingendes Publikum",
+        "7": "Freilichtbühne und Publikum beim Gangjeong-Camp",
+        "8": "Schlusschor des 2. Camps"
+      }
     },
     "camp-2026": {
       "title": "3rd Gangjeong Peace Music Camp",

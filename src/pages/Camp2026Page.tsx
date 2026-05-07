@@ -484,10 +484,16 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
       {/* Final CTA Section */}
       {camp2026.fundingUrl && (
         <>
-          <section
-            className="relative py-20 md:py-28 bg-cover bg-center bg-deep-ocean"
-            style={{ backgroundImage: "url('/images-webp/camps/2023/20230610밤 전쟁을끝내자.webp')" }}
-          >
+          <section className="relative py-20 md:py-28 overflow-hidden bg-deep-ocean">
+            <Image
+              src="/images-webp/camps/2026/cta-end-the-war-2026.webp"
+              alt={t('camp.cta_final_image_alt')}
+              fill
+              sizes="100vw"
+              quality={60}
+              loading="lazy"
+              className="absolute inset-0 object-cover"
+            />
             <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/70" aria-hidden="true" />
             <div className="container mx-auto px-4 text-center relative z-10">
               <motion.div
