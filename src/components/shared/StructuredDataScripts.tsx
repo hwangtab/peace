@@ -25,17 +25,21 @@ const StructuredDataScripts: React.FC<StructuredDataScriptsProps> = ({ data }) =
   if (list.length === 0) return null;
   return (
     <>
-      {list.map((entry, index) => (
-        // React 가 children 을 text node 로 삽입. </script> 시퀀스는 JSON 본문에
-        // 실질적으로 등장하지 않지만 안전을 위해 '<' 를 escape (브라우저 HTML
-        // 파서가 script 태그를 조기 종료하는 것을 방지).
-        <script
-          key={`structured-data-${index}`}
-          type="application/ld+json"
-        >
-          {JSON.stringify(entry).replace(/</g, '\\u003c')}
-        </script>
-      ))}
+      {list.map((entry, index) => {
+        // React 의 children-as-text 가 JSON 의 따옴표를 HTML 엔티티로 인코딩해
+        // 검색엔진 JSON-LD 파싱이 깨짐. innerHTML 로 raw JSON 을 그대로 주입.
+        // '<' 만 escape 해 브라우저 HTML 파서가 </script> 시퀀스로 조기 종료하지
+        // 않도록 함 (XSS 위험 없음 — JSON.stringify 는 데이터 직렬화).
+        const json = JSON.stringify(entry).replace(/</g, '\\u003c');
+        return (
+          <script
+            key={`structured-data-${index}`}
+            type="application/ld+json"
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{ __html: json }}
+          />
+        );
+      })}
     </>
   );
 };
