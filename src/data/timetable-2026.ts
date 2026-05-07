@@ -28,16 +28,16 @@ export const timetable2026: Timetable = {
           "start": "17:25",
           "end": "17:30",
           "type": "transition",
-          "name": "⟶ 5분 (다음: 최상돈 × 김강곤 - 솔로/듀오)",
+          "name": "⟶ 5분 (다음: 최상돈 × 김강곤 × 정환진 - 솔로/듀오)",
           "transitionMinutes": 5,
-          "nextActName": "최상돈 × 김강곤"
+          "nextActName": "최상돈 × 김강곤 × 정환진"
         },
         {
           "order": 2,
           "start": "17:30",
           "end": "17:55",
           "type": "performance",
-          "name": "최상돈 × 김강곤",
+          "name": "최상돈 × 김강곤 × 정환진",
           "scale": "solo",
           "musicianIds": [
             48
