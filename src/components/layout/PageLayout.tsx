@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import SEOHelmet, { SEOHelmetProps } from '../shared/SEOHelmet';
+import StructuredDataScripts from '../shared/StructuredDataScripts';
 import BreadcrumbNav, { BreadcrumbItem } from '../shared/BreadcrumbNav';
 
 interface PageLayoutProps extends SEOHelmetProps {
@@ -51,9 +52,14 @@ const PageLayout: React.FC<PageLayoutProps> = ({
             },
             className
         )}>
-            <SEOHelmet {...seoProps} />
+            <SEOHelmet {...seoProps} omitStructuredScripts />
             {breadcrumbs && <BreadcrumbNav items={breadcrumbs} />}
             {children}
+            {/* JSON-LD 는 LCP/main 콘텐츠 뒤로 이동 — 스트리밍 HTML 파서가
+                메인 마크업(H1, Hero) 을 먼저 도달해 paint 가능. SEO 영향 0. */}
+            {seoProps.structuredData !== undefined && (
+                <StructuredDataScripts data={seoProps.structuredData} />
+            )}
         </div>
     );
 };
