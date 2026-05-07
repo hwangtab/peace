@@ -86,6 +86,24 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
         ? (Array.isArray(structuredData) ? structuredData : [structuredData])
         : [];
 
+    // body 로 렌더할 JSON-LD 스크립트 — head 의 preload scanner 를 막지 않도록
+    // 분리. JSON.stringify 로 직렬화된 안전한 JSON 문자열만 삽입.
+    const structuredScripts = (
+        <>
+            {structuredDataArray.map((data, index) => {
+                const json = JSON.stringify(data);
+                return (
+                    <script
+                        key={`structured-data-${index}`}
+                        type="application/ld+json"
+                        // eslint-disable-next-line react/no-danger -- JSON.stringify 결과만 주입
+                        dangerouslySetInnerHTML={{ __html: json }}
+                    />
+                );
+            })}
+        </>
+    );
+
     const ogLocale = OG_LOCALE_MAP[locale] || locale.replace('-', '_');
 
     const alternateLinks = LOCALES.map((loc) => ({
@@ -94,6 +112,7 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
     }));
 
     return (
+        <>
         <Head>
             {/* 기본 메타 태그 */}
             <title>{finalTitle}</title>
@@ -160,16 +179,18 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
             <meta name="twitter:description" content={finalDescription} />
             <meta name="twitter:image" content={fullOgImage} />
             <meta name="twitter:image:alt" content={finalOgImageAlt} />
-
-            {/* Structured Data (JSON-LD) */}
-            {structuredDataArray.map((data, index) => (
-                <script
-                    key={`structured-data-${index}`}
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-                />
-            ))}
         </Head>
+        {/*
+          Structured Data (JSON-LD) 는 <Head> 밖 body 로 렌더.
+          이유: Camp 2026 의 MusicEvent schema 가 51개 subEvent 로 ~60KB 인데
+          head 에 있으면 preload scanner 가 head 끝까지 파싱해야 LCP 이미지
+          preload 를 발견 — 'resource load delay' 1.5s 의 원인. body 로 옮기면
+          scanner 가 head 만 빠르게 처리하고 즉시 image preload 를 시작.
+          SEO 영향 없음 — schema.org 권장사항 상 application/ld+json 은
+          'anywhere in HTML' 가능, Google/Bingbot 동일하게 인식.
+        */}
+        {structuredDataArray.length > 0 && structuredScripts}
+        </>
     );
 };
 
