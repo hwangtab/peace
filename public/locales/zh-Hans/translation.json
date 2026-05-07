@@ -148,7 +148,7 @@
     "brand_line": "济州 江汀和平音乐营",
     "title_2026": "第三届江汀和平音乐营",
     "seo_title_2026": "第三届江汀和平音乐营 2026 · 6月5–7日 · 济州 · 51组",
-    "seo_description_2026": "第三届江汀和平音乐营 — 2026年6月5–7日在韩国济州岛江汀村举行。51组韩国独立音乐人，三天和平音乐演出。门票30,000韩元，通过Tumblbug（tumblbug.com/gpmc3）发售。",
+    "seo_description_2026": "济州和平音乐节 — 第三届江汀和平音乐营，2026年6月5–7日在韩国济州岛江汀村举行。51组韩国独立音乐人，三天和平音乐演出。门票30,000韩元，通过Tumblbug（tumblbug.com/gpmc3）发售。",
     "slogan_2026": "唱起来，跳起来，终结战争！",
     "date_badge_2026": "2026年6月5日 — 7日",
     "participant_count": "{{count}}支团队",
@@ -159,7 +159,10 @@
     "cta_final_body": "帮助从江汀出发的和平之歌传播得更远。请在Tumblbug上支持我们。",
     "cta_final_button": "在Tumblbug上支持",
     "other_years": "其他营地",
-    "timeline_2026_title": "第三届营地（51组）"
+    "timeline_2026_title": "第三届营地（51组）",
+    "section_overview_subtitle": "济州岛的和平音乐节",
+    "poster_alt_2026": "第三届江汀和平音乐营 2026 官方海报 — 6月5–7日，韩国济州江汀村，51组演出",
+    "hero_alt": "{{year}}年江汀和平音乐营演出现场"
   },
   "camp_data": {
     "camp-2023": {

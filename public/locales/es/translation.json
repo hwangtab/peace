@@ -148,7 +148,7 @@
     "brand_line": "Campamento de Música por la Paz de Jeju Gangjeong",
     "title_2026": "3er Campamento de Música por la Paz de Gangjeong",
     "seo_title_2026": "3.º Gangjeong Peace Music Camp 2026 · 5–7 jun · Jeju · 51 grupos",
-    "seo_description_2026": "El 3.º Gangjeong Peace and Music Camp — del 5 al 7 de junio de 2026 en la aldea de Gangjeong, Jeju. 51 grupos indie coreanos en tres días de música por la paz. Entradas ₩30.000 KRW en Tumblbug (tumblbug.com/gpmc3).",
+    "seo_description_2026": "Festival de música por la paz en Jeju — El 3.º Gangjeong Peace and Music Camp, del 5 al 7 de junio de 2026 en la aldea de Gangjeong, Jeju. 51 grupos indie coreanos en tres días de música por la paz. Entradas ₩30.000 KRW en Tumblbug (tumblbug.com/gpmc3).",
     "slogan_2026": "¡Cantemos, bailemos, acabemos con la guerra!",
     "date_badge_2026": "5–7 jun 2026",
     "participant_count": "{{count}} equipos",
@@ -159,7 +159,10 @@
     "cta_final_body": "Ayuda a que la canción de paz que comenzó en Gangjeong llegue más lejos. Apóyanos en Tumblbug.",
     "cta_final_button": "Apoyar en Tumblbug",
     "other_years": "Otros Campamentos",
-    "timeline_2026_title": "3.º Camp (51 grupos)"
+    "timeline_2026_title": "3.º Camp (51 grupos)",
+    "section_overview_subtitle": "Festival de música por la paz en Jeju",
+    "poster_alt_2026": "Cartel oficial del 3.º Gangjeong Peace Music Camp 2026 — del 5 al 7 de junio, aldea de Gangjeong, Jeju, 51 grupos",
+    "hero_alt": "Concierto del Gangjeong Peace Music Camp {{year}}"
   },
   "camp_data": {
     "camp-2023": {

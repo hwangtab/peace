@@ -42,7 +42,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
             >
               <Image
                 src={img}
-                alt={`${camp.year} ${camp.title} ${t('gallery.seo_keywords')} ${index + 1}`}
+                alt={t('gallery.alt_camp', { year: camp.year, title: camp.title })}
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-110"

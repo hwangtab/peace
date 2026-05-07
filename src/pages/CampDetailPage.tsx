@@ -91,9 +91,30 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
       return [];
     };
 
+    // 다국어 검색 키워드 매칭을 위한 별칭 (GPMC 약어, 영문 정식 명칭, 자연어 변형)
+    const alternateNamesByYear: Record<number, string[]> = {
+      2023: [
+        'GPMC1',
+        'Gangjeong Peace and Music Camp 1',
+        '1st Gangjeong Peace and Music Camp',
+        '제1회 강정피스앤뮤직캠프',
+        'Jeju Peace Music Festival 2023',
+      ],
+      2025: [
+        'GPMC2',
+        'Gangjeong Peace and Music Camp 2',
+        '2nd Gangjeong Peace and Music Camp',
+        '제2회 강정피스앤뮤직캠프',
+        'Jeju Peace Music Festival 2025',
+      ],
+    };
+
     const eventSchema = getEventSchema(
       {
         name: camp.title,
+        ...(alternateNamesByYear[camp.year]
+          ? { alternateName: alternateNamesByYear[camp.year] }
+          : {}),
         startDate: camp.startDate,
         endDate: camp.endDate || camp.startDate,
         description: camp.description,

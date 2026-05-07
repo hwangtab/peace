@@ -148,7 +148,7 @@
     "brand_line": "Kemah Musik Perdamaian Gangjeong, Jeju",
     "title_2026": "Kemah Musik Perdamaian Gangjeong ke-3",
     "seo_title_2026": "Gangjeong Peace Music Camp ke-3 2026 · 5–7 Juni · Jeju · 51 grup",
-    "seo_description_2026": "Gangjeong Peace and Music Camp ke-3 — 5–7 Juni 2026 di Desa Gangjeong, Pulau Jeju. 51 grup indie Korea, tiga hari musik perdamaian. Tiket ₩30.000 KRW via Tumblbug (tumblbug.com/gpmc3).",
+    "seo_description_2026": "Festival musik perdamaian di Jeju — Gangjeong Peace and Music Camp ke-3, 5–7 Juni 2026 di Desa Gangjeong, Pulau Jeju. 51 grup indie Korea, tiga hari musik perdamaian. Tiket ₩30.000 KRW via Tumblbug (tumblbug.com/gpmc3).",
     "slogan_2026": "Mari bernyanyi, menari, dan akhiri perang!",
     "date_badge_2026": "5–7 Jun 2026",
     "participant_count": "{{count}} tim",
@@ -159,7 +159,10 @@
     "cta_final_body": "Bantu lagu perdamaian yang lahir di Gangjeong untuk menjangkau lebih jauh. Dukung kami di Tumblbug.",
     "cta_final_button": "Dukung di Tumblbug",
     "other_years": "Kamp Lainnya",
-    "timeline_2026_title": "Camp ke-3 (51 grup)"
+    "timeline_2026_title": "Camp ke-3 (51 grup)",
+    "section_overview_subtitle": "Festival musik perdamaian di Jeju",
+    "poster_alt_2026": "Poster resmi Gangjeong Peace Music Camp ke-3 2026 — 5–7 Juni, Desa Gangjeong, Pulau Jeju, 51 grup",
+    "hero_alt": "Penampilan di Gangjeong Peace Music Camp {{year}}"
   },
   "camp_data": {
     "camp-2023": {

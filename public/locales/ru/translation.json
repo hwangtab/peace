@@ -148,7 +148,7 @@
     "brand_line": "Музыкальный лагерь мира в Канджоне, Чеджу",
     "title_2026": "3-й Музыкальный лагерь мира в Канджоне",
     "seo_title_2026": "3-й Gangjeong Peace Music Camp 2026 · 5–7 июня · Чеджу · 51 коллектив",
-    "seo_description_2026": "3-й Gangjeong Peace and Music Camp — 5–7 июня 2026, деревня Канджон, остров Чеджу. 51 корейский инди-коллектив, три дня музыки мира. Билеты ₩30 000 (KRW) на Tumblbug (tumblbug.com/gpmc3).",
+    "seo_description_2026": "Фестиваль мирной музыки на Чеджу — 3-й Gangjeong Peace and Music Camp, 5–7 июня 2026, деревня Канджон, остров Чеджу. 51 корейский инди-коллектив, три дня музыки мира. Билеты ₩30 000 (KRW) на Tumblbug (tumblbug.com/gpmc3).",
     "slogan_2026": "Давайте петь, танцевать и покончим с войной!",
     "date_badge_2026": "5–7 июня 2026",
     "participant_count": "{{count}} команд",
@@ -159,7 +159,10 @@
     "cta_final_body": "Помогите песне мира из Канджона звучать дальше. Поддержите нас на Tumblbug.",
     "cta_final_button": "Поддержать на Tumblbug",
     "other_years": "Другие лагеря",
-    "timeline_2026_title": "3-й Camp (51 коллектив)"
+    "timeline_2026_title": "3-й Camp (51 коллектив)",
+    "section_overview_subtitle": "Фестиваль мирной музыки на Чеджу",
+    "poster_alt_2026": "Официальный постер 3-го Gangjeong Peace Music Camp 2026 — 5–7 июня, деревня Канджон, остров Чеджу, 51 коллектив",
+    "hero_alt": "Концерт Gangjeong Peace Music Camp {{year}}"
   },
   "camp_data": {
     "camp-2023": {

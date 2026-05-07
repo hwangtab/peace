@@ -148,7 +148,7 @@
     "brand_line": "Jeju Gangjeong Peace & Music Camp",
     "title_2026": "3. Gangjeong Peace Music Camp",
     "seo_title_2026": "3. Gangjeong Peace Music Camp 2026 · 5.–7. Juni · Jeju · 51 Acts",
-    "seo_description_2026": "Das 3. Gangjeong Peace and Music Camp — 5.–7. Juni 2026 im Dorf Gangjeong, Insel Jeju. 51 koreanische Indie-Acts, drei Tage Friedensmusik. Tickets ₩30.000 KRW bei Tumblbug (tumblbug.com/gpmc3).",
+    "seo_description_2026": "Friedensmusikfestival auf Jeju — Das 3. Gangjeong Peace and Music Camp, 5.–7. Juni 2026 im Dorf Gangjeong, Insel Jeju. 51 koreanische Indie-Acts, drei Tage Friedensmusik. Tickets ₩30.000 KRW bei Tumblbug (tumblbug.com/gpmc3).",
     "slogan_2026": "Lasst uns singen, tanzen und den Krieg beenden!",
     "date_badge_2026": "5.–7. Juni 2026",
     "participant_count": "{{count}} Teams",
@@ -159,7 +159,10 @@
     "cta_final_body": "Hilf dem Friedenslied aus Gangjeong, weiter zu klingen. Unterstütze uns auf Tumblbug.",
     "cta_final_button": "Auf Tumblbug unterstützen",
     "other_years": "Andere Camps",
-    "timeline_2026_title": "3. Camp (51 Acts)"
+    "timeline_2026_title": "3. Camp (51 Acts)",
+    "section_overview_subtitle": "Friedensmusikfestival auf Jeju",
+    "poster_alt_2026": "Offizielles Plakat des 3. Gangjeong Peace Music Camp 2026 — 5.–7. Juni, Dorf Gangjeong, Insel Jeju, 51 Acts",
+    "hero_alt": "Auftritt beim Gangjeong Peace Music Camp {{year}}"
   },
   "structured_data": {
     "howto_name": "So nehmen Sie am Gangjeong Friedensmusikcamp teil",
