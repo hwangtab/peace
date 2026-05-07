@@ -228,16 +228,16 @@ export const timetable2026: Timetable = {
           "start": "22:25",
           "end": "22:32",
           "type": "transition",
-          "name": "⟶ 7분 (다음: 태히언 - 중형밴드)",
+          "name": "⟶ 7분 (다음: 태히언과 이나 데 제주 - 중형밴드)",
           "transitionMinutes": 7,
-          "nextActName": "태히언"
+          "nextActName": "태히언과 이나 데 제주"
         },
         {
           "order": 12,
           "start": "22:32",
           "end": "22:57",
           "type": "performance",
-          "name": "태히언",
+          "name": "태히언과 이나 데 제주",
           "scale": "band",
           "musicianIds": [
             51
