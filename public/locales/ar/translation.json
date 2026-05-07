@@ -162,7 +162,8 @@
     "timeline_2026_title": "المخيم الثالث (51 فرقة)",
     "section_overview_subtitle": "مهرجان موسيقى السلام في جيجو",
     "poster_alt_2026": "الملصق الرسمي لمخيم كانغجونغ للسلام والموسيقى الثالث 2026 — 5–7 يونيو، قرية كانغجونغ، جزيرة جيجو، 51 فرقة",
-    "hero_alt": "حفل في مخيم كانغجونغ للسلام والموسيقى {{year}}"
+    "hero_alt": "حفل في مخيم كانغجونغ للسلام والموسيقى {{year}}",
+    "cta_final_image_alt": "مخيم كانغجونغ للسلام والموسيقى ليلاً — شموع السلام برسالة «أنهوا الحرب»"
   },
   "camp_data": {
     "camp-2023": {
@@ -170,14 +171,36 @@
       "short_description": "The first camp singing for peace in Gangjeong Village",
       "description": "The first Peace Music Camp held in Gangjeong Village on June 10, 2023. Under the slogan \"End the war! Play, dance, and sing!\", we shared solidarity and friendship within the Gangjeong peace movement.",
       "location": "Gangjeong Sports Park (669 Ieodo-ro, Seogwipo-si, Jeju)",
-      "slogan": "End the war! Play, dance, and sing!"
+      "slogan": "End the war! Play, dance, and sing!",
+      "image_alts": {
+        "0": "المسرح الرئيسي لمخيم كانغجونغ للسلام والموسيقى الأول",
+        "1": "اختيار قلائد مصنوعة يدويًا في كشك مشتريات المخيم",
+        "2": "وقفة بالشموع ليلاً — رسالة «أنهوا الحرب»",
+        "3": "عرض حيّ على مسرح كانغجونغ",
+        "4": "فرقة Yeoulgwa في عرض حيّ بالمخيم",
+        "5": "فرقة Jiseul على المسرح",
+        "6": "سوق ثقافة السلام في كانغجونغ",
+        "7": "الجمهور المجتمع في مخيم كانغجونغ",
+        "8": "الجمهور يردّد الأغاني معًا"
+      }
     },
     "camp-2025": {
       "title": "2nd Gangjeong Peace Music Camp",
       "short_description": "On the 72nd anniversary of the armistice, raise the voices for peace",
       "description": "The second Peace Music Camp held across Gangjeong Village, Jeju, on June 14, 2025. Marking the 72nd anniversary of the armistice, it delivered a message of peace against the intensifying militarization of the Korean Peninsula.",
       "location": "Gangjeong Sports Park (2661, Gangjeong-dong, Seogwipo-si, Jeju) and around Gangjeong Village",
-      "slogan": "Let's sing, let's dance, end the war!"
+      "slogan": "Let's sing, let's dance, end the war!",
+      "image_alts": {
+        "0": "الصورة المميّزة لمخيم كانغجونغ للسلام والموسيقى الثاني",
+        "1": "حفل في الهواء الطلق في حديقة كانغجونغ الرياضية",
+        "2": "الجمهور يملأ حديقة كانغجونغ الرياضية",
+        "3": "مسرح يحمل رسالة السلام في الذكرى الـ72 للهدنة",
+        "4": "المسرح الرئيسي للمخيم الثاني",
+        "5": "لقطة قريبة لموسيقيين أثناء العزف",
+        "6": "الجمهور يردّد الأغاني معًا",
+        "7": "المسرح المفتوح والجمهور في مخيم كانغجونغ",
+        "8": "الكورال الختامي للمخيم الثاني"
+      }
     },
     "camp-2026": {
       "title": "3rd Gangjeong Peace Music Camp",

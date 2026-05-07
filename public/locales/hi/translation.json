@@ -162,7 +162,8 @@
     "timeline_2026_title": "तीसरा शिविर (51 समूह)",
     "section_overview_subtitle": "जेजू में शांति संगीत महोत्सव",
     "poster_alt_2026": "तीसरा गांगजोंग शांति संगीत शिविर 2026 का आधिकारिक पोस्टर — 5–7 जून, गांगजोंग गाँव, जेजू द्वीप, 51 समूह",
-    "hero_alt": "{{year}} गांगजोंग शांति संगीत शिविर का प्रदर्शन"
+    "hero_alt": "{{year}} गांगजोंग शांति संगीत शिविर का प्रदर्शन",
+    "cta_final_image_alt": "गांगजोंग शांति संगीत शिविर की रात — शांति की मोमबत्तियाँ और \"युद्ध समाप्त करो\" का संदेश"
   },
   "camp_data": {
     "camp-2023": {
@@ -170,14 +171,36 @@
       "short_description": "The first camp singing for peace in Gangjeong Village",
       "description": "The first Peace Music Camp held in Gangjeong Village on June 10, 2023. Under the slogan \"End the war! Play, dance, and sing!\", we shared solidarity and friendship within the Gangjeong peace movement.",
       "location": "Gangjeong Sports Park (669 Ieodo-ro, Seogwipo-si, Jeju)",
-      "slogan": "End the war! Play, dance, and sing!"
+      "slogan": "End the war! Play, dance, and sing!",
+      "image_alts": {
+        "0": "पहले गांगजोंग शांति संगीत शिविर का मुख्य मंच",
+        "1": "शिविर के स्टॉल पर हाथ से बने हार चुनते दर्शक",
+        "2": "रात की मोमबत्ती सभा — \"युद्ध समाप्त करो\" का संदेश",
+        "3": "गांगजोंग के मंच पर लाइव प्रदर्शन",
+        "4": "Yeoulgwa का शिविर में लाइव प्रदर्शन",
+        "5": "Jiseul का मंच प्रदर्शन",
+        "6": "गांगजोंग शांति संस्कृति का बाजार",
+        "7": "गांगजोंग शिविर में जुटे दर्शक",
+        "8": "साथ गाते हुए दर्शक"
+      }
     },
     "camp-2025": {
       "title": "2nd Gangjeong Peace Music Camp",
       "short_description": "On the 72nd anniversary of the armistice, raise the voices for peace",
       "description": "The second Peace Music Camp held across Gangjeong Village, Jeju, on June 14, 2025. Marking the 72nd anniversary of the armistice, it delivered a message of peace against the intensifying militarization of the Korean Peninsula.",
       "location": "Gangjeong Sports Park (2661, Gangjeong-dong, Seogwipo-si, Jeju) and around Gangjeong Village",
-      "slogan": "Let's sing, let's dance, end the war!"
+      "slogan": "Let's sing, let's dance, end the war!",
+      "image_alts": {
+        "0": "दूसरे गांगजोंग शांति संगीत शिविर की मुख्य तस्वीर",
+        "1": "गांगजोंग खेल पार्क के खुले मंच पर लाइव प्रदर्शन",
+        "2": "गांगजोंग खेल पार्क को भरते दर्शक",
+        "3": "72वीं युद्धविराम वर्षगांठ का शांति संदेश देता मंच",
+        "4": "दूसरे शिविर का मुख्य मंच",
+        "5": "प्रदर्शन करते संगीतकारों का क्लोज़-अप",
+        "6": "साथ गाते हुए दर्शक",
+        "7": "गांगजोंग शिविर का खुला मंच और दर्शक",
+        "8": "दूसरे शिविर का समापन समवेत गायन"
+      }
     },
     "camp-2026": {
       "title": "3rd Gangjeong Peace Music Camp",
