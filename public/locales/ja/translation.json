@@ -162,7 +162,8 @@
     "timeline_2026_title": "第3回キャンプ（51組）",
     "section_overview_subtitle": "済州で開かれる平和音楽フェスティバル",
     "poster_alt_2026": "第3回カンジョン平和音楽キャンプ2026 公式ポスター — 6月5–7日、済州カンジョン村、51組出演",
-    "hero_alt": "{{year}}年 カンジョン平和音楽キャンプの公演風景"
+    "hero_alt": "{{year}}年 カンジョン平和音楽キャンプの公演風景",
+    "cta_final_image_alt": "カンジョン平和音楽キャンプの夜 — 平和の灯火と「戦争を終わらせよう」のメッセージ"
   },
   "camp_data": {
     "camp-2023": {
@@ -170,14 +171,36 @@
       "short_description": "The first camp singing for peace in Gangjeong Village",
       "description": "The first Peace Music Camp held in Gangjeong Village on June 10, 2023. Under the slogan \"End the war! Play, dance, and sing!\", we shared solidarity and friendship within the Gangjeong peace movement.",
       "location": "Gangjeong Sports Park (669 Ieodo-ro, Seogwipo-si, Jeju)",
-      "slogan": "End the war! Play, dance, and sing!"
+      "slogan": "End the war! Play, dance, and sing!",
+      "image_alts": {
+        "0": "第1回カンジョン平和音楽キャンプのメインステージ",
+        "1": "キャンプのグッズブースで手作りのネックレスを選ぶ観客",
+        "2": "夜の灯火 — 「戦争を終わらせよう」のメッセージ",
+        "3": "カンジョン村のステージでのライブ公演",
+        "4": "ミュージシャン「ヨウルグァ」のライブ公演",
+        "5": "ミュージシャン「ジスル」のステージ",
+        "6": "カンジョン平和文化フリーマーケットのブース",
+        "7": "カンジョンキャンプに集まった観客",
+        "8": "共に歌う観客たち"
+      }
     },
     "camp-2025": {
       "title": "2nd Gangjeong Peace Music Camp",
       "short_description": "On the 72nd anniversary of the armistice, raise the voices for peace",
       "description": "The second Peace Music Camp held across Gangjeong Village, Jeju, on June 14, 2025. Marking the 72nd anniversary of the armistice, it delivered a message of peace against the intensifying militarization of the Korean Peninsula.",
       "location": "Gangjeong Sports Park (2661, Gangjeong-dong, Seogwipo-si, Jeju) and around Gangjeong Village",
-      "slogan": "Let's sing, let's dance, end the war!"
+      "slogan": "Let's sing, let's dance, end the war!",
+      "image_alts": {
+        "0": "第2回カンジョン平和音楽キャンプのメインカット",
+        "1": "カンジョン体育公園の野外ステージでのライブ公演",
+        "2": "カンジョン体育公園を埋める観客",
+        "3": "停戦72周年の平和メッセージを伝えるステージ",
+        "4": "第2回キャンプのメインステージ",
+        "5": "演奏中のミュージシャンのクローズアップ",
+        "6": "一緒に歌う観客たち",
+        "7": "カンジョンキャンプの野外ステージと客席",
+        "8": "第2回キャンプのフィナーレ合唱"
+      }
     },
     "camp-2026": {
       "title": "3rd Gangjeong Peace Music Camp",

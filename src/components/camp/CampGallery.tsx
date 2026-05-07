@@ -14,12 +14,18 @@ interface CampGalleryProps {
 }
 
 const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   if (!camp.images || camp.images.length === 0) {
     return null;
   }
+
+  const fallbackAlt = t('gallery.alt_camp', { year: camp.year, title: camp.title });
+  const altForIndex = (index: number): string => {
+    const key = `camp_data.${camp.id}.image_alts.${index}`;
+    return i18n.exists(key) ? t(key) : fallbackAlt;
+  };
 
   return (
     <Section background="light-beige">
@@ -42,7 +48,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
             >
               <Image
                 src={img}
-                alt={t('gallery.alt_camp', { year: camp.year, title: camp.title })}
+                alt={altForIndex(index)}
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
