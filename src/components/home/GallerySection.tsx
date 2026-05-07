@@ -19,6 +19,13 @@ interface GallerySectionProps {
   hideSectionHeader?: boolean;
   initialImages?: GalleryImage[];
   skipClientFetch?: boolean;
+  /**
+   * 첫 N개 타일에 next/image priority 를 부여할지. true (기본)면
+   * /gallery 처럼 갤러리가 above-the-fold 인 페이지에 적합.
+   * /home 처럼 fold 아래에 있으면 false 로 — preload 가 LCP H1 렌더와
+   * 우선순위 경쟁해 element render delay (~2.5s) 를 일으킴.
+   */
+  priorityFirstImages?: boolean;
 }
 
 const EMPTY_GALLERY_IMAGES: GalleryImage[] = [];
@@ -30,6 +37,7 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
     hideSectionHeader = false,
     initialImages = EMPTY_GALLERY_IMAGES,
     skipClientFetch = false,
+    priorityFirstImages = true,
   }) => {
     const { t } = useTranslation();
     const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
@@ -75,7 +83,7 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
                 <AnimatedGalleryItem
                   key={image.id}
                   image={image}
-                  priority={index < GALLERY_CONFIG.PRIORITY_IMAGE_THRESHOLD}
+                  priority={priorityFirstImages && index < GALLERY_CONFIG.PRIORITY_IMAGE_THRESHOLD}
                   onClick={setSelectedImage}
                 />
               ))}
