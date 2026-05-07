@@ -148,7 +148,7 @@
     "brand_line": "濟州 江汀和平音樂營",
     "title_2026": "第三屆江汀和平音樂營",
     "seo_title_2026": "第三屆江汀和平音樂營 2026 · 6月5–7日 · 濟州 · 51組",
-    "seo_description_2026": "第三屆江汀和平音樂營 — 2026年6月5–7日在韓國濟州島江汀村舉行。51組韓國獨立音樂人，三天和平音樂演出。票券30,000韓元，透過Tumblbug（tumblbug.com/gpmc3）販售。",
+    "seo_description_2026": "濟州和平音樂節 — 第三屆江汀和平音樂營，2026年6月5–7日在韓國濟州島江汀村舉行。51組韓國獨立音樂人，三天和平音樂演出。票券30,000韓元，透過Tumblbug（tumblbug.com/gpmc3）販售。",
     "slogan_2026": "唱起來，跳起來，終結戰爭！",
     "date_badge_2026": "2026年6月5日 — 7日",
     "participant_count": "{{count}}組",
@@ -159,7 +159,10 @@
     "cta_final_body": "幫助從江汀出發的和平之歌傳播得更遠。請在Tumblbug上支持我們。",
     "cta_final_button": "在Tumblbug上支持",
     "other_years": "其他營地",
-    "timeline_2026_title": "第三屆營地（51組）"
+    "timeline_2026_title": "第三屆營地（51組）",
+    "section_overview_subtitle": "濟州島的和平音樂節",
+    "poster_alt_2026": "第三屆江汀和平音樂營 2026 官方海報 — 6月5–7日，韓國濟州江汀村，51組演出",
+    "hero_alt": "{{year}}年江汀和平音樂營演出現場"
   },
   "camp_data": {
     "camp-2023": {

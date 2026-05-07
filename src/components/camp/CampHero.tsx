@@ -44,7 +44,7 @@ const CampHero: React.FC<CampHeroProps> = ({ camp, featured, dateBadge, dateDisp
       {backgroundImage && (
         <Image
           src={backgroundImage}
-          alt={camp.title}
+          alt={t('camp.hero_alt', { year: camp.year, defaultValue: camp.title })}
           fill
           sizes="100vw"
           className="absolute inset-0 w-full h-full object-cover"
