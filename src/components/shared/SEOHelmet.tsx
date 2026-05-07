@@ -22,6 +22,11 @@ export interface SEOHelmetProps {
     noIndex?: boolean;
     datePublished?: string;
     dateModified?: string;
+    /**
+     * true 시 JSON-LD 스크립트는 렌더하지 않음 (PageLayout 이 본문 끝에서
+     * StructuredDataScripts 로 별도 렌더할 때 사용).
+     */
+    omitStructuredScripts?: boolean;
 }
 
 const OG_LOCALE_MAP: Record<string, string> = {
@@ -54,6 +59,7 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
     noIndex = false,
     datePublished,
     dateModified,
+    omitStructuredScripts = false,
 }) => {
     const { t, i18n } = useTranslation();
     const router = useRouter();
@@ -181,15 +187,11 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
             <meta name="twitter:image:alt" content={finalOgImageAlt} />
         </Head>
         {/*
-          Structured Data (JSON-LD) 는 <Head> 밖 body 로 렌더.
-          이유: Camp 2026 의 MusicEvent schema 가 51개 subEvent 로 ~60KB 인데
-          head 에 있으면 preload scanner 가 head 끝까지 파싱해야 LCP 이미지
-          preload 를 발견 — 'resource load delay' 1.5s 의 원인. body 로 옮기면
-          scanner 가 head 만 빠르게 처리하고 즉시 image preload 를 시작.
-          SEO 영향 없음 — schema.org 권장사항 상 application/ld+json 은
-          'anywhere in HTML' 가능, Google/Bingbot 동일하게 인식.
+          omitStructuredScripts=true 면 PageLayout 이 본문 끝에서 별도 렌더하므로
+          여기선 생략. 호환을 위해 기본값은 false (pages/index.tsx 같이 직접
+          호출하는 곳에서 기존 동작 유지).
         */}
-        {structuredDataArray.length > 0 && structuredScripts}
+        {!omitStructuredScripts && structuredDataArray.length > 0 && structuredScripts}
         </>
     );
 };

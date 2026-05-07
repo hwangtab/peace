@@ -7,6 +7,7 @@ import dynamic from 'next/dynamic';
 import HeroSection from '@/components/home/HeroSection';
 import AboutSection from '@/components/home/AboutSection';
 import SEOHelmet from '@/components/shared/SEOHelmet';
+import StructuredDataScripts from '@/components/shared/StructuredDataScripts';
 import SectionWave from '@/components/layout/SectionWave';
 
 const GangjeongStorySection = dynamic(() => import('@/components/camp/GangjeongStorySection'), {
@@ -63,6 +64,7 @@ export default function HomePage({ initialGalleryImages }: HomePageProps) {
         title={t('seo.default.title')}
         description={t('seo.default.description')}
         structuredData={structuredData}
+        omitStructuredScripts
       />
       <HeroSection imageUrl="/images-webp/camps/2023/DSC00437.webp" />
       <AboutSection />
@@ -77,6 +79,9 @@ export default function HomePage({ initialGalleryImages }: HomePageProps) {
         skipClientFetch
         priorityFirstImages={false}
       />
+      {/* JSON-LD 는 메인 콘텐츠 뒤로 — preload scanner 와 LCP H1 paint 가
+          앞단에서 빨리 처리되도록. SEO 영향 없음. */}
+      <StructuredDataScripts data={structuredData} />
     </div>
   );
 }
