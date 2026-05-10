@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { m as motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import { GalleryImage } from '@/types/gallery';
 import { VideoItem } from '@/types/video';
 import { Concert } from './ConcertCard';
 import InfoTabPanel from './panels/InfoTabPanel';
-import VideoTabPanel from './panels/VideoTabPanel';
-import PhotoTabPanel from './panels/PhotoTabPanel';
+
+// info 가 디폴트 탭 — video/photo 패널은 클릭 시점까지 코드 분할로 지연 로드.
+// SSR 비활성화: 검색엔진은 SEOHelmet 의 ItemList 스키마로 사진/비디오 메타를
+// 이미 인덱싱하므로 초기 HTML 에 panel 마크업 자체는 불필요.
+const VideoTabPanel = dynamic(() => import('./panels/VideoTabPanel'), { ssr: false });
+const PhotoTabPanel = dynamic(() => import('./panels/PhotoTabPanel'), { ssr: false });
 
 interface AlbumTabContentProps {
     concerts: Concert[];
