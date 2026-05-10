@@ -49,7 +49,7 @@ export default function MusicianDescriptionSection({
               )}
               {fundingUrl && (
                 <Button href={fundingUrl} variant="primary" size="sm" shape="rounded" external utmContent={`musician-${musician.id}`}>
-                  {t(`camp.ticketing_${latestCamp?.year ?? camps[camps.length - 1]?.year}`)} &rarr;
+                  {t(`camp.ticketing_${latestCamp?.year ?? camps[camps.length - 1]?.year}`, { defaultValue: t('camp.cta_final_button') })} &rarr;
                 </Button>
               )}
             </div>
@@ -88,7 +88,7 @@ export default function MusicianDescriptionSection({
                   </div>
                 </div>
                 <Button href={fundingUrl} variant="gold" size="sm" shape="rounded" external utmContent={`musician-camp-info-${musician.id}`} className="self-center">
-                  {t(`camp.ticketing_${latestCamp?.year}`)} &rarr;
+                  {t(`camp.ticketing_${latestCamp?.year}`, { defaultValue: t('camp.cta_final_button') })} &rarr;
                 </Button>
               </div>
             </div>
