@@ -93,6 +93,7 @@ const GalleryPage = ({ initialImages = [], totalImageCount }: GalleryPageProps) 
           enableSectionWrapper={false}
           hideSectionHeader={true}
           initialImages={initialImages}
+          priorityFirstImages={false}
         />
       </div>
 

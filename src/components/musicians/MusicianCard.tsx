@@ -9,11 +9,11 @@ import YouTubeIcon from '../icons/YouTubeIcon';
 
 interface MusicianCardProps {
   musician: Musician;
-  index: number;
+  index?: number;
   href?: string;
 }
 
-const MusicianCard = memo(({ musician, index, href }: MusicianCardProps) => {
+const MusicianCard = memo(({ musician, href }: MusicianCardProps) => {
   const detailHref = href || `/album/musicians/${musician.id}`;
   return (
     <>
@@ -36,7 +36,6 @@ const MusicianCard = memo(({ musician, index, href }: MusicianCardProps) => {
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover object-center transition-transform duration-500 group-hover:scale-110"
-                  priority={index < 4}
                 />
               ) : (
                 <div className="absolute w-full h-full flex items-center justify-center text-coastal-gray">
