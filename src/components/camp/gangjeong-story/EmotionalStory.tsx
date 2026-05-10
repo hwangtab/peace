@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { m as motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
+import { useIsMobile } from '@/hooks/useIsMobile';
 
 interface StoryBlockProps {
   imageSrc: string;
@@ -16,6 +17,9 @@ const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey, alig
   const { t } = useTranslation('gangjeong');
   const blockRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
+  // 모바일에서는 parallax 비활성 — 3개 StoryBlock 이 동시에 rAF subscribe 하던 부담 제거.
+  const isMobile = useIsMobile();
+  const parallaxDisabled = prefersReducedMotion || isMobile;
 
   const { scrollYProgress } = useScroll({
     target: blockRef,
@@ -28,7 +32,7 @@ const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey, alig
     <div ref={blockRef} className="relative min-h-[60vh] md:min-h-[70vh] flex items-end overflow-hidden">
       <motion.div
         className="absolute inset-0 w-full h-full scale-[1.15]"
-        style={prefersReducedMotion ? undefined : { y: bgY }}
+        style={parallaxDisabled ? undefined : { y: bgY }}
       >
         <Image
           src={imageSrc}
