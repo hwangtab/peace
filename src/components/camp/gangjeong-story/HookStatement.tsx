@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { m as motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
+import { useIsMobile } from '@/hooks/useIsMobile';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -28,6 +29,9 @@ const HookStatement: React.FC<Props> = ({ variant = 'camp' }) => {
   const { t } = useTranslation('gangjeong');
   const sectionRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
+  // 모바일에서는 parallax 비활성 — rAF subscribe 가 main thread 차지해 INP 악화.
+  const isMobile = useIsMobile();
+  const parallaxDisabled = prefersReducedMotion || isMobile;
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -40,7 +44,7 @@ const HookStatement: React.FC<Props> = ({ variant = 'camp' }) => {
     <div ref={sectionRef} className="relative min-h-[50vh] md:min-h-[70vh] flex items-center justify-center overflow-hidden">
       <motion.div
         className="absolute inset-0 w-full h-full"
-        style={prefersReducedMotion ? undefined : { y: bgY }}
+        style={parallaxDisabled ? undefined : { y: bgY }}
       >
         <Image
           src="/images-webp/camps/2023/IMG_3565.webp"
