@@ -106,7 +106,10 @@ const Button = ({
     }
 
     if (resolvedHref) {
-        if (external || utmContent) {
+        // utmContent 만으로 _blank 를 자동 적용하지 않는다 — 호출자가 외부 링크
+        // 의도를 `external` 로 명시해야 새 탭 + nofollow 가 적용됨. 내부 경로에
+        // utmContent 가 붙는 경우 (UTM 추적용) Link 처럼 같은 탭에서 열리도록.
+        if (external) {
             return (
                 <div className={wrapperClasses}>
                     <a
