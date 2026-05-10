@@ -301,7 +301,7 @@ const AlbumAboutPage = ({
                   sizes="(max-width: 1024px) 80vw, 40vw"
                   className="object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700"
                   priority
-                  quality={90}
+                  quality={65}
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-50 pointer-events-none" />
               </div>

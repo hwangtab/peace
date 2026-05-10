@@ -29,7 +29,6 @@ export default function MusicianHeroSection({ musician, fundingUrl, isCampPage }
             fill
             sizes="100vw"
             className="object-cover object-center opacity-20 blur-sm scale-105"
-            priority
             aria-hidden="true"
           />
         </div>
