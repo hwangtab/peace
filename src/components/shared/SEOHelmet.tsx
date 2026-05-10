@@ -97,7 +97,10 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
     const structuredScripts = (
         <>
             {structuredDataArray.map((data, index) => {
-                const json = JSON.stringify(data);
+                // `<` 를 `<` 로 escape — JSON 문자열 안에 우연히 `</script>`
+                // 가 포함되어 있어도 HTML 파서가 스크립트를 조기 종료하지 않게 한다.
+                // (StructuredDataScripts 와 동일 처리)
+                const json = JSON.stringify(data).replace(/</g, '\\u003c');
                 return (
                     <script
                         key={`structured-data-${index}`}
