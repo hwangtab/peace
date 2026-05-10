@@ -13,7 +13,11 @@ module.exports = {
   },
   localePath: path.resolve('./public/locales'),
   reloadOnPrerender: false,
-  fallbackLng: DEFAULT_LOCALE,
+  // fallbackLng 비활성화 — 13 로케일 키 parity 100% 확보 후 적용 (audit 2026-05-10).
+  // 비-KO 페이지의 _nextI18Next.initialI18nStore 에 ko 번들 동봉 제거 → SSG payload
+  // -30~50KB/페이지, 13 로케일 × 13 라우트 누적 빌드 캐시 -10~30%.
+  // 신규 키 추가 시 13 로케일 모두 반드시 채워야 raw key 노출 회귀 방지.
+  fallbackLng: /** @type {false} */ (false),
   defaultNS: 'translation',
   // 페이지 단위 SSG payload 절감을 위한 namespace 분리. 각 namespace 는 그것을
   // 사용하는 페이지의 getStaticProps 에서만 serverSideTranslations 에 명시.
