@@ -61,13 +61,14 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
     .filter((m) => referencedIds.has(m.id))
     .map((m) => (isCurrentCamp ? { ...m, description: '' } : m));
 
+  // camp_faq_2026 namespace 는 Camp 2026 페이지에서만 사용 — 2023/2025 페이지의
+  // SSG payload 에서 제외해 13 로케일 × 1~2KB 누적 절감.
+  const namespaces = ['translation', 'gangjeong', 'timeline', 'gallery'];
+  if (year === '2026') namespaces.push('camp_faq_2026');
+
   return {
     props: {
-      ...(await serverSideTranslations(
-        lang,
-        ['translation', 'gangjeong', 'camp_faq_2026', 'timeline', 'gallery'],
-        nextI18NextConfig,
-      )),
+      ...(await serverSideTranslations(lang, namespaces, nextI18NextConfig)),
       year,
       initialMusicians,
       initialLocale: lang,
