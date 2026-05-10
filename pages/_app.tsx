@@ -55,12 +55,16 @@ function App({ Component, pageProps }: AppProps) {
     });
   }, []);
 
-  // GA4 클라이언트 사이드 네비게이션 추적
+  // GA4 클라이언트 사이드 네비게이션 추적 — 'page_view' event 직접 발화.
+  // inline config 가 첫 페이지 view 를 보내고 (send_page_view=true 기본),
+  // 이후 SPA 라우트 변경마다 여기서 page_view 만 보낸다 (gtag('config') 재호출
+  // 방식은 매 호출마다 page_view 가 fire 되어 실수 시 중복 위험이 있어 회피).
   useEffect(() => {
     const handleRouteChange = (url: string) => {
       if (window.gtag) {
-        window.gtag('config', GA_MEASUREMENT_ID, {
+        window.gtag('event', 'page_view', {
           page_path: url,
+          page_location: window.location.href,
         });
       }
     };

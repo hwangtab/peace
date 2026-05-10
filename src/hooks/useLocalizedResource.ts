@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface UseLocalizedResourceOptions<T> {
   initialData: T[];
@@ -32,16 +32,20 @@ export const useLocalizedResource = <T>({
   const [error, setError] = useState<Error | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(enabled && initialData.length === 0);
 
+  // mount 시점 스냅샷 — 호출자가 매 렌더 새 [] 참조를 넘기더라도 effect 재실행 안 함
+  const initialDataRef = useRef(initialData);
+  const initialLocaleRef = useRef(initialLocale);
+
   useEffect(() => {
     if (!enabled) {
-      setData(initialData);
+      setData(initialDataRef.current);
       setError(null);
       setIsLoading(false);
       return;
     }
 
-    if (currentLocale === initialLocale && !alwaysRefetch) {
-      setData(initialData);
+    if (currentLocale === initialLocaleRef.current && !alwaysRefetch) {
+      setData(initialDataRef.current);
       setError(null);
       setIsLoading(false);
       return;
@@ -74,7 +78,7 @@ export const useLocalizedResource = <T>({
     return () => {
       isCancelled = true;
     };
-  }, [currentLocale, enabled, fetchResource, initialData, initialLocale, alwaysRefetch]);
+  }, [currentLocale, enabled, fetchResource, alwaysRefetch]);
 
   return { data, isLoading, error };
 };

@@ -59,10 +59,13 @@ export const useAudioPlayer = ({ audioUrl, isPlaying }: UseAudioPlayerOptions): 
       const newSound = new HowlClass({
         src: [audioUrl],
         html5: true,
+        // 콜백 내부에서 soundRef.current 가 아닌 newSound 직접 참조 — 빠른 트랙
+        // 전환 시 cleanup 이 ref 를 비웠거나 다른 instance 로 교체된 상황에서
+        // 이전 트랙의 onload 가 새 트랙의 duration 을 덮어쓰는 회귀 방지.
         onload: () => {
+          if (cancelled || previousUrlRef.current !== audioUrl) return;
           isLoadedRef.current = true;
-          const dur = soundRef.current?.duration() ?? 0;
-          setDuration(dur);
+          setDuration(newSound.duration() ?? 0);
         },
         onend: () => {
           setProgress(0);
@@ -72,15 +75,17 @@ export const useAudioPlayer = ({ audioUrl, isPlaying }: UseAudioPlayerOptions): 
           }
         },
         onloaderror: (_id: number, msg: unknown) => {
+          if (cancelled || previousUrlRef.current !== audioUrl) return;
           console.warn('Audio load error:', msg);
           isLoadedRef.current = false;
           setError(String(msg || 'Failed to load audio'));
-          soundRef.current?.stop();
+          newSound.stop();
         },
         onplayerror: (_id: number, msg: unknown) => {
+          if (cancelled || previousUrlRef.current !== audioUrl) return;
           console.warn('Audio play error:', msg);
           setError(String(msg || 'Failed to play audio'));
-          soundRef.current?.stop();
+          newSound.stop();
         },
       });
       soundRef.current = newSound;
