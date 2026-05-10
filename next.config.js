@@ -72,6 +72,22 @@ const nextConfig = {
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
+      {
+        // /data/*.json (gallery, musicians, tracks, videos, press) — 콘텐츠
+        // 변경 시 빌드 ID 갱신으로 자연 무효화. SPA 페이지 이동 시 재페치 제거.
+        source: '/data/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=300, s-maxage=86400, stale-while-revalidate=31536000' },
+        ],
+      },
+      {
+        // /locales/*/*.json — i18next 가 클라이언트 런타임에 fetch.
+        // 동일 메커니즘으로 SPA 이동 시 재페치 제거.
+        source: '/locales/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=300, s-maxage=86400, stale-while-revalidate=31536000' },
+        ],
+      },
     ];
   },
   async redirects() {
