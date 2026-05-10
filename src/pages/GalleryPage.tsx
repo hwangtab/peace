@@ -22,20 +22,29 @@ interface GalleryPageProps {
 const GalleryPage = ({ initialImages = [], totalImageCount }: GalleryPageProps) => {
   const { t, i18n } = useTranslation();
   const camp2026 = useCamp('camp-2026');
-  const schemaImages = initialImages.slice(0, 20).map((img) => ({
-    url: getFullUrl(img.url),
-    caption: img.description || t('gallery.hero_subtitle'),
-  }));
-  if (schemaImages.length === 0) {
-    schemaImages.push(
-      { url: getFullUrl('/images-webp/camps/2023/DSC00528.webp'), caption: t('gallery.hero_subtitle') },
-      { url: getFullUrl('/images-webp/camps/2023/DSC00437.webp'), caption: t('gallery.page_desc') }
-    );
-  }
+
+  // schemaImages 를 useMemo 로 안정화 — 매 렌더 새 배열 참조 → structuredData
+  // useMemo 가 매 렌더 재실행되어 7개 스키마 직렬화하던 회귀 차단.
+  const schemaImages = useMemo(() => {
+    const items = initialImages.slice(0, 20).map((img) => ({
+      url: getFullUrl(img.url),
+      caption: img.description || t('gallery.hero_subtitle'),
+    }));
+    if (items.length === 0) {
+      items.push(
+        { url: getFullUrl('/images-webp/camps/2023/DSC00528.webp'), caption: t('gallery.hero_subtitle') },
+        { url: getFullUrl('/images-webp/camps/2023/DSC00437.webp'), caption: t('gallery.page_desc') },
+      );
+    }
+    return items;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialImages, i18n.language]);
+
   const breadcrumbs = useMemo(() => [
     { name: t('nav.home'), url: getFullUrl('/') },
     { name: t('gallery.page_title'), url: getFullUrl('/gallery') },
-  ], [t]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  ], [i18n.language]);
 
   const structuredData = useMemo(() => {
     const gallerySchema = getImageGallerySchema(
