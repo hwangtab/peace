@@ -37,14 +37,12 @@ const GalleryPage = ({ initialImages = [], totalImageCount }: GalleryPageProps) 
       );
     }
     return items;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [initialImages, i18n.language]);
+  }, [initialImages, t]);
 
   const breadcrumbs = useMemo(() => [
     { name: t('nav.home'), url: getFullUrl('/') },
     { name: t('gallery.page_title'), url: getFullUrl('/gallery') },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  ], [i18n.language]);
+  ], [t]);
 
   const structuredData = useMemo(() => {
     const gallerySchema = getImageGallerySchema(
@@ -68,8 +66,7 @@ const GalleryPage = ({ initialImages = [], totalImageCount }: GalleryPageProps) 
         'peace music images',
       ],
     })];
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [schemaImages, i18n.language, totalImageCount, initialImages.length, breadcrumbs]);
+  }, [schemaImages, i18n.language, totalImageCount, initialImages.length, breadcrumbs, t]);
 
   return (
     <PageLayout
