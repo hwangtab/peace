@@ -98,7 +98,8 @@ const Footer = () => {
                                     key={link.name}
                                     href={link.href}
                                     target={link.external ? '_blank' : undefined}
-                                    rel={link.external ? 'noopener noreferrer nofollow' : undefined}
+                                    // SNS 공식 계정 링크에는 nofollow 제외 — 링크 유전력 전달 필요
+                                    rel={link.external && !link.noFollow ? 'noopener noreferrer' : undefined}
                                     aria-label={t(link.nameKey)}
                                     className="group flex items-center justify-center w-12 h-12 rounded-full
                              bg-cloud-white/10 hover:bg-jeju-ocean
@@ -136,6 +137,7 @@ const SOCIAL_LINKS = [
         icon: InstagramIcon,
         nameKey: 'footer.sns_aria',
         external: true,
+        noFollow: false,
     },
     {
         name: 'Email',
@@ -143,6 +145,7 @@ const SOCIAL_LINKS = [
         icon: HiOutlineMail,
         nameKey: 'footer.email_aria',
         external: false,
+        noFollow: false,
     },
 ] as const;
 

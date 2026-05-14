@@ -49,12 +49,10 @@ const Camp2026Page: React.FC<CampPageProps> = ({
   const breadcrumbs = useMemo(() => [
     { name: t('nav.home'), url: getFullUrl('/') },
     { name: `${t('nav.camp')} 2026`, url: getFullUrl('/camps/2026') },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  ], [i18n.language]);
+  ], [t]);
 
   // structured data 는 buildCamp2026Schemas 로 추출해 한 번에 계산.
-  // i18n.language 만 deps 로 두고 t 새 reference 변경엔 무시 (51-act schema
-  // 재계산 비용 회피). camp2026/musicians 도 deps 에 포함해 데이터 변경 시 갱신.
+  // t 는 i18next 가 안정화하므로 deps 에 포함해도 language 변경 시에만 re-run.
   const structuredData = useMemo(() => {
     if (!camp2026) return [];
     return buildCamp2026Schemas({
@@ -65,8 +63,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({
       musicians,
       ordinalLabel,
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [camp2026, musicians, i18n.language, ordinalLabel]);
+  }, [camp2026, musicians, i18n.language, ordinalLabel, t]);
 
   if (!camp2026) {
     return (

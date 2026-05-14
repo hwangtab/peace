@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { AnimatePresence, m as motion } from 'framer-motion';
+import { AnimatePresence, m as motion, useIsPresent } from 'framer-motion';
 import { IoChevronDown } from '@/components/icons/SiteIcons';
 import { useTranslation } from 'next-i18next';
 import { isRouteActive } from '@/utils/routeMatch';
@@ -107,35 +107,58 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(
 
         <AnimatePresence>
           {open && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-              className="absolute top-full left-0 mt-2 min-w-[12rem] max-w-[18rem] w-max bg-white/95 backdrop-blur-md shadow-lg rounded-lg overflow-hidden py-2 border border-ocean-mist/20 z-50 text-left"
-            >
-              {items.map((item) => (
-                <Link
-                  key={item.path}
-                  href={item.path}
-                  className={`block px-4 py-2 whitespace-normal break-words ${
-                    isRouteActive(currentPath, item.path, { locale: router.locale })
-                      ? 'bg-ocean-sand text-jeju-ocean font-bold'
-                      : 'text-deep-ocean hover:bg-ocean-sand/50'
-                  } transition-colors duration-200 font-serif font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-jeju-ocean`}
-                  aria-current={isRouteActive(currentPath, item.path, { locale: router.locale }) ? 'page' : undefined}
-                  onClick={() => setOpen(false)}
-                >
-                  {t(item.nameKey)}
-                </Link>
-              ))}
-            </motion.div>
+            <DropdownMenu
+              items={items}
+              currentPath={currentPath}
+              router={router}
+              onDismiss={() => setOpen(false)}
+              t={t}
+            />
           )}
         </AnimatePresence>
       </div>
     );
   }
 );
+
+// inner menu — useIsPresent 호출을 최상위로 분리 (rules of hooks 준수)
+const DropdownMenu: React.FC<{
+  items: DropdownItem[];
+  currentPath: string;
+  router: ReturnType<typeof useRouter>;
+  onDismiss: () => void;
+  t: (key: string) => string;
+}> = ({ items, currentPath, router, onDismiss, t }) => {
+  const isPresent = useIsPresent();
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.2 }}
+      // exit 애니메이션 중(isPresent=false)에는 aria-hidden='true' —
+      // screen reader 가 사라지는 dropdown 을 읽지 않도록.
+      aria-hidden={isPresent ? 'false' : 'true'}
+      className="absolute top-full left-0 mt-2 min-w-[12rem] max-w-[18rem] w-max bg-white/95 backdrop-blur-md shadow-lg rounded-lg overflow-hidden py-2 border border-ocean-mist/20 z-50 text-left"
+    >
+      {items.map((item) => (
+        <Link
+          key={item.path}
+          href={item.path}
+          className={`block px-4 py-2 whitespace-normal break-words ${
+            isRouteActive(currentPath, item.path, { locale: router.locale })
+              ? 'bg-ocean-sand text-jeju-ocean font-bold'
+              : 'text-deep-ocean hover:bg-ocean-sand/50'
+          } transition-colors duration-200 font-serif font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-jeju-ocean`}
+          aria-current={isRouteActive(currentPath, item.path, { locale: router.locale }) ? 'page' : undefined}
+          onClick={onDismiss}
+        >
+          {t(item.nameKey)}
+        </Link>
+      ))}
+    </motion.div>
+  );
+};
 
 NavigationDropdown.displayName = 'NavigationDropdown';
 export default NavigationDropdown;

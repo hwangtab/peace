@@ -94,13 +94,16 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
 
     // body 로 렌더할 JSON-LD 스크립트 — head 의 preload scanner 를 막지 않도록
     // 분리. JSON.stringify 로 직렬화된 안전한 JSON 문자열만 삽입.
+    // `</script>` 시퀀스를 `<\\/script>`로 escape 해 브라우저 HTML 파서가
+    // 스크립트 태그를 조기 종료하지 않도록 한다 (XSS 위험 없음 —
+    // JSON.stringify 는 데이터 직렬화).
+    const escapeJsonForScript = (json: string): string =>
+        json.replace(/<\/script>/g, '<\\/script>');
+
     const structuredScripts = (
         <>
             {structuredDataArray.map((data, index) => {
-                // `<` 를 `<` 로 escape — JSON 문자열 안에 우연히 `</script>`
-                // 가 포함되어 있어도 HTML 파서가 스크립트를 조기 종료하지 않게 한다.
-                // (StructuredDataScripts 와 동일 처리)
-                const json = JSON.stringify(data).replace(/</g, '\\u003c');
+                const json = escapeJsonForScript(JSON.stringify(data));
                 return (
                     <script
                         key={`structured-data-${index}`}
