@@ -20,17 +20,20 @@ interface StructuredDataScriptsProps {
  * SEO: schema.org 권장사항 상 'anywhere in HTML' 가능. Google/Bingbot
  * 모두 body 의 application/ld+json 동일하게 인식·인덱싱.
  */
+
+// `</script>` 시퀀스를 `<\\/script>`로 escape 해 브라우저 HTML 파서가
+// 스크립트 태그를 조기 종료하지 않도록 한다 (XSS 위험 없음 —
+// JSON.stringify 는 데이터 직렬화).
+const escapeJsonForScript = (json: string): string =>
+  json.replace(/<\/script>/g, '<\\/script>');
+
 const StructuredDataScripts: React.FC<StructuredDataScriptsProps> = ({ data }) => {
   const list = Array.isArray(data) ? data : [data];
   if (list.length === 0) return null;
   return (
     <>
       {list.map((entry, index) => {
-        // React 의 children-as-text 가 JSON 의 따옴표를 HTML 엔티티로 인코딩해
-        // 검색엔진 JSON-LD 파싱이 깨짐. innerHTML 로 raw JSON 을 그대로 주입.
-        // '<' 만 escape 해 브라우저 HTML 파서가 </script> 시퀀스로 조기 종료하지
-        // 않도록 함 (XSS 위험 없음 — JSON.stringify 는 데이터 직렬화).
-        const json = JSON.stringify(entry).replace(/</g, '\\u003c');
+        const json = escapeJsonForScript(JSON.stringify(entry));
         return (
           <script
             key={`structured-data-${index}`}
