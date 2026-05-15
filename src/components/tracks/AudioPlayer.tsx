@@ -85,7 +85,6 @@ const AudioPlayer = React.memo(({ audioUrl, isPlaying, onPlayPause, title, artis
         <motion.div
           className="h-full bg-coastal-gray rounded"
           style={{ width: `${getProgressPercent()}%` }}
-          layout
         />
       </div>
     </div>
