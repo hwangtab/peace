@@ -40,7 +40,8 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
             router.events.off('routeChangeComplete', handleComplete);
             router.events.off('routeChangeError', handleError);
         };
-    }, [router.events, router.asPath]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [router.events]);
 
     return (
         <NavigationContext.Provider value={{ previousPath, isNavigating }}>
