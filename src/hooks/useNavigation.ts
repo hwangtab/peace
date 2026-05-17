@@ -14,9 +14,9 @@ export const useNavigation = () => {
   const router = useRouter();
   const currentPath = router.asPath;
 
-  // Scroll detection with requestAnimationFrame throttling
-  // 단일 임계치 40px — 2개 임계치(40/50px)가 10px 간격이라 미세 스크롤 시
-  // 네비 상태가 깜빡임. 모바일 약 120px (100vh 의 5~10%).
+  // Scroll detection with requestAnimationFrame throttling.
+  // Hysteresis: activate at >50px, deactivate at <30px — prevents flicker
+  // near the threshold (esp. on mobile elastic/momentum scroll).
   useEffect(() => {
     let ticking = false;
     let rafHandle: number | undefined;
@@ -24,7 +24,7 @@ export const useNavigation = () => {
     const handleScroll = () => {
       if (!ticking) {
         rafHandle = requestAnimationFrame(() => {
-          setIsScrolled((prev) => (prev ? window.scrollY <= 40 : window.scrollY > 40));
+          setIsScrolled((prev) => (prev ? window.scrollY > 30 : window.scrollY > 50));
           ticking = false;
         });
         ticking = true;
