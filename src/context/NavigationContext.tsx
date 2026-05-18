@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useRef } from 'react';
+import React, { createContext, useState, useEffect, useRef, useMemo } from 'react';
 import { useRouter } from 'next/router';
 
 interface NavigationContextType {
@@ -13,11 +13,18 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     const [previousPath, setPreviousPath] = useState<string | null>(null);
     const [isNavigating, setIsNavigating] = useState(false);
     const previousPathRef = useRef<string | null>(null);
+    const asPathRef = useRef(router.asPath);
+
+    // router.asPath 를 ref 에 동기화 — listener effect 는 [router.events] 만 의존하므로
+    // 클로저가 stale 해지는 것을 방지.
+    useEffect(() => {
+        asPathRef.current = router.asPath;
+    }, [router.asPath]);
 
     useEffect(() => {
         const handleStart = (url: string) => {
-            if (url !== router.asPath) {
-                previousPathRef.current = router.asPath;
+            if (url !== asPathRef.current) {
+                previousPathRef.current = asPathRef.current;
                 setIsNavigating(true);
             }
         };
@@ -43,8 +50,10 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [router.events]);
 
+    const value = useMemo(() => ({ previousPath, isNavigating }), [previousPath, isNavigating]);
+
     return (
-        <NavigationContext.Provider value={{ previousPath, isNavigating }}>
+        <NavigationContext.Provider value={value}>
             {children}
         </NavigationContext.Provider>
     );

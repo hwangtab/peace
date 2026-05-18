@@ -127,14 +127,9 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
 
               {/* Audio player */}
               <div className="mt-6">
+                {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
                 <audio controls className="w-full" preload="none">
                   <source src={track.audioUrl} type="audio/mpeg" />
-                  <track
-                    kind="captions"
-                    src={`${track.audioUrl}.vtt`}
-                    srcLang={i18n.language}
-                    label={t('common.lyrics')}
-                  />
                 </audio>
               </div>
             </div>

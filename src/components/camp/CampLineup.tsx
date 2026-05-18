@@ -33,7 +33,6 @@ const CampLineup: React.FC<CampLineupProps> = ({ participants, musicians, campYe
             <MusicianCard
               key={musician.id}
               musician={musician}
-              index={index}
               href={campYear ? `/camps/${campYear}/musicians/${musician.id}` : undefined}
             />
           );

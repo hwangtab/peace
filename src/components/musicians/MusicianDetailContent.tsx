@@ -58,7 +58,7 @@ export default function MusicianDetailContent({
 
   const pageTitle =
     isCampPage && latestCampYear
-      ? `${displayName} — ${t(`camp.title_${latestCampYear}`)} ${latestCampYear} | ${t('nav.logo')}`
+      ? `${displayName} — ${t(`camp.title_${latestCampYear}`, { defaultValue: t('app.title') })} ${latestCampYear} | ${t('nav.logo')}`
       : `${displayName} | ${t('app.title')}`;
 
   const pageDescription = isCampPage

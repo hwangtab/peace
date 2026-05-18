@@ -67,7 +67,7 @@ export default function MusicianDescriptionSection({
                   <div className="relative w-full h-44 sm:h-full min-h-[160px]">
                     <Image
                       src={latestCamp.images[0]}
-                      alt={t(`camp.title_${latestCamp?.year}`)}
+                      alt={t(`camp.title_${latestCamp?.year}`, { defaultValue: t('app.title') })}
                       fill
                       sizes="(max-width: 640px) 100vw, 180px"
                       className="object-cover"
@@ -77,13 +77,13 @@ export default function MusicianDescriptionSection({
               )}
               <div className="flex-1 min-w-0 bg-gradient-to-br from-ocean-sand to-white px-6 py-6 flex flex-col justify-between gap-4 text-center items-center">
                 <div>
-                  <p className="text-sm uppercase tracking-widest text-jeju-ocean font-bold mb-2">{t(`camp.title_${latestCamp?.year}`)}</p>
+                  <p className="text-sm uppercase tracking-widest text-jeju-ocean font-bold mb-2">{t(`camp.title_${latestCamp?.year}`, { defaultValue: t('app.title') })}</p>
                   <div className="flex flex-wrap gap-3 justify-center">
                     <span className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-700">
-                      <span className="text-jeju-ocean" aria-hidden="true">📅</span>{t(`camp.date_badge_${latestCamp?.year}`)}
+                      <span className="text-jeju-ocean" aria-hidden="true">📅</span>{t(`camp.date_badge_${latestCamp?.year}`, { defaultValue: '' })}
                     </span>
                     <span className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-700">
-                      <span className="text-jeju-ocean" aria-hidden="true">📍</span>{t(`camp.venue_${latestCamp?.year}`)}
+                      <span className="text-jeju-ocean" aria-hidden="true">📍</span>{t(`camp.venue_${latestCamp?.year}`, { defaultValue: '' })}
                     </span>
                   </div>
                 </div>

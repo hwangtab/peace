@@ -35,6 +35,8 @@ export const useLocalizedResource = <T>({
   // mount 시점 스냅샷 — 호출자가 매 렌더 새 [] 참조를 넘기더라도 effect 재실행 안 함
   const initialDataRef = useRef(initialData);
   const initialLocaleRef = useRef(initialLocale);
+  // 첫 fetch 이후 true — 초기 로케일 복귀 시 SSG partial 데이터가 아닌 최신 데이터 보장
+  const hasFetchedRef = useRef(false);
 
   useEffect(() => {
     if (!enabled) {
@@ -44,7 +46,7 @@ export const useLocalizedResource = <T>({
       return;
     }
 
-    if (currentLocale === initialLocaleRef.current && !alwaysRefetch) {
+    if (currentLocale === initialLocaleRef.current && !alwaysRefetch && !hasFetchedRef.current) {
       setData(initialDataRef.current);
       setError(null);
       setIsLoading(false);
@@ -60,6 +62,7 @@ export const useLocalizedResource = <T>({
       try {
         const nextData = await fetchResource(currentLocale);
         if (!isCancelled) {
+          hasFetchedRef.current = true;
           setData(nextData);
         }
       } catch (err) {

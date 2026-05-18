@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { GalleryImage } from '../types/gallery';
 import { getGalleryImages } from '../api/gallery';
@@ -31,6 +31,8 @@ export const useGalleryImages = (
   const router = useRouter();
   const [images, setImages] = useState<GalleryImage[]>(initialImages);
   const [selectedFilter, setSelectedFilter] = useState<FilterId>('all');
+  // mount 시점 스냅샷 — caller 가 매 렌더 새 [] 참조를 넘겨도 effect 재실행 방지
+  const initialImagesRef = useRef(initialImages);
   const [isLoading, setIsLoading] = useState<boolean>(initialImages.length === 0);
 
   // Sync filter with query parameter on mount
@@ -44,16 +46,18 @@ export const useGalleryImages = (
 
   // Fetch full gallery in background unless skipClientFetch is true.
   // When initialImages exist, render them immediately and replace with full data after fetch.
+  // initialImagesRef 를 deps 대신 사용해 caller 의 array identity 변화로 재실행되지 않게 방지.
   useEffect(() => {
-    if (initialImages.length > 0) {
-      setImages(sortGalleryImages(initialImages));
+    const initial = initialImagesRef.current;
+    if (initial.length > 0) {
+      setImages(sortGalleryImages(initial));
       setIsLoading(false);
     } else {
       setIsLoading(true);
     }
 
     // SSG에서 전체 데이터를 이미 받은 경우 클라이언트 fetch 스킵
-    if (skipClientFetch && initialImages.length > 0) return;
+    if (skipClientFetch && initial.length > 0) return;
 
     let isCancelled = false;
 
@@ -79,7 +83,7 @@ export const useGalleryImages = (
     return () => {
       isCancelled = true;
     };
-  }, [initialImages, skipClientFetch]);
+  }, [skipClientFetch]);
 
   // Filter images based on selected filter
   const filteredImages = useMemo(

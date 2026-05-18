@@ -110,11 +110,14 @@ export const useAudioPlayer = ({ audioUrl, isPlaying }: UseAudioPlayerOptions): 
     const sound = soundRef.current;
     if (!sound) return;
 
+    // 핸들러를 effect 스코프에서 선언해 cleanup 에서 이 listener 만 제거
+    const playOnLoad = () => { sound.play(); };
+
     if (isPlaying) {
       if (isLoadedRef.current) {
         sound.play();
       } else {
-        sound.once('load', () => { sound.play(); });
+        sound.once('load', playOnLoad);
       }
       const animate = () => {
         const now = performance.now();
@@ -137,6 +140,7 @@ export const useAudioPlayer = ({ audioUrl, isPlaying }: UseAudioPlayerOptions): 
     }
 
     return () => {
+      sound.off('load', playOnLoad);
       if (requestRef.current) {
         cancelAnimationFrame(requestRef.current);
         requestRef.current = null;
