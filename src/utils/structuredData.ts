@@ -346,6 +346,12 @@ export const getEventSchema = (event: {
 
   const eventId = event.id ?? (event.url ? `${event.url}#event` : undefined);
 
+  if (!event.name) {
+    const msg = `getEventSchema: "name" is required but received empty/undefined (id: ${eventId ?? 'unknown'})`;
+    if (process.env.NODE_ENV === 'development') throw new Error(msg);
+    console.error(msg);
+  }
+
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "MusicEvent",
@@ -412,12 +418,29 @@ export const getEventSchema = (event: {
       (event.images && event.images.length > 0 ? event.images[0] : undefined) ||
       event.image ||
       "https://peaceandmusic.net/og-image.webp";
-    // 51개 subEvent 의 redundant 필드(eventStatus / eventAttendanceMode /
-    // isAccessibleForFree / inLanguage / organizer / offers)를 제거.
-    // 모두 부모 MusicEvent 와 동일한 값으로 schema.org 'inherits from parent'
-    // 기본 동작에 의해 SEO 봇이 파악 가능. 51× 인라인 시 ~15KB 차지하던 중복
-    // 데이터를 빼서 HTML 페이로드 축소 → LCP 이미지 fetch 시작·전송 가속.
-    const locationRef = { "@id": "https://peaceandmusic.net/#gangjeong-sports-park" };
+    // 각 subEvent 를 독립 MusicEvent 로 자존(self-contained) 출력.
+    // 이전엔 location/organizer/eventStatus/offers 를 부모로부터 상속한다는 가정으로
+    // 생략했으나 Google 구조화 데이터 검증기는 subEvent 필드 상속을 하지 않아
+    // 51개 act × 다국어 페이지 = 176건 가까운 warning(GSC Events 보고서)이 발생.
+    // HTML 페이로드 ~15KB 증가하지만 validation 손실이 더 크다.
+    const subEventEventStatus = event.eventStatus || "https://schema.org/EventScheduled";
+    const subEventOrganizer = {
+      "@type": "Organization" as const,
+      "@id": "https://peaceandmusic.net/#organization",
+      "name": t ? getCampName(t) : '',
+      "url": "https://peaceandmusic.net"
+    };
+    const subEventOffers = event.offers
+      ? {
+          "@type": "Offer" as const,
+          "url": event.offers.url,
+          ...(event.offers.price !== undefined ? { "price": event.offers.price } : {}),
+          "priceCurrency": event.offers.priceCurrency || "KRW",
+          "availability": event.offers.availability || "https://schema.org/InStock",
+          ...(event.offers.validFrom ? { "validFrom": event.offers.validFrom } : {}),
+          ...(event.offers.validThrough ? { "validThrough": event.offers.validThrough } : {})
+        }
+      : undefined;
     schema.subEvent = event.subEvents.map((se, idx) => {
       const image = se.image || fallbackImage;
       const description = se.description || `${se.performerName} — ${event.name}`;
@@ -427,7 +450,11 @@ export const getEventSchema = (event: {
         "name": se.name,
         "startDate": se.startDate,
         "endDate": se.endDate,
-        "location": locationRef,
+        "eventStatus": subEventEventStatus,
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "isAccessibleForFree": event.isAccessibleForFree ?? true,
+        "inLanguage": _lang === 'ko' ? 'ko' : _lang,
+        "location": location,
         "image": image,
         ...(se.url ? { "url": se.url } : {}),
         "performer": {
@@ -437,6 +464,8 @@ export const getEventSchema = (event: {
           ...(se.performerSameAs && se.performerSameAs.length > 0 ? { "sameAs": se.performerSameAs } : {}),
           "image": image
         },
+        "organizer": subEventOrganizer,
+        ...(subEventOffers ? { "offers": subEventOffers } : {}),
         "description": description
       };
     });
@@ -515,7 +544,7 @@ export const getWebPageSchema = (page: {
   ],
   "mentions": [
     { "@type": "Thing", "name": "Jeju Naval Base", "sameAs": "https://en.wikipedia.org/wiki/Jeju_Naval_Base" },
-    { "@type": "Event", "name": "Anti-war movement", "sameAs": "https://en.wikipedia.org/wiki/Anti-war_movement" }
+    { "@type": "Thing", "name": "Anti-war movement", "sameAs": "https://en.wikipedia.org/wiki/Anti-war_movement" }
   ],
   ...(page.mainEntityId ? { "mainEntity": { "@id": page.mainEntityId } } : {}),
   ...(page.primaryImageUrl ? {
@@ -576,15 +605,32 @@ export const getEventSeriesSchema = (series: {
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
     "description": e.description || series.description,
     "image": e.image || "https://peaceandmusic.net/og-image.webp",
-    // 부모 EventSeries 가 location 을 @id 로 정의하므로 여기서도 참조만
-    // (이전엔 Place 객체를 3번 인라인 — 중복 ~600바이트 절감).
-    "location": { "@id": "https://peaceandmusic.net/#gangjeong-sports-park" },
+    // EventSeries 내부 MusicEvent 도 Google 검증기가 location/organizer 의
+    // @id 참조를 해소하지 못해 누락으로 카운트. 인라인 Place / Organization 으로
+    // 출력 (3건 × ~250B = ~750B 증가, GSC 검증 보장).
+    "location": {
+      "@type": "Place",
+      "@id": "https://peaceandmusic.net/#gangjeong-sports-park",
+      "name": e.locationName,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": e.locationAddress || e.locationName,
+        "addressLocality": "Seogwipo",
+        "addressRegion": "Jeju",
+        "addressCountry": "KR"
+      }
+    },
     "performer": {
       "@type": "Organization",
       "@id": "https://peaceandmusic.net/#organization",
       "name": t ? getCampName(t) : ''
     },
-    "organizer": { "@id": "https://peaceandmusic.net/#organization" },
+    "organizer": {
+      "@type": "Organization",
+      "@id": "https://peaceandmusic.net/#organization",
+      "name": t ? getCampName(t) : '',
+      "url": "https://peaceandmusic.net"
+    },
     ...(e.offers
       ? {
           "offers": {
@@ -720,8 +766,26 @@ const normalizeUploadDate = (raw?: string): string | null => {
   return null;
 };
 
+// YouTube URL 형식별 ID 추출 (/embed/, /watch?v=, youtu.be/ 지원).
+// 한 가지 형식만 처리하던 이전 구현은 watch?v= / youtu.be 데이터 14건에 대해
+// videoId 가 빈 문자열이 되어 thumbnailUrl/contentUrl 이 깨지고 GSC 가
+// VideoObject schema 를 invalid 로 카운트했음 (Videos 보고서 uploadDate 누락 4건).
+const extractYoutubeId = (url: string): string => {
+  if (url.includes('/embed/')) {
+    return url.split('/embed/')[1]?.split('?')[0] ?? '';
+  }
+  if (url.includes('watch?v=')) {
+    return url.split('watch?v=')[1]?.split('&')[0] ?? '';
+  }
+  if (url.includes('youtu.be/')) {
+    return url.split('youtu.be/')[1]?.split('?')[0] ?? '';
+  }
+  return '';
+};
+
 // VideoObject Schema - YouTube 동영상
-// uploadDate가 유효하지 않으면 null 반환. 호출 측에서 .filter(Boolean) 등으로 제거.
+// uploadDate가 유효하지 않거나 videoId 를 추출할 수 없으면 null 반환.
+// 호출 측에서 .filter(Boolean) 등으로 제거.
 export const getVideoObjectSchema = (video: {
   name: string;
   description: string;
@@ -733,7 +797,8 @@ export const getVideoObjectSchema = (video: {
 }, t?: TranslationFn) => {
   const uploadDate = normalizeUploadDate(video.uploadDate);
   if (!uploadDate) return null;
-  const videoId = video.youtubeUrl.split('/embed/')[1]?.split('?')[0] ?? '';
+  const videoId = extractYoutubeId(video.youtubeUrl);
+  if (!videoId) return null;
   const canonicalPageUrl =
     video.pageUrl ?? `https://peaceandmusic.net/videos/${video.id ?? videoId}`;
   return {
@@ -744,7 +809,7 @@ export const getVideoObjectSchema = (video: {
     "description": video.description,
     "thumbnailUrl": `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
     "uploadDate": uploadDate,
-    "embedUrl": video.youtubeUrl,
+    "embedUrl": `https://www.youtube.com/embed/${videoId}`,
     "url": canonicalPageUrl,
     "contentUrl": `https://www.youtube.com/watch?v=${videoId}`,
     ...(video.duration ? { "duration": durationToISO8601(video.duration) } : {}),
