@@ -33,7 +33,6 @@ const StructuredDataScripts: React.FC<StructuredDataScriptsProps> = ({ data }) =
           <script
             key={`structured-data-${index}`}
             type="application/ld+json"
-            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: json }}
           />
         );

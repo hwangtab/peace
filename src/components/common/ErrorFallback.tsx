@@ -11,7 +11,6 @@ const ErrorFallback: React.FC<FallbackProps> = ({ error, resetErrorBoundary }) =
     // Log the raw error to the console so it's still discoverable in production,
     // but never surface internal messages to end users (can leak paths/tokens).
     React.useEffect(() => {
-        // eslint-disable-next-line no-console
         console.error('[ErrorBoundary]', error);
     }, [error]);
 
