@@ -9,6 +9,11 @@ export const getGalleryImages = async (): Promise<GalleryImage[]> => {
     categories.map((cat) => fetchLocalData<GalleryImage>(`/data/gallery/${cat}.json`))
   );
   return results
-    .filter((r): r is PromiseFulfilledResult<GalleryImage[]> => r.status === 'fulfilled')
+    .filter((r): r is PromiseFulfilledResult<GalleryImage[]> => {
+      if (r.status === 'rejected') {
+        console.warn('[gallery] category fetch failed:', r.reason);
+      }
+      return r.status === 'fulfilled';
+    })
     .flatMap((r) => r.value);
 };

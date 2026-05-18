@@ -85,7 +85,7 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
 
             return (
               <motion.li
-                key={node.year}
+                key={node.titleKey}
                 variants={nodeVariants}
                 className="relative mb-8 md:mb-12 last:mb-0"
               >

@@ -1,6 +1,7 @@
 import { getLanguageCode } from './localization';
 
 export const formatOrdinal = (value: number, language?: string): string => {
+  if (!Number.isFinite(value) || value < 0) return String(value);
   const lang = getLanguageCode(language);
   if (lang !== 'en') {
     return String(value);
