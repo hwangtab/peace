@@ -110,14 +110,20 @@ const VideoDetailPage: React.FC<VideoDetailPageProps> = ({
       <Section background="white" className="pt-8 md:pt-12 pb-12">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="relative aspect-video w-full rounded-xl overflow-hidden shadow-lg bg-black">
-            <iframe
-              src={`${embedUrl}?rel=0`}
-              title={video.title}
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-              className="absolute inset-0 w-full h-full"
-            />
+            {videoId ? (
+              <iframe
+                src={`${embedUrl}?rel=0`}
+                title={video.title}
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full"
+              />
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center text-white/60 text-sm">
+                {t('common.video_unavailable') || 'Video unavailable'}
+              </div>
+            )}
           </div>
 
           <div className="mt-8">

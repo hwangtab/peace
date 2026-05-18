@@ -35,7 +35,7 @@ const PageIntroSection: React.FC<PageIntroSectionProps> = ({
         <div className="space-y-4">
           {paragraphs.map((p, i) => (
             <p
-              key={i}
+              key={p.slice(0, 40)}
               className="typo-body text-gray-700 leading-relaxed break-words"
               {...(i === 0 ? { 'data-speakable': true } : {})}
             >
