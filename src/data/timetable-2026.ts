@@ -8,9 +8,9 @@ export const timetable2026: Timetable = {
       "date": "2026-06-05",
       "dayLabel": "6/5 (금)",
       "weekday": "fri",
-      "teamCount": 12,
+      "teamCount": 11,
       "startTime": "17:00",
-      "endTime": "22:57",
+      "endTime": "22:27",
       "acts": [
         {
           "order": 1,
@@ -148,34 +148,14 @@ export const timetable2026: Timetable = {
           "start": "20:25",
           "end": "20:30",
           "type": "transition",
-          "name": "⟶ 5분 (다음: 여울 - 솔로/듀오)",
-          "transitionMinutes": 5,
-          "nextActName": "여울"
-        },
-        {
-          "order": 8,
-          "start": "20:30",
-          "end": "20:55",
-          "type": "performance",
-          "name": "여울",
-          "scale": "solo",
-          "musicianIds": [
-            38
-          ]
-        },
-        {
-          "order": null,
-          "start": "20:55",
-          "end": "21:00",
-          "type": "transition",
           "name": "⟶ 5분 (다음: 모레도토요일 - 솔로/듀오)",
           "transitionMinutes": 5,
           "nextActName": "모레도토요일"
         },
         {
-          "order": 9,
-          "start": "21:00",
-          "end": "21:25",
+          "order": 8,
+          "start": "20:30",
+          "end": "20:55",
           "type": "performance",
           "name": "모레도토요일",
           "scale": "solo",
@@ -185,17 +165,17 @@ export const timetable2026: Timetable = {
         },
         {
           "order": null,
-          "start": "21:25",
-          "end": "21:30",
+          "start": "20:55",
+          "end": "21:00",
           "type": "transition",
           "name": "⟶ 5분 (다음: 찬 - 솔로/듀오)",
           "transitionMinutes": 5,
           "nextActName": "찬"
         },
         {
-          "order": 10,
-          "start": "21:30",
-          "end": "21:55",
+          "order": 9,
+          "start": "21:00",
+          "end": "21:25",
           "type": "performance",
           "name": "찬",
           "scale": "solo",
@@ -205,17 +185,17 @@ export const timetable2026: Timetable = {
         },
         {
           "order": null,
-          "start": "21:55",
-          "end": "22:00",
+          "start": "21:25",
+          "end": "21:30",
           "type": "transition",
           "name": "⟶ 5분 (다음: 모허 - 솔로/듀오)",
           "transitionMinutes": 5,
           "nextActName": "모허"
         },
         {
-          "order": 11,
-          "start": "22:00",
-          "end": "22:25",
+          "order": 10,
+          "start": "21:30",
+          "end": "21:55",
           "type": "performance",
           "name": "모허",
           "scale": "solo",
@@ -225,17 +205,17 @@ export const timetable2026: Timetable = {
         },
         {
           "order": null,
-          "start": "22:25",
-          "end": "22:32",
+          "start": "21:55",
+          "end": "22:02",
           "type": "transition",
           "name": "⟶ 7분 (다음: 태히언과 이나 데 제주 - 중형밴드)",
           "transitionMinutes": 7,
           "nextActName": "태히언과 이나 데 제주"
         },
         {
-          "order": 12,
-          "start": "22:32",
-          "end": "22:57",
+          "order": 11,
+          "start": "22:02",
+          "end": "22:27",
           "type": "performance",
           "name": "태히언과 이나 데 제주",
           "scale": "band",
