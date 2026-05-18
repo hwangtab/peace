@@ -84,7 +84,7 @@ const stripLocalePrefix = (pagePath) => {
 
 const getLocalePath = (pagePath, locale) => {
   if (locale === defaultLocale) {
-    return pagePath === '/' ? '/' : pagePath;
+    return pagePath === '/' ? '' : pagePath;
   }
 
   return pagePath === '/' ? `/${locale}` : `/${locale}${pagePath}`;
