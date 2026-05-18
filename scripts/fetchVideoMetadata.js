@@ -29,7 +29,7 @@ const fetchMetadata = (url) => {
             fetchUrl = `https://www.youtube.com/watch?v=${id}`;
         }
 
-        https.get(fetchUrl, (res) => {
+        const req = https.get(fetchUrl, (res) => {
             let data = '';
             res.on('data', (chunk) => { data += chunk; });
             res.on('end', () => {
@@ -49,6 +49,9 @@ const fetchMetadata = (url) => {
         }).on('error', (err) => {
             console.error(`Error fetching ${url}: ${err.message}`);
             resolve({ originalUrl: url, title: 'Error', thumbnail: '' });
+        });
+        req.setTimeout(10000, () => {
+            req.destroy(new Error(`timeout: ${url}`));
         });
     });
 };
