@@ -10,13 +10,14 @@ import PageLayout from '@/components/layout/PageLayout';
 import Section from '@/components/layout/Section';
 import SectionHeader from '@/components/common/SectionHeader';
 import SectionWave from '@/components/layout/SectionWave';
-import { getEventSchema, getBreadcrumbSchema, getHowToSchema, getWebPageSchema } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
 import { getMusicians } from '@/api/musicians';
 import { Musician } from '@/types/musician';
 import { formatOrdinal } from '@/utils/format';
 import Button from '@/components/common/Button';
 import { useLocalizedResource } from '@/hooks/useLocalizedResource';
+import { buildCampDetailSchemas } from '@/utils/buildCampDetailSchemas';
+import type { SchemaT } from '@/utils/buildCamp2026Schemas';
 
 interface CampDetailPageProps {
   campId: string;
@@ -63,106 +64,13 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
 
   const structuredData = useMemo(() => {
     if (!camp) return [];
-
-    const getKeywordsForCamp = (year: number): string[] => {
-      if (year === 2023) {
-        return [
-          '제1회 강정피스앤뮤직캠프',
-          '1st Gangjeong Peace Music Camp 2023',
-          '강정 평화음악제',
-          'Gangjeong peace festival',
-          '2023 캠프',
-          'Jeju music 2023',
-          '첫 번째 캠프',
-          'first camp',
-        ];
-      } else if (year === 2025) {
-        return [
-          '제2회 강정피스앤뮤직캠프',
-          '2nd Gangjeong Peace Music Camp 2025',
-          '강정 평화음악제',
-          'Gangjeong peace festival',
-          '2025 캠프',
-          'Jeju music 2025',
-          '두 번째 캠프',
-          'second camp',
-        ];
-      }
-      return [];
-    };
-
-    // 다국어 검색 키워드 매칭을 위한 별칭 (GPMC 약어, 영문 정식 명칭, 자연어 변형)
-    const alternateNamesByYear: Record<number, string[]> = {
-      2023: [
-        'GPMC1',
-        'Gangjeong Peace and Music Camp 1',
-        '1st Gangjeong Peace and Music Camp',
-        '제1회 강정피스앤뮤직캠프',
-        'Jeju Peace Music Festival 2023',
-      ],
-      2025: [
-        'GPMC2',
-        'Gangjeong Peace and Music Camp 2',
-        '2nd Gangjeong Peace and Music Camp',
-        '제2회 강정피스앤뮤직캠프',
-        'Jeju Peace Music Festival 2025',
-      ],
-    };
-
-    const eventSchema = getEventSchema(
-      {
-        name: camp.title,
-        ...(alternateNamesByYear[camp.year]
-          ? { alternateName: alternateNamesByYear[camp.year] }
-          : {}),
-        startDate: camp.startDate,
-        endDate: camp.endDate || camp.startDate,
-        description: camp.description,
-        location: {
-          name: camp.location.split('(')[0]?.trim() || camp.location,
-          address: camp.location.includes('(')
-            ? camp.location.split('(')[1]?.replace(')', '') || camp.location
-            : camp.location,
-        },
-        image:
-          camp.images && camp.images.length > 0 && camp.images[0]
-            ? getFullUrl(camp.images[0])
-            : undefined,
-        performers: camp.participants?.map((p) => ({
-          type: 'MusicGroup',
-          name: typeof p === 'string' ? p : p.name,
-        })),
-        eventStatus: camp.year < 2026
-          ? "https://schema.org/EventCompleted"
-          : "https://schema.org/EventScheduled",
-        offers: {
-          url: getFullUrl(`/camps/${camp.year}`),
-          price: '0',
-          priceCurrency: 'KRW',
-          availability: camp.year < 2026
-            ? 'https://schema.org/SoldOut'
-            : 'https://schema.org/InStock',
-        },
-        url: getFullUrl(`/camps/${camp.year}`),
-        id: `https://peaceandmusic.net/camps/${camp.year}#event`,
-        superEventId: 'https://peaceandmusic.net/#event-series',
-      },
-      i18n.language,
-      t
-    );
-
-    return [
-      eventSchema,
-      getBreadcrumbSchema(breadcrumbs),
-      ...(camp.year >= 2026 ? [getHowToSchema(i18n.language, t)] : []),
-      getWebPageSchema({
-        name: `${t('camp.ordinal', { num: ordinalLabel })} ${t('app.title')} (${camp.year})`,
-        description: camp.description,
-        url: getFullUrl(`/camps/${camp.year}`),
-        datePublished: camp.startDate,
-        ...(camp.year < 2026 && { keywords: getKeywordsForCamp(camp.year) }),
-      }),
-    ];
+    return buildCampDetailSchemas({
+      t: t as unknown as SchemaT,
+      lang: i18n.language,
+      camp,
+      ordinalLabel,
+      breadcrumbs,
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [camp, breadcrumbs, i18n.language, ordinalLabel]);
 
@@ -262,11 +170,11 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
         return latestCamp && camp.id !== latestCamp.id && latestCamp.fundingUrl ? (
           <div className="bg-jeju-ocean py-12">
             <div className="container mx-auto px-4 text-center">
-              <h3 className="text-2xl font-bold text-white mb-3 break-words">
-                {t(`camp.title_${latestCamp.year}`)}
-              </h3>
+              <h2 className="text-2xl font-bold text-white mb-3 break-words">
+                {t(`camp.title_${latestCamp.year}`, { defaultValue: t('app.title') })}
+              </h2>
               <p className="text-seafoam mb-6 text-sm break-words">
-                {t(`camp.date_badge_${latestCamp.year}`)} · {t(`camp.venue_${latestCamp.year}`)}
+                {t(`camp.date_badge_${latestCamp.year}`, { defaultValue: '' })} · {t(`camp.venue_${latestCamp.year}`, { defaultValue: '' })}
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Button to={`/camps/${latestCamp.year}`} variant="ghost-white" size="sm">
@@ -279,7 +187,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
                   external
                   utmContent="past-camp"
                 >
-                  {t(`camp.ticketing_${latestCamp.year}`)}
+                  {t(`camp.ticketing_${latestCamp.year}`, { defaultValue: t('camp.cta_final_button') })}
                 </Button>
               </div>
             </div>
