@@ -807,7 +807,7 @@ export const getVideoObjectSchema = (video: {
     "@id": `${canonicalPageUrl}#video`,
     "name": video.name,
     "description": video.description,
-    "thumbnailUrl": `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
+    "thumbnailUrl": `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
     "uploadDate": uploadDate,
     "embedUrl": `https://www.youtube.com/embed/${videoId}`,
     "url": canonicalPageUrl,
