@@ -101,7 +101,6 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
                     <script
                         key={`structured-data-${index}`}
                         type="application/ld+json"
-                        // eslint-disable-next-line react/no-danger -- JSON.stringify 결과만 주입
                         dangerouslySetInnerHTML={{ __html: json }}
                     />
                 );

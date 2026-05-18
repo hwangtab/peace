@@ -47,7 +47,6 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
             router.events.off('routeChangeComplete', handleComplete);
             router.events.off('routeChangeError', handleError);
         };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [router.events]);
 
     const value = useMemo(() => ({ previousPath, isNavigating }), [previousPath, isNavigating]);
