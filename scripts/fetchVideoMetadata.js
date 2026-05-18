@@ -25,7 +25,11 @@ const fetchMetadata = (url) => {
         // Normalize URL for fetching
         let fetchUrl = url;
         if (url.includes('youtu.be')) {
-            const id = url.split('youtu.be/')[1].split('?')[0];
+            const id = url.split('youtu.be/')[1]?.split('?')[0];
+            if (!id) {
+                reject(new Error(`Cannot extract video ID from youtu.be URL: ${url}`));
+                return;
+            }
             fetchUrl = `https://www.youtube.com/watch?v=${id}`;
         }
 
