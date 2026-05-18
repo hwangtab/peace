@@ -242,7 +242,8 @@
     "musicianIds": [
       14
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/yiLOO-wo1P8/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/yiLOO-wo1P8/maxresdefault.jpg",
+    "eventYear": 2026
   },
   {
     "id": 204,
@@ -254,7 +255,8 @@
       14
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/Qzca0IjWW6I/maxresdefault.jpg",
-    "date": "2025-12-03"
+    "date": "2025-12-03",
+    "eventYear": 2025
   },
   {
     "id": 205,
@@ -266,7 +268,8 @@
       14
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/DFkKHIbQvb8/maxresdefault.jpg",
-    "date": "2025-12-05"
+    "date": "2025-12-05",
+    "eventYear": 2025
   },
   {
     "id": 206,
@@ -278,7 +281,8 @@
       5
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/5Ak9Ze363kI/maxresdefault.jpg",
-    "date": "2025-08-29"
+    "date": "2025-08-29",
+    "eventYear": 2025
   },
   {
     "id": 207,
@@ -290,7 +294,8 @@
       5
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/r2w4FI17I-g/maxresdefault.jpg",
-    "date": "2025-08-29"
+    "date": "2025-08-29",
+    "eventYear": 2025
   },
   {
     "id": 208,
@@ -302,7 +307,8 @@
       5
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/i4L1HCBtTy4/maxresdefault.jpg",
-    "date": "2023-08-20"
+    "date": "2023-08-20",
+    "eventYear": 2023
   },
   {
     "id": 209,
@@ -314,7 +320,8 @@
       15
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/bmDyt0mr1Kw/maxresdefault.jpg",
-    "date": "2018-11-13"
+    "date": "2018-11-13",
+    "eventYear": 2018
   },
   {
     "id": 210,
@@ -326,7 +333,8 @@
     "musicianIds": [
       15
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/8ModRyX5ddk/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/8ModRyX5ddk/maxresdefault.jpg",
+    "eventYear": 2025
   },
   {
     "id": 211,
@@ -338,7 +346,8 @@
     "musicianIds": [
       3
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/kMT7Fjzjlpo/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/kMT7Fjzjlpo/maxresdefault.jpg",
+    "eventYear": 2025
   },
   {
     "id": 212,
@@ -350,7 +359,8 @@
     "musicianIds": [
       3
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/FFkb2KC6StY/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/FFkb2KC6StY/maxresdefault.jpg",
+    "eventYear": 2026
   },
   {
     "id": 213,
@@ -362,7 +372,8 @@
       16
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/tncRXF8ZZWw/maxresdefault.jpg",
-    "date": "2024-10-30"
+    "date": "2024-10-30",
+    "eventYear": 2024
   },
   {
     "id": 214,
@@ -374,7 +385,8 @@
       4
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/Cl759nQHYQc/maxresdefault.jpg",
-    "date": "2025-05-31"
+    "date": "2025-05-31",
+    "eventYear": 2025
   },
   {
     "id": 215,
@@ -386,7 +398,8 @@
     "musicianIds": [
       4
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/rqZmYu_kvVQ/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/rqZmYu_kvVQ/maxresdefault.jpg",
+    "eventYear": 2024
   },
   {
     "id": 216,
@@ -398,7 +411,8 @@
       17
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/uz1TC6KHV1k/maxresdefault.jpg",
-    "date": "2026-01-13"
+    "date": "2026-01-13",
+    "eventYear": 2026
   },
   {
     "id": 217,
@@ -410,7 +424,8 @@
       17
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/S00qseiuV1k/maxresdefault.jpg",
-    "date": "2022-12-02"
+    "date": "2022-12-02",
+    "eventYear": 2022
   },
   {
     "id": 218,
@@ -422,7 +437,8 @@
     "musicianIds": [
       17
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/jCKosnfRPFE/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/jCKosnfRPFE/maxresdefault.jpg",
+    "eventYear": 2025
   },
   {
     "id": 219,
@@ -434,7 +450,8 @@
     "musicianIds": [
       18
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/DDpinMmeXuY/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/DDpinMmeXuY/maxresdefault.jpg",
+    "eventYear": 2025
   },
   {
     "id": 220,
@@ -446,7 +463,8 @@
       18
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/ggmMqQwZ8Js/maxresdefault.jpg",
-    "date": "2025-06-04"
+    "date": "2025-06-04",
+    "eventYear": 2025
   },
   {
     "id": 221,
@@ -458,7 +476,8 @@
     "musicianIds": [
       19
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/5xAgVErwFok/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/5xAgVErwFok/maxresdefault.jpg",
+    "eventYear": 2024
   },
   {
     "id": 222,
@@ -470,7 +489,8 @@
     "musicianIds": [
       19
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/JjkwiQZbp48/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/JjkwiQZbp48/maxresdefault.jpg",
+    "eventYear": 2026
   },
   {
     "id": 223,
@@ -482,7 +502,8 @@
     "musicianIds": [
       19
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/9QKifYm2ZAE/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/9QKifYm2ZAE/maxresdefault.jpg",
+    "eventYear": 2023
   },
   {
     "id": 224,
@@ -494,7 +515,8 @@
       20
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/oDibl6gzhfU/maxresdefault.jpg",
-    "date": "2020-12-01"
+    "date": "2020-12-01",
+    "eventYear": 2020
   },
   {
     "id": 225,
@@ -506,7 +528,8 @@
       20
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/YX9Yt6q6f6Q/maxresdefault.jpg",
-    "date": "2020-10-13"
+    "date": "2020-10-13",
+    "eventYear": 2020
   },
   {
     "id": 226,
@@ -518,7 +541,8 @@
       20
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/mR4MnE9aINA/maxresdefault.jpg",
-    "date": "2020-04-08"
+    "date": "2020-04-08",
+    "eventYear": 2020
   },
   {
     "id": 227,
@@ -530,7 +554,8 @@
     "musicianIds": [
       21
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/kiWunuJQ9OQ/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/kiWunuJQ9OQ/maxresdefault.jpg",
+    "eventYear": 2022
   },
   {
     "id": 228,
@@ -542,7 +567,8 @@
     "musicianIds": [
       21
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/bL7MGI65I2E/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/bL7MGI65I2E/maxresdefault.jpg",
+    "eventYear": 2025
   },
   {
     "id": 229,
@@ -554,7 +580,8 @@
       21
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/ww4Cwk5knrI/maxresdefault.jpg",
-    "date": "2016-04-17"
+    "date": "2016-04-17",
+    "eventYear": 2016
   },
   {
     "id": 230,
@@ -566,7 +593,8 @@
       22
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/YXxDCqKa4fs/maxresdefault.jpg",
-    "date": "2025-12-17"
+    "date": "2025-12-17",
+    "eventYear": 2025
   },
   {
     "id": 231,
@@ -578,7 +606,8 @@
       22
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/_JzOoJJxq48/maxresdefault.jpg",
-    "date": "2025-12-29"
+    "date": "2025-12-29",
+    "eventYear": 2025
   },
   {
     "id": 232,
@@ -590,7 +619,8 @@
       22
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/LaQL07oGfig/maxresdefault.jpg",
-    "date": "2025-12-01"
+    "date": "2025-12-01",
+    "eventYear": 2025
   },
   {
     "id": 233,
@@ -602,7 +632,8 @@
       7
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/iniFJkG_YfM/maxresdefault.jpg",
-    "date": "2025-07-25"
+    "date": "2025-07-25",
+    "eventYear": 2025
   },
   {
     "id": 234,
@@ -614,7 +645,8 @@
       7
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/ikG_D-BNnUE/maxresdefault.jpg",
-    "date": "2024-05-28"
+    "date": "2024-05-28",
+    "eventYear": 2024
   },
   {
     "id": 235,
@@ -626,7 +658,8 @@
       7
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/r4-T5eGeKns/maxresdefault.jpg",
-    "date": "2025-11-23"
+    "date": "2025-11-23",
+    "eventYear": 2025
   },
   {
     "id": 236,
@@ -638,7 +671,8 @@
     "musicianIds": [
       24
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/Oj68xP1Y4Lc/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/Oj68xP1Y4Lc/maxresdefault.jpg",
+    "eventYear": 2026
   },
   {
     "id": 237,
@@ -650,7 +684,8 @@
       24
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/5VOsu-ANcA8/maxresdefault.jpg",
-    "date": "2024-06-09"
+    "date": "2024-06-09",
+    "eventYear": 2024
   },
   {
     "id": 238,
@@ -662,7 +697,8 @@
       24
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/Gdp83HQ0gG0/maxresdefault.jpg",
-    "date": "2026-02-19"
+    "date": "2026-02-19",
+    "eventYear": 2026
   },
   {
     "id": 239,
@@ -674,7 +710,8 @@
     "musicianIds": [
       13
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/vMsZWHi8EAY/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/vMsZWHi8EAY/maxresdefault.jpg",
+    "eventYear": 2019
   },
   {
     "id": 242,
@@ -686,7 +723,8 @@
       25
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/fp1kFyL6AxQ/maxresdefault.jpg",
-    "date": "2024-09-04"
+    "date": "2024-09-04",
+    "eventYear": 2024
   },
   {
     "id": 243,
@@ -698,7 +736,8 @@
     "musicianIds": [
       25
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/6FctiuWeSh4/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/6FctiuWeSh4/maxresdefault.jpg",
+    "eventYear": 2015
   },
   {
     "id": 244,
@@ -710,7 +749,8 @@
     "musicianIds": [
       25
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/dqpRNHvWRTw/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/dqpRNHvWRTw/maxresdefault.jpg",
+    "eventYear": 2024
   },
   {
     "id": 245,
@@ -722,7 +762,8 @@
     "musicianIds": [
       26
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/YvVlvKCmfZk/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/YvVlvKCmfZk/maxresdefault.jpg",
+    "eventYear": 2025
   },
   {
     "id": 246,
@@ -734,7 +775,8 @@
     "musicianIds": [
       26
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/zLCic-wzbys/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/zLCic-wzbys/maxresdefault.jpg",
+    "eventYear": 2024
   },
   {
     "id": 247,
@@ -746,7 +788,8 @@
     "musicianIds": [
       26
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/F8JH5d9pOt8/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/F8JH5d9pOt8/maxresdefault.jpg",
+    "eventYear": 2025
   },
   {
     "id": 248,
@@ -758,7 +801,8 @@
     "musicianIds": [
       27
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/-zYUMKm2a6g/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/-zYUMKm2a6g/maxresdefault.jpg",
+    "eventYear": 2024
   },
   {
     "id": 249,
@@ -770,7 +814,8 @@
       29
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/c8Pal7z6niI/maxresdefault.jpg",
-    "date": "2022-06-27"
+    "date": "2022-06-27",
+    "eventYear": 2022
   },
   {
     "id": 250,
@@ -782,7 +827,8 @@
       29
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/P_4b6Ah21tA/maxresdefault.jpg",
-    "date": "2026-01-20"
+    "date": "2026-01-20",
+    "eventYear": 2026
   },
   {
     "id": 251,
@@ -794,7 +840,8 @@
       30
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/ll0UBvsTN3Q/maxresdefault.jpg",
-    "date": "2009-08-23"
+    "date": "2009-08-23",
+    "eventYear": 2009
   },
   {
     "id": 252,
@@ -806,7 +853,8 @@
       30
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/G-R3fFhAmdw/maxresdefault.jpg",
-    "date": "2014-12-22"
+    "date": "2014-12-22",
+    "eventYear": 2014
   },
   {
     "id": 253,
@@ -818,7 +866,8 @@
     "musicianIds": [
       30
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/9KB5lzwXiA8/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/9KB5lzwXiA8/maxresdefault.jpg",
+    "eventYear": 2009
   },
   {
     "id": 255,
@@ -830,7 +879,8 @@
     "musicianIds": [
       31
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/Xl65oXeVazU/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/Xl65oXeVazU/maxresdefault.jpg",
+    "eventYear": 2020
   },
   {
     "id": 256,
@@ -842,7 +892,8 @@
     "musicianIds": [
       31
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/yQIDuxkbWM4/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/yQIDuxkbWM4/maxresdefault.jpg",
+    "eventYear": 2004
   },
   {
     "id": 257,
@@ -854,7 +905,8 @@
     "musicianIds": [
       32
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/fnHiEEa1i7Q/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/fnHiEEa1i7Q/maxresdefault.jpg",
+    "eventYear": 2020
   },
   {
     "id": 258,
@@ -866,7 +918,8 @@
       32
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/RObCzfuKt1c/maxresdefault.jpg",
-    "date": "2023-02-21"
+    "date": "2023-02-21",
+    "eventYear": 2023
   },
   {
     "id": 259,
@@ -879,7 +932,8 @@
       33
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/edqSHjYalVo/maxresdefault.jpg",
-    "date": "2024-12-25"
+    "date": "2024-12-25",
+    "eventYear": 2024
   },
   {
     "id": 260,
@@ -891,7 +945,8 @@
       33
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/b7HqMDA-0RA/maxresdefault.jpg",
-    "date": "2024-12-24"
+    "date": "2024-12-24",
+    "eventYear": 2024
   },
   {
     "id": 261,
@@ -903,7 +958,8 @@
       33
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/eELKLFdvhx8/maxresdefault.jpg",
-    "date": "2021-01-01"
+    "date": "2021-01-01",
+    "eventYear": 2021
   },
   {
     "id": 262,
@@ -915,7 +971,8 @@
       34
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/6-v5l1jL8TY/maxresdefault.jpg",
-    "date": "2025-05-01"
+    "date": "2025-05-01",
+    "eventYear": 2025
   },
   {
     "id": 263,
@@ -927,7 +984,8 @@
       34
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/KOxJb6Ro_O8/maxresdefault.jpg",
-    "date": "2025-03-18"
+    "date": "2025-03-18",
+    "eventYear": 2025
   },
   {
     "id": 264,
@@ -939,7 +997,8 @@
       34
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/9t3w8vDNNIw/maxresdefault.jpg",
-    "date": "2025-02-11"
+    "date": "2025-02-11",
+    "eventYear": 2025
   },
   {
     "id": 265,
@@ -951,7 +1010,8 @@
       37
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/lEUa5rV2Ok8/maxresdefault.jpg",
-    "date": "2024-06-02"
+    "date": "2024-06-02",
+    "eventYear": 2024
   },
   {
     "id": 266,
@@ -963,7 +1023,8 @@
     "musicianIds": [
       37
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/H4SKWbU3i-c/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/H4SKWbU3i-c/maxresdefault.jpg",
+    "eventYear": 2022
   },
   {
     "id": 267,
@@ -975,7 +1036,8 @@
       37
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/4iXquyRr7rE/maxresdefault.jpg",
-    "date": "2023-05-16"
+    "date": "2023-05-16",
+    "eventYear": 2023
   },
   {
     "id": 268,
@@ -987,7 +1049,8 @@
     "musicianIds": [
       38
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/1xMOBB2Sfj8/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/1xMOBB2Sfj8/maxresdefault.jpg",
+    "eventYear": 2026
   },
   {
     "id": 269,
@@ -999,7 +1062,8 @@
       39
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/NbNeoOi5SEc/maxresdefault.jpg",
-    "date": "2023-02-09"
+    "date": "2023-02-09",
+    "eventYear": 2023
   },
   {
     "id": 270,
@@ -1011,7 +1075,8 @@
       39
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/PlPrqOScHIY/maxresdefault.jpg",
-    "date": "2025-07-04"
+    "date": "2025-07-04",
+    "eventYear": 2025
   },
   {
     "id": 271,
@@ -1023,7 +1088,8 @@
       39
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/XDZeAaGyRu4/maxresdefault.jpg",
-    "date": "2021-12-07"
+    "date": "2021-12-07",
+    "eventYear": 2021
   },
   {
     "id": 272,
@@ -1035,7 +1101,8 @@
       40
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/ZE2sBhYgql0/maxresdefault.jpg",
-    "date": "2021-04-21"
+    "date": "2021-04-21",
+    "eventYear": 2021
   },
   {
     "id": 273,
@@ -1047,7 +1114,8 @@
       40
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/gEtKkt5ucqc/maxresdefault.jpg",
-    "date": "2025-10-12"
+    "date": "2025-10-12",
+    "eventYear": 2025
   },
   {
     "id": 274,
@@ -1059,7 +1127,8 @@
     "musicianIds": [
       40
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/0maMqofDaQE/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/0maMqofDaQE/maxresdefault.jpg",
+    "eventYear": 2020
   },
   {
     "id": 275,
@@ -1071,7 +1140,8 @@
       12
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/KDu1FxmyEz0/maxresdefault.jpg",
-    "date": "2024-03-12"
+    "date": "2024-03-12",
+    "eventYear": 2024
   },
   {
     "id": 276,
@@ -1083,7 +1153,8 @@
       12
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/ixHdv6fq8nw/maxresdefault.jpg",
-    "date": "2024-03-11"
+    "date": "2024-03-11",
+    "eventYear": 2024
   },
   {
     "id": 277,
@@ -1095,7 +1166,8 @@
     "musicianIds": [
       12
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/BVJBFdlcZXY/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/BVJBFdlcZXY/maxresdefault.jpg",
+    "eventYear": 2024
   },
   {
     "id": 278,
@@ -1107,7 +1179,8 @@
       42
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/SLiSo_OH9tg/maxresdefault.jpg",
-    "date": "2021-10-29"
+    "date": "2021-10-29",
+    "eventYear": 2021
   },
   {
     "id": 279,
@@ -1119,7 +1192,8 @@
       42
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/qyZeA94z0Hk/maxresdefault.jpg",
-    "date": "2023-11-05"
+    "date": "2023-11-05",
+    "eventYear": 2023
   },
   {
     "id": 280,
@@ -1131,7 +1205,8 @@
       42
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/xCNaTfscohY/maxresdefault.jpg",
-    "date": "2018-03-08"
+    "date": "2018-03-08",
+    "eventYear": 2018
   },
   {
     "id": 281,
@@ -1143,7 +1218,8 @@
     "musicianIds": [
       11
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/sAsJNwS59vU/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/sAsJNwS59vU/maxresdefault.jpg",
+    "eventYear": 2025
   },
   {
     "id": 282,
@@ -1155,7 +1231,8 @@
       11
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/qYpwV_p-Azw/maxresdefault.jpg",
-    "date": "2025-05-07"
+    "date": "2025-05-07",
+    "eventYear": 2025
   },
   {
     "id": 283,
@@ -1167,7 +1244,8 @@
       11
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/04q6-vyvg94/maxresdefault.jpg",
-    "date": "2025-03-13"
+    "date": "2025-03-13",
+    "eventYear": 2025
   },
   {
     "id": 284,
@@ -1179,7 +1257,8 @@
       43
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/EWJvD1-otlo/maxresdefault.jpg",
-    "date": "2023-12-24"
+    "date": "2023-12-24",
+    "eventYear": 2023
   },
   {
     "id": 285,
@@ -1191,7 +1270,8 @@
     "musicianIds": [
       43
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/IhRHP7c6Eao/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/IhRHP7c6Eao/maxresdefault.jpg",
+    "eventYear": 2023
   },
   {
     "id": 286,
@@ -1203,7 +1283,8 @@
       2
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/zgiWwanjPdI/maxresdefault.jpg",
-    "date": "2021-11-25"
+    "date": "2021-11-25",
+    "eventYear": 2021
   },
   {
     "id": 287,
@@ -1215,7 +1296,8 @@
     "musicianIds": [
       2
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/CCpHFrcSzPw/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/CCpHFrcSzPw/maxresdefault.jpg",
+    "eventYear": 2021
   },
   {
     "id": 288,
@@ -1227,7 +1309,8 @@
     "musicianIds": [
       2
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/c25pxwnhV0M/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/c25pxwnhV0M/maxresdefault.jpg",
+    "eventYear": 2018
   },
   {
     "id": 289,
@@ -1239,7 +1322,8 @@
     "musicianIds": [
       44
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/65tDAbqJZaQ/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/65tDAbqJZaQ/maxresdefault.jpg",
+    "eventYear": 2016
   },
   {
     "id": 290,
@@ -1251,7 +1335,8 @@
       44
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/e2Oufxoc7x4/maxresdefault.jpg",
-    "date": "2014-09-20"
+    "date": "2014-09-20",
+    "eventYear": 2014
   },
   {
     "id": 291,
@@ -1263,7 +1348,8 @@
       44
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/BEEuFDb1GyM/maxresdefault.jpg",
-    "date": "2026-01-02"
+    "date": "2026-01-02",
+    "eventYear": 2026
   },
   {
     "id": 292,
@@ -1275,7 +1361,8 @@
       45
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/EWRiTHzyLyk/maxresdefault.jpg",
-    "date": "2022-09-08"
+    "date": "2022-09-08",
+    "eventYear": 2022
   },
   {
     "id": 293,
@@ -1287,7 +1374,8 @@
       45
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/fVC1FS-mfk8/maxresdefault.jpg",
-    "date": "2013-10-30"
+    "date": "2013-10-30",
+    "eventYear": 2013
   },
   {
     "id": 294,
@@ -1299,7 +1387,8 @@
       45
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/6Jzm8myzTs8/maxresdefault.jpg",
-    "date": "2022-04-27"
+    "date": "2022-04-27",
+    "eventYear": 2022
   },
   {
     "id": 295,
@@ -1311,7 +1400,8 @@
     "musicianIds": [
       46
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/VTOMLryL6N4/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/VTOMLryL6N4/maxresdefault.jpg",
+    "eventYear": 2020
   },
   {
     "id": 296,
@@ -1323,7 +1413,8 @@
       46
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/SnZA3h1h-q4/maxresdefault.jpg",
-    "date": "2023-04-30"
+    "date": "2023-04-30",
+    "eventYear": 2023
   },
   {
     "id": 297,
@@ -1335,7 +1426,8 @@
     "musicianIds": [
       46
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/GV7eaZnT6Ic/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/GV7eaZnT6Ic/maxresdefault.jpg",
+    "eventYear": 2020
   },
   {
     "id": 298,
@@ -1347,7 +1439,8 @@
       48
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/UuyqY8xo6Yc/maxresdefault.jpg",
-    "date": "2023-04-03"
+    "date": "2023-04-03",
+    "eventYear": 2023
   },
   {
     "id": 299,
@@ -1359,7 +1452,8 @@
       48
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/exF380sO-mo/maxresdefault.jpg",
-    "date": "2020-04-10"
+    "date": "2020-04-10",
+    "eventYear": 2020
   },
   {
     "id": 300,
@@ -1371,7 +1465,8 @@
       48
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/lcvntjQFwN0/maxresdefault.jpg",
-    "date": "2011-10-23"
+    "date": "2011-10-23",
+    "eventYear": 2011
   },
   {
     "id": 301,
@@ -1383,7 +1478,8 @@
       50
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/HZbpddmeKew/maxresdefault.jpg",
-    "date": "2024-10-16"
+    "date": "2024-10-16",
+    "eventYear": 2024
   },
   {
     "id": 302,
@@ -1395,7 +1491,8 @@
       50
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/fyCP5Wd3mcU/maxresdefault.jpg",
-    "date": "2025-07-10"
+    "date": "2025-07-10",
+    "eventYear": 2025
   },
   {
     "id": 303,
@@ -1407,7 +1504,8 @@
       50
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/XEgIJCLbK00/maxresdefault.jpg",
-    "date": "2023-08-02"
+    "date": "2023-08-02",
+    "eventYear": 2023
   },
   {
     "id": 304,
@@ -1419,7 +1517,8 @@
     "musicianIds": [
       51
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/m_farkK8yv8/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/m_farkK8yv8/maxresdefault.jpg",
+    "eventYear": 2026
   },
   {
     "id": 305,
@@ -1431,7 +1530,8 @@
     "musicianIds": [
       51
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/qv3_Uuxc4r0/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/qv3_Uuxc4r0/maxresdefault.jpg",
+    "eventYear": 2022
   },
   {
     "id": 306,
@@ -1443,7 +1543,8 @@
       51
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/-Ez3vTjd314/maxresdefault.jpg",
-    "date": "2020-12-10"
+    "date": "2020-12-10",
+    "eventYear": 2020
   },
   {
     "id": 307,
@@ -1455,7 +1556,8 @@
       52
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/HAm1Jg1LZkY/maxresdefault.jpg",
-    "date": "2021-08-11"
+    "date": "2021-08-11",
+    "eventYear": 2021
   },
   {
     "id": 308,
@@ -1467,7 +1569,8 @@
       52
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/vK0TvMWcK08/maxresdefault.jpg",
-    "date": "2024-12-18"
+    "date": "2024-12-18",
+    "eventYear": 2024
   },
   {
     "id": 309,
@@ -1479,7 +1582,8 @@
       52
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/t-NDoWVrFZY/maxresdefault.jpg",
-    "date": "2024-12-09"
+    "date": "2024-12-09",
+    "eventYear": 2024
   },
   {
     "id": 310,
@@ -1492,7 +1596,8 @@
       11,
       59
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/ka9DcFOD2fw/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/ka9DcFOD2fw/maxresdefault.jpg",
+    "eventYear": 2024
   },
   {
     "id": 311,
@@ -1504,7 +1609,8 @@
     "musicianIds": [
       53
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/ybeiVmWBWYw/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/ybeiVmWBWYw/maxresdefault.jpg",
+    "eventYear": 2026
   },
   {
     "id": 312,
@@ -1516,7 +1622,8 @@
       53
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/fP-ITAf8Za0/maxresdefault.jpg",
-    "date": "2022-09-05"
+    "date": "2022-09-05",
+    "eventYear": 2022
   },
   {
     "id": 313,
@@ -1528,7 +1635,8 @@
       53
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/-xjCi1lgtmo/maxresdefault.jpg",
-    "date": "2016-12-14"
+    "date": "2016-12-14",
+    "eventYear": 2016
   },
   {
     "id": 314,
@@ -1540,7 +1648,8 @@
       55
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/cdMDAmUw-ww/maxresdefault.jpg",
-    "date": "2023-08-18"
+    "date": "2023-08-18",
+    "eventYear": 2023
   },
   {
     "id": 315,
@@ -1552,7 +1661,8 @@
       55
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/iVBKvcOnhXQ/maxresdefault.jpg",
-    "date": "2023-03-29"
+    "date": "2023-03-29",
+    "eventYear": 2023
   },
   {
     "id": 316,
@@ -1564,7 +1674,8 @@
       55
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/9cUem5QHwFg/maxresdefault.jpg",
-    "date": "2023-05-19"
+    "date": "2023-05-19",
+    "eventYear": 2023
   },
   {
     "id": 317,
@@ -1576,7 +1687,8 @@
       56
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/B1jwBkQxccU/maxresdefault.jpg",
-    "date": "2022-07-11"
+    "date": "2022-07-11",
+    "eventYear": 2022
   },
   {
     "id": 318,
@@ -1588,7 +1700,8 @@
       56
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/q92jHcVWfP4/maxresdefault.jpg",
-    "date": "2020-12-11"
+    "date": "2020-12-11",
+    "eventYear": 2020
   },
   {
     "id": 319,
@@ -1600,7 +1713,8 @@
       58
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/3QvZgvH4dDs/maxresdefault.jpg",
-    "date": "2023-12-07"
+    "date": "2023-12-07",
+    "eventYear": 2023
   },
   {
     "id": 320,
@@ -1612,7 +1726,8 @@
       58
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/zv61or_1bls/maxresdefault.jpg",
-    "date": "2024-12-07"
+    "date": "2024-12-07",
+    "eventYear": 2024
   },
   {
     "id": 321,
@@ -1624,7 +1739,8 @@
       58
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/dqnDbaouW6E/maxresdefault.jpg",
-    "date": "2023-12-15"
+    "date": "2023-12-15",
+    "eventYear": 2023
   },
   {
     "id": 322,
@@ -1636,7 +1752,8 @@
     "musicianIds": [
       27
     ],
-    "thumbnailUrl": "https://i.ytimg.com/vi/XTJfNlpoq5Q/maxresdefault.jpg"
+    "thumbnailUrl": "https://i.ytimg.com/vi/XTJfNlpoq5Q/maxresdefault.jpg",
+    "eventYear": 2012
   },
   {
     "id": 323,
@@ -1648,7 +1765,8 @@
       13
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/dsh550wEq5k/maxresdefault.jpg",
-    "date": "2026-03-20"
+    "date": "2026-03-20",
+    "eventYear": 2026
   },
   {
     "id": 324,
@@ -1660,7 +1778,8 @@
       49
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/D7LUxDeWJM8/maxresdefault.jpg",
-    "date": "2023-03-06"
+    "date": "2023-03-06",
+    "eventYear": 2023
   },
   {
     "id": 325,
@@ -1672,7 +1791,8 @@
       58
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/cS0tehlO-7I/maxresdefault.jpg",
-    "date": "2025-12-10"
+    "date": "2025-12-10",
+    "eventYear": 2025
   },
   {
     "id": 326,
@@ -1684,7 +1804,8 @@
       58
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/6Yj7ZTt7GdQ/maxresdefault.jpg",
-    "date": "2026-01-02"
+    "date": "2026-01-02",
+    "eventYear": 2026
   },
   {
     "id": 327,
@@ -1696,6 +1817,7 @@
       58
     ],
     "thumbnailUrl": "https://i.ytimg.com/vi/bt_aJ75LS4Y/maxresdefault.jpg",
-    "date": "2025-04-20"
+    "date": "2025-04-20",
+    "eventYear": 2025
   }
 ]

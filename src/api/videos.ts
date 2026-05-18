@@ -6,4 +6,4 @@ import { VideoItem } from '../types/video';
  * This approach reduces the main bundle size by loading data on-demand.
  */
 export const getVideos = (language?: string) =>
-  fetchLocalizedData<VideoItem>('/data/videos.json', language);
+  fetchLocalizedData<VideoItem>('/data/videos.json', language, { mergeByIdKey: 'id' });

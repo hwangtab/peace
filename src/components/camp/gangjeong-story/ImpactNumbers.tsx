@@ -31,9 +31,10 @@ const StatCard: React.FC<StatCardProps & { colors: VariantColors }> = ({ valueKe
       transition={{ duration: 0.5, delay: delay / 1000 }}
       className="text-center"
     >
-      <p className={`font-partial font-normal text-2xl sm:text-3xl md:text-4xl ${colors.numberColor} whitespace-nowrap tabular-nums`} aria-live="polite">
-        {displayValue.toLocaleString()}
-        <span className="text-base sm:text-xl md:text-2xl">{t(suffixKey)}</span>
+      <p className={`font-partial font-normal text-2xl sm:text-3xl md:text-4xl ${colors.numberColor} whitespace-nowrap tabular-nums`}>
+        <span aria-hidden="true">{displayValue.toLocaleString()}</span>
+        <span className="sr-only">{target.toLocaleString()}</span>
+        <span className="text-base sm:text-xl md:text-2xl" aria-hidden="true">{t(suffixKey)}</span>
       </p>
       <p className={`font-caption font-light text-xs sm:text-sm ${colors.labelColor} mt-2 break-words`}>
         {t(labelKey)}
