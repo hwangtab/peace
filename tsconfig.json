@@ -41,6 +41,10 @@
   ],
   "exclude": [
     "node_modules",
+    "src/setupTests.tsx",
+    "**/__tests__/**",
+    "**/*.test.ts",
+    "**/*.test.tsx",
     "naughty-carson",
     "friendly-northcutt",
     "elated-montalcini",
