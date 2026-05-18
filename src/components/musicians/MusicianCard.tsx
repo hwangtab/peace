@@ -9,7 +9,6 @@ import YouTubeIcon from '../icons/YouTubeIcon';
 
 interface MusicianCardProps {
   musician: Musician;
-  index?: number;
   href?: string;
 }
 

@@ -17,8 +17,6 @@ import '@/index.css';
 import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/layout/Footer';
 import ErrorFallback from '@/components/common/ErrorFallback';
-import { getTextDirection } from '@/utils/rtl';
-
 import { NavigationProvider } from '@/context/NavigationContext';
 
 declare global {
@@ -35,11 +33,6 @@ const GA_MEASUREMENT_ID = (() => {
 
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const { locale } = router;
-  useEffect(() => {
-    const dir = getTextDirection(locale || 'ko');
-    document.documentElement.setAttribute('dir', dir);
-  }, [locale]);
 
   // Core Web Vitals → GA4 보고
   useEffect(() => {

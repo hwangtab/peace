@@ -28,6 +28,7 @@ const campsStructural: CampStructural[] = [
     eventType: 'camp',
     year: 2023,
     startDate: '2023-06-10',
+    endDate: '2023-06-10',
     images: [
       '/images-webp/camps/2023/IMG_2465.webp',
       '/images-webp/camps/2023/20230610둘리목걸이고르는.webp',

@@ -1,4 +1,5 @@
 import React from 'react';
+import { escapeJsonLd } from '@/utils/escapeJsonLd';
 
 interface StructuredDataScriptsProps {
   data: object | object[];
@@ -21,19 +22,13 @@ interface StructuredDataScriptsProps {
  * 모두 body 의 application/ld+json 동일하게 인식·인덱싱.
  */
 
-// `</script>` 시퀀스를 `<\\/script>`로 escape 해 브라우저 HTML 파서가
-// 스크립트 태그를 조기 종료하지 않도록 한다 (XSS 위험 없음 —
-// JSON.stringify 는 데이터 직렬화).
-const escapeJsonForScript = (json: string): string =>
-  json.replace(/<\/script>/g, '<\\/script>');
-
 const StructuredDataScripts: React.FC<StructuredDataScriptsProps> = ({ data }) => {
   const list = Array.isArray(data) ? data : [data];
   if (list.length === 0) return null;
   return (
     <>
       {list.map((entry, index) => {
-        const json = escapeJsonForScript(JSON.stringify(entry));
+        const json = escapeJsonLd(JSON.stringify(entry));
         return (
           <script
             key={`structured-data-${index}`}

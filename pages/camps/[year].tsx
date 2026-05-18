@@ -30,7 +30,8 @@ export default function CampPage({ year, initialMusicians, initialLocale }: Camp
 }
 
 export async function getStaticPaths({ locales }: GetStaticPathsContext) {
-  const years = camps.map((c) => String(c.year));
+  // pageComponents 에 컴포넌트가 없는 year 는 path 에서 제외 — 누락 시 soft 404 방지
+  const years = camps.map((c) => String(c.year)).filter((y) => y in pageComponents);
   const paths = (locales || ['ko']).flatMap((locale) =>
     years.map((year) => ({ params: { year }, locale }))
   );
@@ -73,6 +74,6 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
       initialMusicians,
       initialLocale: lang,
     },
-    ...(isCurrentCamp && { revalidate: 3600 }),
+    revalidate: 3600,
   };
 }

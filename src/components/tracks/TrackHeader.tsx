@@ -42,12 +42,14 @@ export default function TrackHeader({ track, isExpanded, onToggle, onPlay, alway
       role="button"
       tabIndex={0}
       aria-expanded={isExpanded}
+      aria-label={`${track.title} — ${track.artist}`}
     >
       <div className="flex justify-between items-center">
         <div className="flex-grow min-w-0">
           <div className="flex items-center justify-between mb-1">
             <h3 className="text-lg font-bold font-serif break-words min-w-0">
-              <Link href={`/album/tracks/${track.id}`} className="hover:text-jeju-ocean transition-colors focus-visible:outline-none focus-visible:underline" onClick={(e) => e.stopPropagation()}>
+              {/* wrapper role=button이 키보드/SR 진입점 — Link는 마우스 클릭 전용 */}
+              <Link href={`/album/tracks/${track.id}`} className="hover:text-jeju-ocean transition-colors focus-visible:outline-none focus-visible:underline" onClick={(e) => e.stopPropagation()} tabIndex={-1} aria-hidden="true">
                 {track.title}
               </Link>
             </h3>
