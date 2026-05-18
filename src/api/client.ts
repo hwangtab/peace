@@ -15,13 +15,23 @@ const createDataError = (message: string, cause?: unknown): Error => {
   return error;
 };
 
+const FETCH_TIMEOUT_MS = 10_000;
+
 const fetchLocalDataResult = async <T>(path: string): Promise<LocalDataResult<T>> => {
   let response: Response;
 
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+
   try {
-    response = await fetch(path);
+    response = await fetch(path, { signal: controller.signal });
   } catch (error) {
+    if (error instanceof Error && error.name === 'AbortError') {
+      throw createDataError(`Request timeout after ${FETCH_TIMEOUT_MS}ms: ${path}`, error);
+    }
     throw createDataError(`Network error while fetching ${path}`, error);
+  } finally {
+    clearTimeout(timeoutId);
   }
 
   if (!response.ok) {

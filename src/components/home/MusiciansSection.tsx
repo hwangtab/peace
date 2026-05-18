@@ -58,8 +58,8 @@ const MusiciansSection: React.FC<MusiciansSectionProps> = React.memo(
         ) : (
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {musicians.map((musician, index) => (
-                <MusicianCard key={musician.id} musician={musician} index={index} />
+              {musicians.map((musician) => (
+                <MusicianCard key={musician.id} musician={musician} />
               ))}
             </div>
             {enableSectionWrapper && (

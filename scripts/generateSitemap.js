@@ -54,13 +54,18 @@ const getDynamicPages = () => {
     });
   });
 
-  // 캠프-2026 뮤지션 개별 페이지 (participant musicianIds from camps.ts)
-  // 동기화 출처: src/data/camps.ts > localizedData.ko['camp-2026'].participants
-  const camp2026MusicianIds = [
-    14, 5, 15, 3, 4, 17, 20, 21, 10, 22, 7, 23, 24, 13, 25, 26, 27, 29,
-    30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 12, 42, 11, 43, 2, 44,
-    45, 46, 47, 48, 49, 50, 51, 52, 60, 59, 53, 54, 55, 56, 57, 58,
-  ];
+  // 캠프-2026 뮤지션 개별 페이지 — camps.ts 를 텍스트로 파싱해 musicianId 를 동적으로 추출.
+  // 하드코딩 대신 소스에서 직접 읽으므로 참여자 변경 시 자동으로 반영된다.
+  const campsTs = fs.readFileSync(path.join(__dirname, '..', 'src', 'data', 'camps.ts'), 'utf8');
+  // camp-2026 블록 추출 (id: 'camp-2026' 이후 다음 id: 블록 전까지)
+  const camp2026Block = campsTs.slice(
+    campsTs.indexOf("id: 'camp-2026'"),
+    campsTs.indexOf("id: 'camp-", campsTs.indexOf("id: 'camp-2026'") + 1)
+  );
+  const camp2026MusicianIds = [...camp2026Block.matchAll(/musicianId:\s*(\d+)/g)].map(m => Number(m[1]));
+  if (camp2026MusicianIds.length === 0) {
+    throw new Error('generateSitemap: camp-2026 musicianIds 추출 실패 — camps.ts 파일 구조를 확인하세요.');
+  }
   camp2026MusicianIds.forEach((id) => {
     dynamicPages.push({
       path: `/camps/2026/musicians/${id}`,

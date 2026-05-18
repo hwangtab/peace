@@ -8,7 +8,7 @@ export function getMusicianShareUrl(
   locale: string = 'ko'
 ): string {
   const basePath = locale === 'ko' ? '' : `/${locale}`;
-  const url = new URL(`${basePath}/camps/2026/musicians/${musicianId}`, SITE_URL);
+  const url = new URL(`${basePath}/camps/2026/musicians/${encodeURIComponent(musicianId)}`, SITE_URL);
   url.searchParams.set('utm_source', source);
   url.searchParams.set('utm_medium', 'social');
   url.searchParams.set('utm_campaign', 'camp2026');

@@ -6,10 +6,10 @@
 export const extractInstagramUsername = (url: string): string => {
   try {
     const urlObj = new URL(url);
-    return urlObj.pathname.replace(/^\/|\/$/g, '').split('/')[0] || url;
+    return urlObj.pathname.replace(/^\/|\/$/g, '').split('/')[0] || '';
   } catch {
     const parts = url.split('instagram.com/');
-    if (parts.length < 2) return url;
-    return parts[1]?.split(/[?/]/)[0] || url;
+    if (parts.length < 2) return '';
+    return parts[1]?.split(/[?/]/)[0] || '';
   }
 };

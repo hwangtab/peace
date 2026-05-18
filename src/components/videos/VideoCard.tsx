@@ -79,7 +79,7 @@ const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
         <div className="pt-5 px-6 pb-4 flex flex-col cursor-pointer">
           <div className="flex justify-between items-center mb-3 text-xs font-medium text-ocean-mist uppercase tracking-tighter min-w-0">
             <span className="truncate mr-2">{video.location}</span>
-            <span className="flex-shrink-0">
+            <span className="flex-shrink-0" suppressHydrationWarning>
               {new Date(video.date).toLocaleDateString(i18n.language, {
                 year: 'numeric',
                 month: 'long',

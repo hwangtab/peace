@@ -8,11 +8,21 @@ interface ErrorProps {
 }
 
 const messages: Record<string, { error500: string; errorDefault: string; home: string }> = {
-  ko: { error500: '예상치 못한 오류가 발생했습니다.', errorDefault: '서버에서 오류가 발생했습니다.', home: '홈으로' },
-  ja: { error500: '予期しないエラーが発生しました。', errorDefault: 'サーバーでエラーが発生しました。', home: 'ホームへ' },
-  zh: { error500: '发生了意外错误。', errorDefault: '服务器发生错误。', home: '返回首页' },
+  ko:      { error500: '예상치 못한 오류가 발생했습니다.',     errorDefault: '서버에서 오류가 발생했습니다.',     home: '홈으로' },
+  ja:      { error500: '予期しないエラーが発生しました。',     errorDefault: 'サーバーでエラーが発生しました。', home: 'ホームへ' },
+  'zh-Hans': { error500: '发生了意外错误。',                   errorDefault: '服务器发生错误。',                 home: '返回首页' },
+  'zh-Hant': { error500: '發生了意外錯誤。',                   errorDefault: '伺服器發生錯誤。',                 home: '返回首頁' },
+  en:      { error500: 'An unexpected error occurred.',       errorDefault: 'An error occurred on server.',    home: 'Go Home' },
+  es:      { error500: 'Se produjo un error inesperado.',     errorDefault: 'Error en el servidor.',           home: 'Inicio' },
+  fr:      { error500: 'Une erreur inattendue est survenue.', errorDefault: 'Erreur serveur.',                 home: 'Accueil' },
+  de:      { error500: 'Ein unerwarteter Fehler ist aufgetreten.', errorDefault: 'Serverfehler.',              home: 'Startseite' },
+  pt:      { error500: 'Ocorreu um erro inesperado.',         errorDefault: 'Erro no servidor.',               home: 'Início' },
+  ru:      { error500: 'Произошла непредвиденная ошибка.',    errorDefault: 'Ошибка сервера.',                  home: 'Главная' },
+  ar:      { error500: 'حدث خطأ غير متوقع.',                  errorDefault: 'حدث خطأ في الخادم.',              home: 'الرئيسية' },
+  hi:      { error500: 'एक अप्रत्याशित त्रुटि हुई।',         errorDefault: 'सर्वर पर त्रुटि हुई।',           home: 'होम' },
+  id:      { error500: 'Terjadi kesalahan tak terduga.',      errorDefault: 'Terjadi kesalahan server.',       home: 'Beranda' },
 };
-const defaultMsg = { error500: 'An unexpected error occurred.', errorDefault: 'An error occurred on server.', home: 'Go Home' };
+const defaultMsg = messages.en as NonNullable<(typeof messages)[string]>;
 
 function ErrorPage({ statusCode }: ErrorProps) {
   const router = useRouter();

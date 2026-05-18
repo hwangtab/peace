@@ -29,11 +29,10 @@ export default function OtherMusiciansSection({
           {otherMusiciansTitle || t('nav.musician')}
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {otherMusicians.slice(0, 6).map((m, i) => (
+          {otherMusicians.slice(0, 6).map((m) => (
             <MusicianCard
               key={m.id}
               musician={m}
-              index={i}
               href={`${musicianHrefPrefix}/${m.id}`}
             />
           ))}

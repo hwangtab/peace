@@ -40,7 +40,12 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
   const video = localizedMap.get(baseVideo.id) ?? baseVideo;
 
   const musicians = loadLocalizedData<Musician>(resolvedLocale, 'musicians.json');
-  const relatedMusicians = (baseVideo.musicianIds ?? [])
+  const musicianIds = baseVideo.musicianIds ?? [];
+  const missingIds = musicianIds.filter((mid) => !musicians.some((m) => m.id === mid));
+  if (missingIds.length > 0) {
+    console.warn(`[videos/${id}] unknown musicianId(s): ${missingIds.join(', ')}`);
+  }
+  const relatedMusicians = musicianIds
     .map((mid) => musicians.find((m) => m.id === mid))
     .filter((m): m is Musician => Boolean(m));
 
