@@ -71,7 +71,15 @@ export async function fetchLocalData<T>(path: string): Promise<T[]> {
   return result.data;
 }
 
-export async function fetchLocalizedData<T>(path: string, language?: string): Promise<T[]> {
+interface FetchLocalizedOptions {
+  mergeByIdKey?: string;
+}
+
+export async function fetchLocalizedData<T>(
+  path: string,
+  language?: string,
+  options?: FetchLocalizedOptions,
+): Promise<T[]> {
   const lang = getLanguageCode(language);
 
   const candidates = (() => {
@@ -89,23 +97,51 @@ export async function fetchLocalizedData<T>(path: string, language?: string): Pr
     return lang === 'en' ? [localizedPath, path] : [localizedPath, englishPath, path];
   })();
 
-  let allMissing = true;
+  if (!options?.mergeByIdKey) {
+    let allMissing = true;
+
+    for (const candidate of candidates) {
+      const result = await fetchLocalDataResult<T>(candidate);
+
+      if (result.status !== 'not_found') {
+        allMissing = false;
+      }
+
+      if (result.status === 'ok') {
+        return result.data;
+      }
+    }
+
+    if (allMissing) {
+      throw createDataError(`No localized data file found for ${path} (language: ${lang})`);
+    }
+
+    return [];
+  }
+
+  // merge mode: all candidates fetched, earlier entries win on id collision
+  const key = options.mergeByIdKey;
+  const merged: T[] = [];
+  const seen = new Set<unknown>();
+  let anyOk = false;
 
   for (const candidate of candidates) {
     const result = await fetchLocalDataResult<T>(candidate);
-
-    if (result.status !== 'not_found') {
-      allMissing = false;
-    }
-
     if (result.status === 'ok') {
-      return result.data;
+      anyOk = true;
+      for (const item of result.data) {
+        const id = (item as Record<string, unknown>)[key];
+        if (!seen.has(id)) {
+          seen.add(id);
+          merged.push(item);
+        }
+      }
     }
   }
 
-  if (allMissing) {
+  if (!anyOk) {
     throw createDataError(`No localized data file found for ${path} (language: ${lang})`);
   }
 
-  return [];
+  return merged;
 }

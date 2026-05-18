@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { m as motion } from 'framer-motion';
 import { HiOutlineCalendar, HiOutlineLocationMarker } from '@/components/icons/SiteIcons';
 import { CampEvent } from '@/types/camp';
-import Button from '@/components/common/Button';
 
 interface CampCardProps {
   camp: CampEvent;
@@ -76,9 +75,9 @@ const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
               </div>
             )}
 
-            <Button variant="primary" size="sm" fullWidth className="pointer-events-none">
+            <span className="block w-full text-center px-4 py-2 rounded-md bg-jeju-ocean text-white text-sm font-bold">
               {t('camp.view_detail')}
-            </Button>
+            </span>
           </>
         )}
       </div>
