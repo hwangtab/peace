@@ -719,7 +719,7 @@ async function main(): Promise<void> {
       const page = await browser.newPage();
       await page.setViewport({ width: WIDTH_PX, height: 1200, deviceScaleFactor: 2 });
       const html = renderPage(day, musicians);
-      await page.setContent(html, { waitUntil: 'networkidle0' });
+      await page.setContent(html, { waitUntil: 'load' as const });
       await page.evaluateHandle('document.fonts.ready');
 
       const outPath = path.join(OUT_DIR, `${day.date}.png`);
@@ -732,7 +732,7 @@ async function main(): Promise<void> {
     const page = await browser.newPage();
     await page.setViewport({ width: COMBINED_WIDTH_PX, height: 1600, deviceScaleFactor: 2 });
     const html = renderCombinedPage(timetable2026.days, musicians);
-    await page.setContent(html, { waitUntil: 'networkidle0' });
+    await page.setContent(html, { waitUntil: 'load' });
     await page.evaluateHandle('document.fonts.ready');
 
     const outPath = path.join(OUT_DIR, 'all.png');
