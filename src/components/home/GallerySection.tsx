@@ -147,7 +147,6 @@ const AnimatedGalleryItem: React.FC<{
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, transition: { duration: 0.15 } }}
       transition={{ duration: 0.25 }}
-      layout={false}
       className="aspect-square relative bg-ocean-sand rounded-lg overflow-hidden"
     >
       <GalleryImageItem image={image} priority={priority} onClick={onClick} />

@@ -7,10 +7,10 @@ import { useEffect } from 'react';
 import reportWebVitals from '../src/reportWebVitals';
 import { LazyMotion, MotionConfig } from 'framer-motion';
 
-// framer-motion 의 features 를 비동기 청크로 분리해 _app 첫 페인트에서 19KB 의
-// projection/drag/layout 코드를 빼낸다. m.* 컴포넌트(가벼운 변형)와 짝을 이룸.
-// domMax 는 layoutId(AlbumTabContent) 와 layout=true(TrackCard) 사용을 지원.
-const loadDomMaxFeatures = () => import('framer-motion').then((mod) => mod.domMax);
+// framer-motion features 를 비동기 청크로 분리해 _app 첫 페인트 비용을 줄인다.
+// m.* 컴포넌트(가벼운 변형)와 짝을 이룸. layoutId/layout/drag 미사용이므로
+// domAnimation(경량)으로 충분 — layout projection 코드(~19KB)가 청크에서 제외된다.
+const loadDomAnimationFeatures = () => import('framer-motion').then((mod) => mod.domAnimation);
 import { ErrorBoundary } from 'react-error-boundary';
 import nextI18NextConfig from '../next-i18next.config';
 import '@/index.css';
@@ -68,7 +68,7 @@ function App({ Component, pageProps }: AppProps) {
     <NavigationProvider>
       {/* reducedMotion="user": OS의 prefers-reduced-motion 설정을 존중.
            모바일 CSS 애니메이션은 index.css @media (max-width: 767px)에서 별도 처리. */}
-      <LazyMotion features={loadDomMaxFeatures} strict>
+      <LazyMotion features={loadDomAnimationFeatures} strict>
       <MotionConfig reducedMotion="user">
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
