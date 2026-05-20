@@ -4,7 +4,7 @@
 Why:
 - zh-Hans 만 items 6 개 (다른 12 로케일은 16). i18next fallbackLng=ko 비활성화
   전제 조건으로 13 로케일 키 parity 확보가 필요.
-- items[3] (장르/라인업 답변) 도 구버전 "50–60组/32组" 으로 남아있어 51팀 기준으로 수정.
+- items[3] (장르/라인업 답변) 도 구버전 "50–60组/32组" 으로 남아있어 50팀 기준으로 수정.
 
 Run: `python3 scripts/seo/fix-zh-hans-faqs.py`
 """
@@ -27,7 +27,7 @@ NEW_ITEMS_6_15 = [
     },
     {
         'q': '儿童可以参加吗？',
-        'a': '是的，江汀和平音乐营是全家可以一起享受的户外节庆。儿童入场详情请查看Tumblbug（tumblbug.com/gpmc3）门票页面。',
+        'a': '是的，江汀和平音乐营是全家可以一起享受的户外节庆。儿童入场详情请查看官方预订页面。',
     },
     {
         'q': '怎样作为志愿者参与？',
@@ -55,7 +55,7 @@ NEW_ITEMS_6_15 = [
     },
     {
         'q': '我想支持音乐营。',
-        'a': '您可以通过Tumblbug（tumblbug.com/gpmc3）的众筹支持。此外，在Naver智能商店购买周边商品或音乐专辑也对营地的持续举办有很大帮助。',
+        'a': '购票是对音乐营最直接的支持。此外，在Naver智能商店购买周边商品或音乐专辑也对营地的持续举办有很大帮助。',
     },
 ]
 
@@ -68,7 +68,7 @@ def main() -> None:
     assert len(items) >= 6, f'expected ≥6 base items, got {len(items)}'
 
     # items[3] (장르/라인업) 구버전 수정 — 51팀 기준
-    items[3]['a'] = '摇滚、民谣、爵士、电子等多种流派的音乐人将参加。2026年音乐营已确认51组音乐人参演。'
+    items[3]['a'] = '摇滚、民谣、爵士、电子等多种流派的音乐人将参加。2026年音乐营已确认50组音乐人参演。'
 
     # items 6–15 추가 (idempotent: 이미 존재하면 덮어쓰기)
     while len(items) < 6 + len(NEW_ITEMS_6_15):
@@ -86,7 +86,7 @@ def main() -> None:
     with PATH.open('r', encoding='utf-8') as fp:
         reloaded = json.load(fp)
     assert len(reloaded['items']) == 16
-    print(f'updated zh-Hans/faqs.json — {len(reloaded["items"])} items, items[3] 51팀 기준 갱신')
+    print(f'updated zh-Hans/faqs.json — {len(reloaded["items"])} items, items[3] 50팀 기준 갱신')
 
 
 if __name__ == '__main__':

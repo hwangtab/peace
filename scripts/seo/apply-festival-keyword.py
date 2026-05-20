@@ -25,55 +25,55 @@ ROOT = Path('/Users/hwang-gyeongha/peace/public/locales')
 # Per-locale rewritten/added values. Keys are dotted paths into translation.json.
 UPDATES: Dict[str, Dict[str, str]] = {
     'ko': {
-        'camp.seo_description_2026': '제주 평화 음악 페스티벌 — 2026년 6월 5–7일 제주 강정마을에서 열리는 제3회 강정피스앤뮤직캠프. 3일간 51팀의 뮤지션이 평화와 연대를 노래합니다. 강정체육공원, 텀블벅 티켓 3만원(tumblbug.com/gpmc3).',
+        'camp.seo_description_2026': '제주 평화 음악 페스티벌 — 2026년 6월 5–7일 제주 강정마을에서 열리는 제3회 강정피스앤뮤직캠프. 3일간 50팀의 뮤지션이 평화와 연대를 노래합니다. 강정체육공원, 티켓 3만원.',
         'camp.section_overview_subtitle': '제주에서 열리는 평화 음악 페스티벌',
     },
     'en': {
-        'camp.seo_description_2026': 'Jeju Peace Music Festival — The 3rd Gangjeong Peace and Music Camp, June 5–7, 2026 at Gangjeong Village, Jeju Island. 51 Korean indie acts across three days of peace music at Gangjeong Sports Park. Tickets ₩30,000 via Tumblbug (tumblbug.com/gpmc3).',
+        'camp.seo_description_2026': 'Jeju Peace Music Festival — The 3rd Gangjeong Peace and Music Camp, June 5–7, 2026 at Gangjeong Village, Jeju Island. 50 Korean indie acts across three days of peace music at Gangjeong Sports Park. Tickets ₩30,000.',
         'camp.section_overview_subtitle': "Jeju's peace music festival",
     },
     'ja': {
-        'camp.seo_description_2026': '済州平和音楽フェスティバル — 第3回カンジョン平和音楽キャンプ、2026年6月5日〜7日、韓国済州島カンジョン村にて。51組の韓国インディーアーティストが3日間、平和の音楽を奏でます。チケット30,000ウォンはtumblbug.com/gpmc3で販売中。',
+        'camp.seo_description_2026': '済州平和音楽フェスティバル — 第3回カンジョン平和音楽キャンプ、2026年6月5日〜7日、韓国済州島カンジョン村にて。50組の韓国インディーアーティストが3日間、平和の音楽を奏でます。チケット30,000ウォン。',
         'camp.section_overview_subtitle': '済州で開かれる平和音楽フェスティバル',
     },
     'zh-Hans': {
-        'camp.seo_description_2026': '济州和平音乐节 — 第三届江汀和平音乐营，2026年6月5–7日在韩国济州岛江汀村举行。51组韩国独立音乐人，三天和平音乐演出。门票30,000韩元，通过Tumblbug（tumblbug.com/gpmc3）发售。',
+        'camp.seo_description_2026': '济州和平音乐节 — 第三届江汀和平音乐营，2026年6月5–7日在韩国济州岛江汀村举行。50组韩国独立音乐人，三天和平音乐演出。门票30,000韩元。',
         'camp.section_overview_subtitle': '济州岛的和平音乐节',
     },
     'zh-Hant': {
-        'camp.seo_description_2026': '濟州和平音樂節 — 第三屆江汀和平音樂營，2026年6月5–7日在韓國濟州島江汀村舉行。51組韓國獨立音樂人，三天和平音樂演出。票券30,000韓元，透過Tumblbug（tumblbug.com/gpmc3）販售。',
+        'camp.seo_description_2026': '濟州和平音樂節 — 第三屆江汀和平音樂營，2026年6月5–7日在韓國濟州島江汀村舉行。50組韓國獨立音樂人，三天和平音樂演出。票券30,000韓元。',
         'camp.section_overview_subtitle': '濟州島的和平音樂節',
     },
     'es': {
-        'camp.seo_description_2026': 'Festival de música por la paz en Jeju — El 3.º Gangjeong Peace and Music Camp, del 5 al 7 de junio de 2026 en la aldea de Gangjeong, Jeju. 51 grupos indie coreanos en tres días de música por la paz. Entradas ₩30.000 KRW en Tumblbug (tumblbug.com/gpmc3).',
+        'camp.seo_description_2026': 'Festival de música por la paz en Jeju — El 3.º Gangjeong Peace and Music Camp, del 5 al 7 de junio de 2026 en la aldea de Gangjeong, Jeju. 50 grupos indie coreanos en tres días de música por la paz. Entradas ₩30.000 KRW.',
         'camp.section_overview_subtitle': 'Festival de música por la paz en Jeju',
     },
     'fr': {
-        'camp.seo_description_2026': 'Festival de musique pour la paix à Jeju — Le 3e Gangjeong Peace and Music Camp, du 5 au 7 juin 2026 au village de Gangjeong, île de Jeju. 51 groupes indé coréens, trois jours de musique pour la paix. Billets ₩30 000 KRW sur Tumblbug (tumblbug.com/gpmc3).',
+        'camp.seo_description_2026': 'Festival de musique pour la paix à Jeju — Le 3e Gangjeong Peace and Music Camp, du 5 au 7 juin 2026 au village de Gangjeong, île de Jeju. 50 groupes indé coréens, trois jours de musique pour la paix. Billets ₩30 000 KRW.',
         'camp.section_overview_subtitle': 'Festival de musique pour la paix à Jeju',
     },
     'de': {
-        'camp.seo_description_2026': 'Friedensmusikfestival auf Jeju — Das 3. Gangjeong Peace and Music Camp, 5.–7. Juni 2026 im Dorf Gangjeong, Insel Jeju. 51 koreanische Indie-Acts, drei Tage Friedensmusik. Tickets ₩30.000 KRW bei Tumblbug (tumblbug.com/gpmc3).',
+        'camp.seo_description_2026': 'Friedensmusikfestival auf Jeju — Das 3. Gangjeong Peace and Music Camp, 5.–7. Juni 2026 im Dorf Gangjeong, Insel Jeju. 50 koreanische Indie-Acts, drei Tage Friedensmusik. Tickets ₩30.000 KRW.',
         'camp.section_overview_subtitle': 'Friedensmusikfestival auf Jeju',
     },
     'pt': {
-        'camp.seo_description_2026': 'Festival de música pela paz em Jeju — O 3.º Gangjeong Peace and Music Camp, 5–7 de junho de 2026, aldeia de Gangjeong, Jeju. 51 grupos indie coreanos em três dias de música pela paz. Ingressos ₩30.000 KRW no Tumblbug (tumblbug.com/gpmc3).',
+        'camp.seo_description_2026': 'Festival de música pela paz em Jeju — O 3.º Gangjeong Peace and Music Camp, 5–7 de junho de 2026, aldeia de Gangjeong, Jeju. 50 grupos indie coreanos em três dias de música pela paz. Ingressos ₩30.000 KRW.',
         'camp.section_overview_subtitle': 'Festival de música pela paz em Jeju',
     },
     'ru': {
-        'camp.seo_description_2026': 'Фестиваль мирной музыки на Чеджу — 3-й Gangjeong Peace and Music Camp, 5–7 июня 2026, деревня Канджон, остров Чеджу. 51 корейский инди-коллектив, три дня музыки мира. Билеты ₩30 000 (KRW) на Tumblbug (tumblbug.com/gpmc3).',
+        'camp.seo_description_2026': 'Фестиваль мирной музыки на Чеджу — 3-й Gangjeong Peace and Music Camp, 5–7 июня 2026, деревня Канджон, остров Чеджу. 50 корейских инди-коллективов, три дня музыки мира. Билеты ₩30 000 (KRW).',
         'camp.section_overview_subtitle': 'Фестиваль мирной музыки на Чеджу',
     },
     'id': {
-        'camp.seo_description_2026': 'Festival musik perdamaian di Jeju — Gangjeong Peace and Music Camp ke-3, 5–7 Juni 2026 di Desa Gangjeong, Pulau Jeju. 51 grup indie Korea, tiga hari musik perdamaian. Tiket ₩30.000 KRW via Tumblbug (tumblbug.com/gpmc3).',
+        'camp.seo_description_2026': 'Festival musik perdamaian di Jeju — Gangjeong Peace and Music Camp ke-3, 5–7 Juni 2026 di Desa Gangjeong, Pulau Jeju. 50 grup indie Korea, tiga hari musik perdamaian. Tiket ₩30.000 KRW.',
         'camp.section_overview_subtitle': 'Festival musik perdamaian di Jeju',
     },
     'ar': {
-        'camp.seo_description_2026': 'مهرجان موسيقى السلام في جيجو — مخيم كانغجونغ للسلام والموسيقى الثالث، 5–7 يونيو 2026 في قرية كانغجونغ بجزيرة جيجو. 51 فرقة كورية مستقلّة في ثلاثة أيام من موسيقى السلام. التذاكر بـ30,000 وون (KRW) عبر Tumblbug (tumblbug.com/gpmc3).',
+        'camp.seo_description_2026': 'مهرجان موسيقى السلام في جيجو — مخيم كانغجونغ للسلام والموسيقى الثالث، 5–7 يونيو 2026 في قرية كانغجونغ بجزيرة جيجو. 50 فرقة كورية مستقلّة في ثلاثة أيام من موسيقى السلام. التذاكر بـ30,000 وون (KRW).',
         'camp.section_overview_subtitle': 'مهرجان موسيقى السلام في جيجو',
     },
     'hi': {
-        'camp.seo_description_2026': 'जेजू शांति संगीत महोत्सव — तीसरा गांगजोंग शांति और संगीत शिविर, 5–7 जून 2026, गांगजोंग गाँव, जेजू द्वीप। 51 कोरियाई इंडी समूह, तीन दिनों की शांति संगीत प्रस्तुति। टिकट ₩30,000 KRW, Tumblbug (tumblbug.com/gpmc3) पर।',
+        'camp.seo_description_2026': 'जेजू शांति संगीत महोत्सव — तीसरा गांगजोंग शांति और संगीत शिविर, 5–7 जून 2026, गांगजोंग गाँव, जेजू द्वीप। 50 कोरियाई इंडी समूह, तीन दिनों की शांति संगीत प्रस्तुति। टिकट ₩30,000 KRW।',
         'camp.section_overview_subtitle': 'जेजू में शांति संगीत महोत्सव',
     },
 }
