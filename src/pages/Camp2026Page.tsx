@@ -250,9 +250,9 @@ const Camp2026Page: React.FC<CampPageProps> = ({
 
       {/* Guidelines Summary Section */}
       <>
-        <SectionWave color="light-beige" />
-        <GuidelinesSummary />
         <SectionWave color="deep-ocean" />
+        <GuidelinesSummary />
+        <SectionWave color="light-beige" />
       </>
 
       {/* Final CTA Section */}
