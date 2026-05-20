@@ -1,0 +1,172 @@
+{
+  "camp_guidelines_2026": {
+    "page_title": "Peraturan Kamp — Kamp Perdamaian & Musik Gangjeong ke-3",
+    "page_subtitle": "Untuk kamp yang aman dan bermartabat",
+    "seo_title": "Peraturan Kamp | Kamp Perdamaian & Musik Gangjeong ke-3 2026",
+    "seo_description": "Peraturan Kamp Perdamaian & Musik Gangjeong ke-3. Perilaku terlarang, persetujuan, cara melapor, respons penyelenggara, kedaruratan medis, keselamatan di luar ruangan, aksesibilitas, dan kebijakan lingkungan.",
+
+    "breadcrumb_guidelines": "Peraturan",
+
+    "summary_heading": "Untuk kamp yang aman dan bermartabat",
+    "summary_intro": "Kamp Perdamaian & Musik Gangjeong adalah tempat di mana semua orang berpartisipasi dengan aman dan bermartabat. Peraturan ini berlaku secara setara bagi musisi, staf, relawan, dan penonton.",
+    "summary_topics": [
+      "Tanpa kebencian atau diskriminasi",
+      "Tanpa pelecehan atau kekerasan seksual",
+      "Persetujuan",
+      "Cara melapor",
+      "Respons penyelenggara",
+      "Kedaruratan medis",
+      "Keselamatan di luar ruangan",
+      "Aksesibilitas",
+      "Kepedulian lingkungan"
+    ],
+    "summary_report_label": "Pelaporan & Kontak",
+    "summary_report_contact1": "Manajer Kesetaraan Gender (kekerasan seksual)",
+    "summary_report_contact1_names": "Yum (010-8170-2188), Lee Sang (010-2379-0760)",
+    "summary_report_contact2": "Hal lainnya",
+    "summary_report_contact2_name": "Jang Ha-na (010-3693-3971)",
+    "summary_cta": "Baca peraturan lengkap",
+
+    "intro_title": "1. Pendahuluan",
+    "intro_body": "Kamp Perdamaian & Musik Gangjeong adalah ruang solidaritas musikal yang memimpikan dunia tanpa perang. Peraturan ini hadir agar setiap peserta — musisi, staf, relawan, maupun penonton — dapat menjalani waktu ini dengan aman dan bermartabat. Peraturan ini berlaku setara bagi semua orang.",
+
+    "prohibited_title": "2. Perilaku yang dilarang",
+    "prohibited_intro": "Perilaku berikut dilarang keras selama acara berlangsung, di mana pun berada.",
+    "prohibited_hate_title": "Kebencian dan diskriminasi",
+    "prohibited_hate_items": [
+      "Segala ucapan atau perilaku diskriminatif atau penuh kebencian berdasarkan gender, orientasi seksual, identitas gender, usia, kewarganegaraan, suku, disabilitas, penampilan, agama, kelas sosial, atau alasan lainnya. «Itu hanya bercanda» bukan alasan yang dapat diterima."
+    ],
+    "prohibited_harassment_title": "Pelecehan dan kekerasan seksual",
+    "prohibited_harassment_items": [
+      "Kontak fisik yang tidak diinginkan (termasuk sentuhan ringan seperti jabat tangan atau pelukan)",
+      "Komentar seksual, lelucon berkonotasi seksual, atau komentar tentang penampilan atau tubuh seseorang",
+      "Mendekati seseorang tanpa persetujuan, mengikutinya, atau menghubunginya secara berulang",
+      "Pelecehan seksual melalui sarana digital atau daring"
+    ],
+    "prohibited_filming_title": "Fotografi dan perekaman",
+    "prohibited_filming_items": [
+      "Mengambil atau mempublikasikan foto atau video yang mengidentifikasi wajah seseorang tanpa pemberitahuan terlebih dahulu atau persetujuannya",
+      "Perekaman ilegal (tubuh, ruang pribadi, dll.)"
+    ],
+
+    "consent_title": "3. Apa itu persetujuan?",
+    "consent_body": "Persetujuan harus jelas, sukarela, dan dapat dicabut kapan saja. «Tidak» atau «saya tidak nyaman» adalah jawaban yang lengkap dengan sendirinya — tidak diperlukan penjelasan apa pun. Diam, ragu-ragu, atau ketidakpastian bukan merupakan persetujuan. Persetujuan di masa lalu tidak menjamin persetujuan saat ini. Persetujuan yang diberikan dalam keadaan mabuk mungkin tidak berlaku.",
+
+    "bystander_title": "4. Jika Anda mengalami atau menyaksikan situasi yang tidak nyaman",
+    "bystander_items": [
+      "Intervensi langsung — masuk secara natural dengan mengalihkan topik atau memotong percakapan.",
+      "Periksa kondisi orang tersebut — tanyakan «Apakah kamu baik-baik saja?» dan tetaplah bersamanya.",
+      "Minta bantuan — beritahu anggota staf terdekat.",
+      "Dokumentasikan — jika aman untuk dilakukan, catat waktu, tempat, dan rincian situasi tersebut."
+    ],
+
+    "report_title": "5. Cara melapor",
+    "report_intro": "Jika Anda mengalami atau menyaksikan suatu insiden, silakan hubungi kami melalui salah satu cara berikut.",
+    "report_items": [
+      "Hubungi anggota staf secara langsung, melalui telepon, atau pesan",
+      "Manajer Kesetaraan Gender (kekerasan seksual): Yum (010-8170-2188), Lee Sang (010-2379-0760)",
+      "Hal lainnya: Jang Ha-na (010-3693-3971)",
+      "Laporan diterima bahkan setelah acara berakhir."
+    ],
+
+    "response_title": "6. Respons penyelenggara",
+
+    "response_harassment_subtitle": "Dalam kasus pelecehan seksual",
+    "response_harassment_items": [
+      "Pelapor atau penyintas akan dihubungkan dengan anggota staf.",
+      "Penyintas dan tertuduh akan dipisahkan.",
+      "Penyintas akan didukung untuk berpindah ke tempat aman pilihannya."
+    ],
+    "response_options_label": "Dengan persetujuan penyintas, pilihan berikut akan ditawarkan. Tidak ada pilihan yang dipaksakan.",
+    "response_options_items": [
+      "Menerima dukungan di tempat dari tim keamanan",
+      "Bantuan untuk membuat laporan polisi (112)",
+      "Beristirahat dengan aman tanpa tindakan apa pun"
+    ],
+
+    "response_hotlines_subtitle": "Organisasi pendukung eksternal",
+    "response_hotlines": [
+      { "name": "Hotline darurat perempuan", "number": "1366", "hours": "24 jam", "desc": "Konseling darurat untuk kekerasan seksual/domestik dan rujukan perlindungan" },
+      { "name": "Pusat Bantuan Kekerasan Seksual Korea", "number": "02-338-5801", "hours": "", "desc": "Dukungan psikologis dan panduan hukum untuk korban kekerasan seksual" },
+      { "name": "Pusat Konseling Kekerasan Seksual Jeju", "number": "064-757-1366", "hours": "", "desc": "Dukungan langsung di Jeju untuk korban kekerasan seksual" },
+      { "name": "Hotline krisis kesehatan jiwa", "number": "1577-0199", "hours": "24 jam", "desc": "Konseling darurat untuk krisis kesehatan jiwa dan penderitaan psikologis" },
+      { "name": "Hotline pencegahan bunuh diri", "number": "1393", "hours": "24 jam", "desc": "Intervensi krisis dan konseling pencegahan bunuh diri" },
+      { "name": "Korps Bantuan Hukum Korea", "number": "132", "hours": "", "desc": "Konsultasi dan bantuan hukum" }
+    ],
+
+    "response_assault_subtitle": "Dalam kasus kekerasan seksual atau pemerkosaan",
+    "response_assault_items": [
+      "Pelapor atau penyintas akan dihubungkan dengan anggota staf.",
+      "Penyintas dan tertuduh akan segera dipisahkan.",
+      "Penyintas akan didukung untuk berpindah ke tempat aman pilihannya.",
+      "Polisi (112) akan dihubungi untuk memastikan pemisahan terkuat dan bukti hukum."
+    ],
+    "response_evidence_label": "Respons segera dan pelestarian bukti",
+    "response_evidence_items": [
+      "Jangan mandi segera setelah insiden terjadi. Masukkan pakaian yang Anda kenakan ke dalam kantong kertas dan pergi ke Pusat Sunflower (Sunflower Center) atau klinik ginekologi untuk pengambilan sampel DNA.",
+      "Simpan pesan KakaoTalk, email, rekaman CCTV, dan kesaksian saksi sebelum dan sesudah insiden.",
+      "Tulis catatan rinci tentang tanggal, tempat, tindakan spesifik, dan respons tertuduh."
+    ],
+
+    "response_other_subtitle": "Dalam kasus lainnya",
+    "response_other_items": [
+      "Pelapor atau penyintas akan dihubungkan dengan tim keamanan.",
+      "Rencana tindakan akan dikembangkan melalui komunikasi antara pelapor atau penyintas dan anggota staf."
+    ],
+
+    "response_perpetrator_subtitle": "Terkait tertuduh",
+    "response_perpetrator_items": [
+      "Status tertuduh (musisi, staf, penonton, dll.) bukan alasan untuk pengecualian.",
+      "Tingkat tindakan yang diambil berada di bawah kebijaksanaan staf dan otoritas berwenang, dan tidak dapat digugat di tempat."
+    ],
+
+    "response_confidentiality_subtitle": "Kerahasiaan",
+    "response_confidentiality_items": [
+      "Identitas penyintas dan rincian insiden hanya akan dibagikan kepada jumlah minimum orang yang diperlukan untuk respons.",
+      "Tidak ada yang akan diungkapkan secara eksternal tanpa persetujuan penyintas."
+    ],
+
+    "response_secondary_harm_subtitle": "Mencegah kerugian sekunder",
+    "response_secondary_harm_items": [
+      "Pertanyaan seperti «Mengapa Anda ada di sana?» atau «Mengapa tidak mengatakan sesuatu lebih awal?» tidak akan diajukan.",
+      "Membela tertuduh atau mengekspresikan keraguan terhadap penyintas akan diperlakukan sebagai kerugian sekunder."
+    ],
+
+    "medical_title": "7. Situasi medis dan darurat",
+    "medical_items": [
+      "Dalam keadaan darurat, segera hubungi 119 dan beritahu anggota staf terdekat.",
+      "Perlengkapan pertolongan pertama dasar akan tersedia di stan utama."
+    ],
+
+    "outdoor_title": "8. Keselamatan di luar ruangan dan berkemah",
+    "outdoor_items": [
+      "Saat cuaca ekstrem seperti topan atau hujan lebat, ikuti petunjuk penyelenggara dan segera evakuasi.",
+      "Terkait Sungai Gangjeong: berenang dalam keadaan mabuk adalah tanggung jawab sendiri; anak-anak harus selalu didampingi oleh wali.",
+      "Area pintu masuk mungkin padat karena konstruksi Jembatan Gangjeong. Kami merekomendasikan penggunaan transportasi umum atau berbagi kendaraan.",
+      "Barang hilang akan disimpan di stan penyelenggara selama satu minggu setelah acara, kemudian dibuang.",
+      "Wali bertanggung jawab atas keselamatan anak-anak dalam pengasuhan mereka. Jangan biarkan anak-anak tanpa pengawasan.",
+      "Jika seorang dewasa yang bukan wali seorang anak berada sendirian bersama anak tersebut dengan cara yang terasa tidak wajar, harap beritahu anggota staf. Kata-kata atau kontak fisik yang tidak pantas terhadap anak-anak akan ditangani dengan lebih serius daripada insiden serupa yang melibatkan orang dewasa."
+    ],
+
+    "accessibility_title": "9. Aksesibilitas",
+    "accessibility_items": [
+      "Venue dapat diakses dengan kursi roda.",
+      "Kami tidak dapat mengatur layanan interpretasi, interpretasi bahasa isyarat, atau deskripsi audio yang terpisah.",
+      "Kami akan berupaya mengoperasikan semua toilet umum sebagai fasilitas netral gender selama jam pertunjukan."
+    ],
+
+    "environment_title": "10. Lingkungan dan keberlanjutan",
+    "environment_intro": "Desa Gangjeong adalah ruang yang telah mempertahankan ekologi dan perdamaian dari militarisasi. Kita memiliki tanggung jawab untuk melestarikan tanah ini seutuhnya.",
+    "environment_items": [
+      "Bawa sampah Anda. Gunakan tempat sampah daur ulang dan jangan tinggalkan sampah di venue.",
+      "Jangan merusak lingkungan alam di dalam venue (tanaman, batuan, saluran air, dll.).",
+      "Minimalkan penggunaan barang sekali pakai. Membawa cangkir dan peralatan makan sendiri sangat dianjurkan.",
+      "Jangan gunakan sabun atau deterjen saat bermain di Sungai Gangjeong.",
+      "Parkir hanya di area parkir yang telah ditentukan."
+    ],
+
+    "contact_title": "11. Kontak",
+    "contact_body": "Lee Sang (Direktur Utama): 010-2379-0760",
+    "contact_note": "Hanya menerima pertanyaan dan saran sebelum kamp berlangsung."
+  }
+}
