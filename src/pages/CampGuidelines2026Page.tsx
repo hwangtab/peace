@@ -3,6 +3,7 @@ import { useTranslation } from 'next-i18next';
 import { m as motion } from 'framer-motion';
 import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
+import PageHero from '@/components/common/PageHero';
 import Section from '@/components/layout/Section';
 import GuidelineSection from '@/components/camp/guidelines/GuidelineSection';
 import { getFullUrl } from '@/config/env';
@@ -52,24 +53,13 @@ const CampGuidelines2026Page: React.FC = () => {
       title={g('page_title') as string}
       description={g('seo_description') as string}
       breadcrumbs={breadcrumbs}
+      disableTopPadding={true}
     >
-      {/* Page header — bg-deep-ocean (Section component doesn't support deep-ocean) */}
-      <section className="bg-deep-ocean py-16 sm:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-2xl"
-          >
-            <p className="text-xs uppercase tracking-widest text-seafoam mb-3 font-semibold">
-              제3회 강정피스앤뮤직캠프 · 2026
-            </p>
-            <h1 className="typo-h1 text-white mb-3">{g('page_subtitle')}</h1>
-            <p className="typo-body text-cloud-white/80">{g('seo_description')}</p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        title={g('page_subtitle') as string}
+        subtitle={g('page_title') as string}
+        backgroundImage="/images-webp/camps/2026/hero-gangjeong-2026.webp"
+      />
 
       {/* Main content */}
       <Section background="white" paddingTop="loose" paddingBottom="loose">
