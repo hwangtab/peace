@@ -1,8 +1,8 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
-import { useRouter } from 'next/router';
 import { GalleryImage } from '../types/gallery';
 import { getGalleryImages } from '../api/gallery';
-import { FilterId, filterByEvent, isValidFilter } from '../utils/filtering';
+import { FilterId, filterByEvent } from '../utils/filtering';
+import { useFilterFromQuery } from './useFilterFromQuery';
 
 interface UseGalleryImagesReturn {
   images: GalleryImage[];
@@ -28,21 +28,11 @@ export const useGalleryImages = (
   initialImages: GalleryImage[] = EMPTY_GALLERY_IMAGES,
   skipClientFetch = false
 ): UseGalleryImagesReturn => {
-  const router = useRouter();
+  const [selectedFilter, setSelectedFilter] = useFilterFromQuery();
   const [images, setImages] = useState<GalleryImage[]>(initialImages);
-  const [selectedFilter, setSelectedFilter] = useState<FilterId>('all');
   // mount 시점 스냅샷 — caller 가 매 렌더 새 [] 참조를 넘겨도 effect 재실행 방지
   const initialImagesRef = useRef(initialImages);
   const [isLoading, setIsLoading] = useState<boolean>(initialImages.length === 0);
-
-  // Sync filter with query parameter on mount
-  useEffect(() => {
-    if (!router.isReady) return;
-    const filterParam = typeof router.query.filter === 'string' ? router.query.filter : null;
-    if (filterParam && isValidFilter(filterParam)) {
-      setSelectedFilter(filterParam);
-    }
-  }, [router.isReady, router.query.filter]);
 
   // Fetch full gallery in background unless skipClientFetch is true.
   // When initialImages exist, render them immediately and replace with full data after fetch.

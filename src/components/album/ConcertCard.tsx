@@ -34,7 +34,7 @@ const ConcertCard: React.FC<ConcertCardProps> = ({ concert, onMusicianClick, ind
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.4, delay: Math.min(index * 0.08, 0.4) }}
-            className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-[box-shadow,border-color] duration-500 border border-gray-100 flex flex-col"
+            className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-[box-shadow,border-color] duration-500 border border-ocean-sand flex flex-col"
         >
             {/* Card Header Background Decor */}
             <div className="h-2 bg-gradient-to-r from-jeju-ocean to-ocean-mist opacity-80" />
@@ -45,7 +45,7 @@ const ConcertCard: React.FC<ConcertCardProps> = ({ concert, onMusicianClick, ind
                 </h3>
 
                 <div className="space-y-4 mb-8">
-                    <div className="flex items-center gap-4 text-gray-700">
+                    <div className="flex items-center gap-4 text-coastal-gray">
                         <div className="w-10 h-10 rounded-full bg-ocean-sand flex items-center justify-center text-jeju-ocean">
                             <HiOutlineCalendar aria-hidden="true" className="w-5 h-5" />
                         </div>
@@ -60,7 +60,7 @@ const ConcertCard: React.FC<ConcertCardProps> = ({ concert, onMusicianClick, ind
                         </div>
                     </div>
 
-                    <div className="flex items-center gap-4 text-gray-700">
+                    <div className="flex items-center gap-4 text-coastal-gray">
                         <div className="w-10 h-10 rounded-full bg-ocean-sand flex items-center justify-center text-jeju-ocean">
                             <HiOutlineLocationMarker aria-hidden="true" className="w-5 h-5" />
                         </div>

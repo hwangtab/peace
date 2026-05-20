@@ -52,7 +52,7 @@ const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
           </div>
         )}
         <div className="p-6 flex-1 flex flex-col">
-          <div className="flex flex-wrap items-center gap-2 mb-2 text-sm text-gray-500">
+          <div className="flex flex-wrap items-center gap-2 mb-2 text-sm text-coastal-gray">
             <span>{press.publisher}</span>
             <span>{press.date}</span>
           </div>
@@ -159,7 +159,7 @@ export default function PressPage({
           filterOrder="press"
         />
         {pressResource.isLoading && (
-          <p className="text-center text-gray-500 py-12" role="status">
+          <p className="text-center text-coastal-gray py-12" role="status">
             {t('common.loading')}
           </p>
         )}
@@ -173,12 +173,12 @@ export default function PressPage({
           </div>
         )}
         {pressResource.error && (
-          <p className="text-center text-gray-500 py-12" role="alert">
+          <p className="text-center text-coastal-gray py-12" role="alert">
             {t('common.no_results')}
           </p>
         )}
         {filteredItems.length === 0 && !pressResource.error && !pressResource.isLoading && (
-          <p className="text-center text-gray-500 py-12">
+          <p className="text-center text-coastal-gray py-12">
             {t('common.no_results') || 'No results found.'}
           </p>
         )}

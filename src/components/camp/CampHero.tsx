@@ -75,18 +75,18 @@ const CampHero: React.FC<CampHeroProps> = ({ camp, featured, dateBadge, dateDisp
           )}
 
           <h1 className="typo-h1 !text-white mb-3 sm:mb-4">{camp.title}</h1>
-          {camp.slogan && <p className="typo-subtitle !text-gray-100 mb-5 sm:mb-8">{camp.slogan}</p>}
+          {camp.slogan && <p className="typo-subtitle !text-cloud-white/90 mb-5 sm:mb-8">{camp.slogan}</p>}
 
           <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-6 text-white mb-5 sm:mb-8">
             <div>
-              <p className="text-sm uppercase tracking-wide text-gray-300 mb-1">
+              <p className="text-sm uppercase tracking-wide text-cloud-white/70 mb-1">
                 {t('camp.label_period')}
               </p>
               <p className="text-lg font-medium">{formattedDate}</p>
             </div>
-            <div className="hidden sm:block text-gray-400">|</div>
+            <div className="hidden sm:block text-cloud-white/50">|</div>
             <div>
-              <p className="text-sm uppercase tracking-wide text-gray-300 mb-1">
+              <p className="text-sm uppercase tracking-wide text-cloud-white/70 mb-1">
                 {t('camp.label_location')}
               </p>
               <p className="text-lg font-medium">{camp.location}</p>

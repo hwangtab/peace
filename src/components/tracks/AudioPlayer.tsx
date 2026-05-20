@@ -46,18 +46,18 @@ const AudioPlayer = React.memo(({ audioUrl, isPlaying, onPlayPause, title, artis
         {/* Track Info */}
         <div className="flex-1 min-w-0">
           <div className="text-sm font-bold truncate">{title}</div>
-          <div className="text-xs text-gray-500 truncate">{artist}</div>
+          <div className="text-xs text-coastal-gray truncate">{artist}</div>
         </div>
 
         {/* Time */}
-        <div className="text-xs text-gray-500 tabular-nums">
+        <div className="text-xs text-coastal-gray tabular-nums">
           {formatTime(progress)} / {formatTime(duration)}
         </div>
       </div>
 
       {/* Progress Bar */}
       <div
-        className="mt-2 h-1.5 sm:h-1 bg-gray-200 rounded cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
+        className="mt-2 h-1.5 sm:h-1 bg-seafoam/40 rounded cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
         onClick={handleSeek}
         onTouchEnd={(e) => {
           const touch = e.changedTouches[0];

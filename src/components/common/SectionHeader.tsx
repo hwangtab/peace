@@ -47,14 +47,14 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
         >
             <TitleTag className={classNames(
                 titleTag === 'h1' ? 'typo-h1' : 'typo-h2',
-                'mb-4 text-gray-900'
+                'mb-4 text-deep-ocean'
             )}>
                 {title}
             </TitleTag>
 
             {displaySubtitle && (
                 <p
-                    className="typo-subtitle mb-6 text-gray-600 max-w-2xl mx-auto"
+                    className="typo-subtitle mb-6 text-coastal-gray max-w-2xl mx-auto"
                 >
                     {displaySubtitle}
                 </p>

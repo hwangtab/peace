@@ -40,7 +40,7 @@ const AboutSection = () => {
             subtitle={t('about.subtitle')}
           />
 
-          <motion.div variants={itemVariants} className="space-y-8 text-base sm:text-lg text-gray-700 leading-relaxed">
+          <motion.div variants={itemVariants} className="space-y-8 text-base sm:text-lg text-coastal-gray leading-relaxed">
             <p className="text-pretty">
               <Trans i18nKey="about.desc1">
                 제주 강정마을, 거친 바람이 부는 구럼비 바위 앞에서 우리는 처음 노래를 불렀습니다.<br className="hidden md:block" />
@@ -54,7 +54,7 @@ const AboutSection = () => {
                 국경과 언어를 넘어, 음악이라는 가장 아름다운 무기로 우리는 평화를 이야기합니다.
               </Trans>
             </p>
-            <p className="text-gray-900 font-medium text-pretty">
+            <p className="text-deep-ocean font-medium text-pretty">
               <Trans i18nKey="about.desc3">
                 함께 노래하고, 춤추고, 서로를 안아줄 때,<br className="hidden sm:block" />
                 전쟁은 멈추고 평화의 파도는 더 멀리 퍼져나갈 것입니다.

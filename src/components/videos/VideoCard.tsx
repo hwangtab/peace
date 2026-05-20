@@ -50,7 +50,7 @@ const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
         className="block rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
         aria-label={video.title}
       >
-        <div className="relative aspect-video overflow-hidden rounded-t-xl group bg-gray-200">
+        <div className="relative aspect-video overflow-hidden rounded-t-xl group bg-seafoam/30">
           {imgSrc && (
             <Image
               src={imgSrc}
@@ -90,7 +90,7 @@ const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
           <h3 className="typo-h3 text-xl mb-3 hover:text-jeju-ocean transition-colors duration-300 line-clamp-1 leading-snug break-words">
             {video.title}
           </h3>
-          <p className="typo-body text-sm text-gray-600 line-clamp-3 leading-relaxed break-words">
+          <p className="typo-body text-sm text-coastal-gray line-clamp-3 leading-relaxed break-words">
             {video.description}
           </p>
         </div>

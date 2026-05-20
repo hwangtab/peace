@@ -66,7 +66,7 @@ const MusicianCard = memo(({ musician, href }: MusicianCardProps) => {
                 {musician.name}
               </h3>
             </Link>
-            <p className="text-gray-600 mb-4 flex-1 text-pretty break-words">{musician.shortDescription}</p>
+            <p className="text-coastal-gray mb-4 flex-1 text-pretty break-words">{musician.shortDescription}</p>
 
             {/* Social Links */}
             {(musician.instagramUrls.length > 0 || musician.youtubeUrl) && (

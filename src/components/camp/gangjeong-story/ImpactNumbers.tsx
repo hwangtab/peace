@@ -54,7 +54,7 @@ interface Props {
 }
 
 const variantColors: Record<'camp' | 'home', VariantColors> = {
-  camp: { numberColor: 'text-golden-sun', labelColor: 'text-gray-400', dividerVia: 'via-golden-sun/30' },
+  camp: { numberColor: 'text-golden-sun', labelColor: 'text-cloud-white/60', dividerVia: 'via-golden-sun/30' },
   home: { numberColor: 'text-seafoam', labelColor: 'text-sky-horizon', dividerVia: 'via-seafoam/30' },
 };
 

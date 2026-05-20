@@ -1,11 +1,7 @@
 import { getLanguageCode } from '../utils/localization';
+import { parseJsonArray, type JsonArrayResult } from '../utils/jsonReader';
 
-type LocalDataStatus = 'ok' | 'empty' | 'not_found';
-
-interface LocalDataResult<T> {
-  status: LocalDataStatus;
-  data: T[];
-}
+type LocalDataResult<T> = JsonArrayResult<T>;
 
 const createDataError = (message: string, cause?: unknown): Error => {
   const error = new Error(message);
@@ -43,27 +39,12 @@ const fetchLocalDataResult = async <T>(path: string): Promise<LocalDataResult<T>
   }
 
   const text = await response.text();
-  if (!text.trim()) {
-    return { status: 'empty', data: [] };
-  }
 
-  let parsed: unknown;
   try {
-    parsed = JSON.parse(text);
-  } catch (parseError) {
-    throw createDataError(`Invalid JSON payload at ${path}`, parseError);
+    return parseJsonArray<T>(text, path);
+  } catch (error) {
+    throw createDataError((error as Error).message, (error as Error & { cause?: unknown }).cause ?? error);
   }
-
-  if (!Array.isArray(parsed)) {
-    throw createDataError(`Expected array JSON at ${path}`);
-  }
-
-  const data = parsed as T[];
-  if (data.length === 0) {
-    return { status: 'empty', data };
-  }
-
-  return { status: 'ok', data };
 };
 
 export async function fetchLocalData<T>(path: string): Promise<T[]> {

@@ -1,8 +1,6 @@
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import InstagramIcon from '@/components/icons/InstagramIcon';
 import { HiOutlineMail } from '@/components/icons/SiteIcons';
-import { SITE_CONFIG } from '@/constants/config';
 import { useCamp } from '@/hooks/useCamps';
 import { buildUtmUrl } from '@/utils/utm';
 import { simpleMenuItems, campItems, albumItems } from './navigationData';
@@ -12,9 +10,6 @@ import { useTranslation } from 'next-i18next';
 const Footer = () => {
     const { t } = useTranslation();
     const camp2026 = useCamp('camp-2026');
-    // SSG 빌드 연도와 클라이언트 실행 연도가 다를 수 있어 hydration 불일치 방지.
-    const [year, setYear] = useState(SITE_CONFIG.COPYRIGHT_YEAR);
-    useEffect(() => { setYear(new Date().getFullYear()); }, []);
 
     return (
         <footer className="bg-deep-ocean text-cloud-white">
@@ -126,8 +121,8 @@ const Footer = () => {
             <div className="border-t border-cloud-white/10">
                 <div className="container mx-auto px-4 py-4">
                     <p className="text-center text-seafoam/60 text-xs md:text-sm font-caption font-light">
-                        {/* suppressHydrationWarning: SSG 빌드 연도 vs 클라이언트 연도 차이를 허용 */}
-                        © <span suppressHydrationWarning>{year}</span> {t('app.title')}. {t('footer.copyright')}
+                        {/* suppressHydrationWarning: SSG 빌드 연도 vs 클라이언트 실행 연도 차이를 허용 */}
+                        © <span suppressHydrationWarning>{new Date().getFullYear()}</span> {t('app.title')}. {t('footer.copyright')}
                     </p>
                 </div>
             </div>

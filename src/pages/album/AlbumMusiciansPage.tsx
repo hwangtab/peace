@@ -18,7 +18,7 @@ const AlbumMusiciansPage = ({
   initialLocale = 'ko',
 }: AlbumMusiciansPageProps) => {
   // album 을 default 로 두되 nav/common/app 같은 공유 키도 fallback 으로 조회.
-  const { t, i18n } = useTranslation(['album', 'translation']);
+  const { t } = useTranslation(['album', 'translation']);
 
   const breadcrumbs = useMemo(() => [
     { name: t('nav.home'), url: getFullUrl('/') },
@@ -53,8 +53,7 @@ const AlbumMusiciansPage = ({
         ],
       }),
     ];
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [i18n.language, initialMusicians, breadcrumbs]);
+  }, [t, initialMusicians, breadcrumbs]);
 
   return (
     <PageLayout

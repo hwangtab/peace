@@ -74,7 +74,7 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
 
         {filteredImages.length === 0 ? (
           <div className="text-center py-20 bg-white/50 rounded-lg">
-            <p className="text-xl text-gray-500 font-serif font-bold">{t('gallery.no_images')}</p>
+            <p className="text-xl text-coastal-gray font-serif font-bold">{t('gallery.no_images')}</p>
           </div>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
@@ -148,7 +148,7 @@ const AnimatedGalleryItem: React.FC<{
       exit={{ opacity: 0, transition: { duration: 0.15 } }}
       transition={{ duration: 0.25 }}
       layout={false}
-      className="aspect-square relative bg-gray-100 rounded-lg overflow-hidden"
+      className="aspect-square relative bg-ocean-sand rounded-lg overflow-hidden"
     >
       <GalleryImageItem image={image} priority={priority} onClick={onClick} />
     </motion.div>
