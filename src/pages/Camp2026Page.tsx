@@ -13,6 +13,7 @@ import CampHero from '@/components/camp/CampHero';
 import dynamic from 'next/dynamic';
 
 const GangjeongStorySection = dynamic(() => import('@/components/camp/GangjeongStorySection'));
+const GuidelinesSummary = dynamic(() => import('@/components/camp/guidelines/GuidelinesSummary'));
 import { getFullUrl } from '@/config/env';
 import { buildUtmUrl } from '@/utils/utm';
 import Button from '@/components/common/Button';
@@ -51,19 +52,22 @@ const Camp2026Page: React.FC<CampPageProps> = ({
     { name: `${t('nav.camp')} 2026`, url: getFullUrl('/camps/2026') },
   ], [t]);
 
-  // structured data 는 buildCamp2026Schemas 로 추출해 한 번에 계산.
-  // t 는 i18next 가 안정화하므로 deps 에 포함해도 language 변경 시에만 re-run.
+  const tSchema = useCallback(
+    (key: string, vars?: Record<string, string | number>): string =>
+      t(key, vars as Record<string, unknown>) as string,
+    [t],
+  );
+
   const structuredData = useMemo(() => {
     if (!camp2026) return [];
     return buildCamp2026Schemas({
-      t: ((key: string, vars?: Record<string, string | number>) =>
-        t(key, vars as Record<string, unknown>) as unknown as string),
+      t: tSchema,
       lang: i18n.language,
       camp: camp2026,
       musicians,
       ordinalLabel,
     });
-  }, [camp2026, musicians, i18n.language, ordinalLabel, t]);
+  }, [camp2026, musicians, tSchema, i18n.language, ordinalLabel]);
 
   if (!camp2026) {
     return (
@@ -73,7 +77,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({
       >
         <div className="flex items-center justify-center h-full min-h-[50vh]">
           <div className="text-center">
-            <h1 className="typo-h2 text-gray-900 mb-4">{t('camp.not_found')}</h1>
+            <h1 className="typo-h2 text-deep-ocean mb-4">{t('camp.not_found')}</h1>
           </div>
         </div>
       </PageLayout>
@@ -173,7 +177,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({
                 <p className="typo-body mb-6 break-words">{translatedDescription}</p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div className="bg-sky-horizon/60 border border-seafoam/40 rounded-xl p-4 text-center">
-                    <p className="text-xs uppercase tracking-wide text-gray-700 mb-1">
+                    <p className="text-xs uppercase tracking-wide text-coastal-gray mb-1">
                       {t('camp.label_period')}
                     </p>
                     <p className="text-sm font-bold text-jeju-ocean break-words">
@@ -181,7 +185,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({
                     </p>
                   </div>
                   <div className="bg-sky-horizon/60 border border-seafoam/40 rounded-xl p-4 text-center">
-                    <p className="text-xs uppercase tracking-wide text-gray-700 mb-1">
+                    <p className="text-xs uppercase tracking-wide text-coastal-gray mb-1">
                       {t('camp.label_location')}
                     </p>
                     <p className="text-sm font-bold text-jeju-ocean break-words">
@@ -189,7 +193,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({
                     </p>
                   </div>
                   <div className="bg-sky-horizon/60 border border-seafoam/40 rounded-xl p-4 text-center">
-                    <p className="text-xs uppercase tracking-wide text-gray-700 mb-1">
+                    <p className="text-xs uppercase tracking-wide text-coastal-gray mb-1">
                       {t('camp.label_participants')}
                     </p>
                     <p className="text-sm font-bold text-jeju-ocean break-words">
@@ -220,11 +224,11 @@ const Camp2026Page: React.FC<CampPageProps> = ({
             />
             <div className="max-w-5xl mx-auto">
               {musiciansResource.isLoading ? (
-                <p className="text-center text-gray-500 py-10" role="status">
+                <p className="text-center text-coastal-gray py-10" role="status">
                   {t('common.loading')}
                 </p>
               ) : musiciansResource.error ? (
-                <p className="text-center text-gray-500 py-10" role="alert">
+                <p className="text-center text-coastal-gray py-10" role="alert">
                   {t('common.no_results')}
                 </p>
               ) : (
@@ -243,6 +247,15 @@ const Camp2026Page: React.FC<CampPageProps> = ({
 
       {/* Gangjeong Story Section */}
       <GangjeongStorySection />
+
+      {/* Guidelines Summary Section — ko/en only (camp_guidelines_2026 네임스페이스) */}
+      {['ko', 'en'].includes(i18n.language) && (
+        <>
+          <SectionWave color="light-beige" />
+          <GuidelinesSummary />
+          <SectionWave color="deep-ocean" />
+        </>
+      )}
 
       {/* Final CTA Section */}
       {camp2026.fundingUrl && (
@@ -266,7 +279,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({
                 transition={{ duration: 0.6 }}
               >
                 <h2 className="typo-h2 text-white mb-4">{t('camp.cta_final_heading')}</h2>
-                <p className="typo-body text-gray-200 mb-8 max-w-lg mx-auto">
+                <p className="typo-body text-cloud-white/80 mb-8 max-w-lg mx-auto">
                   {t('camp.cta_final_body')}
                 </p>
                 <Button href={camp2026.fundingUrl} variant="gold" external utmContent="final-cta">

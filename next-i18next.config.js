@@ -30,6 +30,7 @@ module.exports = {
   // - videos          : /videos, /videos/[id], /album/about(VideoTabPanel),
   //                     /album/musicians/[id], /camps/2026/musicians/[id]
   // - camp_faq_2026   : /camps/2026
+  // - camp_guidelines_2026 : /camps/2026, /camps/2026/guidelines (ko/en only)
   // - about           : home
   // - gallery         : home, /gallery, /camps/[year](CampGallery)
   // - timeline        : /camps/2026 (EventSeries schema)
@@ -42,6 +43,7 @@ module.exports = {
     'press',
     'videos',
     'camp_faq_2026',
+    'camp_guidelines_2026',
     'about',
     'gallery',
     'timeline',
@@ -57,6 +59,7 @@ module.exports = {
     'press',
     'videos',
     'camp_faq_2026',
+    'camp_guidelines_2026',
     'about',
     'gallery',
     'timeline',

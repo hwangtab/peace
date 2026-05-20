@@ -1,0 +1,172 @@
+{
+  "camp_guidelines_2026": {
+    "page_title": "Camp Guidelines — 3rd Gangjeong Peace & Music Camp",
+    "page_subtitle": "For a Safe and Dignified Camp",
+    "seo_title": "Camp Guidelines | 3rd Gangjeong Peace & Music Camp 2026",
+    "seo_description": "Camp guidelines for the 3rd Gangjeong Peace & Music Camp. Prohibited behaviors, consent, reporting procedures, organizer response, medical emergencies, outdoor safety, accessibility, and environmental policy.",
+
+    "breadcrumb_guidelines": "Guidelines",
+
+    "summary_heading": "For a Safe and Dignified Camp",
+    "summary_intro": "The Gangjeong Peace & Music Camp is a place where everyone participates safely and with dignity. These guidelines apply equally to musicians, staff, volunteers, and audience members.",
+    "summary_topics": [
+      "No Hate or Discrimination",
+      "No Sexual Harassment or Violence",
+      "Consent",
+      "How to Report",
+      "Organizer Response",
+      "Medical & Emergency",
+      "Outdoor & Camping Safety",
+      "Accessibility",
+      "Environmental Care"
+    ],
+    "summary_report_label": "Reporting & Contact",
+    "summary_report_contact1": "Gender Equality Manager (sexual violence)",
+    "summary_report_contact1_names": "Yum (010-8170-2188), Lee Sang (010-2379-0760)",
+    "summary_report_contact2": "Other matters",
+    "summary_report_contact2_name": "Jang Ha-na (010-3693-3971)",
+    "summary_cta": "Read Full Guidelines",
+
+    "intro_title": "1. Introduction",
+    "intro_body": "The Gangjeong Peace & Music Camp is a space of musical solidarity, dreaming of a world without war. These guidelines exist so that every participant — musician, staff, volunteer, or audience member — can share this time safely and with dignity. They apply equally to all.",
+
+    "prohibited_title": "2. Prohibited Behaviors",
+    "prohibited_intro": "The following behaviors are strictly prohibited throughout the event, regardless of location.",
+    "prohibited_hate_title": "Hate & Discrimination",
+    "prohibited_hate_items": [
+      "Any discriminatory or hateful speech and behavior based on gender, sexual orientation, gender identity, age, nationality, ethnicity, disability, appearance, religion, class, or other grounds. Being \"just a joke\" is not an excuse."
+    ],
+    "prohibited_harassment_title": "Sexual Harassment & Violence",
+    "prohibited_harassment_items": [
+      "Unwanted physical contact (including minor contact such as handshakes or hugs)",
+      "Sexual remarks, jokes with sexual connotations, or comments on someone's appearance or body",
+      "Approaching someone without consent, following them, or repeatedly contacting them",
+      "Sexual harassment through digital or online means"
+    ],
+    "prohibited_filming_title": "Photography & Recording",
+    "prohibited_filming_items": [
+      "Taking or posting photos or videos that identify someone's face without prior notice or consent",
+      "Illegal filming (of bodies, private spaces, etc.)"
+    ],
+
+    "consent_title": "3. What Is Consent?",
+    "consent_body": "Consent must be clear, voluntary, and revocable at any time. \"No\" or \"I'm uncomfortable\" is a complete answer in itself — no explanation is required. Silence, hesitation, or uncertainty is not consent. Past consent does not guarantee present consent. Consent given while intoxicated may not be valid.",
+
+    "bystander_title": "4. If You Experience or Witness an Uncomfortable Situation",
+    "bystander_items": [
+      "Intervene directly — step in naturally by changing the subject or interrupting the conversation.",
+      "Check on the person — ask \"Are you okay?\" and stay with them.",
+      "Seek help — alert a nearby staff member.",
+      "Document — if it is safe to do so, note the time, place, and details of the situation."
+    ],
+
+    "report_title": "5. How to Report",
+    "report_intro": "If you experience or witness an incident, please reach out through any of the following means.",
+    "report_items": [
+      "Contact a staff member in person, by phone, or by message",
+      "Gender Equality Manager (sexual violence): Yum (010-8170-2188), Lee Sang (010-2379-0760)",
+      "Other matters: Jang Ha-na (010-3693-3971)",
+      "Reports are accepted even after the event has ended."
+    ],
+
+    "response_title": "6. Organizer Response",
+
+    "response_harassment_subtitle": "In cases of sexual harassment",
+    "response_harassment_items": [
+      "The reporter or survivor will be connected with a staff member.",
+      "The survivor and the accused will be separated.",
+      "The survivor will be supported in moving to a safe location of their choosing."
+    ],
+    "response_options_label": "With the survivor's consent, the following options will be offered. No option will be forced.",
+    "response_options_items": [
+      "Receive on-site support from the safety team",
+      "Assistance in filing a police report (112)",
+      "Rest safely without any action"
+    ],
+
+    "response_hotlines_subtitle": "External Support Organizations",
+    "response_hotlines": [
+      { "name": "Women's Emergency Hotline", "number": "1366", "hours": "24 hrs", "desc": "Emergency counseling for sexual/domestic violence, protection referral" },
+      { "name": "Korea Sexual Violence Relief Center", "number": "02-338-5801", "hours": "", "desc": "Psychological support and legal guidance for sexual violence" },
+      { "name": "Jeju Sexual Violence Counseling Center", "number": "064-757-1366", "hours": "", "desc": "On-site sexual violence support in Jeju" },
+      { "name": "Mental Health Crisis Hotline", "number": "1577-0199", "hours": "24 hrs", "desc": "Emergency counseling for mental health crises and psychological distress" },
+      { "name": "Suicide Prevention Hotline", "number": "1393", "hours": "24 hrs", "desc": "Crisis intervention and suicide counseling" },
+      { "name": "Korea Legal Aid Corporation", "number": "132", "hours": "", "desc": "Legal consultation and support" }
+    ],
+
+    "response_assault_subtitle": "In cases of sexual assault or rape",
+    "response_assault_items": [
+      "The reporter or survivor will be connected with a staff member.",
+      "The survivor and the accused will be separated immediately.",
+      "The survivor will be supported in moving to a safe location of their choosing.",
+      "Police (112) will be contacted to ensure the strongest possible separation measure and legal evidence."
+    ],
+    "response_evidence_label": "Immediate Response & Evidence Preservation",
+    "response_evidence_items": [
+      "Do not wash immediately after the incident. Place the clothing worn in a paper bag and visit a Sunflower Center or gynecology clinic for DNA collection.",
+      "Preserve KakaoTalk messages, emails, CCTV footage, and witness statements from before and after the incident.",
+      "Write a detailed record of the date, location, specific actions, and the perpetrator's reactions."
+    ],
+
+    "response_other_subtitle": "In other cases",
+    "response_other_items": [
+      "The reporter or survivor will be connected with the safety team.",
+      "A course of action will be developed through communication between the reporter or survivor and the staff member."
+    ],
+
+    "response_perpetrator_subtitle": "Regarding the Accused",
+    "response_perpetrator_items": [
+      "The status of the accused (musician, staff, audience, etc.) is not grounds for exception.",
+      "The level of action taken is at the discretion of staff and authorities, and cannot be contested on-site."
+    ],
+
+    "response_confidentiality_subtitle": "Confidentiality",
+    "response_confidentiality_items": [
+      "The survivor's identity and details of the incident will be shared only with the minimum number of people necessary for response.",
+      "Nothing will be disclosed externally without the survivor's consent."
+    ],
+
+    "response_secondary_harm_subtitle": "Preventing Secondary Harm",
+    "response_secondary_harm_items": [
+      "Questions such as \"Why were you there?\" or \"Why didn't you say something sooner?\" will not be asked.",
+      "Defending the accused or expressing doubt about the survivor will be treated as secondary harm."
+    ],
+
+    "medical_title": "7. Medical & Emergency Situations",
+    "medical_items": [
+      "In an emergency, call 119 immediately and notify a nearby staff member.",
+      "Basic first-aid supplies will be available at the main booth."
+    ],
+
+    "outdoor_title": "8. Outdoor & Camping Safety",
+    "outdoor_items": [
+      "In the event of severe weather such as a typhoon or heavy rain, follow organizer instructions and evacuate immediately.",
+      "Regarding the Gangjeon Stream — swimming while intoxicated is at your own risk; children must be accompanied by a guardian at all times.",
+      "The area near the entrance may be congested due to construction on the Gangjeon Bridge. We recommend using public transportation or carpooling.",
+      "Lost items will be kept at the organizer's booth for one week after the event, then disposed of.",
+      "Guardians are responsible for the safety of children in their care. Do not leave children unattended.",
+      "If an adult who is not a child's guardian is alone with a child in a way that feels unnatural, please notify a staff member. Inappropriate words or physical contact toward children will be handled more seriously than similar incidents involving adults."
+    ],
+
+    "accessibility_title": "9. Accessibility",
+    "accessibility_items": [
+      "The venue is wheelchair accessible.",
+      "We have not been able to arrange separate interpretation, sign language interpretation, or audio description services.",
+      "We will endeavor to operate all public restrooms as gender-neutral facilities during performance hours."
+    ],
+
+    "environment_title": "10. Environment & Sustainability",
+    "environment_intro": "Gangjeong village is a space that has defended ecology and peace against militarization. We have a responsibility to preserve this land in its entirety.",
+    "environment_items": [
+      "Take your trash with you. Use the recycling bins and do not leave waste at the venue.",
+      "Do not damage the natural environment within the venue (plants, rocks, waterways, etc.).",
+      "Minimize the use of disposable items. Bringing your own cup and utensils is encouraged.",
+      "Do not use soap or detergents when playing in the Gangjeong Stream.",
+      "Park only in designated parking areas."
+    ],
+
+    "contact_title": "11. Contact",
+    "contact_body": "Lee Sang (General Director): 010-2379-0760",
+    "contact_note": "Inquiries and suggestions before the camp only."
+  }
+}
