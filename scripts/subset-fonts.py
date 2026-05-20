@@ -18,7 +18,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-FONT_DIR = ROOT / "public" / "fonts"
+FONT_SOURCE_DIR = ROOT / "src" / "fonts" / "source"  # 원본 폰트 (비공개, 서빙 안 됨)
+FONT_DIR = ROOT / "public" / "fonts"  # subset 출력 (서빙됨)
 LOCALE_DIR = ROOT / "public" / "locales"
 DATA_DIR = ROOT / "public" / "data"
 SRC_DIR = ROOT / "src"
@@ -145,7 +146,7 @@ def main() -> int:
     total_before = 0
     total_after = 0
     for src_name, dst_name, flavor in FONTS:
-        src = FONT_DIR / src_name
+        src = FONT_SOURCE_DIR / src_name
         dst = FONT_DIR / dst_name
         if not src.exists():
             print(f"  SKIP {src_name} (missing)", file=sys.stderr)
