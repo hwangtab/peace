@@ -39,6 +39,7 @@ const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey, alig
           alt={t(altKey)}
           fill
           sizes="100vw"
+          quality={60}
           className={`object-cover ${imageClassName || ''}`}
         />
       </motion.div>
@@ -67,14 +68,14 @@ const blocks: Omit<StoryBlockProps, 'variant'>[] = [
     textKey: 'story_block1_text',
     altKey: 'story_block1_alt',
     align: 'right',
-    imageClassName: 'grayscale-[0.3] contrast-[0.9] brightness-[0.85] blur-[0.5px]',
+    imageClassName: 'grayscale-[0.3] contrast-[0.9] brightness-[0.85]',
   },
   {
     imageSrc: '/images-webp/gangjeong/gangjeong-memory.webp',
     textKey: 'story_block2_text',
     altKey: 'story_block2_alt',
     align: 'left',
-    imageClassName: 'grayscale-[0.3] contrast-[0.9] brightness-[0.85] blur-[0.5px]',
+    imageClassName: 'grayscale-[0.3] contrast-[0.9] brightness-[0.85]',
   },
   {
     imageSrc: '/images-webp/camps/2023/20230610밤 우와악.webp',

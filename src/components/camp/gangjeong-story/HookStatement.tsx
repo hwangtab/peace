@@ -51,10 +51,11 @@ const HookStatement: React.FC<Props> = ({ variant = 'camp' }) => {
           alt={t('hook_image_alt')}
           fill
           sizes="100vw"
+          quality={60}
           className="object-cover scale-[1.15]"
         />
       </motion.div>
-      <div className={`absolute inset-0 backdrop-blur-[2px] bg-radial-[ellipse_at_center] ${variant === 'home' ? 'from-black/60 via-black/30 to-black/20' : 'from-black/60 via-black/30 to-transparent'}`} />
+      <div className={`absolute inset-0 bg-radial-[ellipse_at_center] ${variant === 'home' ? 'from-black/60 via-black/30 to-black/20' : 'from-black/60 via-black/30 to-transparent'}`} />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 sm:py-28">
         <motion.div
