@@ -1,0 +1,172 @@
+{
+  "camp_guidelines_2026": {
+    "page_title": "Règlement du camp — 3e Camp de Paix et de Musique de Gangjeong",
+    "page_subtitle": "Pour un camp sûr et digne",
+    "seo_title": "Règlement | 3e Camp de Paix et de Musique de Gangjeong 2026",
+    "seo_description": "Règlement du 3e Camp de Paix et de Musique de Gangjeong. Comportements interdits, consentement, procédures de signalement, réponse des organisateurs, urgences médicales, sécurité en plein air, accessibilité et politique environnementale.",
+
+    "breadcrumb_guidelines": "Règlement",
+
+    "summary_heading": "Pour un camp sûr et digne",
+    "summary_intro": "Le Camp de Paix et de Musique de Gangjeong est un espace où chacun·e participe en toute sécurité et dans la dignité. Ce règlement s'applique également aux musicien·nes, au personnel, aux bénévoles et au public.",
+    "summary_topics": [
+      "Zéro haine ni discrimination",
+      "Zéro harcèlement ni violence sexuelle",
+      "Consentement",
+      "Comment signaler",
+      "Réponse des organisateurs",
+      "Urgences médicales",
+      "Sécurité en plein air",
+      "Accessibilité",
+      "Respect de l'environnement"
+    ],
+    "summary_report_label": "Signalement et contacts",
+    "summary_report_contact1": "Responsable de l'égalité de genre (violences sexuelles)",
+    "summary_report_contact1_names": "Yum (010-8170-2188), Lee Sang (010-2379-0760)",
+    "summary_report_contact2": "Autres questions",
+    "summary_report_contact2_name": "Jang Ha-na (010-3693-3971)",
+    "summary_cta": "Lire le règlement complet",
+
+    "intro_title": "1. Introduction",
+    "intro_body": "Le Camp de Paix et de Musique de Gangjeong est un espace de solidarité musicale rêvant d'un monde sans guerre. Ce règlement existe pour que chaque participant·e — musicien·ne, membre du personnel, bénévole ou public — puisse vivre ce moment en toute sécurité et dans la dignité. Il s'applique à toutes et à tous de manière égale.",
+
+    "prohibited_title": "2. Comportements interdits",
+    "prohibited_intro": "Les comportements suivants sont strictement interdits pendant toute la durée de l'événement, quel qu'en soit le lieu.",
+    "prohibited_hate_title": "Haine et discrimination",
+    "prohibited_hate_items": [
+      "Tout discours ou comportement discriminatoire ou haineux fondé sur le genre, l'orientation sexuelle, l'identité de genre, l'âge, la nationalité, l'origine ethnique, le handicap, l'apparence, la religion, la classe sociale ou tout autre motif. « C'était juste une blague » n'est pas une excuse."
+    ],
+    "prohibited_harassment_title": "Harcèlement et violence sexuelle",
+    "prohibited_harassment_items": [
+      "Tout contact physique non souhaité (y compris les contacts légers tels que les poignées de main ou les câlins)",
+      "Propos sexuels, blagues à connotation sexuelle ou commentaires sur l'apparence ou le corps de quelqu'un",
+      "Approcher quelqu'un sans son consentement, le suivre ou le contacter de manière répétée",
+      "Harcèlement sexuel par des moyens numériques ou en ligne"
+    ],
+    "prohibited_filming_title": "Photographie et enregistrement",
+    "prohibited_filming_items": [
+      "Prendre ou publier des photos ou vidéos permettant d'identifier le visage de quelqu'un sans préavis ni consentement",
+      "Filmage illégal (corps, espaces privés, etc.)"
+    ],
+
+    "consent_title": "3. Qu'est-ce que le consentement ?",
+    "consent_body": "Le consentement doit être clair, volontaire et révocable à tout moment. « Non » ou « je suis mal à l'aise » est une réponse complète en soi — aucune explication n'est requise. Le silence, l'hésitation ou l'incertitude ne sont pas un consentement. Un consentement passé ne garantit pas un consentement présent. Le consentement donné sous l'emprise de l'alcool peut ne pas être valable.",
+
+    "bystander_title": "4. Si vous êtes témoin ou victime d'une situation inconfortable",
+    "bystander_items": [
+      "Intervenez directement — interrompez naturellement en changeant de sujet ou en coupant la conversation.",
+      "Vérifiez l'état de la personne — demandez « Ça va ? » et restez avec elle.",
+      "Cherchez de l'aide — alertez un·e membre du personnel à proximité.",
+      "Documentez — si c'est sans danger, notez l'heure, le lieu et les détails de la situation."
+    ],
+
+    "report_title": "5. Comment signaler",
+    "report_intro": "Si vous avez vécu ou été témoin d'un incident, veuillez nous le faire savoir par l'un des moyens suivants.",
+    "report_items": [
+      "Contactez un·e membre du personnel en personne, par téléphone ou par message",
+      "Responsable de l'égalité de genre (violences sexuelles) : Yum (010-8170-2188), Lee Sang (010-2379-0760)",
+      "Autres questions : Jang Ha-na (010-3693-3971)",
+      "Les signalements sont acceptés même après la fin de l'événement."
+    ],
+
+    "response_title": "6. Réponse des organisateurs",
+
+    "response_harassment_subtitle": "En cas de harcèlement sexuel",
+    "response_harassment_items": [
+      "La personne qui signale ou la survivante sera mise en contact avec un·e membre du personnel.",
+      "La survivante et la personne mise en cause seront séparées.",
+      "La survivante sera aidée à se déplacer vers un lieu sûr de son choix."
+    ],
+    "response_options_label": "Avec le consentement de la survivante, les options suivantes lui seront proposées. Aucune option n'est imposée.",
+    "response_options_items": [
+      "Recevoir un soutien sur place de l'équipe de sécurité",
+      "Assistance pour déposer une plainte auprès de la police (112)",
+      "Se reposer en sécurité sans aucune action"
+    ],
+
+    "response_hotlines_subtitle": "Organisations de soutien externes",
+    "response_hotlines": [
+      { "name": "Numéro d'urgence pour les femmes", "number": "1366", "hours": "24h/24", "desc": "Soutien d'urgence pour les violences sexuelles/domestiques et orientation vers des protections" },
+      { "name": "Centre coréen d'aide aux victimes de violences sexuelles", "number": "02-338-5801", "hours": "", "desc": "Soutien psychologique et conseils juridiques pour les victimes de violences sexuelles" },
+      { "name": "Centre d'aide aux victimes de Jeju", "number": "064-757-1366", "hours": "", "desc": "Soutien sur place à Jeju pour les victimes de violences sexuelles" },
+      { "name": "Numéro de crise de santé mentale", "number": "1577-0199", "hours": "24h/24", "desc": "Soutien d'urgence pour les crises de santé mentale et les détresses psychologiques" },
+      { "name": "Numéro de prévention du suicide", "number": "1393", "hours": "24h/24", "desc": "Intervention en crise et soutien pour la prévention du suicide" },
+      { "name": "Société coréenne d'aide juridique", "number": "132", "hours": "", "desc": "Consultation et soutien juridiques" }
+    ],
+
+    "response_assault_subtitle": "En cas d'agression ou de viol",
+    "response_assault_items": [
+      "La personne qui signale ou la survivante sera mise en contact avec un·e membre du personnel.",
+      "La survivante et la personne mise en cause seront séparées immédiatement.",
+      "La survivante sera aidée à se déplacer vers un lieu sûr de son choix.",
+      "La police (112) sera contactée pour garantir la mesure de séparation la plus efficace et les preuves légales."
+    ],
+    "response_evidence_label": "Réponse immédiate et préservation des preuves",
+    "response_evidence_items": [
+      "Ne vous lavez pas immédiatement après l'incident. Placez les vêtements portés dans un sac en papier et rendez-vous dans un Centre Tournesol (Sunflower Center) ou dans une clinique de gynécologie pour un prélèvement d'ADN.",
+      "Conservez les messages KakaoTalk, e-mails, vidéos de vidéosurveillance et témoignages de témoins avant et après l'incident.",
+      "Rédigez un compte rendu détaillé de la date, du lieu, des actions concrètes et des réactions de l'auteur."
+    ],
+
+    "response_other_subtitle": "Dans les autres cas",
+    "response_other_items": [
+      "La personne qui signale ou la survivante sera mise en contact avec l'équipe de sécurité.",
+      "Un plan d'action sera élaboré en communication entre la personne qui signale ou la survivante et le membre du personnel."
+    ],
+
+    "response_perpetrator_subtitle": "Concernant la personne mise en cause",
+    "response_perpetrator_items": [
+      "Le statut de la personne mise en cause (musicien·ne, personnel, public, etc.) ne constitue pas un motif d'exception.",
+      "Le niveau d'action pris relève de la discrétion du personnel et des autorités, et ne peut être contesté sur place."
+    ],
+
+    "response_confidentiality_subtitle": "Confidentialité",
+    "response_confidentiality_items": [
+      "L'identité de la survivante et les détails de l'incident ne seront partagés qu'avec le nombre minimum de personnes nécessaires à la réponse.",
+      "Rien ne sera divulgué à l'extérieur sans le consentement de la survivante."
+    ],
+
+    "response_secondary_harm_subtitle": "Prévention des préjudices secondaires",
+    "response_secondary_harm_items": [
+      "Les questions telles que « Pourquoi étiez-vous là ? » ou « Pourquoi n'avez-vous rien dit plus tôt ? » ne seront pas posées.",
+      "Défendre la personne mise en cause ou exprimer des doutes sur la survivante sera traité comme un préjudice secondaire."
+    ],
+
+    "medical_title": "7. Situations médicales et d'urgence",
+    "medical_items": [
+      "En cas d'urgence, appelez le 119 immédiatement et prévenez un·e membre du personnel à proximité.",
+      "Du matériel de premiers secours de base sera disponible au stand principal."
+    ],
+
+    "outdoor_title": "8. Sécurité en plein air et camping",
+    "outdoor_items": [
+      "En cas de mauvais temps extrême comme un typhon ou de fortes pluies, suivez les instructions des organisateurs et évacuez immédiatement.",
+      "Concernant la rivière Gangjeong : se baigner en état d'ivresse est à vos risques et périls ; les enfants doivent être accompagnés d'un adulte responsable en permanence.",
+      "La zone d'entrée peut être encombrée en raison des travaux sur le pont de Gangjeong. Nous recommandons de prendre les transports en commun ou de covoiturer.",
+      "Les objets perdus seront conservés au stand des organisateurs pendant une semaine après l'événement, puis éliminés.",
+      "Les adultes responsables sont responsables de la sécurité des enfants qu'ils accompagnent. Ne laissez pas les enfants sans surveillance.",
+      "Si un adulte qui n'est pas le responsable d'un enfant se retrouve seul avec lui de manière qui semble anormale, veuillez en informer un·e membre du personnel. Les paroles ou contacts physiques inappropriés envers les enfants seront traités avec plus de sévérité que des incidents similaires impliquant des adultes."
+    ],
+
+    "accessibility_title": "9. Accessibilité",
+    "accessibility_items": [
+      "Le site est accessible en fauteuil roulant.",
+      "Nous n'avons pas pu organiser de services d'interprétation, de langue des signes ou d'audiodescription séparés.",
+      "Nous nous efforcerons de faire fonctionner tous les toilettes publics comme des installations non genrées pendant les heures de représentation."
+    ],
+
+    "environment_title": "10. Environnement et durabilité",
+    "environment_intro": "Le village de Gangjeong est un espace qui a défendu l'écologie et la paix contre la militarisation. Nous avons la responsabilité de préserver cette terre dans son intégralité.",
+    "environment_items": [
+      "Emportez vos déchets avec vous. Utilisez les bacs de recyclage et ne laissez pas de déchets sur le site.",
+      "Ne dégradez pas l'environnement naturel du site (plantes, rochers, cours d'eau, etc.).",
+      "Réduisez au minimum l'utilisation d'articles jetables. Apporter sa propre tasse et ses propres couverts est encouragé.",
+      "N'utilisez pas de savon ni de détergents lorsque vous vous baignez dans la rivière Gangjeong.",
+      "Garez-vous uniquement dans les zones de stationnement désignées."
+    ],
+
+    "contact_title": "11. Contact",
+    "contact_body": "Lee Sang (Directeur général) : 010-2379-0760",
+    "contact_note": "Demandes de renseignements et suggestions avant le camp uniquement."
+  }
+}

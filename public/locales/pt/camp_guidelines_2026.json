@@ -1,0 +1,172 @@
+{
+  "camp_guidelines_2026": {
+    "page_title": "Regulamento do Acampamento — 3.º Acampamento de Paz e Música de Gangjeong",
+    "page_subtitle": "Por um acampamento seguro e digno",
+    "seo_title": "Regulamento | 3.º Acampamento de Paz e Música de Gangjeong 2026",
+    "seo_description": "Regulamento do 3.º Acampamento de Paz e Música de Gangjeong. Comportamentos proibidos, consentimento, como denunciar, resposta da organização, emergências médicas, segurança ao ar livre, acessibilidade e política ambiental.",
+
+    "breadcrumb_guidelines": "Regulamento",
+
+    "summary_heading": "Por um acampamento seguro e digno",
+    "summary_intro": "O Acampamento de Paz e Música de Gangjeong é um espaço onde todas as pessoas participam com segurança e dignidade. Este regulamento aplica-se igualmente a músicos, equipa, voluntários e público.",
+    "summary_topics": [
+      "Sem ódio ou discriminação",
+      "Sem assédio ou violência sexual",
+      "Consentimento",
+      "Como denunciar",
+      "Resposta da organização",
+      "Emergências médicas",
+      "Segurança ao ar livre",
+      "Acessibilidade",
+      "Cuidado ambiental"
+    ],
+    "summary_report_label": "Contactos para denúncias",
+    "summary_report_contact1": "Responsável pela igualdade de género (violência sexual)",
+    "summary_report_contact1_names": "Yum (010-8170-2188), Lee Sang (010-2379-0760)",
+    "summary_report_contact2": "Outros assuntos",
+    "summary_report_contact2_name": "Jang Ha-na (010-3693-3971)",
+    "summary_cta": "Ler o regulamento completo",
+
+    "intro_title": "1. Introdução",
+    "intro_body": "O Acampamento de Paz e Música de Gangjeong é um espaço de solidariedade musical que sonha com um mundo sem guerras. Este regulamento existe para que cada participante — músico, equipa, voluntário ou público — possa partilhar este tempo de forma segura e digna. Aplica-se igualmente a todas as pessoas.",
+
+    "prohibited_title": "2. Comportamentos proibidos",
+    "prohibited_intro": "Os seguintes comportamentos são estritamente proibidos durante todo o evento, independentemente do local.",
+    "prohibited_hate_title": "Ódio e discriminação",
+    "prohibited_hate_items": [
+      "Qualquer discurso ou comportamento discriminatório ou de ódio baseado em género, orientação sexual, identidade de género, idade, nacionalidade, etnia, deficiência, aparência, religião, classe social ou outros motivos. «Era só uma piada» não é desculpa."
+    ],
+    "prohibited_harassment_title": "Assédio e violência sexual",
+    "prohibited_harassment_items": [
+      "Contacto físico indesejado (incluindo contacto ligeiro como apertos de mão ou abraços)",
+      "Comentários sexuais, piadas com conotações sexuais ou comentários sobre a aparência ou o corpo de alguém",
+      "Aproximar-se de alguém sem consentimento, segui-lo ou contactá-lo repetidamente",
+      "Assédio sexual através de meios digitais ou online"
+    ],
+    "prohibited_filming_title": "Fotografia e gravação",
+    "prohibited_filming_items": [
+      "Tirar ou publicar fotos ou vídeos que identifiquem o rosto de alguém sem aviso prévio ou consentimento",
+      "Gravação ilegal (de corpos, espaços privados, etc.)"
+    ],
+
+    "consent_title": "3. O que é o consentimento?",
+    "consent_body": "O consentimento deve ser claro, voluntário e revogável a qualquer momento. «Não» ou «sinto-me desconfortável» é uma resposta completa em si mesma — não é necessária qualquer explicação. Silêncio, hesitação ou incerteza não são consentimento. O consentimento passado não garante o consentimento presente. O consentimento dado sob efeito de álcool pode não ser válido.",
+
+    "bystander_title": "4. Se experienciar ou testemunhar uma situação desconfortável",
+    "bystander_items": [
+      "Intervenha diretamente — interrumpa naturalmente mudando de assunto ou cortando a conversa.",
+      "Verifique como está a pessoa — pergunte «Está bem?» e fique com ela.",
+      "Peça ajuda — avise um membro da equipa próximo.",
+      "Documente — se for seguro fazê-lo, anote a hora, o local e os detalhes da situação."
+    ],
+
+    "report_title": "5. Como denunciar",
+    "report_intro": "Se experienciou ou testemunhou um incidente, por favor comunique-nos através de qualquer um dos seguintes meios.",
+    "report_items": [
+      "Contacte um membro da equipa pessoalmente, por telefone ou por mensagem",
+      "Responsável pela igualdade de género (violência sexual): Yum (010-8170-2188), Lee Sang (010-2379-0760)",
+      "Outros assuntos: Jang Ha-na (010-3693-3971)",
+      "As denúncias são aceites mesmo depois do evento ter terminado."
+    ],
+
+    "response_title": "6. Resposta da organização",
+
+    "response_harassment_subtitle": "Em casos de assédio sexual",
+    "response_harassment_items": [
+      "A pessoa que denuncia ou a sobrevivente será ligada a um membro da equipa.",
+      "A sobrevivente e a pessoa acusada serão separadas.",
+      "A sobrevivente será apoiada para se deslocar para um local seguro da sua escolha."
+    ],
+    "response_options_label": "Com o consentimento da sobrevivente, as seguintes opções serão apresentadas. Nenhuma opção é forçada.",
+    "response_options_items": [
+      "Receber apoio no local da equipa de segurança",
+      "Assistência para apresentar uma queixa à polícia (112)",
+      "Descansar em segurança sem qualquer ação"
+    ],
+
+    "response_hotlines_subtitle": "Organizações de apoio externas",
+    "response_hotlines": [
+      { "name": "Linha de emergência para mulheres", "number": "1366", "hours": "24 h", "desc": "Aconselhamento de urgência para violência sexual/doméstica e encaminhamento para proteção" },
+      { "name": "Centro Coreano de Apoio a Vítimas de Violência Sexual", "number": "02-338-5801", "hours": "", "desc": "Apoio psicológico e orientação jurídica para vítimas de violência sexual" },
+      { "name": "Centro de Aconselhamento de Jeju", "number": "064-757-1366", "hours": "", "desc": "Apoio no local em Jeju para vítimas de violência sexual" },
+      { "name": "Linha de crise de saúde mental", "number": "1577-0199", "hours": "24 h", "desc": "Aconselhamento de urgência em crises de saúde mental e sofrimento psicológico" },
+      { "name": "Linha de prevenção do suicídio", "number": "1393", "hours": "24 h", "desc": "Intervenção em crise e aconselhamento para prevenção do suicídio" },
+      { "name": "Corporação Coreana de Assistência Jurídica", "number": "132", "hours": "", "desc": "Consulta e apoio jurídico" }
+    ],
+
+    "response_assault_subtitle": "Em casos de agressão sexual ou violação",
+    "response_assault_items": [
+      "A pessoa que denuncia ou a sobrevivente será ligada a um membro da equipa.",
+      "A sobrevivente e a pessoa acusada serão separadas imediatamente.",
+      "A sobrevivente será apoiada para se deslocar para um local seguro da sua escolha.",
+      "A polícia (112) será contactada para garantir a medida de separação mais eficaz e as provas legais necessárias."
+    ],
+    "response_evidence_label": "Resposta imediata e preservação de provas",
+    "response_evidence_items": [
+      "Não se lave imediatamente após o incidente. Guarde a roupa que usava num saco de papel e dirija-se a um Centro Girassol (Sunflower Center) ou a uma clínica de ginecologia para recolha de ADN.",
+      "Preserve mensagens do KakaoTalk, e-mails, imagens de CCTV e depoimentos de testemunhas antes e depois do incidente.",
+      "Escreva um registo detalhado da data, local, ações concretas e reações do agressor."
+    ],
+
+    "response_other_subtitle": "Noutros casos",
+    "response_other_items": [
+      "A pessoa que denuncia ou a sobrevivente será ligada à equipa de segurança.",
+      "Um plano de ação será desenvolvido através da comunicação entre a pessoa que denuncia ou a sobrevivente e o membro da equipa."
+    ],
+
+    "response_perpetrator_subtitle": "Sobre a pessoa acusada",
+    "response_perpetrator_items": [
+      "O estatuto da pessoa acusada (músico, equipa, público, etc.) não é motivo de exceção.",
+      "O nível de ação tomada fica ao critério da equipa e das autoridades, e não pode ser contestado no local."
+    ],
+
+    "response_confidentiality_subtitle": "Confidencialidade",
+    "response_confidentiality_items": [
+      "A identidade da sobrevivente e os detalhes do incidente serão partilhados apenas com o número mínimo de pessoas necessárias para a resposta.",
+      "Nada será divulgado externamente sem o consentimento da sobrevivente."
+    ],
+
+    "response_secondary_harm_subtitle": "Prevenção de danos secundários",
+    "response_secondary_harm_items": [
+      "Perguntas como «Porque é que estava ali?» ou «Porque é que não disse nada antes?» não serão feitas.",
+      "Defender a pessoa acusada ou expressar dúvidas sobre a sobrevivente será tratado como dano secundário."
+    ],
+
+    "medical_title": "7. Situações médicas e de emergência",
+    "medical_items": [
+      "Em caso de emergência, ligue imediatamente para o 119 e avise um membro da equipa próximo.",
+      "Materiais básicos de primeiros socorros estarão disponíveis na bancada principal."
+    ],
+
+    "outdoor_title": "8. Segurança ao ar livre e campismo",
+    "outdoor_items": [
+      "Em caso de mau tempo extremo, como tufão ou chuvas fortes, siga as instruções dos organizadores e evacue imediatamente.",
+      "Relativamente ao rio Gangjeong: nadar sob o efeito do álcool é da responsabilidade de cada um; as crianças devem ser sempre acompanhadas por um adulto responsável.",
+      "A zona de entrada pode estar congestionada devido às obras na ponte de Gangjeong. Recomendamos o uso de transportes públicos ou carpooling.",
+      "Os objetos perdidos serão guardados na bancada dos organizadores durante uma semana após o evento e depois descartados.",
+      "Os adultos responsáveis são responsáveis pela segurança das crianças a seu cargo. Não deixe as crianças sem supervisão.",
+      "Se um adulto que não é o responsável de uma criança estiver sozinho com ela de uma forma que pareça estranha, por favor avise um membro da equipa. Palavras ou contacto físico inapropriados com crianças serão tratados com maior gravidade do que incidentes semelhantes com adultos."
+    ],
+
+    "accessibility_title": "9. Acessibilidade",
+    "accessibility_items": [
+      "O recinto é acessível a cadeiras de rodas.",
+      "Não foi possível organizar serviços separados de interpretação, língua gestual ou audiodescrição.",
+      "Esforçar-nos-emos por fazer funcionar todas as instalações sanitárias públicas como instalações de género neutro durante os horários de espetáculo."
+    ],
+
+    "environment_title": "10. Ambiente e sustentabilidade",
+    "environment_intro": "A aldeia de Gangjeong é um espaço que defendeu a ecologia e a paz contra a militarização. Temos a responsabilidade de preservar esta terra na sua totalidade.",
+    "environment_items": [
+      "Leve o seu lixo consigo. Use os ecopontos e não deixe resíduos no recinto.",
+      "Não danifique o ambiente natural do recinto (plantas, rochas, cursos de água, etc.).",
+      "Minimize o uso de artigos descartáveis. É encorajado trazer o seu próprio copo e talheres.",
+      "Não use sabão ou detergentes quando se banhar no rio Gangjeong.",
+      "Estacione apenas nas zonas de estacionamento designadas."
+    ],
+
+    "contact_title": "11. Contacto",
+    "contact_body": "Lee Sang (Diretor Geral): 010-2379-0760",
+    "contact_note": "Apenas se aceitam perguntas e sugestões antes do acampamento."
+  }
+}
