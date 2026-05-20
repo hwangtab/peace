@@ -8,7 +8,7 @@ import TrackHeader from './TrackHeader';
 import TrackCredits from './TrackCredits';
 
 const AudioPlayer = dynamic(() => import('./AudioPlayer'), {
-    loading: () => <div className="h-20 w-full motion-safe:animate-pulse bg-gray-100 rounded-lg" />,
+    loading: () => <div className="h-20 w-full motion-safe:animate-pulse bg-ocean-sand rounded-lg" />,
     ssr: false,
 });
 
@@ -88,7 +88,7 @@ const TrackCard = React.memo(({
                                 <h4 className="text-lg font-serif text-jeju-ocean">{t('common.track_desc')}</h4>
                                 <div className="flex-grow ml-3 sm:ml-4 h-px bg-coastal-gray/20" />
                             </div>
-                            <p className="text-gray-600 leading-relaxed whitespace-pre-line break-words">{track.description}</p>
+                            <p className="text-coastal-gray leading-relaxed whitespace-pre-line break-words">{track.description}</p>
                         </div>
                     )}
 
@@ -99,7 +99,7 @@ const TrackCard = React.memo(({
                                 <div className="flex-grow ml-3 sm:ml-4 h-px bg-coastal-gray/20" />
                             </div>
                             <div className="bg-ocean-sand/30 p-4 rounded-lg">
-                                <p className="text-gray-600 whitespace-pre-line leading-relaxed break-words">{track.lyrics}</p>
+                                <p className="text-coastal-gray whitespace-pre-line leading-relaxed break-words">{track.lyrics}</p>
                             </div>
                         </div>
                     )}

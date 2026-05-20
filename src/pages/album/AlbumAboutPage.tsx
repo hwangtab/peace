@@ -354,7 +354,7 @@ const AlbumAboutPage = ({
                 </span>
                 {t('meaning_title')}
               </h2>
-              <p className="typo-body text-gray-700 leading-loose break-words">
+              <p className="typo-body text-coastal-gray leading-loose break-words">
                 {t('meaning_desc')}
               </p>
             </motion.div>
@@ -373,7 +373,7 @@ const AlbumAboutPage = ({
                 </span>
                 {t('voices_title')}
               </h2>
-              <p className="typo-body text-gray-700 leading-loose break-words">
+              <p className="typo-body text-coastal-gray leading-loose break-words">
                 {t('voices_desc')}
               </p>
             </motion.div>

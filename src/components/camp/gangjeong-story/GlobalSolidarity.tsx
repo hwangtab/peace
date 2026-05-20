@@ -40,7 +40,7 @@ const GlobalSolidarity: React.FC<Props> = ({ variant = 'camp' }) => {
           {/* Declaration */}
           <motion.p
             variants={itemVariants}
-            className={`font-display font-bold text-xl sm:text-2xl md:text-3xl ${isHome ? 'text-white' : 'text-gray-100'} leading-relaxed break-words text-balance`}
+            className={`font-display font-bold text-xl sm:text-2xl md:text-3xl ${isHome ? 'text-white' : 'text-cloud-white/90'} leading-relaxed break-words text-balance`}
           >
             {t('solidarity_declaration')}
           </motion.p>

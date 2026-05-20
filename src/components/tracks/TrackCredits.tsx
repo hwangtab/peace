@@ -20,7 +20,7 @@ export default function TrackCredits({ credits }: TrackCreditsProps) {
             <span className="text-sm text-coastal-gray font-medium min-w-[60px] sm:min-w-[80px]">
               {t('common.composer')}
             </span>
-            <span className="text-gray-600 min-w-0 break-words">
+            <span className="text-coastal-gray min-w-0 break-words">
               {credits.composer.join(', ')}
             </span>
           </div>
@@ -30,7 +30,7 @@ export default function TrackCredits({ credits }: TrackCreditsProps) {
             <span className="text-sm text-coastal-gray font-medium min-w-[60px] sm:min-w-[80px]">
               {t('common.lyricist')}
             </span>
-            <span className="text-gray-600 min-w-0 break-words">
+            <span className="text-coastal-gray min-w-0 break-words">
               {credits.lyricist.join(', ')}
             </span>
           </div>
@@ -40,7 +40,7 @@ export default function TrackCredits({ credits }: TrackCreditsProps) {
             <span className="text-sm text-coastal-gray font-medium min-w-[60px] sm:min-w-[80px]">
               {t('common.arranger')}
             </span>
-            <span className="text-gray-600 min-w-0 break-words">
+            <span className="text-coastal-gray min-w-0 break-words">
               {credits.arranger.join(', ')}
             </span>
           </div>
@@ -50,7 +50,7 @@ export default function TrackCredits({ credits }: TrackCreditsProps) {
             <span className="text-sm text-coastal-gray font-medium min-w-[60px] sm:min-w-[80px]">
               {performer.role}
             </span>
-            <span className="text-gray-600 min-w-0 break-words">
+            <span className="text-coastal-gray min-w-0 break-words">
               {performer.name.join(', ')}
             </span>
           </div>

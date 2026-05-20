@@ -45,10 +45,10 @@ const Button = ({
     const variantClasses = {
         primary: 'bg-jeju-ocean text-white font-medium hover:bg-ocean-mist shadow-md hover:shadow-lg',
         secondary: 'bg-ocean-mist text-white font-medium hover:bg-jeju-ocean shadow-md hover:shadow-lg',
-        gold: 'bg-golden-sun text-gray-900 font-bold hover:bg-yellow-400 shadow-lg hover:shadow-xl',
+        gold: 'bg-golden-sun text-deep-ocean font-bold hover:bg-golden-sun/80 shadow-lg hover:shadow-xl',
         outline: 'border-2 border-jeju-ocean text-jeju-ocean font-medium hover:bg-jeju-ocean hover:text-white bg-transparent shadow-md hover:shadow-lg',
         'white-outline': 'border-2 border-cloud-white text-cloud-white font-medium hover:bg-white/10 bg-transparent shadow-md hover:shadow-lg',
-        white: 'bg-white text-jeju-ocean font-bold hover:bg-gray-100 shadow-lg hover:shadow-xl',
+        white: 'bg-white text-jeju-ocean font-bold hover:bg-ocean-sand shadow-lg hover:shadow-xl',
         'ghost-white': 'bg-white/15 text-white font-medium border border-white/30 hover:bg-white/25',
         back: 'bg-ocean-sand text-jeju-ocean font-medium hover:bg-ocean-mist',
     };
@@ -86,48 +86,28 @@ const Button = ({
         ? (e: React.MouseEvent<HTMLElement>) => { e.preventDefault(); }
         : onClick;
 
-    const wrapperClasses = fullWidth ? 'w-full' : 'inline-block';
-
     if (to) {
         return (
-            <div className={wrapperClasses}>
-                <Link
-                    href={to}
-                    className={combinedClasses}
-                    onClick={handleClick}
-                    aria-label={ariaLabel}
-                    aria-disabled={disabled || undefined}
-                    tabIndex={disabled ? -1 : undefined}
-                >
-                    {content}
-                </Link>
-            </div>
+            <Link
+                href={to}
+                className={combinedClasses}
+                onClick={handleClick}
+                aria-label={ariaLabel}
+                aria-disabled={disabled || undefined}
+                tabIndex={disabled ? -1 : undefined}
+            >
+                {content}
+            </Link>
         );
     }
 
     if (resolvedHref) {
         if (external) {
             return (
-                <div className={wrapperClasses}>
-                    <a
-                        href={resolvedHref}
-                        target="_blank"
-                        rel="noopener noreferrer nofollow"
-                        className={combinedClasses}
-                        onClick={handleClick}
-                        aria-label={ariaLabel}
-                        aria-disabled={disabled || undefined}
-                        tabIndex={disabled ? -1 : undefined}
-                    >
-                        {content}
-                    </a>
-                </div>
-            );
-        }
-        return (
-            <div className={wrapperClasses}>
                 <a
                     href={resolvedHref}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
                     className={combinedClasses}
                     onClick={handleClick}
                     aria-label={ariaLabel}
@@ -136,7 +116,19 @@ const Button = ({
                 >
                     {content}
                 </a>
-            </div>
+            );
+        }
+        return (
+            <a
+                href={resolvedHref}
+                className={combinedClasses}
+                onClick={handleClick}
+                aria-label={ariaLabel}
+                aria-disabled={disabled || undefined}
+                tabIndex={disabled ? -1 : undefined}
+            >
+                {content}
+            </a>
         );
     }
 

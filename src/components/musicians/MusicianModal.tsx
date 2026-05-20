@@ -47,7 +47,7 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                   {/* Close button */}
                   <button
                     onClick={onClose}
-                    className="absolute right-0 top-0 p-2 text-gray-400 hover:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded"
+                    className="absolute right-0 top-0 p-2 text-coastal-gray/70 hover:text-coastal-gray focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded"
                   >
                     <span className="sr-only">{t('common.close')}</span>
                     <svg
@@ -84,14 +84,14 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                     {/* Header */}
                     <Dialog.Title
                       as="h3"
-                      className="text-3xl font-bold leading-6 text-gray-900 mb-4 font-serif break-words"
+                      className="text-3xl font-bold leading-6 text-deep-ocean mb-4 font-serif break-words"
                     >
                       {musician.name}
                     </Dialog.Title>
 
                     {/* Description */}
                     <div className="mt-4 space-y-4">
-                      <p className="text-lg text-gray-700 leading-relaxed whitespace-pre-wrap text-pretty break-words">
+                      <p className="text-lg text-coastal-gray leading-relaxed whitespace-pre-wrap text-pretty break-words">
                         {musician.description}
                       </p>
                     </div>
@@ -100,7 +100,7 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                     {/* Social Links */}
                     {(musician.instagramUrls.length > 0 || musician.youtubeUrl) && (
                       <div className="mt-6">
-                        <h4 className="text-lg font-bold text-gray-900 mb-2">
+                        <h4 className="text-lg font-bold text-deep-ocean mb-2">
                           {t('common.sns')}
                         </h4>
                         <div className="flex flex-wrap gap-2">
@@ -134,7 +134,7 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                       </div>
                     )}
                     {musician.trackId !== undefined && (
-                      <div className="mt-6 pt-4 border-t border-gray-100">
+                      <div className="mt-6 pt-4 border-t border-ocean-sand">
                         <Link
                           href={`/album/musicians/${musician.id}`}
                           className="inline-flex items-center text-sm font-medium text-jeju-ocean hover:text-ocean-mist transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded"

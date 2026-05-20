@@ -15,6 +15,7 @@ import {
 } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
 import { camps } from '@/data/camps';
+import YouTubeFacade from '@/components/videos/YouTubeFacade';
 
 interface VideoDetailPageProps {
   video: VideoItem;
@@ -52,7 +53,6 @@ const VideoDetailPage: React.FC<VideoDetailPageProps> = ({
 }) => {
   const { t, i18n } = useTranslation();
   const videoId = getYoutubeVideoId(video.youtubeUrl);
-  const embedUrl = `https://www.youtube.com/embed/${videoId}`;
   const watchUrl = `https://www.youtube.com/watch?v=${videoId}`;
   const thumbnailUrl =
     video.thumbnailUrl || `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
@@ -109,22 +109,11 @@ const VideoDetailPage: React.FC<VideoDetailPageProps> = ({
     >
       <Section background="white" className="pt-8 md:pt-12 pb-12">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="relative aspect-video w-full rounded-xl overflow-hidden shadow-lg bg-black">
-            {videoId ? (
-              <iframe
-                src={`${embedUrl}?rel=0`}
-                title={video.title}
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                className="absolute inset-0 w-full h-full"
-              />
-            ) : (
-              <div className="absolute inset-0 flex items-center justify-center text-white/60 text-sm">
-                {t('common.video_unavailable') || 'Video unavailable'}
-              </div>
-            )}
-          </div>
+          <YouTubeFacade
+            videoId={videoId}
+            title={video.title}
+            thumbnailUrl={video.thumbnailUrl}
+          />
 
           <div className="mt-8">
             <div className="flex flex-wrap items-center gap-3 text-xs font-medium text-ocean-mist uppercase tracking-tighter mb-4">
@@ -136,7 +125,7 @@ const VideoDetailPage: React.FC<VideoDetailPageProps> = ({
               {video.title}
             </h1>
             {video.description && (
-              <p className="typo-body text-gray-700 whitespace-pre-line break-words mb-8">
+              <p className="typo-body text-coastal-gray whitespace-pre-line break-words mb-8">
                 {video.description}
               </p>
             )}
@@ -173,7 +162,7 @@ const VideoDetailPage: React.FC<VideoDetailPageProps> = ({
                     className="group block rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow"
                   >
                     {m.imageUrl && (
-                      <div className="relative aspect-square overflow-hidden bg-gray-200">
+                      <div className="relative aspect-square overflow-hidden bg-seafoam/30">
                         <Image
                           src={m.imageUrl}
                           alt={m.name}
@@ -210,7 +199,7 @@ const VideoDetailPage: React.FC<VideoDetailPageProps> = ({
                     href={`/videos/${v.id}`}
                     className="group block rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow"
                   >
-                    <div className="relative aspect-video overflow-hidden bg-gray-200">
+                    <div className="relative aspect-video overflow-hidden bg-seafoam/30">
                       <Image
                         src={thumb}
                         alt={v.title}

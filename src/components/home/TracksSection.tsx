@@ -81,7 +81,7 @@ const TracksSection: React.FC<TracksSectionProps> = React.memo(
             <span className="sr-only">{t('common.loading')}</span>
           </div>
         ) : loadingError ? (
-          <p className="text-center text-gray-600 py-10" role="alert">
+          <p className="text-center text-coastal-gray py-10" role="alert">
             {t('common.no_results')}
           </p>
         ) : (

@@ -98,7 +98,7 @@ const TimetableActCard: React.FC<TimetableActCardProps> = ({
           {act.name}
         </p>
         {primary?.shortDescription && (
-          <p className="break-words text-pretty text-sm text-gray-600 transition-colors group-hover:text-gray-800">
+          <p className="break-words text-pretty text-sm text-coastal-gray transition-colors group-hover:text-deep-ocean">
             {primary.shortDescription}
           </p>
         )}
