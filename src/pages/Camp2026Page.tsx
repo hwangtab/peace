@@ -248,14 +248,12 @@ const Camp2026Page: React.FC<CampPageProps> = ({
       {/* Gangjeong Story Section */}
       <GangjeongStorySection />
 
-      {/* Guidelines Summary Section — ko/en only (camp_guidelines_2026 네임스페이스) */}
-      {['ko', 'en'].includes(i18n.language) && (
-        <>
-          <SectionWave color="light-beige" />
-          <GuidelinesSummary />
-          <SectionWave color="deep-ocean" />
-        </>
-      )}
+      {/* Guidelines Summary Section */}
+      <>
+        <SectionWave color="light-beige" />
+        <GuidelinesSummary />
+        <SectionWave color="deep-ocean" />
+      </>
 
       {/* Final CTA Section */}
       {camp2026.fundingUrl && (
