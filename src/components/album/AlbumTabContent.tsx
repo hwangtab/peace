@@ -56,16 +56,13 @@ const AlbumTabContent: React.FC<AlbumTabContentProps> = ({
                             aria-selected={activeTab === tab.id}
                             aria-controls={`${tab.id}-panel`}
                             onClick={() => setActiveTab(tab.id as 'info' | 'video' | 'photo')}
-                            className={`relative px-6 py-3 rounded-xl text-sm font-bold transition-[color,background-color] duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${activeTab === tab.id ? 'text-white' : 'text-coastal-gray hover:text-jeju-ocean'
+                            className={`relative px-6 py-3 rounded-xl text-sm font-bold transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${activeTab === tab.id ? 'text-white' : 'text-coastal-gray hover:text-jeju-ocean'
                                 }`}
                         >
-                            {activeTab === tab.id && (
-                                <motion.div
-                                    layoutId="activeTabBg"
-                                    className="absolute inset-0 bg-jeju-ocean rounded-xl shadow-lg"
-                                    transition={{ type: 'spring', bounce: 0.2, duration: 0.5 }}
-                                />
-                            )}
+                            <span
+                                aria-hidden="true"
+                                className={`absolute inset-0 bg-jeju-ocean rounded-xl shadow-lg transition-opacity duration-300 ${activeTab === tab.id ? 'opacity-100' : 'opacity-0'}`}
+                            />
                             <span className="relative z-10">{tab.label}</span>
                         </button>
                     ))}
