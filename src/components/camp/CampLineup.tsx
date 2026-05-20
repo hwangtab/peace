@@ -46,9 +46,9 @@ const CampLineup: React.FC<CampLineupProps> = ({ participants, musicians, campYe
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.3 }}
-            className="flex items-center justify-center text-center h-full min-h-[120px] sm:min-h-[200px] px-4 rounded-lg border bg-white border-gray-200 shadow-lg"
+            className="flex items-center justify-center text-center h-full min-h-[120px] sm:min-h-[200px] px-4 rounded-lg border bg-white border-seafoam/40 shadow-lg"
           >
-            <span className="font-medium text-gray-700 text-lg break-words">
+            <span className="font-medium text-coastal-gray text-lg break-words">
               {name}
             </span>
           </motion.div>

@@ -28,7 +28,7 @@ export default function MusicianDescriptionSection({
     <div className={`bg-white pt-16 ${isCampPage && latestCamp && fundingUrl ? 'pb-24 md:pb-32' : 'pb-16'} flex-1`}>
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
-          <p className="typo-body text-gray-700 leading-relaxed whitespace-pre-wrap text-pretty break-words">
+          <p className="typo-body text-coastal-gray leading-relaxed whitespace-pre-wrap text-pretty break-words">
             {musician.description}
           </p>
 
@@ -79,10 +79,10 @@ export default function MusicianDescriptionSection({
                 <div>
                   <p className="text-sm uppercase tracking-widest text-jeju-ocean font-bold mb-2">{t(`camp.title_${latestCamp?.year}`, { defaultValue: t('app.title') })}</p>
                   <div className="flex flex-wrap gap-3 justify-center">
-                    <span className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-700">
+                    <span className="inline-flex items-center gap-1.5 text-sm font-medium text-coastal-gray">
                       <span className="text-jeju-ocean" aria-hidden="true">📅</span>{t(`camp.date_badge_${latestCamp?.year}`, { defaultValue: '' })}
                     </span>
-                    <span className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-700">
+                    <span className="inline-flex items-center gap-1.5 text-sm font-medium text-coastal-gray">
                       <span className="text-jeju-ocean" aria-hidden="true">📍</span>{t(`camp.venue_${latestCamp?.year}`, { defaultValue: '' })}
                     </span>
                   </div>

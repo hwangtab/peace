@@ -1,12 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 
-type JsonArrayStatus = 'ok' | 'empty' | 'not_found';
-
-interface JsonArrayResult<T> {
-  status: JsonArrayStatus;
-  data: T[];
-}
+import { parseJsonArray, type JsonArrayResult } from './jsonReader';
+export type { JsonArrayStatus, JsonArrayResult } from './jsonReader';
 
 const createLoaderError = (message: string, cause?: unknown): Error => {
   const error = new Error(message);
@@ -23,23 +19,11 @@ export const readJsonArrayResult = <T>(filePath: string): JsonArrayResult<T> => 
 
   const content = fs.readFileSync(filePath, 'utf8');
 
-  let parsed: unknown;
   try {
-    parsed = JSON.parse(content);
+    return parseJsonArray<T>(content, filePath);
   } catch (error) {
-    throw createLoaderError(`Invalid JSON in ${filePath}`, error);
+    throw createLoaderError((error as Error).message, (error as Error & { cause?: unknown }).cause ?? error);
   }
-
-  if (!Array.isArray(parsed)) {
-    throw createLoaderError(`Expected array JSON in ${filePath}`);
-  }
-
-  const data = parsed as T[];
-  if (data.length === 0) {
-    return { status: 'empty', data };
-  }
-
-  return { status: 'ok', data };
 };
 
 export const readJsonArray = <T>(filePath: string): T[] => {

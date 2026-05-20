@@ -25,11 +25,8 @@ declare global {
   }
 }
 
-const GA_MEASUREMENT_ID = (() => {
-  const id = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
-  if (id && /^G-[A-Z0-9]+$/.test(id)) return id;
-  return undefined;
-})();
+import { config } from '@/config/env';
+const GA_MEASUREMENT_ID = config.gaMeasurementId;
 
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -103,4 +100,5 @@ function App({ Component, pageProps }: AppProps) {
   );
 }
 
+// App Router 전환 시 next-intl + createNextIntlMiddleware 로 교체 필요
 export default appWithTranslation(App, nextI18NextConfig);

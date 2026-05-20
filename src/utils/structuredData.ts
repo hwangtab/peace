@@ -40,7 +40,6 @@ export const getOrganizationSchema = (_lang: string = 'ko', t?: TranslationFn) =
   "sameAs": [
     "https://www.instagram.com/peace_music_in_gangjeong",
     "https://smartstore.naver.com/peaceandmusic",
-    "https://tumblbug.com/gpmc3",
   ],
   "knowsAbout": [
     "Peace movement",
@@ -394,8 +393,7 @@ export const getEventSchema = (event: {
       "name": t ? getCampName(t) : '',
       "url": "https://peaceandmusic.net",
       "sameAs": [
-        "https://www.instagram.com/peace_music_in_gangjeong",
-        "https://tumblbug.com/gpmc3"
+        "https://www.instagram.com/peace_music_in_gangjeong"
       ]
     },
     ...(event.offers ? {
@@ -695,8 +693,8 @@ export const getHowToSchema = (_lang: string = 'ko', t?: TranslationFn) => ({
   "step": [
     { "@type": "HowToStep", "position": 1, "name": t ? t('structured_data.howto_step1_name') : 'Check the schedule', "text": t ? t('structured_data.howto_step1_text') : 'Visit peaceandmusic.net to check the camp dates and lineup.', "url": "https://peaceandmusic.net/camps/2026" },
     { "@type": "HowToStep", "position": 2, "name": t ? t('structured_data.howto_step2_name') : 'Travel to Gangjeong Village', "text": t ? t('structured_data.howto_step2_text') : 'Take a bus or taxi from Jeju Airport to Gangjeong Village.', "url": "https://peaceandmusic.net/camps/2026" },
-    { "@type": "HowToStep", "position": 3, "name": t ? t('structured_data.howto_step3_name') : 'Get your Tumblbug ticket', "text": t ? t('structured_data.howto_step3_text') : 'Buy a ticket through Tumblbug crowdfunding (tumblbug.com/gpmc3); your purchase directly supports the camp.', "url": "https://peaceandmusic.net/camps/2026" },
-    { "@type": "HowToStep", "position": 4, "name": t ? t('structured_data.howto_step4_name') : 'Enter Gangjeong Sports Park', "text": t ? t('structured_data.howto_step4_text') : 'Arrive at Gangjeong Sports Park and enter with the Tumblbug ticket you purchased.', "url": "https://peaceandmusic.net/camps/2026" },
+    { "@type": "HowToStep", "position": 3, "name": t ? t('structured_data.howto_step3_name') : 'Book your ticket', "text": t ? t('structured_data.howto_step3_text') : 'Book a ticket on the official booking page.', "url": "https://peaceandmusic.net/camps/2026" },
+    { "@type": "HowToStep", "position": 4, "name": t ? t('structured_data.howto_step4_name') : 'Enter Gangjeong Sports Park', "text": t ? t('structured_data.howto_step4_text') : 'Arrive at Gangjeong Sports Park and enter with the ticket you purchased.', "url": "https://peaceandmusic.net/camps/2026" },
     { "@type": "HowToStep", "position": 5, "name": t ? t('structured_data.howto_step5_name') : 'Enjoy music and peace', "text": t ? t('structured_data.howto_step5_text') : 'Watch performances and share in the spirit of peace solidarity.', "url": "https://peaceandmusic.net/gallery" },
   ],
 });

@@ -27,21 +27,21 @@ const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
       </div>
 
       <div className="bg-white p-6">
-        <p className="text-gray-700 mb-4 leading-relaxed text-pretty break-words">
+        <p className="text-coastal-gray mb-4 leading-relaxed text-pretty break-words">
           {camp.description}
         </p>
 
         {!isComingSoon && (
           <>
             <div className="mb-4 space-y-2">
-              <p className="text-sm text-gray-600 flex items-start gap-2">
+              <p className="text-sm text-coastal-gray flex items-start gap-2">
                 <HiOutlineCalendar aria-hidden="true" className="w-4 h-4 mt-0.5 flex-shrink-0 text-jeju-ocean" />
                 <span className="min-w-0 break-words">
                   <span className="font-bold">{t('camp.label_period')}:</span> {camp.startDate}
                   {camp.endDate && ` ~ ${camp.endDate}`}
                 </span>
               </p>
-              <p className="text-sm text-gray-600 flex items-start gap-2">
+              <p className="text-sm text-coastal-gray flex items-start gap-2">
                 <HiOutlineLocationMarker aria-hidden="true" className="w-4 h-4 mt-0.5 flex-shrink-0 text-jeju-ocean" />
                 <span className="min-w-0 break-words">
                   <span className="font-bold">{t('camp.label_location')}:</span> {camp.location}
@@ -51,7 +51,7 @@ const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
 
             {camp.participants && camp.participants.length > 0 && (
               <div className="mb-6">
-                <p className="text-sm font-bold text-gray-900 mb-2">
+                <p className="text-sm font-bold text-deep-ocean mb-2">
                   {t('camp.label_participants')} ({camp.participants.length})
                 </p>
                 <div className="flex flex-wrap gap-2">

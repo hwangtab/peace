@@ -1,9 +1,9 @@
-import React, { useState, useMemo, useEffect, useCallback } from 'react';
+import React, { useMemo, useCallback } from 'react';
 import { useTranslation } from 'next-i18next';
-import { useRouter } from 'next/router';
 import { getVideos } from '@/api/videos';
 import { VideoItem } from '@/types/video';
-import { FilterId, filterByEvent, isValidFilter } from '@/utils/filtering';
+import { filterByEvent } from '@/utils/filtering';
+import { useFilterFromQuery } from '@/hooks/useFilterFromQuery';
 import { sortByDateDesc } from '@/utils/sorting';
 import EventFilter from '../common/EventFilter';
 import PageLayout from '../layout/PageLayout';
@@ -21,8 +21,7 @@ interface VideoPageProps {
 
 export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: VideoPageProps) {
   const { t, i18n } = useTranslation();
-  const router = useRouter();
-  const [selectedFilter, setSelectedFilter] = useState<FilterId>('all');
+  const [selectedFilter, setSelectedFilter] = useFilterFromQuery();
 
   const fetchVideos = useCallback((locale: string) => getVideos(locale), []);
   const videosResource = useLocalizedResource<VideoItem>({
@@ -33,15 +32,6 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
   });
 
   const videos = videosResource.data;
-
-  // Sync filter with query parameter on mount
-  useEffect(() => {
-    if (!router.isReady) return;
-    const filterParam = typeof router.query.filter === 'string' ? router.query.filter : null;
-    if (filterParam && isValidFilter(filterParam)) {
-      setSelectedFilter(filterParam);
-    }
-  }, [router.isReady, router.query.filter]);
 
   const filteredVideos = useMemo(
     () => sortByDateDesc(filterByEvent(videos, selectedFilter)),
@@ -126,12 +116,12 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
         />
 
         {videosResource.isLoading && (
-          <p className="text-center text-gray-500 py-12" role="status">
+          <p className="text-center text-coastal-gray py-12" role="status">
             {t('common.loading')}
           </p>
         )}
         {videosResource.error && (
-          <p className="text-center text-gray-500 py-12" role="alert">
+          <p className="text-center text-coastal-gray py-12" role="alert">
             {t('common.no_results')}
           </p>
         )}
@@ -145,7 +135,7 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
           </div>
         )}
         {filteredVideos.length === 0 && !videosResource.error && !videosResource.isLoading && (
-          <p className="text-center text-gray-500 py-12">
+          <p className="text-center text-coastal-gray py-12">
             {t('common.no_results') || 'No results found.'}
           </p>
         )}

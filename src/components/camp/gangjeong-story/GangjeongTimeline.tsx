@@ -61,7 +61,7 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className={`typo-h2 text-center ${isHome ? 'text-jeju-ocean' : 'text-gray-900'} mb-12 sm:mb-16`}
+          className={`typo-h2 text-center ${isHome ? 'text-jeju-ocean' : 'text-deep-ocean'} mb-12 sm:mb-16`}
         >
           {t('timeline_title')}
         </motion.h3>
@@ -104,10 +104,10 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
                         </span>
                       )}
                     </div>
-                    <h4 className="text-sm font-bold text-gray-900 break-words">
+                    <h4 className="text-sm font-bold text-deep-ocean break-words">
                       {node.href ? <Link href={node.href} className="hover:text-jeju-ocean transition-colors">{t(node.titleKey)}</Link> : t(node.titleKey)}
                     </h4>
-                    <p className="text-xs text-gray-500 mt-0.5 break-words">{t(node.descKey)}</p>
+                    <p className="text-xs text-coastal-gray mt-0.5 break-words">{t(node.descKey)}</p>
                   </div>
                 </div>
 
@@ -127,10 +127,10 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
                             {node.year}
                           </span>
                         </div>
-                        <h4 className="text-base font-bold text-gray-900 break-words">
+                        <h4 className="text-base font-bold text-deep-ocean break-words">
                           {node.href ? <Link href={node.href} className="hover:text-jeju-ocean transition-colors">{t(node.titleKey)}</Link> : t(node.titleKey)}
                         </h4>
-                        <p className="text-sm text-gray-500 mt-0.5 break-words">{t(node.descKey)}</p>
+                        <p className="text-sm text-coastal-gray mt-0.5 break-words">{t(node.descKey)}</p>
                       </div>
                     )}
                   </div>
@@ -154,10 +154,10 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
                             </span>
                           )}
                         </div>
-                        <h4 className="text-base font-bold text-gray-900 break-words">
+                        <h4 className="text-base font-bold text-deep-ocean break-words">
                           {node.href ? <Link href={node.href} className="hover:text-jeju-ocean transition-colors">{t(node.titleKey)}</Link> : t(node.titleKey)}
                         </h4>
-                        <p className="text-sm text-gray-500 mt-0.5 break-words">{t(node.descKey)}</p>
+                        <p className="text-sm text-coastal-gray mt-0.5 break-words">{t(node.descKey)}</p>
                       </div>
                     )}
                   </div>

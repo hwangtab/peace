@@ -25,7 +25,7 @@ const ErrorFallback: React.FC<FallbackProps> = ({ error, resetErrorBoundary }) =
                 </p>
 
                 {isDev && (
-                    <div className="bg-white p-6 rounded-lg shadow-sm mb-8 text-left overflow-auto max-h-48 border border-gray-100">
+                    <div className="bg-white p-6 rounded-lg shadow-sm mb-8 text-left overflow-auto max-h-48 border border-ocean-sand">
                         <p className="font-mono text-xs text-red-500 break-words">
                             {error instanceof Error ? error.message : String(error)}
                         </p>

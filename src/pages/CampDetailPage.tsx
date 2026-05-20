@@ -58,29 +58,28 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
       { name: t('nav.home'), url: getFullUrl('/') },
       { name: `${t('nav.camp')} ${camp.year}`, url: getFullUrl(`/camps/${camp.year}`) },
     ];
-    // t 는 매 렌더 새 reference. i18n.language 만으로 충분 (홈 페이지와 동일 패턴).
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [camp, i18n.language]);
+  }, [camp, t]);
+
+  const tSchema = useCallback<SchemaT>((key, vars) => t(key, vars) as string, [t]);
 
   const structuredData = useMemo(() => {
     if (!camp) return [];
     return buildCampDetailSchemas({
-      t: t as unknown as SchemaT,
+      t: tSchema,
       lang: i18n.language,
       camp,
       ordinalLabel,
       breadcrumbs,
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [camp, breadcrumbs, i18n.language, ordinalLabel]);
+  }, [camp, breadcrumbs, tSchema, i18n.language, ordinalLabel]);
 
   if (!camp) {
     return (
       <PageLayout title={t('camp.not_found')} description={t('camp.not_found_desc')}>
         <div className="flex items-center justify-center h-full min-h-[50vh]">
           <div className="text-center">
-            <h1 className="typo-h2 text-gray-900 mb-4">{t('camp.not_found')}</h1>
-            <p className="typo-body text-gray-600">{t('camp.not_found_desc')}</p>
+            <h1 className="typo-h2 text-deep-ocean mb-4">{t('camp.not_found')}</h1>
+            <p className="typo-body text-coastal-gray">{t('camp.not_found_desc')}</p>
           </div>
         </div>
       </PageLayout>
@@ -125,11 +124,11 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
               >
                 <SectionHeader title={t('camp.section_musicians')} align="left" className="!mb-6" />
                 {musiciansResource.isLoading ? (
-                  <p className="text-gray-600" role="status">
+                  <p className="text-coastal-gray" role="status">
                     {t('common.loading')}
                   </p>
                 ) : musiciansResource.error ? (
-                  <p className="text-gray-600" role="alert">
+                  <p className="text-coastal-gray" role="alert">
                     {t('common.no_results')}
                   </p>
                 ) : (

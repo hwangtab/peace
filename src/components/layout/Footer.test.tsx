@@ -42,9 +42,10 @@ describe('Footer Component', () => {
         expect(screen.getByText(i18n.t('nav.video'))).toBeInTheDocument();
     });
 
-    test('renders copyright with 2026', () => {
+    test('renders copyright with current year', () => {
         renderWithI18n(<Footer />);
-        const copyrightText = screen.getByText(/© 2026/);
-        expect(copyrightText).toBeInTheDocument();
+        // 저작권 연도는 <span> 단일 요소로 렌더링됨
+        const yearSpan = screen.getByText(String(new Date().getFullYear()));
+        expect(yearSpan).toBeInTheDocument();
     });
 });
