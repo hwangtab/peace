@@ -64,7 +64,8 @@
     "logo": "Camp de Música por la Paz de Gangjeong",
     "switch_en": "Cambiar a inglés",
     "switch_ko": "Cambiar a coreano",
-    "switch_language": "Cambiar idioma"
+    "switch_language": "Cambiar idioma",
+    "solidarity": "Solidaridad"
   },
   "common": {
     "loading": "Cargando...",
@@ -231,5 +232,34 @@
     "howto_step5_name": "Disfruta de la música y la paz",
     "howto_step5_text": "Disfruta de las actuaciones de músicos de diversos géneros y comparte el espíritu de solidaridad por la paz.",
     "audience_general": "Público general"
+  },
+  "solidarity": {
+    "page_title": "Solidaridad | Campamento de Paz y Música de Gangjeong",
+    "page_desc": "Conciertos y actividades de solidaridad con los movimientos de paz de todo el mundo.",
+    "hero_title": "Solidaridad",
+    "hero_subtitle": "Con los movimientos de paz en todo el mundo",
+    "intro_heading": "Conciertos de Solidaridad por la Paz",
+    "intro_paragraph": "El Campamento de Paz y Música de Gangjeong se solidariza con movimientos de paz de todo el mundo: contra la guerra en Gaza, por la justicia climática y las luchas antimilitaristas. Llevamos música donde se exige la paz.",
+    "empty_message": "Próximamente. La información sobre conciertos de solidaridad se actualizará en breve.",
+    "breadcrumb": "Solidaridad",
+    "concerts_title": "Conciertos de Solidaridad",
+    "concerts_subtitle": "Unidos a través de la música",
+    "label_date": "Fecha y hora",
+    "label_venue": "Lugar",
+    "label_lineup": "Cartel artístico",
+    "label_organizers": "Organizado por",
+    "contact_cta": "Contacto",
+    "event_sail": {
+      "poster_alt": "Cartel del acto cultural por la liberación de activistas palestinos — we are sail for your freedom",
+      "title": "Acto cultural musical por la liberación de activistas palestinos — \"we are sail for your freedom\"",
+      "date": "Sábado 23 de mayo de 2026 · 19:00 h",
+      "venue": "Detrás del Edificio SK Seorin",
+      "venue_address": "26 Jongno, Jongno-gu, Seúl (bloque junto a la Embajada de Israel, lado del arroyo Cheonggyecheon)",
+      "para_1": "Denunciamos el secuestro de activistas del viaje de paz por parte de Israel, Estado genocida y terrorista.",
+      "para_2": "De Gangjeong a Gaza, estamos unidos por el mar. Romper la cadena de 78 años de dominación colonial y genocidio de Israel sobre Palestina, y celebrar finalmente la liberación palestina, está ligado a la liberación de todos nosotros.",
+      "para_3": "Del 5 al 7 de junio, el 'Campamento de Paz y Música de Gangjeong: Poned fin a la guerra' se celebrará en la aldea de Gangjeong, en la isla de Jeju, con 50 grupos musicales. La guerra no es un fenómeno pasajero — es el resultado de la discriminación y la explotación acumuladas en el día a día. Desmantelar este sistema normalizado de violencia, crear nuevas alternativas, cerrar las bases militares que incrementan el riesgo de guerra y lograr la liberación de Palestina del colonialismo israelí: todo eso es lo que significa la paz verdadera.",
+      "para_4": "Rezamos por el regreso sano y salvo de todos los activistas de paz secuestrados por las fuerzas de ocupación israelíes, y esperamos encontrarnos con Haecho, Seungjun y Donghyeon en la aldea de Gangjeong, al sur de Jeju, para compartir canciones de paz e historias. Hemos preparado este acto cultural musical con esa esperanza. Esperamos vuestro interés y participación para que podamos ser el valor del otro.",
+      "note": "Este programa forma parte del «Acto Cultural Diario en condena a Israel y demanda de liberación de activistas palestinos: Hasta que las luces que se dirigían a Gaza regresen a nosotros»."
+    }
   }
 }

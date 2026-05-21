@@ -64,7 +64,8 @@
     "logo": "Camp musical pour la paix de Gangjeong",
     "switch_en": "Passer à l’anglais",
     "switch_ko": "Passer au coréen",
-    "switch_language": "Changer de langue"
+    "switch_language": "Changer de langue",
+    "solidarity": "Solidarité"
   },
   "common": {
     "loading": "Chargement...",
@@ -230,6 +231,35 @@
       "description": "Le 3e Gangjeong Peace Music Camp se tiendra du 5 (ven.) au 7 (dim.) juin 2026 au Parc sportif de Gangjeong, à Seogwipo, sur l'île de Jeju. Pour le 73e anniversaire de l'armistice de la guerre de Corée, le camp s'étend pour la première fois sur trois jours et deux nuits avec 50 groupes. Alors que la militarisation et la menace de guerre s'intensifient sur la péninsule coréenne, le chant de paix né au village de Gangjeong se mue en une solidarité plus forte et plus large. Sous le slogan « Chantons, dansons, mettons fin à la guerre ! », des musicien·ne·s de genres variés livrent des messages antimilitaristes et de paix. Les billets sont en vente sur la page de réservation officielle.",
       "location": "Gangjeong Sports Park",
       "slogan": "Let's sing, let's dance, end the war!"
+    }
+  },
+  "solidarity": {
+    "page_title": "Solidarité | Camp de Paix et de Musique de Gangjeong",
+    "page_desc": "Concerts et activités de solidarité avec les mouvements pour la paix dans le monde entier.",
+    "hero_title": "Solidarité",
+    "hero_subtitle": "Aux côtés des mouvements pour la paix dans le monde",
+    "intro_heading": "Concerts de solidarité pour la paix",
+    "intro_paragraph": "Le Camp de Paix et de Musique de Gangjeong se solidarise avec les mouvements pour la paix dans le monde entier — contre la guerre à Gaza, pour la justice climatique et les luttes antimilitaristes. Nous portons la musique là où la paix est exigée.",
+    "empty_message": "Bientôt disponible. Les informations sur les concerts de solidarité seront mises à jour prochainement.",
+    "breadcrumb": "Solidarité",
+    "concerts_title": "Concerts de Solidarité",
+    "concerts_subtitle": "Ensemble à travers la musique",
+    "label_date": "Date et heure",
+    "label_venue": "Lieu",
+    "label_lineup": "Programmation",
+    "label_organizers": "Organisé par",
+    "contact_cta": "Contact",
+    "event_sail": {
+      "poster_alt": "Affiche de l'événement culturel pour la libération des militants palestiniens — we are sail for your freedom",
+      "title": "Événement culturel musical pour la libération des militants palestiniens — \"we are sail for your freedom\"",
+      "date": "Samedi 23 mai 2026 · 19h00",
+      "venue": "Derrière le bâtiment SK Seorin",
+      "venue_address": "26 Jongno, Jongno-gu, Séoul (bloc adjacent à l'ambassade d'Israël, côté Cheonggyecheon)",
+      "para_1": "Nous condamnons l'enlèvement d'activistes du voyage de paix par Israël — État génocidaire et terroriste.",
+      "para_2": "De Gangjeong à Gaza, nous sommes reliés par la mer. Briser la chaîne de 78 ans de domination coloniale et de génocide d'Israël sur la Palestine, et enfin célébrer la libération palestinienne, est lié à la libération de nous tous.",
+      "para_3": "Du 5 au 7 juin, le « Camp de Paix et de Musique de Gangjeong : Arrêtons la guerre » se tiendra dans le village de Gangjeong, sur l'île de Jeju, avec 50 groupes musicaux. La guerre n'est pas un phénomène passager — c'est le résultat de la discrimination et de l'exploitation accumulées au quotidien. Démanteler ce système de violence normalisé, créer de nouvelles alternatives, fermer les bases militaires qui accroissent le risque de guerre, et permettre à la Palestine de se libérer de la domination coloniale israélienne — voilà ce que signifie la vraie paix.",
+      "para_4": "Nous prions pour le retour sain et sauf de tous les activistes de la paix enlevés par les forces d'occupation israéliennes, et nous espérons retrouver Haecho, Seungjun et Donghyeon dans le village de Gangjeong, au sud de Jeju, pour partager des chants de paix et des récits. Nous avons préparé cet événement culturel avec de la musique, portés par cet espoir. Nous comptons sur votre intérêt et votre participation pour que nous puissions être le courage de chacun.",
+      "note": "Ce programme s'inscrit dans le cadre de l'«Événement Culturel Quotidien de Condamnation d'Israël et de Demande de Libération des Militants Palestiniens : Jusqu'au Retour des Lumières en Route vers Gaza»."
     }
   }
 }
