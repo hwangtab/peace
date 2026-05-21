@@ -2,6 +2,7 @@ import { ROUTES } from '@/constants/routes';
 
 export const simpleMenuItems = [
     { nameKey: 'nav.home', path: ROUTES.HOME },
+    { nameKey: 'nav.solidarity', path: ROUTES.SOLIDARITY },
     { nameKey: 'nav.gallery', path: ROUTES.GALLERY },
     { nameKey: 'nav.video', path: ROUTES.VIDEOS },
     { nameKey: 'nav.press', path: ROUTES.PRESS },
