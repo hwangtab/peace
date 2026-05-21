@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { m as motion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
@@ -13,9 +14,10 @@ interface Props {
   event: SolidarityEvent;
   index: number;
   musicians: Musician[];
+  detailHref?: string;
 }
 
-const SolidarityEventFeature: React.FC<Props> = ({ event, index, musicians }) => {
+const SolidarityEventFeature: React.FC<Props> = ({ event, index, musicians, detailHref }) => {
   const { t } = useTranslation('translation');
   const [selectedMusician, setSelectedMusician] = useState<Musician | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -150,8 +152,8 @@ const SolidarityEventFeature: React.FC<Props> = ({ event, index, musicians }) =>
             <span className="break-words">{event.organizers}</span>
           </div>
 
-          {/* Contact */}
-          <div>
+          {/* Contact + 상세 링크 */}
+          <div className="flex flex-wrap items-center gap-3">
             <a
               href={event.contact.url}
               target="_blank"
@@ -160,6 +162,14 @@ const SolidarityEventFeature: React.FC<Props> = ({ event, index, musicians }) =>
             >
               {t('solidarity.contact_cta')} — {event.contact.name}
             </a>
+            {detailHref && (
+              <Link
+                href={detailHref}
+                className="inline-flex items-center gap-1 px-6 py-3 border border-jeju-ocean text-jeju-ocean rounded-full text-sm font-medium hover:bg-jeju-ocean/5 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
+              >
+                {t('solidarity.detail_cta')} →
+              </Link>
+            )}
           </div>
         </div>
       </motion.article>

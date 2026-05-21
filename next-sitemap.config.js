@@ -137,6 +137,14 @@ const getLastmodForPath = (pagePath) => {
     ]);
   }
 
+  if (normalizedPath === '/solidarity' || normalizedPath.startsWith('/solidarity/')) {
+    return getLastmod([
+      path.join(rootDir, 'src', 'data', 'solidarity.ts'),
+      ...translationFiles,
+      ...getLocalizedDataFiles('musicians'),
+    ]);
+  }
+
   if (normalizedPath === '/videos' || normalizedPath.startsWith('/videos/')) {
     return getLastmod([
       ...translationFiles,
@@ -275,6 +283,14 @@ module.exports = {
     // Individual video detail pages — each gets its own URL for proper video indexing
     if (normalizedPath.startsWith('/videos/')) {
       return { loc: path, changefreq: 'yearly', priority: 0.7, lastmod, alternateRefs };
+    }
+    // Solidarity — 연대공연 목록
+    if (normalizedPath === '/solidarity') {
+      return { loc: path, changefreq: 'monthly', priority: 0.8, lastmod, alternateRefs };
+    }
+    // Individual solidarity event pages — 행사별 독립 페이지
+    if (normalizedPath.startsWith('/solidarity/')) {
+      return { loc: path, changefreq: 'monthly', priority: 0.75, lastmod, alternateRefs };
     }
     // Press — 언론 보도
     if (normalizedPath === '/press') {
