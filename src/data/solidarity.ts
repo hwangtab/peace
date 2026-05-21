@@ -5,6 +5,13 @@ export interface LineupEntry {
   musicianId: number | null;
 }
 
+interface SolidarityAddress {
+  streetAddress: string;
+  addressLocality: string;
+  addressRegion: string;
+  addressCountry: string;
+}
+
 interface SolidarityEventStruct {
   id: string;
   keyPrefix: string;
@@ -13,6 +20,8 @@ interface SolidarityEventStruct {
   lineup: LineupEntry[];
   organizers: string;
   contact: { name: string; url: string };
+  startDate: string;
+  address: SolidarityAddress;
 }
 
 export interface SolidarityEvent {
@@ -28,6 +37,8 @@ export interface SolidarityEvent {
   lineup: LineupEntry[];
   organizers: string;
   contact: { name: string; url: string };
+  startDate: string;
+  address: SolidarityAddress;
 }
 
 const eventStructs: SolidarityEventStruct[] = [
@@ -45,8 +56,26 @@ const eventStructs: SolidarityEventStruct[] = [
     ],
     organizers: '팔레스타인해방을위한항해한국본부 × 강정피스앤뮤직캠프조직위원회',
     contact: { name: '황경하', url: 'https://open.kakao.com/me/Alfseoul' },
+    startDate: '2026-05-23T19:00:00+09:00',
+    address: {
+      streetAddress: '종로 26',
+      addressLocality: '서울특별시',
+      addressRegion: '종로구',
+      addressCountry: 'KR',
+    },
   },
 ];
+
+export function getSolidarityEventSlugs(): string[] {
+  return eventStructs.map((s) => s.id);
+}
+
+export function getSolidarityEventLineupIds(slug: string): number[] {
+  const struct = eventStructs.find((s) => s.id === slug);
+  return (struct?.lineup ?? [])
+    .map((e) => e.musicianId)
+    .filter((id): id is number => id !== null);
+}
 
 export function getSolidarityEvents(t: TFunction): SolidarityEvent[] {
   return eventStructs.map((s) => ({
@@ -62,5 +91,7 @@ export function getSolidarityEvents(t: TFunction): SolidarityEvent[] {
     lineup: s.lineup,
     organizers: s.organizers,
     contact: s.contact,
+    startDate: s.startDate,
+    address: s.address,
   }));
 }
