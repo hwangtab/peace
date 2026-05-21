@@ -64,7 +64,8 @@
     "logo": "Kemah Musik Perdamaian Gangjeong",
     "switch_en": "Beralih ke Bahasa Inggris",
     "switch_ko": "Beralih ke Bahasa Korea",
-    "switch_language": "Ganti bahasa"
+    "switch_language": "Ganti bahasa",
+    "solidarity": "Solidaritas"
   },
   "common": {
     "loading": "Memuat...",
@@ -231,5 +232,34 @@
     "howto_step5_name": "Nikmati musik dan perdamaian",
     "howto_step5_text": "Saksikan pertunjukan musisi dari berbagai genre dan bagikan semangat solidaritas perdamaian.",
     "audience_general": "Audiens umum"
+  },
+  "solidarity": {
+    "page_title": "Solidaritas | Kamp Perdamaian & Musik Gangjeong",
+    "page_desc": "Konser dan kegiatan solidaritas bersama gerakan perdamaian di seluruh dunia.",
+    "hero_title": "Solidaritas",
+    "hero_subtitle": "Bersama Gerakan Perdamaian di Seluruh Dunia",
+    "intro_heading": "Konser Solidaritas untuk Perdamaian",
+    "intro_paragraph": "Kamp Perdamaian & Musik Gangjeong bersolidaritas dengan gerakan perdamaian di seluruh dunia — menentang perang di Gaza, memperjuangkan keadilan iklim, dan perjuangan anti-perang.",
+    "empty_message": "Segera hadir. Informasi konser solidaritas akan segera diperbarui.",
+    "breadcrumb": "Solidaritas",
+    "concerts_title": "Konser Solidaritas",
+    "concerts_subtitle": "Bersatu melalui musik",
+    "label_date": "Tanggal & Waktu",
+    "label_venue": "Tempat",
+    "label_lineup": "Lineup",
+    "label_organizers": "Penyelenggara",
+    "contact_cta": "Hubungi",
+    "event_sail": {
+      "poster_alt": "Poster festival budaya untuk pembebasan aktivis kemerdekaan Palestina — we are sail for your freedom",
+      "title": "Festival Budaya Musik untuk Pembebasan Aktivis Kemerdekaan Palestina — \"we are sail for your freedom\"",
+      "date": "Sabtu, 23 Mei 2026 · Pukul 19.00",
+      "venue": "Di belakang Gedung SK Seorin",
+      "venue_address": "26 Jongno, Jongno-gu, Seoul (blok di sebelah Kedutaan Besar Israel, sisi sungai Cheonggyecheon)",
+      "para_1": "Kami mengecam penculikan aktivis perjalanan damai oleh Israel — negara genosida dan teroris.",
+      "para_2": "Dari Gangjeong hingga Gaza, kami terhubung melalui laut. Memutus rantai 78 tahun penjajahan Israel dan genosida terhadap Palestina, dan akhirnya menyambut kemerdekaan Palestina, terhubung dengan kemerdekaan kita semua.",
+      "para_3": "Dari tanggal 5 hingga 7 Juni, 'Kamp Perdamaian dan Musik Gangjeong: Hentikan Perang' akan diselenggarakan di Desa Gangjeong, Pulau Jeju, menampilkan 50 kelompok musik. Perang bukan fenomena sementara — perang adalah hasil diskriminasi dan eksploitasi yang terakumulasi dalam keseharian. Menghancurkan sistem kekerasan yang ternormalisasi ini, menciptakan alternatif baru, menutup pangkalan militer yang meningkatkan risiko perang, dan membantu Palestina meraih kemerdekaan dari penjajahan Israel — itulah makna perdamaian sejati.",
+      "para_4": "Kami berdoa untuk kepulangan yang selamat bagi semua aktivis perdamaian yang diculik oleh pasukan pendudukan Israel, dan berharap dapat bertemu dengan Haecho, Seungjun, dan Donghyeon di Desa Gangjeong di selatan Pulau Jeju untuk berbagi lagu-lagu perdamaian dan cerita. Kami menyiapkan festival budaya musik ini dengan harapan tersebut. Kami mengharapkan dukungan dan partisipasi Anda agar kita bisa menjadi keberanian satu sama lain.",
+      "note": "Program ini merupakan bagian dari 'Festival Budaya Harian dalam Mengutuk Israel dan Menuntut Pembebasan Aktivis Kemerdekaan Palestina: Hingga Cahaya-Cahaya yang Menuju Gaza Kembali kepada Kami'."
+    }
   }
 }

@@ -64,7 +64,8 @@
     "logo": "Gangjeong Friedensmusikcamp",
     "switch_en": "Zu Englisch wechseln",
     "switch_ko": "Zu Koreanisch wechseln",
-    "switch_language": "Sprache wechseln"
+    "switch_language": "Sprache wechseln",
+    "solidarity": "Solidarität"
   },
   "common": {
     "loading": "Laden...",
@@ -230,6 +231,35 @@
       "description": "Das 3. Gangjeong Peace Music Camp findet vom 5. (Fr.) bis 7. (So.) Juni 2026 im Gangjeong Sports Park in Seogwipo, Jeju, statt. Zum 73. Jahrestag des Waffenstillstands im Koreakrieg erweitert sich das Camp erstmals auf ein Drei-Tage-, Zwei-Nächte-Format mit 50 Acts. Während Militarisierung und Kriegsgefahr auf der koreanischen Halbinsel zunehmen, wächst das im Dorf Gangjeong begonnene Friedenslied zu einer stärkeren, umfassenderen Solidarität. Unter dem Motto „Singen wir, tanzen wir, beenden wir den Krieg!\" tragen Musiker:innen verschiedener Genres Friedens- und Antikriegsbotschaften vor. Tickets sind auf der offiziellen Buchungsseite erhältlich.",
       "location": "Gangjeong Sports Park",
       "slogan": "Let's sing, let's dance, end the war!"
+    }
+  },
+  "solidarity": {
+    "page_title": "Solidarität | Gangjeong Peace & Music Camp",
+    "page_desc": "Solidaritätskonzerte und Aktionen, die Friedensbewegungen weltweit mit Musik unterstützen.",
+    "hero_title": "Solidarität",
+    "hero_subtitle": "Mit Friedensbewegungen rund um die Welt",
+    "intro_heading": "Solidaritätskonzerte für den Frieden",
+    "intro_paragraph": "Das Gangjeong Peace & Music Camp solidarisiert sich mit Friedensbewegungen weltweit — gegen den Krieg in Gaza, für Klimagerechtigkeit und in anti-militaristischen Kämpfen. Wir bringen Musik dorthin, wo Frieden gefordert wird.",
+    "empty_message": "Demnächst verfügbar. Informationen zu Solidaritätskonzerten werden bald aktualisiert.",
+    "breadcrumb": "Solidarität",
+    "concerts_title": "Solidaritätskonzerte",
+    "concerts_subtitle": "Gemeinsam durch Musik",
+    "label_date": "Datum & Uhrzeit",
+    "label_venue": "Veranstaltungsort",
+    "label_lineup": "Lineup",
+    "label_organizers": "Veranstaltet von",
+    "contact_cta": "Kontakt",
+    "event_sail": {
+      "poster_alt": "Plakat — Kulturveranstaltung für die Freilassung palästinensischer Befreiungsaktivisten: we are sail for your freedom",
+      "title": "Musikveranstaltung zur Freilassung palästinensischer Befreiungsaktivisten — \"we are sail for your freedom\"",
+      "date": "Samstag, 23. Mai 2026 · 19:00 Uhr",
+      "venue": "Hinter dem SK Seorin Building",
+      "venue_address": "26 Jongno, Jongno-gu, Seoul (Nächster Block zur israelischen Botschaft, Cheonggyecheon-Seite)",
+      "para_1": "Wir verurteilen die Entführung von Friedensreise-Aktivisten durch Israel — einen genozidalen Terrorstaat.",
+      "para_2": "Von Gangjeong bis Gaza sind wir durch das Meer verbunden. Die 78-jährige Kette der israelischen Kolonialherrschaft und des Völkermordes an Palästina zu durchbrechen und schließlich die Befreiung Palästinas zu erleben, ist mit der Befreiung uns aller verbunden.",
+      "para_3": "Vom 5. bis 7. Juni findet im Gangjeong-Dorf auf der Insel Jeju das „Gangjeong Peace and Music Camp: Stoppt den Krieg\" mit 50 Musikgruppen statt. Krieg ist kein vorübergehendes Phänomen — er ist das Ergebnis alltäglicher Diskriminierung und Ausbeutung. Das normalisierte System der Gewalt zu zerstören, neue Alternativen zu schaffen, Militärbasen zu schließen, die das Kriegsrisiko erhöhen, und Palästina die Befreiung von der israelischen Kolonialherrschaft zu ermöglichen — das alles gehört zum wahren Frieden.",
+      "para_4": "Wir beten für die sichere Rückkehr aller Friedensaktivisten, die von den israelischen Besatzungstruppen entführt wurden, und hoffen, Haecho, Seungjun und Donghyeon im Gangjeong-Dorf im Süden von Jeju zu treffen — um gemeinsam Friedenslieder zu singen und Geschichten auszutauschen. Wir haben diese Kulturveranstaltung mit Musik in dieser Hoffnung vorbereitet. Wir freuen uns auf Ihr Interesse und Ihre Teilnahme, damit wir füreinander Mut sein können.",
+      "note": "Dieses Programm ist Teil der «Täglichen Kulturveranstaltung zur Verurteilung Israels und zur Forderung nach Freilassung palästinensischer Befreiungsaktivisten: Bis die auf Gaza zugehenden Lichter zu uns zurückkehren»."
     }
   }
 }
