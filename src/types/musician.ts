@@ -9,6 +9,7 @@ export interface Musician {
   imageUrl: string;
   instagramUrls: string[];
   youtubeUrl?: string;
+  website?: string;
   events?: string[]; // Array of event IDs (e.g., 'camp-2023', 'camp-2025', 'album-2024')
 }
 

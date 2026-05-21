@@ -7,6 +7,7 @@ import { Musician } from '@/types/musician';
 import { extractInstagramUsername } from '@/utils/instagram';
 import InstagramIcon from '../icons/InstagramIcon';
 import YouTubeIcon from '../icons/YouTubeIcon';
+import { HiOutlineGlobe } from '../icons/SiteIcons';
 
 interface MusicianModalProps {
   musician: Musician;
@@ -98,7 +99,7 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
 
 
                     {/* Social Links */}
-                    {(musician.instagramUrls.length > 0 || musician.youtubeUrl) && (
+                    {(musician.instagramUrls.length > 0 || musician.youtubeUrl || musician.website) && (
                       <div className="mt-6">
                         <h4 className="text-lg font-bold text-deep-ocean mb-2">
                           {t('common.sns')}
@@ -128,6 +129,17 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                             >
                               <YouTubeIcon aria-hidden="true" className="w-4 h-4 mr-1" />
                               YouTube
+                            </a>
+                          )}
+                          {musician.website && (
+                            <a
+                              href={musician.website}
+                              target="_blank"
+                              rel="noopener noreferrer nofollow"
+                              className="inline-flex items-center px-3 py-1 text-sm bg-jeju-ocean text-white rounded-full hover:bg-jeju-ocean/90 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded"
+                            >
+                              <HiOutlineGlobe aria-hidden="true" className="w-4 h-4 mr-1" />
+                              {musician.website.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}
                             </a>
                           )}
                         </div>
