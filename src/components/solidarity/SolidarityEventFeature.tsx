@@ -38,6 +38,7 @@ const SolidarityEventFeature: React.FC<Props> = ({ event, index, musicians }) =>
         transition={{ duration: 0.5, delay: Math.min(index * 0.1, 0.4) }}
         className="bg-white rounded-3xl overflow-hidden shadow-lg border border-ocean-sand"
       >
+        {/* 상단: 포스터 + 주요 정보 2단 */}
         <div className="lg:grid lg:grid-cols-2">
           {/* Poster */}
           <div className="relative aspect-[4/5]">
@@ -51,8 +52,8 @@ const SolidarityEventFeature: React.FC<Props> = ({ event, index, musicians }) =>
             />
           </div>
 
-          {/* Details */}
-          <div className="p-8 lg:p-10 flex flex-col gap-6">
+          {/* Key info */}
+          <div className="p-8 lg:p-10 flex flex-col justify-center gap-6">
             <h2 className="typo-h3 text-xl lg:text-2xl leading-snug break-words">
               {event.title}
             </h2>
@@ -120,42 +121,45 @@ const SolidarityEventFeature: React.FC<Props> = ({ event, index, musicians }) =>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
 
-            {/* Description */}
-            <div className="space-y-3 border-t border-ocean-sand pt-5">
-              {event.paragraphs.map((para, i) => (
-                <p key={i} className="typo-body text-sm leading-relaxed">
-                  {para}
-                </p>
-              ))}
-            </div>
-
-            {/* Program note */}
-            {event.note && (
-              <p className="text-xs text-coastal-gray italic border-l-2 border-ocean-sand pl-3 leading-relaxed">
-                {event.note}
+        {/* 하단: 본문 설명 + 노트 + 주최 + 문의 버튼 (전체폭) */}
+        <div className="px-8 lg:px-10 pb-8 lg:pb-10 pt-6 lg:pt-8 border-t border-ocean-sand flex flex-col gap-6">
+          {/* Description */}
+          <div className="space-y-3">
+            {event.paragraphs.map((para, i) => (
+              <p key={i} className="typo-body text-sm leading-relaxed">
+                {para}
               </p>
-            )}
+            ))}
+          </div>
 
-            {/* Organizers */}
-            <div className="text-sm text-coastal-gray">
-              <span className="text-[10px] uppercase tracking-wider font-bold block mb-1">
-                {t('solidarity.label_organizers')}
-              </span>
-              <span className="break-words">{event.organizers}</span>
-            </div>
+          {/* Program note */}
+          {event.note && (
+            <p className="text-xs text-coastal-gray italic border-l-2 border-ocean-sand pl-3 leading-relaxed">
+              {event.note}
+            </p>
+          )}
 
-            {/* Contact */}
-            <div className="mt-auto pt-2">
-              <a
-                href={event.contact.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-jeju-ocean text-white rounded-full text-sm font-medium hover:bg-jeju-ocean/90 transition-colors duration-200"
-              >
-                {t('solidarity.contact_cta')} — {event.contact.name}
-              </a>
-            </div>
+          {/* Organizers */}
+          <div className="text-sm text-coastal-gray">
+            <span className="text-[10px] uppercase tracking-wider font-bold block mb-1">
+              {t('solidarity.label_organizers')}
+            </span>
+            <span className="break-words">{event.organizers}</span>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <a
+              href={event.contact.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-jeju-ocean text-white rounded-full text-sm font-medium hover:bg-jeju-ocean/90 transition-colors duration-200"
+            >
+              {t('solidarity.contact_cta')} — {event.contact.name}
+            </a>
           </div>
         </div>
       </motion.article>
