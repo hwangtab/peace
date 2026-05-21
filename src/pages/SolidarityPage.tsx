@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useCallback } from 'react';
 import { useTranslation } from 'next-i18next';
 import PageLayout from '@/components/layout/PageLayout';
 import PageHero from '@/components/common/PageHero';
@@ -9,9 +9,29 @@ import SectionWave from '@/components/layout/SectionWave';
 import SolidarityEventFeature from '@/components/solidarity/SolidarityEventFeature';
 import { getSolidarityEvents } from '@/data/solidarity';
 import { getFullUrl } from '@/config/env';
+import { Musician } from '@/types/musician';
+import { getMusicians } from '@/api/musicians';
+import { useLocalizedResource } from '@/hooks/useLocalizedResource';
 
-const SolidarityPage: React.FC = () => {
-  const { t } = useTranslation();
+interface Props {
+  initialMusicians?: Musician[];
+  initialLocale?: string;
+}
+
+const SolidarityPage: React.FC<Props> = ({
+  initialMusicians = [],
+  initialLocale = 'ko',
+}) => {
+  const { t, i18n } = useTranslation();
+
+  const fetchMusicians = useCallback((locale: string) => getMusicians(locale), []);
+  const musiciansResource = useLocalizedResource<Musician>({
+    initialData: initialMusicians,
+    initialLocale,
+    currentLocale: i18n.language,
+    fetchResource: fetchMusicians,
+  });
+  const musicians = musiciansResource.isLoading ? initialMusicians : musiciansResource.data;
 
   const events = useMemo(() => getSolidarityEvents(t), [t]);
 
@@ -62,6 +82,7 @@ const SolidarityPage: React.FC = () => {
                   key={event.id}
                   event={event}
                   index={index}
+                  musicians={musicians}
                 />
               ))}
             </div>
