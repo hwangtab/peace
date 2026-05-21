@@ -1,11 +1,16 @@
 import { TFunction } from 'next-i18next';
 
+export interface LineupEntry {
+  name: string;
+  musicianId: number | null;
+}
+
 interface SolidarityEventStruct {
   id: string;
   keyPrefix: string;
   poster: string;
   paraCount: number;
-  lineup: string[];
+  lineup: LineupEntry[];
   organizers: string;
   contact: { name: string; url: string };
 }
@@ -20,7 +25,7 @@ export interface SolidarityEvent {
   venueAddress: string;
   paragraphs: string[];
   note: string;
-  lineup: string[];
+  lineup: LineupEntry[];
   organizers: string;
   contact: { name: string; url: string };
 }
@@ -31,7 +36,13 @@ const eventStructs: SolidarityEventStruct[] = [
     keyPrefix: 'solidarity.event_sail',
     poster: '/images-webp/solidarity/we-are-sail-for-your-freedom.webp',
     paraCount: 4,
-    lineup: ['강가히말라야', '길가는밴드 장현호', '모레도토요일', '삼각전파사', '이서영', '현장 자유 발언자'],
+    lineup: [
+      { name: '강가히말라야', musicianId: 14 },
+      { name: '길가는밴드 장현호', musicianId: 15 },
+      { name: '모레도토요일', musicianId: 7 },
+      { name: '삼각전파사', musicianId: 34 },
+      { name: '이서영', musicianId: 12 },
+    ],
     organizers: '팔레스타인해방을위한항해한국본부 × 강정피스앤뮤직캠프조직위원회',
     contact: { name: '황경하', url: 'https://open.kakao.com/me/Alfseoul' },
   },
