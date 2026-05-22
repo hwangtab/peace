@@ -40,14 +40,14 @@ const Navigation = () => {
           <div className="flex justify-between items-center min-h-[4rem] py-2 gap-4">
             <Link
               href="/"
-              className={`group inline-flex items-center gap-2 text-lg sm:text-xl lg:text-2xl font-bold font-serif transition-colors duration-300 min-w-0 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${
+              className={`group inline-flex items-center gap-2 text-sm sm:text-base lg:text-lg xl:text-xl 2xl:text-2xl font-bold font-serif transition-colors duration-300 min-w-0 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${
                 isScrolled
                   ? 'text-jeju-ocean hover:text-ocean-mist'
                   : 'text-cloud-white hover:text-seafoam drop-shadow-md'
               }`}
             >
               <WaveLogoMark className="h-4 sm:h-5 w-auto flex-shrink-0 transition-transform duration-500 group-hover:-translate-y-0.5" />
-              <span className="min-w-0 text-balance break-words">{t('nav.logo')}</span>
+              <span className="whitespace-nowrap">{t('nav.logo')}</span>
             </Link>
 
             {/* Desktop Menu */}
@@ -59,7 +59,7 @@ const Navigation = () => {
             />
 
             {/* Mobile Menu Button */}
-            <div className="md:hidden">
+            <div className="xl:hidden">
               <button
                 type="button"
                 onClick={toggleMenu}
