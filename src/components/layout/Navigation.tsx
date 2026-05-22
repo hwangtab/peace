@@ -6,7 +6,6 @@ import DesktopMenu from './DesktopMenu';
 import MobileMenu from './MobileMenu';
 
 import { useTranslation } from 'next-i18next';
-// ...
 const Navigation = () => {
   const { t } = useTranslation();
   const {

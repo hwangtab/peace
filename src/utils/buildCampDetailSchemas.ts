@@ -97,7 +97,7 @@ export function buildCampDetailSchemas({
           ? getFullUrl(camp.images[0])
           : undefined,
       performers: camp.participants?.map((p) => ({
-        type: 'MusicGroup',
+        type: 'MusicGroup' as const,
         name: typeof p === 'string' ? p : p.name,
       })),
       eventStatus: camp.year < 2026

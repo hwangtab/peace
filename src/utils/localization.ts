@@ -1,3 +1,5 @@
+import { normalizeZhLocale } from './localeDetection';
+
 export type SupportedLanguage =
   | 'ko'
   | 'en'
@@ -26,12 +28,7 @@ export const getLanguageCode = (language?: string): SupportedLanguage => {
   if (normalized.startsWith('ru')) return 'ru';
   if (normalized.startsWith('ar')) return 'ar';
   if (normalized.startsWith('ja')) return 'ja';
-  if (normalized.startsWith('zh')) {
-    if (normalized.includes('hant') || normalized.includes('tw') || normalized.includes('hk') || normalized.includes('mo')) {
-      return 'zh-Hant';
-    }
-    return 'zh-Hans';
-  }
+  if (normalized.startsWith('zh')) return normalizeZhLocale(normalized);
   if (normalized.startsWith('hi')) return 'hi';
   if (normalized.startsWith('id')) return 'id';
 

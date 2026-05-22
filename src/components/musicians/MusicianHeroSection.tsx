@@ -113,7 +113,7 @@ export default function MusicianHeroSection({ musician, fundingUrl, isCampPage }
                 <Button href={fundingUrl} variant="gold" size="sm" external utmContent={`musician-hero-${musician.id}`}>
                   {/* fallback: 데이터 정합성 회귀 시(year undefined / camp.ticketing_YEAR 미작성)
                       raw key 노출 방지 — locale-aware 대체 라벨로 graceful degrade */}
-                  {t(`camp.ticketing_${camps[camps.length - 1]?.year}`, { defaultValue: t('camp.cta_final_button') })}
+                  {t(`camp.ticketing_${Math.max(...camps.map((c) => c.year))}`, { defaultValue: t('camp.cta_final_button') })}
                 </Button>
               )}
             </div>
