@@ -3,6 +3,7 @@ import { m as motion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import { useCountUp } from './useCountUp';
 import Container from '@/components/layout/Container';
+import Section from '@/components/layout/Section';
 
 interface StatCardProps {
   valueKey: string;
@@ -62,7 +63,7 @@ const variantColors: Record<'camp' | 'home', VariantColors> = {
 const ImpactNumbers: React.FC<Props> = ({ variant = 'camp' }) => {
   const colors = variantColors[variant];
   return (
-    <div className={`${variant === 'home' ? 'bg-jeju-ocean' : 'bg-deep-ocean'} py-12 sm:py-16 md:py-20`}>
+    <Section background={variant === 'home' ? 'jeju-ocean' : 'deep-ocean'} paddingTop="tight" paddingBottom="tight">
       <Container size="prose">
         <div className={`h-px bg-gradient-to-r from-transparent ${colors.dividerVia} to-transparent mb-10 sm:mb-14`} />
         <div className="grid grid-cols-3 gap-6 sm:gap-8">
@@ -72,7 +73,7 @@ const ImpactNumbers: React.FC<Props> = ({ variant = 'camp' }) => {
         </div>
         <div className={`h-px bg-gradient-to-r from-transparent ${colors.dividerVia} to-transparent mt-10 sm:mt-14`} />
       </Container>
-    </div>
+    </Section>
   );
 };
 

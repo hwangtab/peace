@@ -7,7 +7,7 @@ interface InfoTabPanelProps {
 }
 
 const InfoTabPanel: React.FC<InfoTabPanelProps> = ({ concerts, onMusicianClick }) => (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-16">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
         {concerts.map((concert, index) => (
             <ConcertCard
                 key={concert.id}
