@@ -199,7 +199,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
         const otherCamps = campList.filter((c) => c.id !== camp.id);
         if (otherCamps.length === 0) return null;
         return (
-          <Section background="ocean-sand" paddingTop="none" paddingBottom="none" className="py-8">
+          <Section background="ocean-sand" paddingTop="tight" paddingBottom="tight">
             <Container size="content" className="text-center">
               <p className="text-sm font-medium text-coastal-gray uppercase tracking-wider mb-4">
                 {t('camp.other_years')}

@@ -76,7 +76,7 @@ const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
             </div>
           </div>
         </div>
-        <div className="pt-5 px-6 pb-4 flex flex-col cursor-pointer">
+        <div className="p-6 flex flex-col cursor-pointer">
           <div className="flex justify-between items-center mb-3 text-xs font-medium text-ocean-mist uppercase tracking-tighter min-w-0">
             <span className="truncate mr-2">{video.location}</span>
             <span className="flex-shrink-0" suppressHydrationWarning>

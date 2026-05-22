@@ -70,7 +70,7 @@ const CampHero: React.FC<CampHeroProps> = ({ camp, featured, dateBadge, dateDisp
           transition={{ duration: featured ? 0.4 : 0.6, ease: 'easeOut' }}
         >
           {dateBadge && (
-            <span className="inline-block px-5 py-1.5 bg-white/20 backdrop-blur-sm text-white font-bold rounded-full mb-4 sm:mb-6 text-sm tracking-wider border border-white/30 max-w-full">
+            <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm text-white font-bold rounded-full mb-4 sm:mb-6 text-sm tracking-wider border border-white/30 max-w-full">
               {dateBadge}
             </span>
           )}

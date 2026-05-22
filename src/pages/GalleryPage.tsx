@@ -106,7 +106,7 @@ const GalleryPage = ({ initialImages = [], totalImageCount }: GalleryPageProps) 
 
       {/* Camp 2026 CTA */}
       {camp2026?.fundingUrl && (
-        <Section background="jeju-ocean" paddingTop="none" paddingBottom="none" className="py-10">
+        <Section background="jeju-ocean" paddingTop="tight" paddingBottom="tight">
           <Container size="content" className="text-center">
             <p className="text-white text-lg font-medium mb-4 break-words">
               {t('camp.title_2026')}

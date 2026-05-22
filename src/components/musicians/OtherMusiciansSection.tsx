@@ -1,6 +1,7 @@
 import { useTranslation } from 'next-i18next';
 import { Musician } from '@/types/musician';
 import Container from '@/components/layout/Container';
+import Section from '@/components/layout/Section';
 import MusicianCard from './MusicianCard';
 import Button from '../common/Button';
 
@@ -24,9 +25,9 @@ export default function OtherMusiciansSection({
   const { t } = useTranslation();
 
   return (
-    <div className="bg-white pt-16 pb-24 md:pb-32">
+    <Section background="white" paddingTop="normal" paddingBottom="loose">
       <Container size="wide">
-        <h2 className="typo-h2 text-jeju-ocean text-center mb-10">
+        <h2 className="typo-h2 text-jeju-ocean text-center mb-12 md:mb-16">
           {otherMusiciansTitle || t('nav.musician')}
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
@@ -44,6 +45,6 @@ export default function OtherMusiciansSection({
           </Button>
         </div>
       </Container>
-    </div>
+    </Section>
   );
 }

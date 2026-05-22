@@ -26,13 +26,13 @@ export default function CampFinalCTA({
   return (
     <>
       {!hasOtherMusicians && (
-        <div className="bg-white pb-24 md:pb-32">
+        <Section background="white" paddingTop="none" paddingBottom="loose">
           <Container size="prose">
             <Button to={backHref} variant="back" size="sm" shape="rounded">
               &larr; {backLabel}
             </Button>
           </Container>
-        </div>
+        </Section>
       )}
       <Section background="deep-ocean" paddingTop="loose" paddingBottom="loose" className="relative overflow-hidden">
         <Image
@@ -53,7 +53,7 @@ export default function CampFinalCTA({
             transition={{ duration: 0.6 }}
           >
             <h2 className="typo-h2 text-white mb-4 break-words">{t('camp.cta_final_heading')}</h2>
-            <p className="typo-body text-cloud-white/80 mb-8 max-w-lg mx-auto break-words">{t('camp.cta_final_body')}</p>
+            <p className="typo-body text-cloud-white/80 mb-6 max-w-lg mx-auto break-words">{t('camp.cta_final_body')}</p>
             <Button href={fundingUrl} variant="gold" external utmContent={`musician-final-cta-${musicianId}`}>
               {t('camp.cta_final_button')}
             </Button>

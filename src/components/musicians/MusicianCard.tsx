@@ -24,7 +24,7 @@ const MusicianCard = memo(({ musician, href }: MusicianCardProps) => {
         transition={{ duration: 0.4 }}
         className="transform-gpu h-full scroll-mt-24"
       >
-        <div className="group relative bg-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col">
+        <div className="group relative bg-white rounded-2xl shadow-lg overflow-hidden h-full flex flex-col">
           {/* Image */}
           <Link href={detailHref} className="block relative w-full pb-[100%] flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-lg" aria-label={musician.name} tabIndex={-1}>
             <div className="absolute inset-0 overflow-hidden">
