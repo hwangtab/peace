@@ -3,6 +3,7 @@ import { m as motion } from 'framer-motion';
 import Image from 'next/image';
 import Button from '../common/Button';
 import Container from '../layout/Container';
+import Section from '../layout/Section';
 
 interface CampFinalCTAProps {
   musicianId: number;
@@ -33,7 +34,7 @@ export default function CampFinalCTA({
           </Container>
         </div>
       )}
-      <section className="relative py-20 md:py-28 overflow-hidden bg-deep-ocean">
+      <Section background="deep-ocean" paddingTop="loose" paddingBottom="loose" className="relative overflow-hidden">
         <Image
           src="/images-webp/camps/2023/20230610밤 전쟁을끝내자.webp"
           alt={t('camp.cta_final_image_alt')}
@@ -58,7 +59,7 @@ export default function CampFinalCTA({
             </Button>
           </motion.div>
         </Container>
-      </section>
+      </Section>
     </>
   );
 }

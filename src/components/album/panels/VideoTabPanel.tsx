@@ -14,7 +14,7 @@ const VideoTabPanel: React.FC<VideoTabPanelProps> = ({ albumVideos }) => {
 
     return (
         <>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                 {albumVideos.map((video, index) => (
                     <motion.div
                         key={video.id}

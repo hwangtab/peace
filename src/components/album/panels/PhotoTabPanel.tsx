@@ -15,7 +15,7 @@ const PhotoTabPanel: React.FC<PhotoTabPanelProps> = ({ albumPhotos, onImageClick
 
     return (
         <>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
                 {albumPhotos.slice(0, 12).map((photo, index) => (
                     <motion.div
                         key={photo.id}

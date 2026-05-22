@@ -258,7 +258,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({
       {/* Final CTA Section */}
       {camp2026.fundingUrl && (
         <>
-          <section className="relative py-20 md:py-28 overflow-hidden bg-deep-ocean">
+          <Section background="deep-ocean" paddingTop="loose" paddingBottom="loose" className="relative overflow-hidden">
             <Image
               src="/images-webp/camps/2026/cta-end-the-war-2026.webp"
               alt={t('camp.cta_final_image_alt')}
@@ -285,7 +285,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({
                 </Button>
               </motion.div>
             </Container>
-          </section>
+          </Section>
         </>
       )}
     </PageLayout>
