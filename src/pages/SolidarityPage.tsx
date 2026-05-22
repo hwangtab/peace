@@ -111,6 +111,7 @@ const SolidarityPage: React.FC<Props> = ({
                   index={index}
                   musicians={musicians}
                   detailHref={`/solidarity/${event.id}`}
+                  compact={true}
                 />
               ))}
             </div>
