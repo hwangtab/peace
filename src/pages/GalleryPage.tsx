@@ -4,6 +4,8 @@ import Button from '@/components/common/Button';
 import PageHero from '@/components/common/PageHero';
 import PageIntroSection from '@/components/common/PageIntroSection';
 import GallerySection from '@/components/home/GallerySection';
+import Container from '@/components/layout/Container';
+import Section from '@/components/layout/Section';
 import { getImageGallerySchema, getBreadcrumbSchema, getWebPageSchema } from '@/utils/structuredData';
 import { useCamp } from '@/hooks/useCamps';
 import { getFullUrl } from '@/config/env';
@@ -93,19 +95,19 @@ const GalleryPage = ({ initialImages = [], totalImageCount }: GalleryPageProps) 
         ]}
         background="white"
       />
-      <div className="pt-12">
+      <Section background="white" paddingTop="tight" paddingBottom="none">
         <GallerySection
           enableSectionWrapper={false}
           hideSectionHeader={true}
           initialImages={initialImages}
           priorityFirstImages={false}
         />
-      </div>
+      </Section>
 
       {/* Camp 2026 CTA */}
       {camp2026?.fundingUrl && (
         <div className="bg-jeju-ocean py-10">
-          <div className="container mx-auto px-4 text-center">
+          <Container size="content" className="text-center">
             <p className="text-white text-lg font-medium mb-4 break-words">
               {t('camp.title_2026')}
             </p>
@@ -123,7 +125,7 @@ const GalleryPage = ({ initialImages = [], totalImageCount }: GalleryPageProps) 
                 {t('camp.ticketing_2026')}
               </Button>
             </div>
-          </div>
+          </Container>
         </div>
       )}
     </PageLayout>

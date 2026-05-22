@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'next-i18next';
 import TimelineItem from './TimelineItem';
 import { timelineEvents as timelineData } from '@/data/timeline';
+import Container from '../layout/Container';
 import Section from '../layout/Section';
 import SectionHeader from '../common/SectionHeader';
 
@@ -10,7 +11,7 @@ const Timeline = () => {
 
   return (
     <Section id="history" background="sunlight-glow" paddingBottom="loose">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <Container size="wide">
         <SectionHeader
           title={t('timeline.title')}
           subtitle={t('timeline.subtitle')}
@@ -30,7 +31,7 @@ const Timeline = () => {
             ))}
           </div>
         </div>
-      </div>
+      </Container>
     </Section>
   );
 };

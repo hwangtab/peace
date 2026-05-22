@@ -1,6 +1,7 @@
 import React from 'react';
 import { m as motion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
+import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
 import SectionHeader from '@/components/common/SectionHeader';
 import Button from '@/components/common/Button';
@@ -24,13 +25,12 @@ const GuidelinesSummary: React.FC = () => {
 
   return (
     <Section background="light-beige" paddingTop="loose" paddingBottom="loose" id="guidelines">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <Container size="prose">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
-          className="max-w-3xl mx-auto"
         >
           <motion.div variants={itemVariants}>
             <SectionHeader
@@ -105,7 +105,7 @@ const GuidelinesSummary: React.FC = () => {
             </Button>
           </motion.div>
         </motion.div>
-      </div>
+      </Container>
     </Section>
   );
 };

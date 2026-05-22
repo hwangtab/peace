@@ -3,6 +3,7 @@ import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
 import Section from '@/components/layout/Section';
+import Container from '@/components/layout/Container';
 import SectionWave from '@/components/layout/SectionWave';
 import PageHero from '@/components/common/PageHero';
 import SolidarityEventFeature from '@/components/solidarity/SolidarityEventFeature';
@@ -97,8 +98,8 @@ const SolidarityEventPage: React.FC<Props> = ({
       <SectionWave color="ocean-sand" flow="up" />
 
       <Section background="ocean-sand" paddingBottom="loose">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
+        <Container size="content">
+          <div>
             <Link
               href="/solidarity"
               className="inline-flex items-center gap-1 text-sm text-jeju-ocean hover:text-ocean-mist transition-colors mb-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean rounded"
@@ -112,7 +113,7 @@ const SolidarityEventPage: React.FC<Props> = ({
               musicians={musicians}
             />
           </div>
-        </div>
+        </Container>
       </Section>
     </PageLayout>
   );

@@ -3,6 +3,7 @@ import { m as motion, useScroll, useTransform, useReducedMotion } from 'framer-m
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import { useIsMobile } from '@/hooks/useIsMobile';
+import Container from '@/components/layout/Container';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -57,13 +58,13 @@ const HookStatement: React.FC<Props> = ({ variant = 'camp' }) => {
       </motion.div>
       <div className={`absolute inset-0 bg-radial-[ellipse_at_center] ${variant === 'home' ? 'from-black/60 via-black/30 to-black/20' : 'from-black/60 via-black/30 to-transparent'}`} />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 sm:py-28">
+      <Container size="prose" className="relative z-10 py-20 sm:py-28">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
-          className="max-w-2xl mx-auto text-center"
+          className="text-center"
         >
           <motion.h2
             variants={itemVariants}
@@ -84,7 +85,7 @@ const HookStatement: React.FC<Props> = ({ variant = 'camp' }) => {
             {t('hook_intro')}
           </motion.p>
         </motion.div>
-      </div>
+      </Container>
     </div>
   );
 };

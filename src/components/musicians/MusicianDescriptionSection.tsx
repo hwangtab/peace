@@ -3,6 +3,7 @@ import { useTranslation } from 'next-i18next';
 import { Musician } from '@/types/musician';
 import { CampEvent } from '@/types/camp';
 import { camps } from '@/data/camps';
+import Container from '@/components/layout/Container';
 import Button from '../common/Button';
 
 interface MusicianDescriptionSectionProps {
@@ -26,8 +27,7 @@ export default function MusicianDescriptionSection({
 
   return (
     <div className={`bg-white pt-16 ${isCampPage && latestCamp && fundingUrl ? 'pb-24 md:pb-32' : 'pb-16'} flex-1`}>
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto">
+      <Container size="prose">
           <p className="typo-body text-coastal-gray leading-relaxed whitespace-pre-wrap text-pretty break-words">
             {musician.description}
           </p>
@@ -93,8 +93,7 @@ export default function MusicianDescriptionSection({
               </div>
             </div>
           )}
-        </div>
-      </div>
+      </Container>
     </div>
   );
 }

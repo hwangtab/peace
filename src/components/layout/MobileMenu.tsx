@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { m as motion, AnimatePresence } from 'framer-motion';
 import { simpleMenuItems, campItems, albumItems } from './navigationData';
 import LanguageSwitcher from '../common/LanguageSwitcher';
+import Container from './Container';
 import { NavigationDropdownKey } from '@/hooks/useNavigation';
 
 interface MobileMenuProps {
@@ -28,7 +29,7 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(
               exit={{ opacity: 0, height: 0 }}
               className="md:hidden bg-cloud-white/95 backdrop-blur-md border-t border-seafoam"
             >
-              <div className="container mx-auto px-4 py-4">
+              <Container size="wide" className="py-4">
                 {simpleMenuItems.map((item) => (
                   <Link
                     key={item.path}
@@ -70,7 +71,7 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(
                     isScrolled={true}
                   />
                 </div>
-              </div>
+              </Container>
             </motion.div>
           )}
         </AnimatePresence>
