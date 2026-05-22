@@ -43,7 +43,7 @@ export interface SolidarityEvent {
 
 const eventStructs: SolidarityEventStruct[] = [
   {
-    id: 'event-sail',
+    id: 'we-sing-for-your-freedom',
     keyPrefix: 'solidarity.event_sail',
     poster: '/images-webp/solidarity/we-are-sail-for-your-freedom.webp',
     paraCount: 2,
