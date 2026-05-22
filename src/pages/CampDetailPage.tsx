@@ -167,7 +167,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
       {(() => {
         const latestCamp = campList[campList.length - 1];
         return latestCamp && camp.id !== latestCamp.id && latestCamp.fundingUrl ? (
-          <div className="bg-jeju-ocean py-12">
+          <Section background="jeju-ocean" paddingTop="tight" paddingBottom="tight">
             <Container size="content" className="text-center">
               <h2 className="text-2xl font-bold text-white mb-3 break-words">
                 {t(`camp.title_${latestCamp.year}`, { defaultValue: t('app.title') })}
@@ -190,7 +190,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
                 </Button>
               </div>
             </Container>
-          </div>
+          </Section>
         ) : null;
       })()}
 
@@ -199,7 +199,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
         const otherCamps = campList.filter((c) => c.id !== camp.id);
         if (otherCamps.length === 0) return null;
         return (
-          <div className="bg-ocean-sand py-8">
+          <Section background="ocean-sand" paddingTop="none" paddingBottom="none" className="py-8">
             <Container size="content" className="text-center">
               <p className="text-sm font-medium text-coastal-gray uppercase tracking-wider mb-4">
                 {t('camp.other_years')}
@@ -212,7 +212,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
                 ))}
               </div>
             </Container>
-          </div>
+          </Section>
         );
       })()}
     </PageLayout>

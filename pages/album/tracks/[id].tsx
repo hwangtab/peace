@@ -10,6 +10,8 @@ import { Musician } from '@/types/musician';
 import { loadLocalizedData } from '@/utils/dataLoader';
 import { getMusicRecordingSchema, getBreadcrumbSchema, getWebPageSchema } from '@/utils/structuredData';
 import PageLayout from '@/components/layout/PageLayout';
+import Container from '@/components/layout/Container';
+import Section from '@/components/layout/Section';
 import { getFullUrl } from '@/config/env';
 import { buildTrackMusicianRelation } from '@/utils/trackMusician';
 
@@ -86,8 +88,8 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
     >
       {/* Hero */}
       <div className="bg-gradient-to-b from-jeju-ocean to-ocean-mist pt-32 pb-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-8 items-start">
+        <Container size="content">
+          <div className="flex flex-col md:flex-row gap-8 items-start">
             {/* Album art */}
             {track.imageUrl && (
               <div className="w-full md:w-[300px] flex-shrink-0">
@@ -133,13 +135,12 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
               </div>
             </div>
           </div>
-        </div>
+        </Container>
       </div>
 
       {/* Content */}
-      <div className="bg-white py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
+      <Section background="white" paddingTop="normal" paddingBottom="normal">
+        <Container size="prose">
             {/* Description */}
             <section className="mb-12">
               <h2 className="typo-h2 text-jeju-ocean mb-4">{t('common.about')}</h2>
@@ -218,9 +219,8 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
                 </Link>
               )}
             </div>
-          </div>
-        </div>
-      </div>
+        </Container>
+      </Section>
     </PageLayout>
   );
 }
