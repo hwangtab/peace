@@ -29,7 +29,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(
     };
 
     return (
-      <div className="hidden md:flex flex-wrap items-center gap-x-4 lg:gap-x-6 gap-y-2">
+      <div className="hidden xl:flex items-center gap-x-3 2xl:gap-x-4">
         <Link
           href={ROUTES.HOME}
           className={`${getTextColor(isPathActive(ROUTES.HOME, true))} transition-colors duration-300 font-display font-bold relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm`}
