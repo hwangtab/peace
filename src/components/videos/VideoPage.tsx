@@ -9,6 +9,7 @@ import EventFilter from '../common/EventFilter';
 import PageLayout from '../layout/PageLayout';
 import PageHero from '../common/PageHero';
 import PageIntroSection from '../common/PageIntroSection';
+import Container from '../layout/Container';
 import VideoCard from './VideoCard';
 import { getCollectionPageSchema, getBreadcrumbSchema, getVideoObjectSchema, getWebPageSchema } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
@@ -107,7 +108,7 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
         background="white"
       />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-12">
+      <Container size="wide" className="pt-12">
         <EventFilter
           selectedFilter={selectedFilter}
           onFilterChange={setSelectedFilter}
@@ -139,7 +140,7 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
             {t('common.no_results') || 'No results found.'}
           </p>
         )}
-      </div>
+      </Container>
     </PageLayout>
   );
 }

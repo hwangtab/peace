@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { HiOutlineMenu, HiOutlineX } from '@/components/icons/SiteIcons';
 import { useNavigation } from '@/hooks/useNavigation';
 import WaveLogoMark from '@/components/icons/WaveLogoMark';
+import Container from './Container';
 import DesktopMenu from './DesktopMenu';
 import MobileMenu from './MobileMenu';
 
@@ -35,7 +36,7 @@ const Navigation = () => {
           isScrolled ? 'bg-cloud-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
         }`}
       >
-        <div className="container mx-auto px-4">
+        <Container size="wide">
           <div className="flex justify-between items-center min-h-[4rem] py-2 gap-4">
             <Link
               href="/"
@@ -79,7 +80,7 @@ const Navigation = () => {
               </button>
             </div>
           </div>
-        </div>
+        </Container>
 
         {/* Mobile Menu */}
         <MobileMenu

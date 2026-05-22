@@ -1,31 +1,41 @@
 import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 
+/**
+ * Semantic width tiers — pick by content type:
+ *
+ * - `prose`   max-w-3xl  (768px)  — long-form text, guidelines, solidarity body
+ * - `content` max-w-5xl  (1024px) — general sections, card lists  [default]
+ * - `wide`    max-w-7xl  (1280px) — galleries, grids, full-width sections
+ */
+export type ContainerSize = 'prose' | 'content' | 'wide';
+
 interface ContainerProps {
     children: ReactNode;
     className?: string;
-    size?: 'default' | 'small' | 'large';
+    size?: ContainerSize;
 }
 
+const SIZE_CLASSES: Record<ContainerSize, string> = {
+    prose:   'max-w-3xl',
+    content: 'max-w-5xl',
+    wide:    'max-w-7xl',
+};
+
 /**
- * Container Component
- * 
- * Enforces consistent horizontal constraints and padding.
- * Use this inside <Section> or <PageLayout>.
+ * Container — single source of truth for horizontal layout.
+ * Always use this instead of raw `container mx-auto px-*` divs.
+ * Compose with <Section> for vertical rhythm.
  */
 const Container: React.FC<ContainerProps> = ({
     children,
     className,
-    size = 'default'
+    size = 'content'
 }) => {
     return (
         <div className={classNames(
-            'container mx-auto px-4 sm:px-6 lg:px-8',
-            {
-                'max-w-7xl': size === 'default',
-                'max-w-4xl': size === 'small', // Good for text-heavy pages
-                'max-w-screen-2xl': size === 'large', // Good for galleries
-            },
+            'mx-auto w-full px-4 sm:px-6 lg:px-8',
+            SIZE_CLASSES[size],
             className
         )}>
             {children}

@@ -9,6 +9,7 @@ import Link from 'next/link';
 import EventFilter from '../common/EventFilter';
 import GalleryImageItem from '../gallery/GalleryImageItem';
 import Section from '../layout/Section';
+import Container from '../layout/Container';
 import SectionHeader from '../common/SectionHeader';
 
 const ImageLightbox = dynamic(() => import('../common/ImageLightbox'), { ssr: false });
@@ -48,9 +49,7 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
     );
 
     const content = (
-      <div
-        className={`container mx-auto px-4 sm:px-6 lg:px-8 ${!enableSectionWrapper ? className : ''}`}
-      >
+      <Container size="wide" className={!enableSectionWrapper ? className : undefined}>
         {!hideSectionHeader && (
           <SectionHeader
             title={t('gallery.section_title')}
@@ -77,7 +76,7 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
             <p className="text-xl text-coastal-gray font-serif font-bold">{t('gallery.no_images')}</p>
           </div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
             <AnimatePresence mode="sync" initial={false}>
               {filteredImages.map((image, index) => (
                 <AnimatedGalleryItem
@@ -119,7 +118,7 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
           onClose={() => setSelectedImage(null)}
           maxHeight="85vh"
         />
-      </div>
+      </Container>
     );
 
     if (enableSectionWrapper) {

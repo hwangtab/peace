@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { useTranslation } from 'next-i18next';
 import MusiciansSection from '@/components/home/MusiciansSection';
 import PageLayout from '@/components/layout/PageLayout';
+import Section from '@/components/layout/Section';
 import PageHero from '@/components/common/PageHero';
 import PageIntroSection from '@/components/common/PageIntroSection';
 import { getCollectionPageSchema, getBreadcrumbSchema, getWebPageSchema } from '@/utils/structuredData';
@@ -82,14 +83,14 @@ const AlbumMusiciansPage = ({
         ]}
         background="white"
       />
-      <div className="pt-16 md:pt-20">
+      <Section background="white" paddingTop="normal" paddingBottom="tight">
         <MusiciansSection
           enableSectionWrapper={false}
           hideSectionHeader={true}
           initialMusicians={initialMusicians}
           initialLocale={initialLocale}
         />
-      </div>
+      </Section>
     </PageLayout>
   );
 };

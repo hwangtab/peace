@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Container from '@/components/layout/Container';
 
 export interface BreadcrumbItem {
     name: string;
@@ -25,7 +26,8 @@ const BreadcrumbNav: React.FC<BreadcrumbNavProps> = ({ items }) => {
             itemScope
             itemType="https://schema.org/BreadcrumbList"
         >
-            <ol className="container mx-auto flex flex-wrap items-center gap-1 text-sm text-white/70">
+            <Container size="wide">
+            <ol className="flex flex-wrap items-center gap-1 text-sm text-white/70">
                 {items.map((item, index) => {
                     const isLast = index === items.length - 1;
                     return (
@@ -63,6 +65,7 @@ const BreadcrumbNav: React.FC<BreadcrumbNavProps> = ({ items }) => {
                     );
                 })}
             </ol>
+            </Container>
         </nav>
     );
 };

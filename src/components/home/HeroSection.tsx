@@ -3,6 +3,7 @@ import { m as motion, useInView, useReducedMotion } from 'framer-motion';
 import { useRef, useCallback, useState } from 'react';
 import Image from 'next/image';
 import Button from '../common/Button';
+import Container from '../layout/Container';
 import { useCamp } from '@/hooks/useCamps';
 
 interface HeroSectionProps {
@@ -51,7 +52,7 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-jeju-ocean/70 via-ocean-mist/40 to-seafoam/20" />
 
       {/* LCP content renders visible on first paint — no JS-gated opacity. */}
-      <div className="container mx-auto px-4 relative z-10">
+      <Container size="wide" className="relative z-10">
         <h1 className="typo-h1 text-cloud-white mb-6 drop-shadow-md max-w-5xl mx-auto">
           {t('home.hero.title')}
         </h1>
@@ -74,7 +75,7 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
             </Button>
           )}
         </div>
-      </div>
+      </Container>
 
       {/* Scroll Indicator - Only animates when in view */}
       <motion.div

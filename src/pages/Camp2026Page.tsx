@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useCamp } from '@/hooks/useCamps';
 import PageLayout from '@/components/layout/PageLayout';
 import Section from '@/components/layout/Section';
+import Container from '@/components/layout/Container';
 import SectionHeader from '@/components/common/SectionHeader';
 import SectionWave from '@/components/layout/SectionWave';
 import { CampTimetable } from '@/components/camp/timetable';
@@ -126,13 +127,12 @@ const Camp2026Page: React.FC<CampPageProps> = ({
 
       {/* Overview Section */}
       <Section background="ocean-sand" paddingBottom="loose">
-        <div className="container mx-auto px-4">
+        <Container size="content">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.6 }}
-            className="max-w-5xl mx-auto"
           >
             <div className="flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-8 items-stretch min-w-0">
               {/* Poster */}
@@ -204,7 +204,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({
               </div>
             </div>
           </motion.div>
-        </div>
+        </Container>
       </Section>
 
       <SectionWave color="ocean-sand" />
@@ -217,12 +217,12 @@ const Camp2026Page: React.FC<CampPageProps> = ({
           paddingTop="loose"
           paddingBottom="loose"
         >
-          <div className="container mx-auto px-4">
+          <Container size="content">
             <SectionHeader
               title={t('camp.section_musicians')}
               subtitle={t('camp.lineup_count', { count: participantCount })}
             />
-            <div className="max-w-5xl mx-auto">
+            <div>
               {musiciansResource.isLoading ? (
                 <p className="text-center text-coastal-gray py-10" role="status">
                   {t('common.loading')}
@@ -239,7 +239,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({
                 />
               )}
             </div>
-          </div>
+          </Container>
         </Section>
       )}
 
@@ -269,7 +269,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({
               className="absolute inset-0 object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/70" aria-hidden="true" />
-            <div className="container mx-auto px-4 text-center relative z-10">
+            <Container size="content" className="text-center relative z-10">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -284,7 +284,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({
                   {t('camp.cta_final_button')}
                 </Button>
               </motion.div>
-            </div>
+            </Container>
           </section>
         </>
       )}

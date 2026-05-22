@@ -8,6 +8,7 @@ import { getMusicians } from '@/api/musicians';
 import { Track } from '@/types/track';
 import { Musician } from '@/types/musician';
 import Button from '../common/Button';
+import Container from '../layout/Container';
 import SectionHeader from '../common/SectionHeader';
 import { config } from '@/config/env';
 import { useLocalizedResource } from '@/hooks/useLocalizedResource';
@@ -70,7 +71,7 @@ const TracksSection: React.FC<TracksSectionProps> = React.memo(
     );
 
     const content = (
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <Container size="wide">
         {!hideSectionHeader && (
           <SectionHeader title={t('home.tracks.title')} subtitle={t('home.tracks.subtitle')} />
         )}
@@ -85,7 +86,7 @@ const TracksSection: React.FC<TracksSectionProps> = React.memo(
             {t('common.no_results')}
           </p>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4">
             {tracks.map((track) => {
               const musician = relation.musicianByTrackId.get(track.id);
               return (
@@ -120,7 +121,7 @@ const TracksSection: React.FC<TracksSectionProps> = React.memo(
             </Button>
           )}
         </motion.div>
-      </div>
+      </Container>
     );
 
     if (enableSectionWrapper) {

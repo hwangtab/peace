@@ -6,6 +6,7 @@ import { VideoItem } from '@/types/video';
 import { Musician } from '@/types/musician';
 import PageLayout from '@/components/layout/PageLayout';
 import Section from '@/components/layout/Section';
+import Container from '@/components/layout/Container';
 import SectionHeader from '@/components/common/SectionHeader';
 import Button from '@/components/common/Button';
 import {
@@ -107,8 +108,8 @@ const VideoDetailPage: React.FC<VideoDetailPageProps> = ({
       background="white"
       disableTopPadding={false}
     >
-      <Section background="white" className="pt-8 md:pt-12 pb-12">
-        <div className="container mx-auto px-4 max-w-4xl">
+      <Section background="white" paddingTop="tight" paddingBottom="tight">
+        <Container size="content">
           <YouTubeFacade
             videoId={videoId}
             title={video.title}
@@ -143,12 +144,12 @@ const VideoDetailPage: React.FC<VideoDetailPageProps> = ({
               </Button>
             </div>
           </div>
-        </div>
+        </Container>
       </Section>
 
       {relatedMusicians.length > 0 && (
-        <Section background="ocean-sand" className="py-12 md:py-16">
-          <div className="container mx-auto px-4 max-w-5xl">
+        <Section background="ocean-sand" paddingTop="tight" paddingBottom="tight">
+          <Container size="content">
             <SectionHeader title={t('videos.detail.related_musicians')} align="left" className="!mb-6" />
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
               {relatedMusicians.map((m) => {
@@ -181,13 +182,13 @@ const VideoDetailPage: React.FC<VideoDetailPageProps> = ({
                 );
               })}
             </div>
-          </div>
+          </Container>
         </Section>
       )}
 
       {moreVideos.length > 0 && (
-        <Section background="white" className="py-12 md:py-16">
-          <div className="container mx-auto px-4 max-w-5xl">
+        <Section background="white" paddingTop="tight" paddingBottom="tight">
+          <Container size="content">
             <SectionHeader title={t('videos.detail.more_videos')} align="left" className="!mb-6" />
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {moreVideos.map((v) => {
@@ -220,7 +221,7 @@ const VideoDetailPage: React.FC<VideoDetailPageProps> = ({
                 );
               })}
             </div>
-          </div>
+          </Container>
         </Section>
       )}
     </PageLayout>

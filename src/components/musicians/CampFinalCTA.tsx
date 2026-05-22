@@ -2,6 +2,7 @@ import { useTranslation } from 'next-i18next';
 import { m as motion } from 'framer-motion';
 import Image from 'next/image';
 import Button from '../common/Button';
+import Container from '../layout/Container';
 
 interface CampFinalCTAProps {
   musicianId: number;
@@ -25,11 +26,11 @@ export default function CampFinalCTA({
     <>
       {!hasOtherMusicians && (
         <div className="bg-white pb-24 md:pb-32">
-          <div className="container mx-auto px-4 max-w-3xl">
+          <Container size="prose">
             <Button to={backHref} variant="back" size="sm" shape="rounded">
               &larr; {backLabel}
             </Button>
-          </div>
+          </Container>
         </div>
       )}
       <section className="relative py-20 md:py-28 overflow-hidden bg-deep-ocean">
@@ -43,7 +44,7 @@ export default function CampFinalCTA({
           className="absolute inset-0 object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/70" aria-hidden="true" />
-        <div className="container mx-auto px-4 text-center relative z-10">
+        <Container size="content" className="text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -56,7 +57,7 @@ export default function CampFinalCTA({
               {t('camp.cta_final_button')}
             </Button>
           </motion.div>
-        </div>
+        </Container>
       </section>
     </>
   );

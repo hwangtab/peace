@@ -2,6 +2,7 @@ import React from 'react';
 import { m as motion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import { useCountUp } from './useCountUp';
+import Container from '@/components/layout/Container';
 
 interface StatCardProps {
   valueKey: string;
@@ -62,15 +63,15 @@ const ImpactNumbers: React.FC<Props> = ({ variant = 'camp' }) => {
   const colors = variantColors[variant];
   return (
     <div className={`${variant === 'home' ? 'bg-jeju-ocean' : 'bg-deep-ocean'} py-12 sm:py-16 md:py-20`}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <Container size="prose">
         <div className={`h-px bg-gradient-to-r from-transparent ${colors.dividerVia} to-transparent mb-10 sm:mb-14`} />
-        <div className="grid grid-cols-3 gap-6 sm:gap-8 max-w-3xl mx-auto">
+        <div className="grid grid-cols-3 gap-6 sm:gap-8">
           {stats.map((stat) => (
             <StatCard key={stat.valueKey} {...stat} colors={colors} />
           ))}
         </div>
         <div className={`h-px bg-gradient-to-r from-transparent ${colors.dividerVia} to-transparent mt-10 sm:mt-14`} />
-      </div>
+      </Container>
     </div>
   );
 };

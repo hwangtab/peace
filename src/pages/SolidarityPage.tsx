@@ -4,6 +4,7 @@ import PageLayout from '@/components/layout/PageLayout';
 import PageHero from '@/components/common/PageHero';
 import PageIntroSection from '@/components/common/PageIntroSection';
 import Section from '@/components/layout/Section';
+import Container from '@/components/layout/Container';
 import SectionHeader from '@/components/common/SectionHeader';
 import SectionWave from '@/components/layout/SectionWave';
 import SolidarityEventFeature from '@/components/solidarity/SolidarityEventFeature';
@@ -96,14 +97,14 @@ const SolidarityPage: React.FC<Props> = ({
       <SectionWave color="ocean-sand" flow="up" />
 
       <Section background="ocean-sand" paddingBottom="loose">
-        <div className="container mx-auto px-4">
+        <Container size="content">
           <SectionHeader
             title={t('solidarity.concerts_title')}
             subtitle={t('solidarity.concerts_subtitle')}
           />
 
           {events.length > 0 ? (
-            <div className="max-w-5xl mx-auto space-y-12">
+            <div className="space-y-12">
               {events.map((event, index) => (
                 <SolidarityEventFeature
                   key={event.id}
@@ -120,7 +121,7 @@ const SolidarityPage: React.FC<Props> = ({
               {t('solidarity.empty_message')}
             </p>
           )}
-        </div>
+        </Container>
       </Section>
     </PageLayout>
   );

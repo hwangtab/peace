@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { CampEvent } from '@/types/camp';
 import dynamic from 'next/dynamic';
 const ImageLightbox = dynamic(() => import('../common/ImageLightbox'), { ssr: false });
+import Container from '../layout/Container';
 import Section from '../layout/Section';
 import SectionHeader from '../common/SectionHeader';
 import Button from '../common/Button';
@@ -29,7 +30,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
 
   return (
     <Section background="light-beige">
-      <div className="container mx-auto px-4">
+      <Container size="wide">
         <SectionHeader title={t('camp.section_gallery')} />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {camp.images.map((img, index) => (
@@ -68,7 +69,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
             {t('camp.more')}
           </Button>
         </div>
-      </div>
+      </Container>
 
       <ImageLightbox
         image={selectedImage ? {

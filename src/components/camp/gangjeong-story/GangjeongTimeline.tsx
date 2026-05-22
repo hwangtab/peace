@@ -2,6 +2,8 @@ import React from 'react';
 import { m as motion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
+import Container from '@/components/layout/Container';
+import Section from '@/components/layout/Section';
 
 interface TimelineNode {
   year: string;
@@ -54,8 +56,8 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
     : 'from-sunset-coral/40 via-jeju-ocean/40 to-golden-sun/40';
 
   return (
-    <div className={`${isHome ? 'bg-sky-horizon' : 'bg-white'} py-16 sm:py-20 md:py-28`}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <Section background={isHome ? 'sky-horizon' : 'white'} paddingTop="loose" paddingBottom="loose">
+      <Container size="prose">
         <motion.h3
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -66,7 +68,7 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
           {t('timeline_title')}
         </motion.h3>
 
-        <div className="relative max-w-3xl mx-auto">
+        <div className="relative">
           {/* Vertical center line — desktop only. ol 외부로 빼서 a11y(ol 자식은 li만) 준수 */}
           <div aria-hidden="true" className={`hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b ${lineGradient}`} />
           {/* Vertical left line — mobile only */}
@@ -167,8 +169,8 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
           })}
         </motion.ol>
         </div>
-      </div>
-    </div>
+      </Container>
+    </Section>
   );
 };
 

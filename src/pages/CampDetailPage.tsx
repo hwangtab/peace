@@ -8,6 +8,7 @@ import CampStaff from '@/components/camp/CampStaff';
 import { useCamps } from '@/hooks/useCamps';
 import PageLayout from '@/components/layout/PageLayout';
 import Section from '@/components/layout/Section';
+import Container from '@/components/layout/Container';
 import SectionHeader from '@/components/common/SectionHeader';
 import SectionWave from '@/components/layout/SectionWave';
 import { getFullUrl } from '@/config/env';
@@ -101,13 +102,12 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
       <CampHero camp={camp} />
 
       <Section background="ocean-sand" paddingBottom="loose">
-        <div className="container mx-auto px-4">
+        <Container size="prose">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto"
           >
             <div className="bg-white rounded-lg shadow-sm p-8 mb-12">
               <SectionHeader title={t('camp.section_overview')} align="left" className="!mb-6" />
@@ -156,7 +156,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
               </motion.div>
             )}
           </motion.div>
-        </div>
+        </Container>
       </Section>
 
       <SectionWave color="light-beige" flow="up" />
@@ -168,7 +168,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
         const latestCamp = campList[campList.length - 1];
         return latestCamp && camp.id !== latestCamp.id && latestCamp.fundingUrl ? (
           <div className="bg-jeju-ocean py-12">
-            <div className="container mx-auto px-4 text-center">
+            <Container size="content" className="text-center">
               <h2 className="text-2xl font-bold text-white mb-3 break-words">
                 {t(`camp.title_${latestCamp.year}`, { defaultValue: t('app.title') })}
               </h2>
@@ -189,7 +189,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
                   {t(`camp.ticketing_${latestCamp.year}`, { defaultValue: t('camp.cta_final_button') })}
                 </Button>
               </div>
-            </div>
+            </Container>
           </div>
         ) : null;
       })()}
@@ -200,7 +200,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
         if (otherCamps.length === 0) return null;
         return (
           <div className="bg-ocean-sand py-8">
-            <div className="container mx-auto px-4 text-center">
+            <Container size="content" className="text-center">
               <p className="text-sm font-medium text-coastal-gray uppercase tracking-wider mb-4">
                 {t('camp.other_years')}
               </p>
@@ -211,7 +211,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
                   </Button>
                 ))}
               </div>
-            </div>
+            </Container>
           </div>
         );
       })()}

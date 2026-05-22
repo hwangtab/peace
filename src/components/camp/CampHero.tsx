@@ -3,6 +3,7 @@ import { useTranslation } from 'next-i18next';
 import { m as motion } from 'framer-motion';
 import Image from 'next/image';
 import { CampEvent } from '@/types/camp';
+import Container from '@/components/layout/Container';
 
 interface CampHeroProps {
   camp: CampEvent;
@@ -62,7 +63,7 @@ const CampHero: React.FC<CampHeroProps> = ({ camp, featured, dateBadge, dateDisp
         }`}
       />
 
-      <div className="container mx-auto px-4 relative z-10">
+      <Container size="wide" className="relative z-10">
         <motion.div
           initial={{ y: 16 }}
           animate={{ y: 0 }}
@@ -99,7 +100,7 @@ const CampHero: React.FC<CampHeroProps> = ({ camp, featured, dateBadge, dateDisp
             </div>
           )}
         </motion.div>
-      </div>
+      </Container>
     </section>
   );
 };

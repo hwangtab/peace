@@ -4,6 +4,7 @@ import { useTranslation } from 'next-i18next';
 import { Musician } from '@/types/musician';
 import { extractInstagramUsername } from '@/utils/instagram';
 import { camps } from '@/data/camps';
+import Container from '@/components/layout/Container';
 import InstagramIcon from '../icons/InstagramIcon';
 import YouTubeIcon from '../icons/YouTubeIcon';
 import Button from '../common/Button';
@@ -34,8 +35,8 @@ export default function MusicianHeroSection({ musician, fundingUrl, isCampPage }
         </div>
       )}
       <div className="relative z-10 w-full pt-36 sm:pt-28 md:pt-24 pb-8 sm:pb-12">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-6 md:gap-10 items-center">
+        <Container size="content">
+          <div className="flex flex-col md:flex-row gap-6 md:gap-10 items-center">
             {musician.imageUrl && (
               <div className="w-3/4 sm:w-72 md:w-[380px] flex-shrink-0 mx-auto md:mx-0">
                 <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl ring-4 ring-white/20">
@@ -89,7 +90,7 @@ export default function MusicianHeroSection({ musician, fundingUrl, isCampPage }
                         href={url}
                         target="_blank"
                         rel="noopener noreferrer nofollow"
-                        className="inline-flex items-center px-3 py-1.5 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors max-w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun rounded"
+                        className="inline-flex items-center px-3 py-1 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors max-w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun rounded"
                       >
                         <InstagramIcon aria-hidden="true" className="w-4 h-4 mr-1.5 flex-shrink-0" /><span className="truncate">@{username}</span>
                       </a>
@@ -100,7 +101,7 @@ export default function MusicianHeroSection({ musician, fundingUrl, isCampPage }
                       href={musician.youtubeUrl}
                       target="_blank"
                       rel="noopener noreferrer nofollow"
-                      className="inline-flex items-center px-3 py-1.5 text-sm bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun rounded"
+                      className="inline-flex items-center px-3 py-1 text-sm bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun rounded"
                     >
                       <YouTubeIcon aria-hidden="true" className="w-4 h-4 mr-1.5" />
                       YouTube
@@ -118,7 +119,7 @@ export default function MusicianHeroSection({ musician, fundingUrl, isCampPage }
               )}
             </div>
           </div>
-        </div>
+        </Container>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { m as motion } from 'framer-motion';
 import { useTranslation, Trans } from 'next-i18next';
 import Section from '../layout/Section';
+import Container from '../layout/Container';
 import SectionHeader from '../common/SectionHeader';
 
 const containerVariants = {
@@ -27,13 +28,13 @@ const AboutSection = () => {
 
   return (
     <Section id="about" background="sky-horizon" paddingBottom="loose">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <Container size="content">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
-          className="max-w-4xl mx-auto text-center"
+          className="text-center"
         >
           <SectionHeader
             title={t('about.title')}
@@ -98,7 +99,7 @@ const AboutSection = () => {
             </motion.div>
           </div>
         </motion.div>
-      </div>
+      </Container>
     </Section>
   );
 };

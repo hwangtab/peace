@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { useTranslation } from 'next-i18next';
 import TracksSection from '@/components/home/TracksSection';
 import PageLayout from '@/components/layout/PageLayout';
+import Section from '@/components/layout/Section';
 import PageHero from '@/components/common/PageHero';
 import { getMusicPlaylistSchema, getBreadcrumbSchema, getWebPageSchema } from '@/utils/structuredData';
 import { Musician } from '@/types/musician';
@@ -81,7 +82,7 @@ const AlbumTracksPage = ({
         subtitle={t('tracks_hero_subtitle')}
         backgroundImage="/images-webp/gallery/152.webp"
       />
-      <div className="pt-16 md:pt-20 pb-12 md:pb-16">
+      <Section background="white" paddingTop="normal" paddingBottom="tight">
         <TracksSection
           enableSectionWrapper={false}
           hideSectionHeader={true}
@@ -89,7 +90,7 @@ const AlbumTracksPage = ({
           initialMusicians={initialMusicians}
           initialLocale={initialLocale}
         />
-      </div>
+      </Section>
     </PageLayout>
   );
 };

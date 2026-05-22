@@ -1,4 +1,5 @@
 export { default as Container } from './Container';
+export type { ContainerSize } from './Container';
 export { default as DesktopMenu } from './DesktopMenu';
 export { default as Footer } from './Footer';
 export { default as MobileMenu } from './MobileMenu';

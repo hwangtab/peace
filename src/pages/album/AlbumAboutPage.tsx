@@ -5,6 +5,7 @@ import { m as motion, useInView } from 'framer-motion';
 import Button from '@/components/common/Button';
 import PageLayout from '@/components/layout/PageLayout';
 import Section from '@/components/layout/Section';
+import Container from '@/components/layout/Container';
 import SectionHeader from '@/components/common/SectionHeader';
 import { getVideos } from '@/api/videos';
 import { getMusicians } from '@/api/musicians';
@@ -253,7 +254,7 @@ const AlbumAboutPage = ({
       ]}
       breadcrumbs={breadcrumbs}
       disableTopPadding={true}
-      className="!pb-0"
+      disableBottomPadding={true}
     >
       {/* Hero Section embedded in PageLayout content, or separate? 
           Original had a hero section with background decorations. 
@@ -264,25 +265,25 @@ const AlbumAboutPage = ({
 
       <div className="relative overflow-hidden">
         {isLocaleDataLoading && (
-          <div className="container mx-auto px-4 pt-28">
+          <Container size="content" className="pt-28">
             <p className="text-center text-white/90" role="status">
               {t('common.loading')}
             </p>
-          </div>
+          </Container>
         )}
         {localeDataError && (
-          <div className="container mx-auto px-4 pt-28">
+          <Container size="content" className="pt-28">
             <p className="text-center text-white/90" role="alert">
               {t('common.no_results')}
             </p>
-          </div>
+          </Container>
         )}
         {/* Background Decorative Elements - reimplemented inside container or just kept here */}
         <div className="absolute top-[-20%] right-[-10%] w-2/3 h-[120%] bg-ocean-mist/20 rounded-full blur-3xl z-0 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-1/2 h-2/3 bg-golden-sun/10 rounded-full blur-3xl z-0" />
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-jeju-ocean/5 rounded-full blur-3xl z-0" />
 
-        <div className="container mx-auto px-4 relative z-10 pt-32 pb-12">
+        <Container size="content" className="relative z-10 pt-32 pb-12">
           <motion.div
             ref={ref}
             initial="hidden"
@@ -334,12 +335,12 @@ const AlbumAboutPage = ({
               </div>
             </motion.div>
           </motion.div>
-        </div>
+        </Container>
       </div>
 
       <Section background="white" paddingBottom="loose">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
+        <Container size="wide">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Card 1: Meaning */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -378,14 +379,14 @@ const AlbumAboutPage = ({
               </p>
             </motion.div>
           </div>
-        </div>
+        </Container>
       </Section>
 
       <SectionWave color="ocean-sand" flow="up" />
 
       {/* Release Commemoration Concerts - Integrated Tab Section */}
       <Section background="ocean-sand" paddingBottom="none">
-        <div className="container mx-auto px-4">
+        <Container size="wide">
           <SectionHeader
             title={t('concert_title')}
             subtitle={t('concert_subtitle')}
@@ -413,7 +414,7 @@ const AlbumAboutPage = ({
               <span className="text-jeju-ocean font-bold">{t('app.title')}</span> · 2024
             </p>
           </motion.div>
-        </div>
+        </Container>
       </Section>
       {/* Modal */}
       {selectedMusician && (
