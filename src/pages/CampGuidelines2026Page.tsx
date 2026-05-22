@@ -99,6 +99,7 @@ const CampGuidelines2026Page: React.FC = () => {
                 title=""
                 subtitle={g('prohibited_filming_title') as string}
                 items={arr('prohibited_filming_items')}
+                note={g('prohibited_filming_note') as string}
               />
             </motion.div>
 

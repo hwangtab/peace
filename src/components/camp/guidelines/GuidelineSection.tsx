@@ -5,9 +5,10 @@ interface Props {
   subtitle?: string;
   body?: string;
   items?: string[];
+  note?: string;
 }
 
-const GuidelineSection: React.FC<Props> = ({ title, subtitle, body, items }) => {
+const GuidelineSection: React.FC<Props> = ({ title, subtitle, body, items, note }) => {
   return (
     <div className="mb-10">
       <h2 className="text-xl font-bold text-deep-ocean mb-2">{title}</h2>
@@ -29,6 +30,11 @@ const GuidelineSection: React.FC<Props> = ({ title, subtitle, body, items }) => 
             </li>
           ))}
         </ul>
+      )}
+      {note && (
+        <div className="mt-3 bg-sky-horizon/40 border border-seafoam/30 rounded-lg p-3">
+          <p className="text-sm text-coastal-gray leading-relaxed">{note}</p>
+        </div>
       )}
     </div>
   );
