@@ -37,7 +37,7 @@ const CampParticipants: React.FC<CampParticipantsProps> = ({ participants, music
 
     return (
         <>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                 {participants.map((participant, index) => {
                     const clickable = isClickable(participant);
                     const name = getParticipantName(participant);

@@ -4,6 +4,7 @@ import { Musician } from '@/types/musician';
 import { CampEvent } from '@/types/camp';
 import { camps } from '@/data/camps';
 import Container from '@/components/layout/Container';
+import Section from '@/components/layout/Section';
 import Button from '../common/Button';
 
 interface MusicianDescriptionSectionProps {
@@ -26,7 +27,7 @@ export default function MusicianDescriptionSection({
   const { t } = useTranslation();
 
   return (
-    <div className={`bg-white pt-16 ${isCampPage && latestCamp && fundingUrl ? 'pb-24 md:pb-32' : 'pb-16'} flex-1`}>
+    <Section background="white" paddingTop="normal" paddingBottom={isCampPage && latestCamp && fundingUrl ? 'loose' : 'normal'} className="flex-1">
       <Container size="prose">
           <p className="typo-body text-coastal-gray leading-relaxed whitespace-pre-wrap text-pretty break-words">
             {musician.description}
@@ -94,6 +95,6 @@ export default function MusicianDescriptionSection({
             </div>
           )}
       </Container>
-    </div>
+    </Section>
   );
 }

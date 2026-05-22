@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import dynamic from 'next/dynamic';
+import Button from '../common/Button';
 import { m as motion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import { HiOutlineCalendar, HiOutlineLocationMarker, HiOutlineUserGroup } from '@/components/icons/SiteIcons';
@@ -39,7 +39,7 @@ const SolidarityEventFeature: React.FC<Props> = ({ event, index, musicians, deta
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-50px' }}
         transition={{ duration: 0.5, delay: Math.min(index * 0.1, 0.4) }}
-        className="bg-white rounded-3xl overflow-hidden shadow-lg border border-ocean-sand"
+        className="bg-white rounded-2xl overflow-hidden shadow-lg border border-ocean-sand"
       >
         {/* 상단: 포스터 + 주요 정보 2단 */}
         <div className="lg:grid lg:grid-cols-2">
@@ -56,7 +56,7 @@ const SolidarityEventFeature: React.FC<Props> = ({ event, index, musicians, deta
           </div>
 
           {/* Key info */}
-          <div className="p-8 lg:p-10 flex flex-col justify-center gap-6">
+          <div className="p-6 flex flex-col justify-center gap-6">
             <h2 className="typo-h3 text-xl lg:text-2xl leading-snug break-words">
               {event.title}
             </h2>
@@ -107,14 +107,14 @@ const SolidarityEventFeature: React.FC<Props> = ({ event, index, musicians, deta
                           onClick={() => handleLineupClick(entry.musicianId)}
                           onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleLineupClick(entry.musicianId); } }}
                           aria-label={entry.name}
-                          className="px-3 py-1.5 bg-ocean-mist/5 text-ocean-mist/80 rounded-lg text-xs font-medium border border-ocean-mist/10 break-words hover:bg-jeju-ocean hover:text-white hover:border-jeju-ocean transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
+                          className="px-3 py-1 bg-ocean-mist/5 text-ocean-mist/80 rounded-lg text-xs font-medium border border-ocean-mist/10 break-words hover:bg-jeju-ocean hover:text-white hover:border-jeju-ocean transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
                         >
                           {entry.name}
                         </button>
                       ) : (
                         <span
                           key={entry.name}
-                          className="px-3 py-1.5 bg-ocean-mist/5 text-ocean-mist/80 rounded-lg text-xs font-medium border border-ocean-mist/10 break-words"
+                          className="px-3 py-1 bg-ocean-mist/5 text-ocean-mist/80 rounded-lg text-xs font-medium border border-ocean-mist/10 break-words"
                         >
                           {entry.name}
                         </span>
@@ -127,12 +127,9 @@ const SolidarityEventFeature: React.FC<Props> = ({ event, index, musicians, deta
 
             {/* compact 모드: 자세히 보기 링크 */}
             {compact && detailHref && (
-              <Link
-                href={detailHref}
-                className="self-start inline-flex items-center gap-1 px-6 py-3 bg-jeju-ocean text-white rounded-full text-sm font-medium hover:bg-jeju-ocean/90 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
-              >
+              <Button to={detailHref} variant="primary" className="self-start">
                 {t('solidarity.detail_cta')} →
-              </Link>
+              </Button>
             )}
           </div>
         </div>
@@ -166,14 +163,9 @@ const SolidarityEventFeature: React.FC<Props> = ({ event, index, musicians, deta
 
             {/* Contact */}
             <div>
-              <a
-                href={event.contact.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-jeju-ocean text-white rounded-full text-sm font-medium hover:bg-jeju-ocean/90 transition-colors duration-200"
-              >
+              <Button href={event.contact.url} variant="primary" external>
                 {t('solidarity.contact_cta')} — {event.contact.name}
-              </a>
+              </Button>
             </div>
           </div>
         )}

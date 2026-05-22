@@ -23,7 +23,7 @@ const AudioPlayer = React.memo(({ audioUrl, isPlaying, onPlayPause, title, artis
   } = useAudioPlayer({ audioUrl, isPlaying });
 
   return (
-    <div className="w-full bg-white rounded-lg shadow-md p-3 sm:p-4">
+    <div className="w-full bg-white rounded-xl shadow-md p-4">
       <div className="flex items-center space-x-3 sm:space-x-4">
         {/* Play/Pause Button */}
         <motion.button
