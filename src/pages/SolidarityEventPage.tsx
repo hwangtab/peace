@@ -3,6 +3,8 @@ import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
 import Section from '@/components/layout/Section';
+import SectionWave from '@/components/layout/SectionWave';
+import PageHero from '@/components/common/PageHero';
 import SolidarityEventFeature from '@/components/solidarity/SolidarityEventFeature';
 import { getSolidarityEvents } from '@/data/solidarity';
 import { getFullUrl } from '@/config/env';
@@ -85,9 +87,15 @@ const SolidarityEventPage: React.FC<Props> = ({
       canonicalUrl={pageUrl}
       structuredData={structuredData}
       breadcrumbs={breadcrumbs}
-      disableTopPadding={false}
+      disableTopPadding={true}
       disableBottomPadding={true}
     >
+      <PageHero
+        title={event.title}
+        backgroundImage={event.poster}
+      />
+      <SectionWave color="ocean-sand" flow="up" />
+
       <Section background="ocean-sand" paddingBottom="loose">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
