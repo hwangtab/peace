@@ -5,6 +5,23 @@ import nextI18NextConfig from '../../../next-i18next.config';
 
 const LOCALES = nextI18NextConfig.i18n.locales;
 
+// 언어 이름은 항상 해당 언어의 자기언어명(endonym)으로 표시
+const NATIVE_LANGUAGE_NAMES: Record<string, string> = {
+  ko: '한국어',
+  en: 'English',
+  ja: '日本語',
+  'zh-Hans': '简体中文',
+  'zh-Hant': '繁體中文',
+  es: 'Español',
+  fr: 'Français',
+  de: 'Deutsch',
+  ar: 'العربية',
+  hi: 'हिन्दी',
+  id: 'Bahasa Indonesia',
+  pt: 'Português',
+  ru: 'Русский',
+};
+
 interface LanguageSwitcherProps {
     className?: string;
     isScrolled?: boolean;
@@ -13,8 +30,6 @@ interface LanguageSwitcherProps {
 const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ className = '', isScrolled = false }) => {
     const { t, i18n } = useTranslation();
     const router = useRouter();
-
-    const languageLabels = t('languages', { returnObjects: true }) as Record<string, string>;
     const toneClasses = isScrolled ? 'text-jeju-ocean' : 'text-cloud-white';
     const borderClasses = isScrolled
         ? 'border-jeju-ocean hover:bg-jeju-ocean hover:text-white'
@@ -45,7 +60,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ className = '', isS
             >
                 {LOCALES.map((locale) => (
                     <option key={locale} value={locale} className="text-deep-ocean">
-                        {languageLabels[locale] || locale}
+                        {NATIVE_LANGUAGE_NAMES[locale] || locale}
                     </option>
                 ))}
             </select>
