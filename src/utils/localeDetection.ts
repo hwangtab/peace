@@ -1,5 +1,13 @@
 import { DEFAULT_LOCALE, isSupportedLocale } from '../constants/locales';
 
+export function normalizeZhLocale(locale: string): 'zh-Hant' | 'zh-Hans' {
+  const lower = locale.toLowerCase();
+  if (lower.includes('hant') || lower.includes('tw') || lower.includes('hk') || lower.includes('mo')) {
+    return 'zh-Hant';
+  }
+  return 'zh-Hans';
+}
+
 const COUNTRY_TO_LOCALE: Record<string, string> = {
   KR: 'ko',
   JP: 'ja',
@@ -57,12 +65,7 @@ export const normalizeLocale = (lang: string): string | null => {
   if (lower.startsWith('ru')) return 'ru';
   if (lower.startsWith('ar')) return 'ar';
   if (lower.startsWith('ja')) return 'ja';
-  if (lower.startsWith('zh')) {
-    if (lower.includes('hant') || lower.includes('tw') || lower.includes('hk') || lower.includes('mo')) {
-      return 'zh-Hant';
-    }
-    return 'zh-Hans';
-  }
+  if (lower.startsWith('zh')) return normalizeZhLocale(lower);
   if (lower.startsWith('hi')) return 'hi';
   if (lower.startsWith('id')) return 'id';
   return null;

@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import Image from 'next/image';
+import { useTranslation } from 'next-i18next';
 
 interface ImageLightboxProps {
   image: string | { url: string; alt?: string } | null;
@@ -15,6 +16,7 @@ const ImageLightbox: React.FC<ImageLightboxProps> = ({
   maxHeight = '90vh',
   show,
 }) => {
+  const { t } = useTranslation();
   const isVisible = show ?? !!image;
   const imageUrl = image ? (typeof image === 'string' ? image : image.url) : '';
   const altText = image ? (typeof image === 'string' ? 'Lightbox image' : (image.alt || 'Lightbox image')) : '';
@@ -62,7 +64,7 @@ const ImageLightbox: React.FC<ImageLightboxProps> = ({
                 <button
                   className="absolute top-4 right-4 text-white text-3xl hover:text-jeju-ocean transition-colors bg-black/20 rounded-full w-10 h-10 flex items-center justify-center backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun"
                   onClick={onClose}
-                  aria-label="Close lightbox"
+                  aria-label={t('common.close')}
                 >
                   &times;
                 </button>

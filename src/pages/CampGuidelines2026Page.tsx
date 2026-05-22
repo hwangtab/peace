@@ -36,7 +36,7 @@ const CampGuidelines2026Page: React.FC = () => {
 
   const arr = useCallback(
     (key: string) =>
-      (t(`camp_guidelines_2026.${key}`, { returnObjects: true }) as unknown) as string[],
+      t(`camp_guidelines_2026.${key}`, { returnObjects: true }) as string[],
     [t],
   );
 
@@ -46,7 +46,7 @@ const CampGuidelines2026Page: React.FC = () => {
     { name: g('breadcrumb_guidelines') as string, url: getFullUrl('/camps/2026/guidelines') },
   ], [t, g]);
 
-  const hotlines = (t('camp_guidelines_2026.response_hotlines', { returnObjects: true }) as unknown) as Hotline[];
+  const hotlines = t('camp_guidelines_2026.response_hotlines', { returnObjects: true }) as Hotline[];
 
   return (
     <PageLayout

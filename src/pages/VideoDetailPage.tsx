@@ -15,6 +15,7 @@ import {
 } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
 import { camps } from '@/data/camps';
+import { isParticipantObject } from '@/types/camp';
 import YouTubeFacade from '@/components/videos/YouTubeFacade';
 
 interface VideoDetailPageProps {
@@ -39,11 +40,10 @@ const getYoutubeVideoId = (url: string): string => {
 const CAMP_2026_MUSICIAN_IDS = new Set(
   camps
     .find((c) => c.id === 'camp-2026')
-    ?.participants?.filter(
-      (p): p is { name: string; musicianId: number } =>
-        typeof p === 'object' && 'musicianId' in p
-    )
-    .map((p) => p.musicianId) ?? []
+    ?.participants
+    ?.filter(isParticipantObject)
+    .filter((p) => p.musicianId !== undefined)
+    .map((p) => p.musicianId as number) ?? []
 );
 
 const VideoDetailPage: React.FC<VideoDetailPageProps> = ({
