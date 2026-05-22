@@ -15,9 +15,10 @@ interface Props {
   index: number;
   musicians: Musician[];
   detailHref?: string;
+  compact?: boolean;
 }
 
-const SolidarityEventFeature: React.FC<Props> = ({ event, index, musicians, detailHref }) => {
+const SolidarityEventFeature: React.FC<Props> = ({ event, index, musicians, detailHref, compact = false }) => {
   const { t } = useTranslation('translation');
   const [selectedMusician, setSelectedMusician] = useState<Musician | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -123,55 +124,59 @@ const SolidarityEventFeature: React.FC<Props> = ({ event, index, musicians, deta
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* 하단: 본문 설명 + 노트 + 주최 + 문의 버튼 (전체폭) */}
-        <div className="px-8 lg:px-10 pb-8 lg:pb-10 pt-6 lg:pt-8 border-t border-ocean-sand flex flex-col gap-6">
-          {/* Description */}
-          <div className="space-y-3">
-            {event.paragraphs.map((para, i) => (
-              <p key={i} className="typo-body text-sm leading-relaxed">
-                {para}
-              </p>
-            ))}
-          </div>
-
-          {/* Program note */}
-          {event.note && (
-            <p className="text-xs text-coastal-gray italic border-l-2 border-ocean-sand pl-3 leading-relaxed">
-              {event.note}
-            </p>
-          )}
-
-          {/* Organizers */}
-          <div className="text-sm text-coastal-gray">
-            <span className="text-[10px] uppercase tracking-wider font-bold block mb-1">
-              {t('solidarity.label_organizers')}
-            </span>
-            <span className="break-words">{event.organizers}</span>
-          </div>
-
-          {/* Contact + 상세 링크 */}
-          <div className="flex flex-wrap items-center gap-3">
-            <a
-              href={event.contact.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-jeju-ocean text-white rounded-full text-sm font-medium hover:bg-jeju-ocean/90 transition-colors duration-200"
-            >
-              {t('solidarity.contact_cta')} — {event.contact.name}
-            </a>
-            {detailHref && (
+            {/* compact 모드: 자세히 보기 링크 */}
+            {compact && detailHref && (
               <Link
                 href={detailHref}
-                className="inline-flex items-center gap-1 px-6 py-3 border border-jeju-ocean text-jeju-ocean rounded-full text-sm font-medium hover:bg-jeju-ocean/5 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
+                className="self-start inline-flex items-center gap-1 px-6 py-3 bg-jeju-ocean text-white rounded-full text-sm font-medium hover:bg-jeju-ocean/90 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
               >
                 {t('solidarity.detail_cta')} →
               </Link>
             )}
           </div>
         </div>
+
+        {/* 하단: 본문 설명 + 노트 + 주최 + 문의 버튼 (전체폭) — 상세 뷰에서만 표시 */}
+        {!compact && (
+          <div className="px-8 lg:px-10 pb-8 lg:pb-10 pt-6 lg:pt-8 border-t border-ocean-sand flex flex-col gap-6">
+            {/* Description */}
+            <div className="space-y-3">
+              {event.paragraphs.map((para, i) => (
+                <p key={i} className="typo-body text-sm leading-relaxed">
+                  {para}
+                </p>
+              ))}
+            </div>
+
+            {/* Program note */}
+            {event.note && (
+              <p className="text-xs text-coastal-gray italic border-l-2 border-ocean-sand pl-3 leading-relaxed">
+                {event.note}
+              </p>
+            )}
+
+            {/* Organizers */}
+            <div className="text-sm text-coastal-gray">
+              <span className="text-[10px] uppercase tracking-wider font-bold block mb-1">
+                {t('solidarity.label_organizers')}
+              </span>
+              <span className="break-words">{event.organizers}</span>
+            </div>
+
+            {/* Contact */}
+            <div>
+              <a
+                href={event.contact.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-jeju-ocean text-white rounded-full text-sm font-medium hover:bg-jeju-ocean/90 transition-colors duration-200"
+              >
+                {t('solidarity.contact_cta')} — {event.contact.name}
+              </a>
+            </div>
+          </div>
+        )}
       </motion.article>
 
       {selectedMusician && (
