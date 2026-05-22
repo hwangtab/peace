@@ -235,7 +235,7 @@
   },
   "solidarity": {
     "page_title": "Solidaridad | Campamento de Paz y Música de Gangjeong",
-    "page_desc": "Concierto musical por la liberación de activistas palestinos — 'WE SING FOR YOUR FREEDOM', 23 de mayo de 2026, Seúl. El Campamento de Paz y Música de Gangjeong se solidariza con los movimientos de paz.",
+    "page_desc": "Festival cultural de condena a Israel por la liberación de Palestina 'WE SING FOR YOUR FREEDOM' — sáb. 23 may. 2026, 19 h, Jongno Seúl. El Campo de Paz y Música de Gangjeong se une a la solidaridad con Palestina.",
     "hero_title": "Solidaridad",
     "hero_subtitle": "Con los movimientos de paz en todo el mundo",
     "intro_heading": "Conciertos de Solidaridad por la Paz",
@@ -250,16 +250,14 @@
     "label_organizers": "Organizado por",
     "contact_cta": "Contacto",
     "event_sail": {
-      "poster_alt": "Cartel del acto cultural por la liberación de activistas palestinos — WE SING FOR YOUR FREEDOM",
-      "title": "Acto cultural musical por la liberación de activistas palestinos — \"WE SING FOR YOUR FREEDOM\"",
+      "poster_alt": "Cartel del festival cultural de condena a Israel por la liberación de Palestina — WE SING FOR YOUR FREEDOM",
+      "title": "Festival de música en condena de Israel y por la liberación de Palestina \"WE SING FOR YOUR FREEDOM\"",
       "date": "Sábado 23 de mayo de 2026 · 19:00 h",
       "venue": "Detrás del Edificio SK Seorin",
       "venue_address": "26 Jongno, Jongno-gu, Seúl (bloque junto a la Embajada de Israel, lado del arroyo Cheonggyecheon)",
-      "para_1": "Denunciamos el secuestro de activistas del viaje de paz por parte de Israel, Estado genocida y terrorista.",
-      "para_2": "De Gangjeong a Gaza, estamos unidos por el mar. Romper la cadena de 78 años de dominación colonial y genocidio de Israel sobre Palestina, y celebrar finalmente la liberación palestina, está ligado a la liberación de todos nosotros.",
-      "para_3": "Del 5 al 7 de junio, el 'Campamento de Paz y Música de Gangjeong: Poned fin a la guerra' se celebrará en la aldea de Gangjeong, en la isla de Jeju, con 50 grupos musicales. La guerra no es un fenómeno pasajero — es el resultado de la discriminación y la explotación acumuladas en el día a día. Desmantelar este sistema normalizado de violencia, crear nuevas alternativas, cerrar las bases militares que incrementan el riesgo de guerra y lograr la liberación de Palestina del colonialismo israelí: todo eso es lo que significa la paz verdadera.",
-      "para_4": "Rezamos por el regreso sano y salvo de todos los activistas de paz secuestrados por las fuerzas de ocupación israelíes, y esperamos encontrarnos con Haecho, Seungjun y Donghyeon en la aldea de Gangjeong, al sur de Jeju, para compartir canciones de paz e historias. Hemos preparado este acto cultural musical con esa esperanza. Esperamos vuestro interés y participación para que podamos ser el valor del otro.",
-      "note": "Este programa forma parte del «Acto Cultural Diario en condena a Israel y demanda de liberación de activistas palestinos: Hasta que las luces que se dirigían a Gaza regresen a nosotros»."
+      "para_1": "Los activistas Haecho, Seungjun y Donghyeon, ilegalmente secuestrados por las fuerzas de ocupación israelíes, han sido todos liberados. Sin embargo, el pueblo palestino continúa resistiendo 78 años de ocupación ilegal, colonización y genocidio perpetrados por Israel.",
+      "para_2": "Por ello, el festival cultural preparado originalmente para exigir la liberación de estos activistas se transforma en un festival de condena a Israel y de apoyo a la liberación de Palestina. Les pedimos su atención y solidaridad.",
+      "note": ""
     },
     "back_to_list": "Volver a conciertos solidarios",
     "detail_cta": "Ver detalles del evento"

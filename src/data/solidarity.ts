@@ -46,7 +46,7 @@ const eventStructs: SolidarityEventStruct[] = [
     id: 'event-sail',
     keyPrefix: 'solidarity.event_sail',
     poster: '/images-webp/solidarity/we-are-sail-for-your-freedom.webp',
-    paraCount: 4,
+    paraCount: 2,
     lineup: [
       { name: '강가히말라야', musicianId: 14 },
       { name: '길가는밴드 장현호', musicianId: 15 },
