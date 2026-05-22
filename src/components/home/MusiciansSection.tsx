@@ -5,6 +5,7 @@ import { getMusicians } from '@/api/musicians';
 import { Musician } from '@/types/musician';
 import MusicianCard from '../musicians/MusicianCard';
 import Section from '../layout/Section';
+import Container from '../layout/Container';
 import SectionHeader from '../common/SectionHeader';
 import React from 'react';
 import { useLocalizedResource } from '@/hooks/useLocalizedResource';
@@ -38,7 +39,7 @@ const MusiciansSection: React.FC<MusiciansSectionProps> = React.memo(
     const loadingError = musiciansResource.error;
 
     const content = (
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <Container size="wide">
         {!hideSectionHeader && (
           <SectionHeader
             title={t('home.musicians.title')}
@@ -74,7 +75,7 @@ const MusiciansSection: React.FC<MusiciansSectionProps> = React.memo(
             )}
           </>
         )}
-      </div>
+      </Container>
     );
 
     if (enableSectionWrapper) {

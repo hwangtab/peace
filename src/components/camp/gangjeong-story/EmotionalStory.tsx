@@ -3,6 +3,7 @@ import { m as motion, useScroll, useTransform, useReducedMotion } from 'framer-m
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import { useIsMobile } from '@/hooks/useIsMobile';
+import Container from '@/components/layout/Container';
 
 interface StoryBlockProps {
   imageSrc: string;
@@ -45,7 +46,7 @@ const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey, alig
       </motion.div>
       <div className={`absolute inset-0 bg-gradient-to-t ${variant === 'home' ? 'from-black/75 via-jeju-ocean/40 to-transparent' : 'from-black/80 via-black/30 to-transparent'}`} />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-12 sm:pb-16 md:pb-20 pt-20">
+      <Container size="wide" className="relative z-10 pb-12 sm:pb-16 md:pb-20 pt-20">
         <motion.div
           initial={{ opacity: 0, x: align === 'right' ? 40 : -40 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -57,7 +58,7 @@ const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey, alig
             {t(textKey)}
           </p>
         </motion.div>
-      </div>
+      </Container>
     </div>
   );
 };

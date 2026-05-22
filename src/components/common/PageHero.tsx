@@ -1,6 +1,7 @@
 import React from 'react';
 import { m as motion } from 'framer-motion';
 import Image from 'next/image';
+import Container from '@/components/layout/Container';
 
 interface PageHeroProps {
   title: string;
@@ -33,7 +34,7 @@ const PageHero: React.FC<PageHeroProps> = ({ title, subtitle, backgroundImage })
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
 
       {/* Content - Same as CampHero */}
-      <div className="container mx-auto px-4 relative z-10">
+      <Container size="wide" className="relative z-10">
         <motion.div
           initial={{ y: 16 }}
           animate={{ y: 0 }}
@@ -42,7 +43,7 @@ const PageHero: React.FC<PageHeroProps> = ({ title, subtitle, backgroundImage })
           <h1 className="typo-h1 text-white mb-4 hyphens-auto">{title}</h1>
           {subtitle && <p className="typo-subtitle text-cloud-white/90 mb-6 hyphens-auto">{subtitle}</p>}
         </motion.div>
-      </div>
+      </Container>
     </section>
   );
 };

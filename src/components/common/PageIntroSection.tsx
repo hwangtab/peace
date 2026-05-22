@@ -1,4 +1,5 @@
 import React from 'react';
+import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
 
 interface PageIntroSectionProps {
@@ -22,8 +23,8 @@ const PageIntroSection: React.FC<PageIntroSectionProps> = ({
   background = 'white',
 }) => {
   return (
-    <Section background={background} className="py-12 md:py-16">
-      <div className="container mx-auto px-4 max-w-3xl seo-summary">
+    <Section background={background} paddingTop="tight" paddingBottom="tight">
+      <Container size="prose" className="seo-summary">
         {eyebrow && (
           <p className="text-xs font-semibold uppercase tracking-widest text-ocean-mist mb-3">
             {eyebrow}
@@ -43,7 +44,7 @@ const PageIntroSection: React.FC<PageIntroSectionProps> = ({
             </p>
           ))}
         </div>
-      </div>
+      </Container>
     </Section>
   );
 };

@@ -1,5 +1,6 @@
 import { useTranslation } from 'next-i18next';
 import { Musician } from '@/types/musician';
+import Container from '@/components/layout/Container';
 import MusicianCard from './MusicianCard';
 import Button from '../common/Button';
 
@@ -24,11 +25,11 @@ export default function OtherMusiciansSection({
 
   return (
     <div className="bg-white pt-16 pb-24 md:pb-32">
-      <div className="container mx-auto px-4">
+      <Container size="wide">
         <h2 className="typo-h2 text-jeju-ocean text-center mb-10">
           {otherMusiciansTitle || t('nav.musician')}
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
           {otherMusicians.slice(0, 6).map((m) => (
             <MusicianCard
               key={m.id}
@@ -42,7 +43,7 @@ export default function OtherMusiciansSection({
             {isCampPage ? t('camp.view_full_lineup') : backLabel} &rarr;
           </Button>
         </div>
-      </div>
+      </Container>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Container from './Container';
 import InstagramIcon from '@/components/icons/InstagramIcon';
 import { HiOutlineMail } from '@/components/icons/SiteIcons';
 import { useCamp } from '@/hooks/useCamps';
@@ -14,7 +15,7 @@ const Footer = () => {
     return (
         <footer className="bg-deep-ocean text-cloud-white">
             {/* Main Footer Content */}
-            <div className="container mx-auto px-4 py-12 md:py-16">
+            <Container size="wide" className="py-12 md:py-16">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
 
                     {/* Left Column - Site Info */}
@@ -115,16 +116,16 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </Container>
 
             {/* Bottom Bar */}
             <div className="border-t border-cloud-white/10">
-                <div className="container mx-auto px-4 py-4">
+                <Container size="wide" className="py-4">
                     <p className="text-center text-seafoam/60 text-xs md:text-sm font-caption font-light">
                         {/* suppressHydrationWarning: SSG 빌드 연도 vs 클라이언트 실행 연도 차이를 허용 */}
                         © <span suppressHydrationWarning>{new Date().getFullYear()}</span> {t('app.title')}. {t('footer.copyright')}
                     </p>
-                </div>
+                </Container>
             </div>
         </footer>
     );

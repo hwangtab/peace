@@ -5,6 +5,7 @@ import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
 import PageHero from '@/components/common/PageHero';
 import Section from '@/components/layout/Section';
+import Container from '@/components/layout/Container';
 import GuidelineSection from '@/components/camp/guidelines/GuidelineSection';
 import { getFullUrl } from '@/config/env';
 
@@ -63,13 +64,12 @@ const CampGuidelines2026Page: React.FC = () => {
 
       {/* Main content */}
       <Section background="white" paddingTop="loose" paddingBottom="loose">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <Container size="prose">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
-            className="max-w-2xl mx-auto"
           >
             {/* 1. 들어가며 */}
             <motion.div variants={itemVariants}>
@@ -287,12 +287,12 @@ const CampGuidelines2026Page: React.FC = () => {
               </div>
             </motion.div>
           </motion.div>
-        </div>
+        </Container>
       </Section>
 
       {/* Back to camp */}
       <Section background="ocean-sand" paddingTop="normal" paddingBottom="normal">
-        <div className="container mx-auto px-4 text-center">
+        <Container size="content" className="text-center">
           <Link
             href="/camps/2026"
             className="inline-flex items-center gap-2 text-sm text-jeju-ocean hover:underline font-medium"
@@ -300,7 +300,7 @@ const CampGuidelines2026Page: React.FC = () => {
             <span aria-hidden="true">←</span>
             {t('translation:nav.camp_2026')}
           </Link>
-        </div>
+        </Container>
       </Section>
     </PageLayout>
   );

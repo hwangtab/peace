@@ -1,13 +1,21 @@
 import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 
-type PaddingLevel = 'none' | 'normal' | 'loose';
+/**
+ * Vertical padding scale — use these instead of raw py-* className overrides:
+ *
+ * - `none`   no padding
+ * - `tight`  pt-12 md:pt-16 / pb-12 md:pb-16  — intro sections, compact blocks
+ * - `normal` pt-16 md:pt-24 / pb-16 md:pb-24  — standard sections  [default]
+ * - `loose`  pt-24 md:pt-32 / pb-24 md:pb-32  — hero-adjacent, wave transitions
+ */
+type PaddingLevel = 'none' | 'tight' | 'normal' | 'loose';
 
 interface SectionProps {
     children: ReactNode;
     id?: string;
     className?: string;
-    background?: 'white' | 'ocean-sand' | 'sky-horizon' | 'sunlight-glow' | 'seafoam' | 'light-beige' | 'transparent' | 'golden-sun';
+    background?: 'white' | 'ocean-sand' | 'sky-horizon' | 'sunlight-glow' | 'seafoam' | 'light-beige' | 'transparent' | 'golden-sun' | 'jeju-ocean' | 'deep-ocean';
     /**
      * Top/bottom vertical spacing.
      *
@@ -25,15 +33,17 @@ interface SectionProps {
 }
 
 const PADDING_TOP: Record<PaddingLevel, string> = {
-    none: '',
+    none:   '',
+    tight:  'pt-12 md:pt-16',
     normal: 'pt-16 md:pt-24',
-    loose: 'pt-24 md:pt-32',
+    loose:  'pt-24 md:pt-32',
 };
 
 const PADDING_BOTTOM: Record<PaddingLevel, string> = {
-    none: '',
+    none:   '',
+    tight:  'pb-12 md:pb-16',
     normal: 'pb-16 md:pb-24',
-    loose: 'pb-24 md:pb-32',
+    loose:  'pb-24 md:pb-32',
 };
 
 const BG_CLASSES: Record<NonNullable<SectionProps['background']>, string> = {
@@ -45,6 +55,8 @@ const BG_CLASSES: Record<NonNullable<SectionProps['background']>, string> = {
     'light-beige': 'bg-light-beige',
     'transparent': 'bg-transparent',
     'golden-sun': 'bg-golden-sun',
+    'jeju-ocean': 'bg-jeju-ocean',
+    'deep-ocean': 'bg-deep-ocean',
 };
 
 /**
