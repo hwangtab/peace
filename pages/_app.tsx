@@ -17,8 +17,6 @@ import '@/index.css';
 import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/layout/Footer';
 import ErrorFallback from '@/components/common/ErrorFallback';
-import { NavigationProvider } from '@/context/NavigationContext';
-
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
@@ -65,10 +63,9 @@ function App({ Component, pageProps }: AppProps) {
   }, [router.events]);
 
   return (
-    <NavigationProvider>
-      {/* reducedMotion="user": OS의 prefers-reduced-motion 설정을 존중.
-           모바일 CSS 애니메이션은 index.css @media (max-width: 767px)에서 별도 처리. */}
-      <LazyMotion features={loadDomAnimationFeatures} strict>
+    /* reducedMotion="user": OS의 prefers-reduced-motion 설정을 존중.
+         모바일 CSS 애니메이션은 index.css @media (max-width: 767px)에서 별도 처리. */
+    <LazyMotion features={loadDomAnimationFeatures} strict>
       <MotionConfig reducedMotion="user">
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -95,8 +92,7 @@ function App({ Component, pageProps }: AppProps) {
         </ErrorBoundary>
         <Footer />
       </MotionConfig>
-      </LazyMotion>
-    </NavigationProvider>
+    </LazyMotion>
   );
 }
 

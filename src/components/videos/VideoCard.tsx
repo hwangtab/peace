@@ -4,15 +4,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { VideoItem } from '@/types/video';
 import { camps } from '@/data/camps';
+import { isParticipantObject } from '@/types/camp';
 
-// Derive camp-2026 musician IDs from camps data
-const camp2026 = camps.find(c => c.id === 'camp-2026');
 const CAMP_2026_MUSICIAN_IDS = new Set(
-  camp2026?.participants
-    ?.filter((p): p is { name: string; musicianId: number } =>
-      typeof p === 'object' && 'musicianId' in p
-    )
-    .map(p => p.musicianId) ?? []
+  camps
+    .find((c) => c.id === 'camp-2026')
+    ?.participants
+    ?.filter(isParticipantObject)
+    .filter((p) => p.musicianId !== undefined)
+    .map((p) => p.musicianId as number) ?? []
 );
 
 interface VideoCardProps {

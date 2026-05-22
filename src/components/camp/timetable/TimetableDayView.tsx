@@ -31,10 +31,11 @@ const TimetableDayView: React.FC<TimetableDayViewProps> = ({
       />
       {performances.map((act, idx) => (
         <TimetableActCard
-          key={`p-${idx}`}
+          key={act.order ?? act.name}
           act={act}
           musicianById={musicianById}
           campYear={campYear}
+          date={day.date}
           index={idx}
           accentTimeClass={accentTimeClass}
           accentRuleClass={accentRuleClass}

@@ -9,7 +9,7 @@
  * 결과는 `unknown[]` (각 항목이 schema 객체) — 호출자가 JSON.stringify + `<` 이스케이프.
  */
 
-import { CampEvent } from '@/types/camp';
+import { CampEvent, isParticipantObject } from '@/types/camp';
 import { Musician } from '@/types/musician';
 import { timetable2026 } from '@/data/timetable-2026';
 import { getFullUrl } from '@/config/env';
@@ -46,49 +46,48 @@ export function buildCamp2026Schemas({
   const translatedTitle = t('camp.title_2026');
   const translatedDescription = t('camp.description_2026');
 
-  const subEvents = timetable2026.days.flatMap((day) =>
-    day.acts
-      .filter((a) => a.type === 'performance')
-      .map((a) => {
-        const musician = a.musicianIds && a.musicianIds.length === 1
-          ? musicians.find((m) => m.id === a.musicianIds![0])
-          : undefined;
-        const actId = `https://peaceandmusic.net/camps/2026#act-${day.date}-${a.order}`;
-        return {
-          id: actId,
-          url: actId,
-          name: a.name,
-          startDate: `${day.date}T${a.start}:00+09:00`,
-          endDate: `${day.date}T${a.end}:00+09:00`,
-          performerName: a.name,
-          performerUrl:
-            a.musicianIds && a.musicianIds.length === 1
-              ? getFullUrl(`/camps/2026/musicians/${a.musicianIds[0]}`)
-              : undefined,
-          performerSameAs: musician?.instagramUrls?.length ? musician.instagramUrls : undefined,
-          image: musician?.imageUrl ? getFullUrl(musician.imageUrl) : undefined,
-        };
-      })
-  );
-
+  const subEvents: {
+    id: string; url: string; name: string; startDate: string; endDate: string;
+    performerName: string; performerUrl: string | undefined;
+    performerSameAs: string[] | undefined; image: string | undefined;
+  }[] = [];
+  const timetableItems: {
+    position: number; name: string; url: string;
+    image: string | undefined; startDate: string;
+  }[] = [];
   let actPosition = 0;
-  const timetableItems = timetable2026.days.flatMap((day) =>
-    day.acts
-      .filter((a) => a.type === 'performance')
-      .map((a) => {
-        actPosition += 1;
-        const musician = a.musicianIds && a.musicianIds.length === 1
-          ? musicians.find((m) => m.id === a.musicianIds![0])
-          : undefined;
-        return {
-          position: actPosition,
-          name: a.name,
-          url: `https://peaceandmusic.net/camps/2026#act-${day.date}-${a.order}`,
-          image: musician?.imageUrl ? getFullUrl(musician.imageUrl) : undefined,
-          startDate: `${day.date}T${a.start}:00+09:00`,
-        };
-      })
-  );
+  for (const day of timetable2026.days) {
+    for (const a of day.acts) {
+      if (a.type !== 'performance') continue;
+      const musician = a.musicianIds && a.musicianIds.length === 1
+        ? musicians.find((m) => m.id === a.musicianIds![0])
+        : undefined;
+      const actId = getFullUrl(`/camps/2026#act-${day.date}-${a.order}`);
+      const image = musician?.imageUrl ? getFullUrl(musician.imageUrl) : undefined;
+      actPosition += 1;
+      subEvents.push({
+        id: actId,
+        url: actId,
+        name: a.name,
+        startDate: `${day.date}T${a.start}:00+09:00`,
+        endDate: `${day.date}T${a.end}:00+09:00`,
+        performerName: a.name,
+        performerUrl:
+          a.musicianIds && a.musicianIds.length === 1
+            ? getFullUrl(`/camps/2026/musicians/${a.musicianIds[0]}`)
+            : undefined,
+        performerSameAs: musician?.instagramUrls?.length ? musician.instagramUrls : undefined,
+        image,
+      });
+      timetableItems.push({
+        position: actPosition,
+        name: a.name,
+        url: actId,
+        image,
+        startDate: `${day.date}T${a.start}:00+09:00`,
+      });
+    }
+  }
 
   const itemListSchema = getItemListSchema({
     name: t('timetable.title'),
@@ -135,12 +134,12 @@ export function buildCamp2026Schemas({
       images: camp.images?.map((img) => getFullUrl(img)),
       previousEvent: [
         {
-          '@id': 'https://peaceandmusic.net/camps/2023#event',
+          '@id': getFullUrl('/camps/2023#event'),
           name: t('timeline.events.camp_2023.title'),
           startDate: '2023-06-10',
         },
         {
-          '@id': 'https://peaceandmusic.net/camps/2025#event',
+          '@id': getFullUrl('/camps/2025#event'),
           name: t('timeline.events.camp_2025.title'),
           startDate: '2025-06-14',
         },
@@ -149,11 +148,11 @@ export function buildCamp2026Schemas({
       typicalAgeRange: '0-',
       isAccessibleForFree: false,
       performers: camp.participants?.map((p) => {
-        const musicianId = typeof p === 'object' ? p.musicianId : undefined;
+        const participant = isParticipantObject(p) ? p : undefined;
         return {
           type: 'MusicGroup' as const,
-          name: typeof p === 'string' ? p : p.name,
-          ...(musicianId ? { url: getFullUrl(`/camps/2026/musicians/${musicianId}`) } : {}),
+          name: participant ? participant.name : p as string,
+          ...(participant?.musicianId ? { url: getFullUrl(`/camps/2026/musicians/${participant.musicianId}`) } : {}),
         };
       }),
       ...(camp.fundingUrl
@@ -164,13 +163,13 @@ export function buildCamp2026Schemas({
               priceCurrency: 'KRW',
               availability: 'https://schema.org/InStock',
               validFrom: '2026-01-01T00:00:00+09:00',
-              validThrough: '2026-06-07T23:59:59+09:00',
+              validThrough: `${camp.endDate || camp.startDate}T23:59:59+09:00`,
             },
           }
         : {}),
       url: getFullUrl('/camps/2026'),
-      id: 'https://peaceandmusic.net/camps/2026#event',
-      superEventId: 'https://peaceandmusic.net/#event-series',
+      id: getFullUrl('/camps/2026#event'),
+      superEventId: getFullUrl('/#event-series'),
       subEvents,
     },
     lang,
@@ -184,7 +183,7 @@ export function buildCamp2026Schemas({
       url: getFullUrl('/'),
       events: [
         {
-          '@id': 'https://peaceandmusic.net/camps/2023#event',
+          '@id': getFullUrl('/camps/2023#event'),
           name: t('timeline.events.camp_2023.title'),
           alternateName: [
             'GPMC1',
@@ -207,7 +206,7 @@ export function buildCamp2026Schemas({
           },
         },
         {
-          '@id': 'https://peaceandmusic.net/camps/2025#event',
+          '@id': getFullUrl('/camps/2025#event'),
           name: t('timeline.events.camp_2025.title'),
           alternateName: [
             'GPMC2',
@@ -230,7 +229,7 @@ export function buildCamp2026Schemas({
           },
         },
         {
-          '@id': 'https://peaceandmusic.net/camps/2026#event',
+          '@id': getFullUrl('/camps/2026#event'),
           name: translatedTitle,
           alternateName: [
             'GPMC3',
@@ -255,7 +254,7 @@ export function buildCamp2026Schemas({
                   priceCurrency: 'KRW',
                   availability: 'https://schema.org/InStock',
                   validFrom: '2026-01-01T00:00:00+09:00',
-                  validThrough: '2026-06-07T23:59:59+09:00',
+                  validThrough: `${camp.endDate || camp.startDate}T23:59:59+09:00`,
                 },
               }
             : {}),
@@ -275,8 +274,8 @@ export function buildCamp2026Schemas({
       description: translatedDescription,
       url: getFullUrl('/camps/2026'),
       datePublished: '2026-01-15',
-      dateModified: dateModifiedIso ?? new Date().toISOString().slice(0, 10),
-      mainEntityId: 'https://peaceandmusic.net/camps/2026#event',
+      dateModified: dateModifiedIso ?? '2026-05-13',
+      mainEntityId: getFullUrl('/camps/2026#event'),
       primaryImageUrl: getFullUrl('/images-webp/camps/2026/2026poster1.webp'),
       keywords: [
         '강정피스앤뮤직캠프',

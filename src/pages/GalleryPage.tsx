@@ -9,7 +9,6 @@ import { useCamp } from '@/hooks/useCamps';
 import { getFullUrl } from '@/config/env';
 
 import { useTranslation } from 'next-i18next';
-// ...
 
 import { GalleryImage } from '@/types/gallery';
 

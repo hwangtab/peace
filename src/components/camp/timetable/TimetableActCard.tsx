@@ -9,6 +9,7 @@ interface TimetableActCardProps {
   act: TimetableAct;
   musicianById: Map<number, Musician>;
   campYear: number;
+  date?: string;
   index?: number;
   accentTimeClass?: string;
   accentRuleClass?: string;
@@ -28,6 +29,7 @@ const TimetableActCard: React.FC<TimetableActCardProps> = ({
   act,
   musicianById,
   campYear,
+  date,
   index = 0,
   accentTimeClass = 'text-jeju-ocean',
   accentRuleClass = 'bg-coastal-gray/30',
@@ -47,14 +49,14 @@ const TimetableActCard: React.FC<TimetableActCardProps> = ({
     >
       <div className="flex w-12 flex-shrink-0 flex-col items-center text-center sm:w-16">
         <time
-          dateTime={act.start}
+          dateTime={date ? `${date}T${act.start}:00+09:00` : act.start}
           className={`text-lg font-bold leading-none tabular-nums sm:text-xl ${accentTimeClass}`}
         >
           {act.start}
         </time>
         <span aria-hidden="true" className={`mt-1 block h-px w-4 sm:w-6 ${accentRuleClass}`} />
         <time
-          dateTime={act.end}
+          dateTime={date ? `${date}T${act.end}:00+09:00` : act.end}
           className="mt-1 text-[11px] leading-none tabular-nums text-coastal-gray/70 sm:text-xs"
         >
           {act.end}

@@ -30,3 +30,7 @@ export interface CampEvent extends Event {
 }
 
 export type CampEvents = CampEvent[];
+
+export function isParticipantObject(p: string | Participant): p is Participant {
+  return typeof p === 'object';
+}

@@ -1,8 +1,6 @@
 export { readJsonArray, loadLocalizedData, loadGalleryImages } from './dataLoader';
 export { VALID_FILTERS, filterByEvent, isValidFilter } from './filtering';
 export { formatOrdinal } from './format';
-export type { ResponsiveImagePaths } from './images';
-export { getResponsiveImagePath, getImageAttributes } from './images';
 export { extractInstagramUsername } from './instagram';
 export type { SupportedLanguage } from './localization';
 export { getLanguageCode } from './localization';
