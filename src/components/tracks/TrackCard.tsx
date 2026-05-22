@@ -40,7 +40,7 @@ const TrackCard = React.memo(({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             exit={{ opacity: 0, y: -20 }}
-            className="bg-white rounded-lg shadow-md overflow-hidden"
+            className="bg-white rounded-xl shadow-md overflow-hidden"
         >
             {alwaysExpanded && musicianImageUrl && (
                 <div className="relative h-36 sm:h-48 w-full">
@@ -67,7 +67,7 @@ const TrackCard = React.memo(({
                     initial={alwaysExpanded ? false : { opacity: 0, height: 0 }}
                     animate={alwaysExpanded ? undefined : { opacity: 1, height: "auto" }}
                     exit={alwaysExpanded ? undefined : { opacity: 0, height: 0 }}
-                    className="px-3 pb-3 sm:px-4 sm:pb-4"
+                    className="p-4"
                 >
                     {track.audioUrl && (
                         <div className="mt-4 mb-6 sm:mb-8">

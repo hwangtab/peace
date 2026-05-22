@@ -60,14 +60,14 @@ const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
                     return (
                       <span
                         key={`${name}-${idx}`}
-                        className="bg-ocean-sand text-jeju-ocean px-2 py-1 rounded text-xs font-medium break-words"
+                        className="bg-ocean-sand text-jeju-ocean px-3 py-1 rounded-full text-xs font-medium break-words"
                       >
                         {name}
                       </span>
                     );
                   })}
                   {camp.participants.length > 3 && (
-                    <span className="bg-ocean-sand text-jeju-ocean px-2 py-1 rounded text-xs font-medium">
+                    <span className="bg-ocean-sand text-jeju-ocean px-3 py-1 rounded-full text-xs font-medium">
                       +{camp.participants.length - 3}
                     </span>
                   )}

@@ -45,7 +45,7 @@ const TimetableActCard: React.FC<TimetableActCardProps> = ({
       whileHover={{ y: -2 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.3, delay: Math.min(index * 0.03, 0.3) }}
-      className="group flex items-center gap-3 rounded-xl bg-white p-3 shadow-sm transition-shadow hover:shadow-lg sm:gap-4 sm:p-4"
+      className="group flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm transition-shadow hover:shadow-lg sm:gap-4"
     >
       <div className="flex w-12 flex-shrink-0 flex-col items-center text-center sm:w-16">
         <time

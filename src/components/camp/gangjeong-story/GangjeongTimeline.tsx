@@ -97,11 +97,11 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
                   <div className={`absolute left-2.5 top-1.5 w-3.5 h-3.5 rounded-full ${node.color} border-2 border-white shadow-sm ${isLast ? 'ring-4 ring-golden-sun/30 motion-safe:animate-pulse' : ''}`} />
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1 flex-wrap">
-                      <span className={`inline-block px-2 py-0.5 ${node.color} text-white text-xs font-bold rounded-full`}>
+                      <span className={`inline-block px-3 py-1 ${node.color} text-white text-xs font-bold rounded-full`}>
                         {node.year}
                       </span>
                       {node.badge && (
-                        <span className="inline-block px-2 py-0.5 bg-golden-sun text-deep-ocean text-xs font-bold rounded-full">
+                        <span className="inline-block px-3 py-1 bg-golden-sun text-deep-ocean text-xs font-bold rounded-full">
                           {t(node.badge)}
                         </span>
                       )}
@@ -121,11 +121,11 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
                       <div>
                         <div className="flex items-center justify-end gap-2 mb-1 flex-wrap">
                           {node.badge && (
-                            <span className="inline-block px-2.5 py-0.5 bg-golden-sun text-deep-ocean text-xs font-bold rounded-full">
+                            <span className="inline-block px-3 py-1 bg-golden-sun text-deep-ocean text-xs font-bold rounded-full">
                               {t(node.badge)}
                             </span>
                           )}
-                          <span className={`inline-block px-2.5 py-0.5 ${node.color} text-white text-xs font-bold rounded-full`}>
+                          <span className={`inline-block px-3 py-1 ${node.color} text-white text-xs font-bold rounded-full`}>
                             {node.year}
                           </span>
                         </div>
@@ -147,11 +147,11 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
                     {!isLeft && (
                       <div>
                         <div className="flex items-center gap-2 mb-1 flex-wrap">
-                          <span className={`inline-block px-2.5 py-0.5 ${node.color} text-white text-xs font-bold rounded-full`}>
+                          <span className={`inline-block px-3 py-1 ${node.color} text-white text-xs font-bold rounded-full`}>
                             {node.year}
                           </span>
                           {node.badge && (
-                            <span className="inline-block px-2.5 py-0.5 bg-golden-sun text-deep-ocean text-xs font-bold rounded-full">
+                            <span className="inline-block px-3 py-1 bg-golden-sun text-deep-ocean text-xs font-bold rounded-full">
                               {t(node.badge)}
                             </span>
                           )}

@@ -34,12 +34,12 @@ const ConcertCard: React.FC<ConcertCardProps> = ({ concert, onMusicianClick, ind
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.4, delay: Math.min(index * 0.08, 0.4) }}
-            className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-[box-shadow,border-color] duration-500 border border-ocean-sand flex flex-col"
+            className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-[box-shadow,border-color] duration-500 border border-ocean-sand flex flex-col"
         >
             {/* Card Header Background Decor */}
             <div className="h-2 bg-gradient-to-r from-jeju-ocean to-ocean-mist opacity-80" />
 
-            <div className="p-8 flex-1 flex flex-col">
+            <div className="p-6 flex-1 flex flex-col">
                 <h3 className="typo-h3 text-2xl mb-8 group-hover:text-jeju-ocean transition-colors duration-300 break-words">
                     {concert.name}
                 </h3>
@@ -89,14 +89,14 @@ const ConcertCard: React.FC<ConcertCardProps> = ({ concert, onMusicianClick, ind
                                     variant="back"
                                     size="sm"
                                     shape="rounded"
-                                    className="!px-3 !py-1.5 !text-xs"
+                                    className="!px-3 !py-1 !text-xs"
                                 >
                                     {performer.name}
                                 </Button>
                             ) : (
                                 <span
                                     key={performer.name}
-                                    className="px-3 py-1.5 bg-ocean-mist/5 text-ocean-mist/80 rounded-lg text-xs font-medium border border-ocean-mist/10 break-words"
+                                    className="px-3 py-1 bg-ocean-mist/5 text-ocean-mist/80 rounded-lg text-xs font-medium border border-ocean-mist/10 break-words"
                                 >
                                     {performer.name}
                                 </span>

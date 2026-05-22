@@ -50,7 +50,7 @@ const GuidelinesSummary: React.FC = () => {
               {topics.map((topic) => (
                 <span
                   key={topic}
-                  className="inline-block bg-white border border-seafoam/50 text-jeju-ocean text-sm font-medium px-3 py-1.5 rounded-full shadow-sm"
+                  className="inline-block bg-white border border-seafoam/50 text-jeju-ocean text-sm font-medium px-3 py-1 rounded-full shadow-sm"
                 >
                   {topic}
                 </span>
