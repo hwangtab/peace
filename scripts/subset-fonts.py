@@ -140,15 +140,6 @@ FONTS: list[tuple[str, str, str]] = [
     ("BookkMyungjo-Bd.woff2", "BookkMyungjo-Bd.subset.woff2", "woff2"),
     ("BMkkubulim-Regular.woff2", "BMkkubulim-Regular.subset.woff2", "woff2"),
     ("S-CoreDream-3Light.woff", "S-CoreDream-3Light.subset.woff2", "woff2"),
-    # Noto Sans (다국어 본문) — 가변폰트(wght 축 유지), 실제 쓰는 글자만 서브셋.
-    # 원본은 src/fonts/source/noto/ (gitignore, scripts/fetch-noto.sh 로 재다운로드).
-    ("noto/NotoSans-VF.ttf", "NotoSans.subset.woff2", "woff2"),
-    ("noto/NotoSansKR-VF.ttf", "NotoSansKR.subset.woff2", "woff2"),
-    ("noto/NotoSansArabic-VF.ttf", "NotoSansArabic.subset.woff2", "woff2"),
-    ("noto/NotoSansDevanagari-VF.ttf", "NotoSansDevanagari.subset.woff2", "woff2"),
-    ("noto/NotoSansJP-VF.ttf", "NotoSansJP.subset.woff2", "woff2"),
-    ("noto/NotoSansSC-VF.ttf", "NotoSansSC.subset.woff2", "woff2"),
-    ("noto/NotoSansTC-VF.ttf", "NotoSansTC.subset.woff2", "woff2"),
 ]
 
 
