@@ -32,11 +32,9 @@
   "scripts": {
     "start": "next start",
     "postinstall": "patch-package",
-    "prebuild": "node scripts/generateSitemap.js",
     "build": "next build",
     "postbuild": "next-sitemap",
     "test": "jest",
-    "generate-sitemap": "node scripts/generateSitemap.js",
     "generate:artist-cards": "node scripts/generate-artist-cards.js",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css}\"",
