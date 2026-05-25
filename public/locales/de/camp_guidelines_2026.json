@@ -150,11 +150,7 @@
     "medical_title": "7. Medizinische Notfälle",
     "medical_items": [
       "Im Notfall rufen Sie sofort den Notruf 119 an und informieren Sie ein nahes Mitglied des Personals.",
-      "Grundlegende Erste-Hilfe-Materialien stehen am Hauptstand zur Verfügung.",
-      "Nahegelegene, an Feiertagen geöffnete medizinische Einrichtungen (ca. 20 Min. mit dem Auto). Der 6. Juni (Gedenktag) während der Veranstaltung ist ein Feiertag.",
-      "서귀포열린병원 / 064-762-8001 / 서귀포시 일주동로 8638 / Sprechzeiten 09:00–22:00 (Pause 12:15–13:30)",
-      "서귀포365일의원 / 064-733-3650 / 서귀포시 서문로 2 / Sprechzeiten 08:00–20:00 (Pause 12:30–14:00)",
-      "서귀포의료원 / 064-730-3000 / 서귀포시 장수로 47 / Notaufnahme 24 Std."
+      "Grundlegende Erste-Hilfe-Materialien stehen am Hauptstand zur Verfügung."
     ],
     "outdoor_title": "8. Outdoor- und Camping-Sicherheit",
     "outdoor_items": [
@@ -182,6 +178,28 @@
     ],
     "contact_title": "11. Kontakt",
     "contact_body": "Lee Sang (Hauptdirektor): 010-2379-0760",
-    "contact_note": "Anfragen und Vorschläge werden nur vor dem Camp entgegengenommen."
+    "contact_note": "Anfragen und Vorschläge werden nur vor dem Camp entgegengenommen.",
+    "medical_facilities_subtitle": "An Feiertagen geöffnete Einrichtungen (ca. 20 Min. mit dem Auto)",
+    "medical_facilities_note": "Der 6. Juni (Gedenktag) während der Veranstaltung ist ein Feiertag.",
+    "medical_facilities": [
+      {
+        "name": "서귀포열린병원",
+        "number": "064-762-8001",
+        "address": "서귀포시 일주동로 8638",
+        "hours": "Sprechzeiten 09:00–22:00 · Pause 12:15–13:30"
+      },
+      {
+        "name": "서귀포365일의원",
+        "number": "064-733-3650",
+        "address": "서귀포시 서문로 2",
+        "hours": "Sprechzeiten 08:00–20:00 · Pause 12:30–14:00"
+      },
+      {
+        "name": "서귀포의료원",
+        "number": "064-730-3000",
+        "address": "서귀포시 장수로 47",
+        "hours": "Notaufnahme 24 Std."
+      }
+    ]
   }
 }
