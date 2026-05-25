@@ -4,9 +4,7 @@
     "page_subtitle": "For a Safe and Dignified Camp",
     "seo_title": "Camp Guidelines | 3rd Gangjeong Peace & Music Camp 2026",
     "seo_description": "Camp guidelines for the 3rd Gangjeong Peace & Music Camp. Prohibited behaviors, consent, reporting procedures, organizer response, medical emergencies, outdoor safety, accessibility, and environmental policy.",
-
     "breadcrumb_guidelines": "Guidelines",
-
     "summary_heading": "For a Safe and Dignified Camp",
     "summary_intro": "The Gangjeong Peace & Music Camp is a place where everyone participates safely and with dignity. These guidelines apply equally to musicians, staff, volunteers, and audience members.",
     "summary_topics": [
@@ -26,10 +24,8 @@
     "summary_report_contact2": "Other matters",
     "summary_report_contact2_name": "Jang Ha-na (010-3693-3971)",
     "summary_cta": "Read Full Guidelines",
-
     "intro_title": "1. Introduction",
     "intro_body": "The Gangjeong Peace & Music Camp is a space of musical solidarity, dreaming of a world without war. These guidelines exist so that every participant — musician, staff, volunteer, or audience member — can share this time safely and with dignity. They apply equally to all.",
-
     "prohibited_title": "2. Prohibited Behaviors",
     "prohibited_intro": "The following behaviors are strictly prohibited throughout the event, regardless of location.",
     "prohibited_hate_title": "Hate & Discrimination",
@@ -49,10 +45,8 @@
       "Illegal filming (of bodies, private spaces, etc.)"
     ],
     "prohibited_filming_note": "This year's camp will be filmed and photographed for a documentary and archive. If you prefer not to be recorded, please wear a mask.",
-
     "consent_title": "3. What Is Consent?",
     "consent_body": "Consent must be clear, voluntary, and revocable at any time. \"No\" or \"I'm uncomfortable\" is a complete answer in itself — no explanation is required. Silence, hesitation, or uncertainty is not consent. Past consent does not guarantee present consent. Consent given while intoxicated may not be valid.",
-
     "bystander_title": "4. If You Experience or Witness an Uncomfortable Situation",
     "bystander_items": [
       "Intervene directly — step in naturally by changing the subject or interrupting the conversation.",
@@ -60,7 +54,6 @@
       "Seek help — alert a nearby staff member.",
       "Document — if it is safe to do so, note the time, place, and details of the situation."
     ],
-
     "report_title": "5. How to Report",
     "report_intro": "If you experience or witness an incident, please reach out through any of the following means.",
     "report_items": [
@@ -69,9 +62,7 @@
       "Other matters: Jang Ha-na (010-3693-3971)",
       "Reports are accepted even after the event has ended."
     ],
-
     "response_title": "6. Organizer Response",
-
     "response_harassment_subtitle": "In cases of sexual harassment",
     "response_harassment_items": [
       "The reporter or survivor will be connected with a staff member.",
@@ -84,17 +75,45 @@
       "Assistance in filing a police report (112)",
       "Rest safely without any action"
     ],
-
     "response_hotlines_subtitle": "External Support Organizations",
     "response_hotlines": [
-      { "name": "Women's Emergency Hotline", "number": "1366", "hours": "24 hrs", "desc": "Emergency counseling for sexual/domestic violence, protection referral" },
-      { "name": "Korea Sexual Violence Relief Center", "number": "02-338-5801", "hours": "", "desc": "Psychological support and legal guidance for sexual violence" },
-      { "name": "Jeju Sexual Violence Counseling Center", "number": "064-757-1366", "hours": "", "desc": "On-site sexual violence support in Jeju" },
-      { "name": "Mental Health Crisis Hotline", "number": "1577-0199", "hours": "24 hrs", "desc": "Emergency counseling for mental health crises and psychological distress" },
-      { "name": "Suicide Prevention Hotline", "number": "1393", "hours": "24 hrs", "desc": "Crisis intervention and suicide counseling" },
-      { "name": "Korea Legal Aid Corporation", "number": "132", "hours": "", "desc": "Legal consultation and support" }
+      {
+        "name": "Women's Emergency Hotline",
+        "number": "1366",
+        "hours": "24 hrs",
+        "desc": "Emergency counseling for sexual/domestic violence, protection referral"
+      },
+      {
+        "name": "Korea Sexual Violence Relief Center",
+        "number": "02-338-5801",
+        "hours": "",
+        "desc": "Psychological support and legal guidance for sexual violence"
+      },
+      {
+        "name": "Jeju Sexual Violence Counseling Center",
+        "number": "064-757-1366",
+        "hours": "",
+        "desc": "On-site sexual violence support in Jeju"
+      },
+      {
+        "name": "Mental Health Crisis Hotline",
+        "number": "1577-0199",
+        "hours": "24 hrs",
+        "desc": "Emergency counseling for mental health crises and psychological distress"
+      },
+      {
+        "name": "Suicide Prevention Hotline",
+        "number": "1393",
+        "hours": "24 hrs",
+        "desc": "Crisis intervention and suicide counseling"
+      },
+      {
+        "name": "Korea Legal Aid Corporation",
+        "number": "132",
+        "hours": "",
+        "desc": "Legal consultation and support"
+      }
     ],
-
     "response_assault_subtitle": "In cases of sexual assault or rape",
     "response_assault_items": [
       "The reporter or survivor will be connected with a staff member.",
@@ -108,37 +127,35 @@
       "Preserve KakaoTalk messages, emails, CCTV footage, and witness statements from before and after the incident.",
       "Write a detailed record of the date, location, specific actions, and the perpetrator's reactions."
     ],
-
     "response_other_subtitle": "In other cases",
     "response_other_items": [
       "The reporter or survivor will be connected with the safety team.",
       "A course of action will be developed through communication between the reporter or survivor and the staff member."
     ],
-
     "response_perpetrator_subtitle": "Regarding the Accused",
     "response_perpetrator_items": [
       "The status of the accused (musician, staff, audience, etc.) is not grounds for exception.",
       "The level of action taken is at the discretion of staff and authorities, and cannot be contested on-site."
     ],
-
     "response_confidentiality_subtitle": "Confidentiality",
     "response_confidentiality_items": [
       "The survivor's identity and details of the incident will be shared only with the minimum number of people necessary for response.",
       "Nothing will be disclosed externally without the survivor's consent."
     ],
-
     "response_secondary_harm_subtitle": "Preventing Secondary Harm",
     "response_secondary_harm_items": [
       "Questions such as \"Why were you there?\" or \"Why didn't you say something sooner?\" will not be asked.",
       "Defending the accused or expressing doubt about the survivor will be treated as secondary harm."
     ],
-
     "medical_title": "7. Medical & Emergency Situations",
     "medical_items": [
       "In an emergency, call 119 immediately and notify a nearby staff member.",
-      "Basic first-aid supplies will be available at the main booth."
+      "Basic first-aid supplies will be available at the main booth.",
+      "Nearby medical facilities open on public holidays (about 20 min by car). June 6 (Memorial Day) during the event is a public holiday.",
+      "서귀포열린병원 / 064-762-8001 / 서귀포시 일주동로 8638 / Hours 09:00–22:00 (Break 12:15–13:30)",
+      "서귀포365일의원 / 064-733-3650 / 서귀포시 서문로 2 / Hours 08:00–20:00 (Break 12:30–14:00)",
+      "서귀포의료원 / 064-730-3000 / 서귀포시 장수로 47 / ER open 24h"
     ],
-
     "outdoor_title": "8. Outdoor & Camping Safety",
     "outdoor_items": [
       "In the event of severe weather such as a typhoon or heavy rain, follow organizer instructions and evacuate immediately.",
@@ -148,14 +165,12 @@
       "Guardians are responsible for the safety of children in their care. Do not leave children unattended.",
       "If an adult who is not a child's guardian is alone with a child in a way that feels unnatural, please notify a staff member. Inappropriate words or physical contact toward children will be handled more seriously than similar incidents involving adults."
     ],
-
     "accessibility_title": "9. Accessibility",
     "accessibility_items": [
       "The venue is wheelchair accessible.",
       "We have not been able to arrange separate interpretation, sign language interpretation, or audio description services.",
       "We will endeavor to operate all public restrooms as gender-neutral facilities during performance hours."
     ],
-
     "environment_title": "10. Environment & Sustainability",
     "environment_intro": "Gangjeong village is a space that has defended ecology and peace against militarization. We have a responsibility to preserve this land in its entirety.",
     "environment_items": [
@@ -165,7 +180,6 @@
       "Do not use soap or detergents when playing in the Gangjeong Stream.",
       "Park only in designated parking areas."
     ],
-
     "contact_title": "11. Contact",
     "contact_body": "Lee Sang (General Director): 010-2379-0760",
     "contact_note": "Inquiries and suggestions before the camp only."
