@@ -45,6 +45,9 @@ xenodochial-beaver/
 # Playwright MCP test artifacts
 .playwright-mcp/
 
+# Noto 원본 가변폰트 (대용량) — 서브셋 출력(public/fonts/*.subset.woff2)만 커밋. scripts/fetch-noto.sh 로 재다운로드.
+src/fonts/source/noto/
+
 # next-sitemap 이 postbuild 훅에서 자동 생성 — Vercel 빌드마다 갱신되므로 추적 금지
 public/robots.txt
 public/sitemap.xml

@@ -7,13 +7,13 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['GMarketSans', ...require('tailwindcss/defaultTheme').fontFamily.sans],
+        'sans': ['var(--font-sans)', ...require('tailwindcss/defaultTheme').fontFamily.sans],
         'serif': ['BookkMyungjo-Bd', ...require('tailwindcss/defaultTheme').fontFamily.serif],
         // Semantic Typography
         'display': ['BookkMyungjo-Bd', ...require('tailwindcss/defaultTheme').fontFamily.serif],
         'partial': ['PartialSans', 'sans-serif'],
         'stone': ['KkuBulLim', 'sans-serif'],
-        'body': ['GMarketSans', ...require('tailwindcss/defaultTheme').fontFamily.sans],
+        'body': ['var(--font-sans)', ...require('tailwindcss/defaultTheme').fontFamily.sans],
         'caption': ['S-CoreDream-3Light', 'sans-serif'],
       },
       colors: {
