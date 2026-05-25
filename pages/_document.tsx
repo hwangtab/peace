@@ -12,6 +12,17 @@ class MyDocument extends Document {
     const currentLocale = locale || 'ko';
     const dir = getTextDirection(currentLocale);
 
+    // 본문 폰트(Noto Sans 계열)를 언어별로 preload — index.css 의 --font-sans 와 일치
+    const notoByLocale: Record<string, string> = {
+      ko: 'NotoSansKR',
+      ja: 'NotoSansJP',
+      'zh-Hans': 'NotoSansSC',
+      'zh-Hant': 'NotoSansTC',
+      ar: 'NotoSansArabic',
+      hi: 'NotoSansDevanagari',
+    };
+    const bodyFont = notoByLocale[currentLocale] || 'NotoSans';
+
       return (
         <Html lang={currentLocale} dir={dir}>
         <Head>
@@ -21,27 +32,29 @@ class MyDocument extends Document {
           <link rel="preconnect" href="https://www.google-analytics.com" />
           <link rel="dns-prefetch" href="//www.google-analytics.com" />
 
-          {/* Body 폰트 preload (FOUT 방지) — LCP 히어로 본문에 사용 */}
+          {/* Body 폰트 preload (FOUT 방지) — 언어별 Noto Sans, LCP 본문에 사용 */}
           <link
             rel="preload"
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
-            href="/fonts/GmarketSansLight.subset.woff2"
+            href={`/fonts/${bodyFont}.subset.woff2`}
             // @ts-expect-error — fetchpriority is a valid HTML attribute (React 18.3+)
             fetchpriority="high"
           />
 
-          {/* PartialSans (h1 hero 폰트) preload — LCP 폰트이므로 최우선 */}
-          <link
-            rel="preload"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-            href="/fonts/PartialSansKR-Regular.subset.woff2"
-            // @ts-expect-error — fetchpriority is a valid HTML attribute (React 18.3+)
-            fetchpriority="high"
-          />
+          {/* PartialSans (h1 hero 폰트) preload — 한국어에서만 사용 */}
+          {currentLocale === 'ko' && (
+            <link
+              rel="preload"
+              as="font"
+              type="font/woff2"
+              crossOrigin="anonymous"
+              href="/fonts/PartialSansKR-Regular.subset.woff2"
+              // @ts-expect-error — fetchpriority is a valid HTML attribute (React 18.3+)
+              fetchpriority="high"
+            />
+          )}
 
           {/* 테마 & 색상 스킴 */}
           <meta name="theme-color" content="#0A5F8A" />

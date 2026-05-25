@@ -55,16 +55,84 @@
     font-display: swap;
   }
 
+  /* Noto Sans 다국어 본문 폰트 — 가변폰트(wght 100–900), 언어별로 하나만 로드됨 */
+  @font-face {
+    font-family: 'NotoSans';
+    src: url('/fonts/NotoSans.subset.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'NotoSansKR';
+    src: url('/fonts/NotoSansKR.subset.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'NotoSansArabic';
+    src: url('/fonts/NotoSansArabic.subset.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'NotoSansDevanagari';
+    src: url('/fonts/NotoSansDevanagari.subset.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'NotoSansJP';
+    src: url('/fonts/NotoSansJP.subset.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'NotoSansSC';
+    src: url('/fonts/NotoSansSC.subset.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'NotoSansTC';
+    src: url('/fonts/NotoSansTC.subset.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
   body {
     @apply bg-ocean-sand text-deep-ocean;
-    font-family: 'GMarketSans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
+    font-family: var(--font-sans);
     font-weight: 200;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
+
+  /* 언어별 본문 폰트 (Noto Sans 가변폰트) — 각 페이지는 해당 언어 폰트 하나만 로드 */
+  :root { --font-sans: 'NotoSans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif; }
+  html:lang(ko) { --font-sans: 'NotoSansKR', -apple-system, BlinkMacSystemFont, sans-serif; }
+  html:lang(ja) { --font-sans: 'NotoSansJP', -apple-system, BlinkMacSystemFont, sans-serif; }
+  html:lang(zh-Hans) { --font-sans: 'NotoSansSC', -apple-system, BlinkMacSystemFont, sans-serif; }
+  html:lang(zh-Hant) { --font-sans: 'NotoSansTC', -apple-system, BlinkMacSystemFont, sans-serif; }
+  html:lang(ar) { --font-sans: 'NotoSansArabic', -apple-system, BlinkMacSystemFont, sans-serif; }
+  html:lang(hi) { --font-sans: 'NotoSansDevanagari', -apple-system, BlinkMacSystemFont, sans-serif; }
+
+  /* 비한글 로케일은 제목·디스플레이도 Noto로 (한국어 디스플레이 폰트엔 해당 글리프가 없음) */
+  html:not(:lang(ko)) :is(h1, h2, h3, h4, h5, h6),
+  html:not(:lang(ko)) .font-serif,
+  html:not(:lang(ko)) .font-display,
+  html:not(:lang(ko)) .font-partial,
+  html:not(:lang(ko)) .font-stone,
+  html:not(:lang(ko)) .font-caption {
+    font-family: var(--font-sans) !important;
+  }
 
   :root {
     --text-word-break: keep-all;
