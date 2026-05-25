@@ -36,6 +36,9 @@ goofy-merkle/
 jolly-ritchie/
 xenodochial-beaver/
 
+# Claude Code 로컬 상태 파일 (ralph-loop 등) — 추적 금지
+.claude/*.local.md
+
 # git worktrees
 .worktrees/
 
