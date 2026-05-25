@@ -225,7 +225,8 @@ module.exports = {
   changefreq: 'weekly',
   priority: 0.7,
   sitemapSize: 7000,
-  exclude: ['/404', '/*/404', '/image-sitemap.xml', '/video-sitemap.xml'],
+  // /camps/2026/guide — 뮤지션·스태프 전용 비공개 안내(검색 차단). 사이트맵 제외.
+  exclude: ['/404', '/*/404', '/image-sitemap.xml', '/video-sitemap.xml', '/camps/2026/guide', '/*/camps/2026/guide'],
   additionalSitemaps: [`${siteUrl}/image-sitemap.xml`, `${siteUrl}/video-sitemap.xml`],
   robotsTxtOptions: {
     additionalSitemaps: [
