@@ -16,6 +16,13 @@ interface Hotline {
   desc: string;
 }
 
+interface MedicalFacility {
+  name: string;
+  number: string;
+  address: string;
+  hours: string;
+}
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
@@ -48,6 +55,7 @@ const CampGuidelines2026Page: React.FC = () => {
   ], [t, g]);
 
   const hotlines = t('camp_guidelines_2026.response_hotlines', { returnObjects: true }) as Hotline[];
+  const facilities = t('camp_guidelines_2026.medical_facilities', { returnObjects: true }) as MedicalFacility[];
 
   return (
     <PageLayout
@@ -237,6 +245,34 @@ const CampGuidelines2026Page: React.FC = () => {
                 title={g('medical_title') as string}
                 items={arr('medical_items')}
               />
+              {Array.isArray(facilities) && facilities.length > 0 && (
+                <div className="mt-2">
+                  <h3 className="text-base font-semibold text-jeju-ocean mb-1">
+                    {g('medical_facilities_subtitle')}
+                  </h3>
+                  <p className="text-xs text-coastal-gray mb-3">
+                    {g('medical_facilities_note')}
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {facilities.map((f) => (
+                      <div
+                        key={f.number}
+                        className="bg-sky-horizon/40 border border-seafoam/30 rounded-lg p-3"
+                      >
+                        <p className="text-sm font-semibold text-deep-ocean">{f.name}</p>
+                        <p className="text-xs text-coastal-gray">{f.address}</p>
+                        <p className="text-xs text-coastal-gray mb-1">{f.hours}</p>
+                        <a
+                          href={`tel:${f.number.replace(/-/g, '')}`}
+                          className="text-sm font-bold text-jeju-ocean hover:underline"
+                        >
+                          {f.number}
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </motion.div>
 
             <hr className="border-coastal-gray/20 my-8" />
