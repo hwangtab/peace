@@ -146,7 +146,7 @@ const ASSIGN_TABLES: AssignTable[] = [
 ];
 
 const ETC_LODGING: { name: string; detail: string }[] = [
-  { name: '강가희말라야 + 1인', detail: '2일~9일 낭&탄탄 집 숙박' },
+  { name: '강가히말라야 + 1인', detail: '2일~9일 낭&탄탄 집 숙박' },
   { name: '삼각전파사 + 반려견', detail: '6일, 7일 카페 공간 숙박' },
   { name: '치치', detail: '3·4·8일 새방밧 숙박 / 5·6·7일 위 숙소 중 배분' },
   { name: '정진석', detail: '3·4·8일 새방밧 숙박 / 5·6·7일 이상 집 숙박' },
@@ -436,7 +436,7 @@ const CampMusicianGuide2026Page: React.FC<GuidePageProps> = ({
                 ))}
               </div>
               <p className="text-sm text-coastal-gray mb-8">
-                ※ 강가희말라야, 삼각전파사 님의 숙소 안내는 별도로 진행 예정입니다.
+                ※ 강가히말라야, 삼각전파사 님의 숙소 안내는 별도로 진행 예정입니다.
               </p>
 
               {/* 숙소 배정 */}
