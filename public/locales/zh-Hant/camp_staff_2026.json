@@ -8,14 +8,48 @@
     "private_banner_body": "This is a private operations page not indexed by search engines. It contains sensitive information including personal contacts and lodging assignments. Please do not share beyond the organizing team. Letting us know your availability in advance is a great help for scheduling.",
     "nav_label": "Table of Contents",
     "nav": [
-      { "id": "info", "label": "Core Info" },
-      { "id": "schedule", "label": "Operations Schedule" },
-      { "id": "roles", "label": "Role Assignments" },
-      { "id": "timetable", "label": "Performance Timetable" },
-      { "id": "lodging", "label": "Lodging" },
-      { "id": "market", "label": "Market" },
-      { "id": "rewards", "label": "Pay & Rewards" },
-      { "id": "org", "label": "Organizing Team" }
+      {
+        "id": "info",
+        "label": "Core Info"
+      },
+      {
+        "id": "schedule",
+        "label": "Operations Schedule"
+      },
+      {
+        "id": "roles",
+        "label": "Role Assignments"
+      },
+      {
+        "id": "timetable",
+        "label": "Performance Timetable"
+      },
+      {
+        "id": "lodging",
+        "label": "Lodging"
+      },
+      {
+        "id": "market",
+        "label": "Market"
+      },
+      {
+        "id": "rewards",
+        "label": "Pay & Rewards"
+      },
+      {
+        "id": "org",
+        "label": "Organizing Team"
+      }
+    ],
+    "overview_labels": [
+      "Event",
+      "Date & Time",
+      "Venue"
+    ],
+    "lodging_notice": [
+      "Accommodation may change by day for stays of 2 or more nights. Please check your assignment carefully.",
+      "Check-in/out time is 11:00 AM. Please tidy up your bedding and room before leaving so the next guest can settle in.",
+      "A room list for the day will be posted outside each door by 11:00 AM."
     ],
     "section_info": "Core Info",
     "rain_note": "※ In case of rain, the event will be split across 할망물식당 and the café space simultaneously.",
@@ -47,8 +81,18 @@
     "musician_card_desc": "Information for participating musicians (side programs, budget, etc.) is also available here.",
     "musician_card_link": "View Musician Guide",
     "operation_schedule": [
-      { "date": "6/2", "tasks": ["새방밧 bedding laundry & cleaning"] },
-      { "date": "6/3", "tasks": ["강정평화센터 cleanup, collect wooden pallets; flag prep (starting afternoon)"] },
+      {
+        "date": "6/2",
+        "tasks": [
+          "새방밧 bedding laundry & cleaning"
+        ]
+      },
+      {
+        "date": "6/3",
+        "tasks": [
+          "강정평화센터 cleanup, collect wooden pallets; flag prep (starting afternoon)"
+        ]
+      },
       {
         "date": "6/4",
         "tasks": [
@@ -66,19 +110,32 @@
       },
       {
         "date": "6/6",
-        "tasks": ["Re-setup items for dismantling (starting 10:00)", "Breakdown and cleanup (immediately after end)"]
+        "tasks": [
+          "Re-setup items for dismantling (starting 10:00)",
+          "Breakdown and cleanup (immediately after end)"
+        ]
       },
       {
         "date": "6/7",
-        "tasks": ["Re-setup items for dismantling (starting 9:00)", "Breakdown and cleanup (immediately after end)"]
+        "tasks": [
+          "Re-setup items for dismantling (starting 9:00)",
+          "Breakdown and cleanup (immediately after end)"
+        ]
       },
-      { "date": "6/8", "tasks": ["강정 Sports Park cleanup, accommodation cleanup, final cleanup (starting 9:00)"] }
+      {
+        "date": "6/8",
+        "tasks": [
+          "강정 Sports Park cleanup, accommodation cleanup, final cleanup (starting 9:00)"
+        ]
+      }
     ],
     "role_assignments": [
       {
         "role": "Volunteer Coordination Lead",
         "people": "이상, 장하나",
-        "notes": ["Volunteer organization / task guideline distribution / overall communication"]
+        "notes": [
+          "Volunteer organization / task guideline distribution / overall communication"
+        ]
       },
       {
         "role": "Organizing Committee Booth",
@@ -91,7 +148,10 @@
       {
         "role": "Silkscreen Assistant",
         "people": "까르",
-        "notes": ["Day 5 & 6 (1 session on Day 5, 3 sessions on Day 6)", "Check arrival time with 그린씨"]
+        "notes": [
+          "Day 5 & 6 (1 session on Day 5, 3 sessions on Day 6)",
+          "Check arrival time with 그린씨"
+        ]
       },
       {
         "role": "Paella Assistant",
@@ -138,22 +198,30 @@
       {
         "role": "Gender Equality Manager",
         "people": "이상, 윰",
-        "notes": ["Support survivors and separate accused in cases of sexual violence"]
+        "notes": [
+          "Support survivors and separate accused in cases of sexual violence"
+        ]
       },
       {
         "role": "General Complaints Manager",
         "people": "장하나",
-        "notes": ["Handle general complaints and issues"]
+        "notes": [
+          "Handle general complaints and issues"
+        ]
       },
       {
         "role": "Stage & Venue Setup",
         "people": "가능한 모두",
-        "notes": ["Stage construction, smoking area, booth signage, equipment setup, etc."]
+        "notes": [
+          "Stage construction, smoking area, booth signage, equipment setup, etc."
+        ]
       },
       {
         "role": "Breakdown & Cleanup",
         "people": "가능한 모두",
-        "notes": ["Leave no trace"]
+        "notes": [
+          "Leave no trace"
+        ]
       }
     ],
     "rewards": [
@@ -163,22 +231,70 @@
       "Staff lanyard provided"
     ],
     "staff": [
-      { "role": "General Director", "people": "이상" },
-      { "role": "Market Planning", "people": "남수, 자이" },
-      { "role": "Volunteer Organization & Communication Lead", "people": "이상, 장하나" },
-      { "role": "Artist Communication", "people": "곽민, 박예찬, 자이, 황경하" },
-      { "role": "Tumblbug", "people": "장하나" },
-      { "role": "On-site Preparation", "people": "이상, 장하나" },
-      { "role": "Group Organizing", "people": "이상, 장하나" },
-      { "role": "Publicity", "people": "이상, 장하나, 황경하, 치치" },
-      { "role": "Design", "people": "김홍범" },
-      { "role": "Accounting", "people": "장하나" },
-      { "role": "Stage & Technical Director", "people": "황경하" },
-      { "role": "Sound Director", "people": "황경하, 곽민" },
-      { "role": "On-site Operations / Volunteer Coordination & Management / Stage & Venue Design & Production", "people": "윰, 이상, 이한주, 정진석, 장하나" },
-      { "role": "Documentary Production", "people": "치치, 하띠, 황경하" },
-      { "role": "Photo Archive", "people": "권동희, 김동희" },
-      { "role": "Volunteers", "people": "타투라쿤, 그린씨, 조은, 애나, 유니타, 양상, 정훈, 버들, 타라, 찬, 자파리 3인" }
+      {
+        "role": "General Director",
+        "people": "이상"
+      },
+      {
+        "role": "Market Planning",
+        "people": "남수, 자이"
+      },
+      {
+        "role": "Volunteer Organization & Communication Lead",
+        "people": "이상, 장하나"
+      },
+      {
+        "role": "Artist Communication",
+        "people": "곽민, 박예찬, 자이, 황경하"
+      },
+      {
+        "role": "Tumblbug",
+        "people": "장하나"
+      },
+      {
+        "role": "On-site Preparation",
+        "people": "이상, 장하나"
+      },
+      {
+        "role": "Group Organizing",
+        "people": "이상, 장하나"
+      },
+      {
+        "role": "Publicity",
+        "people": "이상, 장하나, 황경하, 치치"
+      },
+      {
+        "role": "Design",
+        "people": "김홍범"
+      },
+      {
+        "role": "Accounting",
+        "people": "장하나"
+      },
+      {
+        "role": "Stage & Technical Director",
+        "people": "황경하"
+      },
+      {
+        "role": "Sound Director",
+        "people": "황경하, 곽민"
+      },
+      {
+        "role": "On-site Operations / Volunteer Coordination & Management / Stage & Venue Design & Production",
+        "people": "윰, 이상, 이한주, 정진석, 장하나"
+      },
+      {
+        "role": "Documentary Production",
+        "people": "치치, 하띠, 황경하"
+      },
+      {
+        "role": "Photo Archive",
+        "people": "권동희, 김동희"
+      },
+      {
+        "role": "Volunteers",
+        "people": "타투라쿤, 그린씨, 조은, 애나, 유니타, 양상, 정훈, 버들, 타라, 찬, 자파리 3인"
+      }
     ]
   }
 }

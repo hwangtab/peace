@@ -59,12 +59,14 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
     [t],
   );
 
-  const navItems    = s('nav',                { returnObjects: true }) as unknown as NavItem[];
-  const opSchedule  = s('operation_schedule', { returnObjects: true }) as unknown as ScheduleEntry[];
-  const roleItems   = s('role_assignments',   { returnObjects: true }) as unknown as RoleEntry[];
-  const rewardItems = s('rewards',            { returnObjects: true }) as unknown as string[];
-  const staffItems  = s('staff',              { returnObjects: true }) as unknown as StaffEntry[];
-  const marketItems = s('market_items',       { returnObjects: true }) as unknown as string[];
+  const navItems       = s('nav',                { returnObjects: true }) as unknown as NavItem[];
+  const opSchedule     = s('operation_schedule', { returnObjects: true }) as unknown as ScheduleEntry[];
+  const roleItems      = s('role_assignments',   { returnObjects: true }) as unknown as RoleEntry[];
+  const rewardItems    = s('rewards',            { returnObjects: true }) as unknown as string[];
+  const staffItems     = s('staff',              { returnObjects: true }) as unknown as StaffEntry[];
+  const marketItems    = s('market_items',       { returnObjects: true }) as unknown as string[];
+  const overviewLabels = s('overview_labels',    { returnObjects: true }) as unknown as string[];
+  const lodgingNotice  = s('lodging_notice',     { returnObjects: true }) as unknown as string[];
 
   const fetchMusicians = useCallback((locale: string) => getMusicians(locale), []);
   const musiciansResource = useLocalizedResource<Musician>({
@@ -125,9 +127,11 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
             <motion.div variants={itemVariants}>
               <SectionHeading id="info" index={1} title={s('section_info') as string} />
               <dl className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">
-                {OVERVIEW.map((row) => (
+                {OVERVIEW.map((row, i) => (
                   <div key={row.label} className="rounded-xl border border-seafoam/40 bg-sky-horizon/40 p-4">
-                    <dt className="text-xs uppercase tracking-wide text-coastal-gray mb-1">{row.label}</dt>
+                    <dt className="text-xs uppercase tracking-wide text-coastal-gray mb-1">
+                      {Array.isArray(overviewLabels) ? overviewLabels[i] : row.label}
+                    </dt>
                     <dd className="text-sm font-bold text-deep-ocean break-keep">{row.value}</dd>
                   </div>
                 ))}
@@ -218,7 +222,7 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
               {/* 공통 안내 */}
               <h3 className="text-base font-semibold text-jeju-ocean mb-2">{s('lodging_general_title')}</h3>
               <ol className="space-y-2 mb-6">
-                {LODGING_NOTICE.map((n, i) => (
+                {(Array.isArray(lodgingNotice) ? lodgingNotice : LODGING_NOTICE).map((n, i) => (
                   <li key={n.slice(0, 30)} className="flex gap-2 typo-body text-coastal-gray leading-relaxed">
                     <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-jeju-ocean text-xs font-bold text-white">
                       {i + 1}
