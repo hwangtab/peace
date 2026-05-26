@@ -144,7 +144,7 @@ export const STAFF: { role: string; people: string }[] = [
   { role: '현장 운영 / 자원봉사자 조직·운영 / 무대 및 공간 디자인·제작', people: '윰, 이상, 이한주, 정진석, 장하나' },
   { role: '다큐 제작', people: '치치, 하띠, 황경하' },
   { role: '아카이브 기록(사진)', people: '권동희, 김동희' },
-  { role: '자원봉사자', people: '타투라쿤, 그린씨, 조은, 애나, 유니타, 양상, 버들, 타라, 찬, 자파리 3인' },
+  { role: '자원봉사자', people: '타투라쿤, 그린씨, 조은, 애나, 유니타, 양상, 정훈, 버들, 타라, 찬, 자파리 3인' },
 ];
 
 export const BUDGET: string[] = [
