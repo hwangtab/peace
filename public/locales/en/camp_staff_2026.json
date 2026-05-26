@@ -17,6 +17,12 @@
       { "id": "rewards", "label": "Pay & Rewards" },
       { "id": "org", "label": "Organizing Team" }
     ],
+    "overview_labels": ["Event", "Date & Time", "Venue"],
+    "lodging_notice": [
+      "Accommodation may change by day for stays of 2 or more nights. Please check your assignment carefully.",
+      "Check-in/out time is 11:00 AM. Please tidy up your bedding and room before leaving so the next guest can settle in.",
+      "A room list for the day will be posted outside each door by 11:00 AM."
+    ],
     "section_info": "Core Info",
     "rain_note": "※ In case of rain, the event will be split across 할망물식당 and the café space simultaneously.",
     "section_schedule": "Operations Schedule (Prep to Breakdown)",
