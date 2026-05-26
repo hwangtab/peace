@@ -127,7 +127,7 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
           </p>
         )}
         {!videosResource.error && !videosResource.isLoading && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {filteredVideos.map((video) => (
               <div key={video.id} className="h-full">
                 <VideoCard video={video} />

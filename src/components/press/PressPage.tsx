@@ -165,7 +165,7 @@ export default function PressPage({
           </p>
         )}
         {!pressResource.error && !pressResource.isLoading && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredItems.map((press) => (
               <div key={press.id} className="h-full">
                 <PressCard press={press} />

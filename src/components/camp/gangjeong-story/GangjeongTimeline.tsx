@@ -63,7 +63,7 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className={`typo-h2 text-center ${isHome ? 'text-jeju-ocean' : 'text-deep-ocean'} mb-12 sm:mb-16`}
+          className={`typo-h2 text-center ${isHome ? 'text-jeju-ocean' : 'text-deep-ocean'} mb-12 md:mb-16`}
         >
           {t('timeline_title')}
         </motion.h3>

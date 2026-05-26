@@ -63,8 +63,8 @@ const AboutSection = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8 mt-12 text-left">
-            <motion.div variants={itemVariants} className="bg-ocean-sand/30 p-8 rounded-2xl hover:bg-ocean-sand/50 transition-colors duration-300 flex flex-col">
+          <div className="grid md:grid-cols-2 gap-6 mt-12 text-left">
+            <motion.div variants={itemVariants} className="bg-ocean-sand/30 p-6 rounded-2xl hover:bg-ocean-sand/50 transition-colors duration-300 flex flex-col">
               <h3 className="typo-h3 mb-4">{t('about.card1.title')}</h3>
               <p className="typo-body text-coastal-gray text-pretty flex-1">
                 <Trans i18nKey="about.card1.desc">
@@ -81,7 +81,7 @@ const AboutSection = () => {
               </Link>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="bg-ocean-sand/30 p-8 rounded-2xl hover:bg-ocean-sand/50 transition-colors duration-300 flex flex-col">
+            <motion.div variants={itemVariants} className="bg-ocean-sand/30 p-6 rounded-2xl hover:bg-ocean-sand/50 transition-colors duration-300 flex flex-col">
               <h3 className="typo-h3 mb-4">{t('about.card2.title')}</h3>
               <p className="typo-body text-coastal-gray text-pretty flex-1">
                 <Trans i18nKey="about.card2.desc">
