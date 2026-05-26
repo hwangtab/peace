@@ -102,9 +102,9 @@ const SolidarityEventPage: React.FC<Props> = ({
           <div>
             <Link
               href="/solidarity"
-              className="inline-flex items-center gap-1 text-sm text-jeju-ocean hover:text-ocean-mist transition-colors mb-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean rounded"
+              className="inline-flex items-center gap-2 text-sm text-jeju-ocean hover:underline font-medium mb-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean rounded"
             >
-              ← {t('solidarity.back_to_list')}
+              <span aria-hidden="true">←</span>{t('solidarity.back_to_list')}
             </Link>
 
             <SolidarityEventFeature

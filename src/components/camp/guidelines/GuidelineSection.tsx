@@ -11,7 +11,7 @@ interface Props {
 const GuidelineSection: React.FC<Props> = ({ title, subtitle, body, items, note }) => {
   return (
     <div className="mb-10">
-      <h2 className="text-xl font-bold text-deep-ocean mb-4">{title}</h2>
+      <h2 className="typo-h3 mb-4">{title}</h2>
       {subtitle && (
         <h3 className="text-base font-semibold text-jeju-ocean mb-2">{subtitle}</h3>
       )}
