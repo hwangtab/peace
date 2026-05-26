@@ -51,6 +51,69 @@
       "Check-in/out time is 11:00 AM. Please tidy up your bedding and room before leaving so the next guest can settle in.",
       "A room list for the day will be posted outside each door by 11:00 AM."
     ],
+    "overview_values": [
+      "3rd Gangjeong Peace & Music Camp \"End the War!\"",
+      "June 5 (Fri) – 7 (Sun), 2026 · 2 nights / 3 days",
+      "Gangjeong Sports Park (667 Ieodo-ro, Seogwipo-si, Jeju)"
+    ],
+    "lodging_contact_labels": [
+      "Before check-in",
+      "After check-in"
+    ],
+    "lodgings_i18n": [
+      {
+        "address": "187 Maljil-ro, Seogwipo-si",
+        "rooms": [
+          "3F: 6 rooms (shared hallway bathroom/shower)",
+          "4F: communal dining room + 1 room (shared hallway bathroom/shower)",
+          "5F: attic room × 1 (en-suite bathroom/shower)"
+        ],
+        "note": "Use 농협 parking lot if main lot is full"
+      },
+      {
+        "address": "602 Ieodo-ro, Seogwipo-si",
+        "rooms": [
+          "2F: 4 rooms (en-suite bathroom/shower), shared kitchen & lounge",
+          "3F: 2 rooms (open kitchen & lounge, en-suite bathroom/shower)"
+        ],
+        "note": "Park at 김영관센터 lot and walk"
+      },
+      {
+        "address": "53 Gangjeong-tongmul-ro, Seogwipo-si",
+        "rooms": [
+          "2F: 2 rooms (shared bathroom/shower/kitchen in hallway)"
+        ],
+        "note": null
+      }
+    ],
+    "assign_room_header": "Room",
+    "assign_room_name_map": {
+      "3층 1번": "3F Rm 1",
+      "3층 2번": "3F Rm 2",
+      "3층 3번": "3F Rm 3",
+      "3층 4번": "3F Rm 4",
+      "3층 5번": "3F Rm 5",
+      "3층 사제관": "3F Chaplain Rm",
+      "5층 다락": "5F Attic",
+      "2층 1번": "2F Rm 1",
+      "2층 2번": "2F Rm 2",
+      "2층 3번": "2F Rm 3",
+      "2층 4번": "2F Rm 4",
+      "3층": "3F",
+      "2층 왼쪽방": "2F Left Rm",
+      "2층 오른쪽방": "2F Right Rm"
+    },
+    "etc_lodging_details": [
+      "Jun 2–9: 낭&탄탄's home",
+      "Jun 6–7: café space",
+      "Jun 3,4,8: 새방밧; Jun 5,6,7: assigned above",
+      "Jun 3,4,8: 새방밧; Jun 5,6,7: 이상's home",
+      "Jun 3,4,8: 새방밧; Jun 5,6,7: assigned above",
+      "Jun 8 (3 people): 새방밧; Jun 5,6,7: assigned above",
+      "Jun 3,4: 새방밧; Jun 6: 누림펜션 (36 Gangjeongha-ro, Seogwipo); Jun 5,7: assigned above",
+      "Jun 6: 누림펜션 (36 Gangjeongha-ro, Seogwipo)",
+      "Jun 6,7: 누림펜션 (36 Gangjeongha-ro, Seogwipo)"
+    ],
     "section_info": "Core Info",
     "rain_note": "※ In case of rain, the event will be split across 할망물식당 and the café space simultaneously.",
     "section_schedule": "Operations Schedule (Prep to Breakdown)",

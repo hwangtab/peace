@@ -65,8 +65,14 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
   const rewardItems    = s('rewards',            { returnObjects: true }) as unknown as string[];
   const staffItems     = s('staff',              { returnObjects: true }) as unknown as StaffEntry[];
   const marketItems    = s('market_items',       { returnObjects: true }) as unknown as string[];
-  const overviewLabels = s('overview_labels',    { returnObjects: true }) as unknown as string[];
-  const lodgingNotice  = s('lodging_notice',     { returnObjects: true }) as unknown as string[];
+  const overviewLabels       = s('overview_labels',        { returnObjects: true }) as unknown as string[];
+  const overviewValues       = s('overview_values',        { returnObjects: true }) as unknown as string[];
+  const lodgingNotice        = s('lodging_notice',         { returnObjects: true }) as unknown as string[];
+  const lodgingContactLabels = s('lodging_contact_labels', { returnObjects: true }) as unknown as string[];
+  const lodgingsI18n         = s('lodgings_i18n',          { returnObjects: true }) as unknown as { address: string; rooms: string[]; note: string | null }[];
+  const assignRoomHeader     = s('assign_room_header') as string;
+  const assignRoomNameMap    = s('assign_room_name_map',   { returnObjects: true }) as unknown as Record<string, string>;
+  const etcLodgingDetails    = s('etc_lodging_details',    { returnObjects: true }) as unknown as string[];
 
   const fetchMusicians = useCallback((locale: string) => getMusicians(locale), []);
   const musiciansResource = useLocalizedResource<Musician>({
@@ -132,7 +138,9 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
                     <dt className="text-xs uppercase tracking-wide text-coastal-gray mb-1">
                       {Array.isArray(overviewLabels) ? overviewLabels[i] : row.label}
                     </dt>
-                    <dd className="text-sm font-bold text-deep-ocean break-keep">{row.value}</dd>
+                    <dd className="text-sm font-bold text-deep-ocean break-keep">
+                      {Array.isArray(overviewValues) ? overviewValues[i] : row.value}
+                    </dd>
                   </div>
                 ))}
               </dl>
@@ -235,45 +243,64 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
               {/* 숙소 기본 정보 */}
               <h3 className="text-base font-semibold text-jeju-ocean mb-3">{s('lodging_details_title')}</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                {LODGINGS.map((l) => (
-                  <div key={l.name} className="rounded-xl border border-seafoam/40 bg-white p-4 shadow-sm">
-                    <p className="font-bold text-deep-ocean">{l.name}</p>
-                    <p className="text-xs text-coastal-gray mb-3">{l.address}</p>
-                    <ul className="space-y-1 mb-3">
-                      {l.rooms.map((r) => (
-                        <li key={r} className="text-sm text-coastal-gray leading-snug">· {r}</li>
-                      ))}
-                    </ul>
-                    <div className="space-y-1 border-t border-seafoam/30 pt-3">
-                      {l.contacts.map((c) => (
-                        <p key={c.when} className="text-sm text-coastal-gray">
-                          <span className="text-coastal-gray/70">{c.when} · {c.name}</span>{' '}
-                          <a href={phoneHref(c.phone)} className="font-semibold text-jeju-ocean hover:underline">
-                            {c.phone}
-                          </a>
-                        </p>
-                      ))}
+                {LODGINGS.map((l, li) => {
+                  const lI18n = Array.isArray(lodgingsI18n) ? lodgingsI18n[li] : null;
+                  const displayAddress = lI18n?.address ?? l.address;
+                  const displayRooms   = lI18n?.rooms   ?? l.rooms;
+                  const displayNote    = lI18n?.note    ?? l.note;
+                  return (
+                    <div key={l.name} className="rounded-xl border border-seafoam/40 bg-white p-4 shadow-sm">
+                      <p className="font-bold text-deep-ocean">{l.name}</p>
+                      <p className="text-xs text-coastal-gray mb-3">{displayAddress}</p>
+                      <ul className="space-y-1 mb-3">
+                        {displayRooms.map((r) => (
+                          <li key={r} className="text-sm text-coastal-gray leading-snug">· {r}</li>
+                        ))}
+                      </ul>
+                      <div className="space-y-1 border-t border-seafoam/30 pt-3">
+                        {l.contacts.map((c, ci) => (
+                          <p key={c.when} className="text-sm text-coastal-gray">
+                            <span className="text-coastal-gray/70">
+                              {(Array.isArray(lodgingContactLabels) ? lodgingContactLabels[ci] : c.when)} · {c.name}
+                            </span>{' '}
+                            <a href={phoneHref(c.phone)} className="font-semibold text-jeju-ocean hover:underline">
+                              {c.phone}
+                            </a>
+                          </p>
+                        ))}
+                      </div>
+                      {displayNote && <p className="mt-2 text-xs text-coastal-gray/80">📍 {displayNote}</p>}
                     </div>
-                    {l.note && <p className="mt-2 text-xs text-coastal-gray/80">📍 {l.note}</p>}
-                  </div>
-                ))}
+                  );
+                })}
               </div>
               <p className="text-sm text-coastal-gray mb-8">{s('lodging_extra_note')}</p>
 
               {/* 일자별 배정 */}
               <h3 className="text-base font-semibold text-jeju-ocean mb-3">{s('lodging_assignments_title')}</h3>
-              {ASSIGN_TABLES.map((tbl) => (
-                <AssignmentTable key={tbl.title} table={tbl} />
-              ))}
+              {ASSIGN_TABLES.map((tbl) => {
+                const roomMap = (typeof assignRoomNameMap === 'object' && !Array.isArray(assignRoomNameMap))
+                  ? assignRoomNameMap as Record<string, string>
+                  : {};
+                const header0: string = (typeof assignRoomHeader === 'string' && assignRoomHeader) ? assignRoomHeader : (tbl.headers[0] ?? '방');
+                const translatedTable = {
+                  ...tbl,
+                  headers: [header0, ...tbl.headers.slice(1)] as string[],
+                  rows: tbl.rows.map((row) => { const k = row[0] ?? ''; return [roomMap[k] ?? k, ...row.slice(1)]; }),
+                };
+                return <AssignmentTable key={tbl.title} table={translatedTable} />;
+              })}
 
               {/* 기타 배정 */}
               <h4 className="text-base font-semibold text-jeju-ocean mb-2 mt-6">{s('lodging_other_title')}</h4>
               <div className="overflow-hidden rounded-xl border border-seafoam/40">
                 <ul className="divide-y divide-seafoam/30">
-                  {ETC_LODGING.map((e) => (
+                  {ETC_LODGING.map((e, ei) => (
                     <li key={e.name} className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 px-4 py-3">
                       <span className="font-medium text-deep-ocean sm:w-48 sm:flex-shrink-0">{e.name}</span>
-                      <span className="text-sm text-coastal-gray">{e.detail}</span>
+                      <span className="text-sm text-coastal-gray">
+                        {Array.isArray(etcLodgingDetails) ? etcLodgingDetails[ei] : e.detail}
+                      </span>
                     </li>
                   ))}
                 </ul>
