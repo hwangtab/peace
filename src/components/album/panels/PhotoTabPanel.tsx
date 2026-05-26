@@ -44,7 +44,7 @@ const PhotoTabPanel: React.FC<PhotoTabPanelProps> = ({ albumPhotos, onImageClick
                 ))}
             </div>
             <div className="text-center mt-12">
-                <Button to="/gallery?filter=album-2024" variant="primary">
+                <Button to="/gallery?filter=album-2024" variant="outline">
                     {t('all_photos')}
                 </Button>
             </div>

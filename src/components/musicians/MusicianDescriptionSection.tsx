@@ -49,7 +49,7 @@ export default function MusicianDescriptionSection({
                 </Button>
               )}
               {fundingUrl && (
-                <Button href={fundingUrl} variant="primary" size="sm" shape="rounded" external utmContent={`musician-${musician.id}`}>
+                <Button href={fundingUrl} variant="gold" size="sm" shape="rounded" external utmContent={`musician-${musician.id}`}>
                   {t(`camp.ticketing_${latestCamp?.year ?? camps[camps.length - 1]?.year}`, { defaultValue: t('camp.cta_final_button') })} &rarr;
                 </Button>
               )}

@@ -70,7 +70,7 @@ const TrackCard = React.memo(({
                     className="p-4"
                 >
                     {track.audioUrl && (
-                        <div className="mt-4 mb-6 sm:mb-8">
+                        <div className="mt-4 mb-6 md:mb-8">
                             <AudioPlayer
                                 audioUrl={track.audioUrl}
                                 isPlaying={currentlyPlaying}
@@ -82,7 +82,7 @@ const TrackCard = React.memo(({
                     )}
 
                     {track.description && (
-                        <div className="mb-6 sm:mb-8">
+                        <div className="mb-6 md:mb-8">
                             <div className="flex items-center mb-4">
                                 <h4 className="text-lg font-serif text-jeju-ocean">{t('common.track_desc')}</h4>
                                 <div className="flex-grow ml-3 sm:ml-4 h-px bg-coastal-gray/20" />
@@ -92,7 +92,7 @@ const TrackCard = React.memo(({
                     )}
 
                     {track.lyrics && (
-                        <div className="mb-6 sm:mb-8">
+                        <div className="mb-6 md:mb-8">
                             <div className="flex items-center mb-4">
                                 <h4 className="text-lg font-serif text-jeju-ocean">{t('common.lyrics')}</h4>
                                 <div className="flex-grow ml-3 sm:ml-4 h-px bg-coastal-gray/20" />
