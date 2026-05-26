@@ -104,15 +104,15 @@
       "2층 오른쪽방": "2F Right Rm"
     },
     "etc_lodging_details": [
-      "Jun 2–9: 낭&탄탄's home",
+      "Jun 2–9: Nang & Tantan's home",
       "Jun 6–7: café space",
-      "Jun 3,4,8: 새방밧; Jun 5,6,7: assigned above",
-      "Jun 3,4,8: 새방밧; Jun 5,6,7: 이상's home",
-      "Jun 3,4,8: 새방밧; Jun 5,6,7: assigned above",
-      "Jun 8 (3 people): 새방밧; Jun 5,6,7: assigned above",
-      "Jun 3,4: 새방밧; Jun 6: 누림펜션 (36 Gangjeongha-ro, Seogwipo); Jun 5,7: assigned above",
-      "Jun 6: 누림펜션 (36 Gangjeongha-ro, Seogwipo)",
-      "Jun 6,7: 누림펜션 (36 Gangjeongha-ro, Seogwipo)"
+      "Jun 3,4,8: Saebangbat; Jun 5,6,7: assigned above",
+      "Jun 3,4,8: Saebangbat; Jun 5,6,7: Yi Sang's home",
+      "Jun 3,4,8: Saebangbat; Jun 5,6,7: assigned above",
+      "Jun 8 (3 people): Saebangbat; Jun 5,6,7: assigned above",
+      "Jun 3,4: Saebangbat; Jun 6: Nurim Pension (36 Gangjeongha-ro, Seogwipo); Jun 5,7: assigned above",
+      "Jun 6: Nurim Pension (36 Gangjeongha-ro, Seogwipo)",
+      "Jun 6,7: Nurim Pension (36 Gangjeongha-ro, Seogwipo)"
     ],
     "section_info": "Core Info",
     "rain_note": "※ In case of rain, the event will be split across 할망물식당 and the café space simultaneously.",
@@ -358,6 +358,132 @@
         "role": "Volunteers",
         "people": "타투라쿤, 그린씨, 조은, 애나, 유니타, 양상, 정훈, 버들, 타라, 찬, 자파리 3인"
       }
+    ],
+    "lodging_names": [
+      "St. Francis Peace Center",
+      "Seobu Guesthouse",
+      "Saebangbat"
+    ],
+    "assign_tables_i18n": [
+      {
+        "title": "St. Francis Peace Center",
+        "rows": [
+          [
+            "3F Rm 1",
+            "Namsu",
+            "Namsu, Myöng",
+            "Namsu, Kar",
+            "Namsu, Kar"
+          ],
+          [
+            "3F Rm 2",
+            "Myöng",
+            "Jinukonda, Namukkon Mingeon",
+            "Myöng, On Gayeong",
+            "Myöng, On Gayeong"
+          ],
+          [
+            "3F Rm 3",
+            "Jai",
+            "Jai",
+            "Jai, Son Hyeonsuk",
+            "Jai, Son Hyeonsuk"
+          ],
+          [
+            "3F Rm 4",
+            "Jang Hana",
+            "Son Jiyeon",
+            "Momo",
+            "Jang Hana"
+          ],
+          [
+            "3F Rm 5",
+            "Tatourakon",
+            "HANASH",
+            "Bloku (male × 1), Jet Sizer",
+            "Tatourakon"
+          ],
+          [
+            "3F Chaplain Rm",
+            "",
+            "Materials Found",
+            "Jinukonda, Meridies, Sabaha, Site",
+            "Bulgasari Improv × 3"
+          ],
+          [
+            "5F Attic",
+            "",
+            "Meridies, Taejun, Jeonghun, Guitar & Organ",
+            "Honey Whisky",
+            "Taejun, Jeonghun"
+          ]
+        ]
+      },
+      {
+        "title": "Seobu Guesthouse",
+        "rows": [
+          [
+            "2F Rm 1",
+            "Kim Dongsan & Blue Neighbor × 4",
+            "Kim Dongsan & Blue Neighbor × 4",
+            "Kwon Donghui"
+          ],
+          [
+            "2F Rm 2",
+            "Chichi, Hwang Kyeongha, Kwon Donghui",
+            "Chichi, Hwang Kyeongha, Kwon Donghui, Kim Dongsan & Blue Neighbor × 1",
+            "Chichi, Hwang Kyeongha"
+          ],
+          [
+            "2F Rm 3",
+            "Bloku (males × 4)",
+            "Joon Lee (× 2)",
+            "Ha Juwon, Oh Jaehwan"
+          ],
+          [
+            "2F Rm 4",
+            "Chichi + 2 female companions",
+            "Chichi + 2 female companions",
+            "Chichi + 2 female companions"
+          ],
+          [
+            "3F",
+            "Bloku (females × 9), Jang Hana, Duri, Tatourakon, Yunseung",
+            "Bloku (females × 3), Jang Hana, Duri, Tatourakon, Yunseung",
+            "Kim Dongsan & Blue Neighbor × 5"
+          ]
+        ]
+      },
+      {
+        "title": "Saebangbat",
+        "rows": [
+          [
+            "2F Left Rm",
+            "TAGI + dog",
+            "TAGI + dog",
+            "TAGI + dog",
+            "TAGI + dog"
+          ],
+          [
+            "2F Right Rm",
+            "Jeong Jinseok, Chichi, Hwang Kyeongha, Jeonghun",
+            "Jet Sizer, Site, Sabaha",
+            "Anti Stress, Taejun",
+            "Jet Sizer, Site, Sabaha"
+          ]
+        ]
+      }
+    ],
+    "etc_lodging_names": [
+      "Gangga Himalaya + 1",
+      "Samgak Jeonpasa + dog",
+      "Chichi",
+      "Jeong Jinseok",
+      "Hwang Kyeongha",
+      "Kim Dongsan & Blue Neighbor",
+      "Jeonghun",
+      "Heo Jeonghyeok",
+      "Im Jeongdeuk"
     ]
   }
 }
