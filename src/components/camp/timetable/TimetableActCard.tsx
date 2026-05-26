@@ -97,7 +97,9 @@ const TimetableActCard: React.FC<TimetableActCardProps> = ({
 
       <div className="flex min-w-0 flex-1 flex-col gap-1">
         <p className="break-words text-base font-bold leading-tight text-deep-ocean sm:text-lg">
-          {act.name}
+          {musicians.length > 0
+            ? musicians.map((m) => m.name).join(' · ')
+            : act.name}
         </p>
         {primary?.shortDescription && (
           <p className="break-words text-pretty text-sm text-coastal-gray transition-colors group-hover:text-deep-ocean">
@@ -113,14 +115,14 @@ const TimetableActCard: React.FC<TimetableActCardProps> = ({
       <Link
         href={`/camps/${campYear}/musicians/${primary.id}`}
         className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
-        aria-label={`${act.start} ${act.name}`}
+        aria-label={`${act.start} ${musicians.length > 0 ? musicians.map((m) => m.name).join(' · ') : act.name}`}
       >
         {content}
       </Link>
     );
   }
 
-  return <div aria-label={`${act.start} ${act.name}`}>{content}</div>;
+  return <div aria-label={`${act.start} ${musicians.length > 0 ? musicians.map((m) => m.name).join(' · ') : act.name}`}>{content}</div>;
 };
 
 export default TimetableActCard;
