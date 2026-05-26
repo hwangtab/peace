@@ -69,7 +69,7 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
   const overviewValues       = s('overview_values',        { returnObjects: true }) as unknown as string[];
   const lodgingNotice        = s('lodging_notice',         { returnObjects: true }) as unknown as string[];
   const lodgingContactLabels = s('lodging_contact_labels', { returnObjects: true }) as unknown as string[];
-  const lodgingsI18n         = s('lodgings_i18n',          { returnObjects: true }) as unknown as { address: string; rooms: string[]; note: string | null }[];
+  const lodgingsI18n         = s('lodgings_i18n',          { returnObjects: true }) as unknown as { address: string; rooms: string[]; note: string | null; contact_names?: string[] }[];
   const assignRoomHeader     = s('assign_room_header') as string;
   const assignRoomNameMap    = s('assign_room_name_map',   { returnObjects: true }) as unknown as Record<string, string>;
   const assignTablesI18n     = s('assign_tables_i18n',     { returnObjects: true }) as unknown as { title: string; rows: string[][] }[];
@@ -266,7 +266,7 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
                         {l.contacts.map((c, ci) => (
                           <p key={c.when} className="text-sm text-coastal-gray">
                             <span className="text-coastal-gray/70">
-                              {(Array.isArray(lodgingContactLabels) ? lodgingContactLabels[ci] : c.when)} · {c.name}
+                              {(Array.isArray(lodgingContactLabels) ? lodgingContactLabels[ci] : c.when)} · {lI18n?.contact_names?.[ci] ?? c.name}
                             </span>{' '}
                             <a href={phoneHref(c.phone)} className="font-semibold text-jeju-ocean hover:underline">
                               {c.phone}
