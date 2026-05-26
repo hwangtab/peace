@@ -68,7 +68,11 @@
           "4F: communal dining room + 1 room (shared hallway bathroom/shower)",
           "5F: attic room × 1 (en-suite bathroom/shower)"
         ],
-        "note": "Use 농협 parking lot if main lot is full"
+        "note": "Use Nonghyup parking lot if main lot is full",
+        "contact_names": [
+          "Yi Sang",
+          "Namsu"
+        ]
       },
       {
         "address": "602 Ieodo-ro, Seogwipo-si",
@@ -76,14 +80,22 @@
           "2F: 4 rooms (en-suite bathroom/shower), shared kitchen & lounge",
           "3F: 2 rooms (open kitchen & lounge, en-suite bathroom/shower)"
         ],
-        "note": "Park at 김영관센터 lot and walk"
+        "note": "Park at Kim Yeong-gwan Center lot and walk",
+        "contact_names": [
+          "Yi Sang",
+          "Jang Hana"
+        ]
       },
       {
         "address": "53 Gangjeong-tongmul-ro, Seogwipo-si",
         "rooms": [
           "2F: 2 rooms (shared bathroom/shower/kitchen in hallway)"
         ],
-        "note": null
+        "note": null,
+        "contact_names": [
+          "Yi Sang",
+          "Mingki"
+        ]
       }
     ],
     "assign_room_header": "Room",
@@ -115,9 +127,9 @@
       "Jun 6,7: Nurim Pension (36 Gangjeongha-ro, Seogwipo)"
     ],
     "section_info": "Core Info",
-    "rain_note": "※ In case of rain, the event will be split across 할망물식당 and the café space simultaneously.",
+    "rain_note": "※ In case of rain, the event will be split across Hallmangmul Restaurant and the café space simultaneously.",
     "section_schedule": "Operations Schedule (Prep to Breakdown)",
-    "schedule_note": "Anyone available can join regardless of role. Please let us know your available schedule in advance! (Lead: 이상)",
+    "schedule_note": "Anyone available can join regardless of role. Please let us know your available schedule in advance! (Lead: Yi Sang)",
     "section_roles": "Role Assignments",
     "section_timetable": "Performance Timetable",
     "timetable_rain_note": "※ The rain-day performance timetable will be shared separately.",
@@ -126,11 +138,11 @@
     "lodging_details_title": "Accommodation Details",
     "lodging_assignments_title": "Daily Assignments",
     "lodging_other_title": "Other",
-    "lodging_extra_note": "※ Separate lodging arrangements for 강가히말라야 and 삼각전파사 will be communicated directly.",
+    "lodging_extra_note": "※ Separate lodging arrangements for Gangga Himalaya and Samgak Jeonpasa will be communicated directly.",
     "section_market": "Market — End-the-War Market",
     "market_items": [
       "Up to 15 seller teams · Cancelled in case of rain",
-      "남수 and 자이 handle seller communication and inquiries."
+      "Namsu and Jai handle seller communication and inquiries."
     ],
     "market_cta_title": "Apply as a Market Seller",
     "market_cta_desc": "If you'd like to participate as a seller, please apply via the Google Form below.",
@@ -147,13 +159,13 @@
       {
         "date": "6/2",
         "tasks": [
-          "새방밧 bedding laundry & cleaning"
+          "Saebangbat bedding laundry & cleaning"
         ]
       },
       {
         "date": "6/3",
         "tasks": [
-          "강정평화센터 cleanup, collect wooden pallets; flag prep (starting afternoon)"
+          "Gangjeong Peace Center cleanup, collect wooden pallets; flag prep (starting afternoon)"
         ]
       },
       {
@@ -188,37 +200,37 @@
       {
         "date": "6/8",
         "tasks": [
-          "강정 Sports Park cleanup, accommodation cleanup, final cleanup (starting 9:00)"
+          "Gangjeong Sports Park cleanup, accommodation cleanup, final cleanup (starting 9:00)"
         ]
       }
     ],
     "role_assignments": [
       {
         "role": "Volunteer Coordination Lead",
-        "people": "이상, 장하나",
+        "people": "Yi Sang, Jang Hana",
         "notes": [
           "Volunteer organization / task guideline distribution / overall communication"
         ]
       },
       {
         "role": "Organizing Committee Booth",
-        "people": "장하나, 윰, 애나, 유니타, 찬",
+        "people": "Jang Hana, Yum, Aena, Yunita, Chan",
         "notes": [
           "Ticket & T-shirt confirmation, sales & guidance (3–4 working, 1–2 resting in rotation)",
-          "Arrive 1 hour before the event · 장하나 & 윰 will brief on-site"
+          "Arrive 1 hour before the event · Jang Hana & Yum will brief on-site"
         ]
       },
       {
         "role": "Silkscreen Assistant",
-        "people": "까르",
+        "people": "Kar",
         "notes": [
           "Day 5 & 6 (1 session on Day 5, 3 sessions on Day 6)",
-          "Check arrival time with 그린씨"
+          "Check arrival time with Greenssi"
         ]
       },
       {
         "role": "Paella Assistant",
-        "people": "Day 6: 자파리 ×3 / Day 7: 조은, 타라",
+        "people": "Day 6: Jafari ×3 / Day 7: Jo Eun, Tara",
         "notes": [
           "Day 6 & 7 (1 working, 1 resting in rotation)",
           "Sales support (payment info, transfer confirmation, serving), dishwashing",
@@ -227,16 +239,16 @@
       },
       {
         "role": "Market & Musician Guide",
-        "people": "남수, 자이, 밍키 (Day 5)",
+        "people": "Namsu, Jai, Mingki (Day 5)",
         "notes": [
           "Market seller communication and inquiry desk",
           "Check musician list, distribute lanyards & water, direct to waiting area",
-          "남수 to brief 밍키 on tasks and call time"
+          "Namsu to brief Mingki on tasks and call time"
         ]
       },
       {
         "role": "Parking Guide",
-        "people": "정진석, 진석 지인, 버들",
+        "people": "Jeong Jinseok, Jinseok's associate, Beodeul",
         "notes": [
           "Parking guidance (2 working, 1 resting in rotation)",
           "Call time 10:00 AM (9:00 AM on Day 7) · briefed on Day 5"
@@ -244,7 +256,7 @@
       },
       {
         "role": "Restroom Guide",
-        "people": "정훈, 양상",
+        "people": "Jeonghun, Yangsang",
         "notes": [
           "Gender-neutral restroom operation & mid-event cleaning (1 working, 1 resting in rotation)",
           "Arrive 1 hour before the event"
@@ -252,7 +264,7 @@
       },
       {
         "role": "Accommodation Manager",
-        "people": "장하나, 남수, 밍키",
+        "people": "Jang Hana, Namsu, Mingki",
         "notes": [
           "Daily check-in/out confirmation → post room list outside doors by 11:00 AM · accommodation inquiry desk · waste sorting check",
           "Briefed on arrival in the village"
@@ -260,28 +272,28 @@
       },
       {
         "role": "Gender Equality Manager",
-        "people": "이상, 윰",
+        "people": "Yi Sang, Yum",
         "notes": [
           "Support survivors and separate accused in cases of sexual violence"
         ]
       },
       {
         "role": "General Complaints Manager",
-        "people": "장하나",
+        "people": "Jang Hana",
         "notes": [
           "Handle general complaints and issues"
         ]
       },
       {
         "role": "Stage & Venue Setup",
-        "people": "가능한 모두",
+        "people": "All available",
         "notes": [
           "Stage construction, smoking area, booth signage, equipment setup, etc."
         ]
       },
       {
         "role": "Breakdown & Cleanup",
-        "people": "가능한 모두",
+        "people": "All available",
         "notes": [
           "Leave no trace"
         ]
@@ -296,67 +308,67 @@
     "staff": [
       {
         "role": "General Director",
-        "people": "이상"
+        "people": "Yi Sang"
       },
       {
         "role": "Market Planning",
-        "people": "남수, 자이"
+        "people": "Namsu, Jai"
       },
       {
         "role": "Volunteer Organization & Communication Lead",
-        "people": "이상, 장하나"
+        "people": "Yi Sang, Jang Hana"
       },
       {
         "role": "Artist Communication",
-        "people": "곽민, 박예찬, 자이, 황경하"
+        "people": "Gwak Min, Bak Yechan, Jai, Hwang Kyeongha"
       },
       {
         "role": "Tumblbug",
-        "people": "장하나"
+        "people": "Jang Hana"
       },
       {
         "role": "On-site Preparation",
-        "people": "이상, 장하나"
+        "people": "Yi Sang, Jang Hana"
       },
       {
         "role": "Group Organizing",
-        "people": "이상, 장하나"
+        "people": "Yi Sang, Jang Hana"
       },
       {
         "role": "Publicity",
-        "people": "이상, 장하나, 황경하, 치치"
+        "people": "Yi Sang, Jang Hana, Hwang Kyeongha, Chichi"
       },
       {
         "role": "Design",
-        "people": "김홍범"
+        "people": "Kim Hongbeom"
       },
       {
         "role": "Accounting",
-        "people": "장하나"
+        "people": "Jang Hana"
       },
       {
         "role": "Stage & Technical Director",
-        "people": "황경하"
+        "people": "Hwang Kyeongha"
       },
       {
         "role": "Sound Director",
-        "people": "황경하, 곽민"
+        "people": "Hwang Kyeongha, Gwak Min"
       },
       {
         "role": "On-site Operations / Volunteer Coordination & Management / Stage & Venue Design & Production",
-        "people": "윰, 이상, 이한주, 정진석, 장하나"
+        "people": "Yum, Yi Sang, Yi Hanju, Jeong Jinseok, Jang Hana"
       },
       {
         "role": "Documentary Production",
-        "people": "치치, 하띠, 황경하"
+        "people": "Chichi, Hatti, Hwang Kyeongha"
       },
       {
         "role": "Photo Archive",
-        "people": "권동희, 김동희"
+        "people": "Kwon Donghui, Kim Donghui"
       },
       {
         "role": "Volunteers",
-        "people": "타투라쿤, 그린씨, 조은, 애나, 유니타, 양상, 정훈, 버들, 타라, 찬, 자파리 3인"
+        "people": "Tatourakon, Greenssi, Jo Eun, Aena, Yunita, Yangsang, Jeonghun, Beodeul, Tara, Chan, Jafari × 3"
       }
     ],
     "lodging_names": [
