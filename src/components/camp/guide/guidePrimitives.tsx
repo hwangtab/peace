@@ -25,7 +25,7 @@ export const SectionHeading: React.FC<{ id: string; index: number; title: string
 }) => (
   <h2
     id={id}
-    className="scroll-mt-28 text-xl sm:text-2xl font-bold text-deep-ocean mb-4 flex items-baseline gap-2"
+    className="scroll-mt-28 typo-h3 mb-4 flex items-baseline gap-2"
   >
     <span className="text-jeju-ocean tabular-nums">{index}.</span>
     <span>{title}</span>

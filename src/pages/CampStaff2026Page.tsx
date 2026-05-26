@@ -479,7 +479,7 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
         <Container size="content" className="text-center">
           <Link
             href="/camps/2026"
-            className="inline-flex items-center gap-2 text-sm text-jeju-ocean hover:underline font-medium"
+            className="inline-flex items-center gap-2 text-sm text-jeju-ocean hover:underline font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean rounded"
           >
             <span aria-hidden="true">←</span>
             {t('nav.camp_2026', { defaultValue: '캠프 2026' })}

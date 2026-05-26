@@ -91,7 +91,7 @@ const CampGuidelines2026Page: React.FC = () => {
 
             {/* 2. 금지행동 */}
             <motion.div variants={itemVariants}>
-              <h2 className="text-xl font-bold text-deep-ocean mb-2">{g('prohibited_title')}</h2>
+              <h2 className="typo-h3 mb-2">{g('prohibited_title')}</h2>
               <p className="typo-body text-coastal-gray mb-4">{g('prohibited_intro')}</p>
               <GuidelineSection
                 title=""
@@ -135,7 +135,7 @@ const CampGuidelines2026Page: React.FC = () => {
 
             {/* 5. 신고 방법 */}
             <motion.div variants={itemVariants}>
-              <h2 className="text-xl font-bold text-deep-ocean mb-2">{g('report_title')}</h2>
+              <h2 className="typo-h3 mb-2">{g('report_title')}</h2>
               <p className="typo-body text-coastal-gray mb-4">{g('report_intro')}</p>
               <ul className="space-y-2">
                 {arr('report_items').map((item) => (
@@ -151,7 +151,7 @@ const CampGuidelines2026Page: React.FC = () => {
 
             {/* 6. 주최 측 대응 방향 */}
             <motion.div variants={itemVariants}>
-              <h2 className="text-xl font-bold text-deep-ocean mb-6">{g('response_title')}</h2>
+              <h2 className="typo-h3 mb-6">{g('response_title')}</h2>
 
               {/* 성희롱 */}
               <div className="mb-6">
@@ -310,7 +310,7 @@ const CampGuidelines2026Page: React.FC = () => {
 
             {/* 11. 문의 */}
             <motion.div variants={itemVariants}>
-              <h2 className="text-xl font-bold text-deep-ocean mb-3">{g('contact_title')}</h2>
+              <h2 className="typo-h3 mb-3">{g('contact_title')}</h2>
               <div className="bg-sky-horizon/40 border border-seafoam/30 rounded-xl p-4 sm:p-6">
                 <p className="text-sm font-semibold text-deep-ocean mb-1">
                   <a
@@ -332,7 +332,7 @@ const CampGuidelines2026Page: React.FC = () => {
         <Container size="content" className="text-center">
           <Link
             href="/camps/2026"
-            className="inline-flex items-center gap-2 text-sm text-jeju-ocean hover:underline font-medium"
+            className="inline-flex items-center gap-2 text-sm text-jeju-ocean hover:underline font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean rounded"
           >
             <span aria-hidden="true">←</span>
             {t('translation:nav.camp_2026')}
