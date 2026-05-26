@@ -34,7 +34,7 @@ export default function MusicianHeroSection({ musician, fundingUrl, isCampPage }
           />
         </div>
       )}
-      <div className="relative z-10 w-full pt-36 sm:pt-28 md:pt-24 pb-8 sm:pb-12">
+      <div className="relative z-10 w-full pt-36 sm:pt-28 md:pt-24 pb-8 md:pb-12">
         <Container size="content">
           <div className="flex flex-col md:flex-row gap-6 md:gap-10 items-center">
             {musician.imageUrl && (

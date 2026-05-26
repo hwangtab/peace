@@ -139,7 +139,7 @@ const VideoDetailPage: React.FC<VideoDetailPageProps> = ({
               >
                 {t('videos.detail.watch_on_youtube')}
               </Button>
-              <Button to="/videos" variant="outline" size="sm">
+              <Button to="/videos" variant="back" size="sm">
                 {t('videos.detail.back_to_list')}
               </Button>
             </div>

@@ -4,6 +4,7 @@ import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
 import MusicianCard from './MusicianCard';
 import Button from '../common/Button';
+import SectionHeader from '../common/SectionHeader';
 
 interface OtherMusiciansProps {
   otherMusicians: Musician[];
@@ -27,9 +28,7 @@ export default function OtherMusiciansSection({
   return (
     <Section background="white" paddingTop="normal" paddingBottom="loose">
       <Container size="wide">
-        <h2 className="typo-h2 text-jeju-ocean text-center mb-12 md:mb-16">
-          {otherMusiciansTitle || t('nav.musician')}
-        </h2>
+        <SectionHeader title={otherMusiciansTitle || t('nav.musician')} />
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
           {otherMusicians.slice(0, 6).map((m) => (
             <MusicianCard
