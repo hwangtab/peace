@@ -72,7 +72,10 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
   const lodgingsI18n         = s('lodgings_i18n',          { returnObjects: true }) as unknown as { address: string; rooms: string[]; note: string | null }[];
   const assignRoomHeader     = s('assign_room_header') as string;
   const assignRoomNameMap    = s('assign_room_name_map',   { returnObjects: true }) as unknown as Record<string, string>;
+  const assignTablesI18n     = s('assign_tables_i18n',     { returnObjects: true }) as unknown as { title: string; rows: string[][] }[];
   const etcLodgingDetails    = s('etc_lodging_details',    { returnObjects: true }) as unknown as string[];
+  const etcLodgingNames      = s('etc_lodging_names',      { returnObjects: true }) as unknown as string[];
+  const lodgingNames         = s('lodging_names',          { returnObjects: true }) as unknown as string[];
 
   const fetchMusicians = useCallback((locale: string) => getMusicians(locale), []);
   const musiciansResource = useLocalizedResource<Musician>({
@@ -250,7 +253,9 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
                   const displayNote    = lI18n?.note    ?? l.note;
                   return (
                     <div key={l.name} className="rounded-xl border border-seafoam/40 bg-white p-4 shadow-sm">
-                      <p className="font-bold text-deep-ocean">{l.name}</p>
+                      <p className="font-bold text-deep-ocean">
+                      {Array.isArray(lodgingNames) ? lodgingNames[li] : l.name}
+                    </p>
                       <p className="text-xs text-coastal-gray mb-3">{displayAddress}</p>
                       <ul className="space-y-1 mb-3">
                         {displayRooms.map((r) => (
@@ -278,15 +283,17 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
 
               {/* 일자별 배정 */}
               <h3 className="text-base font-semibold text-jeju-ocean mb-3">{s('lodging_assignments_title')}</h3>
-              {ASSIGN_TABLES.map((tbl) => {
-                const roomMap = (typeof assignRoomNameMap === 'object' && !Array.isArray(assignRoomNameMap))
-                  ? assignRoomNameMap as Record<string, string>
-                  : {};
+              {ASSIGN_TABLES.map((tbl, i) => {
+                const tblI18n = Array.isArray(assignTablesI18n) ? assignTablesI18n[i] : null;
                 const header0: string = (typeof assignRoomHeader === 'string' && assignRoomHeader) ? assignRoomHeader : (tbl.headers[0] ?? '방');
+                const rows = tblI18n?.rows ?? (() => {
+                  const roomMap = (typeof assignRoomNameMap === 'object' && !Array.isArray(assignRoomNameMap)) ? assignRoomNameMap as Record<string, string> : {};
+                  return tbl.rows.map((row) => { const k = row[0] ?? ''; return [roomMap[k] ?? k, ...row.slice(1)]; });
+                })();
                 const translatedTable = {
-                  ...tbl,
+                  title: tblI18n?.title ?? tbl.title,
                   headers: [header0, ...tbl.headers.slice(1)] as string[],
-                  rows: tbl.rows.map((row) => { const k = row[0] ?? ''; return [roomMap[k] ?? k, ...row.slice(1)]; }),
+                  rows,
                 };
                 return <AssignmentTable key={tbl.title} table={translatedTable} />;
               })}
@@ -297,7 +304,9 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
                 <ul className="divide-y divide-seafoam/30">
                   {ETC_LODGING.map((e, ei) => (
                     <li key={e.name} className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 px-4 py-3">
-                      <span className="font-medium text-deep-ocean sm:w-48 sm:flex-shrink-0">{e.name}</span>
+                      <span className="font-medium text-deep-ocean sm:w-48 sm:flex-shrink-0">
+                        {Array.isArray(etcLodgingNames) ? etcLodgingNames[ei] : e.name}
+                      </span>
                       <span className="text-sm text-coastal-gray">
                         {Array.isArray(etcLodgingDetails) ? etcLodgingDetails[ei] : e.detail}
                       </span>
