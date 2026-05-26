@@ -59,12 +59,12 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
     [t],
   );
 
-  const navItems    = s('nav',                { returnObjects: true }) as NavItem[];
-  const opSchedule  = s('operation_schedule', { returnObjects: true }) as ScheduleEntry[];
-  const roleItems   = s('role_assignments',   { returnObjects: true }) as RoleEntry[];
-  const rewardItems = s('rewards',            { returnObjects: true }) as string[];
-  const staffItems  = s('staff',              { returnObjects: true }) as StaffEntry[];
-  const marketItems = s('market_items',       { returnObjects: true }) as string[];
+  const navItems    = s('nav',                { returnObjects: true }) as unknown as NavItem[];
+  const opSchedule  = s('operation_schedule', { returnObjects: true }) as unknown as ScheduleEntry[];
+  const roleItems   = s('role_assignments',   { returnObjects: true }) as unknown as RoleEntry[];
+  const rewardItems = s('rewards',            { returnObjects: true }) as unknown as string[];
+  const staffItems  = s('staff',              { returnObjects: true }) as unknown as StaffEntry[];
+  const marketItems = s('market_items',       { returnObjects: true }) as unknown as string[];
 
   const fetchMusicians = useCallback((locale: string) => getMusicians(locale), []);
   const musiciansResource = useLocalizedResource<Musician>({
