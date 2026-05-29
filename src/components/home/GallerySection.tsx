@@ -80,7 +80,7 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
             <AnimatePresence mode="sync" initial={false}>
               {filteredImages.map((image, index) => (
                 <AnimatedGalleryItem
-                  key={image.id}
+                  key={image.url}
                   image={image}
                   priority={priorityFirstImages && index < GALLERY_CONFIG.PRIORITY_IMAGE_THRESHOLD}
                   onClick={setSelectedImage}
