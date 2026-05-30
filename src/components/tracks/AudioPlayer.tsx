@@ -76,7 +76,7 @@ const AudioPlayer = React.memo(({ audioUrl, isPlaying, onPlayPause, title, artis
         }}
         role="slider"
         tabIndex={0}
-        aria-label={t('common.audio_position')}
+        aria-label={`${t('common.audio_position')}: ${title}`}
         aria-valuenow={Math.round(progress)}
         aria-valuemin={0}
         aria-valuemax={Math.round(duration)}
