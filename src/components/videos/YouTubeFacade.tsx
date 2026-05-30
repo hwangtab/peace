@@ -49,7 +49,7 @@ const YouTubeFacade: React.FC<YouTubeFacadeProps> = ({ videoId, title, thumbnail
         fill
         className="object-cover"
         unoptimized
-        loading="lazy"
+        priority
       />
       <button
         type="button"
