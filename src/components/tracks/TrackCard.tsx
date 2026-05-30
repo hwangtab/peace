@@ -20,6 +20,7 @@ export interface TrackCardProps {
     onPlay: () => void;
     musicianImageUrl?: string;
     alwaysExpanded?: boolean;
+    priority?: boolean;
 }
 
 const TrackCard = React.memo(({
@@ -30,6 +31,7 @@ const TrackCard = React.memo(({
     onPlay,
     musicianImageUrl,
     alwaysExpanded = false,
+    priority = false,
 }: TrackCardProps) => {
     const { t } = useTranslation();
     const showContent = alwaysExpanded || isExpanded;
@@ -50,6 +52,7 @@ const TrackCard = React.memo(({
                         fill
                         sizes="(max-width: 1024px) 100vw, 50vw"
                         className="object-cover"
+                        priority={priority}
                     />
                 </div>
             )}
