@@ -87,7 +87,7 @@ const TracksSection: React.FC<TracksSectionProps> = React.memo(
           </p>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4">
-            {tracks.map((track) => {
+            {tracks.map((track, index) => {
               const musician = relation.musicianByTrackId.get(track.id);
               return (
                 <TrackCard
@@ -99,6 +99,7 @@ const TracksSection: React.FC<TracksSectionProps> = React.memo(
                   onPlay={() => handlePlay(track.id)}
                   musicianImageUrl={musician?.imageUrl}
                   alwaysExpanded={hideSectionHeader}
+                  priority={hideSectionHeader && index < 2}
                 />
               );
             })}
