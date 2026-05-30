@@ -29,7 +29,7 @@ const AudioPlayer = React.memo(({ audioUrl, isPlaying, onPlayPause, title, artis
         <motion.button
           whileTap={{ scale: 0.95 }}
           onClick={onPlayPause}
-          aria-label={isPlaying ? t('common.pause') : t('common.play')}
+          aria-label={`${isPlaying ? t('common.pause') : t('common.play')}: ${title}`}
           className="w-10 h-10 flex items-center justify-center rounded-full bg-ocean-mist text-white hover:bg-jeju-ocean transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
         >
           {isPlaying ? (
