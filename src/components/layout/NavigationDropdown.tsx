@@ -60,8 +60,12 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(
 
     const currentPath = router.asPath;
 
-    // Check if any item is active
-    const isActive = items.some((item) =>
+    // 404 페이지 SSR 시 router.asPath 가 '/404' 로 떨어져 클라이언트의 실제 URL 과
+    // 어긋나면서 isActive 가 SSR(false) ↔ client(true) hydration mismatch 를
+    //일으키던 회귀. mount 이후에만 active 계산하도록 지연.
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => { setMounted(true); }, []);
+    const isActive = mounted && items.some((item) =>
       isRouteActive(currentPath, item.path, { locale: router.locale })
     );
 
