@@ -201,6 +201,11 @@
 
 html {
   scroll-behavior: smooth;
+  /* framer-motion useScroll({ target }) 가 offsetParent 체인을 따라 스크롤
+     컨테이너(=documentElement)의 position 을 검사 — 기본값 static 이면 측정
+     실패 경고를 매 페이지마다 띄움. relative 로 두면 viewport 와 동일한
+     containing block 으로 동작해 absolute/fixed 자식에 영향 없이 경고 차단. */
+  position: relative;
 }
 
 html,
