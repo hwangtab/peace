@@ -37,7 +37,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(
         >
           {t('nav.home')}
           {isPathActive(ROUTES.HOME, true) && (
-            <motion.div
+            <motion.span
               className={`absolute bottom-[-4px] left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
@@ -72,7 +72,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(
             >
               {t(item.nameKey)}
               {isPathActive(item.path) && (
-                <motion.div
+                <motion.span
                   className={`absolute bottom-[-4px] left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}

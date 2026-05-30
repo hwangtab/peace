@@ -91,7 +91,7 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(
           <span className="relative">
             {label}
             {isActive && (
-              <motion.div
+              <motion.span
                 className={`absolute bottom-[-4px] left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
