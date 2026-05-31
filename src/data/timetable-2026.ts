@@ -329,19 +329,19 @@ export const timetable2026: Timetable = {
           "start": "14:37",
           "end": "14:42",
           "type": "transition",
-          "name": "⟶ 5분 (다음: 이서영 - 솔로/듀오)",
+          "name": "⟶ 5분 (다음: 조약골 - 솔로/듀오)",
           "transitionMinutes": 5,
-          "nextActName": "이서영"
+          "nextActName": "조약골"
         },
         {
           "order": 6,
           "start": "14:42",
           "end": "15:07",
           "type": "performance",
-          "name": "이서영",
+          "name": "조약골",
           "scale": "solo",
           "musicianIds": [
-            12
+            44
           ]
         },
         {
@@ -389,19 +389,19 @@ export const timetable2026: Timetable = {
           "start": "16:07",
           "end": "16:12",
           "type": "transition",
-          "name": "⟶ 5분 (다음: 조약골 - 솔로/듀오)",
+          "name": "⟶ 5분 (다음: 이서영 - 솔로/듀오)",
           "transitionMinutes": 5,
-          "nextActName": "조약골"
+          "nextActName": "이서영"
         },
         {
           "order": 9,
           "start": "16:12",
           "end": "16:37",
           "type": "performance",
-          "name": "조약골",
+          "name": "이서영",
           "scale": "solo",
           "musicianIds": [
-            44
+            12
           ]
         },
         {
