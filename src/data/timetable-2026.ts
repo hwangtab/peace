@@ -449,19 +449,19 @@ export const timetable2026: Timetable = {
           "start": "17:37",
           "end": "17:42",
           "type": "transition",
-          "name": "⟶ 5분 (다음: 안티스트레스 - 솔로/듀오)",
+          "name": "⟶ 5분 (다음: 손현숙 - 솔로/듀오)",
           "transitionMinutes": 5,
-          "nextActName": "안티스트레스"
+          "nextActName": "손현숙"
         },
         {
           "order": 12,
           "start": "17:42",
           "end": "18:07",
           "type": "performance",
-          "name": "안티스트레스",
+          "name": "손현숙",
           "scale": "solo",
           "musicianIds": [
-            35
+            31
           ]
         },
         {
@@ -469,19 +469,19 @@ export const timetable2026: Timetable = {
           "start": "18:07",
           "end": "18:12",
           "type": "transition",
-          "name": "⟶ 5분 (다음: 손현숙 - 솔로/듀오)",
+          "name": "⟶ 5분 (다음: 안티스트레스 - 솔로/듀오)",
           "transitionMinutes": 5,
-          "nextActName": "손현숙"
+          "nextActName": "안티스트레스"
         },
         {
           "order": 13,
           "start": "18:12",
           "end": "18:37",
           "type": "performance",
-          "name": "손현숙",
+          "name": "안티스트레스",
           "scale": "solo",
           "musicianIds": [
-            31
+            35
           ]
         },
         {
