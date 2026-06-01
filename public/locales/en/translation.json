@@ -126,6 +126,7 @@
     }
   },
   "camp": {
+    "promote_cta": "Spread the word",
     "ordinal": "{{num}}",
     "not_found": "Camp Not Found",
     "not_found_desc": "The requested camp information could not be found.",

@@ -126,6 +126,7 @@
     }
   },
   "camp": {
+    "promote_cta": "Faites passer le mot",
     "ordinal": "{{num}}",
     "not_found": "Camp introuvable",
     "not_found_desc": "Les informations demandées sur le camp sont introuvables.",

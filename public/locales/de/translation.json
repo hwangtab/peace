@@ -126,6 +126,7 @@
     }
   },
   "camp": {
+    "promote_cta": "Weitersagen",
     "ordinal": "{{num}}",
     "not_found": "Camp nicht gefunden",
     "not_found_desc": "Die angeforderten Camp-Informationen wurden nicht gefunden.",

@@ -126,6 +126,7 @@
     }
   },
   "camp": {
+    "promote_cta": "Corre la voz",
     "ordinal": "{{num}}",
     "not_found": "Campamento no encontrado",
     "not_found_desc": "No se pudo encontrar la información del campamento solicitado.",

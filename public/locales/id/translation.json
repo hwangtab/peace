@@ -126,6 +126,7 @@
     }
   },
   "camp": {
+    "promote_cta": "Bantu sebarkan",
     "ordinal": "{{num}}",
     "not_found": "Kamp tidak ditemukan",
     "not_found_desc": "Informasi kamp yang diminta tidak ditemukan.",

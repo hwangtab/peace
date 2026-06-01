@@ -126,6 +126,7 @@
     }
   },
   "camp": {
+    "promote_cta": "함께 알리기",
     "ordinal": "제{{num}}회",
     "not_found": "캠프를 찾을 수 없습니다",
     "not_found_desc": "요청하신 캠프 정보를 찾을 수 없습니다.",

@@ -126,6 +126,7 @@
     }
   },
   "camp": {
+    "promote_cta": "一起宣传",
     "ordinal": "{{num}}",
     "not_found": "未找到营地",
     "not_found_desc": "未找到您请求的营地信息。",
