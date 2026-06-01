@@ -1,0 +1,66 @@
+{
+  "camp_promote_2026": {
+    "seo_title": "함께 알려주세요 — 제3회 강정피스앤뮤직캠프 2026 SNS 홍보 키트",
+    "seo_description": "제3회 강정피스앤뮤직캠프에 함께하는 뮤지션을 위한 SNS 홍보 안내. 포스터·타임테이블 이미지와 인스타그램·페이스북에 바로 올릴 수 있는 홍보글을 한국어·영어로 제공합니다.",
+    "breadcrumb": "함께 알려주세요",
+
+    "hero_title": "함께 알려주세요",
+    "hero_subtitle": "제3회 강정 피스앤뮤직캠프를 SNS에 알리는 가장 쉬운 방법",
+
+    "intro_lead": "무대에 서는 여러분의 목소리가 가장 큰 홍보입니다. 아래 이미지와 글을 그대로 복사해 인스타그램·페이스북에 올려주세요. 한 사람의 게시물이 평화의 파도를 한 뼘 더 멀리 보냅니다. 🌊",
+
+    "howto_title": "이렇게 올려주세요",
+    "howto_steps": [
+      {
+        "title": "이미지를 저장하세요",
+        "body": "포스터와 타임테이블 중 마음에 드는 이미지를 저장하세요. 모바일에서는 이미지를 길게 눌러, PC에서는 [이미지 저장] 버튼으로 받을 수 있습니다."
+      },
+      {
+        "title": "홍보글을 복사하세요",
+        "body": "피드용 긴 글, 스토리·짧은 캡션 중 상황에 맞는 글을 복사 버튼으로 가져가세요. 자유롭게 고쳐 쓰셔도 좋습니다."
+      },
+      {
+        "title": "SNS에 올려주세요",
+        "body": "인스타그램 피드·스토리, 페이스북 등에 이미지와 글을 함께 올리고 @peace_music_in_gangjeong 를 태그해 주세요. 저희가 다시 나눌게요."
+      }
+    ],
+
+    "images_title": "포스터 · 타임테이블 내려받기",
+    "images_note": "고화질 원본입니다. 한 장만 올려도 좋고, 여러 장을 함께 올려도 좋습니다.",
+    "image_poster1_label": "공식 포스터",
+    "image_poster2_label": "포스터 (다른 버전)",
+    "image_timetable_label": "타임테이블",
+    "download_button": "이미지 저장",
+    "download_aria": "{{label}} 이미지 내려받기",
+
+    "ko_block_title": "복사용 홍보글 · 한국어",
+    "en_block_title": "복사용 홍보글 · English",
+
+    "feed_label": "피드용 (긴 글)",
+    "feed_text": "🌈 제3회 강정 피스앤뮤직캠프 : 전쟁을 끝내자\n\n강정 피스앤뮤직캠프는 전쟁 없는 세상을 꿈꾸는 사람들의 연대이자 축제입니다. 국경과 언어를 넘어, 음악이라는 가장 보편적인 언어로 평화를 노래합니다.\n\n함께 부르고, 춤추고, 서로를 안아줄 때 — 전쟁은 멈추고 평화의 파도는 더 멀리 번져갑니다. 🌊\n\n학살과 전쟁으로 얼룩진 시대, 19년째 반전과 평화의 노래를 멈추지 않은 강정마을에서 여러분을 기다립니다.\n\n저도 이 무대에 함께합니다. 6월, 강정에서 만나요. 🎶\n\n🦀 2026년 6월 5일(금)~7일(일)\n🐬 제주 서귀포 강정체육공원\n🌿 50팀 뮤지션 공연 · 평화시장 등\n🔗 peaceandmusic.net\n@peace_music_in_gangjeong",
+
+    "story_label": "스토리 · 짧은 캡션용",
+    "story_text": "🌈 강정 피스앤뮤직캠프 2026\n전쟁을 끝내자 ✊\n\n음악으로 평화를 노래하는 사흘.\n저도 이 무대에 섭니다. 🎶\n\n🗓 6.5(금)~6.7(일)\n📍 제주 강정체육공원\n🔗 peaceandmusic.net\n@peace_music_in_gangjeong",
+
+    "copy_button": "복사하기",
+    "copied": "복사됨!",
+
+    "hashtags_label": "해시태그",
+    "hashtags_text": "#강정피스앤뮤직캠프 #강정평화음악제 #전쟁을끝내자 #반전평화 #평화 #강정마을 #제주 #제주축제 #음악으로평화를 #PeaceAndMusic #StopTheWar #뮤지션 #라이브공연",
+
+    "info_title": "핵심 정보",
+    "info_date_label": "일정",
+    "info_date": "2026년 6월 5일(금) ~ 7일(일)",
+    "info_place_label": "장소",
+    "info_place": "제주 서귀포 강정체육공원",
+    "info_program_label": "프로그램",
+    "info_program": "50팀 뮤지션 공연 · 평화시장 등",
+    "info_web_label": "웹사이트",
+    "info_tag_label": "계정 태그",
+    "info_tag_note": "게시물에 @peace_music_in_gangjeong 를 태그해 주세요.",
+
+    "thanks_title": "고맙습니다",
+    "thanks_body": "여러분의 한 게시물, 한 노래가 강정의 평화운동에 큰 힘이 됩니다. 6월, 강정에서 만나요.",
+    "back_to_camp": "캠프 페이지로"
+  }
+}

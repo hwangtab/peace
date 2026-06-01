@@ -1,0 +1,66 @@
+{
+  "camp_promote_2026": {
+    "seo_title": "Help Us Spread the Word — 3rd Gangjeong Peace & Music Camp 2026 Social Kit",
+    "seo_description": "A social media kit for musicians joining the 3rd Gangjeong Peace and Music Camp. Download the poster and timetable, and copy ready-to-post captions in Korean and English for Instagram and Facebook.",
+    "breadcrumb": "Spread the Word",
+
+    "hero_title": "Help us spread the word",
+    "hero_subtitle": "The easiest way to share the 3rd Gangjeong Peace & Music Camp on social media",
+
+    "intro_lead": "Your voice on stage is the most powerful invitation of all. Copy the images and captions below and post them on Instagram or Facebook. One post sends the wave of peace a little farther. 🌊",
+
+    "howto_title": "How to post",
+    "howto_steps": [
+      {
+        "title": "Save an image",
+        "body": "Pick a poster or the timetable. On mobile, press and hold the image to save it; on desktop, use the [Save image] button."
+      },
+      {
+        "title": "Copy a caption",
+        "body": "Grab the long feed caption or the short story caption — whichever fits. Feel free to edit and make it your own."
+      },
+      {
+        "title": "Post and tag us",
+        "body": "Share the image and caption on your Instagram feed or story, Facebook, and tag @peace_music_in_gangjeong. We'll reshare it."
+      }
+    ],
+
+    "images_title": "Download poster & timetable",
+    "images_note": "Full-resolution originals. Post one, or share several together.",
+    "image_poster1_label": "Official poster",
+    "image_poster2_label": "Poster (alternate)",
+    "image_timetable_label": "Timetable",
+    "download_button": "Save image",
+    "download_aria": "Download {{label}} image",
+
+    "ko_block_title": "Copy & paste · 한국어",
+    "en_block_title": "Copy & paste · English",
+
+    "feed_label": "Feed caption (long)",
+    "feed_text": "🌈 The 3rd Gangjeong Peace & Music Camp — Stop the War\n\nGangjeong Peace and Music Camp is a festival and an act of solidarity by people who dream of a world without war. Across borders and languages, we sing for peace in the most universal language of all — music.\n\nWhen we sing, dance, and hold one another, war falls silent and the wave of peace reaches farther. 🌊\n\nIn an age scarred by massacre and war, the village of Gangjeong has not stopped singing for peace for 19 years. We'll be waiting for you there.\n\nI'll be on this stage too. See you in Gangjeong this June. 🎶\n\n🦀 June 5 (Fri) – 7 (Sun), 2026\n🐬 Gangjeong Sports Park, Seogwipo, Jeju, South Korea\n🌿 50 musician acts · Peace Market & more\n🔗 peaceandmusic.net\n@peace_music_in_gangjeong",
+
+    "story_label": "Story / short caption",
+    "story_text": "🌈 Gangjeong Peace & Music Camp 2026\nStop the War ✊\n\nThree days of singing for peace.\nI'll be on stage. 🎶\n\n🗓 Jun 5–7, 2026\n📍 Gangjeong Sports Park, Jeju\n🔗 peaceandmusic.net\n@peace_music_in_gangjeong",
+
+    "copy_button": "Copy",
+    "copied": "Copied!",
+
+    "hashtags_label": "Hashtags",
+    "hashtags_text": "#GangjeongPeaceMusicCamp #StopTheWar #PeaceAndMusic #Gangjeong #Jeju #PeaceFestival #MusicForPeace #Korea #LiveMusic #AntiWar #PeaceMovement #Jeju2026",
+
+    "info_title": "Key info",
+    "info_date_label": "Dates",
+    "info_date": "June 5 (Fri) – 7 (Sun), 2026",
+    "info_place_label": "Venue",
+    "info_place": "Gangjeong Sports Park, Seogwipo, Jeju, South Korea",
+    "info_program_label": "Program",
+    "info_program": "50 musician acts · Peace Market & more",
+    "info_web_label": "Website",
+    "info_tag_label": "Tag us",
+    "info_tag_note": "Please tag @peace_music_in_gangjeong in your post.",
+
+    "thanks_title": "Thank you",
+    "thanks_body": "One post, one song from you means so much to the peace movement in Gangjeong. See you there in June.",
+    "back_to_camp": "Back to camp"
+  }
+}
