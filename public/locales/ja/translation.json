@@ -126,6 +126,7 @@
     }
   },
   "camp": {
+    "promote_cta": "みんなに広める",
     "ordinal": "{{num}}",
     "not_found": "キャンプが見つかりません",
     "not_found_desc": "指定されたキャンプ情報が見つかりませんでした。",

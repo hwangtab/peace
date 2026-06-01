@@ -123,6 +123,9 @@ const Camp2026Page: React.FC<CampPageProps> = ({
             {t('camp.ticketing_2026')}
           </Button>
         )}
+        <Button to="/camps/2026/promote" variant="ghost-white" size="sm">
+          {t('camp.promote_cta')}
+        </Button>
       </CampHero>
 
       {/* Overview Section */}

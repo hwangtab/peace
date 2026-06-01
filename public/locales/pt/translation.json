@@ -126,6 +126,7 @@
     }
   },
   "camp": {
+    "promote_cta": "Divulgue",
     "ordinal": "{{num}}",
     "not_found": "Acampamento não encontrado",
     "not_found_desc": "As informações solicitadas do acampamento não foram encontradas.",
