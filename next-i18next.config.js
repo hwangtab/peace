@@ -31,6 +31,7 @@ module.exports = {
   //                     /album/musicians/[id], /camps/2026/musicians/[id]
   // - camp_faq_2026   : /camps/2026
   // - camp_guidelines_2026 : /camps/2026, /camps/2026/guidelines (ko/en only)
+  // - camp_promote_2026 : /camps/2026/promote (뮤지션용 SNS 홍보 키트, ko/en only)
   // - camp_staff_2026  : /camps/2026/staff (기획단·자원봉사자 전용)
   // - about           : home
   // - gallery         : home, /gallery, /camps/[year](CampGallery)
@@ -45,6 +46,7 @@ module.exports = {
     'videos',
     'camp_faq_2026',
     'camp_guidelines_2026',
+    'camp_promote_2026',
     'camp_staff_2026',
     'about',
     'gallery',
@@ -62,6 +64,7 @@ module.exports = {
     'videos',
     'camp_faq_2026',
     'camp_guidelines_2026',
+    'camp_promote_2026',
     'camp_staff_2026',
     'about',
     'gallery',
