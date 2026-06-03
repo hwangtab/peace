@@ -180,7 +180,7 @@ const localizedData: Record<string, Record<string, CampLocalizedData>> = {
         { name: '윤선애', musicianId: 40 },
         { name: '이서영', musicianId: 12 },
         { name: '임정득', musicianId: 42 },
-        { name: '자이', musicianId: 11 },
+        { name: '자이(Jai)', musicianId: 11 },
         { name: 'Joon Lee', musicianId: 43 },
         { name: '정진석', musicianId: 2 },
         { name: '조약골', musicianId: 44 },
