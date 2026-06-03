@@ -46,7 +46,7 @@ class MyDocument extends Document {
           {/* 테마 & 색상 스킴 */}
           <meta name="theme-color" content="#0A5F8A" />
           <meta name="color-scheme" content="light" />
-          <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
+          <meta name="format-detection" content="telephone=no,date=no,address=no,email=no" />
           <meta name="application-name" content="강정피스앤뮤직캠프" />
 
           {/* Favicon & PWA */}

@@ -52,6 +52,11 @@ const CampTimetable: React.FC<CampTimetableProps> = ({ data, musicians, campYear
     }
   }, [dates.length, selectTab]);
 
+  const onTouchStart = useCallback((e: React.TouchEvent<HTMLButtonElement>, i: number) => {
+    e.preventDefault();
+    selectTab(i);
+  }, [selectTab]);
+
   useEffect(() => {
     const sync = () => setActiveIndex(readHashIndex(dates));
     sync(); // reconcile on mount
@@ -68,30 +73,35 @@ const CampTimetable: React.FC<CampTimetableProps> = ({ data, musicians, campYear
         {data.days.map((day, i) => {
           const isActive = i === activeIndex;
           const mood = DAY_MOOD[day.weekday];
+          const weekdayLabel = t(`timetable.weekday.${day.weekday}`);
+          const tabLabel = t('timetable.tab_day_label', {
+            date: day.dayLabel.split(' ')[0],
+            weekday: weekdayLabel,
+            count: day.teamCount,
+          });
+          const tabTime = t('timetable.tab_day_time', { start: day.startTime, end: day.endTime });
           return (
             <button
               key={day.date}
               id={`timetable-tab-${i}`}
               role="tab"
               type="button"
+              aria-label={`${tabLabel} ${tabTime}`}
               aria-selected={isActive}
               aria-controls={`timetable-panel-${i}`}
               tabIndex={isActive ? 0 : -1}
               onClick={() => selectTab(i)}
+              onTouchStart={(e) => onTouchStart(e, i)}
               onKeyDown={(e) => onKeyDown(e, i)}
               className={`relative px-2 py-3 text-center text-xs transition-colors sm:text-sm ${
                 isActive ? mood.activeTab : 'bg-white text-deep-ocean hover:bg-ocean-sand'
               }`}
             >
               <span className="block font-bold">
-                {t('timetable.tab_day_label', {
-                  date: day.dayLabel.split(' ')[0],
-                  weekday: t(`timetable.weekday.${day.weekday}`),
-                  count: day.teamCount,
-                })}
+                {tabLabel}
               </span>
               <span className="mt-0.5 block text-[10px] sm:text-xs">
-                {t('timetable.tab_day_time', { start: day.startTime, end: day.endTime })}
+                {tabTime}
               </span>
               {isActive && <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[2px] bg-golden-sun" />}
             </button>

@@ -41,6 +41,10 @@ const data: Timetable = {
   ],
 };
 
+afterEach(() => {
+  window.history.replaceState({}, '', window.location.pathname);
+});
+
 describe('CampTimetable', () => {
   test('renders three tabs', () => {
     render(<CampTimetable data={data} musicians={musicians} campYear={2026} />);
@@ -59,11 +63,33 @@ describe('CampTimetable', () => {
     expect(screen.getByText('하주원')).toBeInTheDocument();
   });
 
+  test('date tabs are buttons without link targets', () => {
+    render(<CampTimetable data={data} musicians={musicians} campYear={2026} />);
+    const tabs = screen.getAllByRole('tab');
+    tabs.forEach((tab) => {
+      expect(tab.tagName).toBe('BUTTON');
+      expect(tab).toHaveAttribute('type', 'button');
+      expect(tab).not.toHaveAttribute('href');
+    });
+  });
+
+  test('switches content on touch and updates hash', () => {
+    render(<CampTimetable data={data} musicians={musicians} campYear={2026} />);
+    const tabs = screen.getAllByRole('tab');
+
+    fireEvent.touchStart(tabs[1]!);
+    expect(screen.getByText('하주원')).toBeInTheDocument();
+    expect(window.location.hash).toBe('#timetable-day-2026-06-06');
+
+    fireEvent.touchStart(tabs[2]!);
+    expect(screen.getByText('선경')).toBeInTheDocument();
+    expect(window.location.hash).toBe('#timetable-day-2026-06-07');
+  });
+
   test('initial tab respects URL hash', () => {
     window.history.replaceState({}, '', '#timetable-day-2026-06-07');
     render(<CampTimetable data={data} musicians={musicians} campYear={2026} />);
     expect(screen.getByText('선경')).toBeInTheDocument();
-    window.history.replaceState({}, '', window.location.pathname);
   });
 
   test('tab has aria-selected on active', () => {
