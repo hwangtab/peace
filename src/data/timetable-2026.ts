@@ -17,7 +17,7 @@ export const timetable2026: Timetable = {
           "start": "17:00",
           "end": "17:25",
           "type": "performance",
-          "name": "블로꾸자파리/뽈레뽈레/북짝북짝",
+          "name": "블로꾸 자파리 X 뽈레뽈레 X 북짝북짝",
           "scale": "ensemble",
           "musicianIds": [
             13
@@ -249,16 +249,16 @@ export const timetable2026: Timetable = {
           "start": "12:25",
           "end": "12:30",
           "type": "transition",
-          "name": "⟶ 5분 (다음: 메리디에스 - 솔로/듀오)",
+          "name": "⟶ 5분 (다음: Meridies - 솔로/듀오)",
           "transitionMinutes": 5,
-          "nextActName": "메리디에스"
+          "nextActName": "Meridies"
         },
         {
           "order": 2,
           "start": "12:30",
           "end": "12:55",
           "type": "performance",
-          "name": "메리디에스",
+          "name": "Meridies",
           "scale": "solo",
           "musicianIds": [
             21
@@ -269,16 +269,16 @@ export const timetable2026: Timetable = {
           "start": "12:55",
           "end": "13:02",
           "type": "transition",
-          "name": "⟶ 7분 (다음: 사바하 - 중형밴드)",
+          "name": "⟶ 7분 (다음: Sabbaha - 중형밴드)",
           "transitionMinutes": 7,
-          "nextActName": "사바하"
+          "nextActName": "Sabbaha"
         },
         {
           "order": 3,
           "start": "13:02",
           "end": "13:27",
           "type": "performance",
-          "name": "사바하",
+          "name": "Sabbaha",
           "scale": "band",
           "musicianIds": [
             26
@@ -289,16 +289,16 @@ export const timetable2026: Timetable = {
           "start": "13:27",
           "end": "13:37",
           "type": "transition",
-          "name": "⟶ 10분 (다음: 머티리얼즈 파운드 - 대형밴드)",
+          "name": "⟶ 10분 (다음: Materials Pound - 대형밴드)",
           "transitionMinutes": 10,
-          "nextActName": "머티리얼즈 파운드"
+          "nextActName": "Materials Pound"
         },
         {
           "order": 4,
           "start": "13:37",
           "end": "14:02",
           "type": "performance",
-          "name": "머티리얼즈 파운드",
+          "name": "Materials Pound",
           "scale": "big-band",
           "musicianIds": [
             24
@@ -309,16 +309,16 @@ export const timetable2026: Timetable = {
           "start": "14:02",
           "end": "14:12",
           "type": "transition",
-          "name": "⟶ 10분 (다음: 허니위스키 - 대형밴드)",
+          "name": "⟶ 10분 (다음: Honey Whiskey - 대형밴드)",
           "transitionMinutes": 10,
-          "nextActName": "허니위스키"
+          "nextActName": "Honey Whiskey"
         },
         {
           "order": 5,
           "start": "14:12",
           "end": "14:37",
           "type": "performance",
-          "name": "허니위스키",
+          "name": "Honey Whiskey",
           "scale": "big-band",
           "musicianIds": [
             54
@@ -409,16 +409,16 @@ export const timetable2026: Timetable = {
           "start": "16:37",
           "end": "16:42",
           "type": "transition",
-          "name": "⟶ 5분 (다음: 지누콘다 - 솔로/듀오)",
+          "name": "⟶ 5분 (다음: Jinu Konda - 솔로/듀오)",
           "transitionMinutes": 5,
-          "nextActName": "지누콘다"
+          "nextActName": "Jinu Konda"
         },
         {
           "order": 10,
           "start": "16:42",
           "end": "17:07",
           "type": "performance",
-          "name": "지누콘다",
+          "name": "Jinu Konda",
           "scale": "solo",
           "musicianIds": [
             46
@@ -790,16 +790,16 @@ export const timetable2026: Timetable = {
           "start": "15:25",
           "end": "15:30",
           "type": "transition",
-          "name": "⟶ 5분 (다음: 사이트 with 제트싸이져 - 솔로/듀오)",
+          "name": "⟶ 5분 (다음: Sight X Zsthyger - 솔로/듀오)",
           "transitionMinutes": 5,
-          "nextActName": "사이트 with 제트싸이져"
+          "nextActName": "Sight X Zsthyger"
         },
         {
           "order": 10,
           "start": "15:30",
           "end": "15:55",
           "type": "performance",
-          "name": "사이트 with 제트싸이져",
+          "name": "Sight X Zsthyger",
           "scale": "solo",
           "musicianIds": [
             27
@@ -870,16 +870,16 @@ export const timetable2026: Timetable = {
           "start": "17:30",
           "end": "17:35",
           "type": "transition",
-          "name": "⟶ 5분 (다음: 자이 - 솔로/듀오)",
+          "name": "⟶ 5분 (다음: 자이(Jai) - 솔로/듀오)",
           "transitionMinutes": 5,
-          "nextActName": "자이"
+          "nextActName": "자이(Jai)"
         },
         {
           "order": 14,
           "start": "17:35",
           "end": "18:00",
           "type": "performance",
-          "name": "자이",
+          "name": "자이(Jai)",
           "scale": "solo",
           "musicianIds": [
             11
@@ -910,16 +910,16 @@ export const timetable2026: Timetable = {
           "start": "18:30",
           "end": "18:35",
           "type": "transition",
-          "name": "⟶ 5분 (다음: 레인보우99 - 솔로/듀오)",
+          "name": "⟶ 5분 (다음: Rainbow99 - 솔로/듀오)",
           "transitionMinutes": 5,
-          "nextActName": "레인보우99"
+          "nextActName": "Rainbow99"
         },
         {
           "order": 16,
           "start": "18:35",
           "end": "19:00",
           "type": "performance",
-          "name": "레인보우99",
+          "name": "Rainbow99",
           "scale": "solo",
           "musicianIds": [
             20
