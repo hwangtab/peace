@@ -87,3 +87,24 @@ export const loadGalleryImages = <T>(): T[] => {
 
   return allImages;
 };
+
+interface GalleryPreviewItem {
+  eventType?: string;
+  eventYear?: number;
+}
+
+const HOME_GALLERY_PREVIEW_GROUPS = [
+  { eventType: 'album', eventYear: 2024 },
+  { eventType: 'camp', eventYear: 2023 },
+  { eventType: 'camp', eventYear: 2025 },
+];
+
+export const selectHomeGalleryPreviewImages = <T extends GalleryPreviewItem>(
+  images: T[],
+  itemsPerGroup = 4,
+): T[] =>
+  HOME_GALLERY_PREVIEW_GROUPS.flatMap(({ eventType, eventYear }) =>
+    images
+      .filter((image) => image.eventType === eventType && image.eventYear === eventYear)
+      .slice(0, itemsPerGroup),
+  );

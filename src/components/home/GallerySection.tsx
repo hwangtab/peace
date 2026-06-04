@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
-import { m as motion, AnimatePresence } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import { GalleryImage } from '@/types/gallery';
 import { useGalleryImages } from '@/hooks/useGalleryImages';
@@ -76,17 +76,18 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
             <p className="text-xl text-coastal-gray font-serif font-bold">{t('gallery.no_images')}</p>
           </div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
-            <AnimatePresence mode="sync" initial={false}>
-              {filteredImages.map((image, index) => (
-                <AnimatedGalleryItem
-                  key={image.url}
-                  image={image}
-                  priority={priorityFirstImages && index < GALLERY_CONFIG.PRIORITY_IMAGE_THRESHOLD}
-                  onClick={setSelectedImage}
-                />
-              ))}
-            </AnimatePresence>
+          <div
+            key={selectedFilter}
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12"
+          >
+            {filteredImages.map((image, index) => (
+              <AnimatedGalleryItem
+                key={image.url}
+                image={image}
+                priority={priorityFirstImages && index < GALLERY_CONFIG.PRIORITY_IMAGE_THRESHOLD}
+                onClick={setSelectedImage}
+              />
+            ))}
           </div>
         )}
 
@@ -144,8 +145,7 @@ const AnimatedGalleryItem: React.FC<{
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0, transition: { duration: 0.15 } }}
-      transition={{ duration: 0.25 }}
+      transition={{ duration: 0.18 }}
       className="aspect-square relative bg-ocean-sand rounded-lg overflow-hidden"
     >
       <GalleryImageItem image={image} priority={priority} onClick={onClick} />

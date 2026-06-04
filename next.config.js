@@ -119,7 +119,7 @@ const nextConfig = {
       },
     ];
   },
-  // Polyfill module 은 patches/next+16.2.4.patch 로 빈 파일로 패치됨
+  // Polyfill module 은 patches/next+16.2.6.patch 로 빈 파일로 패치됨
   // (postinstall: patch-package 가 자동 적용). browserslist baseline-modern
   // 에서 모두 네이티브 지원되어 1.4KB 인라인 불필요.
 };

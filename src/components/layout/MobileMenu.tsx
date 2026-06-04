@@ -15,6 +15,13 @@ interface MobileMenuProps {
   onToggleDropdown: (dropdown: NavigationDropdownKey) => void;
 }
 
+const menuReveal = {
+  initial: { opacity: 0, y: -8 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -8 },
+  transition: { duration: 0.18, ease: 'easeOut' },
+} as const;
+
 const MobileMenu: React.FC<MobileMenuProps> = React.memo(
   ({ isOpen, isPathActive, mobileOpenDropdown, onClose, onToggleDropdown }) => {
     const { t } = useTranslation();
@@ -24,10 +31,8 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(
         <AnimatePresence initial={false}>
           {isOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-cloud-white/95 backdrop-blur-md border-t border-seafoam"
+              {...menuReveal}
+              className="md:hidden origin-top bg-cloud-white/95 backdrop-blur-md border-t border-seafoam"
             >
               <Container size="wide" className="py-4">
                 {simpleMenuItems.map((item) => (
@@ -114,14 +119,12 @@ const MobileDropdown: React.FC<MobileDropdownProps> = React.memo(
             ▼
           </motion.span>
         </button>
-        <AnimatePresence>
+        <AnimatePresence initial={false}>
           {isOpen && (
             <motion.div
               id={`mobile-dropdown-${label}`}
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="pl-4 overflow-hidden"
+              {...menuReveal}
+              className="origin-top pl-4 overflow-hidden"
             >
               {items.map((item) => (
                 <Link

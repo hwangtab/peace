@@ -5,7 +5,12 @@ jest.mock('fs');
 
 const mockedFs = fs as jest.Mocked<typeof fs>;
 
-import { readJsonArrayResult, loadLocalizedData, loadGalleryImages } from './dataLoader';
+import {
+  readJsonArrayResult,
+  loadLocalizedData,
+  loadGalleryImages,
+  selectHomeGalleryPreviewImages,
+} from './dataLoader';
 
 describe('readJsonArrayResult', () => {
   beforeEach(() => {
@@ -123,5 +128,48 @@ describe('loadGalleryImages', () => {
     });
     const images = loadGalleryImages<{ src: string }>();
     expect(images).toEqual([{ src: 'a.jpg' }, { src: 'b.jpg' }]);
+  });
+});
+
+describe('selectHomeGalleryPreviewImages', () => {
+  it('홈 갤러리 preview 를 앨범, 2023 캠프, 2025 캠프 이미지로 균형 있게 구성', () => {
+    const images = [
+      ...Array.from({ length: 6 }, (_, index) => ({
+        id: index + 1,
+        eventType: 'album',
+        eventYear: 2024,
+      })),
+      ...Array.from({ length: 6 }, (_, index) => ({
+        id: index + 101,
+        eventType: 'camp',
+        eventYear: 2023,
+      })),
+      ...Array.from({ length: 6 }, (_, index) => ({
+        id: index + 201,
+        eventType: 'camp',
+        eventYear: 2025,
+      })),
+      ...Array.from({ length: 6 }, (_, index) => ({
+        id: index + 301,
+        eventType: 'camp',
+        eventYear: 2026,
+      })),
+    ];
+
+    const preview = selectHomeGalleryPreviewImages(images);
+
+    expect(preview).toHaveLength(12);
+    expect(
+      preview.filter((image) => image.eventType === 'album' && image.eventYear === 2024),
+    ).toHaveLength(4);
+    expect(
+      preview.filter((image) => image.eventType === 'camp' && image.eventYear === 2023),
+    ).toHaveLength(4);
+    expect(
+      preview.filter((image) => image.eventType === 'camp' && image.eventYear === 2025),
+    ).toHaveLength(4);
+    expect(
+      preview.some((image) => image.eventType === 'camp' && image.eventYear === 2026),
+    ).toBe(false);
   });
 });

@@ -17,7 +17,7 @@ const GallerySection = dynamic(() => import('@/components/home/GallerySection'))
 import { getWebSiteSchema, getOrganizationSchema, getFAQSchema, getWebPageSchema, getHowToSchema, getMusicGroupSchema } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
 import { GalleryImage } from '@/types/gallery';
-import { loadGalleryImages } from '@/utils/dataLoader';
+import { loadGalleryImages, selectHomeGalleryPreviewImages } from '@/utils/dataLoader';
 
 interface HomePageProps {
   initialGalleryImages?: GalleryImage[];
@@ -96,7 +96,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
         ['translation', 'gangjeong', 'faqs', 'about', 'gallery'],
         nextI18NextConfig,
       )),
-      initialGalleryImages: allImages.slice(0, 12),
+      initialGalleryImages: selectHomeGalleryPreviewImages(allImages),
     },
     revalidate: 3600,
   };

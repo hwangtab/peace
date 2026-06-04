@@ -13,6 +13,7 @@ function readScroll() {
     currentScrolled = next;
     scrollListeners.forEach((l) => l());
   }
+  rafHandle = undefined;
   ticking = false;
 }
 
@@ -33,7 +34,11 @@ function subscribeScroll(cb: () => void) {
     scrollListeners.delete(cb);
     if (scrollListeners.size === 0) {
       window.removeEventListener('scroll', onScroll);
-      if (rafHandle !== undefined) cancelAnimationFrame(rafHandle);
+      if (rafHandle !== undefined) {
+        cancelAnimationFrame(rafHandle);
+        rafHandle = undefined;
+      }
+      ticking = false;
     }
   };
 }
