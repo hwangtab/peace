@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Button from '../common/Button';
 import Container from '../layout/Container';
 import { useCamp } from '@/hooks/useCamps';
+import { useIsMobile } from '@/hooks/useIsMobile';
 
 interface HeroSectionProps {
   imageUrl: string;
@@ -17,6 +18,8 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
   const isScrollIndicatorInView = useInView(scrollIndicatorRef);
   const [imageFailed, setImageFailed] = useState(false);
   const prefersReducedMotion = useReducedMotion();
+  const isMobile = useIsMobile();
+  const shouldReduceMotion = Boolean(prefersReducedMotion || isMobile);
 
   const handleScrollToAbout = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
@@ -29,9 +32,9 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
       {!imageFailed && (
         <motion.div
           className="absolute inset-0"
-          initial={prefersReducedMotion ? { scale: 1 } : { scale: 1.08 }}
+          initial={shouldReduceMotion ? { scale: 1 } : { scale: 1.08 }}
           animate={{ scale: 1 }}
-          transition={{ duration: prefersReducedMotion ? 0 : 12, ease: 'easeOut' }}
+          transition={{ duration: shouldReduceMotion ? 0 : 12, ease: 'easeOut' }}
           aria-hidden="true"
         >
           <Image
@@ -82,14 +85,14 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
         ref={scrollIndicatorRef}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.6, duration: 1 }}
+        transition={{ delay: shouldReduceMotion ? 0 : 1.6, duration: shouldReduceMotion ? 0 : 1 }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         aria-hidden="true"
       >
         <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
           <motion.div
             animate={
-              isScrollIndicatorInView && !prefersReducedMotion
+              isScrollIndicatorInView && !shouldReduceMotion
                 ? {
                   y: [0, 12, 0],
                 }
@@ -97,7 +100,7 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
             }
             transition={{
               duration: 1.5,
-              repeat: isScrollIndicatorInView && !prefersReducedMotion ? 3 : 0,
+              repeat: isScrollIndicatorInView && !shouldReduceMotion ? 3 : 0,
               repeatType: 'reverse',
               repeatDelay: 0.5,
             }}

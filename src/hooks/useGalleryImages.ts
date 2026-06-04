@@ -46,8 +46,12 @@ export const useGalleryImages = (
       setIsLoading(true);
     }
 
-    // SSG에서 전체 데이터를 이미 받은 경우 클라이언트 fetch 스킵
-    if (skipClientFetch && initial.length > 0) return;
+    // Caller가 preview-only 또는 SSG-only 렌더를 의도한 경우, 초기 이미지 유무와
+    // 무관하게 전체 갤러리 JSON fetch를 건너뛴다.
+    if (skipClientFetch) {
+      setIsLoading(false);
+      return;
+    }
 
     let isCancelled = false;
 
