@@ -124,6 +124,13 @@ const Footer = () => {
             {/* suppressHydrationWarning: SSG 빌드 연도 vs 클라이언트 실행 연도 차이를 허용 */}©{' '}
             <span suppressHydrationWarning>{new Date().getFullYear()}</span> {t('app.title')}.{' '}
             {t('footer.copyright')}
+            {' · '}
+            <Link
+              href="/privacy"
+              className="underline underline-offset-2 transition-colors hover:text-golden-sun focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun rounded-sm"
+            >
+              {t('footer.privacy')}
+            </Link>
           </p>
         </Container>
       </div>
