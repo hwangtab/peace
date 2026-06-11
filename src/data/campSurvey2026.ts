@@ -9,6 +9,7 @@ export interface RatingQuestion {
   label: string;
   minLabel?: string;
   maxLabel?: string;
+  roles?: string[]; // 해당 역할만 노출(미지정=공통)
 }
 
 export interface TextQuestion {
@@ -17,6 +18,7 @@ export interface TextQuestion {
   placeholder?: string;
   maxLength: number;
   rows?: number;
+  roles?: string[]; // 해당 역할만 노출(미지정=공통)
 }
 
 export interface SurveySection {
@@ -42,7 +44,7 @@ export const SURVEY_SECTIONS: SurveySection[] = [
       },
       {
         key: 'recommend_rating',
-        label: '동료 뮤지션에게 "너도 꼭 서봐"라고 추천하고 싶은 정도',
+        label: '이 캠프를 다른 사람에게 추천하고 싶은 정도',
         ...AGREEMENT,
       },
     ],
@@ -65,13 +67,19 @@ export const SURVEY_SECTIONS: SurveySection[] = [
         key: 'stage_sound_rating',
         label: '무대·음향/모니터, 리허설·사운드체크 운영',
         ...SATISFACTION,
+        roles: ['musician'],
       },
       { key: 'timetable_rating', label: '타임테이블·진행 흐름', ...SATISFACTION },
-      { key: 'lodging_rating', label: '숙소(2박 환경)', ...SATISFACTION },
+      { key: 'lodging_rating', label: '숙소(2박 환경)', ...SATISFACTION, roles: ['musician', 'staff'] },
       { key: 'meals_rating', label: '식사', ...SATISFACTION },
       { key: 'transport_rating', label: '제주/강정 이동·교통', ...SATISFACTION },
       { key: 'staff_comm_rating', label: '스태프·자원봉사자 소통과 응대', ...SATISFACTION },
-      { key: 'pre_comm_rating', label: '출연 안내·정산 등 사전 커뮤니케이션', ...SATISFACTION },
+      {
+        key: 'pre_comm_rating',
+        label: '출연 안내·정산 등 사전 커뮤니케이션',
+        ...SATISFACTION,
+        roles: ['musician', 'seller'],
+      },
     ],
     texts: [
       {
@@ -129,6 +137,7 @@ export const SURVEY_SECTIONS: SurveySection[] = [
         key: 'peace_comfort_rating',
         label: '무대에서 평화·강정·연대 메시지를 표현하기에 편안했다',
         ...AGREEMENT,
+        roles: ['musician'],
       },
       {
         key: 'peace_attitude_rating',
@@ -161,6 +170,7 @@ export const SURVEY_SECTIONS: SurveySection[] = [
         placeholder: '팀명 / 알고 계시면 연락처나 인스타도 함께 적어주세요.',
         maxLength: 1000,
         rows: 2,
+        roles: ['musician'],
       },
       {
         key: 'one_line_intro',
@@ -216,6 +226,14 @@ export const RATING_VALUES = [1, 2, 3, 4, 5] as const;
 // 폼 초기화 / 제출 매핑에 쓰는 전체 컬럼 key 목록.
 export const ALL_RATING_KEYS = SURVEY_SECTIONS.flatMap((s) => s.ratings.map((r) => r.key));
 export const ALL_TEXT_KEYS = SURVEY_SECTIONS.flatMap((s) => s.texts.map((t) => t.key));
+
+// 응답자가 고른 역할(roles)에 따라 문항 노출 여부 판단.
+// roles 미지정 문항은 공통이며, 응답자가 아무 유형도 고르지 않으면 전체를 노출한다.
+export const isQuestionVisible = (
+  q: { roles?: string[] },
+  selectedRoles: string[]
+): boolean =>
+  !q.roles || selectedRoles.length === 0 || q.roles.some((r) => selectedRoles.includes(r));
 
 const TEXT_QUESTION_BY_KEY = new Map(
   SURVEY_SECTIONS.flatMap((section) => section.texts).map((question) => [question.key, question])
