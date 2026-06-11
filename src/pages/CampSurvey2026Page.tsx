@@ -374,7 +374,16 @@ const CampSurvey2026Page: React.FC = () => {
                 <span className="text-sm leading-relaxed text-deep-ocean">
                   <strong className="text-sunset-coral">(필수)</strong> 이름과 연락처 등 입력한
                   개인정보를 설문 분석과 다음 회차 안내 목적으로 수집·이용하는 데 동의합니다. 응답은
-                  운영진만 열람하며, 목적을 다한 뒤 파기합니다.
+                  운영진만 열람하며, 목적을 다한 뒤 파기합니다.{' '}
+                  <a
+                    href="/privacy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="font-medium text-jeju-ocean underline"
+                  >
+                    개인정보처리방침 보기
+                  </a>
                 </span>
               </label>
             </section>
