@@ -9,6 +9,7 @@ import { supabase } from '@/lib/supabase';
 import {
   SURVEY_SECTIONS,
   CONSENT_OPTIONS,
+  ROLE_OPTIONS,
   RATING_VALUES,
   buildInitialSurveyRatings,
   buildInitialSurveyTexts,
@@ -90,6 +91,7 @@ const TextField: React.FC<{
 const CampSurvey2026Page: React.FC = () => {
   const [name, setName] = useState('');
   const [contact, setContact] = useState('');
+  const [roles, setRoles] = useState<string[]>([]);
   const [ratings, setRatings] = useState(buildInitialSurveyRatings);
   const [texts, setTexts] = useState(buildInitialSurveyTexts);
   const [consents, setConsents] = useState<SurveyConsents>({
@@ -100,6 +102,9 @@ const CampSurvey2026Page: React.FC = () => {
   const [website, setWebsite] = useState(''); // honeypot — 사람에겐 숨겨진 필드
   const [status, setStatus] = useState<SubmitStatus>('idle');
   const [errorMsg, setErrorMsg] = useState('');
+
+  const toggleRole = (key: string) =>
+    setRoles((prev) => (prev.includes(key) ? prev.filter((r) => r !== key) : [...prev, key]));
 
   const setRating = (key: string, v: number) =>
     setRatings((prev) => ({ ...prev, [key]: prev[key] === v ? null : v }));
@@ -131,6 +136,7 @@ const CampSurvey2026Page: React.FC = () => {
       ...buildSurveyInsertPayload({
         respondentName: name,
         contact,
+        roles,
         ratings,
         texts,
         consents,
@@ -214,6 +220,32 @@ const CampSurvey2026Page: React.FC = () => {
                     placeholder="예) 강정바람밴드 / 홍길동"
                   />
                 </div>
+                <fieldset className="border-0 p-0 m-0">
+                  <legend className="mb-2 block font-medium text-deep-ocean">
+                    어떤 자격으로 함께하셨나요? (중복 선택 가능)
+                  </legend>
+                  <div className="flex flex-wrap gap-2">
+                    {ROLE_OPTIONS.map((r) => {
+                      const active = roles.includes(r.key);
+                      return (
+                        <button
+                          key={r.key}
+                          type="button"
+                          aria-pressed={active}
+                          onClick={() => toggleRole(r.key)}
+                          className={classNames(
+                            'rounded-full border-2 px-5 py-2 text-sm font-medium transition',
+                            active
+                              ? 'border-jeju-ocean bg-jeju-ocean text-white shadow-md'
+                              : 'border-seafoam bg-white text-coastal-gray hover:border-ocean-mist'
+                          )}
+                        >
+                          {r.label}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </fieldset>
                 <div>
                   <label htmlFor="contact" className="mb-2 block font-medium text-deep-ocean">
                     다음에도 연락드릴 채널 (선택)

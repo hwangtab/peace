@@ -90,6 +90,37 @@ export const SURVEY_SECTIONS: SurveySection[] = [
     ],
   },
   {
+    id: 'open',
+    title: '열린 캠프',
+    description: '이번 캠프가 시도한 포용적·개방적 환경에 대한 질문입니다.',
+    ratings: [
+      {
+        key: 'genderneutral_restroom_rating',
+        label: '성중립 화장실 운영은 어땠나요?',
+        ...SATISFACTION,
+      },
+      {
+        key: 'open_access_rating',
+        label: '티켓 없이도 드나들 수 있던 개방적인 출입 환경은 어땠나요?',
+        ...SATISFACTION,
+      },
+    ],
+    texts: [
+      {
+        key: 'genderneutral_restroom_comment',
+        label: '성중립 화장실에 대해 느낀 점이나 제안이 있다면 (선택)',
+        maxLength: 2000,
+        rows: 2,
+      },
+      {
+        key: 'open_access_comment',
+        label: '티켓 없는 개방적 출입 환경에 대해 느낀 점이 있다면 (선택)',
+        maxLength: 2000,
+        rows: 2,
+      },
+    ],
+  },
+  {
     id: 'peace',
     title: '평화, 우리의 무대',
     description: '이 캠프만이 던질 수 있는 질문입니다.',
@@ -157,7 +188,7 @@ export type ConsentKey = ConsentOption['key'];
 export type SurveyRatings = Record<string, number | null>;
 export type SurveyTexts = Record<string, string>;
 export type SurveyConsents = Record<ConsentKey, boolean>;
-export type SurveyInsertPayload = Record<string, boolean | number | string | null>;
+export type SurveyInsertPayload = Record<string, boolean | number | string | string[] | null>;
 
 export const CONSENT_OPTIONS: ConsentOption[] = [
   {
@@ -166,6 +197,18 @@ export const CONSENT_OPTIONS: ConsentOption[] = [
   },
   { key: 'consent_quote_anon', label: '내 후기를 이름 없이(익명) 사용해도 좋습니다.' },
   { key: 'consent_photo', label: '캠프에서 찍힌 내 무대 사진·영상을 홍보에 사용해도 좋습니다.' },
+];
+
+// 응답자 유형 — 한 사람이 여러 역할을 겸할 수 있어 다중선택. key 는 respondent_roles 배열 값.
+export interface RoleOption {
+  key: string;
+  label: string;
+}
+export const ROLE_OPTIONS: RoleOption[] = [
+  { key: 'musician', label: '뮤지션' },
+  { key: 'staff', label: '스태프·자원봉사' },
+  { key: 'audience', label: '관객' },
+  { key: 'seller', label: '셀러(마켓)' },
 ];
 
 export const RATING_VALUES = [1, 2, 3, 4, 5] as const;
@@ -198,6 +241,7 @@ const normalizeText = (key: string, value: string | undefined) => {
 export const buildSurveyInsertPayload = ({
   respondentName,
   contact,
+  roles,
   ratings,
   texts,
   consents,
@@ -205,6 +249,7 @@ export const buildSurveyInsertPayload = ({
 }: {
   respondentName: string;
   contact: string;
+  roles: string[];
   ratings: SurveyRatings;
   texts: SurveyTexts;
   consents: SurveyConsents;
@@ -213,6 +258,7 @@ export const buildSurveyInsertPayload = ({
   camp_edition: CAMP_EDITION,
   respondent_name: respondentName.trim(),
   contact: contact.trim() || null,
+  respondent_roles: roles.length ? roles : null,
   ...Object.fromEntries(ALL_RATING_KEYS.map((key) => [key, normalizeRating(ratings[key])])),
   ...Object.fromEntries(ALL_TEXT_KEYS.map((key) => [key, normalizeText(key, texts[key])])),
   ...Object.fromEntries(CONSENT_OPTIONS.map(({ key }) => [key, Boolean(consents[key])])),
