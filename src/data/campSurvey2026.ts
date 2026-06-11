@@ -76,7 +76,7 @@ export const SURVEY_SECTIONS: SurveySection[] = [
       { key: 'staff_comm_rating', label: '스태프·자원봉사자 소통과 응대', ...SATISFACTION },
       {
         key: 'pre_comm_rating',
-        label: '출연 안내·정산 등 사전 커뮤니케이션',
+        label: '출연 안내 등 사전 커뮤니케이션',
         ...SATISFACTION,
         roles: ['musician', 'seller'],
       },
