@@ -14,6 +14,7 @@ import {
   buildInitialSurveyRatings,
   buildInitialSurveyTexts,
   buildSurveyInsertPayload,
+  isQuestionVisible,
   type RatingQuestion,
   type SurveyConsents,
   type TextQuestion,
@@ -233,7 +234,7 @@ const CampSurvey2026Page: React.FC = () => {
                 </div>
                 <fieldset className="border-0 p-0 m-0">
                   <legend className="mb-2 block font-medium text-deep-ocean">
-                    어떤 자격으로 함께하셨나요? (중복 선택 가능)
+                    어떤 자격으로 함께하셨나요? (중복 선택 — 고르시면 관련 질문만 보여드려요)
                   </legend>
                   <div className="flex flex-wrap gap-2">
                     {ROLE_OPTIONS.map((r) => {
@@ -310,35 +311,40 @@ const CampSurvey2026Page: React.FC = () => {
               />
             </div>
 
-            {/* 설문 섹션 */}
-            {SURVEY_SECTIONS.map((section) => (
-              <section key={section.id}>
-                <h2 className="mb-2 font-display text-2xl font-bold text-deep-ocean">
-                  {section.title}
-                </h2>
-                {section.description && (
-                  <p className="mb-5 text-sm text-coastal-gray">{section.description}</p>
-                )}
-                <div className="space-y-7">
-                  {section.ratings.map((q) => (
-                    <RatingField
-                      key={q.key}
-                      q={q}
-                      value={ratings[q.key] ?? null}
-                      onChange={(v) => setRating(q.key, v)}
-                    />
-                  ))}
-                  {section.texts.map((q) => (
-                    <TextField
-                      key={q.key}
-                      q={q}
-                      value={texts[q.key] ?? ''}
-                      onChange={(v) => setText(q.key, v)}
-                    />
-                  ))}
-                </div>
-              </section>
-            ))}
+            {/* 설문 섹션 — 응답자 유형(roles)에 맞는 문항만 노출. 빈 섹션은 숨김. */}
+            {SURVEY_SECTIONS.map((section) => {
+              const visibleRatings = section.ratings.filter((q) => isQuestionVisible(q, roles));
+              const visibleTexts = section.texts.filter((q) => isQuestionVisible(q, roles));
+              if (visibleRatings.length === 0 && visibleTexts.length === 0) return null;
+              return (
+                <section key={section.id}>
+                  <h2 className="mb-2 font-display text-2xl font-bold text-deep-ocean">
+                    {section.title}
+                  </h2>
+                  {section.description && (
+                    <p className="mb-5 text-sm text-coastal-gray">{section.description}</p>
+                  )}
+                  <div className="space-y-7">
+                    {visibleRatings.map((q) => (
+                      <RatingField
+                        key={q.key}
+                        q={q}
+                        value={ratings[q.key] ?? null}
+                        onChange={(v) => setRating(q.key, v)}
+                      />
+                    ))}
+                    {visibleTexts.map((q) => (
+                      <TextField
+                        key={q.key}
+                        q={q}
+                        value={texts[q.key] ?? ''}
+                        onChange={(v) => setText(q.key, v)}
+                      />
+                    ))}
+                  </div>
+                </section>
+              );
+            })}
 
             {/* 후기/사진 활용 동의 */}
             <section>
