@@ -12,10 +12,7 @@ const Timeline = () => {
   return (
     <Section id="history" background="sunlight-glow" paddingBottom="loose">
       <Container size="wide">
-        <SectionHeader
-          title={t('timeline.title')}
-          subtitle={t('timeline.subtitle')}
-        />
+        <SectionHeader title={t('timeline.title')} subtitle={t('timeline.subtitle')} />
 
         <div className="relative">
           {/* Central Line */}
@@ -23,11 +20,7 @@ const Timeline = () => {
 
           <div className="space-y-12 sm:space-y-24">
             {timelineData.map((item, index) => (
-              <TimelineItem
-                key={item.year}
-                event={item}
-                isLeft={index % 2 === 0}
-              />
+              <TimelineItem key={item.year} event={item} isLeft={index % 2 === 0} />
             ))}
           </div>
         </div>

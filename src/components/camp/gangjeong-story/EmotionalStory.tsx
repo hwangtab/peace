@@ -14,7 +14,14 @@ interface StoryBlockProps {
   variant?: 'camp' | 'home';
 }
 
-const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey, align = 'left', imageClassName, variant = 'camp' }) => {
+const StoryBlock: React.FC<StoryBlockProps> = ({
+  imageSrc,
+  textKey,
+  altKey,
+  align = 'left',
+  imageClassName,
+  variant = 'camp',
+}) => {
   const { t } = useTranslation('gangjeong');
   const blockRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
@@ -30,7 +37,10 @@ const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey, alig
   const bgY = useTransform(scrollYProgress, [0, 1], ['-4%', '4%']);
 
   return (
-    <div ref={blockRef} className="relative min-h-[60vh] md:min-h-[70vh] flex items-end overflow-hidden">
+    <div
+      ref={blockRef}
+      className="relative min-h-[60vh] md:min-h-[70vh] flex items-end overflow-hidden"
+    >
       <motion.div
         className="absolute inset-0 w-full h-full scale-[1.15]"
         style={parallaxDisabled ? undefined : { y: bgY }}
@@ -44,7 +54,9 @@ const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey, alig
           className={`object-cover ${imageClassName || ''}`}
         />
       </motion.div>
-      <div className={`absolute inset-0 bg-gradient-to-t ${variant === 'home' ? 'from-black/75 via-jeju-ocean/40 to-transparent' : 'from-black/80 via-black/30 to-transparent'}`} />
+      <div
+        className={`absolute inset-0 bg-gradient-to-t ${variant === 'home' ? 'from-black/75 via-jeju-ocean/40 to-transparent' : 'from-black/80 via-black/30 to-transparent'}`}
+      />
 
       <Container size="wide" className="relative z-10 pb-12 sm:pb-16 md:pb-20 pt-20">
         <motion.div
@@ -54,7 +66,9 @@ const StoryBlock: React.FC<StoryBlockProps> = ({ imageSrc, textKey, altKey, alig
           transition={{ duration: 0.7 }}
           className={`max-w-lg mx-auto ${align === 'right' ? 'md:ml-auto md:mr-0' : 'md:mx-0'}`}
         >
-          <p className={`font-display font-bold text-lg sm:text-xl md:text-2xl text-white leading-relaxed break-words text-balance ${align === 'right' ? 'md:text-right' : ''}`}>
+          <p
+            className={`font-display font-bold text-lg sm:text-xl md:text-2xl text-white leading-relaxed break-words text-balance ${align === 'right' ? 'md:text-right' : ''}`}
+          >
             {t(textKey)}
           </p>
         </motion.div>

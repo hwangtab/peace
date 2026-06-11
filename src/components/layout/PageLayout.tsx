@@ -5,63 +5,73 @@ import StructuredDataScripts from '../shared/StructuredDataScripts';
 import BreadcrumbNav, { BreadcrumbItem } from '../shared/BreadcrumbNav';
 
 interface PageLayoutProps extends SEOHelmetProps {
-    children: ReactNode;
-    className?: string;
-    background?: 'white' | 'ocean-sand' | 'seafoam' | 'sunlight-glow' | 'sky-horizon' | 'light-beige' | 'jeju-ocean' | 'golden-sun';
-    disableTopPadding?: boolean;
-    disableBottomPadding?: boolean;
-    breadcrumbs?: BreadcrumbItem[];
+  children: ReactNode;
+  className?: string;
+  background?:
+    | 'white'
+    | 'ocean-sand'
+    | 'seafoam'
+    | 'sunlight-glow'
+    | 'sky-horizon'
+    | 'light-beige'
+    | 'jeju-ocean'
+    | 'golden-sun';
+  disableTopPadding?: boolean;
+  disableBottomPadding?: boolean;
+  breadcrumbs?: BreadcrumbItem[];
 }
 
 /**
  * PageLayout Component
- * 
+ *
  * Standardizes the top-level page layout, ensuring correct spacing for the fixed navigation bar.
  * replacing the manual `pt-24 pb-16` / `pt-32 pb-24` classes.
- * 
+ *
  * Includes SEOHelmet automatically to prevent SEO omissions.
  */
 const PageLayout: React.FC<PageLayoutProps> = ({
-    children,
-    className,
-    background = 'ocean-sand',
-    disableTopPadding = false,
-    disableBottomPadding = false,
-    breadcrumbs,
-    ...seoProps
+  children,
+  className,
+  background = 'ocean-sand',
+  disableTopPadding = false,
+  disableBottomPadding = false,
+  breadcrumbs,
+  ...seoProps
 }) => {
-    return (
-        <div className={classNames(
-            'min-h-screen relative',
-            {
-                'bg-white': background === 'white',
-                'bg-ocean-sand': background === 'ocean-sand',
-                'bg-seafoam': background === 'seafoam',
-                'bg-sunlight-glow': background === 'sunlight-glow',
-                'bg-sky-horizon': background === 'sky-horizon',
-                'bg-light-beige': background === 'light-beige',
-                'bg-jeju-ocean': background === 'jeju-ocean',
-                'bg-golden-sun': background === 'golden-sun',
-            },
-            // Standard top/bottom padding (formerly .page-container)
-            // If disableTopPadding is true, we remove the top padding classes
-            // If disableBottomPadding is true, we remove the bottom padding classes
-            {
-                'pt-24 md:pt-32': !disableTopPadding,
-                'pb-16 md:pb-24': !disableBottomPadding,
-            },
-            className
-        )}>
-            <SEOHelmet {...seoProps} omitStructuredScripts />
-            {breadcrumbs && <BreadcrumbNav items={breadcrumbs} />}
-            {children}
-            {/* JSON-LD 는 LCP/main 콘텐츠 뒤로 이동 — 스트리밍 HTML 파서가
+  return (
+    <div
+      className={classNames(
+        'min-h-screen relative',
+        {
+          'bg-white': background === 'white',
+          'bg-ocean-sand': background === 'ocean-sand',
+          'bg-seafoam': background === 'seafoam',
+          'bg-sunlight-glow': background === 'sunlight-glow',
+          'bg-sky-horizon': background === 'sky-horizon',
+          'bg-light-beige': background === 'light-beige',
+          'bg-jeju-ocean': background === 'jeju-ocean',
+          'bg-golden-sun': background === 'golden-sun',
+        },
+        // Standard top/bottom padding (formerly .page-container)
+        // If disableTopPadding is true, we remove the top padding classes
+        // If disableBottomPadding is true, we remove the bottom padding classes
+        {
+          'pt-24 md:pt-32': !disableTopPadding,
+          'pb-16 md:pb-24': !disableBottomPadding,
+        },
+        className
+      )}
+    >
+      <SEOHelmet {...seoProps} omitStructuredScripts />
+      {breadcrumbs && <BreadcrumbNav items={breadcrumbs} />}
+      {children}
+      {/* JSON-LD 는 LCP/main 콘텐츠 뒤로 이동 — 스트리밍 HTML 파서가
                 메인 마크업(H1, Hero) 을 먼저 도달해 paint 가능. SEO 영향 0. */}
-            {seoProps.structuredData !== undefined && (
-                <StructuredDataScripts data={seoProps.structuredData} />
-            )}
-        </div>
-    );
+      {seoProps.structuredData !== undefined && (
+        <StructuredDataScripts data={seoProps.structuredData} />
+      )}
+    </div>
+  );
 };
 
 export default PageLayout;

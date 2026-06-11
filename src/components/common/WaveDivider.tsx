@@ -32,10 +32,10 @@ const WaveDivider: React.FC<WaveDividerProps> = ({
     overlap === 'prev'
       ? '-mt-[60px] sm:-mt-[100px] relative z-10'
       : overlap === 'next'
-      ? '-mb-[60px] sm:-mb-[100px] relative z-10'
-      : overlap === 'both'
-      ? '-mt-[60px] -mb-[60px] sm:-mt-[100px] sm:-mb-[100px] relative z-10'
-      : '';
+        ? '-mb-[60px] sm:-mb-[100px] relative z-10'
+        : overlap === 'both'
+          ? '-mt-[60px] -mb-[60px] sm:-mt-[100px] sm:-mb-[100px] relative z-10'
+          : '';
 
   // SVG sub-pixel seam guard. Skip the side that `overlap` already controls
   // via negative margin so we never silently overwrite the overlap value.

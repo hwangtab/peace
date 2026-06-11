@@ -29,10 +29,7 @@ interface CampPageProps {
   initialLocale?: string;
 }
 
-const Camp2026Page: React.FC<CampPageProps> = ({
-  initialMusicians = [],
-  initialLocale = 'ko',
-}) => {
+const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialLocale = 'ko' }) => {
   const { t, i18n } = useTranslation();
   const camp2026 = useCamp('camp-2026');
   const ordinalLabel = formatOrdinal(3, i18n.language);
@@ -45,18 +42,21 @@ const Camp2026Page: React.FC<CampPageProps> = ({
   });
   const musicians = useMemo(
     () => (musiciansResource.isLoading ? [] : musiciansResource.data),
-    [musiciansResource.isLoading, musiciansResource.data],
+    [musiciansResource.isLoading, musiciansResource.data]
   );
 
-  const breadcrumbs = useMemo(() => [
-    { name: t('nav.home'), url: getFullUrl('/') },
-    { name: `${t('nav.camp')} 2026`, url: getFullUrl('/camps/2026') },
-  ], [t]);
+  const breadcrumbs = useMemo(
+    () => [
+      { name: t('nav.home'), url: getFullUrl('/') },
+      { name: `${t('nav.camp')} 2026`, url: getFullUrl('/camps/2026') },
+    ],
+    [t]
+  );
 
   const tSchema = useCallback(
     (key: string, vars?: Record<string, string | number>): string =>
       t(key, vars as Record<string, unknown>) as string,
-    [t],
+    [t]
   );
 
   const structuredData = useMemo(() => {
@@ -113,13 +113,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({
           {t('camp.lineup_count', { count: participantCount })}
         </Button>
         {camp2026.fundingUrl && (
-          <Button
-            href={camp2026.fundingUrl}
-            variant="white"
-            size="sm"
-            external
-            utmContent="hero"
-          >
+          <Button href={camp2026.fundingUrl} variant="white" size="sm" external utmContent="hero">
             {t('camp.ticketing_2026')}
           </Button>
         )}
@@ -214,12 +208,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({
 
       {/* Lineup / Timetable Section */}
       {camp2026.participants && camp2026.participants.length > 0 && (
-        <Section
-          background="sky-horizon"
-          id="lineup"
-          paddingTop="loose"
-          paddingBottom="loose"
-        >
+        <Section background="sky-horizon" id="lineup" paddingTop="loose" paddingBottom="loose">
           <Container size="content">
             <SectionHeader
               title={t('camp.section_musicians')}
@@ -235,11 +224,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({
                   {t('common.no_results')}
                 </p>
               ) : (
-                <CampTimetable
-                  data={timetable2026}
-                  musicians={musicians}
-                  campYear={2026}
-                />
+                <CampTimetable data={timetable2026} musicians={musicians} campYear={2026} />
               )}
             </div>
           </Container>
@@ -261,7 +246,12 @@ const Camp2026Page: React.FC<CampPageProps> = ({
       {/* Final CTA Section */}
       {camp2026.fundingUrl && (
         <>
-          <Section background="deep-ocean" paddingTop="loose" paddingBottom="loose" className="relative overflow-hidden">
+          <Section
+            background="deep-ocean"
+            paddingTop="loose"
+            paddingBottom="loose"
+            className="relative overflow-hidden"
+          >
             <Image
               src="/images-webp/camps/2026/cta-end-the-war-2026.webp"
               alt={t('camp.cta_final_image_alt')}
@@ -271,7 +261,10 @@ const Camp2026Page: React.FC<CampPageProps> = ({
               loading="lazy"
               className="absolute inset-0 object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/70" aria-hidden="true" />
+            <div
+              className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/70"
+              aria-hidden="true"
+            />
             <Container size="content" className="text-center relative z-10">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

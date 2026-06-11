@@ -99,7 +99,8 @@
     "lyricist": "作詞",
     "track": "曲目",
     "view_image": "查看圖片",
-    "no_results": "未找到結果。"
+    "no_results": "未找到結果。",
+    "video_unavailable": "影片無法播放"
   },
   "timetable": {
     "title": "演出時刻表",

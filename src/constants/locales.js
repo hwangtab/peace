@@ -20,7 +20,6 @@ const LOCALES = [
 
 const DEFAULT_LOCALE = 'ko';
 
-const isSupportedLocale = (locale) =>
-  !!locale && LOCALES.includes(locale);
+const isSupportedLocale = (locale) => !!locale && LOCALES.includes(locale);
 
 module.exports = { LOCALES, DEFAULT_LOCALE, isSupportedLocale };

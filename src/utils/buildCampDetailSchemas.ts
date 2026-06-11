@@ -11,11 +11,7 @@
 
 import { CampEvent } from '@/types/camp';
 import { getFullUrl } from '@/config/env';
-import {
-  getEventSchema,
-  getBreadcrumbSchema,
-  getWebPageSchema,
-} from '@/utils/structuredData';
+import { getEventSchema, getBreadcrumbSchema, getWebPageSchema } from '@/utils/structuredData';
 import type { SchemaT } from '@/utils/buildCamp2026Schemas';
 
 interface BuildArgs {
@@ -100,16 +96,16 @@ export function buildCampDetailSchemas({
         type: 'MusicGroup' as const,
         name: typeof p === 'string' ? p : p.name,
       })),
-      eventStatus: camp.year < 2026
-        ? 'https://schema.org/EventCompleted'
-        : 'https://schema.org/EventScheduled',
+      eventStatus:
+        camp.year < 2026
+          ? 'https://schema.org/EventCompleted'
+          : 'https://schema.org/EventScheduled',
       offers: {
         url: getFullUrl(`/camps/${camp.year}`),
         price: '0',
         priceCurrency: 'KRW',
-        availability: camp.year < 2026
-          ? 'https://schema.org/SoldOut'
-          : 'https://schema.org/InStock',
+        availability:
+          camp.year < 2026 ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock',
       },
       url: getFullUrl(`/camps/${camp.year}`),
       id: `https://peaceandmusic.net/camps/${camp.year}#event`,

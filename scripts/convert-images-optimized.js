@@ -10,7 +10,7 @@ const config = {
       quality: 85,
       fileRange: { start: 1, end: 180 },
       inputExt: '.jpeg',
-      description: 'Gallery images'
+      description: 'Gallery images',
     },
     musicians: {
       inputDir: 'public/Images/album/musicians',
@@ -18,23 +18,23 @@ const config = {
       quality: 85,
       fileRange: { start: 1, end: 12 },
       inputExt: '.jpg',
-      description: 'Musician profiles'
+      description: 'Musician profiles',
     },
     camp2023: {
       inputDir: 'public/Images/1th camp',
       outputDir: 'public/images-webp/camps/2023',
       quality: 75,
       preserveFilename: true,
-      description: '2023 Camp photos'
+      description: '2023 Camp photos',
     },
     camp2025: {
       inputDir: 'public/Images/2th camp',
       outputDir: 'public/images-webp/camps/2025',
       quality: 75,
       preserveFilename: true,
-      description: '2025 Camp photos'
-    }
-  }
+      description: '2025 Camp photos',
+    },
+  },
 };
 
 async function convertImageSet(typeConfig, typeName) {
@@ -60,7 +60,7 @@ async function convertImageSet(typeConfig, typeName) {
         filesToConvert.push({
           input: inputFile,
           output: path.join(typeConfig.outputDir, `${i}.webp`),
-          filename: `${i}${typeConfig.inputExt}`
+          filename: `${i}${typeConfig.inputExt}`,
         });
       }
     }
@@ -68,14 +68,14 @@ async function convertImageSet(typeConfig, typeName) {
     else if (typeConfig.preserveFilename) {
       try {
         const files = await fs.readdir(typeConfig.inputDir);
-        const imageFiles = files.filter(f =>
-          /\.(jpg|jpeg|png|JPG|JPEG|PNG)$/i.test(f) && !f.startsWith('._')
+        const imageFiles = files.filter(
+          (f) => /\.(jpg|jpeg|png|JPG|JPEG|PNG)$/i.test(f) && !f.startsWith('._')
         );
 
-        filesToConvert = imageFiles.map(file => ({
+        filesToConvert = imageFiles.map((file) => ({
           input: path.join(typeConfig.inputDir, file),
           output: path.join(typeConfig.outputDir, `${path.parse(file).name}.webp`),
-          filename: file
+          filename: file,
         }));
       } catch (error) {
         console.error(`  ❌ Error reading directory ${typeConfig.inputDir}: ${error.message}`);
@@ -103,7 +103,7 @@ async function convertImageSet(typeConfig, typeName) {
         await sharp(input)
           .webp({
             quality: typeConfig.quality,
-            effort: 4
+            effort: 4,
           })
           .toFile(output);
 
@@ -139,7 +139,6 @@ async function convertImageSet(typeConfig, typeName) {
     }
 
     return { converted, errors, originalSize, newSize };
-
   } catch (error) {
     console.error(`  ❌ Failed to process ${typeName}:`, error);
     return { converted: 0, errors: 1, originalSize: 0, newSize: 0 };
@@ -170,7 +169,7 @@ async function main() {
     totalErrors: 0,
     totalOriginalSize: 0,
     totalNewSize: 0,
-    startTime: Date.now()
+    startTime: Date.now(),
   };
 
   // Convert each type
@@ -191,9 +190,10 @@ async function main() {
 
   const originalGB = (results.totalOriginalSize / 1024 / 1024 / 1024).toFixed(2);
   const newGB = (results.totalNewSize / 1024 / 1024 / 1024).toFixed(2);
-  const reduction = results.totalOriginalSize > 0
-    ? ((1 - results.totalNewSize / results.totalOriginalSize) * 100).toFixed(1)
-    : 0;
+  const reduction =
+    results.totalOriginalSize > 0
+      ? ((1 - results.totalNewSize / results.totalOriginalSize) * 100).toFixed(1)
+      : 0;
 
   console.log(`Original size: ${originalGB} GB`);
   console.log(`New size: ${newGB} GB`);
@@ -206,7 +206,7 @@ async function main() {
   process.exit(results.totalErrors > 0 ? 1 : 0);
 }
 
-main().catch(error => {
+main().catch((error) => {
   console.error('Fatal error:', error);
   process.exit(1);
 });

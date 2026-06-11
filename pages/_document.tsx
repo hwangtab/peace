@@ -12,8 +12,8 @@ class MyDocument extends Document {
     const currentLocale = locale || 'ko';
     const dir = getTextDirection(currentLocale);
 
-      return (
-        <Html lang={currentLocale} dir={dir} data-scroll-behavior="smooth">
+    return (
+      <Html lang={currentLocale} dir={dir} data-scroll-behavior="smooth">
         <Head>
           {/* Google Analytics preconnect (GA4 렌더링 차단 방지) */}
           <link rel="preconnect" href="https://www.googletagmanager.com" />

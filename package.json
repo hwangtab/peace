@@ -7,8 +7,11 @@
     "*.css",
     "*.scss"
   ],
-  "overrides": {
-    "postcss": "^8.5.14"
+  "pnpm": {
+    "overrides": {
+      "postcss": "^8.5.14",
+      "tmp": "^0.2.7"
+    }
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
@@ -37,16 +40,19 @@
     "postbuild": "next-sitemap",
     "test": "jest",
     "generate:artist-cards": "node scripts/generate-artist-cards.js",
-    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css}\"",
-    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css}\"",
-    "lint": "eslint src pages",
-    "lint:fix": "eslint src pages --fix",
+    "typecheck": "tsc --noEmit --pretty false",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css}\" \"pages/**/*.{ts,tsx,js,jsx}\" \"scripts/**/*.{ts,tsx,js,mjs,json}\" \"*.{md,json,js}\" \".github/workflows/*.{yml,yaml}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css}\" \"pages/**/*.{ts,tsx,js,jsx}\" \"scripts/**/*.{ts,tsx,js,mjs,json}\" \"*.{md,json,js}\" \".github/workflows/*.{yml,yaml}\"",
+    "lint": "eslint src pages proxy.ts scripts/check-timetable-generated.mjs scripts/convert-timetable.ts",
+    "lint:fix": "eslint src pages proxy.ts scripts/check-timetable-generated.mjs scripts/convert-timetable.ts --fix",
     "analyze": "ANALYZE=true next build",
     "analyze:source-map": "source-map-explorer '.next/static/chunks/*.js'",
     "dev": "next dev",
-    "i18n:extract": "i18next-parser",
-    "i18n:check": "i18next-parser --fail-on-warnings",
-    "build:timetable": "ts-node --compiler-options '{\"module\":\"commonjs\"}' scripts/convert-timetable.ts",
+    "i18n:extract": "node scripts/extract-i18n.mjs",
+    "i18n:check": "node scripts/check-missing-translations.mjs && node scripts/check-deep-translations.mjs",
+    "static:check": "node scripts/check-static-assets.mjs",
+    "build:timetable": "ts-node --compiler-options '{\"module\":\"commonjs\",\"moduleResolution\":\"node\"}' scripts/convert-timetable.ts",
+    "timetable:check": "node scripts/check-timetable-generated.mjs",
     "fonts:subset": "python3 scripts/subset-fonts.py"
   },
   "browserslist": {
@@ -92,9 +98,9 @@
     "patch-package": "^8.0.1",
     "prettier": "^3.4.2",
     "puppeteer": "^24.40.0",
+    "read-excel-file": "^9.1.1",
     "sharp": "^0.33.5",
     "source-map-explorer": "^2.5.3",
-    "ts-node": "^10.9.2",
-    "xlsx": "^0.18.5"
+    "ts-node": "^10.9.2"
   }
 }

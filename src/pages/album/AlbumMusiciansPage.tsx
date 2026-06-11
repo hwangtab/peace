@@ -5,7 +5,11 @@ import PageLayout from '@/components/layout/PageLayout';
 import Section from '@/components/layout/Section';
 import PageHero from '@/components/common/PageHero';
 import PageIntroSection from '@/components/common/PageIntroSection';
-import { getCollectionPageSchema, getBreadcrumbSchema, getWebPageSchema } from '@/utils/structuredData';
+import {
+  getCollectionPageSchema,
+  getBreadcrumbSchema,
+  getWebPageSchema,
+} from '@/utils/structuredData';
 import { Musician } from '@/types/musician';
 import { getFullUrl } from '@/config/env';
 
@@ -18,21 +22,24 @@ const AlbumMusiciansPage = ({
   initialMusicians = [],
   initialLocale = 'ko',
 }: AlbumMusiciansPageProps) => {
-  // album 을 default 로 두되 nav/common/app 같은 공유 키도 fallback 으로 조회.
+  // album 을 default 로 두고, nav/common/app 같은 공유 키는 namespace 를 명시한다.
   const { t } = useTranslation(['album', 'translation']);
 
-  const breadcrumbs = useMemo(() => [
-    { name: t('nav.home'), url: getFullUrl('/') },
-    { name: t('nav.album'), url: getFullUrl('/album/about') },
-    { name: t('nav.musician'), url: getFullUrl('/album/musicians') },
-  ], [t]);
+  const breadcrumbs = useMemo(
+    () => [
+      { name: t('translation:nav.home'), url: getFullUrl('/') },
+      { name: t('translation:nav.album'), url: getFullUrl('/album/about') },
+      { name: t('translation:nav.musician'), url: getFullUrl('/album/musicians') },
+    ],
+    [t]
+  );
 
   const structuredData = useMemo(() => {
     const collectionSchema = getCollectionPageSchema({
       name: t('musicians_page_title'),
       description: t('musicians_page_desc'),
       url: getFullUrl('/album/musicians'),
-      hasPart: initialMusicians.map((m) => ({ "@id": getFullUrl(`/album/musicians/${m.id}`) })),
+      hasPart: initialMusicians.map((m) => ({ '@id': getFullUrl(`/album/musicians/${m.id}`) })),
     });
     return [
       collectionSchema,
@@ -69,18 +76,14 @@ const AlbumMusiciansPage = ({
       disableTopPadding={true}
     >
       <PageHero
-        title={t('nav.musician')}
+        title={t('translation:nav.musician')}
         subtitle={t('musicians_hero_subtitle')}
         backgroundImage="/images-webp/gallery/2.webp"
       />
       <PageIntroSection
         eyebrow={t('musicians_intro.eyebrow')}
         heading={t('musicians_intro.heading')}
-        paragraphs={[
-          t('musicians_intro.p1'),
-          t('musicians_intro.p2'),
-          t('musicians_intro.p3'),
-        ]}
+        paragraphs={[t('musicians_intro.p1'), t('musicians_intro.p2'), t('musicians_intro.p3')]}
         background="white"
       />
       <Section background="white" paddingTop="normal" paddingBottom="tight">

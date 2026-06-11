@@ -23,65 +23,68 @@ const NATIVE_LANGUAGE_NAMES: Record<string, string> = {
 };
 
 interface LanguageSwitcherProps {
-    className?: string;
-    isScrolled?: boolean;
+  className?: string;
+  isScrolled?: boolean;
 }
 
-const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ className = '', isScrolled = false }) => {
-    const { t, i18n } = useTranslation();
-    const router = useRouter();
-    const toneClasses = isScrolled ? 'text-jeju-ocean' : 'text-cloud-white';
-    const borderClasses = isScrolled
-        ? 'border-jeju-ocean hover:bg-jeju-ocean hover:text-white'
-        : 'border-cloud-white hover:bg-cloud-white hover:text-jeju-ocean';
-    const arrowClasses = isScrolled
-        ? 'text-jeju-ocean group-hover:text-white'
-        : 'text-cloud-white group-hover:text-jeju-ocean';
+const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
+  className = '',
+  isScrolled = false,
+}) => {
+  const { t, i18n } = useTranslation();
+  const router = useRouter();
+  const toneClasses = isScrolled ? 'text-jeju-ocean' : 'text-cloud-white';
+  const borderClasses = isScrolled
+    ? 'border-jeju-ocean hover:bg-jeju-ocean hover:text-white'
+    : 'border-cloud-white hover:bg-cloud-white hover:text-jeju-ocean';
+  const arrowClasses = isScrolled
+    ? 'text-jeju-ocean group-hover:text-white'
+    : 'text-cloud-white group-hover:text-jeju-ocean';
 
-    const currentLocale = router.locale || i18n.language || 'ko';
+  const currentLocale = router.locale || i18n.language || 'ko';
 
-    const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const nextLang = event.target.value;
-        document.cookie = `NEXT_LOCALE=${nextLang}; path=/; max-age=31536000; samesite=lax`;
-        router.push(router.asPath, router.asPath, { locale: nextLang });
-    };
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const nextLang = event.target.value;
+    document.cookie = `NEXT_LOCALE=${nextLang}; path=/; max-age=31536000; samesite=lax`;
+    router.push(router.asPath, router.asPath, { locale: nextLang });
+  };
 
-    return (
-        <div className={`relative group ${className}`}>
-            <label className="sr-only" htmlFor="language-switcher">
-                {t('nav.switch_language')}
-            </label>
-            <select
-                id="language-switcher"
-                value={currentLocale}
-                onChange={handleChange}
-                className={`font-serif font-bold text-xs sm:text-sm px-2 py-2 pr-8 border rounded transition-colors duration-300 bg-transparent appearance-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${toneClasses} ${borderClasses}`}
-                aria-label={t('nav.switch_language')}
-            >
-                {LOCALES.map((locale) => (
-                    <option key={locale} value={locale} className="text-deep-ocean">
-                        {NATIVE_LANGUAGE_NAMES[locale] || locale}
-                    </option>
-                ))}
-            </select>
-            <span
-                className={`pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 transition-colors ${arrowClasses}`}
-                aria-hidden="true"
-            >
-                <svg
-                    className="h-3 w-3"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                >
-                    <path d="M6 8l4 4 4-4" />
-                </svg>
-            </span>
-        </div>
-    );
+  return (
+    <div className={`relative group ${className}`}>
+      <label className="sr-only" htmlFor="language-switcher">
+        {t('nav.switch_language')}
+      </label>
+      <select
+        id="language-switcher"
+        value={currentLocale}
+        onChange={handleChange}
+        className={`font-serif font-bold text-xs sm:text-sm px-2 py-2 pr-8 border rounded transition-colors duration-300 bg-transparent appearance-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${toneClasses} ${borderClasses}`}
+        aria-label={t('nav.switch_language')}
+      >
+        {LOCALES.map((locale) => (
+          <option key={locale} value={locale} className="text-deep-ocean">
+            {NATIVE_LANGUAGE_NAMES[locale] || locale}
+          </option>
+        ))}
+      </select>
+      <span
+        className={`pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 transition-colors ${arrowClasses}`}
+        aria-hidden="true"
+      >
+        <svg
+          className="h-3 w-3"
+          viewBox="0 0 20 20"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M6 8l4 4 4-4" />
+        </svg>
+      </span>
+    </div>
+  );
 };
 
 export default LanguageSwitcher;

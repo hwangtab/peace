@@ -116,15 +116,24 @@ const sections = [
   },
   {
     name: '3-story1',
-    html: storyBlockHtml(images.story1, '강정의 상징이었던 구럼비 바위. 수만 년 동안 파도를 맞으며 형성된 이 용암 바위는 2012년, 해군기지 건설을 위해 폭파되었습니다.'),
+    html: storyBlockHtml(
+      images.story1,
+      '강정의 상징이었던 구럼비 바위. 수만 년 동안 파도를 맞으며 형성된 이 용암 바위는 2012년, 해군기지 건설을 위해 폭파되었습니다.'
+    ),
   },
   {
     name: '4-story2',
-    html: storyBlockHtml(images.story2, '하지만 구럼비 위에서 기도하고, 노래하고, 춤추던 사람들의 기억은 사라지지 않았습니다. 20년 가까이 매일 아침 평화의 기도를 올리는 이 마을의 이야기가 캠프의 뿌리입니다.'),
+    html: storyBlockHtml(
+      images.story2,
+      '하지만 구럼비 위에서 기도하고, 노래하고, 춤추던 사람들의 기억은 사라지지 않았습니다. 20년 가까이 매일 아침 평화의 기도를 올리는 이 마을의 이야기가 캠프의 뿌리입니다.'
+    ),
   },
   {
     name: '5-story3',
-    html: storyBlockHtml(images.story3, '군사기지가 아닌 음악으로. 대립이 아닌 연대로. 강정피스앤뮤직캠프는 이 기억 위에 세워진 축제입니다. 가장 아름다운 저항은 함께 노래하는 것이니까요.'),
+    html: storyBlockHtml(
+      images.story3,
+      '군사기지가 아닌 음악으로. 대립이 아닌 연대로. 강정피스앤뮤직캠프는 이 기억 위에 세워진 축제입니다. 가장 아름다운 저항은 함께 노래하는 것이니까요.'
+    ),
   },
   {
     name: '6-solidarity',
@@ -155,7 +164,7 @@ async function main() {
     const full = `<!DOCTYPE html><html><head><meta charset="utf-8"></head><body>${section.html}</body></html>`;
     await page.setContent(full, { waitUntil: 'load' });
     await page.evaluate(() => document.fonts.ready);
-    await new Promise(r => setTimeout(r, 200));
+    await new Promise((r) => setTimeout(r, 200));
 
     const outPath = path.join(OUT, section.name + '.png');
     await page.screenshot({ path: outPath, type: 'png', fullPage: true });
@@ -166,7 +175,7 @@ async function main() {
   console.log(`\nDone! 6 images saved to ${OUT}`);
 }
 
-main().catch(err => {
+main().catch((err) => {
   console.error('Fatal:', err);
   process.exit(1);
 });

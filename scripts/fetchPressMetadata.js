@@ -20,7 +20,9 @@ const loadPressData = async () => {
 
     // Find the press items array more carefully
     // Pattern: export const pressItems: PressItem[] = ([...] as PressItem[])
-    const arrayMatch = content.match(/export const pressItems: PressItem\[\] = \(\[([\s\S]*?)\] as PressItem\[\]\)/);
+    const arrayMatch = content.match(
+      /export const pressItems: PressItem\[\] = \(\[([\s\S]*?)\] as PressItem\[\]\)/
+    );
 
     if (!arrayMatch) {
       throw new Error('Could not find pressItems array in press.ts');
@@ -169,9 +171,10 @@ const fetchPressMetadata = async (pressItem) => {
     timeout: REQUEST_TIMEOUT_MS,
     fetchOptions: {
       headers: {
-        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-      }
-    }
+        'user-agent':
+          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+      },
+    },
   };
 
   try {
@@ -185,7 +188,7 @@ const fetchPressMetadata = async (pressItem) => {
         url: pressItem.url,
         imageUrl: '',
         currentImageUrl: pressItem.imageUrl || '',
-        error: ogsError
+        error: ogsError,
       };
     }
 
@@ -207,7 +210,7 @@ const fetchPressMetadata = async (pressItem) => {
       title: pressItem.title,
       url: pressItem.url,
       imageUrl: imageUrl,
-      currentImageUrl: pressItem.imageUrl || ''
+      currentImageUrl: pressItem.imageUrl || '',
     };
   } catch (error) {
     console.error(`  ✗ Exception for ID ${pressItem.id}: ${error.message}`);
@@ -217,7 +220,7 @@ const fetchPressMetadata = async (pressItem) => {
       url: pressItem.url,
       imageUrl: '',
       currentImageUrl: pressItem.imageUrl || '',
-      error: error.message
+      error: error.message,
     };
   }
 };
@@ -227,7 +230,7 @@ const fetchPressMetadata = async (pressItem) => {
  * @param {number} ms - Milliseconds to sleep
  * @returns {Promise}
  */
-const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 /**
  * Main execution
@@ -245,9 +248,7 @@ const run = async () => {
 
     // Determine fetch mode
     const fetchAll = process.argv.includes('--all');
-    const itemsToFetch = fetchAll
-      ? pressData
-      : pressData.filter(p => !p.imageUrl);
+    const itemsToFetch = fetchAll ? pressData : pressData.filter((p) => !p.imageUrl);
 
     console.log(`Mode: ${fetchAll ? 'ALL ARTICLES' : 'MISSING ONLY'}`);
     console.log(`Items to fetch: ${itemsToFetch.length}\n`);
@@ -280,9 +281,9 @@ const run = async () => {
     console.log('SUMMARY');
     console.log('='.repeat(70));
     console.log(`Total processed: ${results.length}`);
-    console.log(`Found images: ${results.filter(r => r.imageUrl).length}`);
-    console.log(`Missing images: ${results.filter(r => !r.imageUrl).length}`);
-    console.log(`Errors: ${results.filter(r => r.error).length}`);
+    console.log(`Found images: ${results.filter((r) => r.imageUrl).length}`);
+    console.log(`Missing images: ${results.filter((r) => !r.imageUrl).length}`);
+    console.log(`Errors: ${results.filter((r) => r.error).length}`);
 
     // Output detailed results for manual review
     console.log('\n' + '='.repeat(70));
@@ -290,7 +291,7 @@ const run = async () => {
     console.log('='.repeat(70));
     console.log('');
 
-    results.forEach(r => {
+    results.forEach((r) => {
       console.log(`ID ${r.id}:`);
       console.log(`  Title: ${r.title}`);
       console.log(`  URL: ${r.url}`);
@@ -317,15 +318,14 @@ const run = async () => {
     console.log('2. Test image URLs in your browser to verify they load');
     console.log('3. Open src/data/press.ts and add imageUrl field to items with IDs:');
     results
-      .filter(r => r.imageUrl)
-      .forEach(r => {
+      .filter((r) => r.imageUrl)
+      .forEach((r) => {
         console.log(`   - ID ${r.id}: Add imageUrl: "${r.imageUrl}"`);
       });
-    console.log('4. Run: npm run build');
-    console.log('5. Test locally: npm start');
+    console.log('4. Run: pnpm build');
+    console.log('5. Test locally: pnpm start');
     console.log('6. Commit and push changes');
     console.log('');
-
   } catch (error) {
     console.error('Fatal error:', error.message);
     process.exit(1);
@@ -333,7 +333,7 @@ const run = async () => {
 };
 
 // Run the script
-run().catch(error => {
+run().catch((error) => {
   console.error('Fatal error:', error);
   process.exit(1);
 });

@@ -11,7 +11,12 @@ import PageHero from '../common/PageHero';
 import PageIntroSection from '../common/PageIntroSection';
 import Container from '../layout/Container';
 import VideoCard from './VideoCard';
-import { getCollectionPageSchema, getBreadcrumbSchema, getVideoObjectSchema, getWebPageSchema } from '@/utils/structuredData';
+import {
+  getCollectionPageSchema,
+  getBreadcrumbSchema,
+  getVideoObjectSchema,
+  getWebPageSchema,
+} from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
 import { useLocalizedResource } from '@/hooks/useLocalizedResource';
 
@@ -39,23 +44,39 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
     [videos, selectedFilter]
   );
 
-  const videoBreadcrumbs = useMemo(() => [
-    { name: t('nav.home'), url: getFullUrl('/') },
-    { name: t('videos.page_title'), url: getFullUrl('/videos') },
-  ], [t]);
+  const videoBreadcrumbs = useMemo(
+    () => [
+      { name: t('nav.home'), url: getFullUrl('/') },
+      { name: t('videos.page_title'), url: getFullUrl('/videos') },
+    ],
+    [t]
+  );
 
   const structuredData = useMemo(() => {
     const eligibleVideos = videos.filter((v) => v.youtubeUrl && v.date).slice(0, 10);
     const videoSchemas = eligibleVideos
       .map((v) =>
-        getVideoObjectSchema({ name: v.title, description: v.description || '', youtubeUrl: v.youtubeUrl, uploadDate: v.date, id: String(v.id), duration: v.duration, pageUrl: getFullUrl(`/videos/${v.id}`) }, t)
+        getVideoObjectSchema(
+          {
+            name: v.title,
+            description: v.description || '',
+            youtubeUrl: v.youtubeUrl,
+            uploadDate: v.date,
+            id: String(v.id),
+            duration: v.duration,
+            pageUrl: getFullUrl(`/videos/${v.id}`),
+          },
+          t
+        )
       )
       .filter((schema): schema is NonNullable<typeof schema> => schema !== null);
     const collectionSchema = getCollectionPageSchema({
       name: t('videos.page_title'),
       description: t('videos.page_desc'),
       url: getFullUrl('/videos'),
-      hasPart: eligibleVideos.map((v) => ({ "@id": `https://peaceandmusic.net/videos/${v.id}#video` })),
+      hasPart: eligibleVideos.map((v) => ({
+        '@id': `https://peaceandmusic.net/videos/${v.id}#video`,
+      })),
     });
     return [
       collectionSchema,
@@ -100,11 +121,7 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
       <PageIntroSection
         eyebrow={t('videos.intro.eyebrow')}
         heading={t('videos.intro.heading')}
-        paragraphs={[
-          t('videos.intro.p1'),
-          t('videos.intro.p2'),
-          t('videos.intro.p3'),
-        ]}
+        paragraphs={[t('videos.intro.p1'), t('videos.intro.p2'), t('videos.intro.p3')]}
         background="white"
       />
 

@@ -11,7 +11,10 @@ import NotFoundPage from '@/pages/NotFoundPage';
 
 const CURRENT_CAMP_YEAR = Math.max(...camps.map((c) => c.year));
 
-const pageComponents: Record<string, React.ComponentType<{ initialMusicians?: Musician[]; initialLocale?: string }>> = {
+const pageComponents: Record<
+  string,
+  React.ComponentType<{ initialMusicians?: Musician[]; initialLocale?: string }>
+> = {
   '2023': Camp2023Page,
   '2025': Camp2025Page,
   '2026': Camp2026Page,
@@ -54,8 +57,10 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
   const allMusicians = loadLocalizedData<Musician>(lang, 'musicians.json');
   const referencedIds = new Set<number>(
     (camp.participants ?? [])
-      .map((p) => (typeof p === 'object' && p !== null && 'musicianId' in p ? p.musicianId : undefined))
-      .filter((id): id is number => typeof id === 'number'),
+      .map((p) =>
+        typeof p === 'object' && p !== null && 'musicianId' in p ? p.musicianId : undefined
+      )
+      .filter((id): id is number => typeof id === 'number')
   );
   const isCurrentCamp = camp.year >= CURRENT_CAMP_YEAR;
   const initialMusicians = allMusicians

@@ -8,6 +8,7 @@ import { join } from 'path';
 const LOCALES = ['en', 'es', 'fr', 'de', 'pt', 'ru', 'ar', 'ja', 'zh-Hans', 'zh-Hant', 'hi', 'id'];
 const REF_LOCALE = 'ko';
 const BASE = join(process.cwd(), 'public/locales');
+const ALLOWED_EMPTY_KEYS = new Set(['translation.solidarity.event_sail.note']);
 
 function loadKeys(filePath) {
   try {
@@ -83,12 +84,12 @@ const summary = [];
 for (const ns of [...allNs].sort()) {
   const refFile = join(BASE, REF_LOCALE, `${ns}.json`);
   const refKeys = loadKeys(refFile);
-  
+
   for (const locale of LOCALES) {
     const otherFile = join(BASE, locale, `${ns}.json`);
     const otherKeys = loadKeys(otherFile);
     const missing = [...refKeys].filter((k) => !otherKeys.has(k)).sort();
-    
+
     if (missing.length > 0) {
       totalMissing += missing.length;
       summary.push({ locale, ns, missing });
@@ -116,10 +117,12 @@ function findEmpty(obj, prefix) {
 }
 
 let emptyCount = 0;
-for (const nsFile of [...readdirSync(join(BASE, REF_LOCALE)).filter((f) => f.endsWith('.json'))].sort()) {
+for (const nsFile of [
+  ...readdirSync(join(BASE, REF_LOCALE)).filter((f) => f.endsWith('.json')),
+].sort()) {
   const ns = nsFile.replace('.json', '');
   const data = JSON.parse(readFileSync(join(BASE, REF_LOCALE, nsFile), 'utf-8'));
-  const empty = findEmpty(data, '');
+  const empty = findEmpty(data, '').filter((key) => !ALLOWED_EMPTY_KEYS.has(`${ns}.${key}`));
   if (empty.length > 0) {
     emptyCount += empty.length;
     console.log(`${ns}: ${empty.length} empty/placeholder value(s)`);
@@ -142,7 +145,8 @@ console.log(`\n=== SUMMARY ===`);
 console.log(`총 ko 기준 키: ${koTotalKeys}`);
 console.log(`누락된 번역 파일: ${missingFileCount}개`);
 console.log(`누락된 키 전체: ${totalMissing}개`);
-const coverage = koTotalKeys > 0 ? ((1 - totalMissing / (koTotalKeys * LOCALES.length)) * 100).toFixed(1) : 'N/A';
+const coverage =
+  koTotalKeys > 0 ? ((1 - totalMissing / (koTotalKeys * LOCALES.length)) * 100).toFixed(1) : 'N/A';
 console.log(`전체 번역 커버리지: ${coverage}%`);
 
 // Write detailed report
@@ -184,3 +188,7 @@ if (emptyCount > 0) {
 
 writeFileSync(reportFile, report, 'utf-8');
 console.log(`\n→ 상세 보고서: ${reportFile}`);
+
+if (missingFileCount > 0 || totalMissing > 0 || emptyCount > 0) {
+  process.exitCode = 1;
+}

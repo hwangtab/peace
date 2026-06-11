@@ -44,7 +44,11 @@ describe('useFilterFromQuery', () => {
   });
 
   test('router.isReady=false 이면 "all" 반환', () => {
-    mockUseRouter.mockReturnValue({ ...mockRouterBase, isReady: false, query: { filter: 'camp-2025' } });
+    mockUseRouter.mockReturnValue({
+      ...mockRouterBase,
+      isReady: false,
+      query: { filter: 'camp-2025' },
+    });
     const { result } = renderHook(() => useFilterFromQuery());
     expect(result.current[0]).toBe('all');
   });

@@ -99,7 +99,8 @@
     "lyricist": "Penulis lirik",
     "track": "Lagu",
     "view_image": "Lihat gambar",
-    "no_results": "Tidak ada hasil ditemukan."
+    "no_results": "Tidak ada hasil ditemukan.",
+    "video_unavailable": "Video tidak tersedia"
   },
   "timetable": {
     "title": "Jadwal",

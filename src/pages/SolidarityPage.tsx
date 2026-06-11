@@ -21,10 +21,7 @@ interface Props {
   initialLocale?: string;
 }
 
-const SolidarityPage: React.FC<Props> = ({
-  initialMusicians = [],
-  initialLocale = 'ko',
-}) => {
+const SolidarityPage: React.FC<Props> = ({ initialMusicians = [], initialLocale = 'ko' }) => {
   const { t, i18n } = useTranslation();
 
   const fetchMusicians = useCallback((locale: string) => getMusicians(locale), []);
@@ -43,7 +40,7 @@ const SolidarityPage: React.FC<Props> = ({
       { name: t('nav.home'), url: getFullUrl('/') },
       { name: t('solidarity.breadcrumb'), url: getFullUrl('/solidarity') },
     ],
-    [t],
+    [t]
   );
 
   const PAGE_URL = getFullUrl('/solidarity');
@@ -61,9 +58,14 @@ const SolidarityPage: React.FC<Props> = ({
         ...(firstEvent ? { mainEntityId: `${PAGE_URL}#${firstEvent.id}` } : {}),
         ...(primaryImageUrl ? { primaryImageUrl } : {}),
         keywords: [
-          '팔레스타인 해방', '연대 공연', 'WE SING FOR YOUR FREEDOM',
-          '평화 문화제', '강정피스앤뮤직캠프', '팔레스타인 활동가 석방',
-          'Palestine solidarity concert', 'Seoul peace event 2026',
+          '팔레스타인 해방',
+          '연대 공연',
+          'WE SING FOR YOUR FREEDOM',
+          '평화 문화제',
+          '강정피스앤뮤직캠프',
+          '팔레스타인 활동가 석방',
+          'Palestine solidarity concert',
+          'Seoul peace event 2026',
         ],
       }),
     ];

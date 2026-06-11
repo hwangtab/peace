@@ -37,10 +37,7 @@ const SolidarityEventPage: React.FC<Props> = ({
   });
   const musicians = musiciansResource.isLoading ? initialMusicians : musiciansResource.data;
 
-  const event = useMemo(
-    () => getSolidarityEvents(t).find((e) => e.id === slug) ?? null,
-    [t, slug],
-  );
+  const event = useMemo(() => getSolidarityEvents(t).find((e) => e.id === slug) ?? null, [t, slug]);
 
   const pageUrl = getFullUrl(`/solidarity/${slug}`);
 
@@ -50,7 +47,7 @@ const SolidarityEventPage: React.FC<Props> = ({
       { name: t('solidarity.breadcrumb'), url: getFullUrl('/solidarity') },
       { name: event?.title ?? slug, url: pageUrl },
     ],
-    [t, event, slug, pageUrl],
+    [t, event, slug, pageUrl]
   );
 
   const structuredData = useMemo(() => {
@@ -66,8 +63,11 @@ const SolidarityEventPage: React.FC<Props> = ({
         primaryImageUrl: getFullUrl(event.poster),
         keywords: [
           event.title,
-          '연대 공연', '평화 문화제', '강정피스앤뮤직캠프',
-          'Palestine solidarity', 'peace concert Seoul',
+          '연대 공연',
+          '평화 문화제',
+          '강정피스앤뮤직캠프',
+          'Palestine solidarity',
+          'peace concert Seoul',
         ],
       }),
     ];
@@ -91,10 +91,7 @@ const SolidarityEventPage: React.FC<Props> = ({
       disableTopPadding={true}
       disableBottomPadding={true}
     >
-      <PageHero
-        title={event.title}
-        backgroundImage={event.poster}
-      />
+      <PageHero title={event.title} backgroundImage={event.poster} />
       <SectionWave color="ocean-sand" flow="up" />
 
       <Section background="ocean-sand" paddingBottom="loose">
@@ -104,14 +101,11 @@ const SolidarityEventPage: React.FC<Props> = ({
               href="/solidarity"
               className="inline-flex items-center gap-2 text-sm text-jeju-ocean hover:underline font-medium mb-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean rounded"
             >
-              <span aria-hidden="true">←</span>{t('solidarity.back_to_list')}
+              <span aria-hidden="true">←</span>
+              {t('solidarity.back_to_list')}
             </Link>
 
-            <SolidarityEventFeature
-              event={event}
-              index={0}
-              musicians={musicians}
-            />
+            <SolidarityEventFeature event={event} index={0} musicians={musicians} />
           </div>
         </Container>
       </Section>

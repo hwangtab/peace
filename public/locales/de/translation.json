@@ -99,7 +99,8 @@
     "lyricist": "Liedtexter",
     "track": "Track",
     "view_image": "Bild ansehen",
-    "no_results": "Keine Ergebnisse gefunden."
+    "no_results": "Keine Ergebnisse gefunden.",
+    "video_unavailable": "Video nicht verfügbar"
   },
   "timetable": {
     "title": "Zeitplan",

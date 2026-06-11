@@ -4,7 +4,11 @@ import dynamic from 'next/dynamic';
 import Button from '../common/Button';
 import { m as motion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
-import { HiOutlineCalendar, HiOutlineLocationMarker, HiOutlineUserGroup } from '@/components/icons/SiteIcons';
+import {
+  HiOutlineCalendar,
+  HiOutlineLocationMarker,
+  HiOutlineUserGroup,
+} from '@/components/icons/SiteIcons';
 import { SolidarityEvent } from '@/data/solidarity';
 import { Musician } from '@/types/musician';
 
@@ -18,19 +22,28 @@ interface Props {
   compact?: boolean;
 }
 
-const SolidarityEventFeature: React.FC<Props> = ({ event, index, musicians, detailHref, compact = false }) => {
+const SolidarityEventFeature: React.FC<Props> = ({
+  event,
+  index,
+  musicians,
+  detailHref,
+  compact = false,
+}) => {
   const { t } = useTranslation('translation');
   const [selectedMusician, setSelectedMusician] = useState<Musician | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleLineupClick = useCallback((musicianId: number | null) => {
-    if (!musicianId) return;
-    const musician = musicians.find((m) => m.id === musicianId);
-    if (musician) {
-      setSelectedMusician(musician);
-      setIsModalOpen(true);
-    }
-  }, [musicians]);
+  const handleLineupClick = useCallback(
+    (musicianId: number | null) => {
+      if (!musicianId) return;
+      const musician = musicians.find((m) => m.id === musicianId);
+      if (musician) {
+        setSelectedMusician(musician);
+        setIsModalOpen(true);
+      }
+    },
+    [musicians]
+  );
 
   return (
     <>
@@ -57,9 +70,7 @@ const SolidarityEventFeature: React.FC<Props> = ({ event, index, musicians, deta
 
           {/* Key info */}
           <div className="p-6 flex flex-col justify-center gap-6">
-            <h2 className="typo-h3 text-xl lg:text-2xl leading-snug break-words">
-              {event.title}
-            </h2>
+            <h2 className="typo-h3 text-xl lg:text-2xl leading-snug break-words">{event.title}</h2>
 
             <div className="space-y-4">
               {/* Date */}
@@ -85,7 +96,9 @@ const SolidarityEventFeature: React.FC<Props> = ({ event, index, musicians, deta
                     {t('solidarity.label_venue')}
                   </span>
                   <span className="font-medium">{event.venue}</span>
-                  <p className="text-sm text-coastal-gray mt-0.5 break-words">{event.venueAddress}</p>
+                  <p className="text-sm text-coastal-gray mt-0.5 break-words">
+                    {event.venueAddress}
+                  </p>
                 </div>
               </div>
 
@@ -105,7 +118,12 @@ const SolidarityEventFeature: React.FC<Props> = ({ event, index, musicians, deta
                           key={entry.name}
                           type="button"
                           onClick={() => handleLineupClick(entry.musicianId)}
-                          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleLineupClick(entry.musicianId); } }}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                              e.preventDefault();
+                              handleLineupClick(entry.musicianId);
+                            }
+                          }}
                           aria-label={entry.name}
                           className="px-3 py-1 bg-ocean-mist/5 text-ocean-mist/80 rounded-lg text-xs font-medium border border-ocean-mist/10 break-words hover:bg-jeju-ocean hover:text-white hover:border-jeju-ocean transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
                         >
@@ -175,7 +193,10 @@ const SolidarityEventFeature: React.FC<Props> = ({ event, index, musicians, deta
         <MusicianModal
           musician={selectedMusician}
           isOpen={isModalOpen}
-          onClose={() => { setIsModalOpen(false); setSelectedMusician(null); }}
+          onClose={() => {
+            setIsModalOpen(false);
+            setSelectedMusician(null);
+          }}
         />
       )}
     </>

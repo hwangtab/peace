@@ -15,9 +15,9 @@ const path = require('path');
 
 const ns = process.argv[2] || 'translation';
 const LOCALES_DIR = path.join(__dirname, '..', 'public', 'locales');
-const locales = fs.readdirSync(LOCALES_DIR).filter((d) =>
-  fs.statSync(path.join(LOCALES_DIR, d)).isDirectory(),
-);
+const locales = fs
+  .readdirSync(LOCALES_DIR)
+  .filter((d) => fs.statSync(path.join(LOCALES_DIR, d)).isDirectory());
 
 function flatKeys(obj, prefix = '', out = []) {
   for (const k in obj) {

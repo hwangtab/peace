@@ -16,8 +16,9 @@ function generateImagesForYear(year, count = 20) {
   const imagesDir = path.join(__dirname, `../public/images-webp/camps/${year}`);
 
   // Read all available files
-  const allFiles = fs.readdirSync(imagesDir)
-    .filter(file => file.endsWith('.webp'))
+  const allFiles = fs
+    .readdirSync(imagesDir)
+    .filter((file) => file.endsWith('.webp'))
     .sort();
 
   // Randomly select images
@@ -35,7 +36,7 @@ function generateImagesForYear(year, count = 20) {
     id: startId + index,
     url: `/images-webp/camps/${year}/${file}`,
     eventType: 'camp',
-    eventYear: year
+    eventYear: year,
   }));
 
   return newImages;
@@ -53,16 +54,20 @@ console.log('');
 
 console.log('// 2023 Camp Images');
 console.log('const camp2023Images: GalleryImages = [');
-images2023.forEach(img => {
-  console.log(`  { id: ${img.id}, url: '${img.url}', eventType: '${img.eventType}', eventYear: ${img.eventYear} },`);
+images2023.forEach((img) => {
+  console.log(
+    `  { id: ${img.id}, url: '${img.url}', eventType: '${img.eventType}', eventYear: ${img.eventYear} },`
+  );
 });
 console.log('];');
 console.log('');
 
 console.log('// 2025 Camp Images');
 console.log('const camp2025Images: GalleryImages = [');
-images2025.forEach(img => {
-  console.log(`  { id: ${img.id}, url: '${img.url}', eventType: '${img.eventType}', eventYear: ${img.eventYear} },`);
+images2025.forEach((img) => {
+  console.log(
+    `  { id: ${img.id}, url: '${img.url}', eventType: '${img.eventType}', eventYear: ${img.eventYear} },`
+  );
 });
 console.log('];');
 console.log('');

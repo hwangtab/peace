@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  lint-build:
+  verify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,7 +23,21 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      - run: pnpm format:check
+
       - run: pnpm lint
+
+      - run: pnpm typecheck
+
+      - run: pnpm test --runInBand
+
+      - run: pnpm i18n:check
+
+      - run: pnpm static:check
+
+      - run: pnpm timetable:check
+
+      - run: pnpm audit
 
       - run: pnpm build
         env:

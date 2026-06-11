@@ -118,9 +118,7 @@ describe('loadGalleryImages', () => {
   it('여러 카테고리의 이미지를 순서대로 합침', () => {
     const albumPath = path.join(galleryRoot, 'album.json');
     const camp2023Path = path.join(galleryRoot, 'camp2023.json');
-    mockedFs.existsSync.mockImplementation(
-      (p) => p === albumPath || p === camp2023Path,
-    );
+    mockedFs.existsSync.mockImplementation((p) => p === albumPath || p === camp2023Path);
     mockedFs.readFileSync.mockImplementation((p) => {
       if (p === albumPath) return '[{"src":"a.jpg"}]';
       if (p === camp2023Path) return '[{"src":"b.jpg"}]';
@@ -160,16 +158,16 @@ describe('selectHomeGalleryPreviewImages', () => {
 
     expect(preview).toHaveLength(12);
     expect(
-      preview.filter((image) => image.eventType === 'album' && image.eventYear === 2024),
+      preview.filter((image) => image.eventType === 'album' && image.eventYear === 2024)
     ).toHaveLength(4);
     expect(
-      preview.filter((image) => image.eventType === 'camp' && image.eventYear === 2023),
+      preview.filter((image) => image.eventType === 'camp' && image.eventYear === 2023)
     ).toHaveLength(4);
     expect(
-      preview.filter((image) => image.eventType === 'camp' && image.eventYear === 2025),
+      preview.filter((image) => image.eventType === 'camp' && image.eventYear === 2025)
     ).toHaveLength(4);
-    expect(
-      preview.some((image) => image.eventType === 'camp' && image.eventYear === 2026),
-    ).toBe(false);
+    expect(preview.some((image) => image.eventType === 'camp' && image.eventYear === 2026)).toBe(
+      false
+    );
   });
 });

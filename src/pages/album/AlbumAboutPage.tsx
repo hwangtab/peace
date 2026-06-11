@@ -7,19 +7,24 @@ import PageLayout from '@/components/layout/PageLayout';
 import Section from '@/components/layout/Section';
 import Container from '@/components/layout/Container';
 import SectionHeader from '@/components/common/SectionHeader';
+import ImageLightbox from '@/components/common/ImageLightbox';
 import { getVideos } from '@/api/videos';
 import { getMusicians } from '@/api/musicians';
 import dynamic from 'next/dynamic';
-// 모달·라이트박스는 클릭 시점에만 필요 — 초기 번들 분리.
+// 모달은 클릭 시점에만 필요 — 초기 번들 분리.
 const MusicianModal = dynamic(() => import('@/components/musicians/MusicianModal'), { ssr: false });
-const ImageLightbox = dynamic(() => import('@/components/common/ImageLightbox'), { ssr: false });
 import AlbumTabContent from '@/components/album/AlbumTabContent';
 import { getGalleryImages } from '@/api/gallery';
 import { GalleryImage } from '@/types/gallery';
 import { VideoItem } from '@/types/video';
 import { Musician } from '@/types/musician';
 import SectionWave from '@/components/layout/SectionWave';
-import { getMusicAlbumSchema, getMusicGroupSchema, getBreadcrumbSchema, getWebPageSchema } from '@/utils/structuredData';
+import {
+  getMusicAlbumSchema,
+  getMusicGroupSchema,
+  getBreadcrumbSchema,
+  getWebPageSchema,
+} from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
 import { useLocalizedResource } from '@/hooks/useLocalizedResource';
 
@@ -203,7 +208,7 @@ const AlbumAboutPage = ({
     () =>
       getMusicAlbumSchema({
         name: t('album_title_full'),
-        byArtist: { name: t('app.title') },
+        byArtist: { name: t('translation:app.title') },
         genre: ['Folk', 'Rock', 'Jazz', 'Electronic', 'Ambient', 'World Music'],
         image: getFullUrl('/images-webp/album/albumart.webp'),
         datePublished: '2024-10-12',
@@ -219,8 +224,8 @@ const AlbumAboutPage = ({
   );
 
   const breadcrumbs = [
-    { name: t('nav.home'), url: getFullUrl('/') },
-    { name: t('nav.album'), url: getFullUrl('/album/about') },
+    { name: t('translation:nav.home'), url: getFullUrl('/') },
+    { name: t('translation:nav.album'), url: getFullUrl('/album/about') },
   ];
 
   return (
@@ -267,14 +272,14 @@ const AlbumAboutPage = ({
         {isLocaleDataLoading && (
           <Container size="content" className="pt-28">
             <p className="text-center text-white/90" role="status">
-              {t('common.loading')}
+              {t('translation:common.loading')}
             </p>
           </Container>
         )}
         {localeDataError && (
           <Container size="content" className="pt-28">
             <p className="text-center text-white/90" role="alert">
-              {t('common.no_results')}
+              {t('translation:common.no_results')}
             </p>
           </Container>
         )}
@@ -410,8 +415,8 @@ const AlbumAboutPage = ({
             className="mt-16 md:mt-24 pt-16 md:pt-20 pb-20 border-t border-jeju-ocean/10 text-center"
           >
             <p className="text-coastal-gray font-serif font-bold text-lg break-words">
-              {t('common.label_produced_by')}{' '}
-              <span className="text-jeju-ocean font-bold">{t('app.title')}</span> · 2024
+              {t('translation:common.label_produced_by')}{' '}
+              <span className="text-jeju-ocean font-bold">{t('translation:app.title')}</span> · 2024
             </p>
           </motion.div>
         </Container>

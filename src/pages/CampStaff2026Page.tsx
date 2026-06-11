@@ -32,10 +32,23 @@ interface StaffPageProps {
   initialLocale?: string;
 }
 
-interface NavItem { id: string; label: string }
-interface ScheduleEntry { date: string; tasks: string[] }
-interface RoleEntry { role: string; people: string; notes: string[] }
-interface StaffEntry { role: string; people: string }
+interface NavItem {
+  id: string;
+  label: string;
+}
+interface ScheduleEntry {
+  date: string;
+  tasks: string[];
+}
+interface RoleEntry {
+  role: string;
+  people: string;
+  notes: string[];
+}
+interface StaffEntry {
+  role: string;
+  people: string;
+}
 
 /* ------------------------------------------------------------------ *
  * 스태프 전용 비공개 운영 안내 — 제3회 강정피스앤뮤직캠프.
@@ -54,28 +67,42 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
   const { t, i18n } = useTranslation(['camp_staff_2026', 'translation']);
 
   const s = useCallback(
-    (key: string, opts?: Record<string, unknown>) =>
-      t(`camp_staff_2026.${key}`, opts),
-    [t],
+    (key: string, opts?: Record<string, unknown>) => t(`camp_staff_2026.${key}`, opts),
+    [t]
   );
 
-  const navItems       = s('nav',                { returnObjects: true }) as unknown as NavItem[];
-  const opSchedule     = s('operation_schedule', { returnObjects: true }) as unknown as ScheduleEntry[];
-  const roleItems      = s('role_assignments',   { returnObjects: true }) as unknown as RoleEntry[];
-  const rewardItems    = s('rewards',            { returnObjects: true }) as unknown as string[];
-  const staffItems     = s('staff',              { returnObjects: true }) as unknown as StaffEntry[];
-  const marketItems    = s('market_items',       { returnObjects: true }) as unknown as string[];
-  const overviewLabels       = s('overview_labels',        { returnObjects: true }) as unknown as string[];
-  const overviewValues       = s('overview_values',        { returnObjects: true }) as unknown as string[];
-  const lodgingNotice        = s('lodging_notice',         { returnObjects: true }) as unknown as string[];
-  const lodgingContactLabels = s('lodging_contact_labels', { returnObjects: true }) as unknown as string[];
-  const lodgingsI18n         = s('lodgings_i18n',          { returnObjects: true }) as unknown as { address: string; rooms: string[]; note: string | null; contact_names?: string[] }[];
-  const assignRoomHeader     = s('assign_room_header') as string;
-  const assignRoomNameMap    = s('assign_room_name_map',   { returnObjects: true }) as unknown as Record<string, string>;
-  const assignTablesI18n     = s('assign_tables_i18n',     { returnObjects: true }) as unknown as { title: string; rows: string[][] }[];
-  const etcLodgingDetails    = s('etc_lodging_details',    { returnObjects: true }) as unknown as string[];
-  const etcLodgingNames      = s('etc_lodging_names',      { returnObjects: true }) as unknown as string[];
-  const lodgingNames         = s('lodging_names',          { returnObjects: true }) as unknown as string[];
+  const navItems = s('nav', { returnObjects: true }) as unknown as NavItem[];
+  const opSchedule = s('operation_schedule', { returnObjects: true }) as unknown as ScheduleEntry[];
+  const roleItems = s('role_assignments', { returnObjects: true }) as unknown as RoleEntry[];
+  const rewardItems = s('rewards', { returnObjects: true }) as unknown as string[];
+  const staffItems = s('staff', { returnObjects: true }) as unknown as StaffEntry[];
+  const marketItems = s('market_items', { returnObjects: true }) as unknown as string[];
+  const overviewLabels = s('overview_labels', { returnObjects: true }) as unknown as string[];
+  const overviewValues = s('overview_values', { returnObjects: true }) as unknown as string[];
+  const lodgingNotice = s('lodging_notice', { returnObjects: true }) as unknown as string[];
+  const lodgingContactLabels = s('lodging_contact_labels', {
+    returnObjects: true,
+  }) as unknown as string[];
+  const lodgingsI18n = s('lodgings_i18n', { returnObjects: true }) as unknown as {
+    address: string;
+    rooms: string[];
+    note: string | null;
+    contact_names?: string[];
+  }[];
+  const assignRoomHeader = s('assign_room_header') as string;
+  const assignRoomNameMap = s('assign_room_name_map', { returnObjects: true }) as unknown as Record<
+    string,
+    string
+  >;
+  const assignTablesI18n = s('assign_tables_i18n', { returnObjects: true }) as unknown as {
+    title: string;
+    rows: string[][];
+  }[];
+  const etcLodgingDetails = s('etc_lodging_details', {
+    returnObjects: true,
+  }) as unknown as string[];
+  const etcLodgingNames = s('etc_lodging_names', { returnObjects: true }) as unknown as string[];
+  const lodgingNames = s('lodging_names', { returnObjects: true }) as unknown as string[];
 
   const fetchMusicians = useCallback((locale: string) => getMusicians(locale), []);
   const musiciansResource = useLocalizedResource<Musician>({
@@ -86,7 +113,7 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
   });
   const musicians = useMemo(
     () => (musiciansResource.isLoading ? [] : musiciansResource.data),
-    [musiciansResource.isLoading, musiciansResource.data],
+    [musiciansResource.isLoading, musiciansResource.data]
   );
 
   return (
@@ -113,16 +140,17 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
           {/* 목차 */}
           <nav aria-label={s('nav_label') as string} className="mb-10">
             <ul className="flex flex-wrap gap-2">
-              {Array.isArray(navItems) && navItems.map((item) => (
-                <li key={item.id}>
-                  <a
-                    href={`#${item.id}`}
-                    className="inline-block rounded-full border border-seafoam/50 bg-sky-horizon/40 px-3 py-1.5 text-sm text-jeju-ocean transition-colors hover:bg-jeju-ocean hover:text-white"
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
+              {Array.isArray(navItems) &&
+                navItems.map((item) => (
+                  <li key={item.id}>
+                    <a
+                      href={`#${item.id}`}
+                      className="inline-block rounded-full border border-seafoam/50 bg-sky-horizon/40 px-3 py-1.5 text-sm text-jeju-ocean transition-colors hover:bg-jeju-ocean hover:text-white"
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
             </ul>
           </nav>
 
@@ -137,7 +165,10 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
               <SectionHeading id="info" index={1} title={s('section_info') as string} />
               <dl className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">
                 {OVERVIEW.map((row, i) => (
-                  <div key={row.label} className="rounded-xl border border-seafoam/40 bg-sky-horizon/40 p-4">
+                  <div
+                    key={row.label}
+                    className="rounded-xl border border-seafoam/40 bg-sky-horizon/40 p-4"
+                  >
                     <dt className="text-xs uppercase tracking-wide text-coastal-gray mb-1">
                       {Array.isArray(overviewLabels) ? overviewLabels[i] : row.label}
                     </dt>
@@ -157,24 +188,31 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
               <SectionHeading id="schedule" index={2} title={s('section_schedule') as string} />
               <p className="text-sm text-coastal-gray mb-5">{s('schedule_note')}</p>
               <ol className="space-y-3">
-                {Array.isArray(opSchedule) && opSchedule.map((d) => (
-                  <li
-                    key={d.date}
-                    className="flex flex-col sm:flex-row gap-2 sm:gap-4 rounded-xl border border-seafoam/40 bg-white p-4 shadow-sm"
-                  >
-                    <span className="inline-flex h-fit w-fit flex-shrink-0 items-center rounded-full bg-jeju-ocean px-3 py-1 text-sm font-bold text-white">
-                      {d.date}
-                    </span>
-                    <ul className="space-y-1.5 flex-1">
-                      {d.tasks.map((task) => (
-                        <li key={task.slice(0, 40)} className="flex gap-2 text-sm text-coastal-gray leading-relaxed">
-                          <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-seafoam" aria-hidden="true" />
-                          <span>{task}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </li>
-                ))}
+                {Array.isArray(opSchedule) &&
+                  opSchedule.map((d) => (
+                    <li
+                      key={d.date}
+                      className="flex flex-col sm:flex-row gap-2 sm:gap-4 rounded-xl border border-seafoam/40 bg-white p-4 shadow-sm"
+                    >
+                      <span className="inline-flex h-fit w-fit flex-shrink-0 items-center rounded-full bg-jeju-ocean px-3 py-1 text-sm font-bold text-white">
+                        {d.date}
+                      </span>
+                      <ul className="space-y-1.5 flex-1">
+                        {d.tasks.map((task) => (
+                          <li
+                            key={task.slice(0, 40)}
+                            className="flex gap-2 text-sm text-coastal-gray leading-relaxed"
+                          >
+                            <span
+                              className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-seafoam"
+                              aria-hidden="true"
+                            />
+                            <span>{task}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </li>
+                  ))}
               </ol>
             </motion.div>
 
@@ -184,22 +222,32 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
             <motion.div variants={itemVariants}>
               <SectionHeading id="roles" index={3} title={s('section_roles') as string} />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {Array.isArray(roleItems) && roleItems.map((r) => (
-                  <div key={r.role} className="rounded-xl border border-seafoam/40 bg-white p-4 shadow-sm">
-                    <div className="mb-2 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-                      <h3 className="text-base font-bold text-deep-ocean">{r.role}</h3>
-                      <span className="text-sm font-semibold text-jeju-ocean">{r.people}</span>
+                {Array.isArray(roleItems) &&
+                  roleItems.map((r) => (
+                    <div
+                      key={r.role}
+                      className="rounded-xl border border-seafoam/40 bg-white p-4 shadow-sm"
+                    >
+                      <div className="mb-2 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                        <h3 className="text-base font-bold text-deep-ocean">{r.role}</h3>
+                        <span className="text-sm font-semibold text-jeju-ocean">{r.people}</span>
+                      </div>
+                      <ul className="space-y-1 border-t border-seafoam/30 pt-2">
+                        {r.notes.map((note) => (
+                          <li
+                            key={note.slice(0, 40)}
+                            className="flex gap-2 text-sm text-coastal-gray leading-snug"
+                          >
+                            <span
+                              className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-coastal-gray/50"
+                              aria-hidden="true"
+                            />
+                            <span>{note}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                    <ul className="space-y-1 border-t border-seafoam/30 pt-2">
-                      {r.notes.map((note) => (
-                        <li key={note.slice(0, 40)} className="flex gap-2 text-sm text-coastal-gray leading-snug">
-                          <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-coastal-gray/50" aria-hidden="true" />
-                          <span>{note}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
+                  ))}
               </div>
             </motion.div>
 
@@ -231,10 +279,15 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
               <SectionHeading id="lodging" index={5} title={s('section_lodging') as string} />
 
               {/* 공통 안내 */}
-              <h3 className="text-base font-semibold text-jeju-ocean mb-2">{s('lodging_general_title')}</h3>
+              <h3 className="text-base font-semibold text-jeju-ocean mb-2">
+                {s('lodging_general_title')}
+              </h3>
               <ol className="space-y-2 mb-6">
                 {(Array.isArray(lodgingNotice) ? lodgingNotice : LODGING_NOTICE).map((n, i) => (
-                  <li key={n.slice(0, 30)} className="flex gap-2 typo-body text-coastal-gray leading-relaxed">
+                  <li
+                    key={n.slice(0, 30)}
+                    className="flex gap-2 typo-body text-coastal-gray leading-relaxed"
+                  >
                     <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-jeju-ocean text-xs font-bold text-white">
                       {i + 1}
                     </span>
@@ -244,37 +297,52 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
               </ol>
 
               {/* 숙소 기본 정보 */}
-              <h3 className="text-base font-semibold text-jeju-ocean mb-3">{s('lodging_details_title')}</h3>
+              <h3 className="text-base font-semibold text-jeju-ocean mb-3">
+                {s('lodging_details_title')}
+              </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                 {LODGINGS.map((l, li) => {
                   const lI18n = Array.isArray(lodgingsI18n) ? lodgingsI18n[li] : null;
                   const displayAddress = lI18n?.address ?? l.address;
-                  const displayRooms   = lI18n?.rooms   ?? l.rooms;
-                  const displayNote    = lI18n?.note    ?? l.note;
+                  const displayRooms = lI18n?.rooms ?? l.rooms;
+                  const displayNote = lI18n?.note ?? l.note;
                   return (
-                    <div key={l.name} className="rounded-xl border border-seafoam/40 bg-white p-4 shadow-sm">
+                    <div
+                      key={l.name}
+                      className="rounded-xl border border-seafoam/40 bg-white p-4 shadow-sm"
+                    >
                       <p className="font-bold text-deep-ocean">
-                      {Array.isArray(lodgingNames) ? lodgingNames[li] : l.name}
-                    </p>
+                        {Array.isArray(lodgingNames) ? lodgingNames[li] : l.name}
+                      </p>
                       <p className="text-xs text-coastal-gray mb-3">{displayAddress}</p>
                       <ul className="space-y-1 mb-3">
                         {displayRooms.map((r) => (
-                          <li key={r} className="text-sm text-coastal-gray leading-snug">· {r}</li>
+                          <li key={r} className="text-sm text-coastal-gray leading-snug">
+                            · {r}
+                          </li>
                         ))}
                       </ul>
                       <div className="space-y-1 border-t border-seafoam/30 pt-3">
                         {l.contacts.map((c, ci) => (
                           <p key={c.when} className="text-sm text-coastal-gray">
                             <span className="text-coastal-gray/70">
-                              {(Array.isArray(lodgingContactLabels) ? lodgingContactLabels[ci] : c.when)} · {lI18n?.contact_names?.[ci] ?? c.name}
+                              {Array.isArray(lodgingContactLabels)
+                                ? lodgingContactLabels[ci]
+                                : c.when}{' '}
+                              · {lI18n?.contact_names?.[ci] ?? c.name}
                             </span>{' '}
-                            <a href={phoneHref(c.phone)} className="font-semibold text-jeju-ocean hover:underline">
+                            <a
+                              href={phoneHref(c.phone)}
+                              className="font-semibold text-jeju-ocean hover:underline"
+                            >
                               {c.phone}
                             </a>
                           </p>
                         ))}
                       </div>
-                      {displayNote && <p className="mt-2 text-xs text-coastal-gray/80">📍 {displayNote}</p>}
+                      {displayNote && (
+                        <p className="mt-2 text-xs text-coastal-gray/80">📍 {displayNote}</p>
+                      )}
                     </div>
                   );
                 })}
@@ -282,14 +350,27 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
               <p className="text-sm text-coastal-gray mb-8">{s('lodging_extra_note')}</p>
 
               {/* 일자별 배정 */}
-              <h3 className="text-base font-semibold text-jeju-ocean mb-3">{s('lodging_assignments_title')}</h3>
+              <h3 className="text-base font-semibold text-jeju-ocean mb-3">
+                {s('lodging_assignments_title')}
+              </h3>
               {ASSIGN_TABLES.map((tbl, i) => {
                 const tblI18n = Array.isArray(assignTablesI18n) ? assignTablesI18n[i] : null;
-                const header0: string = (typeof assignRoomHeader === 'string' && assignRoomHeader) ? assignRoomHeader : (tbl.headers[0] ?? '방');
-                const rows = tblI18n?.rows ?? (() => {
-                  const roomMap = (typeof assignRoomNameMap === 'object' && !Array.isArray(assignRoomNameMap)) ? assignRoomNameMap as Record<string, string> : {};
-                  return tbl.rows.map((row) => { const k = row[0] ?? ''; return [roomMap[k] ?? k, ...row.slice(1)]; });
-                })();
+                const header0: string =
+                  typeof assignRoomHeader === 'string' && assignRoomHeader
+                    ? assignRoomHeader
+                    : (tbl.headers[0] ?? '방');
+                const rows =
+                  tblI18n?.rows ??
+                  (() => {
+                    const roomMap =
+                      typeof assignRoomNameMap === 'object' && !Array.isArray(assignRoomNameMap)
+                        ? (assignRoomNameMap as Record<string, string>)
+                        : {};
+                    return tbl.rows.map((row) => {
+                      const k = row[0] ?? '';
+                      return [roomMap[k] ?? k, ...row.slice(1)];
+                    });
+                  })();
                 const translatedTable = {
                   title: tblI18n?.title ?? tbl.title,
                   headers: [header0, ...tbl.headers.slice(1)] as string[],
@@ -299,11 +380,16 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
               })}
 
               {/* 기타 배정 */}
-              <h4 className="text-base font-semibold text-jeju-ocean mb-2 mt-6">{s('lodging_other_title')}</h4>
+              <h4 className="text-base font-semibold text-jeju-ocean mb-2 mt-6">
+                {s('lodging_other_title')}
+              </h4>
               <div className="overflow-hidden rounded-xl border border-seafoam/40">
                 <ul className="divide-y divide-seafoam/30">
                   {ETC_LODGING.map((e, ei) => (
-                    <li key={e.name} className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 px-4 py-3">
+                    <li
+                      key={e.name}
+                      className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 px-4 py-3"
+                    >
                       <span className="font-medium text-deep-ocean sm:w-48 sm:flex-shrink-0">
                         {Array.isArray(etcLodgingNames) ? etcLodgingNames[ei] : e.name}
                       </span>
@@ -323,7 +409,9 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
               <SectionHeading id="market" index={6} title={s('section_market') as string} />
               {Array.isArray(marketItems) && <BulletList items={marketItems} />}
               <div className="mt-5 rounded-xl border border-seafoam/40 bg-ocean-sand/40 p-5 sm:p-6">
-                <h3 className="text-base font-bold text-deep-ocean mb-1">{s('market_cta_title')}</h3>
+                <h3 className="text-base font-bold text-deep-ocean mb-1">
+                  {s('market_cta_title')}
+                </h3>
                 <p className="text-sm text-coastal-gray mb-4">{s('market_cta_desc')}</p>
                 <a
                   href={MARKET_FORM_URL}
@@ -351,12 +439,18 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
             <motion.div variants={itemVariants}>
               <SectionHeading id="org" index={8} title={s('section_org') as string} />
               <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
-                {Array.isArray(staffItems) && staffItems.map((item) => (
-                  <div key={item.role} className="flex flex-col sm:flex-row sm:gap-3 border-b border-seafoam/20 pb-2">
-                    <dt className="text-sm font-semibold text-deep-ocean sm:w-1/2 sm:flex-shrink-0">{item.role}</dt>
-                    <dd className="text-sm text-coastal-gray">{item.people}</dd>
-                  </div>
-                ))}
+                {Array.isArray(staffItems) &&
+                  staffItems.map((item) => (
+                    <div
+                      key={item.role}
+                      className="flex flex-col sm:flex-row sm:gap-3 border-b border-seafoam/20 pb-2"
+                    >
+                      <dt className="text-sm font-semibold text-deep-ocean sm:w-1/2 sm:flex-shrink-0">
+                        {item.role}
+                      </dt>
+                      <dd className="text-sm text-coastal-gray">{item.people}</dd>
+                    </div>
+                  ))}
               </dl>
             </motion.div>
 
@@ -365,7 +459,9 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
             {/* 운영지침 + 뮤지션 안내 링크 */}
             <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="rounded-xl border border-seafoam/40 bg-ocean-sand/40 p-5 sm:p-6">
-                <h3 className="text-base font-bold text-deep-ocean mb-1">{s('guidelines_card_title')}</h3>
+                <h3 className="text-base font-bold text-deep-ocean mb-1">
+                  {s('guidelines_card_title')}
+                </h3>
                 <p className="text-sm text-coastal-gray mb-3">{s('guidelines_card_desc')}</p>
                 <Link
                   href="/camps/2026/guidelines"
@@ -376,7 +472,9 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
                 </Link>
               </div>
               <div className="rounded-xl border border-seafoam/40 bg-ocean-sand/40 p-5 sm:p-6">
-                <h3 className="text-base font-bold text-deep-ocean mb-1">{s('musician_card_title')}</h3>
+                <h3 className="text-base font-bold text-deep-ocean mb-1">
+                  {s('musician_card_title')}
+                </h3>
                 <p className="text-sm text-coastal-gray mb-3">{s('musician_card_desc')}</p>
                 <Link
                   href="/camps/2026/guide"

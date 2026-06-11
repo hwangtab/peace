@@ -12,8 +12,18 @@ interface TracksWrappedPageProps {
   initialLocale: string;
 }
 
-export default function WrappedPage({ initialTracks, initialMusicians, initialLocale }: TracksWrappedPageProps) {
-  return <Page initialTracks={initialTracks} initialMusicians={initialMusicians} initialLocale={initialLocale} />;
+export default function WrappedPage({
+  initialTracks,
+  initialMusicians,
+  initialLocale,
+}: TracksWrappedPageProps) {
+  return (
+    <Page
+      initialTracks={initialTracks}
+      initialMusicians={initialMusicians}
+      initialLocale={initialLocale}
+    />
+  );
 }
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
@@ -26,7 +36,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
   // 가져옴.
   const initialMusicians: Musician[] = loadLocalizedData<Musician>(
     resolvedLocale,
-    'musicians.json',
+    'musicians.json'
   ).map((m) => ({
     id: m.id,
     name: m.name,
@@ -41,7 +51,11 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
 
   return {
     props: {
-      ...(await serverSideTranslations(resolvedLocale, ['translation', 'album'], nextI18NextConfig)),
+      ...(await serverSideTranslations(
+        resolvedLocale,
+        ['translation', 'album'],
+        nextI18NextConfig
+      )),
       initialTracks: loadLocalizedData<Track>(resolvedLocale, 'tracks.json'),
       initialMusicians,
       initialLocale: resolvedLocale,

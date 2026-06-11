@@ -5,7 +5,7 @@ const makeMockResponse = (body: string, status = 200): Response =>
     ok: status >= 200 && status < 300,
     status,
     text: () => Promise.resolve(body),
-  } as Response);
+  }) as Response;
 
 describe('fetchLocalData', () => {
   beforeEach(() => {
@@ -100,11 +100,9 @@ describe('fetchLocalizedData', () => {
       .fn()
       .mockResolvedValueOnce(makeMockResponse('[{"id":1,"lang":"en"}]'))
       .mockResolvedValueOnce(makeMockResponse('[{"id":1,"lang":"ko"},{"id":2,"lang":"ko"}]'));
-    const data = await fetchLocalizedData<{ id: number; lang: string }>(
-      '/data/items.json',
-      'en',
-      { mergeByIdKey: 'id' },
-    );
+    const data = await fetchLocalizedData<{ id: number; lang: string }>('/data/items.json', 'en', {
+      mergeByIdKey: 'id',
+    });
     expect(data).toHaveLength(2);
     expect(data[0]).toEqual({ id: 1, lang: 'en' });
     expect(data[1]).toEqual({ id: 2, lang: 'ko' });

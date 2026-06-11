@@ -99,7 +99,8 @@
     "lyricist": "Letrista",
     "track": "Faixa",
     "view_image": "Ver imagem",
-    "no_results": "Nenhum resultado encontrado."
+    "no_results": "Nenhum resultado encontrado.",
+    "video_unavailable": "Vídeo indisponível"
   },
   "timetable": {
     "title": "Programação",

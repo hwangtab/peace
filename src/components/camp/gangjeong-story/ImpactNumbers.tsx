@@ -18,7 +18,13 @@ interface VariantColors {
   dividerVia: string;
 }
 
-const StatCard: React.FC<StatCardProps & { colors: VariantColors }> = ({ valueKey, suffixKey, labelKey, delay = 0, colors }) => {
+const StatCard: React.FC<StatCardProps & { colors: VariantColors }> = ({
+  valueKey,
+  suffixKey,
+  labelKey,
+  delay = 0,
+  colors,
+}) => {
   const { t } = useTranslation('gangjeong');
   const raw = parseInt(t(valueKey), 10);
   const target = isNaN(raw) ? 0 : raw;
@@ -33,12 +39,18 @@ const StatCard: React.FC<StatCardProps & { colors: VariantColors }> = ({ valueKe
       transition={{ duration: 0.5, delay: delay / 1000 }}
       className="text-center"
     >
-      <p className={`font-partial font-normal text-2xl sm:text-3xl md:text-4xl ${colors.numberColor} whitespace-nowrap tabular-nums`}>
+      <p
+        className={`font-partial font-normal text-2xl sm:text-3xl md:text-4xl ${colors.numberColor} whitespace-nowrap tabular-nums`}
+      >
         <span aria-hidden="true">{displayValue.toLocaleString()}</span>
         <span className="sr-only">{target.toLocaleString()}</span>
-        <span className="text-base sm:text-xl md:text-2xl" aria-hidden="true">{t(suffixKey)}</span>
+        <span className="text-base sm:text-xl md:text-2xl" aria-hidden="true">
+          {t(suffixKey)}
+        </span>
       </p>
-      <p className={`font-caption font-light text-xs sm:text-sm ${colors.labelColor} mt-2 break-words`}>
+      <p
+        className={`font-caption font-light text-xs sm:text-sm ${colors.labelColor} mt-2 break-words`}
+      >
         {t(labelKey)}
       </p>
     </motion.div>
@@ -46,9 +58,24 @@ const StatCard: React.FC<StatCardProps & { colors: VariantColors }> = ({ valueKe
 };
 
 const stats = [
-  { valueKey: 'stat_years_value', suffixKey: 'stat_years_suffix', labelKey: 'stat_years_label', delay: 0 },
-  { valueKey: 'stat_days_value', suffixKey: 'stat_days_suffix', labelKey: 'stat_days_label', delay: 150 },
-  { valueKey: 'stat_teams_value', suffixKey: 'stat_teams_suffix', labelKey: 'stat_teams_label', delay: 300 },
+  {
+    valueKey: 'stat_years_value',
+    suffixKey: 'stat_years_suffix',
+    labelKey: 'stat_years_label',
+    delay: 0,
+  },
+  {
+    valueKey: 'stat_days_value',
+    suffixKey: 'stat_days_suffix',
+    labelKey: 'stat_days_label',
+    delay: 150,
+  },
+  {
+    valueKey: 'stat_teams_value',
+    suffixKey: 'stat_teams_suffix',
+    labelKey: 'stat_teams_label',
+    delay: 300,
+  },
 ];
 
 interface Props {
@@ -56,22 +83,38 @@ interface Props {
 }
 
 const variantColors: Record<'camp' | 'home', VariantColors> = {
-  camp: { numberColor: 'text-golden-sun', labelColor: 'text-cloud-white/60', dividerVia: 'via-golden-sun/30' },
-  home: { numberColor: 'text-seafoam', labelColor: 'text-sky-horizon', dividerVia: 'via-seafoam/30' },
+  camp: {
+    numberColor: 'text-golden-sun',
+    labelColor: 'text-cloud-white/60',
+    dividerVia: 'via-golden-sun/30',
+  },
+  home: {
+    numberColor: 'text-seafoam',
+    labelColor: 'text-sky-horizon',
+    dividerVia: 'via-seafoam/30',
+  },
 };
 
 const ImpactNumbers: React.FC<Props> = ({ variant = 'camp' }) => {
   const colors = variantColors[variant];
   return (
-    <Section background={variant === 'home' ? 'jeju-ocean' : 'deep-ocean'} paddingTop="tight" paddingBottom="tight">
+    <Section
+      background={variant === 'home' ? 'jeju-ocean' : 'deep-ocean'}
+      paddingTop="tight"
+      paddingBottom="tight"
+    >
       <Container size="prose">
-        <div className={`h-px bg-gradient-to-r from-transparent ${colors.dividerVia} to-transparent mb-10 sm:mb-14`} />
+        <div
+          className={`h-px bg-gradient-to-r from-transparent ${colors.dividerVia} to-transparent mb-10 sm:mb-14`}
+        />
         <div className="grid grid-cols-3 gap-6 sm:gap-8">
           {stats.map((stat) => (
             <StatCard key={stat.valueKey} {...stat} colors={colors} />
           ))}
         </div>
-        <div className={`h-px bg-gradient-to-r from-transparent ${colors.dividerVia} to-transparent mt-10 sm:mt-14`} />
+        <div
+          className={`h-px bg-gradient-to-r from-transparent ${colors.dividerVia} to-transparent mt-10 sm:mt-14`}
+        />
       </Container>
     </Section>
   );

@@ -132,10 +132,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
                     {t('common.no_results')}
                   </p>
                 ) : (
-                  <CampParticipants
-                    participants={camp.participants}
-                    musicians={musicians}
-                  />
+                  <CampParticipants participants={camp.participants} musicians={musicians} />
                 )}
               </motion.div>
             )}
@@ -149,10 +146,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
                 className="bg-white rounded-lg shadow-sm p-8"
               >
                 <SectionHeader title={t('camp.section_staff')} align="left" className="!mb-6" />
-                <CampStaff
-                  staff={camp.staff}
-                  collaborators={camp.collaborators}
-                />
+                <CampStaff staff={camp.staff} collaborators={camp.collaborators} />
               </motion.div>
             )}
           </motion.div>
@@ -173,7 +167,8 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
                 {t(`camp.title_${latestCamp.year}`, { defaultValue: t('app.title') })}
               </h2>
               <p className="text-seafoam mb-6 text-sm break-words">
-                {t(`camp.date_badge_${latestCamp.year}`, { defaultValue: '' })} · {t(`camp.venue_${latestCamp.year}`, { defaultValue: '' })}
+                {t(`camp.date_badge_${latestCamp.year}`, { defaultValue: '' })} ·{' '}
+                {t(`camp.venue_${latestCamp.year}`, { defaultValue: '' })}
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Button to={`/camps/${latestCamp.year}`} variant="ghost-white" size="sm">
@@ -186,7 +181,9 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
                   external
                   utmContent="past-camp"
                 >
-                  {t(`camp.ticketing_${latestCamp.year}`, { defaultValue: t('camp.cta_final_button') })}
+                  {t(`camp.ticketing_${latestCamp.year}`, {
+                    defaultValue: t('camp.cta_final_button'),
+                  })}
                 </Button>
               </div>
             </Container>
@@ -206,7 +203,13 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 {otherCamps.map((c) => (
-                  <Button key={c.id} to={`/camps/${c.year}`} variant="outline" size="sm" shape="rounded">
+                  <Button
+                    key={c.id}
+                    to={`/camps/${c.year}`}
+                    variant="outline"
+                    size="sm"
+                    shape="rounded"
+                  >
                     {c.year}
                   </Button>
                 ))}

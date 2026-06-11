@@ -2,7 +2,12 @@ import { DEFAULT_LOCALE, isSupportedLocale } from '../constants/locales';
 
 export function normalizeZhLocale(locale: string): 'zh-Hant' | 'zh-Hans' {
   const lower = locale.toLowerCase();
-  if (lower.includes('hant') || lower.includes('tw') || lower.includes('hk') || lower.includes('mo')) {
+  if (
+    lower.includes('hant') ||
+    lower.includes('tw') ||
+    lower.includes('hk') ||
+    lower.includes('mo')
+  ) {
     return 'zh-Hant';
   }
   return 'zh-Hans';

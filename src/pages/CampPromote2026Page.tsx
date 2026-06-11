@@ -6,7 +6,6 @@ import PageLayout from '@/components/layout/PageLayout';
 import PageHero from '@/components/common/PageHero';
 import Section from '@/components/layout/Section';
 import Container from '@/components/layout/Container';
-import CopyButton from '@/components/common/CopyButton';
 import ShareImageCard from '@/components/camp/promote/ShareImageCard';
 import PromoTextBlock from '@/components/camp/promote/PromoTextBlock';
 import { getFullUrl } from '@/config/env';
@@ -64,7 +63,7 @@ const CampPromote2026Page: React.FC<CampPromote2026PageProps> = ({ promoKo, prom
 
   const g = useCallback(
     (key: string, opts?: Record<string, unknown>) => t(`camp_promote_2026.${key}`, opts) as string,
-    [t],
+    [t]
   );
 
   const steps = t('camp_promote_2026.howto_steps', { returnObjects: true }) as HowToStep[];
@@ -78,7 +77,7 @@ const CampPromote2026Page: React.FC<CampPromote2026PageProps> = ({ promoKo, prom
       { name: t('translation:nav.camp_2026'), url: getFullUrl('/camps/2026') },
       { name: g('breadcrumb'), url: getFullUrl('/camps/2026/promote') },
     ],
-    [t, g],
+    [t, g]
   );
 
   return (
@@ -91,11 +90,7 @@ const CampPromote2026Page: React.FC<CampPromote2026PageProps> = ({ promoKo, prom
       disableTopPadding={true}
       disableBottomPadding={true}
     >
-      <PageHero
-        title={g('hero_title')}
-        subtitle={g('hero_subtitle')}
-        backgroundImage={POSTER_OG}
-      />
+      <PageHero title={g('hero_title')} subtitle={g('hero_subtitle')} backgroundImage={POSTER_OG} />
 
       {/* 인트로 */}
       <Section background="white" paddingTop="loose" paddingBottom="normal">
@@ -113,7 +108,12 @@ const CampPromote2026Page: React.FC<CampPromote2026PageProps> = ({ promoKo, prom
       </Section>
 
       {/* ① 이렇게 올려주세요 */}
-      <Section background="sky-horizon" paddingTop="normal" paddingBottom="normal" ariaLabel={g('howto_title')}>
+      <Section
+        background="sky-horizon"
+        paddingTop="normal"
+        paddingBottom="normal"
+        ariaLabel={g('howto_title')}
+      >
         <Container size="content">
           <h2 className="typo-h3 mb-8 text-center text-deep-ocean">{g('howto_title')}</h2>
           <motion.ol
@@ -142,7 +142,12 @@ const CampPromote2026Page: React.FC<CampPromote2026PageProps> = ({ promoKo, prom
       </Section>
 
       {/* ② 포스터 · 타임테이블 내려받기 */}
-      <Section background="white" paddingTop="normal" paddingBottom="normal" ariaLabel={g('images_title')}>
+      <Section
+        background="white"
+        paddingTop="normal"
+        paddingBottom="normal"
+        ariaLabel={g('images_title')}
+      >
         <Container size="content">
           <h2 className="typo-h3 mb-2 text-center text-deep-ocean">{g('images_title')}</h2>
           <p className="typo-body mx-auto mb-8 max-w-xl text-center text-sm text-coastal-gray">
@@ -174,16 +179,36 @@ const CampPromote2026Page: React.FC<CampPromote2026PageProps> = ({ promoKo, prom
       </Section>
 
       {/* ③ 복사용 홍보글 (한국어) + ④ (English) */}
-      <Section background="ocean-sand" paddingTop="normal" paddingBottom="normal" ariaLabel={g('ko_block_title')}>
+      <Section
+        background="ocean-sand"
+        paddingTop="normal"
+        paddingBottom="normal"
+        ariaLabel={g('ko_block_title')}
+      >
         <Container size="prose">
           <div className="space-y-10">
             {/* 한국어 */}
             <div>
               <h2 className="typo-h3 mb-5 text-deep-ocean">{g('ko_block_title')}</h2>
               <div className="space-y-4">
-                <PromoTextBlock label={g('feed_label')} text={promoKo.feed} copyLabel={copyLabel} copiedLabel={copiedLabel} />
-                <PromoTextBlock label={g('story_label')} text={promoKo.story} copyLabel={copyLabel} copiedLabel={copiedLabel} />
-                <PromoTextBlock label={g('hashtags_label')} text={promoKo.hashtags} copyLabel={copyLabel} copiedLabel={copiedLabel} />
+                <PromoTextBlock
+                  label={g('feed_label')}
+                  text={promoKo.feed}
+                  copyLabel={copyLabel}
+                  copiedLabel={copiedLabel}
+                />
+                <PromoTextBlock
+                  label={g('story_label')}
+                  text={promoKo.story}
+                  copyLabel={copyLabel}
+                  copiedLabel={copiedLabel}
+                />
+                <PromoTextBlock
+                  label={g('hashtags_label')}
+                  text={promoKo.hashtags}
+                  copyLabel={copyLabel}
+                  copiedLabel={copiedLabel}
+                />
               </div>
             </div>
 
@@ -191,9 +216,24 @@ const CampPromote2026Page: React.FC<CampPromote2026PageProps> = ({ promoKo, prom
             <div>
               <h2 className="typo-h3 mb-5 text-deep-ocean">{g('en_block_title')}</h2>
               <div className="space-y-4">
-                <PromoTextBlock label={g('feed_label')} text={promoEn.feed} copyLabel={copyLabel} copiedLabel={copiedLabel} />
-                <PromoTextBlock label={g('story_label')} text={promoEn.story} copyLabel={copyLabel} copiedLabel={copiedLabel} />
-                <PromoTextBlock label={g('hashtags_label')} text={promoEn.hashtags} copyLabel={copyLabel} copiedLabel={copiedLabel} />
+                <PromoTextBlock
+                  label={g('feed_label')}
+                  text={promoEn.feed}
+                  copyLabel={copyLabel}
+                  copiedLabel={copiedLabel}
+                />
+                <PromoTextBlock
+                  label={g('story_label')}
+                  text={promoEn.story}
+                  copyLabel={copyLabel}
+                  copiedLabel={copiedLabel}
+                />
+                <PromoTextBlock
+                  label={g('hashtags_label')}
+                  text={promoEn.hashtags}
+                  copyLabel={copyLabel}
+                  copiedLabel={copiedLabel}
+                />
               </div>
             </div>
           </div>
@@ -201,7 +241,12 @@ const CampPromote2026Page: React.FC<CampPromote2026PageProps> = ({ promoKo, prom
       </Section>
 
       {/* ⑤ 핵심 정보 */}
-      <Section background="white" paddingTop="normal" paddingBottom="normal" ariaLabel={g('info_title')}>
+      <Section
+        background="white"
+        paddingTop="normal"
+        paddingBottom="normal"
+        ariaLabel={g('info_title')}
+      >
         <Container size="prose">
           <h2 className="typo-h3 mb-5 text-center text-deep-ocean">{g('info_title')}</h2>
           <dl className="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -211,7 +256,12 @@ const CampPromote2026Page: React.FC<CampPromote2026PageProps> = ({ promoKo, prom
             <InfoRow
               label={g('info_web_label')}
               value={
-                <a href="https://peaceandmusic.net" target="_blank" rel="noopener noreferrer" className="text-jeju-ocean hover:underline">
+                <a
+                  href="https://peaceandmusic.net"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-jeju-ocean hover:underline"
+                >
                   peaceandmusic.net
                 </a>
               }
@@ -220,7 +270,12 @@ const CampPromote2026Page: React.FC<CampPromote2026PageProps> = ({ promoKo, prom
               <InfoRow
                 label={g('info_tag_label')}
                 value={
-                  <a href="https://www.instagram.com/peace_music_in_gangjeong" target="_blank" rel="noopener noreferrer" className="text-jeju-ocean hover:underline">
+                  <a
+                    href="https://www.instagram.com/peace_music_in_gangjeong"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-jeju-ocean hover:underline"
+                  >
                     {g('info_tag_note')}
                   </a>
                 }

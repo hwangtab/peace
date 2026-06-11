@@ -19,10 +19,9 @@ const IMAGES_DIR = path.join(__dirname, '..', 'public', 'images-webp', 'musician
 
 // Camp 2026 participant musician IDs
 const CAMP_2026_IDS = [
-  14, 5, 15, 3, 16, 4, 17, 18, 19, 20, 21, 10, 22, 7, 23, 24,
-  13, 25, 26, 27, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
-  12, 42, 11, 43, 2, 44, 45, 46, 47, 48, 49, 50, 51, 52, 60, 59,
-  53, 54, 55, 56, 57, 58
+  14, 5, 15, 3, 16, 4, 17, 18, 19, 20, 21, 10, 22, 7, 23, 24, 13, 25, 26, 27, 29, 30, 31, 32, 33,
+  34, 35, 36, 37, 38, 39, 40, 12, 42, 11, 43, 2, 44, 45, 46, 47, 48, 49, 50, 51, 52, 60, 59, 53, 54,
+  55, 56, 57, 58,
 ];
 
 // ── HTML Template ───────────────────────────────────────
@@ -44,14 +43,17 @@ function loadFonts() {
   const bold = path.join(FONTS_DIR, 'GmarketSansBold.woff2');
   const medium = path.join(FONTS_DIR, 'GmarketSansMedium.woff2');
   const light = path.join(FONTS_DIR, 'GmarketSansLight.woff2');
-  if (fs.existsSync(bold)) fontBoldDataUri = `data:font/woff2;base64,${fs.readFileSync(bold).toString('base64')}`;
-  if (fs.existsSync(medium)) fontMediumDataUri = `data:font/woff2;base64,${fs.readFileSync(medium).toString('base64')}`;
-  if (fs.existsSync(light)) fontLightDataUri = `data:font/woff2;base64,${fs.readFileSync(light).toString('base64')}`;
+  if (fs.existsSync(bold))
+    fontBoldDataUri = `data:font/woff2;base64,${fs.readFileSync(bold).toString('base64')}`;
+  if (fs.existsSync(medium))
+    fontMediumDataUri = `data:font/woff2;base64,${fs.readFileSync(medium).toString('base64')}`;
+  if (fs.existsSync(light))
+    fontLightDataUri = `data:font/woff2;base64,${fs.readFileSync(light).toString('base64')}`;
 }
 
 function buildCardHtml(musician, photoDataUri) {
   const genreTags = (musician.genre || [])
-    .map(g => `<span class="tag">${escapeHtml(g)}</span>`)
+    .map((g) => `<span class="tag">${escapeHtml(g)}</span>`)
     .join('');
 
   const photoHtml = photoDataUri
@@ -240,8 +242,10 @@ async function main() {
 
   // Load musicians
   const musicians = JSON.parse(fs.readFileSync(MUSICIANS_JSON, 'utf-8'));
-  const camp2026Musicians = musicians.filter(m => CAMP_2026_IDS.includes(m.id));
-  console.log(`Found ${camp2026Musicians.length} / ${CAMP_2026_IDS.length} musicians for camp-2026`);
+  const camp2026Musicians = musicians.filter((m) => CAMP_2026_IDS.includes(m.id));
+  console.log(
+    `Found ${camp2026Musicians.length} / ${CAMP_2026_IDS.length} musicians for camp-2026`
+  );
 
   // Ensure output directory
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
@@ -250,11 +254,7 @@ async function main() {
   console.log('Launching browser...');
   const browser = await puppeteer.launch({
     headless: true,
-    args: [
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
-      '--allow-file-access-from-files',
-    ],
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--allow-file-access-from-files'],
   });
 
   const page = await browser.newPage();
@@ -279,7 +279,9 @@ async function main() {
           const photoBase64 = fs.readFileSync(photoPath).toString('base64');
           photoDataUri = `data:image/webp;base64,${photoBase64}`;
         } else {
-          console.warn(`  No photo for ${musician.name} (ID ${musician.id}) - file not found: ${musician.imageUrl}`);
+          console.warn(
+            `  No photo for ${musician.name} (ID ${musician.id}) - file not found: ${musician.imageUrl}`
+          );
         }
       } else {
         console.warn(`  No photo for ${musician.name} (ID ${musician.id}) - no imageUrl`);
@@ -291,7 +293,7 @@ async function main() {
       // Wait for fonts and images to load
       await page.evaluate(() => document.fonts.ready);
       // Small extra wait for image decode
-      await new Promise(r => setTimeout(r, 100));
+      await new Promise((r) => setTimeout(r, 100));
 
       await page.screenshot({
         path: outputPath,
@@ -312,7 +314,7 @@ async function main() {
   console.log(`Output: ${OUTPUT_DIR}`);
 }
 
-main().catch(err => {
+main().catch((err) => {
   console.error('Fatal error:', err);
   process.exit(1);
 });

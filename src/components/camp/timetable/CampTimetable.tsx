@@ -33,29 +33,38 @@ const CampTimetable: React.FC<CampTimetableProps> = ({ data, musicians, campYear
     return m;
   }, [musicians]);
 
-  const selectTab = useCallback((i: number) => {
-    setActiveIndex(i);
-    const date = dates[i];
-    if (date && typeof window !== 'undefined') {
-      window.history.replaceState({}, '', `#${hashForDate(date)}`);
-    }
-  }, [dates]);
+  const selectTab = useCallback(
+    (i: number) => {
+      setActiveIndex(i);
+      const date = dates[i];
+      if (date && typeof window !== 'undefined') {
+        window.history.replaceState({}, '', `#${hashForDate(date)}`);
+      }
+    },
+    [dates]
+  );
 
-  const onKeyDown = useCallback((e: React.KeyboardEvent<HTMLButtonElement>, i: number) => {
-    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+  const onKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLButtonElement>, i: number) => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        const delta = e.key === 'ArrowRight' ? 1 : -1;
+        const next = (i + delta + dates.length) % dates.length;
+        selectTab(next);
+        const el = document.getElementById(`timetable-tab-${next}`);
+        el?.focus();
+      }
+    },
+    [dates.length, selectTab]
+  );
+
+  const onTouchStart = useCallback(
+    (e: React.TouchEvent<HTMLButtonElement>, i: number) => {
       e.preventDefault();
-      const delta = e.key === 'ArrowRight' ? 1 : -1;
-      const next = (i + delta + dates.length) % dates.length;
-      selectTab(next);
-      const el = document.getElementById(`timetable-tab-${next}`);
-      el?.focus();
-    }
-  }, [dates.length, selectTab]);
-
-  const onTouchStart = useCallback((e: React.TouchEvent<HTMLButtonElement>, i: number) => {
-    e.preventDefault();
-    selectTab(i);
-  }, [selectTab]);
+      selectTab(i);
+    },
+    [selectTab]
+  );
 
   useEffect(() => {
     const sync = () => setActiveIndex(readHashIndex(dates));
@@ -69,7 +78,11 @@ const CampTimetable: React.FC<CampTimetableProps> = ({ data, musicians, campYear
 
   return (
     <div>
-      <div role="tablist" aria-label={t('timetable.title')} className="mb-6 grid grid-cols-3 overflow-hidden rounded-xl border border-seafoam bg-white">
+      <div
+        role="tablist"
+        aria-label={t('timetable.title')}
+        className="mb-6 grid grid-cols-3 overflow-hidden rounded-xl border border-seafoam bg-white"
+      >
         {data.days.map((day, i) => {
           const isActive = i === activeIndex;
           const mood = DAY_MOOD[day.weekday];
@@ -97,13 +110,14 @@ const CampTimetable: React.FC<CampTimetableProps> = ({ data, musicians, campYear
                 isActive ? mood.activeTab : 'bg-white text-deep-ocean hover:bg-ocean-sand'
               }`}
             >
-              <span className="block font-bold">
-                {tabLabel}
-              </span>
-              <span className="mt-0.5 block text-[10px] sm:text-xs">
-                {tabTime}
-              </span>
-              {isActive && <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[2px] bg-golden-sun" />}
+              <span className="block font-bold">{tabLabel}</span>
+              <span className="mt-0.5 block text-[10px] sm:text-xs">{tabTime}</span>
+              {isActive && (
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-x-0 bottom-0 h-[2px] bg-golden-sun"
+                />
+              )}
             </button>
           );
         })}

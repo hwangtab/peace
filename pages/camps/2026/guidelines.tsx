@@ -10,7 +10,11 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
 
   return {
     props: {
-      ...(await serverSideTranslations(lang, ['translation', 'camp_guidelines_2026'], nextI18NextConfig)),
+      ...(await serverSideTranslations(
+        lang,
+        ['translation', 'camp_guidelines_2026'],
+        nextI18NextConfig
+      )),
     },
     revalidate: 3600,
   };

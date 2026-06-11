@@ -59,11 +59,7 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                       strokeWidth="1.5"
                       stroke="currentColor"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M6 18L18 6M6 6l12 12"
-                      />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </button>
 
@@ -97,9 +93,10 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                       </p>
                     </div>
 
-
                     {/* Social Links */}
-                    {(musician.instagramUrls.length > 0 || musician.youtubeUrl || musician.website) && (
+                    {(musician.instagramUrls.length > 0 ||
+                      musician.youtubeUrl ||
+                      musician.website) && (
                       <div className="mt-6">
                         <h4 className="text-lg font-bold text-deep-ocean mb-2">
                           {t('common.sns')}
@@ -115,8 +112,8 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                                 rel="noopener noreferrer nofollow"
                                 className="inline-flex items-center px-3 py-1 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors duration-200 max-w-full truncate focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
                               >
-                                <InstagramIcon aria-hidden="true" className="w-4 h-4 mr-1" />
-                                @{username}
+                                <InstagramIcon aria-hidden="true" className="w-4 h-4 mr-1" />@
+                                {username}
                               </a>
                             );
                           })}
@@ -139,7 +136,9 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                               className="inline-flex items-center px-3 py-1 text-sm bg-jeju-ocean text-white rounded-full hover:bg-jeju-ocean/90 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
                             >
                               <HiOutlineGlobe aria-hidden="true" className="w-4 h-4 mr-1" />
-                              {musician.website.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}
+                              {musician.website
+                                .replace(/^https?:\/\/(www\.)?/, '')
+                                .replace(/\/$/, '')}
                             </a>
                           )}
                         </div>

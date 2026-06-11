@@ -6,7 +6,15 @@ interface PageIntroSectionProps {
   eyebrow?: string;
   heading: string;
   paragraphs: string[];
-  background?: 'white' | 'ocean-sand' | 'seafoam' | 'sunlight-glow' | 'sky-horizon' | 'light-beige' | 'golden-sun' | 'transparent';
+  background?:
+    | 'white'
+    | 'ocean-sand'
+    | 'seafoam'
+    | 'sunlight-glow'
+    | 'sky-horizon'
+    | 'light-beige'
+    | 'golden-sun'
+    | 'transparent';
 }
 
 /**

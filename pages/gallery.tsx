@@ -20,15 +20,18 @@ export default function WrappedPage({ initialImages, totalImageCount }: WrappedP
 }
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
-  const all = loadGalleryImages<GalleryImage>()
-    .sort((a, b) => {
-      if (a.eventYear !== b.eventYear) return (b.eventYear || 0) - (a.eventYear || 0);
-      return b.id - a.id;
-    });
+  const all = loadGalleryImages<GalleryImage>().sort((a, b) => {
+    if (a.eventYear !== b.eventYear) return (b.eventYear || 0) - (a.eventYear || 0);
+    return b.id - a.id;
+  });
 
   return {
     props: {
-      ...(await serverSideTranslations(locale ?? 'ko', ['translation', 'gallery'], nextI18NextConfig)),
+      ...(await serverSideTranslations(
+        locale ?? 'ko',
+        ['translation', 'gallery'],
+        nextI18NextConfig
+      )),
       initialImages: all.slice(0, SSR_PREVIEW_COUNT),
       totalImageCount: all.length,
     },

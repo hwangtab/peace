@@ -26,12 +26,21 @@ const MusicianCard = memo(({ musician, href }: MusicianCardProps) => {
       >
         <div className="group relative bg-white rounded-2xl shadow-lg overflow-hidden h-full flex flex-col">
           {/* Image */}
-          <Link href={detailHref} className="block relative w-full pb-[100%] flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-lg" aria-label={musician.name} tabIndex={-1}>
+          <Link
+            href={detailHref}
+            className="block relative w-full pb-[100%] flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-lg"
+            aria-label={musician.name}
+            tabIndex={-1}
+          >
             <div className="absolute inset-0 overflow-hidden">
               {musician.imageUrl ? (
                 <Image
                   src={musician.imageUrl}
-                  alt={musician.genre && musician.genre.length > 0 ? `${musician.name} — ${musician.genre[0]}` : musician.name}
+                  alt={
+                    musician.genre && musician.genre.length > 0
+                      ? `${musician.name} — ${musician.genre[0]}`
+                      : musician.name
+                  }
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover object-center transition-transform duration-500 group-hover:scale-110"
@@ -61,12 +70,17 @@ const MusicianCard = memo(({ musician, href }: MusicianCardProps) => {
 
           {/* Content */}
           <div className="p-6 flex-1 flex flex-col">
-            <Link href={detailHref} className="block mb-2 hover:text-ocean-mist transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded">
+            <Link
+              href={detailHref}
+              className="block mb-2 hover:text-ocean-mist transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded"
+            >
               <h3 className="typo-h3 !text-jeju-ocean group-hover:!text-ocean-mist transition-colors duration-200 break-words">
                 {musician.name}
               </h3>
             </Link>
-            <p className="text-coastal-gray mb-4 flex-1 text-pretty break-words">{musician.shortDescription}</p>
+            <p className="text-coastal-gray mb-4 flex-1 text-pretty break-words">
+              {musician.shortDescription}
+            </p>
 
             {/* Social Links */}
             {(musician.instagramUrls.length > 0 || musician.youtubeUrl) && (
@@ -93,12 +107,12 @@ const MusicianCard = memo(({ musician, href }: MusicianCardProps) => {
                     rel="noopener noreferrer"
                     className="inline-flex items-center px-3 py-1 text-sm bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded"
                   >
-                    <YouTubeIcon aria-hidden="true" className="w-4 h-4 mr-1" />YouTube
+                    <YouTubeIcon aria-hidden="true" className="w-4 h-4 mr-1" />
+                    YouTube
                   </a>
                 )}
               </div>
             )}
-
           </div>
         </div>
       </motion.div>

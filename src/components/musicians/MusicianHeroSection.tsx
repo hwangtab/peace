@@ -15,7 +15,11 @@ interface MusicianHeroSectionProps {
   isCampPage: boolean;
 }
 
-export default function MusicianHeroSection({ musician, fundingUrl, isCampPage }: MusicianHeroSectionProps) {
+export default function MusicianHeroSection({
+  musician,
+  fundingUrl,
+  isCampPage,
+}: MusicianHeroSectionProps) {
   const { t } = useTranslation();
 
   return (
@@ -92,7 +96,11 @@ export default function MusicianHeroSection({ musician, fundingUrl, isCampPage }
                         rel="noopener noreferrer nofollow"
                         className="inline-flex items-center px-3 py-1 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors max-w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun"
                       >
-                        <InstagramIcon aria-hidden="true" className="w-4 h-4 mr-1.5 flex-shrink-0" /><span className="truncate">@{username}</span>
+                        <InstagramIcon
+                          aria-hidden="true"
+                          className="w-4 h-4 mr-1.5 flex-shrink-0"
+                        />
+                        <span className="truncate">@{username}</span>
                       </a>
                     );
                   })}
@@ -111,10 +119,18 @@ export default function MusicianHeroSection({ musician, fundingUrl, isCampPage }
               )}
 
               {fundingUrl && (
-                <Button href={fundingUrl} variant="gold" size="sm" external utmContent={`musician-hero-${musician.id}`}>
+                <Button
+                  href={fundingUrl}
+                  variant="gold"
+                  size="sm"
+                  external
+                  utmContent={`musician-hero-${musician.id}`}
+                >
                   {/* fallback: 데이터 정합성 회귀 시(year undefined / camp.ticketing_YEAR 미작성)
                       raw key 노출 방지 — locale-aware 대체 라벨로 graceful degrade */}
-                  {t(`camp.ticketing_${Math.max(...camps.map((c) => c.year))}`, { defaultValue: t('camp.cta_final_button') })}
+                  {t(`camp.ticketing_${Math.max(...camps.map((c) => c.year))}`, {
+                    defaultValue: t('camp.cta_final_button'),
+                  })}
                 </Button>
               )}
             </div>

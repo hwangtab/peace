@@ -1,7 +1,8 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import { isRouteActive } from '@/utils/routeMatch';
 import { useScrolled } from '@/hooks/useScrolled';
+import { useHydrated } from '@/hooks/useHydrated';
 
 export type NavigationDropdownKey = 'camps' | 'album';
 
@@ -14,12 +15,7 @@ export const useNavigation = () => {
   const isScrolled = useScrolled();
   const router = useRouter();
   const currentPath = router.asPath;
-
-  // 404 페이지 SSR 시 router.asPath = '/404' 로 떨어져 클라이언트의 실제 URL 과
-  // 어긋나면서 active underline 이 SSR(false) ↔ client(true) hydration mismatch 를
-  // 일으키던 회귀. mount 이후에만 active 계산하도록 지연.
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => { setMounted(true); }, []);
+  const hydrated = useHydrated();
 
   const toggleMenu = useCallback(() => {
     setIsOpen((prev) => {
@@ -47,8 +43,8 @@ export const useNavigation = () => {
 
   const isPathActive = useCallback(
     (path: string, exact = false): boolean =>
-      mounted && isRouteActive(currentPath, path, { exact, locale: router.locale }),
-    [mounted, currentPath, router.locale]
+      hydrated && isRouteActive(currentPath, path, { exact, locale: router.locale }),
+    [currentPath, hydrated, router.locale]
   );
 
   return {

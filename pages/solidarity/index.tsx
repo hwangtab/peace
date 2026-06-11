@@ -5,7 +5,10 @@ import { Musician } from '@/types/musician';
 import { loadLocalizedData } from '@/utils/dataLoader';
 import Page from '@/pages/SolidarityPage';
 
-export default function WrappedPage(props: { initialMusicians: Musician[]; initialLocale: string }) {
+export default function WrappedPage(props: {
+  initialMusicians: Musician[];
+  initialLocale: string;
+}) {
   return <Page {...props} />;
 }
 

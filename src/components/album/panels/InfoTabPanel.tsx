@@ -2,21 +2,21 @@ import React from 'react';
 import ConcertCard, { Concert } from '../ConcertCard';
 
 interface InfoTabPanelProps {
-    concerts: Concert[];
-    onMusicianClick: (musicianId: number | null) => void;
+  concerts: Concert[];
+  onMusicianClick: (musicianId: number | null) => void;
 }
 
 const InfoTabPanel: React.FC<InfoTabPanelProps> = ({ concerts, onMusicianClick }) => (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
-        {concerts.map((concert, index) => (
-            <ConcertCard
-                key={concert.id}
-                concert={concert}
-                onMusicianClick={onMusicianClick}
-                index={index}
-            />
-        ))}
-    </div>
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
+    {concerts.map((concert, index) => (
+      <ConcertCard
+        key={concert.id}
+        concert={concert}
+        onMusicianClick={onMusicianClick}
+        index={index}
+      />
+    ))}
+  </div>
 );
 
 export default InfoTabPanel;

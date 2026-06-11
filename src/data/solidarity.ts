@@ -72,9 +72,7 @@ export function getSolidarityEventSlugs(): string[] {
 
 export function getSolidarityEventLineupIds(slug: string): number[] {
   const struct = eventStructs.find((s) => s.id === slug);
-  return (struct?.lineup ?? [])
-    .map((e) => e.musicianId)
-    .filter((id): id is number => id !== null);
+  return (struct?.lineup ?? []).map((e) => e.musicianId).filter((id): id is number => id !== null);
 }
 
 export function getSolidarityEvents(t: TFunction): SolidarityEvent[] {

@@ -22,7 +22,7 @@ export function useFilterFromQuery(): [FilterId, (filter: FilterId) => void] {
     (filter: FilterId) => {
       setOverride({ filter, key: queryKey });
     },
-    [queryKey],
+    [queryKey]
   );
 
   return [selectedFilter, setSelectedFilter];

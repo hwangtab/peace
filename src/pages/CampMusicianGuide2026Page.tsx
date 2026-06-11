@@ -67,18 +67,18 @@ const CampMusicianGuide2026Page: React.FC<GuidePageProps> = ({
   });
   const musicians = useMemo(
     () => (musiciansResource.isLoading ? [] : musiciansResource.data),
-    [musiciansResource.isLoading, musiciansResource.data],
+    [musiciansResource.isLoading, musiciansResource.data]
   );
 
   return (
     <PageLayout
-      title='제3회 강정피스앤뮤직캠프 뮤지션 안내'
-      description='제3회 강정피스앤뮤직캠프 참여 뮤지션·스태프를 위한 내부 안내 페이지입니다.'
+      title="제3회 강정피스앤뮤직캠프 뮤지션 안내"
+      description="제3회 강정피스앤뮤직캠프 참여 뮤지션·스태프를 위한 내부 안내 페이지입니다."
       noIndex
       disableTopPadding
     >
       <PageHero
-        title='뮤지션 안내'
+        title="뮤지션 안내"
         subtitle='제3회 강정피스앤뮤직캠프 "전쟁을 끝내자!"'
         backgroundImage="/images-webp/camps/2026/hero-gangjeong-2026.webp"
       />
@@ -89,8 +89,8 @@ const CampMusicianGuide2026Page: React.FC<GuidePageProps> = ({
           <div className="mb-8 rounded-xl border border-golden-sun/50 bg-sunlight-glow/40 p-4 text-sm text-coastal-gray">
             <p className="font-semibold text-deep-ocean mb-1">참여 뮤지션·스태프 전용 안내</p>
             <p>
-              이 페이지는 검색에 노출되지 않는 비공개 안내입니다. 개인 연락처와 숙소 배정 등 민감한 정보가 포함되어 있으니,
-              공유 시 참여자 외부로 유출되지 않도록 주의해주세요.
+              이 페이지는 검색에 노출되지 않는 비공개 안내입니다. 개인 연락처와 숙소 배정 등 민감한
+              정보가 포함되어 있으니, 공유 시 참여자 외부로 유출되지 않도록 주의해주세요.
             </p>
           </div>
 
@@ -121,8 +121,13 @@ const CampMusicianGuide2026Page: React.FC<GuidePageProps> = ({
               <SectionHeading id="overview" index={1} title="개요" />
               <dl className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">
                 {OVERVIEW.map((row) => (
-                  <div key={row.label} className="rounded-xl border border-seafoam/40 bg-sky-horizon/40 p-4">
-                    <dt className="text-xs uppercase tracking-wide text-coastal-gray mb-1">{row.label}</dt>
+                  <div
+                    key={row.label}
+                    className="rounded-xl border border-seafoam/40 bg-sky-horizon/40 p-4"
+                  >
+                    <dt className="text-xs uppercase tracking-wide text-coastal-gray mb-1">
+                      {row.label}
+                    </dt>
                     <dd className="text-sm font-bold text-deep-ocean break-keep">{row.value}</dd>
                   </div>
                 ))}
@@ -174,7 +179,9 @@ const CampMusicianGuide2026Page: React.FC<GuidePageProps> = ({
             {/* 4. 부대 프로그램 */}
             <motion.div variants={itemVariants}>
               <SectionHeading id="programs" index={4} title="부대 프로그램" />
-              <h3 className="text-base font-semibold text-jeju-ocean mb-2">장터 — (전쟁을) 끝내장터</h3>
+              <h3 className="text-base font-semibold text-jeju-ocean mb-2">
+                장터 — (전쟁을) 끝내장터
+              </h3>
               <BulletList items={['최대 15팀 모집', '우천 시 취소']} />
               <h3 className="text-base font-semibold text-jeju-ocean mt-5 mb-2">조직위 부스</h3>
               <BulletList items={BOOTH_ITEMS} />
@@ -189,14 +196,18 @@ const CampMusicianGuide2026Page: React.FC<GuidePageProps> = ({
               {/* 오시는 길 */}
               <h3 className="text-base font-semibold text-jeju-ocean mb-2">오시는 길</h3>
               <p className="typo-body text-coastal-gray leading-relaxed mb-6">
-                대중교통 이용 시, 제주공항 5번 게이트에서 600번 리무진 버스를 타고 <strong className="text-deep-ocean">‘강정농협’</strong>에서 하차하세요.
+                대중교통 이용 시, 제주공항 5번 게이트에서 600번 리무진 버스를 타고{' '}
+                <strong className="text-deep-ocean">‘강정농협’</strong>에서 하차하세요.
               </p>
 
               {/* 숙박 공통 안내 */}
               <h3 className="text-base font-semibold text-jeju-ocean mb-2">숙박 — 공통 안내사항</h3>
               <ol className="space-y-2 mb-6">
                 {LODGING_NOTICE.map((n, i) => (
-                  <li key={n.slice(0, 30)} className="flex gap-2 typo-body text-coastal-gray leading-relaxed">
+                  <li
+                    key={n.slice(0, 30)}
+                    className="flex gap-2 typo-body text-coastal-gray leading-relaxed"
+                  >
                     <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-jeju-ocean text-xs font-bold text-white">
                       {i + 1}
                     </span>
@@ -209,19 +220,29 @@ const CampMusicianGuide2026Page: React.FC<GuidePageProps> = ({
               <h3 className="text-base font-semibold text-jeju-ocean mb-3">숙소 기본 정보</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                 {LODGINGS.map((l) => (
-                  <div key={l.name} className="rounded-xl border border-seafoam/40 bg-white p-4 shadow-sm">
+                  <div
+                    key={l.name}
+                    className="rounded-xl border border-seafoam/40 bg-white p-4 shadow-sm"
+                  >
                     <p className="font-bold text-deep-ocean">{l.name}</p>
                     <p className="text-xs text-coastal-gray mb-3">{l.address}</p>
                     <ul className="space-y-1 mb-3">
                       {l.rooms.map((r) => (
-                        <li key={r} className="text-sm text-coastal-gray leading-snug">· {r}</li>
+                        <li key={r} className="text-sm text-coastal-gray leading-snug">
+                          · {r}
+                        </li>
                       ))}
                     </ul>
                     <div className="space-y-1 border-t border-seafoam/30 pt-3">
                       {l.contacts.map((c) => (
                         <p key={c.when} className="text-sm text-coastal-gray">
-                          <span className="text-coastal-gray/70">{c.when} · {c.name}</span>{' '}
-                          <a href={phoneHref(c.phone)} className="font-semibold text-jeju-ocean hover:underline">
+                          <span className="text-coastal-gray/70">
+                            {c.when} · {c.name}
+                          </span>{' '}
+                          <a
+                            href={phoneHref(c.phone)}
+                            className="font-semibold text-jeju-ocean hover:underline"
+                          >
                             {c.phone}
                           </a>
                         </p>
@@ -246,8 +267,13 @@ const CampMusicianGuide2026Page: React.FC<GuidePageProps> = ({
               <div className="overflow-hidden rounded-xl border border-seafoam/40 mb-8">
                 <ul className="divide-y divide-seafoam/30">
                   {ETC_LODGING.map((e) => (
-                    <li key={e.name} className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 px-4 py-3">
-                      <span className="font-medium text-deep-ocean sm:w-48 sm:flex-shrink-0">{e.name}</span>
+                    <li
+                      key={e.name}
+                      className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 px-4 py-3"
+                    >
+                      <span className="font-medium text-deep-ocean sm:w-48 sm:flex-shrink-0">
+                        {e.name}
+                      </span>
                       <span className="text-sm text-coastal-gray">{e.detail}</span>
                     </li>
                   ))}
@@ -257,11 +283,13 @@ const CampMusicianGuide2026Page: React.FC<GuidePageProps> = ({
               {/* 식사 */}
               <h3 className="text-base font-semibold text-jeju-ocean mb-2">식사</h3>
               <div className="rounded-xl border border-seafoam/40 bg-sky-horizon/40 p-4">
-                <BulletList items={[
-                  '6/5 — 김밥',
-                  '6/6~6/7 — 비건 빠에야',
-                  '6/4~6/8 스태프와 뮤지션에게 식사 1끼 및 뒤풀이 안주 제공',
-                ]} />
+                <BulletList
+                  items={[
+                    '6/5 — 김밥',
+                    '6/6~6/7 — 비건 빠에야',
+                    '6/4~6/8 스태프와 뮤지션에게 식사 1끼 및 뒤풀이 안주 제공',
+                  ]}
+                />
               </div>
             </motion.div>
 
@@ -272,8 +300,13 @@ const CampMusicianGuide2026Page: React.FC<GuidePageProps> = ({
               <SectionHeading id="staff" index={6} title="운영진" />
               <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
                 {STAFF.map((s) => (
-                  <div key={s.role} className="flex flex-col sm:flex-row sm:gap-3 border-b border-seafoam/20 pb-2">
-                    <dt className="text-sm font-semibold text-deep-ocean sm:w-1/2 sm:flex-shrink-0">{s.role}</dt>
+                  <div
+                    key={s.role}
+                    className="flex flex-col sm:flex-row sm:gap-3 border-b border-seafoam/20 pb-2"
+                  >
+                    <dt className="text-sm font-semibold text-deep-ocean sm:w-1/2 sm:flex-shrink-0">
+                      {s.role}
+                    </dt>
                     <dd className="text-sm text-coastal-gray">{s.people}</dd>
                   </div>
                 ))}

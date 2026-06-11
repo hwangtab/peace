@@ -16,27 +16,69 @@ jest.mock('next-i18next', () => ({
   }),
 }));
 
-// eslint-disable-next-line @next/next/no-img-element -- next/image mock for jsdom; intentional plain <img>
-jest.mock('next/image', () => ({ __esModule: true, default: ({ alt }: { alt: string }) => <img alt={alt} /> }));
+jest.mock('next/image', () => ({
+  __esModule: true,
+  // eslint-disable-next-line @next/next/no-img-element -- next/image mock for jsdom; intentional plain <img>
+  default: ({ alt }: { alt: string }) => <img alt={alt} />,
+}));
 
 const musicians: Musician[] = [];
 const data: Timetable = {
   year: 2026,
   days: [
     {
-      date: '2026-06-05', weekday: 'fri', dayLabel: '6/5 (금)',
-      teamCount: 1, startTime: '18:00', endTime: '18:25',
-      acts: [{ order: 1, start: '18:00', end: '18:25', type: 'performance', name: '윤선애', scale: 'solo' }],
+      date: '2026-06-05',
+      weekday: 'fri',
+      dayLabel: '6/5 (금)',
+      teamCount: 1,
+      startTime: '18:00',
+      endTime: '18:25',
+      acts: [
+        {
+          order: 1,
+          start: '18:00',
+          end: '18:25',
+          type: 'performance',
+          name: '윤선애',
+          scale: 'solo',
+        },
+      ],
     },
     {
-      date: '2026-06-06', weekday: 'sat', dayLabel: '6/6 (토)',
-      teamCount: 1, startTime: '12:00', endTime: '12:25',
-      acts: [{ order: 1, start: '12:00', end: '12:25', type: 'performance', name: '하주원', scale: 'solo' }],
+      date: '2026-06-06',
+      weekday: 'sat',
+      dayLabel: '6/6 (토)',
+      teamCount: 1,
+      startTime: '12:00',
+      endTime: '12:25',
+      acts: [
+        {
+          order: 1,
+          start: '12:00',
+          end: '12:25',
+          type: 'performance',
+          name: '하주원',
+          scale: 'solo',
+        },
+      ],
     },
     {
-      date: '2026-06-07', weekday: 'sun', dayLabel: '6/7 (일)',
-      teamCount: 1, startTime: '11:00', endTime: '11:25',
-      acts: [{ order: 1, start: '11:00', end: '11:25', type: 'performance', name: '선경', scale: 'solo' }],
+      date: '2026-06-07',
+      weekday: 'sun',
+      dayLabel: '6/7 (일)',
+      teamCount: 1,
+      startTime: '11:00',
+      endTime: '11:25',
+      acts: [
+        {
+          order: 1,
+          start: '11:00',
+          end: '11:25',
+          type: 'performance',
+          name: '선경',
+          scale: 'solo',
+        },
+      ],
     },
   ],
 };

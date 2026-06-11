@@ -3,12 +3,11 @@ import { useTranslation } from 'next-i18next';
 import { m as motion } from 'framer-motion';
 import Image from 'next/image';
 import { CampEvent } from '@/types/camp';
-import dynamic from 'next/dynamic';
-const ImageLightbox = dynamic(() => import('../common/ImageLightbox'), { ssr: false });
 import Container from '../layout/Container';
 import Section from '../layout/Section';
 import SectionHeader from '../common/SectionHeader';
 import Button from '../common/Button';
+import ImageLightbox from '../common/ImageLightbox';
 
 interface CampGalleryProps {
   camp: CampEvent;
@@ -45,7 +44,12 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
               aria-label={`${t('common.view_image') || 'View image'} ${index + 1}`}
               tabIndex={0}
               onClick={() => setSelectedImage(img)}
-              onKeyDown={(e: React.KeyboardEvent) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelectedImage(img); } }}
+              onKeyDown={(e: React.KeyboardEvent) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setSelectedImage(img);
+                }
+              }}
             >
               <Image
                 src={img}
@@ -62,20 +66,21 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
         </div>
 
         <div className="text-center mt-12">
-          <Button
-            to={`/gallery?filter=camp-${camp.year}`}
-            variant="outline"
-          >
+          <Button to={`/gallery?filter=camp-${camp.year}`} variant="outline">
             {t('camp.more')}
           </Button>
         </div>
       </Container>
 
       <ImageLightbox
-        image={selectedImage ? {
-          url: selectedImage,
-          alt: t('gallery.image_alt_template', { year: camp.year, title: camp.title })
-        } : null}
+        image={
+          selectedImage
+            ? {
+                url: selectedImage,
+                alt: t('gallery.image_alt_template', { year: camp.year, title: camp.title }),
+              }
+            : null
+        }
         show={!!selectedImage}
         onClose={() => setSelectedImage(null)}
       />

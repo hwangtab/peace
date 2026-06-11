@@ -47,7 +47,16 @@ const ShareImageCard: React.FC<ShareImageCardProps> = ({
           className="inline-flex flex-shrink-0 items-center gap-1.5 rounded-lg bg-jeju-ocean px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-deep-ocean focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean focus-visible:ring-offset-2"
         >
           <span aria-hidden="true">
-            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 20 20"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.7"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <path d="M10 3v10" />
               <path d="M6 9.5l4 4 4-4" />
               <path d="M4 16.5h12" />

@@ -22,7 +22,7 @@ export const LOCALES = [
 
 export const DEFAULT_LOCALE = 'ko';
 
-export type Locale = typeof LOCALES[number];
+export type Locale = (typeof LOCALES)[number];
 
 export const isSupportedLocale = (locale?: string): locale is Locale =>
   !!locale && LOCALES.includes(locale as Locale);

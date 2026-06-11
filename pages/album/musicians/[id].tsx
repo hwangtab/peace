@@ -103,7 +103,11 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
 
   return {
     props: {
-      ...(await serverSideTranslations(resolvedLocale, ['translation', 'album', 'videos'], nextI18NextConfig)),
+      ...(await serverSideTranslations(
+        resolvedLocale,
+        ['translation', 'album', 'videos'],
+        nextI18NextConfig
+      )),
       musician,
       relatedVideos,
       otherMusicians,

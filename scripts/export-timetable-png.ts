@@ -82,10 +82,14 @@ function fileUrl(absPath: string): string {
 
 function dataUrl(absPath: string): string {
   const ext = path.extname(absPath).toLowerCase().replace('.', '');
-  const mime = ext === 'webp' ? 'image/webp'
-    : ext === 'png' ? 'image/png'
-    : ext === 'jpg' || ext === 'jpeg' ? 'image/jpeg'
-    : 'application/octet-stream';
+  const mime =
+    ext === 'webp'
+      ? 'image/webp'
+      : ext === 'png'
+        ? 'image/png'
+        : ext === 'jpg' || ext === 'jpeg'
+          ? 'image/jpeg'
+          : 'application/octet-stream';
   const b64 = fs.readFileSync(absPath).toString('base64');
   return `data:${mime};base64,${b64}`;
 }
@@ -100,8 +104,13 @@ function getInitials(name: string): string {
   return name.slice(0, 2);
 }
 
-function renderCard(act: TimetableAct, musicians: Map<number, MusicianLite>, mood: DayMood): string {
-  const m = act.musicianIds && act.musicianIds.length > 0 ? musicians.get(act.musicianIds[0]!) : undefined;
+function renderCard(
+  act: TimetableAct,
+  musicians: Map<number, MusicianLite>,
+  mood: DayMood
+): string {
+  const m =
+    act.musicianIds && act.musicianIds.length > 0 ? musicians.get(act.musicianIds[0]!) : undefined;
   const imgAbs = m ? path.join(PUBLIC_DIR, m.imageUrl.replace(/^\//, '')) : '';
   const hasImg = m && fs.existsSync(imgAbs);
   const bio = m?.shortDescription ?? '';
@@ -382,8 +391,13 @@ function renderPage(day: TimetableDay, musicians: Map<number, MusicianLite>): st
 const COMBINED_WIDTH_PX = 2100;
 const COMBINED_COL_WIDTH_PX = 660;
 
-function renderCompactCard(act: TimetableAct, musicians: Map<number, MusicianLite>, mood: DayMood): string {
-  const m = act.musicianIds && act.musicianIds.length > 0 ? musicians.get(act.musicianIds[0]!) : undefined;
+function renderCompactCard(
+  act: TimetableAct,
+  musicians: Map<number, MusicianLite>,
+  mood: DayMood
+): string {
+  const m =
+    act.musicianIds && act.musicianIds.length > 0 ? musicians.get(act.musicianIds[0]!) : undefined;
   const imgAbs = m ? path.join(PUBLIC_DIR, m.imageUrl.replace(/^\//, '')) : '';
   const hasImg = m && fs.existsSync(imgAbs);
   const bio = m?.shortDescription ?? '';
@@ -416,7 +430,9 @@ function renderDayColumn(day: TimetableDay, musicians: Map<number, MusicianLite>
   const mood = DAY_MOOD[day.weekday];
   const weekdayLabel = { fri: '금요일', sat: '토요일', sun: '일요일' }[day.weekday];
   const body = day.acts
-    .map((a) => (a.type === 'transition' ? renderCompactTransition(a) : renderCompactCard(a, musicians, mood)))
+    .map((a) =>
+      a.type === 'transition' ? renderCompactTransition(a) : renderCompactCard(a, musicians, mood)
+    )
     .join('\n');
   return `
     <section class="c-column">

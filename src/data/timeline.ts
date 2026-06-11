@@ -19,7 +19,7 @@ export const timelineEvents: TimelineEvent[] = [
     titleKey: 'timeline.events.camp_2023.title',
     descriptionKey: 'timeline.events.camp_2023.desc',
     locationKey: 'timeline.events.camp_2023.location',
-    eventType: 'camp'
+    eventType: 'camp',
   },
   {
     id: 'album-2024',
@@ -29,7 +29,7 @@ export const timelineEvents: TimelineEvent[] = [
     titleKey: 'timeline.events.album_2024.title',
     descriptionKey: 'timeline.events.album_2024.desc',
     locationKey: 'timeline.events.album_2024.location',
-    eventType: 'album'
+    eventType: 'album',
   },
   {
     id: 'camp-2025',
@@ -39,7 +39,7 @@ export const timelineEvents: TimelineEvent[] = [
     titleKey: 'timeline.events.camp_2025.title',
     descriptionKey: 'timeline.events.camp_2025.desc',
     locationKey: 'timeline.events.camp_2025.location',
-    eventType: 'camp'
+    eventType: 'camp',
   },
   {
     id: 'camp-2026',
@@ -48,6 +48,6 @@ export const timelineEvents: TimelineEvent[] = [
     titleKey: 'timeline.events.camp_2026.title',
     descriptionKey: 'timeline.events.camp_2026.desc',
     locationKey: 'timeline.events.camp_2026.location',
-    eventType: 'camp'
-  }
+    eventType: 'camp',
+  },
 ];

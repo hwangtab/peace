@@ -22,7 +22,10 @@ export const readJsonArrayResult = <T>(filePath: string): JsonArrayResult<T> => 
   try {
     return parseJsonArray<T>(content, filePath);
   } catch (error) {
-    throw createLoaderError((error as Error).message, (error as Error & { cause?: unknown }).cause ?? error);
+    throw createLoaderError(
+      (error as Error).message,
+      (error as Error & { cause?: unknown }).cause ?? error
+    );
   }
 };
 
@@ -101,10 +104,10 @@ const HOME_GALLERY_PREVIEW_GROUPS = [
 
 export const selectHomeGalleryPreviewImages = <T extends GalleryPreviewItem>(
   images: T[],
-  itemsPerGroup = 4,
+  itemsPerGroup = 4
 ): T[] =>
   HOME_GALLERY_PREVIEW_GROUPS.flatMap(({ eventType, eventYear }) =>
     images
       .filter((image) => image.eventType === eventType && image.eventYear === eventYear)
-      .slice(0, itemsPerGroup),
+      .slice(0, itemsPerGroup)
   );

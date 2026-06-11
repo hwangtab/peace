@@ -30,9 +30,7 @@ export function loadRelatedVideos(
     );
   }
 
-  return [...directVideos, ...eventVideos].map(
-    (v) => localizedVideoMap.get(v.id) ?? v
-  );
+  return [...directVideos, ...eventVideos].map((v) => localizedVideoMap.get(v.id) ?? v);
 }
 
 /**

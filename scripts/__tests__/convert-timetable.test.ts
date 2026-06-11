@@ -1,9 +1,4 @@
-import {
-  mapScale,
-  normalizeName,
-  parseTransitionMinutes,
-  parseRow,
-} from '../convert-timetable';
+import { mapScale, normalizeName, parseTransitionMinutes, parseRow } from '../convert-timetable';
 
 describe('mapScale', () => {
   test.each([
@@ -64,7 +59,18 @@ describe('parseRow', () => {
   });
 
   test('parses a transition row', () => {
-    const row = ['6/5(금)', null, '18:25', '18:30', '전환', '⟶ 5분 (다음: HANASH - 솔로/듀오)', null, null, null, null];
+    const row = [
+      '6/5(금)',
+      null,
+      '18:25',
+      '18:30',
+      '전환',
+      '⟶ 5분 (다음: HANASH - 솔로/듀오)',
+      null,
+      null,
+      null,
+      null,
+    ];
     expect(parseRow(row, lookup)).toEqual({
       order: null,
       start: '18:25',
@@ -77,11 +83,24 @@ describe('parseRow', () => {
   });
 
   test('returns null for empty rows', () => {
-    expect(parseRow([null, null, null, null, null, null, null, null, null, null], lookup)).toBeNull();
+    expect(
+      parseRow([null, null, null, null, null, null, null, null, null, null], lookup)
+    ).toBeNull();
   });
 
   test('performance row with unknown name has no musicianIds', () => {
-    const row = ['6/5(금)', 5, '13:00', '13:25', '공연', '불가사리 즉흥세션', 'X', '솔로/듀오', 0, ''];
+    const row = [
+      '6/5(금)',
+      5,
+      '13:00',
+      '13:25',
+      '공연',
+      '불가사리 즉흥세션',
+      'X',
+      '솔로/듀오',
+      0,
+      '',
+    ];
     const result = parseRow(row, lookup);
     expect(result?.musicianIds).toBeUndefined();
   });

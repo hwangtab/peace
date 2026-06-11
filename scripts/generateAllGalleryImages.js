@@ -8,15 +8,16 @@ const path = require('path');
 
 function generateImagesForDirectory(dirPath, baseUrl, idStart, eventType, eventYear) {
   try {
-    const files = fs.readdirSync(dirPath)
-      .filter(file => file.endsWith('.webp'))
+    const files = fs
+      .readdirSync(dirPath)
+      .filter((file) => file.endsWith('.webp'))
       .sort();
 
     const images = files.map((file, index) => ({
       id: idStart + index,
       url: `${baseUrl}${file}`,
       eventType: eventType,
-      eventYear: eventYear
+      eventYear: eventYear,
     }));
 
     return images;
@@ -38,11 +39,23 @@ const albumImages = generateImagesForDirectory(albumDir, '/images-webp/gallery/'
 
 // Camp 2023 images (101-1207)
 const camp2023Dir = path.join(__dirname, '../public/images-webp/camps/2023');
-const camp2023Images = generateImagesForDirectory(camp2023Dir, '/images-webp/camps/2023/', 101, 'camp', 2023);
+const camp2023Images = generateImagesForDirectory(
+  camp2023Dir,
+  '/images-webp/camps/2023/',
+  101,
+  'camp',
+  2023
+);
 
 // Camp 2025 images (201-464)
 const camp2025Dir = path.join(__dirname, '../public/images-webp/camps/2025');
-const camp2025Images = generateImagesForDirectory(camp2025Dir, '/images-webp/camps/2025/', 201, 'camp', 2025);
+const camp2025Images = generateImagesForDirectory(
+  camp2025Dir,
+  '/images-webp/camps/2025/',
+  201,
+  'camp',
+  2025
+);
 
 console.log(`Album images: ${albumImages.length}`);
 console.log(`Camp 2023 images: ${camp2023Images.length}`);
@@ -58,24 +71,30 @@ console.log('');
 
 console.log('// Album Images (Total: ' + albumImages.length + ')');
 console.log('const albumImages: GalleryImages = [');
-albumImages.forEach(img => {
-  console.log(`  { id: ${img.id}, url: '${img.url}', eventType: '${img.eventType}', eventYear: ${img.eventYear} },`);
+albumImages.forEach((img) => {
+  console.log(
+    `  { id: ${img.id}, url: '${img.url}', eventType: '${img.eventType}', eventYear: ${img.eventYear} },`
+  );
 });
 console.log('];');
 console.log('');
 
 console.log('// Camp 2023 Images (Total: ' + camp2023Images.length + ')');
 console.log('const camp2023Images: GalleryImages = [');
-camp2023Images.forEach(img => {
-  console.log(`  { id: ${img.id}, url: '${img.url}', eventType: '${img.eventType}', eventYear: ${img.eventYear} },`);
+camp2023Images.forEach((img) => {
+  console.log(
+    `  { id: ${img.id}, url: '${img.url}', eventType: '${img.eventType}', eventYear: ${img.eventYear} },`
+  );
 });
 console.log('];');
 console.log('');
 
 console.log('// Camp 2025 Images (Total: ' + camp2025Images.length + ')');
 console.log('const camp2025Images: GalleryImages = [');
-camp2025Images.forEach(img => {
-  console.log(`  { id: ${img.id}, url: '${img.url}', eventType: '${img.eventType}', eventYear: ${img.eventYear} },`);
+camp2025Images.forEach((img) => {
+  console.log(
+    `  { id: ${img.id}, url: '${img.url}', eventType: '${img.eventType}', eventYear: ${img.eventYear} },`
+  );
 });
 console.log('];');
 console.log('');

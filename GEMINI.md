@@ -1,70 +1,55 @@
-# Project Overview
+# Gemini Project Context — peace
 
-This is a React-based web application for the "Gangjeong Peace Music Camp", an archive website called "Dear Stranger". The website is available at [https://peaceandmusic.net](https://peaceandmusic.net).
+## Overview
 
-## Technologies Used
+`peace` is the Next.js site for Gangjeong Peace Music Camp, published at
+[peaceandmusic.net](https://peaceandmusic.net). It is an archive and campaign site with static/ISR
+pages, 13-language i18n, structured SEO data, and a small private survey surface for Camp 2026.
 
-*   **Framework**: React (using Create React App)
-*   **Language**: TypeScript
-*   **Styling**: Tailwind CSS with a custom theme defined in `tailwind.config.js`.
-*   **Animation**: Framer Motion
-*   **Routing**: React Router
-*   **Backend**: Express (run with ts-node)
+## Tech Stack
 
-## Project Structure
+- Next.js 16 pages router
+- React 18 and TypeScript 5.7
+- Tailwind CSS
+- framer-motion
+- next-i18next
+- Jest and Testing Library
+- next-sitemap
 
-*   **`src/`**: Contains all the source code for the application.
-    *   **`components/`**: Reusable React components.
-    *   **`pages/`**: The main pages of the application.
-    *   **`data/`**: Static data used throughout the application.
-    *   **`api/`**: API-related files, likely for fetching data.
-    *   **`assets/`**: Images, fonts, and other static assets.
-*   **`public/`**: Publicly accessible files.
-*   **`scripts/`**: Node.js scripts for various tasks, such as generating a sitemap.
-*   **`server/`**: The source code for the Express backend.
+## Important Paths
 
-## Building and Running
+- `pages/`: Next.js route files
+- `src/pages/`: page-level React views
+- `src/components/`: reusable UI and domain components
+- `src/data/`: TypeScript data modules, including generated timetable data
+- `public/data/`: static JSON data
+- `public/locales/`: translation namespaces
+- `scripts/`: build and maintenance scripts
+- `docs/2026캠프 운영/timetable_v7.xlsx`: Camp 2026 timetable source of truth
 
-### Development
-
-To run the app in development mode, use the following command:
-
-```bash
-npm start
-```
-
-This will start the development server and open the application in your default browser at [http://localhost:3000](http://localhost:3000).
-
-### Production Build
-
-To build the app for production, use the following command:
+## Commands
 
 ```bash
-npm run build
+pnpm install
+pnpm dev
+pnpm format:check
+pnpm lint
+pnpm test --runInBand
+pnpm i18n:check
+pnpm audit
+pnpm build
+pnpm start
+pnpm build:timetable
 ```
 
-This will create a `build` directory with the optimized and minified production build of the application.
+`pnpm build:timetable` regenerates `src/data/timetable-2026.ts` from the timetable workbook.
+`pnpm build` runs `next build` and `next-sitemap`.
 
-### Backend Server
+## Operating Notes
 
-To start the backend server, use the following command:
-
-```bash
-npm run server
-```
-
-## Testing
-
-To run the tests, use the following command:
-
-```bash
-npm test
-```
-
-## Deployment
-
-The application is deployed to GitHub Pages. To deploy the app, use the following command:
-
-```bash
-npm run deploy
-```
+- Use `pnpm`, not npm.
+- There is no Express backend and no Create React App build directory.
+- The site is a Next.js app, not a React Router SPA.
+- Private camp guide/staff/survey pages are `noIndex` and excluded from sitemap output.
+- Keep translations at 100% key parity across locales; `pnpm i18n:check` is the gate.
+- Do not edit generated timetable data by hand; regenerate from the workbook.

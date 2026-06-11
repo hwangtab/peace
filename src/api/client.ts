@@ -43,7 +43,10 @@ const fetchLocalDataResult = async <T>(path: string): Promise<LocalDataResult<T>
   try {
     return parseJsonArray<T>(text, path);
   } catch (error) {
-    throw createDataError((error as Error).message, (error as Error & { cause?: unknown }).cause ?? error);
+    throw createDataError(
+      (error as Error).message,
+      (error as Error & { cause?: unknown }).cause ?? error
+    );
   }
 };
 
@@ -59,7 +62,7 @@ interface FetchLocalizedOptions {
 export async function fetchLocalizedData<T>(
   path: string,
   language?: string,
-  options?: FetchLocalizedOptions,
+  options?: FetchLocalizedOptions
 ): Promise<T[]> {
   const lang = getLanguageCode(language);
 
