@@ -156,7 +156,7 @@ const CampSurvey2026Page: React.FC = () => {
 
   if (status === 'success') {
     return (
-      <PageLayout noIndex title="설문 완료 — 제3회 강정 피스앤뮤직캠프" background="ocean-sand">
+      <PageLayout noIndex title="고맙습니다 — 함께 돌아보는 강정" background="ocean-sand">
         <Section>
           <Container size="content">
             <div className="py-16 text-center">
@@ -179,22 +179,23 @@ const CampSurvey2026Page: React.FC = () => {
   return (
     <PageLayout
       noIndex
-      title="뮤지션 설문 — 제3회 강정 피스앤뮤직캠프"
-      description="제3회 강정 피스앤뮤직캠프에 함께한 뮤지션들의 회고를 듣습니다."
+      title="함께 돌아보는 강정 — 제3회 강정 피스앤뮤직캠프"
+      description="제3회 강정 피스앤뮤직캠프에 함께한 모든 분의 회고를 듣습니다."
       background="ocean-sand"
+      disableTopPadding
     >
       <PageHero
-        title="뮤지션 설문"
-        subtitle="제3회 강정 피스앤뮤직캠프를 함께 만들어주신 여러분께"
+        title="함께 돌아보는 강정"
+        subtitle="제3회 강정 피스앤뮤직캠프, 사흘의 기억을 들려주세요"
         backgroundImage={HERO_IMAGE}
       />
-      <Section>
+      <Section background="white" paddingTop="loose" paddingBottom="loose">
         <Container size="content">
           <p className="mb-10 leading-relaxed text-coastal-gray">
-            51팀 뮤지션 여러분, 2박 3일 동안 무대에서 보여주신 노래와 마음이 곧 이 캠프였습니다. 더
-            단단한 4회차를 준비하기 위해 짧은 회고를 부탁드립니다. 약 8분이면 충분하고, 솔직한
-            의견일수록 큰 힘이 됩니다. 응답은 운영진만 확인하며, 후기·사진 공개는 맨 아래에서 따로
-            동의받습니다.
+            강정에서 사흘을 함께한 여러분께. 무대 위에서, 객석에서, 마켓 부스에서, 그리고 보이지 않는
+            곳에서 이 캠프를 함께 만들어주셔서 고맙습니다. 더 단단한 4회차를 준비하기 위해 짧은 회고를
+            부탁드립니다. 약 8분이면 충분하고, 솔직한 의견일수록 큰 힘이 됩니다. 응답은 운영진만
+            확인하며, 후기·사진 공개는 맨 아래에서 따로 동의받습니다.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-12" noValidate>
