@@ -41,8 +41,7 @@ const getYoutubeVideoId = (url: string): string => {
 const CAMP_2026_MUSICIAN_IDS = new Set(
   camps
     .find((c) => c.id === 'camp-2026')
-    ?.participants
-    ?.filter(isParticipantObject)
+    ?.participants?.filter(isParticipantObject)
     .filter((p) => p.musicianId !== undefined)
     .map((p) => p.musicianId as number) ?? []
 );
@@ -103,18 +102,16 @@ const VideoDetailPage: React.FC<VideoDetailPageProps> = ({
       ogImageAlt={video.title}
       ogType="video.other"
       canonicalUrl={pageUrl}
-      structuredData={[videoSchema, getBreadcrumbSchema(breadcrumbs), webPageSchema].filter((s): s is NonNullable<typeof s> => s !== null)}
+      structuredData={[videoSchema, getBreadcrumbSchema(breadcrumbs), webPageSchema].filter(
+        (s): s is NonNullable<typeof s> => s !== null
+      )}
       breadcrumbs={breadcrumbs}
       background="white"
       disableTopPadding={false}
     >
       <Section background="white" paddingTop="tight" paddingBottom="tight">
         <Container size="content">
-          <YouTubeFacade
-            videoId={videoId}
-            title={video.title}
-            thumbnailUrl={video.thumbnailUrl}
-          />
+          <YouTubeFacade videoId={videoId} title={video.title} thumbnailUrl={video.thumbnailUrl} />
 
           <div className="mt-8">
             <div className="flex flex-wrap items-center gap-3 text-xs font-medium text-ocean-mist uppercase tracking-tighter mb-4">
@@ -122,21 +119,14 @@ const VideoDetailPage: React.FC<VideoDetailPageProps> = ({
               <span aria-hidden="true">·</span>
               <time dateTime={video.date}>{localizedDate}</time>
             </div>
-            <h1 className="typo-h2 mb-6 break-words">
-              {video.title}
-            </h1>
+            <h1 className="typo-h2 mb-6 break-words">{video.title}</h1>
             {video.description && (
               <p className="typo-body text-coastal-gray whitespace-pre-line break-words mb-8">
                 {video.description}
               </p>
             )}
             <div className="flex flex-wrap gap-3">
-              <Button
-                href={watchUrl}
-                variant="gold"
-                size="sm"
-                external
-              >
+              <Button href={watchUrl} variant="gold" size="sm" external>
                 {t('videos.detail.watch_on_youtube')}
               </Button>
               <Button to="/videos" variant="back" size="sm">
@@ -150,7 +140,11 @@ const VideoDetailPage: React.FC<VideoDetailPageProps> = ({
       {relatedMusicians.length > 0 && (
         <Section background="ocean-sand" paddingTop="tight" paddingBottom="tight">
           <Container size="content">
-            <SectionHeader title={t('videos.detail.related_musicians')} align="left" className="!mb-6" />
+            <SectionHeader
+              title={t('videos.detail.related_musicians')}
+              align="left"
+              className="!mb-6"
+            />
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
               {relatedMusicians.map((m) => {
                 const href = CAMP_2026_MUSICIAN_IDS.has(m.id)

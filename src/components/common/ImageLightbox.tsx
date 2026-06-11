@@ -19,7 +19,11 @@ const ImageLightbox: React.FC<ImageLightboxProps> = ({
   const { t } = useTranslation();
   const isVisible = show ?? !!image;
   const imageUrl = image ? (typeof image === 'string' ? image : image.url) : '';
-  const altText = image ? (typeof image === 'string' ? 'Lightbox image' : (image.alt || 'Lightbox image')) : '';
+  const altText = image
+    ? typeof image === 'string'
+      ? 'Lightbox image'
+      : image.alt || 'Lightbox image'
+    : '';
 
   return (
     <Transition appear show={isVisible} as={Fragment}>

@@ -42,7 +42,10 @@ const HookStatement: React.FC<Props> = ({ variant = 'camp' }) => {
   const bgY = useTransform(scrollYProgress, [0, 1], ['-5%', '5%']);
 
   return (
-    <div ref={sectionRef} className="relative min-h-[50vh] md:min-h-[70vh] flex items-center justify-center overflow-hidden">
+    <div
+      ref={sectionRef}
+      className="relative min-h-[50vh] md:min-h-[70vh] flex items-center justify-center overflow-hidden"
+    >
       <motion.div
         className="absolute inset-0 w-full h-full"
         style={parallaxDisabled ? undefined : { y: bgY }}
@@ -56,7 +59,9 @@ const HookStatement: React.FC<Props> = ({ variant = 'camp' }) => {
           className="object-cover scale-[1.15]"
         />
       </motion.div>
-      <div className={`absolute inset-0 bg-radial-[ellipse_at_center] ${variant === 'home' ? 'from-black/60 via-black/30 to-black/20' : 'from-black/60 via-black/30 to-transparent'}`} />
+      <div
+        className={`absolute inset-0 bg-radial-[ellipse_at_center] ${variant === 'home' ? 'from-black/60 via-black/30 to-black/20' : 'from-black/60 via-black/30 to-transparent'}`}
+      />
 
       <Container size="prose" className="relative z-10 py-20 sm:py-28">
         <motion.div

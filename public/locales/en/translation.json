@@ -99,7 +99,8 @@
     "lyricist": "Lyricist",
     "arranger": "Arranger",
     "view_image": "View image",
-    "no_results": "No results found."
+    "no_results": "No results found.",
+    "video_unavailable": "Video unavailable"
   },
   "timetable": {
     "title": "Timetable",

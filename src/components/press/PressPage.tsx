@@ -3,7 +3,11 @@ import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import { getPressItems, normalizePressItems } from '@/api/press';
 import { PressItem } from '@/types/press';
-import { getBreadcrumbSchema, getNewsArticleSchema, getWebPageSchema } from '@/utils/structuredData';
+import {
+  getBreadcrumbSchema,
+  getNewsArticleSchema,
+  getWebPageSchema,
+} from '@/utils/structuredData';
 import Button from '@/components/common/Button';
 import { useCamp } from '@/hooks/useCamps';
 import { FilterId, filterByEvent } from '@/utils/filtering';
@@ -85,39 +89,49 @@ export default function PressPage({
 
   const pressItems = useMemo(() => normalizePressItems(pressResource.data), [pressResource.data]);
 
-  const breadcrumbs = useMemo(() => [
-    { name: t('press.breadcrumb_home'), url: getFullUrl('/') },
-    { name: t('press.breadcrumb_press'), url: getFullUrl('/press') },
-  ], [t]);
+  const breadcrumbs = useMemo(
+    () => [
+      { name: t('press.breadcrumb_home'), url: getFullUrl('/') },
+      { name: t('press.breadcrumb_press'), url: getFullUrl('/press') },
+    ],
+    [t]
+  );
 
-  const structuredData = useMemo(() => [
-    getBreadcrumbSchema(breadcrumbs),
-    getWebPageSchema({
-      name: t('press.page_title'),
-      description: t('press.page_desc'),
-      url: getFullUrl('/press'),
-      keywords: [
-        '강정피스앤뮤직캠프 언론보도',
-        'Gangjeong Peace Music Camp press',
-        '평화음악 뉴스',
-        'peace music news',
-        '제주 강정마을',
-        'Gangjeong Village',
-        '평화 운동',
-        'peace movement',
-      ],
-    }),
-    ...pressItems.slice(0, 20).map(item =>
-      getNewsArticleSchema({
-        headline: item.title,
-        description: item.description || '',
-        datePublished: item.date,
-        url: item.url,
-        imageUrl: item.imageUrl,
-        publisher: item.publisher,
-      }, i18n.language, t)
-    ),
-  ], [breadcrumbs, pressItems, i18n.language, t]);
+  const structuredData = useMemo(
+    () => [
+      getBreadcrumbSchema(breadcrumbs),
+      getWebPageSchema({
+        name: t('press.page_title'),
+        description: t('press.page_desc'),
+        url: getFullUrl('/press'),
+        keywords: [
+          '강정피스앤뮤직캠프 언론보도',
+          'Gangjeong Peace Music Camp press',
+          '평화음악 뉴스',
+          'peace music news',
+          '제주 강정마을',
+          'Gangjeong Village',
+          '평화 운동',
+          'peace movement',
+        ],
+      }),
+      ...pressItems.slice(0, 20).map((item) =>
+        getNewsArticleSchema(
+          {
+            headline: item.title,
+            description: item.description || '',
+            datePublished: item.date,
+            url: item.url,
+            imageUrl: item.imageUrl,
+            publisher: item.publisher,
+          },
+          i18n.language,
+          t
+        )
+      ),
+    ],
+    [breadcrumbs, pressItems, i18n.language, t]
+  );
 
   const filteredItems = useMemo(
     () => sortByDateDesc(filterByEvent(pressItems, selectedFilter)),
@@ -144,11 +158,7 @@ export default function PressPage({
       <PageIntroSection
         eyebrow={t('press.intro.eyebrow')}
         heading={t('press.intro.heading')}
-        paragraphs={[
-          t('press.intro.p1'),
-          t('press.intro.p2'),
-          t('press.intro.p3'),
-        ]}
+        paragraphs={[t('press.intro.p1'), t('press.intro.p2'), t('press.intro.p3')]}
         background="white"
       />
 

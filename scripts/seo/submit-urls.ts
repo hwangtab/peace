@@ -13,7 +13,21 @@
  */
 
 const SITE_URL = 'https://peaceandmusic.net';
-const LOCALES = ['ko', 'en', 'es', 'fr', 'de', 'pt', 'ru', 'ar', 'ja', 'zh-Hans', 'zh-Hant', 'hi', 'id'];
+const LOCALES = [
+  'ko',
+  'en',
+  'es',
+  'fr',
+  'de',
+  'pt',
+  'ru',
+  'ar',
+  'ja',
+  'zh-Hans',
+  'zh-Hant',
+  'hi',
+  'id',
+];
 
 // Camp 2026 musician IDs — update this list when musicians change
 // Read from the actual data source at build time
@@ -30,8 +44,8 @@ async function getMusicianIds(): Promise<string[]> {
     return [];
   }
 
-  const files = fs.readdirSync(musiciansDir).filter(f => f.endsWith('.json'));
-  return files.map(f => f.replace('.json', ''));
+  const files = fs.readdirSync(musiciansDir).filter((f) => f.endsWith('.json'));
+  return files.map((f) => f.replace('.json', ''));
 }
 
 function generateUrls(musicianIds: string[]): string[] {
@@ -71,9 +85,11 @@ async function main() {
   if (!credPath) {
     console.log('GOOGLE_APPLICATION_CREDENTIALS not set.');
     console.log('Outputting URLs to stdout for manual submission:\n');
-    urls.forEach(url => console.log(url));
+    urls.forEach((url) => console.log(url));
     console.log(`\nTotal: ${urls.length} URLs`);
-    console.log('\nTo submit automatically, set GOOGLE_APPLICATION_CREDENTIALS to your service account JSON key path.');
+    console.log(
+      '\nTo submit automatically, set GOOGLE_APPLICATION_CREDENTIALS to your service account JSON key path.'
+    );
     return;
   }
 

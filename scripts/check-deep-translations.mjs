@@ -10,6 +10,7 @@ import { join } from 'path';
 const LOCALES = ['en', 'es', 'fr', 'de', 'pt', 'ru', 'ar', 'ja', 'zh-Hans', 'zh-Hant', 'hi', 'id'];
 const REF_LOCALE = 'ko';
 const BASE = join(process.cwd(), 'public/locales');
+const ALLOWED_EMPTY_KEYS = new Set(['translation.solidarity.event_sail.note']);
 
 function loadAll(filePath) {
   try {
@@ -39,9 +40,16 @@ for (const locale of LOCALES) {
     const koreanValues = findKoreanValues(data, `${locale}/${ns}`);
     if (koreanValues.length > 0) {
       koreanFound += koreanValues.length;
-      if (!foundForLocale) { console.log(`${locale}:`); foundForLocale = true; }
+      if (!foundForLocale) {
+        console.log(`${locale}:`);
+        foundForLocale = true;
+      }
       console.log(`  ${ns}: ${koreanValues.length} value(s) with Korean text`);
-      koreanValues.slice(0, 3).forEach((kv) => console.log(`    - ${kv.path}: "${String(kv.value).substring(0, 60)}..."`));
+      koreanValues
+        .slice(0, 3)
+        .forEach((kv) =>
+          console.log(`    - ${kv.path}: "${String(kv.value).substring(0, 60)}..."`)
+        );
       if (koreanValues.length > 3) console.log(`    ... and ${koreanValues.length - 3} more`);
     }
   }
@@ -71,10 +79,15 @@ for (const locale of LOCALES) {
   for (const nsFile of readdirSync(join(BASE, locale)).filter((f) => f.endsWith('.json'))) {
     const ns = nsFile.replace('.json', '');
     const data = loadAll(join(BASE, locale, nsFile));
-    const empty = findEmptyValues(data, `${locale}/${ns}`);
+    const empty = findEmptyValues(data, `${locale}/${ns}`).filter(
+      (ev) => !ALLOWED_EMPTY_KEYS.has(ev.path.replace(`${locale}/`, ''))
+    );
     if (empty.length > 0) {
       emptyFound += empty.length;
-      if (!foundForLocale) { console.log(`${locale}:`); foundForLocale = true; }
+      if (!foundForLocale) {
+        console.log(`${locale}:`);
+        foundForLocale = true;
+      }
       console.log(`  ${ns}: ${empty.length} empty value(s)`);
       empty.slice(0, 3).forEach((ev) => console.log(`    - ${ev.path}`));
       if (empty.length > 3) console.log(`    ... and ${empty.length - 3} more`);
@@ -103,4 +116,7 @@ console.log(`Korean text in non-KO locale values: ${koreanFound}`);
 console.log(`Empty string/null values: ${emptyFound}`);
 if (koreanFound === 0 && emptyFound === 0) {
   console.log('All translations are clean! No Korean text leakage or empty values found.');
+}
+if (koreanFound > 0 || emptyFound > 0) {
+  process.exitCode = 1;
 }

@@ -5,6 +5,7 @@ import { AnimatePresence, m as motion, useIsPresent } from 'framer-motion';
 import { IoChevronDown } from '@/components/icons/SiteIcons';
 import { useTranslation } from 'next-i18next';
 import { isRouteActive } from '@/utils/routeMatch';
+import { useHydrated } from '@/hooks/useHydrated';
 
 interface DropdownItem {
   nameKey: string;
@@ -59,15 +60,13 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(
     }, [open, setOpen]);
 
     const currentPath = router.asPath;
+    const hydrated = useHydrated();
 
     // 404 페이지 SSR 시 router.asPath 가 '/404' 로 떨어져 클라이언트의 실제 URL 과
-    // 어긋나면서 isActive 가 SSR(false) ↔ client(true) hydration mismatch 를
-    //일으키던 회귀. mount 이후에만 active 계산하도록 지연.
-    const [mounted, setMounted] = useState(false);
-    useEffect(() => { setMounted(true); }, []);
-    const isActive = mounted && items.some((item) =>
-      isRouteActive(currentPath, item.path, { locale: router.locale })
-    );
+    // 어긋나던 회귀를 피하기 위해 hydration 이후에만 active 를 계산한다.
+    const isActive =
+      hydrated &&
+      items.some((item) => isRouteActive(currentPath, item.path, { locale: router.locale }));
 
     const getTextColor = () => {
       if (isScrolled) {
@@ -154,7 +153,9 @@ const DropdownMenu: React.FC<{
               ? 'bg-ocean-sand text-jeju-ocean font-bold'
               : 'text-deep-ocean hover:bg-ocean-sand/50'
           } transition-colors duration-200 font-serif font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-jeju-ocean`}
-          aria-current={isRouteActive(currentPath, item.path, { locale: router.locale }) ? 'page' : undefined}
+          aria-current={
+            isRouteActive(currentPath, item.path, { locale: router.locale }) ? 'page' : undefined
+          }
           onClick={onDismiss}
         >
           {t(item.nameKey)}

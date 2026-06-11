@@ -99,7 +99,8 @@
     "lyricist": "Parolier",
     "track": "Piste",
     "view_image": "Voir l'image",
-    "no_results": "Aucun résultat trouvé."
+    "no_results": "Aucun résultat trouvé.",
+    "video_unavailable": "Vidéo indisponible"
   },
   "timetable": {
     "title": "Programme",

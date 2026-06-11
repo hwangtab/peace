@@ -11,9 +11,7 @@ async function convertToWebP(inputDir, outputDir) {
     const files = await fs.readdir(inputDir);
 
     // Filter for image files
-    const imageFiles = files.filter(file => 
-      /\.(jpg|jpeg|png)$/i.test(file)
-    );
+    const imageFiles = files.filter((file) => /\.(jpg|jpeg|png)$/i.test(file));
 
     // Convert each image
     for (const file of imageFiles) {

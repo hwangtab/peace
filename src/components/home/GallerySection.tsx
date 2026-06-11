@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import dynamic from 'next/dynamic';
 import { m as motion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import { GalleryImage } from '@/types/gallery';
@@ -11,8 +10,7 @@ import GalleryImageItem from '../gallery/GalleryImageItem';
 import Section from '../layout/Section';
 import Container from '../layout/Container';
 import SectionHeader from '../common/SectionHeader';
-
-const ImageLightbox = dynamic(() => import('../common/ImageLightbox'), { ssr: false });
+import ImageLightbox from '../common/ImageLightbox';
 
 interface GallerySectionProps {
   className?: string;
@@ -73,7 +71,9 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
 
         {filteredImages.length === 0 ? (
           <div className="text-center py-20 bg-white/50 rounded-lg">
-            <p className="text-xl text-coastal-gray font-serif font-bold">{t('gallery.no_images')}</p>
+            <p className="text-xl text-coastal-gray font-serif font-bold">
+              {t('gallery.no_images')}
+            </p>
           </div>
         ) : (
           <div

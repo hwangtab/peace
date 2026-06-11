@@ -26,9 +26,7 @@ const getGalleryFiles = () => {
 };
 
 const getTranslationFiles = () =>
-  getExistingFiles(
-    locales.map((locale) => path.join(localeDir, locale, 'translation.json')),
-  );
+  getExistingFiles(locales.map((locale) => path.join(localeDir, locale, 'translation.json')));
 
 const toIsoString = (mtimeMs) => new Date(mtimeMs).toISOString();
 
@@ -36,9 +34,7 @@ const getLatestMtime = (filePaths) => {
   const existingFiles = getExistingFiles(filePaths);
   if (existingFiles.length === 0) return undefined;
 
-  return toIsoString(
-    Math.max(...existingFiles.map((filePath) => fs.statSync(filePath).mtimeMs)),
-  );
+  return toIsoString(Math.max(...existingFiles.map((filePath) => fs.statSync(filePath).mtimeMs)));
 };
 
 const getGitLastmod = (filePaths) => {
@@ -52,11 +48,10 @@ const getGitLastmod = (filePaths) => {
 
   try {
     const relativeFiles = existingFiles.map((filePath) => path.relative(rootDir, filePath));
-    const gitLastmod = execFileSync(
-      'git',
-      ['log', '-1', '--format=%cI', '--', ...relativeFiles],
-      { cwd: rootDir, encoding: 'utf8' },
-    ).trim();
+    const gitLastmod = execFileSync('git', ['log', '-1', '--format=%cI', '--', ...relativeFiles], {
+      cwd: rootDir,
+      encoding: 'utf8',
+    }).trim();
 
     const result = gitLastmod || undefined;
     gitLastmodCache.set(cacheKey, result);
@@ -124,17 +119,11 @@ const getLastmodForPath = (pagePath) => {
   }
 
   if (normalizedPath === '/gallery') {
-    return getLastmod([
-      ...translationFiles,
-      ...getGalleryFiles(),
-    ]);
+    return getLastmod([...translationFiles, ...getGalleryFiles()]);
   }
 
   if (normalizedPath === '/press') {
-    return getLastmod([
-      ...translationFiles,
-      ...getLocalizedDataFiles('press'),
-    ]);
+    return getLastmod([...translationFiles, ...getLocalizedDataFiles('press')]);
   }
 
   if (normalizedPath === '/solidarity' || normalizedPath.startsWith('/solidarity/')) {
@@ -146,10 +135,7 @@ const getLastmodForPath = (pagePath) => {
   }
 
   if (normalizedPath === '/videos' || normalizedPath.startsWith('/videos/')) {
-    return getLastmod([
-      ...translationFiles,
-      ...getLocalizedDataFiles('videos'),
-    ]);
+    return getLastmod([...translationFiles, ...getLocalizedDataFiles('videos')]);
   }
 
   if (normalizedPath === '/album/about') {
@@ -159,10 +145,7 @@ const getLastmodForPath = (pagePath) => {
     ]);
   }
 
-  if (
-    normalizedPath === '/album/musicians' ||
-    normalizedPath.startsWith('/album/musicians/')
-  ) {
+  if (normalizedPath === '/album/musicians' || normalizedPath.startsWith('/album/musicians/')) {
     return getLastmod([
       path.join(rootDir, 'src', 'pages', 'album', 'AlbumMusiciansPage.tsx'),
       path.join(rootDir, 'src', 'pages', 'CampDetailPage.tsx'),
@@ -171,10 +154,7 @@ const getLastmodForPath = (pagePath) => {
     ]);
   }
 
-  if (
-    normalizedPath === '/album/tracks' ||
-    normalizedPath.startsWith('/album/tracks/')
-  ) {
+  if (normalizedPath === '/album/tracks' || normalizedPath.startsWith('/album/tracks/')) {
     return getLastmod([
       path.join(rootDir, 'src', 'pages', 'album', 'AlbumTracksPage.tsx'),
       ...translationFiles,
@@ -200,10 +180,7 @@ const getLastmodForPath = (pagePath) => {
     ]);
   }
 
-  if (
-    normalizedPath === '/camps/2026' ||
-    normalizedPath.startsWith('/camps/2026/musicians/')
-  ) {
+  if (normalizedPath === '/camps/2026' || normalizedPath.startsWith('/camps/2026/musicians/')) {
     return getLastmod([
       path.join(rootDir, 'src', 'data', 'camps.ts'),
       path.join(rootDir, 'src', 'pages', 'Camp2026Page.tsx'),
@@ -225,7 +202,8 @@ module.exports = {
   changefreq: 'weekly',
   priority: 0.7,
   sitemapSize: 7000,
-  // /camps/2026/guide(뮤지션), /camps/2026/staff(스태프) — 전용 비공개 안내(검색 차단). 사이트맵 제외.
+  // /camps/2026/guide(뮤지션), /camps/2026/staff(스태프), /camps/2026/survey(설문)
+  // — 전용 비공개 안내/입력 표면(검색 차단). 사이트맵 제외.
   exclude: [
     '/404',
     '/*/404',
@@ -235,13 +213,12 @@ module.exports = {
     '/*/camps/2026/guide',
     '/camps/2026/staff',
     '/*/camps/2026/staff',
+    '/camps/2026/survey',
+    '/*/camps/2026/survey',
   ],
   additionalSitemaps: [`${siteUrl}/image-sitemap.xml`, `${siteUrl}/video-sitemap.xml`],
   robotsTxtOptions: {
-    additionalSitemaps: [
-      `${siteUrl}/image-sitemap.xml`,
-      `${siteUrl}/video-sitemap.xml`,
-    ],
+    additionalSitemaps: [`${siteUrl}/image-sitemap.xml`, `${siteUrl}/video-sitemap.xml`],
     policies: [
       { userAgent: 'Googlebot', allow: '/' },
       { userAgent: 'Bingbot', allow: '/' },

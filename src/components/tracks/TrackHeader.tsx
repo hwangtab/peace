@@ -10,7 +10,13 @@ interface TrackHeaderProps {
   alwaysExpanded: boolean;
 }
 
-export default function TrackHeader({ track, isExpanded, onToggle, onPlay, alwaysExpanded }: TrackHeaderProps) {
+export default function TrackHeader({
+  track,
+  isExpanded,
+  onToggle,
+  onPlay,
+  alwaysExpanded,
+}: TrackHeaderProps) {
   if (alwaysExpanded) {
     return (
       <div className="p-3 sm:p-4">
@@ -18,11 +24,16 @@ export default function TrackHeader({ track, isExpanded, onToggle, onPlay, alway
           <div className="flex-grow min-w-0">
             <div className="flex items-center justify-between mb-1">
               <h3 className="text-lg font-bold font-serif break-words min-w-0">
-                <Link href={`/album/tracks/${track.id}`} className="hover:text-jeju-ocean transition-colors focus-visible:outline-none focus-visible:underline">
+                <Link
+                  href={`/album/tracks/${track.id}`}
+                  className="hover:text-jeju-ocean transition-colors focus-visible:outline-none focus-visible:underline"
+                >
                   {track.title}
                 </Link>
               </h3>
-              <span className="text-sm text-coastal-gray ml-2 sm:ml-4 flex-shrink-0">{track.duration}</span>
+              <span className="text-sm text-coastal-gray ml-2 sm:ml-4 flex-shrink-0">
+                {track.duration}
+              </span>
             </div>
             <p className="text-jeju-ocean font-serif font-bold break-words">{track.artist}</p>
           </div>
@@ -38,7 +49,13 @@ export default function TrackHeader({ track, isExpanded, onToggle, onPlay, alway
         onToggle();
         onPlay();
       }}
-      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onToggle(); onPlay(); } }}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onToggle();
+          onPlay();
+        }
+      }}
       role="button"
       tabIndex={0}
       aria-expanded={isExpanded}
@@ -49,11 +66,19 @@ export default function TrackHeader({ track, isExpanded, onToggle, onPlay, alway
           <div className="flex items-center justify-between mb-1">
             <h3 className="text-lg font-bold font-serif break-words min-w-0">
               {/* wrapper role=button이 키보드/SR 진입점 — Link는 마우스 클릭 전용 */}
-              <Link href={`/album/tracks/${track.id}`} className="hover:text-jeju-ocean transition-colors focus-visible:outline-none focus-visible:underline" onClick={(e) => e.stopPropagation()} tabIndex={-1} aria-hidden="true">
+              <Link
+                href={`/album/tracks/${track.id}`}
+                className="hover:text-jeju-ocean transition-colors focus-visible:outline-none focus-visible:underline"
+                onClick={(e) => e.stopPropagation()}
+                tabIndex={-1}
+                aria-hidden="true"
+              >
                 {track.title}
               </Link>
             </h3>
-            <span className="text-sm text-coastal-gray ml-2 sm:ml-4 flex-shrink-0">{track.duration}</span>
+            <span className="text-sm text-coastal-gray ml-2 sm:ml-4 flex-shrink-0">
+              {track.duration}
+            </span>
           </div>
           <p className="text-jeju-ocean font-serif font-bold break-words">{track.artist}</p>
         </div>

@@ -6,7 +6,11 @@ import PageIntroSection from '@/components/common/PageIntroSection';
 import GallerySection from '@/components/home/GallerySection';
 import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
-import { getImageGallerySchema, getBreadcrumbSchema, getWebPageSchema } from '@/utils/structuredData';
+import {
+  getImageGallerySchema,
+  getBreadcrumbSchema,
+  getWebPageSchema,
+} from '@/utils/structuredData';
 import { useCamp } from '@/hooks/useCamps';
 import { getFullUrl } from '@/config/env';
 
@@ -33,40 +37,53 @@ const GalleryPage = ({ initialImages = [], totalImageCount }: GalleryPageProps) 
     }));
     if (items.length === 0) {
       items.push(
-        { url: getFullUrl('/images-webp/camps/2023/DSC00528.webp'), caption: t('gallery.hero_subtitle') },
-        { url: getFullUrl('/images-webp/camps/2023/DSC00437.webp'), caption: t('gallery.page_desc') },
+        {
+          url: getFullUrl('/images-webp/camps/2023/DSC00528.webp'),
+          caption: t('gallery.hero_subtitle'),
+        },
+        {
+          url: getFullUrl('/images-webp/camps/2023/DSC00437.webp'),
+          caption: t('gallery.page_desc'),
+        }
       );
     }
     return items;
   }, [initialImages, t]);
 
-  const breadcrumbs = useMemo(() => [
-    { name: t('nav.home'), url: getFullUrl('/') },
-    { name: t('gallery.page_title'), url: getFullUrl('/gallery') },
-  ], [t]);
+  const breadcrumbs = useMemo(
+    () => [
+      { name: t('nav.home'), url: getFullUrl('/') },
+      { name: t('gallery.page_title'), url: getFullUrl('/gallery') },
+    ],
+    [t]
+  );
 
   const structuredData = useMemo(() => {
     const gallerySchema = getImageGallerySchema(
       schemaImages,
       i18n.language,
       t,
-      totalImageCount ?? initialImages.length,
+      totalImageCount ?? initialImages.length
     );
-    return [gallerySchema, getBreadcrumbSchema(breadcrumbs), getWebPageSchema({
-      name: t('gallery.page_title'),
-      description: t('gallery.page_desc'),
-      url: getFullUrl('/gallery'),
-      keywords: [
-        '강정피스앤뮤직캠프 갤러리',
-        'Gangjeong Peace Music Camp gallery',
-        '페스티벌 사진',
-        'festival photos',
-        '제주 음악',
-        'Jeju music',
-        '평화 이미지',
-        'peace music images',
-      ],
-    })];
+    return [
+      gallerySchema,
+      getBreadcrumbSchema(breadcrumbs),
+      getWebPageSchema({
+        name: t('gallery.page_title'),
+        description: t('gallery.page_desc'),
+        url: getFullUrl('/gallery'),
+        keywords: [
+          '강정피스앤뮤직캠프 갤러리',
+          'Gangjeong Peace Music Camp gallery',
+          '페스티벌 사진',
+          'festival photos',
+          '제주 음악',
+          'Jeju music',
+          '평화 이미지',
+          'peace music images',
+        ],
+      }),
+    ];
   }, [schemaImages, i18n.language, totalImageCount, initialImages.length, breadcrumbs, t]);
 
   return (
@@ -88,11 +105,7 @@ const GalleryPage = ({ initialImages = [], totalImageCount }: GalleryPageProps) 
       <PageIntroSection
         eyebrow={t('gallery.intro.eyebrow')}
         heading={t('gallery.intro.heading')}
-        paragraphs={[
-          t('gallery.intro.p1'),
-          t('gallery.intro.p2'),
-          t('gallery.intro.p3'),
-        ]}
+        paragraphs={[t('gallery.intro.p1'), t('gallery.intro.p2'), t('gallery.intro.p3')]}
         background="white"
       />
       <Section background="white" paddingTop="tight" paddingBottom="none">

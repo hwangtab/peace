@@ -99,7 +99,8 @@
     "lyricist": "作詞者",
     "track": "収録曲",
     "view_image": "画像を見る",
-    "no_results": "結果が見つかりません。"
+    "no_results": "結果が見つかりません。",
+    "video_unavailable": "動画を利用できません"
   },
   "timetable": {
     "title": "タイムテーブル",

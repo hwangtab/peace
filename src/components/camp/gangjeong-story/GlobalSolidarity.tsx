@@ -30,7 +30,11 @@ const GlobalSolidarity: React.FC<Props> = ({ variant = 'camp' }) => {
   const isHome = variant === 'home';
 
   return (
-    <Section background={isHome ? 'jeju-ocean' : 'deep-ocean'} paddingTop="loose" paddingBottom="loose">
+    <Section
+      background={isHome ? 'jeju-ocean' : 'deep-ocean'}
+      paddingTop="loose"
+      paddingBottom="loose"
+    >
       <Container size="prose">
         <motion.div
           variants={containerVariants}

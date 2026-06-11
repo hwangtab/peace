@@ -4,7 +4,7 @@
 
 **peace**(프로젝트명: dear-stranger-archive)는 [peaceandmusic.net](https://peaceandmusic.net) 도메인에서 서비스되는 **강정 평화 음악 캠프**의 공식 웹사이트입니다. 제주의 평화, 음악, 예술을 주제로 한 캠프의 아카이브 및 홍보 목적의 사이트입니다.
 
-Next.js (v16+) 기반의 정적/반정적(S SG + ISR) 웹사이트로, 다국어(i18n, 13개 언어)를 지원합니다.
+Next.js (v16+) 기반의 정적/반정적(SSG + ISR) 웹사이트로, 다국어(i18n, 13개 언어)를 지원합니다.
 
 ## 기술 스택
 
@@ -76,8 +76,11 @@ peace/
 | `pnpm lint:fix` | ESLint 자동 수정 |
 | `pnpm format` | Prettier 전체 포맷팅 |
 | `pnpm format:check` | Prettier 체크 (CI용) |
-| `pnpm i18n:extract` | i18next 번역 키 추출 |
-| `pnpm i18n:check` | 번역 키 parity 검사 (`--fail-on-warnings`) |
+| `pnpm i18n:extract` | 임시 경로에 번역 키 추출 (`--apply`는 기존 번역 보존·누락 키만 병합) |
+| `pnpm i18n:check` | 번역 키 parity·한국어 누수·빈 값 검사 |
+| `pnpm build:timetable` | `docs/2026캠프 운영/timetable_v7.xlsx`에서 타임테이블 데이터 재생성 |
+| `pnpm timetable:check` | 타임테이블 재생성 후 `src/data/timetable-2026.ts` diff 검사 |
+| `pnpm audit` | 전체 의존성 보안 감사 |
 | `pnpm analyze` | 번들 분석 (`ANALYZE=true next build`) |
 
 ## 개발 관례

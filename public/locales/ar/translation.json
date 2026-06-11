@@ -99,7 +99,8 @@
     "lyricist": "كاتب الكلمات",
     "track": "مسار",
     "view_image": "عرض الصورة",
-    "no_results": "لم يتم العثور على نتائج."
+    "no_results": "لم يتم العثور على نتائج.",
+    "video_unavailable": "الفيديو غير متاح"
   },
   "timetable": {
     "title": "الجدول الزمني",

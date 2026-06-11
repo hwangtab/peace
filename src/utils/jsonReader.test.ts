@@ -20,14 +20,12 @@ describe('parseJsonArray', () => {
 
   it('배열이 아닌 JSON(객체) → Error throw', () => {
     expect(() => parseJsonArray('{"key":"value"}', '/some/path')).toThrow(
-      'Expected array JSON at /some/path',
+      'Expected array JSON at /some/path'
     );
   });
 
   it('잘못된 JSON 문자열 → Error throw (Invalid JSON)', () => {
-    expect(() => parseJsonArray('{bad json', '/api/data')).toThrow(
-      'Invalid JSON at /api/data',
-    );
+    expect(() => parseJsonArray('{bad json', '/api/data')).toThrow('Invalid JSON at /api/data');
   });
 
   it('잘못된 JSON 에러에 cause 첨부', () => {

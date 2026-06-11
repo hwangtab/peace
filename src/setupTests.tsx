@@ -128,8 +128,10 @@ type MotionComponentProps = React.HTMLAttributes<HTMLElement> & {
   transition?: unknown;
   whileHover?: unknown;
   whileTap?: unknown;
+  whileInView?: unknown;
   exit?: unknown;
   variants?: unknown;
+  viewport?: unknown;
   layoutId?: string;
 };
 
@@ -140,8 +142,10 @@ const stripMotionProps = (props: MotionComponentProps): React.HTMLAttributes<HTM
   delete sanitized.transition;
   delete sanitized.whileHover;
   delete sanitized.whileTap;
+  delete sanitized.whileInView;
   delete sanitized.exit;
   delete sanitized.variants;
+  delete sanitized.viewport;
   delete sanitized.layoutId;
   return sanitized;
 };

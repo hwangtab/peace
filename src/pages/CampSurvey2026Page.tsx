@@ -202,10 +202,10 @@ const CampSurvey2026Page: React.FC = () => {
       <Section background="white" paddingTop="loose" paddingBottom="loose">
         <Container size="content">
           <p className="mb-10 leading-relaxed text-coastal-gray">
-            강정에서 사흘을 함께한 여러분께. 무대 위에서, 객석에서, 마켓 부스에서, 그리고 보이지 않는
-            곳에서 이 캠프를 함께 만들어주셔서 고맙습니다. 더 단단한 4회차를 준비하기 위해 짧은 회고를
-            부탁드립니다. 약 8분이면 충분하고, 솔직한 의견일수록 큰 힘이 됩니다. 응답은 운영진만
-            확인하며, 후기·사진 공개는 맨 아래에서 따로 동의받습니다.
+            강정에서 사흘을 함께한 여러분께. 무대 위에서, 객석에서, 마켓 부스에서, 그리고 보이지
+            않는 곳에서 이 캠프를 함께 만들어주셔서 고맙습니다. 더 단단한 4회차를 준비하기 위해 짧은
+            회고를 부탁드립니다. 약 8분이면 충분하고, 솔직한 의견일수록 큰 힘이 됩니다. 응답은
+            운영진만 확인하며, 후기·사진 공개는 맨 아래에서 따로 동의받습니다.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-12" noValidate>
@@ -261,7 +261,9 @@ const CampSurvey2026Page: React.FC = () => {
                   <span className="mb-1 block font-medium text-deep-ocean">
                     다음에도 연락드릴 채널 (선택)
                   </span>
-                  <p className="mb-3 text-sm text-coastal-gray">편한 채널 하나만 적어주셔도 됩니다.</p>
+                  <p className="mb-3 text-sm text-coastal-gray">
+                    편한 채널 하나만 적어주셔도 됩니다.
+                  </p>
                   <div className="space-y-3">
                     <input
                       type="text"

@@ -47,21 +47,31 @@ export function buildCamp2026Schemas({
   const translatedDescription = t('camp.description_2026');
 
   const subEvents: {
-    id: string; url: string; name: string; startDate: string; endDate: string;
-    performerName: string; performerUrl: string | undefined;
-    performerSameAs: string[] | undefined; image: string | undefined;
+    id: string;
+    url: string;
+    name: string;
+    startDate: string;
+    endDate: string;
+    performerName: string;
+    performerUrl: string | undefined;
+    performerSameAs: string[] | undefined;
+    image: string | undefined;
   }[] = [];
   const timetableItems: {
-    position: number; name: string; url: string;
-    image: string | undefined; startDate: string;
+    position: number;
+    name: string;
+    url: string;
+    image: string | undefined;
+    startDate: string;
   }[] = [];
   let actPosition = 0;
   for (const day of timetable2026.days) {
     for (const a of day.acts) {
       if (a.type !== 'performance') continue;
-      const musician = a.musicianIds && a.musicianIds.length === 1
-        ? musicians.find((m) => m.id === a.musicianIds![0])
-        : undefined;
+      const musician =
+        a.musicianIds && a.musicianIds.length === 1
+          ? musicians.find((m) => m.id === a.musicianIds![0])
+          : undefined;
       const actId = getFullUrl(`/camps/2026#act-${day.date}-${a.order}`);
       const image = musician?.imageUrl ? getFullUrl(musician.imageUrl) : undefined;
       actPosition += 1;
@@ -151,8 +161,10 @@ export function buildCamp2026Schemas({
         const participant = isParticipantObject(p) ? p : undefined;
         return {
           type: 'MusicGroup' as const,
-          name: participant ? participant.name : p as string,
-          ...(participant?.musicianId ? { url: getFullUrl(`/camps/2026/musicians/${participant.musicianId}`) } : {}),
+          name: participant ? participant.name : (p as string),
+          ...(participant?.musicianId
+            ? { url: getFullUrl(`/camps/2026/musicians/${participant.musicianId}`) }
+            : {}),
         };
       }),
       ...(camp.fundingUrl

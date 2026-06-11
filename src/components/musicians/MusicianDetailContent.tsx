@@ -1,7 +1,11 @@
 import { useTranslation } from 'next-i18next';
 import { Musician } from '@/types/musician';
 import { VideoItem } from '@/types/video';
-import { getProfilePageSchema, getBreadcrumbSchema, getWebPageSchema } from '@/utils/structuredData';
+import {
+  getProfilePageSchema,
+  getBreadcrumbSchema,
+  getWebPageSchema,
+} from '@/utils/structuredData';
 import { useCamps } from '@/hooks/useCamps';
 import { getFullUrl } from '@/config/env';
 import PageLayout from '../layout/PageLayout';
@@ -50,11 +54,8 @@ export default function MusicianDetailContent({
   const latestCamp = campList.length > 0 ? campList[campList.length - 1] : undefined;
   const latestCampYear = latestCamp?.year;
 
-  const showNativeName =
-    !!nativeName && nativeName !== musician.name && i18n.language !== 'ko';
-  const displayName = showNativeName
-    ? `${musician.name} (${nativeName})`
-    : musician.name;
+  const showNativeName = !!nativeName && nativeName !== musician.name && i18n.language !== 'ko';
+  const displayName = showNativeName ? `${musician.name} (${nativeName})` : musician.name;
 
   const pageTitle =
     isCampPage && latestCampYear
@@ -115,9 +116,7 @@ export default function MusicianDetailContent({
         latestCamp={latestCamp}
       />
 
-      {relatedVideos.length > 0 && (
-        <SectionWave color="ocean-sand" flow="up" />
-      )}
+      {relatedVideos.length > 0 && <SectionWave color="ocean-sand" flow="up" />}
 
       {relatedVideos.length > 0 && <RelatedVideosSection relatedVideos={relatedVideos} />}
 

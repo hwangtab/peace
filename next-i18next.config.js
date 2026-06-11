@@ -31,7 +31,8 @@ module.exports = {
   //                     /album/musicians/[id], /camps/2026/musicians/[id]
   // - camp_faq_2026   : /camps/2026
   // - camp_guidelines_2026 : /camps/2026, /camps/2026/guidelines (ko/en only)
-  // - camp_promote_2026 : /camps/2026/promote (뮤지션용 SNS 홍보 키트, ko/en only)
+  // - camp_promote_2026 : /camps/2026/promote (뮤지션용 SNS 홍보 키트,
+  //                       홍보 본문은 ko/en 고정, UI 키는 13 로케일 parity 유지)
   // - camp_staff_2026  : /camps/2026/staff (기획단·자원봉사자 전용)
   // - about           : home
   // - gallery         : home, /gallery, /camps/[year](CampGallery)

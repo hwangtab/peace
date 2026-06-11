@@ -16,8 +16,10 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
   const allMusicians = loadLocalizedData<Musician>(lang, 'musicians.json');
   const referencedIds = new Set<number>(
     (camp?.participants ?? [])
-      .map((p) => (typeof p === 'object' && p !== null && 'musicianId' in p ? p.musicianId : undefined))
-      .filter((id): id is number => typeof id === 'number'),
+      .map((p) =>
+        typeof p === 'object' && p !== null && 'musicianId' in p ? p.musicianId : undefined
+      )
+      .filter((id): id is number => typeof id === 'number')
   );
   const initialMusicians = allMusicians
     .filter((m) => referencedIds.has(m.id))
@@ -25,7 +27,11 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
 
   return {
     props: {
-      ...(await serverSideTranslations(lang, ['translation', 'camp_staff_2026'], nextI18NextConfig)),
+      ...(await serverSideTranslations(
+        lang,
+        ['translation', 'camp_staff_2026'],
+        nextI18NextConfig
+      )),
       initialMusicians,
       initialLocale: lang,
     },

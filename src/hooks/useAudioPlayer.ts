@@ -26,7 +26,10 @@ interface UseAudioPlayerReturn {
   formatTime: (time: number) => string;
 }
 
-export const useAudioPlayer = ({ audioUrl, isPlaying }: UseAudioPlayerOptions): UseAudioPlayerReturn => {
+export const useAudioPlayer = ({
+  audioUrl,
+  isPlaying,
+}: UseAudioPlayerOptions): UseAudioPlayerReturn => {
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
   const [error, setError] = useState<string | null>(null);
@@ -111,7 +114,9 @@ export const useAudioPlayer = ({ audioUrl, isPlaying }: UseAudioPlayerOptions): 
     if (!sound) return;
 
     // 핸들러를 effect 스코프에서 선언해 cleanup 에서 이 listener 만 제거
-    const playOnLoad = () => { sound.play(); };
+    const playOnLoad = () => {
+      sound.play();
+    };
 
     if (isPlaying) {
       if (isLoadedRef.current) {
@@ -157,26 +162,32 @@ export const useAudioPlayer = ({ audioUrl, isPlaying }: UseAudioPlayerOptions): 
     return Math.min((progress / duration) * 100, 100);
   }, [progress, duration]);
 
-  const handleSeek = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const sound = soundRef.current;
-    if (!sound || !duration || duration <= 0) return;
+  const handleSeek = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      const sound = soundRef.current;
+      if (!sound || !duration || duration <= 0) return;
 
-    const bounds = e.currentTarget.getBoundingClientRect();
-    const percent = Math.max(0, Math.min(1, (e.clientX - bounds.left) / bounds.width));
-    const newTime = percent * duration;
+      const bounds = e.currentTarget.getBoundingClientRect();
+      const percent = Math.max(0, Math.min(1, (e.clientX - bounds.left) / bounds.width));
+      const newTime = percent * duration;
 
-    sound.seek(newTime);
-    setProgress(newTime);
-  }, [duration]);
+      sound.seek(newTime);
+      setProgress(newTime);
+    },
+    [duration]
+  );
 
-  const seekToPercent = useCallback((percent: number) => {
-    const sound = soundRef.current;
-    if (!sound || !duration || duration <= 0) return;
-    const clamped = Math.max(0, Math.min(1, percent));
-    const newTime = clamped * duration;
-    sound.seek(newTime);
-    setProgress(newTime);
-  }, [duration]);
+  const seekToPercent = useCallback(
+    (percent: number) => {
+      const sound = soundRef.current;
+      if (!sound || !duration || duration <= 0) return;
+      const clamped = Math.max(0, Math.min(1, percent));
+      const newTime = clamped * duration;
+      sound.seek(newTime);
+      setProgress(newTime);
+    },
+    [duration]
+  );
 
   const formatTime = useCallback((time: number): string => {
     if (!isFinite(time) || time < 0) return '0:00';

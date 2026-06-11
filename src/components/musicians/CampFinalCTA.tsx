@@ -34,7 +34,12 @@ export default function CampFinalCTA({
           </Container>
         </Section>
       )}
-      <Section background="deep-ocean" paddingTop="loose" paddingBottom="loose" className="relative overflow-hidden">
+      <Section
+        background="deep-ocean"
+        paddingTop="loose"
+        paddingBottom="loose"
+        className="relative overflow-hidden"
+      >
         <Image
           src="/images-webp/camps/2023/20230610밤 전쟁을끝내자.webp"
           alt={t('camp.cta_final_image_alt')}
@@ -44,7 +49,10 @@ export default function CampFinalCTA({
           loading="lazy"
           className="absolute inset-0 object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/70" aria-hidden="true" />
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/70"
+          aria-hidden="true"
+        />
         <Container size="content" className="text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -53,8 +61,15 @@ export default function CampFinalCTA({
             transition={{ duration: 0.6 }}
           >
             <h2 className="typo-h2 text-white mb-4 break-words">{t('camp.cta_final_heading')}</h2>
-            <p className="typo-body text-cloud-white/80 mb-6 max-w-lg mx-auto break-words">{t('camp.cta_final_body')}</p>
-            <Button href={fundingUrl} variant="gold" external utmContent={`musician-final-cta-${musicianId}`}>
+            <p className="typo-body text-cloud-white/80 mb-6 max-w-lg mx-auto break-words">
+              {t('camp.cta_final_body')}
+            </p>
+            <Button
+              href={fundingUrl}
+              variant="gold"
+              external
+              utmContent={`musician-final-cta-${musicianId}`}
+            >
               {t('camp.cta_final_button')}
             </Button>
           </motion.div>

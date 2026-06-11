@@ -4,54 +4,63 @@ import { useTranslation } from 'next-i18next';
 import { GalleryImage } from '@/types/gallery';
 
 interface GalleryImageItemProps {
-    image: GalleryImage;
-    priority?: boolean;
-    onClick: (image: GalleryImage) => void;
+  image: GalleryImage;
+  priority?: boolean;
+  onClick: (image: GalleryImage) => void;
 }
 
-const GalleryImageItem = React.memo(({ image, priority = false, onClick }: GalleryImageItemProps) => {
+const GalleryImageItem = React.memo(
+  ({ image, priority = false, onClick }: GalleryImageItemProps) => {
     const { t } = useTranslation();
     // Isolate loading state to this component only
     const [isLoaded, setIsLoaded] = useState(false);
-    const eventLabel = image.eventType === 'camp'
+    const eventLabel =
+      image.eventType === 'camp'
         ? t('gallery.alt_camp', { year: image.eventYear })
         : t('gallery.alt_album', { year: image.eventYear });
     const altText = image.description || eventLabel;
 
     return (
-        <div
-            className="cursor-pointer group h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-lg"
-            onClick={() => onClick(image)}
-            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(image); } }}
-            role="button"
-            aria-label={altText}
-            tabIndex={0}
-        >
-            <div className="relative overflow-hidden rounded-lg aspect-square bg-ocean-sand shadow-sm hover:shadow-md transition-shadow">
-                {/* Skeleton pulse - only shown while not loaded */}
-                {!isLoaded && (
-                    <div className="absolute inset-0 bg-seafoam/30 motion-safe:animate-pulse rounded-lg z-0" />
-                )}
+      <div
+        className="cursor-pointer group h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-lg"
+        onClick={() => onClick(image)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            onClick(image);
+          }
+        }}
+        role="button"
+        aria-label={altText}
+        tabIndex={0}
+      >
+        <div className="relative overflow-hidden rounded-lg aspect-square bg-ocean-sand shadow-sm hover:shadow-md transition-shadow">
+          {/* Skeleton pulse - only shown while not loaded */}
+          {!isLoaded && (
+            <div className="absolute inset-0 bg-seafoam/30 motion-safe:animate-pulse rounded-lg z-0" />
+          )}
 
-                <Image
-                    src={image.url}
-                    alt={altText}
-                    fill
-                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                    className={`object-cover transition-[transform,opacity] duration-700 ease-in-out group-hover:scale-110 ${isLoaded ? 'opacity-100' : 'opacity-0'
-                        }`}
-                    quality={55}
-                    priority={priority}
-                    {...(!priority && { loading: 'lazy' })}
-                    onLoad={() => setIsLoaded(true)}
-                />
+          <Image
+            src={image.url}
+            alt={altText}
+            fill
+            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            className={`object-cover transition-[transform,opacity] duration-700 ease-in-out group-hover:scale-110 ${
+              isLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
+            quality={55}
+            priority={priority}
+            {...(!priority && { loading: 'lazy' })}
+            onLoad={() => setIsLoaded(true)}
+          />
 
-                {/* Hover overlay */}
-                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
-            </div>
+          {/* Hover overlay */}
+          <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
         </div>
+      </div>
     );
-});
+  }
+);
 
 GalleryImageItem.displayName = 'GalleryImageItem';
 

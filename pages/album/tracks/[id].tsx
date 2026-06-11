@@ -8,7 +8,11 @@ import nextI18NextConfig from '../../../next-i18next.config';
 import { Track } from '@/types/track';
 import { Musician } from '@/types/musician';
 import { loadLocalizedData } from '@/utils/dataLoader';
-import { getMusicRecordingSchema, getBreadcrumbSchema, getWebPageSchema } from '@/utils/structuredData';
+import {
+  getMusicRecordingSchema,
+  getBreadcrumbSchema,
+  getWebPageSchema,
+} from '@/utils/structuredData';
 import PageLayout from '@/components/layout/PageLayout';
 import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
@@ -23,12 +27,15 @@ interface TrackPageProps {
 export default function TrackPage({ track, musician }: TrackPageProps) {
   const { t, i18n } = useTranslation();
 
-  const breadcrumbs = useMemo(() => [
-    { name: t('nav.home'), url: getFullUrl('/') },
-    { name: t('nav.album'), url: getFullUrl('/album/about') },
-    { name: t('nav.track'), url: getFullUrl('/album/tracks') },
-    { name: track.title, url: getFullUrl(`/album/tracks/${track.id}`) },
-  ], [t, track.title, track.id]);
+  const breadcrumbs = useMemo(
+    () => [
+      { name: t('nav.home'), url: getFullUrl('/') },
+      { name: t('nav.album'), url: getFullUrl('/album/about') },
+      { name: t('nav.track'), url: getFullUrl('/album/tracks') },
+      { name: track.title, url: getFullUrl(`/album/tracks/${track.id}`) },
+    ],
+    [t, track.title, track.id]
+  );
 
   const structuredData = useMemo(() => {
     const recordingSchema = {
@@ -42,7 +49,14 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
             name: t('structured_data.playlist_name'),
             url: getFullUrl('/album/about'),
           },
-          ...(musician ? { byArtist: { name: musician.name, url: getFullUrl(`/album/musicians/${musician.id}`) } } : {}),
+          ...(musician
+            ? {
+                byArtist: {
+                  name: musician.name,
+                  url: getFullUrl(`/album/musicians/${musician.id}`),
+                },
+              }
+            : {}),
         },
         i18n.language,
         t
@@ -141,84 +155,82 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
       {/* Content */}
       <Section background="white" paddingTop="normal" paddingBottom="normal">
         <Container size="prose">
-            {/* Description */}
+          {/* Description */}
+          <section className="mb-12">
+            <h2 className="typo-h2 text-jeju-ocean mb-4">{t('common.about')}</h2>
+            <p className="typo-body text-gray-700 leading-relaxed whitespace-pre-wrap text-pretty">
+              {track.description}
+            </p>
+          </section>
+
+          {/* Lyrics */}
+          {track.lyrics && (
             <section className="mb-12">
-              <h2 className="typo-h2 text-jeju-ocean mb-4">{t('common.about')}</h2>
-              <p className="typo-body text-gray-700 leading-relaxed whitespace-pre-wrap text-pretty">
-                {track.description}
-              </p>
+              <h2 className="typo-h2 text-jeju-ocean mb-4">{t('common.lyrics')}</h2>
+              <div className="bg-ocean-sand/30 rounded-xl p-8">
+                <p className="text-gray-800 leading-loose whitespace-pre-wrap font-serif font-bold text-lg">
+                  {track.lyrics}
+                </p>
+              </div>
             </section>
+          )}
 
-            {/* Lyrics */}
-            {track.lyrics && (
-              <section className="mb-12">
-                <h2 className="typo-h2 text-jeju-ocean mb-4">{t('common.lyrics')}</h2>
-                <div className="bg-ocean-sand/30 rounded-xl p-8">
-                  <p className="text-gray-800 leading-loose whitespace-pre-wrap font-serif font-bold text-lg">
-                    {track.lyrics}
-                  </p>
-                </div>
-              </section>
-            )}
+          {/* Credits */}
+          {track.credits && (
+            <section className="mb-12">
+              <h2 className="typo-h2 text-jeju-ocean mb-4">{t('common.credits')}</h2>
+              <div className="space-y-3">
+                {track.credits.composer && track.credits.composer.length > 0 && (
+                  <div>
+                    <span className="text-sm uppercase tracking-wide text-gray-500">
+                      {t('common.composer')}
+                    </span>
+                    <p className="text-gray-800">{track.credits.composer.join(', ')}</p>
+                  </div>
+                )}
+                {track.credits.lyricist && track.credits.lyricist.length > 0 && (
+                  <div>
+                    <span className="text-sm uppercase tracking-wide text-gray-500">
+                      {t('common.lyricist')}
+                    </span>
+                    <p className="text-gray-800">{track.credits.lyricist.join(', ')}</p>
+                  </div>
+                )}
+                {track.credits.arranger && track.credits.arranger.length > 0 && (
+                  <div>
+                    <span className="text-sm uppercase tracking-wide text-gray-500">
+                      {t('common.arranger')}
+                    </span>
+                    <p className="text-gray-800">{track.credits.arranger.join(', ')}</p>
+                  </div>
+                )}
+                {track.credits.personnel?.map((p) => (
+                  <div key={`${p.role}-${p.name.join('-')}`}>
+                    <span className="text-sm uppercase tracking-wide text-gray-500">{p.role}</span>
+                    <p className="text-gray-800">{p.name.join(', ')}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
 
-            {/* Credits */}
-            {track.credits && (
-              <section className="mb-12">
-                <h2 className="typo-h2 text-jeju-ocean mb-4">{t('common.credits')}</h2>
-                <div className="space-y-3">
-                  {track.credits.composer && track.credits.composer.length > 0 && (
-                    <div>
-                      <span className="text-sm uppercase tracking-wide text-gray-500">
-                        {t('common.composer')}
-                      </span>
-                      <p className="text-gray-800">{track.credits.composer.join(', ')}</p>
-                    </div>
-                  )}
-                  {track.credits.lyricist && track.credits.lyricist.length > 0 && (
-                    <div>
-                      <span className="text-sm uppercase tracking-wide text-gray-500">
-                        {t('common.lyricist')}
-                      </span>
-                      <p className="text-gray-800">{track.credits.lyricist.join(', ')}</p>
-                    </div>
-                  )}
-                  {track.credits.arranger && track.credits.arranger.length > 0 && (
-                    <div>
-                      <span className="text-sm uppercase tracking-wide text-gray-500">
-                        {t('common.arranger')}
-                      </span>
-                      <p className="text-gray-800">{track.credits.arranger.join(', ')}</p>
-                    </div>
-                  )}
-                  {track.credits.personnel?.map((p) => (
-                    <div key={`${p.role}-${p.name.join('-')}`}>
-                      <span className="text-sm uppercase tracking-wide text-gray-500">
-                        {p.role}
-                      </span>
-                      <p className="text-gray-800">{p.name.join(', ')}</p>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
-
-            {/* Navigation */}
-            <div className="pt-8 border-t border-gray-200 flex flex-wrap gap-4">
+          {/* Navigation */}
+          <div className="pt-8 border-t border-gray-200 flex flex-wrap gap-4">
+            <Link
+              href="/album/tracks"
+              className="inline-flex items-center px-4 py-2 bg-ocean-sand text-jeju-ocean rounded-lg hover:bg-ocean-mist transition-colors text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
+            >
+              &larr; {t('nav.track')}
+            </Link>
+            {musician && (
               <Link
-                href="/album/tracks"
-                className="inline-flex items-center px-4 py-2 bg-ocean-sand text-jeju-ocean rounded-lg hover:bg-ocean-mist transition-colors text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
+                href={`/album/musicians/${musician.id}`}
+                className="inline-flex items-center px-4 py-2 bg-golden-sun text-gray-900 rounded-lg hover:bg-yellow-400 transition-colors text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
               >
-                &larr; {t('nav.track')}
+                {musician.name} &rarr;
               </Link>
-              {musician && (
-                <Link
-                  href={`/album/musicians/${musician.id}`}
-                  className="inline-flex items-center px-4 py-2 bg-golden-sun text-gray-900 rounded-lg hover:bg-yellow-400 transition-colors text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
-                >
-                  {musician.name} &rarr;
-                </Link>
-              )}
-            </div>
+            )}
+          </div>
         </Container>
       </Section>
     </PageLayout>
@@ -262,7 +274,11 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
 
   return {
     props: {
-      ...(await serverSideTranslations(resolvedLocale, ['translation', 'album'], nextI18NextConfig)),
+      ...(await serverSideTranslations(
+        resolvedLocale,
+        ['translation', 'album'],
+        nextI18NextConfig
+      )),
       track,
       musician,
     },

@@ -31,11 +31,7 @@ export default function OtherMusiciansSection({
         <SectionHeader title={otherMusiciansTitle || t('nav.musician')} />
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
           {otherMusicians.slice(0, 6).map((m) => (
-            <MusicianCard
-              key={m.id}
-              musician={m}
-              href={`${musicianHrefPrefix}/${m.id}`}
-            />
+            <MusicianCard key={m.id} musician={m} href={`${musicianHrefPrefix}/${m.id}`} />
           ))}
         </div>
         <div className="text-center mt-10">

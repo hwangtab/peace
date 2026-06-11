@@ -11,15 +11,15 @@ import classNames from 'classnames';
 export type ContainerSize = 'prose' | 'content' | 'wide';
 
 interface ContainerProps {
-    children: ReactNode;
-    className?: string;
-    size?: ContainerSize;
+  children: ReactNode;
+  className?: string;
+  size?: ContainerSize;
 }
 
 const SIZE_CLASSES: Record<ContainerSize, string> = {
-    prose:   'max-w-3xl',
-    content: 'max-w-5xl',
-    wide:    'max-w-7xl',
+  prose: 'max-w-3xl',
+  content: 'max-w-5xl',
+  wide: 'max-w-7xl',
 };
 
 /**
@@ -27,20 +27,14 @@ const SIZE_CLASSES: Record<ContainerSize, string> = {
  * Always use this instead of raw `container mx-auto px-*` divs.
  * Compose with <Section> for vertical rhythm.
  */
-const Container: React.FC<ContainerProps> = ({
-    children,
-    className,
-    size = 'content'
-}) => {
-    return (
-        <div className={classNames(
-            'mx-auto w-full px-4 sm:px-6 lg:px-8',
-            SIZE_CLASSES[size],
-            className
-        )}>
-            {children}
-        </div>
-    );
+const Container: React.FC<ContainerProps> = ({ children, className, size = 'content' }) => {
+  return (
+    <div
+      className={classNames('mx-auto w-full px-4 sm:px-6 lg:px-8', SIZE_CLASSES[size], className)}
+    >
+      {children}
+    </div>
+  );
 };
 
 export default Container;

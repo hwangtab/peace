@@ -37,25 +37,30 @@ const CampGuidelines2026Page: React.FC = () => {
   const { t } = useTranslation(['camp_guidelines_2026', 'translation']);
 
   const g = useCallback(
-    (key: string, opts?: Record<string, unknown>) =>
-      t(`camp_guidelines_2026.${key}`, opts),
-    [t],
+    (key: string, opts?: Record<string, unknown>) => t(`camp_guidelines_2026.${key}`, opts),
+    [t]
   );
 
   const arr = useCallback(
-    (key: string) =>
-      t(`camp_guidelines_2026.${key}`, { returnObjects: true }) as string[],
-    [t],
+    (key: string) => t(`camp_guidelines_2026.${key}`, { returnObjects: true }) as string[],
+    [t]
   );
 
-  const breadcrumbs = useMemo(() => [
-    { name: t('translation:nav.home'), url: getFullUrl('/') },
-    { name: t('translation:nav.camp_2026'), url: getFullUrl('/camps/2026') },
-    { name: g('breadcrumb_guidelines') as string, url: getFullUrl('/camps/2026/guidelines') },
-  ], [t, g]);
+  const breadcrumbs = useMemo(
+    () => [
+      { name: t('translation:nav.home'), url: getFullUrl('/') },
+      { name: t('translation:nav.camp_2026'), url: getFullUrl('/camps/2026') },
+      { name: g('breadcrumb_guidelines') as string, url: getFullUrl('/camps/2026/guidelines') },
+    ],
+    [t, g]
+  );
 
-  const hotlines = t('camp_guidelines_2026.response_hotlines', { returnObjects: true }) as Hotline[];
-  const facilities = t('camp_guidelines_2026.medical_facilities', { returnObjects: true }) as MedicalFacility[];
+  const hotlines = t('camp_guidelines_2026.response_hotlines', {
+    returnObjects: true,
+  }) as Hotline[];
+  const facilities = t('camp_guidelines_2026.medical_facilities', {
+    returnObjects: true,
+  }) as MedicalFacility[];
 
   return (
     <PageLayout
@@ -139,8 +144,14 @@ const CampGuidelines2026Page: React.FC = () => {
               <p className="typo-body text-coastal-gray mb-4">{g('report_intro')}</p>
               <ul className="space-y-2">
                 {arr('report_items').map((item) => (
-                  <li key={item.slice(0, 60)} className="flex gap-2 typo-body text-coastal-gray leading-relaxed">
-                    <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-jeju-ocean" aria-hidden="true" />
+                  <li
+                    key={item.slice(0, 60)}
+                    className="flex gap-2 typo-body text-coastal-gray leading-relaxed"
+                  >
+                    <span
+                      className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-jeju-ocean"
+                      aria-hidden="true"
+                    />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -241,18 +252,13 @@ const CampGuidelines2026Page: React.FC = () => {
 
             {/* 7. 의료·응급 */}
             <motion.div variants={itemVariants}>
-              <GuidelineSection
-                title={g('medical_title') as string}
-                items={arr('medical_items')}
-              />
+              <GuidelineSection title={g('medical_title') as string} items={arr('medical_items')} />
               {Array.isArray(facilities) && facilities.length > 0 && (
                 <div className="mt-2">
                   <h3 className="text-base font-semibold text-jeju-ocean mb-1">
                     {g('medical_facilities_subtitle')}
                   </h3>
-                  <p className="text-xs text-coastal-gray mb-3">
-                    {g('medical_facilities_note')}
-                  </p>
+                  <p className="text-xs text-coastal-gray mb-3">{g('medical_facilities_note')}</p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {facilities.map((f) => (
                       <div
@@ -279,10 +285,7 @@ const CampGuidelines2026Page: React.FC = () => {
 
             {/* 8. 야외·캠핑 안전 */}
             <motion.div variants={itemVariants}>
-              <GuidelineSection
-                title={g('outdoor_title') as string}
-                items={arr('outdoor_items')}
-              />
+              <GuidelineSection title={g('outdoor_title') as string} items={arr('outdoor_items')} />
             </motion.div>
 
             <hr className="border-coastal-gray/20 my-8" />
@@ -313,10 +316,7 @@ const CampGuidelines2026Page: React.FC = () => {
               <h2 className="typo-h3 mb-3">{g('contact_title')}</h2>
               <div className="bg-sky-horizon/40 border border-seafoam/30 rounded-xl p-4 sm:p-6">
                 <p className="text-sm font-semibold text-deep-ocean mb-1">
-                  <a
-                    href="tel:01023790760"
-                    className="text-jeju-ocean hover:underline"
-                  >
+                  <a href="tel:01023790760" className="text-jeju-ocean hover:underline">
                     {g('contact_body')}
                   </a>
                 </p>

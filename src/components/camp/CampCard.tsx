@@ -15,9 +15,7 @@ const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
   const cardContent = (
     <>
       <div className="bg-gradient-to-b from-jeju-ocean to-ocean-mist h-48 flex flex-col items-center justify-center p-4 text-center">
-        <h3 className="typo-h2 text-white mb-2">
-          {camp.year}
-        </h3>
+        <h3 className="typo-h2 text-white mb-2">{camp.year}</h3>
         <p className="typo-h3 text-white mb-4">{camp.title}</p>
         {isComingSoon && (
           <span className="bg-white text-jeju-ocean px-4 py-2 rounded-full text-sm font-bold">
@@ -35,14 +33,20 @@ const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
           <>
             <div className="mb-4 space-y-2">
               <p className="text-sm text-coastal-gray flex items-start gap-2">
-                <HiOutlineCalendar aria-hidden="true" className="w-4 h-4 mt-0.5 flex-shrink-0 text-jeju-ocean" />
+                <HiOutlineCalendar
+                  aria-hidden="true"
+                  className="w-4 h-4 mt-0.5 flex-shrink-0 text-jeju-ocean"
+                />
                 <span className="min-w-0 break-words">
                   <span className="font-bold">{t('camp.label_period')}:</span> {camp.startDate}
                   {camp.endDate && ` ~ ${camp.endDate}`}
                 </span>
               </p>
               <p className="text-sm text-coastal-gray flex items-start gap-2">
-                <HiOutlineLocationMarker aria-hidden="true" className="w-4 h-4 mt-0.5 flex-shrink-0 text-jeju-ocean" />
+                <HiOutlineLocationMarker
+                  aria-hidden="true"
+                  className="w-4 h-4 mt-0.5 flex-shrink-0 text-jeju-ocean"
+                />
                 <span className="min-w-0 break-words">
                   <span className="font-bold">{t('camp.label_location')}:</span> {camp.location}
                 </span>
@@ -86,17 +90,19 @@ const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
 
   return (
     <motion.div
-      whileHover={!isComingSoon ? {
-        y: -8,
-        boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)"
-      } : {}}
+      whileHover={
+        !isComingSoon
+          ? {
+              y: -8,
+              boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
+            }
+          : {}
+      }
       transition={{ duration: 0.3 }}
       className="h-full"
     >
       {isComingSoon ? (
-        <div className="block h-full rounded-lg overflow-hidden shadow-md">
-          {cardContent}
-        </div>
+        <div className="block h-full rounded-lg overflow-hidden shadow-md">{cardContent}</div>
       ) : (
         <Link
           href={`/camps/${camp.year}`}

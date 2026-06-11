@@ -14,7 +14,14 @@ const GangjeongStorySection = dynamic(() => import('@/components/camp/GangjeongS
   loading: () => <div className="h-96" />,
 });
 const GallerySection = dynamic(() => import('@/components/home/GallerySection'));
-import { getWebSiteSchema, getOrganizationSchema, getFAQSchema, getWebPageSchema, getHowToSchema, getMusicGroupSchema } from '@/utils/structuredData';
+import {
+  getWebSiteSchema,
+  getOrganizationSchema,
+  getFAQSchema,
+  getWebPageSchema,
+  getHowToSchema,
+  getMusicGroupSchema,
+} from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
 import { GalleryImage } from '@/types/gallery';
 import { loadGalleryImages, selectHomeGalleryPreviewImages } from '@/utils/dataLoader';
@@ -31,7 +38,7 @@ export default function HomePage({ initialGalleryImages }: HomePageProps) {
     return [
       getWebSiteSchema(i18n.language, t),
       getOrganizationSchema(i18n.language, t),
-      ...(faqs.length > 0 ? [getFAQSchema(faqs.map(f => ({ question: f.q, answer: f.a })))] : []),
+      ...(faqs.length > 0 ? [getFAQSchema(faqs.map((f) => ({ question: f.q, answer: f.a })))] : []),
       getHowToSchema(i18n.language, t),
       getMusicGroupSchema(i18n.language, t),
       getWebPageSchema({
@@ -94,7 +101,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
       ...(await serverSideTranslations(
         resolvedLocale,
         ['translation', 'gangjeong', 'faqs', 'about', 'gallery'],
-        nextI18NextConfig,
+        nextI18NextConfig
       )),
       initialGalleryImages: selectHomeGalleryPreviewImages(allImages),
     },

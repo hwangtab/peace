@@ -24,9 +24,9 @@ if (!groupName) {
 }
 
 const LOCALES_DIR = path.join(__dirname, '..', 'public', 'locales');
-const locales = fs.readdirSync(LOCALES_DIR).filter((d) =>
-  fs.statSync(path.join(LOCALES_DIR, d)).isDirectory(),
-);
+const locales = fs
+  .readdirSync(LOCALES_DIR)
+  .filter((d) => fs.statSync(path.join(LOCALES_DIR, d)).isDirectory());
 
 let movedCount = 0;
 for (const locale of locales) {

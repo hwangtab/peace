@@ -10,7 +10,11 @@ export default function WrappedPage() {
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
   return {
     props: {
-      ...(await serverSideTranslations(locale ?? 'ko', ['translation', 'notFound'], nextI18NextConfig)),
+      ...(await serverSideTranslations(
+        locale ?? 'ko',
+        ['translation', 'notFound'],
+        nextI18NextConfig
+      )),
     },
   };
 }

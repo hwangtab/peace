@@ -67,7 +67,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     [
       ...LOCALES.map(
         (locale) =>
-          `      <xhtml:link rel="alternate" hreflang="${locale}" href="${escapeXml(SITE_URL + getLocalePath(videoPath, locale))}"/>`,
+          `      <xhtml:link rel="alternate" hreflang="${locale}" href="${escapeXml(SITE_URL + getLocalePath(videoPath, locale))}"/>`
       ),
       `      <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(SITE_URL + getLocalePath(videoPath, DEFAULT_LOCALE))}"/>`,
     ].join('\n');
@@ -79,8 +79,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 
       const videoPath = `/videos/${baseVideo.id}`;
       const thumbnailUrl =
-        baseVideo.thumbnailUrl ||
-        `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+        baseVideo.thumbnailUrl || `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
       const playerUrl = `https://www.youtube.com/embed/${videoId}`;
       const durationSec = durationToSeconds(baseVideo.duration);
 

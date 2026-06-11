@@ -23,8 +23,7 @@ const YouTubeFacade: React.FC<YouTubeFacadeProps> = ({ videoId, title, thumbnail
   }
 
   // hqdefault(480x360)는 모든 동영상에 존재. maxresdefault는 없는 경우 404.
-  const thumb =
-    thumbnailUrl || `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+  const thumb = thumbnailUrl || `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
 
   if (isPlaying) {
     return (
@@ -43,14 +42,7 @@ const YouTubeFacade: React.FC<YouTubeFacadeProps> = ({ videoId, title, thumbnail
   return (
     <div className="relative aspect-video w-full rounded-xl overflow-hidden shadow-lg bg-black">
       {/* YouTube CDN에서 직접 로드 — Next.js 프록시 우회로 지연 방지 */}
-      <Image
-        src={thumb}
-        alt={title}
-        fill
-        className="object-cover"
-        unoptimized
-        priority
-      />
+      <Image src={thumb} alt={title} fill className="object-cover" unoptimized priority />
       <button
         type="button"
         className="absolute inset-0 w-full h-full flex items-center justify-center group focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/60"

@@ -26,7 +26,11 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
 
   return {
     props: {
-      ...(await serverSideTranslations(lang, ['translation', 'camp_promote_2026'], nextI18NextConfig)),
+      ...(await serverSideTranslations(
+        lang,
+        ['translation', 'camp_promote_2026'],
+        nextI18NextConfig
+      )),
       promoKo: loadPromoTexts('ko'),
       promoEn: loadPromoTexts('en'),
     },

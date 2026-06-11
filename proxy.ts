@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { DEFAULT_LOCALE } from './src/constants/locales';
+import { DEFAULT_LOCALE, LOCALES } from './src/constants/locales';
 import { resolveLocale } from './src/utils/localeDetection';
 
 const PUBLIC_FILE = /\.(.*)$/;
@@ -25,6 +25,21 @@ export function proxy(request: NextRequest) {
       PUBLIC_FILE.test(pathname)
     ) {
       return NextResponse.next();
+    }
+
+    const surveyLocalePrefix = LOCALES.find(
+      (locale) => pathname === `/${locale}/camps/2026/survey`
+    );
+    const isNonDefaultSurvey =
+      (request.nextUrl.locale &&
+        request.nextUrl.locale !== DEFAULT_LOCALE &&
+        pathname === '/camps/2026/survey') ||
+      (surveyLocalePrefix && surveyLocalePrefix !== DEFAULT_LOCALE);
+    if (isNonDefaultSurvey) {
+      const url = request.nextUrl.clone();
+      url.locale = DEFAULT_LOCALE;
+      url.pathname = '/camps/2026/survey';
+      return NextResponse.redirect(url);
     }
 
     // Only redirect on the root path to avoid locale redirect loops on subpages.

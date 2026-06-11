@@ -14,26 +14,32 @@ jest.mock('next/image', () => {
 });
 
 const musicianById = new Map<number, Musician>([
-  [40, {
-    id: 40,
-    name: '윤선애',
-    shortDescription: '삶의 애환과 시대정신에 공감하는 서정적인 포크 뮤지션',
-    description: '',
-    genre: [],
-    trackTitle: '',
-    imageUrl: '/images-webp/musicians/40.webp',
-    instagramUrls: [],
-  }],
-  [48, {
-    id: 48,
-    name: '최상돈 × 김강곤',
-    shortDescription: '음악 순례를 통한 창작과 공연을 전개하는 싱어송라이터',
-    description: '',
-    genre: [],
-    trackTitle: '',
-    imageUrl: '/images-webp/musicians/48.webp',
-    instagramUrls: [],
-  }],
+  [
+    40,
+    {
+      id: 40,
+      name: '윤선애',
+      shortDescription: '삶의 애환과 시대정신에 공감하는 서정적인 포크 뮤지션',
+      description: '',
+      genre: [],
+      trackTitle: '',
+      imageUrl: '/images-webp/musicians/40.webp',
+      instagramUrls: [],
+    },
+  ],
+  [
+    48,
+    {
+      id: 48,
+      name: '최상돈 × 김강곤',
+      shortDescription: '음악 순례를 통한 창작과 공연을 전개하는 싱어송라이터',
+      description: '',
+      genre: [],
+      trackTitle: '',
+      imageUrl: '/images-webp/musicians/48.webp',
+      instagramUrls: [],
+    },
+  ],
 ]);
 
 describe('TimetableActCard', () => {
@@ -47,7 +53,9 @@ describe('TimetableActCard', () => {
       scale: 'solo',
       musicianIds: [40],
     };
-    const { container } = render(<TimetableActCard act={act} musicianById={musicianById} campYear={2026} />);
+    const { container } = render(
+      <TimetableActCard act={act} musicianById={musicianById} campYear={2026} />
+    );
     expect(screen.getByText('윤선애')).toBeInTheDocument();
     const times = container.querySelectorAll('time');
     expect(times[0]).toHaveAttribute('dateTime', '18:00');
@@ -55,7 +63,7 @@ describe('TimetableActCard', () => {
     expect(times[1]).toHaveAttribute('dateTime', '18:25');
     expect(times[1]).toHaveTextContent('18:25');
     expect(
-      screen.getByText('삶의 애환과 시대정신에 공감하는 서정적인 포크 뮤지션'),
+      screen.getByText('삶의 애환과 시대정신에 공감하는 서정적인 포크 뮤지션')
     ).toBeInTheDocument();
     const link = screen.getByRole('link');
     expect(link).toHaveAttribute('href', '/camps/2026/musicians/40');
@@ -98,7 +106,9 @@ describe('TimetableActCard', () => {
       scale: 'solo',
       musicianIds: [40],
     };
-    const { container } = render(<TimetableActCard act={act} musicianById={musicianById} campYear={2026} />);
+    const { container } = render(
+      <TimetableActCard act={act} musicianById={musicianById} campYear={2026} />
+    );
     const time = container.querySelector('time');
     expect(time).toHaveAttribute('dateTime', '18:00');
   });

@@ -30,7 +30,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
   // SSG 단계에서 같은 조건으로 미리 추린다 (143개→6개, 약 40KB↓).
   // 클라이언트가 useLocalizedResource 로 로케일 변경 시 전체 비디오를 다시 가져온다.
   const initialVideos = loadLocalizedData<VideoItem>(lang, 'videos.json').filter(
-    (v) => v.eventType === 'album' && v.eventYear === 2024,
+    (v) => v.eventType === 'album' && v.eventYear === 2024
   );
   // pageProps 절감: AlbumAboutPage 는 alwaysRefetch=true 로 마운트 직후 풀 musician
   // 데이터를 다시 가져오므로, SSG 단계에서는 SEO 검색 봇과 첫 페인트에 필요한 최소
@@ -48,7 +48,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
       description: '',
       genre: [],
       instagramUrls: [],
-    }),
+    })
   );
   const canonicalTracks = loadLocalizedData<Track>('ko', 'tracks.json');
   const canonicalMusicians = loadLocalizedData<Musician>('ko', 'musicians.json');
@@ -65,7 +65,11 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
 
   return {
     props: {
-      ...(await serverSideTranslations(lang, ['translation', 'album', 'videos'], nextI18NextConfig)),
+      ...(await serverSideTranslations(
+        lang,
+        ['translation', 'album', 'videos'],
+        nextI18NextConfig
+      )),
       initialVideos,
       initialMusicians,
       initialImages,

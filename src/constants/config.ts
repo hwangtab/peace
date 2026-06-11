@@ -9,7 +9,7 @@ export const GALLERY_CONFIG = {
 export const SITE_CONFIG = {
   NAME: '강정피스앤뮤직캠프',
   NAME_EN: 'Gangjeong Peace & Music Camp',
-SLOGAN: '전쟁을 끝내자! 노래하자, 춤추자',
+  SLOGAN: '전쟁을 끝내자! 노래하자, 춤추자',
   DESCRIPTION: '강정마을에서 시작되는 평화의 메시지',
 } as const;
 

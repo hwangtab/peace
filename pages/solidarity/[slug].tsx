@@ -35,9 +35,8 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
 
   const lineupIds = new Set(getSolidarityEventLineupIds(slug));
   const allMusicians = loadLocalizedData<Musician>(lang, 'musicians.json');
-  const initialMusicians = lineupIds.size > 0
-    ? allMusicians.filter((m) => lineupIds.has(m.id))
-    : [];
+  const initialMusicians =
+    lineupIds.size > 0 ? allMusicians.filter((m) => lineupIds.has(m.id)) : [];
 
   return {
     props: {

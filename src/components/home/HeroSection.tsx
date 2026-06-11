@@ -52,7 +52,10 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
       )}
 
       {/* Ocean gradient overlay — brand-consistent */}
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-jeju-ocean/70 via-ocean-mist/40 to-seafoam/20" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-t from-jeju-ocean/70 via-ocean-mist/40 to-seafoam/20"
+      />
 
       {/* LCP content renders visible on first paint — no JS-gated opacity. */}
       <Container size="wide" className="relative z-10">
@@ -94,8 +97,8 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
             animate={
               isScrollIndicatorInView && !shouldReduceMotion
                 ? {
-                  y: [0, 12, 0],
-                }
+                    y: [0, 12, 0],
+                  }
                 : { y: 0 }
             }
             transition={{

@@ -17,11 +17,11 @@ type WaveColor =
  * (dynamic `text-${color}` strings get tree-shaken out of the build).
  */
 const COLOR_TO_TEXT: Record<WaveColor, string> = {
-  'white': 'text-white',
+  white: 'text-white',
   'ocean-sand': 'text-ocean-sand',
   'sky-horizon': 'text-sky-horizon',
   'sunlight-glow': 'text-sunlight-glow',
-  'seafoam': 'text-seafoam',
+  seafoam: 'text-seafoam',
   'light-beige': 'text-light-beige',
   'golden-sun': 'text-golden-sun',
   'jeju-ocean': 'text-jeju-ocean',

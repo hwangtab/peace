@@ -36,11 +36,14 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 
   const buildImageTag = (img: GalleryImage) => {
     const loc = escapeXml(`${SITE_URL}${img.url}`);
-    const baseTitle = img.eventType === 'album'
-      ? `${img.eventYear} 앨범 발매 기념 공연 — 강정피스앤뮤직캠프`
-      : `${img.eventYear} 강정피스앤뮤직캠프`;
+    const baseTitle =
+      img.eventType === 'album'
+        ? `${img.eventYear} 앨범 발매 기념 공연 — 강정피스앤뮤직캠프`
+        : `${img.eventYear} 강정피스앤뮤직캠프`;
     const title = escapeXml(img.description ? `${baseTitle} — ${img.description}` : baseTitle);
-    const caption = img.description ? `\n      <image:caption>${escapeXml(img.description)}</image:caption>` : '';
+    const caption = img.description
+      ? `\n      <image:caption>${escapeXml(img.description)}</image:caption>`
+      : '';
     return `    <image:image>
       <image:loc>${loc}</image:loc>
       <image:title>${title}</image:title>${caption}
@@ -65,10 +68,7 @@ ${imageXml}
     const campYearImages = images.filter((img) => img.eventType !== 'album');
     if (campYearImages.length === 0) continue;
 
-    const imageXml = campYearImages
-      .slice(0, 30)
-      .map(buildImageTag)
-      .join('\n');
+    const imageXml = campYearImages.slice(0, 30).map(buildImageTag).join('\n');
 
     urlEntries.push(`  <url>
     <loc>${SITE_URL}/camps/${year}</loc>
@@ -79,10 +79,7 @@ ${imageXml}
   // Album 이미지 → /album/about 에 매핑
   const albumImages = allImages.filter((img) => img.eventType === 'album');
   if (albumImages.length > 0) {
-    const imageXml = albumImages
-      .slice(0, 30)
-      .map(buildImageTag)
-      .join('\n');
+    const imageXml = albumImages.slice(0, 30).map(buildImageTag).join('\n');
     urlEntries.push(`  <url>
     <loc>${SITE_URL}/album/about</loc>
 ${imageXml}

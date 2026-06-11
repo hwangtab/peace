@@ -15,17 +15,76 @@ interface TimelineNode {
 }
 
 const nodes: TimelineNode[] = [
-  { year: '2007', titleKey: 'timeline_2007_title', descKey: 'timeline_2007_desc', color: 'bg-sunset-coral' },
-  { year: '2009', titleKey: 'timeline_2009_title', descKey: 'timeline_2009_desc', color: 'bg-sunset-coral' },
-  { year: '2012', titleKey: 'timeline_2012_title', descKey: 'timeline_2012_desc', color: 'bg-sunset-coral' },
-  { year: '2015', titleKey: 'timeline_2015_title', descKey: 'timeline_2015_desc', color: 'bg-golden-sun' },
-  { year: '2016', titleKey: 'timeline_2016_title', descKey: 'timeline_2016_desc', color: 'bg-coastal-gray' },
-  { year: '2018', titleKey: 'timeline_2018_title', descKey: 'timeline_2018_desc', color: 'bg-sunset-coral' },
-  { year: '2023', titleKey: 'timeline_2023_title', descKey: 'timeline_2023_desc', color: 'bg-jeju-ocean', href: '/camps/2023' },
-  { year: '2024', titleKey: 'timeline_2024_title', descKey: 'timeline_2024_desc', color: 'bg-golden-sun' },
-  { year: '2025', titleKey: 'timeline_2025_title', descKey: 'timeline_2025_desc', color: 'bg-sunset-coral' },
-  { year: '2025', titleKey: 'timeline_2025b_title', descKey: 'timeline_2025b_desc', color: 'bg-jeju-ocean', href: '/camps/2025' },
-  { year: '2026', titleKey: 'timeline_2026_title', descKey: 'timeline_2026_desc', color: 'bg-golden-sun', badge: 'timeline_2026_badge', href: '/camps/2026' },
+  {
+    year: '2007',
+    titleKey: 'timeline_2007_title',
+    descKey: 'timeline_2007_desc',
+    color: 'bg-sunset-coral',
+  },
+  {
+    year: '2009',
+    titleKey: 'timeline_2009_title',
+    descKey: 'timeline_2009_desc',
+    color: 'bg-sunset-coral',
+  },
+  {
+    year: '2012',
+    titleKey: 'timeline_2012_title',
+    descKey: 'timeline_2012_desc',
+    color: 'bg-sunset-coral',
+  },
+  {
+    year: '2015',
+    titleKey: 'timeline_2015_title',
+    descKey: 'timeline_2015_desc',
+    color: 'bg-golden-sun',
+  },
+  {
+    year: '2016',
+    titleKey: 'timeline_2016_title',
+    descKey: 'timeline_2016_desc',
+    color: 'bg-coastal-gray',
+  },
+  {
+    year: '2018',
+    titleKey: 'timeline_2018_title',
+    descKey: 'timeline_2018_desc',
+    color: 'bg-sunset-coral',
+  },
+  {
+    year: '2023',
+    titleKey: 'timeline_2023_title',
+    descKey: 'timeline_2023_desc',
+    color: 'bg-jeju-ocean',
+    href: '/camps/2023',
+  },
+  {
+    year: '2024',
+    titleKey: 'timeline_2024_title',
+    descKey: 'timeline_2024_desc',
+    color: 'bg-golden-sun',
+  },
+  {
+    year: '2025',
+    titleKey: 'timeline_2025_title',
+    descKey: 'timeline_2025_desc',
+    color: 'bg-sunset-coral',
+  },
+  {
+    year: '2025',
+    titleKey: 'timeline_2025b_title',
+    descKey: 'timeline_2025b_desc',
+    color: 'bg-jeju-ocean',
+    href: '/camps/2025',
+  },
+  {
+    year: '2026',
+    titleKey: 'timeline_2026_title',
+    descKey: 'timeline_2026_desc',
+    color: 'bg-golden-sun',
+    badge: 'timeline_2026_badge',
+    href: '/camps/2026',
+  },
 ];
 
 const listVariants = {
@@ -70,9 +129,15 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
 
         <div className="relative">
           {/* Vertical center line — desktop only. ol 외부로 빼서 a11y(ol 자식은 li만) 준수 */}
-          <div aria-hidden="true" className={`hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b ${lineGradient}`} />
+          <div
+            aria-hidden="true"
+            className={`hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b ${lineGradient}`}
+          />
           {/* Vertical left line — mobile only */}
-          <div aria-hidden="true" className={`md:hidden absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b ${lineGradient}`} />
+          <div
+            aria-hidden="true"
+            className={`md:hidden absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b ${lineGradient}`}
+          />
 
           <motion.ol
             className="relative"
@@ -81,93 +146,136 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
           >
-          {nodes.map((node, i) => {
-            const isLeft = i % 2 === 0;
-            const isLast = i === nodes.length - 1;
+            {nodes.map((node, i) => {
+              const isLeft = i % 2 === 0;
+              const isLast = i === nodes.length - 1;
 
-            return (
-              <motion.li
-                key={node.titleKey}
-                variants={nodeVariants}
-                className="relative mb-8 md:mb-12 last:mb-0"
-              >
-                {/* Mobile layout */}
-                <div className="md:hidden flex items-start pl-10">
-                  {/* Dot */}
-                  <div className={`absolute left-2.5 top-1.5 w-3.5 h-3.5 rounded-full ${node.color} border-2 border-white shadow-sm ${isLast ? 'ring-4 ring-golden-sun/30 motion-safe:animate-pulse' : ''}`} />
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1 flex-wrap">
-                      <span className={`inline-block px-3 py-1 ${node.color} text-white text-xs font-bold rounded-full`}>
-                        {node.year}
-                      </span>
-                      {node.badge && (
-                        <span className="inline-block px-3 py-1 bg-golden-sun text-deep-ocean text-xs font-bold rounded-full">
-                          {t(node.badge)}
+              return (
+                <motion.li
+                  key={node.titleKey}
+                  variants={nodeVariants}
+                  className="relative mb-8 md:mb-12 last:mb-0"
+                >
+                  {/* Mobile layout */}
+                  <div className="md:hidden flex items-start pl-10">
+                    {/* Dot */}
+                    <div
+                      className={`absolute left-2.5 top-1.5 w-3.5 h-3.5 rounded-full ${node.color} border-2 border-white shadow-sm ${isLast ? 'ring-4 ring-golden-sun/30 motion-safe:animate-pulse' : ''}`}
+                    />
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1 flex-wrap">
+                        <span
+                          className={`inline-block px-3 py-1 ${node.color} text-white text-xs font-bold rounded-full`}
+                        >
+                          {node.year}
                         </span>
+                        {node.badge && (
+                          <span className="inline-block px-3 py-1 bg-golden-sun text-deep-ocean text-xs font-bold rounded-full">
+                            {t(node.badge)}
+                          </span>
+                        )}
+                      </div>
+                      <h4 className="text-sm font-bold text-deep-ocean break-words">
+                        {node.href ? (
+                          <Link
+                            href={node.href}
+                            className="hover:text-jeju-ocean transition-colors"
+                          >
+                            {t(node.titleKey)}
+                          </Link>
+                        ) : (
+                          t(node.titleKey)
+                        )}
+                      </h4>
+                      <p className="text-xs text-coastal-gray mt-0.5 break-words">
+                        {t(node.descKey)}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Desktop layout — alternating left/right */}
+                  <div className="hidden md:flex items-center">
+                    {/* Left content */}
+                    <div className={`w-5/12 pr-8 ${isLeft ? 'text-right' : ''}`}>
+                      {isLeft && (
+                        <div>
+                          <div className="flex items-center justify-end gap-2 mb-1 flex-wrap">
+                            {node.badge && (
+                              <span className="inline-block px-3 py-1 bg-golden-sun text-deep-ocean text-xs font-bold rounded-full">
+                                {t(node.badge)}
+                              </span>
+                            )}
+                            <span
+                              className={`inline-block px-3 py-1 ${node.color} text-white text-xs font-bold rounded-full`}
+                            >
+                              {node.year}
+                            </span>
+                          </div>
+                          <h4 className="text-base font-bold text-deep-ocean break-words">
+                            {node.href ? (
+                              <Link
+                                href={node.href}
+                                className="hover:text-jeju-ocean transition-colors"
+                              >
+                                {t(node.titleKey)}
+                              </Link>
+                            ) : (
+                              t(node.titleKey)
+                            )}
+                          </h4>
+                          <p className="text-sm text-coastal-gray mt-0.5 break-words">
+                            {t(node.descKey)}
+                          </p>
+                        </div>
                       )}
                     </div>
-                    <h4 className="text-sm font-bold text-deep-ocean break-words">
-                      {node.href ? <Link href={node.href} className="hover:text-jeju-ocean transition-colors">{t(node.titleKey)}</Link> : t(node.titleKey)}
-                    </h4>
-                    <p className="text-xs text-coastal-gray mt-0.5 break-words">{t(node.descKey)}</p>
-                  </div>
-                </div>
 
-                {/* Desktop layout — alternating left/right */}
-                <div className="hidden md:flex items-center">
-                  {/* Left content */}
-                  <div className={`w-5/12 pr-8 ${isLeft ? 'text-right' : ''}`}>
-                    {isLeft && (
-                      <div>
-                        <div className="flex items-center justify-end gap-2 mb-1 flex-wrap">
-                          {node.badge && (
-                            <span className="inline-block px-3 py-1 bg-golden-sun text-deep-ocean text-xs font-bold rounded-full">
-                              {t(node.badge)}
+                    {/* Center dot */}
+                    <div className="w-2/12 flex justify-center relative">
+                      <div
+                        className={`w-4 h-4 rounded-full ${node.color} border-2 border-white shadow-md z-10 ${isLast ? 'ring-4 ring-golden-sun/30 motion-safe:animate-pulse' : ''}`}
+                      />
+                    </div>
+
+                    {/* Right content */}
+                    <div className={`w-5/12 pl-8 ${!isLeft ? 'text-left' : ''}`}>
+                      {!isLeft && (
+                        <div>
+                          <div className="flex items-center gap-2 mb-1 flex-wrap">
+                            <span
+                              className={`inline-block px-3 py-1 ${node.color} text-white text-xs font-bold rounded-full`}
+                            >
+                              {node.year}
                             </span>
-                          )}
-                          <span className={`inline-block px-3 py-1 ${node.color} text-white text-xs font-bold rounded-full`}>
-                            {node.year}
-                          </span>
+                            {node.badge && (
+                              <span className="inline-block px-3 py-1 bg-golden-sun text-deep-ocean text-xs font-bold rounded-full">
+                                {t(node.badge)}
+                              </span>
+                            )}
+                          </div>
+                          <h4 className="text-base font-bold text-deep-ocean break-words">
+                            {node.href ? (
+                              <Link
+                                href={node.href}
+                                className="hover:text-jeju-ocean transition-colors"
+                              >
+                                {t(node.titleKey)}
+                              </Link>
+                            ) : (
+                              t(node.titleKey)
+                            )}
+                          </h4>
+                          <p className="text-sm text-coastal-gray mt-0.5 break-words">
+                            {t(node.descKey)}
+                          </p>
                         </div>
-                        <h4 className="text-base font-bold text-deep-ocean break-words">
-                          {node.href ? <Link href={node.href} className="hover:text-jeju-ocean transition-colors">{t(node.titleKey)}</Link> : t(node.titleKey)}
-                        </h4>
-                        <p className="text-sm text-coastal-gray mt-0.5 break-words">{t(node.descKey)}</p>
-                      </div>
-                    )}
+                      )}
+                    </div>
                   </div>
-
-                  {/* Center dot */}
-                  <div className="w-2/12 flex justify-center relative">
-                    <div className={`w-4 h-4 rounded-full ${node.color} border-2 border-white shadow-md z-10 ${isLast ? 'ring-4 ring-golden-sun/30 motion-safe:animate-pulse' : ''}`} />
-                  </div>
-
-                  {/* Right content */}
-                  <div className={`w-5/12 pl-8 ${!isLeft ? 'text-left' : ''}`}>
-                    {!isLeft && (
-                      <div>
-                        <div className="flex items-center gap-2 mb-1 flex-wrap">
-                          <span className={`inline-block px-3 py-1 ${node.color} text-white text-xs font-bold rounded-full`}>
-                            {node.year}
-                          </span>
-                          {node.badge && (
-                            <span className="inline-block px-3 py-1 bg-golden-sun text-deep-ocean text-xs font-bold rounded-full">
-                              {t(node.badge)}
-                            </span>
-                          )}
-                        </div>
-                        <h4 className="text-base font-bold text-deep-ocean break-words">
-                          {node.href ? <Link href={node.href} className="hover:text-jeju-ocean transition-colors">{t(node.titleKey)}</Link> : t(node.titleKey)}
-                        </h4>
-                        <p className="text-sm text-coastal-gray mt-0.5 break-words">{t(node.descKey)}</p>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </motion.li>
-            );
-          })}
-        </motion.ol>
+                </motion.li>
+              );
+            })}
+          </motion.ol>
         </div>
       </Container>
     </Section>

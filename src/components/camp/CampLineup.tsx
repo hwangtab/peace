@@ -18,7 +18,7 @@ const CampLineup: React.FC<CampLineupProps> = ({ participants, musicians, campYe
 
   const findMusician = (participant: string | Participant): Musician | null => {
     if (typeof participant === 'object' && participant !== null && participant.musicianId) {
-      return musicians.find(m => m.id === participant.musicianId) || null;
+      return musicians.find((m) => m.id === participant.musicianId) || null;
     }
     return null;
   };
@@ -48,9 +48,7 @@ const CampLineup: React.FC<CampLineupProps> = ({ participants, musicians, campYe
             transition={{ duration: 0.3 }}
             className="flex items-center justify-center text-center h-full min-h-[120px] sm:min-h-[200px] px-4 rounded-2xl border bg-white border-seafoam/40 shadow-lg"
           >
-            <span className="font-medium text-coastal-gray text-lg break-words">
-              {name}
-            </span>
+            <span className="font-medium text-coastal-gray text-lg break-words">{name}</span>
           </motion.div>
         );
       })}

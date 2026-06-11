@@ -6,7 +6,10 @@ const envSchema = z.object({
   NEXT_PUBLIC_SMARTSTORE_URL: z.string().url().optional(),
   NEXT_PUBLIC_INSTAGRAM_URL: z.string().url().optional(),
   NEXT_PUBLIC_OG_IMAGE: z.string().optional(),
-  NEXT_PUBLIC_GA_MEASUREMENT_ID: z.string().regex(/^G-[A-Z0-9]+$/).optional(),
+  NEXT_PUBLIC_GA_MEASUREMENT_ID: z
+    .string()
+    .regex(/^G-[A-Z0-9]+$/)
+    .optional(),
 });
 
 const parsed = (() => {
@@ -28,7 +31,8 @@ export const config = {
   siteUrl: parsed.NEXT_PUBLIC_SITE_URL ?? 'https://peaceandmusic.net',
   siteName: parsed.NEXT_PUBLIC_SITE_NAME ?? '강정피스앤뮤직캠프',
   smartstoreUrl: parsed.NEXT_PUBLIC_SMARTSTORE_URL ?? 'https://smartstore.naver.com/peaceandmusic',
-  instagramUrl: parsed.NEXT_PUBLIC_INSTAGRAM_URL ?? 'https://www.instagram.com/peace_music_in_gangjeong',
+  instagramUrl:
+    parsed.NEXT_PUBLIC_INSTAGRAM_URL ?? 'https://www.instagram.com/peace_music_in_gangjeong',
   ogImage: parsed.NEXT_PUBLIC_OG_IMAGE ?? '/images/og/peace-camp-og.jpg',
   gaMeasurementId: parsed.NEXT_PUBLIC_GA_MEASUREMENT_ID,
 } as const;

@@ -97,9 +97,7 @@ const TimetableActCard: React.FC<TimetableActCardProps> = ({
 
       <div className="flex min-w-0 flex-1 flex-col gap-1">
         <p className="break-words text-base font-bold leading-tight text-deep-ocean sm:text-lg">
-          {musicians.length > 0
-            ? musicians.map((m) => m.name).join(' · ')
-            : act.name}
+          {musicians.length > 0 ? musicians.map((m) => m.name).join(' · ') : act.name}
         </p>
         {primary?.shortDescription && (
           <p className="break-words text-pretty text-sm text-coastal-gray transition-colors group-hover:text-deep-ocean">
@@ -122,7 +120,13 @@ const TimetableActCard: React.FC<TimetableActCardProps> = ({
     );
   }
 
-  return <div aria-label={`${act.start} ${musicians.length > 0 ? musicians.map((m) => m.name).join(' · ') : act.name}`}>{content}</div>;
+  return (
+    <div
+      aria-label={`${act.start} ${musicians.length > 0 ? musicians.map((m) => m.name).join(' · ') : act.name}`}
+    >
+      {content}
+    </div>
+  );
 };
 
 export default TimetableActCard;

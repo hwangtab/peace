@@ -17,7 +17,13 @@ interface CampHeroProps {
   children?: React.ReactNode;
 }
 
-const CampHero: React.FC<CampHeroProps> = ({ camp, featured, dateBadge, dateDisplay, children }) => {
+const CampHero: React.FC<CampHeroProps> = ({
+  camp,
+  featured,
+  dateBadge,
+  dateDisplay,
+  children,
+}) => {
   const { t, i18n } = useTranslation();
 
   // Parse date parts directly to avoid timezone offset drift
@@ -28,11 +34,13 @@ const CampHero: React.FC<CampHeroProps> = ({ camp, featured, dateBadge, dateDisp
     (Number(dateParts[1]) || 1) - 1,
     Number(dateParts[2]) || 1
   );
-  const formattedDate = dateDisplay || eventDate.toLocaleDateString(i18n.language, {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+  const formattedDate =
+    dateDisplay ||
+    eventDate.toLocaleDateString(i18n.language, {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
 
   const backgroundImage = camp.images && camp.images.length > 0 ? camp.images[0] : null;
 
@@ -76,7 +84,9 @@ const CampHero: React.FC<CampHeroProps> = ({ camp, featured, dateBadge, dateDisp
           )}
 
           <h1 className="typo-h1 !text-white mb-3 sm:mb-4">{camp.title}</h1>
-          {camp.slogan && <p className="typo-subtitle !text-cloud-white/90 mb-5 sm:mb-8">{camp.slogan}</p>}
+          {camp.slogan && (
+            <p className="typo-subtitle !text-cloud-white/90 mb-5 sm:mb-8">{camp.slogan}</p>
+          )}
 
           <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-6 text-white mb-5 sm:mb-8">
             <div>

@@ -19,9 +19,9 @@ const itemVariants = {
 const GuidelinesSummary: React.FC = () => {
   const { t } = useTranslation('camp_guidelines_2026');
 
-  const topics = (t('camp_guidelines_2026.summary_topics', {
+  const topics = t('camp_guidelines_2026.summary_topics', {
     returnObjects: true,
-  }) as unknown) as string[];
+  }) as unknown as string[];
 
   return (
     <Section background="light-beige" paddingTop="loose" paddingBottom="loose" id="guidelines">
@@ -71,17 +71,11 @@ const GuidelinesSummary: React.FC = () => {
                 <span className="font-medium">
                   {t('camp_guidelines_2026.summary_report_contact1')}
                 </span>{' '}
-                <a
-                  href="tel:01081702188"
-                  className="text-jeju-ocean hover:underline"
-                >
+                <a href="tel:01081702188" className="text-jeju-ocean hover:underline">
                   010-8170-2188
                 </a>
                 {' / '}
-                <a
-                  href="tel:01023790760"
-                  className="text-jeju-ocean hover:underline"
-                >
+                <a href="tel:01023790760" className="text-jeju-ocean hover:underline">
                   010-2379-0760
                 </a>
               </p>
@@ -89,10 +83,7 @@ const GuidelinesSummary: React.FC = () => {
                 <span className="font-medium">
                   {t('camp_guidelines_2026.summary_report_contact2')}
                 </span>{' '}
-                <a
-                  href="tel:01036933971"
-                  className="text-jeju-ocean hover:underline"
-                >
+                <a href="tel:01036933971" className="text-jeju-ocean hover:underline">
                   010-3693-3971
                 </a>
               </p>

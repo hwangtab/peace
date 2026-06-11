@@ -24,7 +24,11 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
 
   return {
     props: {
-      ...(await serverSideTranslations(resolvedLocale, ['translation', 'album'], nextI18NextConfig)),
+      ...(await serverSideTranslations(
+        resolvedLocale,
+        ['translation', 'album'],
+        nextI18NextConfig
+      )),
       initialMusicians: (() => {
         const canonicalTracks = loadLocalizedData<Track>('ko', 'tracks.json');
         const canonicalMusicians = loadLocalizedData<Musician>('ko', 'musicians.json');

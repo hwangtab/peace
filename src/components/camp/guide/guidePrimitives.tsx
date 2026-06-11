@@ -23,10 +23,7 @@ export const SectionHeading: React.FC<{ id: string; index: number; title: string
   index,
   title,
 }) => (
-  <h2
-    id={id}
-    className="scroll-mt-28 typo-h3 mb-4 flex items-baseline gap-2"
-  >
+  <h2 id={id} className="scroll-mt-28 typo-h3 mb-4 flex items-baseline gap-2">
     <span className="text-jeju-ocean tabular-nums">{index}.</span>
     <span>{title}</span>
   </h2>
@@ -35,8 +32,14 @@ export const SectionHeading: React.FC<{ id: string; index: number; title: string
 export const BulletList: React.FC<{ items: string[] }> = ({ items }) => (
   <ul className="space-y-2">
     {items.map((item) => (
-      <li key={item.slice(0, 60)} className="flex gap-2 typo-body text-coastal-gray leading-relaxed">
-        <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-jeju-ocean" aria-hidden="true" />
+      <li
+        key={item.slice(0, 60)}
+        className="flex gap-2 typo-body text-coastal-gray leading-relaxed"
+      >
+        <span
+          className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-jeju-ocean"
+          aria-hidden="true"
+        />
         <span>{item}</span>
       </li>
     ))}

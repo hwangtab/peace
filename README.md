@@ -1,49 +1,52 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
 # peace
-# peace
-# peace
+
+강정 피스앤뮤직캠프 공식 아카이브/홍보 사이트입니다. 운영 도메인은
+[peaceandmusic.net](https://peaceandmusic.net)이며, Next.js pages router 기반으로 정적/ISR
+페이지와 다국어 콘텐츠를 제공합니다.
+
+## Stack
+
+- Next.js 16, React 18, TypeScript 5
+- Tailwind CSS, framer-motion
+- next-i18next, 13 locales
+- Jest, Testing Library
+- next-sitemap, JSON-LD structured data
+
+## Commands
+
+```bash
+pnpm install
+pnpm dev
+pnpm lint
+pnpm test --runInBand
+pnpm i18n:check
+pnpm audit
+pnpm build
+pnpm start
+```
+
+`pnpm build` runs `next build` and then `next-sitemap`. Production preview uses
+`pnpm start` after a successful build.
+
+## Content And Data
+
+- Static data lives under `public/data/*.json`.
+- Translations live under `public/locales/<locale>/*.json`.
+- Camp 2026 timetable source is `docs/2026캠프 운영/timetable_v7.xlsx`.
+- Regenerate timetable data with `pnpm build:timetable`.
+- Private guide/staff/survey surfaces are `noIndex` and excluded from sitemap generation.
+
+## Quality Gates
+
+Before shipping, run:
+
+```bash
+pnpm format:check
+pnpm lint
+pnpm test --runInBand
+pnpm i18n:check
+pnpm audit
+pnpm build
+```
+
+These gates are mirrored in `.github/workflows/ci.yml`.

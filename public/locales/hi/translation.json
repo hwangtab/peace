@@ -99,7 +99,8 @@
     "lyricist": "गीतकार",
     "track": "ट्रैक",
     "view_image": "छवि देखें",
-    "no_results": "कोई परिणाम नहीं मिला।"
+    "no_results": "कोई परिणाम नहीं मिला।",
+    "video_unavailable": "वीडियो उपलब्ध नहीं है"
   },
   "timetable": {
     "title": "टाइमटेबल",

@@ -25,7 +25,7 @@ const CopyButton: React.FC<CopyButtonProps> = ({ text, label, copiedLabel, class
     () => () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     },
-    [],
+    []
   );
 
   const handleCopy = useCallback(async () => {
@@ -63,16 +63,34 @@ const CopyButton: React.FC<CopyButtonProps> = ({ text, label, copiedLabel, class
       className={classNames(
         'inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean focus-visible:ring-offset-2',
         copied ? 'bg-seafoam text-deep-ocean' : 'bg-jeju-ocean text-white hover:bg-deep-ocean',
-        className,
+        className
       )}
     >
       <span aria-hidden="true">
         {copied ? (
-          <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 20 20"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <path d="M4 10.5l4 4 8-9" />
           </svg>
         ) : (
-          <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 20 20"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.7"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <rect x="7" y="7" width="9" height="11" rx="2" />
             <path d="M13 4H6a2 2 0 0 0-2 2v8" />
           </svg>
