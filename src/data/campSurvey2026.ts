@@ -240,7 +240,10 @@ const normalizeText = (key: string, value: string | undefined) => {
 
 export const buildSurveyInsertPayload = ({
   respondentName,
-  contact,
+  contactInstagram,
+  contactEmail,
+  contactPhone,
+  privacyConsent,
   roles,
   ratings,
   texts,
@@ -248,7 +251,10 @@ export const buildSurveyInsertPayload = ({
   userAgent,
 }: {
   respondentName: string;
-  contact: string;
+  contactInstagram: string;
+  contactEmail: string;
+  contactPhone: string;
+  privacyConsent: boolean;
   roles: string[];
   ratings: SurveyRatings;
   texts: SurveyTexts;
@@ -257,7 +263,10 @@ export const buildSurveyInsertPayload = ({
 }): SurveyInsertPayload => ({
   camp_edition: CAMP_EDITION,
   respondent_name: respondentName.trim(),
-  contact: contact.trim() || null,
+  contact_instagram: contactInstagram.trim() || null,
+  contact_email: contactEmail.trim() || null,
+  contact_phone: contactPhone.trim() || null,
+  consent_privacy: privacyConsent,
   respondent_roles: roles.length ? roles : null,
   ...Object.fromEntries(ALL_RATING_KEYS.map((key) => [key, normalizeRating(ratings[key])])),
   ...Object.fromEntries(ALL_TEXT_KEYS.map((key) => [key, normalizeText(key, texts[key])])),

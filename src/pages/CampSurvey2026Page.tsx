@@ -90,8 +90,11 @@ const TextField: React.FC<{
 
 const CampSurvey2026Page: React.FC = () => {
   const [name, setName] = useState('');
-  const [contact, setContact] = useState('');
+  const [instagram, setInstagram] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [roles, setRoles] = useState<string[]>([]);
+  const [privacyConsent, setPrivacyConsent] = useState(false);
   const [ratings, setRatings] = useState(buildInitialSurveyRatings);
   const [texts, setTexts] = useState(buildInitialSurveyTexts);
   const [consents, setConsents] = useState<SurveyConsents>({
@@ -123,6 +126,10 @@ const CampSurvey2026Page: React.FC = () => {
       setErrorMsg('이름(또는 팀명)을 입력해 주세요.');
       return;
     }
+    if (!privacyConsent) {
+      setErrorMsg('개인정보 수집·이용에 동의해 주셔야 제출할 수 있습니다.');
+      return;
+    }
     if (!supabase) {
       setStatus('error');
       setErrorMsg('설문 서버 설정이 누락되었습니다. 운영진에게 알려 주세요.');
@@ -135,7 +142,10 @@ const CampSurvey2026Page: React.FC = () => {
     const { error } = await supabase.from('camp_survey_responses').insert({
       ...buildSurveyInsertPayload({
         respondentName: name,
-        contact,
+        contactInstagram: instagram,
+        contactEmail: email,
+        contactPhone: phone,
+        privacyConsent,
         roles,
         ratings,
         texts,
@@ -248,18 +258,39 @@ const CampSurvey2026Page: React.FC = () => {
                   </div>
                 </fieldset>
                 <div>
-                  <label htmlFor="contact" className="mb-2 block font-medium text-deep-ocean">
+                  <span className="mb-1 block font-medium text-deep-ocean">
                     다음에도 연락드릴 채널 (선택)
-                  </label>
-                  <input
-                    id="contact"
-                    type="text"
-                    value={contact}
-                    onChange={(e) => setContact(e.target.value)}
-                    maxLength={200}
-                    className={inputClass}
-                    placeholder="인스타 @아이디 / 이메일 / 전화 중 편한 것"
-                  />
+                  </span>
+                  <p className="mb-3 text-sm text-coastal-gray">편한 채널 하나만 적어주셔도 됩니다.</p>
+                  <div className="space-y-3">
+                    <input
+                      type="text"
+                      value={instagram}
+                      onChange={(e) => setInstagram(e.target.value)}
+                      maxLength={200}
+                      className={inputClass}
+                      placeholder="인스타그램 @아이디"
+                      aria-label="인스타그램 아이디"
+                    />
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      maxLength={200}
+                      className={inputClass}
+                      placeholder="이메일"
+                      aria-label="이메일"
+                    />
+                    <input
+                      type="tel"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      maxLength={50}
+                      className={inputClass}
+                      placeholder="전화번호"
+                      aria-label="전화번호"
+                    />
+                  </div>
                 </div>
               </div>
             </section>
@@ -327,6 +358,23 @@ const CampSurvey2026Page: React.FC = () => {
                   </label>
                 ))}
               </div>
+            </section>
+
+            {/* 개인정보 수집·이용 동의 (필수) */}
+            <section>
+              <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-seafoam bg-white p-4">
+                <input
+                  type="checkbox"
+                  checked={privacyConsent}
+                  onChange={(e) => setPrivacyConsent(e.target.checked)}
+                  className="mt-1 h-5 w-5 flex-shrink-0 rounded border-seafoam text-jeju-ocean focus:ring-jeju-ocean/30"
+                />
+                <span className="text-sm leading-relaxed text-deep-ocean">
+                  <strong className="text-sunset-coral">(필수)</strong> 이름과 연락처 등 입력한
+                  개인정보를 설문 분석과 다음 회차 안내 목적으로 수집·이용하는 데 동의합니다. 응답은
+                  운영진만 열람하며, 목적을 다한 뒤 파기합니다.
+                </span>
+              </label>
             </section>
 
             {errorMsg && (
