@@ -70,7 +70,11 @@ const PhotographerPage: React.FC<PhotographerPageProps> = ({ slug, images }) => 
       breadcrumbs={breadcrumbs}
       disableTopPadding={true}
     >
-      <PageHero title={name} subtitle={t('gallery.photographers_heading')} backgroundImage={heroImage} />
+      <PageHero
+        title={name}
+        subtitle={t('gallery.photographers_heading')}
+        backgroundImage={heroImage}
+      />
 
       <Section background="white" paddingTop="normal" paddingBottom="tight">
         <Container size="content">
@@ -102,11 +106,7 @@ const PhotographerPage: React.FC<PhotographerPageProps> = ({ slug, images }) => 
                   key={image.url}
                   className="aspect-square relative bg-ocean-sand rounded-lg overflow-hidden"
                 >
-                  <GalleryImageItem
-                    image={image}
-                    priority={index < 8}
-                    onClick={setSelectedImage}
-                  />
+                  <GalleryImageItem image={image} priority={index < 8} onClick={setSelectedImage} />
                 </div>
               ))}
             </div>

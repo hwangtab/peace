@@ -100,6 +100,7 @@ const HOME_GALLERY_PREVIEW_GROUPS = [
   { eventType: 'album', eventYear: 2024 },
   { eventType: 'camp', eventYear: 2023 },
   { eventType: 'camp', eventYear: 2025 },
+  { eventType: 'camp', eventYear: 2026 },
 ];
 
 export const selectHomeGalleryPreviewImages = <T extends GalleryPreviewItem>(

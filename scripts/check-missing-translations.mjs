@@ -152,7 +152,7 @@ console.log(`전체 번역 커버리지: ${coverage}%`);
 // Write detailed report
 const reportFile = join(process.cwd(), 'scripts/translation-gap-report.md');
 let report = '# 번역 누락 보고서\n\n';
-report += `## 생성일: ${new Date().toISOString().split('T')[0]}\n\n`;
+report += '## 생성 기준: 현재 public/locales 기준\n\n';
 report += `- 기준 언어: ko\n`;
 report += `- 대상 언어: ${LOCALES.join(', ')}\n`;
 report += `- 총 네임스페이스: ${[...allNs].sort().join(', ')}\n`;
