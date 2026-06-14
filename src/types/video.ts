@@ -12,4 +12,6 @@ export interface VideoItem {
   thumbnailUrl?: string;
   duration?: string;
   musicianIds?: number[];
+  /** 영상 감독(연출) 뮤지션 id — 출연(musicianIds)과 별개로 제작 크레딧 */
+  directorMusicianId?: number;
 }

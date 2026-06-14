@@ -23,6 +23,7 @@ interface VideoDetailPageProps {
   video: VideoItem;
   relatedMusicians: Musician[];
   moreVideos: VideoItem[];
+  director?: Musician | null;
 }
 
 const getYoutubeVideoId = (url: string): string => {
@@ -50,6 +51,7 @@ const VideoDetailPage: React.FC<VideoDetailPageProps> = ({
   video,
   relatedMusicians,
   moreVideos,
+  director,
 }) => {
   const { t, i18n } = useTranslation();
   const videoId = getYoutubeVideoId(video.youtubeUrl);
@@ -119,7 +121,22 @@ const VideoDetailPage: React.FC<VideoDetailPageProps> = ({
               <span aria-hidden="true">·</span>
               <time dateTime={video.date}>{localizedDate}</time>
             </div>
-            <h1 className="typo-h2 mb-6 break-words">{video.title}</h1>
+            <h1 className="typo-h2 mb-4 break-words">{video.title}</h1>
+            {director && (
+              <p className="text-sm text-coastal-gray mb-6">
+                {t('videos.detail.director')}{' '}
+                <Link
+                  href={
+                    CAMP_2026_MUSICIAN_IDS.has(director.id)
+                      ? `/camps/2026/musicians/${director.id}`
+                      : `/album/musicians/${director.id}`
+                  }
+                  className="font-bold text-deep-ocean hover:text-jeju-ocean underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm"
+                >
+                  {director.name}
+                </Link>
+              </p>
+            )}
             {video.description && (
               <p className="typo-body text-coastal-gray whitespace-pre-line break-words mb-8">
                 {video.description}

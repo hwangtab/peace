@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 
 interface ImageLightboxProps {
-  image: string | { url: string; alt?: string } | null;
+  image: string | { url: string; alt?: string; credit?: string } | null;
   onClose: () => void;
   maxHeight?: string;
   show?: boolean;
@@ -24,6 +24,7 @@ const ImageLightbox: React.FC<ImageLightboxProps> = ({
       ? 'Lightbox image'
       : image.alt || 'Lightbox image'
     : '';
+  const credit = image && typeof image !== 'string' ? image.credit : undefined;
 
   return (
     <Transition appear show={isVisible} as={Fragment}>
@@ -63,6 +64,12 @@ const ImageLightbox: React.FC<ImageLightboxProps> = ({
                     loading="eager"
                   />
                 </div>
+
+                {credit && (
+                  <p className="absolute bottom-3 left-4 right-4 text-xs sm:text-sm text-white/90 bg-black/40 backdrop-blur-sm rounded-md px-3 py-1.5 w-fit max-w-[80%] pointer-events-none">
+                    {credit}
+                  </p>
+                )}
 
                 {/* Close button inside panel for better focus management */}
                 <button

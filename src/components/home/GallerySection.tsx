@@ -7,6 +7,8 @@ import { GALLERY_CONFIG } from '@/constants/config';
 import Link from 'next/link';
 import EventFilter from '../common/EventFilter';
 import GalleryImageItem from '../gallery/GalleryImageItem';
+import PhotographerIntro from '../gallery/PhotographerIntro';
+import { getPhotographersForFilter, photographerNameKey } from '@/data/photographers';
 import Section from '../layout/Section';
 import Container from '../layout/Container';
 import SectionHeader from '../common/SectionHeader';
@@ -69,6 +71,8 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
           />
         </motion.div>
 
+        <PhotographerIntro photographers={getPhotographersForFilter(selectedFilter)} />
+
         {filteredImages.length === 0 ? (
           <div className="text-center py-20 bg-white/50 rounded-lg">
             <p className="text-xl text-coastal-gray font-serif font-bold">
@@ -112,6 +116,11 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
                     (selectedImage.eventType === 'camp'
                       ? t('gallery.alt_camp', { year: selectedImage.eventYear })
                       : t('gallery.alt_album', { year: selectedImage.eventYear })),
+                  credit: selectedImage.photographer
+                    ? t('gallery.photo_credit', {
+                        name: t(photographerNameKey(selectedImage.photographer)),
+                      })
+                    : undefined,
                 }
               : null
           }

@@ -118,7 +118,7 @@ const GalleryPage = ({ initialImages = [], totalImageCount }: GalleryPageProps) 
       </Section>
 
       {/* Camp 2026 CTA */}
-      {camp2026?.fundingUrl && (
+      {camp2026 && (
         <Section background="jeju-ocean" paddingTop="tight" paddingBottom="tight">
           <Container size="content" className="text-center">
             <p className="text-white text-lg font-medium mb-4 break-words">
@@ -127,15 +127,6 @@ const GalleryPage = ({ initialImages = [], totalImageCount }: GalleryPageProps) 
             <div className="flex flex-wrap justify-center gap-4">
               <Button to="/camps/2026" variant="ghost-white" size="sm">
                 {t('camp.view_detail')}
-              </Button>
-              <Button
-                href={camp2026.fundingUrl}
-                variant="gold"
-                size="sm"
-                external
-                utmContent="gallery"
-              >
-                {t('camp.ticketing_2026')}
               </Button>
             </div>
           </Container>

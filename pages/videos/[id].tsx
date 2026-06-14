@@ -10,6 +10,7 @@ interface VideoDetailWrappedProps {
   video: VideoItem;
   relatedMusicians: Musician[];
   moreVideos: VideoItem[];
+  director: Musician | null;
 }
 
 export default function WrappedPage(props: VideoDetailWrappedProps) {
@@ -49,6 +50,11 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
     .map((mid) => musicians.find((m) => m.id === mid))
     .filter((m): m is Musician => Boolean(m));
 
+  const director =
+    baseVideo.directorMusicianId != null
+      ? (musicians.find((m) => m.id === baseVideo.directorMusicianId) ?? null)
+      : null;
+
   const moreVideos = koVideos
     .filter(
       (v) =>
@@ -69,6 +75,7 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
       video,
       relatedMusicians,
       moreVideos,
+      director,
     },
     revalidate: 3600,
   };

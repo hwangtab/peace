@@ -17,7 +17,10 @@ export function loadRelatedVideos(
   const localizedVideos = loadLocalizedData<VideoItem>(locale, 'videos.json');
   const localizedVideoMap = new Map(localizedVideos.map((v) => [v.id, v]));
 
-  const directVideos = koVideos.filter((v) => v.musicianIds?.includes(musicianId));
+  // 출연(musicianIds) 또는 영상감독(directorMusicianId)으로 연결된 영상을 프로필에 노출
+  const directVideos = koVideos.filter(
+    (v) => v.musicianIds?.includes(musicianId) || v.directorMusicianId === musicianId
+  );
 
   let eventVideos: VideoItem[] = [];
   if (options?.includeEventVideos && options.events?.length) {

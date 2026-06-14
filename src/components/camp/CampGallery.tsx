@@ -8,6 +8,7 @@ import Section from '../layout/Section';
 import SectionHeader from '../common/SectionHeader';
 import Button from '../common/Button';
 import ImageLightbox from '../common/ImageLightbox';
+import { photographersByYear, photographerNameKey } from '@/data/photographers';
 
 interface CampGalleryProps {
   camp: CampEvent;
@@ -21,6 +22,11 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
     return null;
   }
 
+  // 해당 연도에 등록된 사진 작가가 있으면 크레딧을 노출한다 (제3회/2026 부터).
+  const photographers = photographersByYear[camp.year] ?? [];
+  const creditNames = photographers.map((p) => t(photographerNameKey(p.slug))).join(', ');
+  const creditText = creditNames ? t('gallery.photo_credit', { name: creditNames }) : undefined;
+
   const fallbackAlt = t('gallery.alt_camp', { year: camp.year, title: camp.title });
   const altForIndex = (index: number): string => {
     const key = `camp_data.${camp.id}.image_alts.${index}`;
@@ -30,7 +36,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
   return (
     <Section background="light-beige">
       <Container size="wide">
-        <SectionHeader title={t('camp.section_gallery')} />
+        <SectionHeader title={t('camp.section_gallery')} subtitle={creditText} />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {camp.images.map((img, index) => (
             <motion.div
@@ -78,6 +84,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
             ? {
                 url: selectedImage,
                 alt: t('gallery.image_alt_template', { year: camp.year, title: camp.title }),
+                credit: creditText,
               }
             : null
         }

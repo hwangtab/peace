@@ -167,7 +167,14 @@
     "section_overview_subtitle": "Festival de música por la paz en Jeju",
     "poster_alt_2026": "Cartel oficial del 3.º Gangjeong Peace Music Camp 2026 — del 5 al 7 de junio, aldea de Gangjeong, Jeju, 50 grupos",
     "hero_alt": "Concierto del Gangjeong Peace Music Camp {{year}}",
-    "cta_final_image_alt": "Gangjeong Peace Music Camp de noche — velas por la paz con el mensaje \"Acabemos con la guerra\""
+    "cta_final_image_alt": "Gangjeong Peace Music Camp de noche — velas por la paz con el mensaje \"Acabemos con la guerra\"",
+    "date_badge_2026_past": "5–7 jun 2026 · Finalizado",
+    "view_photos": "Ver fotos",
+    "recap_cta_heading": "Gracias por acompañarnos",
+    "recap_cta_body": "Tres días de canciones por la paz junto al mar de Gangjeong. Revive esos momentos a través de las fotos.",
+    "recap_cta_button": "Ver las fotos",
+    "description_2026_past": "Del 5 al 7 de junio de 2026 se celebró el 3.º Campamento de Paz y Música de Gangjeong en el Parque Deportivo de Gangjeong, en Seogwipo, Jeju. En el 73.º año del armisticio, el campamento se amplió por primera vez a tres días con 50 grupos. Bajo el lema «¡Canta, baila, acaba con la guerra!», durante tres días sonaron canciones por la paz junto al mar de Gangjeong.",
+    "section_videos": "Vídeos"
   },
   "camp_data": {
     "camp-2023": {
