@@ -4,8 +4,8 @@ import classNames from 'classnames';
 
 interface SectionHeaderProps {
   title: string;
-  subtitle?: string;
-  description?: string; // Alternative name for subtitle if needed
+  subtitle?: React.ReactNode;
+  description?: React.ReactNode; // Alternative name for subtitle if needed
   align?: 'center' | 'left';
   className?: string;
   titleTag?: 'h1' | 'h2';

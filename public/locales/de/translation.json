@@ -175,7 +175,8 @@
     "recap_cta_button": "Fotos ansehen",
     "description_2026_past": "Vom 5. bis 7. Juni 2026 fand das 3. Gangjeong Peace and Music Camp im Sportpark Gangjeong in Seogwipo, Jeju, statt. Im 73. Jahr des Waffenstillstands wurde das Camp erstmals auf drei Tage erweitert, mit 50 Acts. Unter dem Motto „Singt, tanzt, beendet den Krieg!“ erklangen drei Tage lang Lieder für den Frieden am Meer von Gangjeong.",
     "section_videos": "Videos",
-    "lineup_count_past": "{{count}} Acts dabei"
+    "lineup_count_past": "{{count}} Acts dabei",
+    "video_director": "Regie"
   },
   "structured_data": {
     "howto_name": "So nehmen Sie am Gangjeong Friedensmusikcamp teil",

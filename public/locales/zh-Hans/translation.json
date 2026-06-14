@@ -175,7 +175,8 @@
     "recap_cta_button": "查看现场照片",
     "description_2026_past": "2026年6月5日至7日，第三届江汀和平音乐营在济州西归浦江汀体育公园举行。在停战73周年之际，本届首次扩展为三天两夜，50组音乐人参与。在“歌唱吧，舞动吧，结束战争！”的口号下，三天里反战与和平之歌在江汀海边回响。",
     "section_videos": "现场视频",
-    "lineup_count_past": "{{count}}组参与"
+    "lineup_count_past": "{{count}}组参与",
+    "video_director": "影像导演"
   },
   "camp_data": {
     "camp-2023": {
