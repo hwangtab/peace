@@ -6,6 +6,7 @@ import { CampEvent } from '@/types/camp';
 import Container from '../layout/Container';
 import Section from '../layout/Section';
 import SectionHeader from '../common/SectionHeader';
+import Link from 'next/link';
 import Button from '../common/Button';
 import ImageLightbox from '../common/ImageLightbox';
 import { photographersByYear, photographerNameKey } from '@/data/photographers';
@@ -34,6 +35,19 @@ const CampGallery: React.FC<CampGalleryProps> = ({
   const photographers = photographersByYear[camp.year] ?? [];
   const creditNames = photographers.map((p) => t(photographerNameKey(p.slug))).join(', ');
   const creditText = creditNames ? t('gallery.photo_credit', { name: creditNames }) : undefined;
+  // 작가가 1명이면 크레딧을 작가 페이지로 연결한다.
+  const singlePhotographer = photographers.length === 1 ? photographers[0] : undefined;
+  const creditNode =
+    creditText && singlePhotographer ? (
+      <Link
+        href={`/photographers/${singlePhotographer.slug}`}
+        className="underline underline-offset-2 hover:text-jeju-ocean transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm"
+      >
+        {creditText}
+      </Link>
+    ) : (
+      creditText
+    );
 
   const fallbackAlt = t('gallery.alt_camp', { year: camp.year, title: camp.title });
   const altForIndex = (index: number): string => {
@@ -44,7 +58,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({
   return (
     <Section background="light-beige" paddingTop={paddingTop} paddingBottom={paddingBottom}>
       <Container size="wide">
-        <SectionHeader title={t('camp.section_gallery')} subtitle={creditText} />
+        <SectionHeader title={t('camp.section_gallery')} subtitle={creditNode} />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {camp.images.map((img, index) => (
             <motion.div

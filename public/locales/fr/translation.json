@@ -175,7 +175,8 @@
     "recap_cta_button": "Voir les photos",
     "description_2026_past": "Du 5 au 7 juin 2026 s'est tenu le 3e Camp pour la paix et la musique de Gangjeong au parc sportif de Gangjeong, à Seogwipo (Jeju). Pour la 73e année de l'armistice, le camp s'est étendu pour la première fois sur trois jours avec 50 groupes. Sous le slogan « Chantons, dansons, mettons fin à la guerre ! », des chants pour la paix ont résonné trois jours durant au bord de la mer de Gangjeong.",
     "section_videos": "Vidéos",
-    "lineup_count_past": "{{count}} groupes ont participé"
+    "lineup_count_past": "{{count}} groupes ont participé",
+    "video_director": "Réalisation"
   },
   "structured_data": {
     "howto_name": "Comment participer au Camp musical pour la paix de Gangjeong",
