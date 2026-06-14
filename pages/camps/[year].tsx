@@ -81,7 +81,8 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
   // 행사 종료 여부 — endDate(KST 자정) 가 빌드/리밸리데이트 시점보다 과거면 후기 모드.
   // 서버(getStaticProps)에서만 Date 를 읽어 prop 으로 내려보내므로 SSG/CSR hydration
   // 불일치가 없다. revalidate(1h) 로 종료 직후 자동 전환된다.
-  const isPast = !!camp.endDate && new Date(`${camp.endDate}T23:59:59+09:00`).getTime() < Date.now();
+  const isPast =
+    !!camp.endDate && new Date(`${camp.endDate}T23:59:59+09:00`).getTime() < Date.now();
 
   return {
     props: {

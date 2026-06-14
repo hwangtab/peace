@@ -39,8 +39,7 @@ export const getPhotographersForFilter = (filter: FilterId): Photographer[] => {
 };
 
 /** slug 로 작가의 표시 이름 번역 키를 만든다 */
-export const photographerNameKey = (slug: string): string =>
-  `gallery.photographers.${slug}.name`;
+export const photographerNameKey = (slug: string): string => `gallery.photographers.${slug}.name`;
 
 /** 전 연도에 걸친 고유 작가 slug 목록 (작가 전용 페이지 getStaticPaths 용) */
 export const allPhotographerSlugs = (): string[] => {

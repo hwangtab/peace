@@ -130,7 +130,7 @@ describe('loadGalleryImages', () => {
 });
 
 describe('selectHomeGalleryPreviewImages', () => {
-  it('홈 갤러리 preview 를 앨범, 2023 캠프, 2025 캠프 이미지로 균형 있게 구성', () => {
+  it('홈 갤러리 preview 를 앨범과 각 연도 캠프 이미지로 균형 있게 구성', () => {
     const images = [
       ...Array.from({ length: 6 }, (_, index) => ({
         id: index + 1,
@@ -156,7 +156,7 @@ describe('selectHomeGalleryPreviewImages', () => {
 
     const preview = selectHomeGalleryPreviewImages(images);
 
-    expect(preview).toHaveLength(12);
+    expect(preview).toHaveLength(16);
     expect(
       preview.filter((image) => image.eventType === 'album' && image.eventYear === 2024)
     ).toHaveLength(4);
@@ -166,8 +166,8 @@ describe('selectHomeGalleryPreviewImages', () => {
     expect(
       preview.filter((image) => image.eventType === 'camp' && image.eventYear === 2025)
     ).toHaveLength(4);
-    expect(preview.some((image) => image.eventType === 'camp' && image.eventYear === 2026)).toBe(
-      false
-    );
+    expect(
+      preview.filter((image) => image.eventType === 'camp' && image.eventYear === 2026)
+    ).toHaveLength(4);
   });
 });
