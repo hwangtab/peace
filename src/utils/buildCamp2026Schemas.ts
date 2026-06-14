@@ -33,6 +33,8 @@ interface BuildArgs {
   ordinalLabel: string;
   /** 빌드 시점 또는 호출 시점 ISO date — 사용자 트래픽마다 변하지 않게 caller 가 결정 */
   dateModifiedIso?: string;
+  /** 행사 종료 여부 — true 면 EventCompleted + 판매 offers 제거 */
+  isPast?: boolean;
 }
 
 export function buildCamp2026Schemas({
@@ -42,6 +44,7 @@ export function buildCamp2026Schemas({
   musicians,
   ordinalLabel,
   dateModifiedIso,
+  isPast = false,
 }: BuildArgs): unknown[] {
   const translatedTitle = t('camp.title_2026');
   const translatedDescription = t('camp.description_2026');
@@ -167,7 +170,10 @@ export function buildCamp2026Schemas({
             : {}),
         };
       }),
-      ...(camp.fundingUrl
+      eventStatus: isPast
+        ? 'https://schema.org/EventCompleted'
+        : 'https://schema.org/EventScheduled',
+      ...(camp.fundingUrl && !isPast
         ? {
             offers: {
               url: camp.fundingUrl,
@@ -257,8 +263,10 @@ export function buildCamp2026Schemas({
           description: translatedDescription,
           image: getFullUrl('/images-webp/camps/2026/2026poster1.webp'),
           locationName: t('camp.venue_2026'),
-          eventStatus: 'https://schema.org/EventScheduled',
-          ...(camp.fundingUrl
+          eventStatus: isPast
+            ? 'https://schema.org/EventCompleted'
+            : 'https://schema.org/EventScheduled',
+          ...(camp.fundingUrl && !isPast
             ? {
                 offers: {
                   url: camp.fundingUrl,

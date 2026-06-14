@@ -11,6 +11,9 @@ import SectionWave from '@/components/layout/SectionWave';
 import { CampTimetable } from '@/components/camp/timetable';
 import { timetable2026 } from '@/data/timetable-2026';
 import CampHero from '@/components/camp/CampHero';
+import CampGallery from '@/components/camp/CampGallery';
+import CampVideos from '@/components/camp/CampVideos';
+import { campGalleryHighlights2026 } from '@/data/camps';
 import dynamic from 'next/dynamic';
 
 const GangjeongStorySection = dynamic(() => import('@/components/camp/GangjeongStorySection'));
@@ -27,9 +30,15 @@ import { buildCamp2026Schemas } from '@/utils/buildCamp2026Schemas';
 interface CampPageProps {
   initialMusicians?: Musician[];
   initialLocale?: string;
+  /** 행사 종료 여부 — true 면 예매 CTA 대신 갤러리/후기 구성으로 전환 */
+  isPast?: boolean;
 }
 
-const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialLocale = 'ko' }) => {
+const Camp2026Page: React.FC<CampPageProps> = ({
+  initialMusicians = [],
+  initialLocale = 'ko',
+  isPast = false,
+}) => {
   const { t, i18n } = useTranslation();
   const camp2026 = useCamp('camp-2026');
   const ordinalLabel = formatOrdinal(3, i18n.language);
@@ -67,8 +76,9 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
       camp: camp2026,
       musicians,
       ordinalLabel,
+      isPast,
     });
-  }, [camp2026, musicians, tSchema, i18n.language, ordinalLabel]);
+  }, [camp2026, musicians, tSchema, i18n.language, ordinalLabel, isPast]);
 
   if (!camp2026) {
     return (
@@ -86,7 +96,10 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
   }
 
   const translatedTitle = t('camp.title_2026');
-  const translatedDescription = t('camp.description_2026');
+  const translatedDescription =
+    isPast && i18n.exists('camp.description_2026_past')
+      ? t('camp.description_2026_past')
+      : t('camp.description_2026');
   const seoTitle = t('camp.seo_title_2026');
   const seoDescription = t('camp.seo_description_2026');
   const participantCount = camp2026.participants?.length || 0;
@@ -106,20 +119,39 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
       <CampHero
         camp={camp2026}
         featured
-        dateBadge={t('camp.date_badge_2026')}
+        dateBadge={isPast ? t('camp.date_badge_2026_past') : t('camp.date_badge_2026')}
         dateDisplay={t('camp.date_2026')}
       >
-        <Button href="#lineup" variant="gold" size="sm">
-          {t('camp.lineup_count', { count: participantCount })}
-        </Button>
-        {camp2026.fundingUrl && (
-          <Button href={camp2026.fundingUrl} variant="white" size="sm" external utmContent="hero">
-            {t('camp.ticketing_2026')}
-          </Button>
+        {isPast ? (
+          <>
+            <Button href="#gallery" variant="gold" size="sm">
+              {t('camp.view_photos')}
+            </Button>
+            <Button href="#lineup" variant="ghost-white" size="sm">
+              {t('camp.lineup_count', { count: participantCount })}
+            </Button>
+          </>
+        ) : (
+          <>
+            <Button href="#lineup" variant="gold" size="sm">
+              {t('camp.lineup_count', { count: participantCount })}
+            </Button>
+            {camp2026.fundingUrl && (
+              <Button
+                href={camp2026.fundingUrl}
+                variant="white"
+                size="sm"
+                external
+                utmContent="hero"
+              >
+                {t('camp.ticketing_2026')}
+              </Button>
+            )}
+            <Button to="/camps/2026/promote" variant="ghost-white" size="sm">
+              {t('camp.promote_cta')}
+            </Button>
+          </>
         )}
-        <Button to="/camps/2026/promote" variant="ghost-white" size="sm">
-          {t('camp.promote_cta')}
-        </Button>
       </CampHero>
 
       {/* Overview Section */}
@@ -133,7 +165,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
           >
             <div className="flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-8 items-stretch min-w-0">
               {/* Poster */}
-              {camp2026.fundingUrl ? (
+              {camp2026.fundingUrl && !isPast ? (
                 <a
                   href={buildUtmUrl(camp2026.fundingUrl, 'poster')}
                   target="_blank"
@@ -231,7 +263,19 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
         </Section>
       )}
 
-      <SectionWave color="sky-horizon" />
+      {/* Photo Gallery Section — 행사 종료 후에만 노출 */}
+      {isPast && campGalleryHighlights2026.length > 0 ? (
+        <>
+          <SectionWave color="sky-horizon" />
+          <div id="gallery">
+            <CampGallery camp={{ ...camp2026, images: campGalleryHighlights2026 }} />
+          </div>
+          <CampVideos year={2026} />
+          <SectionWave color="light-beige" />
+        </>
+      ) : (
+        <SectionWave color="sky-horizon" />
+      )}
 
       {/* Gangjeong Story Section */}
       <GangjeongStorySection />
@@ -244,7 +288,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
       </>
 
       {/* Final CTA Section */}
-      {camp2026.fundingUrl && (
+      {(camp2026.fundingUrl || isPast) && (
         <>
           <Section
             background="deep-ocean"
@@ -272,13 +316,34 @@ const Camp2026Page: React.FC<CampPageProps> = ({ initialMusicians = [], initialL
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.6 }}
               >
-                <h2 className="typo-h2 text-white mb-4">{t('camp.cta_final_heading')}</h2>
-                <p className="typo-body text-cloud-white/80 mb-8 max-w-lg mx-auto">
-                  {t('camp.cta_final_body')}
-                </p>
-                <Button href={camp2026.fundingUrl} variant="gold" external utmContent="final-cta">
-                  {t('camp.cta_final_button')}
-                </Button>
+                {isPast ? (
+                  <>
+                    <h2 className="typo-h2 text-white mb-4">{t('camp.recap_cta_heading')}</h2>
+                    <p className="typo-body text-cloud-white/80 mb-8 max-w-lg mx-auto">
+                      {t('camp.recap_cta_body')}
+                    </p>
+                    <Button to="/gallery?filter=camp-2026" variant="gold">
+                      {t('camp.recap_cta_button')}
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <h2 className="typo-h2 text-white mb-4">{t('camp.cta_final_heading')}</h2>
+                    <p className="typo-body text-cloud-white/80 mb-8 max-w-lg mx-auto">
+                      {t('camp.cta_final_body')}
+                    </p>
+                    {camp2026.fundingUrl && (
+                      <Button
+                        href={camp2026.fundingUrl}
+                        variant="gold"
+                        external
+                        utmContent="final-cta"
+                      >
+                        {t('camp.cta_final_button')}
+                      </Button>
+                    )}
+                  </>
+                )}
               </motion.div>
             </Container>
           </Section>

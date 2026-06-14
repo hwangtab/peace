@@ -13,7 +13,7 @@ const CURRENT_CAMP_YEAR = Math.max(...camps.map((c) => c.year));
 
 const pageComponents: Record<
   string,
-  React.ComponentType<{ initialMusicians?: Musician[]; initialLocale?: string }>
+  React.ComponentType<{ initialMusicians?: Musician[]; initialLocale?: string; isPast?: boolean }>
 > = {
   '2023': Camp2023Page,
   '2025': Camp2025Page,
@@ -24,12 +24,15 @@ interface CampPageProps {
   year: string;
   initialMusicians: Musician[];
   initialLocale: string;
+  isPast: boolean;
 }
 
-export default function CampPage({ year, initialMusicians, initialLocale }: CampPageProps) {
+export default function CampPage({ year, initialMusicians, initialLocale, isPast }: CampPageProps) {
   const Component = pageComponents[year];
   if (!Component) return <NotFoundPage />;
-  return <Component initialMusicians={initialMusicians} initialLocale={initialLocale} />;
+  return (
+    <Component initialMusicians={initialMusicians} initialLocale={initialLocale} isPast={isPast} />
+  );
 }
 
 export async function getStaticPaths({ locales }: GetStaticPathsContext) {
@@ -75,12 +78,18 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
     namespaces.push('camp_guidelines_2026');
   }
 
+  // 행사 종료 여부 — endDate(KST 자정) 가 빌드/리밸리데이트 시점보다 과거면 후기 모드.
+  // 서버(getStaticProps)에서만 Date 를 읽어 prop 으로 내려보내므로 SSG/CSR hydration
+  // 불일치가 없다. revalidate(1h) 로 종료 직후 자동 전환된다.
+  const isPast = !!camp.endDate && new Date(`${camp.endDate}T23:59:59+09:00`).getTime() < Date.now();
+
   return {
     props: {
       ...(await serverSideTranslations(lang, namespaces, nextI18NextConfig)),
       year,
       initialMusicians,
       initialLocale: lang,
+      isPast,
     },
     revalidate: 3600,
   };

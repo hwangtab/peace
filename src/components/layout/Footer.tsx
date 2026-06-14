@@ -2,15 +2,12 @@ import Link from 'next/link';
 import Container from './Container';
 import InstagramIcon from '@/components/icons/InstagramIcon';
 import { HiOutlineMail } from '@/components/icons/SiteIcons';
-import { useCamp } from '@/hooks/useCamps';
-import { buildUtmUrl } from '@/utils/utm';
 import { simpleMenuItems, campItems, albumItems } from './navigationData';
 
 import { useTranslation } from 'next-i18next';
 
 const Footer = () => {
   const { t } = useTranslation();
-  const camp2026 = useCamp('camp-2026');
 
   return (
     <footer className="bg-deep-ocean text-cloud-white">
@@ -61,17 +58,6 @@ const Footer = () => {
                     {t(item.nameKey)}
                   </Link>
                 ))}
-                {camp2026?.fundingUrl && (
-                  <a
-                    href={buildUtmUrl(camp2026.fundingUrl, 'footer')}
-                    target="_blank"
-                    rel="noopener noreferrer nofollow"
-                    className="block text-golden-sun hover:text-yellow-300
-                               transition-colors duration-200 text-sm font-medium break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun rounded-sm"
-                  >
-                    {t('camp.ticketing_2026')}
-                  </a>
-                )}
                 {albumItems.map((item) => (
                   <Link
                     key={item.path}

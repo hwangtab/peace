@@ -1819,5 +1819,20 @@
     "thumbnailUrl": "https://i.ytimg.com/vi/bt_aJ75LS4Y/maxresdefault.jpg",
     "date": "2025-04-20",
     "eventYear": 2025
+  },
+  {
+    "id": 2601,
+    "title": "2026 강정피스앤뮤직캠프 스케치 vol.1 — 친구 (까르)",
+    "description": "제3회 강정피스앤뮤직캠프 현장 스케치 첫 번째 영상. 까르의 무대 \"친구\"를 비롯해 강정 바다 앞에서 보낸 사흘의 순간을 담았습니다.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=-bf3sbAkBXU",
+    "date": "2026-06-07",
+    "location": "서귀포시 강정체육공원",
+    "eventType": "camp",
+    "eventYear": 2026,
+    "thumbnailUrl": "https://i.ytimg.com/vi/-bf3sbAkBXU/sddefault.jpg",
+    "musicianIds": [
+      5
+    ],
+    "directorMusicianId": 49
   }
 ]

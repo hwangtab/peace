@@ -22,6 +22,26 @@ interface CampStructural {
   images: string[];
 }
 
+/**
+ * 제3회(2026) 캠프 후기 페이지 상단에 노출하는 엄선 사진 (촬영: 김동희).
+ * 전체 197장은 /gallery?filter=camp-2026 에서 확인. 여기서는 현장 분위기를
+ * 고르게 보여주는 12장을 추렸다.
+ */
+export const campGalleryHighlights2026: string[] = [
+  '/images-webp/camps/2026/kdh-DSC08498.webp',
+  '/images-webp/camps/2026/kdh-DSC08299.webp',
+  '/images-webp/camps/2026/kdh-DSC08082.webp',
+  '/images-webp/camps/2026/kdh-DSC07946.webp',
+  '/images-webp/camps/2026/kdh-DSC07791.webp',
+  '/images-webp/camps/2026/kdh-DSC07582.webp',
+  '/images-webp/camps/2026/kdh-DSC07446.webp',
+  '/images-webp/camps/2026/kdh-DSC07234.webp',
+  '/images-webp/camps/2026/kdh-DSC07095.webp',
+  '/images-webp/camps/2026/kdh-DSC06961.webp',
+  '/images-webp/camps/2026/kdh-DSC06829.webp',
+  '/images-webp/camps/2026/kdh-DSC06676.webp',
+];
+
 const campsStructural: CampStructural[] = [
   {
     id: 'camp-2023',
@@ -65,7 +85,8 @@ const campsStructural: CampStructural[] = [
     year: 2026,
     startDate: '2026-06-05',
     endDate: '2026-06-07',
-    fundingUrl: 'https://booking.naver.com/booking/5/bizes/1442738/items/7701191',
+    // 행사 종료(2026-06-07)로 예매 마감 — fundingUrl 제거 시 홈/언론보도/뮤지션/푸터의
+    // `camp2026?.fundingUrl &&` 예매 CTA 가 일괄 비활성화된다. 다음 캠프 예매 오픈 시 재설정.
     images: [
       '/images-webp/camps/2026/hero-gangjeong-2026.webp',
       '/images-webp/camps/2026/2026poster1-og.webp',

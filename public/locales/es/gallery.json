@@ -19,6 +19,17 @@
       "p1": "Gangjeong se asienta en la costa sur de Jeju, mirando al islote Beomseom con el monte Halla al fondo. Décadas después de la masacre del 4·3, en 2007 comenzó una nueva capa de historia: la de los habitantes que resisten una base naval. Esta galería guarda el aire de los conciertos celebrados en esa misma orilla.",
       "p2": "Las fotografías cubren los campamentos de 2023, 2025 y el actual 2026. Junto a los músicos en escena aparecen las haenyeo (buceadoras de Jeju), activistas de la roca Gureombi, niños entre el público y voluntarios del Centro de Paz — un retrato de la comunidad más allá del festival.",
       "p3": "Al tocar una tarjeta se abre la imagen en alta resolución en un lightbox. Se permite su uso no comercial en contextos del movimiento por la paz y la música siempre que se indique la fuente."
-    }
+    },
+    "photographers_heading": "Fotógrafo",
+    "photo_credit": "Foto ⓒ {{name}}",
+    "photographers": {
+      "kdh": {
+        "name": "Kim Dong-hee",
+        "bio": "Para mí, tomar la cámara es una forma de relacionarme con los demás. Por eso sigo eligiendo hacerlo. Actualmente trabajo en retratos basados en entrevistas y produzco documentales."
+      }
+    },
+    "photographer_page_title": "{{name}} | Fotógrafo",
+    "photographer_back": "Ver galería completa",
+    "photographer_view_page": "Ver página del fotógrafo"
   }
 }

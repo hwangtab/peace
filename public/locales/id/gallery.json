@@ -19,6 +19,17 @@
       "p1": "Gangjeong berada di pesisir selatan Jeju, menghadap pulau kecil Beomseom di bawah bayang Gunung Halla. Puluhan tahun setelah pembantaian 4·3, sejak 2007 lapisan sejarah baru dimulai ketika warga menolak pembangunan pangkalan angkatan laut. Galeri ini merekam suasana konser-konser yang digelar tepat di tepi pantai itu.",
       "p2": "Foto-foto ini mencakup kamp 2023, 2025, dan 2026 yang sedang berjalan. Selain musisi di atas panggung, terlihat haenyeo (penyelam perempuan Jeju), aktivis batu Gureombi, anak-anak di antara penonton, dan relawan Peace Center — komunitas yang lebih luas daripada festival itu sendiri.",
       "p3": "Mengetuk kartu akan membuka gambar beresolusi penuh di lightbox. Penggunaan non-komersial dalam konteks gerakan perdamaian dan musik dipersilakan dengan mencantumkan sumbernya."
-    }
+    },
+    "photographers_heading": "Fotografer",
+    "photo_credit": "Foto ⓒ {{name}}",
+    "photographers": {
+      "kdh": {
+        "name": "Kim Dong-hee",
+        "bio": "Bagi saya, mengangkat kamera adalah cara menjalin hubungan dengan orang lain. Karena itulah saya terus memilih untuk melakukannya. Saat ini saya menggarap foto potret berbasis wawancara dan memproduksi film dokumenter."
+      }
+    },
+    "photographer_page_title": "{{name}} | Fotografer",
+    "photographer_back": "Lihat galeri lengkap",
+    "photographer_view_page": "Lihat halaman fotografer"
   }
 }
