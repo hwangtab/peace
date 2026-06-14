@@ -96,6 +96,7 @@ const GalleryPage = ({ initialImages = [], totalImageCount }: GalleryPageProps) 
       structuredData={structuredData}
       breadcrumbs={breadcrumbs}
       disableTopPadding={true}
+      disableBottomPadding={true}
     >
       <PageHero
         title={t('gallery.hero_title')}
@@ -108,7 +109,7 @@ const GalleryPage = ({ initialImages = [], totalImageCount }: GalleryPageProps) 
         paragraphs={[t('gallery.intro.p1'), t('gallery.intro.p2'), t('gallery.intro.p3')]}
         background="white"
       />
-      <Section background="white" paddingTop="tight" paddingBottom="none">
+      <Section background="white" paddingTop="tight" paddingBottom="tight">
         <GallerySection
           enableSectionWrapper={false}
           hideSectionHeader={true}
