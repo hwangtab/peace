@@ -10,7 +10,18 @@ import { LazyMotion, MotionConfig } from 'framer-motion';
 // framer-motion features 를 비동기 청크로 분리해 _app 첫 페인트 비용을 줄인다.
 // m.* 컴포넌트(가벼운 변형)와 짝을 이룸. layoutId/layout/drag 미사용이므로
 // domAnimation(경량)으로 충분 — layout projection 코드(~19KB)가 청크에서 제외된다.
-const loadDomAnimationFeatures = () => import('framer-motion').then((mod) => mod.domAnimation);
+//
+// 이 청크가 로드되어야 whileInView 애니메이션이 실행되어 initial(opacity:0) 콘텐츠가
+// 노출된다. 느린/불안정한 모바일 네트워크에서 청크 로드가 실패하면 콘텐츠가 영영
+// 안 보이므로, 로드 완료 시 플래그를 세워 _document 의 폴백 타이머가 강제 노출하지
+// 않도록 한다(프로그레시브 인핸스먼트).
+const loadDomAnimationFeatures = () =>
+  import('framer-motion').then((mod) => {
+    if (typeof window !== 'undefined') {
+      window.__motionReady = true;
+    }
+    return mod.domAnimation;
+  });
 import { ErrorBoundary } from 'react-error-boundary';
 import nextI18NextConfig from '../next-i18next.config';
 import '@/index.css';
@@ -20,6 +31,8 @@ import ErrorFallback from '@/components/common/ErrorFallback';
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
+    // framer-motion 기능 청크 로드 완료 플래그(_document 폴백 타이머가 참조)
+    __motionReady?: boolean;
   }
 }
 
