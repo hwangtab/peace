@@ -71,6 +71,23 @@ class MyDocument extends Document {
           <link rel="dns-prefetch" href="//www.instagram.com" />
           <link rel="preconnect" href="https://www.instagram.com" crossOrigin="anonymous" />
           <link rel="dns-prefetch" href="//smartstore.naver.com" />
+
+          {/* 프로그레시브 인핸스먼트 폴백 — framer-motion(m.*) 콘텐츠는 initial 상태가
+              opacity:0 으로 SSR 출력되고, 비동기 features 청크가 로드·실행되어야 노출된다.
+              JS 가 꺼져 있거나(아래 noscript) 느린/불안정한 모바일 네트워크에서 청크 로드가
+              실패하면 콘텐츠가 영영 안 보여 화면이 깨진 것처럼 보이는 문제를 방지한다. */}
+          <noscript>
+            <style>{`[style*="opacity:0"],[style*="opacity: 0"]{opacity:1!important;transform:none!important}`}</style>
+          </noscript>
+          {/* JS 는 켜졌지만 framer-motion 청크가 일정 시간 내 로드되지 않으면(__motionReady
+              미설정) 숨겨진 콘텐츠를 강제 노출한다. 정상 로드 시에는 아무 동작도 하지 않아
+              스크롤 등장 애니메이션을 그대로 유지한다. */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html:
+                "window.setTimeout(function(){if(window.__motionReady)return;var n=document.querySelectorAll('[style*=\"opacity:0\"],[style*=\"opacity: 0\"]');for(var i=0;i<n.length;i++){n[i].style.opacity='1';n[i].style.transform='none';}},3000);",
+            }}
+          />
         </Head>
         <body>
           <Main />
