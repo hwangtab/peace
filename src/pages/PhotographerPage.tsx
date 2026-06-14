@@ -69,6 +69,7 @@ const PhotographerPage: React.FC<PhotographerPageProps> = ({ slug, images }) => 
       structuredData={structuredData}
       breadcrumbs={breadcrumbs}
       disableTopPadding={true}
+      disableBottomPadding={true}
     >
       <PageHero
         title={name}
