@@ -1834,5 +1834,17 @@
       5
     ],
     "directorMusicianId": 49
+  },
+  {
+    "id": 2602,
+    "title": "2026 강정피스앤뮤직캠프 스케치 vol.2 — 아름다운 사람 (정선녀)",
+    "description": "제3회 강정피스앤뮤직캠프 현장 스케치 두 번째 영상. 정선녀의 무대 \"아름다운 사람\"을 담았습니다.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=5xe--LVQ1s8",
+    "date": "2026-06-07",
+    "location": "서귀포시 강정체육공원",
+    "eventType": "camp",
+    "eventYear": 2026,
+    "thumbnailUrl": "https://i.ytimg.com/vi/5xe--LVQ1s8/sddefault.jpg",
+    "directorMusicianId": 49
   }
 ]
