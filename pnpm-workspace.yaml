@@ -1,0 +1,13 @@
+overrides:
+  postcss: ^8.5.14
+  tmp: ^0.2.7
+
+confirmModulesPurge: false
+
+allowBuilds:
+  '@swc/core': true
+  core-js: false
+  esbuild: true
+  puppeteer: true
+  sharp: true
+  unrs-resolver: true
