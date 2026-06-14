@@ -174,7 +174,8 @@
     "recap_cta_body": "Tres días de canciones por la paz junto al mar de Gangjeong. Revive esos momentos a través de las fotos.",
     "recap_cta_button": "Ver las fotos",
     "description_2026_past": "Del 5 al 7 de junio de 2026 se celebró el 3.º Campamento de Paz y Música de Gangjeong en el Parque Deportivo de Gangjeong, en Seogwipo, Jeju. En el 73.º año del armisticio, el campamento se amplió por primera vez a tres días con 50 grupos. Bajo el lema «¡Canta, baila, acaba con la guerra!», durante tres días sonaron canciones por la paz junto al mar de Gangjeong.",
-    "section_videos": "Vídeos"
+    "section_videos": "Vídeos",
+    "lineup_count_past": "Participaron {{count}} grupos"
   },
   "camp_data": {
     "camp-2023": {
