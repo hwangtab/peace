@@ -128,7 +128,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({
               {t('camp.view_photos')}
             </Button>
             <Button href="#lineup" variant="ghost-white" size="sm">
-              {t('camp.lineup_count', { count: participantCount })}
+              {t('camp.lineup_count_past', { count: participantCount })}
             </Button>
           </>
         ) : (
@@ -244,7 +244,9 @@ const Camp2026Page: React.FC<CampPageProps> = ({
           <Container size="content">
             <SectionHeader
               title={t('camp.section_musicians')}
-              subtitle={t('camp.lineup_count', { count: participantCount })}
+              subtitle={t(isPast ? 'camp.lineup_count_past' : 'camp.lineup_count', {
+                count: participantCount,
+              })}
             />
             <div>
               {musiciansResource.isLoading ? (
@@ -268,9 +270,13 @@ const Camp2026Page: React.FC<CampPageProps> = ({
         <>
           <SectionWave color="sky-horizon" />
           <div id="gallery">
-            <CampGallery camp={{ ...camp2026, images: campGalleryHighlights2026 }} />
+            <CampGallery
+              camp={{ ...camp2026, images: campGalleryHighlights2026 }}
+              paddingTop="loose"
+              paddingBottom="tight"
+            />
           </div>
-          <CampVideos year={2026} />
+          <CampVideos year={2026} paddingTop="tight" paddingBottom="loose" />
           <SectionWave color="light-beige" />
         </>
       ) : (

@@ -8,11 +8,15 @@ import SectionHeader from '../common/SectionHeader';
 import Button from '../common/Button';
 import VideoCard from '../videos/VideoCard';
 
+type PaddingLevel = 'none' | 'tight' | 'normal' | 'loose';
+
 interface CampVideosProps {
   /** 캠프 연도 — 해당 연도 camp 영상만 노출 */
   year: number;
   /** 미리보기로 보여줄 최대 개수 */
   limit?: number;
+  paddingTop?: PaddingLevel;
+  paddingBottom?: PaddingLevel;
 }
 
 /**
@@ -20,7 +24,12 @@ interface CampVideosProps {
  * videos.json 에서 해당 연도 camp 영상을 클라이언트에서 불러와 미리보기로 보여주고,
  * 전체는 /videos?filter=camp-{year} 로 연결한다. 영상이 없으면 렌더하지 않는다.
  */
-const CampVideos: React.FC<CampVideosProps> = ({ year, limit = 6 }) => {
+const CampVideos: React.FC<CampVideosProps> = ({
+  year,
+  limit = 6,
+  paddingTop = 'normal',
+  paddingBottom = 'normal',
+}) => {
   const { t, i18n } = useTranslation();
   const [videos, setVideos] = useState<VideoItem[]>([]);
 
@@ -43,7 +52,12 @@ const CampVideos: React.FC<CampVideosProps> = ({ year, limit = 6 }) => {
   if (videos.length === 0) return null;
 
   return (
-    <Section background="light-beige" id="videos">
+    <Section
+      background="light-beige"
+      id="videos"
+      paddingTop={paddingTop}
+      paddingBottom={paddingBottom}
+    >
       <Container size="wide">
         <SectionHeader title={t('camp.section_videos')} />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

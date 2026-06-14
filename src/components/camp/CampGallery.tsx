@@ -10,11 +10,19 @@ import Button from '../common/Button';
 import ImageLightbox from '../common/ImageLightbox';
 import { photographersByYear, photographerNameKey } from '@/data/photographers';
 
+type PaddingLevel = 'none' | 'tight' | 'normal' | 'loose';
+
 interface CampGalleryProps {
   camp: CampEvent;
+  paddingTop?: PaddingLevel;
+  paddingBottom?: PaddingLevel;
 }
 
-const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
+const CampGallery: React.FC<CampGalleryProps> = ({
+  camp,
+  paddingTop = 'normal',
+  paddingBottom = 'normal',
+}) => {
   const { t, i18n } = useTranslation();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
@@ -34,7 +42,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({ camp }) => {
   };
 
   return (
-    <Section background="light-beige">
+    <Section background="light-beige" paddingTop={paddingTop} paddingBottom={paddingBottom}>
       <Container size="wide">
         <SectionHeader title={t('camp.section_gallery')} subtitle={creditText} />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
