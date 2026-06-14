@@ -40,8 +40,8 @@ const PrivacyPolicyPage: React.FC = () => {
               <p className="mb-2 mt-4 font-medium">나. 자동 수집</p>
               <ul className={UL}>
                 <li>
-                  접속 기기·브라우저 정보(User-Agent), 방문·이용 기록, 쿠키 — Google Analytics를 통한
-                  이용 분석
+                  접속 기기·브라우저 정보(User-Agent), 방문·이용 기록, 쿠키 — Google Analytics를
+                  통한 이용 분석
                 </li>
                 <li>언어 설정을 저장하기 위한 기능 쿠키</li>
               </ul>
@@ -66,7 +66,9 @@ const PrivacyPolicyPage: React.FC = () => {
 
             <section>
               <h2 className={H2}>4. 처리 위탁 및 국외 이전</h2>
-              <p>캠프는 아래 업체에 개인정보 처리를 위탁하며, 데이터 일부는 국외에 저장·이전됩니다.</p>
+              <p>
+                캠프는 아래 업체에 개인정보 처리를 위탁하며, 데이터 일부는 국외에 저장·이전됩니다.
+              </p>
               <ul className={`${UL} mt-2`}>
                 <li>Supabase, Inc. — 설문 응답 데이터베이스 저장·관리 (인도 뭄바이 리전)</li>
                 <li>Vercel, Inc. — 웹사이트 호스팅 (미국 등)</li>
@@ -96,8 +98,8 @@ const PrivacyPolicyPage: React.FC = () => {
             <section>
               <h2 className={H2}>7. 정보주체의 권리와 행사 방법</h2>
               <p>
-                이용자는 언제든지 본인의 개인정보에 대한 열람·정정·삭제·처리정지 및 동의 철회를 요청할
-                수 있습니다. 아래 연락처로 요청하시면 지체 없이 조치합니다.
+                이용자는 언제든지 본인의 개인정보에 대한 열람·정정·삭제·처리정지 및 동의 철회를
+                요청할 수 있습니다. 아래 연락처로 요청하시면 지체 없이 조치합니다.
               </p>
             </section>
 

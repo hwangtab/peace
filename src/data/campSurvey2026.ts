@@ -70,7 +70,12 @@ export const SURVEY_SECTIONS: SurveySection[] = [
         roles: ['musician'],
       },
       { key: 'timetable_rating', label: '타임테이블·진행 흐름', ...SATISFACTION },
-      { key: 'lodging_rating', label: '숙소(2박 환경)', ...SATISFACTION, roles: ['musician', 'staff'] },
+      {
+        key: 'lodging_rating',
+        label: '숙소(2박 환경)',
+        ...SATISFACTION,
+        roles: ['musician', 'staff'],
+      },
       { key: 'meals_rating', label: '식사', ...SATISFACTION },
       { key: 'transport_rating', label: '제주/강정 이동·교통', ...SATISFACTION },
       { key: 'staff_comm_rating', label: '스태프·자원봉사자 소통과 응대', ...SATISFACTION },
@@ -229,10 +234,7 @@ export const ALL_TEXT_KEYS = SURVEY_SECTIONS.flatMap((s) => s.texts.map((t) => t
 
 // 응답자가 고른 역할(roles)에 따라 문항 노출 여부 판단.
 // roles 미지정 문항은 공통이며, 응답자가 아무 유형도 고르지 않으면 전체를 노출한다.
-export const isQuestionVisible = (
-  q: { roles?: string[] },
-  selectedRoles: string[]
-): boolean =>
+export const isQuestionVisible = (q: { roles?: string[] }, selectedRoles: string[]): boolean =>
   !q.roles || selectedRoles.length === 0 || q.roles.some((r) => selectedRoles.includes(r));
 
 const TEXT_QUESTION_BY_KEY = new Map(

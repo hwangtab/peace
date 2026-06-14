@@ -78,8 +78,8 @@ peace/
 | `pnpm format:check` | Prettier 체크 (CI용) |
 | `pnpm i18n:extract` | 임시 경로에 번역 키 추출 (`--apply`는 기존 번역 보존·누락 키만 병합) |
 | `pnpm i18n:check` | 번역 키 parity·한국어 누수·빈 값 검사 |
-| `pnpm build:timetable` | `docs/2026캠프 운영/timetable_v7.xlsx`에서 타임테이블 데이터 재생성 |
-| `pnpm timetable:check` | 타임테이블 재생성 후 `src/data/timetable-2026.ts` diff 검사 |
+| `pnpm build:timetable` | `docs/2026캠프 운영/timetable_v7.xlsx`에서 타임테이블 데이터 재생성 (비공개 원본 필요) |
+| `pnpm timetable:check` | 로컬 전용: 타임테이블 재생성 후 `src/data/timetable-2026.ts` diff 검사 |
 | `pnpm audit` | 전체 의존성 보안 감사 |
 | `pnpm analyze` | 번들 분석 (`ANALYZE=true next build`) |
 

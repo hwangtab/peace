@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 import { spawnSync } from 'child_process';
 import {
+  cpSync,
   existsSync,
   mkdirSync,
   mkdtempSync,
   readdirSync,
   readFileSync,
   rmSync,
+  statSync,
   writeFileSync,
 } from 'fs';
 import { tmpdir } from 'os';
@@ -22,7 +24,7 @@ const shouldStrict = args.includes('--strict');
 if (args.includes('--help') || args.includes('-h')) {
   console.log(`Usage: pnpm i18n:extract [--apply] [--keep] [--strict]
 
-Runs i18next-parser into a temporary directory first. By default this leaves a
+Runs i18next-cli into a temporary directory first. By default this leaves a
 reviewable candidate outside public/locales. With --apply, extracted keys are
 merged into public/locales without deleting namespaces or overwriting existing
 translations.
@@ -34,23 +36,29 @@ Options:
   process.exit(0);
 }
 
+const publicKoDir = join(repoRoot, 'public', 'locales', 'ko');
+const publicLocalesDir = join(repoRoot, 'public', 'locales');
+const extractionRoot = mkdtempSync(join(tmpdir(), 'peace-i18n-raw-'));
 const tempRoot = mkdtempSync(join(tmpdir(), 'peace-i18n-extract-'));
-const outputPattern = join(tempRoot, '$LOCALE', '$NAMESPACE.json');
-const parserBin = join(repoRoot, 'node_modules', '.bin', 'i18next');
 
-const parser = spawnSync(
-  parserBin,
-  ['--config', 'i18next-parser.config.js', '--output', outputPattern],
-  {
-    cwd: repoRoot,
-    stdio: 'inherit',
-  }
-);
+const outputPattern = join(extractionRoot, '{{language}}', '{{namespace}}.json');
+const extractorBin = join(repoRoot, 'node_modules', '.bin', 'i18next-cli');
 
-if (parser.status !== 0) {
-  console.error(`i18next-parser failed with exit code ${parser.status}.`);
-  process.exit(parser.status ?? 1);
+const extractor = spawnSync(extractorBin, ['--config', 'i18next.config.ts', 'extract'], {
+  cwd: repoRoot,
+  stdio: 'inherit',
+  env: {
+    ...process.env,
+    I18NEXT_OUTPUT: outputPattern,
+  },
+});
+
+if (extractor.status !== 0) {
+  console.error(`i18next-cli extract failed with exit code ${extractor.status}.`);
+  process.exit(extractor.status ?? 1);
 }
+
+cpSync(publicLocalesDir, tempRoot, { recursive: true });
 
 function flattenKeys(value, prefix = '', out = []) {
   if (!value || typeof value !== 'object' || Array.isArray(value)) {
@@ -68,14 +76,67 @@ function readJson(file) {
   return JSON.parse(readFileSync(file, 'utf8'));
 }
 
-const publicKoDir = join(repoRoot, 'public', 'locales', 'ko');
-const publicLocalesDir = join(repoRoot, 'public', 'locales');
-const extractedKoDir = join(tempRoot, 'ko');
 const publicNamespaces = readdirSync(publicKoDir)
   .filter((file) => file.endsWith('.json'))
   .map((file) => file.replace(/\.json$/, ''))
   .sort();
 const knownNamespaces = new Set(publicNamespaces);
+
+function mergeMissing(target, source, options = {}) {
+  const { namespace, depth = 0 } = options;
+  let added = 0;
+  for (const [key, sourceValue] of Object.entries(source)) {
+    if (
+      namespace === 'translation' &&
+      depth === 0 &&
+      knownNamespaces.has(key) &&
+      key !== namespace
+    ) {
+      continue;
+    }
+
+    const pluralBaseKey = key.replace(/_(zero|one|two|few|many|other)$/, '');
+    if (pluralBaseKey !== key && pluralBaseKey in target) {
+      continue;
+    }
+
+    if (
+      sourceValue &&
+      typeof sourceValue === 'object' &&
+      !Array.isArray(sourceValue) &&
+      target[key] &&
+      typeof target[key] === 'object' &&
+      !Array.isArray(target[key])
+    ) {
+      added += mergeMissing(target[key], sourceValue, { namespace, depth: depth + 1 });
+    } else if (!(key in target)) {
+      target[key] = sourceValue;
+      added += flattenKeys(sourceValue).length;
+    }
+  }
+  return added;
+}
+
+const rawLocales = readdirSync(extractionRoot)
+  .filter((entry) => statSync(join(extractionRoot, entry)).isDirectory())
+  .sort();
+
+for (const locale of rawLocales) {
+  const rawLocaleDir = join(extractionRoot, locale);
+  const candidateLocaleDir = join(tempRoot, locale);
+  mkdirSync(candidateLocaleDir, { recursive: true });
+
+  for (const file of readdirSync(rawLocaleDir).filter((entry) => entry.endsWith('.json'))) {
+    const rawFile = join(rawLocaleDir, file);
+    const candidateFile = join(candidateLocaleDir, file);
+    const namespace = file.replace(/\.json$/, '');
+    const current = existsSync(candidateFile) ? readJson(candidateFile) : {};
+    mergeMissing(current, readJson(rawFile), { namespace });
+    writeFileSync(candidateFile, `${JSON.stringify(current, null, 2)}\n`, 'utf8');
+  }
+}
+
+const extractedKoDir = join(tempRoot, 'ko');
 const extractedNamespaces = existsSync(extractedKoDir)
   ? readdirSync(extractedKoDir)
       .filter((file) => file.endsWith('.json'))
@@ -124,45 +185,10 @@ if (hasIncompleteCoverage) {
   }
 }
 
-function mergeMissing(target, source, options = {}) {
-  const { namespace, depth = 0 } = options;
-  let added = 0;
-  for (const [key, sourceValue] of Object.entries(source)) {
-    if (
-      namespace === 'translation' &&
-      depth === 0 &&
-      knownNamespaces.has(key) &&
-      key !== namespace
-    ) {
-      continue;
-    }
-
-    const pluralBaseKey = key.replace(/_(zero|one|two|few|many|other)$/, '');
-    if (pluralBaseKey !== key && pluralBaseKey in target) {
-      continue;
-    }
-
-    if (
-      sourceValue &&
-      typeof sourceValue === 'object' &&
-      !Array.isArray(sourceValue) &&
-      target[key] &&
-      typeof target[key] === 'object' &&
-      !Array.isArray(target[key])
-    ) {
-      added += mergeMissing(target[key], sourceValue, { namespace, depth: depth + 1 });
-    } else if (!(key in target)) {
-      target[key] = sourceValue;
-      added += flattenKeys(sourceValue).length;
-    }
-  }
-  return added;
-}
-
 if (shouldApply) {
   const changes = [];
   const locales = readdirSync(tempRoot)
-    .filter((entry) => existsSync(join(tempRoot, entry)))
+    .filter((entry) => statSync(join(tempRoot, entry)).isDirectory())
     .sort();
 
   for (const locale of locales) {
@@ -200,3 +226,5 @@ if (shouldApply) {
   console.log(`i18n extraction candidate written to ${tempRoot}.`);
   console.log('Run with --apply to merge missing extracted keys without overwriting translations.');
 }
+
+rmSync(extractionRoot, { recursive: true, force: true });

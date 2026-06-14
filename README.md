@@ -34,6 +34,7 @@ pnpm start
 - Translations live under `public/locales/<locale>/*.json`.
 - Camp 2026 timetable source is `docs/2026캠프 운영/timetable_v7.xlsx`.
 - Regenerate timetable data with `pnpm build:timetable`.
+- `pnpm timetable:check` is local-only because the timetable source spreadsheet is private and not committed.
 - Private guide/staff/survey surfaces are `noIndex` and excluded from sitemap generation.
 
 ## Quality Gates

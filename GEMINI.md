@@ -42,7 +42,7 @@ pnpm start
 pnpm build:timetable
 ```
 
-`pnpm build:timetable` regenerates `src/data/timetable-2026.ts` from the timetable workbook.
+`pnpm build:timetable` regenerates `src/data/timetable-2026.ts` from the private timetable workbook and is local-only.
 `pnpm build` runs `next build` and `next-sitemap`.
 
 ## Operating Notes

@@ -35,8 +35,6 @@ jobs:
 
       - run: pnpm static:check
 
-      - run: pnpm timetable:check
-
       - run: pnpm audit
 
       - run: pnpm build

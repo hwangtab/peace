@@ -140,29 +140,35 @@ const CampSurvey2026Page: React.FC = () => {
     setStatus('submitting');
     setErrorMsg('');
 
-    const { error } = await supabase.from('camp_survey_responses').insert({
-      ...buildSurveyInsertPayload({
-        respondentName: name,
-        contactInstagram: instagram,
-        contactEmail: email,
-        contactPhone: phone,
-        privacyConsent,
-        roles,
-        ratings,
-        texts,
-        consents,
-        userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : null,
-      }),
-    });
+    try {
+      const { error } = await supabase.from('camp_survey_responses').insert({
+        ...buildSurveyInsertPayload({
+          respondentName: name,
+          contactInstagram: instagram,
+          contactEmail: email,
+          contactPhone: phone,
+          privacyConsent,
+          roles,
+          ratings,
+          texts,
+          consents,
+          userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : null,
+        }),
+      });
 
-    if (error) {
+      if (!error) {
+        setStatus('success');
+        if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+    } catch {
       setStatus('error');
       setErrorMsg('제출 중 문제가 발생했어요. 잠시 후 다시 시도하거나 운영진에게 알려 주세요.');
       return;
     }
 
-    setStatus('success');
-    if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' });
+    setStatus('error');
+    setErrorMsg('제출 중 문제가 발생했어요. 잠시 후 다시 시도하거나 운영진에게 알려 주세요.');
   };
 
   if (status === 'success') {
