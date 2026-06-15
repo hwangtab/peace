@@ -43,10 +43,10 @@ const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
   );
 
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col transition-[box-shadow,transform] duration-300 hover:shadow-lg hover:scale-[1.02] hover:bg-ocean-mist/10">
+    <div className="h-full bg-white rounded-xl shadow-md overflow-hidden flex flex-col transition-[box-shadow,transform] duration-300 hover:shadow-lg hover:scale-[1.02] hover:bg-ocean-mist/10">
       <Link
         href={`/videos/${video.id}`}
-        className="block rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
+        className="grow block rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
         aria-label={video.title}
       >
         <div className="relative aspect-video overflow-hidden rounded-t-xl group bg-seafoam/30">

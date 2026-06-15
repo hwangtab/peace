@@ -76,6 +76,48 @@ const PageLayout: React.FC<PageLayoutProps> = ({
     }
   }, [disableBottomPadding, background]);
 
+  // 개발 가드: 같은 그리드 행에 놓인 "카드"(그림자+둥근모서리)의 높이가 다르면 경고.
+  // 카드 컴포넌트 루트에 h-full 누락 등으로 카드 높이가 들쭉날쭉해지는 회귀를 잡는다.
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'production') return;
+    const root = rootRef.current;
+    if (!root) return;
+    const isCard = (el: HTMLElement) => {
+      const s = getComputedStyle(el);
+      return s.boxShadow !== 'none' && parseFloat(s.borderTopLeftRadius) >= 8;
+    };
+    const timer = window.setTimeout(() => {
+      const grids = Array.from(root.querySelectorAll<HTMLElement>('.grid'));
+      const warned = new Set<HTMLElement>();
+      for (const grid of grids) {
+        const cards = Array.from(grid.children).filter(
+          (c): c is HTMLElement => c instanceof HTMLElement && c.offsetHeight > 0 && isCard(c)
+        );
+        if (cards.length < 2) continue;
+        // offsetTop 으로 같은 행 그룹화
+        const rows = new Map<number, HTMLElement[]>();
+        for (const c of cards) {
+          const key = Math.round(c.offsetTop / 4) * 4;
+          (rows.get(key) ?? rows.set(key, []).get(key)!).push(c);
+        }
+        for (const rowCards of rows.values()) {
+          if (rowCards.length < 2 || warned.has(grid)) continue;
+          const hs = rowCards.map((c) => c.offsetHeight);
+          const diff = Math.max(...hs) - Math.min(...hs);
+          if (diff > 6) {
+            warned.add(grid);
+            const path = typeof window !== 'undefined' ? window.location.pathname : '';
+            console.warn(
+              `[PageLayout] 같은 행의 카드 높이가 다릅니다(${Math.min(...hs)}~${Math.max(...hs)}px, 차이 ${diff}px). ` +
+                `카드 루트에 h-full 을 주고 그리드가 stretch 되게 하세요. [${path}]`
+            );
+          }
+        }
+      }
+    }, 500);
+    return () => window.clearTimeout(timer);
+  });
+
   return (
     <div
       ref={rootRef}
