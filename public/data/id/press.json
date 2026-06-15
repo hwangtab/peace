@@ -283,5 +283,104 @@
         "imageUrl": "http://www.newsnjeju.com/news/thumbnail/202505/218234_282572_2715_v150.jpg",
         "eventType": "camp",
         "eventYear": 2025
+    },
+    {
+        "id": 33,
+        "title": "“Akhiri perang”... diserukan bersama di Gangjeong Peace & Music Camp",
+        "publisher": "Media Jeju",
+        "date": "2026-04-06",
+        "url": "https://www.mediajeju.com/news/articleView.html?idxno=363645",
+        "description": "Media Jeju melaporkan bahwa Gangjeong Peace & Music Camp ke-3 akan digelar mulai 5 Juni di Gangjeong Sports Park, sebagai bentuk solidaritas dengan korban perang di Ukraina, Palestina, dan Iran. Panitia menyebutnya sebagai festival perdamaian dengan slogan “Mari bernyanyi, menari, akhiri perang!”",
+        "imageUrl": "https://cdn.mediajeju.com/news/photo/202604/363645_260476_503.png",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 34,
+        "title": "[Memikirkan hari ini] Mari bernyanyi, menari, akhiri perang",
+        "publisher": "Weekly Kyunghyang",
+        "date": "2026-04-10",
+        "url": "https://weekly.khan.co.kr/article/202604101445001",
+        "description": "Aktivis Jang Hana meninjau kembali gerakan perdamaian Gangjeong sejak komite penolak pangkalan angkatan laut dibentuk pada 2007, dan memperkenalkan camp ke-3 yang akan mempertemukan 54 kelompok musisi selama tiga hari mulai 5 Juni. Tulisan itu mengajak orang untuk terus menyanyikan perdamaian di depan sebuah pangkalan perang.",
+        "imageUrl": "https://img.khan.co.kr/weekly/2026/04/10/news-p.v1.20260409.aea50ab30d844f72bb6a8e2e2d53b58a_P1.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 35,
+        "title": "Lagu sebagai ganti perang, solidaritas sebagai ganti kecemasan",
+        "publisher": "Woman Story News",
+        "date": "2026-05-15",
+        "url": "http://www.woman-story.co.kr/news/articleView.html?idxno=12590",
+        "description": "Woman Story News menggambarkan camp ke-3, yang berlangsung 5-7 Juni di sekitar Gangjeong Village dan Gangjeong Sports Park, sebagai ruang untuk membicarakan perdamaian, hidup bersama, kehidupan, dan solidaritas. Laporan itu menyoroti poster dan program yang mengganti citra perang dan pangkalan militer dengan warna kehidupan dan seni.",
+        "imageUrl": "https://cdn.woman-story.co.kr/news/thumbnail/202605/12590_16064_5338_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 36,
+        "title": "Gangjeong Peace & Music Camp ke-3, eksperimen seni kontemporer tempat musik dan komunitas bertemu",
+        "publisher": "News Classic M",
+        "date": "2026-05-15",
+        "url": "http://www.classicm.co.kr/news/articleView.html?idxno=6497",
+        "description": "News Classic M memandang camp ke-3 sebagai proyek seni yang menunjukkan bagaimana musik kontemporer dapat berelasi dengan masyarakat. Sebanyak 51 kelompok musisi akan menyampaikan pesan perdamaian dan solidaritas lewat folk, world music, reggae, musik elektronik, dan genre lainnya.",
+        "imageUrl": "https://cdn.classicm.co.kr/news/thumbnail/202605/6497_10362_5555_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 37,
+        "title": "“Akhiri perang” Gangjeong Peace & Music Camp ke-3 dibuka 5 Juni",
+        "publisher": "Samda Ilbo",
+        "date": "2026-05-25",
+        "url": "https://www.samdailbo.com/news/articleView.html?idxno=264821",
+        "description": "Samda Ilbo melaporkan bahwa camp ke-3, yang berlangsung 5-7 Juni di Gangjeong Sports Park, Seogwipo, untuk pertama kalinya diperluas menjadi tiga hari dua malam untuk menandai 73 tahun gencatan senjata Perang Korea. Lebih dari 50 kelompok dari Korea dan luar negeri akan membawakan musik anti-perang dan perdamaian.",
+        "imageUrl": "http://www.samdailbo.com/news/thumbnail/202605/264821_190670_4326_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 38,
+        "title": "“Akhiri perang!” Gangjeong Peace & Music Camp ke-3 selama tiga hari akan digelar",
+        "publisher": "Jeju Sori",
+        "date": "2026-05-25",
+        "url": "https://v.daum.net/v/20260525152601984",
+        "description": "Jeju Sori memperkenalkan camp ke-3, yang berlangsung 5-7 Juni di Gangjeong Sports Park, sebagai festival musik yang membawa pesan anti-perang dan perdamaian. Lebih dari 50 kelompok folk, blues, improvisasi, dan musik eksperimental akan berpartisipasi, bersama “Pasar Akhiri Perang”.",
+        "imageUrl": "https://img1.daumcdn.net/thumb/S1200x630/?fname=https://t1.daumcdn.net/news/202605/25/551757-p7t5OYl/20260525152602543pjao.png",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 39,
+        "title": "“Mari bernyanyi, menari, akhiri perang!” Gangjeong Peace & Music Camp ke-3 digelar di Gangjeong Village, Jeju",
+        "publisher": "Lawyersite",
+        "date": "2026-05-25",
+        "url": "https://www.lawyersite.co.kr/12031",
+        "description": "Lawyersite melaporkan bahwa sebuah festival musik besar melawan perang dan militerisasi akan digelar di Gangjeong Village untuk memperingati 73 tahun gencatan senjata. Selama tiga hari dua malam, organisasi masyarakat sipil dan musisi akan berbagi pesan perdamaian melalui musik.",
+        "imageUrl": "https://www.lawyersite.co.kr/data/lawyersite_co_kr/mainimages/202605/2026052511176203.jpeg?t=1781528082",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 40,
+        "title": "“Mari bernyanyi, menari, akhiri perang!” Gangjeong Peace & Music Camp ke-3 dibuka 5 Juni di Gangjeong Village, Jeju, dengan skala terbesar sejauh ini",
+        "publisher": "NewsNJeju",
+        "date": "2026-05-25",
+        "url": "https://www.newsnjeju.com/news/articleView.html?idxno=283610",
+        "description": "NewsNJeju melaporkan bahwa di tengah militerisasi Semenanjung Korea dan krisis perang global, camp ke-3 akan digelar 5-7 Juni dengan skala terbesar sejauh ini. Lebih dari 50 kelompok folk, blues, improvisasi, dan musik eksperimental akan menyanyikan pesan anti-perang dan perdamaian di Gangjeong Village.",
+        "imageUrl": "https://www.newsnjeju.com/news/thumbnail/202605/283610_353153_4116_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 41,
+        "title": "Gangjeong Peace & Music Camp ke-3 akan menggemakan “lagu anti-perang” di Jeju, pulau perdamaian",
+        "publisher": "Seogwipo TV",
+        "date": "2026-05-25",
+        "url": "http://www.seogwipo.tv/news/articleView.html?idxno=14195",
+        "description": "Seogwipo TV memperkenalkan camp ke-3 sebagai acara tiga hari dua malam di sekitar Gangjeong Sports Park, yang akan menggemakan lagu anti-perang di Jeju, pulau perdamaian. Lebih dari 50 kelompok dari Korea dan luar negeri akan tampil di panggung yang berakar pada perlawanan dan ingatan Gangjeong Village.",
+        "imageUrl": "http://www.seogwipo.tv/news/thumbnail/202605/14195_24767_4855_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
     }
 ]

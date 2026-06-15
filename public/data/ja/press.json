@@ -283,5 +283,104 @@
         "imageUrl": "http://www.newsnjeju.com/news/thumbnail/202505/218234_282572_2715_v150.jpg",
         "eventType": "camp",
         "eventYear": 2025
+    },
+    {
+        "id": 33,
+        "title": "「戦争を終わらせよう」…江汀ピース＆ミュージックキャンプで共に叫ぶ",
+        "publisher": "Media Jeju",
+        "date": "2026-04-06",
+        "url": "https://www.mediajeju.com/news/articleView.html?idxno=363645",
+        "description": "メディア済州は、ウクライナ、パレスチナ、イランなどの戦争被害者と連帯し、戦争終結を訴える第3回江汀ピース＆ミュージックキャンプが6月5日から江汀体育公園で開かれると伝えた。組織委員会は「歌おう、踊ろう、戦争を終わらせよう！」をスローガンに平和の祭りとして準備していると説明した。",
+        "imageUrl": "https://cdn.mediajeju.com/news/photo/202604/363645_260476_503.png",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 34,
+        "title": "【今日を考える】歌おう、踊ろう、戦争を終わらせよう",
+        "publisher": "Weekly Kyunghyang",
+        "date": "2026-04-10",
+        "url": "https://weekly.khan.co.kr/article/202604101445001",
+        "description": "活動家のチャン・ハナは、2007年に海軍基地反対対策委員会が発足して以来続いてきた江汀平和運動を振り返り、6月5日から3日間開かれる第3回キャンプに54組の音楽家が集うと紹介した。戦争基地の前で平和の歌を歌い続けようという呼びかけが込められている。",
+        "imageUrl": "https://img.khan.co.kr/weekly/2026/04/10/news-p.v1.20260409.aea50ab30d844f72bb6a8e2e2d53b58a_P1.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 35,
+        "title": "戦争の代わりに歌を、不安の代わりに連帯を",
+        "publisher": "Woman Story News",
+        "date": "2026-05-15",
+        "url": "http://www.woman-story.co.kr/news/articleView.html?idxno=12590",
+        "description": "ウーマンストーリーニュースは、6月5日から7日まで江汀村一帯と江汀体育公園で開かれる第3回キャンプを、平和、共存、生命、連帯を語る場として紹介した。ポスターとプログラムを通じて、戦争や軍事基地のイメージではなく生命と芸術の色彩を強調していると伝えた。",
+        "imageUrl": "https://cdn.woman-story.co.kr/news/thumbnail/202605/12590_16064_5338_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 36,
+        "title": "「第3回江汀ピース＆ミュージックキャンプ」、音楽と共同体が出会う同時代の芸術実験",
+        "publisher": "News Classic M",
+        "date": "2026-05-15",
+        "url": "http://www.classicm.co.kr/news/articleView.html?idxno=6497",
+        "description": "ニュースクラシックMは、第3回キャンプを同時代の音楽が社会とどのように関係を結ぶかを示す芸術プロジェクトとして取り上げた。51組の音楽家がフォーク、ワールドミュージック、レゲエ、電子音楽など多様なジャンルで平和と連帯のメッセージを伝えると紹介した。",
+        "imageUrl": "https://cdn.classicm.co.kr/news/thumbnail/202605/6497_10362_5555_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 37,
+        "title": "「戦争を終わらせよう」第3回江汀ピース＆ミュージックキャンプ、6月5日開催",
+        "publisher": "Samda Ilbo",
+        "date": "2026-05-25",
+        "url": "https://www.samdailbo.com/news/articleView.html?idxno=264821",
+        "description": "三多日報は、6月5日から7日まで西帰浦市江汀体育公園一帯で開かれる第3回キャンプが、朝鮮戦争休戦73年を機に初めて2泊3日規模へ拡大されたと伝えた。国内外の音楽家50組余りが参加し、反戦と平和の旋律を届ける予定だ。",
+        "imageUrl": "http://www.samdailbo.com/news/thumbnail/202605/264821_190670_4326_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 38,
+        "title": "「戦争を終わらせよう！」2泊3日の第3回江汀ピース＆ミュージックキャンプ開催",
+        "publisher": "Jeju Sori",
+        "date": "2026-05-25",
+        "url": "https://v.daum.net/v/20260525152601984",
+        "description": "済州の声は、6月5日から7日まで江汀体育公園一帯で開かれる第3回キャンプを、反戦と平和のメッセージを伝える音楽フェスティバルとして紹介した。フォーク、ブルース、即興・実験音楽など50組余りが参加し、「戦争を終わらせよう市場」も運営されると伝えた。",
+        "imageUrl": "https://img1.daumcdn.net/thumb/S1200x630/?fname=https://t1.daumcdn.net/news/202605/25/551757-p7t5OYl/20260525152602543pjao.png",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 39,
+        "title": "「歌おう、踊ろう、戦争を終わらせよう！」第3回江汀ピース＆ミュージックキャンプ、済州・江汀村で開催",
+        "publisher": "Lawyersite",
+        "date": "2026-05-25",
+        "url": "https://www.lawyersite.co.kr/12031",
+        "description": "法律ドットコムは、休戦73年を迎え、江汀村で戦争と軍事化に抗する大規模な音楽フェスティバルが開かれると伝えた。2泊3日の間、市民社会団体と音楽家が音楽で平和のメッセージを分かち合う場として紹介した。",
+        "imageUrl": "https://www.lawyersite.co.kr/data/lawyersite_co_kr/mainimages/202605/2026052511176203.jpeg?t=1781528082",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 40,
+        "title": "「歌おう、踊ろう、戦争を終わらせよう！」第3回江汀ピース＆ミュージックキャンプ、6月5日に済州・江汀村で過去最大規模開催",
+        "publisher": "NewsNJeju",
+        "date": "2026-05-25",
+        "url": "https://www.newsnjeju.com/news/articleView.html?idxno=283610",
+        "description": "ニュースN済州は、朝鮮半島の軍事基地化と世界的な戦争危機の中で、第3回キャンプが6月5日から7日まで過去最大規模で開かれると報じた。フォーク、ブルース、即興・実験音楽など50組余りが江汀村で反戦と平和のメッセージを歌うと伝えた。",
+        "imageUrl": "https://www.newsnjeju.com/news/thumbnail/202605/283610_353153_4116_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 41,
+        "title": "第3回江汀ピース＆ミュージックキャンプ、平和の島・済州で「反戦の歌」を響かせる",
+        "publisher": "Seogwipo TV",
+        "date": "2026-05-25",
+        "url": "http://www.seogwipo.tv/news/articleView.html?idxno=14195",
+        "description": "西帰浦放送は、第3回キャンプが江汀体育公園一帯で2泊3日間開かれ、平和の島・済州で反戦の歌を響かせると紹介した。江汀村の抵抗と記憶を土台に、国内外の音楽家50組余りが舞台に立つと伝えた。",
+        "imageUrl": "http://www.seogwipo.tv/news/thumbnail/202605/14195_24767_4855_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
     }
 ]

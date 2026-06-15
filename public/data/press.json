@@ -283,5 +283,104 @@
         "imageUrl": "http://www.newsnjeju.com/news/thumbnail/202505/218234_282572_2715_v150.jpg",
         "eventType": "camp",
         "eventYear": 2025
+    },
+    {
+        "id": 33,
+        "title": "\"전쟁을 끝내자\"...강정피스앤뮤직캠프에서 함께 외친다",
+        "publisher": "미디어제주",
+        "date": "2026-04-06",
+        "url": "https://www.mediajeju.com/news/articleView.html?idxno=363645",
+        "description": "미디어제주는 우크라이나, 팔레스타인, 이란 등 전쟁 피해자들과 연대하며 전쟁 종식을 외치는 제3회 강정피스앤뮤직캠프가 6월 5일부터 강정체육공원에서 열린다고 전했다. 조직위원회는 “노래하자, 춤추자, 전쟁을 끝내자!”라는 슬로건 아래 평화의 축제로 준비한다고 설명했다.",
+        "imageUrl": "https://cdn.mediajeju.com/news/photo/202604/363645_260476_503.png",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 34,
+        "title": "[오늘을 생각한다]노래하자 춤추자, 전쟁을 끝내자",
+        "publisher": "주간경향",
+        "date": "2026-04-10",
+        "url": "https://weekly.khan.co.kr/article/202604101445001",
+        "description": "장하나 활동가는 2007년 해군기지 반대대책위 출범 이후 이어진 강정 평화운동의 시간을 돌아보며, 6월 5일부터 3일간 열리는 제3회 캠프에 54팀의 음악가들이 모인다고 소개했다. 전쟁기지 앞에서 평화의 노래를 이어 부르자는 초대가 담겼다.",
+        "imageUrl": "https://img.khan.co.kr/weekly/2026/04/10/news-p.v1.20260409.aea50ab30d844f72bb6a8e2e2d53b58a_P1.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 35,
+        "title": "전쟁 대신 노래를, 불안 대신 연대를",
+        "publisher": "우먼스토리뉴스",
+        "date": "2026-05-15",
+        "url": "http://www.woman-story.co.kr/news/articleView.html?idxno=12590",
+        "description": "우먼스토리뉴스는 6월 5일부터 7일까지 강정마을 일대와 강정체육공원에서 열리는 제3회 캠프가 평화, 공존, 생명과 연대를 이야기하는 자리라고 소개했다. 포스터와 프로그램을 통해 전쟁과 군사기지의 이미지 대신 생명과 예술의 색채를 강조한다고 전했다.",
+        "imageUrl": "https://cdn.woman-story.co.kr/news/thumbnail/202605/12590_16064_5338_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 36,
+        "title": "‘제3회 강정피스앤뮤직캠프’, 음악과 공동체가 만나는 동시대 예술 실험",
+        "publisher": "뉴스클래식M",
+        "date": "2026-05-15",
+        "url": "http://www.classicm.co.kr/news/articleView.html?idxno=6497",
+        "description": "뉴스클래식M은 제3회 캠프를 동시대 음악이 사회와 관계 맺는 방식을 보여주는 예술 프로젝트로 조명했다. 51팀의 음악가가 포크, 월드뮤직, 레게, 전자음악 등 다양한 장르로 평화와 연대의 메시지를 전한다고 소개했다.",
+        "imageUrl": "https://cdn.classicm.co.kr/news/thumbnail/202605/6497_10362_5555_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 37,
+        "title": "“전쟁 끝내자” 제3회 강정피스앤뮤직캠프 내달 5일 개최",
+        "publisher": "삼다일보",
+        "date": "2026-05-25",
+        "url": "https://www.samdailbo.com/news/articleView.html?idxno=264821",
+        "description": "삼다일보는 6월 5일부터 7일까지 서귀포시 강정체육공원 일대에서 열리는 제3회 캠프가 정전 73주년을 맞아 처음 2박 3일 규모로 확대됐다고 전했다. 국내외 뮤지션 50여 팀이 참여해 반전과 평화의 선율을 들려줄 예정이다.",
+        "imageUrl": "http://www.samdailbo.com/news/thumbnail/202605/264821_190670_4326_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 38,
+        "title": "“전쟁을 끝내자!” 2박3일 제3회 강정피스앤뮤직캠프 열린다",
+        "publisher": "제주의소리",
+        "date": "2026-05-25",
+        "url": "https://v.daum.net/v/20260525152601984",
+        "description": "제주의소리는 6월 5일부터 7일까지 강정체육공원 일대에서 열리는 제3회 캠프가 반전과 평화의 메시지를 전하는 음악 페스티벌이라고 소개했다. 포크, 블루스, 즉흥·실험음악 등 50여 팀이 참여하고 ‘전쟁을 끝내장터’도 운영된다고 전했다.",
+        "imageUrl": "https://img1.daumcdn.net/thumb/S1200x630/?fname=https://t1.daumcdn.net/news/202605/25/551757-p7t5OYl/20260525152602543pjao.png",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 39,
+        "title": "“노래하자, 춤추자, 전쟁을 끝내자!” 제3회 강정피스앤뮤직캠프 제주 강정마을서 개최",
+        "publisher": "법률닷컴",
+        "date": "2026-05-25",
+        "url": "https://www.lawyersite.co.kr/12031",
+        "description": "법률닷컴은 정전 73주년을 맞아 강정마을에서 전쟁과 군사화에 맞서는 대규모 음악 축제가 열린다고 전했다. 2박 3일 동안 시민사회단체와 뮤지션들이 음악으로 평화의 메시지를 나누는 자리로 소개했다.",
+        "imageUrl": "https://www.lawyersite.co.kr/data/lawyersite_co_kr/mainimages/202605/2026052511176203.jpeg?t=1781528082",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 40,
+        "title": "“노래하자, 춤추자, 전쟁을 끝내자!” 제3회 강정피스앤뮤직캠프, 6월 5일 제주 강정마을서 역대 최대 규모 개최",
+        "publisher": "뉴스N제주",
+        "date": "2026-05-25",
+        "url": "https://www.newsnjeju.com/news/articleView.html?idxno=283610",
+        "description": "뉴스N제주는 한반도의 군사기지화와 글로벌 전쟁 위기 속에서 제3회 캠프가 6월 5일부터 7일까지 역대 최대 규모로 열린다고 보도했다. 포크, 블루스, 즉흥·실험음악 등 50여 팀이 강정마을에서 반전과 평화의 메시지를 노래한다고 전했다.",
+        "imageUrl": "https://www.newsnjeju.com/news/thumbnail/202605/283610_353153_4116_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 41,
+        "title": "제3회 강정피스앤뮤직캠프, 평화의 섬 제주서 ‘반전의 노래’ 울린다",
+        "publisher": "서귀포방송",
+        "date": "2026-05-25",
+        "url": "http://www.seogwipo.tv/news/articleView.html?idxno=14195",
+        "description": "서귀포방송은 제3회 캠프가 강정체육공원 일대에서 2박 3일간 열리며 평화의 섬 제주에서 반전의 노래를 울린다고 소개했다. 강정마을의 저항과 기억을 바탕으로 국내외 뮤지션 50여 팀이 무대에 오른다고 전했다.",
+        "imageUrl": "http://www.seogwipo.tv/news/thumbnail/202605/14195_24767_4855_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
     }
 ]

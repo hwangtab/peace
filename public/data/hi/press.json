@@ -283,5 +283,104 @@
         "imageUrl": "http://www.newsnjeju.com/news/thumbnail/202505/218234_282572_2715_v150.jpg",
         "eventType": "camp",
         "eventYear": 2025
+    },
+    {
+        "id": 33,
+        "title": "“युद्ध खत्म करें”... गांगजोंग पीस एंड म्यूजिक कैंप में साथ मिलकर पुकार",
+        "publisher": "Media Jeju",
+        "date": "2026-04-06",
+        "url": "https://www.mediajeju.com/news/articleView.html?idxno=363645",
+        "description": "Media Jeju ने बताया कि यूक्रेन, फिलिस्तीन और ईरान जैसे युद्धों से प्रभावित लोगों के साथ एकजुटता जताने वाला तीसरा Gangjeong Peace & Music Camp 5 जून से Gangjeong Sports Park में शुरू होगा। आयोजक इसे “गाएं, नाचें, युद्ध खत्म करें!” के नारे के साथ शांति का उत्सव बता रहे हैं।",
+        "imageUrl": "https://cdn.mediajeju.com/news/photo/202604/363645_260476_503.png",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 34,
+        "title": "[आज पर विचार] गाएं, नाचें, युद्ध खत्म करें",
+        "publisher": "Weekly Kyunghyang",
+        "date": "2026-04-10",
+        "url": "https://weekly.khan.co.kr/article/202604101445001",
+        "description": "कार्यकर्ता जांग हाना 2007 में नौसैनिक अड्डे के विरोधी समिति की शुरुआत के बाद से जारी गांगजोंग शांति आंदोलन को याद करती हैं और 5 जून से तीन दिन तक चलने वाले तीसरे कैंप का परिचय देती हैं, जहां 54 संगीत दल जुटेंगे। लेख युद्ध अड्डे के सामने शांति के लिए गाते रहने का आमंत्रण देता है।",
+        "imageUrl": "https://img.khan.co.kr/weekly/2026/04/10/news-p.v1.20260409.aea50ab30d844f72bb6a8e2e2d53b58a_P1.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 35,
+        "title": "युद्ध की जगह गीत, बेचैनी की जगह एकजुटता",
+        "publisher": "Woman Story News",
+        "date": "2026-05-15",
+        "url": "http://www.woman-story.co.kr/news/articleView.html?idxno=12590",
+        "description": "Woman Story News ने 5 से 7 जून तक Gangjeong Village और Gangjeong Sports Park के आसपास होने वाले तीसरे कैंप को शांति, सहअस्तित्व, जीवन और एकजुटता पर बात करने की जगह बताया। रिपोर्ट ने बताया कि पोस्टर और कार्यक्रम युद्ध और सैन्य अड्डों की छवियों की जगह जीवन और कला के रंगों को सामने रखते हैं।",
+        "imageUrl": "https://cdn.woman-story.co.kr/news/thumbnail/202605/12590_16064_5338_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 36,
+        "title": "तीसरा Gangjeong Peace & Music Camp, जहां संगीत और समुदाय मिलते हैं, एक समकालीन कला प्रयोग",
+        "publisher": "News Classic M",
+        "date": "2026-05-15",
+        "url": "http://www.classicm.co.kr/news/articleView.html?idxno=6497",
+        "description": "News Classic M ने तीसरे कैंप को ऐसा कला प्रोजेक्ट बताया जो दिखाता है कि समकालीन संगीत समाज से कैसे जुड़ सकता है। 51 संगीत दल लोक, विश्व संगीत, रेगे, इलेक्ट्रॉनिक संगीत और अन्य शैलियों के जरिए शांति और एकजुटता के संदेश देंगे।",
+        "imageUrl": "https://cdn.classicm.co.kr/news/thumbnail/202605/6497_10362_5555_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 37,
+        "title": "“युद्ध खत्म करें” तीसरा Gangjeong Peace & Music Camp 5 जून को खुलेगा",
+        "publisher": "Samda Ilbo",
+        "date": "2026-05-25",
+        "url": "https://www.samdailbo.com/news/articleView.html?idxno=264821",
+        "description": "Samda Ilbo ने बताया कि 5 से 7 जून तक Seogwipo के Gangjeong Sports Park क्षेत्र में होने वाला तीसरा कैंप कोरियाई युद्धविराम की 73वीं वर्षगांठ पर पहली बार तीन दिन और दो रात के प्रारूप में बढ़ाया गया है। कोरिया और विदेश से 50 से अधिक दल युद्ध-विरोधी और शांति संगीत मंच पर लाएंगे।",
+        "imageUrl": "http://www.samdailbo.com/news/thumbnail/202605/264821_190670_4326_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 38,
+        "title": "“युद्ध खत्म करें!” तीन दिन का तीसरा Gangjeong Peace & Music Camp होगा",
+        "publisher": "Jeju Sori",
+        "date": "2026-05-25",
+        "url": "https://v.daum.net/v/20260525152601984",
+        "description": "Jeju Sori ने 5 से 7 जून तक Gangjeong Sports Park क्षेत्र में होने वाले तीसरे कैंप को युद्ध-विरोधी और शांति संदेश देने वाला संगीत उत्सव बताया। लोक, ब्लूज़, इम्प्रोवाइजेशन और प्रयोगात्मक संगीत के 50 से अधिक दल भाग लेंगे, साथ में “End the War Market” भी चलेगा।",
+        "imageUrl": "https://img1.daumcdn.net/thumb/S1200x630/?fname=https://t1.daumcdn.net/news/202605/25/551757-p7t5OYl/20260525152602543pjao.png",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 39,
+        "title": "“गाएं, नाचें, युद्ध खत्म करें!” तीसरा Gangjeong Peace & Music Camp Jeju के Gangjeong Village में होगा",
+        "publisher": "Lawyersite",
+        "date": "2026-05-25",
+        "url": "https://www.lawyersite.co.kr/12031",
+        "description": "Lawyersite ने बताया कि युद्धविराम की 73वीं वर्षगांठ पर Gangjeong Village में युद्ध और सैन्यीकरण के खिलाफ एक बड़ा संगीत उत्सव होगा। तीन दिन और दो रात तक नागरिक समाज संगठन और संगीतकार संगीत के जरिए शांति के संदेश साझा करेंगे।",
+        "imageUrl": "https://www.lawyersite.co.kr/data/lawyersite_co_kr/mainimages/202605/2026052511176203.jpeg?t=1781528082",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 40,
+        "title": "“गाएं, नाचें, युद्ध खत्म करें!” तीसरा Gangjeong Peace & Music Camp 5 जून को Jeju के Gangjeong Village में अब तक के सबसे बड़े पैमाने पर खुलेगा",
+        "publisher": "NewsNJeju",
+        "date": "2026-05-25",
+        "url": "https://www.newsnjeju.com/news/articleView.html?idxno=283610",
+        "description": "NewsNJeju ने बताया कि कोरियाई प्रायद्वीप के सैन्यीकरण और वैश्विक युद्ध संकटों के बीच तीसरा कैंप 5 से 7 जून तक अब तक के सबसे बड़े पैमाने पर होगा। लोक, ब्लूज़, इम्प्रोवाइजेशन और प्रयोगात्मक संगीत के 50 से अधिक दल Gangjeong Village में युद्ध-विरोधी और शांति संदेश गाएंगे।",
+        "imageUrl": "https://www.newsnjeju.com/news/thumbnail/202605/283610_353153_4116_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 41,
+        "title": "तीसरा Gangjeong Peace & Music Camp शांति के द्वीप Jeju में “युद्ध-विरोधी गीत” गूंजाएगा",
+        "publisher": "Seogwipo TV",
+        "date": "2026-05-25",
+        "url": "http://www.seogwipo.tv/news/articleView.html?idxno=14195",
+        "description": "Seogwipo TV ने तीसरे कैंप को Gangjeong Sports Park क्षेत्र में तीन दिन और दो रात का आयोजन बताया, जहां शांति के द्वीप Jeju में युद्ध-विरोधी गीत गूंजेंगे। कोरिया और विदेश से 50 से अधिक दल Gangjeong Village के प्रतिरोध और स्मृति में जड़े मंच पर प्रस्तुति देंगे।",
+        "imageUrl": "http://www.seogwipo.tv/news/thumbnail/202605/14195_24767_4855_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
     }
 ]

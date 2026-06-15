@@ -283,5 +283,104 @@
         "imageUrl": "http://www.newsnjeju.com/news/thumbnail/202505/218234_282572_2715_v150.jpg",
         "eventType": "camp",
         "eventYear": 2025
+    },
+    {
+        "id": 33,
+        "title": "\"End the war\"... shouted together at Gangjeong Peace & Music Camp",
+        "publisher": "Media Jeju",
+        "date": "2026-04-06",
+        "url": "https://www.mediajeju.com/news/articleView.html?idxno=363645",
+        "description": "Media Jeju reported that the 3rd Gangjeong Peace & Music Camp will open at Gangjeong Sports Park from June 5, standing in solidarity with people harmed by wars in Ukraine, Palestine and Iran. The organizing committee presents it as a peace festival under the slogan “Sing, dance, end the war!”",
+        "imageUrl": "https://cdn.mediajeju.com/news/photo/202604/363645_260476_503.png",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 34,
+        "title": "[Thinking of Today] Sing, dance, end the war",
+        "publisher": "Weekly Kyunghyang",
+        "date": "2026-04-10",
+        "url": "https://weekly.khan.co.kr/article/202604101445001",
+        "description": "Activist Jang Hana looks back on Gangjeong’s peace movement since the anti-naval-base committee began in 2007 and introduces the 3rd camp, where 54 musician teams will gather for three days from June 5. The piece invites people to keep singing for peace in front of a war base.",
+        "imageUrl": "https://img.khan.co.kr/weekly/2026/04/10/news-p.v1.20260409.aea50ab30d844f72bb6a8e2e2d53b58a_P1.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 35,
+        "title": "Songs instead of war, solidarity instead of anxiety",
+        "publisher": "Woman Story News",
+        "date": "2026-05-15",
+        "url": "http://www.woman-story.co.kr/news/articleView.html?idxno=12590",
+        "description": "Woman Story News describes the 3rd camp, held from June 5 to 7 around Gangjeong Village and Gangjeong Sports Park, as a place to speak of peace, coexistence, life and solidarity. It highlights the poster and program as replacing images of war and military bases with the colors of life and art.",
+        "imageUrl": "https://cdn.woman-story.co.kr/news/thumbnail/202605/12590_16064_5338_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 36,
+        "title": "The 3rd Gangjeong Peace & Music Camp, a contemporary art experiment where music and community meet",
+        "publisher": "News Classic M",
+        "date": "2026-05-15",
+        "url": "http://www.classicm.co.kr/news/articleView.html?idxno=6497",
+        "description": "News Classic M frames the 3rd camp as an art project showing how contemporary music can relate to society. It introduces 51 musician teams sharing messages of peace and solidarity across folk, world music, reggae, electronic music and more.",
+        "imageUrl": "https://cdn.classicm.co.kr/news/thumbnail/202605/6497_10362_5555_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 37,
+        "title": "\"End the war\" 3rd Gangjeong Peace & Music Camp to open on June 5",
+        "publisher": "Samda Ilbo",
+        "date": "2026-05-25",
+        "url": "https://www.samdailbo.com/news/articleView.html?idxno=264821",
+        "description": "Samda Ilbo reported that the 3rd camp, held around Gangjeong Sports Park in Seogwipo from June 5 to 7, has expanded to a three-day, two-night format for the first time to mark the 73rd anniversary of the Korean War armistice. More than 50 teams from Korea and abroad will bring anti-war and peace music to the stage.",
+        "imageUrl": "http://www.samdailbo.com/news/thumbnail/202605/264821_190670_4326_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 38,
+        "title": "\"End the war!\" Three-day 3rd Gangjeong Peace & Music Camp to be held",
+        "publisher": "Jeju Sori",
+        "date": "2026-05-25",
+        "url": "https://v.daum.net/v/20260525152601984",
+        "description": "Jeju Sori introduces the 3rd camp, held from June 5 to 7 around Gangjeong Sports Park, as a music festival carrying anti-war and peace messages. More than 50 teams across folk, blues, improvisation and experimental music will take part, alongside the “End the War Market.”",
+        "imageUrl": "https://img1.daumcdn.net/thumb/S1200x630/?fname=https://t1.daumcdn.net/news/202605/25/551757-p7t5OYl/20260525152602543pjao.png",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 39,
+        "title": "\"Sing, dance, end the war!\" 3rd Gangjeong Peace & Music Camp to be held in Jeju’s Gangjeong Village",
+        "publisher": "Lawyersite",
+        "date": "2026-05-25",
+        "url": "https://www.lawyersite.co.kr/12031",
+        "description": "Lawyersite reported that a large music festival opposing war and militarization will be held in Gangjeong Village for the 73rd anniversary of the armistice. Over three days and two nights, civic groups and musicians will share messages of peace through music.",
+        "imageUrl": "https://www.lawyersite.co.kr/data/lawyersite_co_kr/mainimages/202605/2026052511176203.jpeg?t=1781528082",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 40,
+        "title": "\"Sing, dance, end the war!\" 3rd Gangjeong Peace & Music Camp opens June 5 in Jeju’s Gangjeong Village at its largest scale yet",
+        "publisher": "NewsNJeju",
+        "date": "2026-05-25",
+        "url": "https://www.newsnjeju.com/news/articleView.html?idxno=283610",
+        "description": "NewsNJeju reported that amid militarization on the Korean Peninsula and global war crises, the 3rd camp will be held from June 5 to 7 at its largest scale yet. More than 50 teams across folk, blues, improvisation and experimental music will sing anti-war and peace messages in Gangjeong Village.",
+        "imageUrl": "https://www.newsnjeju.com/news/thumbnail/202605/283610_353153_4116_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 41,
+        "title": "3rd Gangjeong Peace & Music Camp to sound “songs against war” on Jeju, island of peace",
+        "publisher": "Seogwipo TV",
+        "date": "2026-05-25",
+        "url": "http://www.seogwipo.tv/news/articleView.html?idxno=14195",
+        "description": "Seogwipo TV introduces the 3rd camp as a three-day, two-night event around Gangjeong Sports Park, sounding anti-war songs on Jeju, the island of peace. More than 50 teams from Korea and abroad will perform on a stage rooted in Gangjeong Village’s resistance and memory.",
+        "imageUrl": "http://www.seogwipo.tv/news/thumbnail/202605/14195_24767_4855_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
     }
 ]

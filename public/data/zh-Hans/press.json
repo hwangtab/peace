@@ -283,5 +283,104 @@
         "imageUrl": "http://www.newsnjeju.com/news/thumbnail/202505/218234_282572_2715_v150.jpg",
         "eventType": "camp",
         "eventYear": 2025
+    },
+    {
+        "id": 33,
+        "title": "“结束战争”……在江汀和平音乐营共同呼喊",
+        "publisher": "Media Jeju",
+        "date": "2026-04-06",
+        "url": "https://www.mediajeju.com/news/articleView.html?idxno=363645",
+        "description": "Media Jeju报道称，声援乌克兰、巴勒斯坦、伊朗等战争受害者并呼吁终结战争的第三届江汀和平音乐营，将于6月5日起在江汀体育公园举行。组委会表示，本届活动将以“歌唱吧，舞蹈吧，结束战争！”为口号，筹备为一场和平节日。",
+        "imageUrl": "https://cdn.mediajeju.com/news/photo/202604/363645_260476_503.png",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 34,
+        "title": "【思考今天】歌唱吧，舞蹈吧，结束战争",
+        "publisher": "Weekly Kyunghyang",
+        "date": "2026-04-10",
+        "url": "https://weekly.khan.co.kr/article/202604101445001",
+        "description": "活动家张哈娜回顾了自2007年海军基地反对对策委员会成立以来延续至今的江汀和平运动，并介绍将有54组音乐人参加6月5日起为期三天的第三届音乐营。文章传递出在战争基地前继续歌唱和平的邀请。",
+        "imageUrl": "https://img.khan.co.kr/weekly/2026/04/10/news-p.v1.20260409.aea50ab30d844f72bb6a8e2e2d53b58a_P1.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 35,
+        "title": "用歌声代替战争，用联结代替不安",
+        "publisher": "Woman Story News",
+        "date": "2026-05-15",
+        "url": "http://www.woman-story.co.kr/news/articleView.html?idxno=12590",
+        "description": "Woman Story News将6月5日至7日在江汀村一带和江汀体育公园举行的第三届音乐营，介绍为讨论和平、共存、生命与团结的场域。报道指出，海报和节目用生命与艺术的色彩取代战争和军事基地的形象。",
+        "imageUrl": "https://cdn.woman-story.co.kr/news/thumbnail/202605/12590_16064_5338_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 36,
+        "title": "“第三届江汀和平音乐营”：音乐与共同体相遇的当代艺术实验",
+        "publisher": "News Classic M",
+        "date": "2026-05-15",
+        "url": "http://www.classicm.co.kr/news/articleView.html?idxno=6497",
+        "description": "News Classic M将第三届音乐营视为展示当代音乐如何与社会发生关系的艺术项目。报道介绍，51组音乐人将通过民谣、世界音乐、雷鬼、电子音乐等多种类型传递和平与团结的信息。",
+        "imageUrl": "https://cdn.classicm.co.kr/news/thumbnail/202605/6497_10362_5555_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 37,
+        "title": "“结束战争”第三届江汀和平音乐营将于6月5日举行",
+        "publisher": "Samda Ilbo",
+        "date": "2026-05-25",
+        "url": "https://www.samdailbo.com/news/articleView.html?idxno=264821",
+        "description": "Samda Ilbo报道，第三届音乐营将于6月5日至7日在西归浦市江汀体育公园一带举行，并在朝鲜战争停战73周年之际首次扩大为三天两夜规模。来自韩国和海外的50余组音乐人将带来反战与和平的旋律。",
+        "imageUrl": "http://www.samdailbo.com/news/thumbnail/202605/264821_190670_4326_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 38,
+        "title": "“结束战争！”三天两夜第三届江汀和平音乐营即将举行",
+        "publisher": "Jeju Sori",
+        "date": "2026-05-25",
+        "url": "https://v.daum.net/v/20260525152601984",
+        "description": "Jeju Sori将6月5日至7日在江汀体育公园一带举行的第三届音乐营介绍为传递反战与和平信息的音乐节。民谣、布鲁斯、即兴与实验音乐等50余组音乐人将参与，并设有“结束战争市集”。",
+        "imageUrl": "https://img1.daumcdn.net/thumb/S1200x630/?fname=https://t1.daumcdn.net/news/202605/25/551757-p7t5OYl/20260525152602543pjao.png",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 39,
+        "title": "“歌唱吧，舞蹈吧，结束战争！”第三届江汀和平音乐营将在济州江汀村举行",
+        "publisher": "Lawyersite",
+        "date": "2026-05-25",
+        "url": "https://www.lawyersite.co.kr/12031",
+        "description": "Lawyersite报道称，在停战73周年之际，一场反对战争与军事化的大型音乐节将在江汀村举行。为期三天两夜的活动中，市民社会团体与音乐人将通过音乐分享和平信息。",
+        "imageUrl": "https://www.lawyersite.co.kr/data/lawyersite_co_kr/mainimages/202605/2026052511176203.jpeg?t=1781528082",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 40,
+        "title": "“歌唱吧，舞蹈吧，结束战争！”第三届江汀和平音乐营6月5日在济州江汀村以历届最大规模举行",
+        "publisher": "NewsNJeju",
+        "date": "2026-05-25",
+        "url": "https://www.newsnjeju.com/news/articleView.html?idxno=283610",
+        "description": "NewsNJeju报道，在朝鲜半岛军事基地化和全球战争危机加深的背景下，第三届音乐营将于6月5日至7日以历届最大规模举行。民谣、布鲁斯、即兴与实验音乐等50余组将在江汀村唱响反战与和平的信息。",
+        "imageUrl": "https://www.newsnjeju.com/news/thumbnail/202605/283610_353153_4116_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 41,
+        "title": "第三届江汀和平音乐营将在“和平之岛”济州唱响反战之歌",
+        "publisher": "Seogwipo TV",
+        "date": "2026-05-25",
+        "url": "http://www.seogwipo.tv/news/articleView.html?idxno=14195",
+        "description": "Seogwipo TV介绍，第三届音乐营将在江汀体育公园一带举行三天两夜，在和平之岛济州唱响反战之歌。以江汀村的抵抗与记忆为基础，来自韩国和海外的50余组音乐人将登台演出。",
+        "imageUrl": "http://www.seogwipo.tv/news/thumbnail/202605/14195_24767_4855_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
     }
 ]
