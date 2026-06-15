@@ -283,5 +283,104 @@
         "imageUrl": "http://www.newsnjeju.com/news/thumbnail/202505/218234_282572_2715_v150.jpg",
         "eventType": "camp",
         "eventYear": 2025
+    },
+    {
+        "id": 33,
+        "title": "«Покончим с войной»... вместе скандируют на Gangjeong Peace & Music Camp",
+        "publisher": "Media Jeju",
+        "date": "2026-04-06",
+        "url": "https://www.mediajeju.com/news/articleView.html?idxno=363645",
+        "description": "Media Jeju сообщило, что 3-й Gangjeong Peace & Music Camp откроется 5 июня в спортивном парке Канъчжон в знак солидарности с людьми, пострадавшими от войн в Украине, Палестине и Иране. Оргкомитет представляет его как фестиваль мира под лозунгом «Пойте, танцуйте, покончим с войной!».",
+        "imageUrl": "https://cdn.mediajeju.com/news/photo/202604/363645_260476_503.png",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 34,
+        "title": "[Думая о сегодняшнем дне] Пойте, танцуйте, покончим с войной",
+        "publisher": "Weekly Kyunghyang",
+        "date": "2026-04-10",
+        "url": "https://weekly.khan.co.kr/article/202604101445001",
+        "description": "Активистка Чан Хана вспоминает движение за мир в Канъчжоне с момента создания комитета против военно-морской базы в 2007 году и рассказывает о 3-м лагере, где с 5 июня на три дня соберутся 54 музыкальные команды. Текст приглашает продолжать петь о мире перед военной базой.",
+        "imageUrl": "https://img.khan.co.kr/weekly/2026/04/10/news-p.v1.20260409.aea50ab30d844f72bb6a8e2e2d53b58a_P1.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 35,
+        "title": "Песни вместо войны, солидарность вместо тревоги",
+        "publisher": "Woman Story News",
+        "date": "2026-05-15",
+        "url": "http://www.woman-story.co.kr/news/articleView.html?idxno=12590",
+        "description": "Woman Story News описывает 3-й лагерь, который пройдет 5-7 июня в деревне Канъчжон и спортивном парке Канъчжон, как место разговора о мире, сосуществовании, жизни и солидарности. Материал подчеркивает, что афиша и программа заменяют образы войны и военных баз красками жизни и искусства.",
+        "imageUrl": "https://cdn.woman-story.co.kr/news/thumbnail/202605/12590_16064_5338_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 36,
+        "title": "3-й Gangjeong Peace & Music Camp: эксперимент современного искусства, где встречаются музыка и сообщество",
+        "publisher": "News Classic M",
+        "date": "2026-05-15",
+        "url": "http://www.classicm.co.kr/news/articleView.html?idxno=6497",
+        "description": "News Classic M рассматривает 3-й лагерь как художественный проект, показывающий, как современная музыка может взаимодействовать с обществом. 51 музыкальная команда передаст послания мира и солидарности через фолк, world music, регги, электронную музыку и другие жанры.",
+        "imageUrl": "https://cdn.classicm.co.kr/news/thumbnail/202605/6497_10362_5555_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 37,
+        "title": "«Покончим с войной»: 3-й Gangjeong Peace & Music Camp откроется 5 июня",
+        "publisher": "Samda Ilbo",
+        "date": "2026-05-25",
+        "url": "https://www.samdailbo.com/news/articleView.html?idxno=264821",
+        "description": "Samda Ilbo сообщило, что 3-й лагерь, который пройдет 5-7 июня в районе спортивного парка Канъчжон в Согвипхо, впервые расширен до формата трех дней и двух ночей к 73-й годовщине перемирия в Корейской войне. Более 50 команд из Кореи и других стран представят музыку против войны и за мир.",
+        "imageUrl": "http://www.samdailbo.com/news/thumbnail/202605/264821_190670_4326_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 38,
+        "title": "«Покончим с войной!» Состоится трехдневный 3-й Gangjeong Peace & Music Camp",
+        "publisher": "Jeju Sori",
+        "date": "2026-05-25",
+        "url": "https://v.daum.net/v/20260525152601984",
+        "description": "Jeju Sori представляет 3-й лагерь, который пройдет 5-7 июня в районе спортивного парка Канъчжон, как музыкальный фестиваль с антивоенными и мирными посланиями. В нем примут участие более 50 команд фолка, блюза, импровизационной и экспериментальной музыки, а также будет работать «Рынок за конец войны».",
+        "imageUrl": "https://img1.daumcdn.net/thumb/S1200x630/?fname=https://t1.daumcdn.net/news/202605/25/551757-p7t5OYl/20260525152602543pjao.png",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 39,
+        "title": "«Пойте, танцуйте, покончим с войной!» 3-й Gangjeong Peace & Music Camp пройдет в деревне Канъчжон на Чеджу",
+        "publisher": "Lawyersite",
+        "date": "2026-05-25",
+        "url": "https://www.lawyersite.co.kr/12031",
+        "description": "Lawyersite сообщило, что к 73-й годовщине перемирия в деревне Канъчжон пройдет крупный музыкальный фестиваль против войны и милитаризации. В течение трех дней и двух ночей гражданские организации и музыканты будут делиться посланиями мира через музыку.",
+        "imageUrl": "https://www.lawyersite.co.kr/data/lawyersite_co_kr/mainimages/202605/2026052511176203.jpeg?t=1781528082",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 40,
+        "title": "«Пойте, танцуйте, покончим с войной!» 3-й Gangjeong Peace & Music Camp откроется 5 июня в деревне Канъчжон на Чеджу в самом крупном формате",
+        "publisher": "NewsNJeju",
+        "date": "2026-05-25",
+        "url": "https://www.newsnjeju.com/news/articleView.html?idxno=283610",
+        "description": "NewsNJeju сообщило, что на фоне милитаризации Корейского полуострова и глобальных военных кризисов 3-й лагерь пройдет 5-7 июня в самом крупном формате. Более 50 команд фолка, блюза, импровизационной и экспериментальной музыки исполнят в деревне Канъчжон антивоенные и мирные послания.",
+        "imageUrl": "https://www.newsnjeju.com/news/thumbnail/202605/283610_353153_4116_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
+    },
+    {
+        "id": 41,
+        "title": "3-й Gangjeong Peace & Music Camp зазвучит «песнями против войны» на Чеджу, острове мира",
+        "publisher": "Seogwipo TV",
+        "date": "2026-05-25",
+        "url": "http://www.seogwipo.tv/news/articleView.html?idxno=14195",
+        "description": "Seogwipo TV представляет 3-й лагерь как трехдневное событие в районе спортивного парка Канъчжон, где на Чеджу, острове мира, прозвучат антивоенные песни. Более 50 команд из Кореи и других стран выступят на сцене, укорененной в сопротивлении и памяти деревни Канъчжон.",
+        "imageUrl": "http://www.seogwipo.tv/news/thumbnail/202605/14195_24767_4855_v150.jpg",
+        "eventType": "camp",
+        "eventYear": 2026
     }
 ]
