@@ -291,7 +291,7 @@
         "date": "2026-04-06",
         "url": "https://www.mediajeju.com/news/articleView.html?idxno=363645",
         "description": "ذكرت Media Jeju أن الدورة الثالثة من مخيم كانغجونغ للسلام والموسيقى ستنطلق في 5 يونيو في حديقة كانغجونغ الرياضية، تضامنًا مع المتضررين من الحروب في أوكرانيا وفلسطين وإيران. وتقدمه اللجنة المنظمة كمهرجان للسلام تحت شعار «لنغنِّ، لنرقص، لننهِ الحرب!».",
-        "imageUrl": "https://cdn.mediajeju.com/news/photo/202604/363645_260476_503.png",
+        "imageUrl": "/images/press/2026/mediajeju-363645.webp",
         "eventType": "camp",
         "eventYear": 2026
     },
@@ -324,7 +324,7 @@
         "date": "2026-05-15",
         "url": "http://www.classicm.co.kr/news/articleView.html?idxno=6497",
         "description": "تقدم News Classic M المخيم الثالث بوصفه مشروعًا فنيًا يبيّن كيف يمكن للموسيقى المعاصرة أن تتصل بالمجتمع. وستنقل 51 فرقة موسيقية رسائل السلام والتضامن عبر الفولك وموسيقى العالم والريغي والموسيقى الإلكترونية وغيرها.",
-        "imageUrl": "https://cdn.classicm.co.kr/news/thumbnail/202605/6497_10362_5555_v150.jpg",
+        "imageUrl": "/images/press/2026/classicm-6497.webp",
         "eventType": "camp",
         "eventYear": 2026
     },
@@ -335,7 +335,7 @@
         "date": "2026-05-25",
         "url": "https://www.samdailbo.com/news/articleView.html?idxno=264821",
         "description": "ذكرت Samda Ilbo أن المخيم الثالث، المقام من 5 إلى 7 يونيو في محيط حديقة كانغجونغ الرياضية في سيوغويبو، توسع لأول مرة إلى ثلاثة أيام وليلتين بمناسبة الذكرى الثالثة والسبعين لهدنة الحرب الكورية. وستقدم أكثر من 50 فرقة من كوريا وخارجها موسيقى مناهضة للحرب ومن أجل السلام.",
-        "imageUrl": "http://www.samdailbo.com/news/thumbnail/202605/264821_190670_4326_v150.jpg",
+        "imageUrl": "/images/press/2026/samdailbo-264821.webp",
         "eventType": "camp",
         "eventYear": 2026
     },
@@ -379,7 +379,7 @@
         "date": "2026-05-25",
         "url": "http://www.seogwipo.tv/news/articleView.html?idxno=14195",
         "description": "تقدم Seogwipo TV المخيم الثالث كفعالية تمتد ثلاثة أيام وليلتين في محيط حديقة كانغجونغ الرياضية، لتردد أغاني مناهضة للحرب في جيجو، جزيرة السلام. وستصعد أكثر من 50 فرقة من كوريا وخارجها إلى منصة متجذرة في مقاومة قرية كانغجونغ وذاكرتها.",
-        "imageUrl": "http://www.seogwipo.tv/news/thumbnail/202605/14195_24767_4855_v150.jpg",
+        "imageUrl": "/images/press/2026/seogwipo-14195.webp",
         "eventType": "camp",
         "eventYear": 2026
     }

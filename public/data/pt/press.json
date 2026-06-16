@@ -291,7 +291,7 @@
         "date": "2026-04-06",
         "url": "https://www.mediajeju.com/news/articleView.html?idxno=363645",
         "description": "A Media Jeju informou que o 3º Gangjeong Peace & Music Camp será realizado a partir de 5 de junho no Parque Esportivo de Gangjeong, em solidariedade às pessoas atingidas por guerras na Ucrânia, Palestina e Irã. A comissão organizadora apresenta o evento como um festival de paz sob o lema “Vamos cantar, dançar e acabar com a guerra!”.",
-        "imageUrl": "https://cdn.mediajeju.com/news/photo/202604/363645_260476_503.png",
+        "imageUrl": "/images/press/2026/mediajeju-363645.webp",
         "eventType": "camp",
         "eventYear": 2026
     },
@@ -324,7 +324,7 @@
         "date": "2026-05-15",
         "url": "http://www.classicm.co.kr/news/articleView.html?idxno=6497",
         "description": "A News Classic M apresenta o 3º acampamento como um projeto artístico que mostra como a música contemporânea pode se relacionar com a sociedade. Cinquenta e um grupos de músicos levarão mensagens de paz e solidariedade por meio do folk, world music, reggae, música eletrônica e outros gêneros.",
-        "imageUrl": "https://cdn.classicm.co.kr/news/thumbnail/202605/6497_10362_5555_v150.jpg",
+        "imageUrl": "/images/press/2026/classicm-6497.webp",
         "eventType": "camp",
         "eventYear": 2026
     },
@@ -335,7 +335,7 @@
         "date": "2026-05-25",
         "url": "https://www.samdailbo.com/news/articleView.html?idxno=264821",
         "description": "O Samda Ilbo informou que o 3º acampamento, de 5 a 7 de junho no Parque Esportivo de Gangjeong em Seogwipo, será ampliado pela primeira vez para três dias e duas noites no 73º aniversário do armistício da Guerra da Coreia. Mais de 50 grupos da Coreia e do exterior levarão ao palco músicas contra a guerra e pela paz.",
-        "imageUrl": "http://www.samdailbo.com/news/thumbnail/202605/264821_190670_4326_v150.jpg",
+        "imageUrl": "/images/press/2026/samdailbo-264821.webp",
         "eventType": "camp",
         "eventYear": 2026
     },
@@ -379,7 +379,7 @@
         "date": "2026-05-25",
         "url": "http://www.seogwipo.tv/news/articleView.html?idxno=14195",
         "description": "A Seogwipo TV apresenta o 3º acampamento como um evento de três dias e duas noites no Parque Esportivo de Gangjeong, fazendo ecoar canções contra a guerra em Jeju, a ilha da paz. Mais de 50 grupos da Coreia e do exterior subirão ao palco enraizado na resistência e na memória de Gangjeong Village.",
-        "imageUrl": "http://www.seogwipo.tv/news/thumbnail/202605/14195_24767_4855_v150.jpg",
+        "imageUrl": "/images/press/2026/seogwipo-14195.webp",
         "eventType": "camp",
         "eventYear": 2026
     }

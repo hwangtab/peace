@@ -291,7 +291,7 @@
         "date": "2026-04-06",
         "url": "https://www.mediajeju.com/news/articleView.html?idxno=363645",
         "description": "Media Jeju melaporkan bahwa Gangjeong Peace & Music Camp ke-3 akan digelar mulai 5 Juni di Gangjeong Sports Park, sebagai bentuk solidaritas dengan korban perang di Ukraina, Palestina, dan Iran. Panitia menyebutnya sebagai festival perdamaian dengan slogan “Mari bernyanyi, menari, akhiri perang!”",
-        "imageUrl": "https://cdn.mediajeju.com/news/photo/202604/363645_260476_503.png",
+        "imageUrl": "/images/press/2026/mediajeju-363645.webp",
         "eventType": "camp",
         "eventYear": 2026
     },
@@ -324,7 +324,7 @@
         "date": "2026-05-15",
         "url": "http://www.classicm.co.kr/news/articleView.html?idxno=6497",
         "description": "News Classic M memandang camp ke-3 sebagai proyek seni yang menunjukkan bagaimana musik kontemporer dapat berelasi dengan masyarakat. Sebanyak 51 kelompok musisi akan menyampaikan pesan perdamaian dan solidaritas lewat folk, world music, reggae, musik elektronik, dan genre lainnya.",
-        "imageUrl": "https://cdn.classicm.co.kr/news/thumbnail/202605/6497_10362_5555_v150.jpg",
+        "imageUrl": "/images/press/2026/classicm-6497.webp",
         "eventType": "camp",
         "eventYear": 2026
     },
@@ -335,7 +335,7 @@
         "date": "2026-05-25",
         "url": "https://www.samdailbo.com/news/articleView.html?idxno=264821",
         "description": "Samda Ilbo melaporkan bahwa camp ke-3, yang berlangsung 5-7 Juni di Gangjeong Sports Park, Seogwipo, untuk pertama kalinya diperluas menjadi tiga hari dua malam untuk menandai 73 tahun gencatan senjata Perang Korea. Lebih dari 50 kelompok dari Korea dan luar negeri akan membawakan musik anti-perang dan perdamaian.",
-        "imageUrl": "http://www.samdailbo.com/news/thumbnail/202605/264821_190670_4326_v150.jpg",
+        "imageUrl": "/images/press/2026/samdailbo-264821.webp",
         "eventType": "camp",
         "eventYear": 2026
     },
@@ -379,7 +379,7 @@
         "date": "2026-05-25",
         "url": "http://www.seogwipo.tv/news/articleView.html?idxno=14195",
         "description": "Seogwipo TV memperkenalkan camp ke-3 sebagai acara tiga hari dua malam di sekitar Gangjeong Sports Park, yang akan menggemakan lagu anti-perang di Jeju, pulau perdamaian. Lebih dari 50 kelompok dari Korea dan luar negeri akan tampil di panggung yang berakar pada perlawanan dan ingatan Gangjeong Village.",
-        "imageUrl": "http://www.seogwipo.tv/news/thumbnail/202605/14195_24767_4855_v150.jpg",
+        "imageUrl": "/images/press/2026/seogwipo-14195.webp",
         "eventType": "camp",
         "eventYear": 2026
     }
