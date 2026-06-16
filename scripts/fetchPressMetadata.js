@@ -6,80 +6,20 @@ const path = require('path');
 const FETCH_DELAY_MS = 1000; // Rate limiting (1 second between requests)
 const REQUEST_TIMEOUT_MS = 10000; // 10 second timeout per request
 
+const isBrowserSafeImageUrl = (imageUrl) =>
+  imageUrl.startsWith('https://') || imageUrl.startsWith('/');
+
 /**
- * Load press items from TypeScript data file using dynamic import
+ * Load press items from the canonical Korean press data JSON.
  * @returns {Array} Array of press items
  */
 const loadPressData = async () => {
-  const pressFilePath = path.join(__dirname, '../src/data/press.ts');
+  const pressFilePath = path.join(__dirname, '../public/data/press.json');
 
   try {
-    // Try to use dynamic import with ts-node if available
-    // For now, we'll try a regex-based extraction that's more robust
-    const content = fs.readFileSync(pressFilePath, 'utf-8');
+    const items = JSON.parse(fs.readFileSync(pressFilePath, 'utf-8'));
 
-    // Find the press items array more carefully
-    // Pattern: export const pressItems: PressItem[] = ([...] as PressItem[])
-    const arrayMatch = content.match(
-      /export const pressItems: PressItem\[\] = \(\[([\s\S]*?)\] as PressItem\[\]\)/
-    );
-
-    if (!arrayMatch) {
-      throw new Error('Could not find pressItems array in press.ts');
-    }
-
-    // Parse individual objects manually to avoid JSON parsing issues
-    const arrayContent = arrayMatch[1];
-    const items = [];
-
-    // Match each object: { ... }
-    // Use a recursive approach to handle nested braces
-    let depth = 0;
-    let currentObj = '';
-    let inString = false;
-    let stringChar = '';
-
-    for (let i = 0; i < arrayContent.length; i++) {
-      const char = arrayContent[i];
-      const prevChar = i > 0 ? arrayContent[i - 1] : '';
-
-      // Handle string boundaries
-      if ((char === '"' || char === "'") && prevChar !== '\\') {
-        if (!inString) {
-          inString = true;
-          stringChar = char;
-        } else if (char === stringChar) {
-          inString = false;
-        }
-      }
-
-      if (!inString) {
-        if (char === '{') {
-          depth++;
-          currentObj += char;
-        } else if (char === '}') {
-          currentObj += char;
-          depth--;
-
-          if (depth === 0 && currentObj.trim().length > 2) {
-            // We have a complete object
-            try {
-              const obj = parseObjectString(currentObj);
-              items.push(obj);
-            } catch (e) {
-              console.warn(`Failed to parse object: ${currentObj.substring(0, 50)}...`);
-            }
-            currentObj = '';
-          }
-        } else if (depth > 0) {
-          currentObj += char;
-        }
-      } else {
-        currentObj += char;
-      }
-    }
-
-    if (items.length === 0) {
+    if (!Array.isArray(items) || items.length === 0) {
       throw new Error('No items parsed from press data');
     }
 
@@ -89,76 +29,6 @@ const loadPressData = async () => {
     throw error;
   }
 };
-
-/**
- * Parse a single object string from TypeScript format to JavaScript object
- * @param {string} objStr - Object string like: { id: 1, title: "...", ... }
- * @returns {Object} Parsed object
- */
-function parseObjectString(objStr) {
-  // Convert TypeScript object syntax to JSON
-  let jsonStr = objStr;
-
-  // First, escape any unescaped quotes inside string values
-  // This is tricky, so we'll use a state machine approach
-  let result = '';
-  let inString = false;
-  let stringChar = '';
-  let i = 0;
-
-  while (i < jsonStr.length) {
-    const char = jsonStr[i];
-    const nextChar = i + 1 < jsonStr.length ? jsonStr[i + 1] : '';
-    const prevChar = i > 0 ? jsonStr[i - 1] : '';
-
-    // Detect string boundaries
-    if ((char === '"' || char === "'") && prevChar !== '\\') {
-      if (!inString) {
-        inString = true;
-        stringChar = char;
-        // Convert single quotes to double quotes for JSON compatibility
-        result += '"';
-        i++;
-      } else if (char === stringChar) {
-        inString = false;
-        stringChar = '';
-        result += '"';
-        i++;
-      } else {
-        result += char;
-        i++;
-      }
-    } else if (inString) {
-      // Inside a string - escape double quotes that aren't already escaped
-      if (char === '"' && prevChar !== '\\') {
-        result += '\\"';
-      } else if (char === '\\' && nextChar === '"') {
-        // Already escaped, keep it
-        result += '\\' + nextChar;
-        i += 2;
-      } else {
-        result += char;
-        i++;
-      }
-    } else {
-      result += char;
-      i++;
-    }
-  }
-
-  jsonStr = result;
-
-  // Now handle TypeScript syntax conversion
-  // Match and replace property names that are unquoted
-  // Match: word: (not preceded by quote or bracket)
-  jsonStr = jsonStr.replace(/([{,]\s*)([a-zA-Z_]\w*)(\s*:)/g, '$1"$2"$3');
-
-  // Handle trailing commas
-  jsonStr = jsonStr.replace(/,(\s*[}\]])/g, '$1');
-
-  // Parse as JSON
-  return JSON.parse(jsonStr);
-}
 
 /**
  * Fetch Open Graph metadata for a single press article
@@ -242,15 +112,26 @@ const run = async () => {
   console.log('');
 
   try {
-    // Load press data (now async)
+    // Load press data
     const pressData = await loadPressData();
     console.log(`Loaded ${pressData.length} press items\n`);
 
     // Determine fetch mode
     const fetchAll = process.argv.includes('--all');
-    const itemsToFetch = fetchAll ? pressData : pressData.filter((p) => !p.imageUrl);
+    const eventYearFlagIndex = process.argv.indexOf('--event-year');
+    const eventYearValue =
+      eventYearFlagIndex >= 0
+        ? process.argv[eventYearFlagIndex + 1]
+        : process.argv.find((arg) => arg.startsWith('--event-year='))?.split('=')[1];
+    const eventYear = eventYearValue ? Number(eventYearValue) : undefined;
+    const itemsToFetch = (fetchAll ? pressData : pressData.filter((p) => !p.imageUrl)).filter(
+      (item) => eventYear === undefined || item.eventYear === eventYear
+    );
 
     console.log(`Mode: ${fetchAll ? 'ALL ARTICLES' : 'MISSING ONLY'}`);
+    if (eventYear !== undefined) {
+      console.log(`Event year: ${eventYear}`);
+    }
     console.log(`Items to fetch: ${itemsToFetch.length}\n`);
 
     if (itemsToFetch.length === 0) {
@@ -287,7 +168,7 @@ const run = async () => {
 
     // Output detailed results for manual review
     console.log('\n' + '='.repeat(70));
-    console.log('DETAILED RESULTS - Copy imageUrl values to press.ts');
+    console.log('DETAILED RESULTS - Copy imageUrl values to press JSON files');
     console.log('='.repeat(70));
     console.log('');
 
@@ -316,15 +197,24 @@ const run = async () => {
     console.log('='.repeat(70));
     console.log('1. Review the imageUrl values above');
     console.log('2. Test image URLs in your browser to verify they load');
-    console.log('3. Open src/data/press.ts and add imageUrl field to items with IDs:');
+    console.log(
+      '3. Open public/data/*/press.json and add browser-safe imageUrl fields to items with IDs:'
+    );
     results
-      .filter((r) => r.imageUrl)
+      .filter((r) => r.imageUrl && isBrowserSafeImageUrl(r.imageUrl))
       .forEach((r) => {
         console.log(`   - ID ${r.id}: Add imageUrl: "${r.imageUrl}"`);
       });
-    console.log('4. Run: pnpm build');
-    console.log('5. Test locally: pnpm start');
-    console.log('6. Commit and push changes');
+    const unsafeResults = results.filter((r) => r.imageUrl && !isBrowserSafeImageUrl(r.imageUrl));
+    if (unsafeResults.length > 0) {
+      console.log('4. Do not paste these fetched URLs directly; cache or replace them first:');
+      unsafeResults.forEach((r) => {
+        console.log(`   - ID ${r.id}: ${r.imageUrl}`);
+      });
+    }
+    console.log('5. Run: pnpm build');
+    console.log('6. Test locally: pnpm start');
+    console.log('7. Commit and push changes');
     console.log('');
   } catch (error) {
     console.error('Fatal error:', error.message);

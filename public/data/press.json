@@ -291,7 +291,7 @@
         "date": "2026-04-06",
         "url": "https://www.mediajeju.com/news/articleView.html?idxno=363645",
         "description": "미디어제주는 우크라이나, 팔레스타인, 이란 등 전쟁 피해자들과 연대하며 전쟁 종식을 외치는 제3회 강정피스앤뮤직캠프가 6월 5일부터 강정체육공원에서 열린다고 전했다. 조직위원회는 “노래하자, 춤추자, 전쟁을 끝내자!”라는 슬로건 아래 평화의 축제로 준비한다고 설명했다.",
-        "imageUrl": "https://cdn.mediajeju.com/news/photo/202604/363645_260476_503.png",
+        "imageUrl": "/images/press/2026/mediajeju-363645.webp",
         "eventType": "camp",
         "eventYear": 2026
     },
@@ -324,7 +324,7 @@
         "date": "2026-05-15",
         "url": "http://www.classicm.co.kr/news/articleView.html?idxno=6497",
         "description": "뉴스클래식M은 제3회 캠프를 동시대 음악이 사회와 관계 맺는 방식을 보여주는 예술 프로젝트로 조명했다. 51팀의 음악가가 포크, 월드뮤직, 레게, 전자음악 등 다양한 장르로 평화와 연대의 메시지를 전한다고 소개했다.",
-        "imageUrl": "https://cdn.classicm.co.kr/news/thumbnail/202605/6497_10362_5555_v150.jpg",
+        "imageUrl": "/images/press/2026/classicm-6497.webp",
         "eventType": "camp",
         "eventYear": 2026
     },
@@ -335,7 +335,7 @@
         "date": "2026-05-25",
         "url": "https://www.samdailbo.com/news/articleView.html?idxno=264821",
         "description": "삼다일보는 6월 5일부터 7일까지 서귀포시 강정체육공원 일대에서 열리는 제3회 캠프가 정전 73주년을 맞아 처음 2박 3일 규모로 확대됐다고 전했다. 국내외 뮤지션 50여 팀이 참여해 반전과 평화의 선율을 들려줄 예정이다.",
-        "imageUrl": "http://www.samdailbo.com/news/thumbnail/202605/264821_190670_4326_v150.jpg",
+        "imageUrl": "/images/press/2026/samdailbo-264821.webp",
         "eventType": "camp",
         "eventYear": 2026
     },
@@ -379,7 +379,7 @@
         "date": "2026-05-25",
         "url": "http://www.seogwipo.tv/news/articleView.html?idxno=14195",
         "description": "서귀포방송은 제3회 캠프가 강정체육공원 일대에서 2박 3일간 열리며 평화의 섬 제주에서 반전의 노래를 울린다고 소개했다. 강정마을의 저항과 기억을 바탕으로 국내외 뮤지션 50여 팀이 무대에 오른다고 전했다.",
-        "imageUrl": "http://www.seogwipo.tv/news/thumbnail/202605/14195_24767_4855_v150.jpg",
+        "imageUrl": "/images/press/2026/seogwipo-14195.webp",
         "eventType": "camp",
         "eventYear": 2026
     }
