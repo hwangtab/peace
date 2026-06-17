@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import classNames from 'classnames';
 import AdminLayout from './AdminLayout';
 import {
+  ADMIN_COLLECTION_PAGE_SIZE,
   LOCALE_OPTIONS,
   filterAdminRows,
   getPrimaryLabel,
@@ -21,6 +22,9 @@ import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 export interface AdminCollectionPageProps {
   config: AdminCollectionConfig;
   initialItems: AdminCollectionRow[];
+  initialTotalCount: number;
+  initialNextOffset: number;
+  initialHasMore: boolean;
   member: AdminMember;
   selectedLocale: string;
   initialError?: string;
@@ -70,6 +74,9 @@ const buildFormState = (
 export default function AdminCollectionPage({
   config,
   initialItems,
+  initialTotalCount,
+  initialNextOffset,
+  initialHasMore,
   member,
   selectedLocale,
   initialError = '',
@@ -81,8 +88,12 @@ export default function AdminCollectionPage({
     buildFormState(config, initialItems[0], selectedLocale)
   );
   const [isSaving, setIsSaving] = useState(false);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState(initialError);
+  const [totalCount, setTotalCount] = useState(initialTotalCount);
+  const [nextOffset, setNextOffset] = useState(initialNextOffset);
+  const [hasMore, setHasMore] = useState(initialHasMore);
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<AdminStatusFilter>('all');
   const [cloneLocale, setCloneLocale] = useState(
@@ -91,12 +102,12 @@ export default function AdminCollectionPage({
 
   const counts = useMemo(
     () => ({
-      all: items.length,
+      all: totalCount,
       published: items.filter((item) => getRowStatus(item) === 'published').length,
       draft: items.filter((item) => getRowStatus(item) === 'draft').length,
       hidden: items.filter((item) => getRowStatus(item) === 'hidden').length,
     }),
-    [items]
+    [items, totalCount]
   );
 
   const previewUrl = selected
@@ -124,18 +135,65 @@ export default function AdminCollectionPage({
   };
 
   const refreshItems = async (preferredId?: string) => {
-    const params = new URLSearchParams({ locale: selectedLocale });
+    const params = new URLSearchParams({
+      locale: selectedLocale,
+      offset: '0',
+      limit: String(ADMIN_COLLECTION_PAGE_SIZE),
+    });
     const response = await fetch(`/api/admin/archive/${config.collection}?${params.toString()}`);
     if (!response.ok) return;
-    const payload = (await response.json()) as { items: AdminCollectionRow[] };
+    const payload = (await response.json()) as {
+      items: AdminCollectionRow[];
+      totalCount?: number;
+      nextOffset?: number;
+      hasMore?: boolean;
+    };
     const nextItems = payload.items;
     const activeId = preferredId ?? selected?.id;
     const nextSelected = activeId
       ? (nextItems.find((item) => item.id === activeId) ?? nextItems[0] ?? null)
       : (nextItems[0] ?? null);
     setItems(nextItems);
+    setTotalCount(payload.totalCount ?? nextItems.length);
+    setNextOffset(payload.nextOffset ?? nextItems.length);
+    setHasMore(payload.hasMore ?? false);
     setSelected(nextSelected);
     setForm(buildFormState(config, nextSelected, selectedLocale));
+  };
+
+  const loadMore = async () => {
+    if (!hasMore || isLoadingMore) return;
+    setIsLoadingMore(true);
+    setError('');
+
+    const params = new URLSearchParams({
+      locale: selectedLocale,
+      offset: String(nextOffset),
+      limit: String(ADMIN_COLLECTION_PAGE_SIZE),
+    });
+    const response = await fetch(`/api/admin/archive/${config.collection}?${params.toString()}`);
+    const payload = (await response.json()) as {
+      items?: AdminCollectionRow[];
+      error?: string;
+      totalCount?: number;
+      nextOffset?: number;
+      hasMore?: boolean;
+    };
+
+    setIsLoadingMore(false);
+    if (!response.ok || !payload.items) {
+      setError(payload.error || '목록을 더 불러오지 못했습니다.');
+      return;
+    }
+
+    setItems((prev) => {
+      const seen = new Set(prev.map((item) => item.id));
+      const appended = payload.items!.filter((item) => !seen.has(item.id));
+      return [...prev, ...appended];
+    });
+    setTotalCount(payload.totalCount ?? totalCount);
+    setNextOffset(payload.nextOffset ?? nextOffset + payload.items.length);
+    setHasMore(payload.hasMore ?? false);
   };
 
   const changeLocale = async (nextLocale: string) => {
@@ -344,7 +402,7 @@ export default function AdminCollectionPage({
               </select>
               <span className="text-xs text-coastal-gray">
                 {filteredItems.length.toLocaleString('ko-KR')} /{' '}
-                {items.length.toLocaleString('ko-KR')}
+                {totalCount.toLocaleString('ko-KR')}
               </span>
             </div>
           </div>
@@ -385,6 +443,18 @@ export default function AdminCollectionPage({
                 );
               })}
             </ul>
+          )}
+          {items.length > 0 && hasMore && (
+            <div className="border-t border-deep-ocean/10 p-4">
+              <button
+                type="button"
+                onClick={loadMore}
+                disabled={isLoadingMore}
+                className="w-full rounded border border-deep-ocean/20 bg-white px-4 py-2 text-sm font-semibold text-deep-ocean transition hover:bg-ocean-sand/40 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
+              >
+                {isLoadingMore ? '불러오는 중' : '더 불러오기'}
+              </button>
+            </div>
           )}
         </section>
 

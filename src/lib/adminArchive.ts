@@ -13,6 +13,8 @@ import type {
 } from '@/types/cms';
 
 export type AdminCollection = 'content' | 'videos' | 'gallery' | 'press';
+export const ADMIN_COLLECTION_PAGE_SIZE = 200;
+export const ADMIN_COLLECTION_MAX_PAGE_SIZE = 1000;
 
 export type AdminCollectionRow =
   | CmsContentBlock
@@ -326,6 +328,21 @@ export const getAdminCollectionConfig = (collection: string): AdminCollectionCon
   collection in ADMIN_COLLECTION_CONFIGS
     ? ADMIN_COLLECTION_CONFIGS[collection as AdminCollection]
     : null;
+
+export const getAdminPaginationRange = ({ offset, limit }: { offset?: number; limit?: number }) => {
+  const safeOffset =
+    Number.isFinite(offset) && offset != null ? Math.max(0, Math.floor(offset)) : 0;
+  const parsedLimit = Number.isFinite(limit) && limit != null ? Math.floor(limit) : null;
+  const rawLimit =
+    parsedLimit != null && parsedLimit > 0 ? parsedLimit : ADMIN_COLLECTION_PAGE_SIZE;
+  const safeLimit = Math.min(rawLimit, ADMIN_COLLECTION_MAX_PAGE_SIZE);
+
+  return {
+    from: safeOffset,
+    to: safeOffset + safeLimit - 1,
+    limit: safeLimit,
+  };
+};
 
 export const normalizeAdminFormValue = (value: unknown): string => {
   if (Array.isArray(value)) return value.join(', ');

@@ -1,5 +1,6 @@
 import {
   filterAdminRows,
+  getAdminPaginationRange,
   getAdminPreviewUrl,
   getAdminCollectionConfig,
   mapGalleryRowToItem,
@@ -265,4 +266,22 @@ test('prepares a draft clone payload for another locale without carrying row ide
   expect(payload).not.toHaveProperty('created_at');
   expect(payload).not.toHaveProperty('updated_at');
   expect(payload).not.toHaveProperty('published_at');
+});
+
+test('builds bounded admin pagination ranges', () => {
+  expect(getAdminPaginationRange({ offset: 0, limit: 200 })).toEqual({
+    from: 0,
+    to: 199,
+    limit: 200,
+  });
+  expect(getAdminPaginationRange({ offset: -10, limit: 0 })).toEqual({
+    from: 0,
+    to: 199,
+    limit: 200,
+  });
+  expect(getAdminPaginationRange({ offset: 1000, limit: 5000 })).toEqual({
+    from: 1000,
+    to: 1999,
+    limit: 1000,
+  });
 });
