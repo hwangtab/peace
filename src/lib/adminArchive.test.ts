@@ -8,6 +8,7 @@ import {
   mapPressRowToItem,
   mapVideoRowToItem,
   makePublishedAt,
+  prepareAdminMissingLocaleClonePayloads,
   prepareAdminLocaleClonePayload,
   sanitizeAdminPayload,
   toContentMap,
@@ -316,4 +317,56 @@ test('builds locale status coverage with missing locales', () => {
     locale: 'ja',
     status: 'missing',
   });
+});
+
+test('prepares draft clone payloads only for missing locale statuses', () => {
+  const videos = getAdminCollectionConfig('videos');
+  expect(videos).not.toBeNull();
+  if (!videos) return;
+
+  const source = {
+    id: '00000000-0000-0000-0000-000000000401',
+    public_id: 401,
+    locale: 'ko',
+    title: '원본 제목',
+    description: '원본 설명',
+    youtube_url: 'https://www.youtube.com/watch?v=test',
+    date: '2026-06-05',
+    location: '강정',
+    event_type: 'camp',
+    event_year: 2026,
+    thumbnail_url: null,
+    duration: null,
+    musician_ids: [1, 2],
+    director_musician_id: null,
+    status: 'published',
+    sort_order: 0,
+    created_at: '2026-06-17T00:00:00.000Z',
+    updated_at: '2026-06-17T00:00:00.000Z',
+    published_at: '2026-06-17T00:00:00.000Z',
+  } satisfies ArchiveVideoRow;
+
+  const payloads = prepareAdminMissingLocaleClonePayloads(videos, source, [
+    {
+      locale: 'ko',
+      status: 'published',
+      id: source.id,
+      updated_at: source.updated_at,
+      published_at: source.published_at,
+    },
+    {
+      locale: 'en',
+      status: 'draft',
+      id: '00000000-0000-0000-0000-000000000402',
+      updated_at: source.updated_at,
+      published_at: null,
+    },
+    { locale: 'ja', status: 'missing', id: null, updated_at: null, published_at: null },
+    { locale: 'fr', status: 'missing', id: null, updated_at: null, published_at: null },
+  ]);
+
+  expect(payloads).toHaveLength(2);
+  expect(payloads.map((payload) => payload.locale)).toEqual(['ja', 'fr']);
+  expect(payloads.every((payload) => payload.status === 'draft')).toBe(true);
+  expect(payloads.every((payload) => !('id' in payload))).toBe(true);
 });

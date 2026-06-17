@@ -483,6 +483,15 @@ export const prepareAdminLocaleClonePayload = (
   }, {});
 };
 
+export const prepareAdminMissingLocaleClonePayloads = (
+  config: AdminCollectionConfig,
+  row: AdminCollectionRow,
+  localeStatuses: AdminLocaleStatus[]
+): Record<string, unknown>[] =>
+  localeStatuses
+    .filter((item) => item.status === 'missing')
+    .map((item) => prepareAdminLocaleClonePayload(config, row, item.locale));
+
 const normalizePreviewLocale = (locale: unknown): string =>
   typeof locale === 'string' && LOCALES.includes(locale as (typeof LOCALES)[number])
     ? locale
