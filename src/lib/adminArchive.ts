@@ -389,5 +389,35 @@ export const getRowStatus = (row: AdminCollectionRow): CmsStatus =>
 export const getRowUpdatedAt = (row: AdminCollectionRow): string =>
   (row as unknown as { updated_at?: string }).updated_at ?? '';
 
+const normalizePreviewLocale = (locale: unknown): string =>
+  typeof locale === 'string' && LOCALES.includes(locale as (typeof LOCALES)[number])
+    ? locale
+    : 'ko';
+
+const localizedPath = (locale: unknown, path: string): string =>
+  `/${normalizePreviewLocale(locale)}${path === '/' ? '' : path}`;
+
+export const getAdminPreviewUrl = (
+  config: AdminCollectionConfig,
+  row: Partial<Record<string, unknown>>
+): string | null => {
+  const locale = row.locale;
+
+  if (config.collection === 'content') {
+    const routePath = typeof row.route_path === 'string' ? row.route_path.trim() : '';
+    if (!routePath.startsWith('/')) return null;
+    return localizedPath(locale, routePath);
+  }
+
+  const publicId = Number(row.public_id);
+  if (!Number.isInteger(publicId) || publicId <= 0) return null;
+
+  if (config.collection === 'videos') return `${localizedPath(locale, '/videos')}/${publicId}`;
+  if (config.collection === 'gallery') return localizedPath(locale, '/gallery');
+  if (config.collection === 'press') return localizedPath(locale, '/press');
+
+  return null;
+};
+
 export const coerceText = textValue;
 export const coerceNullableText = nullableTextValue;
