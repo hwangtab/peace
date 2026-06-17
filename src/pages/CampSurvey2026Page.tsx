@@ -17,6 +17,7 @@ import {
   isQuestionVisible,
   type RatingQuestion,
   type SurveyConsents,
+  type SurveyInsertPayload,
   type TextQuestion,
 } from '@/data/campSurvey2026';
 
@@ -141,20 +142,22 @@ const CampSurvey2026Page: React.FC = () => {
     setErrorMsg('');
 
     try {
-      const { error } = await supabase.from('camp_survey_responses').insert({
-        ...buildSurveyInsertPayload({
-          respondentName: name,
-          contactInstagram: instagram,
-          contactEmail: email,
-          contactPhone: phone,
-          privacyConsent,
-          roles,
-          ratings,
-          texts,
-          consents,
-          userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : null,
-        }),
+      const payload = buildSurveyInsertPayload({
+        respondentName: name,
+        contactInstagram: instagram,
+        contactEmail: email,
+        contactPhone: phone,
+        privacyConsent,
+        roles,
+        ratings,
+        texts,
+        consents,
+        userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : null,
       });
+      const surveyTable = supabase.from('camp_survey_responses') as unknown as {
+        insert: (values: SurveyInsertPayload) => Promise<{ error: { message: string } | null }>;
+      };
+      const { error } = await surveyTable.insert(payload);
 
       if (!error) {
         setStatus('success');

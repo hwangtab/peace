@@ -19,15 +19,25 @@ import {
 } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
 import { useLocalizedResource } from '@/hooks/useLocalizedResource';
+import type { SiteContentMap } from '@/types/cms';
 
 interface VideoPageProps {
   initialVideos?: VideoItem[];
   initialLocale?: string;
+  siteContent?: SiteContentMap;
 }
 
-export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: VideoPageProps) {
+export default function VideoPage({
+  initialVideos = [],
+  initialLocale = 'ko',
+  siteContent = {},
+}: VideoPageProps) {
   const { t, i18n } = useTranslation();
   const [selectedFilter, setSelectedFilter] = useFilterFromQuery();
+  const text = useCallback(
+    (placement: string, fallbackKey: string) => siteContent[placement] || t(fallbackKey),
+    [siteContent, t]
+  );
 
   const fetchVideos = useCallback((locale: string) => getVideos(locale), []);
   const videosResource = useLocalizedResource<VideoItem>({
@@ -47,9 +57,9 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
   const videoBreadcrumbs = useMemo(
     () => [
       { name: t('nav.home'), url: getFullUrl('/') },
-      { name: t('videos.page_title'), url: getFullUrl('/videos') },
+      { name: text('seo.title', 'videos.page_title'), url: getFullUrl('/videos') },
     ],
-    [t]
+    [t, text]
   );
 
   const structuredData = useMemo(() => {
@@ -71,8 +81,8 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
       )
       .filter((schema): schema is NonNullable<typeof schema> => schema !== null);
     const collectionSchema = getCollectionPageSchema({
-      name: t('videos.page_title'),
-      description: t('videos.page_desc'),
+      name: text('seo.title', 'videos.page_title'),
+      description: text('seo.description', 'videos.page_desc'),
       url: getFullUrl('/videos'),
       hasPart: eligibleVideos.map((v) => ({
         '@id': `https://peaceandmusic.net/videos/${v.id}#video`,
@@ -82,8 +92,8 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
       collectionSchema,
       getBreadcrumbSchema(videoBreadcrumbs),
       getWebPageSchema({
-        name: t('videos.page_title'),
-        description: t('videos.page_desc'),
+        name: text('seo.title', 'videos.page_title'),
+        description: text('seo.description', 'videos.page_desc'),
         url: getFullUrl('/videos'),
         keywords: [
           '강정피스앤뮤직캠프 영상',
@@ -98,14 +108,14 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
       }),
       ...videoSchemas,
     ];
-  }, [videos, t, videoBreadcrumbs]);
+  }, [videos, t, text, videoBreadcrumbs]);
 
   return (
     <PageLayout
-      title={t('videos.page_title')}
-      description={t('videos.page_desc')}
+      title={text('seo.title', 'videos.page_title')}
+      description={text('seo.description', 'videos.page_desc')}
       ogImage="/images/og/peace-camp-og.jpg"
-      ogImageAlt={t('videos.page_title')}
+      ogImageAlt={text('seo.title', 'videos.page_title')}
       ogType="video.other"
       background="sunlight-glow"
       structuredData={structuredData}
@@ -113,15 +123,19 @@ export default function VideoPage({ initialVideos = [], initialLocale = 'ko' }: 
       disableTopPadding={true}
     >
       <PageHero
-        title={t('videos.hero_title')}
-        subtitle={t('videos.hero_subtitle')}
+        title={text('hero.title', 'videos.hero_title')}
+        subtitle={text('hero.subtitle', 'videos.hero_subtitle')}
         backgroundImage="/images-webp/camps/2023/IMG_2064.webp"
       />
 
       <PageIntroSection
-        eyebrow={t('videos.intro.eyebrow')}
-        heading={t('videos.intro.heading')}
-        paragraphs={[t('videos.intro.p1'), t('videos.intro.p2'), t('videos.intro.p3')]}
+        eyebrow={text('intro.eyebrow', 'videos.intro.eyebrow')}
+        heading={text('intro.heading', 'videos.intro.heading')}
+        paragraphs={[
+          text('intro.p1', 'videos.intro.p1'),
+          text('intro.p2', 'videos.intro.p2'),
+          text('intro.p3', 'videos.intro.p3'),
+        ]}
         background="white"
       />
 

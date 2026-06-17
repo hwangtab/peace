@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
-import { loadGalleryImages } from '@/utils/dataLoader';
 import { GalleryImage } from '@/types/gallery';
+import { loadPublishedGallery } from '@/lib/archivePublicData';
 
 // pageComponents 키와 동기화 — 이 목록에 없는 year 는 /camps/${year} 가 404 임
 const VALID_CAMP_YEARS = new Set([2023, 2025, 2026]);
@@ -22,7 +22,7 @@ export default function ImageSitemapXml() {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const allImages = loadGalleryImages<GalleryImage>();
+  const allImages = (await loadPublishedGallery('ko')).items;
 
   // Group images by eventYear for page grouping
   const byYear = new Map<number, GalleryImage[]>();

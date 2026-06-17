@@ -1,4 +1,5 @@
 import { fetchLocalizedData } from './client';
+import { fetchArchiveItems } from './archive';
 import { PressItem } from '../types/press';
 
 // Default event year for items without a specified year
@@ -13,6 +14,9 @@ export const normalizePressItems = (items: PressItem[]): PressItem[] =>
   }));
 
 export async function getPressItems(language?: string): Promise<PressItem[]> {
+  const cmsItems = await fetchArchiveItems<PressItem>('press', language);
+  if (cmsItems) return normalizePressItems(cmsItems);
+
   const items = await fetchLocalizedData<PressItem>('/data/press.json', language);
   return normalizePressItems(items);
 }

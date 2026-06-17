@@ -3,16 +3,28 @@ import nextI18NextConfig from '../next-i18next.config';
 import { GetStaticPropsContext } from 'next';
 import Page from '@/pages/PressPage';
 import { PressItem } from '@/types/press';
-import { loadLocalizedData } from '@/utils/dataLoader';
+import { loadPublishedPress, loadSiteContentMap } from '@/lib/archivePublicData';
 import { normalizePressItems } from '@/api/press';
+import type { SiteContentMap } from '@/types/cms';
 
 interface PressWrappedPageProps {
   initialPressItems: PressItem[];
   initialLocale: string;
+  siteContent: SiteContentMap;
 }
 
-export default function WrappedPage({ initialPressItems, initialLocale }: PressWrappedPageProps) {
-  return <Page initialPressItems={initialPressItems} initialLocale={initialLocale} />;
+export default function WrappedPage({
+  initialPressItems,
+  initialLocale,
+  siteContent,
+}: PressWrappedPageProps) {
+  return (
+    <Page
+      initialPressItems={initialPressItems}
+      initialLocale={initialLocale}
+      siteContent={siteContent}
+    />
+  );
 }
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
@@ -25,10 +37,9 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
         ['translation', 'press'],
         nextI18NextConfig
       )),
-      initialPressItems: normalizePressItems(
-        loadLocalizedData<PressItem>(resolvedLocale, 'press.json')
-      ),
+      initialPressItems: normalizePressItems((await loadPublishedPress(resolvedLocale)).items),
       initialLocale: resolvedLocale,
+      siteContent: await loadSiteContentMap(resolvedLocale, '/press'),
     },
     revalidate: 3600,
   };

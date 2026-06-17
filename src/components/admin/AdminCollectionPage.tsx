@@ -1,0 +1,407 @@
+import { useMemo, useState } from 'react';
+import { useRouter } from 'next/router';
+import classNames from 'classnames';
+import AdminLayout from './AdminLayout';
+import {
+  LOCALE_OPTIONS,
+  getPrimaryLabel,
+  getRowStatus,
+  getRowUpdatedAt,
+  normalizeAdminFormValue,
+  type AdminCollectionConfig,
+  type AdminCollectionRow,
+} from '@/lib/adminArchive';
+import type { AdminMember } from '@/types/cms';
+import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
+
+export interface AdminCollectionPageProps {
+  config: AdminCollectionConfig;
+  initialItems: AdminCollectionRow[];
+  member: AdminMember;
+  selectedLocale: string;
+  initialError?: string;
+}
+
+type FormState = Record<string, string>;
+
+const statusLabel = (status: string) => {
+  if (status === 'published') return '공개';
+  if (status === 'hidden') return '내림';
+  return '초안';
+};
+
+const statusClass = (status: string) =>
+  classNames(
+    'rounded px-2 py-1 text-xs font-semibold',
+    status === 'published' && 'bg-jeju-ocean/10 text-jeju-ocean',
+    status === 'draft' && 'bg-golden-sun/20 text-deep-ocean',
+    status === 'hidden' && 'bg-sunset-coral/10 text-sunset-coral'
+  );
+
+const buildFormState = (
+  config: AdminCollectionConfig,
+  item?: AdminCollectionRow | null,
+  selectedLocale = 'ko'
+): FormState => {
+  const source = (item ?? {}) as unknown as Record<string, unknown>;
+  return config.fields.reduce<FormState>(
+    (state, field) => {
+      const fallback =
+        field.name === 'status'
+          ? 'draft'
+          : field.name === 'locale'
+            ? selectedLocale
+            : field.name === 'event_type'
+              ? 'camp'
+              : field.name === 'sort_order'
+                ? '0'
+                : '';
+      state[field.name] = normalizeAdminFormValue(source[field.name] ?? fallback);
+      return state;
+    },
+    item?.id ? { id: item.id } : {}
+  );
+};
+
+export default function AdminCollectionPage({
+  config,
+  initialItems,
+  member,
+  selectedLocale,
+  initialError = '',
+}: AdminCollectionPageProps) {
+  const router = useRouter();
+  const [items, setItems] = useState(initialItems);
+  const [selected, setSelected] = useState<AdminCollectionRow | null>(initialItems[0] ?? null);
+  const [form, setForm] = useState<FormState>(() =>
+    buildFormState(config, initialItems[0], selectedLocale)
+  );
+  const [isSaving, setIsSaving] = useState(false);
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState(initialError);
+
+  const counts = useMemo(
+    () => ({
+      all: items.length,
+      published: items.filter((item) => getRowStatus(item) === 'published').length,
+      draft: items.filter((item) => getRowStatus(item) === 'draft').length,
+      hidden: items.filter((item) => getRowStatus(item) === 'hidden').length,
+    }),
+    [items]
+  );
+
+  const selectItem = (item: AdminCollectionRow | null) => {
+    setSelected(item);
+    setForm(buildFormState(config, item, selectedLocale));
+    setMessage('');
+    setError('');
+  };
+
+  const updateField = (name: string, value: string) => {
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const refreshItems = async (preferredId?: string) => {
+    const params = new URLSearchParams({ locale: selectedLocale });
+    const response = await fetch(`/api/admin/archive/${config.collection}?${params.toString()}`);
+    if (!response.ok) return;
+    const payload = (await response.json()) as { items: AdminCollectionRow[] };
+    const nextItems = payload.items;
+    const activeId = preferredId ?? selected?.id;
+    const nextSelected = activeId
+      ? (nextItems.find((item) => item.id === activeId) ?? nextItems[0] ?? null)
+      : (nextItems[0] ?? null);
+    setItems(nextItems);
+    setSelected(nextSelected);
+    setForm(buildFormState(config, nextSelected, selectedLocale));
+  };
+
+  const changeLocale = async (nextLocale: string) => {
+    await router.push(`${config.listPath}?locale=${encodeURIComponent(nextLocale)}`);
+  };
+
+  const uploadGalleryImage = async (file: File) => {
+    if (config.collection !== 'gallery') return;
+    if (!file.type.startsWith('image/')) {
+      setError('이미지 파일만 업로드할 수 있습니다.');
+      return;
+    }
+    if (file.size > 10 * 1024 * 1024) {
+      setError('이미지 파일은 10MB 이하로 올려 주세요.');
+      return;
+    }
+
+    setIsSaving(true);
+    setMessage('');
+    setError('');
+
+    const extension =
+      file.name
+        .split('.')
+        .pop()
+        ?.toLowerCase()
+        .replace(/[^a-z0-9]/g, '') || 'jpg';
+    const filePath = `${selectedLocale}/${Date.now()}-${Math.random()
+      .toString(36)
+      .slice(2)}.${extension}`;
+    const supabase = createSupabaseBrowserClient();
+    const { error: uploadError } = await supabase.storage
+      .from('archive-gallery')
+      .upload(filePath, file, {
+        cacheControl: '31536000',
+        upsert: false,
+      });
+
+    setIsSaving(false);
+    if (uploadError) {
+      setError(uploadError.message);
+      return;
+    }
+
+    const { data } = supabase.storage.from('archive-gallery').getPublicUrl(filePath);
+    updateField('image_url', data.publicUrl);
+    setMessage('이미지를 업로드했습니다. 저장을 눌러 공개 정보에 반영하세요.');
+  };
+
+  const save = async () => {
+    setIsSaving(true);
+    setMessage('');
+    setError('');
+
+    const response = await fetch(`/api/admin/archive/${config.collection}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(form),
+    });
+    const payload = (await response.json()) as { item?: AdminCollectionRow; error?: string };
+
+    setIsSaving(false);
+    if (!response.ok || !payload.item) {
+      setError(payload.error || '저장하지 못했습니다.');
+      return;
+    }
+
+    setMessage('저장했습니다.');
+    setSelected(payload.item);
+    setForm(buildFormState(config, payload.item, selectedLocale));
+    await refreshItems(payload.item.id);
+  };
+
+  const hideSelected = async () => {
+    if (!selected) return;
+    setIsSaving(true);
+    setMessage('');
+    setError('');
+
+    const response = await fetch(`/api/admin/archive/${config.collection}?id=${selected.id}`, {
+      method: 'DELETE',
+    });
+    const payload = (await response.json()) as { error?: string };
+
+    setIsSaving(false);
+    if (!response.ok) {
+      setError(payload.error || '내리지 못했습니다.');
+      return;
+    }
+
+    setMessage('공개 목록에서 내렸습니다.');
+    await refreshItems(selected.id);
+  };
+
+  return (
+    <AdminLayout title={config.title} member={member}>
+      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h1 className="font-display text-3xl font-bold">{config.title}</h1>
+          <p className="mt-2 max-w-2xl text-coastal-gray">{config.description}</p>
+        </div>
+        <button
+          type="button"
+          onClick={() => selectItem(null)}
+          className="rounded bg-jeju-ocean px-4 py-2 font-semibold text-white transition hover:bg-deep-ocean focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
+        >
+          새 항목
+        </button>
+      </div>
+
+      <div className="mb-6 flex flex-wrap items-center gap-3 rounded border border-deep-ocean/10 bg-white px-4 py-3">
+        <label className="flex items-center gap-2 text-sm font-semibold">
+          언어
+          <select
+            value={selectedLocale}
+            onChange={(event) => void changeLocale(event.target.value)}
+            className="rounded border border-deep-ocean/15 bg-white px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
+          >
+            {LOCALE_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </label>
+        <span className="text-sm text-coastal-gray">
+          목록과 새 항목 기본값은 선택한 언어 기준입니다.
+        </span>
+      </div>
+
+      <div className="mb-6 grid grid-cols-2 gap-3 md:grid-cols-4">
+        {[
+          ['전체', counts.all],
+          ['공개', counts.published],
+          ['초안', counts.draft],
+          ['내림', counts.hidden],
+        ].map(([label, value]) => (
+          <div key={label} className="rounded border border-deep-ocean/10 bg-white p-4">
+            <p className="text-sm text-coastal-gray">{label}</p>
+            <p className="mt-1 text-2xl font-bold">{value}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(380px,1.1fr)]">
+        <section className="rounded border border-deep-ocean/10 bg-white">
+          <div className="border-b border-deep-ocean/10 px-4 py-3">
+            <h2 className="font-semibold">목록</h2>
+          </div>
+          {items.length === 0 ? (
+            <p className="p-6 text-coastal-gray">{config.emptyLabel}</p>
+          ) : (
+            <ul className="divide-y divide-deep-ocean/10">
+              {items.map((item) => {
+                const active = selected?.id === item.id;
+                const status = getRowStatus(item);
+                return (
+                  <li key={item.id}>
+                    <button
+                      type="button"
+                      onClick={() => selectItem(item)}
+                      className={classNames(
+                        'w-full px-4 py-4 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-jeju-ocean',
+                        active ? 'bg-jeju-ocean/10' : 'hover:bg-ocean-sand/40'
+                      )}
+                    >
+                      <span className="flex items-start justify-between gap-3">
+                        <span>
+                          <span className="block font-semibold">
+                            {getPrimaryLabel(item, config)}
+                          </span>
+                          <span className="mt-1 block text-xs text-coastal-gray">
+                            {getRowUpdatedAt(item)
+                              ? new Date(getRowUpdatedAt(item)).toLocaleString('ko-KR')
+                              : ''}
+                          </span>
+                        </span>
+                        <span className={statusClass(status)}>{statusLabel(status)}</span>
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </section>
+
+        <section className="rounded border border-deep-ocean/10 bg-white">
+          <div className="border-b border-deep-ocean/10 px-4 py-3">
+            <h2 className="font-semibold">{selected ? '항목 편집' : '새 항목 추가'}</h2>
+          </div>
+          <div className="space-y-4 p-4">
+            {config.fields.map((field) => (
+              <label key={field.name} className="block">
+                <span className="mb-1 block text-sm font-semibold text-deep-ocean">
+                  {field.label}
+                  {field.required ? <span className="text-sunset-coral"> *</span> : null}
+                </span>
+                {field.kind === 'textarea' ? (
+                  <textarea
+                    value={form[field.name] ?? ''}
+                    onChange={(event) => updateField(field.name, event.target.value)}
+                    rows={field.name === 'value' || field.name === 'description' ? 6 : 3}
+                    placeholder={field.placeholder}
+                    className="w-full rounded border border-deep-ocean/15 px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
+                  />
+                ) : field.kind === 'select' ? (
+                  <select
+                    value={form[field.name] ?? ''}
+                    onChange={(event) => updateField(field.name, event.target.value)}
+                    className="w-full rounded border border-deep-ocean/15 bg-white px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
+                  >
+                    {field.options?.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                ) : (
+                  <input
+                    type={
+                      field.kind === 'number' ? 'number' : field.kind === 'date' ? 'date' : 'text'
+                    }
+                    value={form[field.name] ?? ''}
+                    onChange={(event) => updateField(field.name, event.target.value)}
+                    placeholder={field.placeholder}
+                    className="w-full rounded border border-deep-ocean/15 px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
+                  />
+                )}
+              </label>
+            ))}
+
+            {config.collection === 'gallery' && (
+              <label className="block rounded border border-dashed border-deep-ocean/20 bg-ocean-sand/30 px-3 py-4">
+                <span className="mb-1 block text-sm font-semibold text-deep-ocean">
+                  이미지 업로드
+                </span>
+                <input
+                  type="file"
+                  accept="image/*"
+                  disabled={isSaving}
+                  onChange={(event) => {
+                    const file = event.target.files?.[0];
+                    if (file) void uploadGalleryImage(file);
+                    event.target.value = '';
+                  }}
+                  className="block w-full text-sm text-coastal-gray file:mr-3 file:rounded file:border-0 file:bg-jeju-ocean file:px-3 file:py-2 file:font-semibold file:text-white hover:file:bg-deep-ocean disabled:opacity-60"
+                />
+                <span className="mt-2 block text-xs text-coastal-gray">
+                  업로드 후 URL이 자동 입력됩니다. 항목 저장을 눌러야 공개 데이터에 반영됩니다.
+                </span>
+              </label>
+            )}
+
+            {message && (
+              <p className="rounded bg-jeju-ocean/10 px-3 py-2 text-sm text-jeju-ocean">
+                {message}
+              </p>
+            )}
+            {error && (
+              <p className="whitespace-pre-wrap rounded bg-sunset-coral/10 px-3 py-2 text-sm text-sunset-coral">
+                {error}
+              </p>
+            )}
+
+            <div className="flex flex-wrap gap-3 pt-2">
+              <button
+                type="button"
+                onClick={save}
+                disabled={isSaving}
+                className="rounded bg-deep-ocean px-4 py-2 font-semibold text-white transition hover:bg-jeju-ocean disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
+              >
+                {isSaving ? '저장 중' : '저장'}
+              </button>
+              {selected && (
+                <button
+                  type="button"
+                  onClick={hideSelected}
+                  disabled={isSaving}
+                  className="rounded border border-sunset-coral/50 bg-white px-4 py-2 font-semibold text-sunset-coral transition hover:bg-sunset-coral/10 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunset-coral"
+                >
+                  공개에서 내리기
+                </button>
+              )}
+            </div>
+          </div>
+        </section>
+      </div>
+    </AdminLayout>
+  );
+}

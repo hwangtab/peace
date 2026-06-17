@@ -40,12 +40,13 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
     skipClientFetch = false,
     priorityFirstImages = true,
   }) => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
 
     const { filteredImages, selectedFilter, setSelectedFilter } = useGalleryImages(
       initialImages,
-      skipClientFetch
+      skipClientFetch,
+      i18n.language
     );
 
     const content = (

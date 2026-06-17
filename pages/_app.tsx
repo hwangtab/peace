@@ -41,6 +41,7 @@ const GA_MEASUREMENT_ID = config.gaMeasurementId;
 
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
+  const isAdminRoute = router.pathname.startsWith('/admin');
 
   // Core Web Vitals → GA4 보고
   useEffect(() => {
@@ -97,13 +98,13 @@ function App({ Component, pageProps }: AppProps) {
           </>
         )}
 
-        <Navigation />
+        {!isAdminRoute && <Navigation />}
         <ErrorBoundary FallbackComponent={ErrorFallback}>
           <main id="main-content" className="overflow-x-hidden">
             <Component {...pageProps} />
           </main>
         </ErrorBoundary>
-        <Footer />
+        {!isAdminRoute && <Footer />}
       </MotionConfig>
     </LazyMotion>
   );

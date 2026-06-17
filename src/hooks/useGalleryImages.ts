@@ -26,7 +26,8 @@ const sortGalleryImages = (items: GalleryImage[]) =>
  */
 export const useGalleryImages = (
   initialImages: GalleryImage[] = EMPTY_GALLERY_IMAGES,
-  skipClientFetch = false
+  skipClientFetch = false,
+  locale = 'ko'
 ): UseGalleryImagesReturn => {
   const [selectedFilter, setSelectedFilter] = useFilterFromQuery();
   const [images, setImages] = useState<GalleryImage[]>(initialImages);
@@ -57,7 +58,7 @@ export const useGalleryImages = (
 
     const loadImages = async () => {
       try {
-        const allFetchedImages = await getGalleryImages();
+        const allFetchedImages = await getGalleryImages(locale);
 
         if (isCancelled) return;
 
@@ -77,7 +78,7 @@ export const useGalleryImages = (
     return () => {
       isCancelled = true;
     };
-  }, [skipClientFetch]);
+  }, [skipClientFetch, locale]);
 
   // Filter images based on selected filter
   const filteredImages = useMemo(

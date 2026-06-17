@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next';
-import { loadLocalizedData } from '@/utils/dataLoader';
 import { VideoItem } from '@/types/video';
 import { LOCALES, DEFAULT_LOCALE } from '@/constants/locales';
+import { loadPublishedVideos } from '@/lib/archivePublicData';
 
 const SITE_URL = 'https://peaceandmusic.net';
 
@@ -53,12 +53,12 @@ export default function VideoSitemapXml() {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const koVideos = loadLocalizedData<VideoItem>('ko', 'videos.json');
+  const koVideos = (await loadPublishedVideos('ko')).items;
 
   // locale별 번역 맵 구축 (빌드 시간 1회)
   const localeMap = new Map<string, Map<number, VideoItem>>();
   for (const locale of LOCALES) {
-    const items = loadLocalizedData<VideoItem>(locale, 'videos.json');
+    const items = (await loadPublishedVideos(locale)).items;
     localeMap.set(locale, new Map(items.map((v) => [v.id, v])));
   }
 
