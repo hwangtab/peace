@@ -10,6 +10,7 @@ import {
   getRowStatus,
   getRowUpdatedAt,
   normalizeAdminFormValue,
+  prepareAdminLocaleClonePayload,
   type AdminStatusFilter,
   type AdminCollectionConfig,
   type AdminCollectionRow,
@@ -84,6 +85,9 @@ export default function AdminCollectionPage({
   const [error, setError] = useState(initialError);
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<AdminStatusFilter>('all');
+  const [cloneLocale, setCloneLocale] = useState(
+    LOCALE_OPTIONS.find((option) => option.value !== selectedLocale)?.value ?? selectedLocale
+  );
 
   const counts = useMemo(
     () => ({
@@ -102,6 +106,10 @@ export default function AdminCollectionPage({
   const filteredItems = useMemo(
     () => filterAdminRows(items, config, { query: searchQuery, status: statusFilter }),
     [config, items, searchQuery, statusFilter]
+  );
+  const cloneLocaleOptions = useMemo(
+    () => LOCALE_OPTIONS.filter((option) => option.value !== selectedLocale),
+    [selectedLocale]
   );
 
   const selectItem = (item: AdminCollectionRow | null) => {
@@ -232,6 +240,32 @@ export default function AdminCollectionPage({
         : '공개 목록에서 내렸습니다.'
     );
     await refreshItems(selected.id);
+  };
+
+  const cloneSelectedToLocale = async () => {
+    if (!selected || !cloneLocale || cloneLocale === selectedLocale) return;
+    setIsSaving(true);
+    setMessage('');
+    setError('');
+
+    const response = await fetch(`/api/admin/archive/${config.collection}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(prepareAdminLocaleClonePayload(config, selected, cloneLocale)),
+    });
+    const payload = (await response.json()) as {
+      item?: AdminCollectionRow;
+      error?: string;
+      changeLogError?: string | null;
+    };
+
+    setIsSaving(false);
+    if (!response.ok || !payload.item) {
+      setError(payload.error || '다른 언어 초안을 만들지 못했습니다.');
+      return;
+    }
+
+    await router.push(`${config.listPath}?locale=${encodeURIComponent(cloneLocale)}`);
   };
 
   return (
@@ -419,6 +453,40 @@ export default function AdminCollectionPage({
                   업로드 후 URL이 자동 입력됩니다. 항목 저장을 눌러야 공개 데이터에 반영됩니다.
                 </span>
               </label>
+            )}
+
+            {selected && cloneLocaleOptions.length > 0 && (
+              <div className="rounded border border-deep-ocean/10 bg-ocean-sand/30 px-3 py-4">
+                <span className="mb-2 block text-sm font-semibold text-deep-ocean">
+                  다른 언어 초안 만들기
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  <select
+                    value={cloneLocale}
+                    onChange={(event) => setCloneLocale(event.target.value)}
+                    disabled={isSaving}
+                    className="rounded border border-deep-ocean/15 bg-white px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20 disabled:opacity-60"
+                  >
+                    {cloneLocaleOptions.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                  <button
+                    type="button"
+                    onClick={cloneSelectedToLocale}
+                    disabled={isSaving || !cloneLocale || cloneLocale === selectedLocale}
+                    className="rounded border border-jeju-ocean/40 bg-white px-3 py-2 text-sm font-semibold text-jeju-ocean transition hover:bg-jeju-ocean/10 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
+                  >
+                    초안 생성
+                  </button>
+                </div>
+                <span className="mt-2 block text-xs text-coastal-gray">
+                  현재 항목을 선택한 언어의 초안으로 복제합니다. 저장된 공개 상태는 복제하지
+                  않습니다.
+                </span>
+              </div>
             )}
 
             {message && (

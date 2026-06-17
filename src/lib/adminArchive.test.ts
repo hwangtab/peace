@@ -6,6 +6,7 @@ import {
   mapPressRowToItem,
   mapVideoRowToItem,
   makePublishedAt,
+  prepareAdminLocaleClonePayload,
   sanitizeAdminPayload,
   toContentMap,
 } from './adminArchive';
@@ -221,4 +222,47 @@ test('filters admin rows by search query and status', () => {
   expect(filterAdminRows(rows, videos, { query: '102', status: 'all' })).toHaveLength(1);
   expect(filterAdminRows(rows, videos, { query: '', status: 'draft' })).toEqual([rows[1]]);
   expect(filterAdminRows(rows, videos, { query: 'archive', status: 'published' })).toEqual([]);
+});
+
+test('prepares a draft clone payload for another locale without carrying row identity', () => {
+  const videos = getAdminCollectionConfig('videos');
+  expect(videos).not.toBeNull();
+  if (!videos) return;
+
+  const payload = prepareAdminLocaleClonePayload(
+    videos,
+    {
+      id: '00000000-0000-0000-0000-000000000201',
+      public_id: 201,
+      locale: 'ko',
+      title: '원본 제목',
+      description: '원본 설명',
+      youtube_url: 'https://www.youtube.com/watch?v=test',
+      date: '2026-06-05',
+      location: '강정',
+      event_type: 'camp',
+      event_year: 2026,
+      thumbnail_url: null,
+      duration: null,
+      musician_ids: [1, 2],
+      director_musician_id: null,
+      status: 'published',
+      sort_order: 0,
+      created_at: '2026-06-17T00:00:00.000Z',
+      updated_at: '2026-06-17T00:00:00.000Z',
+      published_at: '2026-06-17T00:00:00.000Z',
+    } satisfies ArchiveVideoRow,
+    'en'
+  );
+
+  expect(payload).toMatchObject({
+    public_id: 201,
+    locale: 'en',
+    title: '원본 제목',
+    status: 'draft',
+  });
+  expect(payload).not.toHaveProperty('id');
+  expect(payload).not.toHaveProperty('created_at');
+  expect(payload).not.toHaveProperty('updated_at');
+  expect(payload).not.toHaveProperty('published_at');
 });

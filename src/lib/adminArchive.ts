@@ -417,6 +417,24 @@ export const filterAdminRows = (
   });
 };
 
+export const prepareAdminLocaleClonePayload = (
+  config: AdminCollectionConfig,
+  row: AdminCollectionRow,
+  targetLocale: string
+): Record<string, unknown> => {
+  const source = row as unknown as Record<string, unknown>;
+  return config.fields.reduce<Record<string, unknown>>((payload, field) => {
+    if (field.name === 'locale') {
+      payload.locale = targetLocale;
+    } else if (field.name === 'status') {
+      payload.status = 'draft';
+    } else {
+      payload[field.name] = source[field.name];
+    }
+    return payload;
+  }, {});
+};
+
 const normalizePreviewLocale = (locale: unknown): string =>
   typeof locale === 'string' && LOCALES.includes(locale as (typeof LOCALES)[number])
     ? locale
