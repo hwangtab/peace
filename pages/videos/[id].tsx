@@ -5,6 +5,7 @@ import VideoDetailPage from '@/pages/VideoDetailPage';
 import { VideoItem } from '@/types/video';
 import { Musician } from '@/types/musician';
 import { loadLocalizedData } from '@/utils/dataLoader';
+import { loadPublishedVideos } from '@/lib/archivePublicData';
 
 interface VideoDetailWrappedProps {
   video: VideoItem;
@@ -18,19 +19,19 @@ export default function WrappedPage(props: VideoDetailWrappedProps) {
 }
 
 export async function getStaticPaths({ locales }: GetStaticPathsContext) {
-  const koVideos = loadLocalizedData<VideoItem>('ko', 'videos.json');
+  const koVideos = (await loadPublishedVideos('ko')).items;
   const paths = (locales || ['ko']).flatMap((locale) =>
     koVideos.map((v) => ({ params: { id: String(v.id) }, locale }))
   );
-  return { paths, fallback: false };
+  return { paths, fallback: 'blocking' };
 }
 
 export async function getStaticProps({ params, locale }: GetStaticPropsContext) {
   const resolvedLocale = locale ?? 'ko';
   const id = params?.id as string;
 
-  const koVideos = loadLocalizedData<VideoItem>('ko', 'videos.json');
-  const localizedVideos = loadLocalizedData<VideoItem>(resolvedLocale, 'videos.json');
+  const koVideos = (await loadPublishedVideos('ko')).items;
+  const localizedVideos = (await loadPublishedVideos(resolvedLocale)).items;
   const localizedMap = new Map(localizedVideos.map((v) => [v.id, v]));
 
   const baseVideo = koVideos.find((v) => String(v.id) === id);

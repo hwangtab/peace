@@ -9,6 +9,7 @@
   ],
   "dependencies": {
     "@headlessui/react": "^2.2.0",
+    "@supabase/ssr": "0.12.0",
     "@supabase/supabase-js": "^2.108.1",
     "autoprefixer": "^10.4.20",
     "classnames": "^2.5.1",
@@ -45,6 +46,8 @@
     "i18n:extract": "node scripts/extract-i18n.mjs",
     "i18n:check": "node scripts/check-missing-translations.mjs && node scripts/check-deep-translations.mjs",
     "static:check": "node scripts/check-static-assets.mjs",
+    "seed:archive-cms": "ts-node --compiler-options '{\"module\":\"commonjs\",\"moduleResolution\":\"node\"}' scripts/seed-admin-archive.ts",
+    "seed:archive-cms:sql": "ts-node --compiler-options '{\"module\":\"commonjs\",\"moduleResolution\":\"node\"}' scripts/generate-admin-archive-seed-sql.ts",
     "build:timetable": "ts-node --compiler-options '{\"module\":\"commonjs\",\"moduleResolution\":\"node\"}' scripts/convert-timetable.ts",
     "timetable:check": "node scripts/check-timetable-generated.mjs",
     "fonts:subset": "python3 scripts/subset-fonts.py"
@@ -66,6 +69,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "pnpm": {
+    "overrides": {
+      "@babel/core": "7.29.6",
+      "postcss": "8.5.15"
+    }
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.0.0",

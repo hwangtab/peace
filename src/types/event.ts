@@ -3,7 +3,7 @@
  * Supports camps and album projects across different years
  */
 
-export type EventType = 'camp' | 'album';
+export type EventType = 'camp' | 'album' | 'live' | 'music_video' | 'interview';
 
 export interface BaseEvent {
   id: string;

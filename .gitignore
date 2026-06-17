@@ -59,5 +59,6 @@ docs/뮤지션_연락처.csv
 
 # 스프레드시트 작업용 스크래치 디렉터리 — 추적 금지
 .codex_spreadsheet_work/
+.codex-tmp/
 .vercel
 supabase/.temp/

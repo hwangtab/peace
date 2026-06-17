@@ -1,0 +1,14 @@
+import type { GetServerSidePropsContext } from 'next';
+import AdminCollectionPage, {
+  type AdminCollectionPageProps,
+} from '@/components/admin/AdminCollectionPage';
+import { loadAdminCollectionPageProps } from '@/lib/adminPageData';
+
+export default function AdminVideosPage(props: AdminCollectionPageProps) {
+  return (
+    <AdminCollectionPage key={`${props.config.collection}:${props.selectedLocale}`} {...props} />
+  );
+}
+
+export const getServerSideProps = (context: GetServerSidePropsContext) =>
+  loadAdminCollectionPageProps(context, 'videos');
