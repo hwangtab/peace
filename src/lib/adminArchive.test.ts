@@ -5,6 +5,7 @@ import {
   getAdminPreviewUrl,
   getAdminCollectionConfig,
   mapGalleryRowToItem,
+  mergeAdminRowsById,
   mapPressRowToItem,
   mapVideoRowToItem,
   makePublishedAt,
@@ -369,4 +370,17 @@ test('prepares draft clone payloads only for missing locale statuses', () => {
   expect(payloads.map((payload) => payload.locale)).toEqual(['ja', 'fr']);
   expect(payloads.every((payload) => payload.status === 'draft')).toBe(true);
   expect(payloads.every((payload) => !('id' in payload))).toBe(true);
+});
+
+test('merges admin rows by id while preserving first occurrence order', () => {
+  const rows = [
+    { id: 'a', title: 'A' },
+    { id: 'b', title: 'B' },
+  ] as unknown as AdminCollectionRow[];
+  const nextRows = [
+    { id: 'b', title: 'B duplicate' },
+    { id: 'c', title: 'C' },
+  ] as unknown as AdminCollectionRow[];
+
+  expect(mergeAdminRowsById(rows, nextRows)).toEqual([rows[0], rows[1], nextRows[1]]);
 });
