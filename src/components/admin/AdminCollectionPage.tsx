@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import classNames from 'classnames';
 import AdminLayout from './AdminLayout';
@@ -12,6 +12,7 @@ import {
   getRowUpdatedAt,
   normalizeAdminFormValue,
   prepareAdminLocaleClonePayload,
+  type AdminLocaleStatus,
   type AdminStatusFilter,
   type AdminCollectionConfig,
   type AdminCollectionRow,
@@ -35,6 +36,7 @@ type FormState = Record<string, string>;
 const statusLabel = (status: string) => {
   if (status === 'published') return '공개';
   if (status === 'hidden') return '내림';
+  if (status === 'missing') return '없음';
   return '초안';
 };
 
@@ -43,7 +45,8 @@ const statusClass = (status: string) =>
     'rounded px-2 py-1 text-xs font-semibold',
     status === 'published' && 'bg-jeju-ocean/10 text-jeju-ocean',
     status === 'draft' && 'bg-golden-sun/20 text-deep-ocean',
-    status === 'hidden' && 'bg-sunset-coral/10 text-sunset-coral'
+    status === 'hidden' && 'bg-sunset-coral/10 text-sunset-coral',
+    status === 'missing' && 'bg-coastal-gray/10 text-coastal-gray'
   );
 
 const buildFormState = (
@@ -94,6 +97,8 @@ export default function AdminCollectionPage({
   const [totalCount, setTotalCount] = useState(initialTotalCount);
   const [nextOffset, setNextOffset] = useState(initialNextOffset);
   const [hasMore, setHasMore] = useState(initialHasMore);
+  const [localeStatuses, setLocaleStatuses] = useState<AdminLocaleStatus[]>([]);
+  const [isLoadingLocaleStatuses, setIsLoadingLocaleStatuses] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<AdminStatusFilter>('all');
   const [cloneLocale, setCloneLocale] = useState(
@@ -122,6 +127,43 @@ export default function AdminCollectionPage({
     () => LOCALE_OPTIONS.filter((option) => option.value !== selectedLocale),
     [selectedLocale]
   );
+  const localeStatusCounts = useMemo(
+    () => ({
+      published: localeStatuses.filter((item) => item.status === 'published').length,
+      draft: localeStatuses.filter((item) => item.status === 'draft').length,
+      hidden: localeStatuses.filter((item) => item.status === 'hidden').length,
+      missing: localeStatuses.filter((item) => item.status === 'missing').length,
+    }),
+    [localeStatuses]
+  );
+
+  useEffect(() => {
+    if (!selected?.id) return;
+
+    let cancelled = false;
+    const loadLocaleStatuses = async () => {
+      setIsLoadingLocaleStatuses(true);
+      const params = new URLSearchParams({ localeStatusId: selected.id });
+      const response = await fetch(`/api/admin/archive/${config.collection}?${params.toString()}`);
+      const payload = (await response.json()) as {
+        locales?: AdminLocaleStatus[];
+        error?: string;
+      };
+      if (cancelled) return;
+      setIsLoadingLocaleStatuses(false);
+      if (!response.ok || !payload.locales) {
+        setLocaleStatuses([]);
+        return;
+      }
+      setLocaleStatuses(payload.locales);
+    };
+
+    void loadLocaleStatuses();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [config.collection, selected?.id]);
 
   const selectItem = (item: AdminCollectionRow | null) => {
     setSelected(item);
@@ -556,6 +598,36 @@ export default function AdminCollectionPage({
                   현재 항목을 선택한 언어의 초안으로 복제합니다. 저장된 공개 상태는 복제하지
                   않습니다.
                 </span>
+              </div>
+            )}
+
+            {selected && (
+              <div className="rounded border border-deep-ocean/10 bg-white px-3 py-4">
+                <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+                  <span className="text-sm font-semibold text-deep-ocean">언어 상태</span>
+                  <span className="text-xs text-coastal-gray">
+                    공개 {localeStatusCounts.published} / 초안 {localeStatusCounts.draft} / 내림{' '}
+                    {localeStatusCounts.hidden} / 없음 {localeStatusCounts.missing}
+                  </span>
+                </div>
+                {isLoadingLocaleStatuses ? (
+                  <p className="text-sm text-coastal-gray">불러오는 중</p>
+                ) : localeStatuses.length === 0 ? (
+                  <p className="text-sm text-coastal-gray">언어 상태를 불러오지 못했습니다.</p>
+                ) : (
+                  <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                    {localeStatuses.map((item) => (
+                      <a
+                        key={item.locale}
+                        href={`${config.listPath}?locale=${encodeURIComponent(item.locale)}`}
+                        className="flex items-center justify-between gap-2 rounded border border-deep-ocean/10 px-2 py-2 text-sm transition hover:bg-ocean-sand/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
+                      >
+                        <span className="font-semibold">{item.locale}</span>
+                        <span className={statusClass(item.status)}>{statusLabel(item.status)}</span>
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
 
