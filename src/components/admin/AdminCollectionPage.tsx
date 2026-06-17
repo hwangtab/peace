@@ -10,6 +10,7 @@ import {
   getAdminPreviewUrl,
   getRowStatus,
   getRowUpdatedAt,
+  mergeAdminRowsById,
   normalizeAdminFormValue,
   prepareAdminLocaleClonePayload,
   prepareAdminMissingLocaleClonePayloads,
@@ -93,6 +94,7 @@ export default function AdminCollectionPage({
   );
   const [isSaving, setIsSaving] = useState(false);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const [isLoadingAll, setIsLoadingAll] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState(initialError);
   const [totalCount, setTotalCount] = useState(initialTotalCount);
@@ -229,14 +231,54 @@ export default function AdminCollectionPage({
       return;
     }
 
-    setItems((prev) => {
-      const seen = new Set(prev.map((item) => item.id));
-      const appended = payload.items!.filter((item) => !seen.has(item.id));
-      return [...prev, ...appended];
-    });
+    setItems((prev) => mergeAdminRowsById(prev, payload.items!));
     setTotalCount(payload.totalCount ?? totalCount);
     setNextOffset(payload.nextOffset ?? nextOffset + payload.items.length);
     setHasMore(payload.hasMore ?? false);
+  };
+
+  const loadAll = async () => {
+    if (!hasMore || isLoadingAll) return;
+    setIsLoadingAll(true);
+    setError('');
+
+    let offset = nextOffset;
+    let keepLoading: boolean = hasMore;
+    let total = totalCount;
+    const collected: AdminCollectionRow[] = [];
+
+    while (keepLoading) {
+      const params = new URLSearchParams({
+        locale: selectedLocale,
+        offset: String(offset),
+        limit: String(ADMIN_COLLECTION_PAGE_SIZE),
+      });
+      const response = await fetch(`/api/admin/archive/${config.collection}?${params.toString()}`);
+      const payload = (await response.json()) as {
+        items?: AdminCollectionRow[];
+        error?: string;
+        totalCount?: number;
+        nextOffset?: number;
+        hasMore?: boolean;
+      };
+
+      if (!response.ok || !payload.items) {
+        setIsLoadingAll(false);
+        setError(payload.error || '전체 목록을 불러오지 못했습니다.');
+        return;
+      }
+
+      collected.push(...payload.items);
+      total = payload.totalCount ?? total;
+      offset = payload.nextOffset ?? offset + payload.items.length;
+      keepLoading = payload.hasMore ?? false;
+    }
+
+    setItems((prev) => mergeAdminRowsById(prev, collected));
+    setTotalCount(total);
+    setNextOffset(offset);
+    setHasMore(false);
+    setIsLoadingAll(false);
   };
 
   const changeLocale = async (nextLocale: string) => {
@@ -533,14 +575,22 @@ export default function AdminCollectionPage({
             </ul>
           )}
           {items.length > 0 && hasMore && (
-            <div className="border-t border-deep-ocean/10 p-4">
+            <div className="flex flex-col gap-2 border-t border-deep-ocean/10 p-4 sm:flex-row">
               <button
                 type="button"
                 onClick={loadMore}
-                disabled={isLoadingMore}
+                disabled={isLoadingMore || isLoadingAll}
                 className="w-full rounded border border-deep-ocean/20 bg-white px-4 py-2 text-sm font-semibold text-deep-ocean transition hover:bg-ocean-sand/40 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
               >
                 {isLoadingMore ? '불러오는 중' : '더 불러오기'}
+              </button>
+              <button
+                type="button"
+                onClick={loadAll}
+                disabled={isLoadingMore || isLoadingAll}
+                className="w-full rounded border border-jeju-ocean/40 bg-white px-4 py-2 text-sm font-semibold text-jeju-ocean transition hover:bg-jeju-ocean/10 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
+              >
+                {isLoadingAll ? '전체 불러오는 중' : '전체 불러오기'}
               </button>
             </div>
           )}

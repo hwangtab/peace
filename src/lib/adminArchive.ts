@@ -465,6 +465,14 @@ export const filterAdminRows = (
   });
 };
 
+export const mergeAdminRowsById = (
+  currentRows: AdminCollectionRow[],
+  nextRows: AdminCollectionRow[]
+): AdminCollectionRow[] => {
+  const seen = new Set(currentRows.map((item) => item.id));
+  return [...currentRows, ...nextRows.filter((item) => !seen.has(item.id))];
+};
+
 export const prepareAdminLocaleClonePayload = (
   config: AdminCollectionConfig,
   row: AdminCollectionRow,
