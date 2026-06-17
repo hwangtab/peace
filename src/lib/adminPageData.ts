@@ -1,6 +1,11 @@
 import type { GetServerSidePropsContext } from 'next';
 import { getAdminSession, redirectToAdminLogin } from './adminAuth';
-import { getAdminCollectionConfig, type AdminCollection } from './adminArchive';
+import {
+  ADMIN_COLLECTION_PAGE_SIZE,
+  getAdminCollectionConfig,
+  getAdminPaginationRange,
+  type AdminCollection,
+} from './adminArchive';
 import { createSupabaseServerClient } from './supabaseServer';
 import { isSupportedLocale } from '@/constants/locales';
 
@@ -19,17 +24,22 @@ export const loadAdminCollectionPageProps = async (
       : 'ko';
 
   const supabase = createSupabaseServerClient(context.req, context.res);
-  const { data, error } = await supabase
+  const range = getAdminPaginationRange({ offset: 0, limit: ADMIN_COLLECTION_PAGE_SIZE });
+  const { data, error, count } = await supabase
     .from(config.table)
-    .select('*')
+    .select('*', { count: 'exact' })
     .eq('locale', selectedLocale)
-    .order('updated_at', { ascending: false });
+    .order('updated_at', { ascending: false })
+    .range(range.from, range.to);
 
   if (error) {
     return {
       props: {
         config,
         initialItems: [],
+        initialTotalCount: 0,
+        initialNextOffset: 0,
+        initialHasMore: false,
         member: session.member,
         selectedLocale,
         initialError: error.message,
@@ -41,6 +51,9 @@ export const loadAdminCollectionPageProps = async (
     props: {
       config,
       initialItems: data ?? [],
+      initialTotalCount: count ?? data?.length ?? 0,
+      initialNextOffset: data?.length ?? 0,
+      initialHasMore: (data?.length ?? 0) < (count ?? 0),
       member: session.member,
       selectedLocale,
     },

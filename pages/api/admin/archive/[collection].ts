@@ -2,7 +2,9 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { ZodError } from 'zod';
 import { requireAdminApi } from '@/lib/adminAuth';
 import {
+  ADMIN_COLLECTION_PAGE_SIZE,
   getAdminCollectionConfig,
+  getAdminPaginationRange,
   makePublishedAt,
   sanitizeAdminPayload,
 } from '@/lib/adminArchive';
@@ -37,18 +39,32 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       : 'ko';
 
   if (req.method === 'GET') {
-    const { data, error } = await supabase
+    const offset = Number(req.query.offset ?? 0);
+    const limit = Number(req.query.limit ?? ADMIN_COLLECTION_PAGE_SIZE);
+    const range = getAdminPaginationRange({ offset, limit });
+    const { data, error, count } = await supabase
       .from(config.table)
-      .select('*')
+      .select('*', { count: 'exact' })
       .eq('locale', selectedLocale)
-      .order('updated_at', { ascending: false });
+      .order('updated_at', { ascending: false })
+      .range(range.from, range.to);
 
     if (error) {
       res.status(500).json({ error: error.message });
       return;
     }
 
-    res.status(200).json({ items: data ?? [], admin: session.member });
+    const itemCount = data?.length ?? 0;
+    const totalCount = count ?? itemCount;
+    const nextOffset = range.from + itemCount;
+
+    res.status(200).json({
+      items: data ?? [],
+      admin: session.member,
+      totalCount,
+      nextOffset,
+      hasMore: nextOffset < totalCount,
+    });
     return;
   }
 
