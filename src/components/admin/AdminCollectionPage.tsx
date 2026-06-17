@@ -173,7 +173,11 @@ export default function AdminCollectionPage({
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form),
     });
-    const payload = (await response.json()) as { item?: AdminCollectionRow; error?: string };
+    const payload = (await response.json()) as {
+      item?: AdminCollectionRow;
+      error?: string;
+      changeLogError?: string | null;
+    };
 
     setIsSaving(false);
     if (!response.ok || !payload.item) {
@@ -181,7 +185,11 @@ export default function AdminCollectionPage({
       return;
     }
 
-    setMessage('저장했습니다.');
+    setMessage(
+      payload.changeLogError
+        ? `저장했습니다. 변경 이력 기록 실패: ${payload.changeLogError}`
+        : '저장했습니다.'
+    );
     setSelected(payload.item);
     setForm(buildFormState(config, payload.item, selectedLocale));
     await refreshItems(payload.item.id);
@@ -196,7 +204,7 @@ export default function AdminCollectionPage({
     const response = await fetch(`/api/admin/archive/${config.collection}?id=${selected.id}`, {
       method: 'DELETE',
     });
-    const payload = (await response.json()) as { error?: string };
+    const payload = (await response.json()) as { error?: string; changeLogError?: string | null };
 
     setIsSaving(false);
     if (!response.ok) {
@@ -204,7 +212,11 @@ export default function AdminCollectionPage({
       return;
     }
 
-    setMessage('공개 목록에서 내렸습니다.');
+    setMessage(
+      payload.changeLogError
+        ? `공개 목록에서 내렸습니다. 변경 이력 기록 실패: ${payload.changeLogError}`
+        : '공개 목록에서 내렸습니다.'
+    );
     await refreshItems(selected.id);
   };
 

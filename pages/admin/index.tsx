@@ -12,6 +12,7 @@ interface AdminHomeProps {
     videos: number;
     gallery: number;
     press: number;
+    history: number;
   };
 }
 
@@ -40,6 +41,12 @@ const ADMIN_CARDS = [
     body: '기사 링크, 매체명, 대표 이미지와 요약을 관리합니다.',
     key: 'press',
   },
+  {
+    href: '/admin/history',
+    title: '변경 이력',
+    body: '저장, 내리기, 복구 기록을 확인하고 이전 값으로 되돌립니다.',
+    key: 'history',
+  },
 ] as const;
 
 export default function AdminHomePage({ member, counts }: AdminHomeProps) {
@@ -60,7 +67,7 @@ export default function AdminHomePage({ member, counts }: AdminHomeProps) {
             href={card.href}
             className="rounded border border-deep-ocean/10 bg-white p-5 transition hover:-translate-y-0.5 hover:border-jeju-ocean/50 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
           >
-            <span className="text-sm font-semibold text-jeju-ocean">{counts[card.key]}개 등록</span>
+            <span className="text-sm font-semibold text-jeju-ocean">{counts[card.key]}개</span>
             <h2 className="mt-2 font-display text-2xl font-bold">{card.title}</h2>
             <p className="mt-2 text-sm leading-relaxed text-coastal-gray">{card.body}</p>
           </Link>
@@ -75,11 +82,12 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   if (!session) return redirectToAdminLogin(context.resolvedUrl);
 
   const supabase = createSupabaseServerClient(context.req, context.res);
-  const [content, videos, gallery, press] = await Promise.all([
+  const [content, videos, gallery, press, history] = await Promise.all([
     supabase.from('cms_content_blocks').select('id', { count: 'exact', head: true }),
     supabase.from('archive_videos').select('id', { count: 'exact', head: true }),
     supabase.from('archive_gallery_images').select('id', { count: 'exact', head: true }),
     supabase.from('archive_press_items').select('id', { count: 'exact', head: true }),
+    supabase.from('cms_change_logs').select('id', { count: 'exact', head: true }),
   ]);
 
   return {
@@ -90,6 +98,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
         videos: videos.count ?? 0,
         gallery: gallery.count ?? 0,
         press: press.count ?? 0,
+        history: history.count ?? 0,
       },
     },
   };

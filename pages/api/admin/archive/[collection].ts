@@ -9,6 +9,7 @@ import {
 import { revalidateArchivePaths } from '@/lib/adminRevalidate';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import { isSupportedLocale } from '@/constants/locales';
+import { createChangeLogPayload, insertChangeLogs } from '@/lib/adminChangeLogs';
 
 const getErrorMessage = (error: unknown): string => {
   if (error instanceof ZodError) {
@@ -59,17 +60,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         body.status === 'published' ? 'published' : body.status === 'hidden' ? 'hidden' : 'draft';
       const existing =
         id != null
-          ? await supabase.from(config.table).select('published_at').eq('id', id).maybeSingle()
+          ? await supabase.from(config.table).select('*').eq('id', id).maybeSingle()
           : null;
       if (existing?.error) {
         res.status(500).json({ error: existing.error.message });
         return;
       }
+      const previous = (existing?.data as Record<string, unknown> | null) ?? null;
       const payload = {
         ...body,
         published_at: makePublishedAt(
           status,
-          (existing?.data as { published_at?: string | null } | null)?.published_at ?? null
+          (previous as { published_at?: string | null } | null)?.published_at ?? null
         ),
       };
 
@@ -89,7 +91,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         config.collection,
         data as Record<string, unknown>
       );
-      res.status(200).json({ item: data, revalidationErrors });
+      const changeLogError = await insertChangeLogs(supabase, [
+        createChangeLogPayload({
+          config,
+          action: id ? 'update' : 'create',
+          before: previous,
+          after: data,
+          session,
+        }),
+      ]);
+      res.status(200).json({ item: data, revalidationErrors, changeLogError });
       return;
     } catch (error) {
       res.status(400).json({ error: getErrorMessage(error) });
@@ -114,6 +125,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return;
     }
 
+    const beforeRowsResult =
+      config.collection === 'content'
+        ? { data: [current.data as Record<string, unknown>], error: null }
+        : await supabase
+            .from(config.table)
+            .select('*')
+            .eq('public_id', (current.data as { public_id: number }).public_id);
+    if (beforeRowsResult.error) {
+      res.status(500).json({ error: beforeRowsResult.error.message });
+      return;
+    }
+    const beforeRows = beforeRowsResult.data ?? [];
+
     const updateQuery = supabase
       .from(config.table)
       .update({ status: 'hidden', published_at: null });
@@ -134,7 +158,24 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       config.collection,
       current.data as Record<string, unknown>
     );
-    res.status(200).json({ ok: true, hidden: data?.length ?? 0, revalidationErrors });
+    const afterById = new Map(
+      ((data ?? []) as Record<string, unknown>[]).map((row) => [String(row.id), row])
+    );
+    const changeLogError = await insertChangeLogs(
+      supabase,
+      (beforeRows as Record<string, unknown>[]).map((before) =>
+        createChangeLogPayload({
+          config,
+          action: 'hide',
+          before,
+          after: afterById.get(String(before.id)) ?? null,
+          session,
+        })
+      )
+    );
+    res
+      .status(200)
+      .json({ ok: true, hidden: data?.length ?? 0, revalidationErrors, changeLogError });
     return;
   }
 

@@ -3,6 +3,7 @@ import type {
   ArchiveGalleryImageRow,
   ArchivePressItemRow,
   ArchiveVideoRow,
+  CmsChangeLog,
   CmsContentBlock,
 } from './cms';
 import type { SurveyInsertPayload } from '@/data/campSurvey2026';
@@ -46,6 +47,11 @@ export interface Database {
         ArchivePressItemRow,
         Partial<Omit<ArchivePressItemRow, 'id' | 'created_at' | 'updated_at'>>,
         Partial<Omit<ArchivePressItemRow, 'id' | 'created_at' | 'updated_at'>>
+      >;
+      cms_change_logs: TableDef<
+        CmsChangeLog,
+        Partial<Omit<CmsChangeLog, 'id' | 'created_at'>>,
+        Partial<Omit<CmsChangeLog, 'id' | 'created_at'>>
       >;
       camp_survey_responses: TableDef<SurveyRow, SurveyInsertPayload, Partial<SurveyInsertPayload>>;
     };
