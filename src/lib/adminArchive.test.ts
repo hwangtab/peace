@@ -1,4 +1,6 @@
 import {
+  getAdminPreviewUrl,
+  getAdminCollectionConfig,
   mapGalleryRowToItem,
   mapPressRowToItem,
   mapVideoRowToItem,
@@ -163,4 +165,23 @@ test('published_at is preserved while an item remains published', () => {
   expect(makePublishedAt('draft', previous)).toBeNull();
   expect(makePublishedAt('hidden', previous)).toBeNull();
   expect(makePublishedAt('published', null)).toMatch(/^\d{4}-\d{2}-\d{2}T/);
+});
+
+test('builds saved item preview urls for admin review', () => {
+  const videos = getAdminCollectionConfig('videos');
+  const gallery = getAdminCollectionConfig('gallery');
+  const press = getAdminCollectionConfig('press');
+  const content = getAdminCollectionConfig('content');
+
+  expect(videos && getAdminPreviewUrl(videos, { public_id: 12, locale: 'en' })).toBe(
+    '/en/videos/12'
+  );
+  expect(gallery && getAdminPreviewUrl(gallery, { public_id: 34, locale: 'ko' })).toBe(
+    '/ko/gallery'
+  );
+  expect(press && getAdminPreviewUrl(press, { public_id: 56, locale: 'fr' })).toBe('/fr/press');
+  expect(content && getAdminPreviewUrl(content, { route_path: '/album/about', locale: 'ja' })).toBe(
+    '/ja/album/about'
+  );
+  expect(content && getAdminPreviewUrl(content, { route_path: 'bad', locale: 'ja' })).toBeNull();
 });

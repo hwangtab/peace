@@ -5,6 +5,7 @@ import AdminLayout from './AdminLayout';
 import {
   LOCALE_OPTIONS,
   getPrimaryLabel,
+  getAdminPreviewUrl,
   getRowStatus,
   getRowUpdatedAt,
   normalizeAdminFormValue,
@@ -89,6 +90,11 @@ export default function AdminCollectionPage({
     }),
     [items]
   );
+
+  const previewUrl = selected
+    ? getAdminPreviewUrl(config, selected as unknown as Partial<Record<string, unknown>>)
+    : null;
+  const selectedStatus = selected ? getRowStatus(selected) : null;
 
   const selectItem = (item: AdminCollectionRow | null) => {
     setSelected(item);
@@ -410,7 +416,22 @@ export default function AdminCollectionPage({
                   공개에서 내리기
                 </button>
               )}
+              {selected && previewUrl && (
+                <a
+                  href={previewUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded border border-deep-ocean/20 bg-white px-4 py-2 font-semibold text-deep-ocean transition hover:bg-ocean-sand/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
+                >
+                  공개 위치 열기
+                </a>
+              )}
             </div>
+            {selected && previewUrl && selectedStatus !== 'published' && (
+              <p className="text-xs text-coastal-gray">
+                초안 또는 내림 상태는 공개 페이지에서 보이지 않을 수 있습니다.
+              </p>
+            )}
           </div>
         </section>
       </div>
