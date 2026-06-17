@@ -12,6 +12,7 @@ import {
   getRowUpdatedAt,
   normalizeAdminFormValue,
   prepareAdminLocaleClonePayload,
+  prepareAdminMissingLocaleClonePayloads,
   type AdminLocaleStatus,
   type AdminStatusFilter,
   type AdminCollectionConfig,
@@ -368,6 +369,51 @@ export default function AdminCollectionPage({
     await router.push(`${config.listPath}?locale=${encodeURIComponent(cloneLocale)}`);
   };
 
+  const refreshLocaleStatuses = async (itemId: string) => {
+    const params = new URLSearchParams({ localeStatusId: itemId });
+    const response = await fetch(`/api/admin/archive/${config.collection}?${params.toString()}`);
+    const payload = (await response.json()) as {
+      locales?: AdminLocaleStatus[];
+      error?: string;
+    };
+    if (!response.ok || !payload.locales) {
+      throw new Error(payload.error || '언어 상태를 불러오지 못했습니다.');
+    }
+    setLocaleStatuses(payload.locales);
+  };
+
+  const cloneMissingLocales = async () => {
+    if (!selected) return;
+    const payloads = prepareAdminMissingLocaleClonePayloads(config, selected, localeStatuses);
+    if (payloads.length === 0) return;
+
+    setIsSaving(true);
+    setMessage('');
+    setError('');
+
+    for (const payload of payloads) {
+      const response = await fetch(`/api/admin/archive/${config.collection}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const result = (await response.json()) as { item?: AdminCollectionRow; error?: string };
+      if (!response.ok || !result.item) {
+        setIsSaving(false);
+        setError(result.error || '없는 언어 초안을 만들지 못했습니다.');
+        return;
+      }
+    }
+
+    setIsSaving(false);
+    setMessage(`없는 언어 초안 ${payloads.length}개를 만들었습니다.`);
+    try {
+      await refreshLocaleStatuses(selected.id);
+    } catch (error) {
+      setError(error instanceof Error ? error.message : '언어 상태를 다시 불러오지 못했습니다.');
+    }
+  };
+
   return (
     <AdminLayout title={config.title} member={member}>
       <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
@@ -615,18 +661,32 @@ export default function AdminCollectionPage({
                 ) : localeStatuses.length === 0 ? (
                   <p className="text-sm text-coastal-gray">언어 상태를 불러오지 못했습니다.</p>
                 ) : (
-                  <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-                    {localeStatuses.map((item) => (
-                      <a
-                        key={item.locale}
-                        href={`${config.listPath}?locale=${encodeURIComponent(item.locale)}`}
-                        className="flex items-center justify-between gap-2 rounded border border-deep-ocean/10 px-2 py-2 text-sm transition hover:bg-ocean-sand/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
+                  <>
+                    <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                      {localeStatuses.map((item) => (
+                        <a
+                          key={item.locale}
+                          href={`${config.listPath}?locale=${encodeURIComponent(item.locale)}`}
+                          className="flex items-center justify-between gap-2 rounded border border-deep-ocean/10 px-2 py-2 text-sm transition hover:bg-ocean-sand/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
+                        >
+                          <span className="font-semibold">{item.locale}</span>
+                          <span className={statusClass(item.status)}>
+                            {statusLabel(item.status)}
+                          </span>
+                        </a>
+                      ))}
+                    </div>
+                    {localeStatusCounts.missing > 0 && (
+                      <button
+                        type="button"
+                        onClick={cloneMissingLocales}
+                        disabled={isSaving}
+                        className="mt-3 rounded border border-jeju-ocean/40 bg-white px-3 py-2 text-sm font-semibold text-jeju-ocean transition hover:bg-jeju-ocean/10 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
                       >
-                        <span className="font-semibold">{item.locale}</span>
-                        <span className={statusClass(item.status)}>{statusLabel(item.status)}</span>
-                      </a>
-                    ))}
-                  </div>
+                        없는 언어 초안 모두 생성
+                      </button>
+                    )}
+                  </>
                 )}
               </div>
             )}
