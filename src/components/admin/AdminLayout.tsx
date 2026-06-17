@@ -12,6 +12,7 @@ const NAV_ITEMS = [
   { href: '/admin/videos', label: '비디오' },
   { href: '/admin/gallery', label: '갤러리' },
   { href: '/admin/press', label: '언론보도' },
+  { href: '/admin/history', label: '변경 이력' },
 ];
 
 interface AdminLayoutProps {

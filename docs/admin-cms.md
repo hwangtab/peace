@@ -11,10 +11,13 @@
    - `supabase/migrations/20260617022058_admin_archive_cms.sql`
    - `supabase/migrations/20260617032014_admin_archive_cms_locale_storage.sql`
    - `supabase/migrations/20260617062524_admin_archive_event_types.sql`
+   - `supabase/migrations/20260617084133_admin_change_logs.sql`
    - 두 번째 migration은 전 언어 CMS용 `(public_id, locale)` unique 제약과
      `archive-gallery` Storage bucket/RLS를 추가합니다.
    - 세 번째 migration은 실제 비디오 데이터의 `live`, `music_video`, `interview`
      event type을 DB constraint에 반영합니다.
+   - 네 번째 migration은 저장/내리기/복구 변경 이력을 기록하는 `cms_change_logs`를
+     추가합니다.
 2. Supabase Auth에서 운영진 사용자를 생성하거나 이메일 OTP 로그인을 허용합니다.
    - Authentication URL configuration의 Redirect URLs에
      `https://peaceandmusic.net/admin/callback`을 등록합니다.
@@ -77,6 +80,14 @@ done
 - 업로드만으로 공개 데이터가 바뀌지는 않습니다. 항목 저장을 눌러야 DB row와 공개 페이지에
   반영됩니다.
 - 업로드 권한은 active admin allowlist와 Storage RLS로 제한합니다.
+
+## 변경 이력과 복구
+
+- 관리자 저장, 공개에서 내리기, 복구 작업은 `cms_change_logs`에 before/after JSON snapshot을 남깁니다.
+- `/admin/history`에서 최근 변경 이력을 보고 이전 값으로 복구할 수 있습니다.
+- 비디오, 갤러리, 언론보도를 공개에서 내릴 때는 같은 `public_id`의 모든 locale row가 내려가며,
+  각 locale row별로 변경 이력이 기록됩니다.
+- 복구는 기존 row가 남아 있는 항목을 이전 snapshot으로 되돌립니다. 완전히 삭제된 row 재생성은 v1 범위가 아닙니다.
 
 ## 문구 override 키
 
