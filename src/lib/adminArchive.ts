@@ -389,6 +389,34 @@ export const getRowStatus = (row: AdminCollectionRow): CmsStatus =>
 export const getRowUpdatedAt = (row: AdminCollectionRow): string =>
   (row as unknown as { updated_at?: string }).updated_at ?? '';
 
+export type AdminStatusFilter = CmsStatus | 'all';
+
+export const filterAdminRows = (
+  rows: AdminCollectionRow[],
+  config: AdminCollectionConfig,
+  filters: { query?: string; status?: AdminStatusFilter }
+): AdminCollectionRow[] => {
+  const query = (filters.query ?? '').trim().toLocaleLowerCase();
+  const status = filters.status ?? 'all';
+
+  return rows.filter((row) => {
+    if (status !== 'all' && getRowStatus(row) !== status) return false;
+    if (!query) return true;
+
+    const source = row as unknown as Record<string, unknown>;
+    const searchable = [
+      getPrimaryLabel(row, config),
+      ...Object.values(source).filter(
+        (value): value is string | number => typeof value === 'string' || typeof value === 'number'
+      ),
+    ]
+      .join(' ')
+      .toLocaleLowerCase();
+
+    return searchable.includes(query);
+  });
+};
+
 const normalizePreviewLocale = (locale: unknown): string =>
   typeof locale === 'string' && LOCALES.includes(locale as (typeof LOCALES)[number])
     ? locale
