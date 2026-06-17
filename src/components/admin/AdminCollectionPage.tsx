@@ -4,11 +4,13 @@ import classNames from 'classnames';
 import AdminLayout from './AdminLayout';
 import {
   LOCALE_OPTIONS,
+  filterAdminRows,
   getPrimaryLabel,
   getAdminPreviewUrl,
   getRowStatus,
   getRowUpdatedAt,
   normalizeAdminFormValue,
+  type AdminStatusFilter,
   type AdminCollectionConfig,
   type AdminCollectionRow,
 } from '@/lib/adminArchive';
@@ -80,6 +82,8 @@ export default function AdminCollectionPage({
   const [isSaving, setIsSaving] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState(initialError);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [statusFilter, setStatusFilter] = useState<AdminStatusFilter>('all');
 
   const counts = useMemo(
     () => ({
@@ -95,6 +99,10 @@ export default function AdminCollectionPage({
     ? getAdminPreviewUrl(config, selected as unknown as Partial<Record<string, unknown>>)
     : null;
   const selectedStatus = selected ? getRowStatus(selected) : null;
+  const filteredItems = useMemo(
+    () => filterAdminRows(items, config, { query: searchQuery, status: statusFilter }),
+    [config, items, searchQuery, statusFilter]
+  );
 
   const selectItem = (item: AdminCollectionRow | null) => {
     setSelected(item);
@@ -281,11 +289,38 @@ export default function AdminCollectionPage({
           <div className="border-b border-deep-ocean/10 px-4 py-3">
             <h2 className="font-semibold">목록</h2>
           </div>
+          <div className="space-y-3 border-b border-deep-ocean/10 px-4 py-3">
+            <input
+              type="search"
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              placeholder="제목, ID, 설명 검색"
+              className="w-full rounded border border-deep-ocean/15 px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
+            />
+            <div className="flex items-center justify-between gap-3">
+              <select
+                value={statusFilter}
+                onChange={(event) => setStatusFilter(event.target.value as AdminStatusFilter)}
+                className="rounded border border-deep-ocean/15 bg-white px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
+              >
+                <option value="all">모든 상태</option>
+                <option value="published">공개</option>
+                <option value="draft">초안</option>
+                <option value="hidden">내림</option>
+              </select>
+              <span className="text-xs text-coastal-gray">
+                {filteredItems.length.toLocaleString('ko-KR')} /{' '}
+                {items.length.toLocaleString('ko-KR')}
+              </span>
+            </div>
+          </div>
           {items.length === 0 ? (
             <p className="p-6 text-coastal-gray">{config.emptyLabel}</p>
+          ) : filteredItems.length === 0 ? (
+            <p className="p-6 text-coastal-gray">검색 조건에 맞는 항목이 없습니다.</p>
           ) : (
             <ul className="divide-y divide-deep-ocean/10">
-              {items.map((item) => {
+              {filteredItems.map((item) => {
                 const active = selected?.id === item.id;
                 const status = getRowStatus(item);
                 return (

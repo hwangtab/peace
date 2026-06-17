@@ -1,4 +1,5 @@
 import {
+  filterAdminRows,
   getAdminPreviewUrl,
   getAdminCollectionConfig,
   mapGalleryRowToItem,
@@ -8,6 +9,7 @@ import {
   sanitizeAdminPayload,
   toContentMap,
 } from './adminArchive';
+import type { AdminCollectionRow } from './adminArchive';
 import type {
   ArchiveGalleryImageRow,
   ArchivePressItemRow,
@@ -184,4 +186,39 @@ test('builds saved item preview urls for admin review', () => {
     '/ja/album/about'
   );
   expect(content && getAdminPreviewUrl(content, { route_path: 'bad', locale: 'ja' })).toBeNull();
+});
+
+test('filters admin rows by search query and status', () => {
+  const videos = getAdminCollectionConfig('videos');
+  expect(videos).not.toBeNull();
+  if (!videos) return;
+
+  const rows = [
+    {
+      id: '00000000-0000-0000-0000-000000000101',
+      public_id: 101,
+      title: '강정 평화 라이브',
+      description: '캠프 현장 영상',
+      status: 'published',
+    },
+    {
+      id: '00000000-0000-0000-0000-000000000102',
+      public_id: 102,
+      title: 'Archive Draft',
+      description: 'internal note',
+      status: 'draft',
+    },
+    {
+      id: '00000000-0000-0000-0000-000000000103',
+      public_id: 103,
+      title: 'Hidden Interview',
+      description: 'private',
+      status: 'hidden',
+    },
+  ] as unknown as AdminCollectionRow[];
+
+  expect(filterAdminRows(rows, videos, { query: '평화', status: 'all' })).toHaveLength(1);
+  expect(filterAdminRows(rows, videos, { query: '102', status: 'all' })).toHaveLength(1);
+  expect(filterAdminRows(rows, videos, { query: '', status: 'draft' })).toEqual([rows[1]]);
+  expect(filterAdminRows(rows, videos, { query: 'archive', status: 'published' })).toEqual([]);
 });
