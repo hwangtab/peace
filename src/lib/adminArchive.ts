@@ -22,6 +22,14 @@ export type AdminCollectionRow =
   | ArchiveGalleryImageRow
   | ArchivePressItemRow;
 
+export type AdminLocaleStatus = {
+  locale: string;
+  status: CmsStatus | 'missing';
+  id: string | null;
+  updated_at: string | null;
+  published_at: string | null;
+};
+
 export type AdminFieldKind = 'text' | 'textarea' | 'number' | 'date' | 'select' | 'csv';
 
 export interface AdminField {
@@ -342,6 +350,29 @@ export const getAdminPaginationRange = ({ offset, limit }: { offset?: number; li
     to: safeOffset + safeLimit - 1,
     limit: safeLimit,
   };
+};
+
+export const buildAdminLocaleStatuses = (
+  rows: Array<{
+    id?: string | null;
+    locale?: string | null;
+    status?: CmsStatus | null;
+    updated_at?: string | null;
+    published_at?: string | null;
+  }>
+): AdminLocaleStatus[] => {
+  const byLocale = new Map(rows.map((row) => [row.locale, row]));
+
+  return LOCALES.map((locale) => {
+    const row = byLocale.get(locale);
+    return {
+      locale,
+      status: row?.status ?? 'missing',
+      id: row?.id ?? null,
+      updated_at: row?.updated_at ?? null,
+      published_at: row?.published_at ?? null,
+    };
+  });
 };
 
 export const normalizeAdminFormValue = (value: unknown): string => {

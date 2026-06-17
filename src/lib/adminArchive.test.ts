@@ -1,4 +1,5 @@
 import {
+  buildAdminLocaleStatuses,
   filterAdminRows,
   getAdminPaginationRange,
   getAdminPreviewUrl,
@@ -283,5 +284,36 @@ test('builds bounded admin pagination ranges', () => {
     from: 1000,
     to: 1999,
     limit: 1000,
+  });
+});
+
+test('builds locale status coverage with missing locales', () => {
+  const statuses = buildAdminLocaleStatuses([
+    {
+      id: '00000000-0000-0000-0000-000000000301',
+      locale: 'ko',
+      status: 'published',
+      updated_at: '2026-06-17T00:00:00.000Z',
+    },
+    {
+      id: '00000000-0000-0000-0000-000000000302',
+      locale: 'en',
+      status: 'draft',
+      updated_at: '2026-06-17T00:01:00.000Z',
+    },
+  ]);
+
+  expect(statuses.find((item) => item.locale === 'ko')).toMatchObject({
+    locale: 'ko',
+    status: 'published',
+    id: '00000000-0000-0000-0000-000000000301',
+  });
+  expect(statuses.find((item) => item.locale === 'en')).toMatchObject({
+    locale: 'en',
+    status: 'draft',
+  });
+  expect(statuses.find((item) => item.locale === 'ja')).toMatchObject({
+    locale: 'ja',
+    status: 'missing',
   });
 });

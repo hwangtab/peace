@@ -3,6 +3,7 @@ import { ZodError } from 'zod';
 import { requireAdminApi } from '@/lib/adminAuth';
 import {
   ADMIN_COLLECTION_PAGE_SIZE,
+  buildAdminLocaleStatuses,
   getAdminCollectionConfig,
   getAdminPaginationRange,
   makePublishedAt,
@@ -39,6 +40,43 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       : 'ko';
 
   if (req.method === 'GET') {
+    const localeStatusId =
+      typeof req.query.localeStatusId === 'string' ? req.query.localeStatusId : null;
+    if (localeStatusId) {
+      const current = await supabase
+        .from(config.table)
+        .select('*')
+        .eq('id', localeStatusId)
+        .maybeSingle();
+
+      if (current.error) {
+        res.status(500).json({ error: current.error.message });
+        return;
+      }
+      if (!current.data) {
+        res.status(404).json({ error: 'not_found' });
+        return;
+      }
+
+      const currentRow = current.data as Record<string, unknown>;
+      const relatedQuery = supabase
+        .from(config.table)
+        .select('id, locale, status, updated_at, published_at')
+        .order('locale', { ascending: true });
+      const related =
+        config.collection === 'content'
+          ? await relatedQuery.eq('key', String(currentRow.key ?? ''))
+          : await relatedQuery.eq('public_id', Number(currentRow.public_id));
+
+      if (related.error) {
+        res.status(500).json({ error: related.error.message });
+        return;
+      }
+
+      res.status(200).json({ locales: buildAdminLocaleStatuses(related.data ?? []) });
+      return;
+    }
+
     const offset = Number(req.query.offset ?? 0);
     const limit = Number(req.query.limit ?? ADMIN_COLLECTION_PAGE_SIZE);
     const range = getAdminPaginationRange({ offset, limit });
