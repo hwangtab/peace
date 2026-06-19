@@ -1,4 +1,13 @@
 const trimmed = (v: string) => (v ?? '').trim();
+
+// Formats an ISO date string for display in board UI.
+// Fixed 'ko-KR' locale ensures server and client agree (no hydration mismatch).
+export const formatBoardDate = (iso: string): string =>
+  new Date(iso).toLocaleDateString('ko-KR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
 type Ok<T> = { ok: true; value: T };
 type Err = { ok: false; reason: string };
 

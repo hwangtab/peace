@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { useAuth } from '@/components/auth/AuthProvider';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
-import { validateComment } from '@/lib/boardForms';
+import { validateComment, formatBoardDate } from '@/lib/boardForms';
 import { safeRedirectPath } from '@/lib/memberAuth';
 
 export interface CommentRow {
@@ -40,7 +40,7 @@ async function fetchComments(postId: string): Promise<CommentRow[]> {
     status: r.status as 'published' | 'hidden',
     created_at: String(r.created_at),
     updated_at: String(r.updated_at),
-    author_nickname: (r.profiles as { nickname?: string } | null)?.nickname ?? '익명',
+    author_nickname: (r.profiles as { nickname?: string } | null)?.nickname ?? '',
   }));
 }
 
@@ -116,11 +116,7 @@ export default function CommentSection({ postId, initialComments }: Props) {
       ) : (
         <ul className="space-y-4">
           {comments.map((c) => {
-            const dateStr = new Date(c.created_at).toLocaleDateString(undefined, {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            });
+            const dateStr = formatBoardDate(c.created_at);
             const isOwn = user?.id === c.author_id;
             const isDeleting = deleteId === c.id;
 
@@ -129,7 +125,7 @@ export default function CommentSection({ postId, initialComments }: Props) {
                 <div className="flex items-center justify-between gap-2">
                   <div className="flex items-center gap-2 text-sm text-coastal-gray">
                     <span className="font-semibold text-deep-ocean">
-                      {c.author_nickname}
+                      {c.author_nickname || t('post.anonymous')}
                     </span>
                     <span>·</span>
                     <span>{dateStr}</span>
