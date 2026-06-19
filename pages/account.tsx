@@ -41,7 +41,10 @@ export default function AccountPage() {
         .update({ nickname: nick.value })
         .eq('id', user.id);
       setBusy(false);
-      if (upErr) return setError(/duplicate|unique/i.test(upErr.message) ? t('signup.nicknameTaken') : upErr.message);
+      if (upErr) {
+        const isDup = upErr.code === '23505' || /duplicate|unique/i.test(upErr.message ?? '');
+        return setError(isDup ? t('signup.nicknameTaken') : upErr.message);
+      }
       await refreshProfile();
       setMessage(t('account.saved'));
     } catch (err) {
@@ -91,16 +94,16 @@ export default function AccountPage() {
         {error && <p className="rounded bg-sunset-coral/10 px-3 py-2 text-sm text-sunset-coral">{error}</p>}
 
         <section className="space-y-2 rounded border border-deep-ocean/10 bg-white p-5">
-          <label className="block text-sm font-semibold text-deep-ocean">{t('account.nickname')}</label>
-          <input value={nickname} onChange={(e) => setNickname(e.target.value)} className={inputCls} />
+          <label htmlFor="account-nickname" className="block text-sm font-semibold text-deep-ocean">{t('account.nickname')}</label>
+          <input id="account-nickname" value={nickname} onChange={(e) => setNickname(e.target.value)} className={inputCls} />
           <button type="button" onClick={saveNickname} disabled={busy} className={btnCls}>
             {t('account.save')}
           </button>
         </section>
 
         <section className="space-y-2 rounded border border-deep-ocean/10 bg-white p-5">
-          <label className="block text-sm font-semibold text-deep-ocean">{t('account.newPassword')}</label>
-          <input type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} className={inputCls} />
+          <label htmlFor="account-new-password" className="block text-sm font-semibold text-deep-ocean">{t('account.newPassword')}</label>
+          <input id="account-new-password" type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} className={inputCls} />
           <button type="button" onClick={changePassword} disabled={busy} className={btnCls}>
             {t('account.changePassword')}
           </button>
