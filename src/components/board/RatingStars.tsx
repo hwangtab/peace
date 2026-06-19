@@ -1,10 +1,33 @@
 interface RatingStarsProps {
   value: number;
   max?: number;
+  onSelect?: (value: number) => void;
 }
 
-export default function RatingStars({ value, max = 5 }: RatingStarsProps) {
+export default function RatingStars({ value, max = 5, onSelect }: RatingStarsProps) {
   const rounded = Math.round(value);
+
+  if (onSelect) {
+    return (
+      <span className="inline-flex gap-0.5 text-2xl text-golden-sun">
+        {Array.from({ length: max }, (_, i) => {
+          const starValue = i + 1;
+          return (
+            <button
+              key={i}
+              type="button"
+              aria-label={`${starValue}점`}
+              onClick={() => onSelect(starValue)}
+              className="transition-colors text-golden-sun hover:text-golden-sun disabled:opacity-50"
+            >
+              {starValue <= rounded ? '★' : '☆'}
+            </button>
+          );
+        })}
+      </span>
+    );
+  }
+
   return (
     <span
       aria-label={`${value}점 / ${max}점`}

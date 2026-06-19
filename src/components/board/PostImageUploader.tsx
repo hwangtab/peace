@@ -28,11 +28,11 @@ export default function PostImageUploader({ value, onChange }: PostImageUploader
     setError(null);
 
     if (!ALLOWED_TYPES.includes(file.type)) {
-      setError('PNG, JPEG, WebP, GIF 파일만 올릴 수 있습니다.');
+      setError(t('error.invalidImageType'));
       return;
     }
     if (file.size > MAX_SIZE) {
-      setError('이미지 파일은 10 MB 이하로 올려 주세요.');
+      setError(t('error.imageTooLarge'));
       return;
     }
     if (!user) {
@@ -58,7 +58,7 @@ export default function PostImageUploader({ value, onChange }: PostImageUploader
         .upload(path, file, { cacheControl: '31536000', upsert: false });
 
       if (uploadError) {
-        setError(uploadError.message);
+        setError(t('error.saveFailed'));
         return;
       }
 
@@ -111,7 +111,7 @@ export default function PostImageUploader({ value, onChange }: PostImageUploader
         onClick={() => inputRef.current?.click()}
         className="rounded-lg border border-jeju-ocean px-4 py-2 text-sm font-semibold text-jeju-ocean transition hover:bg-seafoam disabled:opacity-50"
       >
-        {uploading ? '업로드 중…' : t('post.uploadImage')}
+        {uploading ? t('post.uploading') : t('post.uploadImage')}
       </button>
 
       {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
