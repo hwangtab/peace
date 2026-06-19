@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { z, ZodError } from 'zod';
-import { requireAdminApi } from '@/lib/adminAuth';
+import { requireAdminRole } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import { getAdminCollectionConfig } from '@/lib/adminArchive';
 import {
@@ -23,7 +23,9 @@ const getErrorMessage = (error: unknown): string => {
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const session = await requireAdminApi(req, res);
+  // Reading the audit log is open to any admin; restoring is editor or owner.
+  const minRole = req.method === 'GET' ? 'viewer' : 'editor';
+  const session = await requireAdminRole(req, res, minRole);
   if (!session) return;
 
   const supabase = createSupabaseServerClient(req, res);

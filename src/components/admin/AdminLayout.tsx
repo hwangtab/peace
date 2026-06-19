@@ -15,6 +15,8 @@ const NAV_ITEMS = [
   { href: '/admin/history', label: '변경 이력' },
 ];
 
+const OWNER_NAV_ITEMS = [{ href: '/admin/members', label: '멤버' }];
+
 interface AdminLayoutProps {
   title: string;
   member?: AdminMember;
@@ -23,6 +25,7 @@ interface AdminLayoutProps {
 
 export default function AdminLayout({ title, member, children }: AdminLayoutProps) {
   const router = useRouter();
+  const navItems = member?.role === 'owner' ? [...NAV_ITEMS, ...OWNER_NAV_ITEMS] : NAV_ITEMS;
 
   const handleSignOut = async () => {
     await createSupabaseBrowserClient().auth.signOut();
@@ -64,7 +67,7 @@ export default function AdminLayout({ title, member, children }: AdminLayoutProp
               </div>
             </div>
             <nav aria-label="관리자 메뉴" className="flex gap-2 overflow-x-auto pb-1">
-              {NAV_ITEMS.map((item) => {
+              {navItems.map((item) => {
                 const active = router.pathname === item.href;
                 return (
                   <Link

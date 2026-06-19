@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { ZodError } from 'zod';
-import { requireAdminApi } from '@/lib/adminAuth';
+import { requireAdminRole } from '@/lib/adminAuth';
 import {
   ADMIN_COLLECTION_PAGE_SIZE,
   buildAdminLocaleStatuses,
@@ -30,7 +30,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return;
   }
 
-  const session = await requireAdminApi(req, res);
+  // GET (read/preview) is allowed for any logged-in admin including viewers;
+  // mutations require editor or owner. RLS enforces the same on the DB side.
+  const minRole = req.method === 'GET' ? 'viewer' : 'editor';
+  const session = await requireAdminRole(req, res, minRole);
   if (!session) return;
 
   const supabase = createSupabaseServerClient(req, res);

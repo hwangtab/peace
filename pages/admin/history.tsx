@@ -58,6 +58,7 @@ export default function AdminHistoryPage({
   initialError = '',
 }: AdminHistoryPageProps) {
   const [logs, setLogs] = useState(initialLogs);
+  const canEdit = member.role !== 'viewer';
   const [isRestoring, setIsRestoring] = useState<string | null>(null);
   const [message, setMessage] = useState('');
   const [error, setError] = useState(initialError);
@@ -122,7 +123,7 @@ export default function AdminHistoryPage({
         ) : (
           <ul className="divide-y divide-deep-ocean/10">
             {logs.map((log) => {
-              const canRestore = Boolean(log.before_data);
+              const canRestore = canEdit && Boolean(log.before_data);
               return (
                 <li key={log.id} className="space-y-4 p-4">
                   <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
@@ -140,14 +141,16 @@ export default function AdminHistoryPage({
                         {log.public_id ? ` · #${log.public_id}` : ''}
                       </p>
                     </div>
-                    <button
-                      type="button"
-                      onClick={() => void restoreLog(log)}
-                      disabled={!canRestore || isRestoring === log.id}
-                      className="rounded border border-deep-ocean/20 bg-white px-3 py-2 text-sm font-semibold text-deep-ocean transition hover:border-jeju-ocean hover:text-jeju-ocean disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
-                    >
-                      {isRestoring === log.id ? '복구 중' : '이전 값으로 복구'}
-                    </button>
+                    {canEdit && (
+                      <button
+                        type="button"
+                        onClick={() => void restoreLog(log)}
+                        disabled={!canRestore || isRestoring === log.id}
+                        className="rounded border border-deep-ocean/20 bg-white px-3 py-2 text-sm font-semibold text-deep-ocean transition hover:border-jeju-ocean hover:text-jeju-ocean disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
+                      >
+                        {isRestoring === log.id ? '복구 중' : '이전 값으로 복구'}
+                      </button>
+                    )}
                   </div>
                   <div className="grid gap-3 lg:grid-cols-2">
                     <JsonBlock title="변경 전" value={log.before_data} />
