@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import type { Session, User } from '@supabase/supabase-js';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
@@ -18,9 +18,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<MemberProfile | null>(null);
   const [loading, setLoading] = useState(true);
+  const loadSeqRef = useRef(0);
 
   const loadProfile = useCallback(async (nextUser: User | null) => {
+    const seq = ++loadSeqRef.current;
     if (!nextUser) {
+      if (seq !== loadSeqRef.current) return;
       setProfile(null);
       return;
     }
@@ -31,8 +34,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         .select('id, nickname, created_at, updated_at')
         .eq('id', nextUser.id)
         .maybeSingle();
+      if (seq !== loadSeqRef.current) return;
       setProfile((data as MemberProfile) ?? null);
     } catch {
+      if (seq !== loadSeqRef.current) return;
       setProfile(null);
     }
   }, []);
