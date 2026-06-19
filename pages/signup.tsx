@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import type { GetStaticPropsContext } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
@@ -10,6 +11,7 @@ import { mapAuthError, validateNickname, validatePassword } from '@/lib/memberAu
 
 export default function SignupPage() {
   const { t } = useTranslation('auth');
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [nickname, setNickname] = useState('');
@@ -41,7 +43,7 @@ export default function SignupPage() {
         return setError(t('signup.nicknameTaken'));
       }
 
-      const { error: signErr } = await supabase.auth.signUp({
+      const { data, error: signErr } = await supabase.auth.signUp({
         email: email.trim(),
         password,
         options: {
@@ -51,7 +53,15 @@ export default function SignupPage() {
         },
       });
       setBusy(false);
-      if (signErr) return setError(mapAuthError(signErr));
+      if (signErr) {
+        const isDup = (signErr as { code?: string }).code === '23505'
+          || /duplicate|unique|nickname/i.test(signErr.message ?? '');
+        return setError(isDup ? t('signup.nicknameTaken') : mapAuthError(signErr));
+      }
+      if (data.session) {
+        await router.push('/account');
+        return;
+      }
       setMessage(t('signup.checkEmail'));
     } catch (err) {
       setBusy(false);
@@ -73,13 +83,13 @@ export default function SignupPage() {
     >
       <form onSubmit={submit} className="space-y-4">
         <Field label={t('common.email')}>
-          <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className={inputCls} />
+          <input type="email" required autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} className={inputCls} />
         </Field>
         <Field label={t('common.nickname')}>
-          <input type="text" required value={nickname} onChange={(e) => setNickname(e.target.value)} className={inputCls} />
+          <input type="text" required autoComplete="username" value={nickname} onChange={(e) => setNickname(e.target.value)} className={inputCls} />
         </Field>
         <Field label={t('common.password')}>
-          <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} className={inputCls} />
+          <input type="password" required autoComplete="new-password" value={password} onChange={(e) => setPassword(e.target.value)} className={inputCls} />
         </Field>
         {message && <p className="rounded bg-jeju-ocean/10 px-3 py-2 text-sm text-jeju-ocean">{message}</p>}
         {error && <p className="rounded bg-sunset-coral/10 px-3 py-2 text-sm text-sunset-coral">{error}</p>}
