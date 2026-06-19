@@ -5,8 +5,10 @@ import type { GetServerSidePropsContext } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import nextI18NextConfig from '../../../../next-i18next.config';
-import { loadPostDetail } from '@/lib/boardData';
+import { loadPostDetail, loadPostComments } from '@/lib/boardData';
 import type { PostWithMeta } from '@/types/board';
+import CommentSection from '@/components/board/CommentSection';
+import type { CommentRow } from '@/components/board/CommentSection';
 import RatingStars from '@/components/board/RatingStars';
 import { useOptionalAuth } from '@/components/auth/AuthProvider';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
@@ -14,9 +16,10 @@ import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 interface Props {
   post: PostWithMeta;
   slug: string;
+  comments: CommentRow[];
 }
 
-export default function PostDetailPage({ post, slug }: Props) {
+export default function PostDetailPage({ post, slug, comments }: Props) {
   const { t } = useTranslation('board');
   const router = useRouter();
   const auth = useOptionalAuth();
@@ -110,8 +113,8 @@ export default function PostDetailPage({ post, slug }: Props) {
       {/* ── PLACEHOLDER: LikeButton (Task 13) ── */}
       {/* <LikeButton postId={post.id} initialCount={post.like_count} /> */}
 
-      {/* ── PLACEHOLDER: CommentSection (Task 11) ── */}
-      {/* <CommentSection postId={post.id} /> */}
+      {/* CommentSection */}
+      <CommentSection postId={post.id} initialComments={comments} />
     </main>
   );
 }
@@ -126,10 +129,13 @@ export const getServerSideProps = async ({
   const post = await loadPostDetail(postId);
   if (!post) return { notFound: true };
 
+  const comments = await loadPostComments(postId);
+
   return {
     props: {
       post,
       slug,
+      comments,
       ...(await serverSideTranslations(
         locale ?? 'ko',
         ['board', 'translation'],
