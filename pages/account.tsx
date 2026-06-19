@@ -90,23 +90,27 @@ export default function AccountPage() {
         <h1 className="font-display text-3xl font-bold text-deep-ocean">{t('account.title')}</h1>
         <p className="text-sm text-coastal-gray">{user.email}</p>
 
-        {message && <p className="rounded bg-jeju-ocean/10 px-3 py-2 text-sm text-jeju-ocean">{message}</p>}
-        {error && <p className="rounded bg-sunset-coral/10 px-3 py-2 text-sm text-sunset-coral">{error}</p>}
+        {message && <p role="status" aria-live="polite" className="rounded bg-jeju-ocean/10 px-3 py-2 text-sm text-jeju-ocean">{message}</p>}
+        {error && <p role="alert" aria-live="assertive" className="rounded bg-sunset-coral/10 px-3 py-2 text-sm text-sunset-coral">{error}</p>}
 
         <section className="space-y-2 rounded border border-deep-ocean/10 bg-white p-5">
-          <label htmlFor="account-nickname" className="block text-sm font-semibold text-deep-ocean">{t('account.nickname')}</label>
-          <input id="account-nickname" value={nickname} onChange={(e) => setNickname(e.target.value)} className={inputCls} />
-          <button type="button" onClick={saveNickname} disabled={busy} className={btnCls}>
-            {t('account.save')}
-          </button>
+          <form onSubmit={(e) => { e.preventDefault(); void saveNickname(); }}>
+            <label htmlFor="account-nickname" className="block text-sm font-semibold text-deep-ocean">{t('account.nickname')}</label>
+            <input id="account-nickname" value={nickname} onChange={(e) => setNickname(e.target.value)} className={`${inputCls} mt-2 mb-2`} />
+            <button type="submit" disabled={busy} className={btnCls}>
+              {t('account.save')}
+            </button>
+          </form>
         </section>
 
         <section className="space-y-2 rounded border border-deep-ocean/10 bg-white p-5">
-          <label htmlFor="account-new-password" className="block text-sm font-semibold text-deep-ocean">{t('account.newPassword')}</label>
-          <input id="account-new-password" type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} className={inputCls} />
-          <button type="button" onClick={changePassword} disabled={busy} className={btnCls}>
-            {t('account.changePassword')}
-          </button>
+          <form onSubmit={(e) => { e.preventDefault(); void changePassword(); }}>
+            <label htmlFor="account-new-password" className="block text-sm font-semibold text-deep-ocean">{t('account.newPassword')}</label>
+            <input id="account-new-password" type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} className={`${inputCls} mt-2 mb-2`} />
+            <button type="submit" disabled={busy} className={btnCls}>
+              {t('account.changePassword')}
+            </button>
+          </form>
         </section>
 
         <button

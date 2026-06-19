@@ -34,7 +34,7 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(
           {isOpen && (
             <motion.div
               {...menuReveal}
-              className="md:hidden origin-top bg-cloud-white/95 backdrop-blur-md border-t border-seafoam"
+              className="xl:hidden origin-top bg-cloud-white/95 backdrop-blur-md border-t border-seafoam"
             >
               <Container size="wide" className="py-4">
                 {simpleMenuItems.map((item) => (
