@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { useAuth } from '@/components/auth/AuthProvider';
+import { boardImagePath } from '@/lib/boardData';
 
 interface PostImageUploaderProps {
   value: string[];
@@ -70,7 +71,16 @@ export default function PostImageUploader({ value, onChange }: PostImageUploader
   };
 
   const handleRemove = (idx: number) => {
+    const removedUrl = value[idx];
     onChange(value.filter((_, i) => i !== idx));
+    // Remove from storage (best-effort, ignore errors)
+    if (removedUrl) {
+      const path = boardImagePath(removedUrl);
+      if (path) {
+        const supabase = createSupabaseBrowserClient();
+        void supabase.storage.from('board-images').remove([path]);
+      }
+    }
   };
 
   return (

@@ -11,6 +11,7 @@ import {
 import PostImageUploader from '@/components/board/PostImageUploader';
 import RatingStars from '@/components/board/RatingStars';
 import type { Board, PostWithMeta } from '@/types/board';
+import { boardImagePath } from '@/lib/boardData';
 
 interface PostFormProps {
   board: Board;
@@ -116,13 +117,11 @@ export default function PostForm({ board, initial, mode }: PostFormProps) {
           return;
         }
 
-        // Replace images: delete existing, insert current
-        const { error: deleteImgError } = await supabase.from('post_images').delete().eq('post_id', initial.id);
-        if (deleteImgError) {
-          setError(t('error.saveFailed'));
-          return;
-        }
+        // Capture old image ids + urls before mutating
+        const oldImages = initial.images ?? [];
+        const oldImageIds = oldImages.map((img) => img.id);
 
+        // Insert new image rows FIRST — if this fails, stop before deleting old rows
         if (imageUrls.length > 0) {
           const imageRows = imageUrls.map((image_url, sort_order) => ({
             post_id: initial.id,
@@ -133,6 +132,27 @@ export default function PostForm({ board, initial, mode }: PostFormProps) {
           if (imgInsertError) {
             setError(t('error.saveFailed'));
             return;
+          }
+        }
+
+        // Delete OLD rows only after new rows are safely inserted
+        if (oldImageIds.length > 0) {
+          const { error: deleteImgError } = await supabase
+            .from('post_images')
+            .delete()
+            .in('id', oldImageIds);
+          if (deleteImgError) {
+            // New images are in; stale old rows are a lesser problem — log and continue
+            console.error('Failed to delete old post_images rows:', deleteImgError.message);
+          } else {
+            // Remove old storage objects (best-effort, ignore errors)
+            const removedUrls = oldImages
+              .filter((img) => !imageUrls.includes(img.image_url))
+              .map((img) => boardImagePath(img.image_url))
+              .filter((p): p is string => p !== null);
+            if (removedUrls.length > 0) {
+              await supabase.storage.from('board-images').remove(removedUrls);
+            }
           }
         }
 

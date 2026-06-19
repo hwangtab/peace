@@ -2,6 +2,13 @@ import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import { getSupabasePublicConfig } from './supabaseConfig';
 import type { Board, PostImage, PostWithMeta } from '@/types/board';
 
+// Extract the storage object path from a board-images public URL.
+export const boardImagePath = (url: string): string | null => {
+  const marker = '/board-images/';
+  const i = url.indexOf(marker);
+  return i === -1 ? null : url.slice(i + marker.length);
+};
+
 let publicClient: SupabaseClient | null | undefined;
 
 const getPublicClient = (): SupabaseClient | null => {
@@ -80,6 +87,20 @@ export const loadPostDetail = async (postId: string): Promise<PostWithMeta | nul
   return mapPostRow(data as Record<string, unknown>);
 };
 
+// Load a post via a caller-provided (session-aware) client; RLS decides visibility
+// (published to anyone, or hidden to its author/admin). No status filter here.
+export const loadPostDetailWithClient = async (
+  client: SupabaseClient, postId: string
+): Promise<PostWithMeta | null> => {
+  const { data } = await client
+    .from('posts')
+    .select('*, profiles!posts_author_id_fkey(nickname), post_images(*), boards(slug)')
+    .eq('id', postId)
+    .maybeSingle();
+  if (!data) return null;
+  return mapPostRow(data as Record<string, unknown>);
+};
+
 export const loadPostComments = async (postId: string) => {
   const client = getPublicClient();
   if (!client) return [];
@@ -94,7 +115,7 @@ export const loadPostComments = async (postId: string) => {
   }));
 };
 
-const mapPostRow = (row: Record<string, unknown>): PostWithMeta => {
+export const mapPostRow = (row: Record<string, unknown>): PostWithMeta => {
   const rawImages = Array.isArray(row.post_images) ? (row.post_images as PostImage[]) : [];
   const images = rawImages
     .slice()
