@@ -70,9 +70,10 @@ export const loadPostDetail = async (postId: string): Promise<PostWithMeta | nul
 };
 
 const mapPostRow = (row: Record<string, unknown>): PostWithMeta => {
-  const images = (((row.post_images as PostImage[]) ?? [])
+  const rawImages = Array.isArray(row.post_images) ? (row.post_images as PostImage[]) : [];
+  const images = rawImages
     .slice()
-    .sort((a, b) => a.sort_order - b.sort_order));
+    .sort((a, b) => a.sort_order - b.sort_order);
   const profile = row.profiles as { nickname?: string } | null;
   const board = row.boards as { slug?: string } | null;
   return {
@@ -84,8 +85,8 @@ const mapPostRow = (row: Record<string, unknown>): PostWithMeta => {
     rating: (row.rating as number | null) ?? null,
     status: row.status as 'published' | 'hidden',
     like_count: Number(row.like_count ?? 0),
-    created_at: String(row.created_at),
-    updated_at: String(row.updated_at),
+    created_at: String(row.created_at ?? ''),
+    updated_at: String(row.updated_at ?? ''),
     author_nickname: profile?.nickname ?? '익명',
     images,
     ...(board?.slug ? { board_slug: board.slug } : {}),
