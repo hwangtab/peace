@@ -1,4 +1,4 @@
-import { validateNickname, validatePassword, mapAuthError } from './memberAuth';
+import { validateNickname, validatePassword, mapAuthError, safeRedirectPath } from './memberAuth';
 
 describe('validateNickname', () => {
   it('trims and accepts a 2-20 char nickname', () => {
@@ -49,5 +49,28 @@ describe('mapAuthError', () => {
   });
   it('returns empty string for no error', () => {
     expect(mapAuthError(null)).toBe('');
+  });
+});
+
+describe('safeRedirectPath', () => {
+  it('allows a normal same-origin path', () => {
+    expect(safeRedirectPath('/account')).toBe('/account');
+    expect(safeRedirectPath('/posts/3')).toBe('/posts/3');
+  });
+  it('rejects protocol-relative //host', () => {
+    expect(safeRedirectPath('//evil.com')).toBe('/account');
+  });
+  it('rejects backslash /\\host', () => {
+    expect(safeRedirectPath('/\\evil.com')).toBe('/account');
+  });
+  it('rejects absolute URLs', () => {
+    expect(safeRedirectPath('https://evil.com')).toBe('/account');
+  });
+  it('rejects non-string (array/undefined)', () => {
+    expect(safeRedirectPath(['/a', '/b'])).toBe('/account');
+    expect(safeRedirectPath(undefined)).toBe('/account');
+  });
+  it('honors a custom fallback', () => {
+    expect(safeRedirectPath('bad', '/')).toBe('/');
   });
 });
