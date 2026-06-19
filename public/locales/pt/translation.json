@@ -245,6 +245,12 @@
     "howto_step5_text": "Assista a apresentações de músicos de diversos gêneros e compartilhe o espírito de solidariedade pela paz.",
     "audience_general": "Público geral"
   },
+  "memberNav": {
+    "login": "Log in",
+    "signup": "Sign up",
+    "account": "My account",
+    "signout": "Log out"
+  },
   "solidarity": {
     "page_title": "Solidariedade | Campo de Paz e Música de Gangjeong",
     "page_desc": "Festival cultural de condenação a Israel pela libertação da Palestina 'WE SING FOR YOUR FREEDOM' — sáb. 23 mai. 2026, 19h, Jongno Seoul. O Campo de Paz e Música de Gangjeong se solidariza com a Palestina.",

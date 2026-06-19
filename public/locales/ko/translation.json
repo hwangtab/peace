@@ -245,6 +245,12 @@
     "howto_step5_text": "다양한 장르의 뮤지션 공연을 감상하고, 평화 연대의 의미를 함께 나눕니다.",
     "audience_general": "일반 관객"
   },
+  "memberNav": {
+    "login": "로그인",
+    "signup": "회원가입",
+    "account": "내 계정",
+    "signout": "로그아웃"
+  },
   "solidarity": {
     "page_title": "연대 | 강정피스앤뮤직캠프",
     "page_desc": "이스라엘 규탄 및 팔레스타인 해방 문화제 'WE SING FOR YOUR FREEDOM' — 2026년 5월 23일(토) 저녁 7시 서울 종로. 강정피스앤뮤직캠프가 팔레스타인 연대에 함께합니다.",

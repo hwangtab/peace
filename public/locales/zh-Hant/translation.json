@@ -245,6 +245,12 @@
     "howto_step5_text": "觀看各種流派音樂人的表演，分享和平團結的精神。",
     "audience_general": "普通觀眾"
   },
+  "memberNav": {
+    "login": "Log in",
+    "signup": "Sign up",
+    "account": "My account",
+    "signout": "Log out"
+  },
   "solidarity": {
     "page_title": "聲援 | 江汀和平音樂營",
     "page_desc": "規彈以色列·巴勒斯坦解放文化節 'WE SING FOR YOUR FREEDOM' — 2026年5月23日（週六）晚7時，首爾鐘路。江汀和平音樂營聲援巴勒斯坦。",

@@ -6,6 +6,7 @@ import { simpleMenuItems, campItems, albumItems } from './navigationData';
 import LanguageSwitcher from '../common/LanguageSwitcher';
 import Container from './Container';
 import { NavigationDropdownKey } from '@/hooks/useNavigation';
+import { useOptionalAuth } from '@/components/auth/AuthProvider';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -25,6 +26,7 @@ const menuReveal = {
 const MobileMenu: React.FC<MobileMenuProps> = React.memo(
   ({ isOpen, isPathActive, mobileOpenDropdown, onClose, onToggleDropdown }) => {
     const { t } = useTranslation();
+    const auth = useOptionalAuth();
 
     return (
       <div id="mobile-menu" className="mobile-menu-wrapper" data-testid="mobile-menu">
@@ -68,6 +70,44 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(
                     isPathActive={isPathActive}
                     onClose={onClose}
                   />
+                </div>
+
+                <div className="border-t border-coastal-gray/20 my-4 pt-4">
+                  {auth?.user ? (
+                    <>
+                      <Link
+                        href="/account"
+                        className="block py-3 font-serif font-bold text-deep-ocean hover:text-jeju-ocean break-words rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
+                        onClick={onClose}
+                      >
+                        {auth.profile?.nickname ?? t('memberNav.account')}
+                      </Link>
+                      <button
+                        type="button"
+                        onClick={() => { void auth.signOut(); onClose(); }}
+                        className="block w-full text-left py-3 font-serif font-bold text-coastal-gray hover:text-sunset-coral break-words rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
+                      >
+                        {t('memberNav.signout')}
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <Link
+                        href="/login"
+                        className="block py-3 font-serif font-bold text-deep-ocean hover:text-jeju-ocean break-words rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
+                        onClick={onClose}
+                      >
+                        {t('memberNav.login')}
+                      </Link>
+                      <Link
+                        href="/signup"
+                        className="block py-3 font-serif font-bold text-jeju-ocean hover:text-deep-ocean break-words rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
+                        onClick={onClose}
+                      >
+                        {t('memberNav.signup')}
+                      </Link>
+                    </>
+                  )}
                 </div>
 
                 <div className="mt-4 flex justify-center">
