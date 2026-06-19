@@ -26,7 +26,7 @@ export default function EditPostPage({ board, post }: Props) {
     if (loading) return;
     if (!user) {
       const currentPath = safeRedirectPath(router.asPath);
-      void router.replace('/login?next=' + currentPath);
+      void router.replace('/login?next=' + encodeURIComponent(currentPath));
       return;
     }
     // Author gate — non-author redirected to detail
