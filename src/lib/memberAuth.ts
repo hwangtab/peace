@@ -9,7 +9,7 @@ export const validateNickname = (
   if (trimmed.length < NICKNAME_MIN || trimmed.length > NICKNAME_MAX) {
     return { ok: false, reason: `닉네임은 ${NICKNAME_MIN}~${NICKNAME_MAX}자여야 합니다.` };
   }
-  if (/[\s\t\n\r\x00-\x1f]/.test(trimmed)) {
+  if (/[\s\x00-\x1f]/.test(trimmed)) {
     return { ok: false, reason: '닉네임에 공백이나 제어문자를 쓸 수 없습니다.' };
   }
   return { ok: true, value: trimmed };
@@ -32,5 +32,5 @@ export const mapAuthError = (error: { message?: string } | null | undefined): st
   if (/email not confirmed/i.test(msg)) return '이메일 인증을 먼저 완료해 주세요.';
   if (/password should be at least/i.test(msg)) return '비밀번호가 너무 짧습니다.';
   if (/rate limit|too many/i.test(msg)) return '잠시 후 다시 시도해 주세요.';
-  return msg || '요청을 처리하지 못했습니다.';
+  return '요청을 처리하지 못했습니다.';
 };
