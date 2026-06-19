@@ -5,7 +5,7 @@ import type { GetServerSidePropsContext } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import nextI18NextConfig from '../../../../next-i18next.config';
-import { loadPostDetail, loadPostComments } from '@/lib/boardData';
+import { loadPostDetailWithClient, loadPostComments, boardImagePath } from '@/lib/boardData';
 import type { PostWithMeta } from '@/types/board';
 import CommentSection from '@/components/board/CommentSection';
 import type { CommentRow } from '@/components/board/CommentSection';
@@ -13,6 +13,7 @@ import RatingStars from '@/components/board/RatingStars';
 import LikeButton from '@/components/board/LikeButton';
 import { useOptionalAuth } from '@/components/auth/AuthProvider';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
+import { createSupabaseServerClient } from '@/lib/supabaseServer';
 
 interface Props {
   post: PostWithMeta;
@@ -35,6 +36,13 @@ export default function PostDetailPage({ post, slug, comments }: Props) {
   const handleDelete = async () => {
     if (!window.confirm(t('post.deleteConfirm'))) return;
     const supabase = createSupabaseBrowserClient();
+    // Remove storage objects for post images (best-effort)
+    const storagePaths = post.images
+      .map((img) => boardImagePath(img.image_url))
+      .filter((p): p is string => p !== null);
+    if (storagePaths.length > 0) {
+      await supabase.storage.from('board-images').remove(storagePaths);
+    }
     await supabase.from('posts').delete().eq('id', post.id);
     await router.push('/board/' + slug);
   };
@@ -123,11 +131,14 @@ export default function PostDetailPage({ post, slug, comments }: Props) {
 export const getServerSideProps = async ({
   locale,
   params,
+  req,
+  res,
 }: GetServerSidePropsContext) => {
   const postId = typeof params?.postId === 'string' ? params.postId : '';
   const slug = typeof params?.slug === 'string' ? params.slug : '';
 
-  const post = await loadPostDetail(postId);
+  const serverClient = createSupabaseServerClient(req, res);
+  const post = await loadPostDetailWithClient(serverClient, postId);
   if (!post) return { notFound: true };
 
   const comments = await loadPostComments(postId);

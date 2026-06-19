@@ -75,11 +75,15 @@ export default function CommentSection({ postId, initialComments }: Props) {
     setSubmitting(true);
     try {
       const supabase = createSupabaseBrowserClient();
-      await supabase.from('post_comments').insert({
+      const { error: insertError } = await supabase.from('post_comments').insert({
         post_id: postId,
         author_id: user.id,
         body: result.value,
       });
+      if (insertError) {
+        setValidationError(t('error.saveFailed'));
+        return;
+      }
       setBody('');
       const refreshed = await fetchComments(postId);
       setComments(refreshed);

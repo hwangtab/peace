@@ -4,9 +4,10 @@ import type { GetServerSidePropsContext } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import nextI18NextConfig from '../../../../next-i18next.config';
-import { loadBoardBySlug, loadPostDetail } from '@/lib/boardData';
+import { loadBoardBySlug, loadPostDetailWithClient } from '@/lib/boardData';
 import { safeRedirectPath } from '@/lib/memberAuth';
 import { useAuth } from '@/components/auth/AuthProvider';
+import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import PostForm from '@/components/board/PostForm';
 import type { Board, PostWithMeta } from '@/types/board';
 
@@ -52,13 +53,16 @@ export default function EditPostPage({ board, post }: Props) {
 export const getServerSideProps = async ({
   locale,
   params,
+  req,
+  res,
 }: GetServerSidePropsContext) => {
   const slug = typeof params?.slug === 'string' ? params.slug : '';
   const postId = typeof params?.postId === 'string' ? params.postId : '';
 
+  const serverClient = createSupabaseServerClient(req, res);
   const [board, post] = await Promise.all([
     loadBoardBySlug(slug),
-    loadPostDetail(postId),
+    loadPostDetailWithClient(serverClient, postId),
   ]);
 
   if (!board || !post) return { notFound: true };
