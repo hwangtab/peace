@@ -3,7 +3,7 @@ import type { GetServerSidePropsContext } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import nextI18NextConfig from '../../next-i18next.config';
-import { loadActiveBoards, loadBoardPosts } from '@/lib/boardData';
+import { loadActiveBoards, loadBoardPostCount } from '@/lib/boardData';
 import type { Board } from '@/types/board';
 
 interface BoardWithCount extends Board {
@@ -53,8 +53,8 @@ export const getServerSideProps = async ({ locale }: GetServerSidePropsContext) 
 
   const boards: BoardWithCount[] = await Promise.all(
     rawBoards.map(async (board) => {
-      const { total } = await loadBoardPosts(board.id, { limit: 0 });
-      return { ...board, postCount: total };
+      const postCount = await loadBoardPostCount(board.id);
+      return { ...board, postCount };
     })
   );
 
