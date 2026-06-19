@@ -1,0 +1,44 @@
+import { validateNickname, validatePassword, mapAuthError } from './memberAuth';
+
+describe('validateNickname', () => {
+  it('trims and accepts a 2-20 char nickname', () => {
+    expect(validateNickname('  강정러버  ')).toEqual({ ok: true, value: '강정러버' });
+  });
+  it('rejects too short', () => {
+    expect(validateNickname('a').ok).toBe(false);
+  });
+  it('rejects too long (>20)', () => {
+    expect(validateNickname('a'.repeat(21)).ok).toBe(false);
+  });
+  it('rejects whitespace/control chars inside', () => {
+    expect(validateNickname('hi there').ok).toBe(false);
+    expect(validateNickname('hi\tthere').ok).toBe(false);
+  });
+});
+
+describe('validatePassword', () => {
+  it('accepts 8+ chars', () => {
+    expect(validatePassword('abcd1234')).toEqual({ ok: true });
+  });
+  it('rejects under 8 chars', () => {
+    expect(validatePassword('abc12').ok).toBe(false);
+  });
+});
+
+describe('mapAuthError', () => {
+  it('maps already-registered', () => {
+    expect(mapAuthError({ message: 'User already registered' })).toMatch(/이미.*가입/);
+  });
+  it('maps invalid credentials', () => {
+    expect(mapAuthError({ message: 'Invalid login credentials' })).toMatch(/이메일|비밀번호/);
+  });
+  it('maps email-not-confirmed', () => {
+    expect(mapAuthError({ message: 'Email not confirmed' })).toMatch(/인증|확인/);
+  });
+  it('falls back to a generic message for unknown errors', () => {
+    expect(mapAuthError({ message: 'weird' })).toBeTruthy();
+  });
+  it('returns empty string for no error', () => {
+    expect(mapAuthError(null)).toBe('');
+  });
+});
