@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import type { GetStaticPropsContext } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -13,8 +13,15 @@ export default function UpdatePasswordPage() {
   const router = useRouter();
   const [password, setPassword] = useState('');
   const [busy, setBusy] = useState(false);
+  const [succeeded, setSucceeded] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    if (!succeeded) return;
+    const id = setTimeout(() => void router.push('/account'), 1200);
+    return () => clearTimeout(id);
+  }, [succeeded, router]);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,7 +36,7 @@ export default function UpdatePasswordPage() {
       setBusy(false);
       if (uErr) return setError(mapAuthError(uErr));
       setMessage(t('reset.updated'));
-      setTimeout(() => void router.push('/account'), 1200);
+      setSucceeded(true);
     } catch (err) {
       setBusy(false);
       setError(mapAuthError(err as { message?: string }));

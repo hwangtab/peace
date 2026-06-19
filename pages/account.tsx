@@ -43,7 +43,7 @@ export default function AccountPage() {
       setBusy(false);
       if (upErr) {
         const isDup = upErr.code === '23505' || /duplicate|unique/i.test(upErr.message ?? '');
-        return setError(isDup ? t('signup.nicknameTaken') : upErr.message);
+        return setError(isDup ? t('signup.nicknameTaken') : mapAuthError(upErr));
       }
       await refreshProfile();
       setMessage(t('account.saved'));

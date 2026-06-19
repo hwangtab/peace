@@ -140,10 +140,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .update(updates)
         .eq('id', body.id)
         .select('*')
-        .single();
+        .maybeSingle();
       if (error) {
         const message = error.code === '23505' ? SLUG_ERROR : error.message;
         res.status(error.code === '23505' ? 409 : 500).json({ error: message });
+        return;
+      }
+      if (!data) {
+        res.status(404).json({ error: '게시판을 찾을 수 없습니다.' });
         return;
       }
       res.status(200).json({ board: data as Board });

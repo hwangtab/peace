@@ -12,6 +12,9 @@ export const validateNickname = (
   if (/[\s\x00-\x1f]/.test(trimmed)) {
     return { ok: false, reason: '닉네임에 공백이나 제어문자를 쓸 수 없습니다.' };
   }
+  if (/[%_\\]/.test(trimmed)) {
+    return { ok: false, reason: '닉네임에 사용할 수 없는 특수문자가 포함되어 있습니다.' };
+  }
   return { ok: true, value: trimmed };
 };
 

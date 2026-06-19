@@ -20,6 +20,16 @@ describe('validateNickname', () => {
     expect(validateNickname('hi there').ok).toBe(false);
     expect(validateNickname('hi\tthere').ok).toBe(false);
   });
+  it('rejects LIKE wildcard characters (%, _, \\)', () => {
+    expect(validateNickname('a%b').ok).toBe(false);
+    expect(validateNickname('a_b').ok).toBe(false);
+    expect(validateNickname('a\\b').ok).toBe(false);
+  });
+  it('accepts normal Korean/alphanumeric nicknames', () => {
+    expect(validateNickname('강정러버').ok).toBe(true);
+    expect(validateNickname('peace2026').ok).toBe(true);
+    expect(validateNickname('한글abc').ok).toBe(true);
+  });
 });
 
 describe('validatePassword', () => {

@@ -123,6 +123,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.status(500).json({ error: existing.error.message });
         return;
       }
+      if (id != null && !existing?.data) {
+        res.status(404).json({ error: 'not_found' });
+        return;
+      }
       const previous = (existing?.data as Record<string, unknown> | null) ?? null;
       const payload = {
         ...body,
@@ -139,7 +143,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const { data, error } = await query;
 
       if (error) {
-        res.status(500).json({ error: error.message });
+        if (error.code === '23505') {
+          res.status(409).json({ error: '이미 사용 중인 공개 ID 또는 키입니다.' });
+        } else {
+          res.status(500).json({ error: error.message });
+        }
         return;
       }
 
