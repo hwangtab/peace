@@ -24,6 +24,17 @@ export const validatePassword = (
   return { ok: true };
 };
 
+// Returns a safe same-origin path for post-auth redirects. Rejects absolute
+// URLs, protocol-relative (//host) and backslash (/\host) forms that browsers
+// can treat as host redirects. Falls back to the given default.
+export const safeRedirectPath = (value: unknown, fallback = '/account'): string => {
+  const path = typeof value === 'string' ? value : '';
+  if (!path.startsWith('/')) return fallback;
+  if (path.startsWith('//')) return fallback;
+  if (path.startsWith('/\\')) return fallback;
+  return path;
+};
+
 export const mapAuthError = (error: { message?: string } | null | undefined): string => {
   if (!error) return '';
   const msg = error.message ?? '';

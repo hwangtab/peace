@@ -7,12 +7,7 @@ import { useTranslation } from 'next-i18next';
 import nextI18NextConfig from '../next-i18next.config';
 import AuthFormShell from '@/components/auth/AuthFormShell';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
-import { mapAuthError } from '@/lib/memberAuth';
-
-const safeNext = (value: unknown) => {
-  const n = typeof value === 'string' ? value : '/account';
-  return n.startsWith('/') && !n.startsWith('//') ? n : '/account';
-};
+import { mapAuthError, safeRedirectPath } from '@/lib/memberAuth';
 
 export default function LoginPage() {
   const { t } = useTranslation('auth');
@@ -34,7 +29,7 @@ export default function LoginPage() {
       });
       setBusy(false);
       if (signErr) return setError(mapAuthError(signErr));
-      await router.push(safeNext(router.query.next));
+      await router.push(safeRedirectPath(router.query.next));
     } catch (err) {
       setBusy(false);
       setError(mapAuthError(err as { message?: string }));
