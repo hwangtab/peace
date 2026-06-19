@@ -56,6 +56,17 @@ export const loadBoardPosts = async (
   return { items, total: count ?? items.length };
 };
 
+export const loadBoardPostCount = async (boardId: string): Promise<number> => {
+  const client = getPublicClient();
+  if (!client) return 0;
+  const { count } = await client
+    .from('posts')
+    .select('*', { count: 'exact', head: true })
+    .eq('board_id', boardId)
+    .eq('status', 'published');
+  return count ?? 0;
+};
+
 export const loadPostDetail = async (postId: string): Promise<PostWithMeta | null> => {
   const client = getPublicClient();
   if (!client) return null;
