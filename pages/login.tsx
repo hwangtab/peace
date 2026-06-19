@@ -17,6 +17,9 @@ export default function LoginPage() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
 
+  const queryError = router.query.error === 'confirm_failed' ? t('confirm.failed') : '';
+  const visibleError = error || queryError;
+
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
@@ -78,7 +81,7 @@ export default function LoginPage() {
             className={inputCls}
           />
         </label>
-        {error && <p className="rounded bg-sunset-coral/10 px-3 py-2 text-sm text-sunset-coral">{error}</p>}
+        {visibleError && <p className="rounded bg-sunset-coral/10 px-3 py-2 text-sm text-sunset-coral">{visibleError}</p>}
         <button type="submit" disabled={busy} className={btnCls}>
           {busy ? t('common.loading') : t('login.cta')}
         </button>
