@@ -9,6 +9,7 @@ import {
   validateRating,
 } from '@/lib/boardForms';
 import PostImageUploader from '@/components/board/PostImageUploader';
+import RatingStars from '@/components/board/RatingStars';
 import type { Board, PostWithMeta } from '@/types/board';
 
 interface PostFormProps {
@@ -89,7 +90,11 @@ export default function PostForm({ board, initial, mode }: PostFormProps) {
             image_url,
             sort_order,
           }));
-          await supabase.from('post_images').insert(imageRows);
+          const { error: imgInsertError } = await supabase.from('post_images').insert(imageRows);
+          if (imgInsertError) {
+            setError(t('error.saveFailed'));
+            return;
+          }
         }
 
         await router.push(`/board/${board.slug}/${newId}`);
@@ -112,7 +117,11 @@ export default function PostForm({ board, initial, mode }: PostFormProps) {
         }
 
         // Replace images: delete existing, insert current
-        await supabase.from('post_images').delete().eq('post_id', initial.id);
+        const { error: deleteImgError } = await supabase.from('post_images').delete().eq('post_id', initial.id);
+        if (deleteImgError) {
+          setError(t('error.saveFailed'));
+          return;
+        }
 
         if (imageUrls.length > 0) {
           const imageRows = imageUrls.map((image_url, sort_order) => ({
@@ -120,7 +129,11 @@ export default function PostForm({ board, initial, mode }: PostFormProps) {
             image_url,
             sort_order,
           }));
-          await supabase.from('post_images').insert(imageRows);
+          const { error: imgInsertError } = await supabase.from('post_images').insert(imageRows);
+          if (imgInsertError) {
+            setError(t('error.saveFailed'));
+            return;
+          }
         }
 
         await router.push(`/board/${board.slug}/${initial.id}`);
@@ -190,22 +203,8 @@ export default function PostForm({ board, initial, mode }: PostFormProps) {
           <span className="block text-sm font-semibold text-deep-ocean">
             {t('post.rating')}
           </span>
-          <div className="mt-2 flex gap-1">
-            {[1, 2, 3, 4, 5].map((star) => (
-              <button
-                key={star}
-                type="button"
-                aria-label={`${star}점`}
-                onClick={() => setRating(rating === star ? null : star)}
-                className={`text-2xl transition-colors ${
-                  rating !== null && star <= rating
-                    ? 'text-golden-sun'
-                    : 'text-coastal-gray hover:text-golden-sun'
-                }`}
-              >
-                {rating !== null && star <= rating ? '★' : '☆'}
-              </button>
-            ))}
+          <div className="mt-2">
+            <RatingStars value={rating ?? 0} onSelect={setRating} />
           </div>
           {fieldErrors.rating && (
             <p className="mt-1 text-sm text-red-500">{fieldErrors.rating}</p>

@@ -1,7 +1,7 @@
 {
   "index": { "title": "Boards", "posts": "posts", "writeCta": "Write", "loginToWrite": "Log in to write" },
   "list": { "empty": "No posts yet.", "newPost": "New post", "by": "by", "more": "Load more" },
-  "post": { "title": "Title", "body": "Body", "rating": "Rating", "images": "Photos", "save": "Save", "cancel": "Cancel", "edit": "Edit", "delete": "Delete", "deleteConfirm": "Delete this post?", "saving": "Saving", "uploadImage": "Add photo", "likes": "Likes" },
+  "post": { "title": "Title", "body": "Body", "rating": "Rating", "images": "Photos", "save": "Save", "cancel": "Cancel", "edit": "Edit", "delete": "Delete", "deleteConfirm": "Delete this post?", "saving": "Saving", "uploadImage": "Add photo", "uploading": "Uploading…", "likes": "Likes" },
   "comment": { "heading": "Comments", "placeholder": "Write a comment", "submit": "Post", "empty": "Be the first to comment.", "delete": "Delete" },
-  "error": { "loginRequired": "Login required.", "notFound": "Post not found.", "saveFailed": "Could not save." }
+  "error": { "loginRequired": "Login required.", "notFound": "Post not found.", "saveFailed": "Could not save.", "invalidImageType": "Only PNG, JPEG, WebP, or GIF files are allowed.", "imageTooLarge": "Images must be 10MB or smaller." }
 }
