@@ -87,6 +87,7 @@ export default function AdminCollectionPage({
   initialError = '',
 }: AdminCollectionPageProps) {
   const router = useRouter();
+  const canEdit = member.role !== 'viewer';
   const [items, setItems] = useState(initialItems);
   const [selected, setSelected] = useState<AdminCollectionRow | null>(initialItems[0] ?? null);
   const [form, setForm] = useState<FormState>(() =>
@@ -463,13 +464,19 @@ export default function AdminCollectionPage({
           <h1 className="font-display text-3xl font-bold">{config.title}</h1>
           <p className="mt-2 max-w-2xl text-coastal-gray">{config.description}</p>
         </div>
-        <button
-          type="button"
-          onClick={() => selectItem(null)}
-          className="rounded bg-jeju-ocean px-4 py-2 font-semibold text-white transition hover:bg-deep-ocean focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
-        >
-          새 항목
-        </button>
+        {canEdit ? (
+          <button
+            type="button"
+            onClick={() => selectItem(null)}
+            className="rounded bg-jeju-ocean px-4 py-2 font-semibold text-white transition hover:bg-deep-ocean focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
+          >
+            새 항목
+          </button>
+        ) : (
+          <span className="rounded bg-coastal-gray/10 px-3 py-2 text-sm font-semibold text-coastal-gray">
+            열람 전용 — 편집 권한이 없습니다
+          </span>
+        )}
       </div>
 
       <div className="mb-6 flex flex-wrap items-center gap-3 rounded border border-deep-ocean/10 bg-white px-4 py-3">
@@ -601,6 +608,7 @@ export default function AdminCollectionPage({
             <h2 className="font-semibold">{selected ? '항목 편집' : '새 항목 추가'}</h2>
           </div>
           <div className="space-y-4 p-4">
+            <fieldset disabled={!canEdit} className="space-y-4 border-0 p-0 disabled:opacity-70">
             {config.fields.map((field) => (
               <label key={field.name} className="block">
                 <span className="mb-1 block text-sm font-semibold text-deep-ocean">
@@ -640,8 +648,9 @@ export default function AdminCollectionPage({
                 )}
               </label>
             ))}
+            </fieldset>
 
-            {config.collection === 'gallery' && (
+            {config.collection === 'gallery' && canEdit && (
               <label className="block rounded border border-dashed border-deep-ocean/20 bg-ocean-sand/30 px-3 py-4">
                 <span className="mb-1 block text-sm font-semibold text-deep-ocean">
                   이미지 업로드
@@ -663,7 +672,7 @@ export default function AdminCollectionPage({
               </label>
             )}
 
-            {selected && cloneLocaleOptions.length > 0 && (
+            {selected && canEdit && cloneLocaleOptions.length > 0 && (
               <div className="rounded border border-deep-ocean/10 bg-ocean-sand/30 px-3 py-4">
                 <span className="mb-2 block text-sm font-semibold text-deep-ocean">
                   다른 언어 초안 만들기
@@ -726,7 +735,7 @@ export default function AdminCollectionPage({
                         </a>
                       ))}
                     </div>
-                    {localeStatusCounts.missing > 0 && (
+                    {localeStatusCounts.missing > 0 && canEdit && (
                       <button
                         type="button"
                         onClick={cloneMissingLocales}
@@ -753,15 +762,17 @@ export default function AdminCollectionPage({
             )}
 
             <div className="flex flex-wrap gap-3 pt-2">
-              <button
-                type="button"
-                onClick={save}
-                disabled={isSaving}
-                className="rounded bg-deep-ocean px-4 py-2 font-semibold text-white transition hover:bg-jeju-ocean disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
-              >
-                {isSaving ? '저장 중' : '저장'}
-              </button>
-              {selected && (
+              {canEdit && (
+                <button
+                  type="button"
+                  onClick={save}
+                  disabled={isSaving}
+                  className="rounded bg-deep-ocean px-4 py-2 font-semibold text-white transition hover:bg-jeju-ocean disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
+                >
+                  {isSaving ? '저장 중' : '저장'}
+                </button>
+              )}
+              {selected && canEdit && (
                 <button
                   type="button"
                   onClick={hideSelected}

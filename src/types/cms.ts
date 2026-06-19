@@ -1,6 +1,7 @@
 export type CmsStatus = 'draft' | 'published' | 'hidden';
 export type ArchiveEventType = 'camp' | 'album' | 'live' | 'music_video' | 'interview';
 export type CmsChangeAction = 'create' | 'update' | 'hide' | 'restore';
+export type AdminRole = 'owner' | 'editor' | 'viewer';
 
 export type SiteContentMap = Record<string, string>;
 
@@ -9,7 +10,7 @@ export interface AdminMember {
   user_id: string | null;
   email: string;
   display_name: string | null;
-  role: 'owner' | 'editor' | 'viewer';
+  role: AdminRole;
   active: boolean;
   created_at: string;
   updated_at: string;
