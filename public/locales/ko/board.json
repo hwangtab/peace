@@ -1,0 +1,7 @@
+{
+  "index": { "title": "게시판", "posts": "글", "writeCta": "글쓰기", "loginToWrite": "로그인하고 글쓰기" },
+  "list": { "empty": "아직 글이 없습니다.", "newPost": "새 글", "by": "작성자", "more": "더 보기" },
+  "post": { "title": "제목", "body": "내용", "rating": "별점", "images": "사진", "save": "저장", "cancel": "취소", "edit": "수정", "delete": "삭제", "deleteConfirm": "이 글을 삭제할까요?", "saving": "저장 중", "uploadImage": "사진 추가", "likes": "좋아요" },
+  "comment": { "heading": "댓글", "placeholder": "댓글을 입력하세요", "submit": "등록", "empty": "첫 댓글을 남겨 보세요.", "delete": "삭제" },
+  "error": { "loginRequired": "로그인이 필요합니다.", "notFound": "글을 찾을 수 없습니다.", "saveFailed": "저장하지 못했습니다." }
+}
