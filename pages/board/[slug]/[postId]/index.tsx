@@ -49,8 +49,17 @@ export default function PostDetailPage({ post, slug, comments }: Props) {
     await router.push('/board/' + slug);
   };
 
+  const isHidden = post.status === 'hidden';
+
   return (
     <main className="mx-auto max-w-2xl px-4 py-12">
+      {/* Hidden-post notice */}
+      {isHidden && (
+        <div className="mb-6 rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+          {t('post.hiddenNotice')}
+        </div>
+      )}
+
       {/* Back link */}
       <Link href={`/board/${slug}`} className="text-sm text-coastal-gray hover:underline">
         ←{' '}
@@ -121,11 +130,11 @@ export default function PostDetailPage({ post, slug, comments }: Props) {
         </section>
       )}
 
-      {/* LikeButton */}
-      <LikeButton postId={post.id} initialCount={post.like_count} />
+      {/* LikeButton — suppressed for hidden posts */}
+      {!isHidden && <LikeButton postId={post.id} initialCount={post.like_count} />}
 
-      {/* CommentSection */}
-      <CommentSection postId={post.id} initialComments={comments} />
+      {/* CommentSection — read-only for hidden posts (no add-comment form) */}
+      <CommentSection postId={post.id} initialComments={comments} readOnly={isHidden} />
     </main>
   );
 }

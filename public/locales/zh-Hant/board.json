@@ -27,7 +27,8 @@
     "likes": "Likes",
     "removeImage": "Remove photo",
     "ratingStar": "{{n}} stars",
-    "anonymous": "Anonymous"
+    "anonymous": "Anonymous",
+    "hiddenNotice": "This post has been hidden by an administrator and is not visible to others."
   },
   "comment": {
     "heading": "Comments",

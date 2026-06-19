@@ -13,37 +13,44 @@ interface Props {
 export default function LikeButton({ postId, initialCount }: Props) {
   const { t } = useTranslation('board');
   const router = useRouter();
-  const auth = useAuth();
-  const user = auth.user;
+  const { user, loading: authLoading } = useAuth();
 
   const [liked, setLiked] = useState(false);
   const [count, setCount] = useState(initialCount);
   const [loading, setLoading] = useState(false);
-  // True while the initial membership check is running (only when a user is logged in).
+  // Starts true; stays true until the membership query resolves (or user is absent).
   // Prevents clicking before we know whether they already liked.
-  const [initializing, setInitializing] = useState(!!user);
+  const [initializing, setInitializing] = useState(true);
 
-  // On mount: if logged in, check whether the user already liked this post
+  // On mount / when user changes: check whether the user already liked this post.
+  // Re-arms `initializing` to true whenever the user identity changes so a freshly-
+  // authenticated user cannot click before the membership query resolves.
   useEffect(() => {
-    if (!user) return;
     let cancelled = false;
-    const supabase = createSupabaseBrowserClient();
-    supabase
-      .from('post_likes')
-      .select('post_id')
-      .eq('post_id', postId)
-      .eq('user_id', user.id)
-      .maybeSingle()
-      .then(({ data }) => {
-        if (!cancelled) {
-          setLiked(data !== null);
-          setInitializing(false);
-        }
-      });
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setInitializing(true);
+
+    const query = user
+      ? createSupabaseBrowserClient()
+          .from('post_likes')
+          .select('post_id')
+          .eq('post_id', postId)
+          .eq('user_id', user.id)
+          .maybeSingle()
+      : Promise.resolve({ data: null });
+
+    void query.then(({ data }) => {
+      if (!cancelled) {
+        setLiked(data !== null);
+        setInitializing(false);
+      }
+    });
+
     return () => { cancelled = true; };
   }, [postId, user]);
 
   const handleClick = async () => {
+    if (authLoading) return;
     if (!user) {
       void router.push('/login?next=' + safeRedirectPath(router.asPath));
       return;
@@ -89,7 +96,7 @@ export default function LikeButton({ postId, initialCount }: Props) {
     setLoading(false);
   };
 
-  const disabled = loading || initializing;
+  const disabled = authLoading || loading || initializing;
 
   return (
     <div className="mt-8 flex items-center gap-2">

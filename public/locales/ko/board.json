@@ -27,7 +27,8 @@
     "likes": "좋아요",
     "removeImage": "사진 제거",
     "ratingStar": "{{n}}점",
-    "anonymous": "익명"
+    "anonymous": "익명",
+    "hiddenNotice": "이 글은 관리자에 의해 숨김 처리되어 다른 사람에게 보이지 않습니다."
   },
   "comment": {
     "heading": "댓글",
