@@ -245,6 +245,12 @@
       "slogan": "Let's sing, let's dance, end the war!"
     }
   },
+  "memberNav": {
+    "login": "Log in",
+    "signup": "Sign up",
+    "account": "My account",
+    "signout": "Log out"
+  },
   "solidarity": {
     "page_title": "Solidarität | Gangjeong Peace & Music Camp",
     "page_desc": "Kulturfestival zur Verurteilung Israels für die Befreiung Palästinas 'WE SING FOR YOUR FREEDOM' — Sa. 23. Mai 2026, 19 Uhr, Jongno Seoul. Das Gangjeong Friedens- und Musikcamp solidarisiert sich mit Palästina.",

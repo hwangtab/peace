@@ -99,3 +99,10 @@ export function useAuth(): AuthContextValue {
   if (!ctx) throw new Error('useAuth must be used within AuthProvider');
   return ctx;
 }
+
+/** Null-safe variant — returns the context value or null when used outside AuthProvider.
+ *  Use this in components (e.g. Navigation) that may render in test environments
+ *  without a provider. Never throws. */
+export function useOptionalAuth(): AuthContextValue | null {
+  return useContext(AuthContext);
+}

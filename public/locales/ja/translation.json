@@ -245,6 +245,12 @@
     "howto_step5_text": "多様なジャンルのミュージシャンの公演を鑑賞し、平和連帯の意味を共有します。",
     "audience_general": "一般観客"
   },
+  "memberNav": {
+    "login": "Log in",
+    "signup": "Sign up",
+    "account": "My account",
+    "signout": "Log out"
+  },
   "solidarity": {
     "page_title": "連帯 | カンジョン平和と音楽キャンプ",
     "page_desc": "イスラエル規弾・パレスチナ解放文化祭 'WE SING FOR YOUR FREEDOM' — 2026年5月23日(土)夜7時、ソウル鍾路。カンジョンピースミュージックキャンプがパレスチナ連帯に参加します。",

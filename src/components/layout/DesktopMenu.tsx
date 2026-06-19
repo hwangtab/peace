@@ -7,6 +7,7 @@ import LanguageSwitcher from '../common/LanguageSwitcher';
 import { campItems, albumItems, simpleMenuItems } from './navigationData';
 import { ROUTES } from '@/constants/routes';
 import { NavigationDropdownKey } from '@/hooks/useNavigation';
+import { useOptionalAuth } from '@/components/auth/AuthProvider';
 
 interface DesktopMenuProps {
   isPathActive: (path: string, exact?: boolean) => boolean;
@@ -18,6 +19,7 @@ interface DesktopMenuProps {
 const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(
   ({ isPathActive, desktopOpenDropdown, onOpenChange, isScrolled }) => {
     const { t } = useTranslation();
+    const auth = useOptionalAuth();
 
     const getTextColor = (isActive: boolean) => {
       if (isScrolled) {
@@ -82,7 +84,55 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(
             </Link>
           ))}
 
-        <div className="pl-2 ml-2 sm:pl-4 sm:ml-4 border-l border-white/30">
+        <div className="pl-2 ml-2 sm:pl-4 sm:ml-4 border-l border-white/30 flex items-center gap-x-2">
+          {auth?.user ? (
+            <>
+              <Link
+                href="/account"
+                className={`text-sm font-semibold transition-colors duration-300 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${
+                  isScrolled
+                    ? 'text-deep-ocean hover:text-jeju-ocean'
+                    : 'text-cloud-white/90 hover:text-cloud-white drop-shadow-md'
+                }`}
+              >
+                {auth.profile?.nickname ?? t('memberNav.account')}
+              </Link>
+              <button
+                type="button"
+                onClick={() => void auth.signOut()}
+                className={`text-sm font-semibold transition-colors duration-300 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${
+                  isScrolled
+                    ? 'text-coastal-gray hover:text-sunset-coral'
+                    : 'text-cloud-white/70 hover:text-cloud-white drop-shadow-md'
+                }`}
+              >
+                {t('memberNav.signout')}
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                href="/login"
+                className={`text-sm font-semibold transition-colors duration-300 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${
+                  isScrolled
+                    ? 'text-deep-ocean hover:text-jeju-ocean'
+                    : 'text-cloud-white/90 hover:text-cloud-white drop-shadow-md'
+                }`}
+              >
+                {t('memberNav.login')}
+              </Link>
+              <Link
+                href="/signup"
+                className={`text-sm font-semibold rounded px-3 py-1.5 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${
+                  isScrolled
+                    ? 'bg-jeju-ocean text-white hover:bg-deep-ocean'
+                    : 'bg-cloud-white/20 text-cloud-white hover:bg-cloud-white/30 border border-cloud-white/50'
+                }`}
+              >
+                {t('memberNav.signup')}
+              </Link>
+            </>
+          )}
           <LanguageSwitcher isScrolled={isScrolled} />
         </div>
       </div>
