@@ -10,6 +10,7 @@ import type { PostWithMeta } from '@/types/board';
 import CommentSection from '@/components/board/CommentSection';
 import type { CommentRow } from '@/components/board/CommentSection';
 import RatingStars from '@/components/board/RatingStars';
+import LikeButton from '@/components/board/LikeButton';
 import { useOptionalAuth } from '@/components/auth/AuthProvider';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 
@@ -110,8 +111,8 @@ export default function PostDetailPage({ post, slug, comments }: Props) {
         </section>
       )}
 
-      {/* ── PLACEHOLDER: LikeButton (Task 13) ── */}
-      {/* <LikeButton postId={post.id} initialCount={post.like_count} /> */}
+      {/* LikeButton */}
+      <LikeButton postId={post.id} initialCount={post.like_count} />
 
       {/* CommentSection */}
       <CommentSection postId={post.id} initialComments={comments} />
