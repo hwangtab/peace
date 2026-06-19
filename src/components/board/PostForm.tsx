@@ -134,19 +134,27 @@ export default function PostForm({ board, initial, mode }: PostFormProps) {
           return;
         }
 
-        // Capture old image ids + urls before mutating
+        // Capture old images before mutating to know which storage objects to clean up
         const oldImages = initial.images ?? [];
-        const oldImageUrls = new Set(oldImages.map((img) => img.image_url));
-        const finalImageUrls = new Set(imageUrls);
+        const finalImageUrlSet = new Set(imageUrls);
 
-        // Only insert URLs that are new (not already in initial.images)
-        const addedUrls = imageUrls.filter((url) => !oldImageUrls.has(url));
-        if (addedUrls.length > 0) {
-          const imageRows = addedUrls.map((image_url) => ({
+        // Delete ALL existing post_images rows then re-insert in final order.
+        // This guarantees sort_order values are contiguous and collision-free
+        // regardless of remove+add sequences the user performed.
+        const { error: deleteAllImgError } = await supabase
+          .from('post_images')
+          .delete()
+          .eq('post_id', initial.id);
+        if (deleteAllImgError) {
+          setError(t('error.saveFailed'));
+          return;
+        }
+
+        if (imageUrls.length > 0) {
+          const imageRows = imageUrls.map((image_url, sort_order) => ({
             post_id: initial.id,
             image_url,
-            // sort_order relative to the overall list position
-            sort_order: imageUrls.indexOf(image_url),
+            sort_order,
           }));
           const { error: imgInsertError } = await supabase.from('post_images').insert(imageRows);
           if (imgInsertError) {
@@ -155,20 +163,9 @@ export default function PostForm({ board, initial, mode }: PostFormProps) {
           }
         }
 
-        // Only delete rows whose URL is no longer in the final set
-        const removedImages = oldImages.filter((img) => !finalImageUrls.has(img.image_url));
+        // Remove storage objects for images that are no longer in the final set (best-effort)
+        const removedImages = oldImages.filter((img) => !finalImageUrlSet.has(img.image_url));
         if (removedImages.length > 0) {
-          const removedIds = removedImages.map((img) => img.id);
-          const { error: deleteImgError } = await supabase
-            .from('post_images')
-            .delete()
-            .in('id', removedIds);
-          if (deleteImgError) {
-            // Surface the error rather than silently continuing
-            setError(t('error.saveFailed'));
-            return;
-          }
-          // Remove storage objects for deleted images (best-effort, ignore errors)
           const removedPaths = removedImages
             .map((img) => boardImagePath(img.image_url))
             .filter((p): p is string => p !== null);

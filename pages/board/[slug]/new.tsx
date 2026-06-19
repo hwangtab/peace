@@ -23,7 +23,7 @@ export default function NewPostPage({ board }: Props) {
   useEffect(() => {
     if (!loading && !user) {
       const currentPath = safeRedirectPath(router.asPath);
-      void router.replace('/login?next=' + currentPath);
+      void router.replace('/login?next=' + encodeURIComponent(currentPath));
     }
   }, [loading, user, router]);
 

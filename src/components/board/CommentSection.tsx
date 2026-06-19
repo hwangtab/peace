@@ -26,11 +26,15 @@ interface Props {
 
 async function fetchComments(postId: string): Promise<CommentRow[]> {
   const supabase = createSupabaseBrowserClient();
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from('post_comments')
     .select('*, profiles!post_comments_author_id_fkey(nickname)')
     .eq('post_id', postId)
     .order('created_at', { ascending: true });
+
+  if (error) {
+    throw error;
+  }
 
   return ((data as Record<string, unknown>[]) ?? []).map((r) => ({
     id: String(r.id),
@@ -58,7 +62,7 @@ export default function CommentSection({ postId, initialComments, readOnly = fal
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const loginHref = `/login?next=${safeRedirectPath(router.asPath)}`;
+  const loginHref = `/login?next=${encodeURIComponent(safeRedirectPath(router.asPath))}`;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -85,8 +89,12 @@ export default function CommentSection({ postId, initialComments, readOnly = fal
         return;
       }
       setBody('');
-      const refreshed = await fetchComments(postId);
-      setComments(refreshed);
+      try {
+        const refreshed = await fetchComments(postId);
+        setComments(refreshed);
+      } catch {
+        // Refetch failed — keep the existing list intact
+      }
     } finally {
       setSubmitting(false);
     }
@@ -102,8 +110,13 @@ export default function CommentSection({ postId, initialComments, readOnly = fal
         setValidationError(t('error.saveFailed'));
         return;
       }
-      const refreshed = await fetchComments(postId);
-      setComments(refreshed);
+      try {
+        const refreshed = await fetchComments(postId);
+        setComments(refreshed);
+      } catch {
+        // Refetch failed — optimistically remove the deleted comment from the list
+        setComments((prev) => prev.filter((c) => c.id !== commentId));
+      }
     } finally {
       setDeleteId(null);
     }
@@ -124,9 +137,16 @@ export default function CommentSection({ postId, initialComments, readOnly = fal
             const dateStr = formatBoardDate(c.created_at);
             const isOwn = user?.id === c.author_id;
             const isDeleting = deleteId === c.id;
+            const isHidden = c.status === 'hidden';
 
             return (
-              <li key={c.id} className="rounded-xl border border-seafoam bg-white p-4">
+              <li
+                key={c.id}
+                className={[
+                  'rounded-xl border border-seafoam bg-white p-4',
+                  isHidden ? 'opacity-50' : '',
+                ].join(' ')}
+              >
                 <div className="flex items-center justify-between gap-2">
                   <div className="flex items-center gap-2 text-sm text-coastal-gray">
                     <span className="font-semibold text-deep-ocean">
@@ -146,6 +166,11 @@ export default function CommentSection({ postId, initialComments, readOnly = fal
                     </button>
                   )}
                 </div>
+                {isHidden && (
+                  <p className="mt-1 text-xs font-medium text-amber-600">
+                    {t('comment.hiddenNotice')}
+                  </p>
+                )}
                 <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-deep-ocean">
                   {c.body}
                 </p>
@@ -160,7 +185,11 @@ export default function CommentSection({ postId, initialComments, readOnly = fal
         <div className="mt-6">
           {user ? (
             <form onSubmit={(e) => { void handleSubmit(e); }} noValidate>
+              <label htmlFor="comment-body" className="sr-only">
+                {t('comment.placeholder')}
+              </label>
               <textarea
+                id="comment-body"
                 ref={textareaRef}
                 value={body}
                 onChange={(e) => setBody(e.target.value)}

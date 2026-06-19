@@ -52,7 +52,7 @@ export default function LikeButton({ postId, initialCount }: Props) {
   const handleClick = async () => {
     if (authLoading) return;
     if (!user) {
-      void router.push('/login?next=' + safeRedirectPath(router.asPath));
+      void router.push('/login?next=' + encodeURIComponent(safeRedirectPath(router.asPath)));
       return;
     }
 

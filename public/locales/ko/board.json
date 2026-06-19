@@ -36,7 +36,8 @@
     "submit": "등록",
     "empty": "첫 댓글을 남겨 보세요.",
     "delete": "삭제",
-    "deleteConfirm": "이 댓글을 삭제할까요?"
+    "deleteConfirm": "이 댓글을 삭제할까요?",
+    "hiddenNotice": "관리자가 숨긴 댓글입니다."
   },
   "error": {
     "loginRequired": "로그인이 필요합니다.",

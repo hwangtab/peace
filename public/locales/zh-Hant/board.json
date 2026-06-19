@@ -36,7 +36,8 @@
     "submit": "Post",
     "empty": "Be the first to comment.",
     "delete": "Delete",
-    "deleteConfirm": "Delete this comment?"
+    "deleteConfirm": "Delete this comment?",
+    "hiddenNotice": "Hidden by an administrator."
   },
   "error": {
     "loginRequired": "Login required.",
