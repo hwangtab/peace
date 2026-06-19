@@ -80,6 +80,20 @@ export const loadPostDetail = async (postId: string): Promise<PostWithMeta | nul
   return mapPostRow(data as Record<string, unknown>);
 };
 
+export const loadPostComments = async (postId: string) => {
+  const client = getPublicClient();
+  if (!client) return [];
+  const { data } = await client.from('post_comments')
+    .select('*, profiles!post_comments_author_id_fkey(nickname)')
+    .eq('post_id', postId).eq('status', 'published').order('created_at', { ascending: true });
+  return ((data as Record<string, unknown>[]) ?? []).map((r) => ({
+    id: String(r.id), post_id: String(r.post_id), author_id: String(r.author_id),
+    body: String(r.body), status: r.status as 'published'|'hidden',
+    created_at: String(r.created_at), updated_at: String(r.updated_at),
+    author_nickname: (r.profiles as {nickname?:string} | null)?.nickname ?? '익명',
+  }));
+};
+
 const mapPostRow = (row: Record<string, unknown>): PostWithMeta => {
   const rawImages = Array.isArray(row.post_images) ? (row.post_images as PostImage[]) : [];
   const images = rawImages
