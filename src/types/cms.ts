@@ -5,6 +5,16 @@ export type AdminRole = 'owner' | 'editor' | 'viewer';
 
 export type SiteContentMap = Record<string, string>;
 
+export interface AdminDocument {
+  id: string;
+  slug: string;
+  title: string;
+  body_md: string;
+  updated_by: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface AdminMember {
   id: string;
   user_id: string | null;
