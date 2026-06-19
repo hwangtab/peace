@@ -96,7 +96,7 @@ export default function PostImageUploader({ value, onChange }: PostImageUploader
               <Image src={url} alt="" fill sizes="96px" className="object-cover" />
               <button
                 type="button"
-                aria-label="사진 제거"
+                aria-label={t('post.removeImage')}
                 onClick={() => handleRemove(idx)}
                 className="absolute right-1 top-1 flex h-5 w-5 items-center justify-center rounded-full bg-black/60 text-xs text-white hover:bg-black/80"
               >

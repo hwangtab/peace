@@ -74,6 +74,18 @@ export const loadBoardPostCount = async (boardId: string): Promise<number> => {
   return count ?? 0;
 };
 
+// Single grouped query for all boards — avoids N+1 on the board index page.
+export const loadBoardPostCounts = async (): Promise<Record<string, number>> => {
+  const client = getPublicClient();
+  if (!client) return {};
+  const { data } = await client.rpc('board_published_post_counts');
+  if (!data) return {};
+  return (data as { board_id: string; post_count: number }[]).reduce<Record<string, number>>(
+    (acc, row) => { acc[row.board_id] = Number(row.post_count); return acc; },
+    {}
+  );
+};
+
 export const loadPostDetail = async (postId: string): Promise<PostWithMeta | null> => {
   const client = getPublicClient();
   if (!client) return null;
@@ -111,7 +123,7 @@ export const loadPostComments = async (postId: string) => {
     id: String(r.id), post_id: String(r.post_id), author_id: String(r.author_id),
     body: String(r.body), status: r.status as 'published'|'hidden',
     created_at: String(r.created_at), updated_at: String(r.updated_at),
-    author_nickname: (r.profiles as {nickname?:string} | null)?.nickname ?? '익명',
+    author_nickname: (r.profiles as {nickname?:string} | null)?.nickname ?? '',
   }));
 };
 
@@ -133,7 +145,7 @@ export const mapPostRow = (row: Record<string, unknown>): PostWithMeta => {
     like_count: Number(row.like_count ?? 0),
     created_at: String(row.created_at ?? ''),
     updated_at: String(row.updated_at ?? ''),
-    author_nickname: profile?.nickname ?? '익명',
+    author_nickname: profile?.nickname ?? '',
     images,
     ...(board?.slug ? { board_slug: board.slug } : {}),
   };

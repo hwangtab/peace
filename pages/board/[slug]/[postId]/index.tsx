@@ -6,6 +6,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import nextI18NextConfig from '../../../../next-i18next.config';
 import { loadPostDetailWithClient, loadPostComments, boardImagePath } from '@/lib/boardData';
+import { formatBoardDate } from '@/lib/boardForms';
 import type { PostWithMeta } from '@/types/board';
 import CommentSection from '@/components/board/CommentSection';
 import type { CommentRow } from '@/components/board/CommentSection';
@@ -27,11 +28,7 @@ export default function PostDetailPage({ post, slug, comments }: Props) {
   const auth = useOptionalAuth();
   const isAuthor = auth?.user?.id === post.author_id;
 
-  const dateStr = new Date(post.created_at).toLocaleDateString(undefined, {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+  const dateStr = formatBoardDate(post.created_at);
 
   const handleDelete = async () => {
     if (!window.confirm(t('post.deleteConfirm'))) return;
@@ -59,7 +56,7 @@ export default function PostDetailPage({ post, slug, comments }: Props) {
       <h1 className="mt-4 text-2xl font-bold text-deep-ocean">{post.title}</h1>
 
       <div className="mt-2 flex flex-wrap items-center gap-3 text-sm text-coastal-gray">
-        <span>{post.author_nickname}</span>
+        <span>{post.author_nickname || t('post.anonymous')}</span>
         <span>·</span>
         <span>{dateStr}</span>
         {post.rating != null && (

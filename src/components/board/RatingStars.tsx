@@ -1,3 +1,5 @@
+import { useTranslation } from 'next-i18next';
+
 interface RatingStarsProps {
   value: number;
   max?: number;
@@ -5,6 +7,7 @@ interface RatingStarsProps {
 }
 
 export default function RatingStars({ value, max = 5, onSelect }: RatingStarsProps) {
+  const { t } = useTranslation('board');
   const rounded = Math.round(value);
 
   if (onSelect) {
@@ -16,7 +19,7 @@ export default function RatingStars({ value, max = 5, onSelect }: RatingStarsPro
             <button
               key={i}
               type="button"
-              aria-label={`${starValue}점`}
+              aria-label={t('post.ratingStar', { n: starValue })}
               onClick={() => onSelect(starValue)}
               className="transition-colors text-golden-sun hover:text-golden-sun disabled:opacity-50"
             >

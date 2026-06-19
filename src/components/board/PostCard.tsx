@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { useTranslation } from 'next-i18next';
 import type { PostWithMeta } from '@/types/board';
 import RatingStars from './RatingStars';
+import { formatBoardDate } from '@/lib/boardForms';
 
 interface PostCardProps {
   post: PostWithMeta;
@@ -9,12 +11,9 @@ interface PostCardProps {
 }
 
 export default function PostCard({ post, boardSlug }: PostCardProps) {
+  const { t } = useTranslation('board');
   const firstImage = post.images.length > 0 ? post.images[0] : null;
-  const dateStr = new Date(post.created_at).toLocaleDateString('ko-KR', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+  const dateStr = formatBoardDate(post.created_at);
 
   return (
     <Link
@@ -35,7 +34,7 @@ export default function PostCard({ post, boardSlug }: PostCardProps) {
       <div className="min-w-0 flex-1">
         <p className="truncate font-semibold text-deep-ocean">{post.title}</p>
         <p className="mt-1 text-sm text-coastal-gray">
-          {post.author_nickname} · {dateStr}
+          {post.author_nickname || t('post.anonymous')} · {dateStr}
         </p>
         <div className="mt-2 flex items-center gap-3 text-sm text-coastal-gray">
           <span>♡ {post.like_count}</span>

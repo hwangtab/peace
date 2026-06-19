@@ -86,7 +86,8 @@ export const getServerSideProps = async ({
   query,
 }: GetServerSidePropsContext) => {
   const slug = typeof params?.slug === 'string' ? params.slug : '';
-  const offset = Math.max(0, parseInt(typeof query.offset === 'string' ? query.offset : '0', 10) || 0);
+  const rawOffset = Math.max(0, parseInt(typeof query.offset === 'string' ? query.offset : '0', 10) || 0);
+  const offset = Math.floor(rawOffset / PAGE_SIZE) * PAGE_SIZE;
 
   const board = await loadBoardBySlug(slug);
   if (!board) return { notFound: true };

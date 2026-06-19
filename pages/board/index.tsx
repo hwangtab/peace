@@ -3,7 +3,7 @@ import type { GetServerSidePropsContext } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import nextI18NextConfig from '../../next-i18next.config';
-import { loadActiveBoards, loadBoardPostCount } from '@/lib/boardData';
+import { loadActiveBoards, loadBoardPostCounts } from '@/lib/boardData';
 import type { Board } from '@/types/board';
 
 interface BoardWithCount extends Board {
@@ -49,14 +49,15 @@ export default function BoardIndexPage({ boards }: Props) {
 }
 
 export const getServerSideProps = async ({ locale }: GetServerSidePropsContext) => {
-  const rawBoards = await loadActiveBoards();
+  const [rawBoards, postCounts] = await Promise.all([
+    loadActiveBoards(),
+    loadBoardPostCounts(),
+  ]);
 
-  const boards: BoardWithCount[] = await Promise.all(
-    rawBoards.map(async (board) => {
-      const postCount = await loadBoardPostCount(board.id);
-      return { ...board, postCount };
-    })
-  );
+  const boards: BoardWithCount[] = rawBoards.map((board) => ({
+    ...board,
+    postCount: postCounts[board.id] ?? 0,
+  }));
 
   return {
     props: {
