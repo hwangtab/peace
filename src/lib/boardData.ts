@@ -150,3 +150,19 @@ export const mapPostRow = (row: Record<string, unknown>): PostWithMeta => {
     ...(board?.slug ? { board_slug: board.slug } : {}),
   };
 };
+
+// Load comments via a caller-provided (session-aware) client; no hard status filter —
+// RLS decides visibility. This allows authors/admins to see comments on hidden posts.
+export const loadPostCommentsWithClient = async (
+  client: SupabaseClient, postId: string
+) => {
+  const { data } = await client.from('post_comments')
+    .select('*, profiles!post_comments_author_id_fkey(nickname)')
+    .eq('post_id', postId).order('created_at', { ascending: true });
+  return ((data as Record<string, unknown>[]) ?? []).map((r) => ({
+    id: String(r.id), post_id: String(r.post_id), author_id: String(r.author_id),
+    body: String(r.body), status: r.status as 'published'|'hidden',
+    created_at: String(r.created_at), updated_at: String(r.updated_at),
+    author_nickname: (r.profiles as {nickname?:string} | null)?.nickname ?? '',
+  }));
+};

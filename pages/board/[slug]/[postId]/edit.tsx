@@ -67,6 +67,9 @@ export const getServerSideProps = async ({
 
   if (!board || !post) return { notFound: true };
 
+  // Validate that the post belongs to the URL slug
+  if (post.board_id !== board.id) return { notFound: true };
+
   return {
     props: {
       board,

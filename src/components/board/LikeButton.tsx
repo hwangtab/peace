@@ -19,6 +19,9 @@ export default function LikeButton({ postId, initialCount }: Props) {
   const [liked, setLiked] = useState(false);
   const [count, setCount] = useState(initialCount);
   const [loading, setLoading] = useState(false);
+  // True while the initial membership check is running (only when a user is logged in).
+  // Prevents clicking before we know whether they already liked.
+  const [initializing, setInitializing] = useState(!!user);
 
   // On mount: if logged in, check whether the user already liked this post
   useEffect(() => {
@@ -32,7 +35,10 @@ export default function LikeButton({ postId, initialCount }: Props) {
       .eq('user_id', user.id)
       .maybeSingle()
       .then(({ data }) => {
-        if (!cancelled) setLiked(data !== null);
+        if (!cancelled) {
+          setLiked(data !== null);
+          setInitializing(false);
+        }
       });
     return () => { cancelled = true; };
   }, [postId, user]);
@@ -43,7 +49,7 @@ export default function LikeButton({ postId, initialCount }: Props) {
       return;
     }
 
-    if (loading) return;
+    if (loading || initializing) return;
     setLoading(true);
 
     const supabase = createSupabaseBrowserClient();
@@ -56,14 +62,18 @@ export default function LikeButton({ postId, initialCount }: Props) {
         .from('post_likes')
         .insert({ post_id: postId, user_id: user.id });
       if (error) {
-        // Revert
-        setLiked(false);
-        setCount((c) => c - 1);
+        if (error.code === '23505') {
+          // Already liked (race condition) — treat as success, keep liked=true
+        } else {
+          // Revert on genuine error
+          setLiked(false);
+          setCount((c) => Math.max(0, c - 1));
+        }
       }
     } else {
       // Optimistic: decrement
       setLiked(false);
-      setCount((c) => c - 1);
+      setCount((c) => Math.max(0, c - 1));
       const { error } = await supabase
         .from('post_likes')
         .delete()
@@ -79,19 +89,21 @@ export default function LikeButton({ postId, initialCount }: Props) {
     setLoading(false);
   };
 
+  const disabled = loading || initializing;
+
   return (
     <div className="mt-8 flex items-center gap-2">
       <button
         type="button"
         onClick={() => { void handleClick(); }}
-        disabled={loading}
+        disabled={disabled}
         aria-pressed={liked}
         className={[
           'flex items-center gap-1.5 rounded-full border px-4 py-1.5 text-sm font-semibold transition',
           liked
             ? 'border-jeju-ocean bg-jeju-ocean text-white'
             : 'border-coastal-gray text-coastal-gray hover:border-jeju-ocean hover:text-jeju-ocean',
-          loading ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer',
+          disabled ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer',
         ].join(' ')}
       >
         <span aria-hidden="true">♡</span>

@@ -13,12 +13,19 @@ interface PostImageUploaderProps {
 const ALLOWED_TYPES = ['image/png', 'image/jpeg', 'image/webp', 'image/gif'];
 const MAX_SIZE = 10 * 1024 * 1024; // 10 MB
 
+// Returns a random slug (file-name-safe) for storage path generation.
+// Defined outside the component to avoid false positives from the purity lint rule.
+const makeRandomSlug = (): string => `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+
 export default function PostImageUploader({ value, onChange }: PostImageUploaderProps) {
   const { t } = useTranslation('board');
   const { user } = useAuth();
   const inputRef = useRef<HTMLInputElement>(null);
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // Track URLs uploaded during this session so we only delete storage for new uploads.
+  // Pre-existing images (seeded from initial.images in edit mode) are not in this set.
+  const sessionUploadedRef = useRef<Set<string> | null>(null);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -41,6 +48,10 @@ export default function PostImageUploader({ value, onChange }: PostImageUploader
       return;
     }
 
+    // Ensure the session set is initialised before entering try/catch
+    if (!sessionUploadedRef.current) sessionUploadedRef.current = new Set<string>();
+    const sessionSet = sessionUploadedRef.current;
+
     setUploading(true);
     try {
       const ext =
@@ -49,9 +60,8 @@ export default function PostImageUploader({ value, onChange }: PostImageUploader
           .pop()
           ?.toLowerCase()
           .replace(/[^a-z0-9]/g, '') || 'jpg';
-      const rand = Math.random().toString(36).slice(2);
       // RLS requires first path segment = user.id
-      const path = `${user.id}/${Date.now()}-${rand}.${ext}`;
+      const path = `${user.id}/${makeRandomSlug()}.${ext}`;
 
       const supabase = createSupabaseBrowserClient();
       const { error: uploadError } = await supabase.storage
@@ -64,7 +74,10 @@ export default function PostImageUploader({ value, onChange }: PostImageUploader
       }
 
       const { data } = supabase.storage.from('board-images').getPublicUrl(path);
+      sessionSet.add(data.publicUrl);
       onChange([...value, data.publicUrl]);
+    } catch {
+      setError(t('error.saveFailed'));
     } finally {
       setUploading(false);
     }
@@ -73,8 +86,10 @@ export default function PostImageUploader({ value, onChange }: PostImageUploader
   const handleRemove = (idx: number) => {
     const removedUrl = value[idx];
     onChange(value.filter((_, i) => i !== idx));
-    // Remove from storage (best-effort, ignore errors)
-    if (removedUrl) {
+    // Only delete from storage if this URL was uploaded in the current session.
+    // Pre-existing images (from saved post) are left for PostForm's save-time cleanup.
+    if (removedUrl && sessionUploadedRef.current?.has(removedUrl)) {
+      sessionUploadedRef.current.delete(removedUrl);
       const path = boardImagePath(removedUrl);
       if (path) {
         const supabase = createSupabaseBrowserClient();
