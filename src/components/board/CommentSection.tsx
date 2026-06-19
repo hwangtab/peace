@@ -21,6 +21,7 @@ export interface CommentRow {
 interface Props {
   postId: string;
   initialComments: CommentRow[];
+  readOnly?: boolean;
 }
 
 async function fetchComments(postId: string): Promise<CommentRow[]> {
@@ -29,7 +30,6 @@ async function fetchComments(postId: string): Promise<CommentRow[]> {
     .from('post_comments')
     .select('*, profiles!post_comments_author_id_fkey(nickname)')
     .eq('post_id', postId)
-    .eq('status', 'published')
     .order('created_at', { ascending: true });
 
   return ((data as Record<string, unknown>[]) ?? []).map((r) => ({
@@ -44,7 +44,7 @@ async function fetchComments(postId: string): Promise<CommentRow[]> {
   }));
 }
 
-export default function CommentSection({ postId, initialComments }: Props) {
+export default function CommentSection({ postId, initialComments, readOnly = false }: Props) {
   const { t } = useTranslation('board');
   const router = useRouter();
   const auth = useAuth();
@@ -155,39 +155,41 @@ export default function CommentSection({ postId, initialComments }: Props) {
         </ul>
       )}
 
-      {/* Add comment form / login prompt */}
-      <div className="mt-6">
-        {user ? (
-          <form onSubmit={(e) => { void handleSubmit(e); }} noValidate>
-            <textarea
-              ref={textareaRef}
-              value={body}
-              onChange={(e) => setBody(e.target.value)}
-              placeholder={t('comment.placeholder')}
-              rows={3}
-              className="w-full rounded-xl border border-seafoam p-3 text-sm text-deep-ocean placeholder-coastal-gray focus:border-jeju-ocean focus:outline-none"
-            />
-            {validationError && (
-              <p className="mt-1 text-xs text-red-500">{validationError}</p>
-            )}
-            <div className="mt-2 flex justify-end">
-              <button
-                type="submit"
-                disabled={submitting}
-                className="rounded-lg bg-jeju-ocean px-5 py-2 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-50"
-              >
-                {t('comment.submit')}
-              </button>
-            </div>
-          </form>
-        ) : (
-          <p className="text-sm text-coastal-gray">
-            <Link href={loginHref} className="text-jeju-ocean underline hover:opacity-80">
-              {t('error.loginRequired')}
-            </Link>
-          </p>
-        )}
-      </div>
+      {/* Add comment form / login prompt — hidden when post is read-only (e.g. hidden status) */}
+      {!readOnly && (
+        <div className="mt-6">
+          {user ? (
+            <form onSubmit={(e) => { void handleSubmit(e); }} noValidate>
+              <textarea
+                ref={textareaRef}
+                value={body}
+                onChange={(e) => setBody(e.target.value)}
+                placeholder={t('comment.placeholder')}
+                rows={3}
+                className="w-full rounded-xl border border-seafoam p-3 text-sm text-deep-ocean placeholder-coastal-gray focus:border-jeju-ocean focus:outline-none"
+              />
+              {validationError && (
+                <p className="mt-1 text-xs text-red-500">{validationError}</p>
+              )}
+              <div className="mt-2 flex justify-end">
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="rounded-lg bg-jeju-ocean px-5 py-2 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-50"
+                >
+                  {t('comment.submit')}
+                </button>
+              </div>
+            </form>
+          ) : (
+            <p className="text-sm text-coastal-gray">
+              <Link href={loginHref} className="text-jeju-ocean underline hover:opacity-80">
+                {t('error.loginRequired')}
+              </Link>
+            </p>
+          )}
+        </div>
+      )}
     </section>
   );
 }
