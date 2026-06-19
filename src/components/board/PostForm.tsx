@@ -79,6 +79,15 @@ export default function PostForm({ board, initial, mode }: PostFormProps) {
 
         if (insertError || !postData) {
           setError(t('error.saveFailed'));
+          // Best-effort clean up any already-uploaded storage objects
+          if (imageUrls.length > 0) {
+            const paths = imageUrls
+              .map((u) => boardImagePath(u))
+              .filter((p): p is string => p !== null);
+            if (paths.length > 0) {
+              void supabase.storage.from('board-images').remove(paths);
+            }
+          }
           return;
         }
 
@@ -93,6 +102,14 @@ export default function PostForm({ board, initial, mode }: PostFormProps) {
           }));
           const { error: imgInsertError } = await supabase.from('post_images').insert(imageRows);
           if (imgInsertError) {
+            // Roll back the orphan post, then clean up storage
+            await supabase.from('posts').delete().eq('id', newId);
+            const paths = imageUrls
+              .map((u) => boardImagePath(u))
+              .filter((p): p is string => p !== null);
+            if (paths.length > 0) {
+              void supabase.storage.from('board-images').remove(paths);
+            }
             setError(t('error.saveFailed'));
             return;
           }
@@ -119,14 +136,17 @@ export default function PostForm({ board, initial, mode }: PostFormProps) {
 
         // Capture old image ids + urls before mutating
         const oldImages = initial.images ?? [];
-        const oldImageIds = oldImages.map((img) => img.id);
+        const oldImageUrls = new Set(oldImages.map((img) => img.image_url));
+        const finalImageUrls = new Set(imageUrls);
 
-        // Insert new image rows FIRST — if this fails, stop before deleting old rows
-        if (imageUrls.length > 0) {
-          const imageRows = imageUrls.map((image_url, sort_order) => ({
+        // Only insert URLs that are new (not already in initial.images)
+        const addedUrls = imageUrls.filter((url) => !oldImageUrls.has(url));
+        if (addedUrls.length > 0) {
+          const imageRows = addedUrls.map((image_url) => ({
             post_id: initial.id,
             image_url,
-            sort_order,
+            // sort_order relative to the overall list position
+            sort_order: imageUrls.indexOf(image_url),
           }));
           const { error: imgInsertError } = await supabase.from('post_images').insert(imageRows);
           if (imgInsertError) {
@@ -135,24 +155,25 @@ export default function PostForm({ board, initial, mode }: PostFormProps) {
           }
         }
 
-        // Delete OLD rows only after new rows are safely inserted
-        if (oldImageIds.length > 0) {
+        // Only delete rows whose URL is no longer in the final set
+        const removedImages = oldImages.filter((img) => !finalImageUrls.has(img.image_url));
+        if (removedImages.length > 0) {
+          const removedIds = removedImages.map((img) => img.id);
           const { error: deleteImgError } = await supabase
             .from('post_images')
             .delete()
-            .in('id', oldImageIds);
+            .in('id', removedIds);
           if (deleteImgError) {
-            // New images are in; stale old rows are a lesser problem — log and continue
-            console.error('Failed to delete old post_images rows:', deleteImgError.message);
-          } else {
-            // Remove old storage objects (best-effort, ignore errors)
-            const removedUrls = oldImages
-              .filter((img) => !imageUrls.includes(img.image_url))
-              .map((img) => boardImagePath(img.image_url))
-              .filter((p): p is string => p !== null);
-            if (removedUrls.length > 0) {
-              await supabase.storage.from('board-images').remove(removedUrls);
-            }
+            // Surface the error rather than silently continuing
+            setError(t('error.saveFailed'));
+            return;
+          }
+          // Remove storage objects for deleted images (best-effort, ignore errors)
+          const removedPaths = removedImages
+            .map((img) => boardImagePath(img.image_url))
+            .filter((p): p is string => p !== null);
+          if (removedPaths.length > 0) {
+            void supabase.storage.from('board-images').remove(removedPaths);
           }
         }
 

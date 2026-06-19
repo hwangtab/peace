@@ -5,7 +5,7 @@ import type { GetServerSidePropsContext } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import nextI18NextConfig from '../../../../next-i18next.config';
-import { loadPostDetailWithClient, loadPostComments, boardImagePath } from '@/lib/boardData';
+import { loadPostDetailWithClient, loadPostCommentsWithClient, boardImagePath } from '@/lib/boardData';
 import { formatBoardDate } from '@/lib/boardForms';
 import type { PostWithMeta } from '@/types/board';
 import CommentSection from '@/components/board/CommentSection';
@@ -33,14 +33,19 @@ export default function PostDetailPage({ post, slug, comments }: Props) {
   const handleDelete = async () => {
     if (!window.confirm(t('post.deleteConfirm'))) return;
     const supabase = createSupabaseBrowserClient();
-    // Remove storage objects for post images (best-effort)
+    // Delete post from DB first — if this fails, don't remove storage or redirect
+    const { error: deleteError } = await supabase.from('posts').delete().eq('id', post.id);
+    if (deleteError) {
+      alert(t('error.saveFailed'));
+      return;
+    }
+    // Remove storage objects for post images (best-effort, ignore errors)
     const storagePaths = post.images
       .map((img) => boardImagePath(img.image_url))
       .filter((p): p is string => p !== null);
     if (storagePaths.length > 0) {
-      await supabase.storage.from('board-images').remove(storagePaths);
+      void supabase.storage.from('board-images').remove(storagePaths);
     }
-    await supabase.from('posts').delete().eq('id', post.id);
     await router.push('/board/' + slug);
   };
 
@@ -138,7 +143,10 @@ export const getServerSideProps = async ({
   const post = await loadPostDetailWithClient(serverClient, postId);
   if (!post) return { notFound: true };
 
-  const comments = await loadPostComments(postId);
+  // Validate that the post belongs to the URL slug
+  if (post.board_slug !== slug) return { notFound: true };
+
+  const comments = await loadPostCommentsWithClient(serverClient, postId);
 
   return {
     props: {

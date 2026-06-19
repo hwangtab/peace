@@ -93,10 +93,15 @@ export default function CommentSection({ postId, initialComments }: Props) {
   };
 
   const handleDelete = async (commentId: string) => {
+    if (!window.confirm(t('comment.deleteConfirm'))) return;
     setDeleteId(commentId);
     try {
       const supabase = createSupabaseBrowserClient();
-      await supabase.from('post_comments').delete().eq('id', commentId);
+      const { error } = await supabase.from('post_comments').delete().eq('id', commentId);
+      if (error) {
+        setValidationError(t('error.saveFailed'));
+        return;
+      }
       const refreshed = await fetchComments(postId);
       setComments(refreshed);
     } finally {
