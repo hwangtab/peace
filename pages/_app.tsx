@@ -28,6 +28,7 @@ import '@/index.css';
 import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/layout/Footer';
 import ErrorFallback from '@/components/common/ErrorFallback';
+import { AuthProvider } from '@/components/auth/AuthProvider';
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
@@ -98,13 +99,23 @@ function App({ Component, pageProps }: AppProps) {
           </>
         )}
 
-        {!isAdminRoute && <Navigation />}
-        <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <main id="main-content" className="overflow-x-hidden">
-            <Component {...pageProps} />
-          </main>
-        </ErrorBoundary>
-        {!isAdminRoute && <Footer />}
+        {isAdminRoute ? (
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <main id="main-content" className="overflow-x-hidden">
+              <Component {...pageProps} />
+            </main>
+          </ErrorBoundary>
+        ) : (
+          <AuthProvider>
+            <Navigation />
+            <ErrorBoundary FallbackComponent={ErrorFallback}>
+              <main id="main-content" className="overflow-x-hidden">
+                <Component {...pageProps} />
+              </main>
+            </ErrorBoundary>
+            <Footer />
+          </AuthProvider>
+        )}
       </MotionConfig>
     </LazyMotion>
   );
