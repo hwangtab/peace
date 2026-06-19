@@ -94,7 +94,7 @@ const Navigation = () => {
 
       {/* Backdrop — closes menu when tapping outside */}
       {isOpen && (
-        <div className="fixed inset-0 z-40 md:hidden" onClick={closeMenu} aria-hidden="true" />
+        <div className="fixed inset-0 z-40 xl:hidden" onClick={closeMenu} aria-hidden="true" />
       )}
     </>
   );

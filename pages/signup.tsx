@@ -91,8 +91,8 @@ export default function SignupPage() {
         <Field label={t('common.password')}>
           <input type="password" required autoComplete="new-password" value={password} onChange={(e) => setPassword(e.target.value)} className={inputCls} />
         </Field>
-        {message && <p className="rounded bg-jeju-ocean/10 px-3 py-2 text-sm text-jeju-ocean">{message}</p>}
-        {error && <p className="rounded bg-sunset-coral/10 px-3 py-2 text-sm text-sunset-coral">{error}</p>}
+        {message && <p role="status" aria-live="polite" className="rounded bg-jeju-ocean/10 px-3 py-2 text-sm text-jeju-ocean">{message}</p>}
+        {error && <p role="alert" aria-live="assertive" className="rounded bg-sunset-coral/10 px-3 py-2 text-sm text-sunset-coral">{error}</p>}
         <button type="submit" disabled={busy} className={btnCls}>
           {busy ? t('common.loading') : t('signup.cta')}
         </button>
