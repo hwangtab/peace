@@ -57,6 +57,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     const { data: sub } = supabase.auth.onAuthStateChange(
       (_event: string, session: Session | null) => {
+        if (!active) return;
         const nextUser = session?.user ?? null;
         setUser(nextUser);
         void loadProfile(nextUser);
@@ -74,10 +75,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [loadProfile, user]);
 
   const signOut = useCallback(async () => {
-    const supabase = createSupabaseBrowserClient();
-    await supabase.auth.signOut();
-    setUser(null);
-    setProfile(null);
+    try {
+      const supabase = createSupabaseBrowserClient();
+      await supabase.auth.signOut();
+    } catch {
+      // ignore — clear local state regardless below
+    } finally {
+      setUser(null);
+      setProfile(null);
+    }
   }, []);
 
   const value = useMemo<AuthContextValue>(
