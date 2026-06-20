@@ -45,3 +45,14 @@ export interface PostWithMeta extends Post {
   images: PostImage[];
   board_slug?: string;
 }
+
+/** Flat shape returned by /api/admin/board-comments */
+export interface AdminCommentRow {
+  id: string;
+  body: string;
+  status: 'published' | 'hidden';
+  created_at: string;
+  post_id: string;
+  post_title: string;
+  author_nickname: string;
+}
