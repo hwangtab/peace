@@ -1,0 +1,110 @@
+<!--
+  강정 피스앤뮤직캠프 — 매직링크 로그인 이메일 템플릿 (주로 관리자 로그인)
+  Supabase Authentication → Email Templates → "Magic Link" 에 이 HTML 전체를 붙여넣으세요.
+  사용 변수: {{ .ConfirmationURL }} (로그인 링크)
+-->
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light only" />
+    <title>강정 피스앤뮤직캠프 로그인 링크</title>
+  </head>
+  <body style="margin:0; padding:0; background-color:#F8F9FA; -webkit-font-smoothing:antialiased;">
+    <div style="display:none; max-height:0; overflow:hidden; opacity:0; color:#F8F9FA;">
+      로그인 링크를 보내드려요. 버튼 한 번이면 바로 로그인됩니다.
+    </div>
+
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#F8F9FA;">
+      <tr>
+        <td align="center" style="padding:32px 16px;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+                 style="max-width:560px; width:100%; background-color:#ffffff; border-radius:16px; overflow:hidden; box-shadow:0 6px 24px rgba(26,35,50,0.08);">
+
+            <tr>
+              <td style="background-color:#0A5F8A; background-image:linear-gradient(135deg,#0A5F8A 0%,#1A2332 100%); padding:36px 40px;">
+                <div style="font-size:13px; letter-spacing:3px; color:#B8D8E8; font-family:'Helvetica Neue',Arial,sans-serif; text-transform:uppercase;">
+                  PEACE &amp; MUSIC IN GANGJEONG
+                </div>
+                <div style="margin-top:8px; font-size:24px; font-weight:700; color:#ffffff; font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;">
+                  강정 피스앤뮤직캠프
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="padding:40px 40px 8px 40px; font-family:'Apple SD Gothic Neo','Malgun Gothic',Arial,sans-serif; color:#1A2332;">
+                <h1 style="margin:0 0 16px 0; font-size:22px; font-weight:700; color:#1A2332;">
+                  로그인 링크를 보내드려요
+                </h1>
+                <p style="margin:0 0 14px 0; font-size:15px; line-height:1.7; color:#3a4654;">
+                  강정 피스앤뮤직캠프 로그인을 요청하셨습니다. 아래 버튼을 누르면
+                  비밀번호 입력 없이 바로 로그인됩니다.
+                </p>
+              </td>
+            </tr>
+
+            <tr>
+              <td align="center" style="padding:18px 40px 8px 40px;">
+                <table role="presentation" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td align="center" style="border-radius:10px; background-color:#0A5F8A;">
+                      <a href="{{ .ConfirmationURL }}" target="_blank"
+                         style="display:inline-block; padding:15px 36px; font-size:16px; font-weight:700;
+                                color:#ffffff; text-decoration:none; font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+                                border-radius:10px;">
+                        로그인하기
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="padding:18px 40px 4px 40px; font-family:'Apple SD Gothic Neo','Malgun Gothic',Arial,sans-serif;">
+                <p style="margin:0 0 8px 0; font-size:13px; line-height:1.6; color:#6B7C8A;">
+                  버튼이 눌리지 않으면 아래 주소를 복사해 브라우저에 붙여넣어 주세요.
+                </p>
+                <p style="margin:0; font-size:13px; line-height:1.6; word-break:break-all;">
+                  <a href="{{ .ConfirmationURL }}" target="_blank" style="color:#0A5F8A; text-decoration:underline;">{{ .ConfirmationURL }}</a>
+                </p>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="padding:24px 40px 0 40px;">
+                <div style="height:1px; background-color:#E6EBEF; line-height:1px; font-size:0;">&nbsp;</div>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:16px 40px 32px 40px; font-family:'Apple SD Gothic Neo','Malgun Gothic',Arial,sans-serif;">
+                <p style="margin:0; font-size:12px; line-height:1.7; color:#9aa7b2;">
+                  본인이 요청하지 않았다면 이 메일을 무시하셔도 됩니다. 이 링크는 일정 시간이 지나면
+                  만료되며, 한 번만 사용할 수 있습니다.
+                </p>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="background-color:#1A2332; padding:24px 40px; font-family:'Apple SD Gothic Neo','Malgun Gothic',Arial,sans-serif;">
+                <p style="margin:0 0 6px 0; font-size:13px; font-weight:600; color:#ffffff;">강정 피스앤뮤직캠프</p>
+                <p style="margin:0; font-size:12px; line-height:1.6; color:#8b97a3;">
+                  <a href="https://peaceandmusic.net" target="_blank" style="color:#B8D8E8; text-decoration:none;">peaceandmusic.net</a>
+                  &nbsp;·&nbsp;
+                  <a href="https://www.instagram.com/peace_music_in_gangjeong" target="_blank" style="color:#B8D8E8; text-decoration:none;">@peace_music_in_gangjeong</a>
+                </p>
+              </td>
+            </tr>
+
+          </table>
+
+          <p style="margin:18px 0 0 0; font-size:11px; color:#b5bfc8; font-family:'Apple SD Gothic Neo','Malgun Gothic',Arial,sans-serif;">
+            © 강정 피스앤뮤직캠프
+          </p>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
