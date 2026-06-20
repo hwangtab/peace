@@ -3,6 +3,7 @@ import { z, ZodError } from 'zod';
 import { requireAdminRole } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import { isValidBoardSlug } from '@/lib/boardForms';
+import { boardImagePath } from '@/lib/boardData';
 import type { Board } from '@/types/board';
 
 const createSchema = z.object({
@@ -161,11 +162,37 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === 'DELETE') {
     try {
       const body = deleteSchema.parse(req.body);
+
+      // Gather image paths before cascade removes the rows
+      const { data: posts } = await supabase.from('posts').select('id').eq('board_id', body.id);
+      const postIds = (posts ?? []).map((p) => p.id as string);
+      let imagePaths: string[] = [];
+      if (postIds.length) {
+        const { data: imgs } = await supabase
+          .from('post_images')
+          .select('image_url')
+          .in('post_id', postIds);
+        imagePaths = (imgs ?? [])
+          .map((r) => boardImagePath(r.image_url as string))
+          .filter((p): p is string => !!p);
+      }
+
+      // Delete the board (cascade removes posts/post_images rows)
       const { error } = await supabase.from('boards').delete().eq('id', body.id);
       if (error) {
         res.status(500).json({ error: error.message });
         return;
       }
+
+      // Best-effort storage cleanup (ignore errors)
+      if (imagePaths.length) {
+        try {
+          await supabase.storage.from('board-images').remove(imagePaths);
+        } catch {
+          // ignore
+        }
+      }
+
       res.status(200).json({ ok: true });
       return;
     } catch (error) {

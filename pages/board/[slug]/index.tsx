@@ -13,17 +13,16 @@ const PAGE_SIZE = 20;
 interface Props {
   board: Board;
   posts: PostWithMeta[];
-  total: number;
+  hasMore: boolean;
   offset: number;
 }
 
-export default function BoardSlugPage({ board, posts, total, offset }: Props) {
+export default function BoardSlugPage({ board, posts, hasMore, offset }: Props) {
   const { t } = useTranslation('board');
   const auth = useOptionalAuth();
   const isLoggedIn = Boolean(auth?.user);
 
   const nextOffset = offset + PAGE_SIZE;
-  const hasMore = nextOffset < total;
 
   return (
     <main className="mx-auto max-w-2xl px-4 py-12">
@@ -92,7 +91,7 @@ export const getServerSideProps = async ({
   const board = await loadBoardBySlug(slug);
   if (!board) return { notFound: true };
 
-  const { items: posts, total } = await loadBoardPosts(board.id, {
+  const { items: posts, hasMore } = await loadBoardPosts(board.id, {
     limit: PAGE_SIZE,
     offset,
   });
@@ -101,7 +100,7 @@ export const getServerSideProps = async ({
     props: {
       board,
       posts,
-      total,
+      hasMore,
       offset,
       ...(await serverSideTranslations(locale ?? 'ko', ['board', 'translation'], nextI18NextConfig)),
     },
