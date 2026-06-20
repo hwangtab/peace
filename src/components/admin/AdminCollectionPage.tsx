@@ -115,8 +115,9 @@ export default function AdminCollectionPage({
       published: items.filter((item) => getRowStatus(item) === 'published').length,
       draft: items.filter((item) => getRowStatus(item) === 'draft').length,
       hidden: items.filter((item) => getRowStatus(item) === 'hidden').length,
+      approximate: hasMore,
     }),
-    [items, totalCount]
+    [items, totalCount, hasMore]
   );
 
   const previewUrl = selected
@@ -181,10 +182,11 @@ export default function AdminCollectionPage({
   };
 
   const refreshItems = async (preferredId?: string) => {
+    const refreshLimit = Math.max(items.length, ADMIN_COLLECTION_PAGE_SIZE);
     const params = new URLSearchParams({
       locale: selectedLocale,
       offset: '0',
-      limit: String(ADMIN_COLLECTION_PAGE_SIZE),
+      limit: String(refreshLimit),
     });
     const response = await fetch(`/api/admin/archive/${config.collection}?${params.toString()}`);
     if (!response.ok) return;
@@ -351,6 +353,7 @@ export default function AdminCollectionPage({
       return;
     }
 
+    const wasExisting = Boolean(form.id);
     setMessage(
       payload.changeLogError
         ? `저장했습니다. 변경 이력 기록 실패: ${payload.changeLogError}`
@@ -359,6 +362,13 @@ export default function AdminCollectionPage({
     setSelected(payload.item);
     setForm(buildFormState(config, payload.item, selectedLocale));
     await refreshItems(payload.item.id);
+    if (wasExisting) {
+      try {
+        await refreshLocaleStatuses(payload.item.id);
+      } catch {
+        // 언어 상태 갱신 실패는 저장 성공 메시지를 덮어쓰지 않음
+      }
+    }
   };
 
   const hideSelected = async () => {
@@ -501,14 +511,20 @@ export default function AdminCollectionPage({
 
       <div className="mb-6 grid grid-cols-2 gap-3 md:grid-cols-4">
         {[
-          ['전체', counts.all],
-          ['공개', counts.published],
-          ['초안', counts.draft],
-          ['내림', counts.hidden],
-        ].map(([label, value]) => (
-          <div key={label} className="rounded border border-deep-ocean/10 bg-white p-4">
-            <p className="text-sm text-coastal-gray">{label}</p>
-            <p className="mt-1 text-2xl font-bold">{value}</p>
+          ['전체', counts.all, false],
+          ['공개', counts.published, counts.approximate],
+          ['초안', counts.draft, counts.approximate],
+          ['내림', counts.hidden, counts.approximate],
+        ].map(([label, value, approx]) => (
+          <div key={label as string} className="rounded border border-deep-ocean/10 bg-white p-4">
+            <p className="text-sm text-coastal-gray">{label as string}</p>
+            <p className="mt-1 text-2xl font-bold">
+              {value as number}
+              {approx ? <span className="ml-1 text-base font-normal text-coastal-gray">+</span> : null}
+            </p>
+            {approx ? (
+              <p className="mt-0.5 text-xs text-coastal-gray">로드된 항목 기준</p>
+            ) : null}
           </div>
         ))}
       </div>
