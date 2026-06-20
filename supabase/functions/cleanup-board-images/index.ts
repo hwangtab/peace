@@ -1,90 +1,72 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
-const GRACE_PERIOD_MS = 24 * 60 * 60 * 1000; // 24 hours
 const BATCH_SIZE = 100;
 
-Deno.serve(async (_req: Request): Promise<Response> => {
+/**
+ * Constant-time string comparison via SHA-256 hex digest.
+ * Prevents timing-oracle attacks on the shared secret.
+ */
+async function timingSafeEqual(a: string, b: string): Promise<boolean> {
+  const enc = new TextEncoder();
+  const [da, db] = await Promise.all([
+    crypto.subtle.digest('SHA-256', enc.encode(a)),
+    crypto.subtle.digest('SHA-256', enc.encode(b)),
+  ]);
+  const ha = Array.from(new Uint8Array(da)).map(x => x.toString(16).padStart(2, '0')).join('');
+  const hb = Array.from(new Uint8Array(db)).map(x => x.toString(16).padStart(2, '0')).join('');
+  // hex strings are equal length — character-by-character OR to prevent short-circuit
+  let diff = 0;
+  for (let i = 0; i < ha.length; i++) diff |= ha.charCodeAt(i) ^ hb.charCodeAt(i);
+  return diff === 0;
+}
+
+Deno.serve(async (req: Request): Promise<Response> => {
+  // Fix 2: require POST
+  if (req.method !== 'POST') {
+    return new Response('Method Not Allowed', { status: 405 });
+  }
+
+  // Fix 2: shared-secret gate
+  const secret = Deno.env.get('CLEANUP_CRON_SECRET');
+  if (!secret) {
+    console.error('cleanup-board-images: CLEANUP_CRON_SECRET env not set');
+    return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+      status: 401,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
+  const incoming = req.headers.get('x-cleanup-secret') ?? '';
+  const valid = await timingSafeEqual(incoming, secret);
+  if (!valid) {
+    return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+      status: 401,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
   try {
     const supabase = createClient(
       Deno.env.get('SUPABASE_URL')!,
       Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!,
     );
 
-    // Step 1: List all objects in board-images bucket.
-    // Objects live under per-user folders: <uid>/<file>
-    // First list top-level "folders" (prefixes), then list files inside each.
-    const allObjects: { path: string; created_at: string }[] = [];
+    // Fix 1+3: orphan detection entirely in Postgres via antijoin RPC —
+    // no JS-side pagination, no consistency window, grace handled server-side.
+    const { data: paths, error: rpcErr } = await supabase
+      .rpc('orphan_board_image_paths', { grace_hours: 24 });
 
-    // List top-level entries (user folders appear as items with name ending in '/')
-    // Supabase storage list without prefix returns root-level items.
-    const { data: rootItems, error: rootErr } = await supabase.storage
-      .from('board-images')
-      .list('', { limit: 1000 });
-
-    if (rootErr) throw new Error(`List root failed: ${rootErr.message}`);
-
-    for (const item of rootItems ?? []) {
-      if (!item.id) {
-        // This is a folder prefix — list its contents
-        const { data: folderItems, error: folderErr } = await supabase.storage
-          .from('board-images')
-          .list(item.name, { limit: 1000 });
-
-        if (folderErr) {
-          console.error(`List folder ${item.name} failed: ${folderErr.message}`);
-          continue;
-        }
-
-        for (const file of folderItems ?? []) {
-          if (file.id) {
-            // Actual file
-            allObjects.push({
-              path: `${item.name}/${file.name}`,
-              created_at: file.created_at ?? '',
-            });
-          }
-        }
-      } else {
-        // Root-level file (uncommon but handle it)
-        allObjects.push({
-          path: item.name,
-          created_at: item.created_at ?? '',
-        });
-      }
+    if (rpcErr) {
+      console.error('cleanup-board-images rpc error:', rpcErr.message);
+      return new Response(JSON.stringify({ error: rpcErr.message }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
 
-    // Step 2: Fetch all referenced image_url values from post_images
-    const { data: rows, error: dbErr } = await supabase
-      .from('post_images')
-      .select('image_url');
+    const orphanPaths: string[] = (paths ?? []).map((r: { path: string }) => r.path);
 
-    if (dbErr) throw new Error(`DB query failed: ${dbErr.message}`);
-
-    // Convert image_url to storage path: everything after '/board-images/'
-    const referencedPaths = new Set<string>();
-    for (const row of rows ?? []) {
-      const url: string = row.image_url ?? '';
-      const marker = '/board-images/';
-      const idx = url.indexOf(marker);
-      if (idx !== -1) {
-        referencedPaths.add(url.slice(idx + marker.length));
-      }
-    }
-
-    // Step 3: Identify orphans (not referenced AND older than 24h)
-    const now = Date.now();
-    const orphanPaths: string[] = [];
-
-    for (const obj of allObjects) {
-      if (referencedPaths.has(obj.path)) continue;
-
-      const age = obj.created_at ? now - new Date(obj.created_at).getTime() : Infinity;
-      if (age >= GRACE_PERIOD_MS) {
-        orphanPaths.push(obj.path);
-      }
-    }
-
-    // Step 4: Delete orphans in batches of BATCH_SIZE
+    // Delete in batches of BATCH_SIZE
     let deleted = 0;
     for (let i = 0; i < orphanPaths.length; i += BATCH_SIZE) {
       const batch = orphanPaths.slice(i, i + BATCH_SIZE);
@@ -99,12 +81,7 @@ Deno.serve(async (_req: Request): Promise<Response> => {
       }
     }
 
-    const summary = {
-      scanned: allObjects.length,
-      orphans: orphanPaths.length,
-      deleted,
-    };
-
+    const summary = { orphans: orphanPaths.length, deleted };
     console.log('cleanup-board-images:', JSON.stringify(summary));
 
     return new Response(JSON.stringify(summary), {
