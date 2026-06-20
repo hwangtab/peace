@@ -30,7 +30,8 @@ async function fetchComments(postId: string): Promise<CommentRow[]> {
     .from('post_comments')
     .select('*, profiles!post_comments_author_id_fkey(nickname)')
     .eq('post_id', postId)
-    .order('created_at', { ascending: true });
+    .order('created_at', { ascending: true })
+    .limit(200);
 
   if (error) {
     throw error;

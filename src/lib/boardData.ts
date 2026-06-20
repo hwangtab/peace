@@ -49,18 +49,21 @@ export const loadBoardBySlug = async (slug: string): Promise<Board | null> => {
 export const loadBoardPosts = async (
   boardId: string,
   { limit = 20, offset = 0 }: { limit?: number; offset?: number }
-): Promise<{ items: PostWithMeta[]; total: number }> => {
+): Promise<{ items: PostWithMeta[]; hasMore: boolean }> => {
   const client = getPublicClient();
-  if (!client) return { items: [], total: 0 };
-  const { data, count } = await client
+  if (!client) return { items: [], hasMore: false };
+  // Fetch one extra row to determine if more pages exist (avoids count:'exact').
+  const { data } = await client
     .from('posts')
-    .select('*, profiles!posts_author_id_fkey(nickname), post_images(*)', { count: 'exact' })
+    .select('*, profiles!posts_author_id_fkey(nickname), post_images(*)')
     .eq('board_id', boardId)
     .eq('status', 'published')
     .order('created_at', { ascending: false })
-    .range(offset, offset + limit - 1);
-  const items = ((data as Record<string, unknown>[]) ?? []).map(mapPostRow);
-  return { items, total: count ?? items.length };
+    .range(offset, offset + limit);
+  const rows = (data as Record<string, unknown>[]) ?? [];
+  const hasMore = rows.length > limit;
+  const items = rows.slice(0, limit).map(mapPostRow);
+  return { items, hasMore };
 };
 
 export const loadBoardPostCount = async (boardId: string): Promise<number> => {
@@ -118,7 +121,7 @@ export const loadPostComments = async (postId: string) => {
   if (!client) return [];
   const { data } = await client.from('post_comments')
     .select('*, profiles!post_comments_author_id_fkey(nickname)')
-    .eq('post_id', postId).eq('status', 'published').order('created_at', { ascending: true });
+    .eq('post_id', postId).eq('status', 'published').order('created_at', { ascending: true }).limit(200);
   return ((data as Record<string, unknown>[]) ?? []).map((r) => ({
     id: String(r.id), post_id: String(r.post_id), author_id: String(r.author_id),
     body: String(r.body), status: r.status as 'published'|'hidden',
@@ -158,7 +161,7 @@ export const loadPostCommentsWithClient = async (
 ) => {
   const { data } = await client.from('post_comments')
     .select('*, profiles!post_comments_author_id_fkey(nickname)')
-    .eq('post_id', postId).order('created_at', { ascending: true });
+    .eq('post_id', postId).order('created_at', { ascending: true }).limit(200);
   return ((data as Record<string, unknown>[]) ?? []).map((r) => ({
     id: String(r.id), post_id: String(r.post_id), author_id: String(r.author_id),
     body: String(r.body), status: r.status as 'published'|'hidden',
