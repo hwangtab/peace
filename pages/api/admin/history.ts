@@ -45,7 +45,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       query = query.eq('collection', req.query.collection);
     }
     if (typeof req.query.row_id === 'string') {
-      query = query.eq('row_id', req.query.row_id);
+      const parsed = z.string().uuid().safeParse(req.query.row_id);
+      if (!parsed.success) {
+        res.status(400).json({ error: 'invalid_row_id' });
+        return;
+      }
+      query = query.eq('row_id', parsed.data);
     }
 
     const { data, error } = await query;
@@ -115,7 +120,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .single();
 
       if (error) {
-        res.status(500).json({ error: error.message });
+        if (error.code === '23505') {
+          res.status(409).json({ error: '이미 사용 중인 공개 ID 또는 키입니다.' });
+        } else {
+          res.status(500).json({ error: error.message });
+        }
         return;
       }
 

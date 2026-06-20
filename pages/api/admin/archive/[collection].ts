@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { ZodError } from 'zod';
+import { z, ZodError } from 'zod';
 import { requireAdminRole } from '@/lib/adminAuth';
 import {
   ADMIN_COLLECTION_PAGE_SIZE,
@@ -46,10 +46,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const localeStatusId =
       typeof req.query.localeStatusId === 'string' ? req.query.localeStatusId : null;
     if (localeStatusId) {
+      const parsed = z.string().uuid().safeParse(localeStatusId);
+      if (!parsed.success) {
+        res.status(400).json({ error: 'invalid_id' });
+        return;
+      }
       const current = await supabase
         .from(config.table)
         .select('*')
-        .eq('id', localeStatusId)
+        .eq('id', parsed.data)
         .maybeSingle();
 
       if (current.error) {
@@ -179,8 +184,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       res.status(400).json({ error: 'missing_id' });
       return;
     }
+    const parsed = z.string().uuid().safeParse(id);
+    if (!parsed.success) {
+      res.status(400).json({ error: 'invalid_id' });
+      return;
+    }
 
-    const current = await supabase.from(config.table).select('*').eq('id', id).maybeSingle();
+    const current = await supabase.from(config.table).select('*').eq('id', parsed.data).maybeSingle();
     if (current.error) {
       res.status(500).json({ error: current.error.message });
       return;
