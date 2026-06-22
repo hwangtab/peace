@@ -4,7 +4,7 @@ import { isRouteActive } from '@/utils/routeMatch';
 import { useScrolled } from '@/hooks/useScrolled';
 import { useHydrated } from '@/hooks/useHydrated';
 
-export type NavigationDropdownKey = 'camps' | 'album';
+export type NavigationDropdownKey = 'camps' | 'album' | 'community';
 
 export const useNavigation = () => {
   const [isOpen, setIsOpen] = useState(false);

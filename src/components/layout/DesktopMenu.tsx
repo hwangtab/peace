@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { m as motion } from 'framer-motion';
 import NavigationDropdown from './NavigationDropdown';
 import LanguageSwitcher from '../common/LanguageSwitcher';
-import { campItems, albumItems, simpleMenuItems } from './navigationData';
+import { campItems, albumItems, communityItems, simpleMenuItems } from './navigationData';
 import { ROUTES } from '@/constants/routes';
 import { NavigationDropdownKey } from '@/hooks/useNavigation';
 import { useOptionalAuth } from '@/components/auth/AuthProvider';
@@ -96,6 +96,14 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(
               )}
             </Link>
           ))}
+
+        <NavigationDropdown
+          label={t('nav.community')}
+          items={communityItems}
+          isOpen={desktopOpenDropdown === 'community'}
+          onOpenChange={(isOpen) => onOpenChange('community', isOpen)}
+          isScrolled={isScrolled}
+        />
 
         <div
           className={`pl-2 ml-2 sm:pl-4 sm:ml-4 border-l flex items-center gap-x-2 ${

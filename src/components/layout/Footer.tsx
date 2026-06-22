@@ -3,6 +3,7 @@ import Container from './Container';
 import InstagramIcon from '@/components/icons/InstagramIcon';
 import { HiOutlineMail } from '@/components/icons/SiteIcons';
 import { simpleMenuItems, campItems, albumItems } from './navigationData';
+import { ROUTES } from '@/constants/routes';
 
 import { useTranslation } from 'next-i18next';
 
@@ -45,6 +46,13 @@ const Footer = () => {
                     {t(item.nameKey)}
                   </Link>
                 ))}
+                <Link
+                  href={ROUTES.BOARD}
+                  className="block text-cloud-white/80 hover:text-golden-sun
+                             transition-colors duration-200 text-sm break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun rounded-sm"
+                >
+                  {t('nav.community')}
+                </Link>
               </div>
               {/* Right - Camp & Album */}
               <div className="space-y-2 text-left">

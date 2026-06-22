@@ -7,4 +7,4 @@ export { default as Navigation } from './Navigation';
 export { default as NavigationDropdown } from './NavigationDropdown';
 export { default as PageLayout } from './PageLayout';
 export { default as Section } from './Section';
-export { simpleMenuItems, campItems, albumItems } from './navigationData';
+export { simpleMenuItems, campItems, albumItems, communityItems } from './navigationData';
