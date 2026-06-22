@@ -40,6 +40,7 @@ export default function PostCard({ post, boardSlug }: PostCardProps) {
         <div className="mt-2 flex items-center gap-3 text-sm text-coastal-gray">
           <span>♡ {post.like_count}</span>
           <span>💬 {post.comment_count}</span>
+          <span>👁 {post.view_count}</span>
           {post.rating != null && <RatingStars value={post.rating} />}
         </div>
       </div>
