@@ -62,3 +62,6 @@ docs/뮤지션_연락처.csv
 .codex-tmp/
 .vercel
 supabase/.temp/
+
+# codebase-memory-mcp (로컬 절대경로 — 환경별로 다름)
+.mcp.json
