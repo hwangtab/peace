@@ -244,12 +244,14 @@ export default function AgendaSection({ meetingId, agendas, canEdit }: AgendaSec
       {canEdit && (
         <form onSubmit={addAgenda} className="space-y-2 border-t border-deep-ocean/10 pt-4">
           <input
+            aria-label="안건 제목"
             className="w-full rounded border border-deep-ocean/15 px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="안건 제목"
           />
           <textarea
+            aria-label="안건 내용(선택)"
             className="w-full rounded border border-deep-ocean/15 px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
             value={content}
             onChange={(e) => setContent(e.target.value)}

@@ -14,7 +14,11 @@ interface AdminMailboxPageProps {
   initialError?: string;
 }
 
-const fmt = new Intl.DateTimeFormat('ko-KR', { dateStyle: 'medium', timeStyle: 'short' });
+const fmt = new Intl.DateTimeFormat('ko-KR', {
+  dateStyle: 'medium',
+  timeStyle: 'short',
+  timeZone: 'Asia/Seoul',
+});
 const formatTs = (iso: string) => fmt.format(new Date(iso));
 
 export default function AdminMailboxPage({
@@ -152,7 +156,7 @@ export default function AdminMailboxPage({
                 <h2 className="font-display text-lg font-bold text-deep-ocean">
                   {selected.subject || '(제목 없음)'}
                 </h2>
-                <p className="mt-1 text-sm text-deep-ocean/60">
+                <p className="mt-1 break-all text-sm text-deep-ocean/60">
                   보낸사람:{' '}
                   {selected.from_name
                     ? `${selected.from_name} <${selected.from_email}>`
@@ -161,9 +165,9 @@ export default function AdminMailboxPage({
                 <p className="text-xs text-deep-ocean/50">{formatTs(selected.created_at)}</p>
 
                 <div className="mt-4 whitespace-pre-wrap border-t border-deep-ocean/10 pt-4 text-sm leading-relaxed text-deep-ocean/90">
-                  {selected.text_body
+                  {selected.text_body.trim()
                     ? selected.text_body
-                    : selected.html_body
+                    : selected.html_body.trim()
                       ? '(HTML 전용 메일입니다. 안전을 위해 본문은 표시하지 않습니다.)'
                       : '(본문 없음)'}
                 </div>
@@ -186,10 +190,14 @@ export default function AdminMailboxPage({
 
                 {canEdit ? (
                   <form onSubmit={sendReply} className="mt-5 border-t border-deep-ocean/10 pt-4">
-                    <label className="mb-1 block text-sm font-semibold text-deep-ocean">
+                    <label
+                      htmlFor="mailbox-reply"
+                      className="mb-1 block text-sm font-semibold text-deep-ocean"
+                    >
                       답장 ({replySubject(selected.subject)})
                     </label>
                     <textarea
+                      id="mailbox-reply"
                       value={replyText}
                       onChange={(e) => setReplyText(e.target.value)}
                       rows={5}

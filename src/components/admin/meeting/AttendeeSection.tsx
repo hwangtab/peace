@@ -128,12 +128,14 @@ export default function AttendeeSection({ meetingId, attendees, canEdit }: Atten
           className="flex flex-wrap gap-2 border-t border-deep-ocean/10 pt-4"
         >
           <input
+            aria-label="참석자 이름"
             className="min-w-[8rem] flex-1 rounded border border-deep-ocean/15 px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="이름"
           />
           <input
+            aria-label="비고(선택)"
             className="min-w-[8rem] flex-1 rounded border border-deep-ocean/15 px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
             value={note}
             onChange={(e) => setNote(e.target.value)}

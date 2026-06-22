@@ -132,20 +132,12 @@ export default function PostForm({ board, initial, mode }: PostFormProps) {
 
         // Capture old images before mutating to know which storage objects to clean up
         const oldImages = initial.images ?? [];
+        const oldImageIds = oldImages.map((img) => img.id);
         const finalImageUrlSet = new Set(imageUrls);
 
-        // Delete ALL existing post_images rows then re-insert in final order.
-        // This guarantees sort_order values are contiguous and collision-free
-        // regardless of remove+add sequences the user performed.
-        const { error: deleteAllImgError } = await supabase
-          .from('post_images')
-          .delete()
-          .eq('post_id', initial.id);
-        if (deleteAllImgError) {
-          setError(t('error.saveFailed'));
-          return;
-        }
-
+        // Insert the new image rows FIRST, then delete the old rows. If the insert
+        // fails the old rows are still intact (no data loss). Re-inserting the full
+        // final set keeps sort_order contiguous regardless of the user's remove/add order.
         if (imageUrls.length > 0) {
           const imageRows = imageUrls.map((image_url, sort_order) => ({
             post_id: initial.id,
@@ -157,6 +149,12 @@ export default function PostForm({ board, initial, mode }: PostFormProps) {
             setError(t('error.saveFailed'));
             return;
           }
+        }
+
+        // New rows are saved; now remove the previous rows by id (best-effort —
+        // a failure here leaves harmless duplicates, never missing images).
+        if (oldImageIds.length > 0) {
+          await supabase.from('post_images').delete().in('id', oldImageIds);
         }
 
         // Remove storage objects for images that are no longer in the final set (best-effort)
