@@ -9,7 +9,15 @@ import PostCard from '@/components/board/PostCard';
 import { useOptionalAuth } from '@/components/auth/AuthProvider';
 import PageHero from '@/components/common/PageHero';
 
-const BOARD_DETAIL_HERO = '/images-webp/camps/2025/DSC00798.webp';
+// 게시판별 히어로 배경 — 슬러그마다 테마에 맞는 다른 사진을 쓴다.
+// 후기: 캠프 단체 기념사진 / 자유게시판: 강정 평화센터 앞 환호하는 사람들 / 공연 소식: 공연 현장.
+// boards 테이블에 게시판이 추가되면 여기 매핑도 함께 갱신할 것(없으면 폴백 사용).
+const BOARD_HERO_BY_SLUG: Record<string, string> = {
+  reviews: '/images-webp/camps/2025/peacemusic-1.webp',
+  free: '/images-webp/camps/2025/DSC00625.webp',
+  shows: '/images-webp/camps/2025/DSC00976.webp',
+};
+const BOARD_DETAIL_HERO_FALLBACK = '/images-webp/camps/2025/DSC00798.webp';
 
 const PAGE_SIZE = 20;
 
@@ -29,7 +37,11 @@ export default function BoardSlugPage({ board, posts, hasMore, offset }: Props) 
 
   return (
     <>
-      <PageHero compact title={board.name} backgroundImage={BOARD_DETAIL_HERO} />
+      <PageHero
+        compact
+        title={board.name}
+        backgroundImage={BOARD_HERO_BY_SLUG[board.slug] ?? BOARD_DETAIL_HERO_FALLBACK}
+      />
       <main className="mx-auto max-w-2xl px-4 py-12">
         <div className="mb-6 flex items-start justify-between gap-4">
           <div>
