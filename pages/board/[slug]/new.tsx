@@ -30,9 +30,21 @@ export default function NewPostPage({ board }: Props) {
     }
   }, [loading, user, router]);
 
-  // Show nothing while redirecting or loading auth
+  // While redirecting or resolving auth, keep the hero so the header stays
+  // visible (it is transparent over the page background) instead of a blank screen.
   if (loading || !user) {
-    return null;
+    return (
+      <>
+        <PageHero
+          compact
+          title={`${board.name} — ${t('list.newPost')}`}
+          backgroundImage={BOARD_NEW_HERO}
+        />
+        <main className="mx-auto max-w-2xl px-4 py-12" aria-hidden="true">
+          <div className="h-64 animate-pulse rounded-lg bg-seafoam/40" />
+        </main>
+      </>
+    );
   }
 
   return (

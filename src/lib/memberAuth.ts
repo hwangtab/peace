@@ -2,25 +2,27 @@ export const NICKNAME_MIN = 2;
 export const NICKNAME_MAX = 20;
 export const PASSWORD_MIN = 8;
 
+// 검증 함수는 한국어 문장 대신 i18n 키(auth 네임스페이스 기준)를 reason으로 반환한다.
+// 호출처에서 t(reason)으로 현지화한다. (fallbackLng:false이므로 키는 13개 로케일에 모두 존재해야 함)
 export const validateNickname = (
   value: string
 ): { ok: true; value: string } | { ok: false; reason: string } => {
   const trimmed = (value ?? '').trim();
   if (trimmed.length < NICKNAME_MIN || trimmed.length > NICKNAME_MAX) {
-    return { ok: false, reason: `닉네임은 ${NICKNAME_MIN}~${NICKNAME_MAX}자여야 합니다.` };
+    return { ok: false, reason: 'errors.nicknameLength' };
   }
   if (/[\s\x00-\x1f]/.test(trimmed)) {
-    return { ok: false, reason: '닉네임에 공백이나 제어문자를 쓸 수 없습니다.' };
+    return { ok: false, reason: 'errors.nicknameWhitespace' };
   }
   if (/[%_\\]/.test(trimmed)) {
-    return { ok: false, reason: '닉네임에 사용할 수 없는 특수문자가 포함되어 있습니다.' };
+    return { ok: false, reason: 'errors.nicknameChars' };
   }
   return { ok: true, value: trimmed };
 };
 
 export const validatePassword = (value: string): { ok: true } | { ok: false; reason: string } => {
   if ((value ?? '').length < PASSWORD_MIN) {
-    return { ok: false, reason: `비밀번호는 최소 ${PASSWORD_MIN}자 이상이어야 합니다.` };
+    return { ok: false, reason: 'errors.passwordLength' };
   }
   return { ok: true };
 };
@@ -36,13 +38,15 @@ export const safeRedirectPath = (value: unknown, fallback = '/account'): string 
   return path;
 };
 
+// Supabase 에러 메시지를 auth 네임스페이스의 i18n 키로 매핑한다. 호출처에서 t()로 변환.
+// 에러가 없으면 '' (호출처는 항상 에러가 있을 때만 호출하므로 안전).
 export const mapAuthError = (error: { message?: string } | null | undefined): string => {
   if (!error) return '';
   const msg = error.message ?? '';
-  if (/already registered|already exists/i.test(msg)) return '이미 가입된 이메일입니다.';
-  if (/invalid login credentials/i.test(msg)) return '이메일 또는 비밀번호가 올바르지 않습니다.';
-  if (/email not confirmed/i.test(msg)) return '이메일 인증을 먼저 완료해 주세요.';
-  if (/password should be at least/i.test(msg)) return '비밀번호가 너무 짧습니다.';
-  if (/rate limit|too many/i.test(msg)) return '잠시 후 다시 시도해 주세요.';
-  return '요청을 처리하지 못했습니다.';
+  if (/already registered|already exists/i.test(msg)) return 'errors.emailTaken';
+  if (/invalid login credentials/i.test(msg)) return 'errors.invalidCredentials';
+  if (/email not confirmed/i.test(msg)) return 'errors.emailNotConfirmed';
+  if (/password should be at least/i.test(msg)) return 'errors.passwordLength';
+  if (/rate limit|too many/i.test(msg)) return 'errors.rateLimit';
+  return 'errors.generic';
 };

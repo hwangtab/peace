@@ -26,9 +26,9 @@ export default function SignupPage() {
     setMessage('');
 
     const nick = validateNickname(nickname);
-    if (!nick.ok) return setError(nick.reason);
+    if (!nick.ok) return setError(t(nick.reason));
     const pw = validatePassword(password);
-    if (!pw.ok) return setError(pw.reason);
+    if (!pw.ok) return setError(t(pw.reason));
 
     setBusy(true);
     try {
@@ -58,7 +58,7 @@ export default function SignupPage() {
         const isDup =
           (signErr as { code?: string }).code === '23505' ||
           /duplicate|unique|nickname/i.test(signErr.message ?? '');
-        return setError(isDup ? t('signup.nicknameTaken') : mapAuthError(signErr));
+        return setError(isDup ? t('signup.nicknameTaken') : t(mapAuthError(signErr)));
       }
       if (data.session) {
         await router.push('/account');
@@ -68,7 +68,7 @@ export default function SignupPage() {
       setSucceeded(true);
     } catch (err) {
       setBusy(false);
-      setError(mapAuthError(err as { message?: string }));
+      setError(t(mapAuthError(err as { message?: string })));
     }
   };
 

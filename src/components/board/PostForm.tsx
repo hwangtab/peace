@@ -44,9 +44,9 @@ export default function PostForm({ board, initial, mode }: PostFormProps) {
     const ratingResult = validateRating(rating, board.has_rating);
 
     const newFieldErrors: typeof fieldErrors = {};
-    if (!titleResult.ok) newFieldErrors.title = titleResult.reason;
-    if (!bodyResult.ok) newFieldErrors.body = bodyResult.reason;
-    if (!ratingResult.ok) newFieldErrors.rating = ratingResult.reason;
+    if (!titleResult.ok) newFieldErrors.title = t(titleResult.reason);
+    if (!bodyResult.ok) newFieldErrors.body = t(bodyResult.reason);
+    if (!ratingResult.ok) newFieldErrors.rating = t(ratingResult.reason);
 
     if (Object.keys(newFieldErrors).length > 0) {
       setFieldErrors(newFieldErrors);

@@ -38,9 +38,17 @@ export default function EditPostPage({ board, post }: Props) {
     }
   }, [loading, user, router, post.author_id, post.id, board.slug]);
 
-  // Show nothing while redirecting or auth still loading
+  // While redirecting or resolving auth, keep the hero so the header stays
+  // visible (it is transparent over the page background) instead of a blank screen.
   if (loading || !user || user.id !== post.author_id) {
-    return null;
+    return (
+      <>
+        <PageHero compact title={t('post.edit')} backgroundImage={BOARD_EDIT_HERO} />
+        <main className="mx-auto max-w-2xl px-4 py-12" aria-hidden="true">
+          <div className="h-64 animate-pulse rounded-lg bg-seafoam/40" />
+        </main>
+      </>
+    );
   }
 
   return (

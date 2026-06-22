@@ -44,6 +44,11 @@
     "notFound": "Post not found.",
     "saveFailed": "Could not save.",
     "invalidImageType": "Only PNG, JPEG, WebP, or GIF files are allowed.",
-    "imageTooLarge": "Images must be 10MB or smaller."
+    "imageTooLarge": "Images must be 10MB or smaller.",
+    "titleLength": "शीर्षक 1~120 अक्षरों का होना चाहिए।",
+    "bodyLength": "सामग्री 1~10000 अक्षरों की होनी चाहिए।",
+    "commentLength": "टिप्पणी 1~1000 अक्षरों की होनी चाहिए।",
+    "ratingRequired": "कृपया रेटिंग चुनें।",
+    "ratingRange": "रेटिंग 1 से 5 तक होनी चाहिए।"
   }
 }

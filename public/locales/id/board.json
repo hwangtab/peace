@@ -44,6 +44,11 @@
     "notFound": "Post not found.",
     "saveFailed": "Could not save.",
     "invalidImageType": "Only PNG, JPEG, WebP, or GIF files are allowed.",
-    "imageTooLarge": "Images must be 10MB or smaller."
+    "imageTooLarge": "Images must be 10MB or smaller.",
+    "titleLength": "Judul harus 1–120 karakter.",
+    "bodyLength": "Konten harus 1–10.000 karakter.",
+    "commentLength": "Komentar harus 1–1.000 karakter.",
+    "ratingRequired": "Silakan pilih rating.",
+    "ratingRange": "Rating harus 1 sampai 5."
   }
 }

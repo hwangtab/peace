@@ -71,7 +71,7 @@ export default function CommentSection({ postId, initialComments, readOnly = fal
 
     const result = validateComment(body);
     if (!result.ok) {
-      setValidationError(result.reason);
+      setValidationError(t(result.reason));
       return;
     }
 

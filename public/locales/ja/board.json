@@ -44,6 +44,11 @@
     "notFound": "Post not found.",
     "saveFailed": "Could not save.",
     "invalidImageType": "Only PNG, JPEG, WebP, or GIF files are allowed.",
-    "imageTooLarge": "Images must be 10MB or smaller."
+    "imageTooLarge": "Images must be 10MB or smaller.",
+    "titleLength": "タイトルは1〜120文字で入力してください。",
+    "bodyLength": "本文は1〜10000文字で入力してください。",
+    "commentLength": "コメントは1〜1000文字で入力してください。",
+    "ratingRequired": "評価を選択してください。",
+    "ratingRange": "評価は1〜5です。"
   }
 }

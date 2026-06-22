@@ -28,18 +28,18 @@ export default function UpdatePasswordPage() {
     setError('');
     setMessage('');
     const pw = validatePassword(password);
-    if (!pw.ok) return setError(pw.reason);
+    if (!pw.ok) return setError(t(pw.reason));
     setBusy(true);
     try {
       const supabase = createSupabaseBrowserClient();
       const { error: uErr } = await supabase.auth.updateUser({ password });
       setBusy(false);
-      if (uErr) return setError(mapAuthError(uErr));
+      if (uErr) return setError(t(mapAuthError(uErr)));
       setMessage(t('reset.updated'));
       setSucceeded(true);
     } catch (err) {
       setBusy(false);
-      setError(mapAuthError(err as { message?: string }));
+      setError(t(mapAuthError(err as { message?: string })));
     }
   };
 

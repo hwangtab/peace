@@ -48,6 +48,7 @@ export default function AttachmentSection({
   const [error, setError] = useState('');
   const [isUploading, setIsUploading] = useState(false);
   const [busyId, setBusyId] = useState<string | null>(null);
+  const [downloadingId, setDownloadingId] = useState<string | null>(null);
 
   const refresh = () => router.replace(router.asPath);
 
@@ -122,7 +123,9 @@ export default function AttachmentSection({
   };
 
   const download = async (att: MeetingAttachment) => {
+    if (downloadingId) return;
     setError('');
+    setDownloadingId(att.id);
     try {
       const supabase = createSupabaseBrowserClient();
       const { data, error: signError } = await supabase.storage
@@ -135,6 +138,8 @@ export default function AttachmentSection({
       window.open(data.signedUrl, '_blank', 'noopener');
     } catch {
       setError('네트워크 오류가 발생했습니다.');
+    } finally {
+      setDownloadingId(null);
     }
   };
 
@@ -186,7 +191,8 @@ export default function AttachmentSection({
               <button
                 type="button"
                 onClick={() => download(att)}
-                className="min-w-0 truncate text-left text-sm font-semibold text-jeju-ocean hover:underline"
+                disabled={downloadingId === att.id}
+                className="min-w-0 truncate text-left text-sm font-semibold text-jeju-ocean hover:underline disabled:opacity-60"
               >
                 {att.file_name}
               </button>

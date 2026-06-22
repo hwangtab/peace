@@ -44,6 +44,11 @@
     "notFound": "Post not found.",
     "saveFailed": "Could not save.",
     "invalidImageType": "Only PNG, JPEG, WebP, or GIF files are allowed.",
-    "imageTooLarge": "Images must be 10MB or smaller."
+    "imageTooLarge": "Images must be 10MB or smaller.",
+    "titleLength": "標題需為 1~120 個字元。",
+    "bodyLength": "內文需為 1~10000 個字元。",
+    "commentLength": "留言需為 1~1000 個字元。",
+    "ratingRequired": "請選擇評分。",
+    "ratingRange": "評分為 1~5 分。"
   }
 }

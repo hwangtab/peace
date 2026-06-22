@@ -44,6 +44,11 @@
     "notFound": "Post not found.",
     "saveFailed": "Could not save.",
     "invalidImageType": "Only PNG, JPEG, WebP, or GIF files are allowed.",
-    "imageTooLarge": "Images must be 10MB or smaller."
+    "imageTooLarge": "Images must be 10MB or smaller.",
+    "titleLength": "Заголовок должен содержать от 1 до 120 символов.",
+    "bodyLength": "Текст должен содержать от 1 до 10000 символов.",
+    "commentLength": "Комментарий должен содержать от 1 до 1000 символов.",
+    "ratingRequired": "Выберите оценку.",
+    "ratingRange": "Оценка должна быть от 1 до 5."
   }
 }

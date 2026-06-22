@@ -31,11 +31,11 @@ export default function LoginPage() {
         password,
       });
       setBusy(false);
-      if (signErr) return setError(mapAuthError(signErr));
+      if (signErr) return setError(t(mapAuthError(signErr)));
       await router.push(safeRedirectPath(router.query.next));
     } catch (err) {
       setBusy(false);
-      setError(mapAuthError(err as { message?: string }));
+      setError(t(mapAuthError(err as { message?: string })));
     }
   };
 
