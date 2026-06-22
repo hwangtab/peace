@@ -9,6 +9,9 @@ import { safeRedirectPath } from '@/lib/memberAuth';
 import { useAuth } from '@/components/auth/AuthProvider';
 import PostForm from '@/components/board/PostForm';
 import type { Board } from '@/types/board';
+import PageHero from '@/components/common/PageHero';
+
+const BOARD_NEW_HERO = '/images-webp/camps/2025/DSC00716.webp';
 
 interface Props {
   board: Board;
@@ -33,12 +36,16 @@ export default function NewPostPage({ board }: Props) {
   }
 
   return (
-    <main className="mx-auto max-w-2xl px-4 py-12">
-      <h1 className="mb-8 text-2xl font-bold text-deep-ocean">
-        {board.name} — {t('list.newPost')}
-      </h1>
-      <PostForm board={board} mode="create" />
-    </main>
+    <>
+      <PageHero
+        compact
+        title={`${board.name} — ${t('list.newPost')}`}
+        backgroundImage={BOARD_NEW_HERO}
+      />
+      <main className="mx-auto max-w-2xl px-4 py-12">
+        <PostForm board={board} mode="create" />
+      </main>
+    </>
   );
 }
 

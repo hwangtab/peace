@@ -7,6 +7,9 @@ import { loadBoardBySlug, loadBoardPosts } from '@/lib/boardData';
 import type { Board, PostWithMeta } from '@/types/board';
 import PostCard from '@/components/board/PostCard';
 import { useOptionalAuth } from '@/components/auth/AuthProvider';
+import PageHero from '@/components/common/PageHero';
+
+const BOARD_DETAIL_HERO = '/images-webp/camps/2025/DSC00798.webp';
 
 const PAGE_SIZE = 20;
 
@@ -25,57 +28,59 @@ export default function BoardSlugPage({ board, posts, hasMore, offset }: Props) 
   const nextOffset = offset + PAGE_SIZE;
 
   return (
-    <main className="mx-auto max-w-2xl px-4 py-12">
-      <div className="mb-6 flex items-start justify-between gap-4">
-        <div>
-          <Link href="/board" className="text-sm text-coastal-gray hover:underline">
-            ← {t('index.title')}
-          </Link>
-          <h1 className="mt-2 text-2xl font-bold text-deep-ocean">{board.name}</h1>
-          {board.description && (
-            <p className="mt-1 text-sm text-coastal-gray">{board.description}</p>
+    <>
+      <PageHero compact title={board.name} backgroundImage={BOARD_DETAIL_HERO} />
+      <main className="mx-auto max-w-2xl px-4 py-12">
+        <div className="mb-6 flex items-start justify-between gap-4">
+          <div>
+            <Link href="/board" className="text-sm text-coastal-gray hover:underline">
+              ← {t('index.title')}
+            </Link>
+            {board.description && (
+              <p className="mt-1 text-sm text-coastal-gray">{board.description}</p>
+            )}
+          </div>
+          {isLoggedIn ? (
+            <Link
+              href={`/board/${board.slug}/new`}
+              className="flex-shrink-0 rounded-lg bg-jeju-ocean px-4 py-2 text-sm font-semibold text-white transition hover:bg-deep-ocean"
+            >
+              {t('index.writeCta')}
+            </Link>
+          ) : (
+            <Link
+              href={`/login?next=/board/${board.slug}/new`}
+              className="flex-shrink-0 rounded-lg border border-jeju-ocean px-4 py-2 text-sm font-semibold text-jeju-ocean transition hover:bg-seafoam"
+            >
+              {t('index.loginToWrite')}
+            </Link>
           )}
         </div>
-        {isLoggedIn ? (
-          <Link
-            href={`/board/${board.slug}/new`}
-            className="flex-shrink-0 rounded-lg bg-jeju-ocean px-4 py-2 text-sm font-semibold text-white transition hover:bg-deep-ocean"
-          >
-            {t('index.writeCta')}
-          </Link>
+
+        {posts.length === 0 ? (
+          <p className="text-coastal-gray">{t('list.empty')}</p>
         ) : (
-          <Link
-            href={`/login?next=/board/${board.slug}/new`}
-            className="flex-shrink-0 rounded-lg border border-jeju-ocean px-4 py-2 text-sm font-semibold text-jeju-ocean transition hover:bg-seafoam"
-          >
-            {t('index.loginToWrite')}
-          </Link>
+          <ul className="space-y-3">
+            {posts.map((post) => (
+              <li key={post.id}>
+                <PostCard post={post} boardSlug={board.slug} />
+              </li>
+            ))}
+          </ul>
         )}
-      </div>
 
-      {posts.length === 0 ? (
-        <p className="text-coastal-gray">{t('list.empty')}</p>
-      ) : (
-        <ul className="space-y-3">
-          {posts.map((post) => (
-            <li key={post.id}>
-              <PostCard post={post} boardSlug={board.slug} />
-            </li>
-          ))}
-        </ul>
-      )}
-
-      {hasMore && (
-        <div className="mt-8 text-center">
-          <Link
-            href={`/board/${board.slug}?offset=${nextOffset}`}
-            className="inline-block rounded-lg border border-jeju-ocean px-6 py-2 text-sm font-semibold text-jeju-ocean transition hover:bg-seafoam"
-          >
-            {t('list.more')}
-          </Link>
-        </div>
-      )}
-    </main>
+        {hasMore && (
+          <div className="mt-8 text-center">
+            <Link
+              href={`/board/${board.slug}?offset=${nextOffset}`}
+              className="inline-block rounded-lg border border-jeju-ocean px-6 py-2 text-sm font-semibold text-jeju-ocean transition hover:bg-seafoam"
+            >
+              {t('list.more')}
+            </Link>
+          </div>
+        )}
+      </main>
+    </>
   );
 }
 

@@ -42,6 +42,7 @@ export default function LoginPage() {
   return (
     <AuthFormShell
       title={t('login.title')}
+      backgroundImage="/images-webp/camps/2025/DSC08812.webp"
       footer={
         <div className="space-y-1">
           <p>
