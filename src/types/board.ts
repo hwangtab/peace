@@ -27,6 +27,7 @@ export interface Post {
   status: 'published' | 'hidden';
   like_count: number;
   comment_count: number;
+  view_count: number;
   created_at: string;
   updated_at: string;
 }

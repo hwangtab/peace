@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -20,6 +21,7 @@ import { useOptionalAuth } from '@/components/auth/AuthProvider';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import PageHero from '@/components/common/PageHero';
+import ImageLightbox from '@/components/common/ImageLightbox';
 
 const BOARD_POST_HERO = '/images-webp/camps/2025/DSC00700.webp';
 
@@ -37,6 +39,23 @@ export default function PostDetailPage({ post, slug, comments, commentsHasMore }
   const isAuthor = auth?.user?.id === post.author_id;
 
   const dateStr = formatBoardDate(post.created_at);
+
+  const [lightbox, setLightbox] = useState<string | null>(null);
+
+  // 조회수 증가 — 세션당 글 1회만(새로고침 인플레이션 방지), 클라이언트에서만 호출.
+  // 표시값은 로드 시점(post.view_count) 기준이며, 증가분은 다음 방문/새로고침에 반영된다.
+  useEffect(() => {
+    if (post.status !== 'published') return;
+    const key = `viewed:${post.id}`;
+    try {
+      if (sessionStorage.getItem(key)) return;
+      sessionStorage.setItem(key, '1');
+    } catch {
+      // sessionStorage 사용 불가 — 그대로 증가 시도
+    }
+    const supabase = createSupabaseBrowserClient();
+    void supabase.rpc('increment_post_view', { p_post_id: post.id });
+  }, [post.id, post.status]);
 
   const handleDelete = async () => {
     if (!window.confirm(t('post.deleteConfirm'))) return;
@@ -79,6 +98,8 @@ export default function PostDetailPage({ post, slug, comments, commentsHasMore }
           <span>{post.author_nickname || t('post.anonymous')}</span>
           <span>·</span>
           <span>{dateStr}</span>
+          <span>·</span>
+          <span>👁 {post.view_count}</span>
           {post.rating != null && (
             <>
               <span>·</span>
@@ -121,9 +142,12 @@ export default function PostDetailPage({ post, slug, comments, commentsHasMore }
             </h2>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
               {post.images.map((img) => (
-                <div
+                <button
                   key={img.id}
-                  className="relative aspect-square overflow-hidden rounded-xl border border-seafoam"
+                  type="button"
+                  onClick={() => setLightbox(img.image_url)}
+                  aria-label={post.title}
+                  className="relative aspect-square overflow-hidden rounded-xl border border-seafoam transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
                 >
                   <Image
                     src={img.image_url}
@@ -132,7 +156,7 @@ export default function PostDetailPage({ post, slug, comments, commentsHasMore }
                     sizes="(max-width: 640px) 50vw, 33vw"
                     className="object-cover"
                   />
-                </div>
+                </button>
               ))}
             </div>
           </section>
@@ -149,6 +173,11 @@ export default function PostDetailPage({ post, slug, comments, commentsHasMore }
           readOnly={isHidden}
         />
       </main>
+
+      <ImageLightbox
+        image={lightbox ? { url: lightbox, alt: post.title } : null}
+        onClose={() => setLightbox(null)}
+      />
     </>
   );
 }

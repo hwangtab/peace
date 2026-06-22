@@ -187,6 +187,7 @@ export const mapPostRow = (row: Record<string, unknown>): PostWithMeta => {
     status: row.status as 'published' | 'hidden',
     like_count: Number(row.like_count ?? 0),
     comment_count: Number(row.comment_count ?? 0),
+    view_count: Number(row.view_count ?? 0),
     created_at: String(row.created_at ?? ''),
     updated_at: String(row.updated_at ?? ''),
     author_nickname: profile?.nickname ?? '',
