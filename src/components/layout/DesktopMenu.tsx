@@ -30,6 +30,19 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(
         : 'text-cloud-white/90 hover:text-cloud-white drop-shadow-md';
     };
 
+    // 인증 영역을 언어 선택기와 같은 명조체(font-display) 알약으로 통일한다.
+    const pillBase =
+      'font-display font-bold text-sm px-3 py-2 rounded border transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean';
+    const ghostPill = isScrolled
+      ? 'bg-transparent text-jeju-ocean border-jeju-ocean hover:bg-jeju-ocean hover:text-white'
+      : 'bg-transparent text-cloud-white border-cloud-white hover:bg-cloud-white hover:text-jeju-ocean';
+    const filledPill = isScrolled
+      ? 'bg-jeju-ocean text-white border-jeju-ocean hover:bg-deep-ocean hover:border-deep-ocean'
+      : 'bg-cloud-white text-jeju-ocean border-cloud-white hover:bg-cloud-white/90';
+    const mutedPill = isScrolled
+      ? 'bg-transparent text-coastal-gray border-coastal-gray/40 hover:text-sunset-coral hover:border-sunset-coral'
+      : 'bg-transparent text-cloud-white/80 border-cloud-white/50 hover:bg-cloud-white/10 hover:text-cloud-white';
+
     return (
       <div className="hidden xl:flex items-center gap-x-3 2xl:gap-x-4">
         <Link
@@ -84,51 +97,30 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(
             </Link>
           ))}
 
-        <div className="pl-2 ml-2 sm:pl-4 sm:ml-4 border-l border-white/30 flex items-center gap-x-2">
+        <div
+          className={`pl-2 ml-2 sm:pl-4 sm:ml-4 border-l flex items-center gap-x-2 ${
+            isScrolled ? 'border-deep-ocean/15' : 'border-cloud-white/30'
+          }`}
+        >
           {auth?.user ? (
             <>
-              <Link
-                href="/account"
-                className={`text-sm font-semibold transition-colors duration-300 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${
-                  isScrolled
-                    ? 'text-deep-ocean hover:text-jeju-ocean'
-                    : 'text-cloud-white/90 hover:text-cloud-white drop-shadow-md'
-                }`}
-              >
+              <Link href="/account" className={`${pillBase} ${ghostPill}`}>
                 {auth.profile?.nickname ?? t('memberNav.account')}
               </Link>
               <button
                 type="button"
                 onClick={() => void auth.signOut()}
-                className={`text-sm font-semibold transition-colors duration-300 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${
-                  isScrolled
-                    ? 'text-coastal-gray hover:text-sunset-coral'
-                    : 'text-cloud-white/70 hover:text-cloud-white drop-shadow-md'
-                }`}
+                className={`${pillBase} ${mutedPill}`}
               >
                 {t('memberNav.signout')}
               </button>
             </>
           ) : (
             <>
-              <Link
-                href="/login"
-                className={`text-sm font-semibold transition-colors duration-300 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${
-                  isScrolled
-                    ? 'text-deep-ocean hover:text-jeju-ocean'
-                    : 'text-cloud-white/90 hover:text-cloud-white drop-shadow-md'
-                }`}
-              >
+              <Link href="/login" className={`${pillBase} ${ghostPill}`}>
                 {t('memberNav.login')}
               </Link>
-              <Link
-                href="/signup"
-                className={`text-sm font-semibold rounded px-3 py-1.5 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${
-                  isScrolled
-                    ? 'bg-jeju-ocean text-white hover:bg-deep-ocean'
-                    : 'bg-cloud-white/20 text-cloud-white hover:bg-cloud-white/30 border border-cloud-white/50'
-                }`}
-              >
+              <Link href="/signup" className={`${pillBase} ${filledPill}`}>
                 {t('memberNav.signup')}
               </Link>
             </>
