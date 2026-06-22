@@ -15,6 +15,7 @@ export const ROUTES = {
     TRACKS: '/album/tracks',
   },
   SOLIDARITY: '/solidarity',
+  BOARD: '/board',
   LEGACY: {
     MUSICIANS: '/musicians',
     TRACKS: '/tracks',

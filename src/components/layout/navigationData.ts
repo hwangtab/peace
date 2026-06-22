@@ -6,6 +6,7 @@ export const simpleMenuItems = [
   { nameKey: 'nav.gallery', path: ROUTES.GALLERY },
   { nameKey: 'nav.video', path: ROUTES.VIDEOS },
   { nameKey: 'nav.press', path: ROUTES.PRESS },
+  { nameKey: 'nav.community', path: ROUTES.BOARD },
 ];
 
 export const campItems = [
