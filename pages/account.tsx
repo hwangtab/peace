@@ -16,7 +16,6 @@ export default function AccountPage() {
   const { t } = useTranslation('auth');
   const router = useRouter();
   const { user, profile, loading, refreshProfile, signOut } = useAuth();
-  const [nickname, setNickname] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('');
@@ -26,11 +25,7 @@ export default function AccountPage() {
     if (!loading && !user) void router.replace('/login?next=/account');
   }, [loading, user, router]);
 
-  useEffect(() => {
-    if (profile) setNickname(profile.nickname);
-  }, [profile]);
-
-  const saveNickname = async () => {
+  const saveNickname = async (nickname: string) => {
     setError('');
     setMessage('');
     const nick = validateNickname(nickname);
@@ -112,30 +107,14 @@ export default function AccountPage() {
           </p>
         )}
 
-        <section className="rounded border border-deep-ocean/10 bg-white p-5">
-          <h2 className="mb-1 font-display text-lg font-bold text-deep-ocean">
-            {t('account.nickname')}
-          </h2>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              void saveNickname();
-            }}
-          >
-            <label htmlFor="account-nickname" className="sr-only">
-              {t('account.nickname')}
-            </label>
-            <input
-              id="account-nickname"
-              value={nickname}
-              onChange={(e) => setNickname(e.target.value)}
-              className={`${inputCls} mt-2 mb-3`}
-            />
-            <button type="submit" disabled={busy} className={btnCls}>
-              {t('account.save')}
-            </button>
-          </form>
-        </section>
+        <NicknameSection
+          key={`${profile?.id ?? user.id}:${profile?.updated_at ?? profile?.nickname ?? ''}`}
+          initialNickname={profile?.nickname ?? ''}
+          title={t('account.nickname')}
+          saveLabel={t('account.save')}
+          busy={busy}
+          onSave={saveNickname}
+        />
 
         <section className="rounded border border-deep-ocean/10 bg-white p-5">
           <h2 className="mb-3 font-display text-lg font-bold text-deep-ocean">
@@ -179,6 +158,47 @@ export default function AccountPage() {
         </button>
       </div>
     </>
+  );
+}
+
+function NicknameSection({
+  initialNickname,
+  title,
+  saveLabel,
+  busy,
+  onSave,
+}: {
+  initialNickname: string;
+  title: string;
+  saveLabel: string;
+  busy: boolean;
+  onSave: (nickname: string) => Promise<void>;
+}) {
+  const [nickname, setNickname] = useState(initialNickname);
+
+  return (
+    <section className="rounded border border-deep-ocean/10 bg-white p-5">
+      <h2 className="mb-1 font-display text-lg font-bold text-deep-ocean">{title}</h2>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          void onSave(nickname);
+        }}
+      >
+        <label htmlFor="account-nickname" className="sr-only">
+          {title}
+        </label>
+        <input
+          id="account-nickname"
+          value={nickname}
+          onChange={(e) => setNickname(e.target.value)}
+          className={`${inputCls} mt-2 mb-3`}
+        />
+        <button type="submit" disabled={busy} className={btnCls}>
+          {saveLabel}
+        </button>
+      </form>
+    </section>
   );
 }
 

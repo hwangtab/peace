@@ -34,7 +34,15 @@ export const readJsonArray = <T>(filePath: string): T[] => {
   return result.data;
 };
 
-export const loadLocalizedData = <T>(locale: string, filename: string): T[] => {
+interface LoadLocalizedDataOptions {
+  mergeByIdKey?: string;
+}
+
+export const loadLocalizedData = <T>(
+  locale: string,
+  filename: string,
+  options?: LoadLocalizedDataOptions
+): T[] => {
   const root = path.join(process.cwd(), 'public', 'data');
   const candidates =
     locale === 'ko'
@@ -44,6 +52,32 @@ export const loadLocalizedData = <T>(locale: string, filename: string): T[] => {
           path.join(root, 'en', filename),
           path.join(root, filename),
         ];
+
+  if (options?.mergeByIdKey) {
+    const merged: T[] = [];
+    const seen = new Set<unknown>();
+    let anyOk = false;
+
+    for (const candidate of candidates) {
+      const result = readJsonArrayResult<T>(candidate);
+      if (result.status !== 'ok') continue;
+
+      anyOk = true;
+      for (const item of result.data) {
+        const id = (item as Record<string, unknown>)[options.mergeByIdKey];
+        if (!seen.has(id)) {
+          seen.add(id);
+          merged.push(item);
+        }
+      }
+    }
+
+    if (!anyOk) {
+      throw createLoaderError(`No localized data file found for ${filename} (locale: ${locale})`);
+    }
+
+    return merged;
+  }
 
   let allMissing = true;
   let sawEmptyData = false;

@@ -4,6 +4,7 @@ import type {
   ArchiveGalleryImageRow,
   ArchivePressItemRow,
   ArchiveVideoRow,
+  CmsStatus,
   CmsContentBlock,
 } from '@/types/cms';
 import type { GalleryImage } from '@/types/gallery';
@@ -46,19 +47,63 @@ const isMissingTableError = (error: { code?: string; message?: string } | null) 
     error.message?.includes('Could not find the table') ||
     error.message?.includes('schema cache'));
 
+type ArchiveRowWithPublicId = {
+  public_id: number;
+  status: CmsStatus;
+};
+
+const mergeArchiveRowsWithStatic = <T, R extends ArchiveRowWithPublicId>(
+  rows: R[],
+  staticItems: T[],
+  mapRow: (row: R) => T,
+  getItemId: (item: T) => number
+): T[] => {
+  const blockedStaticIds = new Set(rows.map((row) => row.public_id));
+  const seenIds = new Set<number>();
+  const items: T[] = [];
+
+  for (const row of rows) {
+    if (row.status !== 'published') continue;
+    const item = mapRow(row);
+    const id = getItemId(item);
+    if (!seenIds.has(id)) {
+      seenIds.add(id);
+      items.push(item);
+    }
+  }
+
+  for (const item of staticItems) {
+    const id = getItemId(item);
+    if (!seenIds.has(id) && !blockedStaticIds.has(id)) {
+      seenIds.add(id);
+      items.push(item);
+    }
+  }
+
+  return items;
+};
+
 export const loadPublishedVideos = async (locale = 'ko'): Promise<ArchiveLoadResult<VideoItem>> => {
+  const staticItems = loadLocalizedData<VideoItem>(locale, 'videos.json', { mergeByIdKey: 'id' });
   const client = getPublicClient();
   if (client) {
     const { data, error } = await client
       .from('archive_videos')
       .select('*')
-      .eq('status', 'published')
       .eq('locale', locale)
       .order('sort_order', { ascending: true })
       .order('date', { ascending: false });
 
     if (!error && data && data.length > 0) {
-      return { source: 'cms', items: (data as ArchiveVideoRow[]).map(mapVideoRowToItem) };
+      return {
+        source: 'cms',
+        items: mergeArchiveRowsWithStatic(
+          data as ArchiveVideoRow[],
+          staticItems,
+          mapVideoRowToItem,
+          (item) => item.id
+        ),
+      };
     }
 
     if (error && !isMissingTableError(error)) {
@@ -68,23 +113,31 @@ export const loadPublishedVideos = async (locale = 'ko'): Promise<ArchiveLoadRes
 
   return {
     source: 'static',
-    items: loadLocalizedData<VideoItem>(locale, 'videos.json'),
+    items: staticItems,
   };
 };
 
 export const loadPublishedPress = async (locale = 'ko'): Promise<ArchiveLoadResult<PressItem>> => {
+  const staticItems = loadLocalizedData<PressItem>(locale, 'press.json');
   const client = getPublicClient();
   if (client) {
     const { data, error } = await client
       .from('archive_press_items')
       .select('*')
-      .eq('status', 'published')
       .eq('locale', locale)
       .order('sort_order', { ascending: true })
       .order('date', { ascending: false });
 
     if (!error && data && data.length > 0) {
-      return { source: 'cms', items: (data as ArchivePressItemRow[]).map(mapPressRowToItem) };
+      return {
+        source: 'cms',
+        items: mergeArchiveRowsWithStatic(
+          data as ArchivePressItemRow[],
+          staticItems,
+          mapPressRowToItem,
+          (item) => item.id
+        ),
+      };
     }
 
     if (error && !isMissingTableError(error)) {
@@ -94,25 +147,33 @@ export const loadPublishedPress = async (locale = 'ko'): Promise<ArchiveLoadResu
 
   return {
     source: 'static',
-    items: loadLocalizedData<PressItem>(locale, 'press.json'),
+    items: staticItems,
   };
 };
 
 export const loadPublishedGallery = async (
   locale = 'ko'
 ): Promise<ArchiveLoadResult<GalleryImage>> => {
+  const staticItems = loadGalleryImages<GalleryImage>();
   const client = getPublicClient();
   if (client) {
     const { data, error } = await client
       .from('archive_gallery_images')
       .select('*')
-      .eq('status', 'published')
       .eq('locale', locale)
       .order('sort_order', { ascending: true })
       .order('event_year', { ascending: false });
 
     if (!error && data && data.length > 0) {
-      return { source: 'cms', items: (data as ArchiveGalleryImageRow[]).map(mapGalleryRowToItem) };
+      return {
+        source: 'cms',
+        items: mergeArchiveRowsWithStatic(
+          data as ArchiveGalleryImageRow[],
+          staticItems,
+          mapGalleryRowToItem,
+          (item) => item.id
+        ),
+      };
     }
 
     if (error && !isMissingTableError(error)) {
@@ -122,7 +183,7 @@ export const loadPublishedGallery = async (
 
   return {
     source: 'static',
-    items: loadGalleryImages<GalleryImage>(),
+    items: staticItems,
   };
 };
 

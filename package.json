@@ -72,12 +72,6 @@
       "last 1 safari version"
     ]
   },
-  "pnpm": {
-    "overrides": {
-      "@babel/core": "7.29.6",
-      "postcss": "8.5.15"
-    }
-  },
   "devDependencies": {
     "@eslint/eslintrc": "^3.0.0",
     "@next/bundle-analyzer": "^16.2.4",
