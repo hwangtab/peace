@@ -28,16 +28,26 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(
     const { t } = useTranslation();
     const auth = useOptionalAuth();
 
+    // 메뉴가 열린 동안 뒤 본문이 스크롤되지 않도록 body 스크롤을 잠근다.
+    React.useEffect(() => {
+      if (!isOpen) return;
+      const previous = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = previous;
+      };
+    }, [isOpen]);
+
     return (
       <div id="mobile-menu" className="mobile-menu-wrapper" data-testid="mobile-menu">
         <AnimatePresence initial={false}>
           {isOpen && (
             <motion.div
               {...menuReveal}
-              // 내용이 화면보다 길어도(작은 폰 + 드롭다운 펼침) 아래 항목이 잘리지 않도록
-              // 뷰포트 높이(내비 4rem 제외)로 제한하고 내부 스크롤을 둔다. nav가 fixed라
-              // 페이지 스크롤로는 닿을 수 없기 때문에 메뉴 자체가 스크롤되어야 한다.
-              className="xl:hidden origin-top max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain bg-cloud-white/95 backdrop-blur-md border-t border-seafoam"
+              // 헤더(4rem) 아래부터 화면 끝까지 꽉 채우는 고정 오버레이.
+              // 이렇게 해야 메뉴 아래로 본문이 비치지 않고, 스크롤이 필요하면 메뉴 안에서만
+              // 스크롤된다(뒤 본문 스크롤은 body overflow:hidden으로 별도 차단).
+              className="xl:hidden fixed inset-x-0 top-16 bottom-0 overflow-y-auto overscroll-contain bg-cloud-white/95 backdrop-blur-md border-t border-seafoam"
             >
               <Container size="wide" className="pt-4 pb-[calc(1rem+env(safe-area-inset-bottom))]">
                 {simpleMenuItems.map((item) => (
