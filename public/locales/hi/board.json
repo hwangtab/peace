@@ -9,7 +9,9 @@
     "empty": "No posts yet.",
     "newPost": "New post",
     "by": "by",
-    "more": "Load more"
+    "more": "Load more",
+    "prev": "पिछला",
+    "next": "अगला"
   },
   "post": {
     "title": "Title",

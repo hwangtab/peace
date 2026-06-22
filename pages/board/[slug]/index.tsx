@@ -34,6 +34,8 @@ export default function BoardSlugPage({ board, posts, hasMore, offset }: Props) 
   const isLoggedIn = Boolean(auth?.user);
 
   const nextOffset = offset + PAGE_SIZE;
+  const prevOffset = Math.max(0, offset - PAGE_SIZE);
+  const currentPage = Math.floor(offset / PAGE_SIZE) + 1;
 
   return (
     <>
@@ -81,14 +83,29 @@ export default function BoardSlugPage({ board, posts, hasMore, offset }: Props) 
           </ul>
         )}
 
-        {hasMore && (
-          <div className="mt-8 text-center">
-            <Link
-              href={`/board/${board.slug}?offset=${nextOffset}`}
-              className="inline-block rounded-lg border border-jeju-ocean px-6 py-2 text-sm font-semibold text-jeju-ocean transition hover:bg-seafoam"
-            >
-              {t('list.more')}
-            </Link>
+        {(offset > 0 || hasMore) && (
+          <div className="mt-8 flex items-center justify-between gap-4">
+            {offset > 0 ? (
+              <Link
+                href={`/board/${board.slug}?offset=${prevOffset}`}
+                className="rounded-lg border border-jeju-ocean px-5 py-2 text-sm font-semibold text-jeju-ocean transition hover:bg-seafoam"
+              >
+                ← {t('list.prev')}
+              </Link>
+            ) : (
+              <span aria-hidden="true" />
+            )}
+            <span className="text-sm text-coastal-gray">{currentPage}</span>
+            {hasMore ? (
+              <Link
+                href={`/board/${board.slug}?offset=${nextOffset}`}
+                className="rounded-lg border border-jeju-ocean px-5 py-2 text-sm font-semibold text-jeju-ocean transition hover:bg-seafoam"
+              >
+                {t('list.next')} →
+              </Link>
+            ) : (
+              <span aria-hidden="true" />
+            )}
           </div>
         )}
       </main>
