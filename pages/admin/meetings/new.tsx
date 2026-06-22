@@ -81,7 +81,10 @@ export default function NewMeetingPage({ member }: NewMeetingPageProps) {
 
   return (
     <AdminLayout title="새 회의" member={member}>
-      <Link href="/admin/meetings" className="mb-4 inline-block text-sm text-jeju-ocean hover:text-deep-ocean">
+      <Link
+        href="/admin/meetings"
+        className="mb-4 inline-block text-sm text-jeju-ocean hover:text-deep-ocean"
+      >
         ← 회의 목록
       </Link>
 
@@ -93,7 +96,9 @@ export default function NewMeetingPage({ member }: NewMeetingPageProps) {
 
       <form onSubmit={handleSubmit} className="max-w-xl space-y-4">
         <div>
-          <label className={labelClass} htmlFor="title">제목 *</label>
+          <label className={labelClass} htmlFor="title">
+            제목 *
+          </label>
           <input
             id="title"
             className={inputClass}
@@ -103,7 +108,9 @@ export default function NewMeetingPage({ member }: NewMeetingPageProps) {
           />
         </div>
         <div>
-          <label className={labelClass} htmlFor="meeting_date">회의 날짜</label>
+          <label className={labelClass} htmlFor="meeting_date">
+            회의 날짜
+          </label>
           <input
             id="meeting_date"
             type="date"
@@ -113,7 +120,9 @@ export default function NewMeetingPage({ member }: NewMeetingPageProps) {
           />
         </div>
         <div>
-          <label className={labelClass} htmlFor="meeting_time">시간</label>
+          <label className={labelClass} htmlFor="meeting_time">
+            시간
+          </label>
           <input
             id="meeting_time"
             className={inputClass}
@@ -123,7 +132,9 @@ export default function NewMeetingPage({ member }: NewMeetingPageProps) {
           />
         </div>
         <div>
-          <label className={labelClass} htmlFor="location">장소</label>
+          <label className={labelClass} htmlFor="location">
+            장소
+          </label>
           <input
             id="location"
             className={inputClass}

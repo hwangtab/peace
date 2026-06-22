@@ -147,7 +147,9 @@ export default function AdminWhitepaperPage({
           </label>
 
           <label className="block">
-            <span className="mb-1 block text-sm font-semibold text-deep-ocean">본문 (Markdown)</span>
+            <span className="mb-1 block text-sm font-semibold text-deep-ocean">
+              본문 (Markdown)
+            </span>
             <textarea
               value={body}
               onChange={(event) => setBody(event.target.value)}
@@ -186,7 +188,9 @@ export default function AdminWhitepaperPage({
       ) : (
         <section className="rounded border border-deep-ocean/10 bg-white p-8 text-center text-coastal-gray">
           아직 등록된 백서가 없습니다.
-          {canEdit ? ' 상단의 “백서 등록”으로 .md 파일을 올려 주세요.' : ' 편집 권한이 있는 관리자에게 등록을 요청하세요.'}
+          {canEdit
+            ? ' 상단의 “백서 등록”으로 .md 파일을 올려 주세요.'
+            : ' 편집 권한이 있는 관리자에게 등록을 요청하세요.'}
         </section>
       )}
     </AdminLayout>

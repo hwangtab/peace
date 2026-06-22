@@ -3,11 +3,7 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { useAuth } from '@/components/auth/AuthProvider';
-import {
-  validatePostTitle,
-  validatePostBody,
-  validateRating,
-} from '@/lib/boardForms';
+import { validatePostTitle, validatePostBody, validateRating } from '@/lib/boardForms';
 import PostImageUploader from '@/components/board/PostImageUploader';
 import RatingStars from '@/components/board/RatingStars';
 import type { Board, PostWithMeta } from '@/types/board';
@@ -192,13 +188,15 @@ export default function PostForm({ board, initial, mode }: PostFormProps) {
   };
 
   return (
-    <form onSubmit={(e) => { void handleSubmit(e); }} className="space-y-6">
+    <form
+      onSubmit={(e) => {
+        void handleSubmit(e);
+      }}
+      className="space-y-6"
+    >
       {/* Title */}
       <div>
-        <label
-          htmlFor="post-title"
-          className="block text-sm font-semibold text-deep-ocean"
-        >
+        <label htmlFor="post-title" className="block text-sm font-semibold text-deep-ocean">
           {t('post.title')}
         </label>
         <input
@@ -209,17 +207,12 @@ export default function PostForm({ board, initial, mode }: PostFormProps) {
           maxLength={120}
           className="mt-1 w-full rounded-lg border border-seafoam px-3 py-2 text-base text-deep-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean"
         />
-        {fieldErrors.title && (
-          <p className="mt-1 text-sm text-red-500">{fieldErrors.title}</p>
-        )}
+        {fieldErrors.title && <p className="mt-1 text-sm text-red-500">{fieldErrors.title}</p>}
       </div>
 
       {/* Body */}
       <div>
-        <label
-          htmlFor="post-body"
-          className="block text-sm font-semibold text-deep-ocean"
-        >
+        <label htmlFor="post-body" className="block text-sm font-semibold text-deep-ocean">
           {t('post.body')}
         </label>
         <textarea
@@ -230,31 +223,23 @@ export default function PostForm({ board, initial, mode }: PostFormProps) {
           maxLength={10000}
           className="mt-1 w-full rounded-lg border border-seafoam px-3 py-2 text-base text-deep-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean"
         />
-        {fieldErrors.body && (
-          <p className="mt-1 text-sm text-red-500">{fieldErrors.body}</p>
-        )}
+        {fieldErrors.body && <p className="mt-1 text-sm text-red-500">{fieldErrors.body}</p>}
       </div>
 
       {/* Rating — only when board.has_rating */}
       {board.has_rating && (
         <div>
-          <span className="block text-sm font-semibold text-deep-ocean">
-            {t('post.rating')}
-          </span>
+          <span className="block text-sm font-semibold text-deep-ocean">{t('post.rating')}</span>
           <div className="mt-2">
             <RatingStars value={rating ?? 0} onSelect={setRating} />
           </div>
-          {fieldErrors.rating && (
-            <p className="mt-1 text-sm text-red-500">{fieldErrors.rating}</p>
-          )}
+          {fieldErrors.rating && <p className="mt-1 text-sm text-red-500">{fieldErrors.rating}</p>}
         </div>
       )}
 
       {/* Images */}
       <div>
-        <span className="block text-sm font-semibold text-deep-ocean">
-          {t('post.images')}
-        </span>
+        <span className="block text-sm font-semibold text-deep-ocean">{t('post.images')}</span>
         <div className="mt-2">
           <PostImageUploader value={imageUrls} onChange={setImageUrls} />
         </div>

@@ -12,7 +12,11 @@ export default function RatingStars({ value, max = 5, onSelect }: RatingStarsPro
 
   if (onSelect) {
     return (
-      <span role="radiogroup" aria-label={t('post.rating')} className="inline-flex gap-0.5 text-2xl text-golden-sun">
+      <span
+        role="radiogroup"
+        aria-label={t('post.rating')}
+        className="inline-flex gap-0.5 text-2xl text-golden-sun"
+      >
         {Array.from({ length: max }, (_, i) => {
           const starValue = i + 1;
           return (
@@ -34,10 +38,7 @@ export default function RatingStars({ value, max = 5, onSelect }: RatingStarsPro
   }
 
   return (
-    <span
-      aria-label={`${value}점 / ${max}점`}
-      className="inline-flex gap-0.5 text-golden-sun"
-    >
+    <span aria-label={`${value}점 / ${max}점`} className="inline-flex gap-0.5 text-golden-sun">
       {Array.from({ length: max }, (_, i) => (
         <span key={i} aria-hidden="true">
           {i < rounded ? '★' : '☆'}

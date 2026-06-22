@@ -54,8 +54,9 @@ export default function SignupPage() {
       });
       setBusy(false);
       if (signErr) {
-        const isDup = (signErr as { code?: string }).code === '23505'
-          || /duplicate|unique|nickname/i.test(signErr.message ?? '');
+        const isDup =
+          (signErr as { code?: string }).code === '23505' ||
+          /duplicate|unique|nickname/i.test(signErr.message ?? '');
         return setError(isDup ? t('signup.nicknameTaken') : mapAuthError(signErr));
       }
       if (data.session) {
@@ -83,16 +84,53 @@ export default function SignupPage() {
     >
       <form onSubmit={submit} className="space-y-4">
         <Field label={t('common.email')}>
-          <input type="email" required autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} className={inputCls} />
+          <input
+            type="email"
+            required
+            autoComplete="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className={inputCls}
+          />
         </Field>
         <Field label={t('common.nickname')}>
-          <input type="text" required autoComplete="username" value={nickname} onChange={(e) => setNickname(e.target.value)} className={inputCls} />
+          <input
+            type="text"
+            required
+            autoComplete="username"
+            value={nickname}
+            onChange={(e) => setNickname(e.target.value)}
+            className={inputCls}
+          />
         </Field>
         <Field label={t('common.password')}>
-          <input type="password" required autoComplete="new-password" value={password} onChange={(e) => setPassword(e.target.value)} className={inputCls} />
+          <input
+            type="password"
+            required
+            autoComplete="new-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className={inputCls}
+          />
         </Field>
-        {message && <p role="status" aria-live="polite" className="rounded bg-jeju-ocean/10 px-3 py-2 text-sm text-jeju-ocean">{message}</p>}
-        {error && <p role="alert" aria-live="assertive" className="rounded bg-sunset-coral/10 px-3 py-2 text-sm text-sunset-coral">{error}</p>}
+        {message && (
+          <p
+            role="status"
+            aria-live="polite"
+            className="rounded bg-jeju-ocean/10 px-3 py-2 text-sm text-jeju-ocean"
+          >
+            {message}
+          </p>
+        )}
+        {error && (
+          <p
+            role="alert"
+            aria-live="assertive"
+            className="rounded bg-sunset-coral/10 px-3 py-2 text-sm text-sunset-coral"
+          >
+            {error}
+          </p>
+        )}
         <button type="submit" disabled={busy} className={btnCls}>
           {busy ? t('common.loading') : t('signup.cta')}
         </button>

@@ -88,7 +88,10 @@ export default function AdminBoardsPage({
     await refresh();
   };
 
-  const patchBoard = async (id: string, body: Partial<Omit<Board, 'id' | 'created_at' | 'updated_at'>>) => {
+  const patchBoard = async (
+    id: string,
+    body: Partial<Omit<Board, 'id' | 'created_at' | 'updated_at'>>
+  ) => {
     setBusyId(id);
     setMessage('');
     setError('');
@@ -116,7 +119,8 @@ export default function AdminBoardsPage({
   };
 
   const deleteBoard = async (id: string, name: string) => {
-    if (!window.confirm(`"${name}" 게시판을 삭제하시겠습니까?\n이 작업은 되돌릴 수 없습니다.`)) return;
+    if (!window.confirm(`"${name}" 게시판을 삭제하시겠습니까?\n이 작업은 되돌릴 수 없습니다.`))
+      return;
     setBusyId(id);
     setMessage('');
     setError('');
@@ -240,7 +244,11 @@ export default function AdminBoardsPage({
             </label>
           </div>
           <div className="flex items-end">
-            <button type="submit" disabled={isSubmitting} className={classNames(btnPrimary, 'w-full')}>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className={classNames(btnPrimary, 'w-full')}
+            >
               {isSubmitting ? '추가 중' : '게시판 추가'}
             </button>
           </div>
@@ -265,7 +273,9 @@ export default function AdminBoardsPage({
                 <li key={board.id} className="p-4">
                   <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                     <label className="block">
-                      <span className="mb-1 block text-xs font-semibold text-coastal-gray">slug</span>
+                      <span className="mb-1 block text-xs font-semibold text-coastal-gray">
+                        slug
+                      </span>
                       <input
                         type="text"
                         value={row.slug}
@@ -277,7 +287,9 @@ export default function AdminBoardsPage({
                       />
                     </label>
                     <label className="block">
-                      <span className="mb-1 block text-xs font-semibold text-coastal-gray">이름</span>
+                      <span className="mb-1 block text-xs font-semibold text-coastal-gray">
+                        이름
+                      </span>
                       <input
                         type="text"
                         value={row.name}
@@ -287,7 +299,9 @@ export default function AdminBoardsPage({
                       />
                     </label>
                     <label className="block lg:col-span-2">
-                      <span className="mb-1 block text-xs font-semibold text-coastal-gray">설명</span>
+                      <span className="mb-1 block text-xs font-semibold text-coastal-gray">
+                        설명
+                      </span>
                       <input
                         type="text"
                         value={row.description}
@@ -305,9 +319,7 @@ export default function AdminBoardsPage({
                         min={0}
                         value={row.sort_order}
                         disabled={busy}
-                        onChange={(e) =>
-                          setEdit(board.id, { sort_order: Number(e.target.value) })
-                        }
+                        onChange={(e) => setEdit(board.id, { sort_order: Number(e.target.value) })}
                         className={classNames(inputClass, busy && 'opacity-60')}
                       />
                     </label>

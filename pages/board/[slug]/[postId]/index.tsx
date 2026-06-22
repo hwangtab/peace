@@ -5,7 +5,11 @@ import type { GetServerSidePropsContext } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import nextI18NextConfig from '../../../../next-i18next.config';
-import { loadPostDetailWithClient, loadPostCommentsWithClient, boardImagePath } from '@/lib/boardData';
+import {
+  loadPostDetailWithClient,
+  loadPostCommentsWithClient,
+  boardImagePath,
+} from '@/lib/boardData';
 import { formatBoardDate } from '@/lib/boardForms';
 import type { PostWithMeta } from '@/types/board';
 import CommentSection from '@/components/board/CommentSection';
@@ -62,8 +66,7 @@ export default function PostDetailPage({ post, slug, comments }: Props) {
 
       {/* Back link */}
       <Link href={`/board/${slug}`} className="text-sm text-coastal-gray hover:underline">
-        ←{' '}
-        {t('index.title')}
+        ← {t('index.title')}
       </Link>
 
       {/* Post header */}
@@ -92,7 +95,9 @@ export default function PostDetailPage({ post, slug, comments }: Props) {
           </Link>
           <button
             type="button"
-            onClick={() => { void handleDelete(); }}
+            onClick={() => {
+              void handleDelete();
+            }}
             className="rounded-lg border border-red-400 px-4 py-1.5 text-sm font-semibold text-red-500 transition hover:bg-red-50"
           >
             {t('post.delete')}

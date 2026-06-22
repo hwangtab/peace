@@ -19,7 +19,8 @@ export const validatePostTitle = (v: string): Ok<string> | Err => {
 
 export const validatePostBody = (v: string): Ok<string> | Err => {
   const t = trimmed(v);
-  if (t.length < 1 || t.length > 10000) return { ok: false, reason: '내용은 1~10000자여야 합니다.' };
+  if (t.length < 1 || t.length > 10000)
+    return { ok: false, reason: '내용은 1~10000자여야 합니다.' };
   return { ok: true, value: t };
 };
 
@@ -29,9 +30,7 @@ export const validateComment = (v: string): Ok<string> | Err => {
   return { ok: true, value: t };
 };
 
-export const validateRating = (
-  v: number | null, required: boolean
-): Ok<number | null> | Err => {
+export const validateRating = (v: number | null, required: boolean): Ok<number | null> | Err => {
   if (v === null || v === undefined) {
     return required ? { ok: false, reason: '별점을 선택해 주세요.' } : { ok: true, value: null };
   }

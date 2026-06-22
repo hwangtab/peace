@@ -47,7 +47,9 @@ export default function UpdatePasswordPage() {
     <AuthFormShell title={t('reset.updateTitle')}>
       <form onSubmit={submit} className="space-y-4">
         <label className="block">
-          <span className="mb-1 block text-sm font-semibold text-deep-ocean">{t('account.newPassword')}</span>
+          <span className="mb-1 block text-sm font-semibold text-deep-ocean">
+            {t('account.newPassword')}
+          </span>
           <input
             type="password"
             required
@@ -57,8 +59,24 @@ export default function UpdatePasswordPage() {
             className={inputCls}
           />
         </label>
-        {message && <p role="status" aria-live="polite" className="rounded bg-jeju-ocean/10 px-3 py-2 text-sm text-jeju-ocean">{message}</p>}
-        {error && <p role="alert" aria-live="assertive" className="rounded bg-sunset-coral/10 px-3 py-2 text-sm text-sunset-coral">{error}</p>}
+        {message && (
+          <p
+            role="status"
+            aria-live="polite"
+            className="rounded bg-jeju-ocean/10 px-3 py-2 text-sm text-jeju-ocean"
+          >
+            {message}
+          </p>
+        )}
+        {error && (
+          <p
+            role="alert"
+            aria-live="assertive"
+            className="rounded bg-sunset-coral/10 px-3 py-2 text-sm text-sunset-coral"
+          >
+            {error}
+          </p>
+        )}
         <button type="submit" disabled={busy} className={btnCls}>
           {busy ? t('common.loading') : t('reset.updateCta')}
         </button>
@@ -75,6 +93,8 @@ const btnCls =
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
   const resolved = locale ?? 'ko';
   return {
-    props: { ...(await serverSideTranslations(resolved, ['auth', 'translation'], nextI18NextConfig)) },
+    props: {
+      ...(await serverSideTranslations(resolved, ['auth', 'translation'], nextI18NextConfig)),
+    },
   };
 }

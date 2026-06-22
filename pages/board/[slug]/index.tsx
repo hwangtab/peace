@@ -79,13 +79,12 @@ export default function BoardSlugPage({ board, posts, hasMore, offset }: Props) 
   );
 }
 
-export const getServerSideProps = async ({
-  locale,
-  params,
-  query,
-}: GetServerSidePropsContext) => {
+export const getServerSideProps = async ({ locale, params, query }: GetServerSidePropsContext) => {
   const slug = typeof params?.slug === 'string' ? params.slug : '';
-  const rawOffset = Math.max(0, parseInt(typeof query.offset === 'string' ? query.offset : '0', 10) || 0);
+  const rawOffset = Math.max(
+    0,
+    parseInt(typeof query.offset === 'string' ? query.offset : '0', 10) || 0
+  );
   const offset = Math.floor(rawOffset / PAGE_SIZE) * PAGE_SIZE;
 
   const board = await loadBoardBySlug(slug);
@@ -102,7 +101,11 @@ export const getServerSideProps = async ({
       posts,
       hasMore,
       offset,
-      ...(await serverSideTranslations(locale ?? 'ko', ['board', 'translation'], nextI18NextConfig)),
+      ...(await serverSideTranslations(
+        locale ?? 'ko',
+        ['board', 'translation'],
+        nextI18NextConfig
+      )),
     },
   };
 };

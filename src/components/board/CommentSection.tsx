@@ -125,9 +125,7 @@ export default function CommentSection({ postId, initialComments, readOnly = fal
 
   return (
     <section className="mt-10 border-t border-seafoam pt-8">
-      <h2 className="mb-4 text-base font-semibold text-deep-ocean">
-        {t('comment.heading')}
-      </h2>
+      <h2 className="mb-4 text-base font-semibold text-deep-ocean">{t('comment.heading')}</h2>
 
       {/* Comment list */}
       {comments.length === 0 ? (
@@ -160,7 +158,9 @@ export default function CommentSection({ postId, initialComments, readOnly = fal
                     <button
                       type="button"
                       disabled={isDeleting}
-                      onClick={() => { void handleDelete(c.id); }}
+                      onClick={() => {
+                        void handleDelete(c.id);
+                      }}
                       className="text-xs text-red-400 hover:text-red-600 disabled:opacity-50"
                     >
                       {t('comment.delete')}
@@ -185,7 +185,12 @@ export default function CommentSection({ postId, initialComments, readOnly = fal
       {!readOnly && (
         <div className="mt-6">
           {user ? (
-            <form onSubmit={(e) => { void handleSubmit(e); }} noValidate>
+            <form
+              onSubmit={(e) => {
+                void handleSubmit(e);
+              }}
+              noValidate
+            >
               <label htmlFor="comment-body" className="sr-only">
                 {t('comment.placeholder')}
               </label>
@@ -198,9 +203,7 @@ export default function CommentSection({ postId, initialComments, readOnly = fal
                 rows={3}
                 className="w-full rounded-xl border border-seafoam p-3 text-sm text-deep-ocean placeholder-coastal-gray focus:border-jeju-ocean focus:outline-none"
               />
-              {validationError && (
-                <p className="mt-1 text-xs text-red-500">{validationError}</p>
-              )}
+              {validationError && <p className="mt-1 text-xs text-red-500">{validationError}</p>}
               <div className="mt-2 flex justify-end">
                 <button
                   type="submit"

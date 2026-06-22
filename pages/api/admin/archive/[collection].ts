@@ -190,7 +190,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return;
     }
 
-    const current = await supabase.from(config.table).select('*').eq('id', parsed.data).maybeSingle();
+    const current = await supabase
+      .from(config.table)
+      .select('*')
+      .eq('id', parsed.data)
+      .maybeSingle();
     if (current.error) {
       res.status(500).json({ error: current.error.message });
       return;

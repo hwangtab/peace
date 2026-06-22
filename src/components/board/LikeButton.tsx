@@ -46,7 +46,9 @@ export default function LikeButton({ postId, initialCount }: Props) {
       }
     });
 
-    return () => { cancelled = true; };
+    return () => {
+      cancelled = true;
+    };
   }, [postId, user]);
 
   const handleClick = async () => {
@@ -102,7 +104,9 @@ export default function LikeButton({ postId, initialCount }: Props) {
     <div className="mt-8 flex items-center gap-2">
       <button
         type="button"
-        onClick={() => { void handleClick(); }}
+        onClick={() => {
+          void handleClick();
+        }}
         disabled={disabled}
         aria-pressed={liked}
         className={[
