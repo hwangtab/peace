@@ -76,80 +76,103 @@ export default function SignupPage() {
 
   return (
     <AuthFormShell
-      title={t('signup.title')}
+      title={succeeded ? t('signup.checkEmailTitle') : t('signup.title')}
       backgroundImage="/images-webp/camps/2025/DSC00599.webp"
       footer={
-        <span>
-          {t('signup.haveAccount')}{' '}
-          <Link href="/login" className="text-jeju-ocean underline">
-            {t('signup.toLogin')}
-          </Link>
-        </span>
+        succeeded ? undefined : (
+          <span>
+            {t('signup.haveAccount')}{' '}
+            <Link href="/login" className="text-jeju-ocean underline">
+              {t('signup.toLogin')}
+            </Link>
+          </span>
+        )
       }
     >
-      <form onSubmit={submit} className="space-y-4">
-        <Field label={t('common.email')}>
-          <input
-            type="email"
-            required
-            autoComplete="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className={inputCls}
-          />
-        </Field>
-        <Field label={t('common.nickname')}>
-          <input
-            type="text"
-            required
-            autoComplete="username"
-            value={nickname}
-            onChange={(e) => setNickname(e.target.value)}
-            className={inputCls}
-          />
-        </Field>
-        <Field label={t('common.password')}>
-          <input
-            type="password"
-            required
-            autoComplete="new-password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className={inputCls}
-          />
-        </Field>
-        <Field label={t('common.passwordConfirm')}>
-          <input
-            type="password"
-            required
-            autoComplete="new-password"
-            value={passwordConfirm}
-            onChange={(e) => setPasswordConfirm(e.target.value)}
-            className={inputCls}
-          />
-        </Field>
-        {message && (
-          <p
-            role="status"
-            aria-live="polite"
-            className="rounded bg-jeju-ocean/10 px-3 py-2 text-sm text-jeju-ocean"
+      {succeeded ? (
+        <div className="space-y-5 text-center">
+          <div
+            className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-jeju-ocean/10 text-3xl"
+            aria-hidden="true"
           >
-            {message}
-          </p>
-        )}
-        {error && (
-          <p
-            role="alert"
-            aria-live="assertive"
-            className="rounded bg-sunset-coral/10 px-3 py-2 text-sm text-sunset-coral"
-          >
-            {error}
-          </p>
-        )}
-        <button type="submit" disabled={busy || succeeded} className={btnCls}>
-          {busy ? t('common.loading') : t('signup.cta')}
-        </button>
-      </form>
+            ✉️
+          </div>
+          <p className="text-sm leading-relaxed text-deep-ocean">{t('signup.checkEmail')}</p>
+          {email && (
+            <p className="break-all rounded bg-jeju-ocean/5 px-3 py-2 text-sm font-semibold text-jeju-ocean">
+              {email}
+            </p>
+          )}
+          <p className="text-xs text-coastal-gray">{t('signup.checkEmailSpam')}</p>
+          <Link href="/login" className={`${btnCls} block text-center`}>
+            {t('signup.toLogin')}
+          </Link>
+        </div>
+      ) : (
+        <form onSubmit={submit} className="space-y-4">
+          <Field label={t('common.email')}>
+            <input
+              type="email"
+              required
+              autoComplete="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className={inputCls}
+            />
+          </Field>
+          <Field label={t('common.nickname')}>
+            <input
+              type="text"
+              required
+              autoComplete="username"
+              value={nickname}
+              onChange={(e) => setNickname(e.target.value)}
+              className={inputCls}
+            />
+          </Field>
+          <Field label={t('common.password')}>
+            <input
+              type="password"
+              required
+              autoComplete="new-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className={inputCls}
+            />
+          </Field>
+          <Field label={t('common.passwordConfirm')}>
+            <input
+              type="password"
+              required
+              autoComplete="new-password"
+              value={passwordConfirm}
+              onChange={(e) => setPasswordConfirm(e.target.value)}
+              className={inputCls}
+            />
+          </Field>
+          {message && (
+            <p
+              role="status"
+              aria-live="polite"
+              className="rounded bg-jeju-ocean/10 px-3 py-2 text-sm text-jeju-ocean"
+            >
+              {message}
+            </p>
+          )}
+          {error && (
+            <p
+              role="alert"
+              aria-live="assertive"
+              className="rounded bg-sunset-coral/10 px-3 py-2 text-sm text-sunset-coral"
+            >
+              {error}
+            </p>
+          )}
+          <button type="submit" disabled={busy} className={btnCls}>
+            {busy ? t('common.loading') : t('signup.cta')}
+          </button>
+        </form>
+      )}
     </AuthFormShell>
   );
 }
