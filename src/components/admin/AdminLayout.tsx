@@ -13,6 +13,7 @@ const NAV_ITEMS = [
   { href: '/admin/gallery', label: '갤러리' },
   { href: '/admin/press', label: '언론보도' },
   { href: '/admin/whitepaper', label: '운영 백서' },
+  { href: '/admin/meetings', label: '회의록' },
   { href: '/admin/boards', label: '게시판' },
   { href: '/admin/board-posts', label: '게시글 관리' },
   { href: '/admin/history', label: '변경 이력' },
