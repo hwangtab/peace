@@ -218,7 +218,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       .update({ status: 'hidden', published_at: null });
     const { data, error } =
       config.collection === 'content'
-        ? await updateQuery.eq('id', id).select('*')
+        ? await updateQuery.eq('id', parsed.data).select('*')
         : await updateQuery
             .eq('public_id', (current.data as { public_id: number }).public_id)
             .select('*');

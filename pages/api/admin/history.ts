@@ -100,8 +100,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.status(400).json({ error: 'missing_restore_row_id' });
         return;
       }
+      // before_data.id는 JSONB(비검증)에서 올 수 있어 UUID 형식을 강제(잘못된 값이 DB로 가 500나는 것 방지)
+      const parsedRowId = z.string().uuid().safeParse(rowId);
+      if (!parsedRowId.success) {
+        res.status(400).json({ error: 'invalid_restore_row_id' });
+        return;
+      }
+      const safeRowId = parsedRowId.data;
 
-      const current = await supabase.from(config.table).select('*').eq('id', rowId).maybeSingle();
+      const current = await supabase
+        .from(config.table)
+        .select('*')
+        .eq('id', safeRowId)
+        .maybeSingle();
       if (current.error) {
         res.status(500).json({ error: current.error.message });
         return;
@@ -115,7 +126,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const { data, error } = await supabase
         .from(config.table)
         .update(payload)
-        .eq('id', rowId)
+        .eq('id', safeRowId)
         .select('*')
         .single();
 

@@ -111,7 +111,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           res.status(500).json({ error: countError.message });
           return;
         }
-        if (!count) {
+        if (count === null) {
+          res.status(500).json({ error: 'owner_count_unavailable' });
+          return;
+        }
+        if (count === 0) {
           res.status(400).json({ error: '마지막 owner는 강등하거나 비활성화할 수 없습니다.' });
           return;
         }
