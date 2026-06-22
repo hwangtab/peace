@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import type { GetStaticPropsContext } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
@@ -8,7 +9,16 @@ import nextI18NextConfig from '../next-i18next.config';
 import { useAuth } from '@/components/auth/AuthProvider';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { mapAuthError, validateNickname, validatePassword } from '@/lib/memberAuth';
+import { formatBoardDate } from '@/lib/boardForms';
 import PageHero from '@/components/common/PageHero';
+
+interface MyPost {
+  id: string;
+  title: string;
+  created_at: string;
+  status: string;
+  boardSlug: string;
+}
 
 const ACCOUNT_HERO_IMAGE = '/images-webp/camps/2025/DSC00864.webp';
 
@@ -20,10 +30,44 @@ export default function AccountPage() {
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+  const [myPosts, setMyPosts] = useState<MyPost[] | null>(null);
 
   useEffect(() => {
     if (!loading && !user) void router.replace('/login?next=/account');
   }, [loading, user, router]);
+
+  // 내가 쓴 글 — 로그인 후 본인 작성 글을 최신순으로 불러온다.
+  useEffect(() => {
+    if (!user) return;
+    let cancelled = false;
+    void (async () => {
+      const supabase = createSupabaseBrowserClient();
+      const { data } = await supabase
+        .from('posts')
+        .select('id, title, created_at, status, boards(slug)')
+        .eq('author_id', user.id)
+        .order('created_at', { ascending: false })
+        .limit(20);
+      if (cancelled) return;
+      const rows = (data as Record<string, unknown>[] | null) ?? [];
+      setMyPosts(
+        rows.map((r) => {
+          const b = r.boards as { slug?: string } | { slug?: string }[] | null;
+          const boardSlug = Array.isArray(b) ? (b[0]?.slug ?? '') : (b?.slug ?? '');
+          return {
+            id: String(r.id),
+            title: String(r.title),
+            created_at: String(r.created_at),
+            status: String(r.status),
+            boardSlug,
+          };
+        })
+      );
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [user]);
 
   const saveNickname = async (nickname: string) => {
     setError('');
@@ -86,7 +130,25 @@ export default function AccountPage() {
       </Head>
       <PageHero compact title={t('account.title')} backgroundImage={ACCOUNT_HERO_IMAGE} />
       <div className="mx-auto max-w-md space-y-6 px-4 py-12">
-        <p className="text-center text-sm text-coastal-gray">{user.email}</p>
+        <section className="rounded border border-deep-ocean/10 bg-white p-5">
+          <h2 className="mb-3 font-display text-lg font-bold text-deep-ocean">
+            {t('account.accountInfo')}
+          </h2>
+          <dl className="space-y-2 text-sm">
+            <div className="flex justify-between gap-3">
+              <dt className="text-coastal-gray">{t('account.email')}</dt>
+              <dd className="break-all text-right font-medium text-deep-ocean">{user.email}</dd>
+            </div>
+            {user.created_at && (
+              <div className="flex justify-between gap-3">
+                <dt className="text-coastal-gray">{t('account.joinedAt')}</dt>
+                <dd className="text-right font-medium text-deep-ocean">
+                  {formatBoardDate(user.created_at)}
+                </dd>
+              </div>
+            )}
+          </dl>
+        </section>
 
         {message && (
           <p
@@ -144,6 +206,40 @@ export default function AccountPage() {
               {t('account.save')}
             </button>
           </form>
+        </section>
+
+        <section className="rounded border border-deep-ocean/10 bg-white p-5">
+          <h2 className="mb-3 font-display text-lg font-bold text-deep-ocean">
+            {t('account.myPosts')}
+          </h2>
+          {myPosts === null ? (
+            <p className="text-sm text-coastal-gray">{t('common.loading')}</p>
+          ) : myPosts.length === 0 ? (
+            <p className="text-sm text-coastal-gray">{t('account.noPosts')}</p>
+          ) : (
+            <ul className="divide-y divide-deep-ocean/10">
+              {myPosts.map((post) => (
+                <li key={post.id}>
+                  <Link
+                    href={`/board/${post.boardSlug}/${post.id}`}
+                    className="flex items-center justify-between gap-3 py-2 transition hover:text-jeju-ocean"
+                  >
+                    <span className="min-w-0 flex-1 truncate text-sm font-medium text-deep-ocean">
+                      {post.title}
+                      {post.status === 'hidden' && (
+                        <span className="ml-2 rounded bg-deep-ocean/10 px-1.5 py-0.5 text-xs text-coastal-gray">
+                          {t('account.postHidden')}
+                        </span>
+                      )}
+                    </span>
+                    <span className="flex-shrink-0 text-xs text-coastal-gray">
+                      {formatBoardDate(post.created_at)}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
         </section>
 
         <button
