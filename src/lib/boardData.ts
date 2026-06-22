@@ -120,26 +120,32 @@ export const loadPostDetailWithClient = async (
   return mapPostRow(data as Record<string, unknown>);
 };
 
+// 댓글 한 페이지 크기. 글 상세는 최신 한 페이지를 먼저 보여주고 '이전 댓글 더 보기'로 과거를 불러온다.
+export const COMMENT_PAGE = 50;
+const COMMENT_SELECT = '*, profiles!post_comments_author_id_fkey(nickname)';
+
+const mapCommentRow = (r: Record<string, unknown>) => ({
+  id: String(r.id),
+  post_id: String(r.post_id),
+  author_id: String(r.author_id),
+  body: String(r.body),
+  status: r.status as 'published' | 'hidden',
+  created_at: String(r.created_at),
+  updated_at: String(r.updated_at),
+  author_nickname: (r.profiles as { nickname?: string } | null)?.nickname ?? '',
+});
+
 export const loadPostComments = async (postId: string) => {
   const client = getPublicClient();
   if (!client) return [];
   const { data } = await client
     .from('post_comments')
-    .select('*, profiles!post_comments_author_id_fkey(nickname)')
+    .select(COMMENT_SELECT)
     .eq('post_id', postId)
     .eq('status', 'published')
     .order('created_at', { ascending: true })
     .limit(200);
-  return ((data as Record<string, unknown>[]) ?? []).map((r) => ({
-    id: String(r.id),
-    post_id: String(r.post_id),
-    author_id: String(r.author_id),
-    body: String(r.body),
-    status: r.status as 'published' | 'hidden',
-    created_at: String(r.created_at),
-    updated_at: String(r.updated_at),
-    author_nickname: (r.profiles as { nickname?: string } | null)?.nickname ?? '',
-  }));
+  return ((data as Record<string, unknown>[]) ?? []).map(mapCommentRow);
 };
 
 export const mapPostRow = (row: Record<string, unknown>): PostWithMeta => {
@@ -166,21 +172,20 @@ export const mapPostRow = (row: Record<string, unknown>): PostWithMeta => {
 
 // Load comments via a caller-provided (session-aware) client; no hard status filter —
 // RLS decides visibility. This allows authors/admins to see comments on hidden posts.
-export const loadPostCommentsWithClient = async (client: SupabaseClient, postId: string) => {
+// Returns the most-recent page first (DESC) plus a hasMore flag (fetches one extra row).
+// Items are newest-first; callers reverse for ascending (conversation-order) display.
+export const loadPostCommentsWithClient = async (
+  client: SupabaseClient,
+  postId: string,
+  { limit = COMMENT_PAGE, offset = 0 }: { limit?: number; offset?: number } = {}
+): Promise<{ items: ReturnType<typeof mapCommentRow>[]; hasMore: boolean }> => {
   const { data } = await client
     .from('post_comments')
-    .select('*, profiles!post_comments_author_id_fkey(nickname)')
+    .select(COMMENT_SELECT)
     .eq('post_id', postId)
-    .order('created_at', { ascending: true })
-    .limit(200);
-  return ((data as Record<string, unknown>[]) ?? []).map((r) => ({
-    id: String(r.id),
-    post_id: String(r.post_id),
-    author_id: String(r.author_id),
-    body: String(r.body),
-    status: r.status as 'published' | 'hidden',
-    created_at: String(r.created_at),
-    updated_at: String(r.updated_at),
-    author_nickname: (r.profiles as { nickname?: string } | null)?.nickname ?? '',
-  }));
+    .order('created_at', { ascending: false })
+    .range(offset, offset + limit);
+  const rows = (data as Record<string, unknown>[]) ?? [];
+  const hasMore = rows.length > limit;
+  return { items: rows.slice(0, limit).map(mapCommentRow), hasMore };
 };

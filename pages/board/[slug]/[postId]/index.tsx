@@ -27,9 +27,10 @@ interface Props {
   post: PostWithMeta;
   slug: string;
   comments: CommentRow[];
+  commentsHasMore: boolean;
 }
 
-export default function PostDetailPage({ post, slug, comments }: Props) {
+export default function PostDetailPage({ post, slug, comments, commentsHasMore }: Props) {
   const { t } = useTranslation('board');
   const router = useRouter();
   const auth = useOptionalAuth();
@@ -141,7 +142,12 @@ export default function PostDetailPage({ post, slug, comments }: Props) {
         {!isHidden && <LikeButton postId={post.id} initialCount={post.like_count} />}
 
         {/* CommentSection — read-only for hidden posts (no add-comment form) */}
-        <CommentSection postId={post.id} initialComments={comments} readOnly={isHidden} />
+        <CommentSection
+          postId={post.id}
+          initialComments={comments}
+          initialHasMore={commentsHasMore}
+          readOnly={isHidden}
+        />
       </main>
     </>
   );
@@ -163,13 +169,19 @@ export const getServerSideProps = async ({
   // Validate that the post belongs to the URL slug
   if (post.board_slug !== slug) return { notFound: true };
 
-  const comments = await loadPostCommentsWithClient(serverClient, postId);
+  const { items: recentComments, hasMore: commentsHasMore } = await loadPostCommentsWithClient(
+    serverClient,
+    postId
+  );
+  // Most-recent page comes back newest-first; reverse for ascending conversation order.
+  const comments = recentComments.slice().reverse();
 
   return {
     props: {
       post,
       slug,
       comments,
+      commentsHasMore,
       ...(await serverSideTranslations(
         locale ?? 'ko',
         ['board', 'translation'],

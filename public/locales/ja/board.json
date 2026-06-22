@@ -40,7 +40,12 @@
     "empty": "Be the first to comment.",
     "delete": "Delete",
     "deleteConfirm": "Delete this comment?",
-    "hiddenNotice": "Hidden by an administrator."
+    "hiddenNotice": "Hidden by an administrator.",
+    "edit": "編集",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "loadOlder": "以前のコメントを表示",
+    "edited": "(編集済み)"
   },
   "error": {
     "loginRequired": "Login required.",
