@@ -30,7 +30,8 @@
     "removeImage": "Remove photo",
     "ratingStar": "{{n}} stars",
     "anonymous": "Anonymous",
-    "hiddenNotice": "This post has been hidden by an administrator and is not visible to others."
+    "hiddenNotice": "This post has been hidden by an administrator and is not visible to others.",
+    "imageAlt": "アップロードした画像 {{n}}"
   },
   "comment": {
     "heading": "Comments",
@@ -51,6 +52,7 @@
     "bodyLength": "本文は1〜10000文字で入力してください。",
     "commentLength": "コメントは1〜1000文字で入力してください。",
     "ratingRequired": "評価を選択してください。",
-    "ratingRange": "評価は1〜5です。"
+    "ratingRange": "評価は1〜5です。",
+    "tooManyImages": "画像は最大{{max}}枚までアップロードできます。"
   }
 }

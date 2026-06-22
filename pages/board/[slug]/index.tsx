@@ -3,7 +3,7 @@ import type { GetServerSidePropsContext } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import nextI18NextConfig from '../../../next-i18next.config';
-import { loadBoardBySlug, loadBoardPosts } from '@/lib/boardData';
+import { loadBoardBySlug, loadBoardPosts, loadBoardPostCount } from '@/lib/boardData';
 import type { Board, PostWithMeta } from '@/types/board';
 import PostCard from '@/components/board/PostCard';
 import { useOptionalAuth } from '@/components/auth/AuthProvider';
@@ -26,9 +26,10 @@ interface Props {
   posts: PostWithMeta[];
   hasMore: boolean;
   offset: number;
+  total: number;
 }
 
-export default function BoardSlugPage({ board, posts, hasMore, offset }: Props) {
+export default function BoardSlugPage({ board, posts, hasMore, offset, total }: Props) {
   const { t } = useTranslation('board');
   const auth = useOptionalAuth();
   const isLoggedIn = Boolean(auth?.user);
@@ -36,6 +37,7 @@ export default function BoardSlugPage({ board, posts, hasMore, offset }: Props) 
   const nextOffset = offset + PAGE_SIZE;
   const prevOffset = Math.max(0, offset - PAGE_SIZE);
   const currentPage = Math.floor(offset / PAGE_SIZE) + 1;
+  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
 
   return (
     <>
@@ -53,6 +55,9 @@ export default function BoardSlugPage({ board, posts, hasMore, offset }: Props) 
             {board.description && (
               <p className="mt-1 text-sm text-coastal-gray">{board.description}</p>
             )}
+            <p className="mt-1 text-xs text-coastal-gray">
+              {total} {t('index.posts')}
+            </p>
           </div>
           {isLoggedIn ? (
             <Link
@@ -95,7 +100,9 @@ export default function BoardSlugPage({ board, posts, hasMore, offset }: Props) 
             ) : (
               <span aria-hidden="true" />
             )}
-            <span className="text-sm text-coastal-gray">{currentPage}</span>
+            <span className="text-sm text-coastal-gray">
+              {currentPage} / {totalPages}
+            </span>
             {hasMore ? (
               <Link
                 href={`/board/${board.slug}?offset=${nextOffset}`}
@@ -124,10 +131,10 @@ export const getServerSideProps = async ({ locale, params, query }: GetServerSid
   const board = await loadBoardBySlug(slug);
   if (!board) return { notFound: true };
 
-  const { items: posts, hasMore } = await loadBoardPosts(board.id, {
-    limit: PAGE_SIZE,
-    offset,
-  });
+  const [{ items: posts, hasMore }, total] = await Promise.all([
+    loadBoardPosts(board.id, { limit: PAGE_SIZE, offset }),
+    loadBoardPostCount(board.id),
+  ]);
 
   return {
     props: {
@@ -135,6 +142,7 @@ export const getServerSideProps = async ({ locale, params, query }: GetServerSid
       posts,
       hasMore,
       offset,
+      total,
       ...(await serverSideTranslations(
         locale ?? 'ko',
         ['board', 'translation'],

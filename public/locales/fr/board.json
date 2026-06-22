@@ -30,7 +30,8 @@
     "removeImage": "Remove photo",
     "ratingStar": "{{n}} stars",
     "anonymous": "Anonymous",
-    "hiddenNotice": "This post has been hidden by an administrator and is not visible to others."
+    "hiddenNotice": "This post has been hidden by an administrator and is not visible to others.",
+    "imageAlt": "Image téléversée {{n}}"
   },
   "comment": {
     "heading": "Comments",
@@ -51,6 +52,7 @@
     "bodyLength": "Le contenu doit comporter entre 1 et 10 000 caractères.",
     "commentLength": "Le commentaire doit comporter entre 1 et 1 000 caractères.",
     "ratingRequired": "Veuillez sélectionner une note.",
-    "ratingRange": "La note doit être comprise entre 1 et 5."
+    "ratingRange": "La note doit être comprise entre 1 et 5.",
+    "tooManyImages": "Vous pouvez téléverser jusqu’à {{max}} images."
   }
 }

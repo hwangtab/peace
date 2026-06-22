@@ -12,6 +12,7 @@ interface PostImageUploaderProps {
 
 const ALLOWED_TYPES = ['image/png', 'image/jpeg', 'image/webp', 'image/gif'];
 const MAX_SIZE = 10 * 1024 * 1024; // 10 MB
+const MAX_IMAGES = 10; // 게시글당 이미지 장수 상한
 
 // Returns a random slug (file-name-safe) for storage path generation.
 // Defined outside the component to avoid false positives from the purity lint rule.
@@ -35,6 +36,10 @@ export default function PostImageUploader({ value, onChange }: PostImageUploader
 
     setError(null);
 
+    if (value.length >= MAX_IMAGES) {
+      setError(t('error.tooManyImages', { max: MAX_IMAGES }));
+      return;
+    }
     if (!ALLOWED_TYPES.includes(file.type)) {
       setError(t('error.invalidImageType'));
       return;
@@ -108,7 +113,13 @@ export default function PostImageUploader({ value, onChange }: PostImageUploader
               key={url}
               className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-xl border border-seafoam"
             >
-              <Image src={url} alt="" fill sizes="96px" className="object-cover" />
+              <Image
+                src={url}
+                alt={t('post.imageAlt', { n: idx + 1 })}
+                fill
+                sizes="96px"
+                className="object-cover"
+              />
               <button
                 type="button"
                 aria-label={t('post.removeImage')}
@@ -134,12 +145,15 @@ export default function PostImageUploader({ value, onChange }: PostImageUploader
       />
       <button
         type="button"
-        disabled={uploading}
+        disabled={uploading || value.length >= MAX_IMAGES}
         onClick={() => inputRef.current?.click()}
         className="rounded-lg border border-jeju-ocean px-4 py-2 text-sm font-semibold text-jeju-ocean transition hover:bg-seafoam disabled:opacity-50"
       >
         {uploading ? t('post.uploading') : t('post.uploadImage')}
       </button>
+      <span className="ml-2 text-xs text-coastal-gray">
+        {value.length} / {MAX_IMAGES}
+      </span>
 
       {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
     </div>

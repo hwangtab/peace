@@ -30,7 +30,8 @@
     "removeImage": "Remove photo",
     "ratingStar": "{{n}} stars",
     "anonymous": "Anonymous",
-    "hiddenNotice": "This post has been hidden by an administrator and is not visible to others."
+    "hiddenNotice": "This post has been hidden by an administrator and is not visible to others.",
+    "imageAlt": "Загруженное изображение {{n}}"
   },
   "comment": {
     "heading": "Comments",
@@ -51,6 +52,7 @@
     "bodyLength": "Текст должен содержать от 1 до 10000 символов.",
     "commentLength": "Комментарий должен содержать от 1 до 1000 символов.",
     "ratingRequired": "Выберите оценку.",
-    "ratingRange": "Оценка должна быть от 1 до 5."
+    "ratingRange": "Оценка должна быть от 1 до 5.",
+    "tooManyImages": "Можно загрузить не более {{max}} изображений."
   }
 }

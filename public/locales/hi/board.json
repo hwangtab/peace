@@ -30,7 +30,8 @@
     "removeImage": "Remove photo",
     "ratingStar": "{{n}} stars",
     "anonymous": "Anonymous",
-    "hiddenNotice": "This post has been hidden by an administrator and is not visible to others."
+    "hiddenNotice": "This post has been hidden by an administrator and is not visible to others.",
+    "imageAlt": "अपलोड की गई छवि {{n}}"
   },
   "comment": {
     "heading": "Comments",
@@ -51,6 +52,7 @@
     "bodyLength": "सामग्री 1~10000 अक्षरों की होनी चाहिए।",
     "commentLength": "टिप्पणी 1~1000 अक्षरों की होनी चाहिए।",
     "ratingRequired": "कृपया रेटिंग चुनें।",
-    "ratingRange": "रेटिंग 1 से 5 तक होनी चाहिए।"
+    "ratingRange": "रेटिंग 1 से 5 तक होनी चाहिए।",
+    "tooManyImages": "आप अधिकतम {{max}} छवियाँ अपलोड कर सकते हैं।"
   }
 }

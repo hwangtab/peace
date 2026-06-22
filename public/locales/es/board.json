@@ -30,7 +30,8 @@
     "removeImage": "Remove photo",
     "ratingStar": "{{n}} stars",
     "anonymous": "Anonymous",
-    "hiddenNotice": "This post has been hidden by an administrator and is not visible to others."
+    "hiddenNotice": "This post has been hidden by an administrator and is not visible to others.",
+    "imageAlt": "Imagen subida {{n}}"
   },
   "comment": {
     "heading": "Comments",
@@ -51,6 +52,7 @@
     "bodyLength": "El contenido debe tener entre 1 y 10000 caracteres.",
     "commentLength": "El comentario debe tener entre 1 y 1000 caracteres.",
     "ratingRequired": "Selecciona una valoración.",
-    "ratingRange": "La valoración debe ser de 1 a 5."
+    "ratingRange": "La valoración debe ser de 1 a 5.",
+    "tooManyImages": "Puedes subir hasta {{max}} imágenes."
   }
 }

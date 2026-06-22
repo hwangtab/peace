@@ -30,7 +30,8 @@
     "removeImage": "Remove photo",
     "ratingStar": "{{n}} stars",
     "anonymous": "Anonymous",
-    "hiddenNotice": "This post has been hidden by an administrator and is not visible to others."
+    "hiddenNotice": "This post has been hidden by an administrator and is not visible to others.",
+    "imageAlt": "الصورة المرفوعة {{n}}"
   },
   "comment": {
     "heading": "Comments",
@@ -51,6 +52,7 @@
     "bodyLength": "يجب أن يتكوّن المحتوى من 1 إلى 10000 حرف.",
     "commentLength": "يجب أن يتكوّن التعليق من 1 إلى 1000 حرف.",
     "ratingRequired": "يرجى اختيار تقييم.",
-    "ratingRange": "يجب أن يكون التقييم من 1 إلى 5."
+    "ratingRange": "يجب أن يكون التقييم من 1 إلى 5.",
+    "tooManyImages": "يمكنك رفع حتى {{max}} صور."
   }
 }
