@@ -33,13 +33,11 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
 }) => {
   const { t, i18n } = useTranslation();
   const router = useRouter();
-  const toneClasses = isScrolled ? 'text-jeju-ocean' : 'text-cloud-white';
-  const borderClasses = isScrolled
-    ? 'border-jeju-ocean hover:bg-jeju-ocean hover:text-white'
-    : 'border-cloud-white hover:bg-cloud-white hover:text-jeju-ocean';
-  const arrowClasses = isScrolled
-    ? 'text-jeju-ocean group-hover:text-white'
-    : 'text-cloud-white group-hover:text-jeju-ocean';
+  // 색·테두리는 보이는 라벨(span)에 적용한다. 상호작용은 위에 겹친 투명 select가 받으므로
+  // hover/focus는 group 기준으로 전파한다.
+  const labelClasses = isScrolled
+    ? 'text-jeju-ocean border-jeju-ocean group-hover:bg-jeju-ocean group-hover:text-white group-focus-within:ring-2 group-focus-within:ring-offset-2 group-focus-within:ring-jeju-ocean'
+    : 'text-cloud-white border-cloud-white group-hover:bg-cloud-white group-hover:text-jeju-ocean group-focus-within:ring-2 group-focus-within:ring-offset-2 group-focus-within:ring-jeju-ocean';
 
   const currentLocale = router.locale || i18n.language || 'ko';
 
@@ -50,27 +48,16 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
   };
 
   return (
-    <div className={`relative group ${className}`}>
+    <div className={`relative inline-flex group ${className}`}>
       <label className="sr-only" htmlFor="language-switcher">
         {t('nav.switch_language')}
       </label>
-      <select
-        id="language-switcher"
-        value={currentLocale}
-        onChange={handleChange}
-        className={`font-serif font-bold text-xs sm:text-sm px-2 py-2 pr-8 border rounded transition-colors duration-300 bg-transparent appearance-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${toneClasses} ${borderClasses}`}
-        aria-label={t('nav.switch_language')}
-      >
-        {LOCALES.map((locale) => (
-          <option key={locale} value={locale} className="text-deep-ocean">
-            {NATIVE_LANGUAGE_NAMES[locale] || locale}
-          </option>
-        ))}
-      </select>
+      {/* 보이는 라벨: 현재 언어에 딱 맞게 너비를 잡아 인증 버튼과 균형을 맞춘다 */}
       <span
-        className={`pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 transition-colors ${arrowClasses}`}
         aria-hidden="true"
+        className={`pointer-events-none inline-flex items-center gap-1.5 font-serif font-bold text-xs sm:text-sm px-3 py-2 rounded border transition-colors duration-300 bg-transparent ${labelClasses}`}
       >
+        {NATIVE_LANGUAGE_NAMES[currentLocale] || currentLocale}
         <svg
           className="h-3 w-3"
           viewBox="0 0 20 20"
@@ -83,6 +70,20 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
           <path d="M6 8l4 4 4-4" />
         </svg>
       </span>
+      {/* 투명 네이티브 select: 위에 겹쳐 클릭/키보드 상호작용만 담당 */}
+      <select
+        id="language-switcher"
+        value={currentLocale}
+        onChange={handleChange}
+        className="absolute inset-0 h-full w-full cursor-pointer opacity-0 focus:outline-none"
+        aria-label={t('nav.switch_language')}
+      >
+        {LOCALES.map((locale) => (
+          <option key={locale} value={locale} className="text-deep-ocean">
+            {NATIVE_LANGUAGE_NAMES[locale] || locale}
+          </option>
+        ))}
+      </select>
     </div>
   );
 };
