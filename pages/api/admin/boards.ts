@@ -163,6 +163,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try {
       const body = deleteSchema.parse(req.body);
 
+      const target = await supabase.from('boards').select('id').eq('id', body.id).maybeSingle();
+      if (target.error) {
+        res.status(500).json({ error: target.error.message });
+        return;
+      }
+      if (!target.data) {
+        res.status(404).json({ error: '게시판을 찾을 수 없습니다.' });
+        return;
+      }
+
       // Gather image paths before cascade removes the rows
       const { data: posts } = await supabase.from('posts').select('id').eq('board_id', body.id);
       const postIds = (posts ?? []).map((p) => p.id as string);

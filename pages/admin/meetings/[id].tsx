@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { z } from 'zod';
 import type { GetServerSidePropsContext } from 'next';
 import AdminLayout from '@/components/admin/AdminLayout';
 import MeetingMinutesEditor from '@/components/admin/meeting/MeetingMinutesEditor';
@@ -30,7 +31,8 @@ const dateFmt = new Intl.DateTimeFormat('ko-KR', { dateStyle: 'long' });
 
 const formatMeetingDate = (m: Meeting): string => {
   if (!m.meeting_date) return '일시 미정';
-  const base = dateFmt.format(new Date(m.meeting_date));
+  // date-only 문자열은 로컬 자정으로 파싱(UTC 파싱 시 음수 시간대에서 하루 밀림 방지)
+  const base = dateFmt.format(new Date(`${m.meeting_date}T00:00:00`));
   return m.meeting_time ? `${base} ${m.meeting_time}` : base;
 };
 
@@ -162,8 +164,9 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   const session = await getAdminSession(context);
   if (!session) return redirectToAdminLogin(context.resolvedUrl);
 
-  const id = context.params?.id;
-  if (typeof id !== 'string') return { notFound: true };
+  const parsedId = z.string().uuid().safeParse(context.params?.id);
+  if (!parsedId.success) return { notFound: true };
+  const id = parsedId.data;
 
   const supabase = createSupabaseServerClient(context.req, context.res);
   const [meetingRes, agendasRes, attendeesRes, attachmentsRes] = await Promise.all([

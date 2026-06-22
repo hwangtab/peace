@@ -16,6 +16,7 @@ export default function AgendaSection({ meetingId, agendas, canEdit }: AgendaSec
   const [error, setError] = useState('');
   const [isBusy, setIsBusy] = useState(false);
   const [busyId, setBusyId] = useState<string | null>(null);
+  const [isReordering, setIsReordering] = useState(false);
 
   const refresh = () => router.replace(router.asPath);
 
@@ -103,7 +104,10 @@ export default function AgendaSection({ meetingId, agendas, canEdit }: AgendaSec
   };
 
   // 표시 순서대로 sort_order를 재부여한다(초기값이 모두 0이라 첫 이동에서 0..n-1로 정규화됨).
+  // 전체 작업 동안 isReordering으로 모든 컨트롤을 잠그고(다른 항목 동시 변경/중복 이동 방지),
+  // 중간 PATCH가 실패하면 refresh()로 DB 실제 상태와 UI를 재동기화한다(부분 적용 후 정지 방지).
   const moveAgenda = async (index: number, dir: -1 | 1) => {
+    if (isReordering) return;
     const target = index + dir;
     if (target < 0 || target >= agendas.length) return;
     const moving = agendas[index];
@@ -111,7 +115,7 @@ export default function AgendaSection({ meetingId, agendas, canEdit }: AgendaSec
     if (!moving || !other) return;
 
     setError('');
-    setBusyId(moving.id);
+    setIsReordering(true);
 
     const reordered = [...agendas];
     reordered[index] = other;
@@ -129,15 +133,17 @@ export default function AgendaSection({ meetingId, agendas, canEdit }: AgendaSec
         const payload = await response.json();
         if (!response.ok || !payload.agenda) {
           setError(payload.error || '순서 변경에 실패했습니다.');
-          setBusyId(null);
+          setIsReordering(false);
+          refresh();
           return;
         }
       }
-      setBusyId(null);
+      setIsReordering(false);
       refresh();
     } catch {
       setError('네트워크 오류가 발생했습니다.');
-      setBusyId(null);
+      setIsReordering(false);
+      refresh();
     }
   };
 
@@ -168,7 +174,7 @@ export default function AgendaSection({ meetingId, agendas, canEdit }: AgendaSec
                       <button
                         type="button"
                         onClick={() => moveAgenda(idx, -1)}
-                        disabled={idx === 0 || busyId === a.id}
+                        disabled={idx === 0 || busyId === a.id || isReordering}
                         aria-label="위로 이동"
                         className="px-1 text-xs text-deep-ocean/50 hover:text-jeju-ocean disabled:opacity-30"
                       >
@@ -177,7 +183,7 @@ export default function AgendaSection({ meetingId, agendas, canEdit }: AgendaSec
                       <button
                         type="button"
                         onClick={() => moveAgenda(idx, 1)}
-                        disabled={idx === agendas.length - 1 || busyId === a.id}
+                        disabled={idx === agendas.length - 1 || busyId === a.id || isReordering}
                         aria-label="아래로 이동"
                         className="px-1 text-xs text-deep-ocean/50 hover:text-jeju-ocean disabled:opacity-30"
                       >
@@ -188,7 +194,7 @@ export default function AgendaSection({ meetingId, agendas, canEdit }: AgendaSec
                   {canEdit ? (
                     <select
                       value={a.status}
-                      disabled={busyId === a.id}
+                      disabled={busyId === a.id || isReordering}
                       onChange={(e) => changeStatus(a.id, e.target.value as AgendaStatus)}
                       className="rounded border border-deep-ocean/15 px-2 py-1 text-xs focus:border-jeju-ocean focus:outline-none"
                     >
@@ -207,7 +213,7 @@ export default function AgendaSection({ meetingId, agendas, canEdit }: AgendaSec
                     <button
                       type="button"
                       onClick={() => deleteAgenda(a.id)}
-                      disabled={busyId === a.id}
+                      disabled={busyId === a.id || isReordering}
                       className="text-xs font-semibold text-sunset-coral hover:underline disabled:opacity-60"
                     >
                       삭제
@@ -237,7 +243,7 @@ export default function AgendaSection({ meetingId, agendas, canEdit }: AgendaSec
           />
           <button
             type="submit"
-            disabled={isBusy}
+            disabled={isBusy || isReordering}
             className="rounded bg-deep-ocean px-4 py-2 text-sm font-semibold text-white transition hover:bg-jeju-ocean disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
           >
             {isBusy ? '추가 중…' : '안건 추가'}

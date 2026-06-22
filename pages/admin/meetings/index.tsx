@@ -17,7 +17,8 @@ const dateFmt = new Intl.DateTimeFormat('ko-KR', { dateStyle: 'medium' });
 
 const formatMeetingDate = (m: Meeting): string => {
   if (!m.meeting_date) return '일시 미정';
-  const base = dateFmt.format(new Date(m.meeting_date));
+  // date-only 문자열은 로컬 자정으로 파싱(UTC 파싱 시 음수 시간대에서 하루 밀림 방지)
+  const base = dateFmt.format(new Date(`${m.meeting_date}T00:00:00`));
   return m.meeting_time ? `${base} ${m.meeting_time}` : base;
 };
 
