@@ -44,6 +44,11 @@
     "notFound": "Post not found.",
     "saveFailed": "Could not save.",
     "invalidImageType": "Only PNG, JPEG, WebP, or GIF files are allowed.",
-    "imageTooLarge": "Images must be 10MB or smaller."
+    "imageTooLarge": "Images must be 10MB or smaller.",
+    "titleLength": "يجب أن يتكوّن العنوان من 1 إلى 120 حرفًا.",
+    "bodyLength": "يجب أن يتكوّن المحتوى من 1 إلى 10000 حرف.",
+    "commentLength": "يجب أن يتكوّن التعليق من 1 إلى 1000 حرف.",
+    "ratingRequired": "يرجى اختيار تقييم.",
+    "ratingRange": "يجب أن يكون التقييم من 1 إلى 5."
   }
 }

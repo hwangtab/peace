@@ -26,11 +26,11 @@ export default function ResetPasswordPage() {
           typeof window === 'undefined' ? undefined : `${window.location.origin}/update-password`,
       });
       setBusy(false);
-      if (rErr) return setError(mapAuthError(rErr));
+      if (rErr) return setError(t(mapAuthError(rErr)));
       setMessage(t('reset.sent'));
     } catch (err) {
       setBusy(false);
-      setError(mapAuthError(err as { message?: string }));
+      setError(t(mapAuthError(err as { message?: string })));
     }
   };
 

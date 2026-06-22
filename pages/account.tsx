@@ -29,7 +29,7 @@ export default function AccountPage() {
     setError('');
     setMessage('');
     const nick = validateNickname(nickname);
-    if (!nick.ok) return setError(nick.reason);
+    if (!nick.ok) return setError(t(nick.reason));
     if (!user) return;
     setBusy(true);
     try {
@@ -41,13 +41,13 @@ export default function AccountPage() {
       setBusy(false);
       if (upErr) {
         const isDup = upErr.code === '23505' || /duplicate|unique/i.test(upErr.message ?? '');
-        return setError(isDup ? t('signup.nicknameTaken') : mapAuthError(upErr));
+        return setError(isDup ? t('signup.nicknameTaken') : t(mapAuthError(upErr)));
       }
       await refreshProfile();
       setMessage(t('account.saved'));
     } catch (err) {
       setBusy(false);
-      setError(mapAuthError(err as { message?: string }));
+      setError(t(mapAuthError(err as { message?: string })));
     }
   };
 
@@ -55,18 +55,18 @@ export default function AccountPage() {
     setError('');
     setMessage('');
     const pw = validatePassword(newPassword);
-    if (!pw.ok) return setError(pw.reason);
+    if (!pw.ok) return setError(t(pw.reason));
     setBusy(true);
     try {
       const supabase = createSupabaseBrowserClient();
       const { error: upErr } = await supabase.auth.updateUser({ password: newPassword });
       setBusy(false);
-      if (upErr) return setError(mapAuthError(upErr));
+      if (upErr) return setError(t(mapAuthError(upErr)));
       setNewPassword('');
       setMessage(t('reset.updated'));
     } catch (err) {
       setBusy(false);
-      setError(mapAuthError(err as { message?: string }));
+      setError(t(mapAuthError(err as { message?: string })));
     }
   };
 

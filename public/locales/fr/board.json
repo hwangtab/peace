@@ -44,6 +44,11 @@
     "notFound": "Post not found.",
     "saveFailed": "Could not save.",
     "invalidImageType": "Only PNG, JPEG, WebP, or GIF files are allowed.",
-    "imageTooLarge": "Images must be 10MB or smaller."
+    "imageTooLarge": "Images must be 10MB or smaller.",
+    "titleLength": "Le titre doit comporter entre 1 et 120 caractères.",
+    "bodyLength": "Le contenu doit comporter entre 1 et 10 000 caractères.",
+    "commentLength": "Le commentaire doit comporter entre 1 et 1 000 caractères.",
+    "ratingRequired": "Veuillez sélectionner une note.",
+    "ratingRange": "La note doit être comprise entre 1 et 5."
   }
 }

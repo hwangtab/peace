@@ -24,7 +24,7 @@ export default function RatingStars({ value, max = 5, onSelect }: RatingStarsPro
               key={i}
               type="button"
               role="radio"
-              aria-checked={starValue === value}
+              aria-checked={starValue === rounded}
               aria-label={t('post.ratingStar', { n: starValue })}
               onClick={() => onSelect(starValue)}
               className="transition-colors text-golden-sun hover:text-golden-sun disabled:opacity-50"
@@ -38,7 +38,7 @@ export default function RatingStars({ value, max = 5, onSelect }: RatingStarsPro
   }
 
   return (
-    <span aria-label={`${value}점 / ${max}점`} className="inline-flex gap-0.5 text-golden-sun">
+    <span aria-label={`${value} / ${max}`} className="inline-flex gap-0.5 text-golden-sun">
       {Array.from({ length: max }, (_, i) => (
         <span key={i} aria-hidden="true">
           {i < rounded ? '★' : '☆'}

@@ -46,16 +46,18 @@ describe('validatePassword', () => {
 
 describe('mapAuthError', () => {
   it('maps already-registered', () => {
-    expect(mapAuthError({ message: 'User already registered' })).toMatch(/이미.*가입/);
+    expect(mapAuthError({ message: 'User already registered' })).toBe('errors.emailTaken');
   });
   it('maps invalid credentials', () => {
-    expect(mapAuthError({ message: 'Invalid login credentials' })).toMatch(/이메일|비밀번호/);
+    expect(mapAuthError({ message: 'Invalid login credentials' })).toBe(
+      'errors.invalidCredentials'
+    );
   });
   it('maps email-not-confirmed', () => {
-    expect(mapAuthError({ message: 'Email not confirmed' })).toMatch(/인증|확인/);
+    expect(mapAuthError({ message: 'Email not confirmed' })).toBe('errors.emailNotConfirmed');
   });
-  it('falls back to a generic message for unknown errors', () => {
-    expect(mapAuthError({ message: 'weird' })).toBe('요청을 처리하지 못했습니다.');
+  it('falls back to a generic key for unknown errors', () => {
+    expect(mapAuthError({ message: 'weird' })).toBe('errors.generic');
   });
   it('returns empty string for no error', () => {
     expect(mapAuthError(null)).toBe('');
