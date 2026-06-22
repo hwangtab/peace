@@ -11,7 +11,13 @@
     "by": "by",
     "more": "Load more",
     "prev": "Anterior",
-    "next": "Próximo"
+    "next": "Próximo",
+    "searchPlaceholder": "Buscar por título ou conteúdo",
+    "search": "Buscar",
+    "sortLatest": "Mais recentes",
+    "sortPopular": "Populares",
+    "clearSearch": "Limpar busca",
+    "noResults": "Nenhum resultado encontrado."
   },
   "post": {
     "title": "Title",

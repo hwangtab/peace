@@ -1,9 +1,16 @@
+import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import type { GetServerSidePropsContext } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import nextI18NextConfig from '../../../next-i18next.config';
-import { loadBoardBySlug, loadBoardPosts, loadBoardPostCount } from '@/lib/boardData';
+import {
+  loadBoardBySlug,
+  loadBoardPosts,
+  loadBoardPostCount,
+  type BoardSort,
+} from '@/lib/boardData';
 import type { Board, PostWithMeta } from '@/types/board';
 import PostCard from '@/components/board/PostCard';
 import { useOptionalAuth } from '@/components/auth/AuthProvider';
@@ -27,17 +34,52 @@ interface Props {
   hasMore: boolean;
   offset: number;
   total: number;
+  q: string;
+  sort: BoardSort;
 }
 
-export default function BoardSlugPage({ board, posts, hasMore, offset, total }: Props) {
+export default function BoardSlugPage({ board, posts, hasMore, offset, total, q, sort }: Props) {
   const { t } = useTranslation('board');
+  const router = useRouter();
   const auth = useOptionalAuth();
   const isLoggedIn = Boolean(auth?.user);
+
+  const [searchInput, setSearchInput] = useState(q);
 
   const nextOffset = offset + PAGE_SIZE;
   const prevOffset = Math.max(0, offset - PAGE_SIZE);
   const currentPage = Math.floor(offset / PAGE_SIZE) + 1;
   const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+
+  const basePath = `/board/${board.slug}`;
+
+  // 검색어(q)·정렬(sort)을 유지한 채 offset만 바꾸는 페이지 링크.
+  const pageHref = (newOffset: number) => ({
+    pathname: basePath,
+    query: {
+      ...(q ? { q } : {}),
+      ...(sort !== 'latest' ? { sort } : {}),
+      ...(newOffset > 0 ? { offset: String(newOffset) } : {}),
+    },
+  });
+
+  // 정렬 변경 — 검색어는 유지하되 페이지는 1로 리셋(offset 제거).
+  const sortHref = (newSort: BoardSort) => ({
+    pathname: basePath,
+    query: { ...(q ? { q } : {}), ...(newSort !== 'latest' ? { sort: newSort } : {}) },
+  });
+
+  const onSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    const next = searchInput.trim();
+    void router.push({
+      pathname: basePath,
+      query: { ...(next ? { q: next } : {}), ...(sort !== 'latest' ? { sort } : {}) },
+    });
+  };
+
+  const sortLinkCls = (active: boolean) =>
+    active ? 'font-bold text-jeju-ocean' : 'text-coastal-gray hover:text-jeju-ocean';
 
   return (
     <>
@@ -76,8 +118,52 @@ export default function BoardSlugPage({ board, posts, hasMore, offset, total }: 
           )}
         </div>
 
+        {/* Search + sort controls */}
+        <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <form onSubmit={onSearch} className="flex gap-2">
+            <input
+              type="search"
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+              placeholder={t('list.searchPlaceholder')}
+              aria-label={t('list.searchPlaceholder')}
+              className="w-full rounded-lg border border-seafoam px-3 py-1.5 text-sm text-deep-ocean focus:border-jeju-ocean focus:outline-none sm:w-56"
+            />
+            <button
+              type="submit"
+              className="flex-shrink-0 rounded-lg bg-jeju-ocean px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-deep-ocean"
+            >
+              {t('list.search')}
+            </button>
+          </form>
+          <div className="flex flex-shrink-0 items-center gap-2 text-sm">
+            <Link href={sortHref('latest')} className={sortLinkCls(sort === 'latest')}>
+              {t('list.sortLatest')}
+            </Link>
+            <span className="text-coastal-gray/40">|</span>
+            <Link href={sortHref('popular')} className={sortLinkCls(sort === 'popular')}>
+              {t('list.sortPopular')}
+            </Link>
+          </div>
+        </div>
+
+        {q && (
+          <p className="mb-4 text-sm text-coastal-gray">
+            “{q}”{' · '}
+            <Link
+              href={{
+                pathname: basePath,
+                query: { ...(sort !== 'latest' ? { sort } : {}) },
+              }}
+              className="text-jeju-ocean underline hover:opacity-80"
+            >
+              {t('list.clearSearch')}
+            </Link>
+          </p>
+        )}
+
         {posts.length === 0 ? (
-          <p className="text-coastal-gray">{t('list.empty')}</p>
+          <p className="text-coastal-gray">{q ? t('list.noResults') : t('list.empty')}</p>
         ) : (
           <ul className="space-y-3">
             {posts.map((post) => (
@@ -92,7 +178,7 @@ export default function BoardSlugPage({ board, posts, hasMore, offset, total }: 
           <div className="mt-8 flex items-center justify-between gap-4">
             {offset > 0 ? (
               <Link
-                href={`/board/${board.slug}?offset=${prevOffset}`}
+                href={pageHref(prevOffset)}
                 className="rounded-lg border border-jeju-ocean px-5 py-2 text-sm font-semibold text-jeju-ocean transition hover:bg-seafoam"
               >
                 ← {t('list.prev')}
@@ -105,7 +191,7 @@ export default function BoardSlugPage({ board, posts, hasMore, offset, total }: 
             </span>
             {hasMore ? (
               <Link
-                href={`/board/${board.slug}?offset=${nextOffset}`}
+                href={pageHref(nextOffset)}
                 className="rounded-lg border border-jeju-ocean px-5 py-2 text-sm font-semibold text-jeju-ocean transition hover:bg-seafoam"
               >
                 {t('list.next')} →
@@ -127,13 +213,15 @@ export const getServerSideProps = async ({ locale, params, query }: GetServerSid
     parseInt(typeof query.offset === 'string' ? query.offset : '0', 10) || 0
   );
   const offset = Math.floor(rawOffset / PAGE_SIZE) * PAGE_SIZE;
+  const q = typeof query.q === 'string' ? query.q.trim().slice(0, 100) : '';
+  const sort: BoardSort = query.sort === 'popular' ? 'popular' : 'latest';
 
   const board = await loadBoardBySlug(slug);
   if (!board) return { notFound: true };
 
   const [{ items: posts, hasMore }, total] = await Promise.all([
-    loadBoardPosts(board.id, { limit: PAGE_SIZE, offset }),
-    loadBoardPostCount(board.id),
+    loadBoardPosts(board.id, { limit: PAGE_SIZE, offset, keyword: q, sort }),
+    loadBoardPostCount(board.id, q),
   ]);
 
   return {
@@ -143,6 +231,8 @@ export const getServerSideProps = async ({ locale, params, query }: GetServerSid
       hasMore,
       offset,
       total,
+      q,
+      sort,
       ...(await serverSideTranslations(
         locale ?? 'ko',
         ['board', 'translation'],

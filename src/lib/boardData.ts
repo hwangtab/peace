@@ -46,34 +46,58 @@ export const loadBoardBySlug = async (slug: string): Promise<Board | null> => {
   return (data as Board) ?? null;
 };
 
+export type BoardSort = 'latest' | 'popular';
+
+const POST_LIST_SELECT = '*, profiles!posts_author_id_fkey(nickname), post_images(*)';
+
+// PostgREST의 or()/ilike() 필터 구문을 깨뜨리는 문자를 공백으로 치환하고 길이를 제한한다.
+const sanitizeKeyword = (kw: string): string =>
+  kw
+    .replace(/[%,()*\\]/g, ' ')
+    .trim()
+    .slice(0, 100);
+
 export const loadBoardPosts = async (
   boardId: string,
-  { limit = 20, offset = 0 }: { limit?: number; offset?: number }
+  {
+    limit = 20,
+    offset = 0,
+    keyword = '',
+    sort = 'latest',
+  }: { limit?: number; offset?: number; keyword?: string; sort?: BoardSort } = {}
 ): Promise<{ items: PostWithMeta[]; hasMore: boolean }> => {
   const client = getPublicClient();
   if (!client) return { items: [], hasMore: false };
   // Fetch one extra row to determine if more pages exist (avoids count:'exact').
-  const { data } = await client
+  let query = client
     .from('posts')
-    .select('*, profiles!posts_author_id_fkey(nickname), post_images(*)')
+    .select(POST_LIST_SELECT)
     .eq('board_id', boardId)
-    .eq('status', 'published')
-    .order('created_at', { ascending: false })
-    .range(offset, offset + limit);
+    .eq('status', 'published');
+  const kw = sanitizeKeyword(keyword);
+  if (kw) query = query.or(`title.ilike.%${kw}%,body.ilike.%${kw}%`);
+  query =
+    sort === 'popular'
+      ? query.order('like_count', { ascending: false }).order('created_at', { ascending: false })
+      : query.order('created_at', { ascending: false });
+  const { data } = await query.range(offset, offset + limit);
   const rows = (data as Record<string, unknown>[]) ?? [];
   const hasMore = rows.length > limit;
   const items = rows.slice(0, limit).map(mapPostRow);
   return { items, hasMore };
 };
 
-export const loadBoardPostCount = async (boardId: string): Promise<number> => {
+export const loadBoardPostCount = async (boardId: string, keyword = ''): Promise<number> => {
   const client = getPublicClient();
   if (!client) return 0;
-  const { count } = await client
+  let query = client
     .from('posts')
     .select('*', { count: 'exact', head: true })
     .eq('board_id', boardId)
     .eq('status', 'published');
+  const kw = sanitizeKeyword(keyword);
+  if (kw) query = query.or(`title.ilike.%${kw}%,body.ilike.%${kw}%`);
+  const { count } = await query;
   return count ?? 0;
 };
 
@@ -162,6 +186,7 @@ export const mapPostRow = (row: Record<string, unknown>): PostWithMeta => {
     rating: (row.rating as number | null) ?? null,
     status: row.status as 'published' | 'hidden',
     like_count: Number(row.like_count ?? 0),
+    comment_count: Number(row.comment_count ?? 0),
     created_at: String(row.created_at ?? ''),
     updated_at: String(row.updated_at ?? ''),
     author_nickname: profile?.nickname ?? '',

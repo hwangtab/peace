@@ -11,7 +11,13 @@
     "by": "by",
     "more": "Load more",
     "prev": "Назад",
-    "next": "Вперёд"
+    "next": "Вперёд",
+    "searchPlaceholder": "Поиск по заголовку или тексту",
+    "search": "Поиск",
+    "sortLatest": "Сначала новые",
+    "sortPopular": "Популярные",
+    "clearSearch": "Сбросить поиск",
+    "noResults": "Ничего не найдено."
   },
   "post": {
     "title": "Title",

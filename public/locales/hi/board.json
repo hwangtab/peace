@@ -11,7 +11,13 @@
     "by": "by",
     "more": "Load more",
     "prev": "पिछला",
-    "next": "अगला"
+    "next": "अगला",
+    "searchPlaceholder": "शीर्षक या सामग्री खोजें",
+    "search": "खोजें",
+    "sortLatest": "नवीनतम",
+    "sortPopular": "लोकप्रिय",
+    "clearSearch": "खोज हटाएँ",
+    "noResults": "कोई परिणाम नहीं मिला।"
   },
   "post": {
     "title": "Title",

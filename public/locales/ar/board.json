@@ -11,7 +11,13 @@
     "by": "by",
     "more": "Load more",
     "prev": "السابق",
-    "next": "التالي"
+    "next": "التالي",
+    "searchPlaceholder": "ابحث في العنوان أو المحتوى",
+    "search": "بحث",
+    "sortLatest": "الأحدث",
+    "sortPopular": "الأكثر شهرة",
+    "clearSearch": "مسح البحث",
+    "noResults": "لا توجد نتائج."
   },
   "post": {
     "title": "Title",
