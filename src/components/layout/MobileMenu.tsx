@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import { m as motion, AnimatePresence } from 'framer-motion';
-import { simpleMenuItems, campItems, albumItems } from './navigationData';
+import { simpleMenuItems, campItems, albumItems, communityItems } from './navigationData';
 import LanguageSwitcher from '../common/LanguageSwitcher';
 import Container from './Container';
 import { NavigationDropdownKey } from '@/hooks/useNavigation';
@@ -70,6 +70,15 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(
                     isPathActive={isPathActive}
                     onClose={onClose}
                   />
+
+                  <MobileDropdown
+                    label={t('nav.community')}
+                    items={communityItems}
+                    isOpen={mobileOpenDropdown === 'community'}
+                    onToggle={() => onToggleDropdown('community')}
+                    isPathActive={isPathActive}
+                    onClose={onClose}
+                  />
                 </div>
 
                 <div className="border-t border-coastal-gray/20 my-4 pt-4">
@@ -132,7 +141,7 @@ MobileMenu.displayName = 'MobileMenu';
 
 interface MobileDropdownProps {
   label: string;
-  items: { nameKey: string; path: string }[];
+  items: { nameKey?: string; label?: string; path: string }[];
   isOpen: boolean;
   onToggle: () => void;
   isPathActive: (path: string, exact?: boolean) => boolean;
@@ -181,7 +190,7 @@ const MobileDropdown: React.FC<MobileDropdownProps> = React.memo(
                   aria-current={isPathActive(item.path) ? 'page' : undefined}
                   onClick={onClose}
                 >
-                  {t(item.nameKey)}
+                  {item.label ?? (item.nameKey ? t(item.nameKey) : '')}
                 </Link>
               ))}
             </motion.div>

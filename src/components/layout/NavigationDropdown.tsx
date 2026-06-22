@@ -8,7 +8,9 @@ import { isRouteActive } from '@/utils/routeMatch';
 import { useHydrated } from '@/hooks/useHydrated';
 
 interface DropdownItem {
-  nameKey: string;
+  // 다국어 라벨은 nameKey(locale JSON), 고정 한국어 라벨(예: 게시판 이름)은 label로 직접 지정.
+  nameKey?: string;
+  label?: string;
   path: string;
 }
 
@@ -158,7 +160,7 @@ const DropdownMenu: React.FC<{
           }
           onClick={onDismiss}
         >
-          {t(item.nameKey)}
+          {item.label ?? (item.nameKey ? t(item.nameKey) : '')}
         </Link>
       ))}
     </motion.div>
