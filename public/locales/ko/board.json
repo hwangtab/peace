@@ -30,7 +30,8 @@
     "removeImage": "사진 제거",
     "ratingStar": "{{n}}점",
     "anonymous": "익명",
-    "hiddenNotice": "이 글은 관리자에 의해 숨김 처리되어 다른 사람에게 보이지 않습니다."
+    "hiddenNotice": "이 글은 관리자에 의해 숨김 처리되어 다른 사람에게 보이지 않습니다.",
+    "imageAlt": "업로드한 이미지 {{n}}"
   },
   "comment": {
     "heading": "댓글",
@@ -51,6 +52,7 @@
     "bodyLength": "내용은 1~10000자여야 합니다.",
     "commentLength": "댓글은 1~1000자여야 합니다.",
     "ratingRequired": "별점을 선택해 주세요.",
-    "ratingRange": "별점은 1~5점입니다."
+    "ratingRange": "별점은 1~5점입니다.",
+    "tooManyImages": "이미지는 최대 {{max}}장까지 올릴 수 있습니다."
   }
 }

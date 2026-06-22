@@ -30,7 +30,8 @@
     "removeImage": "Remove photo",
     "ratingStar": "{{n}} stars",
     "anonymous": "Anonymous",
-    "hiddenNotice": "This post has been hidden by an administrator and is not visible to others."
+    "hiddenNotice": "This post has been hidden by an administrator and is not visible to others.",
+    "imageAlt": "已上传图片 {{n}}"
   },
   "comment": {
     "heading": "Comments",
@@ -51,6 +52,7 @@
     "bodyLength": "正文需为 1~10000 个字符。",
     "commentLength": "评论需为 1~1000 个字符。",
     "ratingRequired": "请选择评分。",
-    "ratingRange": "评分为 1~5 分。"
+    "ratingRange": "评分为 1~5 分。",
+    "tooManyImages": "最多可上传 {{max}} 张图片。"
   }
 }

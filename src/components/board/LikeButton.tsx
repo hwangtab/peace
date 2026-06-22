@@ -117,7 +117,7 @@ export default function LikeButton({ postId, initialCount }: Props) {
           disabled ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer',
         ].join(' ')}
       >
-        <span aria-hidden="true">♡</span>
+        <span aria-hidden="true">{liked ? '♥' : '♡'}</span>
         <span>{t('post.likes')}</span>
         <span>{count}</span>
       </button>

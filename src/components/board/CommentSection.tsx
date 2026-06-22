@@ -201,6 +201,7 @@ export default function CommentSection({ postId, initialComments, readOnly = fal
                 onChange={(e) => setBody(e.target.value)}
                 placeholder={t('comment.placeholder')}
                 rows={3}
+                maxLength={1000}
                 className="w-full rounded-xl border border-seafoam p-3 text-sm text-deep-ocean placeholder-coastal-gray focus:border-jeju-ocean focus:outline-none"
               />
               {validationError && <p className="mt-1 text-xs text-red-500">{validationError}</p>}
