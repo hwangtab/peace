@@ -11,7 +11,13 @@
     "by": "by",
     "more": "Load more",
     "prev": "前へ",
-    "next": "次へ"
+    "next": "次へ",
+    "searchPlaceholder": "タイトル・本文を検索",
+    "search": "検索",
+    "sortLatest": "新着順",
+    "sortPopular": "人気順",
+    "clearSearch": "検索を解除",
+    "noResults": "検索結果がありません。"
   },
   "post": {
     "title": "Title",

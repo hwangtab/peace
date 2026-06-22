@@ -11,7 +11,13 @@
     "by": "by",
     "more": "Load more",
     "prev": "上一頁",
-    "next": "下一頁"
+    "next": "下一頁",
+    "searchPlaceholder": "搜尋標題或內容",
+    "search": "搜尋",
+    "sortLatest": "最新",
+    "sortPopular": "熱門",
+    "clearSearch": "清除搜尋",
+    "noResults": "沒有找到結果。"
   },
   "post": {
     "title": "Title",

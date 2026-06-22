@@ -26,6 +26,7 @@ export interface Post {
   rating: number | null;
   status: 'published' | 'hidden';
   like_count: number;
+  comment_count: number;
   created_at: string;
   updated_at: string;
 }

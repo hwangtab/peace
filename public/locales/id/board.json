@@ -11,7 +11,13 @@
     "by": "by",
     "more": "Load more",
     "prev": "Sebelumnya",
-    "next": "Berikutnya"
+    "next": "Berikutnya",
+    "searchPlaceholder": "Cari judul atau isi",
+    "search": "Cari",
+    "sortLatest": "Terbaru",
+    "sortPopular": "Populer",
+    "clearSearch": "Hapus pencarian",
+    "noResults": "Tidak ada hasil."
   },
   "post": {
     "title": "Title",

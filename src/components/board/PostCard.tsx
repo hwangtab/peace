@@ -33,11 +33,13 @@ export default function PostCard({ post, boardSlug }: PostCardProps) {
       )}
       <div className="min-w-0 flex-1">
         <p className="truncate font-semibold text-deep-ocean">{post.title}</p>
-        <p className="mt-1 text-sm text-coastal-gray">
+        {post.body && <p className="mt-1 line-clamp-2 text-sm text-coastal-gray">{post.body}</p>}
+        <p className="mt-2 text-sm text-coastal-gray">
           {post.author_nickname || t('post.anonymous')} · {dateStr}
         </p>
         <div className="mt-2 flex items-center gap-3 text-sm text-coastal-gray">
           <span>♡ {post.like_count}</span>
+          <span>💬 {post.comment_count}</span>
           {post.rating != null && <RatingStars value={post.rating} />}
         </div>
       </div>
