@@ -42,9 +42,7 @@ export default function EditPostPage({ board, post }: Props) {
 
   return (
     <main className="mx-auto max-w-2xl px-4 py-12">
-      <h1 className="mb-8 text-2xl font-bold text-deep-ocean">
-        {t('post.edit')}
-      </h1>
+      <h1 className="mb-8 text-2xl font-bold text-deep-ocean">{t('post.edit')}</h1>
       <PostForm board={board} initial={post} mode="edit" />
     </main>
   );

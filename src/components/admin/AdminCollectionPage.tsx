@@ -520,11 +520,11 @@ export default function AdminCollectionPage({
             <p className="text-sm text-coastal-gray">{label as string}</p>
             <p className="mt-1 text-2xl font-bold">
               {value as number}
-              {approx ? <span className="ml-1 text-base font-normal text-coastal-gray">+</span> : null}
+              {approx ? (
+                <span className="ml-1 text-base font-normal text-coastal-gray">+</span>
+              ) : null}
             </p>
-            {approx ? (
-              <p className="mt-0.5 text-xs text-coastal-gray">로드된 항목 기준</p>
-            ) : null}
+            {approx ? <p className="mt-0.5 text-xs text-coastal-gray">로드된 항목 기준</p> : null}
           </div>
         ))}
       </div>
@@ -625,45 +625,45 @@ export default function AdminCollectionPage({
           </div>
           <div className="space-y-4 p-4">
             <fieldset disabled={!canEdit} className="space-y-4 border-0 p-0 disabled:opacity-70">
-            {config.fields.map((field) => (
-              <label key={field.name} className="block">
-                <span className="mb-1 block text-sm font-semibold text-deep-ocean">
-                  {field.label}
-                  {field.required ? <span className="text-sunset-coral"> *</span> : null}
-                </span>
-                {field.kind === 'textarea' ? (
-                  <textarea
-                    value={form[field.name] ?? ''}
-                    onChange={(event) => updateField(field.name, event.target.value)}
-                    rows={field.name === 'value' || field.name === 'description' ? 6 : 3}
-                    placeholder={field.placeholder}
-                    className="w-full rounded border border-deep-ocean/15 px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
-                  />
-                ) : field.kind === 'select' ? (
-                  <select
-                    value={form[field.name] ?? ''}
-                    onChange={(event) => updateField(field.name, event.target.value)}
-                    className="w-full rounded border border-deep-ocean/15 bg-white px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
-                  >
-                    {field.options?.map((option) => (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </select>
-                ) : (
-                  <input
-                    type={
-                      field.kind === 'number' ? 'number' : field.kind === 'date' ? 'date' : 'text'
-                    }
-                    value={form[field.name] ?? ''}
-                    onChange={(event) => updateField(field.name, event.target.value)}
-                    placeholder={field.placeholder}
-                    className="w-full rounded border border-deep-ocean/15 px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
-                  />
-                )}
-              </label>
-            ))}
+              {config.fields.map((field) => (
+                <label key={field.name} className="block">
+                  <span className="mb-1 block text-sm font-semibold text-deep-ocean">
+                    {field.label}
+                    {field.required ? <span className="text-sunset-coral"> *</span> : null}
+                  </span>
+                  {field.kind === 'textarea' ? (
+                    <textarea
+                      value={form[field.name] ?? ''}
+                      onChange={(event) => updateField(field.name, event.target.value)}
+                      rows={field.name === 'value' || field.name === 'description' ? 6 : 3}
+                      placeholder={field.placeholder}
+                      className="w-full rounded border border-deep-ocean/15 px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
+                    />
+                  ) : field.kind === 'select' ? (
+                    <select
+                      value={form[field.name] ?? ''}
+                      onChange={(event) => updateField(field.name, event.target.value)}
+                      className="w-full rounded border border-deep-ocean/15 bg-white px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
+                    >
+                      {field.options?.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
+                  ) : (
+                    <input
+                      type={
+                        field.kind === 'number' ? 'number' : field.kind === 'date' ? 'date' : 'text'
+                      }
+                      value={form[field.name] ?? ''}
+                      onChange={(event) => updateField(field.name, event.target.value)}
+                      placeholder={field.placeholder}
+                      className="w-full rounded border border-deep-ocean/15 px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
+                    />
+                  )}
+                </label>
+              ))}
             </fieldset>
 
             {config.collection === 'gallery' && canEdit && (

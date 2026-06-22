@@ -8,11 +8,12 @@ import type { Board } from '@/types/board';
 
 const createSchema = z.object({
   slug: z.string().trim(),
-  name: z.string().trim().min(1, '게시판 이름은 필수입니다.').max(80, '이름은 80자 이하여야 합니다.'),
-  description: z.preprocess(
-    (v) => (typeof v === 'string' && v.trim() ? v.trim() : ''),
-    z.string()
-  ),
+  name: z
+    .string()
+    .trim()
+    .min(1, '게시판 이름은 필수입니다.')
+    .max(80, '이름은 80자 이하여야 합니다.'),
+  description: z.preprocess((v) => (typeof v === 'string' && v.trim() ? v.trim() : ''), z.string()),
   sort_order: z.number().int().min(0).default(0),
   has_rating: z.boolean().default(false),
   is_active: z.boolean().default(true),
@@ -28,12 +29,7 @@ const updateSchema = z
       .min(1, '게시판 이름은 필수입니다.')
       .max(80, '이름은 80자 이하여야 합니다.')
       .optional(),
-    description: z
-      .preprocess(
-        (v) => (typeof v === 'string' ? v.trim() : v),
-        z.string()
-      )
-      .optional(),
+    description: z.preprocess((v) => (typeof v === 'string' ? v.trim() : v), z.string()).optional(),
     sort_order: z.number().int().min(0).optional(),
     has_rating: z.boolean().optional(),
     is_active: z.boolean().optional(),

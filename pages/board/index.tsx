@@ -49,10 +49,7 @@ export default function BoardIndexPage({ boards }: Props) {
 }
 
 export const getServerSideProps = async ({ locale }: GetServerSidePropsContext) => {
-  const [rawBoards, postCounts] = await Promise.all([
-    loadActiveBoards(),
-    loadBoardPostCounts(),
-  ]);
+  const [rawBoards, postCounts] = await Promise.all([loadActiveBoards(), loadBoardPostCounts()]);
 
   const boards: BoardWithCount[] = rawBoards.map((board) => ({
     ...board,
@@ -62,7 +59,11 @@ export const getServerSideProps = async ({ locale }: GetServerSidePropsContext) 
   return {
     props: {
       boards,
-      ...(await serverSideTranslations(locale ?? 'ko', ['board', 'translation'], nextI18NextConfig)),
+      ...(await serverSideTranslations(
+        locale ?? 'ko',
+        ['board', 'translation'],
+        nextI18NextConfig
+      )),
     },
   };
 };

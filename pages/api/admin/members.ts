@@ -56,12 +56,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const body = createSchema.parse(req.body);
       const { data, error } = await supabase
         .from('admin_members')
-        .insert({ email: body.email, display_name: body.display_name, role: body.role, active: true })
+        .insert({
+          email: body.email,
+          display_name: body.display_name,
+          role: body.role,
+          active: true,
+        })
         .select('*')
         .single();
       if (error) {
-        const message =
-          error.code === '23505' ? '이미 등록된 이메일입니다.' : error.message;
+        const message = error.code === '23505' ? '이미 등록된 이메일입니다.' : error.message;
         res.status(error.code === '23505' ? 409 : 500).json({ error: message });
         return;
       }
@@ -97,9 +101,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // Never let the last active owner be demoted or deactivated, or the CMS
       // becomes unmanageable.
       const losesOwnerStatus =
-        current.active &&
-        current.role === 'owner' &&
-        !(nextRole === 'owner' && nextActive);
+        current.active && current.role === 'owner' && !(nextRole === 'owner' && nextActive);
       if (losesOwnerStatus) {
         const { count, error: countError } = await supabase
           .from('admin_members')

@@ -18,9 +18,7 @@ export const validateNickname = (
   return { ok: true, value: trimmed };
 };
 
-export const validatePassword = (
-  value: string
-): { ok: true } | { ok: false; reason: string } => {
+export const validatePassword = (value: string): { ok: true } | { ok: false; reason: string } => {
   if ((value ?? '').length < PASSWORD_MIN) {
     return { ok: false, reason: `비밀번호는 최소 ${PASSWORD_MIN}자 이상이어야 합니다.` };
   }

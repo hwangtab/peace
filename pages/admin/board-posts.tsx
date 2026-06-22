@@ -57,8 +57,7 @@ export default function AdminBoardPostsPage({
   };
 
   const toggleStatus = async (post: PostRow) => {
-    const nextStatus: 'published' | 'hidden' =
-      post.status === 'published' ? 'hidden' : 'published';
+    const nextStatus: 'published' | 'hidden' = post.status === 'published' ? 'hidden' : 'published';
     setBusyId(post.id);
     setMessage('');
     setError('');
@@ -188,9 +187,7 @@ export default function AdminBoardPostsPage({
                 <li key={comment.id} className="flex flex-wrap items-center gap-3 px-4 py-3">
                   <div className="min-w-0 flex-1">
                     <p className="truncate text-sm text-coastal-gray">
-                      {comment.body.length > 80
-                        ? comment.body.slice(0, 80) + '…'
-                        : comment.body}
+                      {comment.body.length > 80 ? comment.body.slice(0, 80) + '…' : comment.body}
                     </p>
                     <p className="mt-0.5 text-xs text-coastal-gray">
                       작성자: {comment.author_nickname} &middot; 글: {comment.post_title} &middot;{' '}

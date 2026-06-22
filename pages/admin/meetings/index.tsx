@@ -64,7 +64,9 @@ export default function AdminMeetingsPage({
       {meetings.length === 0 ? (
         <p className="rounded border border-deep-ocean/10 bg-white px-4 py-10 text-center text-sm text-deep-ocean/60">
           등록된 회의가 없습니다.
-          {canEdit ? ' 상단의 “새 회의”로 추가하세요.' : ' 편집 권한이 있는 관리자에게 등록을 요청하세요.'}
+          {canEdit
+            ? ' 상단의 “새 회의”로 추가하세요.'
+            : ' 편집 권한이 있는 관리자에게 등록을 요청하세요.'}
         </p>
       ) : (
         <div className="space-y-8">
@@ -79,7 +81,9 @@ export default function AdminMeetingsPage({
                       className="flex items-center justify-between gap-3 rounded border border-deep-ocean/10 bg-white px-4 py-3 transition hover:border-jeju-ocean/40 hover:bg-jeju-ocean/5"
                     >
                       <span className="min-w-0">
-                        <span className="block truncate font-semibold text-deep-ocean">{m.title}</span>
+                        <span className="block truncate font-semibold text-deep-ocean">
+                          {m.title}
+                        </span>
                         <span className="block text-sm text-deep-ocean/60">
                           {formatMeetingDate(m)}
                           {m.location ? ` · ${m.location}` : ''}

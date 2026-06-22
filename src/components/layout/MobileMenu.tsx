@@ -84,7 +84,10 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(
                       </Link>
                       <button
                         type="button"
-                        onClick={() => { void auth.signOut(); onClose(); }}
+                        onClick={() => {
+                          void auth.signOut();
+                          onClose();
+                        }}
                         className="block w-full text-left py-3 font-serif font-bold text-coastal-gray hover:text-sunset-coral break-words rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
                       >
                         {t('memberNav.signout')}

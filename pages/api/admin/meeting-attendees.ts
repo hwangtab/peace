@@ -3,12 +3,15 @@ import { z, ZodError } from 'zod';
 import { requireAdminRole } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 
-const blankToEmpty = (v: unknown) =>
-  typeof v === 'string' && v.trim() ? v.trim() : '';
+const blankToEmpty = (v: unknown) => (typeof v === 'string' && v.trim() ? v.trim() : '');
 
 const createSchema = z.object({
   meeting_id: z.string().uuid(),
-  name: z.string().trim().min(1, '참석자 이름은 필수입니다.').max(50, '이름은 50자 이하여야 합니다.'),
+  name: z
+    .string()
+    .trim()
+    .min(1, '참석자 이름은 필수입니다.')
+    .max(50, '이름은 50자 이하여야 합니다.'),
   note: z.preprocess(blankToEmpty, z.string().max(200, '비고는 200자 이하여야 합니다.')),
 });
 

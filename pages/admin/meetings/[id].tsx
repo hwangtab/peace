@@ -11,12 +11,7 @@ import AttachmentSection from '@/components/admin/meeting/AttachmentSection';
 import { getAdminSession, canEditContent, redirectToAdminLogin } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import { MEETING_STATUS_LABELS } from '@/lib/meetingForms';
-import type {
-  Meeting,
-  MeetingAgenda,
-  MeetingAttendee,
-  MeetingAttachment,
-} from '@/types/meeting';
+import type { Meeting, MeetingAgenda, MeetingAttendee, MeetingAttachment } from '@/types/meeting';
 import type { AdminMember } from '@/types/cms';
 
 interface MeetingDetailPageProps {
@@ -97,7 +92,10 @@ export default function MeetingDetailPage({
 
   return (
     <AdminLayout title="회의 상세" member={member}>
-      <Link href="/admin/meetings" className="mb-4 inline-block text-sm text-jeju-ocean hover:text-deep-ocean">
+      <Link
+        href="/admin/meetings"
+        className="mb-4 inline-block text-sm text-jeju-ocean hover:text-deep-ocean"
+      >
         ← 회의 목록
       </Link>
 
@@ -154,7 +152,11 @@ export default function MeetingDetailPage({
         <AgendaSection meetingId={meeting.id} agendas={agendas} canEdit={canEdit} />
         <AttendeeSection meetingId={meeting.id} attendees={attendees} canEdit={canEdit} />
         <AttachmentSection meetingId={meeting.id} attachments={attachments} canEdit={canEdit} />
-        <MeetingMinutesEditor meetingId={meeting.id} initialMd={meeting.minutes_md} canEdit={canEdit} />
+        <MeetingMinutesEditor
+          meetingId={meeting.id}
+          initialMd={meeting.minutes_md}
+          canEdit={canEdit}
+        />
       </div>
     </AdminLayout>
   );

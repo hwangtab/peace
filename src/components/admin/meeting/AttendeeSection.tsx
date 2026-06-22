@@ -37,7 +37,11 @@ export default function AttendeeSection({ meetingId, attendees, canEdit }: Atten
       const response = await fetch('/api/admin/meeting-attendees', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ meeting_id: meetingId, name: nameResult.value, note: noteResult.value }),
+        body: JSON.stringify({
+          meeting_id: meetingId,
+          name: nameResult.value,
+          note: noteResult.value,
+        }),
       });
       const payload = await response.json();
       if (!response.ok || !payload.attendee) {
@@ -81,7 +85,9 @@ export default function AttendeeSection({ meetingId, attendees, canEdit }: Atten
 
   return (
     <section className="rounded border border-deep-ocean/10 bg-white p-5">
-      <h2 className="mb-3 font-display text-lg font-bold text-deep-ocean">참석자 ({attendees.length})</h2>
+      <h2 className="mb-3 font-display text-lg font-bold text-deep-ocean">
+        참석자 ({attendees.length})
+      </h2>
 
       {error && (
         <p className="mb-3 whitespace-pre-wrap rounded bg-sunset-coral/10 px-3 py-2 text-sm text-sunset-coral">
@@ -117,7 +123,10 @@ export default function AttendeeSection({ meetingId, attendees, canEdit }: Atten
       )}
 
       {canEdit && (
-        <form onSubmit={addAttendee} className="flex flex-wrap gap-2 border-t border-deep-ocean/10 pt-4">
+        <form
+          onSubmit={addAttendee}
+          className="flex flex-wrap gap-2 border-t border-deep-ocean/10 pt-4"
+        >
           <input
             className="min-w-[8rem] flex-1 rounded border border-deep-ocean/15 px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
             value={name}

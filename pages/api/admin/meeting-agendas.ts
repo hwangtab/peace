@@ -3,13 +3,19 @@ import { z, ZodError } from 'zod';
 import { requireAdminRole } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 
-const blankToEmpty = (v: unknown) =>
-  typeof v === 'string' && v.trim() ? v.trim() : '';
+const blankToEmpty = (v: unknown) => (typeof v === 'string' && v.trim() ? v.trim() : '');
 
 const createSchema = z.object({
   meeting_id: z.string().uuid(),
-  title: z.string().trim().min(1, '안건 제목은 필수입니다.').max(200, '안건 제목은 200자 이하여야 합니다.'),
-  content: z.preprocess(blankToEmpty, z.string().max(10000, '안건 내용은 10000자 이하여야 합니다.')),
+  title: z
+    .string()
+    .trim()
+    .min(1, '안건 제목은 필수입니다.')
+    .max(200, '안건 제목은 200자 이하여야 합니다.'),
+  content: z.preprocess(
+    blankToEmpty,
+    z.string().max(10000, '안건 내용은 10000자 이하여야 합니다.')
+  ),
 });
 
 const updateSchema = z

@@ -3,14 +3,17 @@ import { z, ZodError } from 'zod';
 import { requireAdminRole } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 
-const emptyToNull = (v: unknown) =>
-  typeof v === 'string' && v.trim() ? v.trim() : null;
-const blankToEmpty = (v: unknown) =>
-  typeof v === 'string' && v.trim() ? v.trim() : '';
+const emptyToNull = (v: unknown) => (typeof v === 'string' && v.trim() ? v.trim() : null);
+const blankToEmpty = (v: unknown) => (typeof v === 'string' && v.trim() ? v.trim() : '');
 
 const updateSchema = z
   .object({
-    title: z.string().trim().min(1, '제목은 필수입니다.').max(200, '제목은 200자 이하여야 합니다.').optional(),
+    title: z
+      .string()
+      .trim()
+      .min(1, '제목은 필수입니다.')
+      .max(200, '제목은 200자 이하여야 합니다.')
+      .optional(),
     meeting_date: z
       .preprocess(
         emptyToNull,
@@ -20,8 +23,12 @@ const updateSchema = z
           .nullable()
       )
       .optional(),
-    meeting_time: z.preprocess(blankToEmpty, z.string().max(20, '시간은 20자 이하여야 합니다.')).optional(),
-    location: z.preprocess(blankToEmpty, z.string().max(200, '장소는 200자 이하여야 합니다.')).optional(),
+    meeting_time: z
+      .preprocess(blankToEmpty, z.string().max(20, '시간은 20자 이하여야 합니다.'))
+      .optional(),
+    location: z
+      .preprocess(blankToEmpty, z.string().max(200, '장소는 200자 이하여야 합니다.'))
+      .optional(),
     status: z.enum(['scheduled', 'completed']).optional(),
     minutes_md: z.string().max(100000, '회의록은 100000자 이하여야 합니다.').optional(),
   })
@@ -97,9 +104,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       .from('meeting_attachments')
       .select('file_path')
       .eq('meeting_id', id);
-    const paths = (attachments.data ?? [])
-      .map((row) => row.file_path as string)
-      .filter(Boolean);
+    const paths = (attachments.data ?? []).map((row) => row.file_path as string).filter(Boolean);
     if (paths.length > 0) {
       try {
         await supabase.storage.from('meeting-files').remove(paths);

@@ -42,10 +42,7 @@ export default function NewPostPage({ board }: Props) {
   );
 }
 
-export const getServerSideProps = async ({
-  locale,
-  params,
-}: GetServerSidePropsContext) => {
+export const getServerSideProps = async ({ locale, params }: GetServerSidePropsContext) => {
   const slug = typeof params?.slug === 'string' ? params.slug : '';
   const board = await loadBoardBySlug(slug);
   if (!board) return { notFound: true };

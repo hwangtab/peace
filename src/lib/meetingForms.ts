@@ -5,12 +5,7 @@ const trimmed = (v: string) => (v ?? '').trim();
 type Ok<T> = { ok: true; value: T };
 type Err = { ok: false; reason: string };
 
-const lenInRange = (
-  v: string,
-  min: number,
-  max: number,
-  reason: string
-): Ok<string> | Err => {
+const lenInRange = (v: string, min: number, max: number, reason: string): Ok<string> | Err => {
   const t = trimmed(v);
   if (t.length < min || t.length > max) return { ok: false, reason };
   return { ok: true, value: t };
@@ -30,11 +25,7 @@ export const validateMeetingDate = (v: string): Ok<string | null> | Err => {
   const m = Number(parts[1]);
   const d = Number(parts[2]);
   const date = new Date(Date.UTC(y, m - 1, d));
-  if (
-    date.getUTCFullYear() !== y ||
-    date.getUTCMonth() !== m - 1 ||
-    date.getUTCDate() !== d
-  ) {
+  if (date.getUTCFullYear() !== y || date.getUTCMonth() !== m - 1 || date.getUTCDate() !== d) {
     return { ok: false, reason: '존재하지 않는 날짜입니다.' };
   }
   return { ok: true, value: t };

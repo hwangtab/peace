@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { AGENDA_STATUSES, AGENDA_STATUS_LABELS, validateAgendaTitle, validateAgendaContent } from '@/lib/meetingForms';
+import {
+  AGENDA_STATUSES,
+  AGENDA_STATUS_LABELS,
+  validateAgendaTitle,
+  validateAgendaContent,
+} from '@/lib/meetingForms';
 import type { MeetingAgenda, AgendaStatus } from '@/types/meeting';
 
 interface AgendaSectionProps {
@@ -38,7 +43,11 @@ export default function AgendaSection({ meetingId, agendas, canEdit }: AgendaSec
       const response = await fetch('/api/admin/meeting-agendas', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ meeting_id: meetingId, title: titleResult.value, content: contentResult.value }),
+        body: JSON.stringify({
+          meeting_id: meetingId,
+          title: titleResult.value,
+          content: contentResult.value,
+        }),
       });
       const payload = await response.json();
       if (!response.ok || !payload.agenda) {
@@ -149,7 +158,9 @@ export default function AgendaSection({ meetingId, agendas, canEdit }: AgendaSec
 
   return (
     <section className="rounded border border-deep-ocean/10 bg-white p-5">
-      <h2 className="mb-3 font-display text-lg font-bold text-deep-ocean">안건 ({agendas.length})</h2>
+      <h2 className="mb-3 font-display text-lg font-bold text-deep-ocean">
+        안건 ({agendas.length})
+      </h2>
 
       {error && (
         <p className="mb-3 whitespace-pre-wrap rounded bg-sunset-coral/10 px-3 py-2 text-sm text-sunset-coral">
@@ -166,7 +177,11 @@ export default function AgendaSection({ meetingId, agendas, canEdit }: AgendaSec
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
                   <p className="font-semibold text-deep-ocean">{a.title}</p>
-                  {a.content && <p className="mt-1 whitespace-pre-wrap text-sm text-deep-ocean/70">{a.content}</p>}
+                  {a.content && (
+                    <p className="mt-1 whitespace-pre-wrap text-sm text-deep-ocean/70">
+                      {a.content}
+                    </p>
+                  )}
                 </div>
                 <div className="flex shrink-0 items-center gap-2">
                   {canEdit && (

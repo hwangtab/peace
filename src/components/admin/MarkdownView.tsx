@@ -48,11 +48,12 @@ const components: Components = {
     />
   ),
   hr: () => <hr className="my-8 border-deep-ocean/10" />,
-  code: (props) => (
-    <code className="rounded bg-ocean-sand/50 px-1.5 py-0.5 text-sm" {...props} />
-  ),
+  code: (props) => <code className="rounded bg-ocean-sand/50 px-1.5 py-0.5 text-sm" {...props} />,
   pre: (props) => (
-    <pre className="my-4 overflow-x-auto rounded border border-deep-ocean/10 bg-[#f5f7f2] p-4 text-sm" {...props} />
+    <pre
+      className="my-4 overflow-x-auto rounded border border-deep-ocean/10 bg-[#f5f7f2] p-4 text-sm"
+      {...props}
+    />
   ),
   table: (props) => (
     <div className="my-4 overflow-x-auto">

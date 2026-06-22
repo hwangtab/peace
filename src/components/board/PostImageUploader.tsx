@@ -128,7 +128,9 @@ export default function PostImageUploader({ value, onChange }: PostImageUploader
         type="file"
         accept="image/png,image/jpeg,image/webp,image/gif"
         className="hidden"
-        onChange={(e) => { void handleFileChange(e); }}
+        onChange={(e) => {
+          void handleFileChange(e);
+        }}
       />
       <button
         type="button"
