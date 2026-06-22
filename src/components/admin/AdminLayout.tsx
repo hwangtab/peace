@@ -33,7 +33,7 @@ export default function AdminLayout({ title, member, children }: AdminLayoutProp
 
   const handleSignOut = async () => {
     await createSupabaseBrowserClient().auth.signOut();
-    await router.push('/admin/login');
+    await router.push('/login');
   };
 
   return (
