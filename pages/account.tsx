@@ -8,6 +8,9 @@ import nextI18NextConfig from '../next-i18next.config';
 import { useAuth } from '@/components/auth/AuthProvider';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { mapAuthError, validateNickname, validatePassword } from '@/lib/memberAuth';
+import PageHero from '@/components/common/PageHero';
+
+const ACCOUNT_HERO_IMAGE = '/images-webp/camps/2023/DSC00437.webp';
 
 export default function AccountPage() {
   const { t } = useTranslation('auth');
@@ -74,7 +77,7 @@ export default function AccountPage() {
 
   if (loading || !user) {
     return (
-      <div className="mx-auto max-w-md px-4 py-16 text-center text-coastal-gray">
+      <div className="mx-auto max-w-md px-4 pb-16 pt-32 text-center text-coastal-gray">
         {t('common.loading')}
       </div>
     );
@@ -86,9 +89,9 @@ export default function AccountPage() {
         <title>{t('account.title')} | PEACE</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
+      <PageHero compact title={t('account.title')} backgroundImage={ACCOUNT_HERO_IMAGE} />
       <div className="mx-auto max-w-md space-y-6 px-4 py-12">
-        <h1 className="font-display text-3xl font-bold text-deep-ocean">{t('account.title')}</h1>
-        <p className="text-sm text-coastal-gray">{user.email}</p>
+        <p className="text-center text-sm text-coastal-gray">{user.email}</p>
 
         {message && (
           <p
@@ -109,24 +112,24 @@ export default function AccountPage() {
           </p>
         )}
 
-        <section className="space-y-2 rounded border border-deep-ocean/10 bg-white p-5">
+        <section className="rounded border border-deep-ocean/10 bg-white p-5">
+          <h2 className="mb-1 font-display text-lg font-bold text-deep-ocean">
+            {t('account.nickname')}
+          </h2>
           <form
             onSubmit={(e) => {
               e.preventDefault();
               void saveNickname();
             }}
           >
-            <label
-              htmlFor="account-nickname"
-              className="block text-sm font-semibold text-deep-ocean"
-            >
+            <label htmlFor="account-nickname" className="sr-only">
               {t('account.nickname')}
             </label>
             <input
               id="account-nickname"
               value={nickname}
               onChange={(e) => setNickname(e.target.value)}
-              className={`${inputCls} mt-2 mb-2`}
+              className={`${inputCls} mt-2 mb-3`}
             />
             <button type="submit" disabled={busy} className={btnCls}>
               {t('account.save')}
@@ -134,7 +137,10 @@ export default function AccountPage() {
           </form>
         </section>
 
-        <section className="space-y-2 rounded border border-deep-ocean/10 bg-white p-5">
+        <section className="rounded border border-deep-ocean/10 bg-white p-5">
+          <h2 className="mb-3 font-display text-lg font-bold text-deep-ocean">
+            {t('account.changePassword')}
+          </h2>
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -150,12 +156,13 @@ export default function AccountPage() {
             <input
               id="account-new-password"
               type="password"
+              autoComplete="new-password"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
-              className={`${inputCls} mt-2 mb-2`}
+              className={`${inputCls} mt-2 mb-3`}
             />
             <button type="submit" disabled={busy} className={btnCls}>
-              {t('account.changePassword')}
+              {t('account.save')}
             </button>
           </form>
         </section>
@@ -166,7 +173,7 @@ export default function AccountPage() {
             await signOut();
             await router.push('/');
           }}
-          className="w-full rounded border border-deep-ocean/20 bg-white px-4 py-2 font-semibold text-deep-ocean transition hover:border-jeju-ocean"
+          className="mt-2 w-full rounded border border-deep-ocean/20 bg-white px-4 py-2 font-semibold text-deep-ocean transition hover:border-jeju-ocean"
         >
           {t('account.signout')}
         </button>

@@ -7,6 +7,8 @@ interface PageHeroProps {
   title: string;
   subtitle?: string;
   backgroundImage: string; // Required - no gradient fallback
+  /** 폼/유틸리티 페이지용 낮은 높이 hero (기본 콘텐츠 페이지는 크게 유지) */
+  compact?: boolean;
 }
 
 /**
@@ -15,9 +17,17 @@ interface PageHeroProps {
  * 재사용 가능한 페이지 히어로 섹션 (CampHero 스타일 기반).
  * 투명 네비게이션과 함께 사용하여 일관된 페이지 헤더 제공.
  */
-const PageHero: React.FC<PageHeroProps> = ({ title, subtitle, backgroundImage }) => {
+const PageHero: React.FC<PageHeroProps> = ({
+  title,
+  subtitle,
+  backgroundImage,
+  compact = false,
+}) => {
+  const heightClass = compact ? 'h-[300px] md:h-[360px]' : 'h-[500px] md:h-[600px] lg:h-[700px]';
   return (
-    <section className="relative h-[500px] md:h-[600px] lg:h-[700px] flex items-center justify-center text-center overflow-hidden">
+    <section
+      className={`relative ${heightClass} flex items-center justify-center text-center overflow-hidden`}
+    >
       {/* Background Image - use original as src, srcset as optimization */}
       <Image
         src={backgroundImage}
