@@ -18,6 +18,7 @@ export default function SignupPage() {
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+  const [succeeded, setSucceeded] = useState(false);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -64,6 +65,7 @@ export default function SignupPage() {
         return;
       }
       setMessage(t('signup.checkEmail'));
+      setSucceeded(true);
     } catch (err) {
       setBusy(false);
       setError(mapAuthError(err as { message?: string }));
@@ -132,7 +134,7 @@ export default function SignupPage() {
             {error}
           </p>
         )}
-        <button type="submit" disabled={busy} className={btnCls}>
+        <button type="submit" disabled={busy || succeeded} className={btnCls}>
           {busy ? t('common.loading') : t('signup.cta')}
         </button>
       </form>

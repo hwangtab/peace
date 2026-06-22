@@ -80,7 +80,7 @@ export default function UpdatePasswordPage() {
             {error}
           </p>
         )}
-        <button type="submit" disabled={busy} className={btnCls}>
+        <button type="submit" disabled={busy || succeeded} className={btnCls}>
           {busy ? t('common.loading') : t('reset.updateCta')}
         </button>
       </form>

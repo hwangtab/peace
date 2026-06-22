@@ -215,6 +215,7 @@ export default function AttachmentSection({
           <input
             ref={fileInputRef}
             type="file"
+            aria-label="첨부 파일 선택 (최대 20MB)"
             onChange={handleUpload}
             disabled={isUploading}
             className="block w-full text-sm text-deep-ocean/70 file:mr-3 file:rounded file:border-0 file:bg-deep-ocean file:px-4 file:py-2 file:font-semibold file:text-white hover:file:bg-jeju-ocean disabled:opacity-60"

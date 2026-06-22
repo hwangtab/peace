@@ -76,6 +76,7 @@ export default function MeetingMinutesEditor({
       {isEditing ? (
         <div className="space-y-3">
           <textarea
+            aria-label="회의록 내용 (마크다운)"
             className="h-96 w-full rounded border border-deep-ocean/15 px-3 py-2 font-mono text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
             value={draft}
             onChange={(e) => setDraft(e.target.value)}
