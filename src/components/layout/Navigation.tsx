@@ -81,16 +81,18 @@ const Navigation = () => {
             </div>
           </div>
         </Container>
-
-        {/* Mobile Menu */}
-        <MobileMenu
-          isOpen={isOpen}
-          isPathActive={isPathActive}
-          mobileOpenDropdown={mobileOpenDropdown}
-          onClose={closeMenu}
-          onToggleDropdown={toggleMobileDropdown}
-        />
       </nav>
+
+      {/* Mobile Menu — nav 밖에 둔다. nav는 스크롤 시 backdrop-filter가 적용되는데,
+          backdrop-filter 조상은 position:fixed 자손의 기준 박스를 뷰포트가 아닌 그 조상으로
+          바꿔버려(containing block 트랩) 메뉴가 nav(4rem) 안에 갇혀 본문에 가려졌다. */}
+      <MobileMenu
+        isOpen={isOpen}
+        isPathActive={isPathActive}
+        mobileOpenDropdown={mobileOpenDropdown}
+        onClose={closeMenu}
+        onToggleDropdown={toggleMobileDropdown}
+      />
 
       {/* Backdrop — closes menu when tapping outside */}
       {isOpen && (
