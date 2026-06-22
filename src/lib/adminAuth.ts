@@ -97,9 +97,11 @@ export const requireAdminRole = async (
   return session;
 };
 
+// 관리자도 회원 로그인(이메일+비밀번호)으로 통일했으므로, 미로그인 시 매직링크 페이지가 아니라
+// 일반 회원 로그인(/login)으로 보낸다. 로그인 후 next 경로(/admin...)로 복귀한다.
 export const redirectToAdminLogin = (destination = '/admin') => ({
   redirect: {
-    destination: `/admin/login?next=${encodeURIComponent(destination)}`,
+    destination: `/login?next=${encodeURIComponent(destination)}`,
     permanent: false,
   },
 });
