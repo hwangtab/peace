@@ -6,6 +6,7 @@ import AdminLayout from '@/components/admin/AdminLayout';
 import MeetingMinutesEditor from '@/components/admin/meeting/MeetingMinutesEditor';
 import AgendaSection from '@/components/admin/meeting/AgendaSection';
 import AttendeeSection from '@/components/admin/meeting/AttendeeSection';
+import AttachmentSection from '@/components/admin/meeting/AttachmentSection';
 import { getAdminSession, canEditContent, redirectToAdminLogin } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import { MEETING_STATUS_LABELS } from '@/lib/meetingForms';
@@ -150,7 +151,7 @@ export default function MeetingDetailPage({
       <div className="space-y-6">
         <AgendaSection meetingId={meeting.id} agendas={agendas} canEdit={canEdit} />
         <AttendeeSection meetingId={meeting.id} attendees={attendees} canEdit={canEdit} />
-        {/* Task 8: <AttachmentSection ... /> */}
+        <AttachmentSection meetingId={meeting.id} attachments={attachments} canEdit={canEdit} />
         <MeetingMinutesEditor meetingId={meeting.id} initialMd={meeting.minutes_md} canEdit={canEdit} />
       </div>
     </AdminLayout>
