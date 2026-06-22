@@ -1,5 +1,6 @@
 overrides:
-  postcss: ^8.5.14
+  '@babel/core': 7.29.6
+  postcss: 8.5.15
   tmp: ^0.2.7
 
 confirmModulesPurge: false

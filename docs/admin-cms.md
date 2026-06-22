@@ -66,8 +66,10 @@ done
 
 ## 공개 반영 방식
 
-- `/videos`, `/gallery`, `/press`는 현재 locale의 Supabase CMS `published` 항목을 먼저 읽습니다.
-- 해당 locale의 CMS 항목이 아직 없으면 기존 `public/data` JSON을 fallback으로 사용합니다.
+- `/videos`, `/gallery`, `/press`는 현재 locale의 Supabase CMS 항목을 기존 `public/data`
+  JSON 위에 덮어씁니다.
+- CMS에 아직 없는 `public_id`는 기존 JSON을 fallback으로 유지해, 부분 이관/부분 번역 상태에서도
+  공개 아카이브가 줄어들지 않게 합니다.
 - 비한국어 페이지가 한국어 CMS row를 대신 표시하지 않습니다.
 - 비디오, 갤러리, 언론보도는 관리자에서 `hidden`으로 내리면 같은 `public_id`의 모든
   locale row가 공개 목록에서 내려갑니다.

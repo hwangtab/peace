@@ -80,6 +80,31 @@ describe('loadLocalizedData', () => {
     expect(data).toEqual([{ id: 3 }]);
   });
 
+  it('mergeByIdKey 옵션 → locale, en, 기본 데이터 순서로 id 병합', () => {
+    const esPath = path.join(root, 'es', 'items.json');
+    const enPath = path.join(root, 'en', 'items.json');
+    const defaultPath = path.join(root, 'items.json');
+    mockedFs.existsSync.mockImplementation(
+      (p) => p === esPath || p === enPath || p === defaultPath
+    );
+    mockedFs.readFileSync.mockImplementation((p) => {
+      if (p === esPath) return '[{"id":1,"lang":"es"}]';
+      if (p === enPath) return '[{"id":1,"lang":"en"},{"id":2,"lang":"en"}]';
+      if (p === defaultPath) return '[{"id":2,"lang":"ko"},{"id":3,"lang":"ko"}]';
+      return '[]';
+    });
+
+    const data = loadLocalizedData<{ id: number; lang: string }>('es', 'items.json', {
+      mergeByIdKey: 'id',
+    });
+
+    expect(data).toEqual([
+      { id: 1, lang: 'es' },
+      { id: 2, lang: 'en' },
+      { id: 3, lang: 'ko' },
+    ]);
+  });
+
   it('모든 경로 없으면 Error throw', () => {
     mockedFs.existsSync.mockReturnValue(false);
     expect(() => loadLocalizedData('en', 'missing.json')).toThrow();

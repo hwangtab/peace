@@ -10,6 +10,7 @@ import {
 import type { ReactNode } from 'react';
 import type { Session, User } from '@supabase/supabase-js';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
+import { getSupabasePublicConfig } from '@/lib/supabaseConfig';
 import type { MemberProfile } from '@/types/member';
 
 interface AuthContextValue {
@@ -23,9 +24,10 @@ interface AuthContextValue {
 const AuthContext = createContext<AuthContextValue | null>(null);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
+  const isSupabaseConfigured = getSupabasePublicConfig() !== null;
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<MemberProfile | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(isSupabaseConfigured);
   const loadSeqRef = useRef(0);
 
   const loadProfile = useCallback(async (nextUser: User | null) => {
@@ -51,15 +53,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
+    if (!isSupabaseConfigured) return;
+
+    let active = true;
     let supabase;
     try {
       supabase = createSupabaseBrowserClient();
     } catch {
-      setLoading(false);
-      return;
+      void Promise.resolve().then(() => {
+        if (active) setLoading(false);
+      });
+      return () => {
+        active = false;
+      };
     }
 
-    let active = true;
     void supabase.auth.getSession().then(async ({ data }) => {
       if (!active) return;
       const nextUser = data.session?.user ?? null;
@@ -81,7 +89,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       active = false;
       sub.subscription.unsubscribe();
     };
-  }, [loadProfile]);
+  }, [isSupabaseConfigured, loadProfile]);
 
   const refreshProfile = useCallback(async () => {
     await loadProfile(user);
