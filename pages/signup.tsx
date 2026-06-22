@@ -14,6 +14,7 @@ export default function SignupPage() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
   const [nickname, setNickname] = useState('');
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('');
@@ -29,6 +30,7 @@ export default function SignupPage() {
     if (!nick.ok) return setError(t(nick.reason));
     const pw = validatePassword(password);
     if (!pw.ok) return setError(t(pw.reason));
+    if (password !== passwordConfirm) return setError(t('errors.passwordMismatch'));
 
     setBusy(true);
     try {
@@ -113,6 +115,16 @@ export default function SignupPage() {
             autoComplete="new-password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            className={inputCls}
+          />
+        </Field>
+        <Field label={t('common.passwordConfirm')}>
+          <input
+            type="password"
+            required
+            autoComplete="new-password"
+            value={passwordConfirm}
+            onChange={(e) => setPasswordConfirm(e.target.value)}
             className={inputCls}
           />
         </Field>
