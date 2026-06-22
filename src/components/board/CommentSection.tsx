@@ -6,6 +6,7 @@ import { useAuth } from '@/components/auth/AuthProvider';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { validateComment, formatBoardDate } from '@/lib/boardForms';
 import { safeRedirectPath } from '@/lib/memberAuth';
+import { COMMENT_PAGE } from '@/lib/boardData';
 
 export interface CommentRow {
   id: string;
@@ -21,23 +22,14 @@ export interface CommentRow {
 interface Props {
   postId: string;
   initialComments: CommentRow[];
+  initialHasMore?: boolean;
   readOnly?: boolean;
 }
 
-async function fetchComments(postId: string): Promise<CommentRow[]> {
-  const supabase = createSupabaseBrowserClient();
-  const { data, error } = await supabase
-    .from('post_comments')
-    .select('*, profiles!post_comments_author_id_fkey(nickname)')
-    .eq('post_id', postId)
-    .order('created_at', { ascending: true })
-    .limit(200);
+const COMMENT_SELECT = '*, profiles!post_comments_author_id_fkey(nickname)';
 
-  if (error) {
-    throw error;
-  }
-
-  return ((data as Record<string, unknown>[]) ?? []).map((r) => ({
+function mapRow(r: Record<string, unknown>): CommentRow {
+  return {
     id: String(r.id),
     post_id: String(r.post_id),
     author_id: String(r.author_id),
@@ -46,24 +38,69 @@ async function fetchComments(postId: string): Promise<CommentRow[]> {
     created_at: String(r.created_at),
     updated_at: String(r.updated_at),
     author_nickname: (r.profiles as { nickname?: string } | null)?.nickname ?? '',
-  }));
+  };
 }
 
-export default function CommentSection({ postId, initialComments, readOnly = false }: Props) {
+// 작성 시각과 수정 시각이 1초 이상 차이 나면 '수정됨'으로 표시한다(insert 시 둘은 동일).
+function isEdited(c: CommentRow): boolean {
+  return new Date(c.updated_at).getTime() - new Date(c.created_at).getTime() > 1000;
+}
+
+export default function CommentSection({
+  postId,
+  initialComments,
+  initialHasMore = false,
+  readOnly = false,
+}: Props) {
   const { t } = useTranslation('board');
   const router = useRouter();
   const auth = useAuth();
   const user = auth.user;
 
+  // comments는 항상 오름차순(과거→최신, 대화 순서)으로 보관·표시한다.
   const [comments, setComments] = useState<CommentRow[]>(initialComments);
+  const [hasMore, setHasMore] = useState(initialHasMore);
+  const [loadingMore, setLoadingMore] = useState(false);
+
   const [body, setBody] = useState('');
   const [validationError, setValidationError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [deleteId, setDeleteId] = useState<string | null>(null);
 
+  const [editId, setEditId] = useState<string | null>(null);
+  const [editBody, setEditBody] = useState('');
+  const [editError, setEditError] = useState<string | null>(null);
+  const [savingEdit, setSavingEdit] = useState(false);
+
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const loginHref = `/login?next=${encodeURIComponent(safeRedirectPath(router.asPath))}`;
+
+  // 위쪽 '이전 댓글 더 보기' — 더 오래된 댓글 한 페이지를 불러와 앞에 붙인다.
+  const loadOlder = async () => {
+    if (loadingMore) return;
+    setLoadingMore(true);
+    try {
+      const supabase = createSupabaseBrowserClient();
+      const { data } = await supabase
+        .from('post_comments')
+        .select(COMMENT_SELECT)
+        .eq('post_id', postId)
+        .order('created_at', { ascending: false })
+        .range(comments.length, comments.length + COMMENT_PAGE);
+      const rows = (data as Record<string, unknown>[] | null) ?? [];
+      const more = rows.length > COMMENT_PAGE;
+      const olderAsc = rows.slice(0, COMMENT_PAGE).map(mapRow).reverse();
+      setComments((prev) => {
+        const seen = new Set(prev.map((c) => c.id));
+        const fresh = olderAsc.filter((c) => !seen.has(c.id));
+        return [...fresh, ...prev];
+      });
+      setHasMore(more);
+    } finally {
+      setLoadingMore(false);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -80,24 +117,62 @@ export default function CommentSection({ postId, initialComments, readOnly = fal
     setSubmitting(true);
     try {
       const supabase = createSupabaseBrowserClient();
-      const { error: insertError } = await supabase.from('post_comments').insert({
-        post_id: postId,
-        author_id: user.id,
-        body: result.value,
-      });
-      if (insertError) {
+      const { data, error: insertError } = await supabase
+        .from('post_comments')
+        .insert({ post_id: postId, author_id: user.id, body: result.value })
+        .select(COMMENT_SELECT)
+        .single();
+      if (insertError || !data) {
         setValidationError(t('error.saveFailed'));
         return;
       }
+      const created = mapRow(data as Record<string, unknown>);
+      if (!created.author_nickname) created.author_nickname = auth.profile?.nickname ?? '';
+      // 새 댓글은 가장 최신이므로 맨 아래에 추가 → 항상 바로 보인다.
+      setComments((prev) => [...prev, created]);
       setBody('');
-      try {
-        const refreshed = await fetchComments(postId);
-        setComments(refreshed);
-      } catch {
-        // Refetch failed — keep the existing list intact
-      }
     } finally {
       setSubmitting(false);
+    }
+  };
+
+  const startEdit = (c: CommentRow) => {
+    setEditId(c.id);
+    setEditBody(c.body);
+    setEditError(null);
+  };
+
+  const cancelEdit = () => {
+    setEditId(null);
+    setEditBody('');
+    setEditError(null);
+  };
+
+  const saveEdit = async (commentId: string) => {
+    setEditError(null);
+    const result = validateComment(editBody);
+    if (!result.ok) {
+      setEditError(t(result.reason));
+      return;
+    }
+    setSavingEdit(true);
+    try {
+      const supabase = createSupabaseBrowserClient();
+      const { error } = await supabase
+        .from('post_comments')
+        .update({ body: result.value })
+        .eq('id', commentId);
+      if (error) {
+        setEditError(t('error.saveFailed'));
+        return;
+      }
+      const now = new Date().toISOString();
+      setComments((prev) =>
+        prev.map((c) => (c.id === commentId ? { ...c, body: result.value, updated_at: now } : c))
+      );
+      cancelEdit();
+    } finally {
+      setSavingEdit(false);
     }
   };
 
@@ -111,13 +186,7 @@ export default function CommentSection({ postId, initialComments, readOnly = fal
         setValidationError(t('error.saveFailed'));
         return;
       }
-      try {
-        const refreshed = await fetchComments(postId);
-        setComments(refreshed);
-      } catch {
-        // Refetch failed — optimistically remove the deleted comment from the list
-        setComments((prev) => prev.filter((c) => c.id !== commentId));
-      }
+      setComments((prev) => prev.filter((c) => c.id !== commentId));
     } finally {
       setDeleteId(null);
     }
@@ -126,6 +195,22 @@ export default function CommentSection({ postId, initialComments, readOnly = fal
   return (
     <section className="mt-10 border-t border-seafoam pt-8">
       <h2 className="mb-4 text-base font-semibold text-deep-ocean">{t('comment.heading')}</h2>
+
+      {/* Load older comments */}
+      {hasMore && (
+        <div className="mb-4 text-center">
+          <button
+            type="button"
+            disabled={loadingMore}
+            onClick={() => {
+              void loadOlder();
+            }}
+            className="rounded-lg border border-seafoam px-4 py-1.5 text-sm font-semibold text-jeju-ocean transition hover:bg-seafoam disabled:opacity-50"
+          >
+            {t('comment.loadOlder')}
+          </button>
+        </div>
+      )}
 
       {/* Comment list */}
       {comments.length === 0 ? (
@@ -137,6 +222,7 @@ export default function CommentSection({ postId, initialComments, readOnly = fal
             const isOwn = user?.id === c.author_id;
             const isDeleting = deleteId === c.id;
             const isHidden = c.status === 'hidden';
+            const isEditing = editId === c.id;
 
             return (
               <li
@@ -153,18 +239,28 @@ export default function CommentSection({ postId, initialComments, readOnly = fal
                     </span>
                     <span>·</span>
                     <span>{dateStr}</span>
+                    {isEdited(c) && <span className="text-xs">{t('comment.edited')}</span>}
                   </div>
-                  {isOwn && (
-                    <button
-                      type="button"
-                      disabled={isDeleting}
-                      onClick={() => {
-                        void handleDelete(c.id);
-                      }}
-                      className="text-xs text-red-400 hover:text-red-600 disabled:opacity-50"
-                    >
-                      {t('comment.delete')}
-                    </button>
+                  {isOwn && !isEditing && (
+                    <div className="flex flex-shrink-0 items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() => startEdit(c)}
+                        className="text-xs text-coastal-gray hover:text-jeju-ocean"
+                      >
+                        {t('comment.edit')}
+                      </button>
+                      <button
+                        type="button"
+                        disabled={isDeleting}
+                        onClick={() => {
+                          void handleDelete(c.id);
+                        }}
+                        className="text-xs text-red-400 hover:text-red-600 disabled:opacity-50"
+                      >
+                        {t('comment.delete')}
+                      </button>
+                    </div>
                   )}
                 </div>
                 {isHidden && (
@@ -172,9 +268,45 @@ export default function CommentSection({ postId, initialComments, readOnly = fal
                     {t('comment.hiddenNotice')}
                   </p>
                 )}
-                <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-deep-ocean">
-                  {c.body}
-                </p>
+                {isEditing ? (
+                  <div className="mt-2">
+                    <label htmlFor={`comment-edit-${c.id}`} className="sr-only">
+                      {t('comment.edit')}
+                    </label>
+                    <textarea
+                      id={`comment-edit-${c.id}`}
+                      value={editBody}
+                      onChange={(e) => setEditBody(e.target.value)}
+                      rows={3}
+                      maxLength={1000}
+                      className="w-full rounded-xl border border-seafoam p-3 text-sm text-deep-ocean focus:border-jeju-ocean focus:outline-none"
+                    />
+                    {editError && <p className="mt-1 text-xs text-red-500">{editError}</p>}
+                    <div className="mt-2 flex justify-end gap-2">
+                      <button
+                        type="button"
+                        onClick={cancelEdit}
+                        className="rounded-lg border border-coastal-gray px-4 py-1.5 text-sm font-semibold text-coastal-gray transition hover:bg-seafoam"
+                      >
+                        {t('comment.cancel')}
+                      </button>
+                      <button
+                        type="button"
+                        disabled={savingEdit}
+                        onClick={() => {
+                          void saveEdit(c.id);
+                        }}
+                        className="rounded-lg bg-jeju-ocean px-4 py-1.5 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-50"
+                      >
+                        {t('comment.save')}
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-deep-ocean">
+                    {c.body}
+                  </p>
+                )}
               </li>
             );
           })}

@@ -40,7 +40,12 @@
     "empty": "Be the first to comment.",
     "delete": "Delete",
     "deleteConfirm": "Delete this comment?",
-    "hiddenNotice": "Hidden by an administrator."
+    "hiddenNotice": "Hidden by an administrator.",
+    "edit": "Edit",
+    "save": "Save",
+    "cancel": "Cancel",
+    "loadOlder": "Load older comments",
+    "edited": "(edited)"
   },
   "error": {
     "loginRequired": "Login required.",

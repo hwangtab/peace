@@ -40,7 +40,12 @@
     "empty": "Be the first to comment.",
     "delete": "Delete",
     "deleteConfirm": "Delete this comment?",
-    "hiddenNotice": "Hidden by an administrator."
+    "hiddenNotice": "Hidden by an administrator.",
+    "edit": "संपादित करें",
+    "save": "सहेजें",
+    "cancel": "रद्द करें",
+    "loadOlder": "पुरानी टिप्पणियाँ देखें",
+    "edited": "(संपादित)"
   },
   "error": {
     "loginRequired": "Login required.",

@@ -40,7 +40,12 @@
     "empty": "Be the first to comment.",
     "delete": "Delete",
     "deleteConfirm": "Delete this comment?",
-    "hiddenNotice": "Hidden by an administrator."
+    "hiddenNotice": "Hidden by an administrator.",
+    "edit": "編輯",
+    "save": "儲存",
+    "cancel": "取消",
+    "loadOlder": "查看更早的留言",
+    "edited": "（已編輯）"
   },
   "error": {
     "loginRequired": "Login required.",
