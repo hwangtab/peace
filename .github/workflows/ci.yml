@@ -35,7 +35,11 @@ jobs:
 
       - run: pnpm static:check
 
-      - run: pnpm audit
+      # 배포되는 production 의존성만 감사한다. dev/빌드 전용 의존성(jest의 jsdom>ws,
+      # bundle-analyzer>ws, open-graph-scraper>undici 등)의 취약점은 사용자에게 도달하지 않고
+      # 상위 패키지의 생태계 업데이트 전까지 수정 불가라, 신규 advisory가 뜰 때마다 CI를
+      # 영구히 막는 노이즈가 된다. production 의존성은 별도로 깨끗하게 유지한다.
+      - run: pnpm audit --prod
 
       - run: pnpm build
         env:
