@@ -44,7 +44,10 @@ export default function UpdatePasswordPage() {
   };
 
   return (
-    <AuthFormShell title={t('reset.updateTitle')}>
+    <AuthFormShell
+      title={t('reset.updateTitle')}
+      backgroundImage="/images-webp/camps/2025/DSC01058.webp"
+    >
       <form onSubmit={submit} className="space-y-4">
         <label className="block">
           <span className="mb-1 block text-sm font-semibold text-deep-ocean">

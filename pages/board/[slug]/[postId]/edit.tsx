@@ -10,6 +10,9 @@ import { useAuth } from '@/components/auth/AuthProvider';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import PostForm from '@/components/board/PostForm';
 import type { Board, PostWithMeta } from '@/types/board';
+import PageHero from '@/components/common/PageHero';
+
+const BOARD_EDIT_HERO = '/images-webp/camps/2025/DSC00995.webp';
 
 interface Props {
   board: Board;
@@ -41,10 +44,12 @@ export default function EditPostPage({ board, post }: Props) {
   }
 
   return (
-    <main className="mx-auto max-w-2xl px-4 py-12">
-      <h1 className="mb-8 text-2xl font-bold text-deep-ocean">{t('post.edit')}</h1>
-      <PostForm board={board} initial={post} mode="edit" />
-    </main>
+    <>
+      <PageHero compact title={t('post.edit')} backgroundImage={BOARD_EDIT_HERO} />
+      <main className="mx-auto max-w-2xl px-4 py-12">
+        <PostForm board={board} initial={post} mode="edit" />
+      </main>
+    </>
   );
 }
 

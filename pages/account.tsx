@@ -10,7 +10,7 @@ import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { mapAuthError, validateNickname, validatePassword } from '@/lib/memberAuth';
 import PageHero from '@/components/common/PageHero';
 
-const ACCOUNT_HERO_IMAGE = '/images-webp/camps/2023/DSC00437.webp';
+const ACCOUNT_HERO_IMAGE = '/images-webp/camps/2025/DSC00864.webp';
 
 export default function AccountPage() {
   const { t } = useTranslation('auth');

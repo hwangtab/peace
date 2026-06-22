@@ -7,7 +7,7 @@ import { loadActiveBoards, loadBoardPostCounts } from '@/lib/boardData';
 import type { Board } from '@/types/board';
 import PageHero from '@/components/common/PageHero';
 
-const BOARD_HERO_IMAGE = '/images-webp/camps/2023/DSC00437.webp';
+const BOARD_HERO_IMAGE = '/images-webp/camps/2025/DSC00921.webp';
 
 interface BoardWithCount extends Board {
   postCount: number;

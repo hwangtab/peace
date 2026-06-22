@@ -73,6 +73,7 @@ export default function SignupPage() {
   return (
     <AuthFormShell
       title={t('signup.title')}
+      backgroundImage="/images-webp/camps/2025/DSC00599.webp"
       footer={
         <span>
           {t('signup.haveAccount')}{' '}
