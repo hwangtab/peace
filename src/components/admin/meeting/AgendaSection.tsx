@@ -102,6 +102,45 @@ export default function AgendaSection({ meetingId, agendas, canEdit }: AgendaSec
     }
   };
 
+  // 표시 순서대로 sort_order를 재부여한다(초기값이 모두 0이라 첫 이동에서 0..n-1로 정규화됨).
+  const moveAgenda = async (index: number, dir: -1 | 1) => {
+    const target = index + dir;
+    if (target < 0 || target >= agendas.length) return;
+    const moving = agendas[index];
+    const other = agendas[target];
+    if (!moving || !other) return;
+
+    setError('');
+    setBusyId(moving.id);
+
+    const reordered = [...agendas];
+    reordered[index] = other;
+    reordered[target] = moving;
+
+    try {
+      for (let i = 0; i < reordered.length; i += 1) {
+        const ag = reordered[i];
+        if (!ag || ag.sort_order === i) continue;
+        const response = await fetch('/api/admin/meeting-agendas', {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: ag.id, sort_order: i }),
+        });
+        const payload = await response.json();
+        if (!response.ok || !payload.agenda) {
+          setError(payload.error || '순서 변경에 실패했습니다.');
+          setBusyId(null);
+          return;
+        }
+      }
+      setBusyId(null);
+      refresh();
+    } catch {
+      setError('네트워크 오류가 발생했습니다.');
+      setBusyId(null);
+    }
+  };
+
   return (
     <section className="rounded border border-deep-ocean/10 bg-white p-5">
       <h2 className="mb-3 font-display text-lg font-bold text-deep-ocean">안건 ({agendas.length})</h2>
@@ -116,7 +155,7 @@ export default function AgendaSection({ meetingId, agendas, canEdit }: AgendaSec
         <p className="mb-4 text-sm text-deep-ocean/50">등록된 안건이 없습니다.</p>
       ) : (
         <ul className="mb-4 space-y-2">
-          {agendas.map((a) => (
+          {agendas.map((a, idx) => (
             <li key={a.id} className="rounded border border-deep-ocean/10 px-3 py-2">
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
@@ -124,6 +163,28 @@ export default function AgendaSection({ meetingId, agendas, canEdit }: AgendaSec
                   {a.content && <p className="mt-1 whitespace-pre-wrap text-sm text-deep-ocean/70">{a.content}</p>}
                 </div>
                 <div className="flex shrink-0 items-center gap-2">
+                  {canEdit && (
+                    <span className="flex flex-col leading-none">
+                      <button
+                        type="button"
+                        onClick={() => moveAgenda(idx, -1)}
+                        disabled={idx === 0 || busyId === a.id}
+                        aria-label="위로 이동"
+                        className="px-1 text-xs text-deep-ocean/50 hover:text-jeju-ocean disabled:opacity-30"
+                      >
+                        ▲
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => moveAgenda(idx, 1)}
+                        disabled={idx === agendas.length - 1 || busyId === a.id}
+                        aria-label="아래로 이동"
+                        className="px-1 text-xs text-deep-ocean/50 hover:text-jeju-ocean disabled:opacity-30"
+                      >
+                        ▼
+                      </button>
+                    </span>
+                  )}
                   {canEdit ? (
                     <select
                       value={a.status}
