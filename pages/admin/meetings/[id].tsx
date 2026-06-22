@@ -4,6 +4,8 @@ import Link from 'next/link';
 import type { GetServerSidePropsContext } from 'next';
 import AdminLayout from '@/components/admin/AdminLayout';
 import MeetingMinutesEditor from '@/components/admin/meeting/MeetingMinutesEditor';
+import AgendaSection from '@/components/admin/meeting/AgendaSection';
+import AttendeeSection from '@/components/admin/meeting/AttendeeSection';
 import { getAdminSession, canEditContent, redirectToAdminLogin } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import { MEETING_STATUS_LABELS } from '@/lib/meetingForms';
@@ -146,7 +148,8 @@ export default function MeetingDetailPage({
       </header>
 
       <div className="space-y-6">
-        {/* Task 7: <AgendaSection ... /> <AttendeeSection ... /> */}
+        <AgendaSection meetingId={meeting.id} agendas={agendas} canEdit={canEdit} />
+        <AttendeeSection meetingId={meeting.id} attendees={attendees} canEdit={canEdit} />
         {/* Task 8: <AttachmentSection ... /> */}
         <MeetingMinutesEditor meetingId={meeting.id} initialMd={meeting.minutes_md} canEdit={canEdit} />
       </div>
