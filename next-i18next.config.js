@@ -53,6 +53,8 @@ module.exports = {
     'gallery',
     'timeline',
     'notFound',
+    'auth',
+    'board',
   ],
   // fallbackNS: t('press.x') 를 useTranslation() 만으로도 찾도록 페이지가
   // 로드한 namespace 들을 자동 탐색. wrapper 키가 보존돼 있어 group prefix
