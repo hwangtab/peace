@@ -34,9 +34,12 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(
           {isOpen && (
             <motion.div
               {...menuReveal}
-              className="xl:hidden origin-top bg-cloud-white/95 backdrop-blur-md border-t border-seafoam"
+              // 내용이 화면보다 길어도(작은 폰 + 드롭다운 펼침) 아래 항목이 잘리지 않도록
+              // 뷰포트 높이(내비 4rem 제외)로 제한하고 내부 스크롤을 둔다. nav가 fixed라
+              // 페이지 스크롤로는 닿을 수 없기 때문에 메뉴 자체가 스크롤되어야 한다.
+              className="xl:hidden origin-top max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain bg-cloud-white/95 backdrop-blur-md border-t border-seafoam"
             >
-              <Container size="wide" className="py-4">
+              <Container size="wide" className="pt-4 pb-[calc(1rem+env(safe-area-inset-bottom))]">
                 {simpleMenuItems.map((item) => (
                   <Link
                     key={item.path}
