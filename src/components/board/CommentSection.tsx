@@ -79,15 +79,20 @@ export default function CommentSection({
   // 위쪽 '이전 댓글 더 보기' — 더 오래된 댓글 한 페이지를 불러와 앞에 붙인다.
   const loadOlder = async () => {
     if (loadingMore) return;
+    const oldest = comments[0];
+    if (!oldest) return;
     setLoadingMore(true);
     try {
       const supabase = createSupabaseBrowserClient();
+      // 커서(현재 가장 오래된 댓글의 created_at) 기준으로 더 과거를 불러온다.
+      // offset 방식과 달리 새 댓글이 추가돼도 경계가 밀리지 않아 누락/중복이 없다.
       const { data } = await supabase
         .from('post_comments')
         .select(COMMENT_SELECT)
         .eq('post_id', postId)
+        .lt('created_at', oldest.created_at)
         .order('created_at', { ascending: false })
-        .range(comments.length, comments.length + COMMENT_PAGE);
+        .range(0, COMMENT_PAGE);
       const rows = (data as Record<string, unknown>[] | null) ?? [];
       const more = rows.length > COMMENT_PAGE;
       const olderAsc = rows.slice(0, COMMENT_PAGE).map(mapRow).reverse();
