@@ -92,10 +92,7 @@ export const getAdminArchiveLocaleStatuses = async ({
     .from(config.table)
     .select('id, locale, status, updated_at, published_at')
     .order('locale', { ascending: true });
-  const related =
-    config.collection === 'content'
-      ? await relatedQuery.eq('key', String(currentRow.key ?? ''))
-      : await relatedQuery.eq('public_id', Number(currentRow.public_id));
+  const related = await relatedQuery.eq('public_id', Number(currentRow.public_id));
 
   if (related.error) throwServiceError(500, related.error.message);
 
@@ -194,23 +191,17 @@ export const hideAdminArchiveRow = async ({
   if (current.error) throwServiceError(500, current.error.message);
   if (!current.data) throwServiceError(404, 'not_found');
 
-  const beforeRowsResult =
-    config.collection === 'content'
-      ? { data: [current.data as Record<string, unknown>], error: null }
-      : await supabase
-          .from(config.table)
-          .select('*')
-          .eq('public_id', (current.data as { public_id: number }).public_id);
+  const beforeRowsResult = await supabase
+    .from(config.table)
+    .select('*')
+    .eq('public_id', (current.data as { public_id: number }).public_id);
   if (beforeRowsResult.error) throwServiceError(500, beforeRowsResult.error.message);
   const beforeRows = beforeRowsResult.data ?? [];
 
   const updateQuery = supabase.from(config.table).update({ status: 'hidden', published_at: null });
-  const { data, error } =
-    config.collection === 'content'
-      ? await updateQuery.eq('id', id).select('*')
-      : await updateQuery
-          .eq('public_id', (current.data as { public_id: number }).public_id)
-          .select('*');
+  const { data, error } = await updateQuery
+    .eq('public_id', (current.data as { public_id: number }).public_id)
+    .select('*');
 
   if (error) throwServiceError(500, error.message);
 

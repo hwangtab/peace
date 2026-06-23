@@ -19,12 +19,10 @@ import PageIntroSection from '../common/PageIntroSection';
 import Container from '../layout/Container';
 import { getFullUrl } from '@/config/env';
 import { useLocalizedResource } from '@/hooks/useLocalizedResource';
-import type { SiteContentMap } from '@/types/cms';
 
 interface PressPageProps {
   initialPressItems?: PressItem[];
   initialLocale?: string;
-  siteContent?: SiteContentMap;
 }
 
 const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
@@ -76,15 +74,10 @@ const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
 export default function PressPage({
   initialPressItems = [],
   initialLocale = 'ko',
-  siteContent = {},
 }: PressPageProps) {
   const { t, i18n } = useTranslation();
   const camp2026 = useCamp('camp-2026');
   const [selectedFilter, setSelectedFilter] = useState<FilterId>('all');
-  const text = useCallback(
-    (placement: string, fallbackKey: string) => siteContent[placement] || t(fallbackKey),
-    [siteContent, t]
-  );
 
   const fetchPress = useCallback((locale: string) => getPressItems(locale), []);
   const pressResource = useLocalizedResource<PressItem>({
@@ -99,17 +92,17 @@ export default function PressPage({
   const breadcrumbs = useMemo(
     () => [
       { name: t('press.breadcrumb_home'), url: getFullUrl('/') },
-      { name: text('seo.title', 'press.breadcrumb_press'), url: getFullUrl('/press') },
+      { name: t('press.breadcrumb_press'), url: getFullUrl('/press') },
     ],
-    [t, text]
+    [t]
   );
 
   const structuredData = useMemo(
     () => [
       getBreadcrumbSchema(breadcrumbs),
       getWebPageSchema({
-        name: text('seo.title', 'press.page_title'),
-        description: text('seo.description', 'press.page_desc'),
+        name: t('press.page_title'),
+        description: t('press.page_desc'),
         url: getFullUrl('/press'),
         keywords: [
           '강정피스앤뮤직캠프 언론보도',
@@ -137,7 +130,7 @@ export default function PressPage({
         )
       ),
     ],
-    [breadcrumbs, pressItems, i18n.language, t, text]
+    [breadcrumbs, pressItems, i18n.language, t]
   );
 
   const filteredItems = useMemo(
@@ -147,29 +140,25 @@ export default function PressPage({
 
   return (
     <PageLayout
-      title={text('seo.title', 'press.page_title')}
-      description={text('seo.description', 'press.page_desc')}
+      title={t('press.page_title')}
+      description={t('press.page_desc')}
       ogImage="/images-webp/camps/2023/DSC00610.webp"
-      ogImageAlt={text('seo.title', 'press.page_title')}
+      ogImageAlt={t('press.page_title')}
       structuredData={structuredData}
       breadcrumbs={breadcrumbs}
       background="ocean-sand"
       disableTopPadding={true}
     >
       <PageHero
-        title={text('hero.title', 'press.hero_title')}
-        subtitle={text('hero.subtitle', 'press.hero_subtitle')}
+        title={t('press.hero_title')}
+        subtitle={t('press.hero_subtitle')}
         backgroundImage="/images-webp/camps/2023/DSC00610.webp"
       />
 
       <PageIntroSection
-        eyebrow={text('intro.eyebrow', 'press.intro.eyebrow')}
-        heading={text('intro.heading', 'press.intro.heading')}
-        paragraphs={[
-          text('intro.p1', 'press.intro.p1'),
-          text('intro.p2', 'press.intro.p2'),
-          text('intro.p3', 'press.intro.p3'),
-        ]}
+        eyebrow={t('press.intro.eyebrow')}
+        heading={t('press.intro.heading')}
+        paragraphs={[t('press.intro.p1'), t('press.intro.p2'), t('press.intro.p3')]}
         background="white"
       />
 

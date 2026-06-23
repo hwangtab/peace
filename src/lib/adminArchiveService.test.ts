@@ -85,21 +85,3 @@ test('getAdminArchiveLocaleStatuses groups archive rows by public_id', async () 
   expect(statuses.find((item) => item.locale === 'en')?.status).toBe('published');
   expect(statuses.find((item) => item.locale === 'ko')?.status).toBe('missing');
 });
-
-test('getAdminArchiveLocaleStatuses groups content rows by key', async () => {
-  const contentConfig = ADMIN_COLLECTION_CONFIGS.content;
-  const { client, relatedQuery } = buildLocaleStatusClient(
-    contentConfig,
-    { id: '11111111-1111-4111-8111-111111111111', key: 'videos.hero.title' },
-    [{ id: '22222222-2222-4222-8222-222222222222', locale: 'ko', status: 'draft' }]
-  );
-
-  const statuses = await getAdminArchiveLocaleStatuses({
-    supabase: client as never,
-    config: contentConfig,
-    id: '11111111-1111-4111-8111-111111111111',
-  });
-
-  expect(relatedQuery.eq).toHaveBeenCalledWith('key', 'videos.hero.title');
-  expect(statuses.find((item) => item.locale === 'ko')?.status).toBe('draft');
-});

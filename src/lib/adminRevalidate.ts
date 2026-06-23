@@ -13,11 +13,6 @@ export const getArchiveRevalidationPaths = (
   collection: AdminCollection,
   payload: Record<string, unknown>
 ): string[] => {
-  if (collection === 'content') {
-    const routePath = typeof payload.route_path === 'string' ? payload.route_path : null;
-    return routePath ? allLocalePaths(routePath) : [];
-  }
-
   if (collection === 'videos') {
     const publicId = payload.public_id;
     return unique([

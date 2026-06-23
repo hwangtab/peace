@@ -1,22 +1,11 @@
-import type {
-  ArchiveGalleryImageRow,
-  ArchivePressItemRow,
-  ArchiveVideoRow,
-  CmsContentBlock,
-} from '@/types/cms';
+import type { ArchiveGalleryImageRow, ArchivePressItemRow, ArchiveVideoRow } from '@/types/cms';
 import type { GalleryImage } from '@/types/gallery';
 import type { PressItem } from '@/types/press';
 import type { VideoItem } from '@/types/video';
 import { loadGalleryImages, loadLocalizedData } from '@/utils/dataLoader';
-import {
-  mapGalleryRowToItem,
-  mapPressRowToItem,
-  mapVideoRowToItem,
-  toContentMap,
-} from './adminArchive';
+import { mapGalleryRowToItem, mapPressRowToItem, mapVideoRowToItem } from './adminArchive';
 import { mergeArchiveRowsWithStatic } from './archiveContract';
 import { getSupabasePublicClient } from './supabasePublicClient';
-import type { SiteContentMap } from '@/types/cms';
 
 export type ArchiveSource = 'cms' | 'static';
 
@@ -134,29 +123,4 @@ export const loadPublishedGallery = async (
     source: 'static',
     items: staticItems,
   };
-};
-
-export const loadSiteContentMap = async (
-  locale: string,
-  routePath: string
-): Promise<SiteContentMap> => {
-  const client = getSupabasePublicClient();
-  if (!client) return {};
-
-  const { data, error } = await client
-    .from('cms_content_blocks')
-    .select('*')
-    .eq('status', 'published')
-    .eq('locale', locale)
-    .eq('route_path', routePath)
-    .order('sort_order', { ascending: true });
-
-  if (error) {
-    if (!isMissingTableError(error)) {
-      console.warn('[archive-cms] content fetch failed:', error.message);
-    }
-    return {};
-  }
-
-  return toContentMap((data ?? []) as CmsContentBlock[]);
 };

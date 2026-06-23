@@ -3,8 +3,6 @@ export type ArchiveEventType = 'camp' | 'album' | 'live' | 'music_video' | 'inte
 export type CmsChangeAction = 'create' | 'update' | 'hide' | 'restore';
 export type AdminRole = 'owner' | 'editor' | 'viewer';
 
-export type SiteContentMap = Record<string, string>;
-
 export interface AdminDocument {
   id: string;
   slug: string;

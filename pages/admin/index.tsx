@@ -8,7 +8,6 @@ import type { AdminMember } from '@/types/cms';
 interface AdminHomeProps {
   member: AdminMember;
   counts: {
-    content: number;
     videos: number;
     gallery: number;
     press: number;
@@ -17,12 +16,6 @@ interface AdminHomeProps {
 }
 
 const ADMIN_CARDS = [
-  {
-    href: '/admin/content',
-    title: '웹사이트 문구',
-    body: '페이지 제목, 소개 문단, 안내 문구를 직접 고칩니다.',
-    key: 'content',
-  },
   {
     href: '/admin/videos',
     title: '비디오 아카이브',
@@ -56,7 +49,7 @@ export default function AdminHomePage({ member, counts }: AdminHomeProps) {
         <h1 className="font-display text-3xl font-bold">웹사이트 관리 상황판</h1>
         <p className="mt-2 text-coastal-gray">
           제3회 캠프 이후에는 운영 체크리스트보다 아카이브 완성도와 공개 콘텐츠 관리가 중심입니다.
-          아래 메뉴에서 문구, 영상, 사진, 언론보도를 직접 추가하고 내릴 수 있습니다.
+          아래 메뉴에서 영상, 사진, 언론보도를 직접 추가하고 내릴 수 있습니다.
         </p>
       </div>
 
@@ -82,8 +75,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   if (!session) return redirectToAdminLogin(context.resolvedUrl);
 
   const supabase = createSupabaseServerClient(context.req, context.res);
-  const [content, videos, gallery, press, history] = await Promise.all([
-    supabase.from('cms_content_blocks').select('id', { count: 'exact', head: true }),
+  const [videos, gallery, press, history] = await Promise.all([
     supabase.from('archive_videos').select('id', { count: 'exact', head: true }),
     supabase.from('archive_gallery_images').select('id', { count: 'exact', head: true }),
     supabase.from('archive_press_items').select('id', { count: 'exact', head: true }),
@@ -94,7 +86,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     props: {
       member: session.member,
       counts: {
-        content: content.count ?? 0,
         videos: videos.count ?? 0,
         gallery: gallery.count ?? 0,
         press: press.count ?? 0,
