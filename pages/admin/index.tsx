@@ -2,8 +2,37 @@ import type { GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { getAdminSession, redirectToAdminLogin } from '@/lib/adminAuth';
-import { createSupabaseServerClient } from '@/lib/supabaseServer';
+import { createSupabaseServiceClient } from '@/lib/supabaseService';
 import type { AdminMember } from '@/types/cms';
+
+interface RecentLog {
+  action: string;
+  collection: string;
+  primary_label: string | null;
+  admin_email: string;
+  created_at: string;
+}
+interface RecentPost {
+  id: string;
+  title: string;
+  status: string;
+  created_at: string;
+  boardName: string;
+  boardSlug: string;
+  author: string;
+}
+interface MeetingRow {
+  id: string;
+  title: string;
+  meeting_date: string | null;
+}
+interface MailRow {
+  id: string;
+  subject: string;
+  from_name: string;
+  from_email: string;
+  created_at: string;
+}
 
 interface AdminHomeProps {
   member: AdminMember;
@@ -12,59 +41,298 @@ interface AdminHomeProps {
     gallery: number;
     press: number;
     history: number;
+    members: number;
+    admins: number;
+    posts: number;
+    postsHidden: number;
+    unreadMail: number;
+    upcomingMeetings: number;
   };
+  recentLogs: RecentLog[];
+  recentPosts: RecentPost[];
+  upcomingMeetings: MeetingRow[];
+  recentMeeting: MeetingRow | null;
+  recentMail: MailRow[];
 }
 
-const ADMIN_CARDS = [
-  {
-    href: '/admin/videos',
-    title: '비디오 아카이브',
-    body: '유튜브 링크와 영상 설명을 추가하거나 공개에서 내립니다.',
-    key: 'videos',
-  },
-  {
-    href: '/admin/gallery',
-    title: '갤러리 아카이브',
-    body: '사진 URL, 촬영자, 연도별 노출 상태를 관리합니다.',
-    key: 'gallery',
-  },
-  {
-    href: '/admin/press',
-    title: '언론보도 아카이브',
-    body: '기사 링크, 매체명, 대표 이미지와 요약을 관리합니다.',
-    key: 'press',
-  },
-  {
-    href: '/admin/history',
-    title: '변경 이력',
-    body: '저장, 내리기, 복구 기록을 확인하고 이전 값으로 되돌립니다.',
-    key: 'history',
-  },
-] as const;
+const ACTION_LABEL: Record<string, string> = {
+  create: '등록',
+  update: '수정',
+  hide: '내림',
+  restore: '복구',
+};
+const COLLECTION_LABEL: Record<string, string> = {
+  videos: '비디오',
+  gallery: '갤러리',
+  press: '언론보도',
+  content: '콘텐츠',
+};
 
-export default function AdminHomePage({ member, counts }: AdminHomeProps) {
+const fmtDate = (iso: string | null): string => {
+  if (!iso) return '날짜 미정';
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return iso;
+  return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
+};
+
+function StatCard({
+  label,
+  value,
+  sub,
+  href,
+  highlight = false,
+}: {
+  label: string;
+  value: number;
+  sub?: string;
+  href?: string;
+  highlight?: boolean;
+}) {
+  const inner = (
+    <>
+      <span className="text-sm font-medium text-coastal-gray">{label}</span>
+      <span
+        className={`mt-1 block font-display text-3xl font-bold ${
+          highlight && value > 0 ? 'text-sunset-coral' : 'text-deep-ocean'
+        }`}
+      >
+        {value.toLocaleString('ko-KR')}
+      </span>
+      {sub ? <span className="mt-1 block text-xs text-coastal-gray">{sub}</span> : null}
+    </>
+  );
+  const base =
+    'block rounded-lg border border-deep-ocean/10 bg-white p-4 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean';
+  return href ? (
+    <Link
+      href={href}
+      className={`${base} hover:-translate-y-0.5 hover:border-jeju-ocean/50 hover:shadow-md`}
+    >
+      {inner}
+    </Link>
+  ) : (
+    <div className={base}>{inner}</div>
+  );
+}
+
+function PanelHeader({ title, href, action }: { title: string; href?: string; action?: string }) {
+  return (
+    <div className="mb-3 flex items-center justify-between">
+      <h2 className="font-display text-lg font-bold text-deep-ocean">{title}</h2>
+      {href ? (
+        <Link href={href} className="text-xs font-semibold text-jeju-ocean hover:underline">
+          {action ?? '전체 보기'} →
+        </Link>
+      ) : null}
+    </div>
+  );
+}
+
+export default function AdminHomePage({
+  member,
+  counts,
+  recentLogs,
+  recentPosts,
+  upcomingMeetings,
+  recentMeeting,
+  recentMail,
+}: AdminHomeProps) {
+  const isOwner = member.role === 'owner';
+  const contentTotal = counts.videos + counts.gallery + counts.press;
+
   return (
     <AdminLayout title="상황판" member={member}>
-      <div className="mb-8 max-w-3xl">
+      <div className="mb-6">
         <h1 className="font-display text-3xl font-bold">기획단 상황판</h1>
         <p className="mt-2 text-coastal-gray">
-          제3회 캠프 이후에는 운영 체크리스트보다 아카이브 완성도와 공개 콘텐츠 관리가 중심입니다.
-          아래 메뉴에서 영상, 사진, 언론보도를 직접 추가하고 내릴 수 있습니다.
+          {member.display_name ? `${member.display_name}님, ` : ''}오늘 기획단 활동 현황을 한눈에
+          확인하세요.
         </p>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
-        {ADMIN_CARDS.map((card) => (
-          <Link
-            key={card.href}
-            href={card.href}
-            className="rounded border border-deep-ocean/10 bg-white p-5 transition hover:-translate-y-0.5 hover:border-jeju-ocean/50 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
-          >
-            <span className="text-sm font-semibold text-jeju-ocean">{counts[card.key]}개</span>
-            <h2 className="mt-2 font-display text-2xl font-bold">{card.title}</h2>
-            <p className="mt-2 text-sm leading-relaxed text-coastal-gray">{card.body}</p>
-          </Link>
-        ))}
+      {/* KPI 스탯 */}
+      <div className="mb-8 grid grid-cols-2 gap-3 lg:grid-cols-4">
+        <StatCard
+          label="가입 회원"
+          value={counts.members}
+          sub={`기획단 ${counts.admins}명`}
+          href={isOwner ? '/admin/members' : undefined}
+        />
+        <StatCard
+          label="게시글"
+          value={counts.posts}
+          sub={counts.postsHidden > 0 ? `숨김 ${counts.postsHidden}건` : '숨김 없음'}
+          href="/admin/board-posts"
+        />
+        <StatCard
+          label="미답변 문의"
+          value={counts.unreadMail}
+          sub={counts.unreadMail > 0 ? '확인 필요' : '모두 확인됨'}
+          href="/admin/mailbox"
+          highlight
+        />
+        <StatCard
+          label="공개 콘텐츠"
+          value={contentTotal}
+          sub={`영상 ${counts.videos} · 사진 ${counts.gallery} · 보도 ${counts.press}`}
+        />
+      </div>
+
+      <div className="grid gap-6 lg:grid-cols-3">
+        {/* 메인 컬럼 */}
+        <div className="space-y-6 lg:col-span-2">
+          {/* 최근 게시글 */}
+          <section className="rounded-lg border border-deep-ocean/10 bg-white p-5">
+            <PanelHeader title="최근 게시글" href="/admin/board-posts" action="게시글 관리" />
+            {recentPosts.length === 0 ? (
+              <p className="py-6 text-center text-sm text-coastal-gray">아직 게시글이 없습니다.</p>
+            ) : (
+              <ul className="divide-y divide-deep-ocean/10">
+                {recentPosts.map((post) => (
+                  <li key={post.id}>
+                    <Link
+                      href={`/board/${post.boardSlug}/${post.id}`}
+                      target="_blank"
+                      className="flex items-center justify-between gap-3 py-2.5 transition hover:text-jeju-ocean"
+                    >
+                      <span className="min-w-0 flex-1 truncate text-sm font-medium text-deep-ocean">
+                        {post.title}
+                        {post.status === 'hidden' && (
+                          <span className="ml-2 rounded bg-deep-ocean/10 px-1.5 py-0.5 text-xs text-coastal-gray">
+                            숨김
+                          </span>
+                        )}
+                      </span>
+                      <span className="flex-shrink-0 text-xs text-coastal-gray">
+                        {post.boardName} · {post.author || '익명'} · {fmtDate(post.created_at)}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
+
+          {/* 최근 변경 이력 */}
+          <section className="rounded-lg border border-deep-ocean/10 bg-white p-5">
+            <PanelHeader title="최근 활동" href="/admin/history" action="변경 이력" />
+            {recentLogs.length === 0 ? (
+              <p className="py-6 text-center text-sm text-coastal-gray">
+                아직 기록된 활동이 없습니다.
+              </p>
+            ) : (
+              <ul className="divide-y divide-deep-ocean/10">
+                {recentLogs.map((log, i) => (
+                  <li key={i} className="flex items-center justify-between gap-3 py-2.5 text-sm">
+                    <span className="min-w-0 flex-1 truncate text-deep-ocean">
+                      <span className="mr-2 rounded bg-jeju-ocean/10 px-1.5 py-0.5 text-xs font-semibold text-jeju-ocean">
+                        {COLLECTION_LABEL[log.collection] ?? log.collection}{' '}
+                        {ACTION_LABEL[log.action] ?? log.action}
+                      </span>
+                      {log.primary_label || '(제목 없음)'}
+                    </span>
+                    <span className="flex-shrink-0 text-xs text-coastal-gray">
+                      {log.admin_email.split('@')[0]} · {fmtDate(log.created_at)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
+        </div>
+
+        {/* 사이드바 */}
+        <div className="space-y-6">
+          {/* 회의 일정 */}
+          <section className="rounded-lg border border-deep-ocean/10 bg-white p-5">
+            <PanelHeader title="회의" href="/admin/meetings" action="회의록" />
+            {upcomingMeetings.length > 0 ? (
+              <ul className="space-y-2">
+                {upcomingMeetings.map((m) => (
+                  <li key={m.id} className="rounded bg-jeju-ocean/5 px-3 py-2">
+                    <span className="block text-sm font-semibold text-deep-ocean">{m.title}</span>
+                    <span className="text-xs text-jeju-ocean">
+                      예정 · {fmtDate(m.meeting_date)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <div className="text-sm text-coastal-gray">
+                <p>다가오는 회의가 없습니다.</p>
+                {recentMeeting && (
+                  <p className="mt-2 text-xs">
+                    최근: {recentMeeting.title} ({fmtDate(recentMeeting.meeting_date)})
+                  </p>
+                )}
+              </div>
+            )}
+          </section>
+
+          {/* 미답변 문의 */}
+          <section className="rounded-lg border border-deep-ocean/10 bg-white p-5">
+            <PanelHeader title="미답변 문의" href="/admin/mailbox" action="메일함" />
+            {recentMail.length === 0 ? (
+              <p className="text-sm text-coastal-gray">새 문의가 없습니다.</p>
+            ) : (
+              <ul className="space-y-2">
+                {recentMail.map((mail) => (
+                  <li key={mail.id} className="border-l-2 border-sunset-coral/40 pl-3">
+                    <span className="block truncate text-sm font-medium text-deep-ocean">
+                      {mail.subject || '(제목 없음)'}
+                    </span>
+                    <span className="text-xs text-coastal-gray">
+                      {mail.from_name || mail.from_email} · {fmtDate(mail.created_at)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
+
+          {/* 콘텐츠 아카이브 */}
+          <section className="rounded-lg border border-deep-ocean/10 bg-white p-5">
+            <PanelHeader title="콘텐츠 아카이브" />
+            <ul className="space-y-1 text-sm">
+              {[
+                { href: '/admin/videos', label: '비디오', n: counts.videos },
+                { href: '/admin/gallery', label: '갤러리', n: counts.gallery },
+                { href: '/admin/press', label: '언론보도', n: counts.press },
+              ].map((c) => (
+                <li key={c.href}>
+                  <Link
+                    href={c.href}
+                    className="flex items-center justify-between rounded px-2 py-1.5 transition hover:bg-ocean-sand/40"
+                  >
+                    <span className="text-deep-ocean">{c.label}</span>
+                    <span className="font-semibold text-jeju-ocean">{c.n}개</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {/* 바로가기 */}
+          <section className="rounded-lg border border-deep-ocean/10 bg-white p-5">
+            <PanelHeader title="바로가기" />
+            <div className="flex flex-wrap gap-2 text-sm">
+              {[
+                { href: '/admin/whitepaper', label: '운영 백서' },
+                { href: '/admin/boards', label: '게시판 설정' },
+                { href: '/admin/history', label: '변경 이력' },
+                ...(isOwner ? [{ href: '/admin/members', label: '기획단' }] : []),
+              ].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="rounded border border-deep-ocean/15 px-3 py-1.5 text-deep-ocean transition hover:border-jeju-ocean hover:text-jeju-ocean"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </section>
+        </div>
       </div>
     </AdminLayout>
   );
@@ -74,13 +342,97 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await getAdminSession(context);
   if (!session) return redirectToAdminLogin(context.resolvedUrl);
 
-  const supabase = createSupabaseServerClient(context.req, context.res);
-  const [videos, gallery, press, history] = await Promise.all([
-    supabase.from('archive_videos').select('id', { count: 'exact', head: true }),
-    supabase.from('archive_gallery_images').select('id', { count: 'exact', head: true }),
-    supabase.from('archive_press_items').select('id', { count: 'exact', head: true }),
-    supabase.from('cms_change_logs').select('id', { count: 'exact', head: true }),
+  const supabase = createSupabaseServiceClient();
+  const today = new Date().toISOString().slice(0, 10);
+  const countHead = (table: string) =>
+    supabase.from(table).select('id', { count: 'exact', head: true });
+
+  const [
+    videos,
+    gallery,
+    press,
+    history,
+    members,
+    admins,
+    posts,
+    postsHidden,
+    unreadMail,
+    upcomingCount,
+    recentLogsRes,
+    recentPostsRes,
+    upcomingMeetingsRes,
+    recentMeetingRes,
+    recentMailRes,
+  ] = await Promise.all([
+    countHead('archive_videos'),
+    countHead('archive_gallery_images'),
+    countHead('archive_press_items'),
+    countHead('cms_change_logs'),
+    countHead('profiles'),
+    supabase.from('admin_members').select('id', { count: 'exact', head: true }).eq('active', true),
+    countHead('posts'),
+    supabase.from('posts').select('id', { count: 'exact', head: true }).eq('status', 'hidden'),
+    supabase
+      .from('mailbox_messages')
+      .select('id', { count: 'exact', head: true })
+      .eq('direction', 'inbound')
+      .eq('is_read', false),
+    supabase
+      .from('meetings')
+      .select('id', { count: 'exact', head: true })
+      .eq('status', 'scheduled')
+      .gte('meeting_date', today),
+    supabase
+      .from('cms_change_logs')
+      .select('action,collection,primary_label,admin_email,created_at')
+      .order('created_at', { ascending: false })
+      .limit(6),
+    supabase
+      .from('posts')
+      .select('id,title,status,created_at,boards(name,slug),profiles(nickname)')
+      .order('created_at', { ascending: false })
+      .limit(5),
+    supabase
+      .from('meetings')
+      .select('id,title,meeting_date')
+      .eq('status', 'scheduled')
+      .gte('meeting_date', today)
+      .order('meeting_date', { ascending: true })
+      .limit(3),
+    supabase
+      .from('meetings')
+      .select('id,title,meeting_date')
+      .eq('status', 'completed')
+      .order('meeting_date', { ascending: false })
+      .limit(1)
+      .maybeSingle(),
+    supabase
+      .from('mailbox_messages')
+      .select('id,subject,from_name,from_email,created_at')
+      .eq('direction', 'inbound')
+      .eq('is_read', false)
+      .order('created_at', { ascending: false })
+      .limit(3),
   ]);
+
+  const pickOne = <T,>(rel: T | T[] | null | undefined): T | null =>
+    Array.isArray(rel) ? (rel[0] ?? null) : (rel ?? null);
+
+  const recentPosts: RecentPost[] = (
+    (recentPostsRes.data as Record<string, unknown>[] | null) ?? []
+  ).map((row) => {
+    const board = pickOne(row.boards as { name?: string; slug?: string } | null);
+    const profile = pickOne(row.profiles as { nickname?: string } | null);
+    return {
+      id: String(row.id),
+      title: String(row.title),
+      status: String(row.status),
+      created_at: String(row.created_at),
+      boardName: board?.name ?? '',
+      boardSlug: board?.slug ?? '',
+      author: profile?.nickname ?? '',
+    };
+  });
 
   return {
     props: {
@@ -90,7 +442,18 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
         gallery: gallery.count ?? 0,
         press: press.count ?? 0,
         history: history.count ?? 0,
+        members: members.count ?? 0,
+        admins: admins.count ?? 0,
+        posts: posts.count ?? 0,
+        postsHidden: postsHidden.count ?? 0,
+        unreadMail: unreadMail.count ?? 0,
+        upcomingMeetings: upcomingCount.count ?? 0,
       },
+      recentLogs: (recentLogsRes.data as RecentLog[] | null) ?? [],
+      recentPosts,
+      upcomingMeetings: (upcomingMeetingsRes.data as MeetingRow[] | null) ?? [],
+      recentMeeting: (recentMeetingRes.data as MeetingRow | null) ?? null,
+      recentMail: (recentMailRes.data as MailRow[] | null) ?? [],
     },
   };
 }
