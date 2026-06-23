@@ -8,7 +8,6 @@ import type { AdminMember } from '@/types/cms';
 
 const NAV_ITEMS = [
   { href: '/admin', label: '상황판' },
-  { href: '/admin/content', label: '웹사이트 문구' },
   { href: '/admin/videos', label: '비디오' },
   { href: '/admin/gallery', label: '갤러리' },
   { href: '/admin/press', label: '언론보도' },

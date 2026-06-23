@@ -8,19 +8,14 @@ import type {
   ArchiveGalleryImageRow,
   ArchivePressItemRow,
   ArchiveVideoRow,
-  CmsContentBlock,
   CmsStatus,
 } from '@/types/cms';
 
-export type AdminCollection = 'content' | 'videos' | 'gallery' | 'press';
+export type AdminCollection = 'videos' | 'gallery' | 'press';
 export const ADMIN_COLLECTION_PAGE_SIZE = 200;
 export const ADMIN_COLLECTION_MAX_PAGE_SIZE = 1000;
 
-export type AdminCollectionRow =
-  | CmsContentBlock
-  | ArchiveVideoRow
-  | ArchiveGalleryImageRow
-  | ArchivePressItemRow;
+export type AdminCollectionRow = ArchiveVideoRow | ArchiveGalleryImageRow | ArchivePressItemRow;
 
 export type AdminLocaleStatus = {
   locale: string;
@@ -53,7 +48,7 @@ export interface AdminFacet {
 
 export interface AdminCollectionConfig {
   collection: AdminCollection;
-  table: 'cms_content_blocks' | 'archive_videos' | 'archive_gallery_images' | 'archive_press_items';
+  table: 'archive_videos' | 'archive_gallery_images' | 'archive_press_items';
   title: string;
   description: string;
   listPath: string;
@@ -124,44 +119,6 @@ const localeField: AdminField = {
 };
 
 export const ADMIN_COLLECTION_CONFIGS: Record<AdminCollection, AdminCollectionConfig> = {
-  content: {
-    collection: 'content',
-    table: 'cms_content_blocks',
-    title: '웹사이트 문구',
-    description: '페이지 제목, 소개 문단, 안내 문구를 Wix처럼 직접 고칩니다.',
-    listPath: '/admin/content',
-    emptyLabel: '아직 등록된 문구가 없습니다.',
-    primaryField: 'label',
-    fields: [
-      {
-        name: 'key',
-        label: '문구 키',
-        kind: 'text',
-        required: true,
-        placeholder: 'videos.hero.title',
-      },
-      localeField,
-      {
-        name: 'route_path',
-        label: '페이지 경로',
-        kind: 'text',
-        required: true,
-        placeholder: '/videos',
-      },
-      {
-        name: 'placement',
-        label: '위치',
-        kind: 'text',
-        required: true,
-        placeholder: 'hero.title',
-      },
-      { name: 'label', label: '관리용 이름', kind: 'text', required: true },
-      { name: 'value', label: '문구', kind: 'textarea', required: true },
-      { name: 'description', label: '메모', kind: 'textarea' },
-      statusField,
-      { name: 'sort_order', label: '정렬', kind: 'number' },
-    ],
-  },
   videos: {
     collection: 'videos',
     table: 'archive_videos',
@@ -298,22 +255,6 @@ const imageUrlSchema = z
   .refine(isPathOrHttpUrl, '이미지 URL은 / 경로 또는 http(s) URL이어야 합니다.');
 const nullableImageUrlSchema = z.preprocess(emptyToNull, imageUrlSchema.nullable());
 
-const contentSchema = z.object({
-  id: z.string().uuid().optional(),
-  key: z.string().trim().min(1),
-  locale: localeSchema.default('ko'),
-  route_path: z
-    .string()
-    .trim()
-    .regex(/^\/[a-z0-9/_-]*$/i, '페이지 경로는 /로 시작해야 합니다.'),
-  placement: z.string().trim().min(1),
-  label: z.string().trim().min(1),
-  value: z.string().default(''),
-  description: nullableTextSchema.optional(),
-  status: cmsStatusSchema.default('draft'),
-  sort_order: sortOrderSchema,
-});
-
 const videoSchema = z.object({
   id: z.string().uuid().optional(),
   public_id: publicIdSchema,
@@ -367,8 +308,6 @@ export const sanitizeAdminPayload = (
   input: unknown
 ): Record<string, unknown> => {
   switch (collection) {
-    case 'content':
-      return contentSchema.parse(input);
     case 'videos':
       return videoSchema.parse(input);
     case 'gallery':
@@ -466,12 +405,6 @@ export const mapPressRowToItem = (row: ArchivePressItemRow): PressItem => ({
   ...(row.image_url ? { imageUrl: row.image_url } : {}),
 });
 
-export const toContentMap = (rows: CmsContentBlock[]): Record<string, string> =>
-  rows.reduce<Record<string, string>>((map, row) => {
-    map[row.placement] = row.value;
-    return map;
-  }, {});
-
 export const getPrimaryLabel = (row: AdminCollectionRow, config: AdminCollectionConfig): string => {
   const value = (row as unknown as Record<string, unknown>)[config.primaryField];
   return typeof value === 'string' && value ? value : `#${String(row.id).slice(0, 8)}`;
@@ -559,12 +492,6 @@ export const getAdminPreviewUrl = (
   row: Partial<Record<string, unknown>>
 ): string | null => {
   const locale = row.locale;
-
-  if (config.collection === 'content') {
-    const routePath = typeof row.route_path === 'string' ? row.route_path.trim() : '';
-    if (!routePath.startsWith('/')) return null;
-    return localizedPath(locale, routePath);
-  }
 
   const publicId = Number(row.public_id);
   if (!Number.isInteger(publicId) || publicId <= 0) return null;

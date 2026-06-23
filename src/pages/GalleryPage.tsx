@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import PageLayout from '@/components/layout/PageLayout';
 import Button from '@/components/common/Button';
 import PageHero from '@/components/common/PageHero';
@@ -17,55 +17,45 @@ import { getFullUrl } from '@/config/env';
 import { useTranslation } from 'next-i18next';
 
 import { GalleryImage } from '@/types/gallery';
-import type { SiteContentMap } from '@/types/cms';
 
 interface GalleryPageProps {
   initialImages?: GalleryImage[];
   /** SSR preview 외 전체 이미지 수 — schema numberOfItems 정확도용 */
   totalImageCount?: number;
-  siteContent?: SiteContentMap;
 }
 
-const GalleryPage = ({
-  initialImages = [],
-  totalImageCount,
-  siteContent = {},
-}: GalleryPageProps) => {
+const GalleryPage = ({ initialImages = [], totalImageCount }: GalleryPageProps) => {
   const { t, i18n } = useTranslation();
   const camp2026 = useCamp('camp-2026');
-  const text = useCallback(
-    (placement: string, fallbackKey: string) => siteContent[placement] || t(fallbackKey),
-    [siteContent, t]
-  );
 
   // schemaImages 를 useMemo 로 안정화 — 매 렌더 새 배열 참조 → structuredData
   // useMemo 가 매 렌더 재실행되어 7개 스키마 직렬화하던 회귀 차단.
   const schemaImages = useMemo(() => {
     const items = initialImages.slice(0, 20).map((img) => ({
       url: getFullUrl(img.url),
-      caption: img.description || text('hero.subtitle', 'gallery.hero_subtitle'),
+      caption: img.description || t('gallery.hero_subtitle'),
     }));
     if (items.length === 0) {
       items.push(
         {
           url: getFullUrl('/images-webp/camps/2023/DSC00528.webp'),
-          caption: text('hero.subtitle', 'gallery.hero_subtitle'),
+          caption: t('gallery.hero_subtitle'),
         },
         {
           url: getFullUrl('/images-webp/camps/2023/DSC00437.webp'),
-          caption: text('seo.description', 'gallery.page_desc'),
+          caption: t('gallery.page_desc'),
         }
       );
     }
     return items;
-  }, [initialImages, text]);
+  }, [initialImages, t]);
 
   const breadcrumbs = useMemo(
     () => [
       { name: t('nav.home'), url: getFullUrl('/') },
-      { name: text('seo.title', 'gallery.page_title'), url: getFullUrl('/gallery') },
+      { name: t('gallery.page_title'), url: getFullUrl('/gallery') },
     ],
-    [t, text]
+    [t]
   );
 
   const structuredData = useMemo(() => {
@@ -79,8 +69,8 @@ const GalleryPage = ({
       gallerySchema,
       getBreadcrumbSchema(breadcrumbs),
       getWebPageSchema({
-        name: text('seo.title', 'gallery.page_title'),
-        description: text('seo.description', 'gallery.page_desc'),
+        name: t('gallery.page_title'),
+        description: t('gallery.page_desc'),
         url: getFullUrl('/gallery'),
         keywords: [
           '강정피스앤뮤직캠프 갤러리',
@@ -94,14 +84,14 @@ const GalleryPage = ({
         ],
       }),
     ];
-  }, [schemaImages, i18n.language, totalImageCount, initialImages.length, breadcrumbs, t, text]);
+  }, [schemaImages, i18n.language, totalImageCount, initialImages.length, breadcrumbs, t]);
 
   return (
     <PageLayout
-      title={text('seo.title', 'gallery.page_title')}
-      description={text('seo.description', 'gallery.page_desc')}
+      title={t('gallery.page_title')}
+      description={t('gallery.page_desc')}
       ogImage="/images-webp/camps/2023/DSC00528.webp"
-      ogImageAlt={text('seo.title', 'gallery.page_title')}
+      ogImageAlt={t('gallery.page_title')}
       background="golden-sun"
       structuredData={structuredData}
       breadcrumbs={breadcrumbs}
@@ -109,18 +99,14 @@ const GalleryPage = ({
       disableBottomPadding={true}
     >
       <PageHero
-        title={text('hero.title', 'gallery.hero_title')}
-        subtitle={text('hero.subtitle', 'gallery.hero_subtitle')}
+        title={t('gallery.hero_title')}
+        subtitle={t('gallery.hero_subtitle')}
         backgroundImage="/images-webp/camps/2023/DSC00528.webp"
       />
       <PageIntroSection
-        eyebrow={text('intro.eyebrow', 'gallery.intro.eyebrow')}
-        heading={text('intro.heading', 'gallery.intro.heading')}
-        paragraphs={[
-          text('intro.p1', 'gallery.intro.p1'),
-          text('intro.p2', 'gallery.intro.p2'),
-          text('intro.p3', 'gallery.intro.p3'),
-        ]}
+        eyebrow={t('gallery.intro.eyebrow')}
+        heading={t('gallery.intro.heading')}
+        paragraphs={[t('gallery.intro.p1'), t('gallery.intro.p2'), t('gallery.intro.p3')]}
         background="white"
       />
       <Section background="white" paddingTop="tight" paddingBottom="tight">

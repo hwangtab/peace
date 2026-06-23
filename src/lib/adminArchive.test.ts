@@ -12,15 +12,9 @@ import {
   prepareAdminMissingLocaleClonePayloads,
   prepareAdminLocaleClonePayload,
   sanitizeAdminPayload,
-  toContentMap,
 } from './adminArchive';
 import type { AdminCollectionRow } from './adminArchive';
-import type {
-  ArchiveGalleryImageRow,
-  ArchivePressItemRow,
-  ArchiveVideoRow,
-  CmsContentBlock,
-} from '@/types/cms';
+import type { ArchiveGalleryImageRow, ArchivePressItemRow, ArchiveVideoRow } from '@/types/cms';
 
 const baseDates = {
   created_at: '2026-06-17T00:00:00.000Z',
@@ -145,26 +139,6 @@ test('maps archive rows to public page item contracts', () => {
   expect(Object.values(press).includes(undefined)).toBe(false);
 });
 
-test('content blocks become placement keyed page overrides', () => {
-  const rows = [
-    {
-      id: '00000000-0000-0000-0000-000000000004',
-      key: '/videos.hero.title',
-      locale: 'ko',
-      route_path: '/videos',
-      placement: 'hero.title',
-      label: '히어로 제목',
-      value: '현장의 영상',
-      description: null,
-      status: 'published',
-      sort_order: 0,
-      ...baseDates,
-    },
-  ] satisfies CmsContentBlock[];
-
-  expect(toContentMap(rows)).toEqual({ 'hero.title': '현장의 영상' });
-});
-
 test('published_at is preserved while an item remains published', () => {
   const previous = '2026-06-17T00:00:00.000Z';
 
@@ -178,7 +152,6 @@ test('builds saved item preview urls for admin review', () => {
   const videos = getAdminCollectionConfig('videos');
   const gallery = getAdminCollectionConfig('gallery');
   const press = getAdminCollectionConfig('press');
-  const content = getAdminCollectionConfig('content');
 
   expect(videos && getAdminPreviewUrl(videos, { public_id: 12, locale: 'en' })).toBe(
     '/en/videos/12'
@@ -187,10 +160,7 @@ test('builds saved item preview urls for admin review', () => {
     '/ko/gallery'
   );
   expect(press && getAdminPreviewUrl(press, { public_id: 56, locale: 'fr' })).toBe('/fr/press');
-  expect(content && getAdminPreviewUrl(content, { route_path: '/album/about', locale: 'ja' })).toBe(
-    '/ja/album/about'
-  );
-  expect(content && getAdminPreviewUrl(content, { route_path: 'bad', locale: 'ja' })).toBeNull();
+  expect(videos && getAdminPreviewUrl(videos, { public_id: -1, locale: 'en' })).toBeNull();
 });
 
 test('filters admin rows by search query and status', () => {
