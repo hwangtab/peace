@@ -122,7 +122,7 @@ const VideoDetailPage: React.FC<VideoDetailPageProps> = ({
               <time dateTime={video.date}>{localizedDate}</time>
             </div>
             <h1 className="typo-h2 mb-4 break-words">{video.title}</h1>
-            {director && (
+            {director ? (
               <p className="text-sm text-coastal-gray mb-6">
                 {t('videos.detail.director')}{' '}
                 <Link
@@ -136,7 +136,12 @@ const VideoDetailPage: React.FC<VideoDetailPageProps> = ({
                   {director.name}
                 </Link>
               </p>
-            )}
+            ) : video.directorName ? (
+              <p className="text-sm text-coastal-gray mb-6">
+                {t('videos.detail.director')}{' '}
+                <span className="font-bold text-deep-ocean">{video.directorName}</span>
+              </p>
+            ) : null}
             {video.description && (
               <p className="typo-body text-coastal-gray whitespace-pre-line break-words mb-8">
                 {video.description}
