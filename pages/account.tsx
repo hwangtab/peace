@@ -25,7 +25,7 @@ const ACCOUNT_HERO_IMAGE = '/images-webp/camps/2025/DSC00864.webp';
 export default function AccountPage() {
   const { t } = useTranslation('auth');
   const router = useRouter();
-  const { user, profile, loading, refreshProfile, signOut } = useAuth();
+  const { user, profile, loading, isAdmin, refreshProfile, signOut } = useAuth();
   const [newPassword, setNewPassword] = useState('');
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('');
@@ -130,6 +130,21 @@ export default function AccountPage() {
       </Head>
       <PageHero compact title={t('account.title')} backgroundImage={ACCOUNT_HERO_IMAGE} />
       <div className="mx-auto max-w-md space-y-6 px-4 py-12">
+        {isAdmin && (
+          <section className="rounded border border-jeju-ocean/30 bg-jeju-ocean/5 p-5">
+            <h2 className="mb-1 font-display text-lg font-bold text-deep-ocean">
+              {t('account.adminTitle')}
+            </h2>
+            <p className="mb-3 text-sm text-coastal-gray">{t('account.adminDescription')}</p>
+            <Link
+              href="/admin"
+              className="inline-flex w-full items-center justify-center gap-2 rounded bg-deep-ocean px-4 py-2 font-semibold text-white transition hover:bg-jeju-ocean"
+            >
+              {t('account.adminEnter')}
+            </Link>
+          </section>
+        )}
+
         <section className="rounded border border-deep-ocean/10 bg-white p-5">
           <h2 className="mb-3 font-display text-lg font-bold text-deep-ocean">
             {t('account.accountInfo')}
