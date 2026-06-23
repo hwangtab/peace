@@ -25,7 +25,7 @@ export const albumItems = [
 // (i18n:check가 비-KO 로케일의 한국어 값을 금지) locale JSON이 아닌 여기서 label로 직접 지정한다.
 // boards 테이블이 바뀌면(추가/이름변경/비활성) 이 목록도 함께 갱신할 것.
 export const communityItems = [
-  { label: '후기', path: `${ROUTES.BOARD}/reviews` },
   { label: '자유게시판', path: `${ROUTES.BOARD}/free` },
+  { label: '후기', path: `${ROUTES.BOARD}/reviews` },
   { label: '공연 소식', path: `${ROUTES.BOARD}/shows` },
 ];
