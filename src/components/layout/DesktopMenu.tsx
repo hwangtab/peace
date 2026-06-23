@@ -4,9 +4,10 @@ import Link from 'next/link';
 import { m as motion } from 'framer-motion';
 import NavigationDropdown from './NavigationDropdown';
 import LanguageSwitcher from '../common/LanguageSwitcher';
-import { campItems, albumItems, communityItems, simpleMenuItems } from './navigationData';
+import { campItems, albumItems, simpleMenuItems } from './navigationData';
 import { ROUTES } from '@/constants/routes';
 import { NavigationDropdownKey } from '@/hooks/useNavigation';
+import { useCommunityBoards } from '@/hooks/useCommunityBoards';
 import { useOptionalAuth } from '@/components/auth/AuthProvider';
 
 interface DesktopMenuProps {
@@ -20,6 +21,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(
   ({ isPathActive, desktopOpenDropdown, onOpenChange, isScrolled }) => {
     const { t } = useTranslation();
     const auth = useOptionalAuth();
+    const communityItems = useCommunityBoards();
 
     const getTextColor = (isActive: boolean) => {
       if (isScrolled) {

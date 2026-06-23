@@ -2,7 +2,8 @@ import React from 'react';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import { m as motion, AnimatePresence } from 'framer-motion';
-import { simpleMenuItems, campItems, albumItems, communityItems } from './navigationData';
+import { simpleMenuItems, campItems, albumItems } from './navigationData';
+import { useCommunityBoards } from '@/hooks/useCommunityBoards';
 import LanguageSwitcher from '../common/LanguageSwitcher';
 import Container from './Container';
 import { NavigationDropdownKey } from '@/hooks/useNavigation';
@@ -27,6 +28,7 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(
   ({ isOpen, isPathActive, mobileOpenDropdown, onClose, onToggleDropdown }) => {
     const { t } = useTranslation();
     const auth = useOptionalAuth();
+    const communityItems = useCommunityBoards();
 
     // 메뉴가 열린 동안 뒤 본문이 스크롤되지 않도록 body 스크롤을 잠근다.
     React.useEffect(() => {
