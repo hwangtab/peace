@@ -45,6 +45,11 @@ xenodochial-beaver/
 # Playwright MCP test artifacts
 .playwright-mcp/
 
+# Local visual QA captures should live in .codex-tmp/ or artifacts, not repo root.
+/*.png
+/*.jpg
+/*.jpeg
+
 # next-sitemap 이 postbuild 훅에서 자동 생성 — Vercel 빌드마다 갱신되므로 추적 금지
 public/robots.txt
 public/sitemap.xml

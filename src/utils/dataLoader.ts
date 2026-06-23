@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 import { parseJsonArray, type JsonArrayResult } from './jsonReader';
+import { buildLocalizedDataCandidateKeys, mergeItemsByKey } from './localizedDataContract';
 export type { JsonArrayStatus, JsonArrayResult } from './jsonReader';
 
 const createLoaderError = (message: string, cause?: unknown): Error => {
@@ -44,18 +45,12 @@ export const loadLocalizedData = <T>(
   options?: LoadLocalizedDataOptions
 ): T[] => {
   const root = path.join(process.cwd(), 'public', 'data');
-  const candidates =
-    locale === 'ko'
-      ? [path.join(root, filename)]
-      : [
-          path.join(root, locale, filename),
-          path.join(root, 'en', filename),
-          path.join(root, filename),
-        ];
+  const candidates = buildLocalizedDataCandidateKeys(locale).map((candidate) =>
+    candidate ? path.join(root, candidate, filename) : path.join(root, filename)
+  );
 
   if (options?.mergeByIdKey) {
-    const merged: T[] = [];
-    const seen = new Set<unknown>();
+    const dataSets: T[][] = [];
     let anyOk = false;
 
     for (const candidate of candidates) {
@@ -63,20 +58,14 @@ export const loadLocalizedData = <T>(
       if (result.status !== 'ok') continue;
 
       anyOk = true;
-      for (const item of result.data) {
-        const id = (item as Record<string, unknown>)[options.mergeByIdKey];
-        if (!seen.has(id)) {
-          seen.add(id);
-          merged.push(item);
-        }
-      }
+      dataSets.push(result.data);
     }
 
     if (!anyOk) {
       throw createLoaderError(`No localized data file found for ${filename} (locale: ${locale})`);
     }
 
-    return merged;
+    return mergeItemsByKey(dataSets, options.mergeByIdKey);
   }
 
   let allMissing = true;

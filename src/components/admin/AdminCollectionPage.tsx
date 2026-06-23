@@ -1,17 +1,16 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
-import classNames from 'classnames';
 import AdminLayout from './AdminLayout';
+import AdminCollectionListPanel from './AdminCollectionListPanel';
+import AdminCollectionStatusCards from './AdminCollectionStatusCards';
+import AdminLocaleStatusPanel from './AdminLocaleStatusPanel';
 import {
   ADMIN_COLLECTION_PAGE_SIZE,
   LOCALE_OPTIONS,
   filterAdminRows,
-  getPrimaryLabel,
   getAdminPreviewUrl,
   getRowStatus,
-  getRowUpdatedAt,
   mergeAdminRowsById,
-  normalizeAdminFormValue,
   prepareAdminLocaleClonePayload,
   prepareAdminMissingLocaleClonePayloads,
   type AdminLocaleStatus,
@@ -21,6 +20,7 @@ import {
 } from '@/lib/adminArchive';
 import type { AdminMember } from '@/types/cms';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
+import { buildAdminFormState, type AdminCollectionFormState } from './adminCollectionForm';
 
 export interface AdminCollectionPageProps {
   config: AdminCollectionConfig;
@@ -32,49 +32,6 @@ export interface AdminCollectionPageProps {
   selectedLocale: string;
   initialError?: string;
 }
-
-type FormState = Record<string, string>;
-
-const statusLabel = (status: string) => {
-  if (status === 'published') return '공개';
-  if (status === 'hidden') return '내림';
-  if (status === 'missing') return '없음';
-  return '초안';
-};
-
-const statusClass = (status: string) =>
-  classNames(
-    'rounded px-2 py-1 text-xs font-semibold',
-    status === 'published' && 'bg-jeju-ocean/10 text-jeju-ocean',
-    status === 'draft' && 'bg-golden-sun/20 text-deep-ocean',
-    status === 'hidden' && 'bg-sunset-coral/10 text-sunset-coral',
-    status === 'missing' && 'bg-coastal-gray/10 text-coastal-gray'
-  );
-
-const buildFormState = (
-  config: AdminCollectionConfig,
-  item?: AdminCollectionRow | null,
-  selectedLocale = 'ko'
-): FormState => {
-  const source = (item ?? {}) as unknown as Record<string, unknown>;
-  return config.fields.reduce<FormState>(
-    (state, field) => {
-      const fallback =
-        field.name === 'status'
-          ? 'draft'
-          : field.name === 'locale'
-            ? selectedLocale
-            : field.name === 'event_type'
-              ? 'camp'
-              : field.name === 'sort_order'
-                ? '0'
-                : '';
-      state[field.name] = normalizeAdminFormValue(source[field.name] ?? fallback);
-      return state;
-    },
-    item?.id ? { id: item.id } : {}
-  );
-};
 
 export default function AdminCollectionPage({
   config,
@@ -90,8 +47,8 @@ export default function AdminCollectionPage({
   const canEdit = member.role !== 'viewer';
   const [items, setItems] = useState(initialItems);
   const [selected, setSelected] = useState<AdminCollectionRow | null>(initialItems[0] ?? null);
-  const [form, setForm] = useState<FormState>(() =>
-    buildFormState(config, initialItems[0], selectedLocale)
+  const [form, setForm] = useState<AdminCollectionFormState>(() =>
+    buildAdminFormState(config, initialItems[0], selectedLocale)
   );
   const [isSaving, setIsSaving] = useState(false);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
@@ -172,7 +129,7 @@ export default function AdminCollectionPage({
 
   const selectItem = (item: AdminCollectionRow | null) => {
     setSelected(item);
-    setForm(buildFormState(config, item, selectedLocale));
+    setForm(buildAdminFormState(config, item, selectedLocale));
     setMessage('');
     setError('');
   };
@@ -206,7 +163,7 @@ export default function AdminCollectionPage({
     setNextOffset(payload.nextOffset ?? nextItems.length);
     setHasMore(payload.hasMore ?? false);
     setSelected(nextSelected);
-    setForm(buildFormState(config, nextSelected, selectedLocale));
+    setForm(buildAdminFormState(config, nextSelected, selectedLocale));
   };
 
   const loadMore = async () => {
@@ -360,7 +317,7 @@ export default function AdminCollectionPage({
         : '저장했습니다.'
     );
     setSelected(payload.item);
-    setForm(buildFormState(config, payload.item, selectedLocale));
+    setForm(buildAdminFormState(config, payload.item, selectedLocale));
     await refreshItems(payload.item.id);
     if (wasExisting) {
       try {
@@ -509,115 +466,26 @@ export default function AdminCollectionPage({
         </span>
       </div>
 
-      <div className="mb-6 grid grid-cols-2 gap-3 md:grid-cols-4">
-        {[
-          ['전체', counts.all, false],
-          ['공개', counts.published, counts.approximate],
-          ['초안', counts.draft, counts.approximate],
-          ['내림', counts.hidden, counts.approximate],
-        ].map(([label, value, approx]) => (
-          <div key={label as string} className="rounded border border-deep-ocean/10 bg-white p-4">
-            <p className="text-sm text-coastal-gray">{label as string}</p>
-            <p className="mt-1 text-2xl font-bold">
-              {value as number}
-              {approx ? (
-                <span className="ml-1 text-base font-normal text-coastal-gray">+</span>
-              ) : null}
-            </p>
-            {approx ? <p className="mt-0.5 text-xs text-coastal-gray">로드된 항목 기준</p> : null}
-          </div>
-        ))}
-      </div>
+      <AdminCollectionStatusCards counts={counts} />
 
       <div className="grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(380px,1.1fr)]">
-        <section className="rounded border border-deep-ocean/10 bg-white">
-          <div className="border-b border-deep-ocean/10 px-4 py-3">
-            <h2 className="font-semibold">목록</h2>
-          </div>
-          <div className="space-y-3 border-b border-deep-ocean/10 px-4 py-3">
-            <input
-              type="search"
-              value={searchQuery}
-              onChange={(event) => setSearchQuery(event.target.value)}
-              placeholder="제목, ID, 설명 검색"
-              className="w-full rounded border border-deep-ocean/15 px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
-            />
-            <div className="flex items-center justify-between gap-3">
-              <select
-                value={statusFilter}
-                onChange={(event) => setStatusFilter(event.target.value as AdminStatusFilter)}
-                className="rounded border border-deep-ocean/15 bg-white px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
-              >
-                <option value="all">모든 상태</option>
-                <option value="published">공개</option>
-                <option value="draft">초안</option>
-                <option value="hidden">내림</option>
-              </select>
-              <span className="text-xs text-coastal-gray">
-                {filteredItems.length.toLocaleString('ko-KR')} /{' '}
-                {totalCount.toLocaleString('ko-KR')}
-              </span>
-            </div>
-          </div>
-          {items.length === 0 ? (
-            <p className="p-6 text-coastal-gray">{config.emptyLabel}</p>
-          ) : filteredItems.length === 0 ? (
-            <p className="p-6 text-coastal-gray">검색 조건에 맞는 항목이 없습니다.</p>
-          ) : (
-            <ul className="divide-y divide-deep-ocean/10">
-              {filteredItems.map((item) => {
-                const active = selected?.id === item.id;
-                const status = getRowStatus(item);
-                return (
-                  <li key={item.id}>
-                    <button
-                      type="button"
-                      onClick={() => selectItem(item)}
-                      className={classNames(
-                        'w-full px-4 py-4 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-jeju-ocean',
-                        active ? 'bg-jeju-ocean/10' : 'hover:bg-ocean-sand/40'
-                      )}
-                    >
-                      <span className="flex items-start justify-between gap-3">
-                        <span>
-                          <span className="block font-semibold">
-                            {getPrimaryLabel(item, config)}
-                          </span>
-                          <span className="mt-1 block text-xs text-coastal-gray">
-                            {getRowUpdatedAt(item)
-                              ? new Date(getRowUpdatedAt(item)).toLocaleString('ko-KR')
-                              : ''}
-                          </span>
-                        </span>
-                        <span className={statusClass(status)}>{statusLabel(status)}</span>
-                      </span>
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
-          )}
-          {items.length > 0 && hasMore && (
-            <div className="flex flex-col gap-2 border-t border-deep-ocean/10 p-4 sm:flex-row">
-              <button
-                type="button"
-                onClick={loadMore}
-                disabled={isLoadingMore || isLoadingAll}
-                className="w-full rounded border border-deep-ocean/20 bg-white px-4 py-2 text-sm font-semibold text-deep-ocean transition hover:bg-ocean-sand/40 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
-              >
-                {isLoadingMore ? '불러오는 중' : '더 불러오기'}
-              </button>
-              <button
-                type="button"
-                onClick={loadAll}
-                disabled={isLoadingMore || isLoadingAll}
-                className="w-full rounded border border-jeju-ocean/40 bg-white px-4 py-2 text-sm font-semibold text-jeju-ocean transition hover:bg-jeju-ocean/10 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
-              >
-                {isLoadingAll ? '전체 불러오는 중' : '전체 불러오기'}
-              </button>
-            </div>
-          )}
-        </section>
+        <AdminCollectionListPanel
+          config={config}
+          items={items}
+          filteredItems={filteredItems}
+          selectedId={selected?.id ?? null}
+          totalCount={totalCount}
+          hasMore={hasMore}
+          isLoadingMore={isLoadingMore}
+          isLoadingAll={isLoadingAll}
+          searchQuery={searchQuery}
+          statusFilter={statusFilter}
+          onSearchQueryChange={setSearchQuery}
+          onStatusFilterChange={setStatusFilter}
+          onSelectItem={selectItem}
+          onLoadMore={() => void loadMore()}
+          onLoadAll={() => void loadAll()}
+        />
 
         <section className="rounded border border-deep-ocean/10 bg-white">
           <div className="border-b border-deep-ocean/10 px-4 py-3">
@@ -723,47 +591,15 @@ export default function AdminCollectionPage({
             )}
 
             {selected && (
-              <div className="rounded border border-deep-ocean/10 bg-white px-3 py-4">
-                <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-                  <span className="text-sm font-semibold text-deep-ocean">언어 상태</span>
-                  <span className="text-xs text-coastal-gray">
-                    공개 {localeStatusCounts.published} / 초안 {localeStatusCounts.draft} / 내림{' '}
-                    {localeStatusCounts.hidden} / 없음 {localeStatusCounts.missing}
-                  </span>
-                </div>
-                {isLoadingLocaleStatuses ? (
-                  <p className="text-sm text-coastal-gray">불러오는 중</p>
-                ) : localeStatuses.length === 0 ? (
-                  <p className="text-sm text-coastal-gray">언어 상태를 불러오지 못했습니다.</p>
-                ) : (
-                  <>
-                    <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-                      {localeStatuses.map((item) => (
-                        <a
-                          key={item.locale}
-                          href={`${config.listPath}?locale=${encodeURIComponent(item.locale)}`}
-                          className="flex items-center justify-between gap-2 rounded border border-deep-ocean/10 px-2 py-2 text-sm transition hover:bg-ocean-sand/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
-                        >
-                          <span className="font-semibold">{item.locale}</span>
-                          <span className={statusClass(item.status)}>
-                            {statusLabel(item.status)}
-                          </span>
-                        </a>
-                      ))}
-                    </div>
-                    {localeStatusCounts.missing > 0 && canEdit && (
-                      <button
-                        type="button"
-                        onClick={cloneMissingLocales}
-                        disabled={isSaving}
-                        className="mt-3 rounded border border-jeju-ocean/40 bg-white px-3 py-2 text-sm font-semibold text-jeju-ocean transition hover:bg-jeju-ocean/10 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
-                      >
-                        없는 언어 초안 모두 생성
-                      </button>
-                    )}
-                  </>
-                )}
-              </div>
+              <AdminLocaleStatusPanel
+                config={config}
+                localeStatuses={localeStatuses}
+                localeStatusCounts={localeStatusCounts}
+                isLoadingLocaleStatuses={isLoadingLocaleStatuses}
+                canEdit={canEdit}
+                isSaving={isSaving}
+                onCloneMissingLocales={() => void cloneMissingLocales()}
+              />
             )}
 
             {message && (

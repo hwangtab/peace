@@ -1,18 +1,16 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { z, ZodError } from 'zod';
 import { requireAdminRole } from '@/lib/adminAuth';
-import {
-  ADMIN_COLLECTION_PAGE_SIZE,
-  buildAdminLocaleStatuses,
-  getAdminCollectionConfig,
-  getAdminPaginationRange,
-  makePublishedAt,
-  sanitizeAdminPayload,
-} from '@/lib/adminArchive';
-import { revalidateArchivePaths } from '@/lib/adminRevalidate';
+import { ADMIN_COLLECTION_PAGE_SIZE, getAdminCollectionConfig } from '@/lib/adminArchive';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import { isSupportedLocale } from '@/constants/locales';
-import { createChangeLogPayload, insertChangeLogs } from '@/lib/adminChangeLogs';
+import {
+  AdminArchiveServiceError,
+  getAdminArchiveLocaleStatuses,
+  hideAdminArchiveRow,
+  listAdminArchiveRows,
+  saveAdminArchiveRow,
+} from '@/lib/adminArchiveService';
 
 const getErrorMessage = (error: unknown): string => {
   if (error instanceof ZodError) {
@@ -51,129 +49,55 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.status(400).json({ error: 'invalid_id' });
         return;
       }
-      const current = await supabase
-        .from(config.table)
-        .select('*')
-        .eq('id', parsed.data)
-        .maybeSingle();
-
-      if (current.error) {
-        res.status(500).json({ error: current.error.message });
-        return;
+      try {
+        const locales = await getAdminArchiveLocaleStatuses({
+          supabase,
+          config,
+          id: parsed.data,
+        });
+        res.status(200).json({ locales });
+      } catch (error) {
+        const statusCode = error instanceof AdminArchiveServiceError ? error.statusCode : 500;
+        res.status(statusCode).json({ error: getErrorMessage(error) });
       }
-      if (!current.data) {
-        res.status(404).json({ error: 'not_found' });
-        return;
-      }
-
-      const currentRow = current.data as Record<string, unknown>;
-      const relatedQuery = supabase
-        .from(config.table)
-        .select('id, locale, status, updated_at, published_at')
-        .order('locale', { ascending: true });
-      const related =
-        config.collection === 'content'
-          ? await relatedQuery.eq('key', String(currentRow.key ?? ''))
-          : await relatedQuery.eq('public_id', Number(currentRow.public_id));
-
-      if (related.error) {
-        res.status(500).json({ error: related.error.message });
-        return;
-      }
-
-      res.status(200).json({ locales: buildAdminLocaleStatuses(related.data ?? []) });
       return;
     }
 
     const offset = Number(req.query.offset ?? 0);
     const limit = Number(req.query.limit ?? ADMIN_COLLECTION_PAGE_SIZE);
-    const range = getAdminPaginationRange({ offset, limit });
-    const { data, error, count } = await supabase
-      .from(config.table)
-      .select('*', { count: 'exact' })
-      .eq('locale', selectedLocale)
-      .order('updated_at', { ascending: false })
-      .range(range.from, range.to);
-
-    if (error) {
-      res.status(500).json({ error: error.message });
-      return;
+    try {
+      const page = await listAdminArchiveRows({
+        supabase,
+        config,
+        locale: selectedLocale,
+        offset,
+        limit,
+      });
+      res.status(200).json({
+        ...page,
+        admin: session.member,
+      });
+    } catch (error) {
+      const statusCode = error instanceof AdminArchiveServiceError ? error.statusCode : 500;
+      res.status(statusCode).json({ error: getErrorMessage(error) });
     }
-
-    const itemCount = data?.length ?? 0;
-    const totalCount = count ?? itemCount;
-    const nextOffset = range.from + itemCount;
-
-    res.status(200).json({
-      items: data ?? [],
-      admin: session.member,
-      totalCount,
-      nextOffset,
-      hasMore: nextOffset < totalCount,
-    });
     return;
   }
 
   if (req.method === 'POST') {
     try {
-      const body = sanitizeAdminPayload(config.collection, req.body);
-      const id = typeof body.id === 'string' ? body.id : null;
-      const status =
-        body.status === 'published' ? 'published' : body.status === 'hidden' ? 'hidden' : 'draft';
-      const existing =
-        id != null
-          ? await supabase.from(config.table).select('*').eq('id', id).maybeSingle()
-          : null;
-      if (existing?.error) {
-        res.status(500).json({ error: existing.error.message });
-        return;
-      }
-      if (id != null && !existing?.data) {
-        res.status(404).json({ error: 'not_found' });
-        return;
-      }
-      const previous = (existing?.data as Record<string, unknown> | null) ?? null;
-      const payload = {
-        ...body,
-        published_at: makePublishedAt(
-          status,
-          (previous as { published_at?: string | null } | null)?.published_at ?? null
-        ),
-      };
-
-      const query = id
-        ? supabase.from(config.table).update(payload).eq('id', id).select('*').single()
-        : supabase.from(config.table).insert(payload).select('*').single();
-
-      const { data, error } = await query;
-
-      if (error) {
-        if (error.code === '23505') {
-          res.status(409).json({ error: '이미 사용 중인 공개 ID 또는 키입니다.' });
-        } else {
-          res.status(500).json({ error: error.message });
-        }
-        return;
-      }
-
-      const revalidationErrors = await revalidateArchivePaths(
-        res,
-        config.collection,
-        data as Record<string, unknown>
-      );
-      const changeLogError = await insertChangeLogs(supabase, [
-        createChangeLogPayload({
-          config,
-          action: id ? 'update' : 'create',
-          before: previous,
-          after: data,
-          session,
-        }),
-      ]);
-      res.status(200).json({ item: data, revalidationErrors, changeLogError });
+      const result = await saveAdminArchiveRow({
+        supabase,
+        response: res,
+        config,
+        input: req.body,
+        session,
+      });
+      res.status(200).json(result);
       return;
     } catch (error) {
-      res.status(400).json({ error: getErrorMessage(error) });
+      const statusCode = error instanceof AdminArchiveServiceError ? error.statusCode : 400;
+      res.status(statusCode).json({ error: getErrorMessage(error) });
       return;
     }
   }
@@ -190,72 +114,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return;
     }
 
-    const current = await supabase
-      .from(config.table)
-      .select('*')
-      .eq('id', parsed.data)
-      .maybeSingle();
-    if (current.error) {
-      res.status(500).json({ error: current.error.message });
+    try {
+      const result = await hideAdminArchiveRow({
+        supabase,
+        response: res,
+        config,
+        id: parsed.data,
+        session,
+      });
+      res.status(200).json(result);
+      return;
+    } catch (error) {
+      const statusCode = error instanceof AdminArchiveServiceError ? error.statusCode : 500;
+      res.status(statusCode).json({ error: getErrorMessage(error) });
       return;
     }
-    if (!current.data) {
-      res.status(404).json({ error: 'not_found' });
-      return;
-    }
-
-    const beforeRowsResult =
-      config.collection === 'content'
-        ? { data: [current.data as Record<string, unknown>], error: null }
-        : await supabase
-            .from(config.table)
-            .select('*')
-            .eq('public_id', (current.data as { public_id: number }).public_id);
-    if (beforeRowsResult.error) {
-      res.status(500).json({ error: beforeRowsResult.error.message });
-      return;
-    }
-    const beforeRows = beforeRowsResult.data ?? [];
-
-    const updateQuery = supabase
-      .from(config.table)
-      .update({ status: 'hidden', published_at: null });
-    const { data, error } =
-      config.collection === 'content'
-        ? await updateQuery.eq('id', parsed.data).select('*')
-        : await updateQuery
-            .eq('public_id', (current.data as { public_id: number }).public_id)
-            .select('*');
-
-    if (error) {
-      res.status(500).json({ error: error.message });
-      return;
-    }
-
-    const revalidationErrors = await revalidateArchivePaths(
-      res,
-      config.collection,
-      current.data as Record<string, unknown>
-    );
-    const afterById = new Map(
-      ((data ?? []) as Record<string, unknown>[]).map((row) => [String(row.id), row])
-    );
-    const changeLogError = await insertChangeLogs(
-      supabase,
-      (beforeRows as Record<string, unknown>[]).map((before) =>
-        createChangeLogPayload({
-          config,
-          action: 'hide',
-          before,
-          after: afterById.get(String(before.id)) ?? null,
-          session,
-        })
-      )
-    );
-    res
-      .status(200)
-      .json({ ok: true, hidden: data?.length ?? 0, revalidationErrors, changeLogError });
-    return;
   }
 
   res.setHeader('Allow', 'GET, POST, DELETE');

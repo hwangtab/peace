@@ -1,5 +1,6 @@
 import { getLanguageCode } from '../utils/localization';
 import { parseJsonArray, type JsonArrayResult } from '../utils/jsonReader';
+import { buildLocalizedDataCandidateKeys, mergeItemsByKey } from '../utils/localizedDataContract';
 
 type LocalDataResult<T> = JsonArrayResult<T>;
 
@@ -71,14 +72,9 @@ export async function fetchLocalizedData<T>(
       return [path];
     }
 
-    if (lang === 'ko') {
-      return [path];
-    }
-
-    const localizedPath = path.replace('/data/', `/data/${lang}/`);
-    const englishPath = path.replace('/data/', '/data/en/');
-
-    return lang === 'en' ? [localizedPath, path] : [localizedPath, englishPath, path];
+    return buildLocalizedDataCandidateKeys(lang).map((candidate) =>
+      candidate ? path.replace('/data/', `/data/${candidate}/`) : path
+    );
   })();
 
   if (!options?.mergeByIdKey) {
@@ -104,22 +100,14 @@ export async function fetchLocalizedData<T>(
   }
 
   // merge mode: all candidates fetched, earlier entries win on id collision
-  const key = options.mergeByIdKey;
-  const merged: T[] = [];
-  const seen = new Set<unknown>();
+  const dataSets: T[][] = [];
   let anyOk = false;
 
   for (const candidate of candidates) {
     const result = await fetchLocalDataResult<T>(candidate);
     if (result.status === 'ok') {
       anyOk = true;
-      for (const item of result.data) {
-        const id = (item as Record<string, unknown>)[key];
-        if (!seen.has(id)) {
-          seen.add(id);
-          merged.push(item);
-        }
-      }
+      dataSets.push(result.data);
     }
   }
 
@@ -127,5 +115,5 @@ export async function fetchLocalizedData<T>(
     throw createDataError(`No localized data file found for ${path} (language: ${lang})`);
   }
 
-  return merged;
+  return mergeItemsByKey(dataSets, options.mergeByIdKey);
 }
