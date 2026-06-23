@@ -141,6 +141,7 @@ FONTS: list[tuple[str, str, str]] = [
     ("S-CoreDream-4Regular.woff", "S-CoreDream-4Regular.subset.woff2", "woff2"),
     ("S-CoreDream-5Medium.woff", "S-CoreDream-5Medium.subset.woff2", "woff2"),
     ("S-CoreDream-6Bold.woff", "S-CoreDream-6Bold.subset.woff2", "woff2"),
+    ("S-CoreDream-7ExtraBold.woff", "S-CoreDream-7ExtraBold.subset.woff2", "woff2"),
 ]
 
 
