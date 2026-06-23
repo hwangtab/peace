@@ -7,6 +7,8 @@ import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import { replySubject } from '@/lib/mailboxForms';
 import type { MailboxMessage } from '@/types/mailbox';
 import type { AdminMember } from '@/types/cms';
+import ContactsPanel from '@/components/admin/mailbox/ContactsPanel';
+import ComposePanel from '@/components/admin/mailbox/ComposePanel';
 
 interface AdminMailboxPageProps {
   messages: MailboxMessage[];
@@ -28,6 +30,7 @@ export default function AdminMailboxPage({
 }: AdminMailboxPageProps) {
   const router = useRouter();
   const canEdit = canEditContent(member);
+  const [tab, setTab] = useState<'inbox' | 'compose' | 'contacts'>('inbox');
   const inbound = messages.filter((m) => m.direction === 'inbound');
   const [selectedId, setSelectedId] = useState<string | null>(inbound[0]?.id ?? null);
   const [replyText, setReplyText] = useState('');
@@ -100,131 +103,167 @@ export default function AdminMailboxPage({
 
   return (
     <AdminLayout title="메일함" member={member}>
-      {(initialError || error) && (
-        <p className="mb-4 whitespace-pre-wrap rounded bg-sunset-coral/10 px-3 py-2 text-sm text-sunset-coral">
-          {initialError || error}
-        </p>
-      )}
-      {message && (
-        <p className="mb-4 rounded bg-jeju-ocean/10 px-3 py-2 text-sm text-jeju-ocean">{message}</p>
-      )}
+      {/* 탭 버튼 줄 */}
+      <div className="mb-4 flex gap-2 border-b border-deep-ocean/10">
+        {(
+          [
+            ['inbox', '받은 메일함'],
+            ['compose', '보내기'],
+            ['contacts', '연락처'],
+          ] as const
+        ).map(([key, label]) => (
+          <button
+            key={key}
+            type="button"
+            onClick={() => setTab(key)}
+            className={`-mb-px border-b-2 px-4 py-2 text-sm font-semibold transition ${
+              tab === key
+                ? 'border-jeju-ocean text-jeju-ocean'
+                : 'border-transparent text-coastal-gray hover:text-deep-ocean'
+            }`}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
 
-      <p className="mb-4 text-sm text-deep-ocean/70">
-        admin@peaceandmusic.net 수신함 · 받은 메일 {inbound.length}건
-      </p>
+      {tab === 'compose' && <ComposePanel canEdit={canEdit} />}
+      {tab === 'contacts' && <ContactsPanel canEdit={canEdit} />}
 
-      {inbound.length === 0 ? (
-        <p className="rounded border border-deep-ocean/10 bg-white px-4 py-10 text-center text-sm text-balance text-deep-ocean/60">
-          받은 메일이 없습니다.
-        </p>
-      ) : (
-        <div className="grid gap-4 md:grid-cols-[18rem_1fr]">
-          {/* 목록 */}
-          <ul className="space-y-1">
-            {inbound.map((m) => (
-              <li key={m.id}>
-                <button
-                  type="button"
-                  onClick={() => openMessage(m)}
-                  className={
-                    'w-full rounded border px-3 py-2 text-left transition ' +
-                    (m.id === selectedId
-                      ? 'border-jeju-ocean/50 bg-jeju-ocean/5'
-                      : 'border-deep-ocean/10 bg-white hover:border-jeju-ocean/30')
-                  }
-                >
-                  <span
-                    className={
-                      'block truncate text-sm ' +
-                      (m.is_read ? 'text-deep-ocean/70' : 'font-bold text-deep-ocean')
-                    }
-                  >
-                    {m.subject || '(제목 없음)'}
-                  </span>
-                  <span className="block truncate text-xs text-deep-ocean/50">
-                    {m.from_name || m.from_email} · {formatTs(m.created_at)}
-                  </span>
-                </button>
-              </li>
-            ))}
-          </ul>
+      {tab === 'inbox' && (
+        <>
+          {(initialError || error) && (
+            <p className="mb-4 whitespace-pre-wrap rounded bg-sunset-coral/10 px-3 py-2 text-sm text-sunset-coral">
+              {initialError || error}
+            </p>
+          )}
+          {message && (
+            <p className="mb-4 rounded bg-jeju-ocean/10 px-3 py-2 text-sm text-jeju-ocean">
+              {message}
+            </p>
+          )}
 
-          {/* 상세 + 답장 */}
-          <div>
-            {selected ? (
-              <article className="rounded border border-deep-ocean/10 bg-white p-5">
-                <h2 className="font-display text-lg font-bold text-deep-ocean">
-                  {selected.subject || '(제목 없음)'}
-                </h2>
-                <p className="mt-1 break-all text-sm text-deep-ocean/60">
-                  보낸사람:{' '}
-                  {selected.from_name
-                    ? `${selected.from_name} <${selected.from_email}>`
-                    : selected.from_email}
-                </p>
-                <p className="text-xs text-deep-ocean/50">{formatTs(selected.created_at)}</p>
+          <p className="mb-4 text-sm text-deep-ocean/70">
+            admin@peaceandmusic.net 수신함 · 받은 메일 {inbound.length}건
+          </p>
 
-                <div className="mt-4 whitespace-pre-wrap border-t border-deep-ocean/10 pt-4 text-sm leading-relaxed text-deep-ocean/90">
-                  {selected.text_body.trim()
-                    ? selected.text_body
-                    : selected.html_body.trim()
-                      ? '(HTML 전용 메일입니다. 안전을 위해 본문은 표시하지 않습니다.)'
-                      : '(본문 없음)'}
-                </div>
-
-                {replies.length > 0 && (
-                  <div className="mt-5 space-y-3 border-t border-deep-ocean/10 pt-4">
-                    <p className="text-xs font-semibold text-deep-ocean/60">보낸 답장</p>
-                    {replies.map((r) => (
-                      <div key={r.id} className="rounded bg-ocean-sand/40 px-3 py-2">
-                        <p className="text-xs text-deep-ocean/50">
-                          {formatTs(r.created_at)} · {r.created_by}
-                        </p>
-                        <p className="mt-1 whitespace-pre-wrap text-sm text-deep-ocean/90">
-                          {r.text_body}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {canEdit ? (
-                  <form onSubmit={sendReply} className="mt-5 border-t border-deep-ocean/10 pt-4">
-                    <label
-                      htmlFor="mailbox-reply"
-                      className="mb-1 block text-sm font-semibold text-deep-ocean"
-                    >
-                      답장 ({replySubject(selected.subject)})
-                    </label>
-                    <textarea
-                      id="mailbox-reply"
-                      value={replyText}
-                      onChange={(e) => setReplyText(e.target.value)}
-                      rows={5}
-                      placeholder={`${selected.from_email} 에게 보낼 답장`}
-                      className="w-full rounded border border-deep-ocean/15 px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
-                    />
+          {inbound.length === 0 ? (
+            <p className="rounded border border-deep-ocean/10 bg-white px-4 py-10 text-center text-sm text-balance text-deep-ocean/60">
+              받은 메일이 없습니다.
+            </p>
+          ) : (
+            <div className="grid gap-4 md:grid-cols-[18rem_1fr]">
+              {/* 목록 */}
+              <ul className="space-y-1">
+                {inbound.map((m) => (
+                  <li key={m.id}>
                     <button
-                      type="submit"
-                      disabled={busy}
-                      className="mt-2 rounded bg-deep-ocean px-4 py-2 text-sm font-semibold text-white transition hover:bg-jeju-ocean disabled:cursor-not-allowed disabled:opacity-60"
+                      type="button"
+                      onClick={() => openMessage(m)}
+                      className={
+                        'w-full rounded border px-3 py-2 text-left transition ' +
+                        (m.id === selectedId
+                          ? 'border-jeju-ocean/50 bg-jeju-ocean/5'
+                          : 'border-deep-ocean/10 bg-white hover:border-jeju-ocean/30')
+                      }
                     >
-                      {busy ? '보내는 중…' : '답장 보내기'}
+                      <span
+                        className={
+                          'block truncate text-sm ' +
+                          (m.is_read ? 'text-deep-ocean/70' : 'font-bold text-deep-ocean')
+                        }
+                      >
+                        {m.subject || '(제목 없음)'}
+                      </span>
+                      <span className="block truncate text-xs text-deep-ocean/50">
+                        {m.from_name || m.from_email} · {formatTs(m.created_at)}
+                      </span>
                     </button>
-                  </form>
+                  </li>
+                ))}
+              </ul>
+
+              {/* 상세 + 답장 */}
+              <div>
+                {selected ? (
+                  <article className="rounded border border-deep-ocean/10 bg-white p-5">
+                    <h2 className="font-display text-lg font-bold text-deep-ocean">
+                      {selected.subject || '(제목 없음)'}
+                    </h2>
+                    <p className="mt-1 break-all text-sm text-deep-ocean/60">
+                      보낸사람:{' '}
+                      {selected.from_name
+                        ? `${selected.from_name} <${selected.from_email}>`
+                        : selected.from_email}
+                    </p>
+                    <p className="text-xs text-deep-ocean/50">{formatTs(selected.created_at)}</p>
+
+                    <div className="mt-4 whitespace-pre-wrap border-t border-deep-ocean/10 pt-4 text-sm leading-relaxed text-deep-ocean/90">
+                      {selected.text_body.trim()
+                        ? selected.text_body
+                        : selected.html_body.trim()
+                          ? '(HTML 전용 메일입니다. 안전을 위해 본문은 표시하지 않습니다.)'
+                          : '(본문 없음)'}
+                    </div>
+
+                    {replies.length > 0 && (
+                      <div className="mt-5 space-y-3 border-t border-deep-ocean/10 pt-4">
+                        <p className="text-xs font-semibold text-deep-ocean/60">보낸 답장</p>
+                        {replies.map((r) => (
+                          <div key={r.id} className="rounded bg-ocean-sand/40 px-3 py-2">
+                            <p className="text-xs text-deep-ocean/50">
+                              {formatTs(r.created_at)} · {r.created_by}
+                            </p>
+                            <p className="mt-1 whitespace-pre-wrap text-sm text-deep-ocean/90">
+                              {r.text_body}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {canEdit ? (
+                      <form
+                        onSubmit={sendReply}
+                        className="mt-5 border-t border-deep-ocean/10 pt-4"
+                      >
+                        <label
+                          htmlFor="mailbox-reply"
+                          className="mb-1 block text-sm font-semibold text-deep-ocean"
+                        >
+                          답장 ({replySubject(selected.subject)})
+                        </label>
+                        <textarea
+                          id="mailbox-reply"
+                          value={replyText}
+                          onChange={(e) => setReplyText(e.target.value)}
+                          rows={5}
+                          placeholder={`${selected.from_email} 에게 보낼 답장`}
+                          className="w-full rounded border border-deep-ocean/15 px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
+                        />
+                        <button
+                          type="submit"
+                          disabled={busy}
+                          className="mt-2 rounded bg-deep-ocean px-4 py-2 text-sm font-semibold text-white transition hover:bg-jeju-ocean disabled:cursor-not-allowed disabled:opacity-60"
+                        >
+                          {busy ? '보내는 중…' : '답장 보내기'}
+                        </button>
+                      </form>
+                    ) : (
+                      <p className="mt-5 border-t border-deep-ocean/10 pt-4 text-sm text-deep-ocean/50">
+                        답장은 편집 권한이 있는 관리자만 보낼 수 있습니다.
+                      </p>
+                    )}
+                  </article>
                 ) : (
-                  <p className="mt-5 border-t border-deep-ocean/10 pt-4 text-sm text-deep-ocean/50">
-                    답장은 편집 권한이 있는 관리자만 보낼 수 있습니다.
+                  <p className="rounded border border-deep-ocean/10 bg-white px-4 py-10 text-center text-sm text-balance text-deep-ocean/60">
+                    왼쪽에서 메일을 선택하세요.
                   </p>
                 )}
-              </article>
-            ) : (
-              <p className="rounded border border-deep-ocean/10 bg-white px-4 py-10 text-center text-sm text-balance text-deep-ocean/60">
-                왼쪽에서 메일을 선택하세요.
-              </p>
-            )}
-          </div>
-        </div>
+              </div>
+            </div>
+          )}
+        </>
       )}
     </AdminLayout>
   );
