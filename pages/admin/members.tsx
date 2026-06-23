@@ -102,14 +102,14 @@ export default function AdminMembersPage({
 
     setIsSubmitting(false);
     if (!response.ok || !payload.member) {
-      setError(payload.error || '멤버를 추가하지 못했습니다.');
+      setError(payload.error || '기획단에 추가하지 못했습니다.');
       return;
     }
 
     setEmail('');
     setDisplayName('');
     setRole('editor');
-    setMessage('멤버를 추가했습니다.');
+    setMessage('기획단에 추가했습니다.');
     await refresh();
   };
 
@@ -127,20 +127,20 @@ export default function AdminMembersPage({
 
     setBusyId(null);
     if (!response.ok || !payload.member) {
-      setError(payload.error || '멤버를 수정하지 못했습니다.');
+      setError(payload.error || '기획단 정보를 수정하지 못했습니다.');
       return;
     }
 
-    setMessage('멤버 정보를 수정했습니다.');
+    setMessage('기획단 정보를 수정했습니다.');
     await refresh();
   };
 
   return (
-    <AdminLayout title="멤버 관리" member={member}>
+    <AdminLayout title="기획단 관리" member={member}>
       <div className="mb-6">
-        <h1 className="font-display text-3xl font-bold">멤버 관리</h1>
+        <h1 className="font-display text-3xl font-bold">기획단 관리</h1>
         <p className="mt-2 max-w-2xl text-coastal-gray">
-          관리자 계정을 추가하고 역할을 정합니다. 소유자는 모든 권한과 멤버 관리, 편집자는 콘텐츠
+          기획단 계정을 추가하고 역할을 정합니다. 소유자는 모든 권한과 기획단 관리, 편집자는 콘텐츠
           편집, 열람자는 조회만 가능합니다.
         </p>
       </div>
@@ -156,7 +156,7 @@ export default function AdminMembersPage({
 
       <section className="mb-8 rounded border border-deep-ocean/10 bg-white">
         <div className="border-b border-deep-ocean/10 px-4 py-3">
-          <h2 className="font-semibold">새 멤버 추가</h2>
+          <h2 className="font-semibold">기획단 추가</h2>
         </div>
         <form onSubmit={addMember} className="grid gap-4 p-4 sm:grid-cols-2 lg:grid-cols-4">
           <label className="block">
@@ -200,7 +200,7 @@ export default function AdminMembersPage({
               disabled={isSubmitting}
               className="w-full rounded bg-deep-ocean px-4 py-2 font-semibold text-white transition hover:bg-jeju-ocean disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
             >
-              {isSubmitting ? '추가 중' : '멤버 추가'}
+              {isSubmitting ? '추가 중' : '기획단 추가'}
             </button>
           </div>
         </form>
@@ -211,10 +211,10 @@ export default function AdminMembersPage({
 
       <section className="rounded border border-deep-ocean/10 bg-white">
         <div className="border-b border-deep-ocean/10 px-4 py-3">
-          <h2 className="font-semibold">멤버 {members.length}명</h2>
+          <h2 className="font-semibold">기획단 {members.length}명</h2>
         </div>
         {members.length === 0 ? (
-          <p className="p-6 text-coastal-gray">등록된 멤버가 없습니다.</p>
+          <p className="p-6 text-coastal-gray">등록된 기획단원이 없습니다.</p>
         ) : (
           <ul className="divide-y divide-deep-ocean/10">
             {members.map((row) => {

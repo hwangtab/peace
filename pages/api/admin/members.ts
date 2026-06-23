@@ -97,7 +97,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return;
       }
       if (!target.data) {
-        res.status(404).json({ error: '대상 멤버를 찾을 수 없습니다.' });
+        res.status(404).json({ error: '대상 기획단원을 찾을 수 없습니다.' });
         return;
       }
 
