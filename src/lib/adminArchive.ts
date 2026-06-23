@@ -36,6 +36,8 @@ export type AdminFieldKind =
   | 'musician'
   // 뮤지션 여러 명을 이름으로 골라 id 목록(csv)을 저장(예: 출연진).
   | 'musician-multi'
+  // 등록된 사진 작가를 이름으로 골라 slug를 저장(작가 2명 이상일 때만 드롭다운).
+  | 'photographer'
   // 분·초 두 칸으로 입력받아 ISO 8601 duration(PT3M20S)으로 저장.
   | 'duration';
 
@@ -199,9 +201,9 @@ export const ADMIN_COLLECTION_CONFIGS: Record<AdminCollection, AdminCollectionCo
       {
         name: 'photographer',
         label: '촬영자',
-        kind: 'text',
+        kind: 'photographer',
         placeholder: 'kdh',
-        hint: '촬영 작가 식별자(slug). 영문 소문자로 입력합니다. 비워도 됩니다.',
+        hint: '등록된 작가에서 고릅니다. 작가가 한 명이면 식별자(slug)를 직접 입력합니다. 비워도 됩니다.',
       },
       statusField,
       {

@@ -49,3 +49,22 @@ export const allPhotographerSlugs = (): string[] => {
   }
   return [...slugs];
 };
+
+/** 관리자 작가 드롭다운에 쓰는 항목 */
+export interface PhotographerOption {
+  slug: string;
+  name: string;
+}
+
+/**
+ * 관리자 드롭다운용 작가 목록(slug + 표시 이름)을 만든다.
+ * 이름은 gallery 번역 사전(gallery.json의 photographers 섹션)에서 가져오고,
+ * 없으면 slug 자체를 표시 이름으로 쓴다.
+ */
+export const buildPhotographerOptions = (
+  galleryPhotographers?: Record<string, { name?: string }> | null
+): PhotographerOption[] =>
+  allPhotographerSlugs().map((slug) => ({
+    slug,
+    name: galleryPhotographers?.[slug]?.name?.trim() || slug,
+  }));
