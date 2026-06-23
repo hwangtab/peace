@@ -39,7 +39,7 @@ export default function AdminLayout({ title, member, children }: AdminLayoutProp
   return (
     <>
       <Head>
-        <title>{title} | PEACE 관리자</title>
+        <title>{title} | PEACE 기획단</title>
         <meta name="robots" content="noindex,nofollow" />
       </Head>
       <div className="min-h-screen bg-[#f5f7f2] text-deep-ocean">
@@ -53,7 +53,7 @@ export default function AdminLayout({ title, member, children }: AdminLayoutProp
                 <span className="block text-xs font-semibold uppercase tracking-[0.2em] text-jeju-ocean">
                   PEACE CMS
                 </span>
-                <span className="font-display text-2xl font-bold">웹사이트 관리</span>
+                <span className="font-display text-2xl font-bold">기획단 페이지</span>
               </Link>
               <div className="flex items-center gap-3 text-sm">
                 {member && (

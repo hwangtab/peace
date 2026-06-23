@@ -46,7 +46,7 @@ export default function AdminHomePage({ member, counts }: AdminHomeProps) {
   return (
     <AdminLayout title="상황판" member={member}>
       <div className="mb-8 max-w-3xl">
-        <h1 className="font-display text-3xl font-bold">웹사이트 관리 상황판</h1>
+        <h1 className="font-display text-3xl font-bold">기획단 상황판</h1>
         <p className="mt-2 text-coastal-gray">
           제3회 캠프 이후에는 운영 체크리스트보다 아카이브 완성도와 공개 콘텐츠 관리가 중심입니다.
           아래 메뉴에서 영상, 사진, 언론보도를 직접 추가하고 내릴 수 있습니다.
