@@ -62,7 +62,7 @@ export default function AdminMeetingsPage({
       </div>
 
       {meetings.length === 0 ? (
-        <p className="rounded border border-deep-ocean/10 bg-white px-4 py-10 text-center text-sm text-deep-ocean/60">
+        <p className="rounded border border-deep-ocean/10 bg-white px-4 py-10 text-center text-sm text-balance text-deep-ocean/60">
           등록된 회의가 없습니다.
           {canEdit
             ? ' 상단의 “새 회의”로 추가하세요.'

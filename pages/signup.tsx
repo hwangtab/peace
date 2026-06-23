@@ -97,13 +97,15 @@ export default function SignupPage() {
           >
             ✉️
           </div>
-          <p className="text-sm leading-relaxed text-deep-ocean">{t('signup.checkEmail')}</p>
+          <p className="text-sm leading-relaxed text-balance text-deep-ocean">
+            {t('signup.checkEmail')}
+          </p>
           {email && (
             <p className="break-all rounded bg-jeju-ocean/5 px-3 py-2 text-sm font-semibold text-jeju-ocean">
               {email}
             </p>
           )}
-          <p className="text-xs text-coastal-gray">{t('signup.checkEmailSpam')}</p>
+          <p className="text-xs text-balance text-coastal-gray">{t('signup.checkEmailSpam')}</p>
           <Link href="/login" className={`${btnCls} block text-center`}>
             {t('signup.toLogin')}
           </Link>
