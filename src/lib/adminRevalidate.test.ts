@@ -14,8 +14,8 @@ test('builds locale-aware revalidation paths for video archive changes', () => {
   expect(paths).toContain('/video-sitemap.xml');
 });
 
-test('builds content revalidation paths from the edited route', () => {
-  const paths = getArchiveRevalidationPaths('content', { route_path: '/press' });
+test('builds locale-aware revalidation paths for press archive changes', () => {
+  const paths = getArchiveRevalidationPaths('press', {});
 
   expect(paths).toEqual(LOCALES.map((locale) => localizedPath('/press', locale)));
 });
