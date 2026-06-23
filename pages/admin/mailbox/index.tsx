@@ -114,7 +114,7 @@ export default function AdminMailboxPage({
       </p>
 
       {inbound.length === 0 ? (
-        <p className="rounded border border-deep-ocean/10 bg-white px-4 py-10 text-center text-sm text-deep-ocean/60">
+        <p className="rounded border border-deep-ocean/10 bg-white px-4 py-10 text-center text-sm text-balance text-deep-ocean/60">
           받은 메일이 없습니다.
         </p>
       ) : (
@@ -219,7 +219,7 @@ export default function AdminMailboxPage({
                 )}
               </article>
             ) : (
-              <p className="rounded border border-deep-ocean/10 bg-white px-4 py-10 text-center text-sm text-deep-ocean/60">
+              <p className="rounded border border-deep-ocean/10 bg-white px-4 py-10 text-center text-sm text-balance text-deep-ocean/60">
                 왼쪽에서 메일을 선택하세요.
               </p>
             )}

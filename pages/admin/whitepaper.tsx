@@ -186,7 +186,7 @@ export default function AdminWhitepaperPage({
           <MarkdownView content={document.body_md} />
         </section>
       ) : (
-        <section className="rounded border border-deep-ocean/10 bg-white p-8 text-center text-coastal-gray">
+        <section className="rounded border border-deep-ocean/10 bg-white p-8 text-center text-balance text-coastal-gray">
           아직 등록된 백서가 없습니다.
           {canEdit
             ? ' 상단의 “백서 등록”으로 .md 파일을 올려 주세요.'

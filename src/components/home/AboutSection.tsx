@@ -42,26 +42,23 @@ const AboutSection = () => {
             variants={itemVariants}
             className="space-y-8 text-base sm:text-lg text-coastal-gray leading-relaxed"
           >
-            <p className="text-pretty">
+            <p className="text-balance">
               <Trans i18nKey="about.desc1">
                 제주 강정마을, 거친 바람이 부는 구럼비 바위 앞에서 우리는 처음 노래를 불렀습니다.
-                <br className="hidden md:block" />
                 평화는 거창한 구호가 아니라, 서로의 목소리에 귀 기울이는 순간 시작된다는 것을
                 알았습니다.
               </Trans>
             </p>
-            <p className="text-pretty">
+            <p className="text-balance">
               <Trans i18nKey="about.desc2">
-                강정피스앤뮤직캠프는 전쟁 없는 세상을 꿈꾸는 음악가들의 연대이자 축제입니다.
-                <br className="hidden md:block" />
-                국경과 언어를 넘어, 음악이라는 가장 아름다운 무기로 우리는 평화를 이야기합니다.
+                강정피스앤뮤직캠프는 전쟁 없는 세상을 꿈꾸는 음악가들의 연대이자 축제입니다. 국경과
+                언어를 넘어, 음악이라는 가장 아름다운 무기로 우리는 평화를 이야기합니다.
               </Trans>
             </p>
-            <p className="text-deep-ocean font-medium text-pretty">
+            <p className="text-deep-ocean font-medium text-balance">
               <Trans i18nKey="about.desc3">
-                함께 노래하고, 춤추고, 서로를 안아줄 때,
-                <br className="hidden sm:block" />
-                전쟁은 멈추고 평화의 파도는 더 멀리 퍼져나갈 것입니다.
+                함께 노래하고, 춤추고, 서로를 안아줄 때, 전쟁은 멈추고 평화의 파도는 더 멀리
+                퍼져나갈 것입니다.
               </Trans>
             </p>
           </motion.div>

@@ -79,7 +79,7 @@ const HookStatement: React.FC<Props> = ({ variant = 'camp' }) => {
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="font-partial font-normal text-xl sm:text-2xl md:text-3xl text-white mb-6 sm:mb-8 break-words"
+            className="font-partial font-normal text-xl sm:text-2xl md:text-3xl text-white mb-6 sm:mb-8 break-words text-balance"
           >
             {t('hook_subline')}
           </motion.p>

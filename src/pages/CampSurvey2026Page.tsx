@@ -182,7 +182,7 @@ const CampSurvey2026Page: React.FC = () => {
             <div className="py-16 text-center">
               <div className="mb-6 text-5xl">🌊</div>
               <h1 className="mb-4 font-display text-3xl font-bold text-deep-ocean">고맙습니다!</h1>
-              <p className="mx-auto mb-8 max-w-md leading-relaxed text-coastal-gray">
+              <p className="mx-auto mb-8 max-w-md leading-relaxed text-balance text-coastal-gray">
                 소중한 회고가 잘 전달되었습니다. 여러분이 들려준 이야기로 제4회 캠프를 더 단단하게
                 준비하겠습니다. 노래하자, 춤추자, 전쟁을 끝내자.
               </p>
