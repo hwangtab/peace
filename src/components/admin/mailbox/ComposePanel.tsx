@@ -21,8 +21,13 @@ export default function ComposePanel({ canEdit }: { canEdit: boolean }) {
     if (group) params.set('group', group);
     if (cohort) params.set('cohort', cohort);
     const res = await fetch(`/api/admin/mail-contacts?${params.toString()}`);
-    const data = await res.json();
-    if (res.ok) setContacts((data.items ?? []).filter((c: MailContact) => c.is_active));
+    const data = await res.json().catch(() => ({}));
+    if (res.ok) {
+      setContacts((data.items ?? []).filter((c: MailContact) => c.is_active));
+    } else {
+      setError(data.error ?? '연락처를 불러오지 못했습니다.');
+    }
+    setSelected(new Set());
   }, [group, cohort]);
 
   useEffect(() => {
