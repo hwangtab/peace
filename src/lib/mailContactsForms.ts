@@ -85,14 +85,21 @@ export const parseContactsCsv = (text: string): { rows: ParsedContact[]; errors:
   const rows: ParsedContact[] = [];
   const errors: string[] = [];
   const lines = (text ?? '').split(/\r?\n/).filter((l) => l.trim().length > 0);
+  let rowNum = 0;
   for (const line of lines) {
     const cols = splitCsvLine(line);
     // 헤더 스킵
     if (cols[0] === '이름' && /이메일|email/i.test(cols[1] ?? '')) continue;
+    rowNum += 1;
     const [name, email, group, cohort] = cols;
     const g = normalizeGroupType(group ?? '');
-    if (!name || !email || !isValidEmail(email) || !g) {
-      errors.push(`건너뜀: ${line} (이름/이메일/그룹 확인: ${email ?? ''})`);
+    if (!name || !email || !isValidEmail(email ?? '') || !g) {
+      const reason = !name
+        ? '이름 누락'
+        : !isValidEmail(email ?? '')
+          ? `이메일 오류(${email ?? ''})`
+          : '그룹 오류';
+      errors.push(`${rowNum}행: ${reason} — ${line}`);
       continue;
     }
     rows.push({
