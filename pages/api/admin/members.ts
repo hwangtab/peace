@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { z, ZodError } from 'zod';
 import { requireAdminRole } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
+import { loadRegularMembers } from '@/lib/adminMembers';
 import type { AdminMember } from '@/types/cms';
 
 const roleSchema = z.enum(['owner', 'editor', 'viewer']);
@@ -13,6 +14,11 @@ const createSchema = z.object({
     z.string().nullable()
   ),
   role: roleSchema.default('editor'),
+  // 일반 회원을 등업할 때 auth user를 직접 연결(없으면 이메일로만 매칭).
+  user_id: z.preprocess(
+    (value) => (typeof value === 'string' && value.trim() ? value.trim() : null),
+    z.string().uuid().nullable()
+  ),
 });
 
 const updateSchema = z
@@ -39,15 +45,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const supabase = createSupabaseServerClient(req, res);
 
   if (req.method === 'GET') {
-    const { data, error } = await supabase
-      .from('admin_members')
-      .select('*')
-      .order('created_at', { ascending: true });
+    const [{ data, error }, users] = await Promise.all([
+      supabase.from('admin_members').select('*').order('created_at', { ascending: true }),
+      loadRegularMembers(),
+    ]);
     if (error) {
       res.status(500).json({ error: error.message });
       return;
     }
-    res.status(200).json({ members: data ?? [], admin: session.member });
+    res.status(200).json({ members: data ?? [], users, admin: session.member });
     return;
   }
 
@@ -60,6 +66,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           email: body.email,
           display_name: body.display_name,
           role: body.role,
+          user_id: body.user_id,
           active: true,
         })
         .select('*')
