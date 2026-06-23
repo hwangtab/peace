@@ -4,6 +4,8 @@ import {
   normalizeGroupType,
   normalizeCohorts,
   validateContactName,
+  validateBroadcastSubject,
+  validateBroadcastBody,
 } from './mailContactsForms';
 
 test('personalizeBody는 {이름}을 이름으로 치환한다', () => {
@@ -50,4 +52,17 @@ test('parseContactsCsv는 헤더 있는 CSV를 파싱하고 잘못된 행은 err
   expect(rows[1].cohorts).toEqual(['2025', '2026']);
   expect(errors).toHaveLength(1);
   expect(errors[0]).toContain('not-an-email');
+});
+
+test('validateBroadcastSubject는 빈 제목을 거부하고 정상 제목을 받는다', () => {
+  expect(validateBroadcastSubject('').ok).toBe(false);
+  expect(validateBroadcastSubject('공지사항')).toEqual({
+    ok: true,
+    value: '공지사항',
+  });
+});
+
+test('validateBroadcastBody는 빈 본문을 거부하고 정상 본문을 받는다', () => {
+  expect(validateBroadcastBody('   ').ok).toBe(false);
+  expect(validateBroadcastBody('안녕하세요').ok).toBe(true);
 });
