@@ -191,7 +191,7 @@ export default function AttachmentSection({
               <button
                 type="button"
                 onClick={() => download(att)}
-                disabled={downloadingId === att.id}
+                disabled={downloadingId !== null}
                 className="min-w-0 truncate text-left text-sm font-semibold text-jeju-ocean hover:underline disabled:opacity-60"
               >
                 {att.file_name}

@@ -216,9 +216,19 @@ export default function AdminMembersPage({
                     <select
                       value={row.role}
                       disabled={busy}
-                      onChange={(event) =>
-                        void patchMember(row.id, { role: event.target.value as AdminRole })
-                      }
+                      onChange={(event) => {
+                        const nextRole = event.target.value as AdminRole;
+                        if (nextRole === row.role) return;
+                        if (
+                          isSelf &&
+                          !window.confirm(
+                            '본인 계정의 권한을 변경하면 관리 권한을 잃을 수 있습니다. 계속할까요?'
+                          )
+                        ) {
+                          return;
+                        }
+                        void patchMember(row.id, { role: nextRole });
+                      }}
                       className="rounded border border-deep-ocean/15 bg-white px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20 disabled:opacity-60"
                     >
                       {ROLE_OPTIONS.map((option) => (
@@ -230,7 +240,18 @@ export default function AdminMembersPage({
                     <button
                       type="button"
                       disabled={busy}
-                      onClick={() => void patchMember(row.id, { active: !row.active })}
+                      onClick={() => {
+                        if (
+                          isSelf &&
+                          row.active &&
+                          !window.confirm(
+                            '본인 계정을 비활성화하면 관리자 접근 권한을 잃습니다. 계속할까요?'
+                          )
+                        ) {
+                          return;
+                        }
+                        void patchMember(row.id, { active: !row.active });
+                      }}
                       className={classNames(
                         'rounded border px-3 py-2 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2',
                         row.active

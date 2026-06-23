@@ -5,10 +5,20 @@ import { createSupabaseServiceClient } from '@/lib/supabaseService';
 // Svix 서명 검증을 위해 raw body가 필요하므로 기본 bodyParser를 끈다.
 export const config = { api: { bodyParser: false } };
 
+// bodyParser를 끈 공개 엔드포인트이므로 본문 크기를 직접 제한한다(메모리 고갈 방지).
+const MAX_BODY_BYTES = 2 * 1024 * 1024; // 2MB
+
 const readRawBody = (req: NextApiRequest): Promise<string> =>
   new Promise((resolve, reject) => {
     let data = '';
-    req.on('data', (chunk) => {
+    let size = 0;
+    req.on('data', (chunk: Buffer) => {
+      size += chunk.length;
+      if (size > MAX_BODY_BYTES) {
+        req.destroy();
+        reject(new Error('payload_too_large'));
+        return;
+      }
       data += chunk;
     });
     req.on('end', () => resolve(data));
@@ -31,7 +41,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return;
   }
 
-  const rawBody = await readRawBody(req);
+  let rawBody: string;
+  try {
+    rawBody = await readRawBody(req);
+  } catch {
+    res.status(413).json({ error: 'payload_too_large' });
+    return;
+  }
   const valid = verifyResendWebhook(
     rawBody,
     {
