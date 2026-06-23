@@ -40,7 +40,7 @@ export default function AdminQuickAccess() {
       <Link
         href="/admin"
         className="flex items-center gap-2 rounded-full bg-deep-ocean px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-deep-ocean/30 transition hover:bg-jeju-ocean focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean focus-visible:ring-offset-2"
-        aria-label="관리자 페이지로 이동"
+        aria-label="기획단 페이지로 이동"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -55,12 +55,12 @@ export default function AdminQuickAccess() {
         >
           <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
         </svg>
-        관리자
+        기획단
       </Link>
       <button
         type="button"
         onClick={dismiss}
-        aria-label="관리자 버튼 숨기기"
+        aria-label="기획단 버튼 숨기기"
         className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-coastal-gray shadow-md ring-1 ring-deep-ocean/10 transition hover:text-deep-ocean focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
       >
         <svg
