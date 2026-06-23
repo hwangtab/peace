@@ -1,5 +1,5 @@
-import { createClient, type SupabaseClient } from '@supabase/supabase-js';
-import { getSupabasePublicConfig } from './supabaseConfig';
+import type { SupabaseClient } from '@supabase/supabase-js';
+import { getSupabasePublicClient } from './supabasePublicClient';
 import type { Board, PostImage, PostWithMeta } from '@/types/board';
 
 // Extract the storage object path from a board-images public URL.
@@ -9,22 +9,8 @@ export const boardImagePath = (url: string): string | null => {
   return i === -1 ? null : url.slice(i + marker.length);
 };
 
-let publicClient: SupabaseClient | null | undefined;
-
-const getPublicClient = (): SupabaseClient | null => {
-  if (publicClient !== undefined) return publicClient;
-
-  const config = getSupabasePublicConfig();
-  publicClient = config
-    ? createClient(config.url, config.anonKey, {
-        auth: { persistSession: false, autoRefreshToken: false },
-      })
-    : null;
-  return publicClient;
-};
-
 export const loadActiveBoards = async (): Promise<Board[]> => {
-  const client = getPublicClient();
+  const client = getSupabasePublicClient();
   if (!client) return [];
   const { data } = await client
     .from('boards')
@@ -35,7 +21,7 @@ export const loadActiveBoards = async (): Promise<Board[]> => {
 };
 
 export const loadBoardBySlug = async (slug: string): Promise<Board | null> => {
-  const client = getPublicClient();
+  const client = getSupabasePublicClient();
   if (!client) return null;
   const { data } = await client
     .from('boards')
@@ -66,7 +52,7 @@ export const loadBoardPosts = async (
     sort = 'latest',
   }: { limit?: number; offset?: number; keyword?: string; sort?: BoardSort } = {}
 ): Promise<{ items: PostWithMeta[]; hasMore: boolean }> => {
-  const client = getPublicClient();
+  const client = getSupabasePublicClient();
   if (!client) return { items: [], hasMore: false };
   // Fetch one extra row to determine if more pages exist (avoids count:'exact').
   let query = client
@@ -88,7 +74,7 @@ export const loadBoardPosts = async (
 };
 
 export const loadBoardPostCount = async (boardId: string, keyword = ''): Promise<number> => {
-  const client = getPublicClient();
+  const client = getSupabasePublicClient();
   if (!client) return 0;
   let query = client
     .from('posts')
@@ -103,7 +89,7 @@ export const loadBoardPostCount = async (boardId: string, keyword = ''): Promise
 
 // Single grouped query for all boards — avoids N+1 on the board index page.
 export const loadBoardPostCounts = async (): Promise<Record<string, number>> => {
-  const client = getPublicClient();
+  const client = getSupabasePublicClient();
   if (!client) return {};
   const { data } = await client.rpc('board_published_post_counts');
   if (!data) return {};
@@ -117,7 +103,7 @@ export const loadBoardPostCounts = async (): Promise<Record<string, number>> => 
 };
 
 export const loadPostDetail = async (postId: string): Promise<PostWithMeta | null> => {
-  const client = getPublicClient();
+  const client = getSupabasePublicClient();
   if (!client) return null;
   const { data } = await client
     .from('posts')
@@ -160,7 +146,7 @@ const mapCommentRow = (r: Record<string, unknown>) => ({
 });
 
 export const loadPostComments = async (postId: string) => {
-  const client = getPublicClient();
+  const client = getSupabasePublicClient();
   if (!client) return [];
   const { data } = await client
     .from('post_comments')

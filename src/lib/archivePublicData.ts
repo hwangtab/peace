@@ -1,10 +1,7 @@
-import { createClient, type SupabaseClient } from '@supabase/supabase-js';
-import { getSupabasePublicConfig } from './supabaseConfig';
 import type {
   ArchiveGalleryImageRow,
   ArchivePressItemRow,
   ArchiveVideoRow,
-  CmsStatus,
   CmsContentBlock,
 } from '@/types/cms';
 import type { GalleryImage } from '@/types/gallery';
@@ -17,6 +14,8 @@ import {
   mapVideoRowToItem,
   toContentMap,
 } from './adminArchive';
+import { mergeArchiveRowsWithStatic } from './archiveContract';
+import { getSupabasePublicClient } from './supabasePublicClient';
 import type { SiteContentMap } from '@/types/cms';
 
 export type ArchiveSource = 'cms' | 'static';
@@ -26,20 +25,6 @@ export interface ArchiveLoadResult<T> {
   items: T[];
 }
 
-let publicClient: SupabaseClient | null | undefined;
-
-const getPublicClient = (): SupabaseClient | null => {
-  if (publicClient !== undefined) return publicClient;
-
-  const config = getSupabasePublicConfig();
-  publicClient = config
-    ? createClient(config.url, config.anonKey, {
-        auth: { persistSession: false, autoRefreshToken: false },
-      })
-    : null;
-  return publicClient;
-};
-
 const isMissingTableError = (error: { code?: string; message?: string } | null) =>
   !!error &&
   (error.code === '42P01' ||
@@ -47,45 +32,9 @@ const isMissingTableError = (error: { code?: string; message?: string } | null) 
     error.message?.includes('Could not find the table') ||
     error.message?.includes('schema cache'));
 
-type ArchiveRowWithPublicId = {
-  public_id: number;
-  status: CmsStatus;
-};
-
-const mergeArchiveRowsWithStatic = <T, R extends ArchiveRowWithPublicId>(
-  rows: R[],
-  staticItems: T[],
-  mapRow: (row: R) => T,
-  getItemId: (item: T) => number
-): T[] => {
-  const blockedStaticIds = new Set(rows.map((row) => row.public_id));
-  const seenIds = new Set<number>();
-  const items: T[] = [];
-
-  for (const row of rows) {
-    if (row.status !== 'published') continue;
-    const item = mapRow(row);
-    const id = getItemId(item);
-    if (!seenIds.has(id)) {
-      seenIds.add(id);
-      items.push(item);
-    }
-  }
-
-  for (const item of staticItems) {
-    const id = getItemId(item);
-    if (!seenIds.has(id) && !blockedStaticIds.has(id)) {
-      seenIds.add(id);
-      items.push(item);
-    }
-  }
-
-  return items;
-};
-
 export const loadPublishedVideos = async (locale = 'ko'): Promise<ArchiveLoadResult<VideoItem>> => {
   const staticItems = loadLocalizedData<VideoItem>(locale, 'videos.json', { mergeByIdKey: 'id' });
-  const client = getPublicClient();
+  const client = getSupabasePublicClient();
   if (client) {
     const { data, error } = await client
       .from('archive_videos')
@@ -119,7 +68,7 @@ export const loadPublishedVideos = async (locale = 'ko'): Promise<ArchiveLoadRes
 
 export const loadPublishedPress = async (locale = 'ko'): Promise<ArchiveLoadResult<PressItem>> => {
   const staticItems = loadLocalizedData<PressItem>(locale, 'press.json');
-  const client = getPublicClient();
+  const client = getSupabasePublicClient();
   if (client) {
     const { data, error } = await client
       .from('archive_press_items')
@@ -155,7 +104,7 @@ export const loadPublishedGallery = async (
   locale = 'ko'
 ): Promise<ArchiveLoadResult<GalleryImage>> => {
   const staticItems = loadGalleryImages<GalleryImage>();
-  const client = getPublicClient();
+  const client = getSupabasePublicClient();
   if (client) {
     const { data, error } = await client
       .from('archive_gallery_images')
@@ -191,7 +140,7 @@ export const loadSiteContentMap = async (
   locale: string,
   routePath: string
 ): Promise<SiteContentMap> => {
-  const client = getPublicClient();
+  const client = getSupabasePublicClient();
   if (!client) return {};
 
   const { data, error } = await client
