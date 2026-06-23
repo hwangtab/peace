@@ -4,7 +4,6 @@ import type {
   ArchivePressItemRow,
   ArchiveVideoRow,
   CmsChangeLog,
-  CmsContentBlock,
 } from './cms';
 import type { SurveyInsertPayload } from '@/data/campSurvey2026';
 
@@ -27,11 +26,6 @@ export interface Database {
         AdminMember,
         Partial<Omit<AdminMember, 'id' | 'created_at' | 'updated_at'>>,
         Partial<Omit<AdminMember, 'id' | 'created_at' | 'updated_at'>>
-      >;
-      cms_content_blocks: TableDef<
-        CmsContentBlock,
-        Partial<Omit<CmsContentBlock, 'id' | 'created_at' | 'updated_at'>>,
-        Partial<Omit<CmsContentBlock, 'id' | 'created_at' | 'updated_at'>>
       >;
       archive_videos: TableDef<
         ArchiveVideoRow,

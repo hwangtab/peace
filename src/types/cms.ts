@@ -24,22 +24,6 @@ export interface AdminMember {
   updated_at: string;
 }
 
-export interface CmsContentBlock {
-  id: string;
-  key: string;
-  locale: string;
-  route_path: string;
-  placement: string;
-  label: string;
-  value: string;
-  description: string | null;
-  status: CmsStatus;
-  sort_order: number;
-  published_at: string | null;
-  created_at: string;
-  updated_at: string;
-}
-
 export interface ArchiveVideoRow {
   id: string;
   public_id: number;
