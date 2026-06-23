@@ -4,10 +4,12 @@ import classNames from 'classnames';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { getAdminSession, isOwner, redirectToAdminLogin } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
+import { loadRegularMembers, type RegularUser } from '@/lib/adminMembers';
 import type { AdminMember, AdminRole } from '@/types/cms';
 
 interface AdminMembersPageProps {
   members: AdminMember[];
+  users: RegularUser[];
   member: AdminMember;
   initialError?: string;
 }
@@ -36,10 +38,12 @@ const formatDate = (value: string) =>
 
 export default function AdminMembersPage({
   members: initialMembers,
+  users: initialUsers,
   member,
   initialError = '',
 }: AdminMembersPageProps) {
   const [members, setMembers] = useState(initialMembers);
+  const [users, setUsers] = useState(initialUsers);
   const [email, setEmail] = useState('');
   const [displayName, setDisplayName] = useState('');
   const [role, setRole] = useState<AdminRole>('editor');
@@ -51,8 +55,36 @@ export default function AdminMembersPage({
   const refresh = async () => {
     const response = await fetch('/api/admin/members');
     if (!response.ok) return;
-    const payload = (await response.json()) as { members: AdminMember[] };
+    const payload = (await response.json()) as { members: AdminMember[]; users?: RegularUser[] };
     setMembers(payload.members);
+    if (payload.users) setUsers(payload.users);
+  };
+
+  const promote = async (user: RegularUser, promoteRole: AdminRole) => {
+    setBusyId(user.id);
+    setMessage('');
+    setError('');
+
+    const response = await fetch('/api/admin/members', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: user.email,
+        display_name: user.nickname || null,
+        role: promoteRole,
+        user_id: user.id,
+      }),
+    });
+    const payload = (await response.json()) as { member?: AdminMember; error?: string };
+
+    setBusyId(null);
+    if (!response.ok || !payload.member) {
+      setError(payload.error || '등업하지 못했습니다.');
+      return;
+    }
+
+    setMessage(`${user.nickname || user.email} 님을 관리자로 등업했습니다.`);
+    await refresh();
   };
 
   const addMember = async (event: React.FormEvent) => {
@@ -268,7 +300,85 @@ export default function AdminMembersPage({
           </ul>
         )}
       </section>
+
+      <section className="mt-8 rounded border border-deep-ocean/10 bg-white">
+        <div className="border-b border-deep-ocean/10 px-4 py-3">
+          <h2 className="font-semibold">일반 회원 {users.length}명</h2>
+          <p className="mt-1 text-xs text-coastal-gray">
+            가입한 회원을 골라 바로 관리자로 등업할 수 있습니다.
+          </p>
+        </div>
+        {users.length === 0 ? (
+          <p className="p-6 text-coastal-gray">가입한 회원이 없습니다.</p>
+        ) : (
+          <ul className="divide-y divide-deep-ocean/10">
+            {users.map((user) => (
+              <RegularUserRow
+                key={user.id}
+                user={user}
+                busy={busyId === user.id}
+                onPromote={(promoteRole) => void promote(user, promoteRole)}
+              />
+            ))}
+          </ul>
+        )}
+      </section>
     </AdminLayout>
+  );
+}
+
+function RegularUserRow({
+  user,
+  busy,
+  onPromote,
+}: {
+  user: RegularUser;
+  busy: boolean;
+  onPromote: (role: AdminRole) => void;
+}) {
+  const [promoteRole, setPromoteRole] = useState<AdminRole>('editor');
+  return (
+    <li className="flex flex-col gap-3 p-4 lg:flex-row lg:items-center lg:justify-between">
+      <div>
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="font-semibold">{user.nickname || '(닉네임 없음)'}</span>
+          {user.isAdmin && (
+            <span className="rounded bg-jeju-ocean/10 px-2 py-1 text-xs font-semibold text-jeju-ocean">
+              관리자
+            </span>
+          )}
+        </div>
+        <p className="mt-1 text-sm text-coastal-gray">
+          {user.email} · 가입 {formatDate(user.created_at)}
+        </p>
+      </div>
+      {user.isAdmin ? (
+        <span className="text-sm text-coastal-gray">이미 관리자입니다</span>
+      ) : (
+        <div className="flex flex-wrap items-center gap-2">
+          <select
+            value={promoteRole}
+            disabled={busy}
+            onChange={(event) => setPromoteRole(event.target.value as AdminRole)}
+            className="rounded border border-deep-ocean/15 bg-white px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20 disabled:opacity-60"
+          >
+            {ROLE_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+          <button
+            type="button"
+            disabled={busy}
+            onClick={() => onPromote(promoteRole)}
+            className="rounded bg-jeju-ocean px-3 py-2 text-sm font-semibold text-white transition hover:bg-deep-ocean disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
+          >
+            {busy ? '처리 중' : '관리자로 등업'}
+          </button>
+        </div>
+      )}
+    </li>
   );
 }
 
@@ -280,14 +390,15 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   }
 
   const supabase = createSupabaseServerClient(context.req, context.res);
-  const { data, error } = await supabase
-    .from('admin_members')
-    .select('*')
-    .order('created_at', { ascending: true });
+  const [{ data, error }, users] = await Promise.all([
+    supabase.from('admin_members').select('*').order('created_at', { ascending: true }),
+    loadRegularMembers(),
+  ]);
 
   return {
     props: {
       members: data ?? [],
+      users,
       member: session.member,
       initialError: error?.message ?? '',
     },
