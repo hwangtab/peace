@@ -126,8 +126,25 @@ export const saveAdminArchiveRow = async ({
   if (id != null && !existing?.data) throwServiceError(404, 'not_found');
 
   const previous = (existing?.data as Record<string, unknown> | null) ?? null;
+
+  // 신규 항목이면서 공개 ID가 비어 있으면 서버가 자동 채번한다(기존 최댓값 + 1).
+  // 언어 복제·기존 항목 수정은 클라이언트가 public_id를 함께 보내므로 그대로 유지된다.
+  let publicId = body.public_id;
+  if (id == null && publicId == null) {
+    const maxResult = await supabase
+      .from(config.table)
+      .select('public_id')
+      .order('public_id', { ascending: false })
+      .limit(1)
+      .maybeSingle();
+    if (maxResult.error) throwServiceError(500, maxResult.error.message);
+    const currentMax = (maxResult.data as { public_id?: number } | null)?.public_id ?? 0;
+    publicId = currentMax + 1;
+  }
+
   const payload = {
     ...body,
+    public_id: publicId,
     published_at: makePublishedAt(
       status,
       (previous as { published_at?: string | null } | null)?.published_at ?? null

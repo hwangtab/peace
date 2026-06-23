@@ -25,7 +25,19 @@ export type AdminLocaleStatus = {
   published_at: string | null;
 };
 
-export type AdminFieldKind = 'text' | 'textarea' | 'number' | 'date' | 'select' | 'csv';
+export type AdminFieldKind =
+  | 'text'
+  | 'textarea'
+  | 'number'
+  | 'date'
+  | 'select'
+  | 'csv'
+  // 뮤지션 한 명을 이름으로 골라 id를 저장(예: 감독).
+  | 'musician'
+  // 뮤지션 여러 명을 이름으로 골라 id 목록(csv)을 저장(예: 출연진).
+  | 'musician-multi'
+  // 분·초 두 칸으로 입력받아 ISO 8601 duration(PT3M20S)으로 저장.
+  | 'duration';
 
 export interface AdminField {
   name: string;
@@ -34,6 +46,10 @@ export interface AdminField {
   required?: boolean;
   placeholder?: string;
   options?: { label: string; value: string }[];
+  // 폼에서 렌더하지 않는 필드(예: 자동 채번되는 public_id). 값은 그대로 전송된다.
+  hidden?: boolean;
+  // 입력칸 아래에 보여줄 도움말 문구.
+  hint?: string;
 }
 
 // 목록을 한 번에 거르는 서버측 카테고리 필터. value는 fields에 위치 순서로 매핑된다
@@ -128,7 +144,7 @@ export const ADMIN_COLLECTION_CONFIGS: Record<AdminCollection, AdminCollectionCo
     emptyLabel: '아직 등록된 영상이 없습니다.',
     primaryField: 'title',
     fields: [
-      { name: 'public_id', label: '공개 ID', kind: 'number', required: true },
+      { name: 'public_id', label: '공개 ID', kind: 'number', hidden: true },
       localeField,
       { name: 'title', label: '제목', kind: 'text', required: true },
       { name: 'description', label: '설명', kind: 'textarea' },
@@ -138,11 +154,16 @@ export const ADMIN_COLLECTION_CONFIGS: Record<AdminCollection, AdminCollectionCo
       eventTypeField,
       { name: 'event_year', label: '연도', kind: 'number', required: true },
       { name: 'thumbnail_url', label: '썸네일 URL', kind: 'text' },
-      { name: 'duration', label: '길이', kind: 'text', placeholder: 'PT3M20S' },
-      { name: 'musician_ids', label: '뮤지션 ID 목록', kind: 'csv', placeholder: '3, 11, 59' },
-      { name: 'director_musician_id', label: '감독 뮤지션 ID', kind: 'number' },
+      { name: 'duration', label: '길이', kind: 'duration' },
+      { name: 'musician_ids', label: '출연 뮤지션', kind: 'musician-multi' },
+      { name: 'director_musician_id', label: '감독 뮤지션', kind: 'musician' },
       statusField,
-      { name: 'sort_order', label: '정렬', kind: 'number' },
+      {
+        name: 'sort_order',
+        label: '정렬 순서',
+        kind: 'number',
+        hint: '작은 숫자가 먼저 표시됩니다. 비우면 0으로 저장됩니다.',
+      },
     ],
   },
   gallery: {
@@ -169,15 +190,26 @@ export const ADMIN_COLLECTION_CONFIGS: Record<AdminCollection, AdminCollectionCo
       ],
     },
     fields: [
-      { name: 'public_id', label: '공개 ID', kind: 'number', required: true },
+      { name: 'public_id', label: '공개 ID', kind: 'number', hidden: true },
       localeField,
       { name: 'image_url', label: '이미지 URL', kind: 'text', required: true },
       { name: 'description', label: '설명', kind: 'textarea' },
       eventTypeField,
       { name: 'event_year', label: '연도', kind: 'number', required: true },
-      { name: 'photographer', label: '촬영자 slug', kind: 'text', placeholder: 'kdh' },
+      {
+        name: 'photographer',
+        label: '촬영자',
+        kind: 'text',
+        placeholder: 'kdh',
+        hint: '촬영 작가 식별자(slug). 영문 소문자로 입력합니다. 비워도 됩니다.',
+      },
       statusField,
-      { name: 'sort_order', label: '정렬', kind: 'number' },
+      {
+        name: 'sort_order',
+        label: '정렬 순서',
+        kind: 'number',
+        hint: '작은 숫자가 먼저 표시됩니다. 비우면 0으로 저장됩니다.',
+      },
     ],
   },
   press: {
@@ -189,7 +221,7 @@ export const ADMIN_COLLECTION_CONFIGS: Record<AdminCollection, AdminCollectionCo
     emptyLabel: '아직 등록된 언론보도가 없습니다.',
     primaryField: 'title',
     fields: [
-      { name: 'public_id', label: '공개 ID', kind: 'number', required: true },
+      { name: 'public_id', label: '공개 ID', kind: 'number', hidden: true },
       localeField,
       { name: 'title', label: '제목', kind: 'text', required: true },
       { name: 'publisher', label: '매체', kind: 'text', required: true },
@@ -200,7 +232,12 @@ export const ADMIN_COLLECTION_CONFIGS: Record<AdminCollection, AdminCollectionCo
       eventTypeField,
       { name: 'event_year', label: '연도', kind: 'number', required: true },
       statusField,
-      { name: 'sort_order', label: '정렬', kind: 'number' },
+      {
+        name: 'sort_order',
+        label: '정렬 순서',
+        kind: 'number',
+        hint: '작은 숫자가 먼저 표시됩니다. 비우면 0으로 저장됩니다.',
+      },
     ],
   },
 };
@@ -231,7 +268,9 @@ const csvNumberArray = (value: unknown): number[] => {
 const cmsStatusSchema = z.enum(['draft', 'published', 'hidden']);
 const eventTypeSchema = z.enum(['camp', 'album', 'live', 'music_video', 'interview']);
 const localeSchema = z.enum(LOCALES);
-const publicIdSchema = z.preprocess(numberValue, z.number().int().positive());
+// 신규 항목은 public_id를 비워두면 서버가 자동 채번한다. 언어 복제·기존 항목 수정은
+// 클라이언트가 기존 public_id를 그대로 보내므로 값이 유지된다.
+const publicIdSchema = z.preprocess(numberValue, z.number().int().positive().nullable());
 const optionalIntegerSchema = z.preprocess(numberValue, z.number().int().nullable());
 const sortOrderSchema = z.preprocess((value) => numberValue(value) ?? 0, z.number().int());
 const nullableTextSchema = z.preprocess(emptyToNull, z.string().trim().nullable());
@@ -505,3 +544,20 @@ export const getAdminPreviewUrl = (
 
 export const coerceText = textValue;
 export const coerceNullableText = nullableTextValue;
+
+// ISO 8601 duration(PT3M20S)을 분·초로 분해한다. 형식이 아니면 빈 값을 돌려준다.
+export const parseIsoDuration = (value: unknown): { minutes: string; seconds: string } => {
+  const match = /^PT(?:(\d+)M)?(?:(\d+)S)?$/.exec(textValue(value));
+  if (!match || (!match[1] && !match[2])) return { minutes: '', seconds: '' };
+  return { minutes: match[1] ?? '', seconds: match[2] ?? '' };
+};
+
+// 분·초 입력을 ISO 8601 duration으로 합친다. 둘 다 비었으면 빈 문자열(저장 시 null).
+export const composeIsoDuration = (minutes: unknown, seconds: unknown): string => {
+  const min = numberValue(minutes) ?? 0;
+  const sec = numberValue(seconds) ?? 0;
+  const safeMin = Number.isInteger(min) && min > 0 ? min : 0;
+  const safeSec = Number.isInteger(sec) && sec > 0 ? sec : 0;
+  if (safeMin === 0 && safeSec === 0) return '';
+  return `PT${safeMin > 0 ? `${safeMin}M` : ''}${safeSec > 0 ? `${safeSec}S` : ''}`;
+};

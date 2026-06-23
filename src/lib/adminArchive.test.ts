@@ -12,6 +12,8 @@ import {
   prepareAdminMissingLocaleClonePayloads,
   prepareAdminLocaleClonePayload,
   sanitizeAdminPayload,
+  parseIsoDuration,
+  composeIsoDuration,
 } from './adminArchive';
 import type { AdminCollectionRow } from './adminArchive';
 import type { ArchiveGalleryImageRow, ArchivePressItemRow, ArchiveVideoRow } from '@/types/cms';
@@ -353,4 +355,31 @@ test('merges admin rows by id while preserving first occurrence order', () => {
   ] as unknown as AdminCollectionRow[];
 
   expect(mergeAdminRowsById(rows, nextRows)).toEqual([rows[0], rows[1], nextRows[1]]);
+});
+
+test('parses and composes ISO 8601 durations for the minute/second inputs', () => {
+  expect(parseIsoDuration('PT3M20S')).toEqual({ minutes: '3', seconds: '20' });
+  expect(parseIsoDuration('PT45S')).toEqual({ minutes: '', seconds: '45' });
+  expect(parseIsoDuration('PT2M')).toEqual({ minutes: '2', seconds: '' });
+  expect(parseIsoDuration('')).toEqual({ minutes: '', seconds: '' });
+  expect(parseIsoDuration('garbage')).toEqual({ minutes: '', seconds: '' });
+
+  expect(composeIsoDuration('3', '20')).toBe('PT3M20S');
+  expect(composeIsoDuration('', '45')).toBe('PT45S');
+  expect(composeIsoDuration('2', '')).toBe('PT2M');
+  expect(composeIsoDuration('', '')).toBe('');
+  expect(composeIsoDuration('0', '0')).toBe('');
+});
+
+test('leaves public_id null when omitted so the server can auto-number it', () => {
+  const payload = sanitizeAdminPayload('videos', {
+    locale: 'ko',
+    title: '자동 채번 영상',
+    youtube_url: 'https://www.youtube.com/watch?v=test',
+    date: '2026-06-05',
+    event_year: '2026',
+    status: 'draft',
+    sort_order: '',
+  });
+  expect(payload.public_id).toBeNull();
 });
