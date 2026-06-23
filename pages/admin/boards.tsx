@@ -36,6 +36,7 @@ export default function AdminBoardsPage({
   const [newSortOrder, setNewSortOrder] = useState(0);
   const [newHasRating, setNewHasRating] = useState(false);
   const [newIsActive, setNewIsActive] = useState(true);
+  const [newHeroImageUrl, setNewHeroImageUrl] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Per-row edit state: id → partial Board fields
@@ -68,6 +69,7 @@ export default function AdminBoardsPage({
         sort_order: newSortOrder,
         has_rating: newHasRating,
         is_active: newIsActive,
+        hero_image_url: newHeroImageUrl,
       }),
     });
     const payload = (await response.json()) as { board?: Board; error?: string };
@@ -84,6 +86,7 @@ export default function AdminBoardsPage({
     setNewSortOrder(0);
     setNewHasRating(false);
     setNewIsActive(true);
+    setNewHeroImageUrl('');
     setMessage('게시판을 추가했습니다.');
     await refresh();
   };
@@ -213,6 +216,18 @@ export default function AdminBoardsPage({
               className={inputClass}
             />
           </label>
+          <label className="block lg:col-span-2">
+            <span className="mb-1 block text-sm font-semibold text-deep-ocean">
+              히어로 이미지 URL
+            </span>
+            <input
+              type="text"
+              value={newHeroImageUrl}
+              onChange={(e) => setNewHeroImageUrl(e.target.value)}
+              placeholder="/images-webp/camps/2025/DSC00625.webp (비우면 기본 이미지)"
+              className={inputClass}
+            />
+          </label>
           <label className="block">
             <span className="mb-1 block text-sm font-semibold text-deep-ocean">정렬 순서</span>
             <input
@@ -310,6 +325,19 @@ export default function AdminBoardsPage({
                         className={classNames(inputClass, busy && 'opacity-60')}
                       />
                     </label>
+                    <label className="block lg:col-span-2">
+                      <span className="mb-1 block text-xs font-semibold text-coastal-gray">
+                        히어로 이미지 URL
+                      </span>
+                      <input
+                        type="text"
+                        value={row.hero_image_url ?? ''}
+                        disabled={busy}
+                        onChange={(e) => setEdit(board.id, { hero_image_url: e.target.value })}
+                        placeholder="비우면 기본 이미지"
+                        className={classNames(inputClass, busy && 'opacity-60')}
+                      />
+                    </label>
                     <label className="block">
                       <span className="mb-1 block text-xs font-semibold text-coastal-gray">
                         정렬 순서
@@ -357,6 +385,7 @@ export default function AdminBoardsPage({
                             sort_order: row.sort_order,
                             has_rating: row.has_rating,
                             is_active: row.is_active,
+                            hero_image_url: row.hero_image_url,
                           })
                         }
                         className={classNames(btnPrimary, 'text-sm')}

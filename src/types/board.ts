@@ -6,6 +6,7 @@ export interface Board {
   sort_order: number;
   has_rating: boolean;
   is_active: boolean;
+  hero_image_url: string | null;
   created_at: string;
   updated_at: string;
 }

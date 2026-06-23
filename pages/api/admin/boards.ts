@@ -17,6 +17,11 @@ const createSchema = z.object({
   sort_order: z.number().int().min(0).default(0),
   has_rating: z.boolean().default(false),
   is_active: z.boolean().default(true),
+  hero_image_url: z.preprocess((v) => {
+    if (typeof v !== 'string') return null;
+    const t = v.trim();
+    return t === '' ? null : t;
+  }, z.string().max(500, 'URL은 500자 이하여야 합니다.').nullable()),
 });
 
 const updateSchema = z
@@ -33,6 +38,13 @@ const updateSchema = z
     sort_order: z.number().int().min(0).optional(),
     has_rating: z.boolean().optional(),
     is_active: z.boolean().optional(),
+    hero_image_url: z
+      .preprocess((v) => {
+        if (typeof v !== 'string') return v;
+        const t = v.trim();
+        return t === '' ? null : t;
+      }, z.string().max(500, 'URL은 500자 이하여야 합니다.').nullable())
+      .optional(),
   })
   .refine(
     (v) =>
@@ -41,7 +53,8 @@ const updateSchema = z
       v.description !== undefined ||
       v.sort_order !== undefined ||
       v.has_rating !== undefined ||
-      v.is_active !== undefined,
+      v.is_active !== undefined ||
+      v.hero_image_url !== undefined,
     { message: '변경할 필드가 하나 이상 필요합니다.' }
   );
 
@@ -95,6 +108,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           sort_order: body.sort_order,
           has_rating: body.has_rating,
           is_active: body.is_active,
+          hero_image_url: body.hero_image_url,
         })
         .select('*')
         .single();
