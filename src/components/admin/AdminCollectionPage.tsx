@@ -22,6 +22,7 @@ import type { AdminMember } from '@/types/cms';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { buildAdminFormState, type AdminCollectionFormState } from './adminCollectionForm';
 import AdminFieldControl, { type MusicianOption } from './AdminFieldControl';
+import AdminPressCardPreview from './AdminPressCardPreview';
 import { buildPhotographerOptions, type PhotographerOption } from '@/data/photographers';
 
 // 관리자 비디오 편집 패널에서 어떤 영상인지 바로 확인할 수 있도록
@@ -611,6 +612,16 @@ export default function AdminCollectionPage({
                   </div>
                 );
               })()}
+            {config.collection === 'press' && (
+              <AdminPressCardPreview
+                key={form.image_url ?? ''}
+                title={form.title ?? ''}
+                publisher={form.publisher ?? ''}
+                date={form.date ?? ''}
+                description={form.description ?? ''}
+                imageUrl={form.image_url ?? ''}
+              />
+            )}
             {config.imageField && form[config.imageField] ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
