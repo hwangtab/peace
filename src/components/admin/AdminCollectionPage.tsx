@@ -30,6 +30,7 @@ export interface AdminCollectionPageProps {
   initialHasMore: boolean;
   member: AdminMember;
   selectedLocale: string;
+  selectedFacet?: string;
   initialError?: string;
 }
 
@@ -41,10 +42,21 @@ export default function AdminCollectionPage({
   initialHasMore,
   member,
   selectedLocale,
+  selectedFacet = '',
   initialError = '',
 }: AdminCollectionPageProps) {
   const router = useRouter();
   const canEdit = member.role !== 'viewer';
+  const facetParam = config.facet?.param;
+  const buildListParams = (offset: number, limit: number) => {
+    const params = new URLSearchParams({
+      locale: selectedLocale,
+      offset: String(offset),
+      limit: String(limit),
+    });
+    if (facetParam && selectedFacet) params.set(facetParam, selectedFacet);
+    return params;
+  };
   const [items, setItems] = useState(initialItems);
   const [selected, setSelected] = useState<AdminCollectionRow | null>(initialItems[0] ?? null);
   const [form, setForm] = useState<AdminCollectionFormState>(() =>
@@ -140,11 +152,7 @@ export default function AdminCollectionPage({
 
   const refreshItems = async (preferredId?: string) => {
     const refreshLimit = Math.max(items.length, ADMIN_COLLECTION_PAGE_SIZE);
-    const params = new URLSearchParams({
-      locale: selectedLocale,
-      offset: '0',
-      limit: String(refreshLimit),
-    });
+    const params = buildListParams(0, refreshLimit);
     const response = await fetch(`/api/admin/archive/${config.collection}?${params.toString()}`);
     if (!response.ok) return;
     const payload = (await response.json()) as {
@@ -171,11 +179,7 @@ export default function AdminCollectionPage({
     setIsLoadingMore(true);
     setError('');
 
-    const params = new URLSearchParams({
-      locale: selectedLocale,
-      offset: String(nextOffset),
-      limit: String(ADMIN_COLLECTION_PAGE_SIZE),
-    });
+    const params = buildListParams(nextOffset, ADMIN_COLLECTION_PAGE_SIZE);
     const response = await fetch(`/api/admin/archive/${config.collection}?${params.toString()}`);
     const payload = (await response.json()) as {
       items?: AdminCollectionRow[];
@@ -208,11 +212,7 @@ export default function AdminCollectionPage({
     const collected: AdminCollectionRow[] = [];
 
     while (keepLoading) {
-      const params = new URLSearchParams({
-        locale: selectedLocale,
-        offset: String(offset),
-        limit: String(ADMIN_COLLECTION_PAGE_SIZE),
-      });
+      const params = buildListParams(offset, ADMIN_COLLECTION_PAGE_SIZE);
       const response = await fetch(`/api/admin/archive/${config.collection}?${params.toString()}`);
       const payload = (await response.json()) as {
         items?: AdminCollectionRow[];
@@ -242,7 +242,16 @@ export default function AdminCollectionPage({
   };
 
   const changeLocale = async (nextLocale: string) => {
-    await router.push(`${config.listPath}?locale=${encodeURIComponent(nextLocale)}`);
+    const params = new URLSearchParams({ locale: nextLocale });
+    if (facetParam && selectedFacet) params.set(facetParam, selectedFacet);
+    await router.push(`${config.listPath}?${params.toString()}`);
+  };
+
+  const changeFacet = async (nextValue: string) => {
+    if (!facetParam) return;
+    const params = new URLSearchParams({ locale: selectedLocale });
+    if (nextValue) params.set(facetParam, nextValue);
+    await router.push(`${config.listPath}?${params.toString()}`);
   };
 
   const uploadGalleryImage = async (file: File) => {
@@ -461,6 +470,22 @@ export default function AdminCollectionPage({
             ))}
           </select>
         </label>
+        {config.facet && (
+          <label className="flex items-center gap-2 text-sm font-semibold">
+            {config.facet.label}
+            <select
+              value={selectedFacet}
+              onChange={(event) => void changeFacet(event.target.value)}
+              className="rounded border border-deep-ocean/15 bg-white px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
+            >
+              {config.facet.options.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
         <span className="text-sm text-coastal-gray">
           목록과 새 항목 기본값은 선택한 언어 기준입니다.
         </span>
@@ -492,6 +517,14 @@ export default function AdminCollectionPage({
             <h2 className="font-semibold">{selected ? '항목 편집' : '새 항목 추가'}</h2>
           </div>
           <div className="space-y-4 p-4">
+            {config.imageField && form[config.imageField] ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={form[config.imageField]}
+                alt="현재 이미지 미리보기"
+                className="max-h-64 w-full rounded border border-deep-ocean/10 bg-ocean-sand/20 object-contain"
+              />
+            ) : null}
             <fieldset disabled={!canEdit} className="space-y-4 border-0 p-0 disabled:opacity-70">
               {config.fields.map((field) => (
                 <label key={field.name} className="block">

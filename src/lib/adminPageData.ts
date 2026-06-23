@@ -4,6 +4,7 @@ import {
   ADMIN_COLLECTION_PAGE_SIZE,
   getAdminCollectionConfig,
   getAdminPaginationRange,
+  parseAdminFacetValue,
   type AdminCollection,
 } from './adminArchive';
 import { createSupabaseServerClient } from './supabaseServer';
@@ -23,12 +24,27 @@ export const loadAdminCollectionPageProps = async (
       ? context.query.locale
       : 'ko';
 
+  // 카테고리(연도) facet — 쿼리에 없으면 설정된 기본값 사용(예: 갤러리 = camp 2026).
+  const facet = config.facet;
+  const selectedFacet = facet
+    ? typeof context.query[facet.param] === 'string'
+      ? (context.query[facet.param] as string)
+      : (facet.default ?? '')
+    : '';
+  const filters = facet ? parseAdminFacetValue(facet, selectedFacet) : null;
+
   const supabase = createSupabaseServerClient(context.req, context.res);
   const range = getAdminPaginationRange({ offset: 0, limit: ADMIN_COLLECTION_PAGE_SIZE });
-  const { data, error, count } = await supabase
+  let query = supabase
     .from(config.table)
     .select('*', { count: 'exact' })
-    .eq('locale', selectedLocale)
+    .eq('locale', selectedLocale);
+  if (filters) {
+    for (const [field, value] of Object.entries(filters)) {
+      query = query.eq(field, value);
+    }
+  }
+  const { data, error, count } = await query
     .order('updated_at', { ascending: false })
     .range(range.from, range.to);
 
@@ -42,6 +58,7 @@ export const loadAdminCollectionPageProps = async (
         initialHasMore: false,
         member: session.member,
         selectedLocale,
+        selectedFacet,
         initialError: error.message,
       },
     };
@@ -56,6 +73,7 @@ export const loadAdminCollectionPageProps = async (
       initialHasMore: (data?.length ?? 0) < (count ?? 0),
       member: session.member,
       selectedLocale,
+      selectedFacet,
     },
   };
 };

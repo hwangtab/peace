@@ -41,6 +41,16 @@ export interface AdminField {
   options?: { label: string; value: string }[];
 }
 
+// 목록을 한 번에 거르는 서버측 카테고리 필터. value는 fields에 위치 순서로 매핑된다
+// (예: fields=['event_type','event_year'], value='camp:2026' → event_type=camp, event_year=2026).
+export interface AdminFacet {
+  param: string;
+  label: string;
+  fields: string[];
+  default?: string;
+  options: { label: string; value: string }[];
+}
+
 export interface AdminCollectionConfig {
   collection: AdminCollection;
   table: 'cms_content_blocks' | 'archive_videos' | 'archive_gallery_images' | 'archive_press_items';
@@ -50,7 +60,28 @@ export interface AdminCollectionConfig {
   emptyLabel: string;
   primaryField: string;
   fields: AdminField[];
+  // 목록·편집기에서 썸네일로 보여줄 이미지 URL 필드(있으면).
+  imageField?: string;
+  // 연도/카테고리 등 서버측 1단계 필터(있으면).
+  facet?: AdminFacet;
 }
+
+// facet value('camp:2026')를 { event_type:'camp', event_year:'2026' } 형태의 eq 필터로 변환.
+export const parseAdminFacetValue = (
+  facet: AdminFacet,
+  value: string | undefined
+): Record<string, string> | null => {
+  if (!value) return null;
+  const valid = facet.options.some((option) => option.value === value && option.value !== '');
+  if (!valid) return null;
+  const parts = value.split(':');
+  const filters: Record<string, string> = {};
+  facet.fields.forEach((field, index) => {
+    const part = parts[index];
+    if (part) filters[field] = part;
+  });
+  return Object.keys(filters).length > 0 ? filters : null;
+};
 
 export const LOCALE_OPTIONS = LOCALES.map((locale) => ({ label: locale, value: locale }));
 
@@ -161,10 +192,25 @@ export const ADMIN_COLLECTION_CONFIGS: Record<AdminCollection, AdminCollectionCo
     collection: 'gallery',
     table: 'archive_gallery_images',
     title: '갤러리 아카이브',
-    description: '사진 URL, 설명, 촬영자, 공개 여부를 관리합니다.',
+    description: '사진을 썸네일로 보고 카테고리(연도)별로 골라 설명·촬영자·공개 여부를 관리합니다.',
     listPath: '/admin/gallery',
     emptyLabel: '아직 등록된 사진이 없습니다.',
     primaryField: 'image_url',
+    imageField: 'image_url',
+    // 카테고리(연도) 필터. 새 캠프/앨범이 생기면 옵션을 추가한다.
+    facet: {
+      param: 'cat',
+      label: '카테고리',
+      fields: ['event_type', 'event_year'],
+      default: 'camp:2026',
+      options: [
+        { label: '전체', value: '' },
+        { label: '캠프 2026', value: 'camp:2026' },
+        { label: '캠프 2025', value: 'camp:2025' },
+        { label: '캠프 2023', value: 'camp:2023' },
+        { label: '앨범 2024', value: 'album:2024' },
+      ],
+    },
     fields: [
       { name: 'public_id', label: '공개 ID', kind: 'number', required: true },
       localeField,

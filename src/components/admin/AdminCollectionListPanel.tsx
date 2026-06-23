@@ -82,6 +82,13 @@ export default function AdminCollectionListPanel({
           {filteredItems.map((item) => {
             const active = selectedId === item.id;
             const status = getRowStatus(item);
+            const imageUrl = config.imageField
+              ? String((item as unknown as Record<string, unknown>)[config.imageField] ?? '')
+              : '';
+            const fileName = imageUrl ? (imageUrl.split('/').pop()?.split('?')[0] ?? '') : '';
+            const updatedAt = getRowUpdatedAt(item)
+              ? new Date(getRowUpdatedAt(item)).toLocaleString('ko-KR')
+              : '';
             return (
               <li key={item.id}>
                 <button
@@ -92,16 +99,25 @@ export default function AdminCollectionListPanel({
                     active ? 'bg-jeju-ocean/10' : 'hover:bg-ocean-sand/40'
                   )}
                 >
-                  <span className="flex items-start justify-between gap-3">
-                    <span>
-                      <span className="block font-semibold">{getPrimaryLabel(item, config)}</span>
-                      <span className="mt-1 block text-xs text-coastal-gray">
-                        {getRowUpdatedAt(item)
-                          ? new Date(getRowUpdatedAt(item)).toLocaleString('ko-KR')
-                          : ''}
+                  <span className="flex items-start gap-3">
+                    {config.imageField && imageUrl ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={imageUrl}
+                        alt=""
+                        loading="lazy"
+                        className="h-14 w-14 flex-shrink-0 rounded bg-ocean-sand/30 object-cover"
+                      />
+                    ) : null}
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate font-semibold">
+                        {config.imageField ? fileName : getPrimaryLabel(item, config)}
                       </span>
+                      <span className="mt-1 block text-xs text-coastal-gray">{updatedAt}</span>
                     </span>
-                    <span className={adminStatusClass(status)}>{adminStatusLabel(status)}</span>
+                    <span className={classNames('flex-shrink-0', adminStatusClass(status))}>
+                      {adminStatusLabel(status)}
+                    </span>
                   </span>
                 </button>
               </li>
