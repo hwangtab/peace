@@ -1,7 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { z, ZodError } from 'zod';
 import { requireAdminRole } from '@/lib/adminAuth';
-import { ADMIN_COLLECTION_PAGE_SIZE, getAdminCollectionConfig } from '@/lib/adminArchive';
+import {
+  ADMIN_COLLECTION_PAGE_SIZE,
+  getAdminCollectionConfig,
+  parseAdminFacetValue,
+} from '@/lib/adminArchive';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import { isSupportedLocale } from '@/constants/locales';
 import {
@@ -65,6 +69,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const offset = Number(req.query.offset ?? 0);
     const limit = Number(req.query.limit ?? ADMIN_COLLECTION_PAGE_SIZE);
+    const facetValue =
+      config.facet && typeof req.query[config.facet.param] === 'string'
+        ? (req.query[config.facet.param] as string)
+        : undefined;
+    const filters = config.facet ? parseAdminFacetValue(config.facet, facetValue) : null;
     try {
       const page = await listAdminArchiveRows({
         supabase,
@@ -72,6 +81,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         locale: selectedLocale,
         offset,
         limit,
+        filters: filters ?? undefined,
       });
       res.status(200).json({
         ...page,

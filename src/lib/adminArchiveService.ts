@@ -34,12 +34,14 @@ export const listAdminArchiveRows = async ({
   locale,
   offset,
   limit,
+  filters,
 }: {
   supabase: SupabaseClient;
   config: AdminCollectionConfig;
   locale: string;
   offset: number;
   limit: number;
+  filters?: Record<string, string>;
 }): Promise<{
   items: AdminCollectionRow[];
   totalCount: number;
@@ -47,10 +49,13 @@ export const listAdminArchiveRows = async ({
   hasMore: boolean;
 }> => {
   const range = getAdminPaginationRange({ offset, limit });
-  const { data, error, count } = await supabase
-    .from(config.table)
-    .select('*', { count: 'exact' })
-    .eq('locale', locale)
+  let query = supabase.from(config.table).select('*', { count: 'exact' }).eq('locale', locale);
+  if (filters) {
+    for (const [field, value] of Object.entries(filters)) {
+      query = query.eq(field, value);
+    }
+  }
+  const { data, error, count } = await query
     .order('updated_at', { ascending: false })
     .range(range.from, range.to);
 
