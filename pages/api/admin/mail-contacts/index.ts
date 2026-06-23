@@ -49,7 +49,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .from('mail_contacts')
         .insert({
           name: nameCheck.value,
-          email: body.email.trim(),
+          email: body.email.trim().toLowerCase(),
           group_type: body.group_type,
           cohorts: normalizeCohorts(body.cohorts ?? []),
           note: body.note?.trim() ?? '',

@@ -41,7 +41,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       if (body.email !== undefined) {
         if (!isValidEmail(body.email))
           return res.status(400).json({ error: '이메일 형식이 올바르지 않습니다.' });
-        update.email = body.email.trim();
+        update.email = body.email.trim().toLowerCase();
       }
       if (body.group_type !== undefined) update.group_type = body.group_type;
       if (body.cohorts !== undefined) update.cohorts = normalizeCohorts(body.cohorts);
@@ -54,7 +54,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .eq('id', id)
         .select('*')
         .single();
-      if (error) return res.status(500).json({ error: error.message });
+      if (error) {
+        const dup = error.code === '23505';
+        return res
+          .status(dup ? 409 : 500)
+          .json({ error: dup ? '이미 등록된 이메일입니다.' : error.message });
+      }
       return res.status(200).json({ item: data });
     } catch (error) {
       return res.status(400).json({ error: getErrorMessage(error) });
