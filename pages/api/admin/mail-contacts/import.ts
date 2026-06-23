@@ -25,7 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     for (const row of rows) {
       const { error } = await supabase.from('mail_contacts').insert({
         name: row.name,
-        email: row.email,
+        email: row.email.toLowerCase(),
         group_type: row.group_type,
         cohorts: row.cohorts,
         created_by: session.member.email,
