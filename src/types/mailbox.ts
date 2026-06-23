@@ -14,4 +14,6 @@ export interface MailboxMessage {
   is_read: boolean;
   created_by: string;
   created_at: string;
+  campaign_id: string | null;
+  send_error: string | null;
 }
