@@ -141,17 +141,17 @@ export default function PostDetailPage({ post, slug, comments, commentsHasMore }
               {t('post.images')}
             </h2>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-              {post.images.map((img) => (
+              {post.images.map((img, i) => (
                 <button
                   key={img.id}
                   type="button"
                   onClick={() => setLightbox(img.image_url)}
-                  aria-label={post.title}
+                  aria-label={t('post.imageAlt', { n: i + 1 })}
                   className="relative aspect-square overflow-hidden rounded-xl border border-seafoam transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
                 >
                   <Image
                     src={img.image_url}
-                    alt={post.title}
+                    alt={t('post.imageAlt', { n: i + 1 })}
                     fill
                     sizes="(max-width: 640px) 50vw, 33vw"
                     className="object-cover"
