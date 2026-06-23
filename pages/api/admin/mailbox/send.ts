@@ -50,7 +50,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       campaignId,
       send: sendEmail,
       record: async (row) => {
-        await supabase.from('mailbox_messages').insert({
+        const { error: recordError } = await supabase.from('mailbox_messages').insert({
           direction: 'outbound',
           resend_id: row.resend_id,
           from_email: 'admin@peaceandmusic.net',
@@ -62,6 +62,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           is_read: true,
           created_by: session.member.email,
         });
+        if (recordError) {
+          console.error(
+            `[mailbox/send] 발송 기록 실패 (campaign ${row.campaign_id}, to ${row.to_email}): ${recordError.message}`
+          );
+        }
       },
     });
 
