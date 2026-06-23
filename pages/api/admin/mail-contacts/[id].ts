@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { z, ZodError } from 'zod';
 import { requireAdminRole } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
-import { isValidEmail, normalizeCohorts } from '@/lib/mailContactsForms';
+import { isValidEmail, normalizeCohorts, validateContactName } from '@/lib/mailContactsForms';
 
 const patchSchema = z.object({
   name: z.string().optional(),
@@ -33,7 +33,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try {
       const body = patchSchema.parse(req.body);
       const update: Record<string, unknown> = { updated_at: new Date().toISOString() };
-      if (body.name !== undefined) update.name = body.name.trim();
+      if (body.name !== undefined) {
+        const nameCheck = validateContactName(body.name);
+        if (!nameCheck.ok) return res.status(400).json({ error: nameCheck.reason });
+        update.name = nameCheck.value;
+      }
       if (body.email !== undefined) {
         if (!isValidEmail(body.email))
           return res.status(400).json({ error: '이메일 형식이 올바르지 않습니다.' });
