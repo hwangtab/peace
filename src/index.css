@@ -12,9 +12,12 @@
     font-display: swap;
   }
 
-  /* 본문/UI 단일 산스 — S-Core Dream(에스코어드림) 4웨이트를 하나의 family 로
-     묶고 font-weight 로 굵기를 제어한다. 300=Light(캡션) · 400=Regular(본문) ·
-     500=Medium(강조/버튼) · 700=Bold(헤딩 보조). */
+  /* 본문/UI 단일 산스 — S-Core Dream(에스코어드림) 5웨이트를 하나의 family 로
+     묶고 font-weight 로 굵기를 제어한다. Tailwind 유틸 ↔ 웨이트 대응:
+     300=font-light(캡션) · 400=font-normal(본문) · 500=font-medium(부드러운 강조) ·
+     600=font-semibold(주력 강조/버튼) · 700=font-bold(최강조).
+     6Bold→600, 7ExtraBold→700 으로 분리해 semibold 와 bold 의 굵기 차등을 보장한다
+     (CSS 매칭 규칙상 600 미정의 시 700 으로 끌려가 둘이 동일해지는 문제 방지). */
   @font-face {
     font-family: 'SCDream';
     src: url('/fonts/S-CoreDream-3Light.subset.woff2') format('woff2');
@@ -42,6 +45,14 @@
   @font-face {
     font-family: 'SCDream';
     src: url('/fonts/S-CoreDream-6Bold.subset.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'SCDream';
+    src: url('/fonts/S-CoreDream-7ExtraBold.subset.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
