@@ -12,11 +12,15 @@ import type { Session, User } from '@supabase/supabase-js';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { getSupabasePublicConfig } from '@/lib/supabaseConfig';
 import type { MemberProfile } from '@/types/member';
+import type { AdminRole } from '@/types/cms';
 
 interface AuthContextValue {
   user: User | null;
   profile: MemberProfile | null;
   loading: boolean;
+  /** admin_members에 등록된 관리자면 권한 등급, 아니면 null. 관리자 진입 버튼 노출용. */
+  adminRole: AdminRole | null;
+  isAdmin: boolean;
   refreshProfile: () => Promise<void>;
   signOut: () => Promise<void>;
 }
@@ -27,8 +31,32 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const isSupabaseConfigured = getSupabasePublicConfig() !== null;
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<MemberProfile | null>(null);
+  const [adminRole, setAdminRole] = useState<AdminRole | null>(null);
   const [loading, setLoading] = useState(isSupabaseConfigured);
   const loadSeqRef = useRef(0);
+  const adminSeqRef = useRef(0);
+
+  // 로그인 사용자가 관리자(admin_members)인지 서버에 한 번 물어본다.
+  // 비로그인/비관리자면 null. UI 노출 판단용일 뿐, 접근 통제는 서버가 한다.
+  const loadAdminRole = useCallback(async (nextUser: User | null) => {
+    const seq = ++adminSeqRef.current;
+    if (!nextUser) {
+      if (seq === adminSeqRef.current) setAdminRole(null);
+      return;
+    }
+    try {
+      const response = await fetch('/api/admin/whoami');
+      if (!response.ok) {
+        if (seq === adminSeqRef.current) setAdminRole(null);
+        return;
+      }
+      const data = (await response.json()) as { isAdmin?: boolean; role?: AdminRole };
+      if (seq !== adminSeqRef.current) return;
+      setAdminRole(data.isAdmin && data.role ? data.role : null);
+    } catch {
+      if (seq === adminSeqRef.current) setAdminRole(null);
+    }
+  }, []);
 
   const loadProfile = useCallback(async (nextUser: User | null) => {
     const seq = ++loadSeqRef.current;
@@ -73,6 +101,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const nextUser = data.session?.user ?? null;
       setUser(nextUser);
       await loadProfile(nextUser);
+      void loadAdminRole(nextUser);
       setLoading(false);
     });
 
@@ -82,6 +111,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         const nextUser = session?.user ?? null;
         setUser(nextUser);
         void loadProfile(nextUser);
+        void loadAdminRole(nextUser);
       }
     );
 
@@ -89,7 +119,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       active = false;
       sub.subscription.unsubscribe();
     };
-  }, [isSupabaseConfigured, loadProfile]);
+  }, [isSupabaseConfigured, loadProfile, loadAdminRole]);
 
   const refreshProfile = useCallback(async () => {
     await loadProfile(user);
@@ -104,12 +134,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     } finally {
       setUser(null);
       setProfile(null);
+      setAdminRole(null);
     }
   }, []);
 
   const value = useMemo<AuthContextValue>(
-    () => ({ user, profile, loading, refreshProfile, signOut }),
-    [user, profile, loading, refreshProfile, signOut]
+    () => ({
+      user,
+      profile,
+      loading,
+      adminRole,
+      isAdmin: adminRole !== null,
+      refreshProfile,
+      signOut,
+    }),
+    [user, profile, loading, adminRole, refreshProfile, signOut]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

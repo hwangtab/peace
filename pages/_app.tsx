@@ -29,6 +29,7 @@ import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/layout/Footer';
 import ErrorFallback from '@/components/common/ErrorFallback';
 import { AuthProvider } from '@/components/auth/AuthProvider';
+import AdminQuickAccess from '@/components/admin/AdminQuickAccess';
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
@@ -114,6 +115,7 @@ function App({ Component, pageProps }: AppProps) {
               </main>
             </ErrorBoundary>
             <Footer />
+            <AdminQuickAccess />
           </AuthProvider>
         )}
       </MotionConfig>
