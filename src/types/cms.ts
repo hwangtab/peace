@@ -39,6 +39,7 @@ export interface ArchiveVideoRow {
   duration: string | null;
   musician_ids: number[];
   director_musician_id: number | null;
+  director_name: string | null;
   status: CmsStatus;
   sort_order: number;
   published_at: string | null;

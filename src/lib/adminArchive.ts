@@ -158,7 +158,18 @@ export const ADMIN_COLLECTION_CONFIGS: Record<AdminCollection, AdminCollectionCo
       { name: 'thumbnail_url', label: '썸네일 URL', kind: 'text' },
       { name: 'duration', label: '길이', kind: 'duration' },
       { name: 'musician_ids', label: '출연 뮤지션', kind: 'musician-multi' },
-      { name: 'director_musician_id', label: '감독 뮤지션', kind: 'musician' },
+      {
+        name: 'director_musician_id',
+        label: '감독 (뮤지션 중 선택)',
+        kind: 'musician',
+        hint: '뮤지션이 감독이면 여기서 고릅니다. 외부 감독이면 비우고 아래 칸을 쓰세요.',
+      },
+      {
+        name: 'director_name',
+        label: '감독 (외부 — 이름 직접 입력)',
+        kind: 'text',
+        hint: '뮤지션이 아닌 영상감독의 이름. 위에서 뮤지션을 골랐다면 비워두세요.',
+      },
       statusField,
       {
         name: 'sort_order',
@@ -311,6 +322,7 @@ const videoSchema = z.object({
   duration: nullableTextSchema.optional(),
   musician_ids: z.preprocess(csvNumberArray, z.array(z.number().int())).default([]),
   director_musician_id: optionalIntegerSchema.optional(),
+  director_name: nullableTextSchema.optional(),
   status: cmsStatusSchema.default('draft'),
   sort_order: sortOrderSchema,
 });
@@ -423,6 +435,7 @@ export const mapVideoRowToItem = (row: ArchiveVideoRow): VideoItem => ({
   ...(row.duration ? { duration: row.duration } : {}),
   ...(row.musician_ids.length ? { musicianIds: row.musician_ids } : {}),
   ...(row.director_musician_id ? { directorMusicianId: row.director_musician_id } : {}),
+  ...(row.director_name ? { directorName: row.director_name } : {}),
 });
 
 export const mapGalleryRowToItem = (row: ArchiveGalleryImageRow): GalleryImage => ({
