@@ -133,13 +133,14 @@ def subset_font(src: Path, dst: Path, unicode_list: list[int], fmt: str) -> tupl
 
 FONTS: list[tuple[str, str, str]] = [
     # (src filename, dst filename, flavor)
-    ("GmarketSansLight.woff2", "GmarketSansLight.subset.woff2", "woff2"),
-    ("GmarketSansMedium.woff2", "GmarketSansMedium.subset.woff2", "woff2"),
-    ("GmarketSansBold.woff2", "GmarketSansBold.subset.woff2", "woff2"),
+    # 폰트 3종 체계: 제목=명조, 포인트=PartialSans, 본문/UI=S-Core Dream(4웨이트).
+    # 지마켓 산스·꾸불림은 정리 과정에서 제거(원본은 source/에 보존).
     ("PartialSansKR-Regular.woff2", "PartialSansKR-Regular.subset.woff2", "woff2"),
     ("BookkMyungjo-Bd.woff2", "BookkMyungjo-Bd.subset.woff2", "woff2"),
-    ("BMkkubulim-Regular.woff2", "BMkkubulim-Regular.subset.woff2", "woff2"),
     ("S-CoreDream-3Light.woff", "S-CoreDream-3Light.subset.woff2", "woff2"),
+    ("S-CoreDream-4Regular.woff", "S-CoreDream-4Regular.subset.woff2", "woff2"),
+    ("S-CoreDream-5Medium.woff", "S-CoreDream-5Medium.subset.woff2", "woff2"),
+    ("S-CoreDream-6Bold.woff", "S-CoreDream-6Bold.subset.woff2", "woff2"),
 ]
 
 

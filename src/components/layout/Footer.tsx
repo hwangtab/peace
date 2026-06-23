@@ -20,7 +20,7 @@ const Footer = () => {
             <h2 className="text-xl md:text-2xl font-serif font-bold break-words">
               {t('app.title')}
             </h2>
-            <p className="text-golden-sun text-sm md:text-base font-stone font-normal break-words">
+            <p className="text-golden-sun text-sm md:text-base font-display font-bold break-words">
               {t('footer.slogan')}
             </p>
             <p className="text-seafoam/80 text-sm font-caption font-light leading-relaxed break-words">
