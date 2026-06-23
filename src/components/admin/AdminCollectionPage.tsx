@@ -21,6 +21,7 @@ import {
 import type { AdminMember } from '@/types/cms';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { buildAdminFormState, type AdminCollectionFormState } from './adminCollectionForm';
+import AdminFieldControl, { type MusicianOption } from './AdminFieldControl';
 
 export interface AdminCollectionPageProps {
   config: AdminCollectionConfig;
@@ -77,6 +78,39 @@ export default function AdminCollectionPage({
   const [cloneLocale, setCloneLocale] = useState(
     LOCALE_OPTIONS.find((option) => option.value !== selectedLocale)?.value ?? selectedLocale
   );
+  const [musicians, setMusicians] = useState<MusicianOption[]>([]);
+
+  // 뮤지션 선택 위젯이 있는 컬렉션(예: 비디오)에서만 이름 목록을 불러온다.
+  const needsMusicians = useMemo(
+    () =>
+      config.fields.some((field) => field.kind === 'musician' || field.kind === 'musician-multi'),
+    [config.fields]
+  );
+
+  useEffect(() => {
+    if (!needsMusicians) return;
+    let cancelled = false;
+    const loadMusicians = async () => {
+      try {
+        const response = await fetch('/data/musicians.json');
+        if (!response.ok) return;
+        const data = (await response.json()) as Array<{ id?: number; name?: string }>;
+        if (cancelled || !Array.isArray(data)) return;
+        setMusicians(
+          data
+            .filter((item): item is MusicianOption => typeof item.id === 'number' && !!item.name)
+            .map((item) => ({ id: item.id, name: item.name }))
+            .sort((a, b) => a.id - b.id)
+        );
+      } catch {
+        // 목록 로드 실패 시 폼은 id 직접 입력으로 폴백한다.
+      }
+    };
+    void loadMusicians();
+    return () => {
+      cancelled = true;
+    };
+  }, [needsMusicians]);
 
   const counts = useMemo(
     () => ({
@@ -526,45 +560,26 @@ export default function AdminCollectionPage({
               />
             ) : null}
             <fieldset disabled={!canEdit} className="space-y-4 border-0 p-0 disabled:opacity-70">
-              {config.fields.map((field) => (
-                <label key={field.name} className="block">
-                  <span className="mb-1 block text-sm font-semibold text-deep-ocean">
-                    {field.label}
-                    {field.required ? <span className="text-sunset-coral"> *</span> : null}
-                  </span>
-                  {field.kind === 'textarea' ? (
-                    <textarea
+              {config.fields
+                .filter((field) => !field.hidden)
+                .map((field) => (
+                  <label key={field.name} className="block">
+                    <span className="mb-1 block text-sm font-semibold text-deep-ocean">
+                      {field.label}
+                      {field.required ? <span className="text-sunset-coral"> *</span> : null}
+                    </span>
+                    <AdminFieldControl
+                      field={field}
                       value={form[field.name] ?? ''}
-                      onChange={(event) => updateField(field.name, event.target.value)}
-                      rows={field.name === 'value' || field.name === 'description' ? 6 : 3}
-                      placeholder={field.placeholder}
-                      className="w-full rounded border border-deep-ocean/15 px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
+                      disabled={!canEdit}
+                      musicians={musicians}
+                      onChange={(value) => updateField(field.name, value)}
                     />
-                  ) : field.kind === 'select' ? (
-                    <select
-                      value={form[field.name] ?? ''}
-                      onChange={(event) => updateField(field.name, event.target.value)}
-                      className="w-full rounded border border-deep-ocean/15 bg-white px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
-                    >
-                      {field.options?.map((option) => (
-                        <option key={option.value} value={option.value}>
-                          {option.label}
-                        </option>
-                      ))}
-                    </select>
-                  ) : (
-                    <input
-                      type={
-                        field.kind === 'number' ? 'number' : field.kind === 'date' ? 'date' : 'text'
-                      }
-                      value={form[field.name] ?? ''}
-                      onChange={(event) => updateField(field.name, event.target.value)}
-                      placeholder={field.placeholder}
-                      className="w-full rounded border border-deep-ocean/15 px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
-                    />
-                  )}
-                </label>
-              ))}
+                    {field.hint ? (
+                      <span className="mt-1 block text-xs text-coastal-gray">{field.hint}</span>
+                    ) : null}
+                  </label>
+                ))}
             </fieldset>
 
             {config.collection === 'gallery' && canEdit && (
