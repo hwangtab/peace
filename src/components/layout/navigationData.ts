@@ -20,10 +20,9 @@ export const albumItems = [
   { nameKey: 'nav.track', path: ROUTES.ALBUM.TRACKS },
 ];
 
-// 커뮤니티(게시판) 드롭다운 — '커뮤니티'를 누르면 인덱스를 거치지 않고 각 게시판으로 바로 이동.
-// 게시판 이름은 boards 테이블의 raw 한국어 이름과 동일하게 둔다. 다국어 대상이 아니므로
-// (i18n:check가 비-KO 로케일의 한국어 값을 금지) locale JSON이 아닌 여기서 label로 직접 지정한다.
-// boards 테이블이 바뀌면(추가/이름변경/비활성) 이 목록도 함께 갱신할 것.
+// 커뮤니티(게시판) 드롭다운의 폴백 목록. 실제 헤더는 useCommunityBoards가 활성 게시판을
+// DB에서 불러와 자동 표시하며(관리자에서 추가/변경 시 자동 반영), 이 목록은 첫 렌더(SSR/초기)
+// 와 조회 실패 시의 기본값으로만 쓰인다. 게시판 이름은 boards 테이블의 raw 한국어 이름과 맞춘다.
 export const communityItems = [
   { label: '자유게시판', path: `${ROUTES.BOARD}/free` },
   { label: '후기', path: `${ROUTES.BOARD}/reviews` },
