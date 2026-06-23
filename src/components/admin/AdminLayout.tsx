@@ -19,7 +19,7 @@ const NAV_ITEMS = [
   { href: '/admin/history', label: '변경 이력' },
 ];
 
-const OWNER_NAV_ITEMS = [{ href: '/admin/members', label: '멤버' }];
+const OWNER_NAV_ITEMS = [{ href: '/admin/members', label: '기획단' }];
 
 interface AdminLayoutProps {
   title: string;
