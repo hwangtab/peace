@@ -43,17 +43,25 @@ export default function ContactsPanel({ canEdit }: { canEdit: boolean }) {
   };
 
   const toggleActive = async (c: MailContact) => {
-    await fetch(`/api/admin/mail-contacts/${c.id}`, {
+    const res = await fetch(`/api/admin/mail-contacts/${c.id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ is_active: !c.is_active }),
     });
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      return setError(data.error ?? '상태 변경에 실패했습니다.');
+    }
     await load();
   };
 
   const removeContact = async (c: MailContact) => {
     if (!window.confirm(`${c.name} 연락처를 삭제할까요?`)) return;
-    await fetch(`/api/admin/mail-contacts/${c.id}`, { method: 'DELETE' });
+    const res = await fetch(`/api/admin/mail-contacts/${c.id}`, { method: 'DELETE' });
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      return setError(data.error ?? '삭제에 실패했습니다.');
+    }
     await load();
   };
 
@@ -190,6 +198,8 @@ function ContactAddForm({
             onAdd({ name, email, group_type: groupType, cohorts });
             setName('');
             setEmail('');
+            setGroupType('musician');
+            setCohorts('2026');
           }}
           className="rounded bg-deep-ocean px-4 py-2 text-sm font-semibold text-white disabled:opacity-60"
         >
