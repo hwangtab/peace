@@ -56,5 +56,6 @@ export interface AdminCommentRow {
   created_at: string;
   post_id: string;
   post_title: string;
+  post_board_slug?: string;
   author_nickname: string;
 }
