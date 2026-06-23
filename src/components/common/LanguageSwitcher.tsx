@@ -48,14 +48,14 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
   };
 
   return (
-    <div className={`relative inline-flex group ${className}`}>
+    <div className={`relative inline-flex shrink-0 group ${className}`}>
       <label className="sr-only" htmlFor="language-switcher">
         {t('nav.switch_language')}
       </label>
       {/* 보이는 라벨: 현재 언어에 딱 맞게 너비를 잡아 인증 버튼과 균형을 맞춘다 */}
       <span
         aria-hidden="true"
-        className={`pointer-events-none inline-flex items-center gap-1.5 font-serif font-bold text-xs sm:text-sm px-3 py-2 rounded border transition-colors duration-300 bg-transparent ${labelClasses}`}
+        className={`pointer-events-none inline-flex items-center gap-1.5 whitespace-nowrap font-serif font-bold text-xs sm:text-sm px-3 py-2 rounded border transition-colors duration-300 bg-transparent ${labelClasses}`}
       >
         {NATIVE_LANGUAGE_NAMES[currentLocale] || currentLocale}
         <svg

@@ -89,7 +89,7 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(
           onKeyDown={(e) => {
             if (e.key === 'Escape') setOpen(false);
           }}
-          className={`flex items-center gap-1 ${getTextColor()} transition-colors duration-300 font-display font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm text-balance`}
+          className={`flex items-center gap-1 ${getTextColor()} whitespace-nowrap transition-colors duration-300 font-display font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm`}
           aria-expanded={open}
           aria-haspopup="menu"
         >
