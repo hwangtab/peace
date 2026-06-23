@@ -21,13 +21,14 @@ class MyDocument extends Document {
           <link rel="preconnect" href="https://www.google-analytics.com" />
           <link rel="dns-prefetch" href="//www.google-analytics.com" />
 
-          {/* Body 폰트 preload (FOUT 방지) — LCP 히어로 본문에 사용 */}
+          {/* Body 폰트 preload (FOUT 방지) — LCP 히어로 본문에 사용.
+              S-Core Dream Regular(400)이 본문 기본 웨이트. */}
           <link
             rel="preload"
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
-            href="/fonts/GmarketSansLight.subset.woff2"
+            href="/fonts/S-CoreDream-4Regular.subset.woff2"
             // @ts-expect-error — fetchpriority is a valid HTML attribute (React 18.3+)
             fetchpriority="high"
           />

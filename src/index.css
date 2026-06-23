@@ -12,31 +12,37 @@
     font-display: swap;
   }
 
+  /* 본문/UI 단일 산스 — S-Core Dream(에스코어드림) 4웨이트를 하나의 family 로
+     묶고 font-weight 로 굵기를 제어한다. 300=Light(캡션) · 400=Regular(본문) ·
+     500=Medium(강조/버튼) · 700=Bold(헤딩 보조). */
   @font-face {
-    font-family: 'GMarketSans';
-    src: url('/fonts/GmarketSansLight.subset.woff2') format('woff2');
-    font-weight: 200;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'GMarketSans';
-    src: url('/fonts/GmarketSansMedium.subset.woff2') format('woff2');
-    font-weight: 500;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'GMarketSans';
-    src: url('/fonts/GmarketSansBold.subset.woff2') format('woff2');
-    font-weight: 700;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'S-CoreDream-3Light';
+    font-family: 'SCDream';
     src: url('/fonts/S-CoreDream-3Light.subset.woff2') format('woff2');
     font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'SCDream';
+    src: url('/fonts/S-CoreDream-4Regular.subset.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'SCDream';
+    src: url('/fonts/S-CoreDream-5Medium.subset.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'SCDream';
+    src: url('/fonts/S-CoreDream-6Bold.subset.woff2') format('woff2');
+    font-weight: 700;
     font-style: normal;
     font-display: swap;
   }
@@ -48,17 +54,10 @@
     font-display: swap;
   }
 
-  @font-face {
-    font-family: 'KkuBulLim';
-    src: url('/fonts/BMkkubulim-Regular.subset.woff2') format('woff2');
-    font-weight: normal;
-    font-display: swap;
-  }
-
   body {
     @apply bg-ocean-sand text-deep-ocean;
     font-family:
-      'GMarketSans',
+      'SCDream',
       -apple-system,
       BlinkMacSystemFont,
       'Segoe UI',
@@ -70,7 +69,7 @@
       'Droid Sans',
       'Helvetica Neue',
       sans-serif;
-    font-weight: 200;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -173,7 +172,7 @@
   }
 
   .typo-h2 {
-    @apply font-stone font-normal text-3xl md:text-4xl leading-tight text-gray-900;
+    @apply font-display font-bold text-3xl md:text-4xl leading-tight text-gray-900;
     word-break: var(--text-word-break);
     overflow-wrap: break-word;
     text-wrap: balance;
@@ -283,5 +282,6 @@ code {
 }
 
 .subtitle {
-  font-family: 'S-CoreDream-3Light', sans-serif;
+  font-family: 'SCDream', sans-serif;
+  font-weight: 300;
 }

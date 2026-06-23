@@ -7,14 +7,15 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['GMarketSans', ...require('tailwindcss/defaultTheme').fontFamily.sans],
+        // 본문/UI 산스는 모두 S-Core Dream(에스코어드림) 단일 family.
+        // 굵기는 font-weight 유틸리티(font-light/normal/medium/bold)로 제어.
+        'sans': ['SCDream', ...require('tailwindcss/defaultTheme').fontFamily.sans],
         'serif': ['BookkMyungjo-Bd', ...require('tailwindcss/defaultTheme').fontFamily.serif],
         // Semantic Typography
         'display': ['BookkMyungjo-Bd', ...require('tailwindcss/defaultTheme').fontFamily.serif],
         'partial': ['PartialSans', 'sans-serif'],
-        'stone': ['KkuBulLim', 'sans-serif'],
-        'body': ['GMarketSans', ...require('tailwindcss/defaultTheme').fontFamily.sans],
-        'caption': ['S-CoreDream-3Light', 'sans-serif'],
+        'body': ['SCDream', ...require('tailwindcss/defaultTheme').fontFamily.sans],
+        'caption': ['SCDream', ...require('tailwindcss/defaultTheme').fontFamily.sans],
       },
       colors: {
         // Ocean Blues (Primary)
