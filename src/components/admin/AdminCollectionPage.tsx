@@ -22,6 +22,7 @@ import type { AdminMember } from '@/types/cms';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { buildAdminFormState, type AdminCollectionFormState } from './adminCollectionForm';
 import AdminFieldControl, { type MusicianOption } from './AdminFieldControl';
+import { buildPhotographerOptions, type PhotographerOption } from '@/data/photographers';
 
 // 관리자 비디오 편집 패널에서 어떤 영상인지 바로 확인할 수 있도록
 // youtube_url(embed/watch/youtu.be 형식)에서 영상 ID를 뽑아 임베드한다.
@@ -122,6 +123,34 @@ export default function AdminCollectionPage({
       cancelled = true;
     };
   }, [needsMusicians]);
+
+  const [photographers, setPhotographers] = useState<PhotographerOption[]>([]);
+  const needsPhotographers = useMemo(
+    () => config.fields.some((field) => field.kind === 'photographer'),
+    [config.fields]
+  );
+
+  // 작가 선택 위젯이 있으면 slug 목록(photographers.ts) + 표시 이름(ko/gallery.json)을 모은다.
+  useEffect(() => {
+    if (!needsPhotographers) return;
+    let cancelled = false;
+    const loadPhotographers = async () => {
+      try {
+        const response = await fetch('/locales/ko/gallery.json');
+        const dict = response.ok
+          ? ((await response.json()) as { photographers?: Record<string, { name?: string }> })
+          : null;
+        if (cancelled) return;
+        setPhotographers(buildPhotographerOptions(dict?.photographers ?? null));
+      } catch {
+        if (!cancelled) setPhotographers(buildPhotographerOptions(null));
+      }
+    };
+    void loadPhotographers();
+    return () => {
+      cancelled = true;
+    };
+  }, [needsPhotographers]);
 
   const counts = useMemo(
     () => ({
@@ -604,6 +633,7 @@ export default function AdminCollectionPage({
                       value={form[field.name] ?? ''}
                       disabled={!canEdit}
                       musicians={musicians}
+                      photographers={photographers}
                       onChange={(value) => updateField(field.name, value)}
                     />
                     {field.hint ? (

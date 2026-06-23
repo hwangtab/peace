@@ -1,4 +1,5 @@
 import { composeIsoDuration, parseIsoDuration, type AdminField } from '@/lib/adminArchive';
+import type { PhotographerOption } from '@/data/photographers';
 
 export interface MusicianOption {
   id: number;
@@ -10,6 +11,7 @@ interface AdminFieldControlProps {
   value: string;
   disabled?: boolean;
   musicians: MusicianOption[];
+  photographers: PhotographerOption[];
   onChange: (value: string) => void;
 }
 
@@ -29,6 +31,7 @@ export default function AdminFieldControl({
   value,
   disabled,
   musicians,
+  photographers,
   onChange,
 }: AdminFieldControlProps) {
   if (field.kind === 'textarea') {
@@ -87,6 +90,38 @@ export default function AdminFieldControl({
         />
         <span className="text-sm text-coastal-gray">초</span>
       </div>
+    );
+  }
+
+  if (field.kind === 'photographer') {
+    // 적응형: 등록 작가가 2명 이상일 때만 드롭다운, 아니면 slug 직접 입력.
+    if (photographers.length < 2) {
+      return (
+        <input
+          type="text"
+          value={value}
+          onChange={(event) => onChange(event.target.value)}
+          placeholder={field.placeholder}
+          className={inputClass}
+        />
+      );
+    }
+    // 현재 값이 목록에 없으면(미등록 slug) 데이터 유실을 막기 위해 옵션으로 함께 노출.
+    const known = photographers.some((option) => option.slug === value);
+    return (
+      <select
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        className={selectClass}
+      >
+        <option value="">— 선택 안 함 —</option>
+        {photographers.map((option) => (
+          <option key={option.slug} value={option.slug}>
+            {option.name} ({option.slug})
+          </option>
+        ))}
+        {value && !known ? <option value={value}>(미등록) {value}</option> : null}
+      </select>
     );
   }
 
