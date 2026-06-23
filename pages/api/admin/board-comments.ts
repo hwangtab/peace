@@ -17,12 +17,11 @@ const getErrorMessage = (error: unknown): string => {
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const session = await requireAdminRole(req, res, 'editor');
-  if (!session) return;
-
   const supabase = createSupabaseServerClient(req, res);
 
   if (req.method === 'GET') {
+    // 읽기는 viewer 이상이면 허용(다른 읽기 전용 admin API와 일관).
+    if (!(await requireAdminRole(req, res, 'viewer'))) return;
     const { data, error } = await supabase
       .from('post_comments')
       .select(
@@ -54,6 +53,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   if (req.method === 'PATCH') {
+    // 상태 변경은 editor 이상.
+    if (!(await requireAdminRole(req, res, 'editor'))) return;
     try {
       const body = patchSchema.parse(req.body);
 
