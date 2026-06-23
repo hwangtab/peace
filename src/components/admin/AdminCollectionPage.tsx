@@ -23,6 +23,17 @@ import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { buildAdminFormState, type AdminCollectionFormState } from './adminCollectionForm';
 import AdminFieldControl, { type MusicianOption } from './AdminFieldControl';
 
+// 관리자 비디오 편집 패널에서 어떤 영상인지 바로 확인할 수 있도록
+// youtube_url(embed/watch/youtu.be 형식)에서 영상 ID를 뽑아 임베드한다.
+const getYoutubeEmbedId = (url: string): string => {
+  const trimmed = url.trim();
+  if (!trimmed) return '';
+  if (trimmed.includes('/embed/')) return trimmed.split('/embed/')[1]?.split(/[?&]/)[0] ?? '';
+  if (trimmed.includes('watch?v=')) return trimmed.split('watch?v=')[1]?.split('&')[0] ?? '';
+  if (trimmed.includes('youtu.be/')) return trimmed.split('youtu.be/')[1]?.split(/[?&]/)[0] ?? '';
+  return '';
+};
+
 export interface AdminCollectionPageProps {
   config: AdminCollectionConfig;
   initialItems: AdminCollectionRow[];
@@ -551,6 +562,26 @@ export default function AdminCollectionPage({
             <h2 className="font-semibold">{selected ? '항목 편집' : '새 항목 추가'}</h2>
           </div>
           <div className="space-y-4 p-4">
+            {config.collection === 'videos' &&
+              (() => {
+                const embedId = getYoutubeEmbedId(form.youtube_url ?? '');
+                if (!embedId) return null;
+                return (
+                  <div className="overflow-hidden rounded border border-deep-ocean/10 bg-black">
+                    <div className="relative aspect-video w-full">
+                      <iframe
+                        key={embedId}
+                        src={`https://www.youtube.com/embed/${embedId}`}
+                        title="영상 미리보기"
+                        className="absolute inset-0 h-full w-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                );
+              })()}
             {config.imageField && form[config.imageField] ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
