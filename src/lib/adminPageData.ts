@@ -52,8 +52,10 @@ export const loadAdminCollectionPageProps = async (
     .from(config.table)
     .select('*', { count: 'exact' })
     .eq('locale', selectedLocale);
-  for (const [field, value] of Object.entries(filters)) {
-    query = query.eq(field, value);
+  if (Object.keys(filters).length > 0) {
+    for (const [field, value] of Object.entries(filters)) {
+      query = query.eq(field, value);
+    }
   }
   const { data, error, count } = await query
     .order('updated_at', { ascending: false })
