@@ -30,6 +30,7 @@ export default function AdminArchiveFilterBar({
                 key={opt.value || 'all'}
                 type="button"
                 onClick={() => onChangeType(opt.value)}
+                aria-pressed={active}
                 className={`rounded-full px-3 py-1 text-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean ${
                   active
                     ? 'bg-jeju-ocean font-semibold text-white'
@@ -43,9 +44,13 @@ export default function AdminArchiveFilterBar({
         </div>
       )}
       {yearOptions.length > 1 && (
-        <label className="flex items-center gap-2 text-xs font-semibold text-coastal-gray">
+        <label
+          htmlFor="archive-year-filter"
+          className="flex items-center gap-2 text-xs font-semibold text-coastal-gray"
+        >
           연도
           <select
+            id="archive-year-filter"
             value={selectedYear}
             onChange={(e) => onChangeYear(e.target.value)}
             className="rounded border border-deep-ocean/15 bg-white px-3 py-1.5 text-sm font-normal text-deep-ocean focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
