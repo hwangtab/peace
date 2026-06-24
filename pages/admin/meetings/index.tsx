@@ -4,12 +4,14 @@ import AdminLayout from '@/components/admin/AdminLayout';
 import { getAdminSession, canEditContent, redirectToAdminLogin } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import { MEETING_STATUS_LABELS } from '@/lib/meetingForms';
+import { CAMP_EDITION_YEARS, campEditionLabel } from '@/lib/campEditions';
 import type { Meeting } from '@/types/meeting';
 import type { AdminMember } from '@/types/cms';
 
 interface AdminMeetingsPageProps {
   meetings: Meeting[];
   member: AdminMember;
+  selectedYear: string;
   initialError?: string;
 }
 
@@ -22,24 +24,29 @@ const formatMeetingDate = (m: Meeting): string => {
   return m.meeting_time ? `${base} ${m.meeting_time}` : base;
 };
 
-const groupByYear = (meetings: Meeting[]): [string, Meeting[]][] => {
-  const groups = new Map<string, Meeting[]>();
+const groupByEdition = (meetings: Meeting[]): [number | null, Meeting[]][] => {
+  const groups = new Map<number | null, Meeting[]>();
   for (const m of meetings) {
-    const year = m.meeting_date ? m.meeting_date.slice(0, 4) + '년' : '일시 미정';
-    const list = groups.get(year) ?? [];
+    const key = m.event_year ?? null;
+    const list = groups.get(key) ?? [];
     list.push(m);
-    groups.set(year, list);
+    groups.set(key, list);
   }
-  return Array.from(groups.entries());
+  return Array.from(groups.entries()).sort((a, b) => {
+    if (a[0] == null) return 1;
+    if (b[0] == null) return -1;
+    return b[0] - a[0];
+  });
 };
 
 export default function AdminMeetingsPage({
   meetings,
   member,
+  selectedYear,
   initialError = '',
 }: AdminMeetingsPageProps) {
   const canEdit = canEditContent(member);
-  const groups = groupByYear(meetings);
+  const groups = groupByEdition(meetings);
 
   return (
     <AdminLayout title="회의록" member={member}>
@@ -51,14 +58,31 @@ export default function AdminMeetingsPage({
 
       <div className="mb-6 flex items-center justify-between">
         <p className="text-sm text-deep-ocean/70">기획단 회의 {meetings.length}건</p>
-        {canEdit && (
-          <Link
-            href="/admin/meetings/new"
-            className="rounded bg-deep-ocean px-4 py-2 font-semibold text-white transition hover:bg-jeju-ocean focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
+        <div className="flex items-center gap-2">
+          <select
+            value={selectedYear}
+            onChange={(e) => {
+              const v = e.target.value;
+              window.location.href = v ? `/admin/meetings?year=${v}` : '/admin/meetings';
+            }}
+            className="rounded border border-deep-ocean/15 bg-white px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
           >
-            새 회의
-          </Link>
-        )}
+            <option value="">전체 회차</option>
+            {CAMP_EDITION_YEARS.map((year) => (
+              <option key={year} value={year}>
+                {campEditionLabel(year)}
+              </option>
+            ))}
+          </select>
+          {canEdit && (
+            <Link
+              href="/admin/meetings/new"
+              className="rounded bg-deep-ocean px-4 py-2 font-semibold text-white transition hover:bg-jeju-ocean focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean"
+            >
+              새 회의
+            </Link>
+          )}
+        </div>
       </div>
 
       {meetings.length === 0 ? (
@@ -71,8 +95,10 @@ export default function AdminMeetingsPage({
       ) : (
         <div className="space-y-8">
           {groups.map(([year, list]) => (
-            <section key={year}>
-              <h2 className="mb-3 font-display text-lg font-bold text-deep-ocean">{year}</h2>
+            <section key={year ?? 'none'}>
+              <h2 className="mb-3 font-display text-lg font-bold text-deep-ocean">
+                {campEditionLabel(year)}
+              </h2>
               <ul className="space-y-2">
                 {list.map((m) => (
                   <li key={m.id}>
@@ -115,17 +141,25 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   const session = await getAdminSession(context);
   if (!session) return redirectToAdminLogin(context.resolvedUrl);
 
+  const selectedYear =
+    typeof context.query.year === 'string' && /^\d{4}$/.test(context.query.year)
+      ? context.query.year
+      : '';
+
   const supabase = createSupabaseServerClient(context.req, context.res);
-  const { data, error } = await supabase
+  let query = supabase
     .from('meetings')
     .select('*')
     .order('meeting_date', { ascending: false, nullsFirst: false })
     .order('created_at', { ascending: false });
+  if (selectedYear) query = query.eq('event_year', Number(selectedYear));
+  const { data, error } = await query;
 
   return {
     props: {
       meetings: data ?? [],
       member: session.member,
+      selectedYear,
       initialError: error?.message ?? '',
     },
   };
