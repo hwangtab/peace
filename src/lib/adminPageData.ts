@@ -39,7 +39,11 @@ export const loadAdminCollectionPageProps = async (
   let typeOptions: ArchiveFilterOption[] = [];
   let yearOptions: ArchiveFilterOption[] = [];
   if (config.yearTypeFilter) {
-    const { data: facetRows } = await supabase.from(config.table).select('event_type, event_year');
+    // distinct를 DB에서 계산(admin_archive_facets RPC). 단순 select는 PostgREST가
+    // 1000행으로 잘라 갤러리(1.6만행)의 일부 연도가 누락됐다.
+    const { data: facetRows } = await supabase.rpc('admin_archive_facets', {
+      p_table: config.table,
+    });
     const opts = buildArchiveFacetOptions(
       (facetRows as { event_type: string | null; event_year: number | null }[] | null) ?? []
     );
