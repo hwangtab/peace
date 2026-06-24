@@ -21,12 +21,14 @@ const getErrorMessage = (error: unknown): string =>
       : String(error);
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  // 인증 먼저, 그다음 입력 검증.
+  const session = await requireAdminRole(req, res, 'editor');
+  if (!session) return;
+
   const parsedId = z.string().uuid().safeParse(req.query.id);
   if (!parsedId.success) return res.status(400).json({ error: 'invalid_id' });
   const id = parsedId.data;
 
-  const session = await requireAdminRole(req, res, 'editor');
-  if (!session) return;
   const supabase = createSupabaseServerClient(req, res);
 
   if (req.method === 'PATCH') {

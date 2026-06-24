@@ -53,7 +53,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // 이메일(소문자) 기준 중복 제거 — 명단 연락처를 우선(이름 보존)
     const byEmail = new Map<string, { id: string; name: string; email: string }>();
-    for (const c of contactRecipients) byEmail.set(c.email.toLowerCase(), c);
+    for (const c of contactRecipients) {
+      const email = c.email.toLowerCase();
+      byEmail.set(email, { ...c, email });
+    }
     for (const m of manual.recipients) {
       if (!byEmail.has(m.email)) byEmail.set(m.email, { id: '', name: m.name, email: m.email });
     }
