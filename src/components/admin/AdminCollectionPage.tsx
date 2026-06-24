@@ -4,6 +4,7 @@ import AdminLayout from './AdminLayout';
 import AdminCollectionListPanel from './AdminCollectionListPanel';
 import AdminCollectionStatusCards from './AdminCollectionStatusCards';
 import AdminLocaleStatusPanel from './AdminLocaleStatusPanel';
+import AdminArchiveFilterBar from './AdminArchiveFilterBar';
 import {
   ADMIN_COLLECTION_PAGE_SIZE,
   LOCALE_OPTIONS,
@@ -17,6 +18,7 @@ import {
   type AdminStatusFilter,
   type AdminCollectionConfig,
   type AdminCollectionRow,
+  type ArchiveFilterOption,
 } from '@/lib/adminArchive';
 import type { AdminMember } from '@/types/cms';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
@@ -44,7 +46,10 @@ export interface AdminCollectionPageProps {
   initialHasMore: boolean;
   member: AdminMember;
   selectedLocale: string;
-  selectedFacet?: string;
+  selectedType: string;
+  selectedYear: string;
+  typeOptions: ArchiveFilterOption[];
+  yearOptions: ArchiveFilterOption[];
   initialError?: string;
 }
 
@@ -56,19 +61,22 @@ export default function AdminCollectionPage({
   initialHasMore,
   member,
   selectedLocale,
-  selectedFacet = '',
+  selectedType,
+  selectedYear,
+  typeOptions,
+  yearOptions,
   initialError = '',
 }: AdminCollectionPageProps) {
   const router = useRouter();
   const canEdit = member.role !== 'viewer';
-  const facetParam = config.facet?.param;
   const buildListParams = (offset: number, limit: number) => {
     const params = new URLSearchParams({
       locale: selectedLocale,
       offset: String(offset),
       limit: String(limit),
     });
-    if (facetParam && selectedFacet) params.set(facetParam, selectedFacet);
+    if (selectedType) params.set('type', selectedType);
+    if (selectedYear) params.set('year', selectedYear);
     return params;
   };
   const [items, setItems] = useState(initialItems);
@@ -318,14 +326,17 @@ export default function AdminCollectionPage({
 
   const changeLocale = async (nextLocale: string) => {
     const params = new URLSearchParams({ locale: nextLocale });
-    if (facetParam && selectedFacet) params.set(facetParam, selectedFacet);
+    if (selectedType) params.set('type', selectedType);
+    if (selectedYear) params.set('year', selectedYear);
     await router.push(`${config.listPath}?${params.toString()}`);
   };
 
-  const changeFacet = async (nextValue: string) => {
-    if (!facetParam) return;
+  const changeFilter = async (next: { type?: string; year?: string }) => {
     const params = new URLSearchParams({ locale: selectedLocale });
-    if (nextValue) params.set(facetParam, nextValue);
+    const type = next.type ?? selectedType;
+    const year = next.year ?? selectedYear;
+    if (type) params.set('type', type);
+    if (year) params.set('year', year);
     await router.push(`${config.listPath}?${params.toString()}`);
   };
 
@@ -545,21 +556,15 @@ export default function AdminCollectionPage({
             ))}
           </select>
         </label>
-        {config.facet && (
-          <label className="flex items-center gap-2 text-sm font-semibold">
-            {config.facet.label}
-            <select
-              value={selectedFacet}
-              onChange={(event) => void changeFacet(event.target.value)}
-              className="rounded border border-deep-ocean/15 bg-white px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
-            >
-              {config.facet.options.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-          </label>
+        {config.yearTypeFilter && (
+          <AdminArchiveFilterBar
+            typeOptions={typeOptions}
+            yearOptions={yearOptions}
+            selectedType={selectedType}
+            selectedYear={selectedYear}
+            onChangeType={(value) => void changeFilter({ type: value })}
+            onChangeYear={(value) => void changeFilter({ year: value })}
+          />
         )}
         <span className="text-sm text-coastal-gray">
           목록과 새 항목 기본값은 선택한 언어 기준입니다.
