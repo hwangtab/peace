@@ -4,7 +4,7 @@ import { requireAdminRole } from '@/lib/adminAuth';
 import {
   ADMIN_COLLECTION_PAGE_SIZE,
   getAdminCollectionConfig,
-  parseAdminFacetValue,
+  buildArchiveFilters,
 } from '@/lib/adminArchive';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import { isSupportedLocale } from '@/constants/locales';
@@ -69,11 +69,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const offset = Number(req.query.offset ?? 0);
     const limit = Number(req.query.limit ?? ADMIN_COLLECTION_PAGE_SIZE);
-    const facetValue =
-      config.facet && typeof req.query[config.facet.param] === 'string'
-        ? (req.query[config.facet.param] as string)
-        : undefined;
-    const filters = config.facet ? parseAdminFacetValue(config.facet, facetValue) : null;
+    const readParam = (key: string) =>
+      typeof req.query[key] === 'string' ? (req.query[key] as string) : '';
+    const filters = config.yearTypeFilter
+      ? buildArchiveFilters({ type: readParam('type'), year: readParam('year') })
+      : {};
     try {
       const page = await listAdminArchiveRows({
         supabase,
@@ -81,7 +81,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         locale: selectedLocale,
         offset,
         limit,
-        filters: filters ?? undefined,
+        filters: Object.keys(filters).length > 0 ? filters : undefined,
       });
       res.status(200).json({
         ...page,
