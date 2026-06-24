@@ -26,6 +26,10 @@
       "kdh": {
         "name": "Kim Dong-hee",
         "bio": "Para mí, tomar la cámara es una forma de relacionarme con los demás. Por eso sigo eligiendo hacerlo. Actualmente trabajo en retratos basados en entrevistas y produzco documentales."
+      },
+      "kwdh": {
+        "name": "Kwon Dong-hee",
+        "bio": "La biografía del fotógrafo está en preparación."
       }
     },
     "photographer_page_title": "{{name}} | Fotógrafo",

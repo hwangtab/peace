@@ -26,6 +26,10 @@
       "kdh": {
         "name": "Kim Dong-hee",
         "bio": "Para mim, pegar na câmera é uma forma de criar relações com os outros. É por isso que continuo a escolher fazê-lo. Atualmente trabalho com retratos baseados em entrevistas e produzo documentários."
+      },
+      "kwdh": {
+        "name": "Kwon Dong-hee",
+        "bio": "A biografia do fotógrafo está em preparação."
       }
     },
     "photographer_page_title": "{{name}} | Fotógrafo",

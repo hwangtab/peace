@@ -17,7 +17,11 @@ export interface Photographer {
 
 /** 연도별 작가 목록 (소개 카드 노출 순서) */
 export const photographersByYear: Record<number, Photographer[]> = {
-  2026: [{ slug: 'kdh', image: '/images-webp/photographers/kdh.webp' }],
+  2026: [
+    { slug: 'kdh', image: '/images-webp/photographers/kdh.webp' },
+    // 권동희: 프로필 사진·소개글 도착 전까지 image 생략 → 대표작으로 폴백
+    { slug: 'kwdh' },
+  ],
 };
 
 /** slug 로 작가 정보를 찾는다 (연도 무관) */

@@ -26,6 +26,10 @@
       "kdh": {
         "name": "Kim Dong-hee",
         "bio": "Pour moi, prendre un appareil photo, c'est nouer une relation avec les autres. C'est pourquoi je continue de choisir de le faire. Je travaille actuellement sur des portraits issus d'entretiens et je réalise des documentaires."
+      },
+      "kwdh": {
+        "name": "Kwon Dong-hee",
+        "bio": "La biographie du photographe est en préparation."
       }
     },
     "photographer_page_title": "{{name}} | Photographe",

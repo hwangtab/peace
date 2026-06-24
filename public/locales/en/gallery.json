@@ -26,6 +26,10 @@
       "kdh": {
         "name": "Kim Dong-hee",
         "bio": "For me, picking up a camera is a way of building relationships with others. That is why I keep choosing to do it. I currently work on interview-based portrait photography and produce documentaries."
+      },
+      "kwdh": {
+        "name": "Kwon Dong-hee",
+        "bio": "Photographer bio coming soon."
       }
     },
     "photographer_page_title": "{{name}} | Photographer",
