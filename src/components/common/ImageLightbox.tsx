@@ -55,6 +55,8 @@ const ImageLightbox: React.FC<ImageLightboxProps> = ({
             >
               <Dialog.Panel className="relative w-[90vw] max-w-5xl transform overflow-hidden rounded-lg shadow-2xl transition-[transform,opacity]">
                 <div className="relative w-full h-[90vh]" style={{ maxHeight }}>
+                  {/* 라이트박스는 풀사이즈로 보므로 next/image 재압축(이중 압축)을 끄고
+                      미리 생성한 webp 원본을 그대로 직송한다. */}
                   <Image
                     src={imageUrl}
                     alt={altText}
@@ -62,6 +64,7 @@ const ImageLightbox: React.FC<ImageLightboxProps> = ({
                     sizes="90vw"
                     className="object-contain rounded-lg"
                     loading="eager"
+                    unoptimized
                   />
                 </div>
 

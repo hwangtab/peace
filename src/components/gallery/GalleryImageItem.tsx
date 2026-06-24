@@ -48,7 +48,7 @@ const GalleryImageItem = React.memo(
             className={`object-cover transition-[transform,opacity] duration-700 ease-in-out group-hover:scale-110 ${
               isLoaded ? 'opacity-100' : 'opacity-0'
             }`}
-            quality={55}
+            quality={75}
             priority={priority}
             {...(!priority && { loading: 'lazy' })}
             onLoad={() => setIsLoaded(true)}
