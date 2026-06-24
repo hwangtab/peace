@@ -6,7 +6,7 @@
   /* 모든 폰트는 scripts/subset-fonts.py 로 프로젝트 사용 글자만 남긴 서브셋 버전. */
   @font-face {
     font-family: 'BookkMyungjo-Bd';
-    src: url('/fonts/BookkMyungjo-Bd.subset.woff2') format('woff2');
+    src: url('/fonts/BookkMyungjo-Bd.subset.woff2?v=2') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -20,7 +20,7 @@
      (CSS 매칭 규칙상 600 미정의 시 700 으로 끌려가 둘이 동일해지는 문제 방지). */
   @font-face {
     font-family: 'SCDream';
-    src: url('/fonts/S-CoreDream-3Light.subset.woff2') format('woff2');
+    src: url('/fonts/S-CoreDream-3Light.subset.woff2?v=2') format('woff2');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -28,7 +28,7 @@
 
   @font-face {
     font-family: 'SCDream';
-    src: url('/fonts/S-CoreDream-4Regular.subset.woff2') format('woff2');
+    src: url('/fonts/S-CoreDream-4Regular.subset.woff2?v=2') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -36,7 +36,7 @@
 
   @font-face {
     font-family: 'SCDream';
-    src: url('/fonts/S-CoreDream-5Medium.subset.woff2') format('woff2');
+    src: url('/fonts/S-CoreDream-5Medium.subset.woff2?v=2') format('woff2');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
@@ -44,7 +44,7 @@
 
   @font-face {
     font-family: 'SCDream';
-    src: url('/fonts/S-CoreDream-6Bold.subset.woff2') format('woff2');
+    src: url('/fonts/S-CoreDream-6Bold.subset.woff2?v=2') format('woff2');
     font-weight: 600;
     font-style: normal;
     font-display: swap;
@@ -52,7 +52,7 @@
 
   @font-face {
     font-family: 'SCDream';
-    src: url('/fonts/S-CoreDream-7ExtraBold.subset.woff2') format('woff2');
+    src: url('/fonts/S-CoreDream-7ExtraBold.subset.woff2?v=2') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -60,7 +60,7 @@
 
   @font-face {
     font-family: 'PartialSans';
-    src: url('/fonts/PartialSansKR-Regular.subset.woff2') format('woff2');
+    src: url('/fonts/PartialSansKR-Regular.subset.woff2?v=2') format('woff2');
     font-weight: normal;
     font-display: swap;
   }
