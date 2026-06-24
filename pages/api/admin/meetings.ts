@@ -17,6 +17,7 @@ const createSchema = z.object({
   ),
   meeting_time: z.preprocess(blankToEmpty, z.string().max(20, '시간은 20자 이하여야 합니다.')),
   location: z.preprocess(blankToEmpty, z.string().max(200, '장소는 200자 이하여야 합니다.')),
+  event_year: z.coerce.number().int().min(2000).max(2100),
 });
 
 const getErrorMessage = (error: unknown): string => {
@@ -42,6 +43,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           meeting_date: body.meeting_date,
           meeting_time: body.meeting_time,
           location: body.location,
+          event_year: body.event_year,
           created_by: session.member.email,
         })
         .select('*')

@@ -30,6 +30,7 @@ const updateSchema = z
       .preprocess(blankToEmpty, z.string().max(200, '장소는 200자 이하여야 합니다.'))
       .optional(),
     status: z.enum(['scheduled', 'completed']).optional(),
+    event_year: z.coerce.number().int().min(2000).max(2100).optional(),
     minutes_md: z.string().max(100000, '회의록은 100000자 이하여야 합니다.').optional(),
   })
   .refine((v) => Object.values(v).some((x) => x !== undefined), {
