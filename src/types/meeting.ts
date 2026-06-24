@@ -5,6 +5,7 @@ export interface Meeting {
   id: string;
   title: string;
   meeting_date: string | null;
+  event_year: number | null;
   meeting_time: string;
   location: string;
   status: MeetingStatus;
