@@ -10,6 +10,7 @@ interface AdminArchiveFilterBarProps {
 }
 
 // 아카이브 목록 상단 필터: 유형 탭(pill) + 연도 드롭다운.
+// 상위 필터 바(언어 등)와 한 줄에 정렬되도록 Fragment로 인라인 그룹 2개를 반환한다.
 export default function AdminArchiveFilterBar({
   typeOptions,
   yearOptions,
@@ -19,10 +20,10 @@ export default function AdminArchiveFilterBar({
   onChangeYear,
 }: AdminArchiveFilterBarProps) {
   return (
-    <div className="space-y-2">
+    <>
       {typeOptions.length > 1 && (
         <div className="flex flex-wrap items-center gap-1.5">
-          <span className="mr-1 text-xs font-semibold text-coastal-gray">유형</span>
+          <span className="mr-1 text-sm font-semibold text-deep-ocean">유형</span>
           {typeOptions.map((opt) => {
             const active = selectedType === opt.value;
             return (
@@ -46,14 +47,14 @@ export default function AdminArchiveFilterBar({
       {yearOptions.length > 1 && (
         <label
           htmlFor="archive-year-filter"
-          className="flex items-center gap-2 text-xs font-semibold text-coastal-gray"
+          className="flex items-center gap-2 text-sm font-semibold text-deep-ocean"
         >
           연도
           <select
             id="archive-year-filter"
             value={selectedYear}
             onChange={(e) => onChangeYear(e.target.value)}
-            className="rounded border border-deep-ocean/15 bg-white px-3 py-1.5 text-sm font-normal text-deep-ocean focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
+            className="rounded border border-deep-ocean/15 bg-white px-3 py-2 text-sm font-normal text-deep-ocean focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
           >
             {yearOptions.map((opt) => (
               <option key={opt.value || 'all'} value={opt.value}>
@@ -63,6 +64,6 @@ export default function AdminArchiveFilterBar({
           </select>
         </label>
       )}
-    </div>
+    </>
   );
 }
