@@ -2,11 +2,14 @@ import { ROUTES } from '@/constants/routes';
 
 export const simpleMenuItems = [
   { nameKey: 'nav.home', path: ROUTES.HOME },
-  { nameKey: 'nav.solidarity', path: ROUTES.SOLIDARITY },
   { nameKey: 'nav.gallery', path: ROUTES.GALLERY },
   { nameKey: 'nav.video', path: ROUTES.VIDEOS },
   { nameKey: 'nav.press', path: ROUTES.PRESS },
 ];
+
+// '연대 활동'은 게시판이 아닌 정적 페이지지만, 최상위 메뉴 항목 수를 줄여 가로 내비를
+// 넉넉하게 두기 위해 커뮤니티 드롭다운 맨 위에 고정 노출한다(useCommunityBoards에서 prepend).
+export const solidarityNavItem = { nameKey: 'nav.solidarity', path: ROUTES.SOLIDARITY };
 
 export const campItems = [
   { nameKey: 'nav.camp_2023', path: ROUTES.CAMPS.CAMP_2023 },
