@@ -13,7 +13,10 @@ module.exports = {
         'serif': ['BookkMyungjo-Bd', ...require('tailwindcss/defaultTheme').fontFamily.serif],
         // Semantic Typography
         'display': ['BookkMyungjo-Bd', ...require('tailwindcss/defaultTheme').fontFamily.serif],
-        'partial': ['PartialSans', 'sans-serif'],
+        // PartialSans 는 디자인 폰트라 글리프가 ~3030 자뿐(확장 완성형 미지원).
+        // '뮁' 같은 글자는 PartialSans 에 없으므로, 글리프 단위 폴백으로 SCDream 이
+        // 받아 그리도록 본문 폰트를 스택에 끼운다(없으면 OS sans → 두부/공백).
+        'partial': ['PartialSans', 'SCDream', 'sans-serif'],
         'body': ['SCDream', ...require('tailwindcss/defaultTheme').fontFamily.sans],
         'caption': ['SCDream', ...require('tailwindcss/defaultTheme').fontFamily.sans],
       },
