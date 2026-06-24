@@ -111,3 +111,37 @@ export const parseContactsCsv = (text: string): { rows: ParsedContact[]; errors:
   }
   return { rows, errors };
 };
+
+export interface ManualRecipient {
+  name: string;
+  email: string;
+}
+
+/**
+ * 직접 입력 수신자 파싱. 줄바꿈/콤마로 구분하며, 각 항목은
+ * `이름 <email@x.com>` 또는 `email@x.com` 형식을 허용한다.
+ * 이메일은 소문자로 정규화하고 같은 주소는 한 번만 남긴다.
+ */
+export const parseManualRecipients = (
+  text: string
+): { recipients: ManualRecipient[]; errors: string[] } => {
+  const recipients: ManualRecipient[] = [];
+  const errors: string[] = [];
+  const seen = new Set<string>();
+  const tokens = (text ?? '').split(/[\n,]+/);
+  for (const raw of tokens) {
+    const token = raw.trim();
+    if (!token) continue;
+    const m = token.match(/^(.*)<([^>]+)>$/);
+    const name = (m?.[1] ?? '').replace(/^"|"$/g, '').trim();
+    const email = (m?.[2] ?? token).trim().toLowerCase();
+    if (!isValidEmail(email)) {
+      errors.push(token);
+      continue;
+    }
+    if (seen.has(email)) continue;
+    seen.add(email);
+    recipients.push({ name, email });
+  }
+  return { recipients, errors };
+};
