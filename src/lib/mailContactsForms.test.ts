@@ -6,7 +6,19 @@ import {
   validateContactName,
   validateBroadcastSubject,
   validateBroadcastBody,
+  parseManualRecipients,
 } from './mailContactsForms';
+
+test('parseManualRecipients는 줄바꿈/콤마와 이름<이메일> 형식을 파싱하고 소문자화·중복제거한다', () => {
+  const { recipients, errors } = parseManualRecipients(
+    '까르 <Kkar@example.com>\njung@example.com, KKAR@example.com\n잘못된주소'
+  );
+  expect(recipients).toEqual([
+    { name: '까르', email: 'kkar@example.com' },
+    { name: '', email: 'jung@example.com' },
+  ]);
+  expect(errors).toEqual(['잘못된주소']);
+});
 
 test('personalizeBody는 {이름}을 이름으로 치환한다', () => {
   expect(personalizeBody('안녕하세요 {이름}님', '홍길동')).toBe('안녕하세요 홍길동님');

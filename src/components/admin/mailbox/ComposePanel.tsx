@@ -1,5 +1,10 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { GROUP_LABEL, GROUP_TYPES, personalizeBody } from '@/lib/mailContactsForms';
+import {
+  GROUP_LABEL,
+  GROUP_TYPES,
+  personalizeBody,
+  parseManualRecipients,
+} from '@/lib/mailContactsForms';
 import type { MailContact, MailGroupType } from '@/types/mailContacts';
 
 export default function ComposePanel({ canEdit }: { canEdit: boolean }) {
@@ -7,6 +12,7 @@ export default function ComposePanel({ canEdit }: { canEdit: boolean }) {
   const [cohort, setCohort] = useState('');
   const [contacts, setContacts] = useState<MailContact[]>([]);
   const [selected, setSelected] = useState<Set<string>>(new Set());
+  const [manualText, setManualText] = useState('');
   const [subject, setSubject] = useState('');
   const [text, setText] = useState('');
   const [busy, setBusy] = useState(false);
@@ -49,25 +55,34 @@ export default function ComposePanel({ canEdit }: { canEdit: boolean }) {
     return first ? personalizeBody(text, first.name) : '';
   }, [contacts, selected, text]);
 
+  // 직접 입력 수신자 — 명단 선택과 합산해 총 인원을 보여준다(이메일 기준 중복 제거).
+  const manualParsed = useMemo(() => parseManualRecipients(manualText), [manualText]);
+  const totalCount = useMemo(() => {
+    const emails = new Set(manualParsed.recipients.map((r) => r.email));
+    for (const c of contacts) if (selected.has(c.id)) emails.add(c.email.toLowerCase());
+    return emails.size;
+  }, [contacts, selected, manualParsed]);
+
   const send = async () => {
     setError('');
     setResult(null);
     const ids = [...selected];
-    if (ids.length === 0) return setError('수신자를 선택하세요.');
+    if (totalCount === 0) return setError('수신자를 선택하거나 직접 입력하세요.');
     if (!subject.trim() || !text.trim()) return setError('제목과 본문을 입력하세요.');
-    if (!window.confirm(`${ids.length}명에게 발송합니다. 발신: admin@peaceandmusic.net`)) return;
+    if (!window.confirm(`${totalCount}명에게 발송합니다. 발신: admin@peaceandmusic.net`)) return;
     setBusy(true);
     const res = await fetch('/api/admin/mailbox/send', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ contactIds: ids, subject, text }),
+      body: JSON.stringify({ contactIds: ids, manualText, subject, text }),
     });
     const data = await res.json();
     setBusy(false);
     if (!res.ok) return setError(data.error ?? '발송 실패');
     setResult({ sent: data.sent, failed: data.failed ?? [] });
-    // 성공 후 수신자 선택을 풀어 같은 본문 중복 발송을 막는다(결과 요약은 그대로 노출).
+    // 성공 후 선택·직접입력을 비워 같은 본문 중복 발송을 막는다(결과 요약은 그대로 노출).
     setSelected(new Set());
+    setManualText('');
   };
 
   if (!canEdit)
@@ -101,7 +116,7 @@ export default function ComposePanel({ canEdit }: { canEdit: boolean }) {
           해제
         </button>
         <span className="ml-auto text-sm font-semibold text-deep-ocean">
-          {selected.size}명 선택
+          명단 {selected.size}명 · 총 {totalCount}명
         </span>
       </div>
 
@@ -120,6 +135,37 @@ export default function ComposePanel({ canEdit }: { canEdit: boolean }) {
           </li>
         )}
       </ul>
+
+      <div>
+        <label
+          htmlFor="manual-recipients"
+          className="mb-1 block text-sm font-semibold text-deep-ocean"
+        >
+          직접 입력 수신자
+          <span className="ml-1 font-normal text-coastal-gray">
+            (한 줄에 한 명, `이메일` 또는 `이름 &lt;이메일&gt;`)
+          </span>
+        </label>
+        <textarea
+          id="manual-recipients"
+          value={manualText}
+          onChange={(e) => setManualText(e.target.value)}
+          rows={3}
+          placeholder={'hong@example.com\n까르 <kkar@example.com>'}
+          className="w-full rounded border border-deep-ocean/15 px-3 py-2 text-sm"
+        />
+        {manualText.trim() && (
+          <p className="mt-1 text-xs text-coastal-gray">
+            인식된 직접 입력 {manualParsed.recipients.length}명
+            {manualParsed.errors.length > 0 && (
+              <span className="text-sunset-coral">
+                {' '}
+                · 형식 오류 {manualParsed.errors.length}건: {manualParsed.errors.join(', ')}
+              </span>
+            )}
+          </p>
+        )}
+      </div>
 
       <input
         value={subject}
@@ -163,7 +209,7 @@ export default function ComposePanel({ canEdit }: { canEdit: boolean }) {
         onClick={send}
         className="rounded bg-deep-ocean px-5 py-2 font-semibold text-white disabled:opacity-60"
       >
-        {busy ? '발송 중…' : `${selected.size}명에게 발송`}
+        {busy ? '발송 중…' : `${totalCount}명에게 발송`}
       </button>
     </section>
   );

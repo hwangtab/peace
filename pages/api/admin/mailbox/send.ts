@@ -5,13 +5,18 @@ import { requireAdminRole } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import { sendEmail } from '@/lib/resend';
 import { runBroadcast } from '@/lib/mailBroadcast';
-import { validateBroadcastBody, validateBroadcastSubject } from '@/lib/mailContactsForms';
+import {
+  validateBroadcastBody,
+  validateBroadcastSubject,
+  parseManualRecipients,
+} from '@/lib/mailContactsForms';
 import type { MailContact } from '@/types/mailContacts';
 
 const FROM_ADDRESS = '강정 피스앤뮤직캠프 <admin@peaceandmusic.net>';
 
 const schema = z.object({
-  contactIds: z.array(z.string().uuid()).min(1),
+  contactIds: z.array(z.string().uuid()).default([]),
+  manualText: z.string().default(''),
   subject: z.string(),
   text: z.string(),
 });
@@ -31,13 +36,28 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (!bodyCheck.ok) return res.status(400).json({ error: bodyCheck.reason });
 
     const supabase = createSupabaseServerClient(req, res);
-    const { data, error } = await supabase
-      .from('mail_contacts')
-      .select('id, name, email, is_active')
-      .in('id', body.contactIds)
-      .eq('is_active', true);
-    if (error) return res.status(500).json({ error: error.message });
-    const recipients = (data as Pick<MailContact, 'id' | 'name' | 'email'>[]) ?? [];
+    // 명단에서 고른 연락처(활성만 재확인)
+    let contactRecipients: Pick<MailContact, 'id' | 'name' | 'email'>[] = [];
+    if (body.contactIds.length > 0) {
+      const { data, error } = await supabase
+        .from('mail_contacts')
+        .select('id, name, email, is_active')
+        .in('id', body.contactIds)
+        .eq('is_active', true);
+      if (error) return res.status(500).json({ error: error.message });
+      contactRecipients = (data as Pick<MailContact, 'id' | 'name' | 'email'>[]) ?? [];
+    }
+
+    // 직접 입력 수신자(서버에서 파싱·검증, 클라 신뢰 안 함)
+    const manual = parseManualRecipients(body.manualText);
+
+    // 이메일(소문자) 기준 중복 제거 — 명단 연락처를 우선(이름 보존)
+    const byEmail = new Map<string, { id: string; name: string; email: string }>();
+    for (const c of contactRecipients) byEmail.set(c.email.toLowerCase(), c);
+    for (const m of manual.recipients) {
+      if (!byEmail.has(m.email)) byEmail.set(m.email, { id: '', name: m.name, email: m.email });
+    }
+    const recipients = [...byEmail.values()];
     if (recipients.length === 0)
       return res.status(400).json({ error: '발송 가능한 수신자가 없습니다.' });
 
@@ -70,7 +90,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       },
     });
 
-    return res.status(200).json({ campaign_id: campaignId, ...result });
+    // 형식이 잘못된 직접입력 주소도 실패로 함께 보고
+    const failed = [
+      ...result.failed,
+      ...manual.errors.map((bad) => ({ email: bad, error: '이메일 형식 오류' })),
+    ];
+
+    return res.status(200).json({ campaign_id: campaignId, sent: result.sent, failed });
   } catch (error) {
     const msg =
       error instanceof ZodError
