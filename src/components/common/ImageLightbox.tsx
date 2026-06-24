@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
@@ -18,13 +18,21 @@ const ImageLightbox: React.FC<ImageLightboxProps> = ({
 }) => {
   const { t } = useTranslation();
   const isVisible = show ?? !!image;
-  const imageUrl = image ? (typeof image === 'string' ? image : image.url) : '';
-  const altText = image
-    ? typeof image === 'string'
+
+  // 닫힐 때 호출처가 image 를 즉시 null 로 바꿔도 leave 애니메이션 동안
+  // 사진이 사라지지 않도록 마지막 이미지를 잠시 유지(latch)한다.
+  const [displayed, setDisplayed] = useState(image);
+  useEffect(() => {
+    if (image) setDisplayed(image);
+  }, [image]);
+
+  const imageUrl = displayed ? (typeof displayed === 'string' ? displayed : displayed.url) : '';
+  const altText = displayed
+    ? typeof displayed === 'string'
       ? 'Lightbox image'
-      : image.alt || 'Lightbox image'
+      : displayed.alt || 'Lightbox image'
     : '';
-  const credit = image && typeof image !== 'string' ? image.credit : undefined;
+  const credit = displayed && typeof displayed !== 'string' ? displayed.credit : undefined;
 
   return (
     <Transition appear show={isVisible} as={Fragment}>
