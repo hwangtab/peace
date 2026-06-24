@@ -94,6 +94,7 @@ const SolidarityPage: React.FC<Props> = ({ initialMusicians = [], initialLocale 
         eyebrow={t('solidarity.breadcrumb')}
         heading={t('solidarity.intro_heading')}
         paragraphs={[t('solidarity.intro_paragraph')]}
+        paddingBottom="loose"
       />
 
       <SectionWave color="ocean-sand" flow="up" />

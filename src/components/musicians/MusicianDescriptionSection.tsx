@@ -30,7 +30,10 @@ export default function MusicianDescriptionSection({
     <Section
       background="white"
       paddingTop="normal"
-      paddingBottom={isCampPage && latestCamp && fundingUrl ? 'loose' : 'normal'}
+      // 이 섹션 바로 뒤에 SectionWave(flow="up")가 와서 하단을 100px(데스크탑)
+      // 끌어올려 잠식한다. normal(96px)은 물결에 묻히므로 항상 loose(128px)로
+      // 물결이 차오를 여백을 확보한다.
+      paddingBottom="loose"
       className="flex-1"
     >
       <Container size="prose">

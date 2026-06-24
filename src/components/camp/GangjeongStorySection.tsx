@@ -28,7 +28,9 @@ const GangjeongStorySection: React.FC<Props> = ({ variant = 'camp' }) => {
         <Section
           background="sky-horizon"
           paddingTop="none"
-          paddingBottom="tight"
+          // 바로 뒤 SectionWave(flow="up", golden-sun)가 하단을 100px 끌어올려
+          // CTA 링크를 잠식하므로 loose로 여백 확보.
+          paddingBottom="loose"
           className="-mt-px text-center"
         >
           <Link

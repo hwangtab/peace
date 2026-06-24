@@ -15,6 +15,11 @@ interface PageIntroSectionProps {
     | 'light-beige'
     | 'golden-sun'
     | 'transparent';
+  /**
+   * 하단 패딩. 기본 tight. 이 섹션 바로 뒤에 SectionWave(flow="up")가 오면
+   * 물결이 하단을 잠식하므로 loose로 올려 물결이 차오를 여백을 확보한다.
+   */
+  paddingBottom?: 'tight' | 'normal' | 'loose';
 }
 
 /**
@@ -29,9 +34,10 @@ const PageIntroSection: React.FC<PageIntroSectionProps> = ({
   heading,
   paragraphs,
   background = 'white',
+  paddingBottom = 'tight',
 }) => {
   return (
-    <Section background={background} paddingTop="tight" paddingBottom="tight">
+    <Section background={background} paddingTop="tight" paddingBottom={paddingBottom}>
       <Container size="prose" className="seo-summary">
         {eyebrow && (
           <p className="text-xs font-semibold uppercase tracking-widest text-ocean-mist mb-3">
