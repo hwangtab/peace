@@ -389,7 +389,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       .limit(6),
     supabase
       .from('posts')
-      .select('id,title,status,created_at,boards(name,slug),profiles(nickname)')
+      .select(
+        'id,title,status,created_at,boards(name,slug),profiles!posts_author_id_fkey(nickname)'
+      )
       .order('created_at', { ascending: false })
       .limit(5),
     supabase
