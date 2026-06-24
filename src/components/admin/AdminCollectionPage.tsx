@@ -545,13 +545,13 @@ export default function AdminCollectionPage({
         )}
       </div>
 
-      <div className="mb-6 flex flex-wrap items-center gap-3 rounded border border-deep-ocean/10 bg-white px-4 py-3">
-        <label className="flex items-center gap-2 text-sm font-semibold">
+      <div className="mb-6 flex flex-wrap items-center gap-x-5 gap-y-2 rounded border border-deep-ocean/10 bg-white px-4 py-3">
+        <label className="flex items-center gap-2 text-sm font-semibold text-deep-ocean">
           언어
           <select
             value={selectedLocale}
             onChange={(event) => void changeLocale(event.target.value)}
-            className="rounded border border-deep-ocean/15 bg-white px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
+            className="rounded border border-deep-ocean/15 bg-white px-3 py-2 text-sm font-normal focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
           >
             {LOCALE_OPTIONS.map((option) => (
               <option key={option.value} value={option.value}>
@@ -570,9 +570,6 @@ export default function AdminCollectionPage({
             onChangeYear={(value) => void changeFilter({ year: value })}
           />
         )}
-        <span className="text-sm text-coastal-gray">
-          목록과 새 항목 기본값은 선택한 언어 기준입니다.
-        </span>
       </div>
 
       <AdminCollectionStatusCards counts={counts} />
