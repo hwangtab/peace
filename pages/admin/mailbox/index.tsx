@@ -274,9 +274,13 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   if (!session) return redirectToAdminLogin(context.resolvedUrl);
 
   const supabase = createSupabaseServerClient(context.req, context.res);
+  // 받은 메일(inbound)과 그에 대한 답장(reply_to_id 있는 outbound)만 가져온다.
+  // 단체 발송 outbound(campaign, reply_to_id 없음)는 수신자당 1행씩 대량 생성되므로,
+  // 제외하지 않으면 최신 200건 창을 채워 받은 메일·과거 답장을 가린다.
   const { data, error } = await supabase
     .from('mailbox_messages')
     .select('*')
+    .or('direction.eq.inbound,reply_to_id.not.is.null')
     .order('created_at', { ascending: false })
     .limit(200);
 

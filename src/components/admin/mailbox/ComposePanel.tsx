@@ -66,6 +66,8 @@ export default function ComposePanel({ canEdit }: { canEdit: boolean }) {
     setBusy(false);
     if (!res.ok) return setError(data.error ?? '발송 실패');
     setResult({ sent: data.sent, failed: data.failed ?? [] });
+    // 성공 후 수신자 선택을 풀어 같은 본문 중복 발송을 막는다(결과 요약은 그대로 노출).
+    setSelected(new Set());
   };
 
   if (!canEdit)
