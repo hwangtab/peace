@@ -82,7 +82,12 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(
     };
 
     return (
-      <div className="relative group" ref={dropdownRef}>
+      <div
+        className="relative group"
+        ref={dropdownRef}
+        onMouseEnter={() => setOpen(true)}
+        onMouseLeave={() => setOpen(false)}
+      >
         <button
           type="button"
           onClick={() => setOpen(!open)}
@@ -105,9 +110,16 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(
               />
             )}
           </span>
-          <motion.div animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.2 }}>
-            <IoChevronDown aria-hidden="true" className="w-4 h-4 ml-1" />
-          </motion.div>
+          {/* 평소엔 숨기고 hover(group-hover) 또는 열림(open) 시에만 화살표 노출 —
+              헤더를 깔끔하게 유지하되 드롭다운 어포던스는 살린다. */}
+          <IoChevronDown
+            aria-hidden="true"
+            className={`w-4 h-4 ml-1 transition-[transform,opacity] duration-200 ${
+              open
+                ? 'rotate-180 opacity-100'
+                : 'rotate-0 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100'
+            }`}
+          />
         </button>
 
         <AnimatePresence>
@@ -144,25 +156,29 @@ const DropdownMenu: React.FC<{
       // exit 애니메이션 중(isPresent=false)에는 aria-hidden='true' —
       // screen reader 가 사라지는 dropdown 을 읽지 않도록.
       aria-hidden={isPresent ? 'false' : 'true'}
-      className="absolute top-full left-0 mt-2 min-w-[12rem] max-w-[18rem] w-max bg-white/95 backdrop-blur-md shadow-lg rounded-lg overflow-hidden py-2 border border-ocean-mist/20 z-50 text-left"
+      // top-full 바로 아래 붙이되 갭(pt-2)을 컨테이너 안에 두어 버튼↔메뉴 hover 영역을
+      // 끊김 없이 잇는다 — 갭에서 마우스가 빠져 드롭다운이 닫히는 깜빡임 방지.
+      className="absolute top-full left-0 pt-2 z-50 text-left"
     >
-      {items.map((item) => (
-        <Link
-          key={item.path}
-          href={item.path}
-          className={`block px-4 py-2 whitespace-normal break-words ${
-            isRouteActive(currentPath, item.path, { locale: router.locale })
-              ? 'bg-ocean-sand text-jeju-ocean font-bold'
-              : 'text-deep-ocean hover:bg-ocean-sand/50'
-          } transition-colors duration-200 font-serif font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-jeju-ocean`}
-          aria-current={
-            isRouteActive(currentPath, item.path, { locale: router.locale }) ? 'page' : undefined
-          }
-          onClick={onDismiss}
-        >
-          {item.label ?? (item.nameKey ? t(item.nameKey) : '')}
-        </Link>
-      ))}
+      <div className="min-w-[12rem] max-w-[18rem] w-max bg-white/95 backdrop-blur-md shadow-lg rounded-lg overflow-hidden py-2 border border-ocean-mist/20">
+        {items.map((item) => (
+          <Link
+            key={item.path}
+            href={item.path}
+            className={`block px-4 py-2 whitespace-normal break-words ${
+              isRouteActive(currentPath, item.path, { locale: router.locale })
+                ? 'bg-ocean-sand text-jeju-ocean font-bold'
+                : 'text-deep-ocean hover:bg-ocean-sand/50'
+            } transition-colors duration-200 font-serif font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-jeju-ocean`}
+            aria-current={
+              isRouteActive(currentPath, item.path, { locale: router.locale }) ? 'page' : undefined
+            }
+            onClick={onDismiss}
+          >
+            {item.label ?? (item.nameKey ? t(item.nameKey) : '')}
+          </Link>
+        ))}
+      </div>
     </motion.div>
   );
 };
