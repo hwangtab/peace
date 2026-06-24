@@ -6,6 +6,7 @@ import { createSupabaseServiceClient } from '@/lib/supabaseService';
 import type { AdminMember } from '@/types/cms';
 
 interface RecentLog {
+  id: string;
   action: string;
   collection: string;
   primary_label: string | null;
@@ -222,8 +223,11 @@ export default function AdminHomePage({
               </p>
             ) : (
               <ul className="divide-y divide-deep-ocean/10">
-                {recentLogs.map((log, i) => (
-                  <li key={i} className="flex items-center justify-between gap-3 py-2.5 text-sm">
+                {recentLogs.map((log) => (
+                  <li
+                    key={log.id}
+                    className="flex items-center justify-between gap-3 py-2.5 text-sm"
+                  >
                     <span className="min-w-0 flex-1 truncate text-deep-ocean">
                       <span className="mr-2 rounded bg-jeju-ocean/10 px-1.5 py-0.5 text-xs font-semibold text-jeju-ocean">
                         {COLLECTION_LABEL[log.collection] ?? log.collection}{' '}
@@ -343,7 +347,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   if (!session) return redirectToAdminLogin(context.resolvedUrl);
 
   const supabase = createSupabaseServiceClient();
-  const today = new Date().toISOString().slice(0, 10);
+  // "다가오는 회의" 경계를 한국 시간(KST, UTC+9) 기준 오늘로 계산한다.
+  // 서버는 UTC라 toISOString()을 그대로 쓰면 KST 자정~오전 9시에 날짜가 하루 어긋난다.
+  const today = new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
   const countHead = (table: string) =>
     supabase.from(table).select('id', { count: 'exact', head: true });
 
@@ -384,7 +390,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       .gte('meeting_date', today),
     supabase
       .from('cms_change_logs')
-      .select('action,collection,primary_label,admin_email,created_at')
+      .select('id,action,collection,primary_label,admin_email,created_at')
       .order('created_at', { ascending: false })
       .limit(6),
     supabase

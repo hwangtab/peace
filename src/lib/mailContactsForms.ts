@@ -96,9 +96,11 @@ export const parseContactsCsv = (text: string): { rows: ParsedContact[]; errors:
     if (!name || !email || !isValidEmail(email ?? '') || !g) {
       const reason = !name
         ? '이름 누락'
-        : !isValidEmail(email ?? '')
-          ? `이메일 오류(${email ?? ''})`
-          : '그룹 오류';
+        : !email
+          ? '이메일 누락'
+          : !isValidEmail(email)
+            ? `이메일 오류(${email})`
+            : '그룹 오류';
       errors.push(`${rowNum}행: ${reason} — ${line}`);
       continue;
     }
