@@ -59,7 +59,7 @@ const Navigation = () => {
             />
 
             {/* Mobile Menu Button */}
-            <div className="xl:hidden">
+            <div className="nav:hidden">
               <button
                 type="button"
                 onClick={toggleMenu}
@@ -96,7 +96,7 @@ const Navigation = () => {
 
       {/* Backdrop — closes menu when tapping outside */}
       {isOpen && (
-        <div className="fixed inset-0 z-40 xl:hidden" onClick={closeMenu} aria-hidden="true" />
+        <div className="fixed inset-0 z-40 nav:hidden" onClick={closeMenu} aria-hidden="true" />
       )}
     </>
   );

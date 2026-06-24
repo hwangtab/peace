@@ -46,7 +46,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(
       : 'bg-transparent text-cloud-white/80 border-cloud-white/50 hover:bg-cloud-white/10 hover:text-cloud-white';
 
     return (
-      <div className="hidden xl:flex items-center gap-x-2 2xl:gap-x-4">
+      <div className="hidden nav:flex items-center gap-x-3 2xl:gap-x-5">
         <Link
           href={ROUTES.HOME}
           className={`${getTextColor(isPathActive(ROUTES.HOME, true))} whitespace-nowrap transition-colors duration-300 font-display font-bold relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm`}
