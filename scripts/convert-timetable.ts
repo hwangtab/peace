@@ -93,6 +93,8 @@ const NAME_OVERRIDES: Record<string, string> = {
   레인보우99: 'Rainbow99',
   '사이트 with 제트싸이져': 'Sight X Zsthyger',
   지누콘다: 'Jinu Konda',
+  // 엑셀은 '자이', camps.ts(ko)는 '자이(Jai)' — 매칭 안 되면 musicianIds 누락됨
+  자이: '자이(Jai)',
 };
 
 const DAY_META: Record<string, { date: string; weekday: Weekday; dayLabel: string }> = {
