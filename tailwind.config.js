@@ -6,6 +6,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        // 가로 내비게이션이 (가장 긴 언어 기준으로도) 넉넉한 간격을 두고
+        // 한 줄에 들어가는 최소 폭. 이 미만은 메뉴가 빡빡해지므로 햄버거로 전환.
+        nav: '1366px',
+      },
       fontFamily: {
         // 본문/UI 산스는 모두 S-Core Dream(에스코어드림) 단일 family.
         // 굵기는 font-weight 유틸리티(font-light/normal/medium/bold)로 제어.
