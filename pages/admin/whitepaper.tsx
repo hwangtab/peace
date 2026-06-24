@@ -4,12 +4,17 @@ import AdminLayout from '@/components/admin/AdminLayout';
 import MarkdownView from '@/components/admin/MarkdownView';
 import { getAdminSession, redirectToAdminLogin } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
+import {
+  CAMP_EDITION_YEARS,
+  campEditionLabel,
+  whitepaperSlug,
+  parseWhitepaperYear,
+} from '@/lib/campEditions';
 import type { AdminDocument, AdminMember } from '@/types/cms';
 
-const WHITEPAPER_SLUG = 'camp-2026-whitepaper';
-const DEFAULT_TITLE = '제3회 강정 피스앤뮤직캠프 운영 백서';
-
 interface WhitepaperPageProps {
+  years: number[];
+  selectedYear: number;
   document: AdminDocument | null;
   member: AdminMember;
   initialError?: string;
@@ -20,22 +25,25 @@ const formatDate = (value: string) =>
     new Date(value)
   );
 
-export default function AdminWhitepaperPage({
+function WhitepaperEditor({
+  years,
+  selectedYear,
   document: initialDocument,
   member,
   initialError = '',
 }: WhitepaperPageProps) {
   const canEdit = member.role !== 'viewer';
+  const defaultTitle = `${campEditionLabel(selectedYear)} 운영 백서`;
   const [document, setDocument] = useState(initialDocument);
   const [isEditing, setIsEditing] = useState(false);
-  const [title, setTitle] = useState(initialDocument?.title || DEFAULT_TITLE);
+  const [title, setTitle] = useState(initialDocument?.title || defaultTitle);
   const [body, setBody] = useState(initialDocument?.body_md ?? '');
   const [isSaving, setIsSaving] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState(initialError);
 
   const startEditing = () => {
-    setTitle(document?.title || DEFAULT_TITLE);
+    setTitle(document?.title || defaultTitle);
     setBody(document?.body_md ?? '');
     setMessage('');
     setError('');
@@ -62,7 +70,7 @@ export default function AdminWhitepaperPage({
     setMessage('');
     setError('');
 
-    const response = await fetch(`/api/admin/documents/${WHITEPAPER_SLUG}`, {
+    const response = await fetch(`/api/admin/documents/${whitepaperSlug(selectedYear)}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title, body_md: body }),
@@ -82,9 +90,29 @@ export default function AdminWhitepaperPage({
 
   return (
     <AdminLayout title="운영 백서" member={member}>
+      <div className="mb-4 flex items-center gap-2">
+        <label htmlFor="wp-year" className="text-sm font-semibold text-deep-ocean">
+          회차
+        </label>
+        <select
+          id="wp-year"
+          value={selectedYear}
+          onChange={(e) => {
+            window.location.href = `/admin/whitepaper?year=${e.target.value}`;
+          }}
+          className="rounded border border-deep-ocean/15 bg-white px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
+        >
+          {years.map((year) => (
+            <option key={year} value={year}>
+              {campEditionLabel(year)}
+            </option>
+          ))}
+        </select>
+      </div>
+
       <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h1 className="font-display text-3xl font-bold">{document?.title || DEFAULT_TITLE}</h1>
+          <h1 className="font-display text-3xl font-bold">{document?.title || defaultTitle}</h1>
           <p className="mt-2 max-w-2xl text-coastal-gray">
             관리자만 열람할 수 있는 비공개 문서입니다. 본문은 공개 저장소에 저장되지 않습니다.
           </p>
@@ -187,14 +215,16 @@ export default function AdminWhitepaperPage({
         </section>
       ) : (
         <section className="rounded border border-deep-ocean/10 bg-white p-8 text-center text-balance text-coastal-gray">
-          아직 등록된 백서가 없습니다.
-          {canEdit
-            ? ' 상단의 “백서 등록”으로 .md 파일을 올려 주세요.'
-            : ' 편집 권한이 있는 관리자에게 등록을 요청하세요.'}
+          {campEditionLabel(selectedYear)} 백서가 아직 없습니다.
+          {canEdit ? " '편집'으로 작성하세요." : ' 편집 권한이 있는 관리자에게 등록을 요청하세요.'}
         </section>
       )}
     </AdminLayout>
   );
+}
+
+export default function AdminWhitepaperPage(props: WhitepaperPageProps) {
+  return <WhitepaperEditor key={props.selectedYear} {...props} />;
 }
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
@@ -202,15 +232,34 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   if (!session) return redirectToAdminLogin(context.resolvedUrl);
 
   const supabase = createSupabaseServerClient(context.req, context.res);
+  // 존재하는 모든 회차 백서(camp-*-whitepaper)를 한 번에 로드.
   const { data, error } = await supabase
     .from('admin_documents')
     .select('*')
-    .eq('slug', WHITEPAPER_SLUG)
-    .maybeSingle();
+    .like('slug', 'camp-%-whitepaper');
+
+  const docs = (data as AdminDocument[] | null) ?? [];
+  const docByYear: Record<number, AdminDocument> = {};
+  for (const d of docs) {
+    const y = parseWhitepaperYear(d.slug);
+    if (y != null) docByYear[y] = d;
+  }
+  // 회차 목록 = 상수 회차 ∪ 백서가 존재하는 연도, 내림차순.
+  const years = Array.from(
+    new Set<number>([...CAMP_EDITION_YEARS, ...Object.keys(docByYear).map(Number)])
+  ).sort((a, b) => b - a);
+
+  const requestedYear =
+    typeof context.query.year === 'string' && /^\d{4}$/.test(context.query.year)
+      ? Number(context.query.year)
+      : null;
+  const selectedYear = requestedYear ?? years[0] ?? 2026;
 
   return {
     props: {
-      document: data ?? null,
+      years,
+      selectedYear,
+      document: docByYear[selectedYear] ?? null,
       member: session.member,
       initialError: error?.message ?? '',
     },
