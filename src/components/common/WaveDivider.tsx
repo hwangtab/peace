@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 interface WaveDividerProps {
   className?: string;
@@ -28,6 +28,82 @@ const WaveDivider: React.FC<WaveDividerProps> = ({
   direction = 'up',
   overlap = 'none',
 }) => {
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  // 개발 가드: overlap 으로 잠식하는 인접 섹션의 실제 콘텐츠와 물결 박스 간격을
+  // 측정해, 너무 가까우면(콘텐츠가 물결에 묻힘) 콘솔 경고한다. 실제 렌더 위치를
+  // 재므로 중앙정렬 hero(콘텐츠가 가장자리에 없음)는 자동으로 안전 판정 → 오탐 없음.
+  // 재발 방지: 물결 직전/직후 섹션의 padding 이 부족해지는 회귀를 개발 중 즉시 잡는다.
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'production') return;
+    if (overlap === 'none') return;
+    const el = rootRef.current;
+    if (!el) return;
+
+    let raf = 0;
+    const run = () => {
+      const isFloating = (n: Element) => {
+        const p = getComputedStyle(n).position;
+        return p === 'absolute' || p === 'fixed';
+      };
+      // 인접 섹션 안에서 실제로 보이는 텍스트/이미지 leaf 의 가장 바깥 가장자리.
+      // 떠 있는(배경) 요소는 제외해 배경 이미지를 콘텐츠로 오인하지 않는다.
+      const contentEdge = (node: Element, side: 'bottom' | 'top'): number | null => {
+        let best = side === 'bottom' ? -Infinity : Infinity;
+        node.querySelectorAll('p,h1,h2,h3,h4,span,a,img,button,li').forEach((c) => {
+          for (let f: Element | null = c; f && f !== node; f = f.parentElement) {
+            if (isFloating(f)) return;
+          }
+          const r = c.getBoundingClientRect();
+          if (!r.width || !r.height) return;
+          const hasText = (c.textContent || '').trim().length > 0;
+          if (c.tagName !== 'IMG' && (c.children.length > 0 || !hasText)) return;
+          best = side === 'bottom' ? Math.max(best, r.bottom) : Math.min(best, r.top);
+        });
+        return Number.isFinite(best) ? best : null;
+      };
+
+      const r = el.getBoundingClientRect();
+      const checks: Array<{ neighbor: Element | null; side: 'bottom' | 'top' }> = [];
+      if (overlap === 'prev' || overlap === 'both')
+        checks.push({ neighbor: el.previousElementSibling, side: 'bottom' });
+      if (overlap === 'next' || overlap === 'both')
+        checks.push({ neighbor: el.nextElementSibling, side: 'top' });
+
+      // loose(128px) − overlap(데스크탑 100px) = 28px 가 정상 하한. 그보다 약간
+      // 낮은 20px 미만을 회귀로 본다(정상 케이스 오탐 없이 normal/tight 만 잡힘).
+      const MIN_GAP = 20;
+      for (const { neighbor, side } of checks) {
+        if (!neighbor) continue;
+        const edge = contentEdge(neighbor, side);
+        if (edge == null) continue;
+        const gap = side === 'bottom' ? r.top - edge : edge - r.bottom;
+        if (gap < MIN_GAP) {
+          const path = typeof window !== 'undefined' ? window.location.pathname : '';
+          const padSide = side === 'bottom' ? 'paddingBottom' : 'paddingTop';
+          const which = side === 'bottom' ? '직전' : '직후';
+          console.warn(
+            `[WaveDivider] 물결이 ${which} 섹션 콘텐츠와 ${Math.round(gap)}px` +
+              `(권장 ≥${MIN_GAP}px)밖에 안 떨어져 콘텐츠가 물결에 묻힐 수 있습니다. ` +
+              `잠식되는 섹션의 ${padSide} 를 loose 로 올리세요. [${path}]`
+          );
+        }
+      }
+    };
+
+    // 폰트·레이아웃 안정 후 측정(폰트 로드 전 높이 차이로 인한 오탐 방지).
+    const fonts = (document as Document & { fonts?: FontFaceSet }).fonts;
+    const schedule = () => {
+      raf = requestAnimationFrame(run);
+    };
+    if (fonts?.ready) {
+      fonts.ready.then(schedule);
+    } else {
+      schedule();
+    }
+    return () => cancelAnimationFrame(raf);
+  }, [overlap, direction]);
+
   const overlapClass =
     overlap === 'prev'
       ? '-mt-[60px] sm:-mt-[100px] relative z-10'
@@ -49,6 +125,7 @@ const WaveDivider: React.FC<WaveDividerProps> = ({
 
   return (
     <div
+      ref={rootRef}
       className={`w-full leading-none overflow-hidden pointer-events-none text-[0px] ${overlapClass} ${className}`}
       style={seamStyle}
     >
