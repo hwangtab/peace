@@ -14,6 +14,8 @@ import {
   sanitizeAdminPayload,
   parseIsoDuration,
   composeIsoDuration,
+  buildArchiveFilters,
+  buildArchiveFacetOptions,
 } from './adminArchive';
 import type { AdminCollectionRow } from './adminArchive';
 import type { ArchiveGalleryImageRow, ArchivePressItemRow, ArchiveVideoRow } from '@/types/cms';
@@ -382,4 +384,39 @@ test('leaves public_id null when omitted so the server can auto-number it', () =
     sort_order: '',
   });
   expect(payload.public_id).toBeNull();
+});
+
+test('buildArchiveFilters는 값이 있는 축만 eq 필터로 만든다', () => {
+  expect(buildArchiveFilters({ type: 'camp', year: '2026' })).toEqual({
+    event_type: 'camp',
+    event_year: '2026',
+  });
+  expect(buildArchiveFilters({ type: 'live' })).toEqual({ event_type: 'live' });
+  expect(buildArchiveFilters({ year: '2024' })).toEqual({ event_year: '2024' });
+  expect(buildArchiveFilters({})).toEqual({});
+  expect(buildArchiveFilters({ type: '', year: '' })).toEqual({});
+});
+
+test('buildArchiveFacetOptions는 존재하는 유형·연도만 라벨·정렬해 전체 선두로 만든다', () => {
+  const rows = [
+    { event_type: 'camp', event_year: 2026 },
+    { event_type: 'camp', event_year: 2023 },
+    { event_type: 'live', event_year: 2024 },
+    { event_type: 'camp', event_year: 2026 },
+    { event_type: null, event_year: null },
+  ];
+  const { typeOptions, yearOptions } = buildArchiveFacetOptions(rows);
+  // 유형: EVENT_TYPE_OPTIONS 순서(camp, album, live, ...) 중 존재하는 것만 + 전체 선두
+  expect(typeOptions).toEqual([
+    { label: '전체', value: '' },
+    { label: '캠프', value: 'camp' },
+    { label: '라이브', value: 'live' },
+  ]);
+  // 연도: 내림차순 + 전체 선두
+  expect(yearOptions).toEqual([
+    { label: '전체', value: '' },
+    { label: '2026', value: '2026' },
+    { label: '2024', value: '2024' },
+    { label: '2023', value: '2023' },
+  ]);
 });
