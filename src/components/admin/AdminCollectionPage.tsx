@@ -471,7 +471,11 @@ export default function AdminCollectionPage({
       return;
     }
 
-    await router.push(`${config.listPath}?locale=${encodeURIComponent(cloneLocale)}`);
+    // 복제 후 이동 시에도 현재 유형/연도 필터를 유지한다(changeLocale과 동일).
+    const params = new URLSearchParams({ locale: cloneLocale });
+    if (selectedType) params.set('type', selectedType);
+    if (selectedYear) params.set('year', selectedYear);
+    await router.push(`${config.listPath}?${params.toString()}`);
   };
 
   const refreshLocaleStatuses = async (itemId: string) => {

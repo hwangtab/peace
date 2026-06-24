@@ -100,8 +100,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       if (!active) return;
       const nextUser = data.session?.user ?? null;
       setUser(nextUser);
-      await loadProfile(nextUser);
-      void loadAdminRole(nextUser);
+      // adminRole까지 확정한 뒤 loading을 끝낸다. void로 두면 loading=false 순간
+      // isAdmin이 잠깐 false로 노출돼 관리자 진입 카드·플로팅 버튼이 깜빡인다.
+      await Promise.all([loadProfile(nextUser), loadAdminRole(nextUser)]);
       setLoading(false);
     });
 
