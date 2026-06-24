@@ -94,7 +94,7 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(
           onKeyDown={(e) => {
             if (e.key === 'Escape') setOpen(false);
           }}
-          className={`flex items-center gap-1 ${getTextColor()} whitespace-nowrap transition-colors duration-300 font-display font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm`}
+          className={`relative inline-flex items-center ${getTextColor()} whitespace-nowrap transition-colors duration-300 font-display font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm`}
           aria-expanded={open}
           aria-haspopup="menu"
         >
@@ -110,11 +110,12 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(
               />
             )}
           </span>
-          {/* 평소엔 숨기고 hover(group-hover) 또는 열림(open) 시에만 화살표 노출 —
-              헤더를 깔끔하게 유지하되 드롭다운 어포던스는 살린다. */}
+          {/* 화살표는 absolute 로 띄워 평소 레이아웃 폭을 차지하지 않게 한다 —
+              드롭다운/일반 링크 간 간격을 텍스트 기준으로 균일하게 유지하면서
+              hover(group-hover) 또는 열림(open) 시에만 텍스트 오른쪽에 fade-in. */}
           <IoChevronDown
             aria-hidden="true"
-            className={`w-4 h-4 ml-1 transition-[transform,opacity] duration-200 ${
+            className={`pointer-events-none absolute left-full top-1/2 -translate-y-1/2 ml-0.5 w-3.5 h-3.5 transition-[transform,opacity] duration-200 ${
               open
                 ? 'rotate-180 opacity-100'
                 : 'rotate-0 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100'
