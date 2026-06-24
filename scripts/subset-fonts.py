@@ -128,7 +128,54 @@ def subset_font(src: Path, dst: Path, unicode_list: list[int], fmt: str) -> tupl
         "--name-languages=*",
     ]
     subprocess.run(cmd, check=True, capture_output=True, text=True)
+    strip_empty_glyph_cmaps(dst, fmt)
     return src.stat().st_size, dst.stat().st_size
+
+
+def strip_empty_glyph_cmaps(path: Path, fmt: str) -> int:
+    """cmap 에 매핑돼 있지만 실제 outline 이 빈 한글 글리프를, cmap 에서 제거한다.
+
+    일부 폰트(예: S-Core Dream)는 '뮁'·'읭' 같은 확장 완성형 음절을 cmap 에는
+    등록해 두고도 글리프 outline 은 비워 둔다. 이러면 브라우저는 그 폰트에서
+    글자를 '찾았다'고 판단해 폴백을 멈추고 빈 칸을 그린다(폰트 스택 뒤의
+    한글 폰트로 못 넘어감). cmap 매핑을 지우면 브라우저가 폴백을 이어가
+    뒤쪽 폰트(BookkMyungjo 등)가 정상 렌더한다.
+    """
+    from fontTools.ttLib import TTFont
+    from fontTools.pens.recordingPen import RecordingPen
+
+    font = TTFont(str(path))
+    glyph_set = font.getGlyphSet()
+
+    empty: set[str] = set()
+    for gname in font.getGlyphOrder():
+        pen = RecordingPen()
+        try:
+            glyph_set[gname].draw(pen)
+        except Exception:
+            continue
+        if not pen.value:
+            empty.add(gname)
+
+    removed = 0
+    removed_chars: set[str] = set()
+    for table in font["cmap"].tables:
+        for cp in list(table.cmap.keys()):
+            # 한글 음절 영역(AC00–D7A3)만 대상 — space 등 의도적 빈 글리프 보호
+            if 0xAC00 <= cp <= 0xD7A3 and table.cmap[cp] in empty:
+                del table.cmap[cp]
+                removed_chars.add(chr(cp))
+                removed += 1
+
+    if removed:
+        font.flavor = fmt
+        font.save(str(path))
+        print(
+            f"    cmap 정리: 빈 한글 글리프 {len(removed_chars)}자 폴백 처리 "
+            f"({' '.join(sorted(removed_chars))})",
+            file=sys.stderr,
+        )
+    return removed
 
 
 FONTS: list[tuple[str, str, str]] = [

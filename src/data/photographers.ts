@@ -19,8 +19,7 @@ export interface Photographer {
 export const photographersByYear: Record<number, Photographer[]> = {
   2026: [
     { slug: 'kdh', image: '/images-webp/photographers/kdh.webp' },
-    // 권동희: 프로필 사진·소개글 도착 전까지 image 생략 → 대표작으로 폴백
-    { slug: 'kwdh' },
+    { slug: 'kwdh', image: '/images-webp/photographers/kwdh.webp' },
   ],
 };
 

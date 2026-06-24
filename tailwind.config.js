@@ -9,16 +9,17 @@ module.exports = {
       fontFamily: {
         // 본문/UI 산스는 모두 S-Core Dream(에스코어드림) 단일 family.
         // 굵기는 font-weight 유틸리티(font-light/normal/medium/bold)로 제어.
-        'sans': ['SCDream', ...require('tailwindcss/defaultTheme').fontFamily.sans],
+        // BookkMyungjo-Bd 를 한글 폴백으로 끼운다: SCDream·PartialSans 둘 다
+        // '뮁'·'읭' 같은 확장 완성형 음절 글리프가 비어(없거나 빈 outline) 깨지는데,
+        // 이 글자들만 명조가 받아 그린다. (서브셋 단계에서 SCDream 의 빈 글리프
+        // cmap 을 제거해 폴백이 실제로 명조까지 도달하도록 했다 — scripts/subset-fonts.py)
+        'sans': ['SCDream', 'BookkMyungjo-Bd', ...require('tailwindcss/defaultTheme').fontFamily.sans],
         'serif': ['BookkMyungjo-Bd', ...require('tailwindcss/defaultTheme').fontFamily.serif],
         // Semantic Typography
         'display': ['BookkMyungjo-Bd', ...require('tailwindcss/defaultTheme').fontFamily.serif],
-        // PartialSans 는 디자인 폰트라 글리프가 ~3030 자뿐(확장 완성형 미지원).
-        // '뮁' 같은 글자는 PartialSans 에 없으므로, 글리프 단위 폴백으로 SCDream 이
-        // 받아 그리도록 본문 폰트를 스택에 끼운다(없으면 OS sans → 두부/공백).
-        'partial': ['PartialSans', 'SCDream', 'sans-serif'],
-        'body': ['SCDream', ...require('tailwindcss/defaultTheme').fontFamily.sans],
-        'caption': ['SCDream', ...require('tailwindcss/defaultTheme').fontFamily.sans],
+        'partial': ['PartialSans', 'SCDream', 'BookkMyungjo-Bd', 'sans-serif'],
+        'body': ['SCDream', 'BookkMyungjo-Bd', ...require('tailwindcss/defaultTheme').fontFamily.sans],
+        'caption': ['SCDream', 'BookkMyungjo-Bd', ...require('tailwindcss/defaultTheme').fontFamily.sans],
       },
       colors: {
         // Ocean Blues (Primary)

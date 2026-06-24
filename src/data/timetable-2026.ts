@@ -795,6 +795,7 @@ export const timetable2026: Timetable = {
           type: 'performance',
           name: '자이',
           scale: 'solo',
+          musicianIds: [11],
         },
         {
           order: null,
