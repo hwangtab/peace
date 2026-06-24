@@ -10,6 +10,7 @@ import {
   validateMeetingTime,
   validateLocation,
 } from '@/lib/meetingForms';
+import { CAMP_EDITION_YEARS, campEditionLabel } from '@/lib/campEditions';
 import type { AdminMember } from '@/types/cms';
 
 interface NewMeetingPageProps {
@@ -26,6 +27,7 @@ export default function NewMeetingPage({ member }: NewMeetingPageProps) {
   const [meetingDate, setMeetingDate] = useState('');
   const [meetingTime, setMeetingTime] = useState('');
   const [location, setLocation] = useState('');
+  const [eventYear, setEventYear] = useState<number>(CAMP_EDITION_YEARS[0] ?? 2026);
   const [error, setError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -64,6 +66,7 @@ export default function NewMeetingPage({ member }: NewMeetingPageProps) {
           meeting_date: dateResult.value ?? '',
           meeting_time: timeResult.value,
           location: locationResult.value,
+          event_year: eventYear,
         }),
       });
       const payload = await response.json();
@@ -95,6 +98,23 @@ export default function NewMeetingPage({ member }: NewMeetingPageProps) {
       )}
 
       <form onSubmit={handleSubmit} className="max-w-xl space-y-4">
+        <div>
+          <label className={labelClass} htmlFor="event_year">
+            캠프 회차
+          </label>
+          <select
+            id="event_year"
+            value={eventYear}
+            onChange={(e) => setEventYear(Number(e.target.value))}
+            className="w-full rounded border border-deep-ocean/15 bg-white px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
+          >
+            {CAMP_EDITION_YEARS.map((year) => (
+              <option key={year} value={year}>
+                {campEditionLabel(year)}
+              </option>
+            ))}
+          </select>
+        </div>
         <div>
           <label className={labelClass} htmlFor="title">
             제목 *
