@@ -6,7 +6,10 @@ import { loadAdminCollectionPageProps } from '@/lib/adminPageData';
 
 export default function AdminPressPage(props: AdminCollectionPageProps) {
   return (
-    <AdminCollectionPage key={`${props.config.collection}:${props.selectedLocale}`} {...props} />
+    <AdminCollectionPage
+      key={`${props.config.collection}:${props.selectedLocale}:${props.selectedType}:${props.selectedYear}`}
+      {...props}
+    />
   );
 }
 
