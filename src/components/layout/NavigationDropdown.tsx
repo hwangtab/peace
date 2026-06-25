@@ -45,21 +45,6 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(
       [isControlled, onOpenChange]
     );
 
-    // hover 닫힘에 짧은 지연을 둬 인접 드롭다운(캠프↔앨범)으로 마우스를 옮길 때
-    // 사이 여백·패널 경계를 지나며 leave/enter 가 연쇄로 발생해 깜빡이는 것을 방지.
-    const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-    const cancelClose = React.useCallback(() => {
-      if (closeTimer.current) {
-        clearTimeout(closeTimer.current);
-        closeTimer.current = null;
-      }
-    }, []);
-    const scheduleClose = React.useCallback(() => {
-      cancelClose();
-      closeTimer.current = setTimeout(() => setOpen(false), 150);
-    }, [cancelClose, setOpen]);
-    useEffect(() => cancelClose, [cancelClose]);
-
     // Escape 등으로 닫을 때 포커스를 트리거 버튼으로 되돌린다(WAI-ARIA disclosure 패턴).
     // 메뉴 항목에 포커스가 가 있는 상태에서 닫으면 포커스가 body로 유실되기 때문.
     const dismissAndFocus = React.useCallback(() => {
@@ -104,16 +89,11 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(
         : 'text-cloud-white/90 hover:text-cloud-white drop-shadow-md';
     };
 
+    // hover 로는 열지 않는다 — 갤러리·비디오 등으로 가려고 마우스가 캠프·앨범 버튼
+    // 위를 지나갈 때 드롭다운이 의도치 않게 열렸다 닫히는 깜빡임을 막기 위함.
+    // 클릭(또는 키보드)으로만 연다. group 은 화살표 hover 미리보기에만 사용.
     return (
-      <div
-        className="relative group"
-        ref={dropdownRef}
-        onMouseEnter={() => {
-          cancelClose();
-          setOpen(true);
-        }}
-        onMouseLeave={scheduleClose}
-      >
+      <div className="relative group" ref={dropdownRef}>
         <button
           ref={buttonRef}
           type="button"
