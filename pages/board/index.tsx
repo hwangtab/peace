@@ -6,6 +6,7 @@ import nextI18NextConfig from '../../next-i18next.config';
 import { loadActiveBoards, loadBoardPostCounts } from '@/lib/boardData';
 import type { Board } from '@/types/board';
 import PageHero from '@/components/common/PageHero';
+import SEOHelmet from '@/components/shared/SEOHelmet';
 
 const BOARD_HERO_IMAGE = '/images-webp/camps/2025/DSC00921.webp';
 
@@ -22,6 +23,7 @@ export default function BoardIndexPage({ boards }: Props) {
 
   return (
     <>
+      <SEOHelmet title={t('index.title')} description={t('index.metaDescription')} />
       <PageHero compact title={t('index.title')} backgroundImage={BOARD_HERO_IMAGE} />
       <main className="mx-auto max-w-2xl px-4 py-12">
         {boards.length === 0 ? (

@@ -3,7 +3,8 @@
     "title": "게시판",
     "posts": "글",
     "writeCta": "글쓰기",
-    "loginToWrite": "로그인하고 글쓰기"
+    "loginToWrite": "로그인하고 글쓰기",
+    "metaDescription": "강정 피스앤뮤직캠프 참가자들이 후기와 자유로운 이야기를 나누는 커뮤니티 공간입니다."
   },
   "list": {
     "empty": "아직 글이 없습니다.",
