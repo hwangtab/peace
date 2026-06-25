@@ -1,0 +1,51 @@
+{
+  "camp_musician_guide_2026": {
+    "page_title": "3rd Gangjeong Peace & Music Camp — Musician Guide",
+    "seo_description": "Internal guide page for musicians and staff participating in the 3rd Gangjeong Peace & Music Camp.",
+    "hero_title": "Musician Guide",
+    "hero_subtitle": "3rd Gangjeong Peace & Music Camp \"Let's end the war!\"",
+    "private_banner_heading": "For Participating Musicians & Staff Only",
+    "private_banner_body": "This page is a private guide not indexed by search engines. It contains sensitive information including personal contacts and accommodation assignments. Please take care not to share this outside of participants.",
+    "toc_aria_label": "Table of Contents",
+    "nav_overview": "Overview",
+    "nav_purpose": "Purpose & Principles",
+    "nav_lineup": "Performance Timetable",
+    "nav_programs": "Side Programs",
+    "nav_access": "Getting Here · Accommodation · Meals",
+    "nav_staff": "Organizing Team",
+    "nav_budget": "Budget & Settlement",
+    "section_overview": "Overview",
+    "overview_rain_note": "※ In case of rain, events will be held simultaneously across two venues: Halmangmul Restaurant & Café.",
+    "section_purpose": "Purpose & Principles",
+    "section_lineup": "Lineup & Performance Timetable",
+    "lineup_rain_note": "※ In case of rain, the performance timetable will be shared separately at a later date.",
+    "section_programs": "Side Programs",
+    "programs_market_heading": "Market — \"End (the War)\" Market",
+    "programs_market_items": [
+      "Up to 15 teams accepted",
+      "Cancelled in case of rain"
+    ],
+    "programs_booth_heading": "Organizing Committee Booth",
+    "section_access": "Getting Here · Accommodation · Meals",
+    "access_transport_heading": "Getting Here",
+    "access_transport_before": "If using public transportation, take the 600 limousine bus from Gate 5 at Jeju Airport and",
+    "access_transport_stop": "'Gangjeong Nonghyup'",
+    "access_transport_after": "get off at the stop.",
+    "access_lodging_common_heading": "Accommodation — General Information",
+    "access_lodging_info_heading": "Basic Accommodation Info",
+    "access_lodging_separate_note": "※ Accommodation details for Ganggahimalaya and Samgakjeonpasa will be shared separately.",
+    "access_lodging_assign_heading": "Room Assignments",
+    "access_lodging_etc_heading": "Other",
+    "access_meal_heading": "Meals",
+    "access_meal_items": [
+      "6/5 — Gimbap (Korean rice rolls)",
+      "6/6–6/7 — Vegan paella",
+      "6/4–6/8: One meal per day and after-party snacks provided for staff and musicians"
+    ],
+    "section_staff": "Organizing Team",
+    "section_budget": "Budget, Settlement & Support Policy",
+    "guidelines_box_heading": "Code of Conduct (Our Commitment)",
+    "guidelines_box_body": "Please review the behavioral commitments and reporting/response procedures for a safe and equitable camp.",
+    "guidelines_box_link": "View Code of Conduct"
+  }
+}

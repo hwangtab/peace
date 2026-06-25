@@ -11,7 +11,11 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
   const lang = locale ?? 'ko';
   return {
     props: {
-      ...(await serverSideTranslations(lang, ['translation'], nextI18NextConfig)),
+      ...(await serverSideTranslations(
+        lang,
+        ['translation', 'camp_survey_2026'],
+        nextI18NextConfig
+      )),
     },
     revalidate: 3600,
   };

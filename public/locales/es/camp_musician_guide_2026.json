@@ -1,0 +1,51 @@
+{
+  "camp_musician_guide_2026": {
+    "page_title": "Guía para Músicos — 3.er Gangjeong Peace & Music Camp",
+    "seo_description": "Página de información interna para músicos y personal del 3.er Gangjeong Peace & Music Camp.",
+    "hero_title": "Guía para Músicos",
+    "hero_subtitle": "3.er Gangjeong Peace & Music Camp \"¡Acabemos con la guerra!\"",
+    "private_banner_heading": "Información exclusiva para músicos y personal participante",
+    "private_banner_body": "Esta página es una guía privada que no aparece en los motores de búsqueda. Contiene información sensible como datos de contacto personales y asignación de alojamiento. Por favor, tenga cuidado de no compartirla fuera de los participantes.",
+    "toc_aria_label": "Tabla de contenidos",
+    "nav_overview": "Resumen",
+    "nav_purpose": "Propósito y enfoque",
+    "nav_lineup": "Tabla de actuaciones",
+    "nav_programs": "Programas adicionales",
+    "nav_access": "Cómo llegar · Alojamiento · Comidas",
+    "nav_staff": "Equipo organizador",
+    "nav_budget": "Presupuesto y liquidación",
+    "section_overview": "Resumen",
+    "overview_rain_note": "※ En caso de lluvia, el evento se realizará simultáneamente en dos espacios: el restaurante Halmangmul y la cafetería.",
+    "section_purpose": "Propósito y enfoque",
+    "section_lineup": "Lineup y tabla de actuaciones",
+    "lineup_rain_note": "※ En caso de lluvia, la tabla de actuaciones se compartirá por separado posteriormente.",
+    "section_programs": "Programas adicionales",
+    "programs_market_heading": "Mercado — Mercado del Fin (de la guerra)",
+    "programs_market_items": [
+      "Hasta 15 equipos participantes",
+      "Se cancela en caso de lluvia"
+    ],
+    "programs_booth_heading": "Puesto del comité organizador",
+    "section_access": "Cómo llegar · Alojamiento · Comidas",
+    "access_transport_heading": "Cómo llegar",
+    "access_transport_before": "Si utiliza transporte público, tome el autobús lanzadera 600 desde la puerta 5 del Aeropuerto de Jeju y baje en",
+    "access_transport_stop": "'Gangjong Nonghyup'",
+    "access_transport_after": ".",
+    "access_lodging_common_heading": "Alojamiento — Información general",
+    "access_lodging_info_heading": "Información básica del alojamiento",
+    "access_lodging_separate_note": "※ La información de alojamiento para Gangahimalaya y Samgakjeonpasa se comunicará por separado.",
+    "access_lodging_assign_heading": "Asignación de alojamiento",
+    "access_lodging_etc_heading": "Otros",
+    "access_meal_heading": "Comidas",
+    "access_meal_items": [
+      "6/5 — Gimbap",
+      "6/6~6/7 — Paella vegana",
+      "6/4~6/8 Se proporcionará 1 comida y aperitivos para la celebración posterior al personal y músicos"
+    ],
+    "section_staff": "Equipo organizador",
+    "section_budget": "Presupuesto, liquidación y principios de apoyo",
+    "guidelines_box_heading": "Directrices operativas (nuestros compromisos)",
+    "guidelines_box_body": "Por favor, revise los compromisos de conducta y los procedimientos de denuncia y respuesta para un campamento seguro e igualitario.",
+    "guidelines_box_link": "Ver directrices operativas"
+  }
+}

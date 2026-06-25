@@ -1,0 +1,51 @@
+{
+  "camp_musician_guide_2026": {
+    "page_title": "제3회 강정피스앤뮤직캠프 뮤지션 안내",
+    "seo_description": "제3회 강정피스앤뮤직캠프 참여 뮤지션·스태프를 위한 내부 안내 페이지입니다.",
+    "hero_title": "뮤지션 안내",
+    "hero_subtitle": "제3회 강정피스앤뮤직캠프 \"전쟁을 끝내자!\"",
+    "private_banner_heading": "참여 뮤지션·스태프 전용 안내",
+    "private_banner_body": "이 페이지는 검색에 노출되지 않는 비공개 안내입니다. 개인 연락처와 숙소 배정 등 민감한 정보가 포함되어 있으니, 공유 시 참여자 외부로 유출되지 않도록 주의해주세요.",
+    "toc_aria_label": "목차",
+    "nav_overview": "개요",
+    "nav_purpose": "취지·기조",
+    "nav_lineup": "공연 타임테이블",
+    "nav_programs": "부대 프로그램",
+    "nav_access": "오시는 길·숙박·식사",
+    "nav_staff": "운영진",
+    "nav_budget": "예산·정산",
+    "section_overview": "개요",
+    "overview_rain_note": "※ 우천 시 할망물식당 & 카페 공간 두 곳에서 분산하여 동시 진행합니다.",
+    "section_purpose": "취지 및 기조",
+    "section_lineup": "라인업 및 공연 타임테이블",
+    "lineup_rain_note": "※ 우천 시 공연 타임테이블은 추후 별도 공유 예정입니다.",
+    "section_programs": "부대 프로그램",
+    "programs_market_heading": "장터 — (전쟁을) 끝내장터",
+    "programs_market_items": [
+      "최대 15팀 모집",
+      "우천 시 취소"
+    ],
+    "programs_booth_heading": "조직위 부스",
+    "section_access": "오시는 길 · 숙박 · 식사",
+    "access_transport_heading": "오시는 길",
+    "access_transport_before": "대중교통 이용 시, 제주공항 5번 게이트에서 600번 리무진 버스를 타고",
+    "access_transport_stop": "'강정농협'",
+    "access_transport_after": "에서 하차하세요.",
+    "access_lodging_common_heading": "숙박 — 공통 안내사항",
+    "access_lodging_info_heading": "숙소 기본 정보",
+    "access_lodging_separate_note": "※ 강가히말라야, 삼각전파사 님의 숙소 안내는 별도로 진행 예정입니다.",
+    "access_lodging_assign_heading": "숙소 배정",
+    "access_lodging_etc_heading": "기타",
+    "access_meal_heading": "식사",
+    "access_meal_items": [
+      "6/5 — 김밥",
+      "6/6~6/7 — 비건 빠에야",
+      "6/4~6/8 스태프와 뮤지션에게 식사 1끼 및 뒤풀이 안주 제공"
+    ],
+    "section_staff": "운영진",
+    "section_budget": "예산 및 정산·지원 원칙",
+    "guidelines_box_heading": "운영지침 (우리의 약속)",
+    "guidelines_box_body": "안전하고 평등한 캠프를 위한 행동 약속과 신고·대응 절차를 꼭 확인해주세요.",
+    "guidelines_box_link": "운영지침 보기"
+  }
+}
