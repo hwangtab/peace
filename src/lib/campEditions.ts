@@ -16,6 +16,13 @@ export const campEditionLabel = (year: number | null): string => {
   return no ? `제${no}회 강정피스앤뮤직캠프 (${year})` : `${year} 캠프`;
 };
 
+// 좁은 UI(메일 연락처 드롭다운·체크박스)용 짧은 라벨.
+export const campEditionShortLabel = (year: number | null): string => {
+  if (year == null) return '회차 미지정';
+  const no = CAMP_EDITIONS[year];
+  return no ? `제${no}회 (${year})` : `${year}`;
+};
+
 export const whitepaperSlug = (year: number): string => `camp-${year}-whitepaper`;
 
 export const parseWhitepaperYear = (slug: string): number | null => {

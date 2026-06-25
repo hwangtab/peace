@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { GROUP_LABEL, GROUP_TYPES } from '@/lib/mailContactsForms';
+import { CAMP_EDITION_YEARS, campEditionShortLabel } from '@/lib/campEditions';
 import type { MailContact, MailGroupType } from '@/types/mailContacts';
 
 export default function ContactsPanel({ canEdit }: { canEdit: boolean }) {
@@ -96,12 +97,18 @@ export default function ContactsPanel({ canEdit }: { canEdit: boolean }) {
             </option>
           ))}
         </select>
-        <input
+        <select
           value={cohort}
           onChange={(e) => setCohort(e.target.value)}
-          placeholder="회차 (예: 2026)"
           className="rounded border border-deep-ocean/15 px-3 py-2 text-sm"
-        />
+        >
+          <option value="">전체 회차</option>
+          {CAMP_EDITION_YEARS.map((year) => (
+            <option key={year} value={String(year)}>
+              {campEditionShortLabel(year)}
+            </option>
+          ))}
+        </select>
       </div>
       {error && (
         <p className="rounded bg-jeju-ocean/10 px-3 py-2 text-sm text-jeju-ocean">{error}</p>
@@ -157,7 +164,7 @@ function ContactAddForm({
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [groupType, setGroupType] = useState<MailGroupType>('musician');
-  const [cohorts, setCohorts] = useState('2026');
+  const [cohorts, setCohorts] = useState(String(CAMP_EDITION_YEARS[0] ?? 2026));
   const [csv, setCsv] = useState('');
   return (
     <div className="space-y-3 rounded border border-deep-ocean/10 bg-ocean-sand/20 p-4">
@@ -185,12 +192,36 @@ function ContactAddForm({
             </option>
           ))}
         </select>
-        <input
-          value={cohorts}
-          onChange={(e) => setCohorts(e.target.value)}
-          placeholder="회차(콤마구분)"
-          className="rounded border border-deep-ocean/15 px-3 py-2 text-sm"
-        />
+        <div className="flex items-center gap-2 rounded border border-deep-ocean/15 px-3 py-2 text-sm">
+          <span className="text-xs font-semibold text-coastal-gray">회차</span>
+          {CAMP_EDITION_YEARS.map((year) => {
+            const y = String(year);
+            const checked = cohorts
+              .split(',')
+              .map((s) => s.trim())
+              .includes(y);
+            return (
+              <label key={year} className="flex items-center gap-1 text-xs text-deep-ocean">
+                <input
+                  type="checkbox"
+                  checked={checked}
+                  onChange={() => {
+                    const set = new Set(
+                      cohorts
+                        .split(',')
+                        .map((s) => s.trim())
+                        .filter(Boolean)
+                    );
+                    if (set.has(y)) set.delete(y);
+                    else set.add(y);
+                    setCohorts([...set].join(','));
+                  }}
+                />
+                {campEditionShortLabel(year)}
+              </label>
+            );
+          })}
+        </div>
         <button
           type="button"
           disabled={busy}
@@ -199,7 +230,7 @@ function ContactAddForm({
             setName('');
             setEmail('');
             setGroupType('musician');
-            setCohorts('2026');
+            setCohorts(String(CAMP_EDITION_YEARS[0] ?? 2026));
           }}
           className="rounded bg-deep-ocean px-4 py-2 text-sm font-semibold text-white disabled:opacity-60"
         >
