@@ -118,7 +118,7 @@ const VideoDetailPage: React.FC<VideoDetailPageProps> = ({
           <div className="mt-8">
             <div className="flex flex-wrap items-center gap-3 text-xs font-medium text-ocean-mist uppercase tracking-tighter mb-4">
               {video.location && <span className="truncate">{video.location}</span>}
-              <span aria-hidden="true">·</span>
+              {video.location && <span aria-hidden="true">·</span>}
               <time dateTime={video.date}>{localizedDate}</time>
             </div>
             <h1 className="typo-h2 mb-4 break-words">{video.title}</h1>

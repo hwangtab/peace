@@ -7,15 +7,16 @@ interface AudioPlayerProps {
   audioUrl: string;
   isPlaying: boolean;
   onPlayPause: () => void;
+  onEnded?: () => void;
   title: string;
   artist: string;
 }
 
 const AudioPlayer = React.memo(
-  ({ audioUrl, isPlaying, onPlayPause, title, artist }: AudioPlayerProps) => {
+  ({ audioUrl, isPlaying, onPlayPause, onEnded, title, artist }: AudioPlayerProps) => {
     const { t } = useTranslation();
     const { progress, duration, getProgressPercent, handleSeek, seekToPercent, formatTime } =
-      useAudioPlayer({ audioUrl, isPlaying });
+      useAudioPlayer({ audioUrl, isPlaying, onEnded });
 
     return (
       <div className="w-full bg-white rounded-xl shadow-md p-4">

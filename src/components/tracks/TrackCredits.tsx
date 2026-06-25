@@ -46,7 +46,7 @@ export default function TrackCredits({ credits }: TrackCreditsProps) {
           </div>
         )}
         {credits.personnel?.map((performer, idx) => (
-          <div key={idx} className="flex items-start space-x-2">
+          <div key={`${performer.role}-${idx}`} className="flex items-start space-x-2">
             <span className="text-sm text-coastal-gray font-medium min-w-[60px] sm:min-w-[80px]">
               {performer.role}
             </span>

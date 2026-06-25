@@ -55,7 +55,7 @@ const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
               src={imgSrc}
               alt={video.location ? `${video.title} — ${video.location}` : video.title}
               fill
-              sizes="(max-width: 768px) 100vw, 50vw"
+              sizes="(max-width: 768px) 100vw, 33vw"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
               onError={() => {
                 if (imgSrc.includes('maxresdefault')) {

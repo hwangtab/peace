@@ -14,6 +14,7 @@ const loadHowl = () => {
 interface UseAudioPlayerOptions {
   audioUrl: string;
   isPlaying: boolean;
+  onEnded?: () => void;
 }
 
 interface UseAudioPlayerReturn {
@@ -29,6 +30,7 @@ interface UseAudioPlayerReturn {
 export const useAudioPlayer = ({
   audioUrl,
   isPlaying,
+  onEnded,
 }: UseAudioPlayerOptions): UseAudioPlayerReturn => {
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -41,6 +43,8 @@ export const useAudioPlayer = ({
   const previousUrlRef = useRef<string | null>(null);
   const isLoadedRef = useRef(false);
   const lastProgressUpdateRef = useRef(0);
+  const onEndedRef = useRef(onEnded);
+  onEndedRef.current = onEnded;
 
   // audioUrl 변경 시 기존 인스턴스 정리 후 새로 생성 (메모리 누수 방지)
   useEffect(() => {
@@ -76,6 +80,7 @@ export const useAudioPlayer = ({
             cancelAnimationFrame(requestRef.current);
             requestRef.current = null;
           }
+          onEndedRef.current?.();
         },
         onloaderror: (_id: number, msg: unknown) => {
           if (cancelled || previousUrlRef.current !== audioUrl) return;
