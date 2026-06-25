@@ -71,6 +71,7 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(
                 {/* Mobile Dropdowns */}
                 <div className="border-t border-coastal-gray/20 my-4 pt-4">
                   <MobileDropdown
+                    id="camps"
                     label={t('nav.camp')}
                     items={campItems}
                     isOpen={mobileOpenDropdown === 'camps'}
@@ -80,6 +81,7 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(
                   />
 
                   <MobileDropdown
+                    id="album"
                     label={t('nav.album')}
                     items={albumItems}
                     isOpen={mobileOpenDropdown === 'album'}
@@ -89,6 +91,7 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(
                   />
 
                   <MobileDropdown
+                    id="community"
                     label={t('nav.community')}
                     items={communityItems}
                     isOpen={mobileOpenDropdown === 'community'}
@@ -157,6 +160,7 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(
 MobileMenu.displayName = 'MobileMenu';
 
 interface MobileDropdownProps {
+  id: string;
   label: string;
   items: { nameKey?: string; label?: string; path: string }[];
   isOpen: boolean;
@@ -166,8 +170,9 @@ interface MobileDropdownProps {
 }
 
 const MobileDropdown: React.FC<MobileDropdownProps> = React.memo(
-  ({ label, items, isOpen, onToggle, isPathActive, onClose }) => {
+  ({ id, label, items, isOpen, onToggle, isPathActive, onClose }) => {
     const { t } = useTranslation();
+    const dropdownId = `mobile-dropdown-${id}`;
 
     return (
       <>
@@ -176,7 +181,7 @@ const MobileDropdown: React.FC<MobileDropdownProps> = React.memo(
           onClick={onToggle}
           className="w-full text-left py-3 font-serif font-bold text-deep-ocean flex justify-between items-center break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm"
           aria-expanded={isOpen}
-          aria-controls={`mobile-dropdown-${label}`}
+          aria-controls={dropdownId}
         >
           {label}
           <motion.span
@@ -190,11 +195,7 @@ const MobileDropdown: React.FC<MobileDropdownProps> = React.memo(
         </button>
         <AnimatePresence initial={false}>
           {isOpen && (
-            <motion.div
-              id={`mobile-dropdown-${label}`}
-              {...menuReveal}
-              className="origin-top pl-4 overflow-hidden"
-            >
+            <motion.div id={dropdownId} {...menuReveal} className="origin-top pl-4 overflow-hidden">
               {items.map((item) => (
                 <Link
                   key={item.path}

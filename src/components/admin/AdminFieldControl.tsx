@@ -41,6 +41,7 @@ export default function AdminFieldControl({
         onChange={(event) => onChange(event.target.value)}
         rows={field.name === 'value' || field.name === 'description' ? 6 : 3}
         placeholder={field.placeholder}
+        disabled={disabled}
         className={inputClass}
       />
     );
@@ -51,6 +52,7 @@ export default function AdminFieldControl({
       <select
         value={value}
         onChange={(event) => onChange(event.target.value)}
+        disabled={disabled}
         className={selectClass}
       >
         {field.options?.map((option) => (
@@ -74,6 +76,7 @@ export default function AdminFieldControl({
           inputMode="numeric"
           value={minutes}
           onChange={(event) => update(event.target.value, seconds)}
+          disabled={disabled}
           className={inputClass}
           aria-label="분"
         />
@@ -85,6 +88,7 @@ export default function AdminFieldControl({
           inputMode="numeric"
           value={seconds}
           onChange={(event) => update(minutes, event.target.value)}
+          disabled={disabled}
           className={inputClass}
           aria-label="초"
         />
@@ -102,6 +106,7 @@ export default function AdminFieldControl({
           value={value}
           onChange={(event) => onChange(event.target.value)}
           placeholder={field.placeholder}
+          disabled={disabled}
           className={inputClass}
         />
       );
@@ -112,6 +117,7 @@ export default function AdminFieldControl({
       <select
         value={value}
         onChange={(event) => onChange(event.target.value)}
+        disabled={disabled}
         className={selectClass}
       >
         <option value="">— 선택 안 함 —</option>
@@ -133,6 +139,7 @@ export default function AdminFieldControl({
       <select
         value={value}
         onChange={(event) => onChange(event.target.value)}
+        disabled={disabled}
         className={selectClass}
       >
         <option value="">— 선택 안 함 —</option>
@@ -190,6 +197,7 @@ export default function AdminFieldControl({
         value={value}
         onChange={(event) => onChange(event.target.value)}
         placeholder={field.kind === 'musician-multi' ? '3, 11, 59' : '49'}
+        disabled={disabled}
         className={inputClass}
       />
     );
@@ -201,6 +209,7 @@ export default function AdminFieldControl({
       value={value}
       onChange={(event) => onChange(event.target.value)}
       placeholder={field.placeholder}
+      disabled={disabled}
       className={inputClass}
     />
   );

@@ -259,11 +259,12 @@ export default function AccountPage() {
 
         <button
           type="button"
+          disabled={busy}
           onClick={async () => {
             await signOut();
             await router.push('/');
           }}
-          className="mt-2 w-full rounded border border-deep-ocean/20 bg-white px-4 py-2 font-semibold text-deep-ocean transition hover:border-jeju-ocean"
+          className="mt-2 w-full rounded border border-deep-ocean/20 bg-white px-4 py-2 font-semibold text-deep-ocean transition hover:border-jeju-ocean disabled:cursor-not-allowed disabled:opacity-60"
         >
           {t('account.signout')}
         </button>

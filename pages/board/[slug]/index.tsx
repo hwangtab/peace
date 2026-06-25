@@ -95,21 +95,22 @@ export default function BoardSlugPage({ board, posts, hasMore, offset, total, q,
               {total} {t('index.posts')}
             </p>
           </div>
-          {isLoggedIn ? (
-            <Link
-              href={`/board/${board.slug}/new`}
-              className="flex-shrink-0 rounded-lg bg-jeju-ocean px-4 py-2 text-sm font-semibold text-white transition hover:bg-deep-ocean"
-            >
-              {t('index.writeCta')}
-            </Link>
-          ) : (
-            <Link
-              href={`/login?next=/board/${board.slug}/new`}
-              className="flex-shrink-0 rounded-lg border border-jeju-ocean px-4 py-2 text-sm font-semibold text-jeju-ocean transition hover:bg-seafoam"
-            >
-              {t('index.loginToWrite')}
-            </Link>
-          )}
+          {!auth?.loading &&
+            (isLoggedIn ? (
+              <Link
+                href={`/board/${board.slug}/new`}
+                className="flex-shrink-0 rounded-lg bg-jeju-ocean px-4 py-2 text-sm font-semibold text-white transition hover:bg-deep-ocean"
+              >
+                {t('index.writeCta')}
+              </Link>
+            ) : (
+              <Link
+                href={`/login?next=/board/${board.slug}/new`}
+                className="flex-shrink-0 rounded-lg border border-jeju-ocean px-4 py-2 text-sm font-semibold text-jeju-ocean transition hover:bg-seafoam"
+              >
+                {t('index.loginToWrite')}
+              </Link>
+            ))}
         </div>
 
         {/* Search + sort controls */}

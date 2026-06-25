@@ -36,6 +36,7 @@ export default function PostForm({ board, initial, mode }: PostFormProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (saving) return;
     if (!user) return;
 
     // Validate
@@ -274,7 +275,8 @@ export default function PostForm({ board, initial, mode }: PostFormProps) {
         <button
           type="button"
           onClick={handleCancel}
-          className="rounded-lg border border-coastal-gray px-6 py-2 text-sm font-semibold text-coastal-gray transition hover:bg-seafoam"
+          disabled={saving}
+          className="rounded-lg border border-coastal-gray px-6 py-2 text-sm font-semibold text-coastal-gray transition hover:bg-seafoam disabled:opacity-50"
         >
           {t('post.cancel')}
         </button>
