@@ -10,7 +10,6 @@ import NotificationBell from '@/components/admin/NotificationBell';
 const NAV_ITEMS = [
   { href: '/admin', label: '상황판' },
   { href: '/admin/videos', label: '비디오' },
-  { href: '/admin/gallery', label: '갤러리' },
   { href: '/admin/press', label: '언론보도' },
   { href: '/admin/whitepaper', label: '운영 백서' },
   { href: '/admin/meetings', label: '회의록' },
