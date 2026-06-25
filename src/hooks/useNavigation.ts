@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { isRouteActive } from '@/utils/routeMatch';
 import { useScrolled } from '@/hooks/useScrolled';
@@ -17,10 +17,28 @@ export const useNavigation = () => {
   const currentPath = router.asPath;
   const hydrated = useHydrated();
 
+  // 링크 클릭 외 경로(브라우저 뒤로가기, programmatic navigation)로 라우팅되면
+  // onMouseLeave/onDismiss가 호출되지 않아 열린 드롭다운 상태가 잔류한다.
+  // 라우팅 완료 시 모든 메뉴/드롭다운을 닫아 상태를 정리한다.
+  useEffect(() => {
+    const closeAll = () => {
+      setIsOpen(false);
+      setMobileOpenDropdown(null);
+      setDesktopOpenDropdown(null);
+    };
+    router.events.on('routeChangeComplete', closeAll);
+    return () => router.events.off('routeChangeComplete', closeAll);
+  }, [router.events]);
+
   const toggleMenu = useCallback(() => {
     setIsOpen((prev) => {
       const newState = !prev;
-      if (newState) setMobileOpenDropdown(null);
+      // 모바일 메뉴를 열 때 데스크톱 드롭다운 상태도 비운다 — 1280px 경계를 resize로
+      // 오갈 때 이전 desktopOpenDropdown 값이 복원되며 드롭다운이 즉시 열려 보이는 것 방지.
+      if (newState) {
+        setMobileOpenDropdown(null);
+        setDesktopOpenDropdown(null);
+      }
       return newState;
     });
   }, []);
