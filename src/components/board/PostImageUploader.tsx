@@ -155,7 +155,11 @@ export default function PostImageUploader({ value, onChange }: PostImageUploader
         {value.length} / {MAX_IMAGES}
       </span>
 
-      {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
+      {error && (
+        <p role="alert" className="mt-2 text-sm text-red-500">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

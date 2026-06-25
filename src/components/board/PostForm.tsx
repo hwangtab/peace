@@ -205,7 +205,11 @@ export default function PostForm({ board, initial, mode }: PostFormProps) {
           maxLength={120}
           className="mt-1 w-full rounded-lg border border-seafoam px-3 py-2 text-base text-deep-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean"
         />
-        {fieldErrors.title && <p className="mt-1 text-sm text-red-500">{fieldErrors.title}</p>}
+        {fieldErrors.title && (
+          <p role="alert" className="mt-1 text-sm text-red-500">
+            {fieldErrors.title}
+          </p>
+        )}
       </div>
 
       {/* Body */}
@@ -221,7 +225,11 @@ export default function PostForm({ board, initial, mode }: PostFormProps) {
           maxLength={10000}
           className="mt-1 w-full rounded-lg border border-seafoam px-3 py-2 text-base text-deep-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean"
         />
-        {fieldErrors.body && <p className="mt-1 text-sm text-red-500">{fieldErrors.body}</p>}
+        {fieldErrors.body && (
+          <p role="alert" className="mt-1 text-sm text-red-500">
+            {fieldErrors.body}
+          </p>
+        )}
       </div>
 
       {/* Rating — only when board.has_rating */}
@@ -231,7 +239,11 @@ export default function PostForm({ board, initial, mode }: PostFormProps) {
           <div className="mt-2">
             <RatingStars value={rating ?? 0} onSelect={setRating} />
           </div>
-          {fieldErrors.rating && <p className="mt-1 text-sm text-red-500">{fieldErrors.rating}</p>}
+          {fieldErrors.rating && (
+            <p role="alert" className="mt-1 text-sm text-red-500">
+              {fieldErrors.rating}
+            </p>
+          )}
         </div>
       )}
 
@@ -244,7 +256,11 @@ export default function PostForm({ board, initial, mode }: PostFormProps) {
       </div>
 
       {/* Global error */}
-      {error && <p className="text-sm text-red-500">{error}</p>}
+      {error && (
+        <p role="alert" className="text-sm text-red-500">
+          {error}
+        </p>
+      )}
 
       {/* Actions */}
       <div className="flex gap-3">
