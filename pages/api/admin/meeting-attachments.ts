@@ -47,6 +47,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .select('*')
         .single();
       if (error) {
+        if (error.code === '23503') {
+          res.status(404).json({ error: '회의를 찾을 수 없습니다.' });
+          return;
+        }
         res.status(500).json({ error: error.message });
         return;
       }
@@ -85,9 +89,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const filePath = target.data.file_path as string;
       if (filePath) {
         try {
-          await supabase.storage.from('meeting-files').remove([filePath]);
-        } catch {
-          // 스토리지 정리는 best-effort
+          const { error: rmError } = await supabase.storage
+            .from('meeting-files')
+            .remove([filePath]);
+          // 스토리지 정리는 best-effort지만, 실패 시 orphan 파일이 쌓이므로 로깅한다.
+          if (rmError) {
+            console.error(
+              '[meeting-attachments] storage cleanup failed:',
+              filePath,
+              rmError.message
+            );
+          }
+        } catch (err) {
+          console.error('[meeting-attachments] storage cleanup threw:', filePath, err);
         }
       }
 

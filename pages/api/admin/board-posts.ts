@@ -159,10 +159,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return;
     }
 
-    // Best-effort: remove storage files
+    // Best-effort: remove storage files (orphan 방지용으로 실패 시 로깅)
     const paths = imageUrls.map(boardImagePath).filter((p): p is string => p !== null);
     if (paths.length > 0) {
-      await supabase.storage.from('board-images').remove(paths);
+      try {
+        const { error: rmError } = await supabase.storage.from('board-images').remove(paths);
+        if (rmError) {
+          console.error('[board-posts] storage cleanup failed:', rawId, rmError.message);
+        }
+      } catch (err) {
+        console.error('[board-posts] storage cleanup threw:', rawId, err);
+      }
     }
 
     res.status(200).json({ ok: true });

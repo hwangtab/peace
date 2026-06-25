@@ -39,6 +39,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .select('*')
         .single();
       if (error) {
+        if (error.code === '23503') {
+          res.status(404).json({ error: '회의를 찾을 수 없습니다.' });
+          return;
+        }
         res.status(500).json({ error: error.message });
         return;
       }

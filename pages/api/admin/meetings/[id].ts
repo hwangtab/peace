@@ -108,9 +108,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const paths = (attachments.data ?? []).map((row) => row.file_path as string).filter(Boolean);
     if (paths.length > 0) {
       try {
-        await supabase.storage.from('meeting-files').remove(paths);
-      } catch {
-        // 스토리지 정리는 best-effort — 실패해도 회의 삭제는 진행
+        const { error: rmError } = await supabase.storage.from('meeting-files').remove(paths);
+        // 스토리지 정리는 best-effort — 실패해도 회의 삭제는 진행하되 orphan 추적용으로 로깅한다.
+        if (rmError) {
+          console.error('[meetings] storage cleanup failed:', id, rmError.message);
+        }
+      } catch (err) {
+        console.error('[meetings] storage cleanup threw:', id, err);
       }
     }
 

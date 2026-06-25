@@ -214,12 +214,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return;
       }
 
-      // Best-effort storage cleanup (ignore errors)
+      // Best-effort storage cleanup (orphan 방지용으로 실패 시 로깅)
       if (imagePaths.length) {
         try {
-          await supabase.storage.from('board-images').remove(imagePaths);
-        } catch {
-          // ignore
+          const { error: rmError } = await supabase.storage.from('board-images').remove(imagePaths);
+          if (rmError) {
+            console.error('[boards] storage cleanup failed:', body.id, rmError.message);
+          }
+        } catch (err) {
+          console.error('[boards] storage cleanup threw:', body.id, err);
         }
       }
 
