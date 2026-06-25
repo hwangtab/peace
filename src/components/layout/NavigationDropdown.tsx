@@ -28,6 +28,7 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(
     const router = useRouter();
     const [internalOpen, setInternalOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
+    const buttonRef = useRef<HTMLButtonElement>(null);
 
     // Controlled vs Uncontrolled state
     const isControlled = isOpen !== undefined && onOpenChange !== undefined;
@@ -43,6 +44,13 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(
       },
       [isControlled, onOpenChange]
     );
+
+    // Escape 등으로 닫을 때 포커스를 트리거 버튼으로 되돌린다(WAI-ARIA disclosure 패턴).
+    // 메뉴 항목에 포커스가 가 있는 상태에서 닫으면 포커스가 body로 유실되기 때문.
+    const dismissAndFocus = React.useCallback(() => {
+      setOpen(false);
+      buttonRef.current?.focus();
+    }, [setOpen]);
 
     // Close when clicking outside
     useEffect(() => {
@@ -89,6 +97,7 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(
         onMouseLeave={() => setOpen(false)}
       >
         <button
+          ref={buttonRef}
           type="button"
           onClick={() => setOpen(!open)}
           onKeyDown={(e) => {
@@ -130,6 +139,7 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(
               currentPath={currentPath}
               router={router}
               onDismiss={() => setOpen(false)}
+              onEscape={dismissAndFocus}
               t={t}
             />
           )}
@@ -145,8 +155,9 @@ const DropdownMenu: React.FC<{
   currentPath: string;
   router: ReturnType<typeof useRouter>;
   onDismiss: () => void;
+  onEscape: () => void;
   t: (key: string) => string;
-}> = ({ items, currentPath, router, onDismiss, t }) => {
+}> = ({ items, currentPath, router, onDismiss, onEscape, t }) => {
   const isPresent = useIsPresent();
   return (
     <motion.div
@@ -154,6 +165,11 @@ const DropdownMenu: React.FC<{
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.2 }}
+      // 메뉴 항목(Link)에 포커스가 있을 때 Escape 키가 버블링되어 여기서 잡힌다 —
+      // 닫고 트리거 버튼으로 포커스를 되돌린다(키보드 접근성).
+      onKeyDown={(e) => {
+        if (e.key === 'Escape') onEscape();
+      }}
       // exit 애니메이션 중(isPresent=false)에는 aria-hidden='true' —
       // screen reader 가 사라지는 dropdown 을 읽지 않도록.
       aria-hidden={isPresent ? 'false' : 'true'}
