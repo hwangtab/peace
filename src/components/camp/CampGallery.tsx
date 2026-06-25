@@ -8,7 +8,7 @@ import Section from '../layout/Section';
 import SectionHeader from '../common/SectionHeader';
 import Link from 'next/link';
 import Button from '../common/Button';
-import ImageLightbox from '../common/ImageLightbox';
+import ImageLightbox, { LightboxImage } from '../common/ImageLightbox';
 import { photographersByYear, photographerNameKey } from '@/data/photographers';
 
 type PaddingLevel = 'none' | 'tight' | 'normal' | 'loose';
@@ -25,7 +25,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({
   paddingBottom = 'normal',
 }) => {
   const { t, i18n } = useTranslation();
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   if (!camp.images || camp.images.length === 0) {
     return null;
@@ -60,7 +60,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({
       <Container size="wide">
         <SectionHeader title={t('camp.section_gallery')} subtitle={creditNode} />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {camp.images.map((img, index) => (
+          {camp.images.map((img, idx) => (
             <motion.div
               key={img}
               initial={{ opacity: 0, y: 20 }}
@@ -69,24 +69,24 @@ const CampGallery: React.FC<CampGalleryProps> = ({
               transition={{ duration: 0.4 }}
               className="cursor-pointer overflow-hidden rounded-xl shadow-lg relative group aspect-video focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
               role="button"
-              aria-label={`${t('common.view_image', { defaultValue: 'View image' })} ${index + 1}`}
+              aria-label={`${t('common.view_image', { defaultValue: 'View image' })} ${idx + 1}`}
               tabIndex={0}
-              onClick={() => setSelectedImage(img)}
+              onClick={() => setSelectedIndex(idx)}
               onKeyDown={(e: React.KeyboardEvent) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                   e.preventDefault();
-                  setSelectedImage(img);
+                  setSelectedIndex(idx);
                 }
               }}
             >
               <Image
                 src={img}
-                alt={altForIndex(index)}
+                alt={altForIndex(idx)}
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
-                priority={index < 3}
-                {...(index >= 3 ? { loading: 'lazy' as const } : {})}
+                priority={idx < 3}
+                {...(idx >= 3 ? { loading: 'lazy' as const } : {})}
               />
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300" />
             </motion.div>
@@ -101,17 +101,17 @@ const CampGallery: React.FC<CampGalleryProps> = ({
       </Container>
 
       <ImageLightbox
-        image={
-          selectedImage
-            ? {
-                url: selectedImage,
-                alt: t('gallery.image_alt_template', { year: camp.year, title: camp.title }),
-                credit: creditText,
-              }
-            : null
-        }
-        show={!!selectedImage}
-        onClose={() => setSelectedImage(null)}
+        show={selectedIndex !== null}
+        onClose={() => setSelectedIndex(null)}
+        images={camp.images.map(
+          (img, idx): LightboxImage => ({
+            src: img,
+            alt: altForIndex(idx),
+            credit: creditText,
+          })
+        )}
+        index={selectedIndex ?? 0}
+        onIndexChange={setSelectedIndex}
       />
     </Section>
   );
