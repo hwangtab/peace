@@ -13,7 +13,9 @@ import SectionWave from '@/components/layout/SectionWave';
 const GangjeongStorySection = dynamic(() => import('@/components/camp/GangjeongStorySection'), {
   loading: () => <div className="h-96" />,
 });
-const GallerySection = dynamic(() => import('@/components/home/GallerySection'));
+const GallerySection = dynamic(() => import('@/components/home/GallerySection'), {
+  loading: () => <div className="h-[600px]" />,
+});
 import {
   getWebSiteSchema,
   getOrganizationSchema,

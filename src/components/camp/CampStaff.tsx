@@ -16,7 +16,7 @@ const CampStaff: React.FC<CampStaffProps> = ({ staff, collaborators }) => {
       <div className="space-y-3">
         {staff.map((section, index) => (
           <motion.div
-            key={section.role}
+            key={`${section.role}-${index}`}
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
