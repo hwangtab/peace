@@ -200,19 +200,26 @@ export default function AdminCollectionPage({
     let cancelled = false;
     const loadLocaleStatuses = async () => {
       setIsLoadingLocaleStatuses(true);
-      const params = new URLSearchParams({ localeStatusId: selected.id });
-      const response = await fetch(`/api/admin/archive/${config.collection}?${params.toString()}`);
-      const payload = (await response.json()) as {
-        locales?: AdminLocaleStatus[];
-        error?: string;
-      };
-      if (cancelled) return;
-      setIsLoadingLocaleStatuses(false);
-      if (!response.ok || !payload.locales) {
-        setLocaleStatuses([]);
-        return;
+      try {
+        const params = new URLSearchParams({ localeStatusId: selected.id });
+        const response = await fetch(
+          `/api/admin/archive/${config.collection}?${params.toString()}`
+        );
+        const payload = (await response.json()) as {
+          locales?: AdminLocaleStatus[];
+          error?: string;
+        };
+        if (cancelled) return;
+        if (!response.ok || !payload.locales) {
+          setLocaleStatuses([]);
+          return;
+        }
+        setLocaleStatuses(payload.locales);
+      } catch {
+        if (!cancelled) setLocaleStatuses([]);
+      } finally {
+        if (!cancelled) setIsLoadingLocaleStatuses(false);
       }
-      setLocaleStatuses(payload.locales);
     };
 
     void loadLocaleStatuses();

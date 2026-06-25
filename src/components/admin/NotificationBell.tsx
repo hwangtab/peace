@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { AnimatePresence, motion } from 'framer-motion';
 import classNames from 'classnames';
@@ -59,9 +59,19 @@ export default function NotificationBell() {
       setLoading(true);
       await fetchFeed();
       setLoading(false);
-      // 종을 여는 순간 읽음 처리 → 배지 즉시 0, 목록 강조는 유지
+      // 종을 여는 순간 읽음 처리 — 낙관적 업데이트 후 실패 시 롤백
+      const prevCount = unreadCount;
       setUnreadCount(0);
-      fetch('/api/admin/notifications/seen', { method: 'POST' }).catch(() => {});
+      try {
+        const res = await fetch('/api/admin/notifications/seen', { method: 'POST' });
+        if (!res.ok) {
+          // POST 실패 시 배지 원복
+          setUnreadCount(prevCount);
+        }
+      } catch {
+        // 네트워크 오류 시 원복
+        setUnreadCount(prevCount);
+      }
     }
   };
 
@@ -70,7 +80,8 @@ export default function NotificationBell() {
     router.push(href);
   };
 
-  const now = new Date();
+  // 드롭다운을 열 때 기준 시각을 고정해 상대시간 기준이 렌더마다 흔들리지 않도록 한다.
+  const now = useMemo(() => new Date(), [open]);
 
   return (
     <div ref={containerRef} className="relative">

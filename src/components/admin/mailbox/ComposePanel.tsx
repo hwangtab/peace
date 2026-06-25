@@ -130,8 +130,15 @@ export default function ComposePanel({ canEdit }: { canEdit: boolean }) {
       <ul className="max-h-48 divide-y divide-deep-ocean/10 overflow-y-auto rounded border border-deep-ocean/10 bg-white">
         {contacts.map((c) => (
           <li key={c.id} className="flex items-center gap-2 px-3 py-1.5 text-sm">
-            <input type="checkbox" checked={selected.has(c.id)} onChange={() => toggle(c.id)} />
-            <span className="text-deep-ocean">{c.name}</span>
+            <label className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                checked={selected.has(c.id)}
+                onChange={() => toggle(c.id)}
+                aria-label={`${c.name} 선택`}
+              />
+              <span className="text-deep-ocean">{c.name}</span>
+            </label>
             <span className="text-coastal-gray">{c.email}</span>
             <span className="ml-auto text-xs text-jeju-ocean">{GROUP_LABEL[c.group_type]}</span>
           </li>
@@ -178,6 +185,7 @@ export default function ComposePanel({ canEdit }: { canEdit: boolean }) {
         value={subject}
         onChange={(e) => setSubject(e.target.value)}
         placeholder="제목"
+        aria-label="메일 제목"
         className="w-full rounded border border-deep-ocean/15 px-3 py-2 text-sm"
       />
       <textarea
@@ -185,6 +193,7 @@ export default function ComposePanel({ canEdit }: { canEdit: boolean }) {
         onChange={(e) => setText(e.target.value)}
         rows={8}
         placeholder="본문 — {이름} 을 쓰면 받는 사람 이름으로 치환됩니다."
+        aria-label="메일 본문"
         className="w-full rounded border border-deep-ocean/15 px-3 py-2 text-sm"
       />
       {preview && (

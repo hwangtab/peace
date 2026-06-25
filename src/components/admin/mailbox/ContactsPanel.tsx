@@ -8,6 +8,7 @@ export default function ContactsPanel({ canEdit }: { canEdit: boolean }) {
   const [group, setGroup] = useState<'' | MailGroupType>('');
   const [cohort, setCohort] = useState('');
   const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
   const [busy, setBusy] = useState(false);
 
   const load = useCallback(async () => {
@@ -69,6 +70,7 @@ export default function ContactsPanel({ canEdit }: { canEdit: boolean }) {
   const importCsv = async (csv: string) => {
     setBusy(true);
     setError('');
+    setMessage('');
     const res = await fetch('/api/admin/mail-contacts/import', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -77,7 +79,9 @@ export default function ContactsPanel({ canEdit }: { canEdit: boolean }) {
     const data = await res.json();
     setBusy(false);
     if (!res.ok) return setError(data.error ?? '임포트 실패');
-    setError(`추가 ${data.inserted}건, 중복 ${data.skipped}건, 오류 ${data.errors?.length ?? 0}건`);
+    setMessage(
+      `추가 ${data.inserted}건, 중복 ${data.skipped}건, 오류 ${data.errors?.length ?? 0}건`
+    );
     await load();
   };
 
@@ -110,8 +114,11 @@ export default function ContactsPanel({ canEdit }: { canEdit: boolean }) {
           ))}
         </select>
       </div>
+      {message && (
+        <p className="rounded bg-jeju-ocean/10 px-3 py-2 text-sm text-jeju-ocean">{message}</p>
+      )}
       {error && (
-        <p className="rounded bg-jeju-ocean/10 px-3 py-2 text-sm text-jeju-ocean">{error}</p>
+        <p className="rounded bg-sunset-coral/10 px-3 py-2 text-sm text-sunset-coral">{error}</p>
       )}
       <ul className="divide-y divide-deep-ocean/10 rounded border border-deep-ocean/10 bg-white">
         {items.map((c) => (
@@ -173,12 +180,14 @@ function ContactAddForm({
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="이름"
+          aria-label="연락처 이름"
           className="rounded border border-deep-ocean/15 px-3 py-2 text-sm"
         />
         <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="이메일"
+          aria-label="연락처 이메일"
           className="rounded border border-deep-ocean/15 px-3 py-2 text-sm"
         />
         <select
