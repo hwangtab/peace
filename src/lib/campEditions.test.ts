@@ -1,12 +1,19 @@
 import {
   CAMP_EDITION_YEARS,
   campEditionLabel,
+  campEditionShortLabel,
   whitepaperSlug,
   parseWhitepaperYear,
 } from './campEditions';
 
 test('CAMP_EDITION_YEARS는 회차 연도를 내림차순으로 준다', () => {
   expect(CAMP_EDITION_YEARS).toEqual([2026, 2025, 2023]);
+});
+
+test('campEditionShortLabel은 제N회(연도) 짧은 형식', () => {
+  expect(campEditionShortLabel(2026)).toBe('제3회 (2026)');
+  expect(campEditionShortLabel(2030)).toBe('2030');
+  expect(campEditionShortLabel(null)).toBe('회차 미지정');
 });
 
 test('campEditionLabel은 매핑된 회차는 제N회로, 없으면 연도 폴백', () => {

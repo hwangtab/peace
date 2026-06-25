@@ -5,6 +5,7 @@ import {
   personalizeBody,
   parseManualRecipients,
 } from '@/lib/mailContactsForms';
+import { CAMP_EDITION_YEARS, campEditionShortLabel } from '@/lib/campEditions';
 import type { MailContact, MailGroupType } from '@/types/mailContacts';
 
 export default function ComposePanel({ canEdit }: { canEdit: boolean }) {
@@ -103,12 +104,18 @@ export default function ComposePanel({ canEdit }: { canEdit: boolean }) {
             </option>
           ))}
         </select>
-        <input
+        <select
           value={cohort}
           onChange={(e) => setCohort(e.target.value)}
-          placeholder="회차 (예: 2026)"
           className="rounded border border-deep-ocean/15 px-3 py-2 text-sm"
-        />
+        >
+          <option value="">전체 회차</option>
+          {CAMP_EDITION_YEARS.map((year) => (
+            <option key={year} value={String(year)}>
+              {campEditionShortLabel(year)}
+            </option>
+          ))}
+        </select>
         <button type="button" onClick={selectAll} className="text-xs text-jeju-ocean">
           전체선택
         </button>
