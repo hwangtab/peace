@@ -124,10 +124,10 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(
               hover(group-hover) 또는 열림(open) 시에만 텍스트 오른쪽에 fade-in. */}
           <IoChevronDown
             aria-hidden="true"
-            className={`pointer-events-none absolute left-full top-1/2 -translate-y-1/2 ml-0.5 w-3.5 h-3.5 transition-[transform,opacity] duration-200 ${
+            className={`pointer-events-none absolute left-full top-1/2 -translate-y-1/2 ml-0.5 w-3.5 h-3.5 transition-opacity duration-200 ${
               open
-                ? 'rotate-180 opacity-100'
-                : 'rotate-0 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100'
+                ? 'opacity-100'
+                : 'opacity-0 group-hover:opacity-100 group-focus-within:opacity-100'
             }`}
           />
         </button>

@@ -184,12 +184,7 @@ const MobileDropdown: React.FC<MobileDropdownProps> = React.memo(
           aria-controls={dropdownId}
         >
           {label}
-          <motion.span
-            animate={{ rotate: isOpen ? 180 : 0 }}
-            transition={{ duration: 0.2 }}
-            className="pointer-events-none"
-            aria-hidden="true"
-          >
+          <motion.span className="pointer-events-none" aria-hidden="true">
             ▼
           </motion.span>
         </button>
