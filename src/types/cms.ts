@@ -22,6 +22,7 @@ export interface AdminMember {
   active: boolean;
   created_at: string;
   updated_at: string;
+  notifications_seen_at?: string | null;
 }
 
 export interface ArchiveVideoRow {
