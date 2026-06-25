@@ -69,7 +69,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({
               transition={{ duration: 0.4 }}
               className="cursor-pointer overflow-hidden rounded-xl shadow-lg relative group aspect-video focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
               role="button"
-              aria-label={`${t('common.view_image') || 'View image'} ${index + 1}`}
+              aria-label={`${t('common.view_image', { defaultValue: 'View image' })} ${index + 1}`}
               tabIndex={0}
               onClick={() => setSelectedImage(img)}
               onKeyDown={(e: React.KeyboardEvent) => {

@@ -52,7 +52,7 @@ const CampVideos: React.FC<CampVideosProps> = ({
   paddingBottom = 'normal',
 }) => {
   const { t, i18n } = useTranslation();
-  const [videos, setVideos] = useState<VideoItem[]>([]);
+  const [videos, setVideos] = useState<VideoItem[] | null>(null);
   const [directors, setDirectors] = useState<DirectorRef[]>([]);
 
   useEffect(() => {
@@ -86,7 +86,13 @@ const CampVideos: React.FC<CampVideosProps> = ({
     };
   }, [i18n.language, year]);
 
-  if (videos.length === 0) return null;
+  // 로딩 완료 후 빈 배열이면 섹션 숨김
+  if (videos !== null && videos.length === 0) return null;
+
+  // 아직 로딩 중(null)이면 높이를 예약해 CLS 방지
+  if (videos === null) {
+    return <div className="min-h-[480px]" aria-hidden="true" />;
+  }
 
   const directorCredit =
     directors.length > 0 ? (

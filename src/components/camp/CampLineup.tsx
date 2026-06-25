@@ -41,7 +41,7 @@ const CampLineup: React.FC<CampLineupProps> = ({ participants, musicians, campYe
         const name = getParticipantName(participant);
         return (
           <motion.div
-            key={`plain-${index}`}
+            key={`${name}-${index}`}
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}

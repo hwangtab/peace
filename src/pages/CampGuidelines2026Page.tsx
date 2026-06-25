@@ -143,9 +143,9 @@ const CampGuidelines2026Page: React.FC = () => {
               <h2 className="typo-h3 mb-2">{g('report_title')}</h2>
               <p className="typo-body text-coastal-gray mb-4">{g('report_intro')}</p>
               <ul className="space-y-2">
-                {arr('report_items').map((item) => (
+                {arr('report_items').map((item, i) => (
                   <li
-                    key={item.slice(0, 60)}
+                    key={`${item.slice(0, 60)}-${i}`}
                     className="flex gap-2 typo-body text-coastal-gray leading-relaxed"
                   >
                     <span
