@@ -7,7 +7,7 @@ import PageLayout from '@/components/layout/PageLayout';
 import Section from '@/components/layout/Section';
 import Container from '@/components/layout/Container';
 import SectionHeader from '@/components/common/SectionHeader';
-import ImageLightbox from '@/components/common/ImageLightbox';
+import ImageLightbox, { LightboxImage } from '@/components/common/ImageLightbox';
 import { getVideos } from '@/api/videos';
 import { getMusicians } from '@/api/musicians';
 import dynamic from 'next/dynamic';
@@ -49,7 +49,7 @@ const AlbumAboutPage = ({
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [selectedMusician, setSelectedMusician] = useState<Musician | null>(null);
-  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
+  const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [images, setImages] = useState<GalleryImage[]>(initialImages);
   const fetchVideos = useCallback((locale: string) => getVideos(locale), []);
@@ -403,7 +403,9 @@ const AlbumAboutPage = ({
             albumVideos={albumVideos}
             albumPhotos={albumPhotos}
             onMusicianClick={handleMusicianClick}
-            onImageClick={setSelectedImage}
+            onImageClick={(img) =>
+              setSelectedPhotoIndex(albumPhotos.findIndex((p) => p.url === img.url))
+            }
           />
 
           {/* Credits Area - Now integrated for cleaner layout with proper spacing */}
@@ -430,17 +432,17 @@ const AlbumAboutPage = ({
         />
       )}
       <ImageLightbox
-        image={
-          selectedImage
-            ? {
-                url: selectedImage.url,
-                alt: t('image_alt_concert', { num: selectedImage.id }),
-              }
-            : null
-        }
-        show={!!selectedImage}
-        onClose={() => setSelectedImage(null)}
+        show={selectedPhotoIndex !== null}
+        onClose={() => setSelectedPhotoIndex(null)}
         maxHeight="85vh"
+        images={albumPhotos.map(
+          (img): LightboxImage => ({
+            src: img.url,
+            alt: t('image_alt_concert', { num: img.id }),
+          })
+        )}
+        index={selectedPhotoIndex ?? 0}
+        onIndexChange={setSelectedPhotoIndex}
       />
     </PageLayout>
   );

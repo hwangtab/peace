@@ -7,7 +7,7 @@ import Section from '@/components/layout/Section';
 import Container from '@/components/layout/Container';
 import Button from '@/components/common/Button';
 import GalleryImageItem from '@/components/gallery/GalleryImageItem';
-import ImageLightbox from '@/components/common/ImageLightbox';
+import ImageLightbox, { LightboxImage } from '@/components/common/ImageLightbox';
 import { GalleryImage } from '@/types/gallery';
 import { photographerNameKey, findPhotographer } from '@/data/photographers';
 import {
@@ -26,7 +26,7 @@ const FALLBACK_HERO = '/images-webp/camps/2026/kdh-DSC08498.webp';
 
 const PhotographerPage: React.FC<PhotographerPageProps> = ({ slug, images }) => {
   const { t, i18n } = useTranslation();
-  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const name = t(photographerNameKey(slug));
   const bio = t(`gallery.photographers.${slug}.bio`);
@@ -102,12 +102,16 @@ const PhotographerPage: React.FC<PhotographerPageProps> = ({ slug, images }) => 
             <p className="text-center text-coastal-gray py-16">{t('gallery.no_images')}</p>
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {images.map((image, index) => (
+              {images.map((image, idx) => (
                 <div
                   key={image.url}
                   className="aspect-square relative bg-ocean-sand rounded-lg overflow-hidden"
                 >
-                  <GalleryImageItem image={image} priority={index < 8} onClick={setSelectedImage} />
+                  <GalleryImageItem
+                    image={image}
+                    priority={idx < 8}
+                    onClick={(_img) => setSelectedIndex(idx)}
+                  />
                 </div>
               ))}
             </div>
@@ -122,18 +126,18 @@ const PhotographerPage: React.FC<PhotographerPageProps> = ({ slug, images }) => 
       </Section>
 
       <ImageLightbox
-        image={
-          selectedImage
-            ? {
-                url: selectedImage.url,
-                alt: selectedImage.description || credit,
-                credit,
-              }
-            : null
-        }
-        show={!!selectedImage}
-        onClose={() => setSelectedImage(null)}
+        show={selectedIndex !== null}
+        onClose={() => setSelectedIndex(null)}
         maxHeight="85vh"
+        images={images.map(
+          (img): LightboxImage => ({
+            src: img.url,
+            alt: img.description || credit,
+            credit,
+          })
+        )}
+        index={selectedIndex ?? 0}
+        onIndexChange={setSelectedIndex}
       />
     </PageLayout>
   );

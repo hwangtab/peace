@@ -12,7 +12,7 @@ import { getPhotographersForFilter, photographerNameKey } from '@/data/photograp
 import Section from '../layout/Section';
 import Container from '../layout/Container';
 import SectionHeader from '../common/SectionHeader';
-import ImageLightbox from '../common/ImageLightbox';
+import ImageLightbox, { LightboxImage } from '../common/ImageLightbox';
 
 interface GallerySectionProps {
   className?: string;
@@ -41,7 +41,7 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
     priorityFirstImages = true,
   }) => {
     const { t, i18n } = useTranslation();
-    const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
+    const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
     const { filteredImages, selectedFilter, setSelectedFilter } = useGalleryImages(
       initialImages,
@@ -85,12 +85,13 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
             key={selectedFilter}
             className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12"
           >
-            {filteredImages.map((image, index) => (
+            {filteredImages.map((image, idx) => (
               <AnimatedGalleryItem
                 key={image.url}
                 image={image}
-                priority={priorityFirstImages && index < GALLERY_CONFIG.PRIORITY_IMAGE_THRESHOLD}
-                onClick={setSelectedImage}
+                priority={priorityFirstImages && idx < GALLERY_CONFIG.PRIORITY_IMAGE_THRESHOLD}
+                imageIndex={idx}
+                onClick={setSelectedIndex}
               />
             ))}
           </div>
@@ -108,26 +109,26 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
         )}
 
         <ImageLightbox
-          image={
-            selectedImage
-              ? {
-                  url: selectedImage.url,
-                  alt:
-                    selectedImage.description ||
-                    (selectedImage.eventType === 'camp'
-                      ? t('gallery.alt_camp', { year: selectedImage.eventYear })
-                      : t('gallery.alt_album', { year: selectedImage.eventYear })),
-                  credit: selectedImage.photographer
-                    ? t('gallery.photo_credit', {
-                        name: t(photographerNameKey(selectedImage.photographer)),
-                      })
-                    : undefined,
-                }
-              : null
-          }
-          show={!!selectedImage}
-          onClose={() => setSelectedImage(null)}
+          show={selectedIndex !== null}
+          onClose={() => setSelectedIndex(null)}
           maxHeight="85vh"
+          images={filteredImages.map(
+            (img): LightboxImage => ({
+              src: img.url,
+              alt:
+                img.description ||
+                (img.eventType === 'camp'
+                  ? t('gallery.alt_camp', { year: img.eventYear })
+                  : t('gallery.alt_album', { year: img.eventYear })),
+              credit: img.photographer
+                ? t('gallery.photo_credit', {
+                    name: t(photographerNameKey(img.photographer)),
+                  })
+                : undefined,
+            })
+          )}
+          index={selectedIndex ?? 0}
+          onIndexChange={setSelectedIndex}
         />
       </Container>
     );
@@ -149,8 +150,9 @@ GallerySection.displayName = 'GallerySection';
 const AnimatedGalleryItem: React.FC<{
   image: GalleryImage;
   priority: boolean;
-  onClick: (image: GalleryImage) => void;
-}> = React.memo(({ image, priority, onClick }) => {
+  imageIndex: number;
+  onClick: (idx: number) => void;
+}> = React.memo(({ image, priority, imageIndex, onClick }) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -158,7 +160,7 @@ const AnimatedGalleryItem: React.FC<{
       transition={{ duration: 0.18 }}
       className="aspect-square relative bg-ocean-sand rounded-lg overflow-hidden"
     >
-      <GalleryImageItem image={image} priority={priority} onClick={onClick} />
+      <GalleryImageItem image={image} priority={priority} onClick={(_img) => onClick(imageIndex)} />
     </motion.div>
   );
 });
