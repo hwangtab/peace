@@ -129,37 +129,6 @@ const sections = [
   ),
   buildUpsertSql(
     {
-      table: 'archive_gallery_images',
-      columns: [
-        'public_id',
-        'locale',
-        'image_url',
-        'description',
-        'event_type',
-        'event_year',
-        'photographer',
-        'status',
-        'sort_order',
-        'published_at',
-      ],
-      recordTypes: [
-        'integer',
-        'text',
-        'text',
-        'text',
-        'text',
-        'integer',
-        'text',
-        'text',
-        'integer',
-        'timestamptz',
-      ],
-      conflict: ['public_id', 'locale'],
-    },
-    rows.gallery
-  ),
-  buildUpsertSql(
-    {
       table: 'archive_press_items',
       columns: [
         'public_id',

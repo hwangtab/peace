@@ -2,8 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { buildArchiveSeedRows } from '../seed-admin-archive';
 import { LOCALES, type Locale } from '../../src/constants/locales';
-import { readJsonArray, loadGalleryImages } from '../../src/utils/dataLoader';
-import type { GalleryImage } from '../../src/types/gallery';
+import { readJsonArray } from '../../src/utils/dataLoader';
 import type { PressItem } from '../../src/types/press';
 import type { VideoItem } from '../../src/types/video';
 
@@ -31,15 +30,11 @@ test('builds archive seed rows for every supported locale', () => {
     (total, locale) => total + directCount<PressItem>(locale, 'press.json'),
     0
   );
-  const galleryCount = loadGalleryImages<GalleryImage>().length;
-
   expect(rows.videos).toHaveLength(expectedVideoCount);
   expect(rows.press).toHaveLength(expectedPressCount);
-  expect(rows.gallery).toHaveLength(galleryCount * LOCALES.length);
   expect(rows.contentRows).toHaveLength(LOCALES.length * 3 * 9);
   expect(uniquePairs(rows.videos).size).toBe(rows.videos.length);
   expect(uniquePairs(rows.press).size).toBe(rows.press.length);
-  expect(uniquePairs(rows.gallery).size).toBe(rows.gallery.length);
   expect(rows.videos.every((row) => typeof row.location === 'string')).toBe(true);
 });
 
