@@ -8,6 +8,7 @@ import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import {
   CAMP_EDITION_YEARS,
   campEditionLabel,
+  campEditionShortLabel,
   whitepaperSlug,
   parseWhitepaperYear,
 } from '@/lib/campEditions';
@@ -106,7 +107,7 @@ function WhitepaperEditor({
         >
           {years.map((year) => (
             <option key={year} value={year}>
-              {campEditionLabel(year)}
+              {campEditionShortLabel(year)}
             </option>
           ))}
         </select>
@@ -114,7 +115,8 @@ function WhitepaperEditor({
 
       <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h1 className="font-display text-3xl font-bold">{document?.title || defaultTitle}</h1>
+          {/* 회차는 위 드롭다운, 정식 제목은 본문(md)에 있으므로 페이지 제목은 일반 명칭만. */}
+          <h1 className="font-display text-3xl font-bold">운영 백서</h1>
           <p className="mt-2 max-w-2xl text-coastal-gray">
             관리자만 열람할 수 있는 비공개 문서입니다. 본문은 공개 저장소에 저장되지 않습니다.
           </p>
