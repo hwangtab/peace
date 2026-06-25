@@ -4,6 +4,8 @@ import AdminLayout from '@/components/admin/AdminLayout';
 import { getAdminSession, canEditContent, redirectToAdminLogin } from '@/lib/adminAuth';
 import { createSupabaseServiceClient } from '@/lib/supabaseService';
 import type { AdminMember } from '@/types/cms';
+import type { GalleryImage } from '@/types/gallery';
+import { loadGalleryImages } from '@/utils/dataLoader';
 
 interface RecentLog {
   id: string;
@@ -367,9 +369,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const countHead = (table: string) =>
     supabase.from(table).select('id', { count: 'exact', head: true });
 
+  // 갤러리는 정적 json(SSOT)이라 archive_gallery_images 테이블이 없다 — 정적 수를 센다.
+  const galleryCount = loadGalleryImages<GalleryImage>().length;
+
   const [
     videos,
-    gallery,
     press,
     history,
     members,
@@ -385,7 +389,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     recentMailRes,
   ] = await Promise.all([
     countHead('archive_videos'),
-    countHead('archive_gallery_images'),
     countHead('archive_press_items'),
     countHead('cms_change_logs'),
     countHead('profiles'),
@@ -466,7 +469,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       canEdit,
       counts: {
         videos: videos.count ?? 0,
-        gallery: gallery.count ?? 0,
+        gallery: galleryCount,
         press: press.count ?? 0,
         history: history.count ?? 0,
         members: members.count ?? 0,
