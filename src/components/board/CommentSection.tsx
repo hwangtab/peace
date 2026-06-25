@@ -294,7 +294,7 @@ export default function CommentSection({
                       onChange={(e) => setEditBody(e.target.value)}
                       rows={3}
                       maxLength={1000}
-                      className="w-full rounded-xl border border-seafoam p-3 text-sm text-deep-ocean focus:border-jeju-ocean focus:outline-none"
+                      className="w-full rounded-xl border border-seafoam p-3 text-sm text-deep-ocean focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean"
                     />
                     {editError && <p className="mt-1 text-xs text-red-500">{editError}</p>}
                     <div className="mt-2 flex justify-end gap-2">
@@ -349,7 +349,7 @@ export default function CommentSection({
                 placeholder={t('comment.placeholder')}
                 rows={3}
                 maxLength={1000}
-                className="w-full rounded-xl border border-seafoam p-3 text-sm text-deep-ocean placeholder-coastal-gray focus:border-jeju-ocean focus:outline-none"
+                className="w-full rounded-xl border border-seafoam p-3 text-sm text-deep-ocean placeholder-coastal-gray focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean"
               />
               {validationError && <p className="mt-1 text-xs text-red-500">{validationError}</p>}
               <div className="mt-2 flex justify-end">

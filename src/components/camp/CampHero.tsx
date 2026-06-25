@@ -51,9 +51,10 @@ const CampHero: React.FC<CampHeroProps> = ({
       }`}
     >
       {backgroundImage && (
+        // 장식용 배경 이미지 — 제목·부제가 텍스트로 의미를 전달하므로 빈 alt로 SR에서 숨김
         <Image
           src={backgroundImage}
-          alt={t('camp.hero_alt', { year: camp.year, defaultValue: camp.title })}
+          alt=""
           fill
           sizes="100vw"
           className="absolute inset-0 w-full h-full object-cover"

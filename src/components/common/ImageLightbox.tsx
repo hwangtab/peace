@@ -154,9 +154,13 @@ const ImageLightbox: React.FC<ImageLightboxProps> = ({
                   </button>
                 )}
 
-                {/* 인덱스 표시 (갤러리 모드) */}
+                {/* 인덱스 표시 (갤러리 모드) — 이전/다음 이동을 스크린리더에 알림 */}
                 {isGalleryMode && images && images.length > 1 && (
-                  <p className="absolute top-4 left-1/2 -translate-x-1/2 text-xs text-white/70 bg-black/30 backdrop-blur-sm rounded-full px-3 py-1 pointer-events-none select-none">
+                  <p
+                    aria-live="polite"
+                    aria-atomic="true"
+                    className="absolute top-4 left-1/2 -translate-x-1/2 text-xs text-white/70 bg-black/30 backdrop-blur-sm rounded-full px-3 py-1 pointer-events-none select-none"
+                  >
                     {index + 1} / {images.length}
                   </p>
                 )}

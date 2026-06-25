@@ -46,6 +46,13 @@ const OG_LOCALE_MAP: Record<string, string> = {
   id: 'id_ID',
 };
 
+// hreflang 값 오버라이드: 스크립트 서브태그(zh-Hans/zh-Hant)는 일부 크롤러가
+// 인식하지 못하므로 BCP47 지역 코드(zh-CN/zh-TW)로 노출한다. URL 경로는 그대로다.
+const HREFLANG_OVERRIDE: Record<string, string> = {
+  'zh-Hans': 'zh-CN',
+  'zh-Hant': 'zh-TW',
+};
+
 const SEOHelmet: React.FC<SEOHelmetProps> = ({
   title,
   description,
@@ -122,6 +129,7 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
 
   const alternateLinks = LOCALES.map((loc) => ({
     locale: loc,
+    hrefLang: HREFLANG_OVERRIDE[loc] ?? loc,
     href: getFullUrl(loc === DEFAULT_LOCALE ? pathWithoutLocale : `/${loc}${pathWithoutLocale}`),
   }));
 
@@ -136,7 +144,7 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
         {/* Canonical URL */}
         <link rel="canonical" href={fullCanonicalUrl} />
         {alternateLinks.map((link) => (
-          <link key={link.locale} rel="alternate" hrefLang={link.locale} href={link.href} />
+          <link key={link.locale} rel="alternate" hrefLang={link.hrefLang} href={link.href} />
         ))}
         <link rel="alternate" hrefLang="x-default" href={getFullUrl(pathWithoutLocale)} />
 

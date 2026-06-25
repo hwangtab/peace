@@ -87,6 +87,7 @@ const CampPromote2026Page: React.FC<CampPromote2026PageProps> = ({ promoKo, prom
       ogImage={getFullUrl(POSTER_OG)}
       ogImageAlt={g('hero_title')}
       breadcrumbs={breadcrumbs}
+      noIndex
       disableTopPadding={true}
       disableBottomPadding={true}
     >
