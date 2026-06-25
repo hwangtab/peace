@@ -3,7 +3,8 @@
     "title": "Boards",
     "posts": "posts",
     "writeCta": "Write",
-    "loginToWrite": "Log in to write"
+    "loginToWrite": "Log in to write",
+    "metaDescription": "A community space where Gangjeong Peace & Music Camp participants share reviews and stories."
   },
   "list": {
     "empty": "No posts yet.",

@@ -15,6 +15,7 @@ import type { Board, PostWithMeta } from '@/types/board';
 import PostCard from '@/components/board/PostCard';
 import { useOptionalAuth } from '@/components/auth/AuthProvider';
 import PageHero from '@/components/common/PageHero';
+import SEOHelmet from '@/components/shared/SEOHelmet';
 
 // 게시판 히어로 배경은 관리자에서 게시판별로 지정한다(boards.hero_image_url).
 // 비어 있으면 아래 폴백 이미지를 쓴다.
@@ -77,6 +78,7 @@ export default function BoardSlugPage({ board, posts, hasMore, offset, total, q,
 
   return (
     <>
+      <SEOHelmet title={board.name} description={board.description || t('index.metaDescription')} />
       <PageHero
         compact
         title={board.name}

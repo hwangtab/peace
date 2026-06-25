@@ -21,6 +21,7 @@ import { useOptionalAuth } from '@/components/auth/AuthProvider';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import PageHero from '@/components/common/PageHero';
+import SEOHelmet from '@/components/shared/SEOHelmet';
 import ImageLightbox, { LightboxImage } from '@/components/common/ImageLightbox';
 
 const BOARD_POST_HERO = '/images-webp/camps/2025/DSC00700.webp';
@@ -78,8 +79,18 @@ export default function PostDetailPage({ post, slug, comments, commentsHasMore }
 
   const isHidden = post.status === 'hidden';
 
+  // 본문 앞부분을 메타 설명으로(줄바꿈 정리 후 ~155자). 숨김 글은 검색 비노출.
+  const metaDescription = post.body.replace(/\s+/g, ' ').trim().slice(0, 155);
+
   return (
     <>
+      <SEOHelmet
+        title={post.title}
+        description={metaDescription}
+        ogType="article"
+        datePublished={post.created_at}
+        noIndex={isHidden}
+      />
       <PageHero compact title={post.title} backgroundImage={BOARD_POST_HERO} />
       <main className="mx-auto max-w-2xl px-4 py-12">
         {/* Hidden-post notice */}

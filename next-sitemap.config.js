@@ -4,6 +4,23 @@ const { execFileSync } = require('child_process');
 const { i18n } = require('./next-i18next.config');
 
 const siteUrl = 'https://peaceandmusic.net';
+
+// 관리자·인증 표면: 사이트맵 제외 + robots disallow 공통 소스.
+// 기본 경로와 로케일 프리픽스(/en/admin 등) 변형을 함께 차단한다.
+const AUTH_BASE_PATHS = [
+  '/admin',
+  '/login',
+  '/signup',
+  '/account',
+  '/reset-password',
+  '/update-password',
+];
+// 사이트맵 exclude용 glob: 기본·하위·로케일 변형 모두 포함
+const AUTH_EXCLUDE = AUTH_BASE_PATHS.flatMap((p) => [p, `${p}/**`, `/*${p}`, `/*${p}/**`]);
+// robots disallow용: 디렉터리 전체 차단(하위 경로 포함). 로케일 프리픽스는
+// 봇이 prefix 매칭하므로 기본 경로만으로 충분하나 명시적으로 와일드카드도 추가.
+const AUTH_DISALLOW = AUTH_BASE_PATHS.flatMap((p) => [p, `/*${p}`]);
+
 const locales = i18n.locales;
 const defaultLocale = i18n.defaultLocale;
 const rootDir = __dirname;
@@ -204,6 +221,8 @@ module.exports = {
   sitemapSize: 7000,
   // /camps/2026/guide(뮤지션), /camps/2026/staff(스태프), /camps/2026/survey(설문)
   // — 전용 비공개 안내/입력 표면(검색 차단). 사이트맵 제외.
+  // admin/* 및 인증 표면(login·signup·account 등) — 비공개 관리/계정 화면.
+  // 검색엔진에 노출되면 안 되므로 사이트맵 제외 + robots disallow(아래) 동시 적용.
   exclude: [
     '/404',
     '/*/404',
@@ -215,25 +234,26 @@ module.exports = {
     '/*/camps/2026/staff',
     '/camps/2026/survey',
     '/*/camps/2026/survey',
+    ...AUTH_EXCLUDE,
   ],
   additionalSitemaps: [`${siteUrl}/image-sitemap.xml`, `${siteUrl}/video-sitemap.xml`],
   robotsTxtOptions: {
     additionalSitemaps: [`${siteUrl}/image-sitemap.xml`, `${siteUrl}/video-sitemap.xml`],
     policies: [
-      { userAgent: 'Googlebot', allow: '/' },
-      { userAgent: 'Bingbot', allow: '/' },
-      { userAgent: 'Yandex', allow: '/' },
-      { userAgent: 'Yeti', allow: '/' },
+      { userAgent: 'Googlebot', allow: '/', disallow: AUTH_DISALLOW },
+      { userAgent: 'Bingbot', allow: '/', disallow: AUTH_DISALLOW },
+      { userAgent: 'Yandex', allow: '/', disallow: AUTH_DISALLOW },
+      { userAgent: 'Yeti', allow: '/', disallow: AUTH_DISALLOW },
       // AI crawlers
-      { userAgent: 'GPTBot', allow: '/' },
-      { userAgent: 'ChatGPT-User', allow: '/' },
-      { userAgent: 'Google-Extended', allow: '/' },
-      { userAgent: 'CCBot', allow: '/' },
-      { userAgent: 'anthropic-ai', allow: '/' },
-      { userAgent: 'ClaudeBot', allow: '/' },
-      { userAgent: 'PerplexityBot', allow: '/' },
-      { userAgent: 'Bytespider', allow: '/' },
-      { userAgent: '*', allow: '/' },
+      { userAgent: 'GPTBot', allow: '/', disallow: AUTH_DISALLOW },
+      { userAgent: 'ChatGPT-User', allow: '/', disallow: AUTH_DISALLOW },
+      { userAgent: 'Google-Extended', allow: '/', disallow: AUTH_DISALLOW },
+      { userAgent: 'CCBot', allow: '/', disallow: AUTH_DISALLOW },
+      { userAgent: 'anthropic-ai', allow: '/', disallow: AUTH_DISALLOW },
+      { userAgent: 'ClaudeBot', allow: '/', disallow: AUTH_DISALLOW },
+      { userAgent: 'PerplexityBot', allow: '/', disallow: AUTH_DISALLOW },
+      { userAgent: 'Bytespider', allow: '/', disallow: AUTH_DISALLOW },
+      { userAgent: '*', allow: '/', disallow: AUTH_DISALLOW },
     ],
   },
   transform: async (config, path) => {

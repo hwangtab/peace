@@ -9,7 +9,6 @@ import {
 } from 'react';
 import type { ReactNode } from 'react';
 import type { Session, User } from '@supabase/supabase-js';
-import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { getSupabasePublicConfig } from '@/lib/supabaseConfig';
 import type { MemberProfile } from '@/types/member';
 import type { AdminRole } from '@/types/cms';
@@ -26,6 +25,15 @@ interface AuthContextValue {
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null);
+
+// Supabase 브라우저 클라이언트(@supabase/supabase-js, realtime-js 포함 ~수백KB)를
+// 초기 번들에서 분리한다. AuthProvider는 전체 공개 페이지를 감싸지만 인증 로직은
+// 마운트 후(클라이언트)에만 필요하므로, 클라이언트 생성을 동적 import로 지연하여
+// LCP를 막는 메인 청크에서 Supabase 코드를 빼낸다. SSR/children 렌더에는 영향 없음.
+async function loadBrowserClient() {
+  const { createSupabaseBrowserClient } = await import('@/lib/supabaseBrowser');
+  return createSupabaseBrowserClient();
+}
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const isSupabaseConfigured = getSupabasePublicConfig() !== null;
@@ -66,7 +74,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       return;
     }
     try {
-      const supabase = createSupabaseBrowserClient();
+      const supabase = await loadBrowserClient();
       const { data } = await supabase
         .from('profiles')
         .select('id, nickname, created_at, updated_at')
@@ -84,41 +92,46 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (!isSupabaseConfigured) return;
 
     let active = true;
-    let supabase;
-    try {
-      supabase = createSupabaseBrowserClient();
-    } catch {
-      void Promise.resolve().then(() => {
+    let subscription: { unsubscribe: () => void } | null = null;
+
+    // Supabase 클라이언트를 동적 import로 지연 로드한다(초기 번들 분리).
+    void (async () => {
+      let supabase;
+      try {
+        supabase = await loadBrowserClient();
+      } catch {
+        if (active) setLoading(false);
+        return;
+      }
+      if (!active) return;
+
+      void supabase.auth.getSession().then(async ({ data }) => {
+        if (!active) return;
+        const nextUser = data.session?.user ?? null;
+        setUser(nextUser);
+        // adminRole까지 확정한 뒤 loading을 끝낸다. void로 두면 loading=false 순간
+        // isAdmin이 잠깐 false로 노출돼 관리자 진입 카드·플로팅 버튼이 깜빡인다.
+        await Promise.all([loadProfile(nextUser), loadAdminRole(nextUser)]);
         if (active) setLoading(false);
       });
-      return () => {
-        active = false;
-      };
-    }
 
-    void supabase.auth.getSession().then(async ({ data }) => {
-      if (!active) return;
-      const nextUser = data.session?.user ?? null;
-      setUser(nextUser);
-      // adminRole까지 확정한 뒤 loading을 끝낸다. void로 두면 loading=false 순간
-      // isAdmin이 잠깐 false로 노출돼 관리자 진입 카드·플로팅 버튼이 깜빡인다.
-      await Promise.all([loadProfile(nextUser), loadAdminRole(nextUser)]);
-      setLoading(false);
-    });
-
-    const { data: sub } = supabase.auth.onAuthStateChange(
-      (_event: string, session: Session | null) => {
-        if (!active) return;
-        const nextUser = session?.user ?? null;
-        setUser(nextUser);
-        void loadProfile(nextUser);
-        void loadAdminRole(nextUser);
-      }
-    );
+      const { data: sub } = supabase.auth.onAuthStateChange(
+        (_event: string, session: Session | null) => {
+          if (!active) return;
+          const nextUser = session?.user ?? null;
+          setUser(nextUser);
+          void loadProfile(nextUser);
+          void loadAdminRole(nextUser);
+        }
+      );
+      subscription = sub.subscription;
+      // import 대기 중 언마운트된 경우 즉시 구독 해제(클린업이 이미 실행됨).
+      if (!active) subscription.unsubscribe();
+    })();
 
     return () => {
       active = false;
-      sub.subscription.unsubscribe();
+      subscription?.unsubscribe();
     };
   }, [isSupabaseConfigured, loadProfile, loadAdminRole]);
 
@@ -128,7 +141,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signOut = useCallback(async () => {
     try {
-      const supabase = createSupabaseBrowserClient();
+      const supabase = await loadBrowserClient();
       await supabase.auth.signOut();
     } catch {
       // ignore — clear local state regardless below
