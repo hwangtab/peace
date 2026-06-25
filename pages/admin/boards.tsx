@@ -154,7 +154,9 @@ export default function AdminBoardsPage({
   const isDirty = (board: Board) => {
     const e = edits[board.id];
     if (!e) return false;
-    return (Object.keys(e) as (keyof typeof e)[]).some((k) => e[k] !== board[k]);
+    // null·undefined·빈 문자열은 같은 값으로 취급해(hero_image_url 등) 오탐 dirty를 막는다.
+    const norm = (v: unknown) => (v === null || v === undefined || v === '' ? '' : v);
+    return (Object.keys(e) as (keyof typeof e)[]).some((k) => norm(e[k]) !== norm(board[k]));
   };
 
   return (

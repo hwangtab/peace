@@ -75,6 +75,38 @@ export const isMeetingStatus = (v: string): v is MeetingStatus =>
 export const isAgendaStatus = (v: string): v is AgendaStatus =>
   (AGENDA_STATUSES as string[]).includes(v);
 
+// 첨부 파일 제약 — 서버(meeting-attachments API)와 클라이언트(AttachmentSection)가 공유한다.
+export const ATTACHMENT_ALLOWED_EXT = [
+  'pdf',
+  'png',
+  'jpg',
+  'jpeg',
+  'webp',
+  'gif',
+  'doc',
+  'docx',
+  'xls',
+  'xlsx',
+  'ppt',
+  'pptx',
+  'hwp',
+  'hwpx',
+  'txt',
+  'md',
+] as const;
+
+export const ATTACHMENT_MAX_SIZE = 20 * 1024 * 1024; // 20MB
+
+export const getFileExt = (fileName: string): string =>
+  fileName
+    .split('.')
+    .pop()
+    ?.toLowerCase()
+    .replace(/[^a-z0-9]/g, '') || '';
+
+export const isAllowedAttachmentExt = (fileName: string): boolean =>
+  (ATTACHMENT_ALLOWED_EXT as readonly string[]).includes(getFileExt(fileName));
+
 export const MEETING_STATUS_LABELS: Record<MeetingStatus, string> = {
   scheduled: '예정',
   completed: '완료',

@@ -578,7 +578,8 @@ export default function AdminBoardPostsPage({ boards, boardCounts, member }: Pag
                           type="button"
                           onClick={() => toggleExpandPost(post.id)}
                           className="mt-0.5 text-xs text-coastal-gray hover:text-deep-ocean focus-visible:outline-none"
-                          aria-label="내용 펼치기"
+                          aria-expanded={expanded}
+                          aria-label={expanded ? '내용 접기' : '내용 펼치기'}
                         >
                           {expanded ? '▲' : '▼'}
                         </button>
@@ -792,7 +793,8 @@ export default function AdminBoardPostsPage({ boards, boardCounts, member }: Pag
                           type="button"
                           onClick={() => toggleExpandComment(comment.id)}
                           className="mt-0.5 text-xs text-coastal-gray hover:text-deep-ocean focus-visible:outline-none"
-                          aria-label="내용 펼치기"
+                          aria-expanded={expanded}
+                          aria-label={expanded ? '내용 접기' : '내용 펼치기'}
                         >
                           {expanded ? '▲' : '▼'}
                         </button>

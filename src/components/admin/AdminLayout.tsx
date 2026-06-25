@@ -79,6 +79,7 @@ export default function AdminLayout({ title, member, children }: AdminLayoutProp
                   <Link
                     key={item.href}
                     href={item.href}
+                    aria-current={active ? 'page' : undefined}
                     className={classNames(
                       'whitespace-nowrap rounded px-3 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean',
                       active
