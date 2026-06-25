@@ -409,7 +409,7 @@ const CampSurvey2026Page: React.FC = () => {
 
             {/* honeypot — 화면에 보이지 않음. 봇 차단용. */}
             <div className="hidden" aria-hidden="true">
-              <label htmlFor="website">홈페이지 (입력하지 마세요)</label>
+              <label htmlFor="website">Website</label>
               <input
                 id="website"
                 type="text"

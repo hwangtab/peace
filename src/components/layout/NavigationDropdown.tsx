@@ -172,7 +172,7 @@ const DropdownMenu: React.FC<{
       }}
       // exit 애니메이션 중(isPresent=false)에는 aria-hidden='true' —
       // screen reader 가 사라지는 dropdown 을 읽지 않도록.
-      aria-hidden={isPresent ? 'false' : 'true'}
+      aria-hidden={!isPresent}
       // top-full 바로 아래 붙이되 갭(pt-2)을 컨테이너 안에 두어 버튼↔메뉴 hover 영역을
       // 끊김 없이 잇는다 — 갭에서 마우스가 빠져 드롭다운이 닫히는 깜빡임 방지.
       className="absolute top-full left-0 pt-2 z-50 text-left"

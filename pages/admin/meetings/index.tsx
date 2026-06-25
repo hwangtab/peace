@@ -1,5 +1,6 @@
 import type { GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { getAdminSession, canEditContent, redirectToAdminLogin } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
@@ -45,6 +46,7 @@ export default function AdminMeetingsPage({
   selectedYear,
   initialError = '',
 }: AdminMeetingsPageProps) {
+  const router = useRouter();
   const canEdit = canEditContent(member);
   const groups = groupByEdition(meetings);
 
@@ -63,7 +65,7 @@ export default function AdminMeetingsPage({
             value={selectedYear}
             onChange={(e) => {
               const v = e.target.value;
-              window.location.href = v ? `/admin/meetings?year=${v}` : '/admin/meetings';
+              void router.push(v ? `/admin/meetings?year=${v}` : '/admin/meetings');
             }}
             className="rounded border border-deep-ocean/15 bg-white px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
           >

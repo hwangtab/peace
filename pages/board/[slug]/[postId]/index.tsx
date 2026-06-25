@@ -21,7 +21,7 @@ import { useOptionalAuth } from '@/components/auth/AuthProvider';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import PageHero from '@/components/common/PageHero';
-import ImageLightbox from '@/components/common/ImageLightbox';
+import ImageLightbox, { LightboxImage } from '@/components/common/ImageLightbox';
 
 const BOARD_POST_HERO = '/images-webp/camps/2025/DSC00700.webp';
 
@@ -36,7 +36,7 @@ export default function PostDetailPage({ post, slug, comments, commentsHasMore }
   const { t } = useTranslation('board');
   const router = useRouter();
   const auth = useOptionalAuth();
-  const isAuthor = auth?.user?.id === post.author_id;
+  const isAuthor = !auth?.loading && auth?.user?.id === post.author_id;
 
   const dateStr = formatBoardDate(post.created_at);
 
@@ -175,7 +175,10 @@ export default function PostDetailPage({ post, slug, comments, commentsHasMore }
       </main>
 
       <ImageLightbox
-        image={lightbox ? { url: lightbox, alt: post.title } : null}
+        show={lightbox !== null}
+        images={lightbox ? ([{ src: lightbox, alt: post.title }] satisfies LightboxImage[]) : []}
+        index={0}
+        onIndexChange={() => {}}
         onClose={() => setLightbox(null)}
       />
     </>

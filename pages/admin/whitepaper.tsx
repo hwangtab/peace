@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import type { GetServerSidePropsContext } from 'next';
 import AdminLayout from '@/components/admin/AdminLayout';
 import MarkdownView from '@/components/admin/MarkdownView';
@@ -32,6 +33,7 @@ function WhitepaperEditor({
   member,
   initialError = '',
 }: WhitepaperPageProps) {
+  const router = useRouter();
   const canEdit = member.role !== 'viewer';
   const defaultTitle = `${campEditionLabel(selectedYear)} 운영 백서`;
   const [document, setDocument] = useState(initialDocument);
@@ -98,7 +100,7 @@ function WhitepaperEditor({
           id="wp-year"
           value={selectedYear}
           onChange={(e) => {
-            window.location.href = `/admin/whitepaper?year=${e.target.value}`;
+            void router.push(`/admin/whitepaper?year=${e.target.value}`);
           }}
           className="rounded border border-deep-ocean/15 bg-white px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
         >
