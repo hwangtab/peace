@@ -44,7 +44,9 @@ export const useAudioPlayer = ({
   const isLoadedRef = useRef(false);
   const lastProgressUpdateRef = useRef(0);
   const onEndedRef = useRef(onEnded);
-  onEndedRef.current = onEnded;
+  useEffect(() => {
+    onEndedRef.current = onEnded;
+  }, [onEnded]);
 
   // audioUrl 변경 시 기존 인스턴스 정리 후 새로 생성 (메모리 누수 방지)
   useEffect(() => {

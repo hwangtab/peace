@@ -88,6 +88,7 @@ export default function AdminBoardPostsPage({ boards, boardCounts, member }: Pag
   const [expandedCommentIds, setExpandedCommentIds] = useState<Set<string>>(new Set());
 
   // Busy tracking for row-level actions
+  const [bulkBusy, setBulkBusy] = useState(false);
   const [busyIds, setBusyIds] = useState<Set<string>>(new Set());
   const setBusy = (id: string, on: boolean) =>
     setBusyIds((prev) => {
@@ -269,43 +270,68 @@ export default function AdminBoardPostsPage({ boards, boardCounts, member }: Pag
 
   // ── Bulk status ───────────────────────────────────────────────────────────
   const bulkUpdatePosts = async (status: 'published' | 'hidden') => {
-    if (selectedPostIds.size === 0) return;
+    if (selectedPostIds.size === 0 || bulkBusy) return;
+    setBulkBusy(true);
     setMessage('');
     setError('');
     const ids = Array.from(selectedPostIds);
-    const res = await fetch('/api/admin/board-posts', {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ids, status }),
-    });
-    if (!res.ok) {
-      const j = (await res.json()) as { error?: string };
-      setError(j.error ?? '일괄 처리에 실패했습니다.');
-      return;
+    try {
+      const res = await fetch('/api/admin/board-posts', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ids, status }),
+      });
+      if (!res.ok) {
+        const j = (await res.json()) as { error?: string };
+        setError(j.error ?? '일괄 처리에 실패했습니다.');
+        return;
+      }
+      const j = (await res.json()) as { updated?: number; missing?: string[] };
+      const updated = j.updated ?? ids.length;
+      const verb = status === 'hidden' ? '숨겼습니다' : '공개했습니다';
+      if (j.missing && j.missing.length > 0) {
+        setError(`${j.missing.length}개 게시글은 찾을 수 없어 건너뛰었습니다.`);
+      }
+      setMessage(`${updated}개 게시글을 ${verb}.`);
+      // 서버 기준으로 현재 페이지를 다시 불러와 목록·total·선택 상태를 동기화한다.
+      await fetchPosts(postsOffset, postsQ, postsBoardId, postsStatus);
+    } catch {
+      setError('일괄 처리에 실패했습니다.');
+    } finally {
+      setBulkBusy(false);
     }
-    setMessage(`${ids.length}개 게시글을 ${status === 'hidden' ? '숨겼습니다' : '공개했습니다'}.`);
-    setPosts((prev) => prev.map((p) => (selectedPostIds.has(p.id) ? { ...p, status } : p)));
-    setSelectedPostIds(new Set());
   };
 
   const bulkUpdateComments = async (status: 'published' | 'hidden') => {
-    if (selectedCommentIds.size === 0) return;
+    if (selectedCommentIds.size === 0 || bulkBusy) return;
+    setBulkBusy(true);
     setMessage('');
     setError('');
     const ids = Array.from(selectedCommentIds);
-    const res = await fetch('/api/admin/board-comments', {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ids, status }),
-    });
-    if (!res.ok) {
-      const j = (await res.json()) as { error?: string };
-      setError(j.error ?? '일괄 처리에 실패했습니다.');
-      return;
+    try {
+      const res = await fetch('/api/admin/board-comments', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ids, status }),
+      });
+      if (!res.ok) {
+        const j = (await res.json()) as { error?: string };
+        setError(j.error ?? '일괄 처리에 실패했습니다.');
+        return;
+      }
+      const j = (await res.json()) as { updated?: number; missing?: string[] };
+      const updated = j.updated ?? ids.length;
+      const verb = status === 'hidden' ? '숨겼습니다' : '공개했습니다';
+      if (j.missing && j.missing.length > 0) {
+        setError(`${j.missing.length}개 댓글은 찾을 수 없어 건너뛰었습니다.`);
+      }
+      setMessage(`${updated}개 댓글을 ${verb}.`);
+      await fetchComments(commentsOffset, commentsQ, commentsStatus);
+    } catch {
+      setError('일괄 처리에 실패했습니다.');
+    } finally {
+      setBulkBusy(false);
     }
-    setMessage(`${ids.length}개 댓글을 ${status === 'hidden' ? '숨겼습니다' : '공개했습니다'}.`);
-    setComments((prev) => prev.map((c) => (selectedCommentIds.has(c.id) ? { ...c, status } : c)));
-    setSelectedCommentIds(new Set());
   };
 
   // ── Delete ────────────────────────────────────────────────────────────────
@@ -322,8 +348,8 @@ export default function AdminBoardPostsPage({ boards, boardCounts, member }: Pag
       return;
     }
     setMessage('게시글을 영구 삭제했습니다.');
-    setPosts((prev) => prev.filter((p) => p.id !== post.id));
-    setPostsTotal((t) => t - 1);
+    // 서버 기준으로 현재 페이지를 다시 불러와 total·다음 페이지 계산을 동기화한다.
+    await fetchPosts(postsOffset, postsQ, postsBoardId, postsStatus);
   };
 
   const deleteComment = async (comment: AdminCommentRow) => {
@@ -339,8 +365,7 @@ export default function AdminBoardPostsPage({ boards, boardCounts, member }: Pag
       return;
     }
     setMessage('댓글을 영구 삭제했습니다.');
-    setComments((prev) => prev.filter((c) => c.id !== comment.id));
-    setCommentsTotal((t) => t - 1);
+    await fetchComments(commentsOffset, commentsQ, commentsStatus);
   };
 
   // ── Selection helpers ─────────────────────────────────────────────────────
@@ -501,17 +526,19 @@ export default function AdminBoardPostsPage({ boards, boardCounts, member }: Pag
                   <span className="text-sm text-coastal-gray">{selectedPostIds.size}개 선택됨</span>
                   <button
                     type="button"
+                    disabled={bulkBusy}
                     className={btnBulk}
                     onClick={() => void bulkUpdatePosts('hidden')}
                   >
-                    일괄 숨김
+                    {bulkBusy ? '처리 중…' : '일괄 숨김'}
                   </button>
                   <button
                     type="button"
+                    disabled={bulkBusy}
                     className={btnBulk}
                     onClick={() => void bulkUpdatePosts('published')}
                   >
-                    일괄 공개
+                    {bulkBusy ? '처리 중…' : '일괄 공개'}
                   </button>
                 </>
               )}
@@ -716,17 +743,19 @@ export default function AdminBoardPostsPage({ boards, boardCounts, member }: Pag
                   </span>
                   <button
                     type="button"
+                    disabled={bulkBusy}
                     className={btnBulk}
                     onClick={() => void bulkUpdateComments('hidden')}
                   >
-                    일괄 숨김
+                    {bulkBusy ? '처리 중…' : '일괄 숨김'}
                   </button>
                   <button
                     type="button"
+                    disabled={bulkBusy}
                     className={btnBulk}
                     onClick={() => void bulkUpdateComments('published')}
                   >
-                    일괄 공개
+                    {bulkBusy ? '처리 중…' : '일괄 공개'}
                   </button>
                 </>
               )}

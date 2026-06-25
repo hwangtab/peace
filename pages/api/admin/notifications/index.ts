@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { requireAdminApi } from '@/lib/adminAuth';
+import { requireAdminRole } from '@/lib/adminAuth';
 import { createSupabaseServiceClient } from '@/lib/supabaseService';
 import {
   buildNotificationFeed,
@@ -17,7 +17,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(405).json({ error: 'method_not_allowed' });
   }
 
-  const session = await requireAdminApi(req, res);
+  // 알림 피드는 인바운드 문의 발신자 이메일·가입자 정보 등 민감 데이터를 service role로
+  // 모아 보여주므로 editor 이상으로 제한한다(viewer 노출 차단).
+  const session = await requireAdminRole(req, res, 'editor');
   if (!session) return;
 
   res.setHeader('Cache-Control', 'no-store');

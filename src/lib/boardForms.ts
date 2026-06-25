@@ -41,3 +41,10 @@ export const validateRating = (v: number | null, required: boolean): Ok<number |
 
 export const isValidBoardSlug = (v: string): boolean =>
   typeof v === 'string' && /^[a-z0-9-]{1,40}$/.test(v);
+
+// 시드로 생성되는 핵심 게시판 slug. 게시글·댓글이 묶여 있어 실수로 삭제되면
+// 복구가 불가능하므로 관리자 DELETE에서 보호한다.
+export const PROTECTED_BOARD_SLUGS = ['reviews', 'free', 'shows'] as const;
+
+export const isProtectedBoardSlug = (slug: string): boolean =>
+  (PROTECTED_BOARD_SLUGS as readonly string[]).includes(slug);

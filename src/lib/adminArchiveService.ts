@@ -129,8 +129,12 @@ export const saveAdminArchiveRow = async ({
 
   // 신규 항목이면서 공개 ID가 비어 있으면 서버가 자동 채번한다(기존 최댓값 + 1).
   // 언어 복제·기존 항목 수정은 클라이언트가 public_id를 함께 보내므로 그대로 유지된다.
-  let publicId = body.public_id;
-  if (id == null && publicId == null) {
+  const autoAssignPublicId = id == null && body.public_id == null;
+
+  // (public_id, locale) unique 제약이 있어, 두 관리자가 동시에 신규 생성하면
+  // 같은 max+1을 읽어 한쪽이 23505로 실패한다. 자동 채번 건에 한해 충돌 시
+  // 최댓값을 다시 읽어 재시도한다(명시적 public_id·수정 건은 그대로 409 반환).
+  const nextPublicId = async (): Promise<number> => {
     const maxResult = await supabase
       .from(config.table)
       .select('public_id')
@@ -138,29 +142,45 @@ export const saveAdminArchiveRow = async ({
       .limit(1)
       .maybeSingle();
     if (maxResult.error) throwServiceError(500, maxResult.error.message);
-    const currentMax = (maxResult.data as { public_id?: number } | null)?.public_id ?? 0;
-    publicId = currentMax + 1;
-  }
-
-  const payload = {
-    ...body,
-    public_id: publicId,
-    published_at: makePublishedAt(
-      status,
-      (previous as { published_at?: string | null } | null)?.published_at ?? null
-    ),
+    return ((maxResult.data as { public_id?: number } | null)?.public_id ?? 0) + 1;
   };
 
-  const query = id
-    ? supabase.from(config.table).update(payload).eq('id', id).select('*').single()
-    : supabase.from(config.table).insert(payload).select('*').single();
+  const basePublishedAt = makePublishedAt(
+    status,
+    (previous as { published_at?: string | null } | null)?.published_at ?? null
+  );
 
-  const { data, error } = await query;
+  const MAX_RETRIES = 5;
+  let data: Record<string, unknown> | null = null;
+  let lastError: { code?: string; message: string } | null = null;
 
-  if (error) {
+  for (let attempt = 0; attempt < (autoAssignPublicId ? MAX_RETRIES : 1); attempt += 1) {
+    const publicId = autoAssignPublicId ? await nextPublicId() : body.public_id;
+    const payload = {
+      ...body,
+      public_id: publicId,
+      published_at: basePublishedAt,
+    };
+
+    const query = id
+      ? supabase.from(config.table).update(payload).eq('id', id).select('*').single()
+      : supabase.from(config.table).insert(payload).select('*').single();
+
+    const result = await query;
+    if (!result.error) {
+      data = result.data as Record<string, unknown>;
+      lastError = null;
+      break;
+    }
+    lastError = result.error;
+    // 자동 채번 중복 충돌이면 max+1을 다시 읽어 재시도, 그 외 오류는 즉시 중단
+    if (!(autoAssignPublicId && result.error.code === '23505')) break;
+  }
+
+  if (lastError) {
     throwServiceError(
-      error.code === '23505' ? 409 : 500,
-      error.code === '23505' ? '이미 사용 중인 공개 ID 또는 키입니다.' : error.message
+      lastError.code === '23505' ? 409 : 500,
+      lastError.code === '23505' ? '이미 사용 중인 공개 ID 또는 키입니다.' : lastError.message
     );
   }
 
@@ -180,7 +200,7 @@ export const saveAdminArchiveRow = async ({
   ]);
 
   return {
-    item: data as AdminCollectionRow,
+    item: data as unknown as AdminCollectionRow,
     revalidationErrors,
     changeLogError,
   };

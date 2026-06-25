@@ -11,6 +11,7 @@ const customJestConfig = {
     '<rootDir>/node_modules/',
     '<rootDir>/.next/',
     '<rootDir>/.worktrees/',
+    '<rootDir>/.claude/worktrees/',
     '/\\._',
     '<rootDir>/naughty-carson/',
     '<rootDir>/friendly-northcutt/',
@@ -21,6 +22,7 @@ const customJestConfig = {
   ],
   modulePathIgnorePatterns: [
     '<rootDir>/.worktrees/',
+    '<rootDir>/.claude/worktrees/',
     '<rootDir>/naughty-carson/',
     '<rootDir>/friendly-northcutt/',
     '<rootDir>/elated-montalcini/',
