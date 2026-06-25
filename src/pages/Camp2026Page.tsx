@@ -266,28 +266,11 @@ const Camp2026Page: React.FC<CampPageProps> = ({
         </Section>
       )}
 
-      {/* Photo Gallery Section — 행사 종료 후에만 노출 */}
-      {isPast && campGalleryHighlights2026.length > 0 ? (
-        <>
-          <SectionWave color="sky-horizon" />
-          <div id="gallery">
-            <CampGallery
-              camp={{ ...camp2026, images: campGalleryHighlights2026 }}
-              paddingTop="loose"
-              paddingBottom="tight"
-            />
-          </div>
-          <CampVideos year={2026} paddingTop="tight" paddingBottom="loose" />
-          <SectionWave color="light-beige" />
-        </>
-      ) : (
-        <SectionWave color="sky-horizon" />
-      )}
-
-      {/* Credits Section — 함께 만든 사람들 · 협력 단체 */}
+      {/* Credits Section — 함께 만든 사람들 · 협력 단체 (라인업 바로 아래) */}
       {((camp2026.staff && camp2026.staff.length > 0) ||
         (camp2026.collaborators && camp2026.collaborators.length > 0)) && (
         <>
+          <SectionWave color="sky-horizon" />
           <Section background="ocean-sand" paddingTop="loose" paddingBottom="loose">
             <Container size="content">
               <motion.div
@@ -302,8 +285,25 @@ const Camp2026Page: React.FC<CampPageProps> = ({
               </motion.div>
             </Container>
           </Section>
-          <SectionWave color="ocean-sand" />
         </>
+      )}
+
+      {/* Photo Gallery / 현장영상 Section — 행사 종료 후에만 노출 */}
+      {isPast && campGalleryHighlights2026.length > 0 ? (
+        <>
+          <SectionWave color="ocean-sand" />
+          <div id="gallery">
+            <CampGallery
+              camp={{ ...camp2026, images: campGalleryHighlights2026 }}
+              paddingTop="loose"
+              paddingBottom="tight"
+            />
+          </div>
+          <CampVideos year={2026} paddingTop="tight" paddingBottom="loose" />
+          <SectionWave color="light-beige" />
+        </>
+      ) : (
+        <SectionWave color="ocean-sand" />
       )}
 
       {/* Gangjeong Story Section */}
