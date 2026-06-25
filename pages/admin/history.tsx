@@ -71,6 +71,9 @@ export default function AdminHistoryPage({
   };
 
   const restoreLog = async (log: CmsChangeLog) => {
+    // 복구는 현재 공개 데이터를 과거 값으로 덮어쓰는 파괴적 작업이므로 확인을 받는다.
+    if (!window.confirm('이 시점으로 복구하면 현재 내용을 과거 값으로 덮어씁니다. 진행할까요?'))
+      return;
     setIsRestoring(log.id);
     setMessage('');
     setError('');

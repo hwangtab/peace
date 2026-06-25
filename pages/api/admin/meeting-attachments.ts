@@ -2,6 +2,11 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { z, ZodError } from 'zod';
 import { requireAdminRole } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
+import {
+  ATTACHMENT_MAX_SIZE,
+  isAllowedAttachmentExt,
+  ATTACHMENT_ALLOWED_EXT,
+} from '@/lib/meetingForms';
 
 const createSchema = z
   .object({
@@ -14,6 +19,15 @@ const createSchema = z
   .refine((v) => v.file_path.startsWith(`${v.meeting_id}/`), {
     message: 'file_path가 회의 폴더와 일치하지 않습니다.',
     path: ['file_path'],
+  })
+  // 클라이언트 검증과 별개로 서버에서도 확장자·크기를 강제한다(우회 방지).
+  .refine((v) => isAllowedAttachmentExt(v.file_name) && isAllowedAttachmentExt(v.file_path), {
+    message: `허용되지 않는 파일 형식입니다. (${ATTACHMENT_ALLOWED_EXT.join(', ')})`,
+    path: ['file_name'],
+  })
+  .refine((v) => v.file_size === undefined || v.file_size <= ATTACHMENT_MAX_SIZE, {
+    message: '파일 크기는 20MB 이하여야 합니다.',
+    path: ['file_size'],
   });
 
 const deleteSchema = z.object({ id: z.string().uuid() });

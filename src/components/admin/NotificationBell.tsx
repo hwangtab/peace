@@ -64,16 +64,21 @@ export default function NotificationBell() {
       setLoading(false);
       // 종을 여는 순간 읽음 처리 — 낙관적 업데이트 후 실패 시 롤백
       const prevCount = unreadCount;
+      const prevItems = items;
       setUnreadCount(0);
+      // 배지뿐 아니라 목록의 안 읽음 표시(점)도 즉시 지워 배지와 어긋나지 않게 한다.
+      setItems((prev) => prev.map((it) => (it.isUnread ? { ...it, isUnread: false } : it)));
       try {
         const res = await fetch('/api/admin/notifications/seen', { method: 'POST' });
         if (!res.ok) {
-          // POST 실패 시 배지 원복
+          // POST 실패 시 배지·목록 원복
           setUnreadCount(prevCount);
+          setItems(prevItems);
         }
       } catch {
         // 네트워크 오류 시 원복
         setUnreadCount(prevCount);
+        setItems(prevItems);
       }
     }
   };

@@ -1,6 +1,11 @@
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
+import {
+  ATTACHMENT_ALLOWED_EXT,
+  ATTACHMENT_MAX_SIZE as MAX_SIZE,
+  getFileExt,
+} from '@/lib/meetingForms';
 import type { MeetingAttachment } from '@/types/meeting';
 
 interface AttachmentSectionProps {
@@ -9,25 +14,7 @@ interface AttachmentSectionProps {
   canEdit: boolean;
 }
 
-const ALLOWED_EXT = [
-  'pdf',
-  'png',
-  'jpg',
-  'jpeg',
-  'webp',
-  'gif',
-  'doc',
-  'docx',
-  'xls',
-  'xlsx',
-  'ppt',
-  'pptx',
-  'hwp',
-  'hwpx',
-  'txt',
-  'md',
-];
-const MAX_SIZE = 20 * 1024 * 1024; // 20MB
+const ALLOWED_EXT = ATTACHMENT_ALLOWED_EXT;
 
 const makeRandomSlug = (): string => `${Date.now()}-${Math.random().toString(36).slice(2)}`;
 
@@ -57,13 +44,8 @@ export default function AttachmentSection({
     if (!file) return;
     setError('');
 
-    const ext =
-      file.name
-        .split('.')
-        .pop()
-        ?.toLowerCase()
-        .replace(/[^a-z0-9]/g, '') || '';
-    if (!ALLOWED_EXT.includes(ext)) {
+    const ext = getFileExt(file.name);
+    if (!(ALLOWED_EXT as readonly string[]).includes(ext)) {
       setError(`허용되지 않는 형식입니다. (${ALLOWED_EXT.join(', ')})`);
       if (fileInputRef.current) fileInputRef.current.value = '';
       return;
