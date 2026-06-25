@@ -67,6 +67,8 @@ export default function CommentSection({
   const [submitting, setSubmitting] = useState(false);
   const [deleteId, setDeleteId] = useState<string | null>(null);
 
+  const [deleteError, setDeleteError] = useState<string | null>(null);
+
   const [editId, setEditId] = useState<string | null>(null);
   const [editBody, setEditBody] = useState('');
   const [editError, setEditError] = useState<string | null>(null);
@@ -183,12 +185,13 @@ export default function CommentSection({
 
   const handleDelete = async (commentId: string) => {
     if (!window.confirm(t('comment.deleteConfirm'))) return;
+    setDeleteError(null);
     setDeleteId(commentId);
     try {
       const supabase = createSupabaseBrowserClient();
       const { error } = await supabase.from('post_comments').delete().eq('id', commentId);
       if (error) {
-        setValidationError(t('error.saveFailed'));
+        setDeleteError(t('error.saveFailed'));
         return;
       }
       setComments((prev) => prev.filter((c) => c.id !== commentId));
@@ -215,6 +218,13 @@ export default function CommentSection({
             {t('comment.loadOlder')}
           </button>
         </div>
+      )}
+
+      {/* Delete error */}
+      {deleteError && (
+        <p role="alert" className="mb-3 text-xs text-red-500">
+          {deleteError}
+        </p>
       )}
 
       {/* Comment list */}
