@@ -1,10 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import { createClient } from '@supabase/supabase-js';
-import type { GalleryImage } from '../src/types/gallery';
 import type { PressItem } from '../src/types/press';
 import type { VideoItem } from '../src/types/video';
-import { readJsonArray, loadGalleryImages, loadLocalizedData } from '../src/utils/dataLoader';
+import { readJsonArray, loadLocalizedData } from '../src/utils/dataLoader';
 import { LOCALES, type Locale } from '../src/constants/locales';
 
 const loadLocalEnv = () => {
@@ -55,11 +54,6 @@ const pick = (source: Record<string, unknown>, pathKey: string): string => {
   return typeof value === 'string' ? value : '';
 };
 
-const makeGalleryPublicId = (item: GalleryImage): number => {
-  const typeOffset = item.eventType === 'album' ? 50000 : 0;
-  return item.eventYear * 100000 + typeOffset + item.id;
-};
-
 interface UpsertSource {
   from: (table: string) => unknown;
 }
@@ -101,22 +95,6 @@ export const buildArchiveSeedRows = (timestamp = nowIso()) => {
       duration: item.duration ?? null,
       musician_ids: item.musicianIds ?? [],
       director_musician_id: item.directorMusicianId ?? null,
-      status: 'published',
-      sort_order: index,
-      published_at: timestamp,
-    }))
-  );
-
-  const baseGallery = loadGalleryImages<GalleryImage>();
-  const gallery = LOCALES.flatMap((locale) =>
-    baseGallery.map((item, index) => ({
-      public_id: makeGalleryPublicId(item),
-      locale,
-      image_url: item.url,
-      description: item.description ?? null,
-      event_type: item.eventType,
-      event_year: item.eventYear,
-      photographer: item.photographer ?? null,
       status: 'published',
       sort_order: index,
       published_at: timestamp,
@@ -175,7 +153,7 @@ export const buildArchiveSeedRows = (timestamp = nowIso()) => {
     })
   );
 
-  return { videos, gallery, press, contentRows };
+  return { videos, press, contentRows };
 };
 
 const main = async () => {
@@ -187,11 +165,10 @@ const main = async () => {
     auth: { persistSession: false, autoRefreshToken: false },
   });
 
-  const { videos, gallery, press, contentRows } = buildArchiveSeedRows();
+  const { videos, press, contentRows } = buildArchiveSeedRows();
 
   const seedClient = supabase as unknown as UpsertSource;
   await upsertRows(seedClient, 'archive_videos', videos, 'public_id,locale');
-  await upsertRows(seedClient, 'archive_gallery_images', gallery, 'public_id,locale');
   await upsertRows(seedClient, 'archive_press_items', press, 'public_id,locale');
   await upsertRows(seedClient, 'cms_content_blocks', contentRows, 'key,locale');
 };
