@@ -124,7 +124,7 @@ export default function BoardSlugPage({ board, posts, hasMore, offset, total, q,
               onChange={(e) => setSearchInput(e.target.value)}
               placeholder={t('list.searchPlaceholder')}
               aria-label={t('list.searchPlaceholder')}
-              className="w-full rounded-lg border border-seafoam px-3 py-1.5 text-sm text-deep-ocean focus:border-jeju-ocean focus:outline-none sm:w-56"
+              className="w-full rounded-lg border border-seafoam px-3 py-1.5 text-sm text-deep-ocean focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean sm:w-56"
             />
             <button
               type="submit"

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'next-i18next';
 import PageLayout from '@/components/layout/PageLayout';
 import Section from '@/components/layout/Section';
 import Container from '@/components/layout/Container';
@@ -11,10 +12,12 @@ const H2 = 'mb-3 font-display text-xl font-bold text-deep-ocean';
 const UL = 'list-disc space-y-1 pl-5';
 
 const PrivacyPolicyPage: React.FC = () => {
+  // 본문은 한국어 단일이나, 검색결과 노출 메타(title/description)는 로케일 언어로 제공한다.
+  const { t } = useTranslation('translation');
   return (
     <PageLayout
-      title="개인정보처리방침 — 강정피스앤뮤직캠프"
-      description="강정피스앤뮤직캠프가 수집하는 개인정보의 처리 방침을 안내합니다."
+      title={t('privacy.seoTitle')}
+      description={t('privacy.seoDescription')}
       background="white"
     >
       <Section>

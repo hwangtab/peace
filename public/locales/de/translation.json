@@ -280,5 +280,9 @@
     },
     "back_to_list": "Zurück zur Konzertliste",
     "detail_cta": "Veranstaltungsdetails ansehen"
+  },
+  "privacy": {
+    "seoTitle": "Datenschutzerklärung — Gangjeong Friedensmusikcamp",
+    "seoDescription": "Wie das Gangjeong Friedensmusikcamp personenbezogene Daten erhebt und verarbeitet."
   }
 }

@@ -280,5 +280,9 @@
     },
     "back_to_list": "Voltar à lista de concertos solidários",
     "detail_cta": "Ver detalhes do evento"
+  },
+  "privacy": {
+    "seoTitle": "Política de Privacidade — Camp Gangjeong de Paz e Música",
+    "seoDescription": "Como o Camp Gangjeong de Paz e Música coleta e trata os seus dados pessoais."
   }
 }

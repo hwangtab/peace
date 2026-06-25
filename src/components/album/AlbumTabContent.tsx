@@ -55,6 +55,7 @@ const AlbumTabContent: React.FC<AlbumTabContentProps> = ({
           {tabs.map((tab) => (
             <button
               key={tab.id}
+              id={`${tab.id}-tab`}
               role="tab"
               aria-selected={activeTab === tab.id}
               aria-controls={`${tab.id}-panel`}
@@ -75,19 +76,37 @@ const AlbumTabContent: React.FC<AlbumTabContentProps> = ({
 
       <AnimatePresence mode="wait">
         {activeTab === 'info' && (
-          <motion.div key="info-tab" id="info-panel" role="tabpanel" {...tabAnimation}>
+          <motion.div
+            key="info-tab"
+            id="info-panel"
+            role="tabpanel"
+            aria-labelledby="info-tab"
+            {...tabAnimation}
+          >
             <InfoTabPanel concerts={concerts} onMusicianClick={onMusicianClick} />
           </motion.div>
         )}
 
         {activeTab === 'video' && (
-          <motion.div key="video-tab" id="video-panel" role="tabpanel" {...tabAnimation}>
+          <motion.div
+            key="video-tab"
+            id="video-panel"
+            role="tabpanel"
+            aria-labelledby="video-tab"
+            {...tabAnimation}
+          >
             <VideoTabPanel albumVideos={albumVideos} />
           </motion.div>
         )}
 
         {activeTab === 'photo' && (
-          <motion.div key="photo-tab" id="photo-panel" role="tabpanel" {...tabAnimation}>
+          <motion.div
+            key="photo-tab"
+            id="photo-panel"
+            role="tabpanel"
+            aria-labelledby="photo-tab"
+            {...tabAnimation}
+          >
             <PhotoTabPanel albumPhotos={albumPhotos} onImageClick={onImageClick} />
           </motion.div>
         )}

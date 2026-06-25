@@ -21,6 +21,9 @@ const AUTH_EXCLUDE = AUTH_BASE_PATHS.flatMap((p) => [p, `${p}/**`, `/*${p}`, `/*
 // 봇이 prefix 매칭하므로 기본 경로만으로 충분하나 명시적으로 와일드카드도 추가.
 const AUTH_DISALLOW = AUTH_BASE_PATHS.flatMap((p) => [p, `/*${p}`]);
 
+// hreflang 오버라이드(SEOHelmet과 동일): 스크립트 서브태그 → BCP47 지역 코드
+const HREFLANG_OVERRIDE = { 'zh-Hans': 'zh-CN', 'zh-Hant': 'zh-TW' };
+
 const locales = i18n.locales;
 const defaultLocale = i18n.defaultLocale;
 const rootDir = __dirname;
@@ -107,7 +110,7 @@ const buildAlternateRefs = (pagePath) => {
 
   return [
     ...locales.map((locale) => ({
-      hreflang: locale,
+      hreflang: HREFLANG_OVERRIDE[locale] ?? locale,
       href: `${siteUrl}${getLocalePath(normalizedPath, locale)}`,
       hrefIsAbsolute: true,
     })),
@@ -234,6 +237,9 @@ module.exports = {
     '/*/camps/2026/staff',
     '/camps/2026/survey',
     '/*/camps/2026/survey',
+    // 뮤지션용 SNS 홍보 키트 — 내부 배포용, 검색 비노출
+    '/camps/2026/promote',
+    '/*/camps/2026/promote',
     ...AUTH_EXCLUDE,
   ],
   additionalSitemaps: [`${siteUrl}/image-sitemap.xml`, `${siteUrl}/video-sitemap.xml`],

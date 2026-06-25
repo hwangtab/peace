@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
-import { AnimatePresence, motion } from 'framer-motion';
+// LazyMotion strict 환경: 전체 motion 대신 경량 m을 사용해야 함(번들·런타임 경고 방지)
+import { AnimatePresence, m as motion } from 'framer-motion';
 import classNames from 'classnames';
 import { formatRelativeTime, type AdminNotification } from '@/lib/adminNotifications';
 

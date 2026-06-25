@@ -44,6 +44,18 @@ class MyDocument extends Document {
             fetchpriority="high"
           />
 
+          {/* BookkMyungjo Bold preload — 모든 페이지 최상단 Navigation(font-serif)과
+              h2(font-display)에 즉시 사용. preload 없으면 Nav에서 FOUT 발생. */}
+          <link
+            rel="preload"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+            href="/fonts/BookkMyungjo-Bd.subset.woff2?v=2"
+            // @ts-expect-error — fetchpriority is a valid HTML attribute (React 18.3+)
+            fetchpriority="high"
+          />
+
           {/* 테마 & 색상 스킴 */}
           <meta name="theme-color" content="#0A5F8A" />
           <meta name="color-scheme" content="light" />
