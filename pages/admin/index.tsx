@@ -1,7 +1,7 @@
 import type { GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
 import AdminLayout from '@/components/admin/AdminLayout';
-import { getAdminSession, redirectToAdminLogin } from '@/lib/adminAuth';
+import { getAdminSession, canEditContent, redirectToAdminLogin } from '@/lib/adminAuth';
 import { createSupabaseServiceClient } from '@/lib/supabaseService';
 import type { AdminMember } from '@/types/cms';
 
@@ -37,6 +37,7 @@ interface MailRow {
 
 interface AdminHomeProps {
   member: AdminMember;
+  canEdit: boolean;
   counts: {
     videos: number;
     gallery: number;
@@ -131,6 +132,7 @@ function PanelHeader({ title, href, action }: { title: string; href?: string; ac
 
 export default function AdminHomePage({
   member,
+  canEdit,
   counts,
   recentLogs,
   recentPosts,
@@ -165,13 +167,15 @@ export default function AdminHomePage({
           sub={counts.postsHidden > 0 ? `숨김 ${counts.postsHidden}건` : '숨김 없음'}
           href="/admin/board-posts"
         />
-        <StatCard
-          label="미답변 문의"
-          value={counts.unreadMail}
-          sub={counts.unreadMail > 0 ? '확인 필요' : '모두 확인됨'}
-          href="/admin/mailbox"
-          highlight
-        />
+        {canEdit && (
+          <StatCard
+            label="미답변 문의"
+            value={counts.unreadMail}
+            sub={counts.unreadMail > 0 ? '확인 필요' : '모두 확인됨'}
+            href="/admin/mailbox"
+            highlight
+          />
+        )}
         <StatCard
           label="공개 콘텐츠"
           value={contentTotal}
@@ -214,85 +218,91 @@ export default function AdminHomePage({
             )}
           </section>
 
-          {/* 최근 변경 이력 */}
-          <section className="rounded-lg border border-deep-ocean/10 bg-white p-5">
-            <PanelHeader title="최근 활동" href="/admin/history" action="변경 이력" />
-            {recentLogs.length === 0 ? (
-              <p className="py-6 text-center text-sm text-coastal-gray">
-                아직 기록된 활동이 없습니다.
-              </p>
-            ) : (
-              <ul className="divide-y divide-deep-ocean/10">
-                {recentLogs.map((log) => (
-                  <li
-                    key={log.id}
-                    className="flex items-center justify-between gap-3 py-2.5 text-sm"
-                  >
-                    <span className="min-w-0 flex-1 truncate text-deep-ocean">
-                      <span className="mr-2 rounded bg-jeju-ocean/10 px-1.5 py-0.5 text-xs font-semibold text-jeju-ocean">
-                        {COLLECTION_LABEL[log.collection] ?? log.collection}{' '}
-                        {ACTION_LABEL[log.action] ?? log.action}
+          {/* 최근 변경 이력 (editor 이상 — admin_email 등 내부 정보 포함) */}
+          {canEdit && (
+            <section className="rounded-lg border border-deep-ocean/10 bg-white p-5">
+              <PanelHeader title="최근 활동" href="/admin/history" action="변경 이력" />
+              {recentLogs.length === 0 ? (
+                <p className="py-6 text-center text-sm text-coastal-gray">
+                  아직 기록된 활동이 없습니다.
+                </p>
+              ) : (
+                <ul className="divide-y divide-deep-ocean/10">
+                  {recentLogs.map((log) => (
+                    <li
+                      key={log.id}
+                      className="flex items-center justify-between gap-3 py-2.5 text-sm"
+                    >
+                      <span className="min-w-0 flex-1 truncate text-deep-ocean">
+                        <span className="mr-2 rounded bg-jeju-ocean/10 px-1.5 py-0.5 text-xs font-semibold text-jeju-ocean">
+                          {COLLECTION_LABEL[log.collection] ?? log.collection}{' '}
+                          {ACTION_LABEL[log.action] ?? log.action}
+                        </span>
+                        {log.primary_label || '(제목 없음)'}
                       </span>
-                      {log.primary_label || '(제목 없음)'}
-                    </span>
-                    <span className="flex-shrink-0 text-xs text-coastal-gray">
-                      {log.admin_email.split('@')[0]} · {fmtDate(log.created_at)}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </section>
+                      <span className="flex-shrink-0 text-xs text-coastal-gray">
+                        {log.admin_email.split('@')[0]} · {fmtDate(log.created_at)}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </section>
+          )}
         </div>
 
         {/* 사이드바 */}
         <div className="space-y-6">
-          {/* 회의 일정 */}
-          <section className="rounded-lg border border-deep-ocean/10 bg-white p-5">
-            <PanelHeader title="회의" href="/admin/meetings" action="회의록" />
-            {upcomingMeetings.length > 0 ? (
-              <ul className="space-y-2">
-                {upcomingMeetings.map((m) => (
-                  <li key={m.id} className="rounded bg-jeju-ocean/5 px-3 py-2">
-                    <span className="block text-sm font-semibold text-deep-ocean">{m.title}</span>
-                    <span className="text-xs text-jeju-ocean">
-                      예정 · {fmtDate(m.meeting_date)}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <div className="text-sm text-coastal-gray">
-                <p>다가오는 회의가 없습니다.</p>
-                {recentMeeting && (
-                  <p className="mt-2 text-xs">
-                    최근: {recentMeeting.title} ({fmtDate(recentMeeting.meeting_date)})
-                  </p>
-                )}
-              </div>
-            )}
-          </section>
+          {/* 회의 일정 (editor 이상) */}
+          {canEdit && (
+            <section className="rounded-lg border border-deep-ocean/10 bg-white p-5">
+              <PanelHeader title="회의" href="/admin/meetings" action="회의록" />
+              {upcomingMeetings.length > 0 ? (
+                <ul className="space-y-2">
+                  {upcomingMeetings.map((m) => (
+                    <li key={m.id} className="rounded bg-jeju-ocean/5 px-3 py-2">
+                      <span className="block text-sm font-semibold text-deep-ocean">{m.title}</span>
+                      <span className="text-xs text-jeju-ocean">
+                        예정 · {fmtDate(m.meeting_date)}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <div className="text-sm text-coastal-gray">
+                  <p>다가오는 회의가 없습니다.</p>
+                  {recentMeeting && (
+                    <p className="mt-2 text-xs">
+                      최근: {recentMeeting.title} ({fmtDate(recentMeeting.meeting_date)})
+                    </p>
+                  )}
+                </div>
+              )}
+            </section>
+          )}
 
-          {/* 미답변 문의 */}
-          <section className="rounded-lg border border-deep-ocean/10 bg-white p-5">
-            <PanelHeader title="미답변 문의" href="/admin/mailbox" action="메일함" />
-            {recentMail.length === 0 ? (
-              <p className="text-sm text-coastal-gray">새 문의가 없습니다.</p>
-            ) : (
-              <ul className="space-y-2">
-                {recentMail.map((mail) => (
-                  <li key={mail.id} className="border-l-2 border-sunset-coral/40 pl-3">
-                    <span className="block truncate text-sm font-medium text-deep-ocean">
-                      {mail.subject || '(제목 없음)'}
-                    </span>
-                    <span className="text-xs text-coastal-gray">
-                      {mail.from_name || mail.from_email} · {fmtDate(mail.created_at)}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </section>
+          {/* 미답변 문의 (editor 이상 — 발신자 이메일 등 민감 정보 포함) */}
+          {canEdit && (
+            <section className="rounded-lg border border-deep-ocean/10 bg-white p-5">
+              <PanelHeader title="미답변 문의" href="/admin/mailbox" action="메일함" />
+              {recentMail.length === 0 ? (
+                <p className="text-sm text-coastal-gray">새 문의가 없습니다.</p>
+              ) : (
+                <ul className="space-y-2">
+                  {recentMail.map((mail) => (
+                    <li key={mail.id} className="border-l-2 border-sunset-coral/40 pl-3">
+                      <span className="block truncate text-sm font-medium text-deep-ocean">
+                        {mail.subject || '(제목 없음)'}
+                      </span>
+                      <span className="text-xs text-coastal-gray">
+                        {mail.from_name || mail.from_email} · {fmtDate(mail.created_at)}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </section>
+          )}
 
           {/* 콘텐츠 아카이브 */}
           <section className="rounded-lg border border-deep-ocean/10 bg-white p-5">
@@ -321,9 +331,13 @@ export default function AdminHomePage({
             <PanelHeader title="바로가기" />
             <div className="flex flex-wrap gap-2 text-sm">
               {[
-                { href: '/admin/whitepaper', label: '운영 백서' },
-                { href: '/admin/boards', label: '게시판 설정' },
-                { href: '/admin/history', label: '변경 이력' },
+                ...(canEdit
+                  ? [
+                      { href: '/admin/whitepaper', label: '운영 백서' },
+                      { href: '/admin/boards', label: '게시판 설정' },
+                      { href: '/admin/history', label: '변경 이력' },
+                    ]
+                  : []),
                 ...(isOwner ? [{ href: '/admin/members', label: '기획단' }] : []),
               ].map((link) => (
                 <Link
@@ -442,9 +456,14 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     };
   });
 
+  // viewer에게는 문의 발신자 이메일·회의·변경 이력 등 내부 정보를 props에 싣지 않는다
+  // (UI 숨김만으로는 __NEXT_DATA__에 직렬화되어 노출되므로 서버에서 비운다).
+  const canEdit = canEditContent(session.member);
+
   return {
     props: {
       member: session.member,
+      canEdit,
       counts: {
         videos: videos.count ?? 0,
         gallery: gallery.count ?? 0,
@@ -454,14 +473,14 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
         admins: admins.count ?? 0,
         posts: posts.count ?? 0,
         postsHidden: postsHidden.count ?? 0,
-        unreadMail: unreadMail.count ?? 0,
-        upcomingMeetings: upcomingCount.count ?? 0,
+        unreadMail: canEdit ? (unreadMail.count ?? 0) : 0,
+        upcomingMeetings: canEdit ? (upcomingCount.count ?? 0) : 0,
       },
-      recentLogs: (recentLogsRes.data as RecentLog[] | null) ?? [],
+      recentLogs: canEdit ? ((recentLogsRes.data as RecentLog[] | null) ?? []) : [],
       recentPosts,
-      upcomingMeetings: (upcomingMeetingsRes.data as MeetingRow[] | null) ?? [],
-      recentMeeting: (recentMeetingRes.data as MeetingRow | null) ?? null,
-      recentMail: (recentMailRes.data as MailRow[] | null) ?? [],
+      upcomingMeetings: canEdit ? ((upcomingMeetingsRes.data as MeetingRow[] | null) ?? []) : [],
+      recentMeeting: canEdit ? ((recentMeetingRes.data as MeetingRow | null) ?? null) : null,
+      recentMail: canEdit ? ((recentMailRes.data as MailRow[] | null) ?? []) : [],
     },
   };
 }

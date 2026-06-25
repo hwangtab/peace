@@ -272,6 +272,9 @@ export default function AdminMailboxPage({
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
   const session = await getAdminSession(context);
   if (!session) return redirectToAdminLogin(context.resolvedUrl);
+  if (!canEditContent(session.member)) {
+    return { redirect: { destination: '/admin', permanent: false } };
+  }
 
   const supabase = createSupabaseServerClient(context.req, context.res);
   // 받은 메일(inbound)과 그에 대한 답장(reply_to_id 있는 outbound)만 가져온다.

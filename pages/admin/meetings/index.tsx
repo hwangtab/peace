@@ -142,6 +142,9 @@ export default function AdminMeetingsPage({
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
   const session = await getAdminSession(context);
   if (!session) return redirectToAdminLogin(context.resolvedUrl);
+  if (!canEditContent(session.member)) {
+    return { redirect: { destination: '/admin', permanent: false } };
+  }
 
   const selectedYear =
     typeof context.query.year === 'string' && /^\d{4}$/.test(context.query.year)

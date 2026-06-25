@@ -165,6 +165,9 @@ export default function MeetingDetailPage({
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
   const session = await getAdminSession(context);
   if (!session) return redirectToAdminLogin(context.resolvedUrl);
+  if (!canEditContent(session.member)) {
+    return { redirect: { destination: '/admin', permanent: false } };
+  }
 
   const parsedId = z.string().uuid().safeParse(context.params?.id);
   if (!parsedId.success) return { notFound: true };
