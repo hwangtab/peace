@@ -119,7 +119,8 @@ export function buildNotificationFeed(
 }
 
 export function formatRelativeTime(iso: string, now: Date): string {
-  const diffMs = now.getTime() - new Date(iso).getTime();
+  // 서버 created_at이 클라이언트 시각보다 미세하게 미래일 수 있어(클럭 스큐) 0으로 클램프 — 음수 표시 방지
+  const diffMs = Math.max(0, now.getTime() - new Date(iso).getTime());
   const sec = Math.floor(diffMs / 1000);
   if (sec < 60) return '방금 전';
   const min = Math.floor(sec / 60);
