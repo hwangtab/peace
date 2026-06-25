@@ -103,15 +103,23 @@ export const loadPublishedGallery = async (
       .order('event_year', { ascending: false });
 
     if (!error && data && data.length > 0) {
-      return {
-        source: 'cms',
-        items: mergeArchiveRowsWithStatic(
-          data as ArchiveGalleryImageRow[],
-          staticItems,
-          mapGalleryRowToItem,
-          (item) => item.id
-        ),
-      };
+      const merged = mergeArchiveRowsWithStatic(
+        data as ArchiveGalleryImageRow[],
+        staticItems,
+        mapGalleryRowToItem,
+        (item) => item.id
+      );
+      // CMS 와 정적 데이터에 같은 이미지가 서로 다른 id 로 중복 등록되어 있어도
+      // merge 는 id 기준으로만 dedup 한다. 갤러리는 url 이 실질 식별자이므로
+      // 같은 url 은 한 번만 노출하도록 추가로 dedup 한다(화면 중복·React key 충돌 방지).
+      const seenUrls = new Set<string>();
+      const items = merged.filter((item) => {
+        if (!item.url) return true;
+        if (seenUrls.has(item.url)) return false;
+        seenUrls.add(item.url);
+        return true;
+      });
+      return { source: 'cms', items };
     }
 
     if (error && !isMissingTableError(error)) {
