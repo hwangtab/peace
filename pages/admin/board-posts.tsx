@@ -101,6 +101,14 @@ export default function AdminBoardPostsPage({ boards, boardCounts, member }: Pag
   const postsQTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const commentsQTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // Cleanup debounce timers on unmount
+  useEffect(() => {
+    return () => {
+      if (postsQTimer.current) clearTimeout(postsQTimer.current);
+      if (commentsQTimer.current) clearTimeout(commentsQTimer.current);
+    };
+  }, []);
+
   // ── Fetch posts ──────────────────────────────────────────────────────────
   const fetchPosts = useCallback(
     async (offset: number, q: string, boardId: string, status: string) => {
@@ -621,7 +629,7 @@ export default function AdminBoardPostsPage({ boards, boardCounts, member }: Pag
                               {sortedImages.map((img, i) => (
                                 // eslint-disable-next-line @next/next/no-img-element
                                 <img
-                                  key={i}
+                                  key={`${img.image_url}-${i}`}
                                   src={img.image_url}
                                   alt={`이미지 ${i + 1}`}
                                   className="h-20 w-20 rounded object-cover"
@@ -641,7 +649,9 @@ export default function AdminBoardPostsPage({ boards, boardCounts, member }: Pag
           {/* Pagination */}
           <div className="mt-3 flex items-center justify-between text-sm text-coastal-gray">
             <span>
-              {postsOffset + 1}–{Math.min(postsOffset + LIMIT, postsTotal)} / 총 {postsTotal}건
+              {postsTotal === 0
+                ? `총 0건`
+                : `${postsOffset + 1}–${Math.min(postsOffset + LIMIT, postsTotal)} / 총 ${postsTotal}건`}
             </span>
             <div className="flex gap-2">
               <button
@@ -836,8 +846,9 @@ export default function AdminBoardPostsPage({ boards, boardCounts, member }: Pag
           {/* Pagination */}
           <div className="mt-3 flex items-center justify-between text-sm text-coastal-gray">
             <span>
-              {commentsOffset + 1}–{Math.min(commentsOffset + LIMIT, commentsTotal)} / 총{' '}
-              {commentsTotal}건
+              {commentsTotal === 0
+                ? `총 0건`
+                : `${commentsOffset + 1}–${Math.min(commentsOffset + LIMIT, commentsTotal)} / 총 ${commentsTotal}건`}
             </span>
             <div className="flex gap-2">
               <button
