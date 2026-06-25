@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import classNames from 'classnames';
+import { useTranslation } from 'next-i18next';
 import PageLayout from '@/components/layout/PageLayout';
 import PageHero from '@/components/common/PageHero';
 import Section from '@/components/layout/Section';
@@ -32,65 +33,78 @@ const inputClass =
  * 척도(1~5) 입력 위젯 — 한 번 더 누르면 선택 해제(미응답 허용).
  * ------------------------------------------------------------------ */
 const RatingField: React.FC<{
-  q: RatingQuestion;
+  q: RatingQuestion & { i18nLabel?: string; i18nMinLabel?: string; i18nMaxLabel?: string };
   value: number | null;
   onChange: (v: number) => void;
-}> = ({ q, value, onChange }) => (
-  <fieldset className="border-0 p-0 m-0">
-    <legend className="block font-medium text-deep-ocean mb-3">{q.label}</legend>
-    <div className="flex items-center gap-2 sm:gap-3" role="radiogroup" aria-label={q.label}>
-      {RATING_VALUES.map((v) => (
-        <button
-          key={v}
-          type="button"
-          role="radio"
-          aria-checked={value === v}
-          onClick={() => onChange(v)}
-          className={classNames(
-            'flex h-11 w-11 items-center justify-center rounded-full border-2 font-semibold transition sm:h-12 sm:w-12',
-            value === v
-              ? 'border-jeju-ocean bg-jeju-ocean text-white shadow-md'
-              : 'border-seafoam bg-white text-coastal-gray hover:border-ocean-mist'
-          )}
-        >
-          {v}
-        </button>
-      ))}
-    </div>
-    {(q.minLabel || q.maxLabel) && (
-      <div className="mt-2 flex max-w-[19rem] justify-between text-xs text-coastal-gray sm:max-w-[20.5rem]">
-        <span>{q.minLabel}</span>
-        <span>{q.maxLabel}</span>
+}> = ({ q, value, onChange }) => {
+  const label = q.i18nLabel ?? q.label;
+  const minLabel = q.i18nMinLabel ?? q.minLabel;
+  const maxLabel = q.i18nMaxLabel ?? q.maxLabel;
+  return (
+    <fieldset className="border-0 p-0 m-0">
+      <legend className="block font-medium text-deep-ocean mb-3">{label}</legend>
+      <div className="flex items-center gap-2 sm:gap-3" role="radiogroup" aria-label={label}>
+        {RATING_VALUES.map((v) => (
+          <button
+            key={v}
+            type="button"
+            role="radio"
+            aria-checked={value === v}
+            onClick={() => onChange(v)}
+            className={classNames(
+              'flex h-11 w-11 items-center justify-center rounded-full border-2 font-semibold transition sm:h-12 sm:w-12',
+              value === v
+                ? 'border-jeju-ocean bg-jeju-ocean text-white shadow-md'
+                : 'border-seafoam bg-white text-coastal-gray hover:border-ocean-mist'
+            )}
+          >
+            {v}
+          </button>
+        ))}
       </div>
-    )}
-  </fieldset>
-);
+      {(minLabel || maxLabel) && (
+        <div className="mt-2 flex max-w-[19rem] justify-between text-xs text-coastal-gray sm:max-w-[20.5rem]">
+          <span>{minLabel}</span>
+          <span>{maxLabel}</span>
+        </div>
+      )}
+    </fieldset>
+  );
+};
 
 const TextField: React.FC<{
-  q: TextQuestion;
+  q: TextQuestion & { i18nLabel?: string; i18nPlaceholder?: string };
   value: string;
   onChange: (v: string) => void;
-}> = ({ q, value, onChange }) => (
-  <div>
-    <label htmlFor={q.key} className="mb-2 block font-medium text-deep-ocean">
-      {q.label}
-    </label>
-    <textarea
-      id={q.key}
-      value={value}
-      rows={q.rows ?? 3}
-      maxLength={q.maxLength}
-      placeholder={q.placeholder}
-      onChange={(e) => onChange(e.target.value)}
-      className={classNames(inputClass, 'resize-y')}
-    />
-    <div className="mt-1 text-right text-xs text-coastal-gray">
-      {value.length}/{q.maxLength}
+}> = ({ q, value, onChange }) => {
+  const label = q.i18nLabel ?? q.label;
+  const placeholder = q.i18nPlaceholder ?? q.placeholder;
+  return (
+    <div>
+      <label htmlFor={q.key} className="mb-2 block font-medium text-deep-ocean">
+        {label}
+      </label>
+      <textarea
+        id={q.key}
+        value={value}
+        rows={q.rows ?? 3}
+        maxLength={q.maxLength}
+        placeholder={placeholder}
+        onChange={(e) => onChange(e.target.value)}
+        className={classNames(inputClass, 'resize-y')}
+      />
+      <div className="mt-1 text-right text-xs text-coastal-gray">
+        {value.length}/{q.maxLength}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const CampSurvey2026Page: React.FC = () => {
+  const { t } = useTranslation(['camp_survey_2026', 'translation']);
+
+  const s = useCallback((key: string) => t(`camp_survey_2026.${key}`) as string, [t]);
+
   const [name, setName] = useState('');
   const [instagram, setInstagram] = useState('');
   const [email, setEmail] = useState('');
@@ -125,16 +139,16 @@ const CampSurvey2026Page: React.FC = () => {
       return;
     }
     if (!name.trim()) {
-      setErrorMsg('이름(또는 팀명)을 입력해 주세요.');
+      setErrorMsg(s('error_name_required'));
       return;
     }
     if (!privacyConsent) {
-      setErrorMsg('개인정보 수집·이용에 동의해 주셔야 제출할 수 있습니다.');
+      setErrorMsg(s('error_privacy_required'));
       return;
     }
     if (!supabase) {
       setStatus('error');
-      setErrorMsg('설문 서버 설정이 누락되었습니다. 운영진에게 알려 주세요.');
+      setErrorMsg(s('error_server_missing'));
       return;
     }
 
@@ -166,28 +180,118 @@ const CampSurvey2026Page: React.FC = () => {
       }
     } catch {
       setStatus('error');
-      setErrorMsg('제출 중 문제가 발생했어요. 잠시 후 다시 시도하거나 운영진에게 알려 주세요.');
+      setErrorMsg(s('error_submit_failed'));
       return;
     }
 
     setStatus('error');
-    setErrorMsg('제출 중 문제가 발생했어요. 잠시 후 다시 시도하거나 운영진에게 알려 주세요.');
+    setErrorMsg(s('error_submit_failed'));
+  };
+
+  // 척도 라벨 번역 맵 (저장 값인 key는 건드리지 않음; 표시 라벨만 치환)
+  const ratingLabelMap: Record<string, string> = {
+    overall_rating: s('q_overall_rating'),
+    recommend_rating: s('q_recommend_rating'),
+    stage_sound_rating: s('q_stage_sound_rating'),
+    timetable_rating: s('q_timetable_rating'),
+    lodging_rating: s('q_lodging_rating'),
+    meals_rating: s('q_meals_rating'),
+    transport_rating: s('q_transport_rating'),
+    staff_comm_rating: s('q_staff_comm_rating'),
+    pre_comm_rating: s('q_pre_comm_rating'),
+    genderneutral_restroom_rating: s('q_genderneutral_restroom_rating'),
+    open_access_rating: s('q_open_access_rating'),
+    peace_comfort_rating: s('q_peace_comfort_rating'),
+    peace_attitude_rating: s('q_peace_attitude_rating'),
+    peace_empathy_rating: s('q_peace_empathy_rating'),
+    rejoin_rating: s('q_rejoin_rating'),
+  };
+
+  // 텍스트 질문 번역 맵
+  const textLabelMap: Record<string, { label: string; placeholder?: string }> = {
+    best_moment: { label: s('q_best_moment'), placeholder: s('placeholder_best_moment') },
+    improvement: { label: s('q_improvement'), placeholder: s('placeholder_improvement') },
+    suggestion: { label: s('q_suggestion') },
+    genderneutral_restroom_comment: { label: s('q_genderneutral_restroom_comment') },
+    open_access_comment: { label: s('q_open_access_comment') },
+    peace_reflection: { label: s('q_peace_reflection') },
+    recommend_musicians: {
+      label: s('q_recommend_musicians'),
+      placeholder: s('placeholder_recommend_musicians'),
+    },
+    one_line_intro: {
+      label: s('q_one_line_intro'),
+      placeholder: s('placeholder_one_line_intro'),
+    },
+    last_words: { label: s('q_last_words') },
+  };
+
+  // 섹션 번역 맵
+  const sectionLabelMap: Record<string, { title: string; description?: string }> = {
+    overall: { title: s('section_overall') },
+    operation: { title: s('section_operation'), description: s('section_operation_desc') },
+    open: { title: s('section_open'), description: s('section_open_desc') },
+    peace: { title: s('section_peace'), description: s('section_peace_desc') },
+    next: { title: s('section_next') },
+  };
+
+  // 척도 min/max 번역
+  const satisfactionScale = {
+    minLabel: s('scale_min_satisfaction'),
+    maxLabel: s('scale_max_satisfaction'),
+  };
+  const agreementScale = {
+    minLabel: s('scale_min_agreement'),
+    maxLabel: s('scale_max_agreement'),
+  };
+  const scaleByKey: Record<string, { minLabel: string; maxLabel: string }> = {
+    overall_rating: satisfactionScale,
+    stage_sound_rating: satisfactionScale,
+    timetable_rating: satisfactionScale,
+    lodging_rating: satisfactionScale,
+    meals_rating: satisfactionScale,
+    transport_rating: satisfactionScale,
+    staff_comm_rating: satisfactionScale,
+    pre_comm_rating: satisfactionScale,
+    genderneutral_restroom_rating: satisfactionScale,
+    open_access_rating: satisfactionScale,
+    recommend_rating: agreementScale,
+    peace_comfort_rating: agreementScale,
+    peace_attitude_rating: agreementScale,
+    peace_empathy_rating: agreementScale,
+    rejoin_rating: agreementScale,
+  };
+
+  // 역할 라벨 번역 맵 (key는 저장 값이므로 그대로 유지)
+  const roleLabelMap: Record<string, string> = {
+    musician: s('role_musician'),
+    staff: s('role_staff'),
+    audience: s('role_audience'),
+    seller: s('role_seller'),
+  };
+
+  // 동의 라벨 번역 맵 (key는 DB 컬럼명 — 저장 값이므로 그대로 유지)
+  const consentLabelMap: Record<string, string> = {
+    consent_quote_named: s('consent_quote_named_label'),
+    consent_quote_anon: s('consent_quote_anon_label'),
+    consent_photo: s('consent_photo_label'),
   };
 
   if (status === 'success') {
     return (
-      <PageLayout noIndex title="고맙습니다 — 함께 돌아보는 강정" background="ocean-sand">
+      <PageLayout noIndex title={s('success_page_title')} background="ocean-sand">
         <Section>
           <Container size="content">
             <div className="py-16 text-center">
               <div className="mb-6 text-5xl">🌊</div>
-              <h1 className="mb-4 font-display text-3xl font-bold text-deep-ocean">고맙습니다!</h1>
+              <h1 className="mb-4 font-display text-3xl font-bold text-deep-ocean">
+                {s('success_heading')}
+              </h1>
               <p className="mx-auto mb-8 max-w-md leading-relaxed text-balance text-coastal-gray">
-                소중한 회고가 잘 전달되었습니다. 여러분이 들려준 이야기로 제4회 캠프를 더 단단하게
-                준비하겠습니다. 노래하자, 춤추자, 전쟁을 끝내자.
+                {s('success_body')}
               </p>
               <Button to="/camps/2026" variant="primary">
-                캠프 페이지로 돌아가기
+                {s('success_btn_back')}
               </Button>
             </div>
           </Container>
@@ -199,36 +303,34 @@ const CampSurvey2026Page: React.FC = () => {
   return (
     <PageLayout
       noIndex
-      title="함께 돌아보는 강정 — 제3회 강정 피스앤뮤직캠프"
-      description="제3회 강정 피스앤뮤직캠프에 함께한 모든 분의 회고를 듣습니다."
+      title={s('page_title')}
+      description={s('seo_description')}
       background="ocean-sand"
       disableTopPadding
     >
       <PageHero
-        title="함께 돌아보는 강정"
-        subtitle="제3회 강정 피스앤뮤직캠프, 사흘의 기억을 들려주세요"
+        title={s('page_hero_title')}
+        subtitle={s('page_hero_subtitle')}
         backgroundImage={HERO_IMAGE}
       />
       <Section background="white" paddingTop="loose" paddingBottom="loose">
         <Container size="content">
-          <p className="mb-10 leading-relaxed text-coastal-gray">
-            강정에서 사흘을 함께한 여러분께. 무대 위에서, 객석에서, 마켓 부스에서, 그리고 보이지
-            않는 곳에서 이 캠프를 함께 만들어주셔서 고맙습니다. 더 단단한 4회차를 준비하기 위해 짧은
-            회고를 부탁드립니다. 약 8분이면 충분하고, 솔직한 의견일수록 큰 힘이 됩니다. 응답은
-            운영진만 확인하며, 후기·사진 공개는 맨 아래에서 따로 동의받습니다.
-          </p>
+          <p className="mb-10 leading-relaxed text-coastal-gray">{s('intro')}</p>
 
           <form onSubmit={handleSubmit} className="space-y-12" noValidate>
             {/* 기본 정보 */}
             <section>
-              <h2 className="mb-5 font-display text-2xl font-bold text-deep-ocean">기본 정보</h2>
+              <h2 className="mb-5 font-display text-2xl font-bold text-deep-ocean">
+                {s('section_basic_info')}
+              </h2>
               <div className="space-y-5">
                 <div>
                   <label
                     htmlFor="respondent_name"
                     className="mb-2 block font-medium text-deep-ocean"
                   >
-                    활동명(팀명) 또는 본명 <span className="text-sunset-coral">*</span>
+                    {s('label_name')}{' '}
+                    <span className="text-sunset-coral">{s('label_name_required')}</span>
                   </label>
                   <input
                     id="respondent_name"
@@ -238,12 +340,12 @@ const CampSurvey2026Page: React.FC = () => {
                     maxLength={100}
                     required
                     className={inputClass}
-                    placeholder="예) 강정바람밴드 / 홍길동"
+                    placeholder={s('placeholder_name')}
                   />
                 </div>
                 <fieldset className="border-0 p-0 m-0">
                   <legend className="mb-2 block font-medium text-deep-ocean">
-                    어떤 자격으로 함께하셨나요? (중복 선택 — 고르시면 관련 질문만 보여드려요)
+                    {s('label_role')}
                   </legend>
                   <div className="flex flex-wrap gap-2">
                     {ROLE_OPTIONS.map((r) => {
@@ -261,7 +363,7 @@ const CampSurvey2026Page: React.FC = () => {
                               : 'border-seafoam bg-white text-coastal-gray hover:border-ocean-mist'
                           )}
                         >
-                          {r.label}
+                          {roleLabelMap[r.key] ?? r.label}
                         </button>
                       );
                     })}
@@ -269,11 +371,9 @@ const CampSurvey2026Page: React.FC = () => {
                 </fieldset>
                 <div>
                   <span className="mb-1 block font-medium text-deep-ocean">
-                    다음에도 연락드릴 채널 (선택)
+                    {s('label_contact')}
                   </span>
-                  <p className="mb-3 text-sm text-coastal-gray">
-                    편한 채널 하나만 적어주셔도 됩니다.
-                  </p>
+                  <p className="mb-3 text-sm text-coastal-gray">{s('contact_hint')}</p>
                   <div className="space-y-3">
                     <input
                       type="text"
@@ -281,8 +381,8 @@ const CampSurvey2026Page: React.FC = () => {
                       onChange={(e) => setInstagram(e.target.value)}
                       maxLength={200}
                       className={inputClass}
-                      placeholder="인스타그램 @아이디"
-                      aria-label="인스타그램 아이디"
+                      placeholder={s('placeholder_instagram')}
+                      aria-label={s('aria_instagram')}
                     />
                     <input
                       type="email"
@@ -290,8 +390,8 @@ const CampSurvey2026Page: React.FC = () => {
                       onChange={(e) => setEmail(e.target.value)}
                       maxLength={200}
                       className={inputClass}
-                      placeholder="이메일"
-                      aria-label="이메일"
+                      placeholder={s('placeholder_email')}
+                      aria-label={s('aria_email')}
                     />
                     <input
                       type="tel"
@@ -299,8 +399,8 @@ const CampSurvey2026Page: React.FC = () => {
                       onChange={(e) => setPhone(e.target.value)}
                       maxLength={50}
                       className={inputClass}
-                      placeholder="전화번호"
-                      aria-label="전화번호"
+                      placeholder={s('placeholder_phone')}
+                      aria-label={s('aria_phone')}
                     />
                   </div>
                 </div>
@@ -325,19 +425,26 @@ const CampSurvey2026Page: React.FC = () => {
               const visibleRatings = section.ratings.filter((q) => isQuestionVisible(q, roles));
               const visibleTexts = section.texts.filter((q) => isQuestionVisible(q, roles));
               if (visibleRatings.length === 0 && visibleTexts.length === 0) return null;
+              const sectionI18n = sectionLabelMap[section.id];
               return (
                 <section key={section.id}>
                   <h2 className="mb-2 font-display text-2xl font-bold text-deep-ocean">
-                    {section.title}
+                    {sectionI18n?.title ?? section.title}
                   </h2>
-                  {section.description && (
-                    <p className="mb-5 text-sm text-coastal-gray">{section.description}</p>
+                  {(sectionI18n?.description ?? section.description) && (
+                    <p className="mb-5 text-sm text-coastal-gray">
+                      {sectionI18n?.description ?? section.description}
+                    </p>
                   )}
                   <div className="space-y-7">
                     {visibleRatings.map((q) => (
                       <RatingField
                         key={q.key}
-                        q={q}
+                        q={{
+                          ...q,
+                          i18nLabel: ratingLabelMap[q.key],
+                          ...(scaleByKey[q.key] ?? {}),
+                        }}
                         value={ratings[q.key] ?? null}
                         onChange={(v) => setRating(q.key, v)}
                       />
@@ -345,7 +452,11 @@ const CampSurvey2026Page: React.FC = () => {
                     {visibleTexts.map((q) => (
                       <TextField
                         key={q.key}
-                        q={q}
+                        q={{
+                          ...q,
+                          i18nLabel: textLabelMap[q.key]?.label,
+                          i18nPlaceholder: textLabelMap[q.key]?.placeholder,
+                        }}
                         value={texts[q.key] ?? ''}
                         onChange={(v) => setText(q.key, v)}
                       />
@@ -358,7 +469,7 @@ const CampSurvey2026Page: React.FC = () => {
             {/* 후기/사진 활용 동의 */}
             <section>
               <h2 className="mb-5 font-display text-2xl font-bold text-deep-ocean">
-                후기·사진 활용 동의 (선택)
+                {s('section_consent_optional')}
               </h2>
               <div className="space-y-3">
                 {CONSENT_OPTIONS.map((c) => (
@@ -371,7 +482,7 @@ const CampSurvey2026Page: React.FC = () => {
                       }
                       className="mt-1 h-5 w-5 flex-shrink-0 rounded border-seafoam text-jeju-ocean focus:ring-jeju-ocean/30"
                     />
-                    <span className="text-deep-ocean">{c.label}</span>
+                    <span className="text-deep-ocean">{consentLabelMap[c.key] ?? c.label}</span>
                   </label>
                 ))}
               </div>
@@ -387,9 +498,10 @@ const CampSurvey2026Page: React.FC = () => {
                   className="mt-1 h-5 w-5 flex-shrink-0 rounded border-seafoam text-jeju-ocean focus:ring-jeju-ocean/30"
                 />
                 <span className="text-sm leading-relaxed text-deep-ocean">
-                  <strong className="text-sunset-coral">(필수)</strong> 이름과 연락처 등 입력한
-                  개인정보를 설문 분석과 다음 회차 안내 목적으로 수집·이용하는 데 동의합니다. 응답은
-                  운영진만 열람하며, 목적을 다한 뒤 파기합니다.{' '}
+                  <strong className="text-sunset-coral">
+                    {s('privacy_consent_required_mark')}
+                  </strong>{' '}
+                  {s('privacy_consent_text')}{' '}
                   <a
                     href="/privacy"
                     target="_blank"
@@ -397,7 +509,7 @@ const CampSurvey2026Page: React.FC = () => {
                     onClick={(e) => e.stopPropagation()}
                     className="font-medium text-jeju-ocean underline"
                   >
-                    개인정보처리방침 보기
+                    {s('privacy_policy_link')}
                   </a>
                 </span>
               </label>
@@ -416,7 +528,7 @@ const CampSurvey2026Page: React.FC = () => {
               fullWidth
               disabled={status === 'submitting'}
             >
-              {status === 'submitting' ? '제출 중…' : '설문 제출하기'}
+              {status === 'submitting' ? s('btn_submitting') : s('btn_submit')}
             </Button>
           </form>
         </Container>
