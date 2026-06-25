@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import type { GetServerSidePropsContext } from 'next';
 import AdminLayout from '@/components/admin/AdminLayout';
 import MarkdownView from '@/components/admin/MarkdownView';
-import { getAdminSession, redirectToAdminLogin } from '@/lib/adminAuth';
+import { getAdminSession, canEditContent, redirectToAdminLogin } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import {
   CAMP_EDITION_YEARS,
@@ -233,6 +233,9 @@ export default function AdminWhitepaperPage(props: WhitepaperPageProps) {
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
   const session = await getAdminSession(context);
   if (!session) return redirectToAdminLogin(context.resolvedUrl);
+  if (!canEditContent(session.member)) {
+    return { redirect: { destination: '/admin', permanent: false } };
+  }
 
   const supabase = createSupabaseServerClient(context.req, context.res);
   // 존재하는 모든 회차 백서(camp-*-whitepaper)를 한 번에 로드.

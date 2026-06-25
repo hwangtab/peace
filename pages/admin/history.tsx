@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { GetServerSidePropsContext } from 'next';
 import classNames from 'classnames';
 import AdminLayout from '@/components/admin/AdminLayout';
-import { getAdminSession, redirectToAdminLogin } from '@/lib/adminAuth';
+import { getAdminSession, canEditContent, redirectToAdminLogin } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import type { AdminMember, CmsChangeAction, CmsChangeLog } from '@/types/cms';
 
@@ -169,6 +169,9 @@ export default function AdminHistoryPage({
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
   const session = await getAdminSession(context);
   if (!session) return redirectToAdminLogin(context.resolvedUrl);
+  if (!canEditContent(session.member)) {
+    return { redirect: { destination: '/admin', permanent: false } };
+  }
 
   const supabase = createSupabaseServerClient(context.req, context.res);
   const { data, error } = await supabase
