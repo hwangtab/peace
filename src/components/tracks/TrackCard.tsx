@@ -18,6 +18,7 @@ export interface TrackCardProps {
   onToggle: () => void;
   currentlyPlaying: boolean;
   onPlay: () => void;
+  onEnded?: () => void;
   musicianImageUrl?: string;
   alwaysExpanded?: boolean;
   priority?: boolean;
@@ -30,6 +31,7 @@ const TrackCard = React.memo(
     onToggle,
     currentlyPlaying,
     onPlay,
+    onEnded,
     musicianImageUrl,
     alwaysExpanded = false,
     priority = false,
@@ -97,6 +99,7 @@ const TrackCard = React.memo(
                       audioUrl={track.audioUrl}
                       isPlaying={currentlyPlaying}
                       onPlayPause={onPlay}
+                      onEnded={onEnded}
                       title={track.title}
                       artist={track.artist}
                     />

@@ -65,6 +65,10 @@ const TracksSection: React.FC<TracksSectionProps> = React.memo(
       setPlayingTrackId((prev) => (prev === id ? null : id));
     }, []);
 
+    const handleEnded = useCallback(() => {
+      setPlayingTrackId(null);
+    }, []);
+
     const relation = useMemo(
       () => buildTrackMusicianRelation(tracks, musicians),
       [tracks, musicians]
@@ -97,6 +101,7 @@ const TracksSection: React.FC<TracksSectionProps> = React.memo(
                   onToggle={() => handleToggle(track.id)}
                   currentlyPlaying={playingTrackId === track.id}
                   onPlay={() => handlePlay(track.id)}
+                  onEnded={handleEnded}
                   musicianImageUrl={musician?.imageUrl}
                   alwaysExpanded={hideSectionHeader}
                   priority={hideSectionHeader && index < 2}

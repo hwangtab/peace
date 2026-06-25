@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 
@@ -11,6 +11,13 @@ interface YouTubeFacadeProps {
 const YouTubeFacade: React.FC<YouTubeFacadeProps> = ({ videoId, title, thumbnailUrl }) => {
   const { t } = useTranslation();
   const [isPlaying, setIsPlaying] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  useEffect(() => {
+    if (isPlaying) {
+      iframeRef.current?.focus();
+    }
+  }, [isPlaying]);
 
   if (!videoId) {
     return (
@@ -29,6 +36,7 @@ const YouTubeFacade: React.FC<YouTubeFacadeProps> = ({ videoId, title, thumbnail
     return (
       <div className="relative aspect-video w-full rounded-xl overflow-hidden shadow-lg bg-black">
         <iframe
+          ref={iframeRef}
           src={`https://www.youtube.com/embed/${videoId}?rel=0&autoplay=1`}
           title={title}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
