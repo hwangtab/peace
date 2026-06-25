@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Container from './Container';
 import InstagramIcon from '@/components/icons/InstagramIcon';
 import { HiOutlineMail } from '@/components/icons/SiteIcons';
-import { simpleMenuItems, campItems, albumItems } from './navigationData';
+import { simpleMenuItems, campItems, albumItems, solidarityNavItem } from './navigationData';
 import { ROUTES } from '@/constants/routes';
 
 import { useTranslation } from 'next-i18next';
@@ -46,6 +46,15 @@ const Footer = () => {
                     {t(item.nameKey)}
                   </Link>
                 ))}
+                {/* '연대 활동'은 커뮤니티 하위로 이동해 최상위 메뉴에선 빠졌지만,
+                    푸터에는 직접 진입점을 유지한다. */}
+                <Link
+                  href={solidarityNavItem.path}
+                  className="block text-cloud-white/80 hover:text-golden-sun
+                             transition-colors duration-200 text-sm break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun rounded-sm"
+                >
+                  {t(solidarityNavItem.nameKey)}
+                </Link>
                 <Link
                   href={ROUTES.BOARD}
                   className="block text-cloud-white/80 hover:text-golden-sun
