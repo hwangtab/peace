@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { AnimatePresence, motion } from 'framer-motion';
 import classNames from 'classnames';
@@ -19,6 +19,8 @@ export default function NotificationBell() {
   const [items, setItems] = useState<AdminNotification[]>([]);
   const [unreadCount, setUnreadCount] = useState(0);
   const [loading, setLoading] = useState(false);
+  // 드롭다운을 열 때 기준 시각을 고정해 상대시간 기준이 렌더마다 흔들리지 않도록 한다.
+  const [now, setNow] = useState(() => new Date());
   const containerRef = useRef<HTMLDivElement>(null);
 
   const fetchFeed = useCallback(async () => {
@@ -56,6 +58,7 @@ export default function NotificationBell() {
     const next = !open;
     setOpen(next);
     if (next) {
+      setNow(new Date());
       setLoading(true);
       await fetchFeed();
       setLoading(false);
@@ -79,9 +82,6 @@ export default function NotificationBell() {
     setOpen(false);
     router.push(href);
   };
-
-  // 드롭다운을 열 때 기준 시각을 고정해 상대시간 기준이 렌더마다 흔들리지 않도록 한다.
-  const now = useMemo(() => new Date(), [open]);
 
   return (
     <div ref={containerRef} className="relative">

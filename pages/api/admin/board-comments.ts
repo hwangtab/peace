@@ -107,7 +107,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           res.status(500).json({ error: error.message });
           return;
         }
-        res.status(200).json({ comments: data ?? [] });
+        const updated = data ?? [];
+        const updatedIds = new Set(updated.map((row) => row.id as string));
+        const missing = ids.filter((id) => !updatedIds.has(id));
+        res
+          .status(200)
+          .json({ comments: updated, updated: updated.length, requested: ids.length, missing });
         return;
       }
 

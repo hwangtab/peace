@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { z, ZodError } from 'zod';
 import { requireAdminRole } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
-import { isValidBoardSlug } from '@/lib/boardForms';
+import { isValidBoardSlug, isProtectedBoardSlug } from '@/lib/boardForms';
 import { boardImagePath } from '@/lib/boardData';
 import type { Board } from '@/types/board';
 
@@ -173,13 +173,23 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try {
       const body = deleteSchema.parse(req.body);
 
-      const target = await supabase.from('boards').select('id').eq('id', body.id).maybeSingle();
+      const target = await supabase
+        .from('boards')
+        .select('id, slug')
+        .eq('id', body.id)
+        .maybeSingle();
       if (target.error) {
         res.status(500).json({ error: target.error.message });
         return;
       }
       if (!target.data) {
         res.status(404).json({ error: '게시판을 찾을 수 없습니다.' });
+        return;
+      }
+      if (isProtectedBoardSlug(target.data.slug as string)) {
+        res.status(403).json({
+          error: '기본 게시판(후기·자유게시판·공연 소식)은 삭제할 수 없습니다.',
+        });
         return;
       }
 
