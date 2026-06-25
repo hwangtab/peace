@@ -1,9 +1,9 @@
-import type { ArchiveGalleryImageRow, ArchivePressItemRow, ArchiveVideoRow } from '@/types/cms';
+import type { ArchivePressItemRow, ArchiveVideoRow } from '@/types/cms';
 import type { GalleryImage } from '@/types/gallery';
 import type { PressItem } from '@/types/press';
 import type { VideoItem } from '@/types/video';
 import { loadGalleryImages, loadLocalizedData } from '@/utils/dataLoader';
-import { mapGalleryRowToItem, mapPressRowToItem, mapVideoRowToItem } from './adminArchive';
+import { mapPressRowToItem, mapVideoRowToItem } from './adminArchive';
 import { mergeArchiveRowsWithStatic } from './archiveContract';
 import { getSupabasePublicClient } from './supabasePublicClient';
 
@@ -90,45 +90,15 @@ export const loadPublishedPress = async (locale = 'ko'): Promise<ArchiveLoadResu
 };
 
 export const loadPublishedGallery = async (
-  locale = 'ko'
+  _locale = 'ko'
 ): Promise<ArchiveLoadResult<GalleryImage>> => {
-  const staticItems = loadGalleryImages<GalleryImage>();
-  const client = getSupabasePublicClient();
-  if (client) {
-    const { data, error } = await client
-      .from('archive_gallery_images')
-      .select('*')
-      .eq('locale', locale)
-      .order('sort_order', { ascending: true })
-      .order('event_year', { ascending: false });
-
-    if (!error && data && data.length > 0) {
-      const merged = mergeArchiveRowsWithStatic(
-        data as ArchiveGalleryImageRow[],
-        staticItems,
-        mapGalleryRowToItem,
-        (item) => item.id
-      );
-      // CMS 와 정적 데이터에 같은 이미지가 서로 다른 id 로 중복 등록되어 있어도
-      // merge 는 id 기준으로만 dedup 한다. 갤러리는 url 이 실질 식별자이므로
-      // 같은 url 은 한 번만 노출하도록 추가로 dedup 한다(화면 중복·React key 충돌 방지).
-      const seenUrls = new Set<string>();
-      const items = merged.filter((item) => {
-        if (!item.url) return true;
-        if (seenUrls.has(item.url)) return false;
-        seenUrls.add(item.url);
-        return true;
-      });
-      return { source: 'cms', items };
-    }
-
-    if (error && !isMissingTableError(error)) {
-      console.warn('[archive-cms] gallery fetch failed:', error.message);
-    }
-  }
-
+  // 갤러리는 정적 json(public/data/gallery/*, 이미지 폴더 스캔으로 자동 생성)을
+  // 단일 출처(SSOT)로 사용한다. CMS(archive_gallery_images)는 정적의 부분집합이라
+  // 고유 데이터가 없고(stale), public_id 합성값이 런타임 merge 의 원본 id 와
+  // 영원히 불일치해 같은 이미지가 중복 노출(React key 충돌)되던 원인이었다.
+  // → CMS 갤러리 레이어 제거. videos/press 는 기존 CMS 병합 유지.
   return {
     source: 'static',
-    items: staticItems,
+    items: loadGalleryImages<GalleryImage>(),
   };
 };

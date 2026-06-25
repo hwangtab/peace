@@ -112,9 +112,8 @@ export default function AgendaSection({ meetingId, agendas, canEdit }: AgendaSec
     }
   };
 
-  // 표시 순서대로 sort_order를 재부여한다(초기값이 모두 0이라 첫 이동에서 0..n-1로 정규화됨).
-  // 전체 작업 동안 isReordering으로 모든 컨트롤을 잠그고(다른 항목 동시 변경/중복 이동 방지),
-  // 중간 PATCH가 실패하면 refresh()로 DB 실제 상태와 UI를 재동기화한다(부분 적용 후 정지 방지).
+  // 표시 순서대로 sort_order를 재부여한다. 전체 순서를 단일 요청으로 보내(서버가 일괄 적용)
+  // 행마다 PATCH를 보내다 중간에 멈춰 sort_order가 깨지던 문제를 없앤다.
   const moveAgenda = async (index: number, dir: -1 | 1) => {
     if (isReordering) return;
     const target = index + dir;
@@ -131,26 +130,18 @@ export default function AgendaSection({ meetingId, agendas, canEdit }: AgendaSec
     reordered[target] = moving;
 
     try {
-      for (let i = 0; i < reordered.length; i += 1) {
-        const ag = reordered[i];
-        if (!ag || ag.sort_order === i) continue;
-        const response = await fetch('/api/admin/meeting-agendas', {
-          method: 'PATCH',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ id: ag.id, sort_order: i }),
-        });
-        const payload = await response.json();
-        if (!response.ok || !payload.agenda) {
-          setError(payload.error || '순서 변경에 실패했습니다.');
-          setIsReordering(false);
-          refresh();
-          return;
-        }
+      const response = await fetch('/api/admin/meeting-agendas', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ meeting_id: meetingId, order: reordered.map((a) => a.id) }),
+      });
+      const payload = await response.json();
+      if (!response.ok || !payload.ok) {
+        setError(payload.error || '순서 변경에 실패했습니다.');
       }
-      setIsReordering(false);
-      refresh();
     } catch {
       setError('네트워크 오류가 발생했습니다.');
+    } finally {
       setIsReordering(false);
       refresh();
     }

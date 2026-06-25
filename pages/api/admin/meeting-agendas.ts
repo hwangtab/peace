@@ -35,6 +35,11 @@ const updateSchema = z
     { message: '변경할 필드가 하나 이상 필요합니다.' }
   );
 
+const reorderSchema = z.object({
+  meeting_id: z.string().uuid(),
+  order: z.array(z.string().uuid()).min(1),
+});
+
 const deleteSchema = z.object({ id: z.string().uuid() });
 
 const getErrorMessage = (error: unknown): string => {
@@ -59,6 +64,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .select('*')
         .single();
       if (error) {
+        if (error.code === '23503') {
+          res.status(404).json({ error: '회의를 찾을 수 없습니다.' });
+          return;
+        }
         res.status(500).json({ error: error.message });
         return;
       }
@@ -72,6 +81,47 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   if (req.method === 'PATCH') {
     try {
+      // 순서 일괄 변경: 한 회의의 안건 순서를 단일 요청으로 처리한다.
+      // 클라이언트가 행마다 PATCH를 보내던 방식은 중간 실패 시 sort_order가 깨졌다.
+      const reorderParsed = reorderSchema.safeParse(req.body);
+      if (reorderParsed.success) {
+        const { meeting_id, order } = reorderParsed.data;
+
+        // 전달된 order가 해당 회의의 안건 집합과 정확히 일치하는지 검증
+        const existing = await supabase
+          .from('meeting_agendas')
+          .select('id')
+          .eq('meeting_id', meeting_id);
+        if (existing.error) {
+          res.status(500).json({ error: existing.error.message });
+          return;
+        }
+        const existingIds = new Set((existing.data ?? []).map((r) => r.id as string));
+        const uniqueOrder = new Set(order);
+        if (
+          uniqueOrder.size !== order.length ||
+          order.length !== existingIds.size ||
+          !order.every((id) => existingIds.has(id))
+        ) {
+          res.status(400).json({ error: '순서 목록이 회의 안건과 일치하지 않습니다.' });
+          return;
+        }
+
+        for (let i = 0; i < order.length; i += 1) {
+          const { error } = await supabase
+            .from('meeting_agendas')
+            .update({ sort_order: i })
+            .eq('id', order[i])
+            .eq('meeting_id', meeting_id);
+          if (error) {
+            res.status(500).json({ error: error.message });
+            return;
+          }
+        }
+        res.status(200).json({ ok: true });
+        return;
+      }
+
       const body = updateSchema.parse(req.body);
       const { id, ...fields } = body;
 
