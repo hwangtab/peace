@@ -5,6 +5,7 @@ import type { ReactNode } from 'react';
 import classNames from 'classnames';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import type { AdminMember } from '@/types/cms';
+import NotificationBell from '@/components/admin/NotificationBell';
 
 const NAV_ITEMS = [
   { href: '/admin', label: '상황판' },
@@ -61,6 +62,7 @@ export default function AdminLayout({ title, member, children }: AdminLayoutProp
                     {member.display_name || member.email}
                   </span>
                 )}
+                <NotificationBell />
                 <button
                   type="button"
                   onClick={handleSignOut}
