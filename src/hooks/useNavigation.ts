@@ -54,7 +54,9 @@ export const useNavigation = () => {
 
   const handleDesktopDropdownChange = useCallback(
     (dropdown: NavigationDropdownKey, isOpen: boolean) => {
-      setDesktopOpenDropdown(isOpen ? dropdown : null);
+      // 닫기 요청은 현재 열려 있는 드롭다운이 그 자신일 때만 적용한다.
+      // (캠프의 지연된 hover-close 가 이미 열린 앨범을 닫아버리는 것 방지)
+      setDesktopOpenDropdown((prev) => (isOpen ? dropdown : prev === dropdown ? null : prev));
     },
     []
   );
