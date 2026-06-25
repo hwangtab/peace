@@ -12,6 +12,7 @@ import { CampTimetable } from '@/components/camp/timetable';
 import { timetable2026 } from '@/data/timetable-2026';
 import CampHero from '@/components/camp/CampHero';
 import CampGallery from '@/components/camp/CampGallery';
+import CampStaff from '@/components/camp/CampStaff';
 import CampVideos from '@/components/camp/CampVideos';
 import { campGalleryHighlights2026 } from '@/data/camps';
 import dynamic from 'next/dynamic';
@@ -292,6 +293,25 @@ const Camp2026Page: React.FC<CampPageProps> = ({
         <GuidelinesSummary />
         <SectionWave color="light-beige" />
       </>
+
+      {/* Credits Section — 함께 만든 사람들 · 협력 단체 */}
+      {((camp2026.staff && camp2026.staff.length > 0) ||
+        (camp2026.collaborators && camp2026.collaborators.length > 0)) && (
+        <Section background="light-beige" paddingTop="loose" paddingBottom="loose">
+          <Container size="content">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-100px' }}
+              transition={{ duration: 0.6 }}
+              className="bg-white rounded-lg shadow-sm p-6 sm:p-8"
+            >
+              <SectionHeader title={t('camp.section_staff')} align="left" className="!mb-6" />
+              <CampStaff staff={camp2026.staff || []} collaborators={camp2026.collaborators} />
+            </motion.div>
+          </Container>
+        </Section>
+      )}
 
       {/* Final CTA Section */}
       {(camp2026.fundingUrl || isPast) && (
