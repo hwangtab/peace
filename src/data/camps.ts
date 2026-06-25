@@ -265,8 +265,8 @@ const localizedData: Record<string, Record<string, CampLocalizedData>> = {
         { role: '자봉 조직·현장 준비·단체 조직', members: ['이상', '나장'] },
         { role: '현장 운영·무대공간 제작', members: ['윰', '이상', '이한주', '정진석', '나장'] },
         { role: '영상 기록', members: ['치치', '하띠', '단', '동우'] },
-        { role: '다큐 제작', members: ['치치', '황경하', '이상'] },
-        { role: '아카이브 기록(사진)', members: ['권동희', '김동희'] },
+        { role: '다큐 제작', members: ['치치'] },
+        { role: '사진 기록', members: ['권동희', '김동희'] },
         {
           role: '자원봉사자',
           members: [
@@ -286,7 +286,7 @@ const localizedData: Record<string, Record<string, CampLocalizedData>> = {
             '베드로',
             '강가히말라야',
             '윤수',
-            '뗑',
+            '뮁',
             '자파리 3인',
             '윤화주',
           ],
@@ -510,8 +510,8 @@ const localizedData: Record<string, Record<string, CampLocalizedData>> = {
           members: ['Yum', 'Lee Sang', 'Lee Hanju', 'Jeong Jinseok', 'Najang'],
         },
         { role: 'Video', members: ['Chichi', 'Hatti', 'Dan', 'Dongwoo'] },
-        { role: 'Documentary', members: ['Chichi', 'Hwang Kyungha', 'Lee Sang'] },
-        { role: 'Photo Archive', members: ['Kwon Donghee', 'Kim Donghee'] },
+        { role: 'Documentary', members: ['Chichi'] },
+        { role: 'Photo Records', members: ['Kwon Donghee', 'Kim Donghee'] },
         {
           role: 'Volunteers',
           members: [
@@ -531,7 +531,7 @@ const localizedData: Record<string, Record<string, CampLocalizedData>> = {
             'Pedro',
             'Ganghahimalaya',
             'Yunsu',
-            'Tteng',
+            'Mwing',
             'Jafari (3 members)',
             'Yun Hwaju',
           ],
