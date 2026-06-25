@@ -8,7 +8,6 @@ import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import {
   CAMP_EDITION_YEARS,
   campEditionLabel,
-  campEditionShortLabel,
   whitepaperSlug,
   parseWhitepaperYear,
 } from '@/lib/campEditions';
@@ -107,7 +106,7 @@ function WhitepaperEditor({
         >
           {years.map((year) => (
             <option key={year} value={year}>
-              {campEditionShortLabel(year)}
+              {campEditionLabel(year)}
             </option>
           ))}
         </select>
