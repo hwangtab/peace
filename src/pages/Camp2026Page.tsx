@@ -273,6 +273,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({
           <SectionWave color="sky-horizon" />
           <Section background="ocean-sand" paddingTop="loose" paddingBottom="loose">
             <Container size="content">
+              <SectionHeader title={t('camp.section_staff')} />
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -280,7 +281,6 @@ const Camp2026Page: React.FC<CampPageProps> = ({
                 transition={{ duration: 0.6 }}
                 className="bg-white rounded-lg shadow-sm p-6 sm:p-8"
               >
-                <SectionHeader title={t('camp.section_staff')} align="left" className="!mb-6" />
                 <CampStaff staff={camp2026.staff || []} collaborators={camp2026.collaborators} />
               </motion.div>
             </Container>
