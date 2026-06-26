@@ -78,3 +78,6 @@ src/fonts/source/Noto*.ttf
 
 # Python 캐시
 __pycache__/
+
+# 빌드 시 생성되는 OG 파생 jpg (scripts/generate-og-images.mjs)
+public/images/og/_derived/

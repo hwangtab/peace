@@ -5,6 +5,7 @@ import { useTranslation } from 'next-i18next';
 import { config, getFullUrl } from '@/config/env';
 import nextI18NextConfig from '../../../next-i18next.config';
 import { escapeJsonLd } from '@/utils/escapeJsonLd';
+import { toOgImage } from '@/utils/ogImage';
 
 const DEFAULT_LOCALE = nextI18NextConfig.i18n.defaultLocale;
 const LOCALES = nextI18NextConfig.i18n.locales;
@@ -84,8 +85,12 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
     locale === DEFAULT_LOCALE ? pathWithoutLocale : `/${locale}${pathWithoutLocale}`;
   const fullCanonicalUrl = canonicalUrl || getFullUrl(canonicalPath);
 
-  // Ensure ogImage is a full URL (if it's a relative path, convert it)
-  const fullOgImage = ogImage.startsWith('http') ? ogImage : getFullUrl(ogImage);
+  // webp/avif og:image 를 카카오톡·페이스북 호환 jpg 로 정규화(파생본 없으면
+  // 기본 OG 로 폴백)한 뒤 절대 URL 로 변환한다.
+  const resolvedOgImage = toOgImage(ogImage);
+  const fullOgImage = resolvedOgImage.startsWith('http')
+    ? resolvedOgImage
+    : getFullUrl(resolvedOgImage);
 
   // Derive MIME type from image extension
   const ogImageExt = fullOgImage.split('.').pop()?.toLowerCase() ?? '';
