@@ -13,11 +13,32 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 // dev 는 webpack HMR 이 unsafe-eval 을 써 위반 노이즈가 심하므로 production 만 적용.
 // Report-Only 단계에서 홈·갤러리·영상·게시판·press + YouTube iframe 직접 삽입까지
 // production 빌드로 검증해 실제 차단 위반 0건을 확인한 뒤 enforce 로 전환함.
+
+// press 썸네일은 언론사 원본 이미지를 외부 도메인에서 직접 로드한다(unoptimized).
+// 출처가 매체마다 달라 img-src 화이트리스트에 등록해야 차단되지 않는다.
+// 매체 자체 도메인은 서브도메인 변동(img→img2 등)에 견디도록 등록도메인 와일드카드,
+// 공유 CDN(speedgabia·daumcdn)은 범위를 좁히려 정확 호스트로 둔다.
+// 새 매체 기사를 추가할 때 새 호스트가 생기면 여기에 더해야 한다.
+const PRESS_IMG_HOSTS = [
+  'https://*.news-art.co.kr',
+  'https://*.hani.co.kr',
+  'https://*.khan.co.kr',
+  'https://*.headlinejeju.co.kr',
+  'https://*.ruliweb.com',
+  'https://*.mt.co.kr',
+  'https://*.ijejutoday.com',
+  'https://*.newsnjeju.com',
+  'https://*.woman-story.co.kr',
+  'https://*.lawyersite.co.kr',
+  'https://mmagimg.speedgabia.com',
+  'https://img1.daumcdn.net',
+].join(' ');
+
 const CSP_DIRECTIVES = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https://img.youtube.com https://i.ytimg.com https://*.supabase.co",
+  `img-src 'self' data: blob: https://img.youtube.com https://i.ytimg.com https://*.supabase.co ${PRESS_IMG_HOSTS}`,
   "font-src 'self'",
   "connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.supabase.co",
   'frame-src https://www.youtube.com',
