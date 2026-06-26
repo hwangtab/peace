@@ -8,6 +8,7 @@ overrides:
   '@babel/core': 7.29.6
   postcss: 8.5.15
   tmp: ^0.2.7
+  i18next-fs-backend: '>=2.6.6'
 
 importers:
 
@@ -2802,8 +2803,8 @@ packages:
     engines: {node: '>=22'}
     hasBin: true
 
-  i18next-fs-backend@2.6.5:
-    resolution: {integrity: sha512-+7HBrlaj3UFnNC9HqiXaIlNkwNINYkgQ2PS4h7qW/WGHC9/+OU9Xi0/tdvjjXATw3YCcpmNV7S3zDD9e10pTWg==}
+  i18next-fs-backend@2.6.6:
+    resolution: {integrity: sha512-mYGu6Nt8RIp3X/U8Y+Gej1wo5xmYWmGKLqBGMCC2OCAou5rW5epeHgHmVcw20mJs9Z9+DAPHIxQPNCgFyPRMeg==}
 
   i18next-resources-for-ts@2.1.0:
     resolution: {integrity: sha512-n5UexwEVt0OoIAhG2MWpSnAVJW1U8mQrQTmXyxc5DMAx+NLhcLZhSMJo/FnUsA5JQ3obTYqTgB7YIuZKWpDgow==}
@@ -7700,7 +7701,7 @@ snapshots:
       - react-native
       - typescript
 
-  i18next-fs-backend@2.6.5: {}
+  i18next-fs-backend@2.6.6: {}
 
   i18next-resources-for-ts@2.1.0(@swc/helpers@0.5.21):
     dependencies:
@@ -8908,7 +8909,7 @@ snapshots:
       core-js: 3.49.0
       hoist-non-react-statics: 3.3.2
       i18next: 25.10.10(typescript@5.7.3)
-      i18next-fs-backend: 2.6.5
+      i18next-fs-backend: 2.6.6
       next: 16.2.6(@babel/core@7.29.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
       react-i18next: 16.6.6(i18next@25.10.10(typescript@5.7.3))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3)
