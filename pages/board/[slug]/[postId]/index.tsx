@@ -23,6 +23,7 @@ import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import PageHero from '@/components/common/PageHero';
 import SEOHelmet from '@/components/shared/SEOHelmet';
 import ImageLightbox, { LightboxImage } from '@/components/common/ImageLightbox';
+import ConfirmDialog from '@/components/common/ConfirmDialog';
 
 const BOARD_POST_HERO = '/images-webp/camps/2025/DSC00700.webp';
 
@@ -42,6 +43,8 @@ export default function PostDetailPage({ post, slug, comments, commentsHasMore }
   const dateStr = formatBoardDate(post.created_at);
 
   const [lightbox, setLightbox] = useState<string | null>(null);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   // 조회수 증가 — 세션당 글 1회만(새로고침 인플레이션 방지), 클라이언트에서만 호출.
   // 표시값은 로드 시점(post.view_count) 기준이며, 증가분은 다음 방문/새로고침에 반영된다.
@@ -58,12 +61,14 @@ export default function PostDetailPage({ post, slug, comments, commentsHasMore }
     void supabase.rpc('increment_post_view', { p_post_id: post.id });
   }, [post.id, post.status]);
 
-  const handleDelete = async () => {
-    if (!window.confirm(t('post.deleteConfirm'))) return;
+  const performDelete = async () => {
+    setDeleting(true);
     const supabase = createSupabaseBrowserClient();
     // Delete post from DB first — if this fails, don't remove storage or redirect
     const { error: deleteError } = await supabase.from('posts').delete().eq('id', post.id);
     if (deleteError) {
+      setDeleting(false);
+      setShowDeleteConfirm(false);
       alert(t('error.saveFailed'));
       return;
     }
@@ -130,9 +135,7 @@ export default function PostDetailPage({ post, slug, comments, commentsHasMore }
             </Link>
             <button
               type="button"
-              onClick={() => {
-                void handleDelete();
-              }}
+              onClick={() => setShowDeleteConfirm(true)}
               className="rounded-lg border border-red-400 px-4 py-1.5 text-sm font-semibold text-red-500 transition hover:bg-red-50"
             >
               {t('post.delete')}
@@ -191,6 +194,18 @@ export default function PostDetailPage({ post, slug, comments, commentsHasMore }
         index={0}
         onIndexChange={() => {}}
         onClose={() => setLightbox(null)}
+      />
+
+      <ConfirmDialog
+        show={showDeleteConfirm}
+        message={t('post.deleteConfirm')}
+        confirmLabel={t('post.delete')}
+        cancelLabel={t('post.cancel')}
+        busy={deleting}
+        onConfirm={() => {
+          void performDelete();
+        }}
+        onCancel={() => setShowDeleteConfirm(false)}
       />
     </>
   );

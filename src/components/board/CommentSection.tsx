@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import ConfirmDialog from '@/components/common/ConfirmDialog';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
@@ -66,6 +67,8 @@ export default function CommentSection({
   const [validationError, setValidationError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [deleteId, setDeleteId] = useState<string | null>(null);
+  // 삭제 확인 모달 대기 중인 댓글 id(window.confirm 대체)
+  const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null);
 
   const [deleteError, setDeleteError] = useState<string | null>(null);
 
@@ -184,7 +187,6 @@ export default function CommentSection({
   };
 
   const handleDelete = async (commentId: string) => {
-    if (!window.confirm(t('comment.deleteConfirm'))) return;
     setDeleteError(null);
     setDeleteId(commentId);
     try {
@@ -197,6 +199,7 @@ export default function CommentSection({
       setComments((prev) => prev.filter((c) => c.id !== commentId));
     } finally {
       setDeleteId(null);
+      setPendingDeleteId(null);
     }
   };
 
@@ -268,9 +271,7 @@ export default function CommentSection({
                       <button
                         type="button"
                         disabled={isDeleting}
-                        onClick={() => {
-                          void handleDelete(c.id);
-                        }}
+                        onClick={() => setPendingDeleteId(c.id)}
                         className="text-xs text-red-400 hover:text-red-600 disabled:opacity-50"
                       >
                         {t('comment.delete')}
@@ -371,6 +372,18 @@ export default function CommentSection({
           )}
         </div>
       )}
+
+      <ConfirmDialog
+        show={pendingDeleteId !== null}
+        message={t('comment.deleteConfirm')}
+        confirmLabel={t('comment.delete')}
+        cancelLabel={t('comment.cancel')}
+        busy={deleteId !== null}
+        onConfirm={() => {
+          if (pendingDeleteId) void handleDelete(pendingDeleteId);
+        }}
+        onCancel={() => setPendingDeleteId(null)}
+      />
     </section>
   );
 }
