@@ -94,22 +94,15 @@ def build_safety_floor() -> set[str]:
     # --- 동적 콘텐츠(게시판·댓글·회원명) 대비 한글 안전집합 ---
     # 한글: 완성형 음절 전체(AC00–D7A3). 자모 조합형이라 글리프 수 대비
     # woff2 증가폭이 제한적이고, 사용자 입력 한글 누락을 원천 차단한다.
-    # CJK 한자 floor 는 여기 넣지 않는다 — 한글 폰트(KR)·세리프(SerifKR)에까지
-    # 무차별 적용되면 unicode-range 가 절대 요청하지 않는 한자 수천 자가
-    # 데드 글리프로 임베드돼 파일이 비대해진다(특히 전 페이지 preload 되는
-    # NotoSerifKR/NotoSansKR). CJK floor 는 main() 에서 JP/SC/TC 에만 적용한다.
+    # 한국어 게시판이라 한글 동적 입력은 빈번하므로 전체를 깐다.
     out.update(chr(c) for c in range(0xAC00, 0xD7A3 + 1))
+    # CJK 한자 floor 는 두지 않는다 — zh/ja/zh-Hant 로케일·데이터 콘텐츠의 한자는
+    # collect_text_chars 가 이미 전부 수집하므로(약 2,400자) 페이지 표시는 100%
+    # 커버된다. CJK Unified 전체(약 21,000자)를 floor 로 깔면 페이지에 등장하지
+    # 않는 18,000여 한자가 JP/SC/TC 에 임베드돼 각 2~3MB 로 비대해진다. 한국어
+    # 사이트라 게시판 동적 CJK 입력은 드물고, 들어와도 시스템 CJK 폰트로 폴백
+    # (깨짐 아님)되므로 floor 없이 collect 기반으로 둔다.
     return out
-
-
-def build_cjk_floor() -> set[str]:
-    """CJK 한자 floor — JP/SC/TC 본문 폰트에만 적용(동적 입력 대비).
-
-    zh/ja 로케일 콘텐츠의 한자는 collect_text_chars 가 이미 포함하므로 페이지
-    표시에는 충분하다. 이 floor 는 게시판 등 동적 입력의 누락 방지용 보강이며,
-    한자를 실제로 서빙하는(unicode-range 4E00-9FFF) JP/SC/TC 에만 의미가 있다.
-    """
-    return {chr(c) for c in range(0x4E00, 0x9FFF + 1)}  # CJK Unified Ideographs
 
 
 def to_unicode_list(chars: set[str]) -> list[int]:
@@ -224,17 +217,9 @@ FONTS: list[tuple[str, str, str]] = [
 
 
 def main() -> int:
-    base_chars = collect_text_chars() | build_safety_floor()
-    base_unicodes = to_unicode_list(base_chars)
-    # JP/SC/TC 전용: base + CJK 한자 floor (한자를 실제로 서빙하는 폰트만)
-    cjk_unicodes = to_unicode_list(base_chars | build_cjk_floor())
-    print(
-        f"Collected {len(base_unicodes)} base / {len(cjk_unicodes)} CJK codepoints",
-        file=sys.stderr,
-    )
-
-    # CJK 한자 floor 를 받는 폰트(한자를 unicode-range 로 서빙) — 나머지는 base 만.
-    cjk_prefixes = ("NotoSansJP", "NotoSansSC", "NotoSansTC")
+    chars = collect_text_chars() | build_safety_floor()
+    unicodes = to_unicode_list(chars)
+    print(f"Collected {len(unicodes)} unique codepoints", file=sys.stderr)
 
     total_before = 0
     total_after = 0
@@ -244,7 +229,6 @@ def main() -> int:
         if not src.exists():
             print(f"  SKIP {src_name} (missing)", file=sys.stderr)
             continue
-        unicodes = cjk_unicodes if dst_name.startswith(cjk_prefixes) else base_unicodes
         try:
             before, after = subset_font(src, dst, unicodes, flavor)
         except subprocess.CalledProcessError as exc:
