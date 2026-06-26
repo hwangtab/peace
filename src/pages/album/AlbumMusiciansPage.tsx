@@ -86,7 +86,7 @@ const AlbumMusiciansPage = ({
         paragraphs={[t('musicians_intro.p1'), t('musicians_intro.p2'), t('musicians_intro.p3')]}
         background="white"
       />
-      <Section background="white" paddingTop="normal" paddingBottom="tight">
+      <Section background="white" paddingTop="none" paddingBottom="tight">
         <MusiciansSection
           enableSectionWrapper={false}
           hideSectionHeader={true}
