@@ -3,10 +3,14 @@ import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import { GalleryImage } from '@/types/gallery';
 
+/** GalleryImageItem 이 실제로 읽는 필드만 요구한다. GalleryImage 의 슈퍼타입 역할을
+ *  하므로 SlimGalleryImage 처럼 일부 필드만 있는 객체도 전달할 수 있다. */
+type GalleryImageLike = Pick<GalleryImage, 'url' | 'description' | 'eventType' | 'eventYear'>;
+
 interface GalleryImageItemProps {
-  image: GalleryImage;
+  image: GalleryImageLike;
   priority?: boolean;
-  onClick: (image: GalleryImage) => void;
+  onClick: (image: GalleryImageLike) => void;
 }
 
 const GalleryImageItem = React.memo(
