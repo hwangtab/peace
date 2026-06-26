@@ -3,86 +3,256 @@
 @tailwind utilities;
 
 @layer base {
-  /* 모든 폰트는 scripts/subset-fonts.py 로 프로젝트 사용 글자만 남긴 서브셋 버전. */
-  @font-face {
-    font-family: 'BookkMyungjo-Bd';
-    src: url('/fonts/BookkMyungjo-Bd.subset.woff2?v=2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
+  /* 모든 폰트는 scripts/subset-fonts.py 로 프로젝트 사용 글자 + 동적 콘텐츠
+     안전집합만 남긴 서브셋. unicode-range 로 스크립트별 분할 → 페이지에 등장한
+     스크립트의 woff2 만 다운로드. 자세한 매핑은 README/주석 참조. */
 
-  /* 본문/UI 단일 산스 — S-Core Dream(에스코어드림) 5웨이트를 하나의 family 로
-     묶고 font-weight 로 굵기를 제어한다. Tailwind 유틸 ↔ 웨이트 대응:
-     300=font-light(캡션) · 400=font-normal(본문) · 500=font-medium(부드러운 강조) ·
-     600=font-semibold(주력 강조/버튼) · 700=font-bold(최강조).
-     6Bold→600, 7ExtraBold→700 으로 분리해 semibold 와 bold 의 굵기 차등을 보장한다
-     (CSS 매칭 규칙상 600 미정의 시 700 으로 끌려가 둘이 동일해지는 문제 방지). */
+  /* ── 라틴·키릴·그리스 (Noto Sans 본체) ── */
   @font-face {
-    font-family: 'SCDream';
-    src: url('/fonts/S-CoreDream-3Light.subset.woff2?v=2') format('woff2');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'SCDream';
-    src: url('/fonts/S-CoreDream-4Regular.subset.woff2?v=2') format('woff2');
+    font-family: 'Noto Sans';
+    src: url('/fonts/NotoSans-Regular.subset.woff2?v=3') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
+    unicode-range: U+0000-024F, U+0370-03FF, U+0400-04FF, U+1E00-1EFF, U+2000-206F, U+20A0-20BF;
   }
-
   @font-face {
-    font-family: 'SCDream';
-    src: url('/fonts/S-CoreDream-5Medium.subset.woff2?v=2') format('woff2');
+    font-family: 'Noto Sans';
+    src: url('/fonts/NotoSans-Medium.subset.woff2?v=3') format('woff2');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
+    unicode-range: U+0000-024F, U+0370-03FF, U+0400-04FF, U+1E00-1EFF, U+2000-206F, U+20A0-20BF;
   }
-
   @font-face {
-    font-family: 'SCDream';
-    src: url('/fonts/S-CoreDream-6Bold.subset.woff2?v=2') format('woff2');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'SCDream';
-    src: url('/fonts/S-CoreDream-7ExtraBold.subset.woff2?v=2') format('woff2');
+    font-family: 'Noto Sans';
+    src: url('/fonts/NotoSans-Bold.subset.woff2?v=3') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
+    unicode-range: U+0000-024F, U+0370-03FF, U+0400-04FF, U+1E00-1EFF, U+2000-206F, U+20A0-20BF;
   }
 
+  /* ── 한글 (Noto Sans KR, 5웨이트: 기존 SCDream 웨이트 매핑 보존) ── */
+  @font-face {
+    font-family: 'Noto Sans KR';
+    src: url('/fonts/NotoSansKR-Light.subset.woff2?v=3') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+AC00-D7A3, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF;
+  }
+  @font-face {
+    font-family: 'Noto Sans KR';
+    src: url('/fonts/NotoSansKR-Regular.subset.woff2?v=3') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+AC00-D7A3, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF;
+  }
+  @font-face {
+    font-family: 'Noto Sans KR';
+    src: url('/fonts/NotoSansKR-Medium.subset.woff2?v=3') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+AC00-D7A3, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF;
+  }
+  @font-face {
+    font-family: 'Noto Sans KR';
+    src: url('/fonts/NotoSansKR-SemiBold.subset.woff2?v=3') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+AC00-D7A3, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF;
+  }
+  @font-face {
+    font-family: 'Noto Sans KR';
+    src: url('/fonts/NotoSansKR-Bold.subset.woff2?v=3') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+AC00-D7A3, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF;
+  }
+
+  /* ── 일본어 가나 (Noto Sans JP) — 한자는 lang 분기에서 JP/SC/TC 우선순위로 제어 ──
+     주: CJK Unified(U+4E00-9FFF)는 JP/SC/TC 가 영역이 겹친다. @font-face 단계에선
+     가나·일본어 구두점만 unicode-range 로 잡고, 한자 영역은 body 의 lang 분기
+     font-family 순서로 해소한다(아래 Step 2). */
+  @font-face {
+    font-family: 'Noto Sans JP';
+    src: url('/fonts/NotoSansJP-Regular.subset.woff2?v=3') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+FF00-FFEF, U+4E00-9FFF;
+  }
+  @font-face {
+    font-family: 'Noto Sans JP';
+    src: url('/fonts/NotoSansJP-Bold.subset.woff2?v=3') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+FF00-FFEF, U+4E00-9FFF;
+  }
+
+  /* ── 중국어 간체 (Noto Sans SC) ── */
+  @font-face {
+    font-family: 'Noto Sans SC';
+    src: url('/fonts/NotoSansSC-Regular.subset.woff2?v=3') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+4E00-9FFF, U+3400-4DBF, U+F900-FAFF, U+3000-303F, U+FF00-FFEF;
+  }
+  @font-face {
+    font-family: 'Noto Sans SC';
+    src: url('/fonts/NotoSansSC-Bold.subset.woff2?v=3') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+4E00-9FFF, U+3400-4DBF, U+F900-FAFF, U+3000-303F, U+FF00-FFEF;
+  }
+
+  /* ── 중국어 번체 (Noto Sans TC) ── */
+  @font-face {
+    font-family: 'Noto Sans TC';
+    src: url('/fonts/NotoSansTC-Regular.subset.woff2?v=3') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+4E00-9FFF, U+3400-4DBF, U+F900-FAFF, U+3000-303F, U+FF00-FFEF;
+  }
+  @font-face {
+    font-family: 'Noto Sans TC';
+    src: url('/fonts/NotoSansTC-Bold.subset.woff2?v=3') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+4E00-9FFF, U+3400-4DBF, U+F900-FAFF, U+3000-303F, U+FF00-FFEF;
+  }
+
+  /* ── 데바나가리 (힌디) ── */
+  @font-face {
+    font-family: 'Noto Sans Devanagari';
+    src: url('/fonts/NotoSansDevanagari-Regular.subset.woff2?v=3') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0900-097F, U+A8E0-A8FF, U+1CD0-1CFF;
+  }
+  @font-face {
+    font-family: 'Noto Sans Devanagari';
+    src: url('/fonts/NotoSansDevanagari-Bold.subset.woff2?v=3') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0900-097F, U+A8E0-A8FF, U+1CD0-1CFF;
+  }
+
+  /* ── 아랍 ── */
+  @font-face {
+    font-family: 'Noto Sans Arabic';
+    src: url('/fonts/NotoSansArabic-Regular.subset.woff2?v=3') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+  }
+  @font-face {
+    font-family: 'Noto Sans Arabic';
+    src: url('/fonts/NotoSansArabic-Bold.subset.woff2?v=3') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+  }
+
+  /* ── 제목 세리프 (한국어 정체성 한정; 한글+라틴) ── */
+  @font-face {
+    font-family: 'Noto Serif KR';
+    src: url('/fonts/NotoSerifKR-Bold.subset.woff2?v=3') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0000-024F, U+AC00-D7A3, U+1100-11FF, U+3130-318F, U+2000-206F;
+  }
+
+  /* ── 포인트 폰트 (유지) ── */
   @font-face {
     font-family: 'PartialSans';
-    src: url('/fonts/PartialSansKR-Regular.subset.woff2?v=2') format('woff2');
+    src: url('/fonts/PartialSansKR-Regular.subset.woff2?v=3') format('woff2');
     font-weight: normal;
+    font-style: normal;
     font-display: swap;
   }
 
   body {
     @apply bg-ocean-sand text-deep-ocean;
+    /* 기본 스택: 라틴/한글 우선 + 모든 스크립트 폴백 나열.
+       lang 분기에서 해당 언어 폰트를 맨 앞으로 끌어올린다. */
     font-family:
-      'SCDream',
+      'Noto Sans',
+      'Noto Sans KR',
+      'Noto Sans JP',
+      'Noto Sans SC',
+      'Noto Sans TC',
+      'Noto Sans Devanagari',
+      'Noto Sans Arabic',
       -apple-system,
       BlinkMacSystemFont,
       'Segoe UI',
       'Roboto',
-      'Oxygen',
-      'Ubuntu',
-      'Cantarell',
-      'Fira Sans',
-      'Droid Sans',
-      'Helvetica Neue',
       sans-serif;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* lang 분기: 해당 언어 CJK 폰트를 한자 영역에서 최우선으로.
+     SSG 라 페이지마다 <html lang> 고정 → 한 페이지엔 한 분기만 적용된다. */
+  html:lang(ja) body {
+    font-family:
+      'Noto Sans',
+      'Noto Sans JP',
+      'Noto Sans KR',
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+  }
+  html:lang(zh-Hans) body {
+    font-family:
+      'Noto Sans',
+      'Noto Sans SC',
+      'Noto Sans TC',
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+  }
+  html:lang(zh-Hant) body {
+    font-family:
+      'Noto Sans',
+      'Noto Sans TC',
+      'Noto Sans SC',
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+  }
+  html:lang(hi) body {
+    font-family:
+      'Noto Sans',
+      'Noto Sans Devanagari',
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+  }
+  html:lang(ar) body {
+    font-family:
+      'Noto Sans',
+      'Noto Sans Arabic',
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
   }
 
   :root {
@@ -130,7 +300,8 @@
   h5,
   h6 {
     @apply font-serif font-bold;
-    font-family: 'BookkMyungjo-Bd', serif;
+    /* 한국어 정체성 세리프. 비한글 제목은 Noto Sans 로 자연 폴백. */
+    font-family: 'Noto Serif KR', 'Noto Sans', 'Noto Sans KR', serif;
     word-break: var(--text-word-break);
     overflow-wrap: break-word;
     hyphens: var(--text-hyphens);
