@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { m as motion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import { GalleryImage } from '@/types/gallery';
@@ -49,6 +49,37 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
       i18n.language
     );
 
+    // 점진 렌더(무한 스크롤): 전체 갤러리는 수천 장이라 한 번에 마운트하면 DOM이
+    // 폭증한다. 보이는 만큼만 렌더하고 sentinel 이 뷰포트에 들어오면 더 로드한다.
+    // 필터 전환 시 처음으로 리셋. 미리보기(홈)는 length 가 작아 sentinel 이 없다.
+    const [visibleCount, setVisibleCount] = useState<number>(GALLERY_CONFIG.INITIAL_VISIBLE_COUNT);
+    const sentinelRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+      setVisibleCount(GALLERY_CONFIG.INITIAL_VISIBLE_COUNT);
+    }, [selectedFilter]);
+
+    useEffect(() => {
+      const el = sentinelRef.current;
+      if (!el) return;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0]?.isIntersecting) {
+            setVisibleCount((c) => Math.min(c + GALLERY_CONFIG.LOAD_STEP, filteredImages.length));
+          }
+        },
+        { rootMargin: '800px' }
+      );
+      observer.observe(el);
+      return () => observer.disconnect();
+      // visibleCount 는 의도적으로 deps 에서 제외한다: 넣으면 sentinel 이 뷰포트에 남아있는
+      // 동안 매 증가마다 observer 가 재생성·재발화해 전체를 한 번에 로드한다. length 만
+      // 관찰하면 사용자가 스크롤해 sentinel 이 다시 교차할 때만 다음 묶음을 로드한다.
+    }, [filteredImages.length]);
+
+    const visibleImages = filteredImages.slice(0, visibleCount);
+    const hasMore = visibleCount < filteredImages.length;
+
     const content = (
       <Container size="wide" className={!enableSectionWrapper ? className : undefined}>
         {!hideSectionHeader && (
@@ -81,20 +112,24 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
             </p>
           </div>
         ) : (
-          <div
-            key={selectedFilter}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12"
-          >
-            {filteredImages.map((image, idx) => (
-              <AnimatedGalleryItem
-                key={image.url}
-                image={image}
-                priority={priorityFirstImages && idx < GALLERY_CONFIG.PRIORITY_IMAGE_THRESHOLD}
-                imageIndex={idx}
-                onClick={setSelectedIndex}
-              />
-            ))}
-          </div>
+          <>
+            <div
+              key={selectedFilter}
+              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12"
+            >
+              {visibleImages.map((image, idx) => (
+                <AnimatedGalleryItem
+                  key={image.url}
+                  image={image}
+                  priority={priorityFirstImages && idx < GALLERY_CONFIG.PRIORITY_IMAGE_THRESHOLD}
+                  imageIndex={idx}
+                  onClick={setSelectedIndex}
+                />
+              ))}
+            </div>
+            {/* 무한 스크롤 sentinel — 남은 이미지가 있을 때만 렌더 */}
+            {hasMore && <div ref={sentinelRef} aria-hidden="true" className="h-px w-full" />}
+          </>
         )}
 
         {enableSectionWrapper && (
