@@ -90,7 +90,7 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
     <PageLayout
       title={`${track.title} - ${track.artist} | ${t('app.title')}`}
       description={(track.description || '').slice(0, 160)}
-      ogImage={track.imageUrl || '/images-webp/album/albumart.webp'}
+      ogImage={track.imageUrl || '/images/og/albumart.jpg'}
       ogImageAlt={track.title}
       ogType="music.song"
       ogAudio={getFullUrl(track.audioUrl)}

@@ -142,7 +142,7 @@ export default function PressPage({
     <PageLayout
       title={t('press.page_title')}
       description={t('press.page_desc')}
-      ogImage="/images-webp/camps/2023/DSC00610.webp"
+      ogImage="/images/og/press.jpg"
       ogImageAlt={t('press.page_title')}
       structuredData={structuredData}
       breadcrumbs={breadcrumbs}

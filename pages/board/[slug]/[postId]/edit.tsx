@@ -11,6 +11,7 @@ import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import PostForm from '@/components/board/PostForm';
 import type { Board, PostWithMeta } from '@/types/board';
 import PageHero from '@/components/common/PageHero';
+import SEOHelmet from '@/components/shared/SEOHelmet';
 
 const BOARD_EDIT_HERO = '/images-webp/camps/2025/DSC00995.webp';
 
@@ -43,6 +44,7 @@ export default function EditPostPage({ board, post }: Props) {
   if (loading || !user || user.id !== post.author_id) {
     return (
       <>
+        <SEOHelmet title={t('post.edit')} noIndex />
         <PageHero compact title={t('post.edit')} backgroundImage={BOARD_EDIT_HERO} />
         <main className="mx-auto max-w-2xl px-4 py-12" aria-hidden="true">
           <div className="h-64 animate-pulse rounded-lg bg-seafoam/40" />
@@ -53,6 +55,7 @@ export default function EditPostPage({ board, post }: Props) {
 
   return (
     <>
+      <SEOHelmet title={t('post.edit')} noIndex />
       <PageHero compact title={t('post.edit')} backgroundImage={BOARD_EDIT_HERO} />
       <main className="mx-auto max-w-2xl px-4 py-12">
         <PostForm board={board} initial={post} mode="edit" />
