@@ -91,6 +91,14 @@ def build_safety_floor() -> set[str]:
     out.update("$€¥₩£")
     # Zero-width + soft-hyphen (한글 줄바꿈에 필요할 수 있음)
     out.update(["​", "­"])
+    # --- 동적 콘텐츠(게시판·댓글·회원명) 대비 안전집합 ---
+    # 한글: 완성형 음절 전체(AC00–D7A3). 자모 조합형이라 글리프 수 대비
+    # woff2 증가폭이 제한적이고, 사용자 입력 한글 누락을 원천 차단한다.
+    out.update(chr(c) for c in range(0xAC00, 0xD7A3 + 1))
+    # CJK: 상용 한자 floor — 한·중·일 입력 대비. CJK Unified 전체는 과중하므로
+    # 통상 상용역(기본 한자 + 확장 일부)만. (zh/ja 로케일 콘텐츠는 collect 단계에서
+    # 이미 포함되며, 여기 floor 는 동적 입력 누락 방지용 보강.)
+    out.update(chr(c) for c in range(0x4E00, 0x9FFF + 1))  # CJK Unified Ideographs
     return out
 
 
@@ -180,15 +188,28 @@ def strip_empty_glyph_cmaps(path: Path, fmt: str) -> int:
 
 FONTS: list[tuple[str, str, str]] = [
     # (src filename, dst filename, flavor)
-    # 폰트 3종 체계: 제목=명조, 포인트=PartialSans, 본문/UI=S-Core Dream(4웨이트).
-    # 지마켓 산스·꾸불림은 정리 과정에서 제거(원본은 source/에 보존).
+    # 본문 산스 = Noto Sans 풀세트(스크립트별 분할), 제목 세리프 = Noto Serif KR.
+    # PartialSans 는 포인트 폰트로 유지(한글 정체성 한정).
+    ("NotoSans-Regular.ttf", "NotoSans-Regular.subset.woff2", "woff2"),
+    ("NotoSans-Medium.ttf", "NotoSans-Medium.subset.woff2", "woff2"),
+    ("NotoSans-Bold.ttf", "NotoSans-Bold.subset.woff2", "woff2"),
+    ("NotoSansKR-Light.ttf", "NotoSansKR-Light.subset.woff2", "woff2"),
+    ("NotoSansKR-Regular.ttf", "NotoSansKR-Regular.subset.woff2", "woff2"),
+    ("NotoSansKR-Medium.ttf", "NotoSansKR-Medium.subset.woff2", "woff2"),
+    ("NotoSansKR-SemiBold.ttf", "NotoSansKR-SemiBold.subset.woff2", "woff2"),
+    ("NotoSansKR-Bold.ttf", "NotoSansKR-Bold.subset.woff2", "woff2"),
+    ("NotoSansJP-Regular.ttf", "NotoSansJP-Regular.subset.woff2", "woff2"),
+    ("NotoSansJP-Bold.ttf", "NotoSansJP-Bold.subset.woff2", "woff2"),
+    ("NotoSansSC-Regular.ttf", "NotoSansSC-Regular.subset.woff2", "woff2"),
+    ("NotoSansSC-Bold.ttf", "NotoSansSC-Bold.subset.woff2", "woff2"),
+    ("NotoSansTC-Regular.ttf", "NotoSansTC-Regular.subset.woff2", "woff2"),
+    ("NotoSansTC-Bold.ttf", "NotoSansTC-Bold.subset.woff2", "woff2"),
+    ("NotoSansDevanagari-Regular.ttf", "NotoSansDevanagari-Regular.subset.woff2", "woff2"),
+    ("NotoSansDevanagari-Bold.ttf", "NotoSansDevanagari-Bold.subset.woff2", "woff2"),
+    ("NotoSansArabic-Regular.ttf", "NotoSansArabic-Regular.subset.woff2", "woff2"),
+    ("NotoSansArabic-Bold.ttf", "NotoSansArabic-Bold.subset.woff2", "woff2"),
+    ("NotoSerifKR-Bold.ttf", "NotoSerifKR-Bold.subset.woff2", "woff2"),
     ("PartialSansKR-Regular.woff2", "PartialSansKR-Regular.subset.woff2", "woff2"),
-    ("BookkMyungjo-Bd.woff2", "BookkMyungjo-Bd.subset.woff2", "woff2"),
-    ("S-CoreDream-3Light.woff", "S-CoreDream-3Light.subset.woff2", "woff2"),
-    ("S-CoreDream-4Regular.woff", "S-CoreDream-4Regular.subset.woff2", "woff2"),
-    ("S-CoreDream-5Medium.woff", "S-CoreDream-5Medium.subset.woff2", "woff2"),
-    ("S-CoreDream-6Bold.woff", "S-CoreDream-6Bold.subset.woff2", "woff2"),
-    ("S-CoreDream-7ExtraBold.woff", "S-CoreDream-7ExtraBold.subset.woff2", "woff2"),
 ]
 
 
