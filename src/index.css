@@ -33,15 +33,7 @@
     unicode-range: U+0000-024F, U+0370-03FF, U+0400-04FF, U+1E00-1EFF, U+2000-206F, U+20A0-20BF;
   }
 
-  /* ── 한글 (Noto Sans KR, 5웨이트: 기존 SCDream 웨이트 매핑 보존) ── */
-  @font-face {
-    font-family: 'Noto Sans KR';
-    src: url('/fonts/NotoSansKR-Light.subset.woff2?v=3') format('woff2');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-    unicode-range: U+AC00-D7A3, U+1100-11FF, U+3130-318F, U+A960-A97F, U+D7B0-D7FF;
-  }
+  /* ── 한글 (Noto Sans KR, 4웨이트: Light(300) 제거 — 사용처 없음, Regular로 대체) ── */
   @font-face {
     font-family: 'Noto Sans KR';
     src: url('/fonts/NotoSansKR-Regular.subset.woff2?v=3') format('woff2');
@@ -382,14 +374,16 @@
   }
 
   .typo-subtitle {
-    @apply font-caption font-light text-lg md:text-xl text-gray-600;
+    /* font-light(300) → font-normal(400): KR Light 서브셋 다운로드 제거 */
+    @apply font-caption font-normal text-lg md:text-xl text-gray-600;
     word-break: var(--text-word-break);
     overflow-wrap: break-word;
     text-wrap: balance;
   }
 
   .typo-caption {
-    @apply font-caption font-light text-sm text-gray-500;
+    /* font-light(300) → font-normal(400): KR Light 서브셋 다운로드 제거 */
+    @apply font-caption font-normal text-sm text-gray-500;
     word-break: var(--text-word-break);
     overflow-wrap: break-word;
     text-wrap: balance;
@@ -468,9 +462,4 @@ code {
   textarea {
     font-size: 16px !important;
   }
-}
-
-.subtitle {
-  font-family: 'Noto Sans', 'Noto Sans KR', sans-serif;
-  font-weight: 300;
 }

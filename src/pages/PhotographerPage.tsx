@@ -48,28 +48,34 @@ const PhotographerPage: React.FC<PhotographerPageProps> = ({ slug, images }) => 
   const profileImage = findPhotographer(slug)?.image;
   const heroImage = profileImage || images[0]?.url || FALLBACK_HERO;
 
-  // 점진 렌더(무한 스크롤): GallerySection 과 동일한 패턴.
+  // 점진 렌더(무한 스크롤): GallerySection 과 동일한 callback ref 패턴.
   // 초기에 INITIAL_VISIBLE_COUNT 장만 DOM에 마운트하고, 사용자가 스크롤해
   // sentinel 이 뷰포트에 가까워지면 LOAD_STEP 단위로 늘린다.
+  // callback ref 로 전환해 sentinel 재마운트 시 항상 observer 가 올바르게 재부착되도록 한다.
   const [visibleCount, setVisibleCount] = useState<number>(GALLERY_CONFIG.INITIAL_VISIBLE_COUNT);
-  const sentinelRef = useRef<HTMLDivElement | null>(null);
 
+  const imagesLengthRef = useRef(images.length);
   useEffect(() => {
-    const el = sentinelRef.current;
+    imagesLengthRef.current = images.length;
+  }, [images.length]);
+
+  const sentinelObserverRef = useRef<IntersectionObserver | null>(null);
+
+  const sentinelRef = useCallback((el: HTMLDivElement | null) => {
+    sentinelObserverRef.current?.disconnect();
+    sentinelObserverRef.current = null;
     if (!el) return;
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0]?.isIntersecting) {
-          setVisibleCount((c) => Math.min(c + GALLERY_CONFIG.LOAD_STEP, images.length));
+          setVisibleCount((c) => Math.min(c + GALLERY_CONFIG.LOAD_STEP, imagesLengthRef.current));
         }
       },
       { rootMargin: '800px' }
     );
     observer.observe(el);
-    return () => observer.disconnect();
-    // images.length 만 의존한다: visibleCount 를 넣으면 sentinel 이 뷰포트에 남아있는
-    // 동안 매 증가마다 observer 가 재생성·재발화해 전체를 한 번에 로드한다.
-  }, [images.length]);
+    sentinelObserverRef.current = observer;
+  }, []);
 
   const visibleImages = images.slice(0, visibleCount);
   const hasMore = visibleCount < images.length;

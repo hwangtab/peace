@@ -56,29 +56,42 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
     // 폭증한다. 보이는 만큼만 렌더하고 sentinel 이 뷰포트에 들어오면 더 로드한다.
     // 필터 전환 시 처음으로 리셋. 미리보기(홈)는 length 가 작아 sentinel 이 없다.
     const [visibleCount, setVisibleCount] = useState<number>(GALLERY_CONFIG.INITIAL_VISIBLE_COUNT);
-    const sentinelRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
       setVisibleCount(GALLERY_CONFIG.INITIAL_VISIBLE_COUNT);
     }, [selectedFilter]);
 
+    // callback ref 패턴: sentinel DOM 노드가 부착/분리되는 시점에 IntersectionObserver를
+    // 연결/해제한다. useRef + useEffect(deps=[length]) 조합에서는 필터 전환으로
+    // visibleCount 가 리셋되고 sentinel 이 언마운트→리마운트될 때, 새 목록 length 가
+    // 이전과 같으면 effect 가 재실행되지 않아 새 DOM 노드에 observer 가 안 붙는 회귀가
+    // 있었다. callback ref 는 length 변화와 무관하게 항상 올바르게 재부착된다.
+    const filteredImagesLengthRef = useRef(filteredImages.length);
     useEffect(() => {
-      const el = sentinelRef.current;
+      filteredImagesLengthRef.current = filteredImages.length;
+    }, [filteredImages.length]);
+
+    // 활성 observer 를 ref 에 보관해, sentinel 이 언마운트(el === null)될 때 해제한다.
+    const sentinelObserverRef = useRef<IntersectionObserver | null>(null);
+
+    const sentinelRef = useCallback((el: HTMLDivElement | null) => {
+      // 이전 observer 해제 (언마운트 또는 재부착 시)
+      sentinelObserverRef.current?.disconnect();
+      sentinelObserverRef.current = null;
       if (!el) return;
       const observer = new IntersectionObserver(
         (entries) => {
           if (entries[0]?.isIntersecting) {
-            setVisibleCount((c) => Math.min(c + GALLERY_CONFIG.LOAD_STEP, filteredImages.length));
+            setVisibleCount((c) =>
+              Math.min(c + GALLERY_CONFIG.LOAD_STEP, filteredImagesLengthRef.current)
+            );
           }
         },
         { rootMargin: '800px' }
       );
       observer.observe(el);
-      return () => observer.disconnect();
-      // visibleCount 는 의도적으로 deps 에서 제외한다: 넣으면 sentinel 이 뷰포트에 남아있는
-      // 동안 매 증가마다 observer 가 재생성·재발화해 전체를 한 번에 로드한다. length 만
-      // 관찰하면 사용자가 스크롤해 sentinel 이 다시 교차할 때만 다음 묶음을 로드한다.
-    }, [filteredImages.length]);
+      sentinelObserverRef.current = observer;
+    }, []);
 
     const visibleImages = filteredImages.slice(0, visibleCount);
     const hasMore = visibleCount < filteredImages.length;

@@ -11,10 +11,14 @@ import StructuredDataScripts from '@/components/shared/StructuredDataScripts';
 import SectionWave from '@/components/layout/SectionWave';
 
 const GangjeongStorySection = dynamic(() => import('@/components/camp/GangjeongStorySection'), {
-  loading: () => <div className="h-96" />,
+  // HookStatement(min-h-[50vh]) + ImpactNumbers + GangjeongTimeline + CTA 섹션 합산.
+  // 실측 기준 데스크탑 ~1400px, 모바일 ~1800px — 1200px 로 보수적 근사해 CLS 완화.
+  loading: () => <div className="min-h-[1200px]" />,
 });
 const GallerySection = dynamic(() => import('@/components/home/GallerySection'), {
-  loading: () => <div className="h-[600px]" />,
+  // 홈 프리뷰 16장(4열 4행) + SectionHeader + EventFilter + 링크 + 섹션 패딩.
+  // 데스크탑 ~1300px, 모바일 ~1600px — 1000px 로 근사해 CLS 완화.
+  loading: () => <div className="min-h-[1000px]" />,
 });
 import {
   getWebSiteSchema,
