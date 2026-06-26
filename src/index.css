@@ -225,6 +225,7 @@
       'Noto Sans',
       'Noto Sans SC',
       'Noto Sans TC',
+      'Noto Sans KR',
       -apple-system,
       BlinkMacSystemFont,
       sans-serif;
@@ -234,6 +235,7 @@
       'Noto Sans',
       'Noto Sans TC',
       'Noto Sans SC',
+      'Noto Sans KR',
       -apple-system,
       BlinkMacSystemFont,
       sans-serif;
@@ -242,6 +244,7 @@
     font-family:
       'Noto Sans',
       'Noto Sans Devanagari',
+      'Noto Sans KR',
       -apple-system,
       BlinkMacSystemFont,
       sans-serif;
@@ -250,6 +253,7 @@
     font-family:
       'Noto Sans',
       'Noto Sans Arabic',
+      'Noto Sans KR',
       -apple-system,
       BlinkMacSystemFont,
       sans-serif;
@@ -300,8 +304,11 @@
   h5,
   h6 {
     @apply font-serif font-bold;
-    /* 한국어 정체성 세리프. 비한글 제목은 Noto Sans 로 자연 폴백. */
-    font-family: 'Noto Serif KR', 'Noto Sans', 'Noto Sans KR', serif;
+    /* 한국어 정체성 세리프. 비한글 제목은 해당 Noto Sans 로 폴백
+       (CJK/데바나가리/아랍 폴백이 없으면 시스템 세리프 Times 로 떨어진다). */
+    font-family:
+      'Noto Serif KR', 'Noto Sans', 'Noto Sans KR', 'Noto Sans JP', 'Noto Sans SC', 'Noto Sans TC',
+      'Noto Sans Devanagari', 'Noto Sans Arabic', serif;
     word-break: var(--text-word-break);
     overflow-wrap: break-word;
     hyphens: var(--text-hyphens);
@@ -464,6 +471,6 @@ code {
 }
 
 .subtitle {
-  font-family: 'SCDream', sans-serif;
+  font-family: 'Noto Sans', 'Noto Sans KR', sans-serif;
   font-weight: 300;
 }

@@ -22,10 +22,24 @@ module.exports = {
           ...require('tailwindcss/defaultTheme').fontFamily.sans,
         ],
         // 제목 세리프 = 한국어 정체성 한정(Noto Serif KR). 비한글은 산스 폴백.
-        serif: ['Noto Serif KR', 'Noto Sans', 'Noto Sans KR', ...require('tailwindcss/defaultTheme').fontFamily.serif],
-        display: ['Noto Serif KR', 'Noto Sans', 'Noto Sans KR', ...require('tailwindcss/defaultTheme').fontFamily.serif],
-        // 포인트 폰트(유지). 비한글은 Noto Sans 폴백.
-        partial: ['PartialSans', 'Noto Sans KR', 'Noto Sans', 'sans-serif'],
+        // CJK/데바나가리/아랍 제목은 해당 Noto Sans 로 폴백(세리프 글리프 부재) —
+        // 없으면 시스템 폰트(Times 등)로 떨어진다.
+        serif: [
+          'Noto Serif KR', 'Noto Sans', 'Noto Sans KR', 'Noto Sans JP',
+          'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Devanagari', 'Noto Sans Arabic',
+          ...require('tailwindcss/defaultTheme').fontFamily.serif,
+        ],
+        display: [
+          'Noto Serif KR', 'Noto Sans', 'Noto Sans KR', 'Noto Sans JP',
+          'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Devanagari', 'Noto Sans Arabic',
+          ...require('tailwindcss/defaultTheme').fontFamily.serif,
+        ],
+        // 포인트 폰트(유지). 비한글은 Noto Sans 풀세트로 폴백.
+        partial: [
+          'PartialSans', 'Noto Sans KR', 'Noto Sans', 'Noto Sans JP',
+          'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Devanagari', 'Noto Sans Arabic',
+          'sans-serif',
+        ],
         body: [
           'Noto Sans', 'Noto Sans KR', 'Noto Sans JP', 'Noto Sans SC',
           'Noto Sans TC', 'Noto Sans Devanagari', 'Noto Sans Arabic',
