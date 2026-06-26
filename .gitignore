@@ -70,3 +70,11 @@ supabase/.temp/
 
 # codebase-memory-mcp (로컬 절대경로 — 환경별로 다름)
 .mcp.json
+
+# Noto 폰트 원본 ttf — 서빙 안 되는 서브셋 입력(총 100MB+). 추적 금지.
+# scripts/fetch-noto-fonts.py 로 언제든 재현(google/fonts VF → 정적 추출).
+# public/fonts/*.subset.woff2(서브셋 산출물)만 커밋된다.
+src/fonts/source/Noto*.ttf
+
+# Python 캐시
+__pycache__/

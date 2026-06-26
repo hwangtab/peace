@@ -52,7 +52,9 @@
     "seed:archive-cms:sql": "ts-node --compiler-options '{\"module\":\"commonjs\",\"moduleResolution\":\"node\"}' scripts/generate-admin-archive-seed-sql.ts",
     "build:timetable": "ts-node --compiler-options '{\"module\":\"commonjs\",\"moduleResolution\":\"node\"}' scripts/convert-timetable.ts",
     "timetable:check": "node scripts/check-timetable-generated.mjs",
-    "fonts:subset": "python3 scripts/subset-fonts.py"
+    "fonts:fetch": "python3 scripts/fetch-noto-fonts.py",
+    "fonts:subset": "python3 scripts/subset-fonts.py",
+    "fonts:verify": "python3 scripts/verify-font-coverage.py"
   },
   "browserslist": {
     "production": [
