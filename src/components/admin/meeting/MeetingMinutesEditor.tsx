@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import MarkdownView from '@/components/admin/MarkdownView';
+import dynamic from 'next/dynamic';
+// 에디터 프리뷰라 SSR 불필요 — 초기 번들에서 분리.
+const MarkdownView = dynamic(() => import('@/components/admin/MarkdownView'), { ssr: false });
 import { validateMinutes } from '@/lib/meetingForms';
 
 interface MeetingMinutesEditorProps {

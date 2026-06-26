@@ -8,7 +8,10 @@ import Section from '../layout/Section';
 import SectionHeader from '../common/SectionHeader';
 import Link from 'next/link';
 import Button from '../common/Button';
-import ImageLightbox, { LightboxImage } from '../common/ImageLightbox';
+import dynamic from 'next/dynamic';
+import type { LightboxImage } from '../common/ImageLightbox';
+// 라이트박스는 클릭 시점에만 필요 — 초기 번들에서 분리.
+const ImageLightbox = dynamic(() => import('../common/ImageLightbox'), { ssr: false });
 import { photographersByYear, photographerNameKey } from '@/data/photographers';
 
 type PaddingLevel = 'none' | 'tight' | 'normal' | 'loose';

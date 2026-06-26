@@ -98,9 +98,9 @@ const TracksSection: React.FC<TracksSectionProps> = React.memo(
                   key={track.id}
                   track={track}
                   isExpanded={hideSectionHeader ? true : expandedTrackId === track.id}
-                  onToggle={() => handleToggle(track.id)}
+                  onToggle={handleToggle}
                   currentlyPlaying={playingTrackId === track.id}
-                  onPlay={() => handlePlay(track.id)}
+                  onPlay={handlePlay}
                   onEnded={handleEnded}
                   musicianImageUrl={musician?.imageUrl}
                   alwaysExpanded={hideSectionHeader}

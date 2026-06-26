@@ -28,88 +28,92 @@ interface ConcertCardProps {
   index: number;
 }
 
-const ConcertCard: React.FC<ConcertCardProps> = ({ concert, onMusicianClick, index }) => {
-  const { t } = useTranslation('album');
+const ConcertCard: React.FC<ConcertCardProps> = React.memo(
+  ({ concert, onMusicianClick, index }) => {
+    const { t } = useTranslation('album');
 
-  return (
-    <motion.div
-      key={concert.id}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.4, delay: Math.min(index * 0.08, 0.4) }}
-      className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-[box-shadow,border-color] duration-500 border border-ocean-sand flex flex-col"
-    >
-      {/* Card Header Background Decor */}
-      <div className="h-2 bg-gradient-to-r from-jeju-ocean to-ocean-mist opacity-80" />
+    return (
+      <motion.div
+        key={concert.id}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-50px' }}
+        transition={{ duration: 0.4, delay: Math.min(index * 0.08, 0.4) }}
+        className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-[box-shadow,border-color] duration-500 border border-ocean-sand flex flex-col"
+      >
+        {/* Card Header Background Decor */}
+        <div className="h-2 bg-gradient-to-r from-jeju-ocean to-ocean-mist opacity-80" />
 
-      <div className="p-6 flex-1 flex flex-col">
-        <h3 className="typo-h3 text-2xl mb-8 group-hover:text-jeju-ocean transition-colors duration-300 break-words">
-          {concert.name}
-        </h3>
+        <div className="p-6 flex-1 flex flex-col">
+          <h3 className="typo-h3 text-2xl mb-8 group-hover:text-jeju-ocean transition-colors duration-300 break-words">
+            {concert.name}
+          </h3>
 
-        <div className="space-y-4 mb-8">
-          <div className="flex items-center gap-4 text-coastal-gray">
-            <div className="w-10 h-10 rounded-full bg-ocean-sand flex items-center justify-center text-jeju-ocean">
-              <HiOutlineCalendar aria-hidden="true" className="w-5 h-5" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">
-                {t('label_date')}
-              </span>
-              <span className="font-medium break-words">
-                {concert.date} <span className="text-coastal-gray text-sm">{concert.time}</span>
-              </span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-4 text-coastal-gray">
-            <div className="w-10 h-10 rounded-full bg-ocean-sand flex items-center justify-center text-jeju-ocean">
-              <HiOutlineLocationMarker aria-hidden="true" className="w-5 h-5" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">
-                {t('label_venue')}
-              </span>
-              <span className="font-medium break-words">{concert.venue}</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-auto">
-          <div className="flex items-center gap-2 mb-4">
-            <HiOutlineUserGroup aria-hidden="true" className="w-4 h-4 text-jeju-ocean" />
-            <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">
-              {t('label_performers')}
-            </span>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {concert.performers.map((performer) =>
-              performer.musicianId ? (
-                <Button
-                  key={performer.musicianId}
-                  onClick={() => onMusicianClick(performer.musicianId)}
-                  variant="back"
-                  size="sm"
-                  shape="rounded"
-                  className="!px-3 !py-1 !text-xs"
-                >
-                  {performer.name}
-                </Button>
-              ) : (
-                <span
-                  key={performer.name}
-                  className="px-3 py-1 bg-ocean-mist/5 text-ocean-mist/80 rounded-lg text-xs font-medium border border-ocean-mist/10 break-words"
-                >
-                  {performer.name}
+          <div className="space-y-4 mb-8">
+            <div className="flex items-center gap-4 text-coastal-gray">
+              <div className="w-10 h-10 rounded-full bg-ocean-sand flex items-center justify-center text-jeju-ocean">
+                <HiOutlineCalendar aria-hidden="true" className="w-5 h-5" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">
+                  {t('label_date')}
                 </span>
-              )
-            )}
+                <span className="font-medium break-words">
+                  {concert.date} <span className="text-coastal-gray text-sm">{concert.time}</span>
+                </span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4 text-coastal-gray">
+              <div className="w-10 h-10 rounded-full bg-ocean-sand flex items-center justify-center text-jeju-ocean">
+                <HiOutlineLocationMarker aria-hidden="true" className="w-5 h-5" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">
+                  {t('label_venue')}
+                </span>
+                <span className="font-medium break-words">{concert.venue}</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-auto">
+            <div className="flex items-center gap-2 mb-4">
+              <HiOutlineUserGroup aria-hidden="true" className="w-4 h-4 text-jeju-ocean" />
+              <span className="text-[10px] uppercase tracking-wider text-coastal-gray font-bold">
+                {t('label_performers')}
+              </span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {concert.performers.map((performer) =>
+                performer.musicianId ? (
+                  <Button
+                    key={performer.musicianId}
+                    onClick={() => onMusicianClick(performer.musicianId)}
+                    variant="back"
+                    size="sm"
+                    shape="rounded"
+                    className="!px-3 !py-1 !text-xs"
+                  >
+                    {performer.name}
+                  </Button>
+                ) : (
+                  <span
+                    key={performer.name}
+                    className="px-3 py-1 bg-ocean-mist/5 text-ocean-mist/80 rounded-lg text-xs font-medium border border-ocean-mist/10 break-words"
+                  >
+                    {performer.name}
+                  </span>
+                )
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </motion.div>
-  );
-};
+      </motion.div>
+    );
+  }
+);
+
+ConcertCard.displayName = 'ConcertCard';
 
 export default ConcertCard;

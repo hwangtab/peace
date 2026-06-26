@@ -1,3 +1,4 @@
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
@@ -10,7 +11,7 @@ interface PostCardProps {
   boardSlug: string;
 }
 
-export default function PostCard({ post, boardSlug }: PostCardProps) {
+const PostCard = React.memo(function PostCard({ post, boardSlug }: PostCardProps) {
   const { t } = useTranslation('board');
   const firstImage = post.images.length > 0 ? post.images[0] : null;
   const dateStr = formatBoardDate(post.created_at);
@@ -46,4 +47,8 @@ export default function PostCard({ post, boardSlug }: PostCardProps) {
       </div>
     </Link>
   );
-}
+});
+
+PostCard.displayName = 'PostCard';
+
+export default PostCard;

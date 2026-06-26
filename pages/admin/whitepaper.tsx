@@ -1,8 +1,19 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import type { GetServerSidePropsContext } from 'next';
+import dynamic from 'next/dynamic';
 import AdminLayout from '@/components/admin/AdminLayout';
-import MarkdownView from '@/components/admin/MarkdownView';
+// SEO/LCP를 위해 ssr:true 유지. 뷰어 섹션에서만 렌더되므로 번들 분리 효과 있음.
+const MarkdownView = dynamic(() => import('@/components/admin/MarkdownView'), {
+  ssr: true,
+  loading: () => (
+    <div className="space-y-3 motion-safe:animate-pulse">
+      <div className="h-4 rounded bg-deep-ocean/10 w-3/4" />
+      <div className="h-4 rounded bg-deep-ocean/10 w-full" />
+      <div className="h-4 rounded bg-deep-ocean/10 w-5/6" />
+    </div>
+  ),
+});
 import { getAdminSession, canEditContent, redirectToAdminLogin } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import {

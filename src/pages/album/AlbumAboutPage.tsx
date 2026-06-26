@@ -7,7 +7,9 @@ import PageLayout from '@/components/layout/PageLayout';
 import Section from '@/components/layout/Section';
 import Container from '@/components/layout/Container';
 import SectionHeader from '@/components/common/SectionHeader';
-import ImageLightbox, { LightboxImage } from '@/components/common/ImageLightbox';
+import type { LightboxImage } from '@/components/common/ImageLightbox';
+// 라이트박스는 클릭 시점에만 필요 — 초기 번들에서 분리.
+const ImageLightbox = dynamic(() => import('@/components/common/ImageLightbox'), { ssr: false });
 import { getVideos } from '@/api/videos';
 import { getMusicians } from '@/api/musicians';
 import dynamic from 'next/dynamic';

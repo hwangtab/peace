@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { m as motion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import { GalleryImage } from '@/types/gallery';
@@ -12,7 +12,10 @@ import { getPhotographersForFilter, photographerNameKey } from '@/data/photograp
 import Section from '../layout/Section';
 import Container from '../layout/Container';
 import SectionHeader from '../common/SectionHeader';
-import ImageLightbox, { LightboxImage } from '../common/ImageLightbox';
+import dynamic from 'next/dynamic';
+import type { LightboxImage } from '../common/ImageLightbox';
+// 라이트박스는 클릭 시점에만 필요 — 초기 번들에서 분리.
+const ImageLightbox = dynamic(() => import('../common/ImageLightbox'), { ssr: false });
 
 interface GallerySectionProps {
   className?: string;
@@ -79,6 +82,25 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
 
     const visibleImages = filteredImages.slice(0, visibleCount);
     const hasMore = visibleCount < filteredImages.length;
+
+    // 라이트박스 이미지 배열 — 필터·언어 변경 시에만 재계산 (열려있을 때만 사용됨).
+    const lightboxImages = useMemo<LightboxImage[]>(
+      () =>
+        filteredImages.map((img) => ({
+          src: img.url,
+          alt:
+            img.description ||
+            (img.eventType === 'camp'
+              ? t('gallery.alt_camp', { year: img.eventYear })
+              : t('gallery.alt_album', { year: img.eventYear })),
+          credit: img.photographer
+            ? t('gallery.photo_credit', {
+                name: t(photographerNameKey(img.photographer)),
+              })
+            : undefined,
+        })),
+      [filteredImages, t]
+    );
 
     const content = (
       <Container size="wide" className={!enableSectionWrapper ? className : undefined}>
@@ -147,21 +169,7 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
           show={selectedIndex !== null}
           onClose={() => setSelectedIndex(null)}
           maxHeight="85vh"
-          images={filteredImages.map(
-            (img): LightboxImage => ({
-              src: img.url,
-              alt:
-                img.description ||
-                (img.eventType === 'camp'
-                  ? t('gallery.alt_camp', { year: img.eventYear })
-                  : t('gallery.alt_album', { year: img.eventYear })),
-              credit: img.photographer
-                ? t('gallery.photo_credit', {
-                    name: t(photographerNameKey(img.photographer)),
-                  })
-                : undefined,
-            })
-          )}
+          images={lightboxImages}
           index={selectedIndex ?? 0}
           onIndexChange={setSelectedIndex}
         />
@@ -188,6 +196,13 @@ const AnimatedGalleryItem: React.FC<{
   imageIndex: number;
   onClick: (idx: number) => void;
 }> = React.memo(({ image, priority, imageIndex, onClick }) => {
+  // imageIndex를 클로저로 고정해 GalleryImageItem memo가 무력화되지 않도록.
+  // GalleryImageItem은 image 인자를 넘기지만 여기선 index로만 처리한다.
+  const handleClick = useCallback(
+    (_img: GalleryImage) => onClick(imageIndex),
+    [onClick, imageIndex]
+  );
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -195,7 +210,7 @@ const AnimatedGalleryItem: React.FC<{
       transition={{ duration: 0.18 }}
       className="aspect-square relative bg-ocean-sand rounded-lg overflow-hidden"
     >
-      <GalleryImageItem image={image} priority={priority} onClick={(_img) => onClick(imageIndex)} />
+      <GalleryImageItem image={image} priority={priority} onClick={handleClick} />
     </motion.div>
   );
 });

@@ -15,9 +15,11 @@ const AudioPlayer = dynamic(() => import('./AudioPlayer'), {
 export interface TrackCardProps {
   track: Track;
   isExpanded: boolean;
-  onToggle: () => void;
+  /** track.id를 인자로 받는 안정 콜백 — 부모에서 useCallback으로 감쌀 것. */
+  onToggle: (id: number) => void;
   currentlyPlaying: boolean;
-  onPlay: () => void;
+  /** track.id를 인자로 받는 안정 콜백 — 부모에서 useCallback으로 감쌀 것. */
+  onPlay: (id: number) => void;
   onEnded?: () => void;
   musicianImageUrl?: string;
   alwaysExpanded?: boolean;
@@ -39,6 +41,10 @@ const TrackCard = React.memo(
     const { t } = useTranslation();
     const showContent = alwaysExpanded || isExpanded;
     const [shouldRenderContent, setShouldRenderContent] = React.useState(showContent);
+
+    // TrackHeader는 () => void 시그니처를 사용하므로 id를 바인딩해 전달한다.
+    const handleToggle = React.useCallback(() => onToggle(track.id), [onToggle, track.id]);
+    const handlePlay = React.useCallback(() => onPlay(track.id), [onPlay, track.id]);
 
     React.useEffect(() => {
       if (showContent) {
@@ -74,8 +80,8 @@ const TrackCard = React.memo(
         <TrackHeader
           track={track}
           isExpanded={isExpanded}
-          onToggle={onToggle}
-          onPlay={onPlay}
+          onToggle={handleToggle}
+          onPlay={handlePlay}
           alwaysExpanded={alwaysExpanded}
         />
 
@@ -98,7 +104,7 @@ const TrackCard = React.memo(
                     <AudioPlayer
                       audioUrl={track.audioUrl}
                       isPlaying={currentlyPlaying}
-                      onPlayPause={onPlay}
+                      onPlayPause={handlePlay}
                       onEnded={onEnded}
                       title={track.title}
                       artist={track.artist}
