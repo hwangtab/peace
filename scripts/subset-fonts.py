@@ -91,18 +91,26 @@ def build_safety_floor() -> set[str]:
     out.update("$€¥₩£")
     # Zero-width + soft-hyphen (한글 줄바꿈에 필요할 수 있음)
     out.update(["​", "­"])
-    # --- 동적 콘텐츠(게시판·댓글·회원명) 대비 한글 안전집합 ---
-    # 한글: 완성형 음절 전체(AC00–D7A3). 자모 조합형이라 글리프 수 대비
-    # woff2 증가폭이 제한적이고, 사용자 입력 한글 누락을 원천 차단한다.
-    # 한국어 게시판이라 한글 동적 입력은 빈번하므로 전체를 깐다.
-    out.update(chr(c) for c in range(0xAC00, 0xD7A3 + 1))
     # CJK 한자 floor 는 두지 않는다 — zh/ja/zh-Hant 로케일·데이터 콘텐츠의 한자는
     # collect_text_chars 가 이미 전부 수집하므로(약 2,400자) 페이지 표시는 100%
     # 커버된다. CJK Unified 전체(약 21,000자)를 floor 로 깔면 페이지에 등장하지
     # 않는 18,000여 한자가 JP/SC/TC 에 임베드돼 각 2~3MB 로 비대해진다. 한국어
     # 사이트라 게시판 동적 CJK 입력은 드물고, 들어와도 시스템 CJK 폰트로 폴백
     # (깨짐 아님)되므로 floor 없이 collect 기반으로 둔다.
+    # 한글 완성형 floor 도 여기 두지 않는다 — build_hangul_floor 로 분리해 본문
+    # (NotoSansKR)·제목(NotoSerifKR)에만 적용한다. PartialSans 는 정적 포인트
+    # 전용(게시판 등 동적 입력에 안 쓰임)이라 완성형 전체를 깔 이유가 없다.
     return out
+
+
+def build_hangul_floor() -> set[str]:
+    """한글 완성형 음절(AC00–D7A3) — 동적 입력(게시판·댓글·회원명) 대비.
+
+    한국어 게시판이라 사용자 입력 한글이 빈번하므로 본문(NotoSansKR)과 h 태그
+    제목(NotoSerifKR)에는 완성형 전체를 깐다. 자모 조합형이라 글리프 수 대비
+    woff2 증가폭도 제한적이다. 정적 포인트 폰트(PartialSans)는 제외(main 참조).
+    """
+    return {chr(c) for c in range(0xAC00, 0xD7A3 + 1)}
 
 
 def to_unicode_list(chars: set[str]) -> list[int]:
@@ -217,9 +225,14 @@ FONTS: list[tuple[str, str, str]] = [
 
 
 def main() -> int:
-    chars = collect_text_chars() | build_safety_floor()
-    unicodes = to_unicode_list(chars)
-    print(f"Collected {len(unicodes)} unique codepoints", file=sys.stderr)
+    base_chars = collect_text_chars() | build_safety_floor()
+    base_unicodes = to_unicode_list(base_chars)
+    # 한글 완성형 floor 포함(본문·제목용) — PartialSans 는 base 만.
+    hangul_unicodes = to_unicode_list(base_chars | build_hangul_floor())
+    print(
+        f"Collected {len(base_unicodes)} base / {len(hangul_unicodes)} +한글 codepoints",
+        file=sys.stderr,
+    )
 
     total_before = 0
     total_after = 0
@@ -229,6 +242,8 @@ def main() -> int:
         if not src.exists():
             print(f"  SKIP {src_name} (missing)", file=sys.stderr)
             continue
+        # PartialSans 는 정적 포인트 전용 → 한글 완성형 floor 제외(실사용 글자만).
+        unicodes = base_unicodes if dst_name.startswith("PartialSans") else hangul_unicodes
         try:
             before, after = subset_font(src, dst, unicodes, flavor)
         except subprocess.CalledProcessError as exc:
