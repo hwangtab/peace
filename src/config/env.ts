@@ -1,31 +1,39 @@
-import { z } from 'zod';
-
-const envSchema = z.object({
-  NEXT_PUBLIC_SITE_URL: z.string().url().optional(),
-  NEXT_PUBLIC_SITE_NAME: z.string().optional(),
-  NEXT_PUBLIC_SMARTSTORE_URL: z.string().url().optional(),
-  NEXT_PUBLIC_INSTAGRAM_URL: z.string().url().optional(),
-  NEXT_PUBLIC_OG_IMAGE: z.string().optional(),
-  NEXT_PUBLIC_GA_MEASUREMENT_ID: z
-    .string()
-    .regex(/^G-[A-Z0-9]+$/)
-    .optional(),
-});
-
-const parsed = (() => {
-  const result = envSchema.safeParse({
-    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
-    NEXT_PUBLIC_SITE_NAME: process.env.NEXT_PUBLIC_SITE_NAME,
-    NEXT_PUBLIC_SMARTSTORE_URL: process.env.NEXT_PUBLIC_SMARTSTORE_URL,
-    NEXT_PUBLIC_INSTAGRAM_URL: process.env.NEXT_PUBLIC_INSTAGRAM_URL,
-    NEXT_PUBLIC_OG_IMAGE: process.env.NEXT_PUBLIC_OG_IMAGE,
-    NEXT_PUBLIC_GA_MEASUREMENT_ID: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID,
-  });
-  if (!result.success) {
-    throw new Error(`Invalid environment variables:\n${result.error.message}`);
+// env 검증은 6개 NEXT_PUBLIC_* 에 대한 단순 형식 체크뿐이라 zod 가 불필요하다.
+// zod 를 쓰면 이 모듈을 import 하는 config/getFullUrl 이 거의 모든 페이지에서
+// 쓰이는 탓에 zod(~279KB raw)가 _app 전역 청크에 박혀 전 라우트에 로드됐다.
+// 경량 수동 검증으로 대체해 클라이언트 번들에서 zod 를 제거한다.
+const validateUrl = (key: string, value?: string): string | undefined => {
+  if (value === undefined) return undefined;
+  try {
+    new URL(value);
+    return value;
+  } catch {
+    throw new Error(`Invalid environment variable ${key}: not a valid URL (${value})`);
   }
-  return result.data;
-})();
+};
+
+const validateGaId = (value?: string): string | undefined => {
+  if (value === undefined) return undefined;
+  if (!/^G-[A-Z0-9]+$/.test(value)) {
+    throw new Error(`Invalid environment variable NEXT_PUBLIC_GA_MEASUREMENT_ID: ${value}`);
+  }
+  return value;
+};
+
+const parsed = {
+  NEXT_PUBLIC_SITE_URL: validateUrl('NEXT_PUBLIC_SITE_URL', process.env.NEXT_PUBLIC_SITE_URL),
+  NEXT_PUBLIC_SITE_NAME: process.env.NEXT_PUBLIC_SITE_NAME,
+  NEXT_PUBLIC_SMARTSTORE_URL: validateUrl(
+    'NEXT_PUBLIC_SMARTSTORE_URL',
+    process.env.NEXT_PUBLIC_SMARTSTORE_URL
+  ),
+  NEXT_PUBLIC_INSTAGRAM_URL: validateUrl(
+    'NEXT_PUBLIC_INSTAGRAM_URL',
+    process.env.NEXT_PUBLIC_INSTAGRAM_URL
+  ),
+  NEXT_PUBLIC_OG_IMAGE: process.env.NEXT_PUBLIC_OG_IMAGE,
+  NEXT_PUBLIC_GA_MEASUREMENT_ID: validateGaId(process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID),
+};
 
 export const config = {
   siteUrl: parsed.NEXT_PUBLIC_SITE_URL ?? 'https://peaceandmusic.net',
