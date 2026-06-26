@@ -35,8 +35,8 @@ const GalleryImageItem = React.memo(
         tabIndex={0}
       >
         <div className="relative overflow-hidden rounded-lg aspect-square bg-ocean-sand shadow-sm hover:shadow-md transition-shadow">
-          {/* Skeleton pulse - only shown while not loaded */}
-          {!isLoaded && (
+          {/* Skeleton pulse — priority 타일은 LCP 후보이므로 건너뜀 */}
+          {!priority && !isLoaded && (
             <div className="absolute inset-0 bg-seafoam/30 motion-safe:animate-pulse rounded-lg z-0" />
           )}
 
@@ -46,7 +46,7 @@ const GalleryImageItem = React.memo(
             fill
             sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
             className={`object-cover transition-[transform,opacity] duration-700 ease-in-out group-hover:scale-110 ${
-              isLoaded ? 'opacity-100' : 'opacity-0'
+              priority || isLoaded ? 'opacity-100' : 'opacity-0'
             }`}
             quality={75}
             priority={priority}

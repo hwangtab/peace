@@ -22,8 +22,11 @@ import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import PageHero from '@/components/common/PageHero';
 import SEOHelmet from '@/components/shared/SEOHelmet';
-import ImageLightbox, { LightboxImage } from '@/components/common/ImageLightbox';
-import ConfirmDialog from '@/components/common/ConfirmDialog';
+import dynamic from 'next/dynamic';
+import type { LightboxImage } from '@/components/common/ImageLightbox';
+// 라이트박스·삭제 확인 다이얼로그는 클릭 시점에만 필요 — 초기 번들에서 분리.
+const ImageLightbox = dynamic(() => import('@/components/common/ImageLightbox'), { ssr: false });
+const ConfirmDialog = dynamic(() => import('@/components/common/ConfirmDialog'), { ssr: false });
 
 const BOARD_POST_HERO = '/images-webp/camps/2025/DSC00700.webp';
 

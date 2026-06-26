@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { useAuth } from '@/components/auth/AuthProvider';
@@ -18,17 +18,16 @@ export default function LikeButton({ postId, initialCount }: Props) {
   const [liked, setLiked] = useState(false);
   const [count, setCount] = useState(initialCount);
   const [loading, setLoading] = useState(false);
-  // Starts true; stays true until the membership query resolves (or user is absent).
-  // Prevents clicking before we know whether they already liked.
-  const [initializing, setInitializing] = useState(true);
 
-  // On mount / when user changes: check whether the user already liked this post.
-  // Re-arms `initializing` to true whenever the user identity changes so a freshly-
-  // authenticated user cannot click before the membership query resolves.
+  // 사용자가 직접 토글했으면 뒤늦게 도착한 초기 조회로 상태를 덮어쓰지 않는다.
+  // (조회 발화 전에 클릭하면 stale한 data=null이 방금 누른 좋아요를 풀어버리는 레이스 방지)
+  const interactedRef = useRef(false);
+
+  // 마운트/사용자 변경 시 실제 liked 상태를 조회해 낙관적 값을 reconcile한다.
+  // 조회 전에도 클릭을 허용하므로 initializing으로 막지 않는다.
   useEffect(() => {
     let cancelled = false;
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setInitializing(true);
+    interactedRef.current = false;
 
     const query = user
       ? createSupabaseBrowserClient()
@@ -40,9 +39,8 @@ export default function LikeButton({ postId, initialCount }: Props) {
       : Promise.resolve({ data: null });
 
     void query.then(({ data }) => {
-      if (!cancelled) {
+      if (!cancelled && !interactedRef.current) {
         setLiked(data !== null);
-        setInitializing(false);
       }
     });
 
@@ -58,7 +56,8 @@ export default function LikeButton({ postId, initialCount }: Props) {
       return;
     }
 
-    if (loading || initializing) return;
+    if (loading) return;
+    interactedRef.current = true;
     setLoading(true);
 
     const supabase = createSupabaseBrowserClient();
@@ -98,7 +97,8 @@ export default function LikeButton({ postId, initialCount }: Props) {
     setLoading(false);
   };
 
-  const disabled = authLoading || loading || initializing;
+  // initializing 중에도 클릭 가능하게 — 낙관적 토글 후 백그라운드에서 reconcile.
+  const disabled = authLoading || loading;
 
   return (
     <div className="mt-8 flex items-center gap-2">

@@ -25,7 +25,7 @@ interface PressPageProps {
   initialLocale?: string;
 }
 
-const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
+const PressCard: React.FC<{ press: PressItem }> = React.memo(({ press }) => {
   const [imgSrc, setImgSrc] = useState(press.imageUrl || '');
 
   return (
@@ -69,7 +69,9 @@ const PressCard: React.FC<{ press: PressItem }> = ({ press }) => {
       </article>
     </a>
   );
-};
+});
+
+PressCard.displayName = 'PressCard';
 
 export default function PressPage({
   initialPressItems = [],
