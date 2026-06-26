@@ -56,8 +56,9 @@ const VideoDetailPage: React.FC<VideoDetailPageProps> = ({
   const { t, i18n } = useTranslation();
   const videoId = getYoutubeVideoId(video.youtubeUrl);
   const watchUrl = `https://www.youtube.com/watch?v=${videoId}`;
-  const thumbnailUrl =
-    video.thumbnailUrl || `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+  // OG/구조화데이터 썸네일: 소셜 크롤러는 클라이언트 onError 폴백이 통하지 않으므로,
+  // 일부 영상에만 있는 maxresdefault(404 가능) 대신 모든 영상에 존재하는 hqdefault 사용.
+  const thumbnailUrl = video.thumbnailUrl || `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
   const pageUrl = getFullUrl(`/videos/${video.id}`);
   const localizedDate = new Date(video.date).toLocaleDateString(i18n.language, {
     year: 'numeric',
