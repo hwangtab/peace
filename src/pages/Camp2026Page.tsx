@@ -174,7 +174,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({
                   className="w-full md:w-[360px] flex-shrink-0 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
                 >
                   <Image
-                    src="/images-webp/camps/2026/2026poster1.webp"
+                    src="/images-webp/camps/2026/2026poster1-display.webp"
                     alt={t('camp.poster_alt_2026')}
                     width={360}
                     height={480}
@@ -186,7 +186,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({
               ) : (
                 <div className="w-full md:w-[360px] flex-shrink-0 rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="/images-webp/camps/2026/2026poster1.webp"
+                    src="/images-webp/camps/2026/2026poster1-display.webp"
                     alt={t('camp.poster_alt_2026')}
                     width={360}
                     height={480}
