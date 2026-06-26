@@ -199,7 +199,8 @@ const AnimatedGalleryItem: React.FC<{
   // imageIndex를 클로저로 고정해 GalleryImageItem memo가 무력화되지 않도록.
   // GalleryImageItem은 image 인자를 넘기지만 여기선 index로만 처리한다.
   const handleClick = useCallback(
-    (_img: GalleryImage) => onClick(imageIndex),
+    (_img: Pick<GalleryImage, 'url' | 'description' | 'eventType' | 'eventYear'>) =>
+      onClick(imageIndex),
     [onClick, imageIndex]
   );
 
