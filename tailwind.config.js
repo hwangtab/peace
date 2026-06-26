@@ -13,19 +13,29 @@ module.exports = {
         nav: '1280px',
       },
       fontFamily: {
-        // 본문/UI 산스는 모두 S-Core Dream(에스코어드림) 단일 family.
-        // 굵기는 font-weight 유틸리티(font-light/normal/medium/bold)로 제어.
-        // BookkMyungjo-Bd 를 한글 폴백으로 끼운다: SCDream·PartialSans 둘 다
-        // '뮁'·'읭' 같은 확장 완성형 음절 글리프가 비어(없거나 빈 outline) 깨지는데,
-        // 이 글자들만 명조가 받아 그린다. (서브셋 단계에서 SCDream 의 빈 글리프
-        // cmap 을 제거해 폴백이 실제로 명조까지 도달하도록 했다 — scripts/subset-fonts.py)
-        'sans': ['SCDream', 'BookkMyungjo-Bd', ...require('tailwindcss/defaultTheme').fontFamily.sans],
-        'serif': ['BookkMyungjo-Bd', ...require('tailwindcss/defaultTheme').fontFamily.serif],
-        // Semantic Typography
-        'display': ['BookkMyungjo-Bd', ...require('tailwindcss/defaultTheme').fontFamily.serif],
-        'partial': ['PartialSans', 'SCDream', 'BookkMyungjo-Bd', 'sans-serif'],
-        'body': ['SCDream', 'BookkMyungjo-Bd', ...require('tailwindcss/defaultTheme').fontFamily.sans],
-        'caption': ['SCDream', 'BookkMyungjo-Bd', ...require('tailwindcss/defaultTheme').fontFamily.sans],
+        // 본문/UI 산스 = Noto Sans 풀세트. 스크립트별 unicode-range 는
+        // src/index.css @font-face 가 처리하므로 여기선 family 나열만.
+        // CJK 한자 우선순위는 html:lang 분기(index.css)에서 제어.
+        sans: [
+          'Noto Sans', 'Noto Sans KR', 'Noto Sans JP', 'Noto Sans SC',
+          'Noto Sans TC', 'Noto Sans Devanagari', 'Noto Sans Arabic',
+          ...require('tailwindcss/defaultTheme').fontFamily.sans,
+        ],
+        // 제목 세리프 = 한국어 정체성 한정(Noto Serif KR). 비한글은 산스 폴백.
+        serif: ['Noto Serif KR', 'Noto Sans', 'Noto Sans KR', ...require('tailwindcss/defaultTheme').fontFamily.serif],
+        display: ['Noto Serif KR', 'Noto Sans', 'Noto Sans KR', ...require('tailwindcss/defaultTheme').fontFamily.serif],
+        // 포인트 폰트(유지). 비한글은 Noto Sans 폴백.
+        partial: ['PartialSans', 'Noto Sans KR', 'Noto Sans', 'sans-serif'],
+        body: [
+          'Noto Sans', 'Noto Sans KR', 'Noto Sans JP', 'Noto Sans SC',
+          'Noto Sans TC', 'Noto Sans Devanagari', 'Noto Sans Arabic',
+          ...require('tailwindcss/defaultTheme').fontFamily.sans,
+        ],
+        caption: [
+          'Noto Sans', 'Noto Sans KR', 'Noto Sans JP', 'Noto Sans SC',
+          'Noto Sans TC', 'Noto Sans Devanagari', 'Noto Sans Arabic',
+          ...require('tailwindcss/defaultTheme').fontFamily.sans,
+        ],
       },
       colors: {
         // Ocean Blues (Primary)
