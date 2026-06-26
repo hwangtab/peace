@@ -21,37 +21,26 @@ class MyDocument extends Document {
           <link rel="preconnect" href="https://www.google-analytics.com" />
           <link rel="dns-prefetch" href="//www.google-analytics.com" />
 
-          {/* Body 폰트 preload (FOUT 방지) — LCP 히어로 본문에 사용.
-              S-Core Dream Regular(400)이 본문 기본 웨이트. */}
+          {/* 본문 한글 preload — 모든 페이지 본문 기본 웨이트(Noto Sans KR 400).
+              라틴/CJK/기타 스크립트는 해당 페이지에서 unicode-range 로 자연 로드. */}
           <link
             rel="preload"
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
-            href="/fonts/S-CoreDream-4Regular.subset.woff2?v=2"
+            href="/fonts/NotoSansKR-Regular.subset.woff2?v=3"
             // @ts-expect-error — fetchpriority is a valid HTML attribute (React 18.3+)
             fetchpriority="high"
           />
 
-          {/* PartialSans (h1 hero 폰트) preload — LCP 폰트이므로 최우선 */}
+          {/* 제목 세리프 preload — 전 페이지 Navigation/h2(font-serif·display)에 즉시 사용.
+              preload 없으면 Nav 에서 FOUT. */}
           <link
             rel="preload"
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
-            href="/fonts/PartialSansKR-Regular.subset.woff2?v=2"
-            // @ts-expect-error — fetchpriority is a valid HTML attribute (React 18.3+)
-            fetchpriority="high"
-          />
-
-          {/* BookkMyungjo Bold preload — 모든 페이지 최상단 Navigation(font-serif)과
-              h2(font-display)에 즉시 사용. preload 없으면 Nav에서 FOUT 발생. */}
-          <link
-            rel="preload"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-            href="/fonts/BookkMyungjo-Bd.subset.woff2?v=2"
+            href="/fonts/NotoSerifKR-Bold.subset.woff2?v=3"
             // @ts-expect-error — fetchpriority is a valid HTML attribute (React 18.3+)
             fetchpriority="high"
           />
