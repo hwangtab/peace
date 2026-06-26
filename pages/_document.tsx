@@ -49,7 +49,10 @@ class MyDocument extends Document {
 
           {/* 제목 세리프(Noto Serif KR)는 한글 제목용이라 ko 에서만 preload — 전 페이지
               Navigation/h2(font-serif·display)에 즉시 사용. 비-KO 제목은 라틴 세리프/
-              산스 폴백이라 swap 로드(전 로케일 1.4MB preload 낭비 제거). */}
+              산스 폴백이라 swap 로드(전 로케일 1.4MB preload 낭비 제거).
+              fetchpriority="high" 제거: 1.52MB Bold 가 본문 KR Regular·LCP 이미지와
+              high 우선순위 대역 경쟁하지 않도록 auto(브라우저 기본)로 강등한다.
+              preload 자체는 유지 — 제목 FOUT 최소화를 위해. */}
           {isKorean && (
             <link
               rel="preload"
@@ -57,8 +60,6 @@ class MyDocument extends Document {
               type="font/woff2"
               crossOrigin="anonymous"
               href="/fonts/NotoSerifKR-Bold.subset.woff2?v=3"
-              // @ts-expect-error — fetchpriority is a valid HTML attribute (React 18.3+)
-              fetchpriority="high"
             />
           )}
 
@@ -79,16 +80,15 @@ class MyDocument extends Document {
           {/* Naver Search Console 인증 */}
           <meta name="naver-site-verification" content="68980c84460ca49f3268a96ad5832da513b55bca" />
 
-          {/* YouTube DNS-prefetch (비디오 페이지 LCP 개선) */}
+          {/* YouTube DNS-prefetch (비디오 페이지 LCP 개선) — preconnect 제거(매 페이지
+              비용 대비 이득 미미), dns-prefetch 만으로 충분. */}
           <link rel="dns-prefetch" href="//www.youtube.com" />
           <link rel="dns-prefetch" href="//img.youtube.com" />
-          <link rel="preconnect" href="https://img.youtube.com" crossOrigin="anonymous" />
 
-          {/* 외부 링크 도메인 preconnect/dns-prefetch (CTA 전환 개선) */}
+          {/* 외부 링크 도메인 — CTA 클릭 후 전환이라 preconnect 이득 미미.
+              dns-prefetch(비용 거의 0) 만 유지. */}
           <link rel="dns-prefetch" href="//booking.naver.com" />
-          <link rel="preconnect" href="https://booking.naver.com" crossOrigin="anonymous" />
           <link rel="dns-prefetch" href="//www.instagram.com" />
-          <link rel="preconnect" href="https://www.instagram.com" crossOrigin="anonymous" />
           <link rel="dns-prefetch" href="//smartstore.naver.com" />
 
           {/* 프로그레시브 인핸스먼트 폴백 — framer-motion(m.*) 콘텐츠는 initial 상태가

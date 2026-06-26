@@ -23,7 +23,7 @@ const Footer = () => {
             <p className="text-golden-sun text-sm md:text-base font-display font-bold break-words text-balance">
               {t('footer.slogan')}
             </p>
-            <p className="text-seafoam/80 text-sm font-caption font-light leading-relaxed break-words text-balance">
+            <p className="text-seafoam/80 text-sm font-caption font-normal leading-relaxed break-words text-balance">
               {t('footer.description')}
             </p>
           </div>
@@ -123,7 +123,7 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="border-t border-cloud-white/10">
         <Container size="wide" className="py-4">
-          <p className="text-center text-seafoam/60 text-xs md:text-sm font-caption font-light">
+          <p className="text-center text-seafoam/60 text-xs md:text-sm font-caption font-normal">
             {/* suppressHydrationWarning: SSG 빌드 연도 vs 클라이언트 실행 연도 차이를 허용 */}©{' '}
             <span suppressHydrationWarning>{new Date().getFullYear()}</span> {t('app.title')}.{' '}
             {t('footer.copyright')}

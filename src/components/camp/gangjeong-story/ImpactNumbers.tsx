@@ -49,7 +49,7 @@ const StatCard: React.FC<StatCardProps & { colors: VariantColors }> = ({
         </span>
       </p>
       <p
-        className={`font-caption font-light text-xs sm:text-sm ${colors.labelColor} mt-2 break-words`}
+        className={`font-caption font-normal text-xs sm:text-sm ${colors.labelColor} mt-2 break-words`}
       >
         {t(labelKey)}
       </p>
