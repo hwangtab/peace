@@ -96,7 +96,7 @@ export default function MusicianDetailContent({
     <PageLayout
       title={pageTitle}
       description={pageDescription}
-      ogImage={musician.imageUrl || '/images-webp/album/albumart.webp'}
+      ogImage={musician.imageUrl || '/images/og/albumart.jpg'}
       ogImageAlt={musician.name}
       ogType="profile"
       structuredData={[profileSchema, breadcrumbSchema, webPageSchema]}

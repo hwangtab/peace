@@ -78,7 +78,7 @@ const AlbumTracksPage = ({
     <PageLayout
       title={t('tracks_page_title')}
       description={t('tracks_page_desc')}
-      ogImage="/images-webp/gallery/152.webp"
+      ogImage="/images/og/album-tracks.jpg"
       ogImageAlt={t('tracks_page_title')}
       ogType="music.playlist"
       background="sky-horizon"

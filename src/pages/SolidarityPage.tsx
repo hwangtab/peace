@@ -75,7 +75,7 @@ const SolidarityPage: React.FC<Props> = ({ initialMusicians = [], initialLocale 
     <PageLayout
       title={t('solidarity.page_title')}
       description={t('solidarity.page_desc')}
-      ogImage={events[0]?.poster ?? '/images-webp/gangjeong/gangjeong-memory.webp'}
+      ogImage={events[0]?.poster ?? '/images/og/solidarity.jpg'}
       ogImageAlt={events[0]?.posterAlt}
       structuredData={structuredData}
       breadcrumbs={breadcrumbs}

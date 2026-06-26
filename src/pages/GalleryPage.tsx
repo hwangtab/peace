@@ -90,7 +90,7 @@ const GalleryPage = ({ initialImages = [], totalImageCount }: GalleryPageProps) 
     <PageLayout
       title={t('gallery.page_title')}
       description={t('gallery.page_desc')}
-      ogImage="/images-webp/camps/2023/DSC00528.webp"
+      ogImage="/images/og/gallery.jpg"
       ogImageAlt={t('gallery.page_title')}
       background="golden-sun"
       structuredData={structuredData}

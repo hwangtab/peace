@@ -232,7 +232,7 @@ const AlbumAboutPage = ({
     <PageLayout
       title={t('page_title')}
       description={t('page_desc')}
-      ogImage="/images-webp/album/albumart.webp"
+      ogImage="/images/og/albumart.jpg"
       ogImageAlt={t('page_title')}
       ogType="music.album"
       background="jeju-ocean"

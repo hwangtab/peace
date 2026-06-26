@@ -67,7 +67,7 @@ const AlbumMusiciansPage = ({
     <PageLayout
       title={t('musicians_page_title')}
       description={t('musicians_page_desc')}
-      ogImage="/images-webp/gallery/2.webp"
+      ogImage="/images/og/album-musicians.jpg"
       ogImageAlt={t('musicians_page_title')}
       ogType="music.playlist"
       background="sunlight-glow"

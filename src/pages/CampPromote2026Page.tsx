@@ -29,6 +29,8 @@ export interface CampPromote2026PageProps {
 }
 
 const POSTER_OG = '/images-webp/camps/2026/2026poster1-og.webp';
+// 화면 배경(PageHero)은 webp, OG 공유 이미지는 카카오톡/페이스북 호환을 위해 jpg
+const POSTER_OG_SHARE = '/images/og/camp-2026-promote.jpg';
 
 const SHARE_IMAGES = [
   {
@@ -84,7 +86,7 @@ const CampPromote2026Page: React.FC<CampPromote2026PageProps> = ({ promoKo, prom
     <PageLayout
       title={g('seo_title')}
       description={g('seo_description')}
-      ogImage={getFullUrl(POSTER_OG)}
+      ogImage={getFullUrl(POSTER_OG_SHARE)}
       ogImageAlt={g('hero_title')}
       breadcrumbs={breadcrumbs}
       noIndex

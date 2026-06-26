@@ -10,6 +10,7 @@ import { useAuth } from '@/components/auth/AuthProvider';
 import PostForm from '@/components/board/PostForm';
 import type { Board } from '@/types/board';
 import PageHero from '@/components/common/PageHero';
+import SEOHelmet from '@/components/shared/SEOHelmet';
 
 const BOARD_NEW_HERO = '/images-webp/camps/2025/DSC00716.webp';
 
@@ -35,6 +36,7 @@ export default function NewPostPage({ board }: Props) {
   if (loading || !user) {
     return (
       <>
+        <SEOHelmet title={`${board.name} — ${t('list.newPost')}`} noIndex />
         <PageHero
           compact
           title={`${board.name} — ${t('list.newPost')}`}
@@ -49,6 +51,7 @@ export default function NewPostPage({ board }: Props) {
 
   return (
     <>
+      <SEOHelmet title={`${board.name} — ${t('list.newPost')}`} noIndex />
       <PageHero
         compact
         title={`${board.name} — ${t('list.newPost')}`}
