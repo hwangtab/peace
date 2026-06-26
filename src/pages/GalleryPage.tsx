@@ -109,7 +109,7 @@ const GalleryPage = ({ initialImages = [], totalImageCount }: GalleryPageProps) 
         paragraphs={[t('gallery.intro.p1'), t('gallery.intro.p2'), t('gallery.intro.p3')]}
         background="white"
       />
-      <Section background="white" paddingTop="tight" paddingBottom="tight">
+      <Section background="white" paddingTop="none" paddingBottom="tight">
         <GallerySection
           enableSectionWrapper={false}
           hideSectionHeader={true}
