@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import type { GetServerSidePropsContext } from 'next';
+import type { GetStaticPropsContext } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import nextI18NextConfig from '../../next-i18next.config';
@@ -55,7 +55,9 @@ export default function BoardIndexPage({ boards }: Props) {
   );
 }
 
-export const getServerSideProps = async ({ locale }: GetServerSidePropsContext) => {
+// 게시판 목록·글 수는 실시간 정확성이 불필요하므로 ISR(5분 재생성)로 정적 서빙한다.
+// — TTFB·Edge CDN 캐시 개선. 새 글 카운트는 다음 재생성 주기에 반영된다.
+export const getStaticProps = async ({ locale }: GetStaticPropsContext) => {
   const [rawBoards, postCounts] = await Promise.all([loadActiveBoards(), loadBoardPostCounts()]);
 
   const boards: BoardWithCount[] = rawBoards.map((board) => ({
@@ -72,5 +74,6 @@ export const getServerSideProps = async ({ locale }: GetServerSidePropsContext) 
         nextI18NextConfig
       )),
     },
+    revalidate: 300,
   };
 };
