@@ -33,8 +33,9 @@
   "scripts": {
     "start": "next start",
     "postinstall": "patch-package",
-    "build": "next build",
+    "build": "node scripts/generate-og-images.mjs && next build",
     "postbuild": "next-sitemap",
+    "generate:og": "node scripts/generate-og-images.mjs",
     "test": "jest",
     "generate:artist-cards": "node scripts/generate-artist-cards.js",
     "typecheck": "tsc --noEmit --pretty false",
