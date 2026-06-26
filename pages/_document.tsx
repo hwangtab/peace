@@ -12,6 +12,20 @@ class MyDocument extends Document {
     const currentLocale = locale || 'ko';
     const dir = getTextDirection(currentLocale);
 
+    // 로케일별 본문 기본 폰트(LCP preload 대상). 라틴/키릴(en/es/fr/de/pt/ru/id)은
+    // 공통 Noto Sans. 각 페이지는 자기 언어 폰트만 받는다(전 로케일에 한글 872KB +
+    // 세리프 1.4MB 를 깔던 낭비 제거).
+    const bodyFontByLocale: Record<string, string> = {
+      ko: 'NotoSansKR-Regular',
+      ja: 'NotoSansJP-Regular',
+      'zh-Hans': 'NotoSansSC-Regular',
+      'zh-Hant': 'NotoSansTC-Regular',
+      hi: 'NotoSansDevanagari-Regular',
+      ar: 'NotoSansArabic-Regular',
+    };
+    const bodyFontFile = bodyFontByLocale[currentLocale] || 'NotoSans-Regular';
+    const isKorean = currentLocale === 'ko';
+
     return (
       <Html lang={currentLocale} dir={dir} data-scroll-behavior="smooth">
         <Head>
@@ -21,29 +35,32 @@ class MyDocument extends Document {
           <link rel="preconnect" href="https://www.google-analytics.com" />
           <link rel="dns-prefetch" href="//www.google-analytics.com" />
 
-          {/* 본문 한글 preload — 모든 페이지 본문 기본 웨이트(Noto Sans KR 400).
-              라틴/CJK/기타 스크립트는 해당 페이지에서 unicode-range 로 자연 로드. */}
+          {/* 본문 폰트 preload — 로케일별 본문 기본 폰트(LCP). 그 외 스크립트는
+              해당 페이지에서 unicode-range 로 자연 로드. */}
           <link
             rel="preload"
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
-            href="/fonts/NotoSansKR-Regular.subset.woff2?v=3"
+            href={`/fonts/${bodyFontFile}.subset.woff2?v=3`}
             // @ts-expect-error — fetchpriority is a valid HTML attribute (React 18.3+)
             fetchpriority="high"
           />
 
-          {/* 제목 세리프 preload — 전 페이지 Navigation/h2(font-serif·display)에 즉시 사용.
-              preload 없으면 Nav 에서 FOUT. */}
-          <link
-            rel="preload"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-            href="/fonts/NotoSerifKR-Bold.subset.woff2?v=3"
-            // @ts-expect-error — fetchpriority is a valid HTML attribute (React 18.3+)
-            fetchpriority="high"
-          />
+          {/* 제목 세리프(Noto Serif KR)는 한글 제목용이라 ko 에서만 preload — 전 페이지
+              Navigation/h2(font-serif·display)에 즉시 사용. 비-KO 제목은 라틴 세리프/
+              산스 폴백이라 swap 로드(전 로케일 1.4MB preload 낭비 제거). */}
+          {isKorean && (
+            <link
+              rel="preload"
+              as="font"
+              type="font/woff2"
+              crossOrigin="anonymous"
+              href="/fonts/NotoSerifKR-Bold.subset.woff2?v=3"
+              // @ts-expect-error — fetchpriority is a valid HTML attribute (React 18.3+)
+              fetchpriority="high"
+            />
+          )}
 
           {/* 테마 & 색상 스킴 */}
           <meta name="theme-color" content="#0A5F8A" />
