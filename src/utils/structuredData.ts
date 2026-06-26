@@ -106,14 +106,8 @@ export const getWebSiteSchema = (_lang: string = 'ko', t?: TranslationFn) => ({
     '@type': 'SpeakableSpecification',
     cssSelector: ['h1', '.typo-subtitle'],
   },
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: {
-      '@type': 'EntryPoint',
-      urlTemplate: getFullUrl('/videos?filter={search_term_string}'),
-    },
-    'query-input': 'required name=search_term_string',
-  },
+  // SearchAction 제거: 사이트 전역 검색 기능이 없고 /videos?filter 는 비디오 한정
+  // 필터라 SearchAction 의 의미(사이트 검색)와 불일치 — 잘못된 구조화 데이터.
 });
 
 // MusicGroup Schema - 음악 그룹 정보
