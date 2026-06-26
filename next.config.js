@@ -4,14 +4,15 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
-// Content-Security-Policy (1단계: Report-Only — 차단하지 않고 위반만 보고).
+// Content-Security-Policy (enforce — 차단 적용).
 // 정적 생성(SSG/ISR) + 인라인 스크립트(_document 폴백·GA·JSON-LD) 구조라
 // 요청별 nonce 를 줄 수 없어 script/style 은 'unsafe-inline' 을 허용한다.
 // 대신 외부 출처를 화이트리스트로 묶어 데이터 유출·외부 스크립트 주입·클릭재킹을 막는다.
 // 화이트리스트: GA(googletagmanager·google-analytics), Supabase(*.supabase.co —
 // 백서·게시판 + KOSMART 설문), YouTube(영상 임베드·썸네일).
 // dev 는 webpack HMR 이 unsafe-eval 을 써 위반 노이즈가 심하므로 production 만 적용.
-// 프리뷰에서 주요 페이지 콘솔 위반이 없음을 확인한 뒤 enforce 헤더로 전환 예정.
+// Report-Only 단계에서 홈·갤러리·영상·게시판·press + YouTube iframe 직접 삽입까지
+// production 빌드로 검증해 실제 차단 위반 0건을 확인한 뒤 enforce 로 전환함.
 const CSP_DIRECTIVES = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
@@ -28,9 +29,9 @@ const CSP_DIRECTIVES = [
   'upgrade-insecure-requests',
 ].join('; ');
 
-const cspReportOnlyHeader =
+const cspHeader =
   process.env.NODE_ENV === 'production'
-    ? [{ key: 'Content-Security-Policy-Report-Only', value: CSP_DIRECTIVES }]
+    ? [{ key: 'Content-Security-Policy', value: CSP_DIRECTIVES }]
     : [];
 
 /** @type {import('next').NextConfig} */
@@ -86,7 +87,7 @@ const nextConfig = {
             value: 'max-age=63072000; includeSubDomains; preload',
           },
           { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
-          ...cspReportOnlyHeader,
+          ...cspHeader,
         ],
       },
       {
