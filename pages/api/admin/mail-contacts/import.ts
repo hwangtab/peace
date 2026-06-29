@@ -29,7 +29,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const supabase = createSupabaseServerClient(req, res);
     // 배치 upsert: 단일 호출로 처리(순차 루프의 타임아웃·부분삽입 문제 회피).
     // 이메일 중복은 무시(ignoreDuplicates)하고, 삽입된 행 수로 inserted/skipped를 산출한다.
-    const payload = rows.map((row) => ({
+    // 먼저 배치 내 이메일 중복을 제거한다 — Postgres는 같은 ON CONFLICT 키가 한 배치에
+    // 두 번 나오면("cannot affect row a second time") 전체를 실패시키기 때문.
+    const byEmail = new Map<string, (typeof rows)[number]>();
+    for (const row of rows) {
+      const email = row.email.toLowerCase();
+      if (!byEmail.has(email)) byEmail.set(email, row);
+    }
+    const payload = [...byEmail.values()].map((row) => ({
       name: row.name,
       email: row.email.toLowerCase(),
       group_type: row.group_type,
