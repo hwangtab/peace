@@ -42,6 +42,7 @@ export default function AdminFieldControl({
         rows={field.name === 'value' || field.name === 'description' ? 6 : 3}
         placeholder={field.placeholder}
         disabled={disabled}
+        aria-label={field.label}
         className={inputClass}
       />
     );
@@ -53,6 +54,7 @@ export default function AdminFieldControl({
         value={value}
         onChange={(event) => onChange(event.target.value)}
         disabled={disabled}
+        aria-label={field.label}
         className={selectClass}
       >
         {field.options?.map((option) => (
@@ -107,6 +109,7 @@ export default function AdminFieldControl({
           onChange={(event) => onChange(event.target.value)}
           placeholder={field.placeholder}
           disabled={disabled}
+          aria-label={field.placeholder ?? '사진 작가 slug'}
           className={inputClass}
         />
       );
@@ -118,6 +121,7 @@ export default function AdminFieldControl({
         value={value}
         onChange={(event) => onChange(event.target.value)}
         disabled={disabled}
+        aria-label="사진 작가 선택"
         className={selectClass}
       >
         <option value="">— 선택 안 함 —</option>
@@ -140,6 +144,7 @@ export default function AdminFieldControl({
         value={value}
         onChange={(event) => onChange(event.target.value)}
         disabled={disabled}
+        aria-label="뮤지션 선택"
         className={selectClass}
       >
         <option value="">— 선택 안 함 —</option>
@@ -191,13 +196,15 @@ export default function AdminFieldControl({
 
   if (field.kind === 'musician' || field.kind === 'musician-multi') {
     // 폴백: 뮤지션 데이터를 못 불러온 경우 id를 직접 입력한다.
+    const fallbackPlaceholder = field.kind === 'musician-multi' ? '3, 11, 59' : '49';
     return (
       <input
         type="text"
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        placeholder={field.kind === 'musician-multi' ? '3, 11, 59' : '49'}
+        placeholder={fallbackPlaceholder}
         disabled={disabled}
+        aria-label={field.kind === 'musician-multi' ? '뮤지션 ID 목록 (쉼표 구분)' : '뮤지션 ID'}
         className={inputClass}
       />
     );
@@ -210,6 +217,7 @@ export default function AdminFieldControl({
       onChange={(event) => onChange(event.target.value)}
       placeholder={field.placeholder}
       disabled={disabled}
+      aria-label={field.label}
       className={inputClass}
     />
   );

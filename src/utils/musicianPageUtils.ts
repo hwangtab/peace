@@ -28,7 +28,7 @@ export function loadRelatedVideos(
       (v) =>
         v.eventType &&
         v.eventYear &&
-        options.events!.includes(`${v.eventType}-${v.eventYear}`) &&
+        options.events?.includes(`${v.eventType}-${v.eventYear}`) &&
         !directVideos.some((dv) => dv.id === v.id)
     );
   }

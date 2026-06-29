@@ -3,8 +3,9 @@ import { VideoItem } from '@/types/video';
 import { LOCALES, DEFAULT_LOCALE } from '@/constants/locales';
 import { loadPublishedVideos } from '@/lib/archivePublicData';
 import { escapeXml } from '@/utils/xml';
+import { config } from '@/config/env';
 
-const SITE_URL = 'https://peaceandmusic.net';
+const SITE_URL = config.siteUrl;
 
 function getYoutubeVideoId(url: string): string {
   if (url.includes('/embed/')) {

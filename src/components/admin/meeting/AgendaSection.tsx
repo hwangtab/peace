@@ -202,6 +202,7 @@ export default function AgendaSection({ meetingId, agendas, canEdit }: AgendaSec
                       value={a.status}
                       disabled={busyId === a.id || isReordering}
                       onChange={(e) => changeStatus(a.id, e.target.value as AgendaStatus)}
+                      aria-label={`${a.title} 안건 상태`}
                       className="rounded border border-deep-ocean/15 px-2 py-1 text-xs focus:border-jeju-ocean focus:outline-none"
                     >
                       {AGENDA_STATUSES.map((s) => (

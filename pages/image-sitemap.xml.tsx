@@ -2,11 +2,12 @@ import { GetServerSideProps } from 'next';
 import { GalleryImage } from '@/types/gallery';
 import { loadPublishedGallery } from '@/lib/archivePublicData';
 import { escapeXml } from '@/utils/xml';
+import { config } from '@/config/env';
 
 // pageComponents 키와 동기화 — 이 목록에 없는 year 는 /camps/${year} 가 404 임
 const VALID_CAMP_YEARS = new Set([2023, 2025, 2026]);
 
-const SITE_URL = 'https://peaceandmusic.net';
+const SITE_URL = config.siteUrl;
 
 // This component is never rendered — the page serves raw XML
 export default function ImageSitemapXml() {

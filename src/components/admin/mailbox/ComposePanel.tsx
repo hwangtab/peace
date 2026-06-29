@@ -95,6 +95,7 @@ export default function ComposePanel({ canEdit }: { canEdit: boolean }) {
         <select
           value={group}
           onChange={(e) => setGroup(e.target.value as '' | MailGroupType)}
+          aria-label="수신자 그룹 필터"
           className="rounded border border-deep-ocean/15 px-3 py-2 text-sm"
         >
           <option value="">전체 그룹</option>
@@ -107,6 +108,7 @@ export default function ComposePanel({ canEdit }: { canEdit: boolean }) {
         <select
           value={cohort}
           onChange={(e) => setCohort(e.target.value)}
+          aria-label="수신자 회차 필터"
           className="rounded border border-deep-ocean/15 px-3 py-2 text-sm"
         >
           <option value="">전체 회차</option>
