@@ -43,7 +43,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           res.status(404).json({ error: '회의를 찾을 수 없습니다.' });
           return;
         }
-        res.status(500).json({ error: error.message });
+        console.error('[meeting-attendees] POST insert failed:', error.message);
+        res.status(500).json({ error: 'internal_error' });
         return;
       }
       res.status(200).json({ attendee: data });
@@ -59,7 +60,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const body = deleteSchema.parse(req.body);
       const { error } = await supabase.from('meeting_attendees').delete().eq('id', body.id);
       if (error) {
-        res.status(500).json({ error: error.message });
+        console.error('[meeting-attendees] DELETE failed:', error.message);
+        res.status(500).json({ error: 'internal_error' });
         return;
       }
       res.status(200).json({ ok: true });

@@ -83,7 +83,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       .select('*')
       .order('sort_order', { ascending: true });
     if (error) {
-      res.status(500).json({ error: error.message });
+      console.error('[boards] GET boards failed:', error.message);
+      res.status(500).json({ error: 'internal_error' });
       return;
     }
     res.status(200).json({ boards: data ?? [] });
@@ -113,8 +114,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .select('*')
         .single();
       if (error) {
-        const message = error.code === '23505' ? SLUG_ERROR : error.message;
-        res.status(error.code === '23505' ? 409 : 500).json({ error: message });
+        if (error.code === '23505') {
+          res.status(409).json({ error: SLUG_ERROR });
+        } else {
+          console.error('[boards] POST insert failed:', error.message);
+          res.status(500).json({ error: 'internal_error' });
+        }
         return;
       }
       res.status(200).json({ board: data as Board });
@@ -137,7 +142,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       const target = await supabase.from('boards').select('*').eq('id', body.id).maybeSingle();
       if (target.error) {
-        res.status(500).json({ error: target.error.message });
+        console.error('[boards] PATCH select failed:', target.error.message);
+        res.status(500).json({ error: 'internal_error' });
         return;
       }
       if (!target.data) {
@@ -153,8 +159,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .select('*')
         .maybeSingle();
       if (error) {
-        const message = error.code === '23505' ? SLUG_ERROR : error.message;
-        res.status(error.code === '23505' ? 409 : 500).json({ error: message });
+        if (error.code === '23505') {
+          res.status(409).json({ error: SLUG_ERROR });
+        } else {
+          console.error('[boards] PATCH update failed:', error.message);
+          res.status(500).json({ error: 'internal_error' });
+        }
         return;
       }
       if (!data) {
@@ -179,7 +189,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .eq('id', body.id)
         .maybeSingle();
       if (target.error) {
-        res.status(500).json({ error: target.error.message });
+        console.error('[boards] DELETE select failed:', target.error.message);
+        res.status(500).json({ error: 'internal_error' });
         return;
       }
       if (!target.data) {
@@ -210,7 +221,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // Delete the board (cascade removes posts/post_images rows)
       const { error } = await supabase.from('boards').delete().eq('id', body.id);
       if (error) {
-        res.status(500).json({ error: error.message });
+        console.error('[boards] DELETE failed:', error.message);
+        res.status(500).json({ error: 'internal_error' });
         return;
       }
 

@@ -62,7 +62,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.status(200).json({ locales });
       } catch (error) {
         const statusCode = error instanceof AdminArchiveServiceError ? error.statusCode : 500;
-        res.status(statusCode).json({ error: getErrorMessage(error) });
+        if (statusCode >= 500) {
+          console.error(
+            '[archive/collection] GET localeStatuses failed:',
+            error instanceof Error ? error.message : String(error)
+          );
+          res.status(statusCode).json({ error: 'internal_error' });
+        } else {
+          res.status(statusCode).json({ error: getErrorMessage(error) });
+        }
       }
       return;
     }
@@ -89,7 +97,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       });
     } catch (error) {
       const statusCode = error instanceof AdminArchiveServiceError ? error.statusCode : 500;
-      res.status(statusCode).json({ error: getErrorMessage(error) });
+      if (statusCode >= 500) {
+        console.error(
+          '[archive/collection] GET list failed:',
+          error instanceof Error ? error.message : String(error)
+        );
+        res.status(statusCode).json({ error: 'internal_error' });
+      } else {
+        res.status(statusCode).json({ error: getErrorMessage(error) });
+      }
     }
     return;
   }
@@ -107,7 +123,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return;
     } catch (error) {
       const statusCode = error instanceof AdminArchiveServiceError ? error.statusCode : 400;
-      res.status(statusCode).json({ error: getErrorMessage(error) });
+      if (statusCode >= 500) {
+        console.error(
+          '[archive/collection] POST save failed:',
+          error instanceof Error ? error.message : String(error)
+        );
+        res.status(statusCode).json({ error: 'internal_error' });
+      } else {
+        res.status(statusCode).json({ error: getErrorMessage(error) });
+      }
       return;
     }
   }
@@ -136,7 +160,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return;
     } catch (error) {
       const statusCode = error instanceof AdminArchiveServiceError ? error.statusCode : 500;
-      res.status(statusCode).json({ error: getErrorMessage(error) });
+      if (statusCode >= 500) {
+        console.error(
+          '[archive/collection] DELETE hide failed:',
+          error instanceof Error ? error.message : String(error)
+        );
+        res.status(statusCode).json({ error: 'internal_error' });
+      } else {
+        res.status(statusCode).json({ error: getErrorMessage(error) });
+      }
       return;
     }
   }

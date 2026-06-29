@@ -63,7 +63,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       const target = await supabase.from('meetings').select('id').eq('id', id).maybeSingle();
       if (target.error) {
-        res.status(500).json({ error: target.error.message });
+        console.error('[meetings/[id]] PATCH select failed:', target.error.message);
+        res.status(500).json({ error: 'internal_error' });
         return;
       }
       if (!target.data) {
@@ -78,7 +79,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .select('*')
         .single();
       if (error) {
-        res.status(500).json({ error: error.message });
+        console.error('[meetings/[id]] PATCH update failed:', error.message);
+        res.status(500).json({ error: 'internal_error' });
         return;
       }
       res.status(200).json({ meeting: data });
@@ -92,7 +94,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === 'DELETE') {
     const target = await supabase.from('meetings').select('id').eq('id', id).maybeSingle();
     if (target.error) {
-      res.status(500).json({ error: target.error.message });
+      console.error('[meetings/[id]] DELETE select failed:', target.error.message);
+      res.status(500).json({ error: 'internal_error' });
       return;
     }
     if (!target.data) {
@@ -120,7 +123,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const { error } = await supabase.from('meetings').delete().eq('id', id);
     if (error) {
-      res.status(500).json({ error: error.message });
+      console.error('[meetings/[id]] DELETE failed:', error.message);
+      res.status(500).json({ error: 'internal_error' });
       return;
     }
     res.status(200).json({ ok: true });

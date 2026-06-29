@@ -68,7 +68,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           res.status(404).json({ error: '회의를 찾을 수 없습니다.' });
           return;
         }
-        res.status(500).json({ error: error.message });
+        console.error('[meeting-agendas] POST insert failed:', error.message);
+        res.status(500).json({ error: 'internal_error' });
         return;
       }
       res.status(200).json({ agenda: data });
@@ -93,7 +94,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           .select('id')
           .eq('meeting_id', meeting_id);
         if (existing.error) {
-          res.status(500).json({ error: existing.error.message });
+          console.error('[meeting-agendas] PATCH reorder select failed:', existing.error.message);
+          res.status(500).json({ error: 'internal_error' });
           return;
         }
         const existingIds = new Set((existing.data ?? []).map((r) => r.id as string));
@@ -114,7 +116,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             .eq('id', order[i])
             .eq('meeting_id', meeting_id);
           if (error) {
-            res.status(500).json({ error: error.message });
+            console.error('[meeting-agendas] PATCH reorder update failed:', error.message);
+            res.status(500).json({ error: 'internal_error' });
             return;
           }
         }
@@ -127,7 +130,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       const target = await supabase.from('meeting_agendas').select('id').eq('id', id).maybeSingle();
       if (target.error) {
-        res.status(500).json({ error: target.error.message });
+        console.error('[meeting-agendas] PATCH select failed:', target.error.message);
+        res.status(500).json({ error: 'internal_error' });
         return;
       }
       if (!target.data) {
@@ -142,7 +146,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .select('*')
         .single();
       if (error) {
-        res.status(500).json({ error: error.message });
+        console.error('[meeting-agendas] PATCH update failed:', error.message);
+        res.status(500).json({ error: 'internal_error' });
         return;
       }
       res.status(200).json({ agenda: data });
@@ -158,7 +163,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const body = deleteSchema.parse(req.body);
       const { error } = await supabase.from('meeting_agendas').delete().eq('id', body.id);
       if (error) {
-        res.status(500).json({ error: error.message });
+        console.error('[meeting-agendas] DELETE failed:', error.message);
+        res.status(500).json({ error: 'internal_error' });
         return;
       }
       res.status(200).json({ ok: true });
