@@ -23,7 +23,7 @@ export default function BoardIndexPage({ boards }: Props) {
 
   return (
     <>
-      <SEOHelmet title={t('index.title')} description={t('index.metaDescription')} />
+      <SEOHelmet title={t('index.title')} description={t('index.metaDescription')} noIndex />
       <PageHero compact title={t('index.title')} backgroundImage={BOARD_HERO_IMAGE} />
       <main className="mx-auto max-w-2xl px-4 py-12">
         {boards.length === 0 ? (

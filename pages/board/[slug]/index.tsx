@@ -78,7 +78,11 @@ export default function BoardSlugPage({ board, posts, hasMore, offset, total, q,
 
   return (
     <>
-      <SEOHelmet title={board.name} description={board.description || t('index.metaDescription')} />
+      <SEOHelmet
+        title={board.name}
+        description={board.description || t('index.metaDescription')}
+        noIndex
+      />
       <PageHero
         compact
         title={board.name}

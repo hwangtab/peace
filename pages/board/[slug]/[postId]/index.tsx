@@ -87,17 +87,18 @@ export default function PostDetailPage({ post, slug, comments, commentsHasMore }
 
   const isHidden = post.status === 'hidden';
 
-  // 본문 앞부분을 메타 설명으로(줄바꿈 정리 후 ~155자). 숨김 글은 검색 비노출.
+  // 본문 앞부분을 메타 설명으로(줄바꿈 정리 후 ~155자).
   const metaDescription = post.body.replace(/\s+/g, ' ').trim().slice(0, 155);
 
   return (
     <>
+      {/* 게시판은 회원 전용 커뮤니티로 검색엔진과 분리한다(전체 noindex). */}
       <SEOHelmet
         title={post.title}
         description={metaDescription}
         ogType="article"
         datePublished={post.created_at}
-        noIndex={isHidden}
+        noIndex
       />
       <PageHero compact title={post.title} backgroundImage={BOARD_POST_HERO} />
       <main className="mx-auto max-w-2xl px-4 py-12">
