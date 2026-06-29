@@ -5,6 +5,7 @@ import AdminLayout from '@/components/admin/AdminLayout';
 import { getAdminSession, isOwner, redirectToAdminLogin } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import { loadRegularMembers, type RegularUser } from '@/lib/adminMembers';
+import { formatDateTime } from '@/utils/format';
 import type { AdminMember, AdminRole } from '@/types/cms';
 
 interface AdminMembersPageProps {
@@ -29,11 +30,6 @@ const roleClass = (role: AdminRole) =>
     role === 'owner' && 'bg-deep-ocean/10 text-deep-ocean',
     role === 'editor' && 'bg-jeju-ocean/10 text-jeju-ocean',
     role === 'viewer' && 'bg-coastal-gray/10 text-coastal-gray'
-  );
-
-const formatDate = (value: string) =>
-  new Intl.DateTimeFormat('ko-KR', { dateStyle: 'medium', timeStyle: 'short' }).format(
-    new Date(value)
   );
 
 export default function AdminMembersPage({
@@ -241,7 +237,7 @@ export default function AdminMembersPage({
                       )}
                     </div>
                     <p className="mt-1 text-sm text-coastal-gray">
-                      {row.email} · 등록 {formatDate(row.created_at)}
+                      {row.email} · 등록 {formatDateTime(row.created_at)}
                     </p>
                   </div>
                   <div className="flex flex-wrap items-center gap-2">
@@ -349,7 +345,7 @@ function RegularUserRow({
           )}
         </div>
         <p className="mt-1 text-sm text-coastal-gray">
-          {user.email} · 가입 {formatDate(user.created_at)}
+          {user.email} · 가입 {formatDateTime(user.created_at)}
         </p>
       </div>
       {user.isAdmin ? (

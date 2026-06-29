@@ -22,6 +22,7 @@ import {
   whitepaperSlug,
   parseWhitepaperYear,
 } from '@/lib/campEditions';
+import { formatDateTime } from '@/utils/format';
 import type { AdminDocument, AdminMember } from '@/types/cms';
 
 interface WhitepaperPageProps {
@@ -31,11 +32,6 @@ interface WhitepaperPageProps {
   member: AdminMember;
   initialError?: string;
 }
-
-const formatDate = (value: string) =>
-  new Intl.DateTimeFormat('ko-KR', { dateStyle: 'medium', timeStyle: 'short' }).format(
-    new Date(value)
-  );
 
 function WhitepaperEditor({
   years,
@@ -132,7 +128,7 @@ function WhitepaperEditor({
           </p>
           {document && (
             <p className="mt-1 text-xs text-coastal-gray">
-              마지막 수정 {formatDate(document.updated_at)}
+              마지막 수정 {formatDateTime(document.updated_at)}
               {document.updated_by ? ` · ${document.updated_by}` : ''}
             </p>
           )}

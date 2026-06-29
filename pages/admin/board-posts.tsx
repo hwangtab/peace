@@ -4,59 +4,19 @@ import AdminLayout from '@/components/admin/AdminLayout';
 import { getAdminSession, canEditContent, redirectToAdminLogin } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import type { AdminMember } from '@/types/cms';
-import type { AdminCommentRow, Board } from '@/types/board';
+import type { AdminCommentRow } from '@/types/board';
+import type { AdminPostRow, BoardInfo, BoardCounts } from '@/components/admin/board-posts/types';
+import { LIMIT } from '@/components/admin/board-posts/types';
+import PostsTab from '@/components/admin/board-posts/PostsTab';
+import CommentsTab from '@/components/admin/board-posts/CommentsTab';
 
 // ── Types ────────────────────────────────────────────────────────────────────
-
-interface PostImageRow {
-  image_url: string;
-  sort_order: number;
-}
-
-interface AdminPostRow {
-  id: string;
-  title: string;
-  body: string;
-  board_id: string;
-  status: 'published' | 'hidden';
-  like_count: number;
-  comment_count: number;
-  view_count: number;
-  created_at: string;
-  updated_at: string;
-  boards: { slug: string; name: string } | null;
-  profiles: { nickname: string } | null;
-  post_images: PostImageRow[];
-}
-
-type BoardInfo = Pick<Board, 'id' | 'slug' | 'name'>;
-type BoardCounts = Record<string, { published: number; hidden: number }>;
 
 interface PageProps {
   boards: BoardInfo[];
   boardCounts: BoardCounts;
   member: AdminMember;
 }
-
-// ── Styles ───────────────────────────────────────────────────────────────────
-
-const btnHide =
-  'rounded border border-sunset-coral/50 bg-white px-2.5 py-1 text-xs font-semibold text-sunset-coral transition hover:bg-sunset-coral/10 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunset-coral';
-const btnShow =
-  'rounded border border-jeju-ocean/50 bg-white px-2.5 py-1 text-xs font-semibold text-jeju-ocean transition hover:bg-jeju-ocean/10 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jeju-ocean';
-const btnDanger =
-  'rounded border border-red-300 bg-white px-2.5 py-1 text-xs font-semibold text-red-600 transition hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400';
-const btnLink =
-  'rounded border border-deep-ocean/20 bg-white px-2.5 py-1 text-xs font-semibold text-deep-ocean/70 transition hover:bg-deep-ocean/5 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-deep-ocean/40';
-const inputCls =
-  'rounded border border-deep-ocean/20 bg-white px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-jeju-ocean/40';
-const selectCls =
-  'rounded border border-deep-ocean/20 bg-white px-2 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-jeju-ocean/40';
-const btnBulk =
-  'rounded border border-deep-ocean/20 bg-white px-3 py-1.5 text-xs font-semibold text-deep-ocean transition hover:bg-deep-ocean/5 disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-deep-ocean/40';
-
-const LIMIT = 30;
-const fmt = new Intl.DateTimeFormat('ko-KR', { dateStyle: 'medium', timeStyle: 'short' });
 
 // ── Component ─────────────────────────────────────────────────────────────────
 
@@ -457,450 +417,60 @@ export default function AdminBoardPostsPage({ boards, boardCounts, member }: Pag
 
       {/* ── POSTS TAB ─────────────────────────────────────────────────── */}
       {activeTab === 'posts' && (
-        <>
-          {/* Board count chips */}
-          {boards.length > 0 && (
-            <div className="mb-4 flex flex-wrap gap-2">
-              {boards.map((b) => {
-                const cnt = boardCounts[b.id] ?? { published: 0, hidden: 0 };
-                return (
-                  <span
-                    key={b.id}
-                    className="rounded-full bg-deep-ocean/5 px-3 py-1 text-xs text-coastal-gray"
-                  >
-                    <span className="font-semibold text-deep-ocean">{b.name}</span> 공개&nbsp;
-                    <span className="font-semibold text-jeju-ocean">{cnt.published}</span>
-                    &nbsp;·&nbsp;숨김&nbsp;
-                    <span className="font-semibold text-sunset-coral">{cnt.hidden}</span>
-                  </span>
-                );
-              })}
-            </div>
-          )}
-
-          {/* Filter bar */}
-          <div className="mb-3 flex flex-wrap items-center gap-2">
-            <input
-              className={inputCls}
-              placeholder="제목 검색"
-              value={postsQ}
-              onChange={(e) => handlePostsQChange(e.target.value)}
-            />
-            <select
-              className={selectCls}
-              value={postsBoardId}
-              onChange={(e) => handlePostsBoardChange(e.target.value)}
-            >
-              <option value="">전체 게시판</option>
-              {boards.map((b) => (
-                <option key={b.id} value={b.id}>
-                  {b.name}
-                </option>
-              ))}
-            </select>
-            <select
-              className={selectCls}
-              value={postsStatus}
-              onChange={(e) => handlePostsStatusChange(e.target.value)}
-            >
-              <option value="">전체</option>
-              <option value="published">공개</option>
-              <option value="hidden">숨김</option>
-            </select>
-          </div>
-
-          {/* Bulk action bar */}
-          {canEdit && (
-            <div className="mb-3 flex items-center gap-3">
-              <label className="flex cursor-pointer items-center gap-2 text-sm text-coastal-gray">
-                <input
-                  type="checkbox"
-                  checked={allPostsSelected}
-                  onChange={toggleSelectAllPosts}
-                  className="accent-jeju-ocean"
-                />
-                전체 선택
-              </label>
-              {selectedPostIds.size > 0 && (
-                <>
-                  <span className="text-sm text-coastal-gray">{selectedPostIds.size}개 선택됨</span>
-                  <button
-                    type="button"
-                    disabled={bulkBusy}
-                    className={btnBulk}
-                    onClick={() => void bulkUpdatePosts('hidden')}
-                  >
-                    {bulkBusy ? '처리 중…' : '일괄 숨김'}
-                  </button>
-                  <button
-                    type="button"
-                    disabled={bulkBusy}
-                    className={btnBulk}
-                    onClick={() => void bulkUpdatePosts('published')}
-                  >
-                    {bulkBusy ? '처리 중…' : '일괄 공개'}
-                  </button>
-                </>
-              )}
-            </div>
-          )}
-
-          {/* Posts list */}
-          <div className="rounded border border-deep-ocean/10 bg-white">
-            {postsLoading ? (
-              <p className="p-6 text-sm text-coastal-gray">불러오는 중…</p>
-            ) : posts.length === 0 ? (
-              <p className="p-6 text-coastal-gray">게시글이 없습니다.</p>
-            ) : (
-              <ul className="divide-y divide-deep-ocean/10">
-                {posts.map((post) => {
-                  const busy = busyIds.has(post.id);
-                  const expanded = expandedPostIds.has(post.id);
-                  const sortedImages = post.post_images
-                    .slice()
-                    .sort((a, b) => a.sort_order - b.sort_order);
-
-                  return (
-                    <li key={post.id} className="px-4 py-3">
-                      <div className="flex flex-wrap items-start gap-3">
-                        {/* Checkbox */}
-                        {canEdit && (
-                          <input
-                            type="checkbox"
-                            checked={selectedPostIds.has(post.id)}
-                            onChange={() => togglePostSelect(post.id)}
-                            className="mt-1 accent-jeju-ocean"
-                          />
-                        )}
-
-                        {/* Expand toggle */}
-                        <button
-                          type="button"
-                          onClick={() => toggleExpandPost(post.id)}
-                          className="mt-0.5 text-xs text-coastal-gray hover:text-deep-ocean focus-visible:outline-none"
-                          aria-expanded={expanded}
-                          aria-label={expanded ? '내용 접기' : '내용 펼치기'}
-                        >
-                          {expanded ? '▲' : '▼'}
-                        </button>
-
-                        {/* Content */}
-                        <div className="min-w-0 flex-1">
-                          <p className="truncate font-medium">{post.title}</p>
-                          <p className="mt-0.5 text-xs text-coastal-gray">
-                            <span>{post.boards?.name ?? post.board_id}</span>
-                            &nbsp;·&nbsp;
-                            <span>{post.profiles?.nickname ?? '익명'}</span>
-                            &nbsp;·&nbsp;
-                            <span>{fmt.format(new Date(post.created_at))}</span>
-                            &nbsp;·&nbsp;
-                            <span>♡{post.like_count}</span>
-                            &nbsp;
-                            <span>💬{post.comment_count}</span>
-                            &nbsp;
-                            <span>👁{post.view_count}</span>
-                          </p>
-                        </div>
-
-                        {/* Status badge */}
-                        <span
-                          className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${
-                            post.status === 'published'
-                              ? 'bg-jeju-ocean/10 text-jeju-ocean'
-                              : 'bg-sunset-coral/10 text-sunset-coral'
-                          }`}
-                        >
-                          {post.status === 'published' ? '공개' : '숨김'}
-                        </span>
-
-                        {/* Actions */}
-                        {canEdit && (
-                          <div className="flex items-center gap-1.5">
-                            <button
-                              type="button"
-                              disabled={busy}
-                              onClick={() => void togglePostStatus(post)}
-                              className={post.status === 'published' ? btnHide : btnShow}
-                            >
-                              {busy ? '…' : post.status === 'published' ? '숨김' : '공개'}
-                            </button>
-                            <button
-                              type="button"
-                              disabled={busy}
-                              onClick={() => void deletePost(post)}
-                              className={btnDanger}
-                            >
-                              영구삭제
-                            </button>
-                            {post.boards?.slug && (
-                              <a
-                                href={`/board/${post.boards.slug}/${post.id}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={btnLink}
-                              >
-                                원문 열기
-                              </a>
-                            )}
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Expanded body */}
-                      {expanded && (
-                        <div className="mt-3 rounded bg-deep-ocean/5 p-3">
-                          <p className="whitespace-pre-wrap text-sm text-deep-ocean">
-                            {post.body || '(본문 없음)'}
-                          </p>
-                          {sortedImages.length > 0 && (
-                            <div className="mt-2 flex flex-wrap gap-2">
-                              {sortedImages.map((img, i) => (
-                                // eslint-disable-next-line @next/next/no-img-element
-                                <img
-                                  key={`${img.image_url}-${i}`}
-                                  src={img.image_url}
-                                  alt={`이미지 ${i + 1}`}
-                                  className="h-20 w-20 rounded object-cover"
-                                />
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
-          </div>
-
-          {/* Pagination */}
-          <div className="mt-3 flex items-center justify-between text-sm text-coastal-gray">
-            <span>
-              {postsTotal === 0
-                ? `총 0건`
-                : `${postsOffset + 1}–${Math.min(postsOffset + LIMIT, postsTotal)} / 총 ${postsTotal}건`}
-            </span>
-            <div className="flex gap-2">
-              <button
-                type="button"
-                disabled={postsOffset === 0 || postsLoading}
-                onClick={() => goPostsPage(-1)}
-                className={btnBulk}
-              >
-                이전
-              </button>
-              <button
-                type="button"
-                disabled={postsOffset + LIMIT >= postsTotal || postsLoading}
-                onClick={() => goPostsPage(1)}
-                className={btnBulk}
-              >
-                다음
-              </button>
-            </div>
-          </div>
-        </>
+        <PostsTab
+          boards={boards}
+          boardCounts={boardCounts}
+          canEdit={canEdit}
+          posts={posts}
+          postsTotal={postsTotal}
+          postsLoading={postsLoading}
+          postsOffset={postsOffset}
+          postsQ={postsQ}
+          postsBoardId={postsBoardId}
+          postsStatus={postsStatus}
+          selectedPostIds={selectedPostIds}
+          expandedPostIds={expandedPostIds}
+          bulkBusy={bulkBusy}
+          busyIds={busyIds}
+          allPostsSelected={allPostsSelected}
+          onPostsQChange={handlePostsQChange}
+          onPostsBoardChange={handlePostsBoardChange}
+          onPostsStatusChange={handlePostsStatusChange}
+          onToggleSelectAll={toggleSelectAllPosts}
+          onTogglePostSelect={togglePostSelect}
+          onToggleExpandPost={toggleExpandPost}
+          onTogglePostStatus={(post) => void togglePostStatus(post)}
+          onDeletePost={(post) => void deletePost(post)}
+          onBulkUpdate={(status) => void bulkUpdatePosts(status)}
+          onPageChange={goPostsPage}
+        />
       )}
 
       {/* ── COMMENTS TAB ──────────────────────────────────────────────── */}
       {activeTab === 'comments' && (
-        <>
-          {/* Filter bar */}
-          <div className="mb-3 flex flex-wrap items-center gap-2">
-            <input
-              className={inputCls}
-              placeholder="댓글 내용 검색"
-              value={commentsQ}
-              onChange={(e) => handleCommentsQChange(e.target.value)}
-            />
-            <select
-              className={selectCls}
-              value={commentsStatus}
-              onChange={(e) => handleCommentsStatusChange(e.target.value)}
-            >
-              <option value="">전체</option>
-              <option value="published">공개</option>
-              <option value="hidden">숨김</option>
-            </select>
-          </div>
-
-          {/* Bulk action bar */}
-          {canEdit && (
-            <div className="mb-3 flex items-center gap-3">
-              <label className="flex cursor-pointer items-center gap-2 text-sm text-coastal-gray">
-                <input
-                  type="checkbox"
-                  checked={allCommentsSelected}
-                  onChange={toggleSelectAllComments}
-                  className="accent-jeju-ocean"
-                />
-                전체 선택
-              </label>
-              {selectedCommentIds.size > 0 && (
-                <>
-                  <span className="text-sm text-coastal-gray">
-                    {selectedCommentIds.size}개 선택됨
-                  </span>
-                  <button
-                    type="button"
-                    disabled={bulkBusy}
-                    className={btnBulk}
-                    onClick={() => void bulkUpdateComments('hidden')}
-                  >
-                    {bulkBusy ? '처리 중…' : '일괄 숨김'}
-                  </button>
-                  <button
-                    type="button"
-                    disabled={bulkBusy}
-                    className={btnBulk}
-                    onClick={() => void bulkUpdateComments('published')}
-                  >
-                    {bulkBusy ? '처리 중…' : '일괄 공개'}
-                  </button>
-                </>
-              )}
-            </div>
-          )}
-
-          {/* Comments list */}
-          <div className="rounded border border-deep-ocean/10 bg-white">
-            {commentsLoading ? (
-              <p className="p-6 text-sm text-coastal-gray">불러오는 중…</p>
-            ) : comments.length === 0 ? (
-              <p className="p-6 text-coastal-gray">댓글이 없습니다.</p>
-            ) : (
-              <ul className="divide-y divide-deep-ocean/10">
-                {comments.map((comment) => {
-                  const busy = busyIds.has(comment.id);
-                  const expanded = expandedCommentIds.has(comment.id);
-
-                  return (
-                    <li key={comment.id} className="px-4 py-3">
-                      <div className="flex flex-wrap items-start gap-3">
-                        {/* Checkbox */}
-                        {canEdit && (
-                          <input
-                            type="checkbox"
-                            checked={selectedCommentIds.has(comment.id)}
-                            onChange={() => toggleCommentSelect(comment.id)}
-                            className="mt-1 accent-jeju-ocean"
-                          />
-                        )}
-
-                        {/* Expand toggle */}
-                        <button
-                          type="button"
-                          onClick={() => toggleExpandComment(comment.id)}
-                          className="mt-0.5 text-xs text-coastal-gray hover:text-deep-ocean focus-visible:outline-none"
-                          aria-expanded={expanded}
-                          aria-label={expanded ? '내용 접기' : '내용 펼치기'}
-                        >
-                          {expanded ? '▲' : '▼'}
-                        </button>
-
-                        {/* Content */}
-                        <div className="min-w-0 flex-1">
-                          <p className="truncate text-sm text-deep-ocean">
-                            {comment.body.length > 80
-                              ? comment.body.slice(0, 80) + '…'
-                              : comment.body}
-                          </p>
-                          <p className="mt-0.5 text-xs text-coastal-gray">
-                            <span>{comment.author_nickname}</span>
-                            &nbsp;·&nbsp;
-                            <span>글: {comment.post_title}</span>
-                            &nbsp;·&nbsp;
-                            <span>{fmt.format(new Date(comment.created_at))}</span>
-                          </p>
-                        </div>
-
-                        {/* Status badge */}
-                        <span
-                          className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${
-                            comment.status === 'published'
-                              ? 'bg-jeju-ocean/10 text-jeju-ocean'
-                              : 'bg-sunset-coral/10 text-sunset-coral'
-                          }`}
-                        >
-                          {comment.status === 'published' ? '공개' : '숨김'}
-                        </span>
-
-                        {/* Actions */}
-                        {canEdit && (
-                          <div className="flex items-center gap-1.5">
-                            <button
-                              type="button"
-                              disabled={busy}
-                              onClick={() => void toggleCommentStatus(comment)}
-                              className={comment.status === 'published' ? btnHide : btnShow}
-                            >
-                              {busy ? '…' : comment.status === 'published' ? '숨김' : '공개'}
-                            </button>
-                            <button
-                              type="button"
-                              disabled={busy}
-                              onClick={() => void deleteComment(comment)}
-                              className={btnDanger}
-                            >
-                              영구삭제
-                            </button>
-                            {comment.post_board_slug && (
-                              <a
-                                href={`/board/${comment.post_board_slug}/${comment.post_id}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={btnLink}
-                              >
-                                원문 열기
-                              </a>
-                            )}
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Expanded body */}
-                      {expanded && (
-                        <div className="mt-3 rounded bg-deep-ocean/5 p-3">
-                          <p className="whitespace-pre-wrap text-sm text-deep-ocean">
-                            {comment.body || '(내용 없음)'}
-                          </p>
-                        </div>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
-          </div>
-
-          {/* Pagination */}
-          <div className="mt-3 flex items-center justify-between text-sm text-coastal-gray">
-            <span>
-              {commentsTotal === 0
-                ? `총 0건`
-                : `${commentsOffset + 1}–${Math.min(commentsOffset + LIMIT, commentsTotal)} / 총 ${commentsTotal}건`}
-            </span>
-            <div className="flex gap-2">
-              <button
-                type="button"
-                disabled={commentsOffset === 0 || commentsLoading}
-                onClick={() => goCommentsPage(-1)}
-                className={btnBulk}
-              >
-                이전
-              </button>
-              <button
-                type="button"
-                disabled={commentsOffset + LIMIT >= commentsTotal || commentsLoading}
-                onClick={() => goCommentsPage(1)}
-                className={btnBulk}
-              >
-                다음
-              </button>
-            </div>
-          </div>
-        </>
+        <CommentsTab
+          canEdit={canEdit}
+          comments={comments}
+          commentsTotal={commentsTotal}
+          commentsLoading={commentsLoading}
+          commentsOffset={commentsOffset}
+          commentsQ={commentsQ}
+          commentsStatus={commentsStatus}
+          selectedCommentIds={selectedCommentIds}
+          expandedCommentIds={expandedCommentIds}
+          bulkBusy={bulkBusy}
+          busyIds={busyIds}
+          allCommentsSelected={allCommentsSelected}
+          onCommentsQChange={handleCommentsQChange}
+          onCommentsStatusChange={handleCommentsStatusChange}
+          onToggleSelectAll={toggleSelectAllComments}
+          onToggleCommentSelect={toggleCommentSelect}
+          onToggleExpandComment={toggleExpandComment}
+          onToggleCommentStatus={(comment) => void toggleCommentStatus(comment)}
+          onDeleteComment={(comment) => void deleteComment(comment)}
+          onBulkUpdate={(status) => void bulkUpdateComments(status)}
+          onPageChange={goCommentsPage}
+        />
       )}
     </AdminLayout>
   );
