@@ -49,7 +49,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .select('*')
         .single();
       if (error) {
-        res.status(500).json({ error: error.message });
+        console.error('[meetings] POST insert failed:', error.message);
+        res.status(500).json({ error: 'internal_error' });
         return;
       }
       res.status(200).json({ meeting: data });

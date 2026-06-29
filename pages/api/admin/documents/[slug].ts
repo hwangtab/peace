@@ -43,7 +43,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       .eq('slug', slug)
       .maybeSingle();
     if (error) {
-      res.status(500).json({ error: error.message });
+      console.error('[documents/[slug]] GET failed:', error.message);
+      res.status(500).json({ error: 'internal_error' });
       return;
     }
     res.status(200).json({ document: data ?? null });
@@ -67,7 +68,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .select('*')
         .single();
       if (error) {
-        res.status(500).json({ error: error.message });
+        console.error('[documents/[slug]] PUT upsert failed:', error.message);
+        res.status(500).json({ error: 'internal_error' });
         return;
       }
       res.status(200).json({ document: data });

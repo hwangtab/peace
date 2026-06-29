@@ -50,7 +50,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       loadRegularMembers(),
     ]);
     if (error) {
-      res.status(500).json({ error: error.message });
+      console.error('[members] GET members failed:', error.message);
+      res.status(500).json({ error: 'internal_error' });
       return;
     }
     res.status(200).json({ members: data ?? [], users, admin: session.member });
@@ -72,8 +73,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .select('*')
         .single();
       if (error) {
-        const message = error.code === '23505' ? '이미 등록된 이메일입니다.' : error.message;
-        res.status(error.code === '23505' ? 409 : 500).json({ error: message });
+        if (error.code === '23505') {
+          res.status(409).json({ error: '이미 등록된 이메일입니다.' });
+        } else {
+          console.error('[members] POST insert failed:', error.message);
+          res.status(500).json({ error: 'internal_error' });
+        }
         return;
       }
       res.status(200).json({ member: data });
@@ -93,7 +98,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .eq('id', body.id)
         .maybeSingle();
       if (target.error) {
-        res.status(500).json({ error: target.error.message });
+        console.error('[members] PATCH select failed:', target.error.message);
+        res.status(500).json({ error: 'internal_error' });
         return;
       }
       if (!target.data) {
@@ -117,7 +123,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           .eq('active', true)
           .neq('id', current.id);
         if (countError) {
-          res.status(500).json({ error: countError.message });
+          console.error('[members] PATCH owner count failed:', countError.message);
+          res.status(500).json({ error: 'internal_error' });
           return;
         }
         if (count === null) {
@@ -137,7 +144,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .select('*')
         .single();
       if (error) {
-        res.status(500).json({ error: error.message });
+        console.error('[members] PATCH update failed:', error.message);
+        res.status(500).json({ error: 'internal_error' });
         return;
       }
       res.status(200).json({ member: data });

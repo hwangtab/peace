@@ -55,7 +55,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const { data, error } = await query;
     if (error) {
-      res.status(500).json({ error: error.message });
+      console.error('[history] GET logs failed:', error.message);
+      res.status(500).json({ error: 'internal_error' });
       return;
     }
 
@@ -73,7 +74,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .maybeSingle();
 
       if (logError) {
-        res.status(500).json({ error: logError.message });
+        console.error('[history] POST fetch log failed:', logError.message);
+        res.status(500).json({ error: 'internal_error' });
         return;
       }
       if (!log) {
@@ -114,7 +116,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .eq('id', safeRowId)
         .maybeSingle();
       if (current.error) {
-        res.status(500).json({ error: current.error.message });
+        console.error('[history] POST fetch current row failed:', current.error.message);
+        res.status(500).json({ error: 'internal_error' });
         return;
       }
       if (!current.data) {
@@ -134,7 +137,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         if (error.code === '23505') {
           res.status(409).json({ error: '이미 사용 중인 공개 ID 또는 키입니다.' });
         } else {
-          res.status(500).json({ error: error.message });
+          console.error('[history] POST restore update failed:', error.message);
+          res.status(500).json({ error: 'internal_error' });
         }
         return;
       }

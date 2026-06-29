@@ -63,7 +63,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const { data, error, count } = await query;
     if (error) {
-      res.status(500).json({ error: error.message });
+      console.error('[board-posts] GET posts failed:', error.message);
+      res.status(500).json({ error: 'internal_error' });
       return;
     }
 
@@ -88,7 +89,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           .in('id', ids)
           .select('id, status');
         if (error) {
-          res.status(500).json({ error: error.message });
+          console.error('[board-posts] PATCH bulk update failed:', error.message);
+          res.status(500).json({ error: 'internal_error' });
           return;
         }
         const updated = data ?? [];
@@ -105,7 +107,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       const target = await supabase.from('posts').select('id').eq('id', single.id).maybeSingle();
       if (target.error) {
-        res.status(500).json({ error: target.error.message });
+        console.error('[board-posts] PATCH select failed:', target.error.message);
+        res.status(500).json({ error: 'internal_error' });
         return;
       }
       if (!target.data) {
@@ -120,7 +123,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .select('id, status')
         .single();
       if (error) {
-        res.status(500).json({ error: error.message });
+        console.error('[board-posts] PATCH single update failed:', error.message);
+        res.status(500).json({ error: 'internal_error' });
         return;
       }
       res.status(200).json({ post: data });
@@ -155,7 +159,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.status(404).json({ error: '게시글을 찾을 수 없습니다.' });
         return;
       }
-      res.status(500).json({ error: deleteError.message });
+      console.error('[board-posts] DELETE failed:', deleteError.message);
+      res.status(500).json({ error: 'internal_error' });
       return;
     }
 
