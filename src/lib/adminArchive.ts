@@ -295,7 +295,6 @@ const dateSchema = z
   .string()
   .trim()
   .regex(/^\d{4}-\d{2}-\d{2}$/, 'YYYY-MM-DD 형식이어야 합니다.');
-const externalUrlSchema = z.string().trim().url('올바른 URL이어야 합니다.');
 const isHttpUrl = (value: string) => {
   try {
     const url = new URL(value);
@@ -304,6 +303,11 @@ const isHttpUrl = (value: string) => {
     return false;
   }
 };
+const externalUrlSchema = z
+  .string()
+  .trim()
+  .url('올바른 URL이어야 합니다.')
+  .refine(isHttpUrl, 'http(s) URL만 허용됩니다.');
 const isPathOrHttpUrl = (value: string) => value.startsWith('/') || isHttpUrl(value);
 const imageUrlSchema = z
   .string()
