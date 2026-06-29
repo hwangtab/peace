@@ -15,6 +15,14 @@ export interface SEOHelmetProps {
   description?: string;
   ogImage?: string;
   ogImageAlt?: string;
+  /**
+   * og:image 의 실제 픽셀 크기. 기본 OG(1200×630 제작본)는 자동으로 채워지지만,
+   * 동적 이미지(뮤지션 프로필·YouTube 썸네일·포스터 등)는 비율이 제각각이라
+   * 잘못된 크기를 박으면 SNS 미리보기가 크롭/왜곡된다. 정확한 크기를 아는
+   * 호출처만 명시하고, 모르면 생략한다(메타 자체를 출력하지 않음).
+   */
+  ogImageWidth?: number;
+  ogImageHeight?: number;
   ogType?: string;
   ogAudio?: string;
   ogMusicAlbum?: string;
@@ -57,8 +65,10 @@ const HREFLANG_OVERRIDE: Record<string, string> = {
 const SEOHelmet: React.FC<SEOHelmetProps> = ({
   title,
   description,
-  ogImage = getFullUrl(config.ogImage),
+  ogImage,
   ogImageAlt,
+  ogImageWidth,
+  ogImageHeight,
   ogType = 'website',
   ogAudio,
   ogMusicAlbum,
@@ -86,11 +96,20 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
   const fullCanonicalUrl = canonicalUrl || getFullUrl(canonicalPath);
 
   // webp/avif og:image 를 카카오톡·페이스북 호환 jpg 로 정규화(파생본 없으면
-  // 기본 OG 로 폴백)한 뒤 절대 URL 로 변환한다.
-  const resolvedOgImage = toOgImage(ogImage);
+  // 기본 OG 로 폴백)한 뒤 절대 URL 로 변환한다. config.ogImage 는 상대 경로이므로
+  // toOgImage 를 그대로 통과한다(getFullUrl 은 마지막에 적용).
+  const resolvedOgImage = toOgImage(ogImage ?? config.ogImage);
   const fullOgImage = resolvedOgImage.startsWith('http')
     ? resolvedOgImage
     : getFullUrl(resolvedOgImage);
+
+  // generate-og-images.mjs 가 만드는 OG 산출물(/images/og/ 하위 — 제작본·_derived
+  // 파생본·폴백 모두)은 전부 1200×630 으로 cover-resize 된다. 이 경우에만 크기 메타를
+  // 자동으로 채우고, 외부 URL(YouTube 썸네일 480×360 등)·비표준 비율 이미지는
+  // 잘못된 크기로 SNS 미리보기가 크롭/왜곡되지 않도록 호출처가 명시할 때만 출력한다.
+  const isStandardOg = resolvedOgImage.startsWith('/images/og/');
+  const finalOgImageWidth = ogImageWidth ?? (isStandardOg ? 1200 : undefined);
+  const finalOgImageHeight = ogImageHeight ?? (isStandardOg ? 630 : undefined);
 
   // Derive MIME type from image extension
   const ogImageExt = fullOgImage.split('.').pop()?.toLowerCase() ?? '';
@@ -188,8 +207,12 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
         <meta property="og:image:secure_url" content={fullOgImage} />
         <meta property="og:image:type" content={ogImageType} />
         <meta property="og:image:alt" content={finalOgImageAlt} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
+        {finalOgImageWidth && finalOgImageHeight && (
+          <>
+            <meta property="og:image:width" content={String(finalOgImageWidth)} />
+            <meta property="og:image:height" content={String(finalOgImageHeight)} />
+          </>
+        )}
         <meta property="og:locale" content={ogLocale} />
         {LOCALES.filter((loc) => loc !== locale).map((loc) => (
           <meta

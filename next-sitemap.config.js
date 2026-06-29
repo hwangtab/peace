@@ -240,6 +240,11 @@ module.exports = {
     // 뮤지션용 SNS 홍보 키트 — 내부 배포용, 검색 비노출
     '/camps/2026/promote',
     '/*/camps/2026/promote',
+    // 게시판 — 회원 전용 커뮤니티로 검색엔진과 분리(페이지에도 noindex 적용).
+    '/board',
+    '/board/**',
+    '/*/board',
+    '/*/board/**',
     ...AUTH_EXCLUDE,
   ],
   additionalSitemaps: [`${siteUrl}/image-sitemap.xml`, `${siteUrl}/video-sitemap.xml`],
