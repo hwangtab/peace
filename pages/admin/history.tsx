@@ -53,7 +53,7 @@ export default function AdminHistoryPage({
   initialError = '',
 }: AdminHistoryPageProps) {
   const [logs, setLogs] = useState(initialLogs);
-  const canEdit = member.role !== 'viewer';
+  const canEdit = canEditContent(member);
   const [isRestoring, setIsRestoring] = useState<string | null>(null);
   const [message, setMessage] = useState('');
   const [error, setError] = useState(initialError);

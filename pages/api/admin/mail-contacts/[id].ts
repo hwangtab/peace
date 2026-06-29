@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { z, ZodError } from 'zod';
-import { requireAdminRole } from '@/lib/adminAuth';
+import { isOwner, requireAdminRole } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import { isValidEmail, normalizeCohorts, validateContactName } from '@/lib/mailContactsForms';
 
@@ -58,9 +58,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .single();
       if (error) {
         const dup = error.code === '23505';
+        if (!dup) console.error('[mail-contacts/[id]] 수정 실패:', error.message);
         return res
           .status(dup ? 409 : 500)
-          .json({ error: dup ? '이미 등록된 이메일입니다.' : error.message });
+          .json({ error: dup ? '이미 등록된 이메일입니다.' : 'internal_error' });
       }
       return res.status(200).json({ item: data });
     } catch (error) {
@@ -69,8 +70,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   if (req.method === 'DELETE') {
+    // 영구 삭제는 발송 이력(mailbox_messages) 참조를 끊으므로 owner만 허용. editor는 PATCH로 is_active:false(소프트 삭제) 사용.
+    if (!isOwner(session.member)) return res.status(403).json({ error: 'admin_role_required' });
     const { error } = await supabase.from('mail_contacts').delete().eq('id', id);
-    if (error) return res.status(500).json({ error: error.message });
+    if (error) {
+      console.error('[mail-contacts/[id]] 삭제 실패:', error.message);
+      return res.status(500).json({ error: 'internal_error' });
+    }
     return res.status(200).json({ ok: true });
   }
 

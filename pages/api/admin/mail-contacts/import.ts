@@ -6,7 +6,7 @@ import { parseContactsCsv } from '@/lib/mailContactsForms';
 
 const schema = z.object({ csv: z.string() });
 
-// 한 번에 처리할 최대 행 수. serverless 타임아웃(순차 insert) 방어용.
+// 한 번에 처리할 최대 행 수. 페이로드 크기·메모리 방어용.
 const MAX_IMPORT_ROWS = 1000;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -27,21 +27,25 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       });
 
     const supabase = createSupabaseServerClient(req, res);
-    let inserted = 0;
-    let skipped = 0;
-    for (const row of rows) {
-      const { error } = await supabase.from('mail_contacts').insert({
-        name: row.name,
-        email: row.email.toLowerCase(),
-        group_type: row.group_type,
-        cohorts: row.cohorts,
-        created_by: session.member.email,
-      });
-      if (error) {
-        if (error.code === '23505') skipped += 1;
-        else errors.push(`${row.email}: ${error.message}`);
-      } else inserted += 1;
+    // 배치 upsert: 단일 호출로 처리(순차 루프의 타임아웃·부분삽입 문제 회피).
+    // 이메일 중복은 무시(ignoreDuplicates)하고, 삽입된 행 수로 inserted/skipped를 산출한다.
+    const payload = rows.map((row) => ({
+      name: row.name,
+      email: row.email.toLowerCase(),
+      group_type: row.group_type,
+      cohorts: row.cohorts,
+      created_by: session.member.email,
+    }));
+    const { data, error } = await supabase
+      .from('mail_contacts')
+      .upsert(payload, { onConflict: 'email', ignoreDuplicates: true })
+      .select('id');
+    if (error) {
+      console.error('[mail-contacts/import] 가져오기 실패:', error.message);
+      return res.status(500).json({ error: 'internal_error' });
     }
+    const inserted = data?.length ?? 0;
+    const skipped = rows.length - inserted;
     return res.status(200).json({ inserted, skipped, errors });
   } catch (error) {
     const msg =

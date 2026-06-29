@@ -41,7 +41,7 @@ function WhitepaperEditor({
   initialError = '',
 }: WhitepaperPageProps) {
   const router = useRouter();
-  const canEdit = member.role !== 'viewer';
+  const canEdit = canEditContent(member);
   const defaultTitle = `${campEditionLabel(selectedYear)} 운영 백서`;
   const [document, setDocument] = useState(initialDocument);
   const [isEditing, setIsEditing] = useState(false);

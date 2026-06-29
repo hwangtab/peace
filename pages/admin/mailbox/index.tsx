@@ -287,9 +287,16 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     .order('created_at', { ascending: false })
     .limit(200);
 
+  // html_body 원본 HTML이 __NEXT_DATA__에 직렬화되지 않도록 플레이스홀더로 마스킹한다.
+  // 렌더 로직은 html_body.trim() 존재 여부만 확인하므로 동작은 그대로 보존된다.
+  const messages = (data ?? []).map((row) => ({
+    ...row,
+    html_body: row.html_body ? '__HTML__' : '',
+  }));
+
   return {
     props: {
-      messages: data ?? [],
+      messages,
       member: session.member,
       initialError: error?.message ?? '',
     },

@@ -14,9 +14,12 @@ import type { MailContact } from '@/types/mailContacts';
 
 const FROM_ADDRESS = '강정 피스앤뮤직캠프 <admin@peaceandmusic.net>';
 
+// 한 번에 발송 가능한 최대 수신자 수. 비용 폭주·발신 도메인 평판 손상 방어.
+const MAX_RECIPIENTS = 500;
+
 const schema = z.object({
-  contactIds: z.array(z.string().uuid()).default([]),
-  manualText: z.string().default(''),
+  contactIds: z.array(z.string().uuid()).max(MAX_RECIPIENTS).default([]),
+  manualText: z.string().max(100_000).default(''),
   subject: z.string(),
   text: z.string(),
 });
@@ -44,7 +47,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .select('id, name, email, is_active')
         .in('id', body.contactIds)
         .eq('is_active', true);
-      if (error) return res.status(500).json({ error: error.message });
+      if (error) {
+        console.error('[mailbox/send] 연락처 조회 실패:', error.message);
+        return res.status(500).json({ error: 'internal_error' });
+      }
       contactRecipients = (data as Pick<MailContact, 'id' | 'name' | 'email'>[]) ?? [];
     }
 
@@ -63,6 +69,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const recipients = [...byEmail.values()];
     if (recipients.length === 0)
       return res.status(400).json({ error: '발송 가능한 수신자가 없습니다.' });
+    if (recipients.length > MAX_RECIPIENTS)
+      return res.status(400).json({
+        error: `한 번에 최대 ${MAX_RECIPIENTS}명까지 발송할 수 있습니다. (현재 ${recipients.length}명) 나눠서 보내세요.`,
+      });
 
     const campaignId = randomUUID();
     const result = await runBroadcast({
