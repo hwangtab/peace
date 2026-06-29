@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { z, ZodError } from 'zod';
-import { requireAdminRole } from '@/lib/adminAuth';
+import { redactMember, requireAdminRole } from '@/lib/adminAuth';
 import {
   ADMIN_COLLECTION_PAGE_SIZE,
   getAdminCollectionConfig,
@@ -93,7 +93,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       });
       res.status(200).json({
         ...page,
-        admin: session.member,
+        admin: redactMember(session.member),
       });
     } catch (error) {
       const statusCode = error instanceof AdminArchiveServiceError ? error.statusCode : 500;

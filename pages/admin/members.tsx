@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { GetServerSidePropsContext } from 'next';
 import classNames from 'classnames';
 import AdminLayout from '@/components/admin/AdminLayout';
-import { getAdminSession, isOwner, redirectToAdminLogin } from '@/lib/adminAuth';
+import { getAdminSession, isOwner, redirectToAdminLogin, redactMember } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import { loadRegularMembers, type RegularUser } from '@/lib/adminMembers';
 import { formatDateTime } from '@/utils/format';
@@ -395,7 +395,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     props: {
       members: data ?? [],
       users,
-      member: session.member,
+      member: redactMember(session.member),
       initialError: error?.message ?? '',
     },
   };

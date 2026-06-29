@@ -2,7 +2,12 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import type { GetServerSidePropsContext } from 'next';
 import AdminLayout from '@/components/admin/AdminLayout';
-import { getAdminSession, canEditContent, redirectToAdminLogin } from '@/lib/adminAuth';
+import {
+  getAdminSession,
+  canEditContent,
+  redirectToAdminLogin,
+  redactMember,
+} from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import { replySubject } from '@/lib/mailboxForms';
 import type { MailboxMessage } from '@/types/mailbox';
@@ -297,7 +302,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   return {
     props: {
       messages,
-      member: session.member,
+      member: redactMember(session.member),
       initialError: error?.message ?? '',
     },
   };

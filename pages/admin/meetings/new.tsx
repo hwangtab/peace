@@ -3,7 +3,12 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import type { GetServerSidePropsContext } from 'next';
 import AdminLayout from '@/components/admin/AdminLayout';
-import { getAdminSession, canEditContent, redirectToAdminLogin } from '@/lib/adminAuth';
+import {
+  getAdminSession,
+  canEditContent,
+  redirectToAdminLogin,
+  redactMember,
+} from '@/lib/adminAuth';
 import {
   validateMeetingTitle,
   validateMeetingDate,
@@ -181,5 +186,5 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   if (!canEditContent(session.member)) {
     return { redirect: { destination: '/admin/meetings', permanent: false } };
   }
-  return { props: { member: session.member } };
+  return { props: { member: redactMember(session.member) } };
 };

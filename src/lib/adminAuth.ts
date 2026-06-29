@@ -22,6 +22,11 @@ export const canEditContent = (member: Pick<AdminMember, 'role'>): boolean =>
 
 export const isOwner = (member: Pick<AdminMember, 'role'>): boolean => member.role === 'owner';
 
+// 클라이언트로 내보내는 본인 멤버 정보에서 auth user UUID를 가린다.
+// 프론트는 id/email/display_name/role만 사용하므로 user_id는 불필요하고,
+// 노출 시 auth.users UUID 탈취 면적만 늘린다(API 응답·getServerSideProps props 공통).
+export const redactMember = (member: AdminMember): AdminMember => ({ ...member, user_id: null });
+
 const findAdminMember = async (
   supabase: ReturnType<typeof createSupabaseServerClient>,
   user: User

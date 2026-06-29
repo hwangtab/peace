@@ -2,7 +2,12 @@ import type { GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import AdminLayout from '@/components/admin/AdminLayout';
-import { getAdminSession, canEditContent, redirectToAdminLogin } from '@/lib/adminAuth';
+import {
+  getAdminSession,
+  canEditContent,
+  redirectToAdminLogin,
+  redactMember,
+} from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import { MEETING_STATUS_LABELS } from '@/lib/meetingForms';
 import { CAMP_EDITION_YEARS, campEditionLabel } from '@/lib/campEditions';
@@ -163,7 +168,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   return {
     props: {
       meetings: data ?? [],
-      member: session.member,
+      member: redactMember(session.member),
       selectedYear,
       initialError: error?.message ?? '',
     },
