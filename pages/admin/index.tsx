@@ -1,7 +1,7 @@
 import type { GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
 import AdminLayout from '@/components/admin/AdminLayout';
-import { getAdminSession, canEditContent, redirectToAdminLogin } from '@/lib/adminAuth';
+import { getAdminSession, canEditContent, isOwner, redirectToAdminLogin } from '@/lib/adminAuth';
 import { createSupabaseServiceClient } from '@/lib/supabaseService';
 import type { AdminMember } from '@/types/cms';
 import type { GalleryImage } from '@/types/gallery';
@@ -142,7 +142,7 @@ export default function AdminHomePage({
   recentMeeting,
   recentMail,
 }: AdminHomeProps) {
-  const isOwner = member.role === 'owner';
+  const isOwnerMember = isOwner(member);
   const contentTotal = counts.videos + counts.gallery + counts.press;
 
   return (
@@ -161,7 +161,7 @@ export default function AdminHomePage({
           label="가입 회원"
           value={counts.members}
           sub={`기획단 ${counts.admins}명`}
-          href={isOwner ? '/admin/members' : undefined}
+          href={isOwnerMember ? '/admin/members' : undefined}
         />
         <StatCard
           label="게시글"
@@ -340,7 +340,7 @@ export default function AdminHomePage({
                       { href: '/admin/history', label: '변경 이력' },
                     ]
                   : []),
-                ...(isOwner ? [{ href: '/admin/members', label: '기획단' }] : []),
+                ...(isOwnerMember ? [{ href: '/admin/members', label: '기획단' }] : []),
               ].map((link) => (
                 <Link
                   key={link.href}

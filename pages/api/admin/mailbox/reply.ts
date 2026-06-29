@@ -56,17 +56,28 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
     const subject = replySubject(subjectResult.value);
 
+    const supabase = createSupabaseServerClient(req, res);
+
+    // reply_to_id가 주어지면 실제 존재하는 메시지인지 확인(없으면 연결 위조 방지 위해 null 처리).
+    let replyToId: string | null = null;
+    if (body.reply_to_id) {
+      const { data: parent } = await supabase
+        .from('mailbox_messages')
+        .select('id')
+        .eq('id', body.reply_to_id)
+        .maybeSingle();
+      replyToId = parent?.id ?? null;
+    }
+
     let sent: { id: string };
     try {
       sent = await sendEmail({ from: FROM_ADDRESS, to, subject, text: bodyResult.value });
     } catch (err) {
-      res
-        .status(502)
-        .json({ error: err instanceof Error ? err.message : '메일 발송에 실패했습니다.' });
+      console.error('[mailbox/reply] 메일 발송 실패:', err instanceof Error ? err.message : err);
+      res.status(502).json({ error: 'mail_send_failed' });
       return;
     }
 
-    const supabase = createSupabaseServerClient(req, res);
     const { data, error } = await supabase
       .from('mailbox_messages')
       .insert({
@@ -76,7 +87,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         to_email: to,
         subject,
         text_body: bodyResult.value,
-        reply_to_id: body.reply_to_id ?? null,
+        reply_to_id: replyToId,
         is_read: true,
         created_by: session.member.email,
       })
@@ -84,7 +95,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       .single();
     if (error) {
       // 메일은 이미 발송됨 — 기록 실패만 보고(중복 등).
-      res.status(500).json({ error: `발송됨, 기록 실패: ${error.message}` });
+      console.error('[mailbox/reply] 발송됨, 기록 실패:', error.message);
+      res.status(500).json({ error: 'mail_sent_record_failed' });
       return;
     }
 

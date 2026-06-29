@@ -15,15 +15,16 @@ const getErrorMessage = (error: unknown): string => {
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  // 인증 먼저, 그다음 입력 검증(다른 라우트와 순서 통일).
+  const session = await requireAdminRole(req, res, 'editor');
+  if (!session) return;
+
   const parsedId = z.string().uuid().safeParse(req.query.id);
   if (!parsedId.success) {
     res.status(400).json({ error: 'invalid_id' });
     return;
   }
   const id = parsedId.data;
-
-  const session = await requireAdminRole(req, res, 'editor');
-  if (!session) return;
 
   const supabase = createSupabaseServerClient(req, res);
 
@@ -37,7 +38,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .select('id, is_read')
         .single();
       if (error) {
-        res.status(500).json({ error: error.message });
+        console.error('[mailbox/[id]] 업데이트 실패:', error.message);
+        res.status(500).json({ error: 'internal_error' });
         return;
       }
       res.status(200).json({ message: data });

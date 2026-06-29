@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { requireAdminApi } from '@/lib/adminAuth';
+import { requireAdminRole } from '@/lib/adminAuth';
 import { createSupabaseServiceClient } from '@/lib/supabaseService';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -8,7 +8,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(405).json({ error: 'method_not_allowed' });
   }
 
-  const session = await requireAdminApi(req, res);
+  // 알림 피드(index.ts)가 editor 이상이므로 seen 마킹도 editor로 맞춘다.
+  const session = await requireAdminRole(req, res, 'editor');
   if (!session) return;
 
   const supabase = createSupabaseServiceClient();

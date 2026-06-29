@@ -2,7 +2,13 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { z, ZodError } from 'zod';
 import { requireAdminRole } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
-import { isValidEmail, normalizeCohorts, validateContactName } from '@/lib/mailContactsForms';
+import {
+  GROUP_TYPES,
+  isValidEmail,
+  normalizeCohorts,
+  validateContactName,
+} from '@/lib/mailContactsForms';
+import type { MailGroupType } from '@/types/mailContacts';
 
 const createSchema = z.object({
   name: z.string(),
@@ -30,11 +36,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       .select('*')
       .order('created_at', { ascending: false });
     const group = req.query.group;
-    if (typeof group === 'string' && group) query = query.eq('group_type', group);
+    if (typeof group === 'string' && group) {
+      if (!GROUP_TYPES.includes(group as MailGroupType))
+        return res.status(400).json({ error: 'invalid_group' });
+      query = query.eq('group_type', group);
+    }
     const cohort = req.query.cohort;
     if (typeof cohort === 'string' && cohort) query = query.contains('cohorts', [cohort]);
     const { data, error } = await query;
-    if (error) return res.status(500).json({ error: error.message });
+    if (error) {
+      console.error('[mail-contacts] 조회 실패:', error.message);
+      return res.status(500).json({ error: 'internal_error' });
+    }
     return res.status(200).json({ items: data });
   }
 
@@ -59,9 +72,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         .single();
       if (error) {
         const dup = error.code === '23505';
+        if (!dup) console.error('[mail-contacts] 등록 실패:', error.message);
         return res
           .status(dup ? 409 : 500)
-          .json({ error: dup ? '이미 등록된 이메일입니다.' : error.message });
+          .json({ error: dup ? '이미 등록된 이메일입니다.' : 'internal_error' });
       }
       return res.status(200).json({ item: data });
     } catch (error) {
