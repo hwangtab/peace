@@ -1,20 +1,12 @@
 import { GetServerSideProps } from 'next';
 import { GalleryImage } from '@/types/gallery';
 import { loadPublishedGallery } from '@/lib/archivePublicData';
+import { escapeXml } from '@/utils/xml';
 
 // pageComponents 키와 동기화 — 이 목록에 없는 year 는 /camps/${year} 가 404 임
 const VALID_CAMP_YEARS = new Set([2023, 2025, 2026]);
 
 const SITE_URL = 'https://peaceandmusic.net';
-
-function escapeXml(str: string): string {
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;');
-}
 
 // This component is never rendered — the page serves raw XML
 export default function ImageSitemapXml() {

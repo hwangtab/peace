@@ -2,17 +2,9 @@ import { GetServerSideProps } from 'next';
 import { VideoItem } from '@/types/video';
 import { LOCALES, DEFAULT_LOCALE } from '@/constants/locales';
 import { loadPublishedVideos } from '@/lib/archivePublicData';
+import { escapeXml } from '@/utils/xml';
 
 const SITE_URL = 'https://peaceandmusic.net';
-
-function escapeXml(str: string): string {
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;');
-}
 
 function getYoutubeVideoId(url: string): string {
   if (url.includes('/embed/')) {

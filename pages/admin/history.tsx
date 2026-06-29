@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { getAdminSession, canEditContent, redirectToAdminLogin } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
+import { formatDateTime } from '@/utils/format';
 import type { AdminMember, CmsChangeAction, CmsChangeLog } from '@/types/cms';
 
 interface AdminHistoryPageProps {
@@ -36,12 +37,6 @@ const actionClass = (action: CmsChangeAction) =>
     action === 'hide' && 'bg-sunset-coral/10 text-sunset-coral',
     action === 'restore' && 'bg-deep-ocean/10 text-deep-ocean'
   );
-
-const formatDate = (value: string) =>
-  new Intl.DateTimeFormat('ko-KR', {
-    dateStyle: 'medium',
-    timeStyle: 'short',
-  }).format(new Date(value));
 
 const JsonBlock = ({ title, value }: { title: string; value: Record<string, unknown> | null }) => (
   <details className="rounded border border-deep-ocean/10 bg-ocean-sand/30">
@@ -139,7 +134,7 @@ export default function AdminHistoryPage({
                         </span>
                       </div>
                       <p className="mt-2 text-sm text-coastal-gray">
-                        {formatDate(log.created_at)} · {log.admin_email}
+                        {formatDateTime(log.created_at)} · {log.admin_email}
                         {log.locale ? ` · ${log.locale}` : ''}
                         {log.public_id ? ` · #${log.public_id}` : ''}
                       </p>
