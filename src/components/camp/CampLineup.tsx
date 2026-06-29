@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { m as motion } from 'framer-motion';
 import { Participant } from '@/types/camp';
 import MusicianCard from '../musicians/MusicianCard';
@@ -11,6 +11,9 @@ interface CampLineupProps {
 }
 
 const CampLineup: React.FC<CampLineupProps> = ({ participants, musicians, campYear }) => {
+  // 참가자 수십 명 × musicians.find() 가 렌더마다 O(n²) 였다 → id→Musician Map 으로 O(n).
+  const musicianById = useMemo(() => new Map(musicians.map((m) => [m.id, m])), [musicians]);
+
   const getParticipantName = (participant: string | Participant) => {
     if (!participant) return '';
     return typeof participant === 'string' ? participant : participant.name;
@@ -18,7 +21,7 @@ const CampLineup: React.FC<CampLineupProps> = ({ participants, musicians, campYe
 
   const findMusician = (participant: string | Participant): Musician | null => {
     if (typeof participant === 'object' && participant !== null && participant.musicianId) {
-      return musicians.find((m) => m.id === participant.musicianId) || null;
+      return musicianById.get(participant.musicianId) || null;
     }
     return null;
   };

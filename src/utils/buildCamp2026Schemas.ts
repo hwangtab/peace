@@ -261,7 +261,7 @@ export function buildCamp2026Schemas({
           endDate: camp.endDate || camp.startDate,
           url: getFullUrl('/camps/2026'),
           description: translatedDescription,
-          image: getFullUrl('/images-webp/camps/2026/2026poster1.webp'),
+          image: getFullUrl('/images-webp/camps/2026/2026poster1-display.webp'),
           locationName: t('camp.venue_2026'),
           eventStatus: isPast
             ? 'https://schema.org/EventCompleted'
@@ -296,7 +296,7 @@ export function buildCamp2026Schemas({
       datePublished: '2026-01-15',
       dateModified: dateModifiedIso ?? '2026-05-13',
       mainEntityId: getFullUrl('/camps/2026#event'),
-      primaryImageUrl: getFullUrl('/images-webp/camps/2026/2026poster1.webp'),
+      primaryImageUrl: getFullUrl('/images-webp/camps/2026/2026poster1-display.webp'),
       keywords: [
         '강정피스앤뮤직캠프',
         'Gangjeong Peace Music Camp',

@@ -42,7 +42,7 @@ const MusicianCard = memo(({ musician, href }: MusicianCardProps) => {
                       : musician.name
                   }
                   fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   className="object-cover object-center transition-transform duration-500 group-hover:scale-110"
                 />
               ) : (

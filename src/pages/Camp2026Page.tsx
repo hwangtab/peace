@@ -8,7 +8,6 @@ import Section from '@/components/layout/Section';
 import Container from '@/components/layout/Container';
 import SectionHeader from '@/components/common/SectionHeader';
 import SectionWave from '@/components/layout/SectionWave';
-import { CampTimetable } from '@/components/camp/timetable';
 import { timetable2026 } from '@/data/timetable-2026';
 import CampHero from '@/components/camp/CampHero';
 import CampGallery from '@/components/camp/CampGallery';
@@ -19,6 +18,10 @@ import dynamic from 'next/dynamic';
 
 const GangjeongStorySection = dynamic(() => import('@/components/camp/GangjeongStorySection'));
 const GuidelinesSummary = dynamic(() => import('@/components/camp/guidelines/GuidelinesSummary'));
+// fold 아래 타임테이블(서브뷰·카드 다수 + framer-motion) — 초기 JS에서 분리, SEO 위해 ssr 유지.
+const CampTimetable = dynamic(() =>
+  import('@/components/camp/timetable').then((m) => m.CampTimetable)
+);
 import { getFullUrl } from '@/config/env';
 import { buildUtmUrl } from '@/utils/utm';
 import Button from '@/components/common/Button';
