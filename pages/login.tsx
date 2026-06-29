@@ -39,6 +39,8 @@ export default function LoginPage() {
     }
   };
 
+  const errorId = 'login-error';
+
   return (
     <AuthFormShell
       title={t('login.title')}
@@ -71,6 +73,8 @@ export default function LoginPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className={inputCls}
+            aria-invalid={visibleError ? true : undefined}
+            aria-describedby={visibleError ? errorId : undefined}
           />
         </label>
         <label className="block">
@@ -84,10 +88,13 @@ export default function LoginPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className={inputCls}
+            aria-invalid={visibleError ? true : undefined}
+            aria-describedby={visibleError ? errorId : undefined}
           />
         </label>
         {visibleError && (
           <p
+            id={errorId}
             role="alert"
             aria-live="assertive"
             className="rounded bg-sunset-coral/10 px-3 py-2 text-sm text-sunset-coral"

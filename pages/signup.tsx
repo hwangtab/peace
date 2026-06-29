@@ -111,7 +111,11 @@ export default function SignupPage() {
           </Link>
         </div>
       ) : (
-        <form onSubmit={submit} className="space-y-4">
+        <form
+          onSubmit={submit}
+          className="space-y-4"
+          aria-describedby={error ? 'signup-error' : undefined}
+        >
           <Field label={t('common.email')}>
             <input
               type="email"
@@ -120,6 +124,8 @@ export default function SignupPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className={inputCls}
+              aria-invalid={error ? true : undefined}
+              aria-describedby={error ? 'signup-error' : undefined}
             />
           </Field>
           <Field label={t('common.nickname')}>
@@ -130,6 +136,8 @@ export default function SignupPage() {
               value={nickname}
               onChange={(e) => setNickname(e.target.value)}
               className={inputCls}
+              aria-invalid={error ? true : undefined}
+              aria-describedby={error ? 'signup-error' : undefined}
             />
           </Field>
           <Field label={t('common.password')}>
@@ -140,6 +148,8 @@ export default function SignupPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className={inputCls}
+              aria-invalid={error ? true : undefined}
+              aria-describedby={error ? 'signup-error' : undefined}
             />
           </Field>
           <Field label={t('common.passwordConfirm')}>
@@ -150,6 +160,8 @@ export default function SignupPage() {
               value={passwordConfirm}
               onChange={(e) => setPasswordConfirm(e.target.value)}
               className={inputCls}
+              aria-invalid={error ? true : undefined}
+              aria-describedby={error ? 'signup-error' : undefined}
             />
           </Field>
           {message && (
@@ -163,6 +175,7 @@ export default function SignupPage() {
           )}
           {error && (
             <p
+              id="signup-error"
               role="alert"
               aria-live="assertive"
               className="rounded bg-sunset-coral/10 px-3 py-2 text-sm text-sunset-coral"
