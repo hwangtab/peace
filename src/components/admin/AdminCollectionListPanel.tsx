@@ -55,12 +55,14 @@ export default function AdminCollectionListPanel({
           value={searchQuery}
           onChange={(event) => onSearchQueryChange(event.target.value)}
           placeholder="제목, ID, 설명 검색"
+          aria-label="제목, ID, 설명 검색"
           className="w-full rounded border border-deep-ocean/15 px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
         />
         <div className="flex items-center justify-between gap-3">
           <select
             value={statusFilter}
             onChange={(event) => onStatusFilterChange(event.target.value as AdminStatusFilter)}
+            aria-label="상태 필터"
             className="rounded border border-deep-ocean/15 bg-white px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"
           >
             <option value="all">모든 상태</option>

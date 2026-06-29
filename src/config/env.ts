@@ -36,7 +36,8 @@ const parsed = {
 };
 
 export const config = {
-  siteUrl: parsed.NEXT_PUBLIC_SITE_URL ?? 'https://peaceandmusic.net',
+  // trailing slash 를 제거해 단일 정규형으로 보관(sitemap·공유 URL base 로 직접 사용 가능).
+  siteUrl: (parsed.NEXT_PUBLIC_SITE_URL ?? 'https://peaceandmusic.net').replace(/\/$/, ''),
   siteName: parsed.NEXT_PUBLIC_SITE_NAME ?? '강정피스앤뮤직캠프',
   smartstoreUrl: parsed.NEXT_PUBLIC_SMARTSTORE_URL ?? 'https://smartstore.naver.com/peaceandmusic',
   instagramUrl:

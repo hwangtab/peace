@@ -1,4 +1,6 @@
-const SITE_URL = 'https://peaceandmusic.net';
+import { config } from '@/config/env';
+
+const SITE_URL = config.siteUrl;
 
 export type ShareSource = 'instagram' | 'facebook' | 'twitter' | 'kakao' | 'direct';
 

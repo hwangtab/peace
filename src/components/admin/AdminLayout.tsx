@@ -32,7 +32,12 @@ export default function AdminLayout({ title, member, children }: AdminLayoutProp
   const navItems = member?.role === 'owner' ? [...NAV_ITEMS, ...OWNER_NAV_ITEMS] : NAV_ITEMS;
 
   const handleSignOut = async () => {
-    await createSupabaseBrowserClient().auth.signOut();
+    try {
+      await createSupabaseBrowserClient().auth.signOut();
+    } catch (err) {
+      // 세션 종료 실패해도 로그인 페이지로 보내 사용자가 다시 시도하게 한다.
+      console.error('[AdminLayout] signOut failed:', err);
+    }
     await router.push('/login');
   };
 

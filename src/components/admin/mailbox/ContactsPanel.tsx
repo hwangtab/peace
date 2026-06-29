@@ -92,6 +92,7 @@ export default function ContactsPanel({ canEdit }: { canEdit: boolean }) {
         <select
           value={group}
           onChange={(e) => setGroup(e.target.value as '' | MailGroupType)}
+          aria-label="그룹 필터"
           className="rounded border border-deep-ocean/15 px-3 py-2 text-sm"
         >
           <option value="">전체 그룹</option>
@@ -104,6 +105,7 @@ export default function ContactsPanel({ canEdit }: { canEdit: boolean }) {
         <select
           value={cohort}
           onChange={(e) => setCohort(e.target.value)}
+          aria-label="회차 필터"
           className="rounded border border-deep-ocean/15 px-3 py-2 text-sm"
         >
           <option value="">전체 회차</option>
@@ -193,6 +195,7 @@ function ContactAddForm({
         <select
           value={groupType}
           onChange={(e) => setGroupType(e.target.value as MailGroupType)}
+          aria-label="연락처 그룹"
           className="rounded border border-deep-ocean/15 px-3 py-2 text-sm"
         >
           {GROUP_TYPES.map((g) => (
@@ -254,6 +257,7 @@ function ContactAddForm({
           value={csv}
           onChange={(e) => setCsv(e.target.value)}
           rows={4}
+          aria-label="CSV 붙여넣기 (이름,이메일,그룹,회차)"
           className="mt-2 w-full rounded border border-deep-ocean/15 px-3 py-2 text-sm"
           placeholder="홍길동,hong@example.com,뮤지션,2026"
         />
