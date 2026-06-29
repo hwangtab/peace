@@ -341,6 +341,8 @@ const CampSurvey2026Page: React.FC = () => {
                     required
                     className={inputClass}
                     placeholder={s('placeholder_name')}
+                    aria-invalid={errorMsg ? true : undefined}
+                    aria-describedby={errorMsg ? 'survey-error' : undefined}
                   />
                 </div>
                 <fieldset className="border-0 p-0 m-0">
@@ -516,7 +518,12 @@ const CampSurvey2026Page: React.FC = () => {
             </section>
 
             {errorMsg && (
-              <p className="rounded-lg bg-sunset-coral/10 px-4 py-3 text-sunset-coral">
+              <p
+                id="survey-error"
+                role="alert"
+                aria-live="assertive"
+                className="rounded-lg bg-sunset-coral/10 px-4 py-3 text-sunset-coral"
+              >
                 {errorMsg}
               </p>
             )}
