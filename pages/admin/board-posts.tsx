@@ -1,7 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { GetServerSidePropsContext } from 'next';
 import AdminLayout from '@/components/admin/AdminLayout';
-import { getAdminSession, canEditContent, redirectToAdminLogin } from '@/lib/adminAuth';
+import {
+  getAdminSession,
+  canEditContent,
+  redirectToAdminLogin,
+  redactMember,
+} from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import type { AdminMember } from '@/types/cms';
 import type { AdminCommentRow } from '@/types/board';
@@ -508,7 +513,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     props: {
       boards,
       boardCounts,
-      member: session.member,
+      member: redactMember(session.member),
     } satisfies PageProps,
   };
 };

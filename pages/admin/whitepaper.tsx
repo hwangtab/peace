@@ -14,7 +14,12 @@ const MarkdownView = dynamic(() => import('@/components/admin/MarkdownView'), {
     </div>
   ),
 });
-import { getAdminSession, canEditContent, redirectToAdminLogin } from '@/lib/adminAuth';
+import {
+  getAdminSession,
+  canEditContent,
+  redirectToAdminLogin,
+  redactMember,
+} from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import {
   CAMP_EDITION_YEARS,
@@ -273,7 +278,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
       years,
       selectedYear,
       document: docByYear[selectedYear] ?? null,
-      member: session.member,
+      member: redactMember(session.member),
       initialError: error?.message ?? '',
     },
   };

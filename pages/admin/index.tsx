@@ -1,7 +1,13 @@
 import type { GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
 import AdminLayout from '@/components/admin/AdminLayout';
-import { getAdminSession, canEditContent, isOwner, redirectToAdminLogin } from '@/lib/adminAuth';
+import {
+  getAdminSession,
+  canEditContent,
+  isOwner,
+  redirectToAdminLogin,
+  redactMember,
+} from '@/lib/adminAuth';
 import { createSupabaseServiceClient } from '@/lib/supabaseService';
 import type { AdminMember } from '@/types/cms';
 import type { GalleryImage } from '@/types/gallery';
@@ -465,7 +471,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   return {
     props: {
-      member: session.member,
+      member: redactMember(session.member),
       canEdit,
       counts: {
         videos: videos.count ?? 0,

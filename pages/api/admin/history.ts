@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { z, ZodError } from 'zod';
-import { requireAdminRole } from '@/lib/adminAuth';
+import { redactMember, requireAdminRole } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import { getAdminCollectionConfig } from '@/lib/adminArchive';
 import {
@@ -60,7 +60,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return;
     }
 
-    res.status(200).json({ logs: data ?? [], admin: session.member });
+    res.status(200).json({ logs: data ?? [], admin: redactMember(session.member) });
     return;
   }
 

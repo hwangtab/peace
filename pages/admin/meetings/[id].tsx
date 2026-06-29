@@ -8,7 +8,12 @@ import MeetingMinutesEditor from '@/components/admin/meeting/MeetingMinutesEdito
 import AgendaSection from '@/components/admin/meeting/AgendaSection';
 import AttendeeSection from '@/components/admin/meeting/AttendeeSection';
 import AttachmentSection from '@/components/admin/meeting/AttachmentSection';
-import { getAdminSession, canEditContent, redirectToAdminLogin } from '@/lib/adminAuth';
+import {
+  getAdminSession,
+  canEditContent,
+  redirectToAdminLogin,
+  redactMember,
+} from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import { MEETING_STATUS_LABELS } from '@/lib/meetingForms';
 import type { Meeting, MeetingAgenda, MeetingAttendee, MeetingAttachment } from '@/types/meeting';
@@ -203,7 +208,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
       agendas: agendasRes.data ?? [],
       attendees: attendeesRes.data ?? [],
       attachments: attachmentsRes.data ?? [],
-      member: session.member,
+      member: redactMember(session.member),
     },
   };
 };

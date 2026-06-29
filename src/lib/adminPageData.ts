@@ -1,5 +1,5 @@
 import type { GetServerSidePropsContext } from 'next';
-import { getAdminSession, redirectToAdminLogin } from './adminAuth';
+import { getAdminSession, redactMember, redirectToAdminLogin } from './adminAuth';
 import {
   ADMIN_COLLECTION_PAGE_SIZE,
   getAdminCollectionConfig,
@@ -68,7 +68,7 @@ export const loadAdminCollectionPageProps = async (
 
   const baseProps = {
     config,
-    member: session.member,
+    member: redactMember(session.member),
     selectedLocale,
     selectedType,
     selectedYear,
