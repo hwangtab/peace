@@ -34,20 +34,13 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 
   const urlEntries: string[] = [];
 
+  // Google 은 2022-08 부터 image:title·image:caption·image:geo_location·image:license
+  // 를 색인에 사용하지 않는다(현재 유효 태그는 image:loc 뿐). 갤러리도 정적 SSOT 라
+  // 로케일별 번역 데이터가 없어 다국어화 실익이 없으므로 image:loc 만 출력한다.
   const buildImageTag = (img: GalleryImage) => {
     const loc = escapeXml(`${SITE_URL}${img.url}`);
-    const baseTitle =
-      img.eventType === 'album'
-        ? `${img.eventYear} 앨범 발매 기념 공연 — 강정피스앤뮤직캠프`
-        : `${img.eventYear} 강정피스앤뮤직캠프`;
-    const title = escapeXml(img.description ? `${baseTitle} — ${img.description}` : baseTitle);
-    const caption = img.description
-      ? `\n      <image:caption>${escapeXml(img.description)}</image:caption>`
-      : '';
     return `    <image:image>
       <image:loc>${loc}</image:loc>
-      <image:title>${title}</image:title>${caption}
-      <image:geo_location>Gangjeong Village, Seogwipo, Jeju, South Korea</image:geo_location>
     </image:image>`;
   };
 
