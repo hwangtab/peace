@@ -91,13 +91,19 @@ export default function AdminMailboxPage({
         }),
       });
       const payload = await response.json();
-      if (!response.ok || !payload.message) {
+      if (!response.ok || !payload.ok) {
         setError(payload.error || '답장 발송에 실패했습니다.');
         setBusy(false);
         return;
       }
       setReplyText('');
-      setMessage('답장을 보냈습니다.');
+      // recorded=false: 메일은 발송됐지만 메일함 기록 저장만 실패한 경우.
+      // '실패'로 보이면 관리자가 재전송해 수신자에게 중복 발송되므로, 발송됨을 분명히 알린다.
+      setMessage(
+        payload.recorded === false
+          ? '답장은 발송되었습니다. 다만 메일함 기록 저장에 실패해 보낸 목록에 남지 않을 수 있습니다. 다시 보내지 마세요.'
+          : '답장을 보냈습니다.'
+      );
       setBusy(false);
       refresh();
     } catch {

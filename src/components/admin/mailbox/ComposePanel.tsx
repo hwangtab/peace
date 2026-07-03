@@ -22,6 +22,21 @@ export default function ComposePanel({ canEdit }: { canEdit: boolean }) {
     sent: number;
     failed: { email: string; error: string }[];
   } | null>(null);
+  // 청크 발송 진행 상태(서버 job 커서의 미러) — 발송 중 진행률 표시용.
+  const [progress, setProgress] = useState<{ cursor: number; total: number } | null>(null);
+  // 청크 연쇄가 중간에 끊긴 job id — '이어서 발송'으로 중복 없이 재개한다.
+  const [resumeJobId, setResumeJobId] = useState<string | null>(null);
+
+  // 발송 진행 중 새로고침·탭 닫기 경고(중간 이탈 방지).
+  useEffect(() => {
+    if (!busy) return;
+    const warn = (e: BeforeUnloadEvent) => {
+      e.preventDefault();
+      e.returnValue = '';
+    };
+    window.addEventListener('beforeunload', warn);
+    return () => window.removeEventListener('beforeunload', warn);
+  }, [busy]);
 
   const load = useCallback(
     async (signal?: AbortSignal) => {
@@ -77,6 +92,58 @@ export default function ComposePanel({ canEdit }: { canEdit: boolean }) {
     return emails.size;
   }, [contacts, selected, manualParsed]);
 
+  // 서버는 한 요청당 소분량(청크)만 발송하고 진행 커서를 저장한다.
+  // done=false면 jobId로 다음 청크를 연쇄 호출해 완료까지 진행한다.
+  type ChunkResponse = {
+    jobId: string;
+    done: boolean;
+    total: number;
+    cursor: number;
+    remaining: number;
+    sentCount: number;
+    failed: { email: string; error: string }[];
+    error?: string;
+  };
+
+  const postSend = async (body: unknown): Promise<ChunkResponse> => {
+    const res = await fetch('/api/admin/mailbox/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    const data = (await res.json().catch(() => ({}))) as Partial<ChunkResponse>;
+    if (!res.ok) throw Object.assign(new Error(data.error ?? '발송 실패'), { jobId: data.jobId });
+    return data as ChunkResponse;
+  };
+
+  // 첫 응답(job 생성) 이후 done까지 청크를 연쇄 호출한다.
+  const runChunks = async (first: ChunkResponse) => {
+    let chunk = first;
+    setProgress({ cursor: chunk.cursor, total: chunk.total });
+    while (!chunk.done) {
+      try {
+        chunk = await postSend({ jobId: chunk.jobId });
+      } catch (e) {
+        // 중단돼도 서버 커서·발송 기록이 남아 있어 같은 job 재개 시 중복 발송되지 않는다.
+        setResumeJobId(chunk.jobId);
+        setError(
+          `발송이 중단되었습니다 (${chunk.cursor}/${chunk.total} 처리됨): ${(e as Error).message} — '이어서 발송'을 누르면 중복 없이 재개됩니다.`
+        );
+        return null;
+      }
+      setProgress({ cursor: chunk.cursor, total: chunk.total });
+    }
+    return chunk;
+  };
+
+  const finish = (last: ChunkResponse) => {
+    setResult({ sent: last.sentCount, failed: last.failed ?? [] });
+    setResumeJobId(null);
+    // 성공 후 선택·직접입력을 비워 같은 본문 중복 발송을 막는다(결과 요약은 그대로 노출).
+    setSelected(new Set());
+    setManualText('');
+  };
+
   const send = async () => {
     setError('');
     setResult(null);
@@ -85,18 +152,43 @@ export default function ComposePanel({ canEdit }: { canEdit: boolean }) {
     if (!subject.trim() || !text.trim()) return setError('제목과 본문을 입력하세요.');
     if (!window.confirm(`${totalCount}명에게 발송합니다. 발신: admin@peaceandmusic.net`)) return;
     setBusy(true);
-    const res = await fetch('/api/admin/mailbox/send', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ contactIds: ids, manualText, subject, text }),
-    });
-    const data = await res.json();
-    setBusy(false);
-    if (!res.ok) return setError(data.error ?? '발송 실패');
-    setResult({ sent: data.sent, failed: data.failed ?? [] });
-    // 성공 후 선택·직접입력을 비워 같은 본문 중복 발송을 막는다(결과 요약은 그대로 노출).
-    setSelected(new Set());
-    setManualText('');
+    setResumeJobId(null);
+    try {
+      const first = await postSend({ contactIds: ids, manualText, subject, text });
+      const last = await runChunks(first);
+      if (last) finish(last);
+    } catch (e) {
+      // 첫 청크 처리 중 실패해도 서버가 jobId를 알려주면 재개할 수 있다.
+      const jobId = (e as { jobId?: string }).jobId;
+      if (jobId) {
+        setResumeJobId(jobId);
+        setError(`${(e as Error).message} — '이어서 발송'을 누르면 중복 없이 재개됩니다.`);
+      } else {
+        setError((e as Error).message);
+      }
+    } finally {
+      setBusy(false);
+      setProgress(null);
+    }
+  };
+
+  // 중단된 job 재개 — 서버가 이미 발송된 수신자를 건너뛰므로 중복 발송 없음.
+  const resume = async () => {
+    if (!resumeJobId) return;
+    setError('');
+    setBusy(true);
+    try {
+      const first = await postSend({ jobId: resumeJobId });
+      const last = await runChunks(first);
+      if (last) finish(last);
+    } catch (e) {
+      setError(
+        `발송 재개에 실패했습니다: ${(e as Error).message} — 잠시 후 '이어서 발송'을 다시 눌러 주세요.`
+      );
+    } finally {
+      setBusy(false);
+      setProgress(null);
+    }
   };
 
   if (!canEdit)
@@ -234,13 +326,34 @@ export default function ComposePanel({ canEdit }: { canEdit: boolean }) {
           )}
         </div>
       )}
+      {busy && progress && (
+        <div className="rounded bg-ocean-sand/30 px-3 py-2 text-sm text-deep-ocean">
+          <p aria-live="polite">
+            {progress.cursor}/{progress.total} 발송 중… 창을 닫거나 이동하지 마세요.
+          </p>
+          <div className="mt-1 h-1.5 overflow-hidden rounded bg-deep-ocean/10">
+            <div
+              className="h-full rounded bg-jeju-ocean transition-all"
+              style={{
+                width: `${progress.total > 0 ? Math.round((progress.cursor / progress.total) * 100) : 0}%`,
+              }}
+            />
+          </div>
+        </div>
+      )}
       <button
         type="button"
         disabled={busy}
-        onClick={send}
+        onClick={resumeJobId ? resume : send}
         className="rounded bg-deep-ocean px-5 py-2 font-semibold text-white disabled:opacity-60"
       >
-        {busy ? '발송 중…' : `${totalCount}명에게 발송`}
+        {busy
+          ? progress
+            ? `발송 중… ${progress.cursor}/${progress.total}`
+            : '발송 중…'
+          : resumeJobId
+            ? '이어서 발송'
+            : `${totalCount}명에게 발송`}
       </button>
     </section>
   );

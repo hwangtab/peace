@@ -94,13 +94,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       .select('*')
       .single();
     if (error) {
-      // 메일은 이미 발송됨 — 기록 실패만 보고(중복 등).
+      // 메일은 이미 Resend로 발송 완료됨. 기록(insert)만 실패했다.
+      // 여기서 500(실패)로 응답하면 관리자가 '발송 실패'로 오인해 재전송 → 중복 발송한다.
+      // 따라서 200으로 '발송은 됐고 기록만 실패'를 구분해 알린다.
       console.error('[mailbox/reply] 발송됨, 기록 실패:', error.message);
-      res.status(500).json({ error: 'mail_sent_record_failed' });
+      res.status(200).json({ ok: true, recorded: false, resendId: sent.id });
       return;
     }
 
-    res.status(200).json({ message: data });
+    res.status(200).json({ ok: true, recorded: true, message: data });
   } catch (error) {
     res.status(400).json({ error: getErrorMessage(error) });
   }
