@@ -60,12 +60,11 @@ export const safeRedirectPath = (value: unknown, fallback = '/account'): string 
   if (path.startsWith('//')) return fallback;
   if (path.startsWith('/\\')) return fallback;
 
-  const pathname = path.split(/[?#]/)[0];
+  const pathname = path.split(/[?#]/)[0] ?? path;
   const segments = pathname.split('/');
-  const rest =
-    segments.length > 1 && LOCALE_SEGMENTS.has(segments[1])
-      ? '/' + segments.slice(2).join('/')
-      : pathname;
+  const rest = LOCALE_SEGMENTS.has(segments[1] ?? '')
+    ? '/' + segments.slice(2).join('/')
+    : pathname;
   if (AUTH_ONLY_PREFIXES.some((p) => rest === p || rest.startsWith(p + '/'))) {
     return fallback;
   }
