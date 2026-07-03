@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import type { GetStaticPropsContext } from 'next';
@@ -6,16 +6,23 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import nextI18NextConfig from '../next-i18next.config';
 import AuthFormShell from '@/components/auth/AuthFormShell';
+import { useAuth } from '@/components/auth/AuthProvider';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { mapAuthError, safeRedirectPath } from '@/lib/memberAuth';
 
 export default function LoginPage() {
   const { t } = useTranslation('auth');
   const router = useRouter();
+  const { user, loading } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
+
+  // 이미 로그인된 사용자가 진입하면(예: /login?next=/login 자기참조) 목적지로 즉시 이동.
+  useEffect(() => {
+    if (!loading && user) void router.replace(safeRedirectPath(router.query.next));
+  }, [loading, user, router]);
 
   const queryError = router.query.error === 'confirm_failed' ? t('confirm.failed') : '';
   const visibleError = error || queryError;

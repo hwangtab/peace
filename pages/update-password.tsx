@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import type { GetStaticPropsContext } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -6,7 +7,12 @@ import { useTranslation } from 'next-i18next';
 import nextI18NextConfig from '../next-i18next.config';
 import AuthFormShell from '@/components/auth/AuthFormShell';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
-import { mapAuthError, validatePassword } from '@/lib/memberAuth';
+import {
+  authLinkErrorFromUrl,
+  isAuthSessionMissingError,
+  mapAuthError,
+  validatePassword,
+} from '@/lib/memberAuth';
 
 export default function UpdatePasswordPage() {
   const { t } = useTranslation('auth');
@@ -16,6 +22,18 @@ export default function UpdatePasswordPage() {
   const [succeeded, setSucceeded] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+  // 만료/사용된 링크로 진입한 경우 폼 대신 재요청 안내를 노출한다.
+  const [linkExpired, setLinkExpired] = useState(false);
+
+  // GoTrue는 recovery code 교환 실패 시 error/error_code를 쿼리 또는 해시에 붙여
+  // 되돌려보낸다(confirm.tsx의 서버측 실패 처리와 동일한 신호). 폼을 보여주기 전에
+  // 둘 다 점검해 만료 안내로 전환한다.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    if (authLinkErrorFromUrl(window.location.search, window.location.hash)) {
+      setLinkExpired(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (!succeeded) return;
@@ -34,14 +52,42 @@ export default function UpdatePasswordPage() {
       const supabase = createSupabaseBrowserClient();
       const { error: uErr } = await supabase.auth.updateUser({ password });
       setBusy(false);
-      if (uErr) return setError(t(mapAuthError(uErr)));
+      if (uErr) {
+        // 세션 없이 제출된 경로(만료·사용된 링크)는 만료 안내로 매핑한다.
+        if (isAuthSessionMissingError(uErr)) return setLinkExpired(true);
+        return setError(t(mapAuthError(uErr)));
+      }
       setMessage(t('reset.updated'));
       setSucceeded(true);
     } catch (err) {
       setBusy(false);
-      setError(t(mapAuthError(err as { message?: string })));
+      const authErr = err as { name?: string; message?: string };
+      if (isAuthSessionMissingError(authErr)) return setLinkExpired(true);
+      setError(t(mapAuthError(authErr)));
     }
   };
+
+  if (linkExpired) {
+    return (
+      <AuthFormShell
+        title={t('reset.linkExpiredTitle')}
+        backgroundImage="/images-webp/camps/2025/DSC01058.webp"
+      >
+        <div className="space-y-4">
+          <p
+            role="alert"
+            aria-live="assertive"
+            className="rounded bg-sunset-coral/10 px-3 py-2 text-sm leading-relaxed text-sunset-coral"
+          >
+            {t('reset.linkExpired')}
+          </p>
+          <Link href="/reset-password" className={`${btnCls} block text-center`}>
+            {t('reset.requestAgain')}
+          </Link>
+        </div>
+      </AuthFormShell>
+    );
+  }
 
   return (
     <AuthFormShell

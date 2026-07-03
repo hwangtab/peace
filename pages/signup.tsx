@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import type { GetStaticPropsContext } from 'next';
@@ -6,12 +6,19 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import nextI18NextConfig from '../next-i18next.config';
 import AuthFormShell from '@/components/auth/AuthFormShell';
+import { useAuth } from '@/components/auth/AuthProvider';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
-import { mapAuthError, validateNickname, validatePassword } from '@/lib/memberAuth';
+import {
+  mapAuthError,
+  safeRedirectPath,
+  validateNickname,
+  validatePassword,
+} from '@/lib/memberAuth';
 
 export default function SignupPage() {
   const { t } = useTranslation('auth');
   const router = useRouter();
+  const { user, loading } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
@@ -20,6 +27,11 @@ export default function SignupPage() {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const [succeeded, setSucceeded] = useState(false);
+
+  // 이미 로그인된 사용자가 진입하면 목적지로 즉시 이동(가입 폼 무의미).
+  useEffect(() => {
+    if (!loading && user) void router.replace(safeRedirectPath(router.query.next));
+  }, [loading, user, router]);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();

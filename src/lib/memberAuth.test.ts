@@ -1,4 +1,11 @@
-import { validateNickname, validatePassword, mapAuthError, safeRedirectPath } from './memberAuth';
+import {
+  validateNickname,
+  validatePassword,
+  mapAuthError,
+  safeRedirectPath,
+  authLinkErrorFromUrl,
+  isAuthSessionMissingError,
+} from './memberAuth';
 
 describe('validateNickname', () => {
   it('trims and accepts a 2-20 char nickname', () => {
@@ -84,5 +91,50 @@ describe('safeRedirectPath', () => {
   });
   it('honors a custom fallback', () => {
     expect(safeRedirectPath('bad', '/')).toBe('/');
+  });
+  it('rejects auth-only destinations (self-redirect guard)', () => {
+    expect(safeRedirectPath('/login')).toBe('/account');
+    expect(safeRedirectPath('/signup')).toBe('/account');
+    expect(safeRedirectPath('/reset-password')).toBe('/account');
+    expect(safeRedirectPath('/update-password')).toBe('/account');
+  });
+  it('rejects auth-only destinations with query/hash and honors fallback', () => {
+    expect(safeRedirectPath('/login?next=/login')).toBe('/account');
+    expect(safeRedirectPath('/login', '/')).toBe('/');
+  });
+  it('rejects auth-only destinations behind a locale prefix', () => {
+    expect(safeRedirectPath('/en/login')).toBe('/account');
+    expect(safeRedirectPath('/zh-Hans/signup')).toBe('/account');
+  });
+  it('does not over-match paths that merely start with an auth prefix', () => {
+    expect(safeRedirectPath('/loginhelp')).toBe('/loginhelp');
+    expect(safeRedirectPath('/en/account')).toBe('/en/account');
+  });
+});
+
+describe('authLinkErrorFromUrl', () => {
+  it('detects error in the query string', () => {
+    expect(authLinkErrorFromUrl('?error=access_denied', '')).toBe(true);
+    expect(authLinkErrorFromUrl('?error_code=otp_expired', '')).toBe(true);
+  });
+  it('detects error in the hash (implicit flow)', () => {
+    expect(authLinkErrorFromUrl('', '#error=access_denied&error_code=otp_expired')).toBe(true);
+  });
+  it('returns false when there is no error signal', () => {
+    expect(authLinkErrorFromUrl('', '')).toBe(false);
+    expect(authLinkErrorFromUrl('?code=abc', '')).toBe(false);
+  });
+});
+
+describe('isAuthSessionMissingError', () => {
+  it('matches by error name', () => {
+    expect(isAuthSessionMissingError({ name: 'AuthSessionMissingError' })).toBe(true);
+  });
+  it('matches by message', () => {
+    expect(isAuthSessionMissingError({ message: 'Auth session missing!' })).toBe(true);
+  });
+  it('is false for other errors / nullish', () => {
+    expect(isAuthSessionMissingError({ message: 'Invalid login credentials' })).toBe(false);
+    expect(isAuthSessionMissingError(null)).toBe(false);
   });
 });
