@@ -81,7 +81,11 @@ ${urlEntries.join('\n')}
 </urlset>`;
 
   res.setHeader('Content-Type', 'application/xml');
-  res.setHeader('Cache-Control', 'public, max-age=43200, stale-while-revalidate=3600');
+  // s-maxage 로 Vercel 엣지 CDN 24h 캐시 — 크롤러 재요청마다 재조회하지 않도록.
+  res.setHeader(
+    'Cache-Control',
+    'public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800'
+  );
   res.write(xml);
   res.end();
 

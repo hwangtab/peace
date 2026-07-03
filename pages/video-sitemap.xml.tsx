@@ -125,7 +125,13 @@ ${urlEntries}
 </urlset>`;
 
   res.setHeader('Content-Type', 'application/xml');
-  res.setHeader('Cache-Control', 'public, max-age=43200, stale-while-revalidate=3600');
+  // s-maxage 로 Vercel 엣지 CDN 이 24h 캐시 → 크롤러 재요청이 getServerSideProps 를
+  // 다시 돌리지 않게 한다. 이 핸들러는 요청당 archive_videos 를 13개 로케일 전량
+  // 조회하므로(요청당 ~14쿼리), CDN 캐시가 없으면 크롤러 트래픽이 곧 Supabase egress.
+  res.setHeader(
+    'Cache-Control',
+    'public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800'
+  );
   res.write(xml);
   res.end();
 

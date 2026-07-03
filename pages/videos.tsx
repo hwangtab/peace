@@ -27,6 +27,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
       initialVideos: (await loadPublishedVideos(resolvedLocale)).items,
       initialLocale: resolvedLocale,
     },
-    revalidate: 3600,
+    // 비디오 목록은 거의 안 바뀌므로 1h→24h (archive_videos 재조회 빈도 축소).
+    revalidate: 86400,
   };
 }

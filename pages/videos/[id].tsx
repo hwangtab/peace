@@ -30,8 +30,10 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
   const resolvedLocale = locale ?? 'ko';
   const id = params?.id as string;
 
+  // ko 는 항상 필요(정본 목록·id·관계). 로케일이 ko 면 동일 쿼리를 두 번 돌리지 않는다.
   const koVideos = (await loadPublishedVideos('ko')).items;
-  const localizedVideos = (await loadPublishedVideos(resolvedLocale)).items;
+  const localizedVideos =
+    resolvedLocale === 'ko' ? koVideos : (await loadPublishedVideos(resolvedLocale)).items;
   const localizedMap = new Map(localizedVideos.map((v) => [v.id, v]));
 
   const baseVideo = koVideos.find((v) => String(v.id) === id);
@@ -78,6 +80,8 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
       moreVideos,
       director,
     },
-    revalidate: 3600,
+    // 비디오 콘텐츠는 거의 안 바뀌므로 1h→24h. 페이지 변형이 ~1,870개(비디오×13로케일)라
+    // 짧은 revalidate 는 크롤러 트래픽이 곧바로 archive_videos 재조회(egress)로 직결된다.
+    revalidate: 86400,
   };
 }
