@@ -57,6 +57,28 @@ const getLatestMtime = (filePaths) => {
   return toIsoString(Math.max(...existingFiles.map((filePath) => fs.statSync(filePath).mtimeMs)));
 };
 
+// 얕은(shallow) 클론에서는 `git log`가 파일별 실제 이력을 알 수 없어
+// 모든 파일에 대해 유일한(루트) 커밋 하나만 돌려준다. 그러면 sitemap의
+// 전 페이지 <lastmod>가 빌드 커밋 날짜로 동일하게 오염된다. 게다가 git이
+// '성공'하므로 mtime fallback으로 넘어가지도 않는다. 그래서 shallow면 git
+// 결과를 아예 신뢰하지 않고 mtime fallback 경로를 타도록 한다.
+// (GitHub Actions actions/checkout 기본 depth 1, Vercel 클론도 얕음)
+let isShallowRepoCache;
+const isShallowRepo = () => {
+  if (isShallowRepoCache !== undefined) return isShallowRepoCache;
+  try {
+    const out = execFileSync('git', ['rev-parse', '--is-shallow-repository'], {
+      cwd: rootDir,
+      encoding: 'utf8',
+    }).trim();
+    isShallowRepoCache = out === 'true';
+  } catch {
+    // git 자체가 없거나 저장소가 아니면 안전하게 shallow로 간주해 fallback.
+    isShallowRepoCache = true;
+  }
+  return isShallowRepoCache;
+};
+
 const getGitLastmod = (filePaths) => {
   const existingFiles = getExistingFiles(filePaths);
   if (existingFiles.length === 0) return undefined;
@@ -64,6 +86,12 @@ const getGitLastmod = (filePaths) => {
   const cacheKey = existingFiles.slice().sort().join('|');
   if (gitLastmodCache.has(cacheKey)) {
     return gitLastmodCache.get(cacheKey);
+  }
+
+  // shallow 클론에서는 git lastmod가 신뢰 불가 — mtime fallback으로 위임.
+  if (isShallowRepo()) {
+    gitLastmodCache.set(cacheKey, undefined);
+    return undefined;
   }
 
   try {
