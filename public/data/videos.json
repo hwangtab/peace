@@ -1846,5 +1846,18 @@
     "eventYear": 2026,
     "thumbnailUrl": "https://i.ytimg.com/vi/5xe--LVQ1s8/sddefault.jpg",
     "directorMusicianId": 49
+  },
+  {
+    "id": 2603,
+    "title": "2026 강정피스앤뮤직캠프 스케치 vol.3 — 해군기지 몰아내 (조약골)",
+    "description": "",
+    "youtubeUrl": "https://www.youtube.com/watch?v=bouurGVR4VM",
+    "date": "2026-06-07",
+    "location": "서귀포시 강정체육공원",
+    "eventType": "camp",
+    "eventYear": 2026,
+    "musicianIds": [
+      44
+    ]
   }
 ]
