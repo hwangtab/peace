@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import AdminLayout from './AdminLayout';
 import AdminCollectionListPanel from './AdminCollectionListPanel';
@@ -100,6 +100,14 @@ export default function AdminCollectionPage({
     LOCALE_OPTIONS.find((option) => option.value !== selectedLocale)?.value ?? selectedLocale
   );
   const [musicians, setMusicians] = useState<MusicianOption[]>([]);
+
+  // 비동기 완료 콜백(save/hideSelected/cloneMissingLocales)이 "응답이 도착한 지금도
+  // 그 요청의 대상이 여전히 선택돼 있는가"를 대조할 수 있도록, 현재 선택 id를 ref로 추적한다.
+  // (저장 도중 사용자가 다른 항목 편집을 시작하면 그 입력을 덮어쓰지 않기 위함)
+  const selectedIdRef = useRef<string | null>(initialItems[0]?.id ?? null);
+  useEffect(() => {
+    selectedIdRef.current = selected?.id ?? null;
+  }, [selected?.id]);
 
   // 뮤지션 선택 위젯이 있는 컬렉션(예: 비디오)에서만 이름 목록을 불러온다.
   const needsMusicians = useMemo(
@@ -252,14 +260,19 @@ export default function AdminCollectionPage({
       hasMore?: boolean;
     };
     const nextItems = payload.items;
-    const activeId = preferredId ?? selected?.id;
-    const nextSelected = activeId
-      ? (nextItems.find((item) => item.id === activeId) ?? nextItems[0] ?? null)
-      : (nextItems[0] ?? null);
+    // 목록 데이터 갱신은 컨텍스트와 무관한 전역 부수효과라 항상 반영한다.
     setItems(nextItems);
     setTotalCount(payload.totalCount ?? nextItems.length);
     setNextOffset(payload.nextOffset ?? nextItems.length);
     setHasMore(payload.hasMore ?? false);
+
+    // 선택·폼 덮어쓰기는 요청 시작 시점의 대상(preferredId)이 응답 도착 시점에도
+    // 여전히 현재 선택일 때만 수행한다. 저장/내림 도중 다른 항목으로 이동했다면 그 편집을 지킨다.
+    if (preferredId !== undefined && selectedIdRef.current !== preferredId) return;
+    const activeId = preferredId ?? selectedIdRef.current ?? undefined;
+    const nextSelected = activeId
+      ? (nextItems.find((item) => item.id === activeId) ?? nextItems[0] ?? null)
+      : (nextItems[0] ?? null);
     setSelected(nextSelected);
     setForm(buildAdminFormState(config, nextSelected, selectedLocale));
   };
@@ -391,6 +404,8 @@ export default function AdminCollectionPage({
   };
 
   const save = async () => {
+    // 요청 시작 시점의 편집 대상(신규 항목이면 null)을 캡처해 응답 도착 시 대조한다.
+    const targetId = selected?.id ?? null;
     setIsSaving(true);
     setMessage('');
     setError('');
@@ -418,10 +433,13 @@ export default function AdminCollectionPage({
         ? `저장했습니다. 변경 이력 기록 실패: ${payload.changeLogError}`
         : '저장했습니다.'
     );
-    setSelected(payload.item);
-    setForm(buildAdminFormState(config, payload.item, selectedLocale));
+    // 저장 요청 도중 다른 항목으로 이동했다면 선택·폼을 덮어쓰지 않는다(입력 소실 방지).
+    if (selectedIdRef.current === targetId) {
+      setSelected(payload.item);
+      setForm(buildAdminFormState(config, payload.item, selectedLocale));
+    }
     await refreshItems(payload.item.id);
-    if (wasExisting) {
+    if (wasExisting && selectedIdRef.current === targetId) {
       try {
         await refreshLocaleStatuses(payload.item.id);
       } catch {
@@ -500,6 +518,7 @@ export default function AdminCollectionPage({
 
   const cloneMissingLocales = async () => {
     if (!selected) return;
+    const targetId = selected.id;
     const payloads = prepareAdminMissingLocaleClonePayloads(config, selected, localeStatuses);
     if (payloads.length === 0) return;
 
@@ -523,8 +542,10 @@ export default function AdminCollectionPage({
 
     setIsSaving(false);
     setMessage(`없는 언어 초안 ${payloads.length}개를 만들었습니다.`);
+    // 복제 도중 다른 항목으로 이동했다면 그 항목의 언어 상태 패널을 덮어쓰지 않는다.
+    if (selectedIdRef.current !== targetId) return;
     try {
-      await refreshLocaleStatuses(selected.id);
+      await refreshLocaleStatuses(targetId);
     } catch (error) {
       setError(error instanceof Error ? error.message : '언어 상태를 다시 불러오지 못했습니다.');
     }

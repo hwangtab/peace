@@ -11,18 +11,30 @@ export default function ContactsPanel({ canEdit }: { canEdit: boolean }) {
   const [message, setMessage] = useState('');
   const [busy, setBusy] = useState(false);
 
-  const load = useCallback(async () => {
-    const params = new URLSearchParams();
-    if (group) params.set('group', group);
-    if (cohort) params.set('cohort', cohort);
-    const res = await fetch(`/api/admin/mail-contacts?${params.toString()}`);
-    const data = await res.json();
-    if (res.ok) setItems(data.items ?? []);
-    else setError(data.error ?? '불러오지 못했습니다.');
-  }, [group, cohort]);
+  const load = useCallback(
+    async (signal?: AbortSignal) => {
+      const params = new URLSearchParams();
+      if (group) params.set('group', group);
+      if (cohort) params.set('cohort', cohort);
+      try {
+        const res = await fetch(`/api/admin/mail-contacts?${params.toString()}`, { signal });
+        const data = await res.json();
+        if (res.ok) setItems(data.items ?? []);
+        else setError(data.error ?? '불러오지 못했습니다.');
+      } catch (e) {
+        // 필터 변경으로 이전 요청이 취소된 경우는 무시한다(응답 역전 방지).
+        if ((e as Error).name === 'AbortError') return;
+        setError('불러오지 못했습니다.');
+      }
+    },
+    [group, cohort]
+  );
 
   useEffect(() => {
-    void load();
+    // 필터(group/cohort) 변경 시 이전 요청을 취소해 오래된 응답이 최종 목록을 덮어쓰지 않게 한다.
+    const controller = new AbortController();
+    void load(controller.signal);
+    return () => controller.abort();
   }, [load]);
 
   const addContact = async (form: {

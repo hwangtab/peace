@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import ConfirmDialog from '@/components/common/ConfirmDialog';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -76,6 +76,13 @@ export default function CommentSection({
   const [editBody, setEditBody] = useState('');
   const [editError, setEditError] = useState<string | null>(null);
   const [savingEdit, setSavingEdit] = useState(false);
+
+  // 저장 응답 도착 시점에도 "여전히 같은 댓글을 편집 중인가"를 대조하기 위한 ref.
+  // (A 저장 중 사용자가 B 수정을 시작하면 B 세션을 통보 없이 닫지 않기 위함)
+  const editIdRef = useRef<string | null>(null);
+  useEffect(() => {
+    editIdRef.current = editId;
+  }, [editId]);
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -180,7 +187,8 @@ export default function CommentSection({
       setComments((prev) =>
         prev.map((c) => (c.id === commentId ? { ...c, body: result.value, updated_at: now } : c))
       );
-      cancelEdit();
+      // 저장 완료 시점에도 여전히 이 댓글을 편집 중일 때만 편집 세션을 닫는다.
+      if (editIdRef.current === commentId) cancelEdit();
     } finally {
       setSavingEdit(false);
     }

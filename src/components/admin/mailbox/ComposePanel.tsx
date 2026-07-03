@@ -23,22 +23,35 @@ export default function ComposePanel({ canEdit }: { canEdit: boolean }) {
     failed: { email: string; error: string }[];
   } | null>(null);
 
-  const load = useCallback(async () => {
-    const params = new URLSearchParams();
-    if (group) params.set('group', group);
-    if (cohort) params.set('cohort', cohort);
-    const res = await fetch(`/api/admin/mail-contacts?${params.toString()}`);
-    const data = await res.json().catch(() => ({}));
-    if (res.ok) {
-      setContacts((data.items ?? []).filter((c: MailContact) => c.is_active));
-    } else {
-      setError(data.error ?? '연락처를 불러오지 못했습니다.');
-    }
-    setSelected(new Set());
-  }, [group, cohort]);
+  const load = useCallback(
+    async (signal?: AbortSignal) => {
+      const params = new URLSearchParams();
+      if (group) params.set('group', group);
+      if (cohort) params.set('cohort', cohort);
+      try {
+        const res = await fetch(`/api/admin/mail-contacts?${params.toString()}`, { signal });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok) {
+          setContacts((data.items ?? []).filter((c: MailContact) => c.is_active));
+        } else {
+          setError(data.error ?? '연락처를 불러오지 못했습니다.');
+        }
+        setSelected(new Set());
+      } catch (e) {
+        // 필터가 바뀌어 이전 요청이 취소된 경우는 무시한다(응답 역전 방지).
+        if ((e as Error).name === 'AbortError') return;
+        setError('연락처를 불러오지 못했습니다.');
+      }
+    },
+    [group, cohort]
+  );
 
   useEffect(() => {
-    void load();
+    // 필터(group/cohort) 변경 시 이전 요청을 취소해 응답 역전으로 다른 그룹 명단이
+    // 표시된 채 발송되는 사고를 막는다.
+    const controller = new AbortController();
+    void load(controller.signal);
+    return () => controller.abort();
   }, [load]);
 
   const toggle = (id: string) =>
