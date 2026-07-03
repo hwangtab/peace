@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { VideoItem } from '@/types/video';
 import { camps } from '@/data/camps';
 import { isParticipantObject } from '@/types/camp';
+import { formatDateLocalized } from '@/utils/date';
 
 const CAMP_2026_MUSICIAN_IDS = new Set(
   camps
@@ -83,13 +84,7 @@ const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
         <div className="p-6 flex flex-col cursor-pointer">
           <div className="flex justify-between items-center mb-3 text-xs font-medium text-ocean-mist uppercase tracking-tighter min-w-0">
             <span className="truncate me-2">{video.location}</span>
-            <span className="flex-shrink-0" suppressHydrationWarning>
-              {new Date(video.date).toLocaleDateString(i18n.language, {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}
-            </span>
+            <span className="flex-shrink-0">{formatDateLocalized(video.date, i18n.language)}</span>
           </div>
           <h3 className="typo-h3 text-xl mb-3 hover:text-jeju-ocean transition-colors duration-300 line-clamp-1 leading-snug break-words">
             {video.title}

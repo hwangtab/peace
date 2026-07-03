@@ -4,6 +4,7 @@ import { m as motion } from 'framer-motion';
 import Image from 'next/image';
 import { CampEvent } from '@/types/camp';
 import Container from '@/components/layout/Container';
+import { formatDateLocalized } from '@/utils/date';
 
 interface CampHeroProps {
   camp: CampEvent;
@@ -26,21 +27,9 @@ const CampHero: React.FC<CampHeroProps> = ({
 }) => {
   const { t, i18n } = useTranslation();
 
-  // Parse date parts directly to avoid timezone offset drift
-  // (new Date('2026-06-05') parses as UTC midnight, showing wrong date in western timezones)
-  const dateParts = camp.startDate.split('-');
-  const eventDate = new Date(
-    Number(dateParts[0]),
-    (Number(dateParts[1]) || 1) - 1,
-    Number(dateParts[2]) || 1
-  );
-  const formattedDate =
-    dateDisplay ||
-    eventDate.toLocaleDateString(i18n.language, {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    });
+  // formatDateLocalized parses local Y/M/D parts to avoid the UTC-midnight drift
+  // that would render the wrong day in western timezones.
+  const formattedDate = dateDisplay || formatDateLocalized(camp.startDate, i18n.language);
 
   const backgroundImage = camp.images && camp.images.length > 0 ? camp.images[0] : null;
 

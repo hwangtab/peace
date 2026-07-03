@@ -15,6 +15,7 @@ import {
   getWebPageSchema,
 } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
+import { formatDateLocalized } from '@/utils/date';
 import { camps } from '@/data/camps';
 import { isParticipantObject } from '@/types/camp';
 import YouTubeFacade from '@/components/videos/YouTubeFacade';
@@ -60,11 +61,7 @@ const VideoDetailPage: React.FC<VideoDetailPageProps> = ({
   // 일부 영상에만 있는 maxresdefault(404 가능) 대신 모든 영상에 존재하는 hqdefault 사용.
   const thumbnailUrl = video.thumbnailUrl || `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
   const pageUrl = getFullUrl(`/videos/${video.id}`);
-  const localizedDate = new Date(video.date).toLocaleDateString(i18n.language, {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+  const localizedDate = formatDateLocalized(video.date, i18n.language);
 
   const seoTitle = `${video.title} | ${t('videos.page_title')}`;
   const seoDescription = (video.description || t('videos.page_desc')).slice(0, 160);
