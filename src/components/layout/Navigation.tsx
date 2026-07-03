@@ -26,7 +26,7 @@ const Navigation = () => {
       {/* Skip to main content link for screen readers */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:bg-jeju-ocean focus:text-white focus:px-4 focus:py-2 focus:rounded"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:start-4 focus:z-[60] focus:bg-jeju-ocean focus:text-white focus:px-4 focus:py-2 focus:rounded"
       >
         {t('nav.skip_to_main')}
       </a>

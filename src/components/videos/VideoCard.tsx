@@ -82,7 +82,7 @@ const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
         </div>
         <div className="p-6 flex flex-col cursor-pointer">
           <div className="flex justify-between items-center mb-3 text-xs font-medium text-ocean-mist uppercase tracking-tighter min-w-0">
-            <span className="truncate mr-2">{video.location}</span>
+            <span className="truncate me-2">{video.location}</span>
             <span className="flex-shrink-0" suppressHydrationWarning>
               {new Date(video.date).toLocaleDateString(i18n.language, {
                 year: 'numeric',
@@ -107,7 +107,10 @@ const VideoCard: React.FC<VideoCardProps> = React.memo(({ video }) => {
               href={`/camps/2026/musicians/${campMusicianId}`}
               className="inline-flex items-center text-xs text-jeju-ocean hover:text-ocean-mist transition-colors font-medium rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
             >
-              {t('camp.view_detail')} &rarr;
+              {t('camp.view_detail')}{' '}
+              <span aria-hidden="true" className="inline-block rtl:-scale-x-100">
+                &rarr;
+              </span>
             </Link>
           </div>
         ) : null;

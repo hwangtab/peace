@@ -74,25 +74,29 @@ export const getServerSideProps = async ({
   const postId = typeof params?.postId === 'string' ? params.postId : '';
 
   const serverClient = createSupabaseServerClient(req, res);
-  const [board, post] = await Promise.all([
-    loadBoardBySlug(slug),
-    loadPostDetailWithClient(serverClient, postId),
-  ]);
+  try {
+    const [board, post] = await Promise.all([
+      loadBoardBySlug(slug),
+      loadPostDetailWithClient(serverClient, postId),
+    ]);
 
-  if (!board || !post) return { notFound: true };
+    if (!board || !post) return { notFound: true };
+    // Validate that the post belongs to the URL slug
+    if (post.board_id !== board.id) return { notFound: true };
 
-  // Validate that the post belongs to the URL slug
-  if (post.board_id !== board.id) return { notFound: true };
-
-  return {
-    props: {
-      board,
-      post,
-      ...(await serverSideTranslations(
-        locale ?? 'ko',
-        ['board', 'translation'],
-        nextI18NextConfig
-      )),
-    },
-  };
+    return {
+      props: {
+        board,
+        post,
+        ...(await serverSideTranslations(
+          locale ?? 'ko',
+          ['board', 'translation'],
+          nextI18NextConfig
+        )),
+      },
+    };
+  } catch {
+    // 데이터 소스 장애 시 raw 500 대신 글 페이지로 보내 안내를 노출한다.
+    return { redirect: { destination: `/board/${slug}/${postId}`, permanent: false } };
+  }
 };

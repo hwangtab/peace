@@ -23,7 +23,7 @@ const TimelineCardContent: React.FC<TimelineCardContentProps> = ({ event, eventT
       </p>
       {event.locationKey && (
         <p className="text-xs text-ocean-mist flex items-center font-medium break-words">
-          <span className="mr-1" aria-hidden="true">
+          <span className="me-1" aria-hidden="true">
             📍
           </span>{' '}
           {t(event.locationKey)}

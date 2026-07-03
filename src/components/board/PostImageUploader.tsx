@@ -23,68 +23,90 @@ export default function PostImageUploader({ value, onChange }: PostImageUploader
   const { user } = useAuth();
   const inputRef = useRef<HTMLInputElement>(null);
   const [uploading, setUploading] = useState(false);
+  // 여러 장을 한 번에 올릴 때 진행 상황(done/total)을 버튼에 노출한다.
+  const [progress, setProgress] = useState<{ done: number; total: number } | null>(null);
   const [error, setError] = useState<string | null>(null);
   // Track URLs uploaded during this session so we only delete storage for new uploads.
   // Pre-existing images (seeded from initial.images in edit mode) are not in this set.
   const sessionUploadedRef = useRef<Set<string> | null>(null);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    // Reset input so the same file can be re-selected
+    const files = Array.from(e.target.files ?? []);
+    // Reset input so the same file(s) can be re-selected
     e.target.value = '';
+    if (files.length === 0) return;
 
     setError(null);
 
-    if (value.length >= MAX_IMAGES) {
-      setError(t('error.tooManyImages', { max: MAX_IMAGES }));
-      return;
-    }
-    if (!ALLOWED_TYPES.includes(file.type)) {
-      setError(t('error.invalidImageType'));
-      return;
-    }
-    if (file.size > MAX_SIZE) {
-      setError(t('error.imageTooLarge'));
-      return;
-    }
     if (!user) {
       setError(t('error.loginRequired'));
       return;
     }
+
+    const remaining = MAX_IMAGES - value.length;
+    if (remaining <= 0) {
+      setError(t('error.tooManyImages', { max: MAX_IMAGES }));
+      return;
+    }
+    // 남은 슬롯보다 많이 고르면 앞에서부터 채우고 초과분은 버린다.
+    const batch = files.slice(0, remaining);
+    const truncated = files.length > remaining;
 
     // Ensure the session set is initialised before entering try/catch
     if (!sessionUploadedRef.current) sessionUploadedRef.current = new Set<string>();
     const sessionSet = sessionUploadedRef.current;
 
     setUploading(true);
+    setProgress({ done: 0, total: batch.length });
+    const supabase = createSupabaseBrowserClient();
+    // value 는 배치 시작 시점 스냅샷 — 매 장 업로드 후 [...value, ...added] 로 미리보기를 점진 갱신.
+    const added: string[] = [];
     try {
-      const ext =
-        file.name
-          .split('.')
-          .pop()
-          ?.toLowerCase()
-          .replace(/[^a-z0-9]/g, '') || 'jpg';
-      // RLS requires first path segment = user.id
-      const path = `${user.id}/${makeRandomSlug()}.${ext}`;
+      for (let i = 0; i < batch.length; i++) {
+        const file = batch[i];
+        if (!file) continue;
+        if (!ALLOWED_TYPES.includes(file.type)) {
+          setError(t('error.invalidImageType'));
+          setProgress({ done: i + 1, total: batch.length });
+          continue;
+        }
+        if (file.size > MAX_SIZE) {
+          setError(t('error.imageTooLarge'));
+          setProgress({ done: i + 1, total: batch.length });
+          continue;
+        }
+        const ext =
+          file.name
+            .split('.')
+            .pop()
+            ?.toLowerCase()
+            .replace(/[^a-z0-9]/g, '') || 'jpg';
+        // RLS requires first path segment = user.id
+        const path = `${user.id}/${makeRandomSlug()}.${ext}`;
 
-      const supabase = createSupabaseBrowserClient();
-      const { error: uploadError } = await supabase.storage
-        .from('board-images')
-        .upload(path, file, { cacheControl: '31536000', upsert: false });
+        const { error: uploadError } = await supabase.storage
+          .from('board-images')
+          .upload(path, file, { cacheControl: '31536000', upsert: false });
 
-      if (uploadError) {
-        setError(t('error.saveFailed'));
-        return;
+        if (uploadError) {
+          setError(t('error.saveFailed'));
+          setProgress({ done: i + 1, total: batch.length });
+          continue;
+        }
+
+        const { data } = supabase.storage.from('board-images').getPublicUrl(path);
+        sessionSet.add(data.publicUrl);
+        added.push(data.publicUrl);
+        onChange([...value, ...added]);
+        setProgress({ done: i + 1, total: batch.length });
       }
-
-      const { data } = supabase.storage.from('board-images').getPublicUrl(path);
-      sessionSet.add(data.publicUrl);
-      onChange([...value, data.publicUrl]);
+      if (truncated) setError(t('error.tooManyImages', { max: MAX_IMAGES }));
     } catch {
       setError(t('error.saveFailed'));
+      if (added.length > 0) onChange([...value, ...added]);
     } finally {
       setUploading(false);
+      setProgress(null);
     }
   };
 
@@ -124,7 +146,7 @@ export default function PostImageUploader({ value, onChange }: PostImageUploader
                 type="button"
                 aria-label={t('post.removeImage')}
                 onClick={() => handleRemove(idx)}
-                className="absolute right-1 top-1 flex h-5 w-5 items-center justify-center rounded-full bg-black/60 text-xs text-white hover:bg-black/80"
+                className="absolute end-1 top-1 flex h-5 w-5 items-center justify-center rounded-full bg-black/60 text-xs text-white hover:bg-black/80"
               >
                 ×
               </button>
@@ -137,6 +159,7 @@ export default function PostImageUploader({ value, onChange }: PostImageUploader
       <input
         ref={inputRef}
         type="file"
+        multiple
         accept="image/png,image/jpeg,image/webp,image/gif"
         className="hidden"
         onChange={(e) => {
@@ -149,9 +172,13 @@ export default function PostImageUploader({ value, onChange }: PostImageUploader
         onClick={() => inputRef.current?.click()}
         className="rounded-lg border border-jeju-ocean px-4 py-2 text-sm font-semibold text-jeju-ocean transition hover:bg-seafoam disabled:opacity-50"
       >
-        {uploading ? t('post.uploading') : t('post.uploadImage')}
+        {uploading
+          ? progress && progress.total > 1
+            ? `${t('post.uploading')} ${progress.done}/${progress.total}`
+            : t('post.uploading')
+          : t('post.uploadImage')}
       </button>
-      <span className="ml-2 text-xs text-coastal-gray">
+      <span className="ms-2 text-xs text-coastal-gray">
         {value.length} / {MAX_IMAGES}
       </span>
 

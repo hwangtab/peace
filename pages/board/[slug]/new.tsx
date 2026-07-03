@@ -66,7 +66,13 @@ export default function NewPostPage({ board }: Props) {
 
 export const getServerSideProps = async ({ locale, params }: GetServerSidePropsContext) => {
   const slug = typeof params?.slug === 'string' ? params.slug : '';
-  const board = await loadBoardBySlug(slug);
+  let board;
+  try {
+    board = await loadBoardBySlug(slug);
+  } catch {
+    // 데이터 소스 장애 시 raw 500 대신 게시판으로 보내 안내를 노출한다(어차피 인증도 불가).
+    return { redirect: { destination: `/board/${slug}`, permanent: false } };
+  }
   if (!board) return { notFound: true };
 
   return {

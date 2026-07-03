@@ -18,7 +18,8 @@
     "sortLatest": "Terbaru",
     "sortPopular": "Populer",
     "clearSearch": "Hapus pencarian",
-    "noResults": "Tidak ada hasil."
+    "noResults": "Tidak ada hasil.",
+    "unavailable": "Konten sementara tidak tersedia. Silakan coba lagi sebentar lagi."
   },
   "post": {
     "title": "Title",

@@ -48,7 +48,7 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                   {/* Close button */}
                   <button
                     onClick={onClose}
-                    className="absolute right-0 top-0 p-2 text-coastal-gray/70 hover:text-coastal-gray focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
+                    className="absolute end-0 top-0 p-2 text-coastal-gray/70 hover:text-coastal-gray focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
                   >
                     <span className="sr-only">{t('common.close')}</span>
                     <svg
@@ -112,7 +112,7 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                                 rel="noopener noreferrer nofollow"
                                 className="inline-flex items-center px-3 py-1 text-sm bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors duration-200 max-w-full truncate focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
                               >
-                                <InstagramIcon aria-hidden="true" className="w-4 h-4 mr-1" />@
+                                <InstagramIcon aria-hidden="true" className="w-4 h-4 me-1" />@
                                 {username}
                               </a>
                             );
@@ -124,7 +124,7 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                               rel="noopener noreferrer nofollow"
                               className="inline-flex items-center px-3 py-1 text-sm bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
                             >
-                              <YouTubeIcon aria-hidden="true" className="w-4 h-4 mr-1" />
+                              <YouTubeIcon aria-hidden="true" className="w-4 h-4 me-1" />
                               YouTube
                             </a>
                           )}
@@ -135,7 +135,7 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                               rel="noopener noreferrer nofollow"
                               className="inline-flex items-center px-3 py-1 text-sm bg-jeju-ocean text-white rounded-full hover:bg-jeju-ocean/90 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
                             >
-                              <HiOutlineGlobe aria-hidden="true" className="w-4 h-4 mr-1" />
+                              <HiOutlineGlobe aria-hidden="true" className="w-4 h-4 me-1" />
                               {musician.website
                                 .replace(/^https?:\/\/(www\.)?/, '')
                                 .replace(/\/$/, '')}
@@ -151,7 +151,8 @@ const MusicianModal = ({ musician, isOpen, onClose }: MusicianModalProps) => {
                           className="inline-flex items-center text-sm font-medium text-jeju-ocean hover:text-ocean-mist transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
                           onClick={onClose}
                         >
-                          {t('nav.musician')} →
+                          {t('nav.musician')}{' '}
+                          <span className="inline-block rtl:-scale-x-100">→</span>
                         </Link>
                       </div>
                     )}

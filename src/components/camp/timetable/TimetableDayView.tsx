@@ -24,9 +24,9 @@ const TimetableDayView: React.FC<TimetableDayViewProps> = ({
   // 화면에서 제외. 데이터(timetable-2026.ts)에는 보존되어 PNG 추출 등 내부 도구가 활용.
   const performances = day.acts.filter((act) => act.type === 'performance');
   return (
-    <div className="relative flex flex-col gap-3 pl-0 sm:pl-16 lg:pl-20">
+    <div className="relative flex flex-col gap-3 ps-0 sm:ps-16 lg:ps-20">
       <div
-        className={`pointer-events-none absolute left-6 top-0 hidden h-full w-1 rounded-full opacity-60 sm:block lg:left-8 ${railClassName}`}
+        className={`pointer-events-none absolute start-6 top-0 hidden h-full w-1 rounded-full opacity-60 sm:block lg:start-8 ${railClassName}`}
         aria-hidden="true"
       />
       {performances.map((act, idx) => (

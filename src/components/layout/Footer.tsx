@@ -16,7 +16,7 @@ const Footer = () => {
       <Container size="wide" className="py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
           {/* Left Column - Site Info */}
-          <div className="text-center md:text-left space-y-4">
+          <div className="text-center md:text-start space-y-4">
             <h2 className="text-xl md:text-2xl font-serif font-bold break-words">
               {t('app.title')}
             </h2>
@@ -35,7 +35,7 @@ const Footer = () => {
             </h3>
             <div className="grid grid-cols-2 gap-x-8 gap-y-2">
               {/* Left - Main Menu */}
-              <div className="space-y-2 text-right">
+              <div className="space-y-2 text-end">
                 {simpleMenuItems.map((item) => (
                   <Link
                     key={item.path}
@@ -64,7 +64,7 @@ const Footer = () => {
                 </Link>
               </div>
               {/* Right - Camp & Album */}
-              <div className="space-y-2 text-left">
+              <div className="space-y-2 text-start">
                 {campItems.map((item) => (
                   <Link
                     key={item.path}
@@ -90,7 +90,7 @@ const Footer = () => {
           </div>
 
           {/* Right Column - Social & Contact */}
-          <div className="text-center md:text-right space-y-4">
+          <div className="text-center md:text-end space-y-4">
             <h3 className="text-sm font-bold text-seafoam uppercase tracking-wider mb-4 break-words">
               {t('footer.contact')}
             </h3>

@@ -63,9 +63,9 @@ const TimelineItem = React.memo<TimelineItemProps>(({ event, isLeft }) => {
       className="flex items-stretch mb-8 md:mb-16 w-full"
     >
       {/* Left Column (5/12) - Hidden on mobile */}
-      <div className="hidden md:flex md:w-5/12 md:pr-8 md:justify-end">
+      <div className="hidden md:flex md:w-5/12 md:pe-8 md:justify-end">
         {isLeft ? (
-          <motion.div variants={contentVariants} className="w-full text-right">
+          <motion.div variants={contentVariants} className="w-full text-end">
             <TimelineCardContent event={event} eventTypeColor={eventTypeColor} />
           </motion.div>
         ) : (
@@ -88,7 +88,7 @@ const TimelineItem = React.memo<TimelineItemProps>(({ event, isLeft }) => {
       </div>
 
       {/* Right Column (5/12 on desktop, full width on mobile) */}
-      <div className="w-full md:w-5/12 md:pl-8 flex justify-start">
+      <div className="w-full md:w-5/12 md:ps-8 flex justify-start">
         {/* Mobile view: Always show full card with year inside */}
         <div className="block md:hidden w-full">
           <TimelineMobileCard
@@ -101,7 +101,7 @@ const TimelineItem = React.memo<TimelineItemProps>(({ event, isLeft }) => {
         {/* Desktop view: Show conditional layout (left/right content) */}
         <div className="hidden md:block w-full">
           {!isLeft ? (
-            <motion.div variants={contentVariants} className="w-full text-left">
+            <motion.div variants={contentVariants} className="w-full text-start">
               <TimelineCardContent event={event} eventTypeColor={eventTypeColor} />
             </motion.div>
           ) : (

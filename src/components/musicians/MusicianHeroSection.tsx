@@ -56,7 +56,7 @@ export default function MusicianHeroSection({
               </div>
             )}
 
-            <div className="flex-1 min-w-0 text-white pb-2 text-center md:text-left">
+            <div className="flex-1 min-w-0 text-white pb-2 text-center md:text-start">
               <div className="flex flex-wrap gap-2 mb-4 justify-center md:justify-start">
                 {musician.genre.map((g) => (
                   <span
@@ -98,7 +98,7 @@ export default function MusicianHeroSection({
                       >
                         <InstagramIcon
                           aria-hidden="true"
-                          className="w-4 h-4 mr-1.5 flex-shrink-0"
+                          className="w-4 h-4 me-1.5 flex-shrink-0"
                         />
                         <span className="truncate">@{username}</span>
                       </a>
@@ -111,7 +111,7 @@ export default function MusicianHeroSection({
                       rel="noopener noreferrer nofollow"
                       className="inline-flex items-center px-3 py-1 text-sm bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun"
                     >
-                      <YouTubeIcon aria-hidden="true" className="w-4 h-4 mr-1.5" />
+                      <YouTubeIcon aria-hidden="true" className="w-4 h-4 me-1.5" />
                       YouTube
                     </a>
                   )}

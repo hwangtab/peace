@@ -220,14 +220,14 @@ export default function TrackPage({ track, musician }: TrackPageProps) {
               href="/album/tracks"
               className="inline-flex items-center px-4 py-2 bg-ocean-sand text-jeju-ocean rounded-lg hover:bg-ocean-mist transition-colors text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
             >
-              &larr; {t('nav.track')}
+              <span className="inline-block rtl:-scale-x-100">&larr;</span> {t('nav.track')}
             </Link>
             {musician && (
               <Link
                 href={`/album/musicians/${musician.id}`}
                 className="inline-flex items-center px-4 py-2 bg-golden-sun text-gray-900 rounded-lg hover:bg-yellow-400 transition-colors text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
               >
-                {musician.name} &rarr;
+                {musician.name} <span className="inline-block rtl:-scale-x-100">&rarr;</span>
               </Link>
             )}
           </div>

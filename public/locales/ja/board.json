@@ -18,7 +18,8 @@
     "sortLatest": "新着順",
     "sortPopular": "人気順",
     "clearSearch": "検索を解除",
-    "noResults": "検索結果がありません。"
+    "noResults": "検索結果がありません。",
+    "unavailable": "コンテンツを一時的に読み込めません。しばらくしてからもう一度お試しください。"
   },
   "post": {
     "title": "Title",

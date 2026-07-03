@@ -173,7 +173,7 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
               href="/gallery"
               className="inline-flex items-center gap-1 text-deep-ocean hover:text-jeju-ocean font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded"
             >
-              {t('nav.gallery')} →
+              {t('nav.gallery')} <span className="inline-block rtl:-scale-x-100">→</span>
             </Link>
           </div>
         )}

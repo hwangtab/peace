@@ -4,6 +4,18 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
+// 게시판 이미지(board-images 버킷)는 Supabase Storage 공개 URL 로 저장된다.
+// 이 호스트를 next/image remotePatterns 에 등록해야 (1) <Image> 가 렌더 가능하고
+// (2) Vercel 이 변환 결과를 minimumCacheTTL(30일) 동안 CDN 캐시해 Supabase Storage
+// egress 를 '조회당'에서 '이미지·사이즈당 최대 월 1회'로 낮춘다(egress 쿼터 보호).
+const supabaseImageHost = (() => {
+  try {
+    return new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).hostname;
+  } catch {
+    return null;
+  }
+})();
+
 // Content-Security-Policy (enforce — 차단 적용).
 // 정적 생성(SSG/ISR) + 인라인 스크립트(_document 폴백·GA·JSON-LD) 구조라
 // 요청별 nonce 를 줄 수 없어 script/style 은 'unsafe-inline' 을 허용한다.
@@ -93,6 +105,16 @@ const nextConfig = {
         hostname: 'i.ytimg.com',
         pathname: '/vi/**',
       },
+      // 게시판 이미지: 공개 스토리지 오브젝트만 허용(공개 경로로 범위 제한).
+      ...(supabaseImageHost
+        ? [
+            {
+              protocol: 'https',
+              hostname: supabaseImageHost,
+              pathname: '/storage/v1/object/public/**',
+            },
+          ]
+        : []),
     ],
   },
   async headers() {

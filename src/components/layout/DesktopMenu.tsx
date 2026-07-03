@@ -55,7 +55,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(
           {t('nav.home')}
           {isPathActive(ROUTES.HOME, true) && (
             <motion.span
-              className={`absolute bottom-[-4px] left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
+              className={`absolute bottom-[-4px] start-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.2 }}
@@ -90,7 +90,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(
               {t(item.nameKey)}
               {isPathActive(item.path) && (
                 <motion.span
-                  className={`absolute bottom-[-4px] left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
+                  className={`absolute bottom-[-4px] start-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ duration: 0.2 }}
@@ -108,7 +108,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(
         />
 
         <div
-          className={`pl-2 ml-2 sm:pl-4 sm:ml-4 border-l flex shrink-0 items-center gap-x-2 ${
+          className={`ps-2 ms-2 sm:ps-4 sm:ms-4 border-s flex shrink-0 items-center gap-x-2 ${
             isScrolled ? 'border-deep-ocean/15' : 'border-cloud-white/30'
           }`}
         >

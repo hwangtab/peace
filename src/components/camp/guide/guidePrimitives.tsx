@@ -57,8 +57,8 @@ export const AssignmentTable: React.FC<{ table: AssignTable }> = ({ table }) => 
               <th
                 key={h}
                 scope="col"
-                className={`px-3 py-2 text-left font-semibold text-deep-ocean whitespace-nowrap ${
-                  i === 0 ? 'sticky left-0 bg-sky-horizon/60 z-10' : ''
+                className={`px-3 py-2 text-start font-semibold text-deep-ocean whitespace-nowrap ${
+                  i === 0 ? 'sticky start-0 bg-sky-horizon/60 z-10' : ''
                 }`}
               >
                 {h}
@@ -74,7 +74,7 @@ export const AssignmentTable: React.FC<{ table: AssignTable }> = ({ table }) => 
                   key={i}
                   className={`px-3 py-2 align-top text-coastal-gray ${
                     i === 0
-                      ? 'sticky left-0 bg-white even:bg-ocean-sand/30 font-medium text-deep-ocean whitespace-nowrap z-10'
+                      ? 'sticky start-0 bg-white even:bg-ocean-sand/30 font-medium text-deep-ocean whitespace-nowrap z-10'
                       : ''
                   }`}
                 >

@@ -18,7 +18,8 @@
     "sortLatest": "Mais recentes",
     "sortPopular": "Populares",
     "clearSearch": "Limpar busca",
-    "noResults": "Nenhum resultado encontrado."
+    "noResults": "Nenhum resultado encontrado.",
+    "unavailable": "O conteúdo está temporariamente indisponível. Tente novamente em instantes."
   },
   "post": {
     "title": "Title",

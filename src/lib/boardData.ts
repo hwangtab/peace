@@ -9,26 +9,41 @@ export const boardImagePath = (url: string): string | null => {
   return i === -1 ? null : url.slice(i + marker.length);
 };
 
+// 데이터 소스 장애(Supabase egress 초과·네트워크 등)를 "글 0건"·"게시판 없음"과
+// 구분하기 위한 전용 에러. 각 load* 는 Supabase가 error 를 돌려주면 이걸 throw 하고,
+// 페이지(getStaticProps/getServerSideProps)는 catch 해 '일시적으로 불러올 수 없음' 상태를
+// 노출한다(빌드·SSR 중 무조건 throw 하면 빌드/요청이 500 으로 깨지므로 페이지에서 잡는다).
+// null 클라이언트(설정 누락)는 여기 해당 없음 — 그건 전송 오류가 아니라 미구성이므로 빈 값 반환.
+export class BoardDataError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'BoardDataError';
+  }
+}
+
 export const loadActiveBoards = async (): Promise<Board[]> => {
   const client = getSupabasePublicClient();
   if (!client) return [];
-  const { data } = await client
+  const { data, error } = await client
     .from('boards')
     .select('*')
     .eq('is_active', true)
     .order('sort_order', { ascending: true });
+  if (error) throw new BoardDataError(error.message);
   return (data as Board[]) ?? [];
 };
 
 export const loadBoardBySlug = async (slug: string): Promise<Board | null> => {
   const client = getSupabasePublicClient();
   if (!client) return null;
-  const { data } = await client
+  // maybeSingle: 행이 없으면 data:null/error:null (진짜 없음 → 404), 전송 오류만 error.
+  const { data, error } = await client
     .from('boards')
     .select('*')
     .eq('slug', slug)
     .eq('is_active', true)
     .maybeSingle();
+  if (error) throw new BoardDataError(error.message);
   return (data as Board) ?? null;
 };
 
@@ -66,7 +81,8 @@ export const loadBoardPosts = async (
     sort === 'popular'
       ? query.order('like_count', { ascending: false }).order('created_at', { ascending: false })
       : query.order('created_at', { ascending: false });
-  const { data } = await query.range(offset, offset + limit);
+  const { data, error } = await query.range(offset, offset + limit);
+  if (error) throw new BoardDataError(error.message);
   const rows = (data as Record<string, unknown>[]) ?? [];
   const hasMore = rows.length > limit;
   const items = rows.slice(0, limit).map(mapPostRow);
@@ -83,7 +99,8 @@ export const loadBoardPostCount = async (boardId: string, keyword = ''): Promise
     .eq('status', 'published');
   const kw = sanitizeKeyword(keyword);
   if (kw) query = query.or(`title.ilike.%${kw}%,body.ilike.%${kw}%`);
-  const { count } = await query;
+  const { count, error } = await query;
+  if (error) throw new BoardDataError(error.message);
   return count ?? 0;
 };
 
@@ -91,7 +108,8 @@ export const loadBoardPostCount = async (boardId: string, keyword = ''): Promise
 export const loadBoardPostCounts = async (): Promise<Record<string, number>> => {
   const client = getSupabasePublicClient();
   if (!client) return {};
-  const { data } = await client.rpc('board_published_post_counts');
+  const { data, error } = await client.rpc('board_published_post_counts');
+  if (error) throw new BoardDataError(error.message);
   if (!data) return {};
   return (data as { board_id: string; post_count: number }[]).reduce<Record<string, number>>(
     (acc, row) => {
@@ -121,11 +139,12 @@ export const loadPostDetailWithClient = async (
   client: SupabaseClient,
   postId: string
 ): Promise<PostWithMeta | null> => {
-  const { data } = await client
+  const { data, error } = await client
     .from('posts')
     .select('*, profiles!posts_author_id_fkey(nickname), post_images(*), boards(slug)')
     .eq('id', postId)
     .maybeSingle();
+  if (error) throw new BoardDataError(error.message);
   if (!data) return null;
   return mapPostRow(data as Record<string, unknown>);
 };
@@ -191,12 +210,13 @@ export const loadPostCommentsWithClient = async (
   postId: string,
   { limit = COMMENT_PAGE, offset = 0 }: { limit?: number; offset?: number } = {}
 ): Promise<{ items: ReturnType<typeof mapCommentRow>[]; hasMore: boolean }> => {
-  const { data } = await client
+  const { data, error } = await client
     .from('post_comments')
     .select(COMMENT_SELECT)
     .eq('post_id', postId)
     .order('created_at', { ascending: false })
     .range(offset, offset + limit);
+  if (error) throw new BoardDataError(error.message);
   const rows = (data as Record<string, unknown>[]) ?? [];
   const hasMore = rows.length > limit;
   return { items: rows.slice(0, limit).map(mapCommentRow), hasMore };

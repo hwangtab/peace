@@ -22,7 +22,7 @@ const BreadcrumbNav: React.FC<BreadcrumbNavProps> = ({ items }) => {
   return (
     <nav
       aria-label="Breadcrumb"
-      className="absolute top-20 md:top-24 left-0 right-0 z-20 py-1.5"
+      className="absolute top-20 md:top-24 start-0 end-0 z-20 py-1.5"
       itemScope
       itemType="https://schema.org/BreadcrumbList"
     >

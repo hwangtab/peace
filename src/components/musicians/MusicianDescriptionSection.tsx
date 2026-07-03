@@ -44,7 +44,7 @@ export default function MusicianDescriptionSection({
         {!isCampPage && (
           <div className="mt-12 flex flex-wrap gap-4">
             <Button to={backHref} variant="back" size="sm" shape="rounded">
-              &larr; {backLabel}
+              <span className="inline-block rtl:-scale-x-100">&larr;</span> {backLabel}
             </Button>
             {musician.trackTitle && (
               <Button
@@ -53,7 +53,8 @@ export default function MusicianDescriptionSection({
                 size="sm"
                 shape="rounded"
               >
-                {t('common.album_track_button')} &rarr;
+                {t('common.album_track_button')}{' '}
+                <span className="inline-block rtl:-scale-x-100">&rarr;</span>
               </Button>
             )}
             {fundingUrl && (
@@ -68,7 +69,7 @@ export default function MusicianDescriptionSection({
                 {t(`camp.ticketing_${latestCamp?.year ?? camps[camps.length - 1]?.year}`, {
                   defaultValue: t('camp.cta_final_button'),
                 })}{' '}
-                &rarr;
+                <span className="inline-block rtl:-scale-x-100">&rarr;</span>
               </Button>
             )}
           </div>
@@ -126,7 +127,7 @@ export default function MusicianDescriptionSection({
                 {t(`camp.ticketing_${latestCamp?.year}`, {
                   defaultValue: t('camp.cta_final_button'),
                 })}{' '}
-                &rarr;
+                <span className="inline-block rtl:-scale-x-100">&rarr;</span>
               </Button>
             </div>
           </div>

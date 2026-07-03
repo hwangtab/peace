@@ -117,7 +117,7 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(
                           void auth.signOut();
                           onClose();
                         }}
-                        className="block w-full text-left py-3 font-serif font-bold text-coastal-gray hover:text-sunset-coral break-words rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
+                        className="block w-full text-start py-3 font-serif font-bold text-coastal-gray hover:text-sunset-coral break-words rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
                       >
                         {t('memberNav.signout')}
                       </button>
@@ -179,7 +179,7 @@ const MobileDropdown: React.FC<MobileDropdownProps> = React.memo(
         <button
           type="button"
           onClick={onToggle}
-          className="w-full text-left py-3 font-serif font-bold text-deep-ocean flex justify-between items-center break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm"
+          className="w-full text-start py-3 font-serif font-bold text-deep-ocean flex justify-between items-center break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm"
           aria-expanded={isOpen}
           aria-controls={dropdownId}
         >
@@ -190,7 +190,7 @@ const MobileDropdown: React.FC<MobileDropdownProps> = React.memo(
         </button>
         <AnimatePresence initial={false}>
           {isOpen && (
-            <motion.div id={dropdownId} {...menuReveal} className="origin-top pl-4 overflow-hidden">
+            <motion.div id={dropdownId} {...menuReveal} className="origin-top ps-4 overflow-hidden">
               {items.map((item) => (
                 <Link
                   key={item.path}

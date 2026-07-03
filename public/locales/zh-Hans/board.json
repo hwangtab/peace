@@ -18,7 +18,8 @@
     "sortLatest": "最新",
     "sortPopular": "热门",
     "clearSearch": "清除搜索",
-    "noResults": "没有找到结果。"
+    "noResults": "没有找到结果。",
+    "unavailable": "内容暂时无法加载，请稍后再试。"
   },
   "post": {
     "title": "Title",

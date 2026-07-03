@@ -31,19 +31,23 @@ const ConfirmDialog = dynamic(() => import('@/components/common/ConfirmDialog'),
 const BOARD_POST_HERO = '/images-webp/camps/2025/DSC00700.webp';
 
 interface Props {
-  post: PostWithMeta;
+  post: PostWithMeta | null;
   slug: string;
   comments: CommentRow[];
   commentsHasMore: boolean;
+  loadError?: boolean;
 }
 
-export default function PostDetailPage({ post, slug, comments, commentsHasMore }: Props) {
+export default function PostDetailPage({
+  post,
+  slug,
+  comments,
+  commentsHasMore,
+  loadError,
+}: Props) {
   const { t } = useTranslation('board');
   const router = useRouter();
   const auth = useOptionalAuth();
-  const isAuthor = !auth?.loading && auth?.user?.id === post.author_id;
-
-  const dateStr = formatBoardDate(post.created_at);
 
   const [lightbox, setLightbox] = useState<string | null>(null);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
@@ -52,7 +56,7 @@ export default function PostDetailPage({ post, slug, comments, commentsHasMore }
   // 조회수 증가 — 세션당 글 1회만(새로고침 인플레이션 방지), 클라이언트에서만 호출.
   // 표시값은 로드 시점(post.view_count) 기준이며, 증가분은 다음 방문/새로고침에 반영된다.
   useEffect(() => {
-    if (post.status !== 'published') return;
+    if (!post || post.status !== 'published') return;
     const key = `viewed:${post.id}`;
     try {
       if (sessionStorage.getItem(key)) return;
@@ -62,7 +66,31 @@ export default function PostDetailPage({ post, slug, comments, commentsHasMore }
     }
     const supabase = createSupabaseBrowserClient();
     void supabase.rpc('increment_post_view', { p_post_id: post.id });
-  }, [post.id, post.status]);
+  }, [post]);
+
+  // 데이터 소스 장애: '없는 글'(404)이 아니라 '지금 못 불러온 글'임을 구분해 안내한다.
+  if (loadError || !post) {
+    return (
+      <>
+        <SEOHelmet title={t('index.title')} noIndex />
+        <PageHero compact title={t('index.title')} backgroundImage={BOARD_POST_HERO} />
+        <main className="mx-auto max-w-2xl px-4 py-12">
+          <Link href={`/board/${slug}`} className="text-sm text-coastal-gray hover:underline">
+            <span className="inline-block rtl:-scale-x-100">←</span> {t('index.title')}
+          </Link>
+          <p
+            role="alert"
+            className="mt-4 rounded-xl bg-seafoam/40 px-5 py-6 text-center text-coastal-gray"
+          >
+            {t('list.unavailable')}
+          </p>
+        </main>
+      </>
+    );
+  }
+
+  const isAuthor = !auth?.loading && auth?.user?.id === post.author_id;
+  const dateStr = formatBoardDate(post.created_at);
 
   const performDelete = async () => {
     setDeleting(true);
@@ -111,7 +139,7 @@ export default function PostDetailPage({ post, slug, comments, commentsHasMore }
 
         {/* Back link */}
         <Link href={`/board/${slug}`} className="text-sm text-coastal-gray hover:underline">
-          ← {t('index.title')}
+          <span className="inline-block rtl:-scale-x-100">←</span> {t('index.title')}
         </Link>
 
         <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-coastal-gray">
@@ -224,31 +252,40 @@ export const getServerSideProps = async ({
   const postId = typeof params?.postId === 'string' ? params.postId : '';
   const slug = typeof params?.slug === 'string' ? params.slug : '';
 
+  const i18n = await serverSideTranslations(
+    locale ?? 'ko',
+    ['board', 'translation'],
+    nextI18NextConfig
+  );
   const serverClient = createSupabaseServerClient(req, res);
-  const post = await loadPostDetailWithClient(serverClient, postId);
+
+  let post;
+  try {
+    post = await loadPostDetailWithClient(serverClient, postId);
+  } catch {
+    // 전송 오류(egress 초과 등): 404 로 오인시키지 않고 '일시적으로 불러올 수 없음' 안내.
+    return {
+      props: { post: null, slug, comments: [], commentsHasMore: false, loadError: true, ...i18n },
+    };
+  }
   if (!post) return { notFound: true };
 
   // Validate that the post belongs to the URL slug
   if (post.board_slug !== slug) return { notFound: true };
 
-  const { items: recentComments, hasMore: commentsHasMore } = await loadPostCommentsWithClient(
-    serverClient,
-    postId
-  );
-  // Most-recent page comes back newest-first; reverse for ascending conversation order.
-  const comments = recentComments.slice().reverse();
+  // 댓글만 실패하면 글은 정상 표시하고 댓글은 빈 목록으로 degrade(글 전체를 막지 않는다).
+  let comments: CommentRow[] = [];
+  let commentsHasMore = false;
+  try {
+    const { items, hasMore } = await loadPostCommentsWithClient(serverClient, postId);
+    // Most-recent page comes back newest-first; reverse for ascending conversation order.
+    comments = items.slice().reverse();
+    commentsHasMore = hasMore;
+  } catch {
+    // 댓글 로드 실패 — 빈 목록으로 진행.
+  }
 
   return {
-    props: {
-      post,
-      slug,
-      comments,
-      commentsHasMore,
-      ...(await serverSideTranslations(
-        locale ?? 'ko',
-        ['board', 'translation'],
-        nextI18NextConfig
-      )),
-    },
+    props: { post, slug, comments, commentsHasMore, ...i18n },
   };
 };

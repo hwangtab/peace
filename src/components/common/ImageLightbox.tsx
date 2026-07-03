@@ -102,21 +102,25 @@ const ImageLightbox: React.FC<ImageLightboxProps> = ({
             >
               <Dialog.Panel className="relative w-[90vw] max-w-5xl transform overflow-hidden rounded-lg shadow-2xl transition-[transform,opacity]">
                 <div className="relative w-full h-[90vh]" style={{ maxHeight }}>
-                  {/* 라이트박스는 풀사이즈로 보므로 next/image 재압축(이중 압축)을 끄고
-                      미리 생성한 webp 원본을 그대로 직송한다. */}
+                  {/* 라이트박스 원본 webp가 최대 ~660KB라 unoptimized 직송은 저속
+                      회선에서 확대 첫 장 지연이 크다. next/image 최적화를 거쳐
+                      뷰포트 폭에 맞는 avif/webp로 서빙한다. quality는 next.config.js
+                      images.qualities 화이트리스트([55,60,65,75]) 중 최댓값(75)을
+                      써 원본 품질 열화를 최소화했다 — 목록 썸네일(quality=75)과
+                      동일 수준. */}
                   <Image
                     src={imageUrl}
                     alt={altText}
                     fill
-                    sizes="90vw"
+                    sizes="(max-width: 1024px) 100vw, 90vw"
                     className="object-contain rounded-lg"
                     loading="eager"
-                    unoptimized
+                    quality={75}
                   />
                 </div>
 
                 {credit && (
-                  <p className="absolute bottom-3 left-4 right-4 text-xs sm:text-sm text-white/90 bg-black/40 backdrop-blur-sm rounded-md px-3 py-1.5 w-fit max-w-[80%] pointer-events-none">
+                  <p className="absolute bottom-3 start-4 end-4 text-xs sm:text-sm text-white/90 bg-black/40 backdrop-blur-sm rounded-md px-3 py-1.5 w-fit max-w-[80%] pointer-events-none">
                     {credit}
                   </p>
                 )}
@@ -133,24 +137,24 @@ const ImageLightbox: React.FC<ImageLightboxProps> = ({
                 {/* 이전 버튼 */}
                 {isGalleryMode && (
                   <button
-                    className="absolute left-3 top-1/2 -translate-y-1/2 text-white bg-black/30 hover:bg-black/60 disabled:opacity-30 disabled:cursor-not-allowed rounded-full w-10 h-10 flex items-center justify-center backdrop-blur-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun"
+                    className="absolute start-3 top-1/2 -translate-y-1/2 text-white bg-black/30 hover:bg-black/60 disabled:opacity-30 disabled:cursor-not-allowed rounded-full w-10 h-10 flex items-center justify-center backdrop-blur-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun"
                     onClick={handlePrev}
                     disabled={!canPrev}
                     aria-label={t('common.prev_image', { defaultValue: '이전 이미지' })}
                   >
-                    &#8249;
+                    <span className="inline-block rtl:-scale-x-100">&#8249;</span>
                   </button>
                 )}
 
                 {/* 다음 버튼 */}
                 {isGalleryMode && (
                   <button
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-white bg-black/30 hover:bg-black/60 disabled:opacity-30 disabled:cursor-not-allowed rounded-full w-10 h-10 flex items-center justify-center backdrop-blur-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun"
+                    className="absolute end-3 top-1/2 -translate-y-1/2 text-white bg-black/30 hover:bg-black/60 disabled:opacity-30 disabled:cursor-not-allowed rounded-full w-10 h-10 flex items-center justify-center backdrop-blur-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun"
                     onClick={handleNext}
                     disabled={!canNext}
                     aria-label={t('common.next_image', { defaultValue: '다음 이미지' })}
                   >
-                    &#8250;
+                    <span className="inline-block rtl:-scale-x-100">&#8250;</span>
                   </button>
                 )}
 

@@ -18,7 +18,8 @@
     "sortLatest": "最新",
     "sortPopular": "熱門",
     "clearSearch": "清除搜尋",
-    "noResults": "沒有找到結果。"
+    "noResults": "沒有找到結果。",
+    "unavailable": "內容暫時無法載入，請稍後再試。"
   },
   "post": {
     "title": "Title",

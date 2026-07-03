@@ -64,10 +64,10 @@ const StoryBlock: React.FC<StoryBlockProps> = ({
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7 }}
-          className={`max-w-lg mx-auto ${align === 'right' ? 'md:ml-auto md:mr-0' : 'md:mx-0'}`}
+          className={`max-w-lg mx-auto ${align === 'right' ? 'md:ms-auto md:me-0' : 'md:mx-0'}`}
         >
           <p
-            className={`font-display font-bold text-lg sm:text-xl md:text-2xl text-white leading-relaxed break-words text-balance ${align === 'right' ? 'md:text-right' : ''}`}
+            className={`font-display font-bold text-lg sm:text-xl md:text-2xl text-white leading-relaxed break-words text-balance ${align === 'right' ? 'md:text-end' : ''}`}
           >
             {t(textKey)}
           </p>

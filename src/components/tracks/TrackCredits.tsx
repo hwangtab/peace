@@ -12,7 +12,7 @@ export default function TrackCredits({ credits }: TrackCreditsProps) {
     <div className="mb-4">
       <div className="flex items-center mb-4">
         <h4 className="text-lg font-serif text-jeju-ocean">{t('common.credits')}</h4>
-        <div className="flex-grow ml-4 h-px bg-coastal-gray/20" />
+        <div className="flex-grow ms-4 h-px bg-coastal-gray/20" />
       </div>
       <div className="grid grid-cols-1 gap-3 sm:gap-4">
         {credits.composer && credits.composer.length > 0 && (

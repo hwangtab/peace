@@ -109,7 +109,7 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(
             {label}
             {isActive && (
               <motion.span
-                className={`absolute bottom-[-4px] left-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
+                className={`absolute bottom-[-4px] start-0 w-full h-0.5 ${isScrolled ? 'bg-golden-sun' : 'bg-cloud-white'}`}
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 exit={{ scaleX: 0 }}
@@ -122,7 +122,7 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(
               hover(group-hover) 또는 열림(open) 시에만 텍스트 오른쪽에 fade-in. */}
           <IoChevronDown
             aria-hidden="true"
-            className={`pointer-events-none absolute left-full top-1/2 -translate-y-1/2 ml-0.5 w-3.5 h-3.5 transition-opacity duration-200 ${
+            className={`pointer-events-none absolute start-full top-1/2 -translate-y-1/2 ms-0.5 w-3.5 h-3.5 transition-opacity duration-200 ${
               open
                 ? 'opacity-100'
                 : 'opacity-0 group-hover:opacity-100 group-focus-within:opacity-100'
@@ -173,7 +173,7 @@ const DropdownMenu: React.FC<{
       aria-hidden={!isPresent}
       // top-full 바로 아래 붙이되 갭(pt-2)을 컨테이너 안에 두어 버튼↔메뉴 hover 영역을
       // 끊김 없이 잇는다 — 갭에서 마우스가 빠져 드롭다운이 닫히는 깜빡임 방지.
-      className="absolute top-full left-0 pt-2 z-50 text-left"
+      className="absolute top-full start-0 pt-2 z-50 text-start"
     >
       <div className="min-w-[12rem] max-w-[18rem] w-max bg-white/95 backdrop-blur-md shadow-lg rounded-lg overflow-hidden py-2 border border-ocean-mist/20">
         {items.map((item) => (

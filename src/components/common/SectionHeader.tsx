@@ -40,7 +40,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
         'mb-12 md:mb-16',
         {
           'text-center': align === 'center',
-          'text-left': align === 'left',
+          'text-start': align === 'left',
         },
         className
       )}
@@ -62,7 +62,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
             'bg-gradient-to-r from-jeju-ocean via-ocean-mist to-golden-sun',
             {
               'mx-auto': align === 'center',
-              'mr-auto': align === 'left',
+              'me-auto': align === 'left',
             }
           )}
         />

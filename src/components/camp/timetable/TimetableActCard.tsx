@@ -69,7 +69,7 @@ const TimetableActCard: React.FC<TimetableActCardProps> = ({
             {musicians.map((m, i) => (
               <div
                 key={m.id}
-                className={`h-14 w-14 overflow-hidden rounded-full border-2 border-white sm:h-20 sm:w-20 ${i > 0 ? '-ml-4' : ''}`}
+                className={`h-14 w-14 overflow-hidden rounded-full border-2 border-white sm:h-20 sm:w-20 ${i > 0 ? '-ms-4' : ''}`}
                 style={{ zIndex: musicians.length - i }}
               >
                 <Image

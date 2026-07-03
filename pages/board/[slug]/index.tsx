@@ -24,22 +24,50 @@ const BOARD_DETAIL_HERO_FALLBACK = '/images-webp/camps/2025/DSC00798.webp';
 const PAGE_SIZE = 20;
 
 interface Props {
-  board: Board;
+  board: Board | null;
   posts: PostWithMeta[];
   hasMore: boolean;
   offset: number;
   total: number;
   q: string;
   sort: BoardSort;
+  loadError?: boolean;
 }
 
-export default function BoardSlugPage({ board, posts, hasMore, offset, total, q, sort }: Props) {
+export default function BoardSlugPage({
+  board,
+  posts,
+  hasMore,
+  offset,
+  total,
+  q,
+  sort,
+  loadError,
+}: Props) {
   const { t } = useTranslation('board');
   const router = useRouter();
   const auth = useOptionalAuth();
   const isLoggedIn = Boolean(auth?.user);
 
   const [searchInput, setSearchInput] = useState(q);
+
+  // 데이터 소스 장애: 게시판이 '없는 것'(404)이 아니라 '지금 못 불러온 것'임을 구분해 안내한다.
+  if (loadError || !board) {
+    return (
+      <>
+        <SEOHelmet title={t('index.title')} noIndex />
+        <PageHero compact title={t('index.title')} backgroundImage={BOARD_DETAIL_HERO_FALLBACK} />
+        <main className="mx-auto max-w-2xl px-4 py-12">
+          <p
+            role="alert"
+            className="rounded-xl bg-seafoam/40 px-5 py-6 text-center text-coastal-gray"
+          >
+            {t('list.unavailable')}
+          </p>
+        </main>
+      </>
+    );
+  }
 
   const nextOffset = offset + PAGE_SIZE;
   const prevOffset = Math.max(0, offset - PAGE_SIZE);
@@ -92,7 +120,7 @@ export default function BoardSlugPage({ board, posts, hasMore, offset, total, q,
         <div className="mb-6 flex items-start justify-between gap-4">
           <div>
             <Link href="/board" className="text-sm text-coastal-gray hover:underline">
-              ← {t('index.title')}
+              <span className="inline-block rtl:-scale-x-100">←</span> {t('index.title')}
             </Link>
             {board.description && (
               <p className="mt-1 text-sm text-coastal-gray">{board.description}</p>
@@ -182,7 +210,7 @@ export default function BoardSlugPage({ board, posts, hasMore, offset, total, q,
                 href={pageHref(prevOffset)}
                 className="rounded-lg border border-jeju-ocean px-5 py-2 text-sm font-semibold text-jeju-ocean transition hover:bg-seafoam"
               >
-                ← {t('list.prev')}
+                <span className="inline-block rtl:-scale-x-100">←</span> {t('list.prev')}
               </Link>
             ) : (
               <span aria-hidden="true" />
@@ -195,7 +223,7 @@ export default function BoardSlugPage({ board, posts, hasMore, offset, total, q,
                 href={pageHref(nextOffset)}
                 className="rounded-lg border border-jeju-ocean px-5 py-2 text-sm font-semibold text-jeju-ocean transition hover:bg-seafoam"
               >
-                {t('list.next')} →
+                {t('list.next')} <span className="inline-block rtl:-scale-x-100">→</span>
               </Link>
             ) : (
               <span aria-hidden="true" />
@@ -217,28 +245,39 @@ export const getServerSideProps = async ({ locale, params, query }: GetServerSid
   const q = typeof query.q === 'string' ? query.q.trim().slice(0, 100) : '';
   const sort: BoardSort = query.sort === 'popular' ? 'popular' : 'latest';
 
-  const board = await loadBoardBySlug(slug);
+  const i18n = await serverSideTranslations(
+    locale ?? 'ko',
+    ['board', 'translation'],
+    nextI18NextConfig
+  );
+  const errorProps = {
+    board: null,
+    posts: [],
+    hasMore: false,
+    offset,
+    total: 0,
+    q,
+    sort,
+    loadError: true,
+    ...i18n,
+  };
+
+  let board: Board | null = null;
+  try {
+    board = await loadBoardBySlug(slug);
+  } catch {
+    return { props: errorProps };
+  }
+  // 전송 오류가 아니라 실제로 없는 게시판만 404.
   if (!board) return { notFound: true };
 
-  const [{ items: posts, hasMore }, total] = await Promise.all([
-    loadBoardPosts(board.id, { limit: PAGE_SIZE, offset, keyword: q, sort }),
-    loadBoardPostCount(board.id, q),
-  ]);
-
-  return {
-    props: {
-      board,
-      posts,
-      hasMore,
-      offset,
-      total,
-      q,
-      sort,
-      ...(await serverSideTranslations(
-        locale ?? 'ko',
-        ['board', 'translation'],
-        nextI18NextConfig
-      )),
-    },
-  };
+  try {
+    const [{ items: posts, hasMore }, total] = await Promise.all([
+      loadBoardPosts(board.id, { limit: PAGE_SIZE, offset, keyword: q, sort }),
+      loadBoardPostCount(board.id, q),
+    ]);
+    return { props: { board, posts, hasMore, offset, total, q, sort, ...i18n } };
+  } catch {
+    return { props: { ...errorProps, board } };
+  }
 };

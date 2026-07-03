@@ -26,7 +26,7 @@ const CampStaff: React.FC<CampStaffProps> = ({ staff, collaborators }) => {
             <span className="inline-block w-1.5 h-1.5 rounded-full bg-coastal-gray mt-2 flex-shrink-0" />
             <p className="font-serif font-bold text-base min-w-0">
               <span className="text-coastal-gray">{section.role}:</span>
-              <span className="text-coastal-gray/70 ml-2 break-words">
+              <span className="text-coastal-gray/70 ms-2 break-words">
                 {section.members.join(', ')}
               </span>
             </p>

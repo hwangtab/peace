@@ -31,7 +31,7 @@ export default function TrackHeader({
                   {track.title}
                 </Link>
               </h3>
-              <span className="text-sm text-coastal-gray ml-2 sm:ml-4 flex-shrink-0">
+              <span className="text-sm text-coastal-gray ms-2 sm:ms-4 flex-shrink-0">
                 {track.duration}
               </span>
             </div>
@@ -76,7 +76,7 @@ export default function TrackHeader({
                 {track.title}
               </Link>
             </h3>
-            <span className="text-sm text-coastal-gray ml-2 sm:ml-4 flex-shrink-0">
+            <span className="text-sm text-coastal-gray ms-2 sm:ms-4 flex-shrink-0">
               {track.duration}
             </span>
           </div>
@@ -84,7 +84,7 @@ export default function TrackHeader({
         </div>
         <motion.span
           animate={{ rotate: isExpanded ? 180 : 0 }}
-          className="text-coastal-gray ml-2 sm:ml-4"
+          className="text-coastal-gray ms-2 sm:ms-4"
           aria-hidden="true"
         >
           <svg

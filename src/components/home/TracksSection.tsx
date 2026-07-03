@@ -122,8 +122,8 @@ const TracksSection: React.FC<TracksSectionProps> = React.memo(
             {t('home.tracks.buy_album')}
           </Button>
           {enableSectionWrapper && (
-            <Button to="/album/tracks" variant="outline" size="sm" className="ml-4">
-              {t('nav.track')} →
+            <Button to="/album/tracks" variant="outline" size="sm" className="ms-4">
+              {t('nav.track')} <span className="inline-block rtl:-scale-x-100">→</span>
             </Button>
           )}
         </motion.div>

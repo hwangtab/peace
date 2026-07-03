@@ -63,7 +63,7 @@ const AboutSection = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-6 mt-12 text-left">
+          <div className="grid md:grid-cols-2 gap-6 mt-12 text-start">
             <motion.div
               variants={itemVariants}
               className="bg-ocean-sand/30 p-6 rounded-2xl hover:bg-ocean-sand/50 transition-colors duration-300 flex flex-col"
@@ -82,7 +82,7 @@ const AboutSection = () => {
                 href="/camps/2026"
                 className="mt-4 inline-flex items-center text-sm font-medium text-jeju-ocean hover:text-ocean-mist transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded"
               >
-                {t('about.card1.link')} →
+                {t('about.card1.link')} <span className="inline-block rtl:-scale-x-100">→</span>
               </Link>
             </motion.div>
 
@@ -104,7 +104,7 @@ const AboutSection = () => {
                 href="/press"
                 className="mt-4 inline-flex items-center text-sm font-medium text-jeju-ocean hover:text-ocean-mist transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded"
               >
-                {t('about.card2.link')} →
+                {t('about.card2.link')} <span className="inline-block rtl:-scale-x-100">→</span>
               </Link>
             </motion.div>
           </div>

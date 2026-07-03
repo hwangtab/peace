@@ -118,7 +118,7 @@ const TrackCard = React.memo(
                       <h4 className="text-lg font-serif text-jeju-ocean">
                         {t('common.track_desc')}
                       </h4>
-                      <div className="flex-grow ml-3 sm:ml-4 h-px bg-coastal-gray/20" />
+                      <div className="flex-grow ms-3 sm:ms-4 h-px bg-coastal-gray/20" />
                     </div>
                     <p className="text-coastal-gray leading-relaxed whitespace-pre-line break-words">
                       {track.description}
@@ -130,7 +130,7 @@ const TrackCard = React.memo(
                   <div className="mb-6 md:mb-8">
                     <div className="flex items-center mb-4">
                       <h4 className="text-lg font-serif text-jeju-ocean">{t('common.lyrics')}</h4>
-                      <div className="flex-grow ml-3 sm:ml-4 h-px bg-coastal-gray/20" />
+                      <div className="flex-grow ms-3 sm:ms-4 h-px bg-coastal-gray/20" />
                     </div>
                     <div className="bg-ocean-sand/30 p-4 rounded-lg">
                       <p className="text-coastal-gray whitespace-pre-line leading-relaxed break-words">

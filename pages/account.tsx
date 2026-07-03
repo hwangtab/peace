@@ -152,12 +152,12 @@ export default function AccountPage() {
           <dl className="space-y-2 text-sm">
             <div className="flex justify-between gap-3">
               <dt className="text-coastal-gray">{t('account.email')}</dt>
-              <dd className="break-all text-right font-medium text-deep-ocean">{user.email}</dd>
+              <dd className="break-all text-end font-medium text-deep-ocean">{user.email}</dd>
             </div>
             {user.created_at && (
               <div className="flex justify-between gap-3">
                 <dt className="text-coastal-gray">{t('account.joinedAt')}</dt>
-                <dd className="text-right font-medium text-deep-ocean">
+                <dd className="text-end font-medium text-deep-ocean">
                   {formatBoardDate(user.created_at)}
                 </dd>
               </div>
@@ -242,7 +242,7 @@ export default function AccountPage() {
                     <span className="min-w-0 flex-1 truncate text-sm font-medium text-deep-ocean">
                       {post.title}
                       {post.status === 'hidden' && (
-                        <span className="ml-2 rounded bg-deep-ocean/10 px-1.5 py-0.5 text-xs text-coastal-gray">
+                        <span className="ms-2 rounded bg-deep-ocean/10 px-1.5 py-0.5 text-xs text-coastal-gray">
                           {t('account.postHidden')}
                         </span>
                       )}

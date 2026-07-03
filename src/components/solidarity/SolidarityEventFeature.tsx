@@ -146,7 +146,10 @@ const SolidarityEventFeature: React.FC<Props> = ({
             {/* compact 모드: 자세히 보기 링크 */}
             {compact && detailHref && (
               <Button to={detailHref} variant="primary" className="self-start">
-                {t('solidarity.detail_cta')} →
+                {t('solidarity.detail_cta')}{' '}
+                <span aria-hidden="true" className="inline-block rtl:-scale-x-100">
+                  →
+                </span>
               </Button>
             )}
           </div>
@@ -166,7 +169,7 @@ const SolidarityEventFeature: React.FC<Props> = ({
 
             {/* Program note */}
             {event.note && (
-              <p className="text-xs text-coastal-gray italic border-l-2 border-ocean-sand pl-3 leading-relaxed">
+              <p className="text-xs text-coastal-gray italic border-s-2 border-ocean-sand ps-3 leading-relaxed">
                 {event.note}
               </p>
             )}
