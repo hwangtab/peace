@@ -28,6 +28,7 @@ import {
   parseWhitepaperYear,
 } from '@/lib/campEditions';
 import { formatDateTime } from '@/utils/format';
+import { useUnsavedChangesGuard } from '@/hooks/useUnsavedChangesGuard';
 import type { AdminDocument, AdminMember } from '@/types/cms';
 
 interface WhitepaperPageProps {
@@ -55,6 +56,13 @@ function WhitepaperEditor({
   const [isSaving, setIsSaving] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState(initialError);
+
+  // 미저장 편집 보호: 편집 모드에서 제목/본문이 로드값(문서 or 기본값)과 다르면 dirty.
+  // 저장 성공 시 setDocument+setIsEditing(false)로, 취소 시 setIsEditing(false)로 자동 해제된다.
+  const isDirty =
+    isEditing &&
+    (title !== (document?.title || defaultTitle) || body !== (document?.body_md ?? ''));
+  const { confirmIfDirty } = useUnsavedChangesGuard(isDirty);
 
   const startEditing = () => {
     setTitle(document?.title || defaultTitle);
@@ -112,6 +120,13 @@ function WhitepaperEditor({
           id="wp-year"
           value={selectedYear}
           onChange={(e) => {
+            // 회차 변경은 key={selectedYear} 리마운트라 편집 중 본문이 소실된다.
+            // dirty면 confirm으로 확인하고, 취소 시 select 표시값을 현재 회차로 원복한다.
+            // (controlled select라도 상태 변화가 없으면 React가 DOM을 되돌리지 않음)
+            if (!confirmIfDirty()) {
+              e.target.value = String(selectedYear);
+              return;
+            }
             void router.push(`/admin/whitepaper?year=${e.target.value}`);
           }}
           className="rounded border border-deep-ocean/15 bg-white px-3 py-2 text-sm focus:border-jeju-ocean focus:outline-none focus:ring-2 focus:ring-jeju-ocean/20"

@@ -23,6 +23,7 @@ import {
 import type { AdminMember } from '@/types/cms';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { buildAdminFormState, type AdminCollectionFormState } from './adminCollectionForm';
+import { useUnsavedChangesGuard } from '@/hooks/useUnsavedChangesGuard';
 import AdminFieldControl, { type MusicianOption } from './AdminFieldControl';
 import AdminPressCardPreview from './AdminPressCardPreview';
 import { buildPhotographerOptions, type PhotographerOption } from '@/data/photographers';
@@ -108,6 +109,24 @@ export default function AdminCollectionPage({
   useEffect(() => {
     selectedIdRef.current = selected?.id ?? null;
   }, [selected?.id]);
+
+  // 미저장 편집 보호(dirty guard): 마지막으로 "로드된"(=저장/선택 직후) 폼을 원본으로
+  // 잡아두고, 현재 form과 얕게 비교해 편집 여부를 판단한다. loadForm으로 폼을 갈아끼울
+  // 때마다 원본도 함께 갱신해 저장 성공 시 dirty가 자동 해제되도록 한다.
+  const [pristineForm, setPristineForm] = useState<AdminCollectionFormState>(form);
+  const loadForm = (item: AdminCollectionRow | null) => {
+    const next = buildAdminFormState(config, item, selectedLocale);
+    setPristineForm(next);
+    setForm(next);
+  };
+  const isDirty = useMemo(() => {
+    const keys = new Set([...Object.keys(pristineForm), ...Object.keys(form)]);
+    for (const key of keys) {
+      if (pristineForm[key] !== form[key]) return true;
+    }
+    return false;
+  }, [pristineForm, form]);
+  const { confirmIfDirty, confirmDiscard } = useUnsavedChangesGuard(isDirty);
 
   // 뮤지션 선택 위젯이 있는 컬렉션(예: 비디오)에서만 이름 목록을 불러온다.
   const needsMusicians = useMemo(
@@ -238,8 +257,11 @@ export default function AdminCollectionPage({
   }, [config.collection, selected?.id]);
 
   const selectItem = (item: AdminCollectionRow | null) => {
+    // 목록에서 다른 항목을 고르면 편집 중이던 폼이 통째로 교체된다 — dirty면 먼저 묻는다.
+    // (라우팅이 아니므로 bypass를 무장하지 않는 confirmDiscard 사용)
+    if (!confirmDiscard()) return;
     setSelected(item);
-    setForm(buildAdminFormState(config, item, selectedLocale));
+    loadForm(item);
     setMessage('');
     setError('');
   };
@@ -274,7 +296,7 @@ export default function AdminCollectionPage({
       ? (nextItems.find((item) => item.id === activeId) ?? nextItems[0] ?? null)
       : (nextItems[0] ?? null);
     setSelected(nextSelected);
-    setForm(buildAdminFormState(config, nextSelected, selectedLocale));
+    loadForm(nextSelected);
   };
 
   const loadMore = async () => {
@@ -345,6 +367,9 @@ export default function AdminCollectionPage({
   };
 
   const changeLocale = async (nextLocale: string) => {
+    // 언어 변경은 router.push → 페이지 key 리마운트로 편집 중 폼이 전량 소실된다.
+    // dirty면 이동 전에 확인하고, 취소 시 이동하지 않는다(승인 시 routeChangeStart 재확인 없음).
+    if (!confirmIfDirty()) return;
     const params = new URLSearchParams({ locale: nextLocale });
     if (selectedType) params.set('type', selectedType);
     if (selectedYear) params.set('year', selectedYear);
@@ -352,6 +377,8 @@ export default function AdminCollectionPage({
   };
 
   const changeFilter = async (next: { type?: string; year?: string }) => {
+    // 유형/연도 필터 변경도 router.push 리마운트 경로 — changeLocale과 동일하게 보호.
+    if (!confirmIfDirty()) return;
     const params = new URLSearchParams({ locale: selectedLocale });
     const type = next.type ?? selectedType;
     const year = next.year ?? selectedYear;
@@ -436,7 +463,8 @@ export default function AdminCollectionPage({
     // 저장 요청 도중 다른 항목으로 이동했다면 선택·폼을 덮어쓰지 않는다(입력 소실 방지).
     if (selectedIdRef.current === targetId) {
       setSelected(payload.item);
-      setForm(buildAdminFormState(config, payload.item, selectedLocale));
+      // loadForm이 pristine 원본도 함께 갱신하므로 저장 성공 시 dirty가 해제된다.
+      loadForm(payload.item);
     }
     await refreshItems(payload.item.id);
     if (wasExisting && selectedIdRef.current === targetId) {
@@ -496,6 +524,13 @@ export default function AdminCollectionPage({
       return;
     }
 
+    // 복제 성공 후의 이동은 router.push 리마운트라 편집 중 폼이 소실된다.
+    // 이동 "직전"에 확인해야 bypass가 곧바로 소비된다(요청 실패 시 무장 잔류 방지).
+    // 취소하면 초안은 만들어진 채 현재 편집을 유지한다.
+    if (!confirmIfDirty()) {
+      setMessage('다른 언어 초안을 만들었습니다. 이동을 취소해 현재 편집을 유지합니다.');
+      return;
+    }
     // 복제 후 이동 시에도 현재 유형/연도 필터를 유지한다(changeLocale과 동일).
     const params = new URLSearchParams({ locale: cloneLocale });
     if (selectedType) params.set('type', selectedType);
