@@ -23,11 +23,21 @@ export default function NotificationBell() {
   // 드롭다운을 열 때 기준 시각을 고정해 상대시간 기준이 렌더마다 흔들리지 않도록 한다.
   const [now, setNow] = useState(() => new Date());
   const containerRef = useRef<HTMLDivElement>(null);
+  // 403(권한 부족)을 만나면 폴링 인터벌을 멈춘다 — viewer 등 editor 미만 역할에
+  // AdminLayout이 벨을 렌더하지 않지만, 만일 렌더되더라도 이중 방어로 재시도를 끊는다.
+  const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const fetchFeed = useCallback(async () => {
     try {
       const res = await fetch('/api/admin/notifications');
-      if (!res.ok) return;
+      if (!res.ok) {
+        // 403은 역할 미달 — 새로고침 전엔 상태가 바뀌지 않으므로 폴링을 중단한다.
+        if (res.status === 403 && pollRef.current) {
+          clearInterval(pollRef.current);
+          pollRef.current = null;
+        }
+        return;
+      }
       const data = (await res.json()) as { items: AdminNotification[]; unreadCount: number };
       setItems(data.items);
       setUnreadCount(data.unreadCount);
@@ -39,8 +49,11 @@ export default function NotificationBell() {
   // 마운트 시 1회 + 60초 폴링
   useEffect(() => {
     fetchFeed();
-    const t = setInterval(fetchFeed, POLL_MS);
-    return () => clearInterval(t);
+    pollRef.current = setInterval(fetchFeed, POLL_MS);
+    return () => {
+      if (pollRef.current) clearInterval(pollRef.current);
+      pollRef.current = null;
+    };
   }, [fetchFeed]);
 
   // 외부 클릭 닫힘

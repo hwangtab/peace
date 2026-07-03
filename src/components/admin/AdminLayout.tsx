@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import type { ReactNode } from 'react';
 import classNames from 'classnames';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
+import { canEditContent } from '@/lib/adminAuth';
 import type { AdminMember } from '@/types/cms';
 import NotificationBell from '@/components/admin/NotificationBell';
 
@@ -66,7 +67,9 @@ export default function AdminLayout({ title, member, children }: AdminLayoutProp
                     {member.display_name || member.email}
                   </span>
                 )}
-                <NotificationBell />
+                {/* 알림 API(/api/admin/notifications)는 editor 이상만 허용 —
+                    viewer에게는 죽은 벨·무의미한 403 폴링만 남으므로 렌더하지 않는다. */}
+                {member && canEditContent(member) && <NotificationBell />}
                 <button
                   type="button"
                   onClick={handleSignOut}
