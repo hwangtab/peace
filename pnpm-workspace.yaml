@@ -3,6 +3,13 @@ overrides:
   postcss: 8.5.15
   tmp: ^0.2.7
   i18next-fs-backend: '>=2.6.6'
+  # dev 전용 전이 의존성 취약점 정리(2026-07 audit — prod 영향 없음)
+  'undici@>=7.0.0 <7.28.0': '>=7.28.0'
+  # ws 소비처(jsdom·puppeteer·webpack-bundle-analyzer)는 전부 8.x — 블랭킷으로 통일
+  ws: '>=8.21.0'
+  'form-data@>=4.0.0 <4.0.6': '>=4.0.6'
+  'js-yaml@<3.15.0': '>=3.15.0 <4'
+  'js-yaml@>=4.0.0 <=4.1.1': '>=4.1.2'
 
 confirmModulesPurge: false
 
