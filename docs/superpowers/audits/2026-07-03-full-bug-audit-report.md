@@ -132,6 +132,25 @@
 - admin CMS 원본 테이블(archive_videos 등)의 RLS 실물 — 공개 경로가 정적 JSON으로 전환돼 우선순위 낮음.
 - 프로덕션 환경변수 실값(설문 백엔드 KOSMART vs 메인 Supabase 라우팅) — 코드 정적 확인만.
 
+## 수정 결과 (2026-07-04 완료)
+
+전 클러스터 승인 후 3개 웨이브(Opus 서브에이전트)로 수정 완료. **근본원인 10개 전부 해소.**
+
+| 클러스터 | 커밋 | 비고 |
+| -------- | ---- | ---- |
+| R1 | 87981af3 + c6470d89 + 6418a0f6 | CI 빨간불 원인은 3중이었음(stale 테스트 + prettier 미포맷 + R8 타입 에러) — 전부 해소, CI 초록 복귀 |
+| R2 | 7762df1f | selectedIdRef/editIdRef 컨텍스트 대조 + AbortController |
+| R3 | da27b98e | mail_broadcast_jobs 테이블(DB 적용됨) + 청크 8명/커서 + 멱등 2중 + reply recorded:false |
+| R4 | f738370f | useUnsavedChangesGuard 훅 신설(routeChangeStart·beforeunload·1회용 bypass) |
+| R5 | c0d38e45 | POST /api/board/view (service role 경유, IP+postId 60초 rate limit) |
+| R6 | e889f8ec | 갤러리 onError 대체 표시, viewer 벨 미렌더+403 폴링 중단 |
+| R7 | edf60e96 | src/utils/date.ts (parseLocalDate/formatDateLocalized) 신설, 사용처 통일 |
+| R8 | f676090b | authLinkErrorFromUrl·isAuthSessionMissingError·safeRedirectPath 인증페이지 배제, 13로케일 키 3개 |
+| R9 | 4ab428ec | isShallowRepo 감지 → mtime fallback |
+| R10 | 041448ad | pnpm overrides — pnpm audit 0건 |
+
+최종 게이트: typecheck 0 에러 · lint 0 에러(경고 4 — admin fetch-on-mount 잔여) · jest 43 스위트 338 테스트 전부 통과 · format:check 통과 · pnpm audit 0건 · i18n parity 100%.
+
 ## 다음 단계 (승인 대기)
 
 1. **R1 즉시 수정 승인** — CI 게이트 복구가 다른 모든 수정의 전제.
