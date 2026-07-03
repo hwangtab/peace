@@ -53,19 +53,41 @@ export default function PostDetailPage({
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [deleting, setDeleting] = useState(false);
 
-  // 조회수 증가 — 세션당 글 1회만(새로고침 인플레이션 방지), 클라이언트에서만 호출.
+  // 조회수 증가 — 세션당 글 1회만(새로고침 인플레이션 방지). 로그인·비로그인 공통으로
+  // 서버 API를 경유한다(anon은 increment_post_view 직접 실행 권한이 없어 조용히 403되므로).
   // 표시값은 로드 시점(post.view_count) 기준이며, 증가분은 다음 방문/새로고침에 반영된다.
   useEffect(() => {
     if (!post || post.status !== 'published') return;
-    const key = `viewed:${post.id}`;
+    const postId = post.id;
+    const key = `viewed:${postId}`;
+    let hadFlag = false;
     try {
       if (sessionStorage.getItem(key)) return;
       sessionStorage.setItem(key, '1');
+      hadFlag = true;
     } catch {
-      // sessionStorage 사용 불가 — 그대로 증가 시도
+      // sessionStorage 사용 불가 — 플래그 없이 그대로 증가 시도.
     }
-    const supabase = createSupabaseBrowserClient();
-    void supabase.rpc('increment_post_view', { p_post_id: post.id });
+    void (async () => {
+      try {
+        const res = await fetch('/api/board/view', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ postId }),
+        });
+        // 호출 실패 시 sessionStorage 플래그를 되돌려 다음 방문에서 재시도되게 한다.
+        if (!res.ok && hadFlag) sessionStorage.removeItem(key);
+      } catch {
+        if (hadFlag) {
+          try {
+            sessionStorage.removeItem(key);
+          } catch {
+            // 복구 실패는 무시.
+          }
+        }
+        console.warn('[board] view count increment failed');
+      }
+    })();
   }, [post]);
 
   // 데이터 소스 장애: '없는 글'(404)이 아니라 '지금 못 불러온 글'임을 구분해 안내한다.
