@@ -18,7 +18,9 @@ export interface ArchiveLoadResult<T> {
 // (또는 CMS→정적 재동기화 스크립트)으로 반영한다. 관리자 CMS 편집은 공개 사이트에
 // 더는 자동 반영되지 않는다. 참조: [[project_supabase_egress]] [[project_gallery_static_ssot]]
 
-export const loadPublishedVideos = async (locale = 'ko'): Promise<ArchiveLoadResult<VideoItem>> => ({
+export const loadPublishedVideos = async (
+  locale = 'ko'
+): Promise<ArchiveLoadResult<VideoItem>> => ({
   source: 'static',
   items: loadLocalizedData<VideoItem>(locale, 'videos.json', { mergeByIdKey: 'id' }),
 });
