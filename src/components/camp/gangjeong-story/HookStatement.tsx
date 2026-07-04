@@ -3,24 +3,8 @@ import { m as motion, useScroll, useTransform, useReducedMotion } from 'framer-m
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import { useIsMobile } from '@/hooks/useIsMobile';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import Container from '@/components/layout/Container';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6 },
-  },
-};
 
 interface Props {
   variant?: 'camp' | 'home';
@@ -28,6 +12,7 @@ interface Props {
 
 const HookStatement: React.FC<Props> = ({ variant = 'camp' }) => {
   const { t } = useTranslation('gangjeong');
+  const { viewport, container, item } = useScrollReveal();
   const sectionRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
   // 모바일에서는 parallax 비활성 — rAF subscribe 가 main thread 차지해 INP 악화.
@@ -65,26 +50,26 @@ const HookStatement: React.FC<Props> = ({ variant = 'camp' }) => {
 
       <Container size="prose" className="relative z-10 py-20 sm:py-28">
         <motion.div
-          variants={containerVariants}
+          variants={container}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-80px' }}
+          viewport={viewport}
           className="text-center"
         >
           <motion.h2
-            variants={itemVariants}
+            variants={item}
             className={`font-partial font-normal text-4xl sm:text-5xl md:text-6xl ${variant === 'home' ? 'text-jeju-sky' : 'text-golden-sun'} mb-3 break-words`}
           >
             {t('hook_headline')}
           </motion.h2>
           <motion.p
-            variants={itemVariants}
+            variants={item}
             className="font-partial font-normal text-xl sm:text-2xl md:text-3xl text-white mb-6 sm:mb-8 break-words text-balance"
           >
             {t('hook_subline')}
           </motion.p>
           <motion.p
-            variants={itemVariants}
+            variants={item}
             className="typo-body text-cloud-white/80 leading-relaxed text-base sm:text-lg"
           >
             {t('hook_intro')}

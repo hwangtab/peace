@@ -2,6 +2,7 @@ import React from 'react';
 import { m as motion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import { useCountUp } from './useCountUp';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
 
@@ -10,6 +11,7 @@ interface StatCardProps {
   suffixKey: string;
   labelKey: string;
   delay?: number;
+  index?: number;
 }
 
 interface VariantColors {
@@ -23,9 +25,11 @@ const StatCard: React.FC<StatCardProps & { colors: VariantColors }> = ({
   suffixKey,
   labelKey,
   delay = 0,
+  index = 0,
   colors,
 }) => {
   const { t } = useTranslation('gangjeong');
+  const { viewport, item, itemTransition } = useScrollReveal();
   const raw = parseInt(t(valueKey), 10);
   const target = isNaN(raw) ? 0 : raw;
   const { ref, displayValue } = useCountUp({ target, duration: 2000, delay });
@@ -33,10 +37,10 @@ const StatCard: React.FC<StatCardProps & { colors: VariantColors }> = ({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
+      initial={item.hidden}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.5, delay: delay / 1000 }}
+      viewport={viewport}
+      transition={itemTransition(index)}
       className="text-center"
     >
       <p
@@ -108,8 +112,8 @@ const ImpactNumbers: React.FC<Props> = ({ variant = 'camp' }) => {
           className={`h-px bg-gradient-to-r from-transparent ${colors.dividerVia} to-transparent mb-10 sm:mb-14`}
         />
         <div className="grid grid-cols-3 gap-6 sm:gap-8">
-          {stats.map((stat) => (
-            <StatCard key={stat.valueKey} {...stat} colors={colors} />
+          {stats.map((stat, i) => (
+            <StatCard key={stat.valueKey} {...stat} index={i} colors={colors} />
           ))}
         </div>
         <div

@@ -2,6 +2,7 @@ import React from 'react';
 import { m as motion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
 
@@ -87,28 +88,13 @@ const nodes: TimelineNode[] = [
   },
 ];
 
-const listVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.08 },
-  },
-};
-
-const nodeVariants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4 },
-  },
-};
-
 interface Props {
   variant?: 'camp' | 'home';
 }
 
 const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
   const { t } = useTranslation('gangjeong');
+  const { viewport, container, item } = useScrollReveal();
   const isHome = variant === 'home';
   const lineGradient = isHome
     ? 'from-ocean-mist/40 via-jeju-ocean/40 to-seafoam/40'
@@ -118,10 +104,10 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
     <Section background={isHome ? 'sky-horizon' : 'white'} paddingTop="loose" paddingBottom="loose">
       <Container size="prose">
         <motion.h3
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.6 }}
+          variants={item}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
           className={`typo-h2 text-center ${isHome ? 'text-jeju-ocean' : 'text-deep-ocean'} mb-12 md:mb-16`}
         >
           {t('timeline_title')}
@@ -141,10 +127,10 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
 
           <motion.ol
             className="relative"
-            variants={listVariants}
+            variants={container}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
+            viewport={viewport}
           >
             {nodes.map((node, i) => {
               const isLeft = i % 2 === 0;
@@ -153,7 +139,7 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
               return (
                 <motion.li
                   key={node.titleKey}
-                  variants={nodeVariants}
+                  variants={item}
                   className="relative mb-8 md:mb-12 last:mb-0"
                 >
                   {/* Mobile layout */}
