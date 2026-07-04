@@ -1,6 +1,7 @@
 import { m as motion, Variants } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import { TimelineEvent } from '@/data/timeline';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 interface TimelineMobileCardProps {
   event: TimelineEvent;
@@ -14,13 +15,14 @@ const TimelineMobileCard: React.FC<TimelineMobileCardProps> = ({
   mobileContentVariants,
 }) => {
   const { t } = useTranslation();
+  const { viewport } = useScrollReveal();
 
   return (
     <motion.div
       variants={mobileContentVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-100px' }}
+      viewport={viewport}
       className="bg-cloud-white rounded-xl p-4 shadow-sm border border-ocean-mist/20 w-full"
     >
       {/* 연도 레이블 - 모바일에서 카드 안에 */}

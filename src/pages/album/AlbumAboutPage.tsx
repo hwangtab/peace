@@ -29,6 +29,7 @@ import {
 } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
 import { useLocalizedResource } from '@/hooks/useLocalizedResource';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 interface AlbumAboutPageProps {
   initialVideos?: VideoItem[];
@@ -48,6 +49,7 @@ const AlbumAboutPage = ({
   initialLocale = 'ko',
 }: AlbumAboutPageProps) => {
   const { t, i18n } = useTranslation(['album', 'translation']);
+  const { container: revealContainer, item: revealItem, viewport } = useScrollReveal();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [selectedMusician, setSelectedMusician] = useState<Musician | null>(null);
@@ -347,15 +349,15 @@ const AlbumAboutPage = ({
 
       <Section background="white" paddingBottom="loose">
         <Container size="wide">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <motion.div
+            className="grid grid-cols-1 lg:grid-cols-2 gap-16"
+            variants={revealContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+          >
             {/* Card 1: Meaning */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="bg-ocean-sand/30 p-10 rounded-3xl"
-            >
+            <motion.div variants={revealItem} className="bg-ocean-sand/30 p-10 rounded-3xl">
               <h2 className="typo-h3 text-jeju-ocean mb-6 flex items-center gap-3">
                 <span className="w-8 h-8 rounded-full bg-golden-sun flex items-center justify-center text-white text-sm">
                   01
@@ -368,13 +370,7 @@ const AlbumAboutPage = ({
             </motion.div>
 
             {/* Card 2: Participants */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-ocean-sand/30 p-10 rounded-3xl"
-            >
+            <motion.div variants={revealItem} className="bg-ocean-sand/30 p-10 rounded-3xl">
               <h2 className="typo-h3 text-jeju-ocean mb-6 flex items-center gap-3">
                 <span className="w-8 h-8 rounded-full bg-jeju-ocean flex items-center justify-center text-white text-sm">
                   02
@@ -385,7 +381,7 @@ const AlbumAboutPage = ({
                 {t('voices_desc')}
               </p>
             </motion.div>
-          </div>
+          </motion.div>
         </Container>
       </Section>
 
@@ -412,10 +408,10 @@ const AlbumAboutPage = ({
 
           {/* Credits Area - Now integrated for cleaner layout with proper spacing */}
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            variants={revealItem}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
             className="mt-16 md:mt-24 pt-16 md:pt-20 pb-20 border-t border-jeju-ocean/10 text-center"
           >
             <p className="text-balance text-coastal-gray font-serif font-bold text-lg break-words">

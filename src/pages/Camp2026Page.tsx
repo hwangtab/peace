@@ -30,6 +30,7 @@ import { getMusicians } from '@/api/musicians';
 import { Musician } from '@/types/musician';
 import { useLocalizedResource } from '@/hooks/useLocalizedResource';
 import { buildCamp2026Schemas } from '@/utils/buildCamp2026Schemas';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 interface CampPageProps {
   initialMusicians?: Musician[];
@@ -44,6 +45,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({
   isPast = false,
 }) => {
   const { t, i18n } = useTranslation();
+  const { item, viewport } = useScrollReveal();
   const camp2026 = useCamp('camp-2026');
   const ordinalLabel = formatOrdinal(3, i18n.language);
   const fetchMusicians = useCallback((locale: string) => getMusicians(locale), []);
@@ -161,12 +163,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({
       {/* Overview Section */}
       <Section background="ocean-sand" paddingBottom="loose">
         <Container size="content">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6 }}
-          >
+          <motion.div variants={item} initial="hidden" whileInView="visible" viewport={viewport}>
             <div className="flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-8 items-stretch min-w-0">
               {/* Poster */}
               {camp2026.fundingUrl && !isPast ? (
@@ -278,10 +275,10 @@ const Camp2026Page: React.FC<CampPageProps> = ({
             <Container size="content">
               <SectionHeader title={t('camp.section_staff')} />
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
-                transition={{ duration: 0.6 }}
+                variants={item}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewport}
                 className="bg-white rounded-lg shadow-sm p-6 sm:p-8"
               >
                 <CampStaff staff={camp2026.staff || []} collaborators={camp2026.collaborators} />
@@ -343,10 +340,10 @@ const Camp2026Page: React.FC<CampPageProps> = ({
             />
             <Container size="content" className="text-center relative z-10">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.6 }}
+                variants={item}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewport}
               >
                 {isPast ? (
                   <>

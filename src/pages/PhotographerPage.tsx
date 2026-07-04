@@ -20,6 +20,7 @@ import {
 } from '@/utils/structuredData';
 import { getFullUrl } from '@/config/env';
 import { GALLERY_CONFIG } from '@/constants/config';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 /**
  * getStaticProps 에서 내려오는 슬림 이미지 타입.
@@ -40,6 +41,7 @@ const FALLBACK_HERO = '/images-webp/camps/2026/kdh-DSC08498.webp';
 
 const PhotographerPage: React.FC<PhotographerPageProps> = ({ slug, images }) => {
   const { t, i18n } = useTranslation();
+  const { item, viewport } = useScrollReveal();
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const name = t(photographerNameKey(slug));
@@ -149,12 +151,7 @@ const PhotographerPage: React.FC<PhotographerPageProps> = ({ slug, images }) => 
 
       <Section background="white" paddingTop="normal" paddingBottom="tight">
         <Container size="content">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.5 }}
-          >
+          <motion.div variants={item} initial="hidden" whileInView="visible" viewport={viewport}>
             <p className="text-xs uppercase tracking-[0.18em] text-jeju-ocean font-bold mb-3">
               {t('gallery.photographers_heading')}
             </p>

@@ -1,6 +1,8 @@
 import React from 'react';
 import { m as motion } from 'framer-motion';
 import { TimelineEvent } from '@/data/timeline';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { REVEAL_DURATION, REVEAL_EASE } from '@/constants/motion';
 
 import TimelineCardContent from './subcomponents/TimelineCardContent';
 import TimelineMobileCard from './subcomponents/TimelineMobileCard';
@@ -24,33 +26,38 @@ const eventTypeBorder = {
   milestone: 'border-sunset-coral',
 };
 
-const containerVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6 },
-  },
-};
-
-const mobileContentVariants = {
-  hidden: { opacity: 0, x: 20 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.6, delay: 0.2 },
-  },
-};
-
 // Memoized component to prevent unnecessary re-renders
 const TimelineItem = React.memo<TimelineItemProps>(({ event, isLeft }) => {
-  // Content variants depend on isLeft, so keep them inside
-  const contentVariants = {
-    hidden: { opacity: 0, x: isLeft ? -20 : 20 },
+  const { viewport, reduce } = useScrollReveal();
+
+  // 타이밍/viewport 는 훅·모션 상수로 통일하되, 타임라인 카드의 의도적인 좌우
+  // 대칭 x축 슬라이드(isLeft 방향성)와 컨테이너 y축 오프셋은 유지한다.
+  // prefers-reduced-motion 이면 x/y 오프셋과 지연을 제거한다(감사 접근성 결함 보완).
+  const containerVariants = {
+    hidden: { opacity: 0, y: reduce ? 0 : 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: REVEAL_DURATION, ease: REVEAL_EASE },
+    },
+  };
+
+  const mobileContentVariants = {
+    hidden: { opacity: 0, x: reduce ? 0 : 20 },
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.6, delay: 0.2 },
+      transition: { duration: REVEAL_DURATION, ease: REVEAL_EASE, delay: reduce ? 0 : 0.2 },
+    },
+  };
+
+  // Content variants depend on isLeft, so keep them inside
+  const contentVariants = {
+    hidden: { opacity: 0, x: reduce ? 0 : isLeft ? -20 : 20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: REVEAL_DURATION, ease: REVEAL_EASE, delay: reduce ? 0 : 0.2 },
     },
   };
 
@@ -59,7 +66,7 @@ const TimelineItem = React.memo<TimelineItemProps>(({ event, isLeft }) => {
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-100px' }}
+      viewport={viewport}
       className="flex items-stretch mb-8 md:mb-16 w-full"
     >
       {/* Left Column (5/12) - Hidden on mobile */}

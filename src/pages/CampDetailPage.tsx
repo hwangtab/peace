@@ -19,6 +19,7 @@ import Button from '@/components/common/Button';
 import { useLocalizedResource } from '@/hooks/useLocalizedResource';
 import { buildCampDetailSchemas } from '@/utils/buildCampDetailSchemas';
 import type { SchemaT } from '@/utils/buildCamp2026Schemas';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 interface CampDetailPageProps {
   campId: string;
@@ -37,6 +38,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
   initialLocale = 'ko',
 }) => {
   const { t, i18n } = useTranslation();
+  const { item, viewport } = useScrollReveal();
   const campList = useCamps();
   const camp = campList.find((c) => c.id === campId);
   const fetchMusicians = useCallback((locale: string) => getMusicians(locale), []);
@@ -103,12 +105,7 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
 
       <Section background="ocean-sand" paddingBottom="loose">
         <Container size="prose">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6 }}
-          >
+          <motion.div variants={item} initial="hidden" whileInView="visible" viewport={viewport}>
             <div className="bg-white rounded-lg shadow-sm p-8 mb-12">
               <SectionHeader title={t('camp.section_overview')} align="left" className="!mb-6" />
               <p className="typo-body mb-4 break-words">{camp.description}</p>
@@ -116,10 +113,10 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
 
             {camp.participants && camp.participants.length > 0 && (
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
-                transition={{ duration: 0.6 }}
+                variants={item}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewport}
                 className="bg-white rounded-lg shadow-sm p-8 mb-8"
               >
                 <SectionHeader title={t('camp.section_musicians')} align="left" className="!mb-6" />
@@ -139,10 +136,10 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
 
             {camp.staff && camp.staff.length > 0 && (
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
-                transition={{ duration: 0.6 }}
+                variants={item}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewport}
                 className="bg-white rounded-lg shadow-sm p-8"
               >
                 <SectionHeader title={t('camp.section_staff')} align="left" className="!mb-6" />

@@ -6,16 +6,6 @@ import type { AssignTable } from '@/data/camp2026Guide';
  * 두 안내 페이지가 동일한 섹션 헤딩·불릿·배정표 스타일을 공유한다.
  * ------------------------------------------------------------------ */
 
-export const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.06 } },
-};
-
-export const itemVariants = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
-
 export const phoneHref = (phone: string) => `tel:${phone.replace(/-/g, '')}`;
 
 export const SectionHeading: React.FC<{ id: string; index: number; title: string }> = ({

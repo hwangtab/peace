@@ -9,6 +9,7 @@ import Container from '@/components/layout/Container';
 import ShareImageCard from '@/components/camp/promote/ShareImageCard';
 import PromoTextBlock from '@/components/camp/promote/PromoTextBlock';
 import { getFullUrl } from '@/config/env';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 interface HowToStep {
   title: string;
@@ -50,18 +51,9 @@ const SHARE_IMAGES = [
   },
 ] as const;
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
-
 const CampPromote2026Page: React.FC<CampPromote2026PageProps> = ({ promoKo, promoEn }) => {
   const { t } = useTranslation(['camp_promote_2026', 'translation']);
+  const { container, item, viewport } = useScrollReveal();
 
   const g = useCallback(
     (key: string, opts?: Record<string, unknown>) => t(`camp_promote_2026.${key}`, opts) as string,
@@ -100,10 +92,10 @@ const CampPromote2026Page: React.FC<CampPromote2026PageProps> = ({ promoKo, prom
         <Container size="prose" className="text-center">
           <motion.p
             className="typo-subtitle text-coastal-gray"
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.5 }}
+            variants={item}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
           >
             {g('intro_lead')}
           </motion.p>
@@ -121,16 +113,16 @@ const CampPromote2026Page: React.FC<CampPromote2026PageProps> = ({ promoKo, prom
           <h2 className="typo-h3 mb-8 text-center text-deep-ocean">{g('howto_title')}</h2>
           <motion.ol
             className="grid grid-cols-1 gap-5 sm:grid-cols-3"
-            variants={containerVariants}
+            variants={container}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
+            viewport={viewport}
           >
             {Array.isArray(steps) &&
               steps.map((step, i) => (
                 <motion.li
                   key={step.title}
-                  variants={itemVariants}
+                  variants={item}
                   className="rounded-xl border border-seafoam/40 bg-white p-5"
                 >
                   <span className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-full bg-jeju-ocean text-base font-bold text-white">
@@ -158,15 +150,15 @@ const CampPromote2026Page: React.FC<CampPromote2026PageProps> = ({ promoKo, prom
           </p>
           <motion.div
             className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
-            variants={containerVariants}
+            variants={container}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
+            viewport={viewport}
           >
             {SHARE_IMAGES.map((img) => {
               const label = g(img.labelKey);
               return (
-                <motion.div key={img.src} variants={itemVariants}>
+                <motion.div key={img.src} variants={item}>
                   <ShareImageCard
                     src={img.src}
                     label={label}
