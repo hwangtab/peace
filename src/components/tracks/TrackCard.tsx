@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Track } from '@/types/track';
 import TrackHeader from './TrackHeader';
 import TrackCredits from './TrackCredits';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const AudioPlayer = dynamic(() => import('./AudioPlayer'), {
   loading: () => <div className="h-20 w-full motion-safe:animate-pulse bg-ocean-sand rounded-lg" />,
@@ -39,6 +40,7 @@ const TrackCard = React.memo(
     priority = false,
   }: TrackCardProps) => {
     const { t } = useTranslation();
+    const { viewport, itemTransition } = useScrollReveal();
     const showContent = alwaysExpanded || isExpanded;
     const [shouldRenderContent, setShouldRenderContent] = React.useState(showContent);
 
@@ -60,7 +62,8 @@ const TrackCard = React.memo(
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-50px' }}
+        viewport={viewport}
+        transition={itemTransition()}
         exit={{ opacity: 0, y: -20 }}
         className="bg-white rounded-xl shadow-md overflow-hidden"
       >

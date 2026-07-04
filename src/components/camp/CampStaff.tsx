@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'next-i18next';
 import { m as motion } from 'framer-motion';
 import { StaffSection } from '@/types/camp';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 interface CampStaffProps {
   staff: StaffSection[];
@@ -10,6 +11,7 @@ interface CampStaffProps {
 
 const CampStaff: React.FC<CampStaffProps> = ({ staff, collaborators }) => {
   const { t } = useTranslation();
+  const { viewport, itemTransition } = useScrollReveal();
   return (
     <div className="space-y-6">
       {/* Staff sections */}
@@ -19,8 +21,8 @@ const CampStaff: React.FC<CampStaffProps> = ({ staff, collaborators }) => {
             key={`${section.role}-${index}`}
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.4, delay: index * 0.05 }}
+            viewport={viewport}
+            transition={itemTransition(index)}
             className="flex items-start gap-2"
           >
             <span className="inline-block w-1.5 h-1.5 rounded-full bg-coastal-gray mt-2 flex-shrink-0" />
@@ -39,8 +41,8 @@ const CampStaff: React.FC<CampStaffProps> = ({ staff, collaborators }) => {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.4 }}
+          viewport={viewport}
+          transition={itemTransition()}
           className="pt-4 border-t border-ocean-sand"
         >
           <h4 className="font-serif font-bold text-base text-coastal-gray mb-3">
@@ -52,8 +54,8 @@ const CampStaff: React.FC<CampStaffProps> = ({ staff, collaborators }) => {
                 key={org}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.4, delay: index * 0.03 }}
+                viewport={viewport}
+                transition={itemTransition(index)}
                 className="flex items-center gap-2"
               >
                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-coastal-gray flex-shrink-0" />

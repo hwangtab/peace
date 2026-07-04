@@ -2,6 +2,7 @@ import React, { useMemo, useCallback } from 'react';
 import { useTranslation } from 'next-i18next';
 import { m as motion } from 'framer-motion';
 import { FilterId } from '@/utils/filtering';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 interface EventFilterProps {
   selectedFilter: FilterId;
@@ -22,6 +23,7 @@ const EventFilter: React.FC<EventFilterProps> = ({
   filterOrder = 'gallery',
 }) => {
   const { t } = useTranslation();
+  const { viewport, itemTransition } = useScrollReveal();
   const filters = useMemo((): FilterItem[] => {
     if (filterOrder === 'press') {
       return [
@@ -63,8 +65,8 @@ const EventFilter: React.FC<EventFilterProps> = ({
       aria-label={t('common.aria_filter')}
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.4 }}
+      viewport={viewport}
+      transition={itemTransition()}
       className="flex flex-wrap gap-2 justify-center mb-8"
     >
       {filters.map((filter) => {

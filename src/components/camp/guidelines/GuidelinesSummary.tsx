@@ -5,19 +5,11 @@ import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
 import SectionHeader from '@/components/common/SectionHeader';
 import Button from '@/components/common/Button';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const GuidelinesSummary: React.FC = () => {
   const { t } = useTranslation('camp_guidelines_2026');
+  const { viewport, container, item } = useScrollReveal();
 
   const topics = t('camp_guidelines_2026.summary_topics', {
     returnObjects: true,
@@ -26,13 +18,8 @@ const GuidelinesSummary: React.FC = () => {
   return (
     <Section background="light-beige" paddingTop="loose" paddingBottom="loose" id="guidelines">
       <Container size="prose">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-80px' }}
-        >
-          <motion.div variants={itemVariants}>
+        <motion.div variants={container} initial="hidden" whileInView="visible" viewport={viewport}>
+          <motion.div variants={item}>
             <SectionHeader
               title={t('camp_guidelines_2026.summary_heading')}
               subtitle={t('camp_guidelines_2026.summary_intro')}
@@ -43,10 +30,7 @@ const GuidelinesSummary: React.FC = () => {
 
           {/* Topic chips */}
           {Array.isArray(topics) && topics.length > 0 && (
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-wrap justify-center gap-2 mb-8"
-            >
+            <motion.div variants={item} className="flex flex-wrap justify-center gap-2 mb-8">
               {topics.map((topic) => (
                 <span
                   key={topic}
@@ -60,7 +44,7 @@ const GuidelinesSummary: React.FC = () => {
 
           {/* Report contacts callout */}
           <motion.div
-            variants={itemVariants}
+            variants={item}
             className="bg-sky-horizon/60 border border-seafoam/40 rounded-xl p-4 sm:p-6 mb-8"
           >
             <p className="text-xs uppercase tracking-wide text-coastal-gray mb-3 font-semibold">
@@ -90,7 +74,7 @@ const GuidelinesSummary: React.FC = () => {
             </div>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="text-center">
+          <motion.div variants={item} className="text-center">
             <Button to="/camps/2026/guidelines" variant="secondary" size="sm">
               {t('camp_guidelines_2026.summary_cta')}
             </Button>

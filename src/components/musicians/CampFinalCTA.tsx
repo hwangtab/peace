@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Button from '../common/Button';
 import Container from '../layout/Container';
 import Section from '../layout/Section';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 interface CampFinalCTAProps {
   musicianId: number;
@@ -22,6 +23,7 @@ export default function CampFinalCTA({
   backLabel,
 }: CampFinalCTAProps) {
   const { t } = useTranslation();
+  const { viewport, itemTransition } = useScrollReveal();
 
   return (
     <>
@@ -57,8 +59,8 @@ export default function CampFinalCTA({
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.6 }}
+            viewport={viewport}
+            transition={itemTransition()}
           >
             <h2 className="typo-h2 text-white mb-4 break-words">{t('camp.cta_final_heading')}</h2>
             <p className="typo-body text-cloud-white/80 mb-6 max-w-lg mx-auto break-words">

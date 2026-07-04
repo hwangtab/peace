@@ -6,6 +6,7 @@ import { Musician } from '@/types/musician';
 import { extractInstagramUsername } from '@/utils/instagram';
 import InstagramIcon from '../icons/InstagramIcon';
 import YouTubeIcon from '../icons/YouTubeIcon';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 interface MusicianCardProps {
   musician: Musician;
@@ -14,14 +15,15 @@ interface MusicianCardProps {
 
 const MusicianCard = memo(({ musician, href }: MusicianCardProps) => {
   const detailHref = href || `/album/musicians/${musician.id}`;
+  const { viewport, itemTransition } = useScrollReveal();
   return (
     <>
       <motion.div
         id={`musician-${musician.id}`}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-50px' }}
-        transition={{ duration: 0.4 }}
+        viewport={viewport}
+        transition={itemTransition()}
         className="transform-gpu h-full scroll-mt-24"
       >
         <div className="group relative bg-white rounded-2xl shadow-lg overflow-hidden h-full flex flex-col">

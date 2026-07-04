@@ -4,6 +4,7 @@ import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import Button from '../../common/Button';
 import { GalleryImage } from '@/types/gallery';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 interface PhotoTabPanelProps {
   albumPhotos: GalleryImage[];
@@ -12,6 +13,7 @@ interface PhotoTabPanelProps {
 
 const PhotoTabPanel: React.FC<PhotoTabPanelProps> = ({ albumPhotos, onImageClick }) => {
   const { t } = useTranslation('album');
+  const { itemTransition } = useScrollReveal();
 
   return (
     <>
@@ -22,7 +24,7 @@ const PhotoTabPanel: React.FC<PhotoTabPanelProps> = ({ albumPhotos, onImageClick
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.4, delay: index * 0.05 }}
+            transition={itemTransition(index)}
             className="aspect-square rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
             role="button"
             aria-label={t('image_alt_concert', { num: index + 1 })}

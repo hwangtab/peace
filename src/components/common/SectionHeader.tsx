@@ -1,6 +1,7 @@
 import React from 'react';
 import { m as motion } from 'framer-motion';
 import classNames from 'classnames';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 interface SectionHeaderProps {
   title: string;
@@ -29,13 +30,14 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
 }) => {
   const displaySubtitle = subtitle || description;
   const TitleTag = titleTag;
+  const { viewport, itemTransition } = useScrollReveal();
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.6 }}
+      viewport={viewport}
+      transition={itemTransition()}
       className={classNames(
         'mb-12 md:mb-16',
         {

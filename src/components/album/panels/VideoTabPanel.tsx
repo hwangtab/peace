@@ -4,6 +4,7 @@ import { useTranslation } from 'next-i18next';
 import Button from '../../common/Button';
 import VideoCard from '../../videos/VideoCard';
 import { VideoItem } from '@/types/video';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 interface VideoTabPanelProps {
   albumVideos: VideoItem[];
@@ -11,6 +12,7 @@ interface VideoTabPanelProps {
 
 const VideoTabPanel: React.FC<VideoTabPanelProps> = ({ albumVideos }) => {
   const { t } = useTranslation();
+  const { itemTransition } = useScrollReveal();
 
   return (
     <>
@@ -20,7 +22,7 @@ const VideoTabPanel: React.FC<VideoTabPanelProps> = ({ albumVideos }) => {
             key={video.id}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            transition={itemTransition(index)}
           >
             <VideoCard video={video} />
           </motion.div>

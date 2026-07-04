@@ -13,6 +13,7 @@ import type { LightboxImage } from '../common/ImageLightbox';
 // 라이트박스는 클릭 시점에만 필요 — 초기 번들에서 분리.
 const ImageLightbox = dynamic(() => import('../common/ImageLightbox'), { ssr: false });
 import { photographersByYear, photographerNameKey } from '@/data/photographers';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 type PaddingLevel = 'none' | 'tight' | 'normal' | 'loose';
 
@@ -29,6 +30,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({
 }) => {
   const { t, i18n } = useTranslation();
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const { viewport, itemTransition } = useScrollReveal();
 
   if (!camp.images || camp.images.length === 0) {
     return null;
@@ -68,8 +70,8 @@ const CampGallery: React.FC<CampGalleryProps> = ({
               key={img}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4 }}
+              viewport={viewport}
+              transition={itemTransition()}
               className="cursor-pointer overflow-hidden rounded-xl shadow-lg relative group aspect-video focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
               role="button"
               aria-label={`${t('common.view_image', { defaultValue: 'View image' })} ${idx + 1}`}

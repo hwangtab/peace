@@ -3,6 +3,7 @@ import { m as motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import { Participant } from '@/types/camp';
 import { Musician } from '@/types/musician';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 // 모달은 클릭 시점에만 필요 — 초기 번들에서 분리해 캠프 페이지 LCP 단축.
 const MusicianModal = dynamic(() => import('../musicians/MusicianModal'), { ssr: false });
@@ -15,6 +16,7 @@ interface CampParticipantsProps {
 const CampParticipants: React.FC<CampParticipantsProps> = ({ participants, musicians }) => {
   const [selectedMusician, setSelectedMusician] = useState<Musician | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { viewport, itemTransition } = useScrollReveal();
 
   const handleParticipantClick = React.useCallback(
     (participant: string | Participant) => {
@@ -54,8 +56,8 @@ const CampParticipants: React.FC<CampParticipantsProps> = ({ participants, music
               key={stableKey}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
+              viewport={viewport}
+              transition={itemTransition(index)}
               className={`flex items-start gap-2 min-w-0 ${clickable ? 'cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded' : ''}`}
               role={clickable ? 'button' : undefined}
               aria-label={clickable ? name : undefined}

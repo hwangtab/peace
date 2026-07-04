@@ -7,6 +7,7 @@ import {
   HiOutlineUserGroup,
 } from '@/components/icons/SiteIcons';
 import Button from '@/components/common/Button';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 export interface Performer {
   name: string;
@@ -31,14 +32,15 @@ interface ConcertCardProps {
 const ConcertCard: React.FC<ConcertCardProps> = React.memo(
   ({ concert, onMusicianClick, index }) => {
     const { t } = useTranslation('album');
+    const { viewport, itemTransition } = useScrollReveal();
 
     return (
       <motion.div
         key={concert.id}
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-50px' }}
-        transition={{ duration: 0.4, delay: Math.min(index * 0.08, 0.4) }}
+        viewport={viewport}
+        transition={itemTransition(index)}
         className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-[box-shadow,border-color] duration-500 border border-ocean-sand flex flex-col"
       >
         {/* Card Header Background Decor */}

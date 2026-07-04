@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { m as motion } from 'framer-motion';
 import { Musician } from '@/types/musician';
 import { TimetableAct } from './types';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 interface TimetableActCardProps {
   act: TimetableAct;
@@ -34,6 +35,7 @@ const TimetableActCard: React.FC<TimetableActCardProps> = ({
   accentTimeClass = 'text-jeju-ocean',
   accentRuleClass = 'bg-coastal-gray/30',
 }) => {
+  const { viewport, itemTransition } = useScrollReveal();
   const musicians = resolveMusicians(act.musicianIds, musicianById);
   const primary = musicians[0];
   const isLinkable = musicians.length === 1 && primary !== undefined;
@@ -43,8 +45,8 @@ const TimetableActCard: React.FC<TimetableActCardProps> = ({
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       whileHover={{ y: -2 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.3, delay: Math.min(index * 0.03, 0.3) }}
+      viewport={viewport}
+      transition={itemTransition(index, 0.3)}
       className="group flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm transition-shadow hover:shadow-lg sm:gap-4"
     >
       <div className="flex w-12 flex-shrink-0 flex-col items-center text-center sm:w-16">

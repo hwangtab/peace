@@ -3,6 +3,7 @@ import { m as motion } from 'framer-motion';
 import { Participant } from '@/types/camp';
 import MusicianCard from '../musicians/MusicianCard';
 import { Musician } from '@/types/musician';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 interface CampLineupProps {
   participants: (string | Participant)[];
@@ -13,6 +14,7 @@ interface CampLineupProps {
 const CampLineup: React.FC<CampLineupProps> = ({ participants, musicians, campYear }) => {
   // 참가자 수십 명 × musicians.find() 가 렌더마다 O(n²) 였다 → id→Musician Map 으로 O(n).
   const musicianById = useMemo(() => new Map(musicians.map((m) => [m.id, m])), [musicians]);
+  const { viewport, itemTransition } = useScrollReveal();
 
   const getParticipantName = (participant: string | Participant) => {
     if (!participant) return '';
@@ -47,8 +49,8 @@ const CampLineup: React.FC<CampLineupProps> = ({ participants, musicians, campYe
             key={`${name}-${index}`}
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.3 }}
+            viewport={viewport}
+            transition={itemTransition()}
             className="flex items-center justify-center text-center h-full min-h-[120px] sm:min-h-[200px] px-4 rounded-2xl border bg-white border-seafoam/40 shadow-lg"
           >
             <span className="font-medium text-coastal-gray text-lg break-words">{name}</span>

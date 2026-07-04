@@ -11,6 +11,7 @@ import {
 } from '@/components/icons/SiteIcons';
 import { SolidarityEvent } from '@/data/solidarity';
 import { Musician } from '@/types/musician';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const MusicianModal = dynamic(() => import('../musicians/MusicianModal'), { ssr: false });
 
@@ -30,6 +31,7 @@ const SolidarityEventFeature: React.FC<Props> = ({
   compact = false,
 }) => {
   const { t } = useTranslation('translation');
+  const { viewport, itemTransition } = useScrollReveal();
   const [selectedMusician, setSelectedMusician] = useState<Musician | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -50,8 +52,8 @@ const SolidarityEventFeature: React.FC<Props> = ({
       <motion.article
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-50px' }}
-        transition={{ duration: 0.5, delay: Math.min(index * 0.1, 0.4) }}
+        viewport={viewport}
+        transition={itemTransition(index)}
         className="bg-white rounded-2xl overflow-hidden shadow-lg border border-ocean-sand"
       >
         {/* 상단: 포스터 + 주요 정보 2단 */}
