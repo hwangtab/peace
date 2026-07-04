@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next';
 import { m as motion, useInView, useReducedMotion } from 'framer-motion';
-import { useRef, useCallback, useState } from 'react';
+import { useRef, useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Button from '../common/Button';
 import Container from '../layout/Container';
@@ -11,15 +11,38 @@ interface HeroSectionProps {
   imageUrl: string;
 }
 
+// 히어로는 사이트에서 가장 눈에 띄는 단일 이미지라, 일시적인 네트워크 실패(약한 모바일
+// 신호 등)로 한 번 실패하면 재시도 없이 그라디언트만 남아 이후로도 색이 돌아오지 않았다.
+// 짧은 지연을 두고 몇 차례 재시도한 뒤에만 최종적으로 포기한다.
+const MAX_IMAGE_RETRIES = 2;
+const RETRY_DELAY_MS = 1500;
+
 const HeroSection = ({ imageUrl }: HeroSectionProps) => {
   const { t } = useTranslation();
   const camp2026 = useCamp('camp-2026');
   const scrollIndicatorRef = useRef(null);
   const isScrollIndicatorInView = useInView(scrollIndicatorRef);
+  const [imageAttempt, setImageAttempt] = useState(0);
   const [imageFailed, setImageFailed] = useState(false);
+  const retryTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const prefersReducedMotion = useReducedMotion();
   const isMobile = useIsMobile();
   const shouldReduceMotion = Boolean(prefersReducedMotion || isMobile);
+
+  useEffect(
+    () => () => {
+      if (retryTimeoutRef.current) clearTimeout(retryTimeoutRef.current);
+    },
+    []
+  );
+
+  const handleImageError = useCallback(() => {
+    if (imageAttempt >= MAX_IMAGE_RETRIES) {
+      setImageFailed(true);
+      return;
+    }
+    retryTimeoutRef.current = setTimeout(() => setImageAttempt((a) => a + 1), RETRY_DELAY_MS);
+  }, [imageAttempt]);
 
   const handleScrollToAbout = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
@@ -38,6 +61,7 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
           aria-hidden="true"
         >
           <Image
+            key={imageAttempt}
             src={imageUrl}
             alt={t('home.hero.image_alt')}
             fill
@@ -46,7 +70,7 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
             quality={60}
             priority
             fetchPriority="high"
-            onError={() => setImageFailed(true)}
+            onError={handleImageError}
           />
         </motion.div>
       )}
