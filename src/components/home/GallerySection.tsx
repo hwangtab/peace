@@ -12,6 +12,7 @@ import { getPhotographersForFilter, photographerNameKey } from '@/data/photograp
 import Section from '../layout/Section';
 import Container from '../layout/Container';
 import SectionHeader from '../common/SectionHeader';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import dynamic from 'next/dynamic';
 import type { LightboxImage } from '../common/ImageLightbox';
 // 라이트박스는 클릭 시점에만 필요 — 초기 번들에서 분리.
@@ -44,6 +45,7 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
     priorityFirstImages = true,
   }) => {
     const { t, i18n } = useTranslation();
+    const { viewport, item } = useScrollReveal();
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
     const { filteredImages, selectedFilter, setSelectedFilter } = useGalleryImages(
@@ -124,12 +126,7 @@ const GallerySection: React.FC<GallerySectionProps> = React.memo(
           />
         )}
 
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.5 }}
-        >
+        <motion.div variants={item} initial="hidden" whileInView="visible" viewport={viewport}>
           <EventFilter
             selectedFilter={selectedFilter}
             onFilterChange={setSelectedFilter}

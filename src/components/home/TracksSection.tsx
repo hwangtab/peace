@@ -13,6 +13,7 @@ import SectionHeader from '../common/SectionHeader';
 import { config } from '@/config/env';
 import { useLocalizedResource } from '@/hooks/useLocalizedResource';
 import { buildTrackMusicianRelation } from '@/utils/trackMusician';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 interface TracksSectionProps {
   enableSectionWrapper?: boolean;
@@ -31,6 +32,7 @@ const TracksSection: React.FC<TracksSectionProps> = React.memo(
     initialLocale = 'ko',
   }) => {
     const { t, i18n } = useTranslation();
+    const { viewport, item } = useScrollReveal();
 
     const [expandedTrackId, setExpandedTrackId] = useState<number | null>(null);
     const [playingTrackId, setPlayingTrackId] = useState<number | null>(null);
@@ -112,10 +114,10 @@ const TracksSection: React.FC<TracksSectionProps> = React.memo(
         )}
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.6 }}
+          variants={item}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
           className="text-center mt-16"
         >
           <Button href={config.smartstoreUrl} variant="primary" size="lg" external>

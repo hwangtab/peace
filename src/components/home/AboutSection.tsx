@@ -5,41 +5,26 @@ import { useTranslation, Trans } from 'next-i18next';
 import Section from '../layout/Section';
 import Container from '../layout/Container';
 import SectionHeader from '../common/SectionHeader';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.2 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6 },
-  },
-};
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const AboutSection = () => {
   const { t } = useTranslation();
+  const { viewport, container, item } = useScrollReveal();
 
   return (
     <Section id="about" background="sky-horizon" paddingBottom="loose">
       <Container size="content">
         <motion.div
-          variants={containerVariants}
+          variants={container}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={viewport}
           className="text-center"
         >
           <SectionHeader title={t('about.title')} subtitle={t('about.subtitle')} />
 
           <motion.div
-            variants={itemVariants}
+            variants={item}
             className="space-y-8 text-base sm:text-lg text-coastal-gray leading-relaxed"
           >
             <p className="text-balance">
@@ -65,7 +50,7 @@ const AboutSection = () => {
 
           <div className="grid md:grid-cols-2 gap-6 mt-12 text-start">
             <motion.div
-              variants={itemVariants}
+              variants={item}
               className="bg-ocean-sand/30 p-6 rounded-2xl hover:bg-ocean-sand/50 transition-colors duration-300 flex flex-col"
             >
               <h3 className="typo-h3 mb-4">{t('about.card1.title')}</h3>
@@ -87,7 +72,7 @@ const AboutSection = () => {
             </motion.div>
 
             <motion.div
-              variants={itemVariants}
+              variants={item}
               className="bg-ocean-sand/30 p-6 rounded-2xl hover:bg-ocean-sand/50 transition-colors duration-300 flex flex-col"
             >
               <h3 className="typo-h3 mb-4">{t('about.card2.title')}</h3>
