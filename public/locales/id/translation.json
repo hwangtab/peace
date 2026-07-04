@@ -102,7 +102,8 @@
     "track": "Lagu",
     "view_image": "Lihat gambar",
     "no_results": "Tidak ada hasil ditemukan.",
-    "video_unavailable": "Video tidak tersedia"
+    "video_unavailable": "Video tidak tersedia",
+    "audio_unavailable": "Tidak dapat memutar audio"
   },
   "timetable": {
     "title": "Jadwal",

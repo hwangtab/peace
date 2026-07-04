@@ -102,7 +102,8 @@
     "track": "Piste",
     "view_image": "Voir l'image",
     "no_results": "Aucun résultat trouvé.",
-    "video_unavailable": "Vidéo indisponible"
+    "video_unavailable": "Vidéo indisponible",
+    "audio_unavailable": "Impossible de lire l’audio"
   },
   "timetable": {
     "title": "Programme",

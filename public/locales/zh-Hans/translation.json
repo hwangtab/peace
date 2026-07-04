@@ -102,7 +102,8 @@
     "track": "曲目",
     "view_image": "查看图片",
     "no_results": "未找到结果。",
-    "video_unavailable": "视频不可用"
+    "video_unavailable": "视频不可用",
+    "audio_unavailable": "无法播放音频"
   },
   "timetable": {
     "title": "演出时刻表",

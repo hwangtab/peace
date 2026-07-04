@@ -10,9 +10,11 @@ const mockOff = jest.fn();
 const mockDuration = jest.fn().mockReturnValue(180);
 
 let capturedCallbacks: Record<string, ((...args: unknown[]) => void)[]> = {};
+let capturedOptions: Record<string, unknown> = {};
 
 const MockHowl = jest.fn().mockImplementation((options: Record<string, unknown>) => {
   capturedCallbacks = {};
+  capturedOptions = options;
   const instance = {
     play: mockPlay,
     pause: mockPause,
@@ -47,6 +49,43 @@ describe('useAudioPlayer', () => {
     mockDuration.mockReturnValue(180);
     mockSeek.mockReturnValue(0);
     capturedCallbacks = {};
+    capturedOptions = {};
+  });
+
+  describe('재생 실패 시 부모로 종료 전파 + error 노출', () => {
+    it('onloaderror → error 설정, stop 호출, onEnded 전파', async () => {
+      const onEnded = jest.fn();
+      const { result } = renderHook(() =>
+        useAudioPlayer({ audioUrl: 'http://example.com/track.mp3', isPlaying: true, onEnded })
+      );
+      await act(async () => {
+        await Promise.resolve();
+        await Promise.resolve();
+      });
+      act(() => {
+        (capturedOptions.onloaderror as (id: number, msg: unknown) => void)(1, 'decode error');
+      });
+      expect(result.current.error).toBe('decode error');
+      expect(mockStop).toHaveBeenCalled();
+      expect(onEnded).toHaveBeenCalledTimes(1);
+    });
+
+    it('onplayerror → error 설정, stop 호출, onEnded 전파', async () => {
+      const onEnded = jest.fn();
+      const { result } = renderHook(() =>
+        useAudioPlayer({ audioUrl: 'http://example.com/track.mp3', isPlaying: true, onEnded })
+      );
+      await act(async () => {
+        await Promise.resolve();
+        await Promise.resolve();
+      });
+      act(() => {
+        (capturedOptions.onplayerror as (id: number, msg: unknown) => void)(1, 'autoplay blocked');
+      });
+      expect(result.current.error).toBe('autoplay blocked');
+      expect(mockStop).toHaveBeenCalled();
+      expect(onEnded).toHaveBeenCalledTimes(1);
+    });
   });
 
   it('초기 상태: progress=0, duration=0, error=null', () => {

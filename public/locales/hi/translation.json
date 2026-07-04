@@ -102,7 +102,8 @@
     "track": "ट्रैक",
     "view_image": "छवि देखें",
     "no_results": "कोई परिणाम नहीं मिला।",
-    "video_unavailable": "वीडियो उपलब्ध नहीं है"
+    "video_unavailable": "वीडियो उपलब्ध नहीं है",
+    "audio_unavailable": "ऑडियो चलाने में असमर्थ"
   },
   "timetable": {
     "title": "टाइमटेबल",

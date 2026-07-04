@@ -102,7 +102,8 @@
     "track": "収録曲",
     "view_image": "画像を見る",
     "no_results": "結果が見つかりません。",
-    "video_unavailable": "動画を利用できません"
+    "video_unavailable": "動画を利用できません",
+    "audio_unavailable": "音声を再生できません"
   },
   "timetable": {
     "title": "タイムテーブル",

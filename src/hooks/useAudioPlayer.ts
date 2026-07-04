@@ -90,12 +90,18 @@ export const useAudioPlayer = ({
           isLoadedRef.current = false;
           setError(String(msg || 'Failed to load audio'));
           newSound.stop();
+          // 재생 실패 = 재생 종료. 부모(TracksSection)의 playingTrackId 를
+          // 리셋해 "재생 중" 아이콘이 고정되지 않도록 onend 와 동일하게 전파.
+          onEndedRef.current?.();
         },
         onplayerror: (_id: number, msg: unknown) => {
           if (cancelled || previousUrlRef.current !== audioUrl) return;
           console.warn('Audio play error:', msg);
           setError(String(msg || 'Failed to play audio'));
           newSound.stop();
+          // 재생 실패 = 재생 종료. 부모(TracksSection)의 playingTrackId 를
+          // 리셋해 "재생 중" 아이콘이 고정되지 않도록 onend 와 동일하게 전파.
+          onEndedRef.current?.();
         },
       });
       soundRef.current = newSound;

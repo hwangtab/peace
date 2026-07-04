@@ -15,7 +15,7 @@ interface AudioPlayerProps {
 const AudioPlayer = React.memo(
   ({ audioUrl, isPlaying, onPlayPause, onEnded, title, artist }: AudioPlayerProps) => {
     const { t } = useTranslation();
-    const { progress, duration, getProgressPercent, handleSeek, seekToPercent, formatTime } =
+    const { progress, duration, error, getProgressPercent, handleSeek, seekToPercent, formatTime } =
       useAudioPlayer({ audioUrl, isPlaying, onEnded });
 
     return (
@@ -108,6 +108,13 @@ const AudioPlayer = React.memo(
             style={{ width: `${getProgressPercent()}%` }}
           />
         </div>
+
+        {/* 재생 실패 안내 — onloaderror/onplayerror 발생 시 사용자에게 피드백 */}
+        {error && (
+          <p className="mt-2 text-xs text-red-600" role="alert">
+            {t('common.audio_unavailable')}
+          </p>
+        )}
       </div>
     );
   }

@@ -102,7 +102,8 @@
     "track": "مسار",
     "view_image": "عرض الصورة",
     "no_results": "لم يتم العثور على نتائج.",
-    "video_unavailable": "الفيديو غير متاح"
+    "video_unavailable": "الفيديو غير متاح",
+    "audio_unavailable": "تعذّر تشغيل الصوت"
   },
   "timetable": {
     "title": "الجدول الزمني",
