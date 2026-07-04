@@ -76,6 +76,17 @@ Hero와 동일한 결함이 이번 세션의 이전 감사(R6)에서 onError 처
 - **근본 수정**: 뷰포트가 nav 브레이크포인트(1280px)를 넘나들 때 모든 열림 상태를 초기화하는
   리스너(`matchMedia` 또는 `useIsMobile`류) 추가.
 
+## 수정 결과 (2026-07-04 완료)
+
+| 클러스터 | 커밋 | 비고 |
+| -------- | ---- | ---- |
+| R11 | 048a349e | AdminCollectionPage 6개 함수 + whitepaper 저장 + ContactsPanel 2개 함수를 try/finally로 감쌈. 기존 selectedIdRef 경쟁조건 가드·confirmIfDirty 순서 보존 확인 |
+| R12 | c8d47eec | HeroSection과 동일한 재시도 패턴(1.5초 간격 최대 2회) 이식 |
+| R13 | 308e57f2 | onloaderror/onplayerror에 onEndedRef 호출 추가 + 버려지던 error를 13로케일 안내로 노출 |
+| R14 | f55d500c | matchMedia(1280px) change 시점에 메뉴/드롭다운 열림 상태 전부 초기화 |
+
+최종 게이트: typecheck 0 에러 · lint 0 에러(기존 경고 그대로) · jest 47 스위트 353 테스트 전부 통과(신규 테스트 4개 파일 포함) · format:check 통과.
+
 ## 커버리지 공백
 
 - 관리자 라우트는 로그인 세션이 필요해 실제 네트워크 차단까지는 재현하지 못하고 코드 분석
