@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import { GalleryImage } from '@/types/gallery';
@@ -13,6 +13,12 @@ interface GalleryImageItemProps {
   onClick: (image: GalleryImageLike) => void;
 }
 
+// 일시적인 네트워크 실패(약한 모바일 신호 등)로 onError가 한 번 터지면 재시도 없이
+// 영구히 깨진-이미지 표시로 고착되던 구조적 결함을 막는다. 짧은 지연을 두고 몇 차례
+// remount로 재시도한 뒤에만 최종적으로 대체 표시로 포기한다.
+const MAX_IMAGE_RETRIES = 2;
+const RETRY_DELAY_MS = 1500;
+
 const GalleryImageItem = React.memo(
   ({ image, priority = false, onClick }: GalleryImageItemProps) => {
     const { t } = useTranslation();
@@ -20,6 +26,24 @@ const GalleryImageItem = React.memo(
     const [isLoaded, setIsLoaded] = useState(false);
     // 이미지 로드 실패(404 등) 시 스켈레톤 펄스를 멈추고 중립 대체 표시로 전환한다.
     const [hasError, setHasError] = useState(false);
+    // 재시도 횟수 — 값이 바뀔 때마다 <Image>가 remount되어 새 네트워크 요청을 유발한다.
+    const [imageAttempt, setImageAttempt] = useState(0);
+    const retryTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+    useEffect(
+      () => () => {
+        if (retryTimeoutRef.current) clearTimeout(retryTimeoutRef.current);
+      },
+      []
+    );
+
+    const handleImageError = useCallback(() => {
+      if (imageAttempt >= MAX_IMAGE_RETRIES) {
+        setHasError(true);
+        return;
+      }
+      retryTimeoutRef.current = setTimeout(() => setImageAttempt((a) => a + 1), RETRY_DELAY_MS);
+    }, [imageAttempt]);
     const eventLabel =
       image.eventType === 'camp'
         ? t('gallery.alt_camp', { year: image.eventYear })
@@ -76,6 +100,7 @@ const GalleryImageItem = React.memo(
             </div>
           ) : (
             <Image
+              key={imageAttempt}
               src={image.url}
               alt={altText}
               fill
@@ -87,7 +112,7 @@ const GalleryImageItem = React.memo(
               priority={priority}
               {...(!priority && { loading: 'lazy' })}
               onLoad={() => setIsLoaded(true)}
-              onError={() => setHasError(true)}
+              onError={handleImageError}
             />
           )}
 
