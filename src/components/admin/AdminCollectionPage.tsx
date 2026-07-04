@@ -304,26 +304,32 @@ export default function AdminCollectionPage({
     setIsLoadingMore(true);
     setError('');
 
-    const params = buildListParams(nextOffset, ADMIN_COLLECTION_PAGE_SIZE);
-    const response = await fetch(`/api/admin/archive/${config.collection}?${params.toString()}`);
-    const payload = (await response.json()) as {
-      items?: AdminCollectionRow[];
-      error?: string;
-      totalCount?: number;
-      nextOffset?: number;
-      hasMore?: boolean;
-    };
+    try {
+      const params = buildListParams(nextOffset, ADMIN_COLLECTION_PAGE_SIZE);
+      const response = await fetch(`/api/admin/archive/${config.collection}?${params.toString()}`);
+      const payload = (await response.json()) as {
+        items?: AdminCollectionRow[];
+        error?: string;
+        totalCount?: number;
+        nextOffset?: number;
+        hasMore?: boolean;
+      };
 
-    setIsLoadingMore(false);
-    if (!response.ok || !payload.items) {
-      setError(payload.error || '목록을 더 불러오지 못했습니다.');
-      return;
+      if (!response.ok || !payload.items) {
+        setError(payload.error || '목록을 더 불러오지 못했습니다.');
+        return;
+      }
+
+      setItems((prev) => mergeAdminRowsById(prev, payload.items!));
+      setTotalCount(payload.totalCount ?? totalCount);
+      setNextOffset(payload.nextOffset ?? nextOffset + payload.items.length);
+      setHasMore(payload.hasMore ?? false);
+    } catch (err) {
+      // 네트워크 단절·비-JSON 응답 등으로 예외가 나도 로딩 상태가 고착되지 않게 한다.
+      setError(err instanceof Error ? err.message : '목록을 더 불러오지 못했습니다.');
+    } finally {
+      setIsLoadingMore(false);
     }
-
-    setItems((prev) => mergeAdminRowsById(prev, payload.items!));
-    setTotalCount(payload.totalCount ?? totalCount);
-    setNextOffset(payload.nextOffset ?? nextOffset + payload.items.length);
-    setHasMore(payload.hasMore ?? false);
   };
 
   const loadAll = async () => {
@@ -336,34 +342,41 @@ export default function AdminCollectionPage({
     let total = totalCount;
     const collected: AdminCollectionRow[] = [];
 
-    while (keepLoading) {
-      const params = buildListParams(offset, ADMIN_COLLECTION_PAGE_SIZE);
-      const response = await fetch(`/api/admin/archive/${config.collection}?${params.toString()}`);
-      const payload = (await response.json()) as {
-        items?: AdminCollectionRow[];
-        error?: string;
-        totalCount?: number;
-        nextOffset?: number;
-        hasMore?: boolean;
-      };
+    try {
+      while (keepLoading) {
+        const params = buildListParams(offset, ADMIN_COLLECTION_PAGE_SIZE);
+        const response = await fetch(
+          `/api/admin/archive/${config.collection}?${params.toString()}`
+        );
+        const payload = (await response.json()) as {
+          items?: AdminCollectionRow[];
+          error?: string;
+          totalCount?: number;
+          nextOffset?: number;
+          hasMore?: boolean;
+        };
 
-      if (!response.ok || !payload.items) {
-        setIsLoadingAll(false);
-        setError(payload.error || '전체 목록을 불러오지 못했습니다.');
-        return;
+        if (!response.ok || !payload.items) {
+          setError(payload.error || '전체 목록을 불러오지 못했습니다.');
+          return;
+        }
+
+        collected.push(...payload.items);
+        total = payload.totalCount ?? total;
+        offset = payload.nextOffset ?? offset + payload.items.length;
+        keepLoading = payload.hasMore ?? false;
       }
 
-      collected.push(...payload.items);
-      total = payload.totalCount ?? total;
-      offset = payload.nextOffset ?? offset + payload.items.length;
-      keepLoading = payload.hasMore ?? false;
+      setItems((prev) => mergeAdminRowsById(prev, collected));
+      setTotalCount(total);
+      setNextOffset(offset);
+      setHasMore(false);
+    } catch (err) {
+      // 반복 fetch 중 어느 회차에서든 예외가 나도 로딩 상태가 고착되지 않게 한다.
+      setError(err instanceof Error ? err.message : '전체 목록을 불러오지 못했습니다.');
+    } finally {
+      setIsLoadingAll(false);
     }
-
-    setItems((prev) => mergeAdminRowsById(prev, collected));
-    setTotalCount(total);
-    setNextOffset(offset);
-    setHasMore(false);
-    setIsLoadingAll(false);
   };
 
   const changeLocale = async (nextLocale: string) => {
@@ -437,42 +450,48 @@ export default function AdminCollectionPage({
     setMessage('');
     setError('');
 
-    const response = await fetch(`/api/admin/archive/${config.collection}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form),
-    });
-    const payload = (await response.json()) as {
-      item?: AdminCollectionRow;
-      error?: string;
-      changeLogError?: string | null;
-    };
+    try {
+      const response = await fetch(`/api/admin/archive/${config.collection}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const payload = (await response.json()) as {
+        item?: AdminCollectionRow;
+        error?: string;
+        changeLogError?: string | null;
+      };
 
-    setIsSaving(false);
-    if (!response.ok || !payload.item) {
-      setError(payload.error || '저장하지 못했습니다.');
-      return;
-    }
-
-    const wasExisting = Boolean(form.id);
-    setMessage(
-      payload.changeLogError
-        ? `저장했습니다. 변경 이력 기록 실패: ${payload.changeLogError}`
-        : '저장했습니다.'
-    );
-    // 저장 요청 도중 다른 항목으로 이동했다면 선택·폼을 덮어쓰지 않는다(입력 소실 방지).
-    if (selectedIdRef.current === targetId) {
-      setSelected(payload.item);
-      // loadForm이 pristine 원본도 함께 갱신하므로 저장 성공 시 dirty가 해제된다.
-      loadForm(payload.item);
-    }
-    await refreshItems(payload.item.id);
-    if (wasExisting && selectedIdRef.current === targetId) {
-      try {
-        await refreshLocaleStatuses(payload.item.id);
-      } catch {
-        // 언어 상태 갱신 실패는 저장 성공 메시지를 덮어쓰지 않음
+      if (!response.ok || !payload.item) {
+        setError(payload.error || '저장하지 못했습니다.');
+        return;
       }
+
+      const wasExisting = Boolean(form.id);
+      setMessage(
+        payload.changeLogError
+          ? `저장했습니다. 변경 이력 기록 실패: ${payload.changeLogError}`
+          : '저장했습니다.'
+      );
+      // 저장 요청 도중 다른 항목으로 이동했다면 선택·폼을 덮어쓰지 않는다(입력 소실 방지).
+      if (selectedIdRef.current === targetId) {
+        setSelected(payload.item);
+        // loadForm이 pristine 원본도 함께 갱신하므로 저장 성공 시 dirty가 해제된다.
+        loadForm(payload.item);
+      }
+      await refreshItems(payload.item.id);
+      if (wasExisting && selectedIdRef.current === targetId) {
+        try {
+          await refreshLocaleStatuses(payload.item.id);
+        } catch {
+          // 언어 상태 갱신 실패는 저장 성공 메시지를 덮어쓰지 않음
+        }
+      }
+    } catch (err) {
+      // 네트워크 단절·비-JSON 응답 등으로 예외가 나도 버튼이 '저장 중'에 고착되지 않게 한다.
+      setError(err instanceof Error ? err.message : '저장하지 못했습니다.');
+    } finally {
+      setIsSaving(false);
     }
   };
 
@@ -482,23 +501,32 @@ export default function AdminCollectionPage({
     setMessage('');
     setError('');
 
-    const response = await fetch(`/api/admin/archive/${config.collection}?id=${selected.id}`, {
-      method: 'DELETE',
-    });
-    const payload = (await response.json()) as { error?: string; changeLogError?: string | null };
+    try {
+      const response = await fetch(`/api/admin/archive/${config.collection}?id=${selected.id}`, {
+        method: 'DELETE',
+      });
+      const payload = (await response.json()) as {
+        error?: string;
+        changeLogError?: string | null;
+      };
 
-    setIsSaving(false);
-    if (!response.ok) {
-      setError(payload.error || '내리지 못했습니다.');
-      return;
+      if (!response.ok) {
+        setError(payload.error || '내리지 못했습니다.');
+        return;
+      }
+
+      setMessage(
+        payload.changeLogError
+          ? `공개 목록에서 내렸습니다. 변경 이력 기록 실패: ${payload.changeLogError}`
+          : '공개 목록에서 내렸습니다.'
+      );
+      await refreshItems(selected.id);
+    } catch (err) {
+      // 네트워크 단절·비-JSON 응답 등으로 예외가 나도 버튼이 고착되지 않게 한다.
+      setError(err instanceof Error ? err.message : '내리지 못했습니다.');
+    } finally {
+      setIsSaving(false);
     }
-
-    setMessage(
-      payload.changeLogError
-        ? `공개 목록에서 내렸습니다. 변경 이력 기록 실패: ${payload.changeLogError}`
-        : '공개 목록에서 내렸습니다.'
-    );
-    await refreshItems(selected.id);
   };
 
   const cloneSelectedToLocale = async () => {
@@ -507,35 +535,41 @@ export default function AdminCollectionPage({
     setMessage('');
     setError('');
 
-    const response = await fetch(`/api/admin/archive/${config.collection}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(prepareAdminLocaleClonePayload(config, selected, cloneLocale)),
-    });
-    const payload = (await response.json()) as {
-      item?: AdminCollectionRow;
-      error?: string;
-      changeLogError?: string | null;
-    };
+    try {
+      const response = await fetch(`/api/admin/archive/${config.collection}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(prepareAdminLocaleClonePayload(config, selected, cloneLocale)),
+      });
+      const payload = (await response.json()) as {
+        item?: AdminCollectionRow;
+        error?: string;
+        changeLogError?: string | null;
+      };
 
-    setIsSaving(false);
-    if (!response.ok || !payload.item) {
-      setError(payload.error || '다른 언어 초안을 만들지 못했습니다.');
-      return;
-    }
+      if (!response.ok || !payload.item) {
+        setError(payload.error || '다른 언어 초안을 만들지 못했습니다.');
+        return;
+      }
 
-    // 복제 성공 후의 이동은 router.push 리마운트라 편집 중 폼이 소실된다.
-    // 이동 "직전"에 확인해야 bypass가 곧바로 소비된다(요청 실패 시 무장 잔류 방지).
-    // 취소하면 초안은 만들어진 채 현재 편집을 유지한다.
-    if (!confirmIfDirty()) {
-      setMessage('다른 언어 초안을 만들었습니다. 이동을 취소해 현재 편집을 유지합니다.');
-      return;
+      // 복제 성공 후의 이동은 router.push 리마운트라 편집 중 폼이 소실된다.
+      // 이동 "직전"에 확인해야 bypass가 곧바로 소비된다(요청 실패 시 무장 잔류 방지).
+      // 취소하면 초안은 만들어진 채 현재 편집을 유지한다.
+      if (!confirmIfDirty()) {
+        setMessage('다른 언어 초안을 만들었습니다. 이동을 취소해 현재 편집을 유지합니다.');
+        return;
+      }
+      // 복제 후 이동 시에도 현재 유형/연도 필터를 유지한다(changeLocale과 동일).
+      const params = new URLSearchParams({ locale: cloneLocale });
+      if (selectedType) params.set('type', selectedType);
+      if (selectedYear) params.set('year', selectedYear);
+      await router.push(`${config.listPath}?${params.toString()}`);
+    } catch (err) {
+      // 네트워크 단절·비-JSON 응답 등으로 예외가 나도 버튼이 고착되지 않게 한다.
+      setError(err instanceof Error ? err.message : '다른 언어 초안을 만들지 못했습니다.');
+    } finally {
+      setIsSaving(false);
     }
-    // 복제 후 이동 시에도 현재 유형/연도 필터를 유지한다(changeLocale과 동일).
-    const params = new URLSearchParams({ locale: cloneLocale });
-    if (selectedType) params.set('type', selectedType);
-    if (selectedYear) params.set('year', selectedYear);
-    await router.push(`${config.listPath}?${params.toString()}`);
   };
 
   const refreshLocaleStatuses = async (itemId: string) => {
@@ -561,28 +595,33 @@ export default function AdminCollectionPage({
     setMessage('');
     setError('');
 
-    for (const payload of payloads) {
-      const response = await fetch(`/api/admin/archive/${config.collection}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      const result = (await response.json()) as { item?: AdminCollectionRow; error?: string };
-      if (!response.ok || !result.item) {
-        setIsSaving(false);
-        setError(result.error || '없는 언어 초안을 만들지 못했습니다.');
-        return;
-      }
-    }
-
-    setIsSaving(false);
-    setMessage(`없는 언어 초안 ${payloads.length}개를 만들었습니다.`);
-    // 복제 도중 다른 항목으로 이동했다면 그 항목의 언어 상태 패널을 덮어쓰지 않는다.
-    if (selectedIdRef.current !== targetId) return;
     try {
-      await refreshLocaleStatuses(targetId);
-    } catch (error) {
-      setError(error instanceof Error ? error.message : '언어 상태를 다시 불러오지 못했습니다.');
+      for (const payload of payloads) {
+        const response = await fetch(`/api/admin/archive/${config.collection}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const result = (await response.json()) as { item?: AdminCollectionRow; error?: string };
+        if (!response.ok || !result.item) {
+          setError(result.error || '없는 언어 초안을 만들지 못했습니다.');
+          return;
+        }
+      }
+
+      setMessage(`없는 언어 초안 ${payloads.length}개를 만들었습니다.`);
+      // 복제 도중 다른 항목으로 이동했다면 그 항목의 언어 상태 패널을 덮어쓰지 않는다.
+      if (selectedIdRef.current !== targetId) return;
+      try {
+        await refreshLocaleStatuses(targetId);
+      } catch (error) {
+        setError(error instanceof Error ? error.message : '언어 상태를 다시 불러오지 못했습니다.');
+      }
+    } catch (err) {
+      // 반복 fetch 중 어느 회차에서든 예외가 나도 버튼이 고착되지 않게 한다.
+      setError(err instanceof Error ? err.message : '없는 언어 초안을 만들지 못했습니다.');
+    } finally {
+      setIsSaving(false);
     }
   };
 

@@ -92,22 +92,28 @@ function WhitepaperEditor({
     setMessage('');
     setError('');
 
-    const response = await fetch(`/api/admin/documents/${whitepaperSlug(selectedYear)}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title, body_md: body }),
-    });
-    const payload = (await response.json()) as { document?: AdminDocument; error?: string };
+    try {
+      const response = await fetch(`/api/admin/documents/${whitepaperSlug(selectedYear)}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title, body_md: body }),
+      });
+      const payload = (await response.json()) as { document?: AdminDocument; error?: string };
 
-    setIsSaving(false);
-    if (!response.ok || !payload.document) {
-      setError(payload.error || '저장하지 못했습니다.');
-      return;
+      if (!response.ok || !payload.document) {
+        setError(payload.error || '저장하지 못했습니다.');
+        return;
+      }
+
+      setDocument(payload.document);
+      setIsEditing(false);
+      setMessage('저장했습니다.');
+    } catch (err) {
+      // 네트워크 단절·비-JSON 응답 등으로 예외가 나도 버튼이 '저장 중'에 고착되지 않게 한다.
+      setError(err instanceof Error ? err.message : '저장하지 못했습니다.');
+    } finally {
+      setIsSaving(false);
     }
-
-    setDocument(payload.document);
-    setIsEditing(false);
-    setMessage('저장했습니다.');
   };
 
   return (

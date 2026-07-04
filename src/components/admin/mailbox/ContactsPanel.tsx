@@ -45,15 +45,24 @@ export default function ContactsPanel({ canEdit }: { canEdit: boolean }) {
   }) => {
     setBusy(true);
     setError('');
-    const res = await fetch('/api/admin/mail-contacts', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form),
-    });
-    const data = await res.json();
-    setBusy(false);
-    if (!res.ok) return setError(data.error ?? '추가 실패');
-    await load();
+    try {
+      const res = await fetch('/api/admin/mail-contacts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error ?? '추가 실패');
+        return;
+      }
+      await load();
+    } catch {
+      // 네트워크 단절·비-JSON 응답 등으로 예외가 나도 버튼이 고착되지 않게 한다.
+      setError('추가 실패');
+    } finally {
+      setBusy(false);
+    }
   };
 
   const toggleActive = async (c: MailContact) => {
@@ -83,18 +92,27 @@ export default function ContactsPanel({ canEdit }: { canEdit: boolean }) {
     setBusy(true);
     setError('');
     setMessage('');
-    const res = await fetch('/api/admin/mail-contacts/import', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ csv }),
-    });
-    const data = await res.json();
-    setBusy(false);
-    if (!res.ok) return setError(data.error ?? '임포트 실패');
-    setMessage(
-      `추가 ${data.inserted}건, 중복 ${data.skipped}건, 오류 ${data.errors?.length ?? 0}건`
-    );
-    await load();
+    try {
+      const res = await fetch('/api/admin/mail-contacts/import', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ csv }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error ?? '임포트 실패');
+        return;
+      }
+      setMessage(
+        `추가 ${data.inserted}건, 중복 ${data.skipped}건, 오류 ${data.errors?.length ?? 0}건`
+      );
+      await load();
+    } catch {
+      // 네트워크 단절·비-JSON 응답 등으로 예외가 나도 버튼이 고착되지 않게 한다.
+      setError('임포트 실패');
+    } finally {
+      setBusy(false);
+    }
   };
 
   return (
