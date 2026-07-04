@@ -6,6 +6,10 @@ import { useHydrated } from '@/hooks/useHydrated';
 
 export type NavigationDropdownKey = 'camps' | 'album' | 'community';
 
+// Tailwind의 커스텀 `nav:` variant 브레이크포인트(tailwind.config.js와 일치).
+// 이 값을 경계로 DesktopMenu/MobileMenu의 표시가 CSS로 전환된다.
+const NAV_BREAKPOINT_PX = 1280;
+
 export const useNavigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [desktopOpenDropdown, setDesktopOpenDropdown] = useState<NavigationDropdownKey | null>(
@@ -29,6 +33,23 @@ export const useNavigation = () => {
     router.events.on('routeChangeComplete', closeAll);
     return () => router.events.off('routeChangeComplete', closeAll);
   }, [router.events]);
+
+  // DesktopMenu/MobileMenu는 CSS(`hidden nav:flex` / `nav:hidden`)로만 숨겨질 뿐
+  // 언마운트되지 않으므로, 한쪽에서 연 상태가 반대쪽 폭으로 리사이즈 후 되돌아오면
+  // 아무 조작 없이 재등장한다. nav 브레이크포인트를 넘나드는 시점(어느 방향이든)에
+  // 모든 열림 상태를 닫아 잔류를 방지한다.
+  useEffect(() => {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return;
+    const mq = window.matchMedia(`(min-width: ${NAV_BREAKPOINT_PX}px)`);
+    // change 이벤트는 브레이크포인트를 실제로 통과할 때만 발생한다.
+    const handleBreakpointCross = () => {
+      setIsOpen(false);
+      setMobileOpenDropdown(null);
+      setDesktopOpenDropdown(null);
+    };
+    mq.addEventListener('change', handleBreakpointCross);
+    return () => mq.removeEventListener('change', handleBreakpointCross);
+  }, []);
 
   const toggleMenu = useCallback(() => {
     setIsOpen((prev) => {
