@@ -11,6 +11,15 @@ export const GALLERY_CONFIG = {
   LOAD_STEP: 60,
 } as const;
 
+export const VIDEOS_CONFIG = {
+  // 점진 렌더: /videos 는 카드 145개(각 유튜브 썸네일 img 포함)를 전부 SSR 하면
+  // HTML 이 ~590KB 로 폭증해 슬로우 4G FCP/LCP 를 망친다. 첫 화면 분량만 카드로
+  // SSR 하고 나머지는 스크롤 도달 시 클라이언트에서 카드로 승격한다.
+  // 그리드는 데스크톱 3열 → 12개면 4행으로 첫 뷰포트를 채운다.
+  INITIAL_VISIBLE_COUNT: 12,
+  LOAD_STEP: 24,
+} as const;
+
 export const SITE_CONFIG = {
   NAME: '강정피스앤뮤직캠프',
   NAME_EN: 'Gangjeong Peace & Music Camp',
