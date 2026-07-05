@@ -178,7 +178,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({
                     alt={t('camp.poster_alt_2026')}
                     width={360}
                     height={480}
-                    sizes="(max-width: 768px) 100vw, 360px"
+                    sizes="(max-width: 768px) calc(100vw - 2rem), 360px"
                     quality={65}
                     className="w-full h-auto"
                   />
@@ -190,7 +190,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({
                     alt={t('camp.poster_alt_2026')}
                     width={360}
                     height={480}
-                    sizes="(max-width: 768px) 100vw, 360px"
+                    sizes="(max-width: 768px) calc(100vw - 2rem), 360px"
                     quality={65}
                     className="w-full h-auto"
                   />

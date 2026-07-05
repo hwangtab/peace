@@ -90,8 +90,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
-                priority={idx < 3}
-                {...(idx >= 3 ? { loading: 'lazy' as const } : {})}
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300" />
             </motion.div>
