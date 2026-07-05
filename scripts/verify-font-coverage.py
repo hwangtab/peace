@@ -35,6 +35,18 @@ CASES = [
     # 애초에 이 폰트로 렌더되지 않고, 제목 세리프 스택의 다음 폰트(Noto Sans)가
     # 서빙한다(src/index.css·tailwind.config.js 'serif' 스택 참조). 파일에 라틴
     # 글리프를 담아 두는 건 다운로드만 되고 안 쓰이는 낭비라 빼는 게 맞다.
+    #
+    # PartialSans(포인트 폰트) — collect_partial_chars() 로 font-partial 실사용
+    # 텍스트(locale JSON 전체 + musicians/tracks)만 담는 초경량 서브셋이다. 한글코어
+    # (KS X 1001) floor 를 두지 않으므로, font-partial 로 렌더되는 대표 제목 글자와
+    # 라틴/숫자 floor 가 실제로 담겼는지 확인해 서브셋 정책 회귀(수집 소스 누락 등)를
+    # 잡는다. 게시판 등 동적 텍스트의 미수록 음절은 Noto Sans KR 로 정상 폴백되므로
+    # (tofu 아님) 검증 대상이 아니다.
+    ("PartialSansKR-Regular.subset.woff2", 0xAC15, "포인트 강(home.hero.title)"),
+    ("PartialSansKR-Regular.subset.woff2", 0xC815, "포인트 정(home.hero.title)"),
+    ("PartialSansKR-Regular.subset.woff2", 0xC804, "포인트 전(gangjeong hook_headline)"),
+    ("PartialSansKR-Regular.subset.woff2", 0xB144, "포인트 년(ImpactNumbers suffix)"),
+    ("PartialSansKR-Regular.subset.woff2", 0x0030, "포인트 숫자 0(ImpactNumbers)"),
 ]
 
 

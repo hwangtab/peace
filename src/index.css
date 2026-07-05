@@ -8290,7 +8290,7 @@
   /* ── 포인트 폰트 (유지) ── */
   @font-face {
     font-family: 'PartialSans';
-    src: url('/fonts/PartialSansKR-Regular.subset.woff2?v=4') format('woff2');
+    src: url('/fonts/PartialSansKR-Regular.subset.woff2?v=5') format('woff2');
     font-weight: normal;
     font-style: normal;
     font-display: swap;

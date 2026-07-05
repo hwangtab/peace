@@ -47,6 +47,21 @@ class MyDocument extends Document {
             fetchpriority="high"
           />
 
+          {/* 포인트 폰트(PartialSans) preload — typo-h1(홈 HeroSection·PageHero 제목 등
+              LCP 텍스트 요소)이 전 로케일 전 페이지에서 즉시 사용한다. preload 가 없으면
+              페이지당 1.5MB 폰트와 대역 경쟁해 늦게 도착 → h1 swap 페인트가 LCP 를 뒤로
+              밀었다(모바일 Render Delay 10s). 초경량 서브셋(~103KB, font-partial 실사용
+              글리프만)이라 high 우선순위로 먼저 도착시켜 LCP 확정 전에 h1 을 확정한다. */}
+          <link
+            rel="preload"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+            href="/fonts/PartialSansKR-Regular.subset.woff2?v=5"
+            // @ts-expect-error — fetchpriority is a valid HTML attribute (React 18.3+)
+            fetchpriority="high"
+          />
+
           {/* 제목 세리프(Noto Serif KR)는 한글 제목용이라 ko 에서만 preload — 전 페이지
               Navigation/h2(font-serif·display)에 즉시 사용. 비-KO 제목은 라틴 세리프/
               산스 폴백이라 swap 로드(전 로케일 1.4MB preload 낭비 제거).

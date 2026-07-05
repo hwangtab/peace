@@ -64,6 +64,50 @@ def collect_text_chars() -> set[str]:
     return chars
 
 
+def collect_partial_chars() -> set[str]:
+    """PartialSans(포인트 폰트) 전용 — font-partial 이 실제 렌더하는 텍스트만 수집한다.
+
+    PartialSans 는 typo-h1/font-partial(제목·히어로·gangjeong 슬로건·ImpactNumbers
+    숫자·뮤지션명·트랙명)에만 쓰이는 정적 포인트 폰트다. 그래서 전 코드베이스
+    union(collect_text_chars — 소스 파일의 한글 '주석'과 gallery/videos/press CMS
+    본문까지 담김)으로 서브셋하면, font-partial 로 절대 렌더되지 않는 글리프가
+    대량 임베드된다. 여기서는 font-partial 사용처의 실제 텍스트 소스만 좁혀 담는다:
+
+      1. 전 로케일 i18n JSON 전체(public/locales/**/*.json)
+         — HeroSection h1, PageHero 제목, SectionHeader, gangjeong 네임스페이스
+           (hook_headline/closing_slogan/stat_*_suffix) 등 모든 제목 키를 포함.
+      2. 뮤지션·트랙 정적 데이터(public/data/**/{musicians,tracks}.json, 전 로케일)
+         — MusicianHeroSection 의 musician.name, tracks/[id] 의 track.title.
+
+    제외: 소스 코드 파일 내용(한글 주석 — 렌더 안 됨), gallery/videos/press 등
+    나머지 CMS 데이터(본문·캡션 — font-partial 아님). 게시판 글 제목 등 런타임
+    동적 텍스트는 PartialSans 에 글리프가 없어도 스택 다음 폰트(Noto Sans KR)로
+    정상 폴백된다(tofu 아님) — 정적 실사용만 담고 동적은 폴백에 맡기는 설계.
+
+    숫자(ImpactNumbers)·라틴(영문 제목/뮤지션명)·구두점은 main() 에서
+    build_safety_floor() 로 합쳐 커버한다(한글 글리프를 늘리지 않음).
+    """
+    chars: set[str] = set()
+
+    for path in LOCALE_DIR.rglob("*.json"):
+        try:
+            with path.open(encoding="utf-8") as f:
+                chars.update(_chars_from_value(json.load(f)))
+        except Exception:
+            continue
+
+    if DATA_DIR.exists():
+        for name in ("musicians.json", "tracks.json"):
+            for path in DATA_DIR.rglob(name):
+                try:
+                    with path.open(encoding="utf-8") as f:
+                        chars.update(_chars_from_value(json.load(f)))
+                except Exception:
+                    continue
+
+    return chars
+
+
 def _chars_from_value(value) -> set[str]:
     out: set[str] = set()
     if isinstance(value, str):
@@ -610,9 +654,12 @@ def main() -> int:
     # KR/Serif 전용 축소 집합 — unicode-range(한글·자모·구두점)에 정확히 맞춰
     # 원본에 든 한자·라틴 글리프(다운로드되지만 안 쓰임)를 제거한다.
     kr_unicodes = build_kr_subset_codepoints(base_chars, hangul_common)
+    # PartialSans 전용 초경량 집합 = font-partial 실사용 텍스트(locale JSON 전체 +
+    # musicians/tracks) ∪ 라틴·숫자·구두점 floor. 한글코어(KS X 1001) floor 없음.
+    partial_unicodes = to_unicode_list(collect_partial_chars() | build_safety_floor())
     print(
         f"Collected {len(base_unicodes)} base / {len(hangul_unicodes)} +한글코어 / "
-        f"{len(kr_unicodes)} KR코어 codepoints",
+        f"{len(kr_unicodes)} KR코어 / {len(partial_unicodes)} PartialSans codepoints",
         file=sys.stderr,
     )
 
@@ -624,10 +671,11 @@ def main() -> int:
         if not src.exists():
             print(f"  SKIP {src_name} (missing)", file=sys.stderr)
             continue
-        # PartialSans 는 정적 포인트 전용 → base 만. NotoSansKR/NotoSerifKR 는
-        # unicode-range 에 맞춘 축소 집합(kr_unicodes). 나머지(JP/SC/TC 등)는 종전대로.
+        # PartialSans 는 정적 포인트 전용 → font-partial 실사용만(partial_unicodes).
+        # NotoSansKR/NotoSerifKR 는 unicode-range 에 맞춘 축소 집합(kr_unicodes).
+        # 나머지(JP/SC/TC 등)는 종전대로.
         if dst_name.startswith("PartialSans"):
-            unicodes = base_unicodes
+            unicodes = partial_unicodes
         elif dst_name.startswith("NotoSansKR") or dst_name.startswith("NotoSerifKR"):
             unicodes = kr_unicodes
         else:
