@@ -54,9 +54,11 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
   }
 
   // pageProps 절감: (1) 이 캠프 참가자로 등록된 musicianId 만 추리고
-  // (2) Camp 2026 은 모달 대신 전용 musician 페이지로 이동하므로 가장 무거운
-  // description 필드를 제거. 다른 페이지(2023/2025)는 CampParticipants→MusicianModal
-  // 에서 description 을 사용하므로 그대로 유지.
+  // (2) Camp 2026 은 모달 대신 전용 musician 페이지로 이동하므로 이 페이지가
+  // 렌더/스키마에서 실제로 쓰지 않는 무거운 필드(description·genre·trackTitle)를 제거.
+  // Camp 2026 이 소비하는 musician 필드는 id·name·shortDescription·imageUrl·
+  // instagramUrls 뿐(타임테이블 카드 + JSON-LD sameAs/image). 다른 페이지(2023/2025)는
+  // CampParticipants→MusicianModal 에서 이 필드들을 사용하므로 그대로 유지.
   const allMusicians = loadLocalizedData<Musician>(lang, 'musicians.json');
   const referencedIds = new Set<number>(
     (camp.participants ?? [])
@@ -68,7 +70,7 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
   const isCurrentCamp = camp.year >= CURRENT_CAMP_YEAR;
   const initialMusicians = allMusicians
     .filter((m) => referencedIds.has(m.id))
-    .map((m) => (isCurrentCamp ? { ...m, description: '' } : m));
+    .map((m) => (isCurrentCamp ? { ...m, description: '', genre: [], trackTitle: '' } : m));
 
   // camp_faq_2026 namespace 는 Camp 2026 페이지에서만 사용 — 2023/2025 페이지의
   // SSG payload 에서 제외해 13 로케일 × 1~2KB 누적 절감.
