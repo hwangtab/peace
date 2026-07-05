@@ -35,6 +35,14 @@ jobs:
 
       - run: pnpm static:check
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install fonttools brotli
+
+      - run: pnpm fonts:verify
+
       # 배포되는 production 의존성만 감사한다. dev/빌드 전용 의존성(jest의 jsdom>ws,
       # bundle-analyzer>ws, open-graph-scraper>undici 등)의 취약점은 사용자에게 도달하지 않고
       # 상위 패키지의 생태계 업데이트 전까지 수정 불가라, 신규 advisory가 뜰 때마다 CI를
