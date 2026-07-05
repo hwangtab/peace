@@ -621,6 +621,8 @@ FONTS: list[tuple[str, str, str]] = [
     # (src filename, dst filename, flavor)
     # 본문 산스 = Noto Sans 풀세트(스크립트별 분할), 제목 세리프 = Noto Serif KR.
     # PartialSans 는 포인트 폰트로 유지(한글 정체성 한정).
+    # 주: Light/Medium/SemiBold 는 CSS 에서 미사용(index.css 웨이트 범위 통합 — Regular
+    # 400-500, Bold 600-700). 롤백 대비 계속 생성/보존하되 @font-face 로 로드되지 않음.
     ("NotoSans-Regular.ttf", "NotoSans-Regular.subset.woff2", "woff2"),
     ("NotoSans-Medium.ttf", "NotoSans-Medium.subset.woff2", "woff2"),
     ("NotoSans-Bold.ttf", "NotoSans-Bold.subset.woff2", "woff2"),
