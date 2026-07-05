@@ -24,7 +24,6 @@ class MyDocument extends Document {
       ar: 'NotoSansArabic-Regular',
     };
     const bodyFontFile = bodyFontByLocale[currentLocale] || 'NotoSans-Regular';
-    const isKorean = currentLocale === 'ko';
 
     return (
       <Html lang={currentLocale} dir={dir} data-scroll-behavior="smooth">
@@ -35,7 +34,22 @@ class MyDocument extends Document {
           <link rel="preconnect" href="https://www.google-analytics.com" />
           <link rel="dns-prefetch" href="//www.google-analytics.com" />
 
-          {/* 본문 폰트 preload — 로케일별 본문 기본 폰트(LCP). 그 외 스크립트는
+          {/* 포인트 폰트(PartialSans) preload — typo-h1(홈 HeroSection·PageHero 제목 등
+              LCP 텍스트 요소)이 전 로케일 전 페이지에서 즉시 사용한다. preload 가 없으면
+              페이지당 1.5MB 폰트와 대역 경쟁해 늦게 도착 → h1 swap 페인트가 LCP 를 뒤로
+              밀었다(모바일 Render Delay 10s). 초경량 서브셋(~103KB, font-partial 실사용
+              글리프만)을 high 밴드 '첫 번째'로 두어 LCP 확정 전에 h1 을 확정한다. */}
+          <link
+            rel="preload"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+            href="/fonts/PartialSansKR-Regular.subset.woff2?v=5"
+            // @ts-expect-error — fetchpriority is a valid HTML attribute (React 18.3+)
+            fetchpriority="high"
+          />
+
+          {/* 본문 폰트 preload — 로케일별 본문 기본 폰트. 그 외 스크립트는
               해당 페이지에서 unicode-range 로 자연 로드. */}
           <link
             rel="preload"
@@ -47,36 +61,11 @@ class MyDocument extends Document {
             fetchpriority="high"
           />
 
-          {/* 포인트 폰트(PartialSans) preload — typo-h1(홈 HeroSection·PageHero 제목 등
-              LCP 텍스트 요소)이 전 로케일 전 페이지에서 즉시 사용한다. preload 가 없으면
-              페이지당 1.5MB 폰트와 대역 경쟁해 늦게 도착 → h1 swap 페인트가 LCP 를 뒤로
-              밀었다(모바일 Render Delay 10s). 초경량 서브셋(~103KB, font-partial 실사용
-              글리프만)이라 high 우선순위로 먼저 도착시켜 LCP 확정 전에 h1 을 확정한다. */}
-          <link
-            rel="preload"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-            href="/fonts/PartialSansKR-Regular.subset.woff2?v=5"
-            // @ts-expect-error — fetchpriority is a valid HTML attribute (React 18.3+)
-            fetchpriority="high"
-          />
-
-          {/* 제목 세리프(Noto Serif KR)는 한글 제목용이라 ko 에서만 preload — 전 페이지
-              Navigation/h2(font-serif·display)에 즉시 사용. 비-KO 제목은 라틴 세리프/
-              산스 폴백이라 swap 로드(전 로케일 1.4MB preload 낭비 제거).
-              fetchpriority="high" 제거: 1.52MB Bold 가 본문 KR Regular·LCP 이미지와
-              high 우선순위 대역 경쟁하지 않도록 auto(브라우저 기본)로 강등한다.
-              preload 자체는 유지 — 제목 FOUT 최소화를 위해. */}
-          {isKorean && (
-            <link
-              rel="preload"
-              as="font"
-              type="font/woff2"
-              crossOrigin="anonymous"
-              href="/fonts/NotoSerifKR-Bold.subset.woff2?v=4"
-            />
-          )}
+          {/* 제목 세리프(Noto Serif KR Bold 508KB)는 preload 하지 않는다 — typo-h2/h3
+              (섹션 제목)용이라 대부분 fold 아래이고, preload 하면 슬로우 4G 에서 LCP
+              이미지·포인트 폰트의 대역폭을 선점해 LCP Load Delay 를 7~9s 로 밀었다
+              (Lighthouse 실측). CSS unicode-range 매칭 시점에 자연 로드돼도 fold 아래
+              제목의 swap 은 체감이 미미하다. */}
 
           {/* 테마 & 색상 스킴 */}
           <meta name="theme-color" content="#0A5F8A" />
