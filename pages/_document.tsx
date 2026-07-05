@@ -61,11 +61,12 @@ class MyDocument extends Document {
             fetchpriority="high"
           />
 
-          {/* 제목 세리프(Noto Serif KR Bold 508KB)는 preload 하지 않는다 — typo-h2/h3
+          {/* 제목 세리프(Noto Serif KR Bold)는 preload 하지 않는다 — typo-h2/h3
               (섹션 제목)용이라 대부분 fold 아래이고, preload 하면 슬로우 4G 에서 LCP
               이미지·포인트 폰트의 대역폭을 선점해 LCP Load Delay 를 7~9s 로 밀었다
               (Lighthouse 실측). CSS unicode-range 매칭 시점에 자연 로드돼도 fold 아래
-              제목의 swap 은 체감이 미미하다. */}
+              제목의 swap 은 체감이 미미하다. 세리프는 2-슬라이스(core ~333KB 공개
+              실사용 / rest ~224KB 잔여 음절)로 나뉘어, 공개 페이지는 core 만 로드한다. */}
 
           {/* 테마 & 색상 스킴 */}
           <meta name="theme-color" content="#0A5F8A" />

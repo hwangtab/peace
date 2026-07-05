@@ -108,6 +108,44 @@ def collect_partial_chars() -> set[str]:
     return chars
 
 
+def collect_serif_core_chars() -> set[str]:
+    """세리프 코어 슬라이스(NotoSerifKR-Bold.core) 전용 — 공개 페이지가 실제로
+    세리프(typo-h2/h3·font-serif·font-display 제목)로 렌더하는 텍스트만 수집한다.
+
+    수집원(전부 빌드타임 열거 가능한 공개 콘텐츠):
+      1. 전 로케일 i18n JSON 전체(public/locales/**/*.json)
+         — 홈 h2/h3, PageHero 제목, SectionHeader, gangjeong 등 모든 제목 키.
+      2. 정적 콘텐츠 JSON(public/data):
+         - musicians.json·tracks.json — 뮤지션명·트랙 제목(제목 세리프).
+         - videos.json·press.json — 비디오 제목·언론 제목이 typo-h2/h3 로 렌더.
+
+    제외: 소스 코드 파일 내용(한글 주석·admin 하드코딩 — 여기 담으면 core 가
+    비대해져 분할 이득이 사라짐), 게시판 CMS 본문(런타임 동적). admin 편집기·
+    mailbox 등의 동적 세리프 텍스트는 core 밖 음절이 나올 수 있는데, 그건 rest
+    슬라이스가 unicode-range 로 커버한다(core ∪ rest == 기존 서브셋). core 만
+    쓰는 공개 페이지에선 rest 가 로드되지 않는 게 분할의 목적이다.
+    """
+    chars: set[str] = set()
+
+    for path in LOCALE_DIR.rglob("*.json"):
+        try:
+            with path.open(encoding="utf-8") as f:
+                chars.update(_chars_from_value(json.load(f)))
+        except Exception:
+            continue
+
+    if DATA_DIR.exists():
+        for name in ("musicians.json", "tracks.json", "videos.json", "press.json"):
+            for path in DATA_DIR.rglob(name):
+                try:
+                    with path.open(encoding="utf-8") as f:
+                        chars.update(_chars_from_value(json.load(f)))
+                except Exception:
+                    continue
+
+    return chars
+
+
 def _chars_from_value(value) -> set[str]:
     out: set[str] = set()
     if isinstance(value, str):
@@ -516,34 +554,92 @@ def build_kr_css_unicode_range(base_chars: set[str], hangul_common: set[str]) ->
     return ", ".join(p for p in parts if p)
 
 
+def build_serif_slices(
+    serif_core_chars: set[str], base_chars: set[str], hangul_common: set[str]
+) -> tuple[list[int], list[int], list[int], list[int]]:
+    """세리프 2-슬라이스(core/rest) 코드포인트 집합을 만든다.
+
+    반환: (core_codepoints, rest_codepoints, core_hangul, punct_codepoints).
+
+      core = 공개 페이지 실사용 한글(serif_core_chars ∩ AC00-D7A3)
+             ∪ 자모 호환 전 범위 ∪ 실사용 CJK 구두점(base_chars 기준).
+      rest = build_kr_subset_codepoints(base, common) − core.
+
+    union(core, rest) == build_kr_subset_codepoints(base, common) 를 보장한다
+    (기존 단일 서브셋과 커버리지 동일). serif_core_chars ⊆ base_chars 이므로
+    core_hangul ⊆ full — core 는 항상 full 의 부분집합이다.
+    """
+    full = set(build_kr_subset_codepoints(base_chars, hangul_common))
+    core_hangul = {ord(ch) for ch in serif_core_chars if 0xAC00 <= ord(ch) <= 0xD7A3}
+    punct = {
+        ord(ch) for ch in base_chars if _JP_LEAK_PUNCT_LO <= ord(ch) <= _JP_LEAK_PUNCT_HI
+    }
+    core = set(core_hangul) | punct
+    for lo, hi in _KR_JAMO_RANGES:  # 자모 전 범위는 core 에 둔다(공개 페이지도 조합 사용)
+        core.update(range(lo, hi + 1))
+    core &= full  # 방어적: 항상 subset 이지만 full 밖 코드포인트가 새지 않게 교집합
+    rest = full - core
+    return sorted(core), sorted(rest), sorted(core_hangul), sorted(punct)
+
+
+def build_serif_core_css_range(core_hangul: list[int], punct: list[int]) -> str:
+    """세리프 core @font-face 의 AUTO-SERIF-CORE-RANGE 마커에 넣을 값.
+
+    실사용 한글 완성형(연속구간 병합) + 자모 호환 영역(항상) + 실사용 CJK
+    구두점(있으면). 라틴/일반구두점(U+0000-024F, U+2000-206F)은 CSS 에
+    마커 밖으로 하드코딩돼 있어 여기 포함하지 않는다.
+    """
+    parts = [merge_unicode_ranges(core_hangul), KR_JAMO_TAIL_RANGE]
+    if punct:
+        parts.append(merge_unicode_ranges(punct))
+    return ", ".join(p for p in parts if p)
+
+
+def build_serif_rest_css_range(rest_codepoints: list[int]) -> str:
+    """세리프 rest @font-face 의 AUTO-SERIF-REST-RANGE 마커 값 — core 에 없는 잔여 음절."""
+    return merge_unicode_ranges(rest_codepoints)
+
+
 CSS_PATH = ROOT / "src" / "index.css"
 CSS_MARKER_START = "/* AUTO-KR-RANGE:START */"
 CSS_MARKER_END = "/* AUTO-KR-RANGE:END */"
+CSS_SERIF_CORE_START = "/* AUTO-SERIF-CORE-RANGE:START */"
+CSS_SERIF_CORE_END = "/* AUTO-SERIF-CORE-RANGE:END */"
+CSS_SERIF_REST_START = "/* AUTO-SERIF-REST-RANGE:START */"
+CSS_SERIF_REST_END = "/* AUTO-SERIF-REST-RANGE:END */"
 
 
-def inject_css_unicode_range(range_css: str) -> int:
-    """index.css 의 AUTO-KR-RANGE 마커 사이 unicode-range 값을 재생성 값으로 갱신.
+def inject_css_marker(start_marker: str, end_marker: str, value: str) -> int:
+    """index.css 의 지정 마커 쌍 사이 값을 value 로 재생성 갱신(마커 안쪽만 치환).
 
-    src/index.css 의 NotoSansKR ×4 + NotoSerifKR-Bold ×1, 총 5개 @font-face
-    unicode-range 줄에 이 마커 쌍이 감싸져 있어야 한다(수동 세팅, 1회).
-    스크립트를 다시 돌려도 항상 같은 값으로 재현되도록 마커 안쪽만 치환한다.
+    스크립트를 다시 돌려도 항상 같은 값으로 재현된다. 마커가 없으면 경고만.
     """
     content = CSS_PATH.read_text(encoding="utf-8")
     pattern = re.compile(
-        re.escape(CSS_MARKER_START) + r".*?" + re.escape(CSS_MARKER_END), re.DOTALL
+        re.escape(start_marker) + r".*?" + re.escape(end_marker), re.DOTALL
     )
-    replacement = f"{CSS_MARKER_START}{range_css}{CSS_MARKER_END}"
+    replacement = f"{start_marker}{value}{end_marker}"
     new_content, count = pattern.subn(replacement, content)
     if count == 0:
         print(
-            "  WARN: index.css 에 AUTO-KR-RANGE 마커가 없어 CSS 갱신을 건너뜀",
+            f"  WARN: index.css 에 {start_marker} 마커가 없어 CSS 갱신을 건너뜀",
             file=sys.stderr,
         )
         return 0
     if new_content != content:
         CSS_PATH.write_text(new_content, encoding="utf-8")
-    print(f"  index.css unicode-range 갱신: 마커 {count}곳", file=sys.stderr)
+    print(f"  index.css {start_marker} 갱신: 마커 {count}곳", file=sys.stderr)
     return count
+
+
+def inject_css_unicode_range(range_css: str) -> int:
+    """NotoSansKR @font-face 의 AUTO-KR-RANGE 마커 사이 unicode-range 값을 갱신.
+
+    src/index.css 의 NotoSansKR Regular/Bold 2개 @font-face unicode-range 줄에
+    이 마커 쌍이 감싸져 있어야 한다(수동 세팅, 1회). NotoSerifKR 는 2-슬라이스
+    전환으로 별도 마커(AUTO-SERIF-CORE/REST-RANGE)를 쓴다.
+    """
+    return inject_css_marker(CSS_MARKER_START, CSS_MARKER_END, range_css)
 
 
 def subset_font(src: Path, dst: Path, unicode_list: list[int], fmt: str) -> tuple[int, int]:
@@ -641,7 +737,11 @@ FONTS: list[tuple[str, str, str]] = [
     ("NotoSansDevanagari-Bold.ttf", "NotoSansDevanagari-Bold.subset.woff2", "woff2"),
     ("NotoSansArabic-Regular.ttf", "NotoSansArabic-Regular.subset.woff2", "woff2"),
     ("NotoSansArabic-Bold.ttf", "NotoSansArabic-Bold.subset.woff2", "woff2"),
+    # NotoSerifKR-Bold 2-슬라이스(core/rest) — core=공개 실사용, rest=잔여 상용 음절.
+    # 단일 파일(.subset)은 롤백 대비 계속 생성/보존하되 index.css 는 core/rest 만 참조.
     ("NotoSerifKR-Bold.ttf", "NotoSerifKR-Bold.subset.woff2", "woff2"),
+    ("NotoSerifKR-Bold.ttf", "NotoSerifKR-Bold.core.woff2", "woff2"),
+    ("NotoSerifKR-Bold.ttf", "NotoSerifKR-Bold.rest.woff2", "woff2"),
     ("PartialSansKR-Regular.woff2", "PartialSansKR-Regular.subset.woff2", "woff2"),
 ]
 
@@ -659,9 +759,19 @@ def main() -> int:
     # PartialSans 전용 초경량 집합 = font-partial 실사용 텍스트(locale JSON 전체 +
     # musicians/tracks) ∪ 라틴·숫자·구두점 floor. 한글코어(KS X 1001) floor 없음.
     partial_unicodes = to_unicode_list(collect_partial_chars() | build_safety_floor())
+    # NotoSerifKR-Bold 2-슬라이스: core=공개 실사용(locale + musicians/tracks/videos/press),
+    # rest=kr_unicodes − core. union(core, rest) == kr_unicodes(기존 단일 서브셋).
+    serif_core_chars = collect_serif_core_chars()
+    serif_core_unicodes, serif_rest_unicodes, serif_core_hangul, serif_punct = (
+        build_serif_slices(serif_core_chars, base_chars, hangul_common)
+    )
+    assert set(serif_core_unicodes) | set(serif_rest_unicodes) == set(kr_unicodes), (
+        "세리프 core ∪ rest 가 기존 KR 서브셋과 불일치 — 커버리지 회귀"
+    )
     print(
         f"Collected {len(base_unicodes)} base / {len(hangul_unicodes)} +한글코어 / "
-        f"{len(kr_unicodes)} KR코어 / {len(partial_unicodes)} PartialSans codepoints",
+        f"{len(kr_unicodes)} KR코어 / {len(partial_unicodes)} PartialSans / "
+        f"{len(serif_core_unicodes)} Serif-core / {len(serif_rest_unicodes)} Serif-rest codepoints",
         file=sys.stderr,
     )
 
@@ -676,7 +786,11 @@ def main() -> int:
         # PartialSans 는 정적 포인트 전용 → font-partial 실사용만(partial_unicodes).
         # NotoSansKR/NotoSerifKR 는 unicode-range 에 맞춘 축소 집합(kr_unicodes).
         # 나머지(JP/SC/TC 등)는 종전대로.
-        if dst_name.startswith("PartialSans"):
+        if dst_name == "NotoSerifKR-Bold.core.woff2":
+            unicodes = serif_core_unicodes
+        elif dst_name == "NotoSerifKR-Bold.rest.woff2":
+            unicodes = serif_rest_unicodes
+        elif dst_name.startswith("PartialSans"):
             unicodes = partial_unicodes
         elif dst_name.startswith("NotoSansKR") or dst_name.startswith("NotoSerifKR"):
             unicodes = kr_unicodes
@@ -699,8 +813,18 @@ def main() -> int:
     )
 
     css_range = build_kr_css_unicode_range(base_chars, hangul_common)
-    print(f"  KR/Serif CSS unicode-range 미리보기: {css_range[:160]}...", file=sys.stderr)
+    print(f"  KR CSS unicode-range 미리보기: {css_range[:160]}...", file=sys.stderr)
     inject_css_unicode_range(css_range)
+
+    # 세리프 core/rest @font-face unicode-range 갱신(각각 전용 마커).
+    serif_core_range = build_serif_core_css_range(serif_core_hangul, serif_punct)
+    serif_rest_range = build_serif_rest_css_range(serif_rest_unicodes)
+    print(
+        f"  Serif-core CSS unicode-range 미리보기: {serif_core_range[:120]}...",
+        file=sys.stderr,
+    )
+    inject_css_marker(CSS_SERIF_CORE_START, CSS_SERIF_CORE_END, serif_core_range)
+    inject_css_marker(CSS_SERIF_REST_START, CSS_SERIF_REST_END, serif_rest_range)
 
     return 0
 
