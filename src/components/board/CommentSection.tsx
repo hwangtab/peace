@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import ConfirmDialog from '@/components/common/ConfirmDialog';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
@@ -8,6 +8,10 @@ import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { validateComment, formatBoardDate } from '@/lib/boardForms';
 import { safeRedirectPath } from '@/lib/memberAuth';
 import { COMMENT_PAGE } from '@/lib/boardData';
+
+// 삭제 확인 다이얼로그(@headlessui/react ~15.6KB gzip)는 댓글 삭제 클릭 시점에만 필요 —
+// 글 상세 페이지 초기 번들에서 분리한다. (같은 페이지의 ImageLightbox·ConfirmDialog와 동일 패턴)
+const ConfirmDialog = dynamic(() => import('@/components/common/ConfirmDialog'), { ssr: false });
 
 export interface CommentRow {
   id: string;

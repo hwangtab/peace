@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ROUTES } from '@/constants/routes';
 import { communityItems as FALLBACK, solidarityNavItem } from '@/components/layout/navigationData';
-import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 
 export interface CommunityItem {
   // 게시판은 DB의 고정 한국어 이름(label), '연대 활동'은 다국어 키(nameKey)로 라벨링한다.
@@ -18,22 +17,26 @@ const withSolidarity = (boards: CommunityItem[]): CommunityItem[] => [solidarity
 let cache: CommunityItem[] | null = null;
 let inflight: Promise<CommunityItem[]> | null = null;
 
+// 브라우저 supabase-js 직결 조회 대신 얇은 API(/api/board/list)를 경유한다.
+// 이유: supabaseBrowser 정적 import가 Supabase 클라이언트(~232KB)를 모든 공개 페이지 초기
+// 번들에 되돌려 넣었고, 방문자마다 브라우저→Supabase 직결 조회로 egress 리스크가 있었다.
+// API 라우트는 서버에서 조회하고 CDN(s-maxage=300)이 흡수하므로 번들에서 Supabase가 빠지고
+// 페이지뷰당 DB 조회가 사라진다. (상세 근거는 pages/api/board/list.ts 주석 참고)
 const fetchActiveBoards = async (): Promise<CommunityItem[]> => {
   try {
-    const supabase = createSupabaseBrowserClient();
-    const { data, error } = await supabase
-      .from('boards')
-      .select('slug, name')
-      .eq('is_active', true)
-      .order('sort_order', { ascending: true });
-    if (error || !data || data.length === 0) return withSolidarity(FALLBACK);
+    const res = await fetch('/api/board/list');
+    if (!res.ok) return withSolidarity(FALLBACK);
+    const json = (await res.json()) as { boards?: { slug: string; name: string }[] };
+    const boards = json.boards ?? [];
+    if (boards.length === 0) return withSolidarity(FALLBACK);
     return withSolidarity(
-      (data as { slug: string; name: string }[]).map((b) => ({
+      boards.map((b) => ({
         label: b.name,
         path: `${ROUTES.BOARD}/${b.slug}`,
       }))
     );
   } catch {
+    // 네트워크·파싱 실패는 조용히 삼키고 FALLBACK으로 degrade(네비게이션은 항상 떠야 한다).
     return withSolidarity(FALLBACK);
   }
 };
