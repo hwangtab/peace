@@ -47,7 +47,7 @@
     "analyze:source-map": "source-map-explorer '.next/static/chunks/*.js'",
     "dev": "next dev",
     "i18n:extract": "node scripts/extract-i18n.mjs",
-    "i18n:check": "node scripts/check-missing-translations.mjs && node scripts/check-deep-translations.mjs",
+    "i18n:check": "node scripts/check-missing-translations.mjs && node scripts/check-deep-translations.mjs && node scripts/audit-i18n-drift.js",
     "static:check": "node scripts/check-static-assets.mjs",
     "seed:archive-cms": "ts-node --compiler-options '{\"module\":\"commonjs\",\"moduleResolution\":\"node\"}' scripts/seed-admin-archive.ts",
     "seed:archive-cms:sql": "ts-node --compiler-options '{\"module\":\"commonjs\",\"moduleResolution\":\"node\"}' scripts/generate-admin-archive-seed-sql.ts",
