@@ -21,18 +21,19 @@ const getErrorMessage = (error: unknown): string => {
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  // 인증 먼저, 그다음 입력 검증(mailbox/[id].ts 선례와 순서 통일).
+  // Reading is open to any active admin; writing requires editor or owner.
+  // RLS enforces the same on the DB side.
+  const minRole = req.method === 'GET' ? 'viewer' : 'editor';
+  const session = await requireAdminRole(req, res, minRole);
+  if (!session) return;
+
   const parsedSlug = slugSchema.safeParse(req.query.slug);
   if (!parsedSlug.success) {
     res.status(400).json({ error: 'invalid_slug' });
     return;
   }
   const slug = parsedSlug.data;
-
-  // Reading is open to any active admin; writing requires editor or owner.
-  // RLS enforces the same on the DB side.
-  const minRole = req.method === 'GET' ? 'viewer' : 'editor';
-  const session = await requireAdminRole(req, res, minRole);
-  if (!session) return;
 
   const supabase = createSupabaseServerClient(req, res);
 

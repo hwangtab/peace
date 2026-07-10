@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { ZodError } from 'zod';
 import { createSupabaseServiceClient } from '@/lib/supabaseService';
 import { postViewBodySchema, createRateLimiter } from '@/lib/postViewRateLimit';
+import { getClientIp } from '@/lib/clientIp';
 
 // IP+postId당 최소 60초 간격으로 조회수 증가를 제한한다. 상한 1만 항목(메모리 누수 방지).
 // 이 Map은 모듈 스코프이므로 같은 서버 인스턴스에 붙는 요청 사이에서만 공유된다 —
@@ -9,16 +10,6 @@ import { postViewBodySchema, createRateLimiter } from '@/lib/postViewRateLimit';
 const RATE_LIMIT_MS = 60_000;
 const RATE_LIMIT_MAX_ENTRIES = 10_000;
 const rateLimiter = createRateLimiter(RATE_LIMIT_MS, RATE_LIMIT_MAX_ENTRIES);
-
-const clientIp = (req: NextApiRequest): string => {
-  const fwd = req.headers['x-forwarded-for'];
-  const raw = Array.isArray(fwd) ? fwd[0] : fwd;
-  if (raw) {
-    const first = raw.split(',')[0]?.trim();
-    if (first) return first;
-  }
-  return req.socket.remoteAddress ?? 'unknown';
-};
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -41,7 +32,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   // Rate limit: IP+postId당 최소 간격. 차단돼도 클라이언트엔 성공처럼 보이는 no-op 응답
   // (조작 시도자에게 게시글 존재 여부/차단 여부 정보를 흘리지 않기 위함).
-  if (!rateLimiter.allow(`${clientIp(req)}:${postId}`)) {
+  if (!rateLimiter.allow(`${getClientIp(req)}:${postId}`)) {
     res.status(200).json({ ok: true, counted: false });
     return;
   }

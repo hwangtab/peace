@@ -45,15 +45,16 @@ const getErrorMessage = (error: unknown): string => {
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  // 인증 먼저, 그다음 입력 검증(mailbox/[id].ts 선례와 순서 통일).
+  const session = await requireAdminRole(req, res, 'editor');
+  if (!session) return;
+
   const parsedId = z.string().uuid().safeParse(req.query.id);
   if (!parsedId.success) {
     res.status(400).json({ error: 'invalid_id' });
     return;
   }
   const id = parsedId.data;
-
-  const session = await requireAdminRole(req, res, 'editor');
-  if (!session) return;
 
   const supabase = createSupabaseServerClient(req, res);
 

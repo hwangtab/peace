@@ -21,6 +21,13 @@ const AUTH_EXCLUDE = AUTH_BASE_PATHS.flatMap((p) => [p, `${p}/**`, `/*${p}`, `/*
 // 봇이 prefix 매칭하므로 기본 경로만으로 충분하나 명시적으로 와일드카드도 추가.
 const AUTH_DISALLOW = AUTH_BASE_PATHS.flatMap((p) => [p, `/*${p}`]);
 
+// 게시판(/board)은 회원 전용 커뮤니티라 sitemap 에서 제외(아래 exclude)했고 페이지도
+// noindex 지만, exclude·noindex 는 "색인 금지"일 뿐 크롤러가 SSR 을 fetch 하는 것 자체를
+// 막지 못한다. robots 에서도 명시 차단해 불필요한 크롤(SSR egress)을 줄인다. AUTH 경로와
+// 동일 형식(`/board` + 로케일 프리픽스 `/*/board`)이라 별도 목록으로 두고 disallow 에 합친다.
+const BOARD_DISALLOW = ['/board', '/*/board'];
+const ROBOTS_DISALLOW = [...AUTH_DISALLOW, ...BOARD_DISALLOW];
+
 // hreflang 오버라이드(SEOHelmet과 동일): 스크립트 서브태그 → BCP47 지역 코드
 const HREFLANG_OVERRIDE = { 'zh-Hans': 'zh-CN', 'zh-Hant': 'zh-TW' };
 
@@ -279,20 +286,20 @@ module.exports = {
   robotsTxtOptions: {
     additionalSitemaps: [`${siteUrl}/image-sitemap.xml`, `${siteUrl}/video-sitemap.xml`],
     policies: [
-      { userAgent: 'Googlebot', allow: '/', disallow: AUTH_DISALLOW },
-      { userAgent: 'Bingbot', allow: '/', disallow: AUTH_DISALLOW },
-      { userAgent: 'Yandex', allow: '/', disallow: AUTH_DISALLOW },
-      { userAgent: 'Yeti', allow: '/', disallow: AUTH_DISALLOW },
+      { userAgent: 'Googlebot', allow: '/', disallow: ROBOTS_DISALLOW },
+      { userAgent: 'Bingbot', allow: '/', disallow: ROBOTS_DISALLOW },
+      { userAgent: 'Yandex', allow: '/', disallow: ROBOTS_DISALLOW },
+      { userAgent: 'Yeti', allow: '/', disallow: ROBOTS_DISALLOW },
       // AI crawlers
-      { userAgent: 'GPTBot', allow: '/', disallow: AUTH_DISALLOW },
-      { userAgent: 'ChatGPT-User', allow: '/', disallow: AUTH_DISALLOW },
-      { userAgent: 'Google-Extended', allow: '/', disallow: AUTH_DISALLOW },
-      { userAgent: 'CCBot', allow: '/', disallow: AUTH_DISALLOW },
-      { userAgent: 'anthropic-ai', allow: '/', disallow: AUTH_DISALLOW },
-      { userAgent: 'ClaudeBot', allow: '/', disallow: AUTH_DISALLOW },
-      { userAgent: 'PerplexityBot', allow: '/', disallow: AUTH_DISALLOW },
-      { userAgent: 'Bytespider', allow: '/', disallow: AUTH_DISALLOW },
-      { userAgent: '*', allow: '/', disallow: AUTH_DISALLOW },
+      { userAgent: 'GPTBot', allow: '/', disallow: ROBOTS_DISALLOW },
+      { userAgent: 'ChatGPT-User', allow: '/', disallow: ROBOTS_DISALLOW },
+      { userAgent: 'Google-Extended', allow: '/', disallow: ROBOTS_DISALLOW },
+      { userAgent: 'CCBot', allow: '/', disallow: ROBOTS_DISALLOW },
+      { userAgent: 'anthropic-ai', allow: '/', disallow: ROBOTS_DISALLOW },
+      { userAgent: 'ClaudeBot', allow: '/', disallow: ROBOTS_DISALLOW },
+      { userAgent: 'PerplexityBot', allow: '/', disallow: ROBOTS_DISALLOW },
+      { userAgent: 'Bytespider', allow: '/', disallow: ROBOTS_DISALLOW },
+      { userAgent: '*', allow: '/', disallow: ROBOTS_DISALLOW },
     ],
   },
   transform: async (config, path) => {

@@ -96,13 +96,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // resend_id 유니크 충돌(중복 전송)은 정상 처리로 간주.
     if (error && error.code !== '23505') {
-      res.status(500).json({ error: error.message });
+      // 원문 에러는 로그로만 남기고 응답 본문엔 고정 문자열만 노출(내부 정보 유출 방지).
+      console.error('[resend-inbound] mailbox insert failed:', error.message);
+      res.status(500).json({ error: 'internal_error' });
       return;
     }
 
     res.status(200).json({ ok: true });
   } catch (err) {
+    // 원문 에러는 로그로만 남기고 응답 본문엔 고정 문자열만 노출(내부 정보 유출 방지).
     // Resend가 재시도하도록 5xx 반환.
-    res.status(502).json({ error: err instanceof Error ? err.message : 'fetch_failed' });
+    console.error('[resend-inbound] inbound processing failed:', err);
+    res.status(502).json({ error: 'upstream_error' });
   }
 }

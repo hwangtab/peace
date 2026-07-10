@@ -235,7 +235,12 @@ export default function BoardSlugPage({
   );
 }
 
-export const getServerSideProps = async ({ locale, params, query }: GetServerSidePropsContext) => {
+export const getServerSideProps = async ({
+  locale,
+  params,
+  query,
+  res,
+}: GetServerSidePropsContext) => {
   const slug = typeof params?.slug === 'string' ? params.slug : '';
   const rawOffset = Math.max(
     0,
@@ -276,6 +281,14 @@ export const getServerSideProps = async ({ locale, params, query }: GetServerSid
       loadBoardPosts(board.id, { limit: PAGE_SIZE, offset, keyword: q, sort }),
       loadBoardPostCount(board.id, q),
     ]);
+    // 이 목록 페이지의 SSR 출력은 로그인 세션과 무관하다 — 로더(loadBoardBySlug/
+    // loadBoardPosts/loadBoardPostCount)가 세션이 아닌 공개(anon) 클라이언트를 쓰고
+    // status='published' 글만 노출하므로 모든 방문자에게 동일하다(작성 버튼·작성자
+    // 메뉴 등 사용자별 UI 는 전부 클라이언트 useOptionalAuth 로 처리, SSR HTML 엔 없음).
+    // 따라서 짧은 공유 CDN 캐시를 걸어 요청·크롤마다의 Supabase 2쿼리(egress)를 줄인다.
+    // 오류/notFound 경로엔 캐시를 걸지 않아(아래 catch·notFound) 일시적 장애가 캐시에
+    // 30초간 고착되지 않게 한다.
+    res.setHeader('Cache-Control', 'public, s-maxage=30, stale-while-revalidate=300');
     return { props: { board, posts, hasMore, offset, total, q, sort, ...i18n } };
   } catch {
     return { props: { ...errorProps, board } };
