@@ -27,10 +27,13 @@ module.exports = {
   // - album           : /album/about, /album/musicians, /album/tracks 등
   // - faqs            : home (FAQ schema)
   // - press           : /press
-  // - videos          : /videos, /videos/[id], /album/about(VideoTabPanel),
-  //                     /album/musicians/[id], /camps/2026/musicians/[id]
+  // - videos          : /videos, /videos/[id], /album/about(VideoTabPanel)
+  //                     (musician 상세 페이지는 RelatedVideosSection 이 videos 키를
+  //                      쓰지 않아 ns 미로드 — 2026-07 슬림화)
   // - camp_faq_2026   : /camps/2026
-  // - camp_guidelines_2026 : /camps/2026, /camps/2026/guidelines (ko/en only)
+  // - camp_guidelines_2026 : /camps/2026/guidelines (운영지침 본문 전체)
+  // - camp_guidelines_2026_summary : /camps/2026 (GuidelinesSummary 요약 키만 —
+  //                       본문 페이지가 실제 쓰는 92%를 최다 트래픽 랜딩에서 분리)
   // - camp_promote_2026 : /camps/2026/promote (뮤지션용 SNS 홍보 키트,
   //                       홍보 본문은 ko/en 고정, UI 키는 13 로케일 parity 유지)
   // - camp_staff_2026  : /camps/2026/staff (기획단·자원봉사자 전용)
@@ -47,6 +50,7 @@ module.exports = {
     'videos',
     'camp_faq_2026',
     'camp_guidelines_2026',
+    'camp_guidelines_2026_summary',
     'camp_promote_2026',
     'camp_staff_2026',
     'camp_musician_guide_2026',
@@ -69,6 +73,7 @@ module.exports = {
     'videos',
     'camp_faq_2026',
     'camp_guidelines_2026',
+    'camp_guidelines_2026_summary',
     'camp_promote_2026',
     'camp_staff_2026',
     'camp_musician_guide_2026',

@@ -8,7 +8,9 @@ import Button from '@/components/common/Button';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const GuidelinesSummary: React.FC = () => {
-  const { t } = useTranslation('camp_guidelines_2026');
+  // 요약 전용 ns(camp_guidelines_2026_summary)만 로드한다. wrapper 키는
+  // camp_guidelines_2026 로 보존돼 t('camp_guidelines_2026.summary_*') 경로는 그대로.
+  const { t } = useTranslation('camp_guidelines_2026_summary');
   const { viewport, container, item } = useScrollReveal();
 
   const topics = t('camp_guidelines_2026.summary_topics', {

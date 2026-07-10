@@ -7,13 +7,21 @@ import { loadGalleryImages } from '@/utils/dataLoader';
 import { allPhotographerSlugs } from '@/data/photographers';
 import type { SlimGalleryImage } from '@/pages/PhotographerPage';
 
+// SSR 첫 페인트용으로 상단 N장만 보낸다. 나머지는 PhotographerPage 가 마운트 후
+// /data/gallery/*.json 을 fetch 해 작가 필터를 적용해 채운다. kwdh(2,015장) 등
+// 전량 인라인 시 페이지 데이터가 로케일당 ~200KB 로 128KB 임계를 넘기던 회귀 해소.
+// gallery.tsx 의 SSR_PREVIEW_COUNT 와 동일 값(60)으로 맞춘다.
+const SSR_PREVIEW_COUNT = 60;
+
 interface WrappedProps {
   slug: string;
-  images: SlimGalleryImage[];
+  initialImages: SlimGalleryImage[];
+  /** SSR preview 외 전체 이미지 수 — schema numberOfItems 정확도용 */
+  totalImageCount: number;
 }
 
-export default function WrappedPage({ slug, images }: WrappedProps) {
-  return <Page slug={slug} images={images} />;
+export default function WrappedPage({ slug, initialImages, totalImageCount }: WrappedProps) {
+  return <Page slug={slug} initialImages={initialImages} totalImageCount={totalImageCount} />;
 }
 
 export async function getStaticPaths({ locales }: GetStaticPathsContext) {
@@ -30,10 +38,12 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
     return { notFound: true };
   }
 
-  // props 슬림화: GalleryImageItem 이 실제로 읽는 필드(url, description, eventType,
-  // eventYear)만 내려보낸다. id·photographer 는 이 페이지에서 사용하지 않으므로 제거해
-  // getStaticProps 페이로드를 줄인다(261 kB → ~220 kB).
-  const images: SlimGalleryImage[] = loadGalleryImages<GalleryImage>()
+  // props 슬림화 2단계:
+  // (1) 필드 슬림 — GalleryImageItem 이 실제로 읽는 필드(url, description, eventType,
+  //     eventYear)만 남긴다. id·photographer 는 이 페이지에서 렌더에 쓰지 않는다.
+  // (2) 개수 슬림 — 전량(kwdh 2,015장 ≈ 200KB) 을 인라인하지 않고 상단 60장만 SSR 로
+  //     내려보낸다. 나머지는 PhotographerPage 가 클라이언트에서 fetch(gallery.tsx 패턴).
+  const all: SlimGalleryImage[] = loadGalleryImages<GalleryImage>()
     .filter((img) => img.photographer === slug)
     .sort((a, b) => {
       if (a.eventYear !== b.eventYear) return (b.eventYear || 0) - (a.eventYear || 0);
@@ -56,7 +66,8 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
         nextI18NextConfig
       )),
       slug,
-      images,
+      initialImages: all.slice(0, SSR_PREVIEW_COUNT),
+      totalImageCount: all.length,
     },
     revalidate: 3600,
   };

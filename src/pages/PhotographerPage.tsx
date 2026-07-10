@@ -11,8 +11,14 @@ import dynamic from 'next/dynamic';
 import type { LightboxImage } from '@/components/common/ImageLightbox';
 // 라이트박스는 클릭 시점에만 필요 — 초기 번들에서 분리.
 const ImageLightbox = dynamic(() => import('@/components/common/ImageLightbox'), { ssr: false });
+import WidgetErrorBoundary from '@/components/common/WidgetErrorBoundary';
 import { GalleryImage } from '@/types/gallery';
-import { photographerNameKey, findPhotographer } from '@/data/photographers';
+import { photographerNameKey, findPhotographer, photographersByYear } from '@/data/photographers';
+import {
+  getGalleryImagesByCategories,
+  GALLERY_CATEGORIES,
+  type GalleryCategory,
+} from '@/api/gallery';
 import {
   getImageGallerySchema,
   getBreadcrumbSchema,
@@ -34,15 +40,87 @@ export type SlimGalleryImage = Pick<
 
 interface PhotographerPageProps {
   slug: string;
-  images: SlimGalleryImage[];
+  /** SSR 첫 페인트용 상단 프리뷰(60장). 마운트 후 클라이언트가 전량으로 교체 */
+  initialImages: SlimGalleryImage[];
+  /** 작가의 전체 이미지 수 — schema numberOfItems 정확도용(SSR 시점) */
+  totalImageCount: number;
 }
 
 const FALLBACK_HERO = '/images-webp/camps/2026/kdh-DSC08498.webp';
 
-const PhotographerPage: React.FC<PhotographerPageProps> = ({ slug, images }) => {
+// 연도 → gallery JSON 카테고리. photographersByYear 의 연도 키를 fetch 대상
+// 카테고리로 환원한다.
+const CATEGORY_BY_YEAR: Partial<Record<number, GalleryCategory>> = {
+  2023: 'camp2023',
+  2024: 'album',
+  2025: 'camp2025',
+  2026: 'camp2026',
+};
+
+// 작가가 등록된 연도로부터 fetch 할 카테고리를 도출한다. 현재 작가 태그는 전부
+// camp2026 에만 있어 통상 1개 카테고리만 받는다. 매핑되지 않는 연도가 섞이면
+// 정확성을 위해 전체 카테고리를 받아 필터한다.
+const categoriesForPhotographer = (slug: string): GalleryCategory[] => {
+  const cats = new Set<GalleryCategory>();
+  let hasUnmapped = false;
+  for (const [year, list] of Object.entries(photographersByYear)) {
+    if (!list.some((p) => p.slug === slug)) continue;
+    const cat = CATEGORY_BY_YEAR[Number(year)];
+    if (cat) cats.add(cat);
+    else hasUnmapped = true;
+  }
+  if (hasUnmapped || cats.size === 0) return [...GALLERY_CATEGORIES];
+  return [...cats];
+};
+
+// getStaticProps 와 동일한 필터·정렬·슬림 매핑. SSR 프리뷰와 클라이언트 전량이
+// 같은 순서를 갖도록 로직을 일치시킨다.
+const toSlimForPhotographer = (all: GalleryImage[], slug: string): SlimGalleryImage[] =>
+  all
+    .filter((img) => img.photographer === slug)
+    .sort((a, b) => {
+      if (a.eventYear !== b.eventYear) return (b.eventYear || 0) - (a.eventYear || 0);
+      return b.id - a.id;
+    })
+    .map(({ url, description, eventType, eventYear }) => ({
+      url,
+      ...(description !== undefined && { description }),
+      eventType,
+      eventYear,
+    }));
+
+const PhotographerPage: React.FC<PhotographerPageProps> = ({
+  slug,
+  initialImages,
+  totalImageCount,
+}) => {
   const { t, i18n } = useTranslation();
   const { item, viewport } = useScrollReveal();
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
+  // 초기엔 SSR 프리뷰(60장)만 보유하고, 마운트 후 전량으로 교체한다.
+  const [images, setImages] = useState<SlimGalleryImage[]>(initialImages);
+
+  // 클라이언트 지연 로드: gallery.tsx 와 동일 패턴. 마운트 후 작가의 카테고리
+  // JSON 을 fetch → 작가 필터 → 전량으로 교체. slug/프리뷰 변경(작가 페이지 간
+  // 이동) 시 프리뷰로 리셋한 뒤 다시 받는다.
+  useEffect(() => {
+    let cancelled = false;
+    setImages(initialImages);
+    (async () => {
+      try {
+        const all = await getGalleryImagesByCategories(categoriesForPhotographer(slug));
+        if (cancelled) return;
+        const slim = toSlimForPhotographer(all, slug);
+        if (slim.length > 0) setImages(slim);
+      } catch (error) {
+        console.error('Failed to load photographer images:', error);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [slug, initialImages]);
 
   const name = t(photographerNameKey(slug));
   const bio = t(`gallery.photographers.${slug}.bio`);
@@ -108,7 +186,9 @@ const PhotographerPage: React.FC<PhotographerPageProps> = ({ slug, images }) => 
       caption: credit,
     }));
     return [
-      getImageGallerySchema(schemaImages, i18n.language, t, images.length),
+      // numberOfItems 는 전체 개수(totalImageCount)로 — SSR 시점엔 images 가
+      // 프리뷰 60장뿐이라 images.length 를 쓰면 개수가 과소 집계된다.
+      getImageGallerySchema(schemaImages, i18n.language, t, totalImageCount),
       getBreadcrumbSchema(breadcrumbs),
       getWebPageSchema({
         name: t('gallery.photographer_page_title', { name }),
@@ -116,7 +196,7 @@ const PhotographerPage: React.FC<PhotographerPageProps> = ({ slug, images }) => 
         url: getFullUrl(`/photographers/${slug}`),
       }),
     ];
-  }, [images, credit, i18n.language, t, breadcrumbs, name, bio, slug]);
+  }, [images, credit, i18n.language, t, breadcrumbs, name, bio, slug, totalImageCount]);
 
   // 라이트박스 이미지 배열 — 전체 images 기준이어야 네비게이션이 깨지지 않는다.
   const lightboxImages = useMemo<LightboxImage[]>(
@@ -196,14 +276,17 @@ const PhotographerPage: React.FC<PhotographerPageProps> = ({ slug, images }) => 
         </Container>
       </Section>
 
-      <ImageLightbox
-        show={selectedIndex !== null}
-        onClose={() => setSelectedIndex(null)}
-        maxHeight="85vh"
-        images={lightboxImages}
-        index={selectedIndex ?? 0}
-        onIndexChange={setSelectedIndex}
-      />
+      {/* 라이트박스 격리(D2): 렌더 예외가 페이지 전체를 덮지 않도록. */}
+      <WidgetErrorBoundary>
+        <ImageLightbox
+          show={selectedIndex !== null}
+          onClose={() => setSelectedIndex(null)}
+          maxHeight="85vh"
+          images={lightboxImages}
+          index={selectedIndex ?? 0}
+          onIndexChange={setSelectedIndex}
+        />
+      </WidgetErrorBoundary>
     </PageLayout>
   );
 };

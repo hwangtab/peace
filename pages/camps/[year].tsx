@@ -74,10 +74,13 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
 
   // camp_faq_2026 namespace 는 Camp 2026 페이지에서만 사용 — 2023/2025 페이지의
   // SSG payload 에서 제외해 13 로케일 × 1~2KB 누적 절감.
+  // camp_guidelines_2026 은 본문 전체(로케일당 ~10KB)이나 이 랜딩에서 렌더되는
+  // GuidelinesSummary 는 요약 키(8%)만 쓴다. 요약 전용 ns 만 로드해 최다 트래픽
+  // 페이지의 __NEXT_DATA__ 에서 죽은 운영지침 본문(92%)을 제거한다.
   const namespaces = ['translation', 'gangjeong', 'timeline', 'gallery'];
   if (year === '2026') {
     namespaces.push('camp_faq_2026');
-    namespaces.push('camp_guidelines_2026');
+    namespaces.push('camp_guidelines_2026_summary');
   }
 
   // 행사 종료 여부 — endDate(KST 자정) 가 빌드/리밸리데이트 시점보다 과거면 후기 모드.
