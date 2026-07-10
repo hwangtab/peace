@@ -11,7 +11,9 @@ import {
 import { createSupabaseServiceClient } from '@/lib/supabaseService';
 import type { AdminMember } from '@/types/cms';
 import type { GalleryImage } from '@/types/gallery';
-import { loadGalleryImages } from '@/utils/dataLoader';
+import type { VideoItem } from '@/types/video';
+import type { PressItem } from '@/types/press';
+import { loadGalleryImages, loadLocalizedData } from '@/utils/dataLoader';
 
 interface RecentLog {
   id: string;
@@ -312,27 +314,11 @@ export default function AdminHomePage({
             </section>
           )}
 
-          {/* 콘텐츠 아카이브 */}
-          <section className="rounded-lg border border-deep-ocean/10 bg-white p-5">
-            <PanelHeader title="콘텐츠 아카이브" />
-            <ul className="space-y-1 text-sm">
-              {[
-                { href: '/admin/videos', label: '비디오', n: counts.videos },
-                { href: '/admin/gallery', label: '갤러리', n: counts.gallery },
-                { href: '/admin/press', label: '언론보도', n: counts.press },
-              ].map((c) => (
-                <li key={c.href}>
-                  <Link
-                    href={c.href}
-                    className="flex items-center justify-between rounded px-2 py-1.5 transition hover:bg-ocean-sand/40"
-                  >
-                    <span className="text-deep-ocean">{c.label}</span>
-                    <span className="font-semibold text-jeju-ocean">{c.n}개</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
+          {/* 콘텐츠 아카이브 편집 진입 카드는 제거했다. 비디오·갤러리·언론보도는 정적
+              json(SSOT)으로 전환되어 어드민 CMS 편집이 공개 사이트에 반영되지 않으므로,
+              편집 페이지로 이어지던 링크가 모두 상황판 리다이렉트로 바뀌었다. 공개 콘텐츠
+              수량은 위 "공개 콘텐츠" KPI 카드에서 그대로 확인할 수 있다.
+              참조: [[project_gallery_static_ssot]] [[project_supabase_egress]] */}
 
           {/* 바로가기 */}
           <section className="rounded-lg border border-deep-ocean/10 bg-white p-5">
@@ -375,12 +361,23 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const countHead = (table: string) =>
     supabase.from(table).select('id', { count: 'exact', head: true });
 
-  // 갤러리는 정적 json(SSOT)이라 archive_gallery_images 테이블이 없다 — 정적 수를 센다.
+  // 비디오·언론보도·갤러리는 정적 json(SSOT)이 공개 사이트의 실제 출처다. 좀비 테이블
+  // (archive_videos·archive_press_items)의 행 수가 아니라 공개 페이지(/videos·/press)와
+  // 동일한 정적 데이터를 세어 "공개 콘텐츠" 수치를 라이브와 일치시킨다(기본 로케일 ko 기준).
+  // 참조: [[project_gallery_static_ssot]] [[project_supabase_egress]]
   const galleryCount = loadGalleryImages<GalleryImage>().length;
+  const staticCount = <T,>(filename: string, opts?: { mergeByIdKey?: string }): number => {
+    try {
+      return loadLocalizedData<T>('ko', filename, opts).length;
+    } catch {
+      // 정적 파일 누락 등으로 카운트 실패해도 상황판이 500 나지 않도록 0 으로 폴백.
+      return 0;
+    }
+  };
+  const videosCount = staticCount<VideoItem>('videos.json', { mergeByIdKey: 'id' });
+  const pressCount = staticCount<PressItem>('press.json');
 
   const [
-    videos,
-    press,
     history,
     members,
     admins,
@@ -394,8 +391,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     recentMeetingRes,
     recentMailRes,
   ] = await Promise.all([
-    countHead('archive_videos'),
-    countHead('archive_press_items'),
     countHead('cms_change_logs'),
     countHead('profiles'),
     supabase.from('admin_members').select('id', { count: 'exact', head: true }).eq('active', true),
@@ -474,9 +469,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       member: redactMember(session.member),
       canEdit,
       counts: {
-        videos: videos.count ?? 0,
+        videos: videosCount,
         gallery: galleryCount,
-        press: press.count ?? 0,
+        press: pressCount,
         history: history.count ?? 0,
         members: members.count ?? 0,
         admins: admins.count ?? 0,

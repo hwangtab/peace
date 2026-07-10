@@ -23,6 +23,13 @@ const getErrorMessage = (error: unknown): string => {
   return error instanceof Error ? error.message : String(error);
 };
 
+// 주의: 공개 사이트(videos/gallery/press)는 정적 JSON(public/data/**)을 단일
+// 출처(SSOT)로 사용한다. 이 API가 write 하는 archive_videos·archive_gallery_images·
+// archive_press_items 테이블은 더 이상 공개 화면에 반영되지 않는다(좀비 CMS 레이어).
+// 저장은 성공해도 사이트에는 나타나지 않으므로, 대응하는 어드민 편집 UI(/admin/videos·
+// /admin/gallery·/admin/press)는 모두 상황판 리다이렉트로 비활성화했다. 라우트 자체는
+// 과거 데이터 열람·복구 및 CMS→정적 재동기화 스크립트 호환을 위해 남겨둔다.
+// 참조: [[project_gallery_static_ssot]] [[project_supabase_egress]]
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const collection = String(req.query.collection ?? '');
   const config = getAdminCollectionConfig(collection);

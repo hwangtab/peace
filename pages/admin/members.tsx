@@ -4,13 +4,17 @@ import classNames from 'classnames';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { getAdminSession, isOwner, redirectToAdminLogin, redactMember } from '@/lib/adminAuth';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
-import { loadRegularMembers, type RegularUser } from '@/lib/adminMembers';
+import { loadRegularMembersWithMeta, type RegularUser } from '@/lib/adminMembers';
 import { formatDateTime } from '@/utils/format';
 import type { AdminMember, AdminRole } from '@/types/cms';
 
 interface AdminMembersPageProps {
   members: AdminMember[];
   users: RegularUser[];
+  // 가입 회원 전체 수(auth.users 총원). 표시 목록(users)이 잘렸을 때 실제 규모를 알린다.
+  usersTotal: number;
+  // 안전 상한에 걸려 일부 회원만 불러왔는지 — true면 목록 위에 경고를 띄운다.
+  usersTruncated: boolean;
   member: AdminMember;
   initialError?: string;
 }
@@ -35,6 +39,8 @@ const roleClass = (role: AdminRole) =>
 export default function AdminMembersPage({
   members: initialMembers,
   users: initialUsers,
+  usersTotal,
+  usersTruncated,
   member,
   initialError = '',
 }: AdminMembersPageProps) {
@@ -299,10 +305,19 @@ export default function AdminMembersPage({
 
       <section className="mt-8 rounded border border-deep-ocean/10 bg-white">
         <div className="border-b border-deep-ocean/10 px-4 py-3">
-          <h2 className="font-semibold">일반 회원 {users.length}명</h2>
+          <h2 className="font-semibold">
+            일반 회원 {users.length.toLocaleString('ko-KR')}명
+            {usersTruncated ? ` (전체 ${usersTotal.toLocaleString('ko-KR')}명 중 일부)` : ''}
+          </h2>
           <p className="mt-1 text-xs text-coastal-gray">
             가입한 회원을 골라 바로 관리자로 등업할 수 있습니다.
           </p>
+          {usersTruncated && (
+            <p className="mt-1 text-xs font-semibold text-sunset-coral">
+              표시 한도에 도달해 일부 회원만 불러왔습니다. 전체 회원 관리는 Supabase 대시보드를
+              이용하세요.
+            </p>
+          )}
         </div>
         {users.length === 0 ? (
           <p className="p-6 text-coastal-gray">가입한 회원이 없습니다.</p>
@@ -386,15 +401,17 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   }
 
   const supabase = createSupabaseServerClient(context.req, context.res);
-  const [{ data, error }, users] = await Promise.all([
+  const [{ data, error }, regularMembers] = await Promise.all([
     supabase.from('admin_members').select('*').order('created_at', { ascending: true }),
-    loadRegularMembers(),
+    loadRegularMembersWithMeta(),
   ]);
 
   return {
     props: {
       members: data ?? [],
-      users,
+      users: regularMembers.users,
+      usersTotal: regularMembers.total,
+      usersTruncated: regularMembers.truncated,
       member: redactMember(session.member),
       initialError: error?.message ?? '',
     },

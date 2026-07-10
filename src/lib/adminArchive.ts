@@ -156,7 +156,10 @@ export const ADMIN_COLLECTION_CONFIGS: Record<AdminCollection, AdminCollectionCo
     collection: 'videos',
     table: 'archive_videos',
     title: '비디오 아카이브',
-    description: '공개 영상의 제목, 유튜브 링크, 썸네일, 노출 상태를 관리합니다.',
+    // 공개 사이트는 정적 JSON(public/data/**/videos.json)을 단일 출처로 쓴다.
+    // 이 테이블 편집은 공개 화면에 반영되지 않으므로 오해 없도록 명시한다.
+    description:
+      '아카이브 영상 데이터입니다. 공개 사이트는 정적 JSON(SSOT)을 쓰므로 이 편집은 화면에 반영되지 않습니다.',
     listPath: '/admin/videos',
     emptyLabel: '아직 등록된 영상이 없습니다.',
     primaryField: 'title',
@@ -232,7 +235,10 @@ export const ADMIN_COLLECTION_CONFIGS: Record<AdminCollection, AdminCollectionCo
     collection: 'press',
     table: 'archive_press_items',
     title: '언론보도 아카이브',
-    description: '기사 링크, 매체, 요약, 대표 이미지를 관리합니다.',
+    // 공개 사이트는 정적 JSON(public/data/**/press.json)을 단일 출처로 쓴다.
+    // 이 테이블 편집은 공개 화면에 반영되지 않으므로 오해 없도록 명시한다.
+    description:
+      '아카이브 언론보도 데이터입니다. 공개 사이트는 정적 JSON(SSOT)을 쓰므로 이 편집은 화면에 반영되지 않습니다.',
     listPath: '/admin/press',
     emptyLabel: '아직 등록된 언론보도가 없습니다.',
     primaryField: 'title',

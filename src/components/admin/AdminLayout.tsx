@@ -8,10 +8,11 @@ import { canEditContent } from '@/lib/adminAuth';
 import type { AdminMember } from '@/types/cms';
 import NotificationBell from '@/components/admin/NotificationBell';
 
+// 비디오·갤러리·언론보도는 정적 json(SSOT)으로 전환되어 어드민 CMS 편집이
+// 공개 사이트에 반영되지 않는다. 혼란 방지를 위해 아카이브 편집 메뉴를 모두 제거했다.
+// (콘텐츠 갱신은 정적 json 수정·커밋으로만 반영. 참조: [[project_gallery_static_ssot]])
 const NAV_ITEMS = [
   { href: '/admin', label: '상황판' },
-  { href: '/admin/videos', label: '비디오' },
-  { href: '/admin/press', label: '언론보도' },
   { href: '/admin/whitepaper', label: '운영 백서' },
   { href: '/admin/meetings', label: '회의록' },
   { href: '/admin/mailbox', label: '메일함' },
