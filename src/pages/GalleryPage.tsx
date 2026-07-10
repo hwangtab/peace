@@ -4,6 +4,7 @@ import Button from '@/components/common/Button';
 import PageHero from '@/components/common/PageHero';
 import PageIntroSection from '@/components/common/PageIntroSection';
 import GallerySection from '@/components/home/GallerySection';
+import WidgetErrorBoundary from '@/components/common/WidgetErrorBoundary';
 import Container from '@/components/layout/Container';
 import Section from '@/components/layout/Section';
 import {
@@ -110,12 +111,15 @@ const GalleryPage = ({ initialImages = [], totalImageCount }: GalleryPageProps) 
         background="white"
       />
       <Section background="white" paddingTop="none" paddingBottom="tight">
-        <GallerySection
-          enableSectionWrapper={false}
-          hideSectionHeader={true}
-          initialImages={initialImages}
-          priorityFirstImages={false}
-        />
+        {/* 갤러리 섹션 격리(D2): 이미지/라이트박스 예외가 페이지 전체를 덮지 않도록. */}
+        <WidgetErrorBoundary>
+          <GallerySection
+            enableSectionWrapper={false}
+            hideSectionHeader={true}
+            initialImages={initialImages}
+            priorityFirstImages={false}
+          />
+        </WidgetErrorBoundary>
       </Section>
 
       {/* Camp 2026 CTA */}

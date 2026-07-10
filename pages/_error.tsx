@@ -88,8 +88,24 @@ function ErrorPage({ statusCode }: ErrorProps) {
   );
 }
 
-ErrorPage.getInitialProps = ({ res, err }: NextPageContext) => {
+ErrorPage.getInitialProps = (ctx: NextPageContext) => {
+  const { res, err } = ctx;
   const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
+  // D1 — SSR/렌더 중 발생한 에러를 서버 로그(Vercel 함수 로그)에 남긴다.
+  // 기존엔 statusCode 만 뽑고 err 를 버려 프로덕션에서 원인 추적이 불가능했다.
+  // 서버 사이드에서만 로깅(클라이언트 런타임 에러는 _app 의 전역 핸들러가 수집).
+  if (err && typeof window === 'undefined') {
+    console.error(
+      '[_error]',
+      JSON.stringify({
+        statusCode,
+        message: err.message,
+        stack: err.stack,
+        url: ctx.asPath,
+        at: new Date().toISOString(),
+      })
+    );
+  }
   return { statusCode };
 };
 

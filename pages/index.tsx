@@ -9,6 +9,7 @@ import AboutSection from '@/components/home/AboutSection';
 import SEOHelmet from '@/components/shared/SEOHelmet';
 import StructuredDataScripts from '@/components/shared/StructuredDataScripts';
 import SectionWave from '@/components/layout/SectionWave';
+import WidgetErrorBoundary from '@/components/common/WidgetErrorBoundary';
 
 const GangjeongStorySection = dynamic(() => import('@/components/camp/GangjeongStorySection'), {
   // HookStatement(min-h-[50vh]) + ImpactNumbers + GangjeongTimeline + CTA 섹션 합산.
@@ -86,11 +87,14 @@ export default function HomePage({ initialGalleryImages }: HomePageProps) {
       {/* home 의 갤러리는 fold 아래에 위치. priorityFirstImages=false 로
           첫 8개 타일의 preload 링크를 끊어 Hero H1 의 LCP element render delay
           (이전에 ~2.5s) 를 해소. */}
-      <GallerySection
-        initialImages={initialGalleryImages}
-        skipClientFetch
-        priorityFirstImages={false}
-      />
+      {/* 갤러리 섹션 격리(D2): 이미지/라이트박스 예외가 홈 전체를 덮지 않도록. */}
+      <WidgetErrorBoundary>
+        <GallerySection
+          initialImages={initialGalleryImages}
+          skipClientFetch
+          priorityFirstImages={false}
+        />
+      </WidgetErrorBoundary>
       {/* JSON-LD 는 메인 콘텐츠 뒤로 — preload scanner 와 LCP H1 paint 가
           앞단에서 빨리 처리되도록. SEO 영향 없음. */}
       <StructuredDataScripts data={structuredData} />

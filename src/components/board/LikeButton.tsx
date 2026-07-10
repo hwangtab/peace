@@ -60,41 +60,46 @@ export default function LikeButton({ postId, initialCount }: Props) {
     interactedRef.current = true;
     setLoading(true);
 
-    const supabase = createSupabaseBrowserClient();
+    // 로딩 플래그는 try/finally 로 반드시 해제한다 — 예기치 못한 throw(네트워크 계층
+    // 예외, 클라이언트 생성 실패 등)에도 버튼이 영구 비활성으로 고착되지 않도록.
+    // (형제 파일 CommentSection 의 확립된 try/finally 규칙과 일관.)
+    try {
+      const supabase = createSupabaseBrowserClient();
 
-    if (!liked) {
-      // Optimistic: increment
-      setLiked(true);
-      setCount((c) => c + 1);
-      const { error } = await supabase
-        .from('post_likes')
-        .insert({ post_id: postId, user_id: user.id });
-      if (error) {
-        if (error.code === '23505') {
-          // Already liked (race condition) — treat as success, keep liked=true
-        } else {
-          // Revert on genuine error
-          setLiked(false);
-          setCount((c) => Math.max(0, c - 1));
-        }
-      }
-    } else {
-      // Optimistic: decrement
-      setLiked(false);
-      setCount((c) => Math.max(0, c - 1));
-      const { error } = await supabase
-        .from('post_likes')
-        .delete()
-        .eq('post_id', postId)
-        .eq('user_id', user.id);
-      if (error) {
-        // Revert
+      if (!liked) {
+        // Optimistic: increment
         setLiked(true);
         setCount((c) => c + 1);
+        const { error } = await supabase
+          .from('post_likes')
+          .insert({ post_id: postId, user_id: user.id });
+        if (error) {
+          if (error.code === '23505') {
+            // Already liked (race condition) — treat as success, keep liked=true
+          } else {
+            // Revert on genuine error
+            setLiked(false);
+            setCount((c) => Math.max(0, c - 1));
+          }
+        }
+      } else {
+        // Optimistic: decrement
+        setLiked(false);
+        setCount((c) => Math.max(0, c - 1));
+        const { error } = await supabase
+          .from('post_likes')
+          .delete()
+          .eq('post_id', postId)
+          .eq('user_id', user.id);
+        if (error) {
+          // Revert
+          setLiked(true);
+          setCount((c) => c + 1);
+        }
       }
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   // initializing 중에도 클릭 가능하게 — 낙관적 토글 후 백그라운드에서 reconcile.

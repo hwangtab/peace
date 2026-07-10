@@ -12,6 +12,7 @@ import dynamic from 'next/dynamic';
 import type { LightboxImage } from '../common/ImageLightbox';
 // 라이트박스는 클릭 시점에만 필요 — 초기 번들에서 분리.
 const ImageLightbox = dynamic(() => import('../common/ImageLightbox'), { ssr: false });
+import WidgetErrorBoundary from '../common/WidgetErrorBoundary';
 import { photographersByYear, photographerNameKey } from '@/data/photographers';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
@@ -104,19 +105,22 @@ const CampGallery: React.FC<CampGalleryProps> = ({
         </div>
       </Container>
 
-      <ImageLightbox
-        show={selectedIndex !== null}
-        onClose={() => setSelectedIndex(null)}
-        images={camp.images.map(
-          (img, idx): LightboxImage => ({
-            src: img,
-            alt: altForIndex(idx),
-            credit: creditText,
-          })
-        )}
-        index={selectedIndex ?? 0}
-        onIndexChange={setSelectedIndex}
-      />
+      {/* 라이트박스 격리(D2): 렌더 예외가 갤러리 전체를 덮지 않도록. */}
+      <WidgetErrorBoundary>
+        <ImageLightbox
+          show={selectedIndex !== null}
+          onClose={() => setSelectedIndex(null)}
+          images={camp.images.map(
+            (img, idx): LightboxImage => ({
+              src: img,
+              alt: altForIndex(idx),
+              credit: creditText,
+            })
+          )}
+          index={selectedIndex ?? 0}
+          onIndexChange={setSelectedIndex}
+        />
+      </WidgetErrorBoundary>
     </Section>
   );
 };

@@ -17,6 +17,7 @@ import CommentSection from '@/components/board/CommentSection';
 import type { CommentRow } from '@/components/board/CommentSection';
 import RatingStars from '@/components/board/RatingStars';
 import LikeButton from '@/components/board/LikeButton';
+import WidgetErrorBoundary from '@/components/common/WidgetErrorBoundary';
 import { useOptionalAuth } from '@/components/auth/AuthProvider';
 import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
@@ -230,25 +231,36 @@ export default function PostDetailPage({
           </section>
         )}
 
-        {/* LikeButton — suppressed for hidden posts */}
-        {!isHidden && <LikeButton postId={post.id} initialCount={post.like_count} />}
+        {/* LikeButton — suppressed for hidden posts. 위젯 단위 격리(D2): 좋아요가
+            던져도 본문·댓글은 유지된다. */}
+        {!isHidden && (
+          <WidgetErrorBoundary resetKeys={[post.id]}>
+            <LikeButton postId={post.id} initialCount={post.like_count} />
+          </WidgetErrorBoundary>
+        )}
 
-        {/* CommentSection — read-only for hidden posts (no add-comment form) */}
-        <CommentSection
-          postId={post.id}
-          initialComments={comments}
-          initialHasMore={commentsHasMore}
-          readOnly={isHidden}
-        />
+        {/* CommentSection — read-only for hidden posts (no add-comment form).
+            위젯 단위 격리(D2): 댓글 영역만 fallback 되고 본문은 살아남는다. */}
+        <WidgetErrorBoundary resetKeys={[post.id]}>
+          <CommentSection
+            postId={post.id}
+            initialComments={comments}
+            initialHasMore={commentsHasMore}
+            readOnly={isHidden}
+          />
+        </WidgetErrorBoundary>
       </main>
 
-      <ImageLightbox
-        show={lightbox !== null}
-        images={lightbox ? ([{ src: lightbox, alt: post.title }] satisfies LightboxImage[]) : []}
-        index={0}
-        onIndexChange={() => {}}
-        onClose={() => setLightbox(null)}
-      />
+      {/* 라이트박스(모달)도 격리 — 렌더 예외가 페이지 전체를 덮지 않도록. */}
+      <WidgetErrorBoundary>
+        <ImageLightbox
+          show={lightbox !== null}
+          images={lightbox ? ([{ src: lightbox, alt: post.title }] satisfies LightboxImage[]) : []}
+          index={0}
+          onIndexChange={() => {}}
+          onClose={() => setLightbox(null)}
+        />
+      </WidgetErrorBoundary>
 
       <ConfirmDialog
         show={showDeleteConfirm}
@@ -279,6 +291,11 @@ export const getServerSideProps = async ({
     ['board', 'translation'],
     nextI18NextConfig
   );
+  // CDN 캐시 금지(의도적): 이 상세 SSR 은 세션 스코프 클라이언트로 조회하고 RLS 가
+  // 방문자에 따라 결과를 바꾼다 — 숨김(hidden) 글/댓글은 작성자·관리자에게만 보이고
+  // 그 외엔 404 다. 공유 캐시를 걸면 작성자의 비공개 글이 타인에게 새거나 특정 방문자의
+  // 뷰가 다른 방문자에게 재사용될 수 있으므로 캐시 헤더를 두지 않는다(목록 페이지는
+  // 세션 무관이라 캐시함 — pages/board/[slug]/index.tsx 참고).
   const serverClient = createSupabaseServerClient(req, res);
 
   let post;

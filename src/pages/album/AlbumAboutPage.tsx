@@ -10,6 +10,7 @@ import SectionHeader from '@/components/common/SectionHeader';
 import type { LightboxImage } from '@/components/common/ImageLightbox';
 // 라이트박스는 클릭 시점에만 필요 — 초기 번들에서 분리.
 const ImageLightbox = dynamic(() => import('@/components/common/ImageLightbox'), { ssr: false });
+import WidgetErrorBoundary from '@/components/common/WidgetErrorBoundary';
 import { getVideos } from '@/api/videos';
 import { getMusicians } from '@/api/musicians';
 import dynamic from 'next/dynamic';
@@ -429,19 +430,22 @@ const AlbumAboutPage = ({
           onClose={() => setIsModalOpen(false)}
         />
       )}
-      <ImageLightbox
-        show={selectedPhotoIndex !== null}
-        onClose={() => setSelectedPhotoIndex(null)}
-        maxHeight="85vh"
-        images={albumPhotos.map(
-          (img): LightboxImage => ({
-            src: img.url,
-            alt: t('image_alt_concert', { num: img.id }),
-          })
-        )}
-        index={selectedPhotoIndex ?? 0}
-        onIndexChange={setSelectedPhotoIndex}
-      />
+      {/* 라이트박스 격리(D2): 렌더 예외가 페이지 전체를 덮지 않도록. */}
+      <WidgetErrorBoundary>
+        <ImageLightbox
+          show={selectedPhotoIndex !== null}
+          onClose={() => setSelectedPhotoIndex(null)}
+          maxHeight="85vh"
+          images={albumPhotos.map(
+            (img): LightboxImage => ({
+              src: img.url,
+              alt: t('image_alt_concert', { num: img.id }),
+            })
+          )}
+          index={selectedPhotoIndex ?? 0}
+          onIndexChange={setSelectedPhotoIndex}
+        />
+      </WidgetErrorBoundary>
     </PageLayout>
   );
 };

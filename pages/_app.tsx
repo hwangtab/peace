@@ -30,6 +30,7 @@ import Footer from '@/components/layout/Footer';
 import ErrorFallback from '@/components/common/ErrorFallback';
 import { AuthProvider } from '@/components/auth/AuthProvider';
 import AdminQuickAccess from '@/components/admin/AdminQuickAccess';
+import { reportClientError, reportReactError } from '@/lib/clientError';
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
@@ -44,6 +45,36 @@ const GA_MEASUREMENT_ID = config.gaMeasurementId;
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const isAdminRoute = router.pathname.startsWith('/admin');
+
+  // D1 — 전역 클라이언트 에러 수집.
+  // 잡히지 않은 예외/Promise 거부를 자체 엔드포인트(/api/client-error)로 보내
+  // Vercel 함수 로그에 남긴다. dedupe·상한·개발모드 미전송은 reportClientError 내부 처리.
+  // (관리자 라우트 포함 전역 등록 — 스태프 작업 중 에러도 수집 대상이다.)
+  useEffect(() => {
+    const onError = (event: ErrorEvent) => {
+      // 리소스 로드 실패 등 message/error 가 비어있는 이벤트는 무시(노이즈 방지).
+      if (!event.error && !event.message) return;
+      reportClientError({
+        kind: 'window.onerror',
+        message: event.message || (event.error as Error | undefined)?.message || 'unknown error',
+        stack: (event.error as Error | undefined)?.stack,
+      });
+    };
+    const onRejection = (event: PromiseRejectionEvent) => {
+      const reason = event.reason as { message?: string; stack?: string } | undefined;
+      reportClientError({
+        kind: 'unhandledrejection',
+        message: reason?.message ?? String(event.reason),
+        stack: reason?.stack,
+      });
+    };
+    window.addEventListener('error', onError);
+    window.addEventListener('unhandledrejection', onRejection);
+    return () => {
+      window.removeEventListener('error', onError);
+      window.removeEventListener('unhandledrejection', onRejection);
+    };
+  }, []);
 
   // Core Web Vitals → GA4 보고
   useEffect(() => {
@@ -87,8 +118,11 @@ function App({ Component, pageProps }: AppProps) {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
 
-        {/* GA4: afterInteractive로 렌더링 차단 방지 */}
-        {GA_MEASUREMENT_ID && (
+        {/* GA4: afterInteractive로 렌더링 차단 방지.
+            D5 — 어드민 라우트에서는 GA 스크립트를 로드하지 않는다(스태프 작업이 공개
+            방문자 통계에 혼입되지 않도록). web-vitals·라우트 page_view 보고도 admin 에선
+            window.gtag 가 없어 자연히 no-op 이 된다(위 useEffect 의 gtag 가드). */}
+        {GA_MEASUREMENT_ID && !isAdminRoute && (
           <>
             <Script
               src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
@@ -101,7 +135,7 @@ function App({ Component, pageProps }: AppProps) {
         )}
 
         {isAdminRoute ? (
-          <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <ErrorBoundary FallbackComponent={ErrorFallback} onError={reportReactError}>
             <main id="main-content" className="overflow-x-hidden">
               <Component {...pageProps} />
             </main>
@@ -109,7 +143,7 @@ function App({ Component, pageProps }: AppProps) {
         ) : (
           <AuthProvider>
             <Navigation />
-            <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <ErrorBoundary FallbackComponent={ErrorFallback} onError={reportReactError}>
               <main id="main-content" className="overflow-x-hidden">
                 <Component {...pageProps} />
               </main>

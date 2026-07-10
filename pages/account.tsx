@@ -31,6 +31,10 @@ export default function AccountPage() {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const [myPosts, setMyPosts] = useState<MyPost[] | null>(null);
+  // D4 — '내가 쓴 글' 조회 실패를 '글 없음'으로 오인시키지 않기 위한 에러 상태.
+  const [postsError, setPostsError] = useState(false);
+  // 재시도 트리거 — 값이 바뀌면 조회 effect 를 다시 실행한다(onError 엔 재시도 제공 규칙).
+  const [postsReloadKey, setPostsReloadKey] = useState(0);
 
   useEffect(() => {
     if (!loading && !user) void router.replace('/login?next=/account');
@@ -41,33 +45,46 @@ export default function AccountPage() {
     if (!user) return;
     let cancelled = false;
     void (async () => {
-      const supabase = createSupabaseBrowserClient();
-      const { data } = await supabase
-        .from('posts')
-        .select('id, title, created_at, status, boards(slug)')
-        .eq('author_id', user.id)
-        .order('created_at', { ascending: false })
-        .limit(20);
-      if (cancelled) return;
-      const rows = (data as Record<string, unknown>[] | null) ?? [];
-      setMyPosts(
-        rows.map((r) => {
-          const b = r.boards as { slug?: string } | { slug?: string }[] | null;
-          const boardSlug = Array.isArray(b) ? (b[0]?.slug ?? '') : (b?.slug ?? '');
-          return {
-            id: String(r.id),
-            title: String(r.title),
-            created_at: String(r.created_at),
-            status: String(r.status),
-            boardSlug,
-          };
-        })
-      );
+      // 재시도 시 로딩 상태로 되돌리고 이전 에러를 지운다(effect 본문이 아닌 async
+      // 콜백 내부에서 호출 — cascading render 경고 회피).
+      setPostsError(false);
+      setMyPosts(null);
+      try {
+        const supabase = createSupabaseBrowserClient();
+        const { data, error } = await supabase
+          .from('posts')
+          .select('id, title, created_at, status, boards(slug)')
+          .eq('author_id', user.id)
+          .order('created_at', { ascending: false })
+          .limit(20);
+        if (cancelled) return;
+        // 조회 장애(error) 또는 전송 실패(throw)를 '글 없음'이 아니라 에러로 구분.
+        if (error) {
+          setPostsError(true);
+          return;
+        }
+        const rows = (data as Record<string, unknown>[] | null) ?? [];
+        setMyPosts(
+          rows.map((r) => {
+            const b = r.boards as { slug?: string } | { slug?: string }[] | null;
+            const boardSlug = Array.isArray(b) ? (b[0]?.slug ?? '') : (b?.slug ?? '');
+            return {
+              id: String(r.id),
+              title: String(r.title),
+              created_at: String(r.created_at),
+              status: String(r.status),
+              boardSlug,
+            };
+          })
+        );
+      } catch {
+        if (!cancelled) setPostsError(true);
+      }
     })();
     return () => {
       cancelled = true;
     };
-  }, [user]);
+  }, [user, postsReloadKey]);
 
   const saveNickname = async (nickname: string) => {
     setError('');
@@ -227,7 +244,20 @@ export default function AccountPage() {
           <h2 className="mb-3 font-display text-lg font-bold text-deep-ocean">
             {t('account.myPosts')}
           </h2>
-          {myPosts === null ? (
+          {postsError ? (
+            <div className="text-sm">
+              <p role="alert" className="text-coastal-gray">
+                {t('errors.generic')}
+              </p>
+              <button
+                type="button"
+                onClick={() => setPostsReloadKey((k) => k + 1)}
+                className="mt-3 rounded border border-deep-ocean/20 px-3 py-1.5 font-semibold text-jeju-ocean transition hover:border-jeju-ocean"
+              >
+                {t('common.retry', { ns: 'translation' })}
+              </button>
+            </div>
+          ) : myPosts === null ? (
             <p className="text-sm text-coastal-gray">{t('common.loading')}</p>
           ) : myPosts.length === 0 ? (
             <p className="text-sm text-coastal-gray">{t('account.noPosts')}</p>
