@@ -167,10 +167,23 @@ const SEOHelmet: React.FC<SEOHelmetProps> = ({
 
         {/* Canonical URL */}
         <link rel="canonical" href={fullCanonicalUrl} />
-        {alternateLinks.map((link) => (
-          <link key={link.locale} rel="alternate" hrefLang={link.hrefLang} href={link.href} />
-        ))}
-        <link rel="alternate" hrefLang="x-default" href={getFullUrl(pathWithoutLocale)} />
+        {/*
+          hreflang alternate 는 색인 대상 페이지에서만 낸다. noIndex 페이지
+          (설문·스태프·가이드·홍보키트·게시판·404)는 크롤러가 색인하지 않으므로
+          alternate 가 애초에 무의미하고, 특히 /camps/2026/survey 처럼 proxy 가
+          비-ko 로케일을 ko 로 리다이렉트하는 경로에선 12개 로케일 alternate 가 전부
+          '리다이렉트되는 URL'을 가리켜(hreflang 은 200 canonical 을 가리켜야 함)
+          상충 신호가 된다. 따라서 noIndex 면 alternate/x-default 를 렌더하지 않는다
+          (canonical 은 자기참조로 유지 — noindex 와 무관하게 무해).
+        */}
+        {!noIndex && (
+          <>
+            {alternateLinks.map((link) => (
+              <link key={link.locale} rel="alternate" hrefLang={link.hrefLang} href={link.href} />
+            ))}
+            <link rel="alternate" hrefLang="x-default" href={getFullUrl(pathWithoutLocale)} />
+          </>
+        )}
 
         {/* 로봇 메타 태그 */}
         <meta

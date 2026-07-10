@@ -142,6 +142,23 @@ const nextConfig = {
         headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
       },
       {
+        // /images/** 원본(og 제작본·og/_derived 파생 jpg·press webp).
+        // immutable 대신 온건한 정책을 쓰는 이유: 이 하위 파일명엔 내용 해시가
+        // 없어(예: /images/og/_derived/musicians/60.jpg — 원본 60.webp 에서 파생)
+        // 원본 이미지를 같은 이름으로 교체하면 URL 이 그대로다. _derived 는 빌드가
+        // 원본 변경 시 재생성하는 산출물(gitignore)이라 특히 교체 가능성이 높고,
+        // 카카오톡·페북 OG 크롤러가 og:image 를 공격적으로 캐시하므로 immutable 이면
+        // 갱신본이 최대 1년 고착된다. max-age 1일·s-maxage 7일·SWR 로 CDN 효율은
+        // 지키되 이미지 교체가 일주일 내 수동 퍼지 없이 전파되게 한다.
+        source: '/images/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=604800',
+          },
+        ],
+      },
+      {
         source: '/audio/:path*',
         headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
       },
@@ -157,13 +174,43 @@ const nextConfig = {
         ],
       },
       {
-        // /locales/*/*.json — i18next 가 클라이언트 런타임에 fetch.
-        // 동일 메커니즘으로 SPA 이동 시 재페치 제거.
+        // /locales/*/*.json — next-i18next 는 SSR props(serverSideTranslations)로
+        // 번역을 임베드하므로 공개 페이지는 이 파일을 클라이언트에서 fetch 하지 않는다.
+        // 실제 직접 fetch 는 admin 도구 한 곳뿐(AdminCollectionPage 가 작가 표시
+        // 이름을 얻으려 /locales/ko/gallery.json 을 조회). 그 admin fetch·수동
+        // 접근을 위한 캐시로 유효하므로 헤더는 유지한다.
         source: '/locales/:path*',
         headers: [
           {
             key: 'Cache-Control',
             value: 'public, max-age=300, s-maxage=86400, stale-while-revalidate=31536000',
+          },
+        ],
+      },
+      {
+        // next-sitemap 산출 정적 사이트맵: 색인 sitemap.xml + URL 청크 sitemap-N.xml
+        // (sitemap-0.xml 은 ~4.5MB). 공개 배포엔 헤더가 없어 매 크롤러 요청이 전량
+        // 재전송되므로 CDN 캐시를 건다. 크롤 주기(수 시간~일)에 맞춰 브라우저 1시간·
+        // CDN 24시간·SWR 7일. 빌드마다 재생성되지만 s-maxage 24시간이면 갱신 지연은
+        // 최대 하루로 SEO 영향이 없다.
+        // 주의: 동적 사이트맵 /video-sitemap.xml·/image-sitemap.xml 은 SSR 라우트라
+        // getServerSideProps 에서 자체 Cache-Control 을 설정한다. 헤더 이중 적용을
+        // 피하려 여기 source 는 정적 파일명(sitemap.xml / sitemap-<숫자>.xml)에만 한정
+        // — image-/video- 접두 경로는 이 패턴에 매칭되지 않는다.
+        source: '/sitemap.xml',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800',
+          },
+        ],
+      },
+      {
+        source: '/sitemap-:index(\\d+).xml',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800',
           },
         ],
       },

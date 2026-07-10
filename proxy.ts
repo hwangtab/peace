@@ -17,7 +17,14 @@ export function proxy(request: NextRequest) {
   try {
     const { pathname } = request.nextUrl;
 
-    // Skip static files and API routes
+    // 정적 파일·API 라우트 방어 가드.
+    // 아래 config.matcher 가 이미 api·_next/static·_next/image·favicon.ico·확장자
+    // 포함 경로(.*\..*)를 선차단하므로, `/api`·`/_next/*(확장자 有)`·PUBLIC_FILE
+    // 분기는 현재 매처 하에선 도달 불가다. 다만 매처가 커버하지 않는 실제 빈틈이
+    // 남아 있어(확장자 없는 `/static/*`, 확장자 없는 `/_next/*`) 완전한 죽은 코드가
+    // 아니다. 미들웨어는 전 요청 경로에서 돌고 로케일 감지·리다이렉트라는 부작용을
+    // 수행하므로, 매처가 나중에 느슨해져도 비-페이지 요청에 그 로직이 새지 않도록
+    // 저비용 방어망으로 의도적으로 유지한다.
     if (
       pathname.startsWith('/_next') ||
       pathname.startsWith('/api') ||

@@ -49,6 +49,19 @@ jobs:
       # 영구히 막는 노이즈가 된다. production 의존성은 별도로 깨끗하게 유지한다.
       - run: pnpm audit --prod
 
+      # OG 파생 jpg 재인코딩 캐시. build 스텝(pnpm build → generate-og-images.mjs)이
+      # sharp 로 67개를 매 빌드 재인코딩하지 않도록, 이전 빌드 산출물과 내용 주소
+      # 미러를 복원한다. 키는 원본 경로 집합의 SSOT 인 매니페스트 해시 — 원본이
+      # 추가/제거되면 키가 바뀌어 전량 재생성되고, 그 외엔 복원 후 스크립트가 내용
+      # 해시로 변경분만 재인코딩한다. .next/cache/og-derived 는 스크립트의 캐시
+      # 진실원천(Vercel 과 동일 경로), public/images/og/_derived 는 서빙 산출물.
+      - uses: actions/cache@v4
+        with:
+          path: |
+            public/images/og/_derived
+            .next/cache/og-derived
+          key: og-derived-${{ hashFiles('src/generated/og-derived-manifest.json') }}
+
       - run: pnpm build
         env:
           NEXT_PUBLIC_GA_MEASUREMENT_ID: G-CI0TEST00
