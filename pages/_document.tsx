@@ -82,6 +82,9 @@ class MyDocument extends Document {
           {/* Sitemap 광고 (Googlebot 등이 HTML에서 직접 발견 가능) */}
           <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
+          {/* llms.txt 광고 — LLM 크롤러가 /llms.txt 를 추측하지 않고 HTML 에서 발견 */}
+          <link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt" />
+
           {/* Naver Search Console 인증 */}
           <meta name="naver-site-verification" content="68980c84460ca49f3268a96ad5832da513b55bca" />
 

@@ -163,6 +163,18 @@ const nextConfig = {
         headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
       },
       {
+        // /llms.txt — LLM 크롤러용 사이트 요약. 사실이 바뀌면(캠프 종료·팀 수 변경)
+        // 즉시 반영돼야 하므로 immutable 금지. CDN 1일 + SWR 로 재검증한다.
+        source: '/llms.txt',
+        headers: [
+          { key: 'Content-Type', value: 'text/plain; charset=utf-8' },
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=300, s-maxage=86400, stale-while-revalidate=604800',
+          },
+        ],
+      },
+      {
         // /data/*.json (gallery, musicians, tracks, videos, press) — 콘텐츠
         // 변경 시 빌드 ID 갱신으로 자연 무효화. SPA 페이지 이동 시 재페치 제거.
         source: '/data/:path*',

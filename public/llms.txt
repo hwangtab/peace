@@ -1,58 +1,91 @@
-# Gangjeong Peace Music Camp (강정피스앤뮤직캠프)
+# Gangjeong Peace and Music Camp (강정피스앤뮤직캠프)
 
-> An anti-war peace music festival held annually in Gangjeong Village, Jeju Island, South Korea. Founded in 2023. Musicians from diverse genres gather to sing for peace in conflict zones worldwide. Free admission.
+> An anti-war peace music festival held annually in Gangjeong Village, Jeju Island, South Korea. Founded in 2023, it gathers musicians across genres to sing for peace in conflict zones worldwide. The 3rd camp was held June 5–7, 2026 and has concluded; this site now serves as its archive (timetable, photos, videos, press) alongside the 2024 album project and ongoing solidarity events.
 
-## Key Facts
-- Official Name: Gangjeong Peace Music Camp (강정피스앤뮤직캠프)
-- Location: Gangjeong Sports Park, Seogwipo, Jeju Special Self-Governing Province, South Korea
-- Founded: 2023 (1st camp: June 10, 2023, 11 music acts)
-- 2nd Camp: June 14, 2025 (11 music acts)
-- 3rd Camp: June 5-7, 2026 (54 music acts, expanded to 3-day format)
-- Album: "To You in a Distant Place Whose Name I Don't Know" (이름을 모르는 먼 곳의 그대에게, released October 12, 2024, 12 tracks)
+Last updated: 2026-07-13. Facts below are generated from the site's own data files; when this file and a page disagree, the page is authoritative.
+
+## Key facts
+
+- Official name: Gangjeong Peace and Music Camp (강정피스앤뮤직캠프)
+- Venue: Gangjeong Sports Park, Gangjeong Village, Seogwipo, Jeju Island, South Korea
+- 1st camp: June 10, 2023 — one day, 11 acts
+- 2nd camp: June 14, 2025 — one day, 11 acts
+- 3rd camp: June 5–7, 2026 — three days, 50 acts (concluded)
+- Admission (3rd camp): ticketed, 1-day tickets from ₩30,000 KRW. Proceeds funded the festival and peace solidarity work.
 - Slogan: "Let's sing, let's dance, end the war!" (노래하자, 춤추자, 전쟁을 끝내자!)
-- Free admission with voluntary donations
-- Languages supported: Korean, English, Japanese, Chinese (Simplified/Traditional), Spanish, French, German, Portuguese, Russian, Arabic, Hindi, Indonesian
+- Album: "To You in a Distant Place Whose Name I Don't Know" (이름을 모르는 먼 곳의 그대에게) — released October 12, 2024, 13 tracks, 14 contributing acts
+- Organizer contact: gpmc0625@gmail.com
 
 ## Pages
-- Home: https://peaceandmusic.net
-- Camp 2026: https://peaceandmusic.net/camps/2026
-- Camp 2025: https://peaceandmusic.net/camps/2025
-- Camp 2023: https://peaceandmusic.net/camps/2023
-- Album About: https://peaceandmusic.net/album/about
-- Musicians: https://peaceandmusic.net/album/musicians
-- Tracks: https://peaceandmusic.net/album/tracks
-- Gallery: https://peaceandmusic.net/gallery
-- Press: https://peaceandmusic.net/press
-- Videos: https://peaceandmusic.net/videos
 
-## Camp 2026 Timetable (3rd Gangjeong Peace Music Camp)
+- [Home](https://peaceandmusic.net): festival overview, latest camp, FAQ
+- [Camp 2026](https://peaceandmusic.net/camps/2026): 3rd camp — full 3-day timetable, lineup, venue and FAQ
+- [Camp 2026 attendance guidelines](https://peaceandmusic.net/camps/2026/guidelines): what to bring, transport, camping and site rules
+- [Camp 2025](https://peaceandmusic.net/camps/2025): 2nd camp — lineup and photos
+- [Camp 2023](https://peaceandmusic.net/camps/2023): 1st camp — lineup and photos
+- [Solidarity](https://peaceandmusic.net/solidarity): peace solidarity events the camp organizes or joins
+- [Album — about](https://peaceandmusic.net/album/about): the 2024 peace album project, its meaning and release concerts
+- [Album — musicians](https://peaceandmusic.net/album/musicians): profiles of the contributing artists
+- [Album — tracks](https://peaceandmusic.net/album/tracks): all 13 tracks with credits and streaming audio
+- [Gallery](https://peaceandmusic.net/gallery): photo archive of every camp, by year and by photographer
+- [Videos](https://peaceandmusic.net/videos): 145 performance and documentary videos
+- [Press](https://peaceandmusic.net/press): 40 press articles about the camp and Gangjeong Village
+- [Privacy policy](https://peaceandmusic.net/privacy)
 
-The 3rd Gangjeong Peace Music Camp runs three consecutive days. Each performance is 25 minutes, separated by 5–10 minute transitions. Admission is free.
+Detail pages follow stable URL patterns:
 
-- Day 1 — Friday, June 5, 2026 · 17:00–22:57 KST · 12 acts · https://peaceandmusic.net/camps/2026#timetable-day-2026-06-05
-- Day 2 — Saturday, June 6, 2026 · 12:00–22:37 KST · 21 acts · https://peaceandmusic.net/camps/2026#timetable-day-2026-06-06
-- Day 3 — Sunday, June 7, 2026 · 11:00–21:30 KST · 21 acts · https://peaceandmusic.net/camps/2026#timetable-day-2026-06-07
+- Camp 2026 performer profile: `https://peaceandmusic.net/camps/2026/musicians/{id}`
+- Album musician profile: `https://peaceandmusic.net/album/musicians/{id}`
+- Album track: `https://peaceandmusic.net/album/tracks/{id}`
+- Video: `https://peaceandmusic.net/videos/{id}`
+- Photographer: `https://peaceandmusic.net/photographers/{slug}`
+- Solidarity event: `https://peaceandmusic.net/solidarity/{slug}`
 
-Each individual performance has a deep-link anchor in the form `#act-YYYY-MM-DD-N` (e.g. `#act-2026-06-05-3` is the 3rd act on day 1). Performer profiles live at `https://peaceandmusic.net/camps/2026/musicians/{id}`.
+Not for crawling or citation: `/admin/*` (staff CMS), `/board/*` (members-only community, noindex), and the auth pages `/login`, `/signup`, `/account`, `/reset-password`, `/update-password`. The internal pages `/camps/2026/guide`, `/camps/2026/staff`, `/camps/2026/survey` and `/camps/2026/promote` are for participating musicians and staff only and are excluded from the sitemap.
 
-Participating artists span Korean indie, folk, blues, rock, ambient, electronic, and world music — including Yun Sunae (윤선애), Jeong Jinseok (정진석), Choi Sangdon (최상돈), Kim Dongsan & Blue Neighbors, Dear Arcadian, Honey Whiskey, Materials Pound, Dog Last Page, Taehyeon (태히언), HANASH, TAGI, Rainbow99, Sabbaha (사바하), Meridies (메리디에스), and 40+ others.
+## Languages
 
-## Structured Data (schema.org)
+Content is published in 13 languages: Korean (default), English, Spanish, French, German, Portuguese, Russian, Arabic, Japanese, Chinese (Simplified), Chinese (Traditional), Hindi, Indonesian.
 
-Every camp page exposes JSON-LD for:
-- `MusicEvent` for the full festival plus 54 individual `MusicEvent` subEvents (one per performance, each linked to the performer's profile and tagged with start/end time in KST)
-- `FAQPage` with 6 common questions (when/where/free/support/lineup/schedule)
-- `BreadcrumbList`, `ItemList` (ordered timetable), `HowTo` (attendance steps), `WebPage`, `Organization`, `WebSite`
+Korean is served at the bare path (`/camps/2026`). Every other language is served under a locale prefix using its code — `/en/camps/2026`, `/ja/camps/2026`, `/zh-Hans/camps/2026`, `/ar/camps/2026`, and so on. Locale codes: `ko`, `en`, `es`, `fr`, `de`, `pt`, `ru`, `ar`, `ja`, `zh-Hans`, `zh-Hant`, `hi`, `id`. Every page declares hreflang alternates for all 13.
 
-Each musician profile page exposes `ProfilePage` schema with genre, social links, and organization affiliation.
+## Camp 2026 timetable (3rd camp, concluded)
+
+The 3rd camp ran three consecutive days. Each performance was 25 minutes, separated by 5–10 minute transitions. The full timetable, with each act's start and end time in KST, remains published as an archive.
+
+- [Day 1 — Friday, June 5, 2026](https://peaceandmusic.net/camps/2026#timetable-day-2026-06-05): 17:00–22:27 KST, 11 acts
+- [Day 2 — Saturday, June 6, 2026](https://peaceandmusic.net/camps/2026#timetable-day-2026-06-06): 12:00–21:27 KST, 19 acts
+- [Day 3 — Sunday, June 7, 2026](https://peaceandmusic.net/camps/2026#timetable-day-2026-06-07): 11:00–21:00 KST, 20 acts
+
+Each individual performance has a deep-link anchor of the form `#act-YYYY-MM-DD-N`, where N is the act's position on that day — for example `#act-2026-06-05-3` is the third act of Day 1.
+
+The 50 acts span Korean indie, folk, blues, rock, ambient, electronic and world music, including Yun Sunae (윤선애), Jeong Jinseok (정진석), Choi Sangdon (최상돈), Kim Dongsan & Blue Neighbors (김동산과 블루이웃), Im Jeongdeuk (임정득), Taehyeon (태히언), HANASH, TAGI, Rainbow99, Sabbaha (사바하) and Meridies (메리디에스).
+
+## Structured data (schema.org)
+
+Pages expose JSON-LD that mirrors the facts above:
+
+- Camp pages: `MusicEvent` for the festival plus one `MusicEvent` subEvent per performance (50 for the 3rd camp), each carrying start/end time in KST and linking to the performer's profile; `EventSeries` across camps; `FAQPage`; `ItemList` for the ordered timetable; `HowTo` for attendance steps; `BreadcrumbList`.
+- Musician profiles: `ProfilePage` with `MusicGroup`/`Person`, genre, social links and organization affiliation.
+- Album pages: `MusicAlbum`, `MusicRecording`, `MusicPlaylist`.
+- Gallery: `ImageGallery` / `ImageObject`. Videos: `VideoObject`. Press: `NewsArticle`.
+- Site-wide: `Organization`, `WebSite`, `WebPage`.
 
 ## Context
-Gangjeong Village in Jeju Island has been the site of nearly 20 years of peace resistance since the 2007 designation of a naval base construction site. Despite 94% resident opposition, the Jeju Naval Base was built, destroying the UNESCO-protected Gureombi Rock in 2012. The village received the IPB Sean MacBride Peace Award in 2015, recognized globally for its nonviolent peace movement. Residents have maintained daily peace prayers for over 7,000 consecutive days.
 
-The Gangjeong Peace Music Camp was born from this movement. It brings together musicians across genres — rock, folk, jazz, electronic, ambient, world music — to stand in solidarity with conflict zones globally, including Palestine, Ukraine, and the Korean Peninsula.
+Gangjeong Village on Jeju Island has been a site of peace resistance since 2007, when it was designated for naval base construction. Despite overwhelming resident opposition, the Jeju Naval Base was built, and the UNESCO-protected Gureombi Rock was destroyed in 2012. The village received the International Peace Bureau's Sean MacBride Peace Award in 2015 for its nonviolent movement, and residents have held daily peace prayers for over 7,000 consecutive days.
+
+The Gangjeong Peace and Music Camp grew out of that movement. It brings musicians together in solidarity with conflict zones worldwide, including Palestine, Ukraine and the Korean Peninsula.
+
+## Machine-readable sources
+
+- [Sitemap](https://peaceandmusic.net/sitemap.xml)
+- [Image sitemap](https://peaceandmusic.net/image-sitemap.xml)
+- [Video sitemap](https://peaceandmusic.net/video-sitemap.xml)
+- [robots.txt](https://peaceandmusic.net/robots.txt)
 
 ## Contact
-- Instagram: https://www.instagram.com/peace_music_in_gangjeong
+
+- [Instagram](https://www.instagram.com/peace_music_in_gangjeong)
 - Email: gpmc0625@gmail.com
-- Merchandise/Album: https://smartstore.naver.com/peaceandmusic
-- Crowdfunding (2026): https://tumblbug.com/gpmc3
+- [Album and merchandise store](https://smartstore.naver.com/peaceandmusic)
