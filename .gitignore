@@ -42,8 +42,6 @@ xenodochial-beaver/
 # git worktrees
 .worktrees/
 
-# Playwright MCP test artifacts
-.playwright-mcp/
 
 # Local visual QA captures should live in .codex-tmp/ or artifacts, not repo root.
 /*.png

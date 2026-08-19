@@ -6,4 +6,3 @@ coverage/
 /*.jpg
 /*.png
 .codex-tmp/
-.playwright-mcp/
