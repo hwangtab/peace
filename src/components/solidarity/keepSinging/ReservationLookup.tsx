@@ -87,12 +87,13 @@ const ReservationLookup: React.FC = () => {
   };
 
   return (
-    <DarkSection id="lookup" width="prose" ariaLabelledby="ksfp-lookup-heading">
+    <DarkSection id="lookup" width="prose-center" ariaLabelledby="ksfp-lookup-heading">
       <SectionHeading
         id="ksfp-lookup-heading"
         eyebrow={t('lookup.eyebrow')}
         heading={t('lookup.heading')}
         subheading={t('lookup.subheading')}
+        align="center"
       />
 
       <Reveal>

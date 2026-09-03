@@ -130,12 +130,13 @@ const ReservationForm: React.FC = () => {
   );
 
   return (
-    <DarkSection id="reservation" width="prose" ariaLabelledby="ksfp-form-heading">
+    <DarkSection id="reservation" width="prose-center" ariaLabelledby="ksfp-form-heading">
       <SectionHeading
         id="ksfp-form-heading"
         eyebrow={t('form.eyebrow')}
         heading={t('form.heading')}
         subheading={success ? undefined : t('form.subheading')}
+        align="center"
       />
 
       <Reveal>

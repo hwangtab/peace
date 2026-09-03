@@ -33,9 +33,9 @@ export const Reveal: React.FC<{
 /**
  * 섹션 껍데기 — 세로 리듬과 최대폭을 통일한다.
  *
- * 바깥 컨테이너 폭은 `content`/`wide` 모두 같은 왼쪽 여백에서 시작한다. 본문 폭을
- * 좁히는 `prose` 는 바깥을 그대로 두고 **안쪽만** max-w-3xl 로 줄여, 페이지를 훑을 때
- * 섹션 제목의 왼쪽 정렬선이 어긋나지 않게 한다(`prose-center` 만 가운데 정렬).
+ * 본문 폭을 좁히는 `prose`/`prose-center` 는 안쪽 블록을 max-w-3xl 로 줄이고 **가운데
+ * 정렬**한다 — 왼쪽에 붙이면 오른쪽 여백만 200px 남아 좌우가 기울어 보인다. 둘의 차이는
+ * 블록 위치가 아니라 안쪽 텍스트 정렬(`prose-center` 는 제목·본문도 가운데)뿐이다.
  */
 export const DarkSection: React.FC<{
   id?: string;
@@ -57,13 +57,7 @@ export const DarkSection: React.FC<{
           'max-w-6xl': width === 'wide',
         })}
       >
-        {narrow ? (
-          <div className={classNames('max-w-3xl', width === 'prose-center' && 'mx-auto')}>
-            {children}
-          </div>
-        ) : (
-          children
-        )}
+        {narrow ? <div className="mx-auto max-w-3xl">{children}</div> : children}
       </div>
     </section>
   );
