@@ -1,0 +1,134 @@
+{
+  "seo": {
+    "title": "Keep Singing for Palestine — 평화 콘서트 | 강정피스앤뮤직캠프",
+    "description": "2026년 9월 19일(토) 18:00, 서울 반쥴. 강정피스앤뮤직캠프 × 팔레스타인해방운동이 여는 평화 콘서트. 이서영·이형주·모레도토요일·모모. 사전 예매 30,000원."
+  },
+  "hero": {
+    "eyebrow": "강정피스앤뮤직캠프 × 팔레스타인해방운동",
+    "title": "Keep Singing for Palestine",
+    "subtitle": "팔레스타인 해방을 위한 평화 콘서트",
+    "poster_alt": "Keep Singing for Palestine 평화 콘서트 포스터 — 팔레스타인 국기색이 반사되는 CD",
+    "date_label": "일시",
+    "date_value": "2026년 9월 19일(토) 18:00 – 20:00",
+    "venue_label": "장소",
+    "venue_value": "반쥴 (서울 종로구 삼일대로17길 23 3층)",
+    "price_label": "티켓",
+    "price_value": "사전 예매 30,000원 · 현장 35,000원",
+    "cta_reserve": "예매 신청하기",
+    "cta_support": "후원 계좌 보기",
+    "scroll_hint": "아래로 스크롤"
+  },
+  "intro": {
+    "heading": "쉬지 않고 노래합니다",
+    "para_1": "19년째 이어지고 있는 제주 강정마을 평화운동을 기반으로, 음악이라는 언어를 통해 전쟁에 반대하고 저항하는 마음을 모아온 강정피스앤뮤직캠프.",
+    "para_2": "이번엔 강정마을에 울려 퍼진 평화의 노래를 서울에서 함께 나눕니다.",
+    "para_3": "78년째 이어지고 있는 이스라엘의 팔레스타인 불법점령과 집단학살에 맞서 싸우는 한국 시민사회와 연대하기 위해, 우리는 쉬지 않고 노래합니다!",
+    "quote_line_1": "Keep singing for peace!",
+    "quote_line_2": "Keep singing with us!"
+  },
+  "rally": {
+    "eyebrow": "같은 날 14:00",
+    "heading": "집회부터 콘서트까지",
+    "body": "14:00 <팔레스타인과 연대하는 한국 시민사회 긴급행동> 집회에, 다재다능한 솔로 아티스트 남수의 연대 공연으로 참여합니다. 집회부터 콘서트까지 함께 해요~"
+  },
+  "lineup": {
+    "eyebrow": "Lineup",
+    "heading": "노래하는 사람들",
+    "subheading": "네 팀이 서울에서 팔레스타인의 해방을 노래합니다",
+    "link_profile": "뮤지션 소개 보기",
+    "link_external": "아티스트 페이지",
+    "link_instagram": "인스타그램"
+  },
+  "artists": {
+    "ihyeongju": {
+      "name": "이형주",
+      "description": "핑거스타일 블루스에 기초해 포크, 재즈 등 다양한 장르를 음악에 녹여낸다. 2017년부터 새 민중음악 선곡집 1,2,3집에 참여하며 사회적 폭력으로 고통받는 현장에서 노래했다. 2019년 첫 EP 〈아토피〉, 2023년 정규 〈우리는 서로를 간직 하려고〉를 발매했다.",
+      "image_alt": "싱어송라이터 이형주"
+    }
+  },
+  "tickets": {
+    "eyebrow": "Tickets",
+    "heading": "티켓 안내",
+    "advance_label": "사전 예매",
+    "advance_price": "30,000원",
+    "door_label": "현장 구매",
+    "door_price": "35,000원",
+    "note_order": "구글 예약 순이 아니라, 입금 순서로 예매를 마감하니 서두르시면 좋습니다.",
+    "note_refund": "예매 후 환불이 어렵습니다.",
+    "note_limit": "1인당 최대 4매까지 신청할 수 있습니다."
+  },
+  "form": {
+    "eyebrow": "Reservation",
+    "heading": "예매 신청",
+    "subheading": "신청 후 아래 계좌로 입금해 주세요. 입금이 확인되면 예매가 확정됩니다.",
+    "name_label": "이름 (입금자명)",
+    "name_placeholder": "홍길동",
+    "phone_label": "연락처",
+    "phone_placeholder": "010-1234-5678",
+    "quantity_label": "매수",
+    "quantity_decrease": "매수 줄이기",
+    "quantity_increase": "매수 늘리기",
+    "total_label": "총 입금액",
+    "deposit_agree": "입금 순서로 예매가 마감되며, 예매 후 환불이 어렵다는 점을 확인했습니다.",
+    "privacy_agree": "개인정보 수집·이용에 동의합니다. (필수)",
+    "privacy_toggle": "수집 항목 자세히 보기",
+    "privacy_detail_1": "수집 주체: 강정피스앤뮤직캠프 조직위원회",
+    "privacy_detail_2": "수집 정보: 이름, 연락처",
+    "privacy_detail_3": "용도: 평화 콘서트 사전 예매 본인 확인용",
+    "privacy_detail_4": "보유 및 이용 기간: 평화 콘서트 개최 익일 폐기",
+    "submit": "예매 신청하기",
+    "submitting": "신청 중…",
+    "error_name": "이름을 입력해 주세요.",
+    "error_phone": "연락처를 010-1234-5678 형식으로 입력해 주세요.",
+    "error_deposit": "입금 안내를 확인해 주세요.",
+    "error_privacy": "개인정보 수집·이용에 동의해 주세요.",
+    "error_duplicate": "이미 접수된 연락처입니다. 아래 예매 확인에서 상태를 확인하세요.",
+    "error_rate_limit": "요청이 너무 많습니다. 잠시 후 다시 시도해 주세요.",
+    "error_generic": "신청에 실패했습니다. 잠시 후 다시 시도해 주세요.",
+    "goto_lookup": "예매 확인으로 이동",
+    "success_title": "예매 신청이 접수되었습니다",
+    "success_amount_label": "입금하실 금액",
+    "account_label": "입금 계좌",
+    "success_quantity": "{{count}}매",
+    "success_guide": "입금 순으로 확정됩니다. 확정 여부는 아래 ‘예매 확인’에서 조회하세요.",
+    "success_reset": "다른 사람 이름으로 추가 신청하기"
+  },
+  "lookup": {
+    "eyebrow": "Check",
+    "heading": "예매 확인",
+    "subheading": "신청할 때 적은 이름과 연락처로 예매 상태를 조회할 수 있습니다.",
+    "submit": "조회하기",
+    "submitting": "조회 중…",
+    "status_label": "예매 상태",
+    "status_pending": "입금 대기",
+    "status_confirmed": "예매 확정",
+    "status_cancelled": "취소됨",
+    "status_pending_desc": "입금이 확인되면 예매가 확정됩니다.",
+    "status_confirmed_desc": "입금이 확인되었습니다. 공연 당일 이름을 말씀해 주세요.",
+    "status_cancelled_desc": "취소된 예매입니다. 문의가 필요하면 아래 연락처로 알려 주세요.",
+    "quantity_label": "매수",
+    "created_label": "접수 일시",
+    "error_not_found": "일치하는 접수가 없습니다. 이름과 연락처를 다시 확인해 주세요.",
+    "error_rate_limit": "요청이 너무 많습니다. 잠시 후 다시 시도해 주세요.",
+    "error_generic": "조회에 실패했습니다. 잠시 후 다시 시도해 주세요."
+  },
+  "support": {
+    "eyebrow": "Support",
+    "heading": "후원하기",
+    "intro": "아래 계좌로 팔레스타인 해방을 위한 평화의 노래를 지지해 주세요.",
+    "account_label": "후원 계좌",
+    "copy": "계좌번호 복사",
+    "copied": "복사됨!",
+    "outro": "우리의 노래와 평화를 향한 투쟁이 멈추지 않도록, 함께해 주세요."
+  },
+  "venue": {
+    "eyebrow": "Venue",
+    "heading": "오시는 길",
+    "name": "반쥴",
+    "address": "서울 종로구 삼일대로17길 23 3층",
+    "naver": "네이버지도에서 보기",
+    "kakao": "카카오맵에서 보기",
+    "contact_heading": "문의",
+    "contact_cta": "카카오톡으로 문의하기"
+  }
+}

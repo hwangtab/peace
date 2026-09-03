@@ -49,7 +49,7 @@ const SolidarityPage: React.FC<Props> = ({ initialMusicians = [], initialLocale 
     const firstEvent = events[0];
     const primaryImageUrl = firstEvent ? getFullUrl(firstEvent.poster) : undefined;
     return [
-      ...events.map(buildSolidarityEventSchema),
+      ...events.map((e) => buildSolidarityEventSchema(e)),
       getBreadcrumbSchema(breadcrumbs),
       getWebPageSchema({
         name: t('solidarity.page_title'),

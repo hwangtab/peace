@@ -1,0 +1,134 @@
+{
+  "seo": {
+    "title": "Keep Singing for Palestine — 和平音樂會 | 江汀和平音樂營",
+    "description": "2026年9月19日(週六)18:00,於Banjul(반줄)舉行。由江汀和平音樂營×巴勒斯坦解放運動共同呈現的和平音樂會。李瑞英、李亨柱、Moredo Tuesday、MOMO演出。預售票3萬韓元。"
+  },
+  "hero": {
+    "eyebrow": "江汀和平音樂營 × 巴勒斯坦解放運動",
+    "title": "Keep Singing for Palestine",
+    "subtitle": "為巴勒斯坦解放而歌的和平音樂會",
+    "poster_alt": "Keep Singing for Palestine 音樂會海報 — 映照巴勒斯坦國旗色彩的CD",
+    "date_label": "日期",
+    "date_value": "2026年9月19日(週六)18:00–20:00",
+    "venue_label": "場地",
+    "venue_value": "Banjul(首爾市鐘路區三一大路17街23號3樓)",
+    "price_label": "門票",
+    "price_value": "預售3萬韓元 · 現場購票3.5萬韓元",
+    "cta_reserve": "預訂門票",
+    "cta_support": "查看捐款帳戶",
+    "scroll_hint": "向下捲動"
+  },
+  "intro": {
+    "heading": "我們繼續歌唱",
+    "para_1": "扎根於濟州島江汀村和平運動、邁入第19年的江汀和平音樂營,匯聚起以音樂為語言反對戰爭、堅持抗爭的意志。",
+    "para_2": "這一次,我們把在江汀村響起的和平之歌帶到首爾,與大家一同分享。",
+    "para_3": "為了與反對以色列長達78年非法佔領巴勒斯坦及種族滅絕的韓國公民社會站在一起,我們將不間斷地繼續歌唱!",
+    "quote_line_1": "為和平,繼續歌唱!",
+    "quote_line_2": "與我們一起,繼續歌唱!"
+  },
+  "rally": {
+    "eyebrow": "當日14:00",
+    "heading": "從集會到音樂會",
+    "body": "14:00,我們將參加韓國公民社會聲援巴勒斯坦緊急行動,多才多藝的獨立音樂人Namsu將獻上聲援演出。歡迎大家從集會一路參與到音樂會!"
+  },
+  "lineup": {
+    "eyebrow": "陣容",
+    "heading": "歌唱的人們",
+    "subheading": "為巴勒斯坦解放在首爾歌唱的四組音樂人",
+    "link_profile": "查看藝人簡介",
+    "link_external": "藝人主頁",
+    "link_instagram": "Instagram"
+  },
+  "artists": {
+    "ihyeongju": {
+      "name": "李亨柱",
+      "description": "以指彈藍調(Fingerstyle Blues)為根基、融合民謠與爵士的創作歌手。自2017年起參與《新民眾歌謠合輯》第1至3輯,並在社會暴力現場演唱。首張迷你專輯《Atopy(異位性皮膚炎)》(2019)、首張正規專輯《We Wanted to Keep Each Other(我們曾想守護彼此)》(2023)。",
+      "image_alt": "創作歌手 李亨柱"
+    }
+  },
+  "tickets": {
+    "eyebrow": "門票",
+    "heading": "購票資訊",
+    "advance_label": "預售票",
+    "advance_price": "3萬韓元",
+    "door_label": "現場購票",
+    "door_price": "3.5萬韓元",
+    "note_order": "預訂按付款到帳順序確認,而非申請提交順序,建議儘早匯款。",
+    "note_refund": "預訂完成後不接受退款。",
+    "note_limit": "每人限購4張。"
+  },
+  "form": {
+    "eyebrow": "預訂",
+    "heading": "預訂門票",
+    "subheading": "提交後請將款項匯入下方帳戶。收到付款後預訂即確認。",
+    "name_label": "姓名(與匯款人姓名一致)",
+    "name_placeholder": "請輸入姓名",
+    "phone_label": "電話號碼",
+    "phone_placeholder": "010-1234-5678",
+    "quantity_label": "票數",
+    "quantity_decrease": "減少數量",
+    "quantity_increase": "增加數量",
+    "total_label": "應匯款總額",
+    "deposit_agree": "我已了解預訂按付款順序確認,且預訂完成後不可退款。",
+    "privacy_agree": "我同意收集和使用本人個人資訊。(必填)",
+    "privacy_toggle": "查看收集項目",
+    "privacy_detail_1": "收集方: 江汀和平音樂營籌備委員會",
+    "privacy_detail_2": "收集項目: 姓名、電話號碼",
+    "privacy_detail_3": "使用目的: 和平音樂會預售票身分核實",
+    "privacy_detail_4": "保存期限: 和平音樂會結束翌日銷毀",
+    "submit": "提交預訂",
+    "submitting": "提交中…",
+    "error_name": "請輸入姓名。",
+    "error_phone": "請按010-1234-5678的格式輸入電話號碼。",
+    "error_deposit": "請確認已閱讀付款提示。",
+    "error_privacy": "請同意收集和使用個人資訊。",
+    "error_duplicate": "該電話號碼已註冊。請在下方「查詢我的預訂」中確認狀態。",
+    "error_rate_limit": "請求過多,請稍後再試。",
+    "error_generic": "提交失敗,請稍後再試。",
+    "goto_lookup": "前往預訂查詢",
+    "success_title": "已收到您的預訂申請",
+    "success_amount_label": "應匯款金額",
+    "account_label": "匯款帳戶",
+    "success_quantity": "{{count}}張",
+    "success_guide": "預訂按付款到帳順序確認。請在下方「查詢我的預訂」中查看狀態。",
+    "success_reset": "繼續預訂"
+  },
+  "lookup": {
+    "eyebrow": "查詢",
+    "heading": "查詢我的預訂",
+    "subheading": "請輸入預訂時填寫的姓名和電話號碼進行查詢。",
+    "submit": "查詢",
+    "submitting": "查詢中…",
+    "status_label": "狀態",
+    "status_pending": "等待付款",
+    "status_confirmed": "已確認",
+    "status_cancelled": "已取消",
+    "status_pending_desc": "收到付款後您的預訂將被確認。",
+    "status_confirmed_desc": "已收到您的付款。現場只需告知姓名即可入場。",
+    "status_cancelled_desc": "該預訂已被取消。如有疑問請透過下方方式聯繫我們。",
+    "quantity_label": "票數",
+    "created_label": "提交時間",
+    "error_not_found": "未找到符合的預訂。請核對姓名和電話號碼。",
+    "error_rate_limit": "請求過多,請稍後再試。",
+    "error_generic": "查詢失敗,請稍後再試。"
+  },
+  "support": {
+    "eyebrow": "支持",
+    "heading": "支持我們",
+    "intro": "請透過以下帳戶支持為巴勒斯坦解放而唱的和平之歌。",
+    "account_label": "捐款帳戶",
+    "copy": "複製帳號",
+    "copied": "已複製!",
+    "outro": "請與我們同行,讓我們的歌聲與和平的抗爭永不停息。"
+  },
+  "venue": {
+    "eyebrow": "場地",
+    "heading": "交通指南",
+    "name": "Banjul",
+    "address": "首爾市鐘路區三一大路17街23號3樓",
+    "naver": "在Naver地圖中開啟",
+    "kakao": "在Kakao地圖中開啟",
+    "contact_heading": "聯絡方式",
+    "contact_cta": "透過KakaoTalk諮詢"
+  }
+}

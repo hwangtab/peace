@@ -37,6 +37,7 @@ module.exports = {
   // - camp_promote_2026 : /camps/2026/promote (뮤지션용 SNS 홍보 키트,
   //                       홍보 본문은 ko/en 고정, UI 키는 13 로케일 parity 유지)
   // - camp_staff_2026  : /camps/2026/staff (기획단·자원봉사자 전용)
+  // - concert_ksfp_2026 : /solidarity/keep-singing-for-palestine (예매 폼 포함)
   // - about           : home
   // - gallery         : home, /gallery, /camps/[year](CampGallery)
   // - timeline        : /camps/2026 (EventSeries schema)
@@ -55,6 +56,7 @@ module.exports = {
     'camp_staff_2026',
     'camp_musician_guide_2026',
     'camp_survey_2026',
+    'concert_ksfp_2026',
     'about',
     'gallery',
     'timeline',
@@ -78,6 +80,7 @@ module.exports = {
     'camp_staff_2026',
     'camp_musician_guide_2026',
     'camp_survey_2026',
+    'concert_ksfp_2026',
     'about',
     'gallery',
     'timeline',

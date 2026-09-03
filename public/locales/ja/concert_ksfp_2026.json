@@ -1,0 +1,134 @@
+{
+  "seo": {
+    "title": "Keep Singing for Palestine — ピースコンサート | カンジョン平和音楽キャンプ",
+    "description": "2026年9月19日(土)18:00、パンウル(Banjul)にて。カンジョン平和音楽キャンプ×パレスチナ解放運動によるピースコンサート。イ・ソヨン、イ・ヒョンジュ、モレド・トゥエスデー、MOMO出演。前売り3万ウォン。"
+  },
+  "hero": {
+    "eyebrow": "カンジョン平和音楽キャンプ×パレスチナ解放運動",
+    "title": "Keep Singing for Palestine",
+    "subtitle": "パレスチナ解放のためのピースコンサート",
+    "poster_alt": "Keep Singing for Palestine コンサートポスター — パレスチナの旗の色を映したCD",
+    "date_label": "日時",
+    "date_value": "2026年9月19日(土)18:00〜20:00",
+    "venue_label": "会場",
+    "venue_value": "パンウル(Banjul)(ソウル特別市鍾路区三一大路17ギル23、3階)",
+    "price_label": "チケット",
+    "price_value": "前売り3万ウォン・当日券3万5千ウォン",
+    "cta_reserve": "チケットを予約する",
+    "cta_support": "後援口座を見る",
+    "scroll_hint": "スクロールして見る"
+  },
+  "intro": {
+    "heading": "私たちは歌い続けます",
+    "para_1": "済州島カンジョン村の平和運動に根ざし、19年目を迎えたカンジョン平和音楽キャンプは、戦争に反対し、音楽という言葉で抵抗する意志を積み重ねてきました。",
+    "para_2": "今回はカンジョン村で響いた平和の歌をソウルへ運び、共に分かち合います。",
+    "para_3": "イスラエルによる78年に及ぶパレスチナ不法占領とジェノサイドに対抗する韓国市民社会と共にあるため、私たちは休むことなく歌い続けます!",
+    "quote_line_1": "平和のために、歌い続けよう!",
+    "quote_line_2": "私たちと共に、歌い続けよう!"
+  },
+  "rally": {
+    "eyebrow": "同日14:00",
+    "heading": "集会からコンサートへ",
+    "body": "14:00には、多才なソロアーティスト、ナムスの連帯ステージとともに「パレスチナ連帯・韓国市民社会緊急行動」に参加します。集会からコンサートまで、ぜひ一緒に!"
+  },
+  "lineup": {
+    "eyebrow": "ラインナップ",
+    "heading": "歌う人びと",
+    "subheading": "パレスチナ解放のためにソウルで歌う4組",
+    "link_profile": "アーティストプロフィールを見る",
+    "link_external": "アーティストページ",
+    "link_instagram": "Instagram"
+  },
+  "artists": {
+    "ihyeongju": {
+      "name": "イ・ヒョンジュ",
+      "description": "フィンガースタイル・ブルースを土台に、フォークとジャズを織り交ぜるシンガーソングライター。2017年から「新民衆歌謡コンピレーション」1〜3集に参加し、社会的暴力の現場で歌ってきた。デビューEP『Atopy(アトピー)』(2019)、正規1集『We Wanted to Keep Each Other(互いを守りたかった)』(2023)。",
+      "image_alt": "シンガーソングライター イ・ヒョンジュ"
+    }
+  },
+  "tickets": {
+    "eyebrow": "チケット",
+    "heading": "チケット案内",
+    "advance_label": "前売り",
+    "advance_price": "3万ウォン",
+    "door_label": "当日券",
+    "door_price": "3万5千ウォン",
+    "note_order": "予約は申込順ではなく入金順で確定します。お早めのご送金をおすすめします。",
+    "note_refund": "予約完了後の払い戻しはできません。",
+    "note_limit": "お一人様4枚までご購入いただけます。"
+  },
+  "form": {
+    "eyebrow": "予約",
+    "heading": "チケットを予約する",
+    "subheading": "送信後、下記口座へ料金をお振込みください。入金確認後に予約が確定します。",
+    "name_label": "お名前(お振込み名義)",
+    "name_placeholder": "お名前",
+    "phone_label": "電話番号",
+    "phone_placeholder": "010-1234-5678",
+    "quantity_label": "枚数",
+    "quantity_decrease": "数量を減らす",
+    "quantity_increase": "数量を増やす",
+    "total_label": "お振込み合計金額",
+    "deposit_agree": "予約は入金順に確定し、予約後の払い戻しはできないことを確認しました。",
+    "privacy_agree": "個人情報の収集・利用に同意します。(必須)",
+    "privacy_toggle": "収集項目を見る",
+    "privacy_detail_1": "収集者: カンジョン平和音楽キャンプ組織委員会",
+    "privacy_detail_2": "収集項目: 氏名、電話番号",
+    "privacy_detail_3": "利用目的: ピースコンサート前売り予約の本人確認",
+    "privacy_detail_4": "保存期間: ピースコンサート翌日に破棄",
+    "submit": "予約を送信する",
+    "submitting": "送信中…",
+    "error_name": "お名前を入力してください。",
+    "error_phone": "電話番号は010-1234-5678の形式で入力してください。",
+    "error_deposit": "入金案内の確認にチェックしてください。",
+    "error_privacy": "個人情報の収集・利用に同意してください。",
+    "error_duplicate": "この電話番号はすでに登録されています。下記の「予約状況を確認する」からご確認ください。",
+    "error_rate_limit": "リクエストが集中しています。しばらくしてから再度お試しください。",
+    "error_generic": "送信に失敗しました。しばらくしてから再度お試しください。",
+    "goto_lookup": "予約確認へ進む",
+    "success_title": "予約リクエストを受け付けました",
+    "success_amount_label": "お振込み金額",
+    "account_label": "振込先口座",
+    "success_quantity": "{{count}}枚",
+    "success_guide": "予約は入金順に確定します。下記の「予約状況を確認する」から状況をご確認ください。",
+    "success_reset": "続けて予約する"
+  },
+  "lookup": {
+    "eyebrow": "確認",
+    "heading": "予約状況を確認する",
+    "subheading": "予約時に入力したお名前と電話番号で照会できます。",
+    "submit": "確認する",
+    "submitting": "確認中…",
+    "status_label": "状況",
+    "status_pending": "入金待ち",
+    "status_confirmed": "確定",
+    "status_cancelled": "キャンセル済み",
+    "status_pending_desc": "入金が確認され次第、予約が確定します。",
+    "status_confirmed_desc": "入金を確認しました。当日は受付でお名前をお伝えください。",
+    "status_cancelled_desc": "こちらの予約はキャンセルされました。ご不明な点は下記までお問い合わせください。",
+    "quantity_label": "枚数",
+    "created_label": "申込日時",
+    "error_not_found": "該当する予約が見つかりませんでした。お名前と電話番号をご確認ください。",
+    "error_rate_limit": "リクエストが集中しています。しばらくしてから再度お試しください。",
+    "error_generic": "確認に失敗しました。しばらくしてから再度お試しください。"
+  },
+  "support": {
+    "eyebrow": "後援",
+    "heading": "後援のお願い",
+    "intro": "パレスチナ解放のための平和の歌に、下記口座への後援でお力添えください。",
+    "account_label": "後援口座",
+    "copy": "口座番号をコピー",
+    "copied": "コピーしました!",
+    "outro": "私たちの歌と平和のたたかいが止まらぬよう、共に歩んでください。"
+  },
+  "venue": {
+    "eyebrow": "会場案内",
+    "heading": "アクセス",
+    "name": "パンウル(Banjul)",
+    "address": "ソウル特別市鍾路区三一大路17ギル23、3階",
+    "naver": "Naverマップで開く",
+    "kakao": "Kakaoマップで開く",
+    "contact_heading": "お問い合わせ",
+    "contact_cta": "カカオトークで問い合わせる"
+  }
+}

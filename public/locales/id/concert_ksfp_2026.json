@@ -1,0 +1,134 @@
+{
+  "seo": {
+    "title": "Keep Singing for Palestine — Konser Perdamaian | Kemah Perdamaian dan Musik Gangjeong",
+    "description": "Sabtu, 19 September 2026, pukul 18:00 di Banjul, Seoul. Konser perdamaian oleh Kemah Perdamaian dan Musik Gangjeong × gerakan pembebasan Palestina. Lee Seo-young, Lee Hyeong-ju, Moredo Saturday, MOMO. Tiket presale 30.000 won."
+  },
+  "hero": {
+    "eyebrow": "Kemah Perdamaian dan Musik Gangjeong × Gerakan Pembebasan Palestina",
+    "title": "Keep Singing for Palestine",
+    "subtitle": "Konser perdamaian untuk pembebasan Palestina",
+    "poster_alt": "Poster konser Keep Singing for Palestine — CD yang merefleksikan warna bendera Palestina",
+    "date_label": "Tanggal",
+    "date_value": "Sabtu, 19 September 2026, pukul 18:00 – 20:00",
+    "venue_label": "Lokasi",
+    "venue_value": "Banjul (Lantai 3, 23 Samil-daero 17-gil, Jongno-gu, Seoul)",
+    "price_label": "Tiket",
+    "price_value": "Presale 30.000 won · Di tempat 35.000 won",
+    "cta_reserve": "Pesan tiket",
+    "cta_support": "Lihat rekening donasi",
+    "scroll_hint": "Gulir ke bawah"
+  },
+  "intro": {
+    "heading": "Kami terus bernyanyi",
+    "para_1": "Berakar dari gerakan perdamaian Desa Gangjeong di Pulau Jeju yang kini memasuki tahun ke-19, Kemah Perdamaian dan Musik Gangjeong telah menghimpun tekad untuk menentang perang dan melawan melalui bahasa musik.",
+    "para_2": "Kali ini kami membawa lagu-lagu perdamaian yang bergema di Desa Gangjeong ke Seoul, untuk dibagikan bersama.",
+    "para_3": "Untuk berdiri bersama masyarakat sipil Korea yang berjuang melawan pendudukan ilegal Israel atas Palestina selama 78 tahun dan genosida yang dilakukannya, kami terus bernyanyi tanpa henti!",
+    "quote_line_1": "Teruslah bernyanyi untuk perdamaian!",
+    "quote_line_2": "Teruslah bernyanyi bersama kami!"
+  },
+  "rally": {
+    "eyebrow": "Hari yang sama, pukul 14:00",
+    "heading": "Dari aksi unjuk rasa ke konser",
+    "body": "Pukul 14:00 kami bergabung dalam Aksi Darurat Masyarakat Sipil Korea untuk Solidaritas dengan Palestina, dengan penampilan solidaritas dari Namsu, seorang artis solo serba bisa. Bergabunglah bersama kami mulai dari aksi unjuk rasa hingga konser!"
+  },
+  "lineup": {
+    "eyebrow": "Lineup",
+    "heading": "Mereka yang bernyanyi",
+    "subheading": "Empat penampil bernyanyi di Seoul untuk pembebasan Palestina",
+    "link_profile": "Lihat profil artis",
+    "link_external": "Halaman artis",
+    "link_instagram": "Instagram"
+  },
+  "artists": {
+    "ihyeongju": {
+      "name": "Lee Hyeong-ju",
+      "description": "Seorang penyanyi-penulis lagu berakar pada fingerstyle blues, yang memadukan folk dan jazz dalam musiknya. Sejak 2017 ia telah ikut serta dalam New Minjung Music Compilation vol. 1–3 dan tampil di lokasi-lokasi kekerasan sosial. EP debut Atopy (2019), album penuh We Wanted to Keep Each Other (2023).",
+      "image_alt": "Penyanyi-penulis lagu Lee Hyeong-ju"
+    }
+  },
+  "tickets": {
+    "eyebrow": "Tiket",
+    "heading": "Informasi tiket",
+    "advance_label": "Presale",
+    "advance_price": "30.000 won",
+    "door_label": "Di tempat",
+    "door_price": "35.000 won",
+    "note_order": "Pemesanan ditutup berdasarkan urutan pembayaran masuk, bukan urutan pengiriman permintaan — sebaiknya segera lakukan pembayaran.",
+    "note_refund": "Pengembalian dana tidak tersedia setelah pemesanan.",
+    "note_limit": "Maksimal 4 tiket per orang."
+  },
+  "form": {
+    "eyebrow": "Pemesanan",
+    "heading": "Pesan tiket",
+    "subheading": "Setelah mengirimkan formulir, silakan transfer sejumlah dana ke rekening di bawah ini. Pemesanan Anda dikonfirmasi setelah pembayaran diterima.",
+    "name_label": "Nama (sesuai yang tertera pada transfer)",
+    "name_placeholder": "Nama Anda",
+    "phone_label": "Nomor telepon",
+    "phone_placeholder": "010-1234-5678",
+    "quantity_label": "Jumlah tiket",
+    "quantity_decrease": "Kurangi jumlah",
+    "quantity_increase": "Tambah jumlah",
+    "total_label": "Total yang harus ditransfer",
+    "deposit_agree": "Saya memahami bahwa pemesanan ditutup berdasarkan urutan pembayaran dan pengembalian dana tidak tersedia setelah pemesanan.",
+    "privacy_agree": "Saya menyetujui pengumpulan dan penggunaan informasi pribadi saya. (wajib)",
+    "privacy_toggle": "Lihat data yang dikumpulkan",
+    "privacy_detail_1": "Dikumpulkan oleh: Panitia Penyelenggara Kemah Perdamaian dan Musik Gangjeong",
+    "privacy_detail_2": "Informasi yang dikumpulkan: nama, nomor telepon",
+    "privacy_detail_3": "Tujuan: verifikasi identitas untuk pemesanan presale konser perdamaian",
+    "privacy_detail_4": "Masa penyimpanan: dimusnahkan sehari setelah konser perdamaian",
+    "submit": "Kirim pemesanan",
+    "submitting": "Mengirim…",
+    "error_name": "Silakan masukkan nama Anda.",
+    "error_phone": "Silakan masukkan nomor telepon Anda dengan format 010-1234-5678.",
+    "error_deposit": "Silakan konfirmasi pemberitahuan pembayaran.",
+    "error_privacy": "Silakan setujui pengumpulan dan penggunaan informasi pribadi Anda.",
+    "error_duplicate": "Nomor telepon ini sudah terdaftar. Periksa statusnya di “Periksa pemesanan Anda” di bawah.",
+    "error_rate_limit": "Terlalu banyak permintaan. Silakan coba lagi sebentar lagi.",
+    "error_generic": "Pengiriman gagal. Silakan coba lagi sebentar lagi.",
+    "goto_lookup": "Buka pemeriksaan pemesanan",
+    "success_title": "Permintaan pemesanan Anda telah diterima",
+    "success_amount_label": "Jumlah yang harus ditransfer",
+    "account_label": "Rekening pembayaran",
+    "success_quantity": "{{count}} tiket",
+    "success_guide": "Pemesanan dikonfirmasi berdasarkan urutan pembayaran masuk. Periksa status Anda di “Periksa pemesanan Anda” di bawah.",
+    "success_reset": "Kirim pemesanan lain"
+  },
+  "lookup": {
+    "eyebrow": "Pemeriksaan",
+    "heading": "Periksa pemesanan Anda",
+    "subheading": "Cari pemesanan Anda dengan nama dan nomor telepon yang Anda gunakan.",
+    "submit": "Periksa",
+    "submitting": "Memeriksa…",
+    "status_label": "Status",
+    "status_pending": "Menunggu pembayaran",
+    "status_confirmed": "Terkonfirmasi",
+    "status_cancelled": "Dibatalkan",
+    "status_pending_desc": "Pemesanan Anda akan dikonfirmasi setelah pembayaran diterima.",
+    "status_confirmed_desc": "Pembayaran Anda telah diterima. Cukup sebutkan nama Anda di pintu masuk.",
+    "status_cancelled_desc": "Pemesanan ini telah dibatalkan. Silakan hubungi kami di bawah jika ada pertanyaan.",
+    "quantity_label": "Jumlah tiket",
+    "created_label": "Dikirim",
+    "error_not_found": "Tidak ditemukan pemesanan yang cocok. Silakan periksa nama dan nomor telepon.",
+    "error_rate_limit": "Terlalu banyak permintaan. Silakan coba lagi sebentar lagi.",
+    "error_generic": "Pemeriksaan gagal. Silakan coba lagi sebentar lagi."
+  },
+  "support": {
+    "eyebrow": "Dukungan",
+    "heading": "Dukung kami",
+    "intro": "Silakan dukung lagu-lagu perdamaian untuk pembebasan Palestina melalui rekening di bawah ini.",
+    "account_label": "Rekening donasi",
+    "copy": "Salin nomor rekening",
+    "copied": "Tersalin!",
+    "outro": "Berdirilah bersama kami, agar lagu-lagu kami dan perjuangan untuk perdamaian tidak pernah berhenti."
+  },
+  "venue": {
+    "eyebrow": "Lokasi",
+    "heading": "Cara menuju lokasi",
+    "name": "Banjul",
+    "address": "Lantai 3, 23 Samil-daero 17-gil, Jongno-gu, Seoul",
+    "naver": "Buka di Naver Map",
+    "kakao": "Buka di Kakao Map",
+    "contact_heading": "Kontak",
+    "contact_cta": "Tanya via KakaoTalk"
+  }
+}

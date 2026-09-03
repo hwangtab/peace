@@ -18,6 +18,7 @@ const NAV_ITEMS = [
   { href: '/admin/mailbox', label: '메일함' },
   { href: '/admin/boards', label: '게시판' },
   { href: '/admin/board-posts', label: '게시글 관리' },
+  { href: '/admin/reservations', label: '예매 관리' },
   { href: '/admin/history', label: '변경 이력' },
 ];
 

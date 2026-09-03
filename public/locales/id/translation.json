@@ -34,6 +34,13 @@
       "title": "Track",
       "subtitle": "12 lagu perdamaian",
       "buy_album": "Beli album"
+    },
+    "concert_banner": {
+      "label": "19 Sep, Seoul",
+      "title": "Konser perdamaian Keep Singing for Palestine",
+      "status": "Pemesanan dibuka",
+      "cta": "Pesan",
+      "image_alt": "Poster konser perdamaian Keep Singing for Palestine"
     }
   },
   "footer": {
@@ -280,7 +287,18 @@
       "note": ""
     },
     "back_to_list": "Kembali ke daftar konser solidaritas",
-    "detail_cta": "Lihat detail acara"
+    "detail_cta": "Lihat detail acara",
+    "event_ksfp": {
+      "poster_alt": "Poster konser Keep Singing for Palestine — CD yang merefleksikan warna bendera Palestina",
+      "title": "Keep Singing for Palestine — Konser Perdamaian untuk Pembebasan Palestina",
+      "date": "Sabtu, 19 September 2026, pukul 18:00 – 20:00",
+      "venue": "Banjul",
+      "venue_address": "Lantai 3, 23 Samil-daero 17-gil, Jongno-gu, Seoul",
+      "para_1": "Berakar dari gerakan perdamaian Desa Gangjeong di Pulau Jeju yang kini memasuki tahun ke-19, Kemah Perdamaian dan Musik Gangjeong telah menghimpun tekad untuk menentang perang dan melawan melalui bahasa musik.",
+      "para_2": "Kali ini kami membawa lagu-lagu perdamaian yang bergema di Desa Gangjeong ke Seoul, untuk dibagikan bersama.",
+      "para_3": "Untuk berdiri bersama masyarakat sipil Korea yang berjuang melawan pendudukan ilegal Israel atas Palestina selama 78 tahun dan genosida yang dilakukannya, kami terus bernyanyi tanpa henti!",
+      "note": "Pada pukul 14:00 di hari yang sama kami bergabung dalam Aksi Darurat Masyarakat Sipil Korea untuk Solidaritas dengan Palestina, dengan penampilan solidaritas dari Namsu."
+    }
   },
   "privacy": {
     "seoTitle": "Kebijakan Privasi — Gangjeong Peace Music Camp",

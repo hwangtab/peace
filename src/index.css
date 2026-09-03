@@ -5627,3 +5627,13 @@ code {
     font-size: 16px !important;
   }
 }
+
+/* Keep Singing for Palestine 히어로 — CD 반사광 회전(60초). 감소 모드에서는 정지. */
+@keyframes ksfp-spin {
+  from {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}

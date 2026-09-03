@@ -34,6 +34,13 @@
       "title": "Pistas",
       "subtitle": "12 canciones por la paz",
       "buy_album": "Comprar álbum"
+    },
+    "concert_banner": {
+      "label": "19 sept., Seúl",
+      "title": "Concierto por la paz Keep Singing for Palestine",
+      "status": "Reservas abiertas",
+      "cta": "Reservar",
+      "image_alt": "Cartel del concierto por la paz Keep Singing for Palestine"
     }
   },
   "footer": {
@@ -280,7 +287,18 @@
       "note": ""
     },
     "back_to_list": "Volver a conciertos solidarios",
-    "detail_cta": "Ver detalles del evento"
+    "detail_cta": "Ver detalles del evento",
+    "event_ksfp": {
+      "poster_alt": "Cartel del concierto Keep Singing for Palestine — un CD que refleja los colores de la bandera palestina",
+      "title": "Keep Singing for Palestine — Un concierto por la paz para la liberación de Palestina",
+      "date": "Sábado 19 de septiembre de 2026, 18:00 – 20:00",
+      "venue": "Banjul",
+      "venue_address": "3.ª planta, 23 Samil-daero 17-gil, Jongno-gu, Seúl",
+      "para_1": "Arraigado en el movimiento por la paz de la aldea de Gangjeong, en la isla de Jeju, que ya cumple su 19.º año, Gangjeong Peace and Music Camp ha reunido la voluntad de oponerse a la guerra y de resistir a través del lenguaje de la música.",
+      "para_2": "Esta vez traemos a Seúl las canciones de paz que resonaron en la aldea de Gangjeong, para compartirlas juntos.",
+      "para_3": "Para permanecer junto a la sociedad civil coreana que lucha contra la ocupación ilegal de Palestina por parte de Israel, que dura ya 78 años, y contra el genocidio, ¡seguimos cantando sin pausa!",
+      "note": "A las 14:00 del mismo día nos unimos a la Acción de Emergencia de la Sociedad Civil Coreana en Solidaridad con Palestina, con una actuación solidaria de Namsu."
+    }
   },
   "privacy": {
     "seoTitle": "Política de Privacidad — Camp Gangjeong de Paz Musical",

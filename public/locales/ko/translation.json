@@ -34,6 +34,13 @@
       "title": "수록곡",
       "subtitle": "12곡의 평화의 노래",
       "buy_album": "음반 구매하기"
+    },
+    "concert_banner": {
+      "label": "9.19 서울",
+      "title": "Keep Singing for Palestine 평화 콘서트",
+      "status": "예매 열림",
+      "cta": "예매하기",
+      "image_alt": "Keep Singing for Palestine 평화 콘서트 포스터"
     }
   },
   "footer": {
@@ -280,7 +287,18 @@
       "note": ""
     },
     "back_to_list": "연대공연 목록으로",
-    "detail_cta": "행사 자세히 보기"
+    "detail_cta": "행사 자세히 보기",
+    "event_ksfp": {
+      "poster_alt": "Keep Singing for Palestine 평화 콘서트 포스터 — 팔레스타인 국기색이 반사되는 CD",
+      "title": "Keep Singing for Palestine — 팔레스타인 해방을 위한 평화 콘서트",
+      "date": "2026년 9월 19일(토) 18:00 – 20:00",
+      "venue": "반쥴",
+      "venue_address": "서울 종로구 삼일대로17길 23 3층",
+      "para_1": "19년째 이어지고 있는 제주 강정마을 평화운동을 기반으로, 음악이라는 언어를 통해 전쟁에 반대하고 저항하는 마음을 모아온 강정피스앤뮤직캠프.",
+      "para_2": "이번엔 강정마을에 울려 퍼진 평화의 노래를 서울에서 함께 나눕니다.",
+      "para_3": "78년째 이어지고 있는 이스라엘의 팔레스타인 불법점령과 집단학살에 맞서 싸우는 한국 시민사회와 연대하기 위해, 우리는 쉬지 않고 노래합니다!",
+      "note": "같은 날 14:00 <팔레스타인과 연대하는 한국 시민사회 긴급행동> 집회에 남수의 연대 공연으로 함께합니다."
+    }
   },
   "privacy": {
     "seoTitle": "개인정보처리방침 — 강정피스앤뮤직캠프",

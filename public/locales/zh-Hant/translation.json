@@ -34,6 +34,13 @@
       "title": "曲目",
       "subtitle": "12首和平之歌",
       "buy_album": "購買專輯"
+    },
+    "concert_banner": {
+      "label": "9月19日,首爾",
+      "title": "Keep Singing for Palestine 和平音樂會",
+      "status": "預訂開放中",
+      "cta": "預訂",
+      "image_alt": "Keep Singing for Palestine 和平音樂會海報"
     }
   },
   "footer": {
@@ -280,7 +287,18 @@
       "note": ""
     },
     "back_to_list": "返回聯合演出列表",
-    "detail_cta": "查看活動詳情"
+    "detail_cta": "查看活動詳情",
+    "event_ksfp": {
+      "poster_alt": "Keep Singing for Palestine 音樂會海報 — 映照巴勒斯坦國旗色彩的CD",
+      "title": "Keep Singing for Palestine — 為巴勒斯坦解放而舉辦的和平音樂會",
+      "date": "2026年9月19日(週六)18:00–20:00",
+      "venue": "Banjul",
+      "venue_address": "首爾市鐘路區三一大路17街23號3樓",
+      "para_1": "扎根於濟州島江汀村和平運動、邁入第19年的江汀和平音樂營,匯聚起以音樂為語言反對戰爭、堅持抗爭的意志。",
+      "para_2": "這一次,我們把在江汀村響起的和平之歌帶到首爾,與大家一同分享。",
+      "para_3": "為了與反對以色列長達78年非法佔領巴勒斯坦及種族滅絕的韓國公民社會站在一起,我們將不間斷地繼續歌唱!",
+      "note": "當日14:00,我們將參加韓國公民社會聲援巴勒斯坦緊急行動,Namsu將獻上聲援演出。"
+    }
   },
   "privacy": {
     "seoTitle": "隱私政策 — 江汀和平音樂營",

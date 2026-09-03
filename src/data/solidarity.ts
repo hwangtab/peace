@@ -43,6 +43,27 @@ export interface SolidarityEvent {
 
 const eventStructs: SolidarityEventStruct[] = [
   {
+    id: 'keep-singing-for-palestine',
+    keyPrefix: 'solidarity.event_ksfp',
+    poster: '/images-webp/solidarity/keep-singing-for-palestine.webp',
+    paraCount: 3,
+    lineup: [
+      { name: '이서영', musicianId: 12 },
+      { name: '이형주', musicianId: null },
+      { name: '모레도토요일', musicianId: 7 },
+      { name: '모모', musicianId: 10 },
+    ],
+    organizers: '강정피스앤뮤직캠프 × 팔레스타인해방운동',
+    contact: { name: '황경하', url: 'https://open.kakao.com/me/Alfseoul' },
+    startDate: '2026-09-19T18:00:00+09:00',
+    address: {
+      streetAddress: '삼일대로17길 23 3층',
+      addressLocality: '서울특별시',
+      addressRegion: '종로구',
+      addressCountry: 'KR',
+    },
+  },
+  {
     id: 'we-sing-for-your-freedom',
     keyPrefix: 'solidarity.event_sail',
     poster: '/images-webp/solidarity/we-are-sail-for-your-freedom.webp',
@@ -65,6 +86,12 @@ const eventStructs: SolidarityEventStruct[] = [
     },
   },
 ];
+
+/**
+ * 전용 정적 라우트(`pages/solidarity/keep-singing-for-palestine.tsx`)를 가진 slug.
+ * `[slug].tsx` 의 getStaticPaths 는 이 목록을 제외해 경로 중복을 막는다.
+ */
+export const DEDICATED_ROUTE_SLUGS = ['keep-singing-for-palestine'];
 
 export function getSolidarityEventSlugs(): string[] {
   return eventStructs.map((s) => s.id);

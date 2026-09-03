@@ -5,6 +5,7 @@ import nextI18NextConfig from '../next-i18next.config';
 import { GetStaticPropsContext } from 'next';
 import dynamic from 'next/dynamic';
 import HeroSection from '@/components/home/HeroSection';
+import ConcertBanner, { isConcertBannerActive } from '@/components/home/ConcertBanner';
 import AboutSection from '@/components/home/AboutSection';
 import SEOHelmet from '@/components/shared/SEOHelmet';
 import StructuredDataScripts from '@/components/shared/StructuredDataScripts';
@@ -35,9 +36,14 @@ import { loadGalleryImages, selectHomeGalleryPreviewImages } from '@/utils/dataL
 
 interface HomePageProps {
   initialGalleryImages?: GalleryImage[];
+  /** 공연 배너 노출 여부 — 빌드/재검증 시점에 판정한다(하이드레이션 불일치 방지). */
+  showConcertBanner?: boolean;
 }
 
-export default function HomePage({ initialGalleryImages }: HomePageProps) {
+export default function HomePage({
+  initialGalleryImages,
+  showConcertBanner = false,
+}: HomePageProps) {
   const { t, i18n } = useTranslation();
   const structuredData = useMemo(() => {
     const faqItems = t('items', { ns: 'faqs', returnObjects: true, defaultValue: [] }) as unknown;
@@ -80,6 +86,7 @@ export default function HomePage({ initialGalleryImages }: HomePageProps) {
         omitStructuredScripts
       />
       <HeroSection imageUrl="/images-webp/camps/2023/DSC00437.webp" />
+      <ConcertBanner active={showConcertBanner} />
       <AboutSection />
       <SectionWave color="sky-horizon" />
       <GangjeongStorySection variant="home" />
@@ -114,6 +121,7 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
         nextI18NextConfig
       )),
       initialGalleryImages: selectHomeGalleryPreviewImages(allImages),
+      showConcertBanner: isConcertBannerActive(new Date()),
     },
     revalidate: 3600,
   };

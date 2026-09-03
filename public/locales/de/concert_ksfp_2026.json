@@ -1,0 +1,134 @@
+{
+  "seo": {
+    "title": "Keep Singing for Palestine — Friedenskonzert | Gangjeong Peace and Music Camp",
+    "description": "Samstag, 19. September 2026, 18:00 Uhr in Banjul, Seoul. Ein Friedenskonzert von Gangjeong Peace and Music Camp × der Palästina-Befreiungsbewegung. Lee Seo-young, Lee Hyeong-ju, Moredo Saturday, MOMO. Vorverkauf 30.000 KRW."
+  },
+  "hero": {
+    "eyebrow": "Gangjeong Peace and Music Camp × Palästina-Befreiungsbewegung",
+    "title": "Keep Singing for Palestine",
+    "subtitle": "Ein Friedenskonzert für die Befreiung Palästinas",
+    "poster_alt": "Plakat des Konzerts Keep Singing for Palestine — eine CD in den Farben der palästinensischen Flagge",
+    "date_label": "Datum",
+    "date_value": "Samstag, 19. September 2026, 18:00 – 20:00 Uhr",
+    "venue_label": "Veranstaltungsort",
+    "venue_value": "Banjul (3. OG, 23 Samil-daero 17-gil, Jongno-gu, Seoul)",
+    "price_label": "Tickets",
+    "price_value": "Vorverkauf 30.000 KRW · Abendkasse 35.000 KRW",
+    "cta_reserve": "Ticket reservieren",
+    "cta_support": "Spendenkonto ansehen",
+    "scroll_hint": "Nach unten scrollen"
+  },
+  "intro": {
+    "heading": "Wir singen weiter",
+    "para_1": "Verwurzelt in der Friedensbewegung des Dorfes Gangjeong auf der Insel Jeju, die inzwischen im 19. Jahr besteht, hat das Gangjeong Peace and Music Camp den Willen gebündelt, sich dem Krieg zu widersetzen und durch die Sprache der Musik Widerstand zu leisten.",
+    "para_2": "Diesmal bringen wir die Lieder des Friedens, die im Dorf Gangjeong erklangen, nach Seoul, um sie gemeinsam zu teilen.",
+    "para_3": "Um an der Seite der koreanischen Zivilgesellschaft zu stehen, die gegen Israels 78 Jahre andauernde illegale Besatzung Palästinas und den Genozid kämpft, singen wir ohne Unterbrechung weiter!",
+    "quote_line_1": "Singt weiter für den Frieden!",
+    "quote_line_2": "Singt weiter mit uns!"
+  },
+  "rally": {
+    "eyebrow": "Am selben Tag, 14:00 Uhr",
+    "heading": "Von der Kundgebung zum Konzert",
+    "body": "Um 14:00 Uhr nehmen wir an der Notfallaktion der koreanischen Zivilgesellschaft in Solidarität mit Palästina teil, mit einer Solidaritätsdarbietung von Namsu, einer vielseitigen Solokünstlerin. Begleitet uns von der Kundgebung bis zum Konzert!"
+  },
+  "lineup": {
+    "eyebrow": "Lineup",
+    "heading": "Die Menschen, die singen",
+    "subheading": "Vier Acts singen in Seoul für die Befreiung Palästinas",
+    "link_profile": "Künstlerprofil ansehen",
+    "link_external": "Künstlerseite",
+    "link_instagram": "Instagram"
+  },
+  "artists": {
+    "ihyeongju": {
+      "name": "Lee Hyeong-ju",
+      "description": "Ein Singer-Songwriter, verwurzelt im Fingerstyle-Blues, der Folk und Jazz in seine Musik einwebt. Seit 2017 hat er an den Sammelbänden New Minjung Music Compilation Vol. 1–3 mitgewirkt und an Orten sozialer Gewalt gesungen. Debüt-EP Atopy (2019), Debütalbum We Wanted to Keep Each Other (2023).",
+      "image_alt": "Singer-Songwriter Lee Hyeong-ju"
+    }
+  },
+  "tickets": {
+    "eyebrow": "Tickets",
+    "heading": "Ticketinformationen",
+    "advance_label": "Vorverkauf",
+    "advance_price": "30.000 KRW",
+    "door_label": "Abendkasse",
+    "door_price": "35.000 KRW",
+    "note_order": "Reservierungen werden in der Reihenfolge des Zahlungseingangs geschlossen, nicht in der Reihenfolge der Anfragen — schnell sein hilft.",
+    "note_refund": "Nach der Buchung sind keine Rückerstattungen möglich.",
+    "note_limit": "Maximal 4 Tickets pro Person."
+  },
+  "form": {
+    "eyebrow": "Reservierung",
+    "heading": "Ticket reservieren",
+    "subheading": "Bitte überweisen Sie den Betrag nach dem Absenden auf das unten angegebene Konto. Ihre Reservierung wird nach Zahlungseingang bestätigt.",
+    "name_label": "Name (wie auf der Überweisung angegeben)",
+    "name_placeholder": "Ihr Name",
+    "phone_label": "Telefonnummer",
+    "phone_placeholder": "010-1234-5678",
+    "quantity_label": "Tickets",
+    "quantity_decrease": "Anzahl verringern",
+    "quantity_increase": "Anzahl erhöhen",
+    "total_label": "Zu überweisender Gesamtbetrag",
+    "deposit_agree": "Mir ist bewusst, dass Reservierungen in der Reihenfolge des Zahlungseingangs geschlossen werden und nach der Buchung keine Rückerstattung möglich ist.",
+    "privacy_agree": "Ich stimme der Erhebung und Nutzung meiner personenbezogenen Daten zu. (erforderlich)",
+    "privacy_toggle": "Details zur Datenerhebung ansehen",
+    "privacy_detail_1": "Verantwortlich: Organisationskomitee des Gangjeong Peace and Music Camp",
+    "privacy_detail_2": "Erhobene Daten: Name, Telefonnummer",
+    "privacy_detail_3": "Zweck: Identitätsprüfung für Vorreservierungen zum Friedenskonzert",
+    "privacy_detail_4": "Speicherdauer: Löschung am Tag nach dem Friedenskonzert",
+    "submit": "Reservierung absenden",
+    "submitting": "Wird gesendet…",
+    "error_name": "Bitte geben Sie Ihren Namen ein.",
+    "error_phone": "Bitte geben Sie Ihre Telefonnummer im Format 010-1234-5678 ein.",
+    "error_deposit": "Bitte bestätigen Sie den Zahlungshinweis.",
+    "error_privacy": "Bitte stimmen Sie der Erhebung und Nutzung Ihrer personenbezogenen Daten zu.",
+    "error_duplicate": "Diese Telefonnummer ist bereits registriert. Prüfen Sie den Status unter „Reservierung prüfen“ unten.",
+    "error_rate_limit": "Zu viele Anfragen. Bitte versuchen Sie es gleich noch einmal.",
+    "error_generic": "Absenden fehlgeschlagen. Bitte versuchen Sie es gleich noch einmal.",
+    "goto_lookup": "Zur Reservierungsprüfung",
+    "success_title": "Ihre Reservierungsanfrage wurde empfangen",
+    "success_amount_label": "Zu überweisender Betrag",
+    "account_label": "Zahlungskonto",
+    "success_quantity": "{{count}} Ticket(s)",
+    "success_guide": "Reservierungen werden in der Reihenfolge des Zahlungseingangs bestätigt. Prüfen Sie Ihren Status unter „Reservierung prüfen“ unten.",
+    "success_reset": "Weitere Reservierung absenden"
+  },
+  "lookup": {
+    "eyebrow": "Prüfen",
+    "heading": "Reservierung prüfen",
+    "subheading": "Suchen Sie Ihre Reservierung mit dem verwendeten Namen und der Telefonnummer.",
+    "submit": "Prüfen",
+    "submitting": "Wird geprüft…",
+    "status_label": "Status",
+    "status_pending": "Zahlung ausstehend",
+    "status_confirmed": "Bestätigt",
+    "status_cancelled": "Storniert",
+    "status_pending_desc": "Ihre Reservierung wird bestätigt, sobald die Zahlung eingegangen ist.",
+    "status_confirmed_desc": "Ihre Zahlung ist eingegangen. Nennen Sie einfach Ihren Namen an der Abendkasse.",
+    "status_cancelled_desc": "Diese Reservierung wurde storniert. Bei Fragen kontaktieren Sie uns bitte unten.",
+    "quantity_label": "Tickets",
+    "created_label": "Eingereicht am",
+    "error_not_found": "Es wurde keine passende Reservierung gefunden. Bitte überprüfen Sie Name und Telefonnummer.",
+    "error_rate_limit": "Zu viele Anfragen. Bitte versuchen Sie es gleich noch einmal.",
+    "error_generic": "Die Prüfung ist fehlgeschlagen. Bitte versuchen Sie es gleich noch einmal."
+  },
+  "support": {
+    "eyebrow": "Unterstützen",
+    "heading": "Unterstützt uns",
+    "intro": "Bitte unterstützt die Lieder des Friedens für die Befreiung Palästinas über das unten stehende Konto.",
+    "account_label": "Spendenkonto",
+    "copy": "Kontonummer kopieren",
+    "copied": "Kopiert!",
+    "outro": "Steht an unserer Seite, damit unsere Lieder und der Kampf für den Frieden niemals verstummen."
+  },
+  "venue": {
+    "eyebrow": "Veranstaltungsort",
+    "heading": "Anfahrt",
+    "name": "Banjul",
+    "address": "3. OG, 23 Samil-daero 17-gil, Jongno-gu, Seoul",
+    "naver": "In Naver Maps öffnen",
+    "kakao": "In Kakao Maps öffnen",
+    "contact_heading": "Kontakt",
+    "contact_cta": "Über KakaoTalk fragen"
+  }
+}
