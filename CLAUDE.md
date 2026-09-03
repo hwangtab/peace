@@ -20,6 +20,14 @@ Supabase DB 조회·수정은 **MCP가 아니라 Supabase CLI(또는 psql / serv
 - 로그인 세션이 필요한 페이지 조회나 여러 페이지 루프 점검은 `aside-browser` 스킬, 공개 페이지 대량 수집은 `crawl4ai` 스킬.
 - 산출물(스크린샷 등)은 레포 루트가 아니라 스크래치패드에 남긴다. 루트 `/*.png`는 `.gitignore` 처리됨.
 
+### 스크린샷은 최후의 수단 — 토큰 비용 때문
+
+스크린샷 한 장이 수천 토큰이다. 확인하려는 것이 **수치로 판정 가능하면 스크린샷을 찍지 말고 `evaluate_script`로 숫자를 뽑는다.**
+
+- 스크립트로 측정할 것: 정렬·좌우 여백(`getBoundingClientRect`), 섹션 간격, 가로 오버플로(`scrollWidth > clientWidth`), 색 대비(`getComputedStyle`), 요소 존재·개수, 폰트 크기. 표로 정리하면 스크린샷보다 정확하고 훨씬 싸다.
+- Aside(`aside-browser`)에 맡길 것: 로그인 세션이 필요한 페이지, "보기에 어떤가"를 사람 눈으로 판단해야 하는 심미 검토, 여러 페이지 순회. **요약만 받는다**(이미지를 이쪽 컨텍스트로 끌어오지 않는다).
+- 직접 스크린샷을 찍는 경우: 위 둘로 안 되는 시각 확인이 꼭 필요할 때만. 전체 페이지(`fullPage`) 캡처는 특히 비싸니 뷰포트 단위로, `format: 'jpeg'` + `quality` 낮춰서 찍는다.
+
 ## 기타
 
 - 의존성은 **pnpm**. `package.json` 변경 시 `pnpm-lock.yaml` 함께 커밋(안 하면 Vercel 빌드 실패).
