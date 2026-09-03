@@ -97,14 +97,10 @@ const Lineup: React.FC<Props> = ({ musicians }) => {
                       flipped && 'lg:order-2 lg:flex-row-reverse'
                     )}
                   >
-                    <div
-                      className="relative w-full flex-1 overflow-hidden rounded-lg p-px"
-                      style={{
-                        background:
-                          'linear-gradient(150deg, #CE1126 0%, #F5F1EA 38%, #007A3D 70%, rgba(10,10,10,0.9) 100%)',
-                      }}
-                    >
-                      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[7px] bg-[#141414]">
+                    {/* 테두리는 균일한 헤어라인 한 겹만 둔다. 국기색 그라데이션을 쓰면 밝은
+                        구간이 한쪽 모서리에만 걸려 사진이 잘못 잘린 것처럼 보인다. */}
+                    <div className="relative w-full flex-1 overflow-hidden rounded-lg border border-[#F5F1EA]/15">
+                      <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#141414]">
                         <Image
                           src={artist.imageUrl}
                           alt={artist.imageAlt}
