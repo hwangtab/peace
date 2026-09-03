@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import classNames from 'classnames';
 import { Musician } from '@/types/musician';
-import { DarkSection, DarkLinkButton, Reveal, SectionHeading } from './DarkUI';
+import { DarkSection, DarkLinkButton, FlagRule, Reveal, SectionHeading } from './DarkUI';
 
 interface LineupArtist {
   key: string;
@@ -129,6 +129,10 @@ const Lineup: React.FC<Props> = ({ musicians }) => {
                     <h3 className="mt-3 font-serif text-3xl text-[#F5F1EA] md:text-4xl">
                       {artist.name}
                     </h3>
+                    {/* 국기색은 사진 테두리 대신 이름 아래 짧은 선으로만 쓴다(모서리에 몰리지 않음). */}
+                    <div className="mt-4 w-28">
+                      <FlagRule />
+                    </div>
                     <p className="mt-5 text-sm leading-[1.95] text-[#D7D1C7] md:text-base">
                       {artist.description}
                     </p>
