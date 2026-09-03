@@ -13,7 +13,6 @@ interface LineupArtist {
   imageAlt: string;
   /** 사이트 안 뮤지션 상세 페이지 — 없으면 외부 링크를 쓴다. */
   profileHref?: string;
-  externalHref?: string;
   instagramUrl?: string;
 }
 
@@ -25,7 +24,7 @@ const MUSICIAN_ORDER: Array<{ key: string; id: number }> = [
 ];
 
 const IHYEONGJU_IMAGE = '/images-webp/solidarity/lineup/ihyeongju.webp';
-const IHYEONGJU_LINK = 'https://indistreet.com/artists/ihyeongju';
+const IHYEONGJU_INSTAGRAM = 'https://www.instagram.com/hyungju1218/';
 
 interface Props {
   musicians: Musician[];
@@ -65,7 +64,7 @@ const Lineup: React.FC<Props> = ({ musicians }) => {
       description: t('artists.ihyeongju.description'),
       imageUrl: IHYEONGJU_IMAGE,
       imageAlt: t('artists.ihyeongju.image_alt'),
-      externalHref: IHYEONGJU_LINK,
+      instagramUrl: IHYEONGJU_INSTAGRAM,
     };
 
     // 포스터 순서대로: 이서영, 이형주, 모레도토요일, 모모.
@@ -142,16 +141,6 @@ const Lineup: React.FC<Props> = ({ musicians }) => {
                       {artist.profileHref && (
                         <DarkLinkButton href={artist.profileHref} variant="outline" size="sm">
                           {t('lineup.link_profile')}
-                        </DarkLinkButton>
-                      )}
-                      {artist.externalHref && (
-                        <DarkLinkButton
-                          href={artist.externalHref}
-                          variant="outline"
-                          size="sm"
-                          external
-                        >
-                          {t('lineup.link_external')}
                         </DarkLinkButton>
                       )}
                       {artist.instagramUrl && (
