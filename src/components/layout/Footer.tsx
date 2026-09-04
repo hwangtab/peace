@@ -40,6 +40,7 @@ const Footer = () => {
                   <Link
                     key={item.path}
                     href={item.path}
+                    prefetch={false}
                     className="block text-cloud-white/80 hover:text-golden-sun
                                transition-colors duration-200 text-sm break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun rounded-sm"
                   >
@@ -50,6 +51,7 @@ const Footer = () => {
                     푸터에는 직접 진입점을 유지한다. */}
                 <Link
                   href={solidarityNavItem.path}
+                  prefetch={false}
                   className="block text-cloud-white/80 hover:text-golden-sun
                              transition-colors duration-200 text-sm break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun rounded-sm"
                 >
@@ -57,6 +59,7 @@ const Footer = () => {
                 </Link>
                 <Link
                   href={ROUTES.BOARD}
+                  prefetch={false}
                   className="block text-cloud-white/80 hover:text-golden-sun
                              transition-colors duration-200 text-sm break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun rounded-sm"
                 >
@@ -69,6 +72,7 @@ const Footer = () => {
                   <Link
                     key={item.path}
                     href={item.path}
+                    prefetch={false}
                     className="block text-cloud-white/80 hover:text-golden-sun
                                transition-colors duration-200 text-sm break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun rounded-sm"
                   >
@@ -79,6 +83,7 @@ const Footer = () => {
                   <Link
                     key={item.path}
                     href={item.path}
+                    prefetch={false}
                     className="block text-cloud-white/80 hover:text-golden-sun
                                transition-colors duration-200 text-sm break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun rounded-sm"
                   >
@@ -130,6 +135,7 @@ const Footer = () => {
             {' · '}
             <Link
               href="/privacy"
+              prefetch={false}
               className="underline underline-offset-2 transition-colors hover:text-golden-sun focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-golden-sun rounded-sm"
             >
               {t('footer.privacy')}

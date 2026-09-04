@@ -180,6 +180,9 @@ const DropdownMenu: React.FC<{
           <Link
             key={item.path}
             href={item.path}
+            // 드롭다운은 열릴 때만 렌더되지만, 열리는 순간 항목 전부를 프리페치하지 않도록
+            // 헤더·푸터 링크와 같은 정책(hover 시 프리페치)을 적용한다.
+            prefetch={false}
             className={`block px-4 py-2 whitespace-normal break-words ${
               isRouteActive(currentPath, item.path, { locale: router.locale })
                 ? 'bg-ocean-sand text-jeju-ocean font-bold'

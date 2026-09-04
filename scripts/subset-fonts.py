@@ -475,24 +475,29 @@ def _format_unicode_range(lo: int, hi: int) -> str:
     return f"U+{lo:04X}" if lo == hi else f"U+{lo:04X}-{hi:04X}"
 
 
-def merge_unicode_ranges(codepoints: list[int]) -> str:
-    """연속 코드포인트를 U+XXXX-YYYY range 로 병합해 CSS unicode-range 문자열로.
-
-    예: [0xAC00, 0xAC01, 0xAC02, 0xAC10] -> "U+AC00-AC02, U+AC10"
-    """
-    if not codepoints:
-        return ""
+def _contiguous_ranges(codepoints) -> list[tuple[int, int]]:
+    """연속 코드포인트를 (lo, hi) 구간 리스트로 병합한다."""
     cps = sorted(set(codepoints))
-    parts: list[str] = []
+    if not cps:
+        return []
+    ranges: list[tuple[int, int]] = []
     start = prev = cps[0]
     for cp in cps[1:]:
         if cp == prev + 1:
             prev = cp
             continue
-        parts.append(_format_unicode_range(start, prev))
+        ranges.append((start, prev))
         start = prev = cp
-    parts.append(_format_unicode_range(start, prev))
-    return ", ".join(parts)
+    ranges.append((start, prev))
+    return ranges
+
+
+def merge_unicode_ranges(codepoints: list[int]) -> str:
+    """연속 코드포인트를 U+XXXX-YYYY range 로 병합해 CSS unicode-range 문자열로.
+
+    예: [0xAC00, 0xAC01, 0xAC02, 0xAC10] -> "U+AC00-AC02, U+AC10"
+    """
+    return ", ".join(_format_unicode_range(lo, hi) for lo, hi in _contiguous_ranges(codepoints))
 
 
 # 자모 호환 영역 — 코어 완성형 음절 범위 뒤에 항상 덧붙인다(중세/고어 조합용).
@@ -534,24 +539,35 @@ def build_kr_subset_codepoints(base_chars: set[str], hangul_common: set[str]) ->
     return sorted(cps)
 
 
-def build_kr_css_unicode_range(base_chars: set[str], hangul_common: set[str]) -> str:
-    """KR/Serif 5개 @font-face 에 공통으로 쓸 unicode-range 값을 생성한다.
+# 한글 관련 표준 블록 — KR unicode-range 는 이 단위로 뭉뚱그린다(아래 설명 참고).
+_KR_BLOCK_RANGES = _KR_JAMO_RANGES + ((0xAC00, 0xD7A3),)
 
-    실제 서브셋에 담기는 한글 완성형 코드포인트(수집 935자 ∪ KS X 1001 상용
-    2,350자)를 연속 구간으로 병합하고, 자모 호환 영역과(항상) 실사용 CJK
-    구두점 범위(있는 경우만)를 덧붙인다. unicode-range 가 서브셋 글리프와
-    정확히 일치해야 코어 밖 문자가 tofu 없이 시스템 한글 폰트로 폴백된다.
+
+def build_kr_css_unicode_range(base_chars: set[str], hangul_common: set[str]) -> str:
+    """NotoSansKR 2개 @font-face(Regular/Bold)에 쓸 unicode-range 값을 생성한다.
+
+    KR 은 웨이트당 woff2 **한 개**짜리 단일 파일 서브셋이다. 한글 코드포인트가
+    하나라도 매치되면 그 파일이 통째로 내려오므로, 실제 커버하는 2,800여 자를
+    정확히 열거해도 다운로드 이득이 전혀 없다. 반대로 비용은 확실하다 — 열거하면
+    range 가 1,600여 개로 늘어 렌더 차단 CSS 가 50KB 가까이 불어난다. 그래서 한글
+    관련 블록(자모·호환자모·자모확장 A/B·완성형 음절)은 "하나라도 커버하면 블록
+    전체"로 선언한다. 파일에 없는 코드포인트는 예전과 똑같이 스택 다음 폰트로
+    폴백되므로 렌더 결과는 달라지지 않는다.
+
+    단, 블록 밖 문자(실사용 CJK 구두점)는 정확히 병합해 커버리지 주장을 정직하게
+    유지한다. NotoSerifKR 는 core/rest 두 물리 파일로 쪼개져 정확한 range 가
+    두 face 를 분할하므로 이 블록화를 적용하지 않는다(겹치면 로딩이 깨진다).
     """
-    core_codepoints = [
-        ord(ch) for ch in (base_chars | hangul_common) if 0xAC00 <= ord(ch) <= 0xD7A3
-    ]
-    punct_codepoints = [
-        ord(ch) for ch in base_chars if _JP_LEAK_PUNCT_LO <= ord(ch) <= _JP_LEAK_PUNCT_HI
-    ]
-    parts = [merge_unicode_ranges(core_codepoints), KR_JAMO_TAIL_RANGE]
-    if punct_codepoints:
-        parts.append(merge_unicode_ranges(punct_codepoints))
-    return ", ".join(p for p in parts if p)
+    remaining = set(build_kr_subset_codepoints(base_chars, hangul_common))
+    ranges: list[tuple[int, int]] = []
+    for lo, hi in _KR_BLOCK_RANGES:
+        block = set(range(lo, hi + 1))
+        if remaining & block:
+            ranges.append((lo, hi))
+            remaining -= block
+    ranges.extend(_contiguous_ranges(remaining))  # 블록 밖(CJK 구두점 등)은 정확히
+    ranges.sort()
+    return ", ".join(_format_unicode_range(lo, hi) for lo, hi in ranges)
 
 
 def build_serif_slices(

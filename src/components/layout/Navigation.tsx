@@ -40,6 +40,9 @@ const Navigation = () => {
           <div className="flex justify-between items-center min-h-[4rem] py-2 gap-4">
             <Link
               href="/"
+              // 헤더 로고는 항상 뷰포트 안이라 홈 페이지 데이터(ko.json 30KB)를 즉시
+              // 프리페치했다. 네비게이션은 hover/tap 시점 프리페치로 충분하다.
+              prefetch={false}
               className={`group inline-flex items-center gap-2 text-sm sm:text-base lg:text-lg xl:text-xl 2xl:text-2xl font-bold font-serif transition-colors duration-300 min-w-0 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${
                 isScrolled
                   ? 'text-jeju-ocean hover:text-ocean-mist'

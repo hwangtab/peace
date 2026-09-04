@@ -58,6 +58,9 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(
                   <Link
                     key={item.path}
                     href={item.path}
+                    // 메뉴는 열릴 때만 렌더되지만, 열자마자 전 항목 데이터를 받아오지 않도록
+                    // 헤더·푸터와 같은 지연 프리페치 정책을 쓴다(탭 시 로드).
+                    prefetch={false}
                     className={`block py-3 break-words rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${
                       isPathActive(item.path) ? 'text-jeju-ocean font-bold' : 'text-coastal-gray'
                     } font-serif font-bold`}
@@ -106,6 +109,7 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(
                     <>
                       <Link
                         href="/account"
+                        prefetch={false}
                         className="block py-3 font-serif font-bold text-deep-ocean hover:text-jeju-ocean break-words rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
                         onClick={onClose}
                       >
@@ -126,6 +130,7 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(
                     <>
                       <Link
                         href="/login"
+                        prefetch={false}
                         className="block py-3 font-serif font-bold text-deep-ocean hover:text-jeju-ocean break-words rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
                         onClick={onClose}
                       >
@@ -133,6 +138,7 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(
                       </Link>
                       <Link
                         href="/signup"
+                        prefetch={false}
                         className="block py-3 font-serif font-bold text-jeju-ocean hover:text-deep-ocean break-words rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"
                         onClick={onClose}
                       >
@@ -195,6 +201,7 @@ const MobileDropdown: React.FC<MobileDropdownProps> = React.memo(
                 <Link
                   key={item.path}
                   href={item.path}
+                  prefetch={false}
                   className={`block py-3 font-serif font-bold text-sm break-words rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${
                     isPathActive(item.path)
                       ? 'text-jeju-ocean bg-ocean-sand/70'

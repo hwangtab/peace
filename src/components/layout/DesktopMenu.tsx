@@ -49,6 +49,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(
       <div className="hidden nav:flex items-center gap-x-4 2xl:gap-x-6">
         <Link
           href={ROUTES.HOME}
+          prefetch={false}
           className={`${getTextColor(isPathActive(ROUTES.HOME, true))} whitespace-nowrap transition-colors duration-300 font-display font-bold relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm`}
           aria-current={isPathActive(ROUTES.HOME, true) ? 'page' : undefined}
         >
@@ -84,6 +85,11 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(
             <Link
               key={item.path}
               href={item.path}
+              // 상단 메뉴는 뷰포트 안이라 gallery/videos/press 페이지 데이터를 방문 즉시
+              // 내려받았다(videos.json 63KB + press.json 49KB + gallery.json 25KB).
+              // Pages Router 에서 prefetch={false} 는 hover 시 프리페치를 유지하므로
+              // 데스크톱 이동 체감은 그대로고, 첫 로드 트래픽만 사라진다.
+              prefetch={false}
               className={`${getTextColor(isPathActive(item.path))} whitespace-nowrap transition-colors duration-300 font-display font-bold relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded-sm`}
               aria-current={isPathActive(item.path) ? 'page' : undefined}
             >
@@ -116,6 +122,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(
             <>
               <Link
                 href="/account"
+                prefetch={false}
                 className={`${pillBase} ${ghostPill} block max-w-[10rem] truncate`}
               >
                 {auth.profile?.nickname ?? t('memberNav.account')}
@@ -130,7 +137,8 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(
             </>
           ) : (
             <>
-              <Link href="/login" className={`${pillBase} ${ghostPill}`}>
+              {/* 익명 방문자 대부분은 로그인하지 않는다 — login.json(18KB)은 hover 때만. */}
+              <Link href="/login" prefetch={false} className={`${pillBase} ${ghostPill}`}>
                 {t('memberNav.login')}
               </Link>
               <Link href="/signup" className={`${pillBase} ${filledPill}`}>
