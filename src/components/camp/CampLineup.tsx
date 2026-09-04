@@ -14,7 +14,7 @@ interface CampLineupProps {
 const CampLineup: React.FC<CampLineupProps> = ({ participants, musicians, campYear }) => {
   // 참가자 수십 명 × musicians.find() 가 렌더마다 O(n²) 였다 → id→Musician Map 으로 O(n).
   const musicianById = useMemo(() => new Map(musicians.map((m) => [m.id, m])), [musicians]);
-  const { viewport, itemTransition } = useScrollReveal();
+  const { viewport, itemHidden, itemVisible, itemTransition } = useScrollReveal();
 
   const getParticipantName = (participant: string | Participant) => {
     if (!participant) return '';
@@ -47,8 +47,8 @@ const CampLineup: React.FC<CampLineupProps> = ({ participants, musicians, campYe
         return (
           <motion.div
             key={`${name}-${index}`}
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={itemHidden}
+            whileInView={itemVisible}
             viewport={viewport}
             transition={itemTransition()}
             className="flex items-center justify-center text-center h-full min-h-[120px] sm:min-h-[200px] px-4 rounded-2xl border bg-white border-seafoam/40 shadow-lg"

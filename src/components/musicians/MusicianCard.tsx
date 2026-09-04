@@ -15,13 +15,13 @@ interface MusicianCardProps {
 
 const MusicianCard = memo(({ musician, href }: MusicianCardProps) => {
   const detailHref = href || `/album/musicians/${musician.id}`;
-  const { viewport, itemTransition } = useScrollReveal();
+  const { viewport, itemHidden, itemVisible, itemTransition } = useScrollReveal();
   return (
     <>
       <motion.div
         id={`musician-${musician.id}`}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={itemHidden}
+        whileInView={itemVisible}
         viewport={viewport}
         transition={itemTransition()}
         className="transform-gpu h-full scroll-mt-24"

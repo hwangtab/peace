@@ -31,7 +31,7 @@ const SolidarityEventFeature: React.FC<Props> = ({
   compact = false,
 }) => {
   const { t } = useTranslation('translation');
-  const { viewport, itemTransition } = useScrollReveal();
+  const { viewport, itemHidden, itemVisible, itemTransition } = useScrollReveal();
   const [selectedMusician, setSelectedMusician] = useState<Musician | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -50,8 +50,8 @@ const SolidarityEventFeature: React.FC<Props> = ({
   return (
     <>
       <motion.article
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={itemHidden}
+        whileInView={itemVisible}
         viewport={viewport}
         transition={itemTransition(index)}
         className="bg-white rounded-2xl overflow-hidden shadow-lg border border-ocean-sand"

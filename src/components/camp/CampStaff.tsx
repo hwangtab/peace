@@ -11,7 +11,7 @@ interface CampStaffProps {
 
 const CampStaff: React.FC<CampStaffProps> = ({ staff, collaborators }) => {
   const { t } = useTranslation();
-  const { viewport, itemTransition } = useScrollReveal();
+  const { viewport, itemHidden, itemVisible, itemTransition } = useScrollReveal();
   return (
     <div className="space-y-6">
       {/* Staff sections */}
@@ -19,8 +19,8 @@ const CampStaff: React.FC<CampStaffProps> = ({ staff, collaborators }) => {
         {staff.map((section, index) => (
           <motion.div
             key={`${section.role}-${index}`}
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={itemHidden}
+            whileInView={itemVisible}
             viewport={viewport}
             transition={itemTransition(index)}
             className="flex items-start gap-2"
@@ -39,8 +39,8 @@ const CampStaff: React.FC<CampStaffProps> = ({ staff, collaborators }) => {
       {/* Collaborators section */}
       {collaborators && collaborators.length > 0 && (
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={itemHidden}
+          whileInView={itemVisible}
           viewport={viewport}
           transition={itemTransition()}
           className="pt-4 border-t border-ocean-sand"
@@ -52,8 +52,8 @@ const CampStaff: React.FC<CampStaffProps> = ({ staff, collaborators }) => {
             {collaborators.map((org, index) => (
               <motion.div
                 key={org}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={itemHidden}
+                whileInView={itemVisible}
                 viewport={viewport}
                 transition={itemTransition(index)}
                 className="flex items-center gap-2"

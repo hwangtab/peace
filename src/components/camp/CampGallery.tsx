@@ -31,7 +31,7 @@ const CampGallery: React.FC<CampGalleryProps> = ({
 }) => {
   const { t, i18n } = useTranslation();
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const { viewport, itemTransition } = useScrollReveal();
+  const { viewport, itemHidden, itemVisible, itemTransition } = useScrollReveal();
 
   if (!camp.images || camp.images.length === 0) {
     return null;
@@ -69,8 +69,8 @@ const CampGallery: React.FC<CampGalleryProps> = ({
           {camp.images.map((img, idx) => (
             <motion.div
               key={img}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={itemHidden}
+              whileInView={itemVisible}
               viewport={viewport}
               transition={itemTransition()}
               className="cursor-pointer overflow-hidden rounded-xl shadow-lg relative group aspect-video focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean"

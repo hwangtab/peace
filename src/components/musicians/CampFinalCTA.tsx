@@ -23,7 +23,7 @@ export default function CampFinalCTA({
   backLabel,
 }: CampFinalCTAProps) {
   const { t } = useTranslation();
-  const { viewport, itemTransition } = useScrollReveal();
+  const { viewport, itemHidden, itemVisible, itemTransition } = useScrollReveal();
 
   return (
     <>
@@ -57,8 +57,8 @@ export default function CampFinalCTA({
         />
         <Container size="content" className="text-center relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={itemHidden}
+            whileInView={itemVisible}
             viewport={viewport}
             transition={itemTransition()}
           >

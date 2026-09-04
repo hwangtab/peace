@@ -30,12 +30,12 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
 }) => {
   const displaySubtitle = subtitle || description;
   const TitleTag = titleTag;
-  const { viewport, itemTransition } = useScrollReveal();
+  const { viewport, itemHidden, itemVisible, itemTransition } = useScrollReveal();
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={itemHidden}
+      whileInView={itemVisible}
       viewport={viewport}
       transition={itemTransition()}
       className={classNames(

@@ -16,11 +16,11 @@ export const Reveal: React.FC<{
   className?: string;
   delayIndex?: number;
 }> = ({ children, className, delayIndex = 0 }) => {
-  const { viewport, itemTransition, reduce } = useScrollReveal();
+  const { viewport, itemHidden, itemVisible, itemTransition } = useScrollReveal();
   return (
     <motion.div
-      initial={reduce ? { opacity: 1 } : { opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={itemHidden}
+      whileInView={itemVisible}
       viewport={viewport}
       transition={itemTransition(delayIndex)}
       className={className}

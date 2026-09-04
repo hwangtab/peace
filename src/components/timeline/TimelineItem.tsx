@@ -33,6 +33,9 @@ const TimelineItem = React.memo<TimelineItemProps>(({ event, isLeft }) => {
   // 타이밍/viewport 는 훅·모션 상수로 통일하되, 타임라인 카드의 의도적인 좌우
   // 대칭 x축 슬라이드(isLeft 방향성)와 컨테이너 y축 오프셋은 유지한다.
   // prefers-reduced-motion 이면 x/y 오프셋과 지연을 제거한다(감사 접근성 결함 보완).
+  // 타임라인 노드(점)는 등장 시 살짝 커지는 강조 — 감소 모드에서는 변화를 없앤다.
+  const dotVisible = reduce ? {} : { scale: 1.2 };
+
   const containerVariants = {
     hidden: { opacity: 0, y: reduce ? 0 : 20 },
     visible: {
@@ -87,8 +90,8 @@ const TimelineItem = React.memo<TimelineItemProps>(({ event, isLeft }) => {
         <div className="w-1 bg-transparent h-full absolute left-1/2 -translate-x-1/2" />{' '}
         {/* Spacer for line */}
         <motion.div
-          whileInView={{ scale: 1.2 }}
-          viewport={{ once: true }}
+          whileInView={dotVisible}
+          viewport={viewport}
           transition={{ duration: 0.4 }}
           className={`w-6 h-6 rounded-full bg-cloud-white border-4 ${eventTypeBorder[event.eventType]} shadow-md z-10 mt-6`}
         />

@@ -35,18 +35,18 @@ const TimetableActCard: React.FC<TimetableActCardProps> = ({
   accentTimeClass = 'text-jeju-ocean',
   accentRuleClass = 'bg-coastal-gray/30',
 }) => {
-  const { viewport, itemTransition } = useScrollReveal();
+  const { viewport, itemHidden, itemVisible, itemTransition } = useScrollReveal();
   const musicians = resolveMusicians(act.musicianIds, musicianById);
   const primary = musicians[0];
   const isLinkable = musicians.length === 1 && primary !== undefined;
 
   const content = (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={itemHidden}
+      whileInView={itemVisible}
       whileHover={{ y: -2 }}
       viewport={viewport}
-      transition={itemTransition(index, 0.3)}
+      transition={itemTransition(index)}
       className="group flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm transition-shadow hover:shadow-lg sm:gap-4"
     >
       <div className="flex w-12 flex-shrink-0 flex-col items-center text-center sm:w-16">

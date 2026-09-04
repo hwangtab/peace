@@ -32,13 +32,13 @@ interface ConcertCardProps {
 const ConcertCard: React.FC<ConcertCardProps> = React.memo(
   ({ concert, onMusicianClick, index }) => {
     const { t } = useTranslation('album');
-    const { viewport, itemTransition } = useScrollReveal();
+    const { viewport, itemHidden, itemVisible, itemTransition } = useScrollReveal();
 
     return (
       <motion.div
         key={concert.id}
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={itemHidden}
+        whileInView={itemVisible}
         viewport={viewport}
         transition={itemTransition(index)}
         className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-[box-shadow,border-color] duration-500 border border-ocean-sand flex flex-col"

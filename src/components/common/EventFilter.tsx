@@ -23,7 +23,7 @@ const EventFilter: React.FC<EventFilterProps> = ({
   filterOrder = 'gallery',
 }) => {
   const { t } = useTranslation();
-  const { viewport, itemTransition } = useScrollReveal();
+  const { viewport, itemHidden, itemVisible, itemTransition } = useScrollReveal();
   const filters = useMemo((): FilterItem[] => {
     if (filterOrder === 'press') {
       return [
@@ -63,8 +63,8 @@ const EventFilter: React.FC<EventFilterProps> = ({
     <motion.div
       role="group"
       aria-label={t('common.aria_filter')}
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={itemHidden}
+      whileInView={itemVisible}
       viewport={viewport}
       transition={itemTransition()}
       className="flex flex-wrap gap-2 justify-center mb-8"

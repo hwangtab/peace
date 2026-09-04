@@ -40,7 +40,7 @@ const TrackCard = React.memo(
     priority = false,
   }: TrackCardProps) => {
     const { t } = useTranslation();
-    const { viewport, itemTransition } = useScrollReveal();
+    const { viewport, itemHidden, itemVisible, itemTransition } = useScrollReveal();
     const showContent = alwaysExpanded || isExpanded;
     const [shouldRenderContent, setShouldRenderContent] = React.useState(showContent);
 
@@ -60,8 +60,8 @@ const TrackCard = React.memo(
 
     return (
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={itemHidden}
+        whileInView={itemVisible}
         viewport={viewport}
         transition={itemTransition()}
         exit={{ opacity: 0, y: -20 }}

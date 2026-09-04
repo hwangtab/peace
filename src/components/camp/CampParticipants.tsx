@@ -16,7 +16,7 @@ interface CampParticipantsProps {
 const CampParticipants: React.FC<CampParticipantsProps> = ({ participants, musicians }) => {
   const [selectedMusician, setSelectedMusician] = useState<Musician | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { viewport, itemTransition } = useScrollReveal();
+  const { viewport, itemHidden, itemVisible, itemTransition } = useScrollReveal();
 
   const handleParticipantClick = React.useCallback(
     (participant: string | Participant) => {
@@ -54,8 +54,8 @@ const CampParticipants: React.FC<CampParticipantsProps> = ({ participants, music
           return (
             <motion.div
               key={stableKey}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={itemHidden}
+              whileInView={itemVisible}
               viewport={viewport}
               transition={itemTransition(index)}
               className={`flex items-start gap-2 min-w-0 ${clickable ? 'cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean rounded' : ''}`}

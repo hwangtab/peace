@@ -29,7 +29,7 @@ const StatCard: React.FC<StatCardProps & { colors: VariantColors }> = ({
   colors,
 }) => {
   const { t } = useTranslation('gangjeong');
-  const { viewport, item, itemTransition } = useScrollReveal();
+  const { viewport, itemHidden, itemVisible, itemTransition } = useScrollReveal();
   const raw = parseInt(t(valueKey), 10);
   const target = isNaN(raw) ? 0 : raw;
   const { ref, displayValue } = useCountUp({ target, duration: 2000, delay });
@@ -37,8 +37,8 @@ const StatCard: React.FC<StatCardProps & { colors: VariantColors }> = ({
   return (
     <motion.div
       ref={ref}
-      initial={item.hidden}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={itemHidden}
+      whileInView={itemVisible}
       viewport={viewport}
       transition={itemTransition(index)}
       className="text-center"

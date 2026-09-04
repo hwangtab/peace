@@ -24,7 +24,7 @@ const StoryBlock: React.FC<StoryBlockProps> = ({
   variant = 'camp',
 }) => {
   const { t } = useTranslation('gangjeong');
-  const { viewport, itemTransition, reduce } = useScrollReveal();
+  const { viewport, itemHidden, itemVisible, itemTransition } = useScrollReveal();
   const blockRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
   // 모바일에서는 parallax 비활성 — 3개 StoryBlock 이 동시에 rAF subscribe 하던 부담 제거.
@@ -63,8 +63,8 @@ const StoryBlock: React.FC<StoryBlockProps> = ({
 
       <Container size="wide" className="relative z-10 pb-12 sm:pb-16 md:pb-20 pt-20">
         <motion.div
-          initial={{ opacity: reduce ? 1 : 0, x: reduce ? 0 : align === 'right' ? 40 : -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={itemHidden}
+          whileInView={itemVisible}
           viewport={viewport}
           transition={itemTransition(0)}
           className={`max-w-lg mx-auto ${align === 'right' ? 'md:ms-auto md:me-0' : 'md:mx-0'}`}
