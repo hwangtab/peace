@@ -36,7 +36,7 @@ module.exports = {
         ],
         // 포인트 폰트(유지). 비한글은 Noto Sans 풀세트로 폴백.
         partial: [
-          'PartialSans', 'PartialSans Fallback', 'Noto Sans KR', 'Noto Sans', 'Noto Sans JP',
+          'PartialSans', 'PartialSans Fallback Apple', 'PartialSans Fallback CJK', 'Noto Sans KR', 'Noto Sans', 'Noto Sans JP',
           'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Devanagari', 'Noto Sans Arabic',
           'sans-serif',
         ],
