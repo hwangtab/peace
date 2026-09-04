@@ -13,7 +13,7 @@
      NotoSans-Medium.woff2 는 롤백 대비 보존하되 로드되지 않음. */
   @font-face {
     font-family: 'Noto Sans';
-    src: url('/fonts/NotoSans-Regular.subset.woff2?v=4') format('woff2');
+    src: url('/fonts/NotoSans-Regular.subset.woff2?v=6') format('woff2');
     font-weight: 400 500;
     font-style: normal;
     font-display: swap;
@@ -21,7 +21,7 @@
   }
   @font-face {
     font-family: 'Noto Sans';
-    src: url('/fonts/NotoSans-Bold.subset.woff2?v=4') format('woff2');
+    src: url('/fonts/NotoSans-Bold.subset.woff2?v=6') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -35,7 +35,7 @@
      public/fonts 의 Medium/SemiBold woff2 는 롤백 대비 보존하되 로드되지 않음. */
   @font-face {
     font-family: 'Noto Sans KR';
-    src: url('/fonts/NotoSansKR-Regular.subset.woff2?v=4') format('woff2');
+    src: url('/fonts/NotoSansKR-Regular.subset.woff2?v=6') format('woff2');
     font-weight: 400 500;
     font-style: normal;
     font-display: swap;
@@ -56,7 +56,7 @@
   }
   @font-face {
     font-family: 'Noto Sans KR';
-    src: url('/fonts/NotoSansKR-Bold.subset.woff2?v=4') format('woff2');
+    src: url('/fonts/NotoSansKR-Bold.subset.woff2?v=6') format('woff2');
     font-weight: 600 700;
     font-style: normal;
     font-display: swap;
@@ -82,7 +82,7 @@
      font-family 순서로 해소한다(아래 Step 2). */
   @font-face {
     font-family: 'Noto Sans JP';
-    src: url('/fonts/NotoSansJP-Regular.subset.woff2?v=4') format('woff2');
+    src: url('/fonts/NotoSansJP-Regular.subset.woff2?v=6') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -90,7 +90,7 @@
   }
   @font-face {
     font-family: 'Noto Sans JP';
-    src: url('/fonts/NotoSansJP-Bold.subset.woff2?v=4') format('woff2');
+    src: url('/fonts/NotoSansJP-Bold.subset.woff2?v=6') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -100,7 +100,7 @@
   /* ── 중국어 간체 (Noto Sans SC) ── */
   @font-face {
     font-family: 'Noto Sans SC';
-    src: url('/fonts/NotoSansSC-Regular.subset.woff2?v=4') format('woff2');
+    src: url('/fonts/NotoSansSC-Regular.subset.woff2?v=6') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -108,7 +108,7 @@
   }
   @font-face {
     font-family: 'Noto Sans SC';
-    src: url('/fonts/NotoSansSC-Bold.subset.woff2?v=4') format('woff2');
+    src: url('/fonts/NotoSansSC-Bold.subset.woff2?v=6') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -118,7 +118,7 @@
   /* ── 중국어 번체 (Noto Sans TC) ── */
   @font-face {
     font-family: 'Noto Sans TC';
-    src: url('/fonts/NotoSansTC-Regular.subset.woff2?v=4') format('woff2');
+    src: url('/fonts/NotoSansTC-Regular.subset.woff2?v=6') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -126,7 +126,7 @@
   }
   @font-face {
     font-family: 'Noto Sans TC';
-    src: url('/fonts/NotoSansTC-Bold.subset.woff2?v=4') format('woff2');
+    src: url('/fonts/NotoSansTC-Bold.subset.woff2?v=6') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -136,7 +136,7 @@
   /* ── 데바나가리 (힌디) ── */
   @font-face {
     font-family: 'Noto Sans Devanagari';
-    src: url('/fonts/NotoSansDevanagari-Regular.subset.woff2?v=4') format('woff2');
+    src: url('/fonts/NotoSansDevanagari-Regular.subset.woff2?v=6') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -144,7 +144,7 @@
   }
   @font-face {
     font-family: 'Noto Sans Devanagari';
-    src: url('/fonts/NotoSansDevanagari-Bold.subset.woff2?v=4') format('woff2');
+    src: url('/fonts/NotoSansDevanagari-Bold.subset.woff2?v=6') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -154,7 +154,7 @@
   /* ── 아랍 ── */
   @font-face {
     font-family: 'Noto Sans Arabic';
-    src: url('/fonts/NotoSansArabic-Regular.subset.woff2?v=4') format('woff2');
+    src: url('/fonts/NotoSansArabic-Regular.subset.woff2?v=6') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -162,7 +162,7 @@
   }
   @font-face {
     font-family: 'Noto Sans Arabic';
-    src: url('/fonts/NotoSansArabic-Bold.subset.woff2?v=4') format('woff2');
+    src: url('/fonts/NotoSansArabic-Bold.subset.woff2?v=6') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -178,7 +178,7 @@
      (NotoSerifKR-Bold.subset.woff2)은 롤백 대비 보존하되 여기서 참조하지 않는다. */
   @font-face {
     font-family: 'Noto Serif KR';
-    src: url('/fonts/NotoSerifKR-Bold.core.woff2?v=1') format('woff2');
+    src: url('/fonts/NotoSerifKR-Bold.core.woff2?v=6') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -885,7 +885,7 @@
   }
   @font-face {
     font-family: 'Noto Serif KR';
-    src: url('/fonts/NotoSerifKR-Bold.rest.woff2?v=1') format('woff2');
+    src: url('/fonts/NotoSerifKR-Bold.rest.woff2?v=6') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -2116,7 +2116,7 @@
   /* ── 포인트 폰트 (유지) ── */
   @font-face {
     font-family: 'PartialSans';
-    src: url('/fonts/PartialSansKR-Regular.subset.woff2?v=5') format('woff2');
+    src: url('/fonts/PartialSansKR-Regular.subset.woff2?v=6') format('woff2');
     font-weight: normal;
     font-style: normal;
     font-display: swap;

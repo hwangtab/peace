@@ -44,7 +44,7 @@ class MyDocument extends Document {
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
-            href="/fonts/PartialSansKR-Regular.subset.woff2?v=5"
+            href="/fonts/PartialSansKR-Regular.subset.woff2?v=6"
             // @ts-expect-error — fetchpriority is a valid HTML attribute (React 18.3+)
             fetchpriority="high"
           />
@@ -56,7 +56,7 @@ class MyDocument extends Document {
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
-            href={`/fonts/${bodyFontFile}.subset.woff2?v=4`}
+            href={`/fonts/${bodyFontFile}.subset.woff2?v=6`}
             // @ts-expect-error — fetchpriority is a valid HTML attribute (React 18.3+)
             fetchpriority="high"
           />
