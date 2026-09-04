@@ -13,43 +13,21 @@ module.exports = {
         nav: '1280px',
       },
       fontFamily: {
-        // 본문/UI 산스 = Noto Sans 풀세트. 스크립트별 unicode-range 는
-        // src/index.css @font-face 가 처리하므로 여기선 family 나열만.
-        // CJK 한자 우선순위는 html:lang 분기(index.css)에서 제어.
-        sans: [
-          'Noto Sans', 'Noto Sans KR', 'Noto Sans JP', 'Noto Sans SC',
-          'Noto Sans TC', 'Noto Sans Devanagari', 'Noto Sans Arabic',
-          ...require('tailwindcss/defaultTheme').fontFamily.sans,
-        ],
-        // 제목 세리프 = 한국어 정체성 한정(Noto Serif KR). 비한글은 산스 폴백.
-        // CJK/데바나가리/아랍 제목은 해당 Noto Sans 로 폴백(세리프 글리프 부재) —
-        // 없으면 시스템 폰트(Times 등)로 떨어진다.
-        serif: [
-          'Noto Serif KR', 'Noto Sans', 'Noto Sans KR', 'Noto Sans JP',
-          'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Devanagari', 'Noto Sans Arabic',
-          ...require('tailwindcss/defaultTheme').fontFamily.serif,
-        ],
-        display: [
-          'Noto Serif KR', 'Noto Sans', 'Noto Sans KR', 'Noto Sans JP',
-          'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Devanagari', 'Noto Sans Arabic',
-          ...require('tailwindcss/defaultTheme').fontFamily.serif,
-        ],
-        // 포인트 폰트(유지). 비한글은 Noto Sans 풀세트로 폴백.
+        // 스택은 src/index.css 의 --font-sans / --font-serif 가 로케일(html:lang)별로
+        // 정의한다 — 여기서 family 를 나열하면 로케일 분기가 무력화돼 다른 언어 폰트까지
+        // 내려받는다(2026-09-04). 새 토큰도 변수를 참조할 것.
+        sans: ['var(--font-sans)'],
+        serif: ['var(--font-serif)'],
+        display: ['var(--font-serif)'],
+        // 포인트 폰트: 도착 전 플랫폼별 메트릭 폴백(index.css @font-face) → 로케일 sans 스택
         partial: [
-          'PartialSans', 'PartialSans Fallback Apple', 'PartialSans Fallback CJK', 'Noto Sans KR', 'Noto Sans', 'Noto Sans JP',
-          'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Devanagari', 'Noto Sans Arabic',
-          'sans-serif',
+          'PartialSans',
+          'PartialSans Fallback Apple',
+          'PartialSans Fallback CJK',
+          'var(--font-sans)',
         ],
-        body: [
-          'Noto Sans', 'Noto Sans KR', 'Noto Sans JP', 'Noto Sans SC',
-          'Noto Sans TC', 'Noto Sans Devanagari', 'Noto Sans Arabic',
-          ...require('tailwindcss/defaultTheme').fontFamily.sans,
-        ],
-        caption: [
-          'Noto Sans', 'Noto Sans KR', 'Noto Sans JP', 'Noto Sans SC',
-          'Noto Sans TC', 'Noto Sans Devanagari', 'Noto Sans Arabic',
-          ...require('tailwindcss/defaultTheme').fontFamily.sans,
-        ],
+        body: ['var(--font-sans)'],
+        caption: ['var(--font-sans)'],
       },
       colors: {
         // Ocean Blues (Primary)

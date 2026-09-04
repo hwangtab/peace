@@ -5981,6 +5981,8 @@
     ascent-override: 61.5%;
     descent-override: 15.4%;
     line-gap-override: 15.4%;
+    /* PartialSans 가 커버하는 영역에서만 대신한다 — 가나·한자는 여기 걸리면 안 된다 */
+    unicode-range: U+0020-007E, U+1100-11FF, U+3130-318F, U+AC00-D7A3;
   }
   @font-face {
     font-family: 'PartialSans Fallback CJK';
@@ -5989,78 +5991,62 @@
     ascent-override: 65.6%;
     descent-override: 16.4%;
     line-gap-override: 16.4%;
+    /* PartialSans 가 커버하는 영역에서만 대신한다 — 가나·한자는 여기 걸리면 안 된다 */
+    unicode-range: U+0020-007E, U+1100-11FF, U+3130-318F, U+AC00-D7A3;
   }
 
   body {
     @apply bg-ocean-sand text-deep-ocean;
-    /* 기본 스택: 라틴/한글 우선 + 모든 스크립트 폴백 나열.
-       lang 분기에서 해당 언어 폰트를 맨 앞으로 끌어올린다. */
-    font-family:
-      'Noto Sans',
-      'Noto Sans KR',
-      'Noto Sans JP',
-      'Noto Sans SC',
-      'Noto Sans TC',
-      'Noto Sans Devanagari',
-      'Noto Sans Arabic',
-      -apple-system,
-      BlinkMacSystemFont,
-      'Segoe UI',
-      'Roboto',
-      sans-serif;
+    font-family: var(--font-sans);
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* lang 분기: 해당 언어 CJK 폰트를 한자 영역에서 최우선으로.
-     SSG 라 페이지마다 <html lang> 고정 → 한 페이지엔 한 분기만 적용된다. */
-  html:lang(ja) body {
-    font-family:
-      'Noto Sans',
-      'Noto Sans JP',
-      'Noto Sans KR',
-      -apple-system,
-      BlinkMacSystemFont,
+  /* 로케일별 폰트 스택 — 페이지 언어의 스크립트 폰트 하나만 라틴(Noto Sans) 뒤에 둔다.
+     예전엔 모든 유틸리티(font-sans/serif/partial)와 h1~h6 가 KR·JP·SC·TC·… 전 스택을
+     고정 순서로 나열해, html:lang body 분기가 무력화됐다. 그 결과 /ja 는 일본어 구두점
+     、。「」 이 KR unicode-range 에 먼저 걸려 KR 본문 core 305KB + KR 세리프 core 336KB 를,
+     /zh-Hans 는 KR 641KB + JP 814KB 를 추가로 받았다(2026-09-04 프로덕션 Slow 4G 실측).
+     다른 스크립트 글자(ko 페이지의 일본 아티스트명 등)는 시스템 폰트로 폴백한다 — 그 몇
+     글자 때문에 400KB 웹폰트를 받지 않는다. SSG 라 페이지마다 <html lang> 고정. */
+  :root {
+    --font-script: 'Noto Sans KR';
+    --font-sans:
+      'Noto Sans', var(--font-script), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
       sans-serif;
+    /* 제목 세리프는 한국어 정체성 한정 — 다른 로케일은 sans 스택 그대로 */
+    --font-serif: 'Noto Serif KR', var(--font-sans);
   }
-  html:lang(zh-Hans) body {
-    font-family:
-      'Noto Sans',
-      'Noto Sans SC',
-      'Noto Sans TC',
-      'Noto Sans KR',
-      -apple-system,
-      BlinkMacSystemFont,
-      sans-serif;
+  html:lang(ja) {
+    --font-script: 'Noto Sans JP';
+    --font-serif: var(--font-sans);
   }
-  html:lang(zh-Hant) body {
-    font-family:
-      'Noto Sans',
-      'Noto Sans TC',
-      'Noto Sans SC',
-      'Noto Sans KR',
-      -apple-system,
-      BlinkMacSystemFont,
-      sans-serif;
+  html:lang(zh-Hans) {
+    --font-script: 'Noto Sans SC';
+    --font-serif: var(--font-sans);
   }
-  html:lang(hi) body {
-    font-family:
-      'Noto Sans',
-      'Noto Sans Devanagari',
-      'Noto Sans KR',
-      -apple-system,
-      BlinkMacSystemFont,
-      sans-serif;
+  html:lang(zh-Hant) {
+    --font-script: 'Noto Sans TC';
+    --font-serif: var(--font-sans);
   }
-  html:lang(ar) body {
-    font-family:
-      'Noto Sans',
-      'Noto Sans Arabic',
-      'Noto Sans KR',
-      -apple-system,
-      BlinkMacSystemFont,
-      sans-serif;
+  html:lang(hi) {
+    --font-script: 'Noto Sans Devanagari';
+    --font-serif: var(--font-sans);
+  }
+  html:lang(ar) {
+    --font-script: 'Noto Sans Arabic';
+    --font-serif: var(--font-sans);
+  }
+  html:lang(en),
+  html:lang(es),
+  html:lang(fr),
+  html:lang(de),
+  html:lang(pt),
+  html:lang(ru),
+  html:lang(id) {
+    --font-script: 'Noto Sans';
+    --font-serif: var(--font-sans);
   }
 
   :root {
@@ -6108,11 +6094,7 @@
   h5,
   h6 {
     @apply font-serif font-bold;
-    /* 한국어 정체성 세리프. 비한글 제목은 해당 Noto Sans 로 폴백
-       (CJK/데바나가리/아랍 폴백이 없으면 시스템 세리프 Times 로 떨어진다). */
-    font-family:
-      'Noto Serif KR', 'Noto Sans', 'Noto Sans KR', 'Noto Sans JP', 'Noto Sans SC', 'Noto Sans TC',
-      'Noto Sans Devanagari', 'Noto Sans Arabic', serif;
+    font-family: var(--font-serif);
     word-break: var(--text-word-break);
     overflow-wrap: break-word;
     hyphens: var(--text-hyphens);
