@@ -2,7 +2,12 @@ import React from 'react';
 import { m as motion } from 'framer-motion';
 import { TimelineEvent } from '@/data/timeline';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import { REVEAL_DURATION, REVEAL_EASE } from '@/constants/motion';
+import {
+  REVEAL_DISTANCE,
+  REVEAL_DURATION,
+  REVEAL_EASE,
+  STAGGER_INTERVAL,
+} from '@/constants/motion';
 
 import TimelineCardContent from './subcomponents/TimelineCardContent';
 import TimelineMobileCard from './subcomponents/TimelineMobileCard';
@@ -37,7 +42,7 @@ const TimelineItem = React.memo<TimelineItemProps>(({ event, isLeft }) => {
   const dotVisible = reduce ? {} : { scale: 1.2 };
 
   const containerVariants = {
-    hidden: { opacity: 0, y: reduce ? 0 : 20 },
+    hidden: { opacity: 0, y: reduce ? 0 : REVEAL_DISTANCE },
     visible: {
       opacity: 1,
       y: 0,
@@ -46,21 +51,29 @@ const TimelineItem = React.memo<TimelineItemProps>(({ event, isLeft }) => {
   };
 
   const mobileContentVariants = {
-    hidden: { opacity: 0, x: reduce ? 0 : 20 },
+    hidden: { opacity: 0, x: reduce ? 0 : REVEAL_DISTANCE },
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: REVEAL_DURATION, ease: REVEAL_EASE, delay: reduce ? 0 : 0.2 },
+      transition: {
+        duration: REVEAL_DURATION,
+        ease: REVEAL_EASE,
+        delay: reduce ? 0 : STAGGER_INTERVAL,
+      },
     },
   };
 
   // Content variants depend on isLeft, so keep them inside
   const contentVariants = {
-    hidden: { opacity: 0, x: reduce ? 0 : isLeft ? -20 : 20 },
+    hidden: { opacity: 0, x: reduce ? 0 : isLeft ? -REVEAL_DISTANCE : REVEAL_DISTANCE },
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: REVEAL_DURATION, ease: REVEAL_EASE, delay: reduce ? 0 : 0.2 },
+      transition: {
+        duration: REVEAL_DURATION,
+        ease: REVEAL_EASE,
+        delay: reduce ? 0 : STAGGER_INTERVAL,
+      },
     },
   };
 

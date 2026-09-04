@@ -6,6 +6,7 @@ import { GalleryImage } from '@/types/gallery';
 import { VideoItem } from '@/types/video';
 import { Concert } from './ConcertCard';
 import InfoTabPanel from './panels/InfoTabPanel';
+import { REVEAL_DISTANCE, REVEAL_DURATION, REVEAL_EASE } from '@/constants/motion';
 
 // info 가 디폴트 탭 — video/photo 패널은 클릭 시점까지 코드 분할로 지연 로드.
 // SSR 비활성화: 검색엔진은 SEOHelmet 의 ItemList 스키마로 사진/비디오 메타를
@@ -21,11 +22,14 @@ interface AlbumTabContentProps {
   onImageClick: (image: GalleryImage) => void;
 }
 
+// 탭 전환의 좌우 방향성(들어올 땐 오른쪽에서, 나갈 땐 왼쪽으로)은 의미가 있어 모양을
+// 유지하되, 거리·시간은 사이트 공용 상수에서 받는다 — 첫 로드 때 이 패널만 20px·0.4s 로
+// 움직여 주변 16px·0.5s 등장과 박자가 어긋났다.
 const tabAnimation = {
-  initial: { opacity: 0, x: 20 },
+  initial: { opacity: 0, x: REVEAL_DISTANCE },
   animate: { opacity: 1, x: 0 },
-  exit: { opacity: 0, x: -20 },
-  transition: { duration: 0.4 },
+  exit: { opacity: 0, x: -REVEAL_DISTANCE },
+  transition: { duration: REVEAL_DURATION, ease: REVEAL_EASE },
 };
 
 const AlbumTabContent: React.FC<AlbumTabContentProps> = ({

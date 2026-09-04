@@ -1,7 +1,7 @@
-import React, { useRef, useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
-import { m as motion, useInView } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import Button from '@/components/common/Button';
 import PageLayout from '@/components/layout/PageLayout';
 import Section from '@/components/layout/Section';
@@ -51,8 +51,6 @@ const AlbumAboutPage = ({
 }: AlbumAboutPageProps) => {
   const { t, i18n } = useTranslation(['album', 'translation']);
   const { container: revealContainer, item: revealItem, viewport } = useScrollReveal();
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [selectedMusician, setSelectedMusician] = useState<Musician | null>(null);
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -120,24 +118,6 @@ const AlbumAboutPage = ({
       }
     },
     [visibleMusicians]
-  );
-
-  const fadeUpVariants = useMemo(
-    () => ({
-      hidden: { opacity: 0, y: 20 },
-      visible: { opacity: 1, y: 0 },
-    }),
-    []
-  );
-
-  const containerVariants = useMemo(
-    () => ({
-      hidden: {},
-      visible: {
-        transition: { staggerChildren: 0.1, delayChildren: 0.1 },
-      },
-    }),
-    []
   );
 
   const resolveMusicianName = useCallback(
@@ -295,14 +275,14 @@ const AlbumAboutPage = ({
 
         <Container size="content" className="relative z-10 pt-32 pb-12">
           <motion.div
-            ref={ref}
+            variants={revealContainer}
             initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
-            variants={containerVariants}
+            whileInView="visible"
+            viewport={viewport}
             className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20"
           >
             {/* Left: Album Art */}
-            <motion.div variants={fadeUpVariants} className="w-full lg:w-5/12 max-w-lg">
+            <motion.div variants={revealItem} className="w-full lg:w-5/12 max-w-lg">
               <div className="relative aspect-square rounded-xl shadow-2xl overflow-hidden group">
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500" />
                 <Image
@@ -319,10 +299,7 @@ const AlbumAboutPage = ({
             </motion.div>
 
             {/* Right: Info */}
-            <motion.div
-              variants={fadeUpVariants}
-              className="w-full lg:w-7/12 text-center lg:text-left"
-            >
+            <motion.div variants={revealItem} className="w-full lg:w-7/12 text-center lg:text-left">
               <span className="inline-block px-3 py-1 bg-jeju-ocean text-white text-sm font-bold tracking-wider rounded-full mb-6">
                 {t('release_official')}
               </span>

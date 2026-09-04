@@ -32,4 +32,28 @@ describe('scroll reveal consistency', () => {
     const offenders = files.filter((f) => /viewport=\{\{/.test(fs.readFileSync(f, 'utf8')));
     expect(offenders.map((f) => path.relative(process.cwd(), f))).toEqual([]);
   });
+
+  it('no locally defined reveal variants with hardcoded offsets', () => {
+    // whileInView 대신 useInView + animate 로 같은 스크롤 reveal 을 만들면서 로컬
+    // variants 에 y:20 / x:±20 을 적어두면 위 두 검사를 통과하면서 리듬만 어긋난다
+    // (2026-09 실측: /album/about 이 y:20 + stagger 0.1 + margin -100px 로 이탈).
+    // 방향성 있는 커스텀 오프셋(타임라인의 좌우 대칭 슬라이드 등)은 모양을 유지하되 거리는
+    // REVEAL_DISTANCE 에서 받아야 한다 — 0 이 아닌 숫자 리터럴만 이탈로 본다.
+    const offenders = files.filter((f) => {
+      const src = fs.readFileSync(f, 'utf8');
+      return [...src.matchAll(/hidden:\s*\{([^}]*)\}/g)].some((block) =>
+        [...block[1].matchAll(/\b[xy]:\s*([^,}]+)/g)].some((assign) =>
+          /(^|[?:\s])-?[1-9]\d*(\.\d+)?/.test(assign[1])
+        )
+      );
+    });
+    expect(offenders.map((f) => path.relative(process.cwd(), f))).toEqual([]);
+  });
+
+  it('no bespoke useInView margin for scroll reveals', () => {
+    const offenders = files.filter((f) =>
+      /useInView\([^)]*margin/.test(fs.readFileSync(f, 'utf8'))
+    );
+    expect(offenders.map((f) => path.relative(process.cwd(), f))).toEqual([]);
+  });
 });

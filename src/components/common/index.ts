@@ -1,8 +1,0 @@
-export { default as Button } from './Button';
-export { default as ErrorFallback } from './ErrorFallback';
-export { default as EventFilter } from './EventFilter';
-export { default as ImageLightbox } from './ImageLightbox';
-export { default as LanguageSwitcher } from './LanguageSwitcher';
-export { default as PageHero } from './PageHero';
-export { default as SectionHeader } from './SectionHeader';
-export { default as WaveDivider } from './WaveDivider';
