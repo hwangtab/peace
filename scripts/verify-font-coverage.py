@@ -63,25 +63,52 @@ CASES = [
     ("PartialSansKR-Regular.subset.woff2", 0x0030, "포인트 숫자 0(ImpactNumbers)"),
 ]
 
+# 본문 산스 KR 2-슬라이스(core/rest) — core=공개 페이지 실사용, rest=잔여 상용 음절.
+# 공개 페이지가 본문(Noto Sans KR)으로 렌더하는 대표 글자가 core 에 실제로 담겼는지
+# 확인한다(수집 소스 누락 시 공개 페이지가 rest 슬라이스를 통째로 받는 회귀 방지).
+_SANS_CORE_GLYPHS = [
+    (0xAC15, "강"),
+    (0xC815, "정"),
+    (0xB9C8, "마"),
+    (0xC744, "을"),
+    (0xD3C9, "평"),
+    (0xD654, "화"),
+    (0xCC38, "참"),
+    (0xAC00, "가"),
+    (0xAC24, "갤"),
+    (0xB7EC, "러"),
+    (0xB9AC, "리"),
+]
+for _weight in ("Regular", "Bold"):
+    for _cp, _label in _SANS_CORE_GLYPHS:
+        CASES.append(
+            (
+                f"NotoSansKR-{_weight}.core.woff2",
+                _cp,
+                f"산스 core {_label}(홈 본문 '강정마을 평화'·캠프 '참가'·내비 '갤러리')",
+            )
+        )
+
 
 def _cmap_codepoints(fn: str) -> set[int]:
     return set(TTFont(str(FONT_DIR / fn)).getBestCmap().keys())
 
 
-def verify_serif_slice_union() -> bool:
-    """세리프 core ∪ rest 의 cmap 이 기존 단일 서브셋(.subset)과 동일한지 검증.
+def verify_slice_union(stem: str, label: str) -> bool:
+    """`{stem}.core/.rest` 의 cmap 합집합이 기존 단일 서브셋(.subset)과 같은지 검증.
 
     2-슬라이스 분할이 커버리지를 한 글자도 잃지 않았음을 보장한다. core 는 공개
     실사용 + 자모 + 구두점, rest 는 나머지 상용 음절 — 둘의 합집합이 분할 전
-    NotoSerifKR-Bold.subset.woff2 와 정확히 일치해야 한다. 또한 두 슬라이스가
-    한글 음절 영역에서 서로 겹치지 않는지(불필요한 중복 임베드)도 함께 본다.
+    `{stem}.subset.woff2` 와 정확히 일치해야 한다. 또한 두 슬라이스가 한글 음절
+    영역에서 서로 겹치지 않는지(겹치면 두 face 가 같은 음절을 놓고 경합해 로딩이
+    깨지고 용량도 낭비)도 함께 본다.
     """
-    core = FONT_DIR / "NotoSerifKR-Bold.core.woff2"
-    rest = FONT_DIR / "NotoSerifKR-Bold.rest.woff2"
-    subset = FONT_DIR / "NotoSerifKR-Bold.subset.woff2"
+    core = FONT_DIR / f"{stem}.core.woff2"
+    rest = FONT_DIR / f"{stem}.rest.woff2"
+    subset = FONT_DIR / f"{stem}.subset.woff2"
     for p in (core, rest, subset):
         if not p.exists():
-            print(f"FAIL  세리프 슬라이스 {p.name} 없음")
+            print(f"FAIL  {label} 슬라이스 {p.name} 없음")
             return False
 
     core_cps = _cmap_codepoints(core.name)
@@ -91,13 +118,13 @@ def verify_serif_slice_union() -> bool:
 
     ok = True
     if union == subset_cps:
-        print(f"OK    세리프 core∪rest == subset ({len(subset_cps)} codepoints)")
+        print(f"OK    {label} core∪rest == subset ({len(subset_cps)} codepoints)")
     else:
         ok = False
         missing = subset_cps - union
         extra = union - subset_cps
         print(
-            f"FAIL  세리프 core∪rest != subset "
+            f"FAIL  {label} core∪rest != subset "
             f"(subset={len(subset_cps)}, union={len(union)}, "
             f"누락={len(missing)}, 초과={len(extra)})"
         )
@@ -107,9 +134,9 @@ def verify_serif_slice_union() -> bool:
     # 한글 음절 영역 중복(있어도 렌더는 정상이나 용량 낭비 → 경고).
     hangul_overlap = {c for c in (core_cps & rest_cps) if 0xAC00 <= c <= 0xD7A3}
     if hangul_overlap:
-        print(f"WARN  core/rest 한글 음절 {len(hangul_overlap)}자 중복 임베드")
+        print(f"WARN  {label} core/rest 한글 음절 {len(hangul_overlap)}자 중복 임베드")
     else:
-        print("OK    세리프 core/rest 한글 음절 중복 없음")
+        print(f"OK    {label} core/rest 한글 음절 중복 없음")
 
     return ok
 
@@ -127,7 +154,12 @@ def main() -> int:
         print(("OK   " if has else "FAIL ") + f"{fn}  {label}")
         ok = ok and has
 
-    ok = verify_serif_slice_union() and ok
+    for stem, label in (
+        ("NotoSerifKR-Bold", "세리프"),
+        ("NotoSansKR-Regular", "산스 Regular"),
+        ("NotoSansKR-Bold", "산스 Bold"),
+    ):
+        ok = verify_slice_union(stem, label) and ok
 
     if not ok:
         print("\n커버리지 검증 실패 — 서브셋 floor/원본 폰트를 확인하세요.", file=sys.stderr)

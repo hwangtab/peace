@@ -147,6 +147,53 @@ def collect_serif_core_chars() -> set[str]:
     #    여기 있고 CampStaff 등이 font-serif 로 렌더한다. 이 소스가 빠져 '척·왓·콤' 같은
     #    음절이 core 밖으로 떨어졌고, 공개 캠프 페이지가 rest 슬라이스(224KB)를 통째로
     #    받았다(2026-09-04 프로덕션 실측). 주석·식별자는 제외하고 따옴표 안만 모은다.
+    chars.update(_src_data_literal_chars())
+
+    return chars
+
+
+def collect_sans_core_chars() -> set[str]:
+    """산스 코어 슬라이스(NotoSansKR-{Regular,Bold}.core) 전용 — 공개 페이지가 실제로
+    본문 폰트(Noto Sans KR)로 렌더하는 텍스트만 수집한다.
+
+    본문은 제목보다 넓으므로 collect_serif_core_chars 의 수집원 상위집합이다:
+      1. 전 로케일 i18n JSON 전체(public/locales/**/*.json).
+      2. 정적 콘텐츠 JSON 전체(public/data/**/*.json, 로케일 하위 포함)
+         — 세리프는 musicians/tracks/videos/press 4종만 보지만, 본문은 갤러리
+           캡션·타임라인·앨범 해설 등 나머지 JSON 도 전부 렌더한다.
+      3. TS 정적 데이터(src/data/*.ts)의 문자열 리터럴.
+
+    제외: 소스 코드 파일 전체 내용(collect_text_chars 가 담는 한글 '주석'·admin
+    하드코딩 — 여기 담으면 core 가 사실상 full 이 돼 분할 이득이 사라진다),
+    게시판 등 런타임 동적 텍스트. core 밖 음절은 rest 슬라이스가 unicode-range 로
+    커버한다(core ∪ rest == 기존 단일 서브셋) — 공개 페이지에서 rest 가 로드되지
+    않는 것이 분할의 목적이다.
+    """
+    chars: set[str] = set()
+
+    for path in LOCALE_DIR.rglob("*.json"):
+        try:
+            with path.open(encoding="utf-8") as f:
+                chars.update(_chars_from_value(json.load(f)))
+        except Exception:
+            continue
+
+    if DATA_DIR.exists():
+        for path in DATA_DIR.rglob("*.json"):
+            try:
+                with path.open(encoding="utf-8") as f:
+                    chars.update(_chars_from_value(json.load(f)))
+            except Exception:
+                continue
+
+    chars.update(_src_data_literal_chars())
+
+    return chars
+
+
+def _src_data_literal_chars() -> set[str]:
+    """src/data/*.ts 의 문자열 리터럴 안 문자만 모은다(주석·식별자 제외)."""
+    chars: set[str] = set()
     for path in (SRC_DIR / "data").glob("*.ts"):
         if path.name.endswith(".test.ts"):
             continue
@@ -154,9 +201,10 @@ def collect_serif_core_chars() -> set[str]:
             text = path.read_text(encoding="utf-8")
         except Exception:
             continue
-        for literal in re.findall(r"'((?:[^'\\]|\\.)*)'|\"((?:[^\"\\]|\\.)*)\"|`((?:[^`\\]|\\.)*)`", text):
+        for literal in re.findall(
+            r"'((?:[^'\\]|\\.)*)'|\"((?:[^\"\\]|\\.)*)\"|`((?:[^`\\]|\\.)*)`", text
+        ):
             chars.update("".join(literal))
-
     return chars
 
 
@@ -553,54 +601,26 @@ def build_kr_subset_codepoints(base_chars: set[str], hangul_common: set[str]) ->
     return sorted(cps)
 
 
-# 한글 관련 표준 블록 — KR unicode-range 는 이 단위로 뭉뚱그린다(아래 설명 참고).
-_KR_BLOCK_RANGES = _KR_JAMO_RANGES + ((0xAC00, 0xD7A3),)
-
-
-def build_kr_css_unicode_range(base_chars: set[str], hangul_common: set[str]) -> str:
-    """NotoSansKR 2개 @font-face(Regular/Bold)에 쓸 unicode-range 값을 생성한다.
-
-    KR 은 웨이트당 woff2 **한 개**짜리 단일 파일 서브셋이다. 한글 코드포인트가
-    하나라도 매치되면 그 파일이 통째로 내려오므로, 실제 커버하는 2,800여 자를
-    정확히 열거해도 다운로드 이득이 전혀 없다. 반대로 비용은 확실하다 — 열거하면
-    range 가 1,600여 개로 늘어 렌더 차단 CSS 가 50KB 가까이 불어난다. 그래서 한글
-    관련 블록(자모·호환자모·자모확장 A/B·완성형 음절)은 "하나라도 커버하면 블록
-    전체"로 선언한다. 파일에 없는 코드포인트는 예전과 똑같이 스택 다음 폰트로
-    폴백되므로 렌더 결과는 달라지지 않는다.
-
-    단, 블록 밖 문자(실사용 CJK 구두점)는 정확히 병합해 커버리지 주장을 정직하게
-    유지한다. NotoSerifKR 는 core/rest 두 물리 파일로 쪼개져 정확한 range 가
-    두 face 를 분할하므로 이 블록화를 적용하지 않는다(겹치면 로딩이 깨진다).
-    """
-    remaining = set(build_kr_subset_codepoints(base_chars, hangul_common))
-    ranges: list[tuple[int, int]] = []
-    for lo, hi in _KR_BLOCK_RANGES:
-        block = set(range(lo, hi + 1))
-        if remaining & block:
-            ranges.append((lo, hi))
-            remaining -= block
-    ranges.extend(_contiguous_ranges(remaining))  # 블록 밖(CJK 구두점 등)은 정확히
-    ranges.sort()
-    return ", ".join(_format_unicode_range(lo, hi) for lo, hi in ranges)
-
-
-def build_serif_slices(
-    serif_core_chars: set[str], base_chars: set[str], hangul_common: set[str]
+def build_kr_slices(
+    core_chars: set[str], base_chars: set[str], hangul_common: set[str]
 ) -> tuple[list[int], list[int], list[int], list[int]]:
-    """세리프 2-슬라이스(core/rest) 코드포인트 집합을 만든다.
+    """한글 폰트 2-슬라이스(core/rest) 코드포인트 집합을 만든다(세리프·산스 공용).
 
     반환: (core_codepoints, rest_codepoints, core_hangul, punct_codepoints).
 
-      core = 공개 페이지 실사용 한글(serif_core_chars ∩ AC00-D7A3)
+      core = 공개 페이지 실사용 한글(core_chars ∩ AC00-D7A3)
              ∪ 자모 호환 전 범위 ∪ 실사용 CJK 구두점(base_chars 기준).
       rest = build_kr_subset_codepoints(base, common) − core.
 
     union(core, rest) == build_kr_subset_codepoints(base, common) 를 보장한다
-    (기존 단일 서브셋과 커버리지 동일). serif_core_chars ⊆ base_chars 이므로
+    (기존 단일 서브셋과 커버리지 동일). core_chars ⊆ base_chars 이므로
     core_hangul ⊆ full — core 는 항상 full 의 부분집합이다.
+
+    세리프(제목)와 산스(본문)는 수집원만 다르고(collect_serif_core_chars /
+    collect_sans_core_chars) 슬라이싱 규약은 같아 이 함수를 공유한다.
     """
     full = set(build_kr_subset_codepoints(base_chars, hangul_common))
-    core_hangul = {ord(ch) for ch in serif_core_chars if 0xAC00 <= ord(ch) <= 0xD7A3}
+    core_hangul = {ord(ch) for ch in core_chars if 0xAC00 <= ord(ch) <= 0xD7A3}
     punct = {
         ord(ch) for ch in base_chars if _JP_LEAK_PUNCT_LO <= ord(ch) <= _JP_LEAK_PUNCT_HI
     }
@@ -612,12 +632,13 @@ def build_serif_slices(
     return sorted(core), sorted(rest), sorted(core_hangul), sorted(punct)
 
 
-def build_serif_core_css_range(core_hangul: list[int], punct: list[int]) -> str:
-    """세리프 core @font-face 의 AUTO-SERIF-CORE-RANGE 마커에 넣을 값.
+def build_core_css_range(core_hangul: list[int], punct: list[int]) -> str:
+    """core @font-face 의 AUTO-*-CORE-RANGE 마커에 넣을 값(세리프·산스 공용).
 
     실사용 한글 완성형(연속구간 병합) + 자모 호환 영역(항상) + 실사용 CJK
-    구두점(있으면). 라틴/일반구두점(U+0000-024F, U+2000-206F)은 CSS 에
-    마커 밖으로 하드코딩돼 있어 여기 포함하지 않는다.
+    구두점(있으면). 라틴/일반구두점(U+0000-024F, U+2000-206F)은 세리프 CSS 에
+    마커 밖으로 하드코딩돼 있고(산스 KR 블록은 라틴을 아예 선언하지 않는다 —
+    라틴은 Noto Sans 담당) 여기 포함하지 않는다.
     """
     parts = [merge_unicode_ranges(core_hangul), KR_JAMO_TAIL_RANGE]
     if punct:
@@ -625,14 +646,16 @@ def build_serif_core_css_range(core_hangul: list[int], punct: list[int]) -> str:
     return ", ".join(p for p in parts if p)
 
 
-def build_serif_rest_css_range(rest_codepoints: list[int]) -> str:
-    """세리프 rest @font-face 의 AUTO-SERIF-REST-RANGE 마커 값 — core 에 없는 잔여 음절."""
+def build_rest_css_range(rest_codepoints: list[int]) -> str:
+    """rest @font-face 의 AUTO-*-REST-RANGE 마커 값 — core 에 없는 잔여 음절."""
     return merge_unicode_ranges(rest_codepoints)
 
 
 CSS_PATH = ROOT / "src" / "index.css"
-CSS_MARKER_START = "/* AUTO-KR-RANGE:START */"
-CSS_MARKER_END = "/* AUTO-KR-RANGE:END */"
+CSS_SANS_CORE_START = "/* AUTO-SANS-CORE-RANGE:START */"
+CSS_SANS_CORE_END = "/* AUTO-SANS-CORE-RANGE:END */"
+CSS_SANS_REST_START = "/* AUTO-SANS-REST-RANGE:START */"
+CSS_SANS_REST_END = "/* AUTO-SANS-REST-RANGE:END */"
 CSS_SERIF_CORE_START = "/* AUTO-SERIF-CORE-RANGE:START */"
 CSS_SERIF_CORE_END = "/* AUTO-SERIF-CORE-RANGE:END */"
 CSS_SERIF_REST_START = "/* AUTO-SERIF-REST-RANGE:START */"
@@ -660,16 +683,6 @@ def inject_css_marker(start_marker: str, end_marker: str, value: str) -> int:
         CSS_PATH.write_text(new_content, encoding="utf-8")
     print(f"  index.css {start_marker} 갱신: 마커 {count}곳", file=sys.stderr)
     return count
-
-
-def inject_css_unicode_range(range_css: str) -> int:
-    """NotoSansKR @font-face 의 AUTO-KR-RANGE 마커 사이 unicode-range 값을 갱신.
-
-    src/index.css 의 NotoSansKR Regular/Bold 2개 @font-face unicode-range 줄에
-    이 마커 쌍이 감싸져 있어야 한다(수동 세팅, 1회). NotoSerifKR 는 2-슬라이스
-    전환으로 별도 마커(AUTO-SERIF-CORE/REST-RANGE)를 쓴다.
-    """
-    return inject_css_marker(CSS_MARKER_START, CSS_MARKER_END, range_css)
 
 
 def subset_font(src: Path, dst: Path, unicode_list: list[int], fmt: str) -> tuple[int, int]:
@@ -757,6 +770,13 @@ FONTS: list[tuple[str, str, str]] = [
     ("NotoSansKR-Medium.ttf", "NotoSansKR-Medium.subset.woff2", "woff2"),
     ("NotoSansKR-SemiBold.ttf", "NotoSansKR-SemiBold.subset.woff2", "woff2"),
     ("NotoSansKR-Bold.ttf", "NotoSansKR-Bold.subset.woff2", "woff2"),
+    # 본문 산스 KR 2-슬라이스(core/rest, 세리프와 같은 규약) — core=공개 페이지
+    # 실사용(collect_sans_core_chars), rest=잔여 KS X 1001 상용 음절. 단일 파일
+    # (.subset)은 롤백 대비 계속 생성/보존하되 index.css 는 core/rest 만 참조한다.
+    ("NotoSansKR-Regular.ttf", "NotoSansKR-Regular.core.woff2", "woff2"),
+    ("NotoSansKR-Regular.ttf", "NotoSansKR-Regular.rest.woff2", "woff2"),
+    ("NotoSansKR-Bold.ttf", "NotoSansKR-Bold.core.woff2", "woff2"),
+    ("NotoSansKR-Bold.ttf", "NotoSansKR-Bold.rest.woff2", "woff2"),
     ("NotoSansJP-Regular.ttf", "NotoSansJP-Regular.subset.woff2", "woff2"),
     ("NotoSansJP-Bold.ttf", "NotoSansJP-Bold.subset.woff2", "woff2"),
     ("NotoSansSC-Regular.ttf", "NotoSansSC-Regular.subset.woff2", "woff2"),
@@ -793,15 +813,28 @@ def main() -> int:
     # rest=kr_unicodes − core. union(core, rest) == kr_unicodes(기존 단일 서브셋).
     serif_core_chars = collect_serif_core_chars()
     serif_core_unicodes, serif_rest_unicodes, serif_core_hangul, serif_punct = (
-        build_serif_slices(serif_core_chars, base_chars, hangul_common)
+        build_kr_slices(serif_core_chars, base_chars, hangul_common)
     )
     assert set(serif_core_unicodes) | set(serif_rest_unicodes) == set(kr_unicodes), (
         "세리프 core ∪ rest 가 기존 KR 서브셋과 불일치 — 커버리지 회귀"
     )
+    # NotoSansKR-{Regular,Bold} 2-슬라이스: core=공개 페이지 실사용(locale JSON 전체 +
+    # public/data 전체 + src/data TS 리터럴), rest=kr_unicodes − core.
+    sans_core_chars = collect_sans_core_chars()
+    sans_core_unicodes, sans_rest_unicodes, sans_core_hangul, sans_punct = build_kr_slices(
+        sans_core_chars, base_chars, hangul_common
+    )
+    assert set(sans_core_unicodes) | set(sans_rest_unicodes) == set(kr_unicodes), (
+        "산스 core ∪ rest 가 기존 KR 서브셋과 불일치 — 커버리지 회귀"
+    )
+    assert not (set(sans_core_unicodes) & set(sans_rest_unicodes)), (
+        "산스 core ∩ rest 가 비어 있지 않음 — 두 face 가 겹치면 로딩이 깨진다"
+    )
     print(
         f"Collected {len(base_unicodes)} base / {len(hangul_unicodes)} +한글코어 / "
         f"{len(kr_unicodes)} KR코어 / {len(partial_unicodes)} PartialSans / "
-        f"{len(serif_core_unicodes)} Serif-core / {len(serif_rest_unicodes)} Serif-rest codepoints",
+        f"{len(serif_core_unicodes)} Serif-core / {len(serif_rest_unicodes)} Serif-rest / "
+        f"{len(sans_core_unicodes)} Sans-core / {len(sans_rest_unicodes)} Sans-rest codepoints",
         file=sys.stderr,
     )
 
@@ -820,6 +853,10 @@ def main() -> int:
             unicodes = serif_core_unicodes
         elif dst_name == "NotoSerifKR-Bold.rest.woff2":
             unicodes = serif_rest_unicodes
+        elif dst_name.startswith("NotoSansKR") and dst_name.endswith(".core.woff2"):
+            unicodes = sans_core_unicodes
+        elif dst_name.startswith("NotoSansKR") and dst_name.endswith(".rest.woff2"):
+            unicodes = sans_rest_unicodes
         elif dst_name.startswith("PartialSans"):
             unicodes = partial_unicodes
         elif dst_name.startswith("NotoSansKR") or dst_name.startswith("NotoSerifKR"):
@@ -842,19 +879,27 @@ def main() -> int:
         file=sys.stderr,
     )
 
-    css_range = build_kr_css_unicode_range(base_chars, hangul_common)
-    print(f"  KR CSS unicode-range 미리보기: {css_range[:160]}...", file=sys.stderr)
-    inject_css_unicode_range(css_range)
-
     # 세리프 core/rest @font-face unicode-range 갱신(각각 전용 마커).
-    serif_core_range = build_serif_core_css_range(serif_core_hangul, serif_punct)
-    serif_rest_range = build_serif_rest_css_range(serif_rest_unicodes)
+    serif_core_range = build_core_css_range(serif_core_hangul, serif_punct)
+    serif_rest_range = build_rest_css_range(serif_rest_unicodes)
     print(
         f"  Serif-core CSS unicode-range 미리보기: {serif_core_range[:120]}...",
         file=sys.stderr,
     )
     inject_css_marker(CSS_SERIF_CORE_START, CSS_SERIF_CORE_END, serif_core_range)
     inject_css_marker(CSS_SERIF_REST_START, CSS_SERIF_REST_END, serif_rest_range)
+
+    # 산스 KR core/rest @font-face unicode-range 갱신(Regular·Bold 블록 각 1쌍, 총 4곳).
+    # 블록 단위로 뭉뚱그리던 옛 AUTO-KR-RANGE 는 단일 파일 전제라 2슬라이스에서
+    # 두 face 가 겹쳐 로딩이 깨진다 — 정확한 range 로 분할한다.
+    sans_core_range = build_core_css_range(sans_core_hangul, sans_punct)
+    sans_rest_range = build_rest_css_range(sans_rest_unicodes)
+    print(
+        f"  Sans-core CSS unicode-range 미리보기: {sans_core_range[:120]}...",
+        file=sys.stderr,
+    )
+    inject_css_marker(CSS_SANS_CORE_START, CSS_SANS_CORE_END, sans_core_range)
+    inject_css_marker(CSS_SANS_REST_START, CSS_SANS_REST_END, sans_rest_range)
 
     return 0
 
