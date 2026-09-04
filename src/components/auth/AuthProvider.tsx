@@ -112,6 +112,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
+  // getSession() 과 onAuthStateChange 는 로드 직후 같은 사용자로 연달아 발화한다
+  // (INITIAL_SESSION·SIGNED_IN·TOKEN_REFRESHED). 그때마다 profiles 조회와
+  // /api/admin/whoami 를 다시 부르면 로그인 사용자는 페이지당 3회씩 호출한다
+  // (프로덕션 실측). 마지막으로 동기화한 사용자 id 를 기억해 같은 사용자면 건너뛴다.
+  // 로그아웃(null)·계정 전환은 id 가 달라지므로 정상적으로 다시 로드된다.
+  const syncedUserIdRef = useRef<string | null | undefined>(undefined);
+  const syncUser = useCallback(
+    async (nextUser: User | null) => {
+      const nextId = nextUser?.id ?? null;
+      if (syncedUserIdRef.current === nextId) return;
+      syncedUserIdRef.current = nextId;
+      await Promise.all([loadProfile(nextUser), loadAdminRole(nextUser)]);
+    },
+    [loadProfile, loadAdminRole]
+  );
+
   useEffect(() => {
     if (!isSupabaseConfigured) return;
 
@@ -142,7 +158,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           setUser(nextUser);
           // adminRole까지 확정한 뒤 loading을 끝낸다. void로 두면 loading=false 순간
           // isAdmin이 잠깐 false로 노출돼 관리자 진입 카드·플로팅 버튼이 깜빡인다.
-          await Promise.all([loadProfile(nextUser), loadAdminRole(nextUser)]);
+          await syncUser(nextUser);
           if (active) setLoading(false);
         });
 
@@ -151,8 +167,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             if (!active) return;
             const nextUser = session?.user ?? null;
             setUser(nextUser);
-            void loadProfile(nextUser);
-            void loadAdminRole(nextUser);
+            void syncUser(nextUser);
           }
         );
         subscription = sub.subscription;
@@ -199,7 +214,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       window.removeEventListener('focus', recheck);
       document.removeEventListener('visibilitychange', handleVisibility);
     };
-  }, [isSupabaseConfigured, authCookiePrefix, loadProfile, loadAdminRole]);
+  }, [isSupabaseConfigured, authCookiePrefix, syncUser]);
 
   const refreshProfile = useCallback(async () => {
     await loadProfile(user);
