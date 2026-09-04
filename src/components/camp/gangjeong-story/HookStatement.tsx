@@ -26,10 +26,11 @@ const HookStatement: React.FC<Props> = ({ variant = 'camp' }) => {
 
   const bgY = useTransform(scrollYProgress, [0, 1], ['-5%', '5%']);
 
+  // bg-deep-ocean: lazy 이미지 도착 전 바탕. 없으면 스크롤 진입 시 흰 블록이 먼저 번쩍인다.
   return (
     <div
       ref={sectionRef}
-      className="relative min-h-[50vh] md:min-h-[70vh] flex items-center justify-center overflow-hidden"
+      className="relative min-h-[50vh] md:min-h-[70vh] flex items-center justify-center overflow-hidden bg-deep-ocean"
     >
       <motion.div
         className="absolute inset-0 w-full h-full"

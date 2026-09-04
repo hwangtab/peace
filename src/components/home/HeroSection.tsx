@@ -49,8 +49,10 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
   }, []);
 
+  // bg-jeju-ocean: 이미지 도착 전 바탕. 없으면 body(#F8F9FA)가 비쳐 흰 화면 + 흰 제목이
+  // 먼저 보였다가 이미지가 오면 어두워지는 "흰 번쩍임"이 생긴다(느린 4G 실측 2.3초).
   return (
-    <section className="relative h-screen flex items-center justify-center text-center overflow-hidden">
+    <section className="relative h-screen flex items-center justify-center text-center overflow-hidden bg-jeju-ocean">
       {/* Slow Ken Burns background for subtle atmosphere */}
       {!imageFailed && (
         <motion.div

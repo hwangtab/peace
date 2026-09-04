@@ -33,9 +33,11 @@ const CampHero: React.FC<CampHeroProps> = ({
 
   const backgroundImage = camp.images && camp.images.length > 0 ? camp.images[0] : null;
 
+  // bg-deep-ocean: 이미지 도착 전 바탕색. hero-gradient 는 위쪽이 거의 투명이라 이것만으로는
+  // body(#F8F9FA)가 비쳐 흰 화면이 먼저 번쩍인다.
   return (
     <section
-      className={`relative min-h-[500px] md:min-h-[600px] lg:min-h-[700px] flex items-center justify-center text-center overflow-hidden ${
+      className={`relative min-h-[500px] md:min-h-[600px] lg:min-h-[700px] flex items-center justify-center text-center overflow-hidden bg-deep-ocean ${
         featured ? 'bg-ocean-gradient pt-20 pb-16' : 'bg-hero-gradient'
       }`}
     >

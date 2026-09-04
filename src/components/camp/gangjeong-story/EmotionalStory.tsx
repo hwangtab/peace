@@ -38,10 +38,11 @@ const StoryBlock: React.FC<StoryBlockProps> = ({
 
   const bgY = useTransform(scrollYProgress, [0, 1], ['-4%', '4%']);
 
+  // bg-deep-ocean: lazy 이미지 도착 전 바탕. 없으면 스크롤 진입 시 흰 블록이 먼저 번쩍인다.
   return (
     <div
       ref={blockRef}
-      className="relative min-h-[60vh] md:min-h-[70vh] flex items-end overflow-hidden"
+      className="relative min-h-[60vh] md:min-h-[70vh] flex items-end overflow-hidden bg-deep-ocean"
     >
       <motion.div
         className="absolute inset-0 w-full h-full scale-[1.15]"

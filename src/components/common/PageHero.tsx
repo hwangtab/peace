@@ -24,9 +24,10 @@ const PageHero: React.FC<PageHeroProps> = ({
   compact = false,
 }) => {
   const heightClass = compact ? 'h-[300px] md:h-[360px]' : 'h-[500px] md:h-[600px] lg:h-[700px]';
+  // bg-deep-ocean: 이미지 도착 전 바탕. 없으면 body(#F8F9FA)가 비쳐 흰 화면이 먼저 번쩍인다.
   return (
     <section
-      className={`relative ${heightClass} flex items-center justify-center text-center overflow-hidden`}
+      className={`relative ${heightClass} flex items-center justify-center text-center overflow-hidden bg-deep-ocean`}
     >
       {/* Background Image - use original as src, srcset as optimization */}
       <Image
