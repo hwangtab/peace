@@ -3919,18 +3919,13 @@
      주: CJK Unified(U+4E00-9FFF)는 JP/SC/TC 가 영역이 겹친다. @font-face 단계에선
      가나·일본어 구두점만 unicode-range 로 잡고, 한자 영역은 body 의 lang 분기
      font-family 순서로 해소한다(아래 Step 2). */
+  /* JP/SC/TC 의 Bold(700) @font-face 는 여기 없다 — public/fonts/cjk-bold.css 로 옮겨
+     _document.tsx 가 첫 페인트 뒤에 적용한다(fold 위 볼드 CJK 가 Bold 파일 400KB+ 를
+     LCP 대역에서 Regular 와 경쟁시키던 문제). 도착 전엔 Regular 합성 볼드로 렌더. */
   @font-face {
     font-family: 'Noto Sans JP';
     src: url('/fonts/NotoSansJP-Regular.subset.woff2?v=6') format('woff2');
     font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-    unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+FF00-FFEF, U+4E00-9FFF;
-  }
-  @font-face {
-    font-family: 'Noto Sans JP';
-    src: url('/fonts/NotoSansJP-Bold.subset.woff2?v=6') format('woff2');
-    font-weight: 700;
     font-style: normal;
     font-display: swap;
     unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+FF00-FFEF, U+4E00-9FFF;
@@ -3945,28 +3940,12 @@
     font-display: swap;
     unicode-range: U+4E00-9FFF, U+3400-4DBF, U+F900-FAFF, U+3000-303F, U+FF00-FFEF;
   }
-  @font-face {
-    font-family: 'Noto Sans SC';
-    src: url('/fonts/NotoSansSC-Bold.subset.woff2?v=6') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-    unicode-range: U+4E00-9FFF, U+3400-4DBF, U+F900-FAFF, U+3000-303F, U+FF00-FFEF;
-  }
 
   /* ── 중국어 번체 (Noto Sans TC) ── */
   @font-face {
     font-family: 'Noto Sans TC';
     src: url('/fonts/NotoSansTC-Regular.subset.woff2?v=6') format('woff2');
     font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-    unicode-range: U+4E00-9FFF, U+3400-4DBF, U+F900-FAFF, U+3000-303F, U+FF00-FFEF;
-  }
-  @font-face {
-    font-family: 'Noto Sans TC';
-    src: url('/fonts/NotoSansTC-Bold.subset.woff2?v=6') format('woff2');
-    font-weight: 700;
     font-style: normal;
     font-display: swap;
     unicode-range: U+4E00-9FFF, U+3400-4DBF, U+F900-FAFF, U+3000-303F, U+FF00-FFEF;

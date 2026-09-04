@@ -1,0 +1,36 @@
+/* CJK(JP/SC/TC) Bold @font-face — 첫 페인트 뒤에 적용되는 지연 스타일시트.
+ *
+ * /ja·/zh-Hans·/zh-Hant 는 fold 위에 볼드 CJK 텍스트가 11개(로고·내비 라벨·히어로
+ * 부제·CTA)라 Bold 파일(JP 411KB·SC 471KB·TC 406KB)이 Regular 와 함께 LCP 대역을
+ * 나눠 썼다. 이 파일은 pages/_document.tsx 에서 media="print" 로 링크돼 렌더를 막지
+ * 않고, window load 후 media="all" 로 바뀌어야 @font-face 가 활성화된다. 그 전까지
+ * weight 700 텍스트는 Regular 에서 합성한 볼드로 그려지고, 파일이 도착하면 진짜
+ * Bold 로 교체된다(최종 화면 동일). Regular 블록은 src/index.css 에 그대로 있다.
+ *
+ * 주의: /fonts 는 1년 immutable 캐시라 이 파일이나 참조하는 woff2 가 바뀌면
+ * _document.tsx 의 링크 ?v= 와 여기 woff2 의 ?v= 를 함께 올려야 한다.
+ */
+@font-face {
+  font-family: 'Noto Sans JP';
+  src: url('/fonts/NotoSansJP-Bold.subset.woff2?v=6') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+3000-303F, U+3040-309F, U+30A0-30FF, U+FF00-FFEF, U+4E00-9FFF;
+}
+@font-face {
+  font-family: 'Noto Sans SC';
+  src: url('/fonts/NotoSansSC-Bold.subset.woff2?v=6') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+4E00-9FFF, U+3400-4DBF, U+F900-FAFF, U+3000-303F, U+FF00-FFEF;
+}
+@font-face {
+  font-family: 'Noto Sans TC';
+  src: url('/fonts/NotoSansTC-Bold.subset.woff2?v=6') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+4E00-9FFF, U+3400-4DBF, U+F900-FAFF, U+3000-303F, U+FF00-FFEF;
+}

@@ -1,6 +1,9 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
 import { getTextDirection } from '@/utils/rtl';
 
+// CJK Bold @font-face 를 지연 로드하는 로케일(public/fonts/cjk-bold.css 참조)
+const CJK_BOLD_LOCALES = new Set(['ja', 'zh-Hans', 'zh-Hant']);
+
 class MyDocument extends Document {
   static override async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx);
@@ -35,6 +38,20 @@ class MyDocument extends Document {
             // @ts-expect-error — fetchpriority is a valid HTML attribute (React 18.3+)
             fetchpriority="high"
           />
+
+          {/* CJK(JP/SC/TC) Bold 는 첫 페인트 뒤에 적용한다. /ja·/zh 는 fold 위 볼드 CJK 가
+              11개(로고·내비·히어로 부제·CTA)라 Bold 파일(400KB+)이 Regular 와 LCP 대역을
+              나눠 썼다. media="print" 로 링크해 렌더를 막지 않게 하고, 아래 스크립트가
+              load 후 media="all" 로 바꿔 @font-face 를 활성화한다. 그 전엔 Regular 합성
+              볼드 → 도착 후 진짜 Bold(최종 화면 동일). 해당 로케일에서만 링크한다. */}
+          {CJK_BOLD_LOCALES.has(currentLocale) && (
+            <link
+              rel="stylesheet"
+              href="/fonts/cjk-bold.css?v=1"
+              media="print"
+              data-defer-font=""
+            />
+          )}
 
           {/* 제목 세리프(Noto Serif KR Bold)는 preload 하지 않는다 — typo-h2/h3
               (섹션 제목)용이라 대부분 fold 아래이고, preload 하면 슬로우 4G 에서 LCP
@@ -81,6 +98,15 @@ class MyDocument extends Document {
           <noscript>
             <style>{`[style*="opacity:0"],[style*="opacity: 0"]{opacity:1!important;transform:none!important}`}</style>
           </noscript>
+          {/* 지연 폰트 스타일시트(data-defer-font) 활성화 — window load 후 media 전환. */}
+          {CJK_BOLD_LOCALES.has(currentLocale) && (
+            <script
+              dangerouslySetInnerHTML={{
+                __html:
+                  "window.addEventListener('load',function(){var l=document.querySelectorAll('link[data-defer-font]');for(var i=0;i<l.length;i++){l[i].media='all';}});",
+              }}
+            />
+          )}
           {/* JS 는 켜졌지만 framer-motion 청크가 일정 시간 내 로드되지 않으면(__motionReady
               미설정) 숨겨진 콘텐츠를 강제 노출한다. 정상 로드 시에는 아무 동작도 하지 않아
               스크롤 등장 애니메이션을 그대로 유지한다. */}
