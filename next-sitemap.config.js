@@ -250,6 +250,51 @@ const getLastmodForPath = (pagePath) => {
 };
 
 /** @type {import('next-sitemap').IConfig} */
+// ── blocking-fallback 동적 라우트의 비(非)프리렌더 로케일 URL 보강 ─────────────────
+// /videos/[id]·/camps/2026/musicians/[id] 는 빌드 시간 때문에 ko·en 만 prerender 하고
+// (src/constants/locales.js PRERENDER_LOCALES) 나머지 11개 로케일은 fallback:'blocking'
+// 으로 첫 요청 때 생성한다. next-sitemap 은 .next/prerender-manifest.json 에 실제로 구워진
+// 경로만 열거하므로, 이 설정이 없으면 사이트맵이 3,069 → 937 URL 로 줄어든다
+// (2026-09-04 프로덕션 실측). hreflang alternates 는 힌트일 뿐 <loc> 를 대신하지 못한다.
+//
+// 방식: TS 데이터(camps.ts 등)를 정규식으로 긁으면 페이지의 getStaticPaths 와 어긋날 수
+// 있어(실측 52 vs 50), 대신 매니페스트에 있는 ko 경로에서 id 를 읽고 매니페스트에 없는
+// 로케일만 추가한다. 페이지가 실제로 굽는 집합과 정의상 일치하고 중복도 생기지 않는다.
+const FALLBACK_DYNAMIC_ROUTES = [
+  { pattern: /^\/(?<locale>[a-zA-Z-]+)\/videos\/(?<id>\d+)$/, base: (id) => `/videos/${id}` },
+  {
+    pattern: /^\/(?<locale>[a-zA-Z-]+)\/camps\/2026\/musicians\/(?<id>\d+)$/,
+    base: (id) => `/camps/2026/musicians/${id}`,
+  },
+];
+
+const buildFallbackLocalePaths = async (config) => {
+  const manifestPath = path.join(rootDir, '.next', 'prerender-manifest.json');
+  if (!fs.existsSync(manifestPath)) return [];
+  const routeKeys = Object.keys(JSON.parse(fs.readFileSync(manifestPath, 'utf8')).routes ?? {});
+
+  const fields = [];
+  for (const { pattern, base } of FALLBACK_DYNAMIC_ROUTES) {
+    const ids = new Set();
+    const seenLocales = new Set();
+    for (const key of routeKeys) {
+      const m = key.match(pattern);
+      if (!m) continue;
+      ids.add(m.groups.id);
+      seenLocales.add(m.groups.locale);
+    }
+    const missingLocales = locales.filter((l) => !seenLocales.has(l));
+    for (const locale of missingLocales) {
+      for (const id of ids) {
+        const loc = getLocalePath(base(id), locale);
+        // transform 을 그대로 태워 lastmod·priority·alternateRefs 를 프리렌더 항목과 통일
+        fields.push(await config.transform(config, loc));
+      }
+    }
+  }
+  return fields;
+};
+
 module.exports = {
   siteUrl,
   generateRobotsTxt: true,
@@ -302,6 +347,7 @@ module.exports = {
       { userAgent: '*', allow: '/', disallow: ROBOTS_DISALLOW },
     ],
   },
+  additionalPaths: buildFallbackLocalePaths,
   transform: async (config, path) => {
     const normalizedPath = stripLocalePrefix(path);
     const lastmod = getLastmodForPath(path);
