@@ -1,13 +1,20 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { useAuth } from '@/components/auth/AuthProvider';
 import { validatePostTitle, validatePostBody, validateRating } from '@/lib/boardForms';
 import PostImageUploader from '@/components/board/PostImageUploader';
 import RatingStars from '@/components/board/RatingStars';
 import type { Board, PostWithMeta } from '@/types/board';
 import { boardImagePath } from '@/lib/boardData';
+
+// Supabase SDK(@supabase/ssr — gotrue + realtime-js 포함 ~35KB gzip)를 초기 번들에서
+// 분리한다. 저장·삭제·업로드 같은 실제 상호작용 시점에만 필요하다.
+// (AuthProvider·login·signup 과 동일한 지연 로드 패턴)
+async function loadBrowserClient() {
+  const { createSupabaseBrowserClient } = await import('@/lib/supabaseBrowser');
+  return createSupabaseBrowserClient();
+}
 
 interface PostFormProps {
   board: Board;
@@ -58,7 +65,7 @@ export default function PostForm({ board, initial, mode }: PostFormProps) {
 
     setSaving(true);
     try {
-      const supabase = createSupabaseBrowserClient();
+      const supabase = await loadBrowserClient();
 
       if (mode === 'create') {
         // Insert post

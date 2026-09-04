@@ -69,6 +69,5 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
       initialImages: all.slice(0, SSR_PREVIEW_COUNT),
       totalImageCount: all.length,
     },
-    revalidate: 3600,
   };
 }

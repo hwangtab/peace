@@ -38,6 +38,5 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
       initialMusicians,
       initialLocale: lang,
     },
-    revalidate: 3600,
   };
 }

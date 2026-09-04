@@ -20,11 +20,18 @@ import { camps } from '@/data/camps';
 import { isParticipantObject } from '@/types/camp';
 import YouTubeFacade from '@/components/videos/YouTubeFacade';
 
+/** 출연/연출 뮤지션 참조 — 이 페이지는 id·name·imageUrl 만 렌더한다 */
+export type VideoMusicianRef = Pick<Musician, 'id' | 'name' | 'imageUrl'>;
+
+/** 관련 영상 카드 — 썸네일·제목·장소·링크에 필요한 필드만 */
+export type MoreVideoRef = Pick<VideoItem, 'id' | 'title' | 'youtubeUrl'> &
+  Partial<Pick<VideoItem, 'location' | 'thumbnailUrl'>>;
+
 interface VideoDetailPageProps {
   video: VideoItem;
-  relatedMusicians: Musician[];
-  moreVideos: VideoItem[];
-  director?: Musician | null;
+  relatedMusicians: VideoMusicianRef[];
+  moreVideos: MoreVideoRef[];
+  director?: VideoMusicianRef | null;
 }
 
 const getYoutubeVideoId = (url: string): string => {

@@ -42,6 +42,8 @@ export const useAudioPlayer = ({
   const requestRef = useRef<number | null>(null);
   const previousUrlRef = useRef<string | null>(null);
   const isLoadedRef = useRef(false);
+  // preload:false 이므로 load() 는 첫 재생 요청 때 한 번만 직접 시작한다.
+  const loadStartedRef = useRef(false);
   const lastProgressUpdateRef = useRef(0);
   const onEndedRef = useRef(onEnded);
   useEffect(() => {
@@ -59,6 +61,7 @@ export const useAudioPlayer = ({
       soundRef.current = null;
     }
     isLoadedRef.current = false;
+    loadStartedRef.current = false;
     setError(null);
     previousUrlRef.current = audioUrl;
 
@@ -68,6 +71,13 @@ export const useAudioPlayer = ({
       const newSound = new HowlClass({
         src: [audioUrl],
         html5: true,
+        // preload:false — /album/tracks 는 13곡 전부의 <AudioPlayer> 를 동시에
+        // 마운트한다. Howler 기본값(preload:true)이면 media element 가 곧바로
+        // preload="auto" 로 붙어 MP3 51MB 를 한 화면에서 내려받아 LCP 와 대역폭을
+        // 잡아먹는다. 실제 재생을 누른 트랙만 아래 재생 effect 에서 load() 한다.
+        // (곡 길이 표시는 정적 메타데이터 track.duration 을 쓰므로 영향 없고,
+        //  플레이어 안의 남은시간은 load 전까지 0:00 으로 둔다.)
+        preload: false,
         // 콜백 내부에서 soundRef.current 가 아닌 newSound 직접 참조 — 빠른 트랙
         // 전환 시 cleanup 이 ref 를 비웠거나 다른 instance 로 교체된 상황에서
         // 이전 트랙의 onload 가 새 트랙의 duration 을 덮어쓰는 회귀 방지.
@@ -88,6 +98,8 @@ export const useAudioPlayer = ({
           if (cancelled || previousUrlRef.current !== audioUrl) return;
           console.warn('Audio load error:', msg);
           isLoadedRef.current = false;
+          // 다시 재생을 누르면 load() 를 재시도할 수 있도록 플래그를 되돌린다.
+          loadStartedRef.current = false;
           setError(String(msg || 'Failed to load audio'));
           newSound.stop();
           // 재생 실패 = 재생 종료. 부모(TracksSection)의 playingTrackId 를
@@ -135,6 +147,12 @@ export const useAudioPlayer = ({
       if (isLoadedRef.current) {
         sound.play();
       } else {
+        // preload:false 라서 Howler 가 아직 소스를 받지 않았다. 재생 요청이
+        // 들어온 지금 처음으로 load() 를 걸고, 로드 완료 시 play() 한다.
+        if (!loadStartedRef.current) {
+          loadStartedRef.current = true;
+          sound.load();
+        }
         sound.once('load', playOnLoad);
       }
       const animate = () => {

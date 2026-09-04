@@ -10,8 +10,12 @@ jest.mock('../auth/AuthProvider', () => ({
   useAuth: () => mockUseAuth(),
 }));
 
+// LikeButton 은 이제 SDK 를 `await import('@/lib/supabaseBrowser')` 로 지연 로드한다.
+// jest.mock 은 모듈 레지스트리를 가로채므로 동적 import 에도 그대로 적용되지만,
+// 네임스페이스 구조분해가 안전하도록 __esModule 을 명시한다.
 const mockCreateClient = jest.fn();
 jest.mock('../../lib/supabaseBrowser', () => ({
+  __esModule: true,
   createSupabaseBrowserClient: () => mockCreateClient(),
 }));
 
@@ -72,6 +76,19 @@ describe('LikeButton', () => {
     expect(insertSpy).toHaveBeenCalledTimes(1);
     expect(button).toBeEnabled();
     expect(button).toHaveAttribute('aria-pressed', 'true');
+  });
+
+  it('비로그인 방문자에게는 Supabase SDK 를 전혀 요청하지 않는다', async () => {
+    // 초기 좋아요 수는 SSR props(initialCount)에서 오므로 익명 독자는 SDK 가 필요 없다.
+    mockUseAuth.mockReturnValue({ user: null, loading: false });
+    mockCreateClient.mockReturnValue(makeClient({}));
+
+    render(<LikeButton postId="p1" initialCount={7} />);
+    const button = screen.getByRole('button');
+    await waitFor(() => expect(button).toBeEnabled());
+    expect(button).toHaveTextContent('7');
+    expect(button).toHaveAttribute('aria-pressed', 'false');
+    expect(mockCreateClient).not.toHaveBeenCalled();
   });
 
   it('좋아요 쓰기가 error 를 반환하면 낙관적 상태를 되돌리고 버튼은 다시 활성화된다', async () => {

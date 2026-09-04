@@ -36,6 +36,8 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
       initialImages: all.slice(0, SSR_PREVIEW_COUNT),
       totalImageCount: all.length,
     },
-    revalidate: 3600,
+    // ISR 미적용 — 이 페이지의 데이터는 레포 정적 JSON(public/data/**)이 단일 출처라
+    // 재생성해도 바이트 동일한 결과가 나온다. 콘텐츠는 배포 시점에만 바뀌므로
+    // revalidate 는 람다 호출과 cold TTFB 만 추가할 뿐이다. (참조: src/lib/archivePublicData.ts)
   };
 }

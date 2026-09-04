@@ -2,8 +2,16 @@ import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { useAuth } from '@/components/auth/AuthProvider';
-import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { safeRedirectPath } from '@/lib/memberAuth';
+
+// Supabase SDK(@supabase/ssr — gotrue + realtime-js 포함 ~35KB gzip)를 글 상세 페이지
+// 초기 번들에서 분리한다. 좋아요 수(initialCount)는 SSR props 로 이미 내려오고,
+// liked 여부 조회는 로그인 사용자에게만 필요하므로 익명 독자는 SDK 를 받지 않는다.
+// (AuthProvider·login·signup 과 동일한 지연 로드 패턴)
+async function loadBrowserClient() {
+  const { createSupabaseBrowserClient } = await import('@/lib/supabaseBrowser');
+  return createSupabaseBrowserClient();
+}
 
 interface Props {
   postId: string;
@@ -29,20 +37,27 @@ export default function LikeButton({ postId, initialCount }: Props) {
     let cancelled = false;
     interactedRef.current = false;
 
-    const query = user
-      ? createSupabaseBrowserClient()
-          .from('post_likes')
-          .select('post_id')
-          .eq('post_id', postId)
-          .eq('user_id', user.id)
-          .maybeSingle()
-      : Promise.resolve({ data: null });
-
-    void query.then(({ data }) => {
+    void (async () => {
+      let data: unknown = null;
+      if (user) {
+        try {
+          const supabase = await loadBrowserClient();
+          const result = await supabase
+            .from('post_likes')
+            .select('post_id')
+            .eq('post_id', postId)
+            .eq('user_id', user.id)
+            .maybeSingle();
+          data = result.data;
+        } catch {
+          // 청크 로드/조회 실패 — 표시 상태를 건드리지 않고 그대로 둔다.
+          return;
+        }
+      }
       if (!cancelled && !interactedRef.current) {
         setLiked(data !== null);
       }
-    });
+    })();
 
     return () => {
       cancelled = true;
@@ -64,7 +79,7 @@ export default function LikeButton({ postId, initialCount }: Props) {
     // 예외, 클라이언트 생성 실패 등)에도 버튼이 영구 비활성으로 고착되지 않도록.
     // (형제 파일 CommentSection 의 확립된 try/finally 규칙과 일관.)
     try {
-      const supabase = createSupabaseBrowserClient();
+      const supabase = await loadBrowserClient();
 
       if (!liked) {
         // Optimistic: increment

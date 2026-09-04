@@ -274,14 +274,11 @@ export async function getStaticProps({ params, locale }: GetStaticPropsContext) 
 
   return {
     props: {
-      ...(await serverSideTranslations(
-        resolvedLocale,
-        ['translation', 'album'],
-        nextI18NextConfig
-      )),
+      // album ns 는 이 상세 페이지(및 하위 컴포넌트 트리)에서 단 하나의 키도 쓰지
+      // 않는다 — 로드하면 13 로케일 × 4KB 가 __NEXT_DATA__ 에 죽은 채로 실린다.
+      ...(await serverSideTranslations(resolvedLocale, ['translation'], nextI18NextConfig)),
       track,
       musician,
     },
-    revalidate: 3600,
   };
 }

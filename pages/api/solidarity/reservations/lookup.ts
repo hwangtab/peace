@@ -5,10 +5,10 @@ import { getClientIp } from '@/lib/clientIp';
 import {
   EVENT_SLUG,
   createWindowRateLimiter,
-  lookupBodySchema,
   normalizeNameForMatch,
   normalizePhone,
 } from '@/lib/eventReservations';
+import { lookupBodySchema } from '@/lib/eventReservationSchemas';
 
 // IP당 10분에 10회.
 const rateLimiter = createWindowRateLimiter(10 * 60_000, 10);

@@ -1,5 +1,3 @@
-import { z } from 'zod';
-
 /** Keep Singing for Palestine 공연 slug (event_reservations.event_slug). */
 export const EVENT_SLUG = 'keep-singing-for-palestine';
 
@@ -40,44 +38,6 @@ export const normalizePhone = (input: string): string | null => {
 
 /** 예매 접수 금액(원). */
 export const reservationAmount = (quantity: number): number => quantity * TICKET_PRICE;
-
-const phoneField = z
-  .string()
-  .trim()
-  .min(1, '연락처를 입력해 주세요.')
-  .max(30, '연락처가 너무 깁니다.')
-  .refine((value) => normalizePhone(value) !== null, {
-    message: '휴대폰 번호를 010-1234-5678 형식으로 입력해 주세요.',
-  });
-
-const nameField = z
-  .string()
-  .trim()
-  .min(1, '입금자명을 입력해 주세요.')
-  .max(40, '이름은 40자 이내로 입력해 주세요.');
-
-/** POST /api/solidarity/reservations 요청 본문. */
-export const reservationBodySchema = z.object({
-  name: nameField,
-  phone: phoneField,
-  quantity: z
-    .number()
-    .int('매수는 정수여야 합니다.')
-    .min(1, '최소 1매부터 신청할 수 있습니다.')
-    .max(MAX_QUANTITY, `최대 ${MAX_QUANTITY}매까지 신청할 수 있습니다.`),
-  privacyAgreed: z.literal(true, { message: '개인정보 수집·이용에 동의해 주세요.' }),
-  depositAgreed: z.literal(true, { message: '입금 안내를 확인해 주세요.' }),
-});
-
-export type ReservationBody = z.infer<typeof reservationBodySchema>;
-
-/** POST /api/solidarity/reservations/lookup 요청 본문. */
-export const lookupBodySchema = z.object({
-  name: nameField,
-  phone: phoneField,
-});
-
-export type LookupBody = z.infer<typeof lookupBodySchema>;
 
 /** 이름 비교용 정규화 — 공백 제거 + 소문자화(영문 이름 대소문자 차이 흡수). */
 export const normalizeNameForMatch = (name: string): string =>

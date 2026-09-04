@@ -13,6 +13,7 @@ import CampHero from '@/components/camp/CampHero';
 import CampGallery from '@/components/camp/CampGallery';
 import CampStaff from '@/components/camp/CampStaff';
 import CampVideos from '@/components/camp/CampVideos';
+import type { CampVideoDirector, CampVideoItem } from '@/components/camp/CampVideos';
 import { campGalleryHighlights2026 } from '@/data/camps';
 import dynamic from 'next/dynamic';
 
@@ -37,12 +38,18 @@ interface CampPageProps {
   initialLocale?: string;
   /** 행사 종료 여부 — true 면 예매 CTA 대신 갤러리/후기 구성으로 전환 */
   isPast?: boolean;
+  /** getStaticProps 에서 미리 필터·정렬한 2026 캠프 현장 영상 */
+  campVideos?: CampVideoItem[];
+  /** 위 영상들의 영상감독 크레딧 (id·name) */
+  campVideoDirectors?: CampVideoDirector[];
 }
 
 const Camp2026Page: React.FC<CampPageProps> = ({
   initialMusicians = [],
   initialLocale = 'ko',
   isPast = false,
+  campVideos = [],
+  campVideoDirectors = [],
 }) => {
   const { t, i18n } = useTranslation();
   const { item, viewport } = useScrollReveal();
@@ -299,7 +306,13 @@ const Camp2026Page: React.FC<CampPageProps> = ({
               paddingBottom="tight"
             />
           </div>
-          <CampVideos year={2026} paddingTop="tight" paddingBottom="loose" />
+          <CampVideos
+            year={2026}
+            videos={campVideos}
+            directors={campVideoDirectors}
+            paddingTop="tight"
+            paddingBottom="loose"
+          />
           <SectionWave color="light-beige" />
         </>
       ) : (

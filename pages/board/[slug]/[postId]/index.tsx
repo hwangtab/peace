@@ -19,7 +19,6 @@ import RatingStars from '@/components/board/RatingStars';
 import LikeButton from '@/components/board/LikeButton';
 import WidgetErrorBoundary from '@/components/common/WidgetErrorBoundary';
 import { useOptionalAuth } from '@/components/auth/AuthProvider';
-import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { createSupabaseServerClient } from '@/lib/supabaseServer';
 import PageHero from '@/components/common/PageHero';
 import SEOHelmet from '@/components/shared/SEOHelmet';
@@ -28,6 +27,14 @@ import type { LightboxImage } from '@/components/common/ImageLightbox';
 // 라이트박스·삭제 확인 다이얼로그는 클릭 시점에만 필요 — 초기 번들에서 분리.
 const ImageLightbox = dynamic(() => import('@/components/common/ImageLightbox'), { ssr: false });
 const ConfirmDialog = dynamic(() => import('@/components/common/ConfirmDialog'), { ssr: false });
+
+// Supabase SDK(@supabase/ssr — gotrue + realtime-js 포함 ~35KB gzip)를 초기 번들에서
+// 분리한다. 저장·삭제·업로드 같은 실제 상호작용 시점에만 필요하다.
+// (AuthProvider·login·signup 과 동일한 지연 로드 패턴)
+async function loadBrowserClient() {
+  const { createSupabaseBrowserClient } = await import('@/lib/supabaseBrowser');
+  return createSupabaseBrowserClient();
+}
 
 const BOARD_POST_HERO = '/images-webp/camps/2025/DSC00700.webp';
 
@@ -117,23 +124,31 @@ export default function PostDetailPage({
 
   const performDelete = async () => {
     setDeleting(true);
-    const supabase = createSupabaseBrowserClient();
-    // Delete post from DB first — if this fails, don't remove storage or redirect
-    const { error: deleteError } = await supabase.from('posts').delete().eq('id', post.id);
-    if (deleteError) {
+    // SDK 청크 로드 실패 등 예기치 못한 throw 에도 삭제 버튼이 busy 로 고착되지 않도록
+    // try/catch 로 감싼다(레포 규칙: async 플래그는 반드시 해제).
+    try {
+      const supabase = await loadBrowserClient();
+      // Delete post from DB first — if this fails, don't remove storage or redirect
+      const { error: deleteError } = await supabase.from('posts').delete().eq('id', post.id);
+      if (deleteError) {
+        setDeleting(false);
+        setShowDeleteConfirm(false);
+        alert(t('error.saveFailed'));
+        return;
+      }
+      // Remove storage objects for post images (best-effort, ignore errors)
+      const storagePaths = post.images
+        .map((img) => boardImagePath(img.image_url))
+        .filter((p): p is string => p !== null);
+      if (storagePaths.length > 0) {
+        void supabase.storage.from('board-images').remove(storagePaths);
+      }
+      await router.push('/board/' + slug);
+    } catch {
       setDeleting(false);
       setShowDeleteConfirm(false);
       alert(t('error.saveFailed'));
-      return;
     }
-    // Remove storage objects for post images (best-effort, ignore errors)
-    const storagePaths = post.images
-      .map((img) => boardImagePath(img.image_url))
-      .filter((p): p is string => p !== null);
-    if (storagePaths.length > 0) {
-      void supabase.storage.from('board-images').remove(storagePaths);
-    }
-    await router.push('/board/' + slug);
   };
 
   const isHidden = post.status === 'hidden';

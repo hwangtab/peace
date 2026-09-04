@@ -5,12 +5,16 @@ const mockPause = jest.fn();
 const mockStop = jest.fn();
 const mockSeek = jest.fn();
 const mockUnload = jest.fn();
+const mockLoad = jest.fn();
 const mockOnce = jest.fn();
 const mockOff = jest.fn();
 const mockDuration = jest.fn().mockReturnValue(180);
 
 let capturedCallbacks: Record<string, ((...args: unknown[]) => void)[]> = {};
 let capturedOptions: Record<string, unknown> = {};
+// preload:false 이후에는 Howler 가 스스로 로드하지 않는다. 훅이 직접 load() 를
+// 부르는 경로를 검증하려면 mock 의 자동 onload 발화를 끌 수 있어야 한다.
+let autoFireLoad = true;
 
 const MockHowl = jest.fn().mockImplementation((options: Record<string, unknown>) => {
   capturedCallbacks = {};
@@ -21,6 +25,7 @@ const MockHowl = jest.fn().mockImplementation((options: Record<string, unknown>)
     stop: mockStop,
     seek: mockSeek,
     unload: mockUnload,
+    load: mockLoad,
     duration: mockDuration,
     once: mockOnce,
     off: mockOff,
@@ -30,7 +35,7 @@ const MockHowl = jest.fn().mockImplementation((options: Record<string, unknown>)
     }),
   };
 
-  if (typeof options.onload === 'function') {
+  if (autoFireLoad && typeof options.onload === 'function') {
     Promise.resolve().then(() => (options.onload as () => void)());
   }
 
@@ -50,6 +55,7 @@ describe('useAudioPlayer', () => {
     mockSeek.mockReturnValue(0);
     capturedCallbacks = {};
     capturedOptions = {};
+    autoFireLoad = true;
   });
 
   describe('재생 실패 시 부모로 종료 전파 + error 노출', () => {
@@ -105,6 +111,48 @@ describe('useAudioPlayer', () => {
     expect(MockHowl).toHaveBeenCalledWith(
       expect.objectContaining({ src: ['http://example.com/track.mp3'], html5: true })
     );
+  });
+
+  it('preload:false 로 생성한다 (13곡 동시 preload = 51MB 방지)', async () => {
+    renderHook(() =>
+      useAudioPlayer({ audioUrl: 'http://example.com/track.mp3', isPlaying: false })
+    );
+    await act(async () => {
+      await Promise.resolve();
+    });
+    expect(capturedOptions.preload).toBe(false);
+  });
+
+  it('재생 전에는 load() 를 부르지 않는다', async () => {
+    autoFireLoad = false;
+    renderHook(() =>
+      useAudioPlayer({ audioUrl: 'http://example.com/track.mp3', isPlaying: false })
+    );
+    await act(async () => {
+      await Promise.resolve();
+      await Promise.resolve();
+    });
+    expect(mockLoad).not.toHaveBeenCalled();
+  });
+
+  it('미로드 상태에서 재생 요청 시 load() 를 한 번 시작하고 load 이벤트에 play 를 건다', async () => {
+    autoFireLoad = false;
+    const { rerender } = renderHook(
+      ({ isPlaying }) => useAudioPlayer({ audioUrl: 'http://example.com/track.mp3', isPlaying }),
+      { initialProps: { isPlaying: false } }
+    );
+    await act(async () => {
+      await Promise.resolve();
+      await Promise.resolve();
+    });
+    rerender({ isPlaying: true });
+    expect(mockLoad).toHaveBeenCalledTimes(1);
+    expect(mockOnce).toHaveBeenCalledWith('load', expect.any(Function));
+
+    // 일시정지 후 재요청해도 load() 는 중복 호출되지 않는다.
+    rerender({ isPlaying: false });
+    rerender({ isPlaying: true });
+    expect(mockLoad).toHaveBeenCalledTimes(1);
   });
 
   it('onload 콜백 호출 후 duration 설정', async () => {

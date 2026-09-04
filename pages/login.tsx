@@ -7,7 +7,6 @@ import { useTranslation } from 'next-i18next';
 import nextI18NextConfig from '../next-i18next.config';
 import AuthFormShell from '@/components/auth/AuthFormShell';
 import { useAuth } from '@/components/auth/AuthProvider';
-import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { mapAuthError, safeRedirectPath } from '@/lib/memberAuth';
 
 export default function LoginPage() {
@@ -32,6 +31,7 @@ export default function LoginPage() {
     setError('');
     setBusy(true);
     try {
+      const { createSupabaseBrowserClient } = await import('@/lib/supabaseBrowser');
       const supabase = createSupabaseBrowserClient();
       const { error: signErr } = await supabase.auth.signInWithPassword({
         email: email.trim(),

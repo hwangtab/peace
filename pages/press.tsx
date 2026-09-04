@@ -28,7 +28,5 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
       initialPressItems: normalizePressItems((await loadPublishedPress(resolvedLocale)).items),
       initialLocale: resolvedLocale,
     },
-    // 언론보도도 거의 안 바뀌므로 1h→24h (archive_press_items 재조회 빈도 축소).
-    revalidate: 86400,
   };
 }

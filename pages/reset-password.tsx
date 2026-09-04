@@ -4,7 +4,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import nextI18NextConfig from '../next-i18next.config';
 import AuthFormShell from '@/components/auth/AuthFormShell';
-import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { mapAuthError } from '@/lib/memberAuth';
 
 export default function ResetPasswordPage() {
@@ -20,6 +19,7 @@ export default function ResetPasswordPage() {
     setMessage('');
     setBusy(true);
     try {
+      const { createSupabaseBrowserClient } = await import('@/lib/supabaseBrowser');
       const supabase = createSupabaseBrowserClient();
       const { error: rErr } = await supabase.auth.resetPasswordForEmail(email.trim(), {
         redirectTo:

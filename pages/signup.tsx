@@ -7,7 +7,6 @@ import { useTranslation } from 'next-i18next';
 import nextI18NextConfig from '../next-i18next.config';
 import AuthFormShell from '@/components/auth/AuthFormShell';
 import { useAuth } from '@/components/auth/AuthProvider';
-import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import {
   mapAuthError,
   safeRedirectPath,
@@ -46,6 +45,7 @@ export default function SignupPage() {
 
     setBusy(true);
     try {
+      const { createSupabaseBrowserClient } = await import('@/lib/supabaseBrowser');
       const supabase = createSupabaseBrowserClient();
       // Pre-check nickname uniqueness (final guard is the DB unique index).
       const { data: taken } = await supabase

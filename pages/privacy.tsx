@@ -12,6 +12,5 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
     props: {
       ...(await serverSideTranslations(lang, ['translation'], nextI18NextConfig)),
     },
-    revalidate: 3600,
   };
 }

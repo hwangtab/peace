@@ -7,7 +7,6 @@ import { useTranslation } from 'next-i18next';
 import Head from 'next/head';
 import nextI18NextConfig from '../next-i18next.config';
 import { useAuth } from '@/components/auth/AuthProvider';
-import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { mapAuthError, validateNickname, validatePassword } from '@/lib/memberAuth';
 import { formatBoardDate } from '@/lib/boardForms';
 import PageHero from '@/components/common/PageHero';
@@ -50,6 +49,7 @@ export default function AccountPage() {
       setPostsError(false);
       setMyPosts(null);
       try {
+        const { createSupabaseBrowserClient } = await import('@/lib/supabaseBrowser');
         const supabase = createSupabaseBrowserClient();
         const { data, error } = await supabase
           .from('posts')
@@ -94,6 +94,7 @@ export default function AccountPage() {
     if (!user) return;
     setBusy(true);
     try {
+      const { createSupabaseBrowserClient } = await import('@/lib/supabaseBrowser');
       const supabase = createSupabaseBrowserClient();
       const { error: upErr } = await supabase
         .from('profiles')
@@ -119,6 +120,7 @@ export default function AccountPage() {
     if (!pw.ok) return setError(t(pw.reason));
     setBusy(true);
     try {
+      const { createSupabaseBrowserClient } = await import('@/lib/supabaseBrowser');
       const supabase = createSupabaseBrowserClient();
       const { error: upErr } = await supabase.auth.updateUser({ password: newPassword });
       setBusy(false);

@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import { VideoItem } from '@/types/video';
-import { getVideos } from '@/api/videos';
-import { getMusicians } from '@/api/musicians';
 import { camps } from '@/data/camps';
 import { isParticipantObject } from '@/types/camp';
 import Container from '../layout/Container';
@@ -14,18 +12,29 @@ import VideoCard from '../videos/VideoCard';
 
 type PaddingLevel = 'none' | 'tight' | 'normal' | 'loose';
 
+/** VideoCard 렌더에 실제로 쓰이는 필드만 추린 형태 (getStaticProps 에서 생성) */
+export type CampVideoItem = Pick<
+  VideoItem,
+  'id' | 'title' | 'description' | 'youtubeUrl' | 'date' | 'location'
+> &
+  Pick<VideoItem, 'thumbnailUrl' | 'musicianIds'>;
+
+export interface CampVideoDirector {
+  id: number;
+  name: string;
+}
+
 interface CampVideosProps {
-  /** 캠프 연도 — 해당 연도 camp 영상만 노출 */
+  /** 캠프 연도 — 전체보기 링크(/videos?filter=camp-{year}) 구성에 사용 */
   year: number;
+  /** getStaticProps 에서 미리 필터·정렬된 해당 연도 camp 영상 */
+  videos: CampVideoItem[];
+  /** 영상감독 크레딧 (id·name 만) */
+  directors?: CampVideoDirector[];
   /** 미리보기로 보여줄 최대 개수 */
   limit?: number;
   paddingTop?: PaddingLevel;
   paddingBottom?: PaddingLevel;
-}
-
-interface DirectorRef {
-  id: number;
-  name: string;
 }
 
 const CAMP_2026_MUSICIAN_IDS = new Set(
@@ -41,58 +50,24 @@ const directorHref = (id: number): string =>
 
 /**
  * 캠프 상세(후기) 페이지의 현장 영상 섹션.
- * videos.json 에서 해당 연도 camp 영상을 클라이언트에서 불러와 미리보기로 보여주고,
- * 전체는 /videos?filter=camp-{year} 로 연결한다. 영상이 없으면 렌더하지 않는다.
- * 영상감독(directorMusicianId)이 있으면 헤더에 크레딧을 노출하고 뮤지션 페이지로 연결.
+ * 표시할 영상·영상감독은 getStaticProps(pages/camps/[year].tsx)에서 로케일별로
+ * 필터·정렬해 props 로 내려온다. 과거에는 마운트 후 videos.json(66KB)+musicians.json(51KB)
+ * 전체를 클라이언트에서 다시 받아 3개를 걸러냈는데, 빌드 시점에 확정되는 정적 데이터라
+ * 서버에서 계산해 넘긴다(런타임 fetch 0, CLS 플레이스홀더 불필요).
+ * 전체 목록은 /videos?filter=camp-{year} 로 연결한다.
  */
 const CampVideos: React.FC<CampVideosProps> = ({
   year,
+  videos,
+  directors = [],
   limit = 6,
   paddingTop = 'normal',
   paddingBottom = 'normal',
 }) => {
-  const { t, i18n } = useTranslation();
-  const [videos, setVideos] = useState<VideoItem[] | null>(null);
-  const [directors, setDirectors] = useState<DirectorRef[]>([]);
+  const { t } = useTranslation();
 
-  useEffect(() => {
-    let cancelled = false;
-    Promise.all([getVideos(i18n.language), getMusicians(i18n.language)])
-      .then(([allVideos, allMusicians]) => {
-        if (cancelled) return;
-        const campVideos = allVideos
-          .filter((v) => v.eventType === 'camp' && v.eventYear === year)
-          .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
-        setVideos(campVideos);
-
-        const directorIds = [
-          ...new Set(
-            campVideos
-              .map((v) => v.directorMusicianId)
-              .filter((id): id is number => typeof id === 'number')
-          ),
-        ];
-        const resolved = directorIds
-          .map((id) => {
-            const m = allMusicians.find((mm) => mm.id === id);
-            return m ? { id: m.id, name: m.name } : null;
-          })
-          .filter((d): d is DirectorRef => d !== null);
-        setDirectors(resolved);
-      })
-      .catch((err) => console.warn('[CampVideos] load failed:', err));
-    return () => {
-      cancelled = true;
-    };
-  }, [i18n.language, year]);
-
-  // 로딩 완료 후 빈 배열이면 섹션 숨김
-  if (videos !== null && videos.length === 0) return null;
-
-  // 아직 로딩 중(null)이면 높이를 예약해 CLS 방지
-  if (videos === null) {
-    return <div className="min-h-[480px]" aria-hidden="true" />;
-  }
+  // 영상이 없으면 섹션 자체를 렌더하지 않는다 (빌드 시점에 이미 확정된 값)
+  if (videos.length === 0) return null;
 
   const directorCredit =
     directors.length > 0 ? (

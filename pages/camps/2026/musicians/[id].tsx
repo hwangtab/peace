@@ -10,6 +10,7 @@ import { useCamp } from '@/hooks/useCamps';
 import MusicianDetailContent from '@/components/musicians/MusicianDetailContent';
 import { loadRelatedVideos, selectOtherMusicians } from '@/utils/musicianPageUtils';
 import { getFullUrl } from '@/config/env';
+import { prerenderLocales } from '@/constants/locales';
 
 interface CampMusicianPageProps {
   musician: Musician;
@@ -65,7 +66,10 @@ function getCamp2026MusicianIds(): number[] {
 
 export async function getStaticPaths({ locales }: GetStaticPathsContext) {
   const musicianIds = getCamp2026MusicianIds();
-  const paths = (locales || ['ko']).flatMap((locale) =>
+  // 50 뮤지션 × 13 로케일 = 650 변형(빌드 102s). 주요 로케일(ko·en)만 굽고 나머지는
+  // blocking fallback — 첫 요청에서 서버 렌더 후 캐시되므로 사용자/크롤러 모두
+  // 완전한 HTML 을 받는다. 존재하지 않는 id 는 getStaticProps 의 notFound 로 404.
+  const paths = prerenderLocales(locales).flatMap((locale) =>
     musicianIds.map((id) => ({
       params: { id: String(id) },
       locale,
@@ -74,7 +78,7 @@ export async function getStaticPaths({ locales }: GetStaticPathsContext) {
 
   return {
     paths,
-    fallback: false,
+    fallback: 'blocking',
   };
 }
 

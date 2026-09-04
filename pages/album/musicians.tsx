@@ -41,6 +41,5 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
       })(),
       initialLocale: resolvedLocale,
     },
-    revalidate: 3600,
   };
 }

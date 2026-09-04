@@ -8,8 +8,8 @@ import {
   createWindowRateLimiter,
   normalizePhone,
   reservationAmount,
-  reservationBodySchema,
 } from '@/lib/eventReservations';
+import { reservationBodySchema } from '@/lib/eventReservationSchemas';
 
 // IP당 10분에 5회. 모듈 스코프 in-memory이므로 같은 인스턴스 내에서만 유효한 경량 억제책.
 const rateLimiter = createWindowRateLimiter(10 * 60_000, 5);

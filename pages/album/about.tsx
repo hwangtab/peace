@@ -77,6 +77,5 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
       initialMusicianTrackIds,
       initialLocale: lang,
     },
-    revalidate: 3600,
   };
 }

@@ -6,7 +6,6 @@ import PageHero from '@/components/common/PageHero';
 import Section from '@/components/layout/Section';
 import Container from '@/components/layout/Container';
 import Button from '@/components/common/Button';
-import { supabase } from '@/lib/supabase';
 import {
   SURVEY_SECTIONS,
   CONSENT_OPTIONS,
@@ -145,6 +144,14 @@ const CampSurvey2026Page: React.FC = () => {
     if (!privacyConsent) {
       setErrorMsg(s('error_privacy_required'));
       return;
+    }
+    // 익명 방문자 번들 절감: supabase-js 는 제출 시점에만 동적으로 불러온다.
+    let supabase: import('@supabase/supabase-js').SupabaseClient | null = null;
+    try {
+      const { getSurveyClient } = await import('@/lib/supabase');
+      supabase = getSurveyClient();
+    } catch {
+      supabase = null;
     }
     if (!supabase) {
       setStatus('error');

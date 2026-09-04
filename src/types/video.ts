@@ -6,7 +6,8 @@ export interface VideoItem {
   description: string;
   youtubeUrl: string;
   date: string;
-  location: string;
+  /** 실데이터 145건 중 122건이 값 없음 — 필수로 두면 getStaticProps 직렬화가 깨진다. */
+  location?: string;
   eventType?: EventType;
   eventYear?: number;
   thumbnailUrl?: string;

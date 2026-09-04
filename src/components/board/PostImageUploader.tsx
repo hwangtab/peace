@@ -1,9 +1,16 @@
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
-import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { useAuth } from '@/components/auth/AuthProvider';
 import { boardImagePath } from '@/lib/boardData';
+
+// Supabase SDK(@supabase/ssr — gotrue + realtime-js 포함 ~35KB gzip)를 초기 번들에서
+// 분리한다. 저장·삭제·업로드 같은 실제 상호작용 시점에만 필요하다.
+// (AuthProvider·login·signup 과 동일한 지연 로드 패턴)
+async function loadBrowserClient() {
+  const { createSupabaseBrowserClient } = await import('@/lib/supabaseBrowser');
+  return createSupabaseBrowserClient();
+}
 
 interface PostImageUploaderProps {
   value: string[];
@@ -58,10 +65,11 @@ export default function PostImageUploader({ value, onChange }: PostImageUploader
 
     setUploading(true);
     setProgress({ done: 0, total: batch.length });
-    const supabase = createSupabaseBrowserClient();
     // value 는 배치 시작 시점 스냅샷 — 매 장 업로드 후 [...value, ...added] 로 미리보기를 점진 갱신.
     const added: string[] = [];
     try {
+      // SDK 획득은 try 안에서 — 청크 로드가 실패해도 catch/finally 가 uploading 을 해제한다.
+      const supabase = await loadBrowserClient();
       for (let i = 0; i < batch.length; i++) {
         const file = batch[i];
         if (!file) continue;
@@ -119,8 +127,15 @@ export default function PostImageUploader({ value, onChange }: PostImageUploader
       sessionUploadedRef.current.delete(removedUrl);
       const path = boardImagePath(removedUrl);
       if (path) {
-        const supabase = createSupabaseBrowserClient();
-        void supabase.storage.from('board-images').remove([path]);
+        // 스토리지 정리는 best-effort — SDK 로드/삭제 실패는 무시한다(UI 상태 영향 없음).
+        void (async () => {
+          try {
+            const supabase = await loadBrowserClient();
+            await supabase.storage.from('board-images').remove([path]);
+          } catch {
+            // ignore
+          }
+        })();
       }
     }
   };

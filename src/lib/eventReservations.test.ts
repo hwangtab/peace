@@ -4,12 +4,11 @@ import {
   RESERVATION_STATUS_LABELS,
   TICKET_PRICE,
   createWindowRateLimiter,
-  lookupBodySchema,
   normalizeNameForMatch,
   normalizePhone,
   reservationAmount,
-  reservationBodySchema,
 } from './eventReservations';
+import { lookupBodySchema, reservationBodySchema } from './eventReservationSchemas';
 
 describe('normalizePhone', () => {
   test('다양한 입력을 010-0000-0000 형태로 정규화한다', () => {

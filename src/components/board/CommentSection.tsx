@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { useAuth } from '@/components/auth/AuthProvider';
-import { createSupabaseBrowserClient } from '@/lib/supabaseBrowser';
 import { validateComment, formatBoardDate } from '@/lib/boardForms';
 import { safeRedirectPath } from '@/lib/memberAuth';
 import { COMMENT_PAGE } from '@/lib/boardData';
@@ -12,6 +11,15 @@ import { COMMENT_PAGE } from '@/lib/boardData';
 // 삭제 확인 다이얼로그(@headlessui/react ~15.6KB gzip)는 댓글 삭제 클릭 시점에만 필요 —
 // 글 상세 페이지 초기 번들에서 분리한다. (같은 페이지의 ImageLightbox·ConfirmDialog와 동일 패턴)
 const ConfirmDialog = dynamic(() => import('@/components/common/ConfirmDialog'), { ssr: false });
+
+// Supabase SDK(@supabase/ssr — gotrue + realtime-js 포함 ~35KB gzip)를 글 상세 페이지
+// 초기 번들에서 분리한다. 첫 댓글 목록은 getServerSideProps 가 서버 클라이언트로 읽어
+// initialComments props 로 내려주므로, 브라우저 SDK 는 '더 보기'·작성·수정·삭제 같은
+// 실제 상호작용 시점에만 필요하다. (AuthProvider·login·signup 과 동일한 지연 로드 패턴)
+async function loadBrowserClient() {
+  const { createSupabaseBrowserClient } = await import('@/lib/supabaseBrowser');
+  return createSupabaseBrowserClient();
+}
 
 export interface CommentRow {
   id: string;
@@ -99,7 +107,7 @@ export default function CommentSection({
     if (!oldest) return;
     setLoadingMore(true);
     try {
-      const supabase = createSupabaseBrowserClient();
+      const supabase = await loadBrowserClient();
       // 커서(현재 가장 오래된 댓글의 created_at) 기준으로 더 과거를 불러온다.
       // offset 방식과 달리 새 댓글이 추가돼도 경계가 밀리지 않아 누락/중복이 없다.
       const { data } = await supabase
@@ -118,6 +126,8 @@ export default function CommentSection({
         return [...fresh, ...prev];
       });
       setHasMore(more);
+    } catch {
+      // SDK 청크 로드/조회 실패 — 기존 목록을 그대로 두고 조용히 끝낸다(재클릭 가능).
     } finally {
       setLoadingMore(false);
     }
@@ -137,7 +147,7 @@ export default function CommentSection({
 
     setSubmitting(true);
     try {
-      const supabase = createSupabaseBrowserClient();
+      const supabase = await loadBrowserClient();
       const { data, error: insertError } = await supabase
         .from('post_comments')
         .insert({ post_id: postId, author_id: user.id, body: result.value })
@@ -152,6 +162,8 @@ export default function CommentSection({
       // 새 댓글은 가장 최신이므로 맨 아래에 추가 → 항상 바로 보인다.
       setComments((prev) => [...prev, created]);
       setBody('');
+    } catch {
+      setValidationError(t('error.saveFailed'));
     } finally {
       setSubmitting(false);
     }
@@ -178,7 +190,7 @@ export default function CommentSection({
     }
     setSavingEdit(true);
     try {
-      const supabase = createSupabaseBrowserClient();
+      const supabase = await loadBrowserClient();
       const { error } = await supabase
         .from('post_comments')
         .update({ body: result.value })
@@ -193,6 +205,8 @@ export default function CommentSection({
       );
       // 저장 완료 시점에도 여전히 이 댓글을 편집 중일 때만 편집 세션을 닫는다.
       if (editIdRef.current === commentId) cancelEdit();
+    } catch {
+      setEditError(t('error.saveFailed'));
     } finally {
       setSavingEdit(false);
     }
@@ -202,13 +216,15 @@ export default function CommentSection({
     setDeleteError(null);
     setDeleteId(commentId);
     try {
-      const supabase = createSupabaseBrowserClient();
+      const supabase = await loadBrowserClient();
       const { error } = await supabase.from('post_comments').delete().eq('id', commentId);
       if (error) {
         setDeleteError(t('error.saveFailed'));
         return;
       }
       setComments((prev) => prev.filter((c) => c.id !== commentId));
+    } catch {
+      setDeleteError(t('error.saveFailed'));
     } finally {
       setDeleteId(null);
       setPendingDeleteId(null);

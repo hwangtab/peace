@@ -75,14 +75,6 @@ const nextConfig = {
     ...i18n,
     localeDetection: false, // 커스텀 미들웨어와 충돌을 방지하기 위해 내장 감지 기능 비활성화
   },
-  // react-icons 의 fa/hi/io5 인덱스 전체를 불러오는 barrel import 를 트리 흔들기 가능하도록
-  // 개별 아이콘 경로로 자동 변환 (번들 분석에서 _app.js 에 fa+io5 만 ~22KiB 차지하던 회귀 해소).
-  modularizeImports: {
-    'react-icons/?(((\\w*)?/?)*)': {
-      transform: 'react-icons/{{ matches.[1] }}/{{member}}',
-      skipDefaultConversion: true,
-    },
-  },
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
