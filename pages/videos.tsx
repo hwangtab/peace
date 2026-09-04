@@ -40,8 +40,9 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
     description: v.description,
     youtubeUrl: v.youtubeUrl,
     date: v.date,
-    // location 은 타입상 필수지만 실데이터 145건 중 122건이 비어 있다.
-    // undefined 를 그대로 props 에 넣으면 getStaticProps 직렬화가 실패한다.
+    // 아래 필드는 전부 선택값이라 값이 없으면 키 자체를 빼야 한다. `location: v.location`
+    // 처럼 그대로 대입하면 undefined 가 들어가 getStaticProps 직렬화가 실패하고
+    // 페이지가 500 이 된다(실데이터 145건 중 location 122건이 빈 값).
     ...(v.location !== undefined ? { location: v.location } : {}),
     ...(v.eventType !== undefined ? { eventType: v.eventType } : {}),
     ...(v.eventYear !== undefined ? { eventYear: v.eventYear } : {}),
