@@ -41,6 +41,9 @@ CASES = [
     ("NotoSerifKR-Bold.core.woff2", 0xB798, "core 래(홈/제목 '노래')"),
     ("NotoSerifKR-Bold.core.woff2", 0xAE40, "core 김(video 제목 '김동산')"),
     ("NotoSerifKR-Bold.core.woff2", 0xBE14, "core 블(video 제목 '블루이웃')"),
+    ("NotoSerifKR-Bold.core.woff2", 0xCC99, "core 척(camps.ts 파트너 '개척자들' — src/data TS 수집원 회귀 방지)"),
+    ("NotoSerifKR-Bold.core.woff2", 0xC653, "core 왓(camps.ts 파트너 '연구소 왓')"),
+    ("NotoSerifKR-Bold.core.woff2", 0xCF64, "core 콤(camps.ts 파트너 '브릿지콤마')"),
     # 세리프 라틴/숫자(A, 2026 등)는 NotoSerifKR 서브셋에서 의도적으로 제외한다.
     # 세리프 @font-face 의 unicode-range 는 한글·자모·구두점만 선언하므로 라틴은
     # 애초에 이 폰트로 렌더되지 않고, 제목 세리프 스택의 다음 폰트(Noto Sans)가

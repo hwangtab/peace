@@ -178,7 +178,7 @@
      (NotoSerifKR-Bold.subset.woff2)은 롤백 대비 보존하되 여기서 참조하지 않는다. */
   @font-face {
     font-family: 'Noto Serif KR';
-    src: url('/fonts/NotoSerifKR-Bold.core.woff2?v=6') format('woff2');
+    src: url('/fonts/NotoSerifKR-Bold.core.woff2?v=7') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -502,6 +502,7 @@
       U+BE59,
       U+BE5B,
       U+BE60,
+      U+BE68,
       U+BE7C,
       U+BE84,
       U+BED7,
@@ -610,7 +611,7 @@
       U+C637,
       U+C640,
       U+C644,
-      U+C654,
+      U+C653-C654,
       U+C65C,
       U+C678,
       U+C67C,
@@ -641,6 +642,7 @@
       U+C74C,
       U+C751,
       U+C758,
+      U+C76D,
       U+C774-C775,
       U+C778,
       U+C77C-C77D,
@@ -711,7 +713,7 @@
       U+CC3D-CC3E,
       U+CC44-CC45,
       U+CC54,
-      U+CC98,
+      U+CC98-CC99,
       U+CC9C,
       U+CCA0,
       U+CCA8,
@@ -755,6 +757,7 @@
       U+CF54,
       U+CF58,
       U+CF5C,
+      U+CF64,
       U+CFE0,
       U+CFE4,
       U+CFE8,
@@ -783,10 +786,12 @@
       U+D14C-D14D,
       U+D150,
       U+D154,
+      U+D15D,
       U+D1A0-D1A1,
       U+D1B5,
       U+D1F4,
       U+D22C,
+      U+D23C,
       U+D241,
       U+D29C,
       U+D2AC,
@@ -848,6 +853,7 @@
       U+D604,
       U+D610-D611,
       U+D614-D615,
+      U+D61C,
       U+D638-D639,
       U+D63C,
       U+D640,
@@ -885,7 +891,7 @@
   }
   @font-face {
     font-family: 'Noto Serif KR';
-    src: url('/fonts/NotoSerifKR-Bold.rest.woff2?v=6') format('woff2');
+    src: url('/fonts/NotoSerifKR-Bold.rest.woff2?v=7') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -1396,7 +1402,6 @@
       U+BE5A,
       U+BE61,
       U+BE64,
-      U+BE68,
       U+BE6A,
       U+BE70-BE71,
       U+BE73-BE75,
@@ -1625,7 +1630,6 @@
       U+C641,
       U+C648,
       U+C650-C651,
-      U+C653,
       U+C655,
       U+C65D,
       U+C660,
@@ -1667,7 +1671,6 @@
       U+C760,
       U+C768,
       U+C76B,
-      U+C76D,
       U+C77E,
       U+C797,
       U+C79A,
@@ -1802,7 +1805,6 @@
       U+CC68,
       U+CC70,
       U+CC75,
-      U+CC99,
       U+CCA9,
       U+CCAC,
       U+CCB5,
@@ -1874,7 +1876,7 @@
       U+CF2F-CF31,
       U+CF38,
       U+CF55,
-      U+CF64-CF65,
+      U+CF65,
       U+CF67,
       U+CF69,
       U+CF70-CF71,
@@ -1922,7 +1924,7 @@
       U+D13A,
       U+D141,
       U+D143-D145,
-      U+D15C-D15D,
+      U+D15C,
       U+D15F,
       U+D161,
       U+D168,
@@ -1945,7 +1947,7 @@
       U+D22D,
       U+D230,
       U+D234,
-      U+D23C-D23D,
+      U+D23D,
       U+D23F,
       U+D248,
       U+D25C,
@@ -2049,7 +2051,6 @@
       U+D5F9,
       U+D608,
       U+D613,
-      U+D61C,
       U+D620,
       U+D624,
       U+D62D,
@@ -2120,6 +2121,24 @@
     font-weight: normal;
     font-style: normal;
     font-display: swap;
+  }
+
+  /* PartialSans 도착 전 폴백(시스템 고딕)을 PartialSans 의 폭·세로 메트릭에 맞춘다.
+     PartialSans 는 한글 advance 가 1.12em(2293/2048)으로 시스템 고딕(≈0.9em)보다 넓어,
+     swap 순간 h1 줄바꿈이 바뀌며 레이아웃이 튀었다(프로덕션 슬로우 4G 실측 CLS 0.012,
+     첫 페인트 3.0s → 교체 6.0s). size-adjust 130% 는 홈 h1 '강정피스앤뮤직캠프' 36px 실측(PartialSans 362.8px / Apple SD Gothic Neo 280.3px = 1.294)을 올림한 값 — 폴백이 PartialSans 보다 살짝 넓어야 같은 줄에서 접힌다.
+     125% 로는 홈 h1 이 폴백에서 1줄, PartialSans 에서 2줄로 갈려 오히려 튀었다(로컬 실측). ascent/descent/line-gap 은 PartialSans typo 메트릭
+     (1638/-410/410 @2048)을 size-adjust 로 나눈 값. 글리프 모양 차이는 남지만 줄 수·높이가
+     유지돼 교체가 "번쩍"이 아니라 글꼴만 바뀌는 정도로 줄어든다. */
+  @font-face {
+    font-family: 'PartialSans Fallback';
+    src:
+      local('Apple SD Gothic Neo'), local('AppleSDGothicNeo-Regular'), local('Noto Sans CJK KR'),
+      local('Malgun Gothic'), local('맑은 고딕');
+    size-adjust: 130%;
+    ascent-override: 61.5%;
+    descent-override: 15.4%;
+    line-gap-override: 15.4%;
   }
 
   body {

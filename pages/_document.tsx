@@ -12,19 +12,6 @@ class MyDocument extends Document {
     const currentLocale = locale || 'ko';
     const dir = getTextDirection(currentLocale);
 
-    // 로케일별 본문 기본 폰트(LCP preload 대상). 라틴/키릴(en/es/fr/de/pt/ru/id)은
-    // 공통 Noto Sans. 각 페이지는 자기 언어 폰트만 받는다(전 로케일에 한글 872KB +
-    // 세리프 1.4MB 를 깔던 낭비 제거).
-    const bodyFontByLocale: Record<string, string> = {
-      ko: 'NotoSansKR-Regular',
-      ja: 'NotoSansJP-Regular',
-      'zh-Hans': 'NotoSansSC-Regular',
-      'zh-Hant': 'NotoSansTC-Regular',
-      hi: 'NotoSansDevanagari-Regular',
-      ar: 'NotoSansArabic-Regular',
-    };
-    const bodyFontFile = bodyFontByLocale[currentLocale] || 'NotoSans-Regular';
-
     return (
       <Html lang={currentLocale} dir={dir} data-scroll-behavior="smooth">
         <Head>
@@ -45,18 +32,6 @@ class MyDocument extends Document {
             type="font/woff2"
             crossOrigin="anonymous"
             href="/fonts/PartialSansKR-Regular.subset.woff2?v=6"
-            // @ts-expect-error — fetchpriority is a valid HTML attribute (React 18.3+)
-            fetchpriority="high"
-          />
-
-          {/* 본문 폰트 preload — 로케일별 본문 기본 폰트. 그 외 스크립트는
-              해당 페이지에서 unicode-range 로 자연 로드. */}
-          <link
-            rel="preload"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-            href={`/fonts/${bodyFontFile}.subset.woff2?v=6`}
             // @ts-expect-error — fetchpriority is a valid HTML attribute (React 18.3+)
             fetchpriority="high"
           />

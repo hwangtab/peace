@@ -143,6 +143,20 @@ def collect_serif_core_chars() -> set[str]:
                 except Exception:
                     continue
 
+    # 3. TS 정적 데이터(src/data/*.ts)의 문자열 리터럴 — 캠프 파트너·참가자·라인업 이름이
+    #    여기 있고 CampStaff 등이 font-serif 로 렌더한다. 이 소스가 빠져 '척·왓·콤' 같은
+    #    음절이 core 밖으로 떨어졌고, 공개 캠프 페이지가 rest 슬라이스(224KB)를 통째로
+    #    받았다(2026-09-04 프로덕션 실측). 주석·식별자는 제외하고 따옴표 안만 모은다.
+    for path in (SRC_DIR / "data").glob("*.ts"):
+        if path.name.endswith(".test.ts"):
+            continue
+        try:
+            text = path.read_text(encoding="utf-8")
+        except Exception:
+            continue
+        for literal in re.findall(r"'((?:[^'\\]|\\.)*)'|\"((?:[^\"\\]|\\.)*)\"|`((?:[^`\\]|\\.)*)`", text):
+            chars.update("".join(literal))
+
     return chars
 
 
