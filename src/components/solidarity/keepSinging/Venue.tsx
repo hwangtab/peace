@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'next-i18next';
 import { DarkLinkButton, DarkSection, FlagRule, Reveal, SectionHeading } from './DarkUI';
-import { CONTACT_URL, KAKAO_MAP_URL, NAVER_MAP_URL } from './constants';
+import { CONTACT_URL, KAKAO_MAP_URL, LOCATION_CONFIRMED, NAVER_MAP_URL } from './constants';
 
 /**
  * 오시는 길 + 문의.
@@ -24,14 +24,17 @@ const Venue: React.FC = () => {
         <p className="font-serif text-2xl text-[#F5F1EA] md:text-3xl">{t('venue.name')}</p>
         <p className="mt-3 text-sm text-[#D7D1C7] md:text-base">{t('venue.address')}</p>
 
-        <div className="mt-7 flex flex-wrap gap-3">
-          <DarkLinkButton href={NAVER_MAP_URL} variant="outline" size="sm" external>
-            {t('venue.naver')}
-          </DarkLinkButton>
-          <DarkLinkButton href={KAKAO_MAP_URL} variant="outline" size="sm" external>
-            {t('venue.kakao')}
-          </DarkLinkButton>
-        </div>
+        {/* 장소가 확정되기 전에는 옛 대관처(반쥴) 지도로 보내지 않는다. */}
+        {LOCATION_CONFIRMED && (
+          <div className="mt-7 flex flex-wrap gap-3">
+            <DarkLinkButton href={NAVER_MAP_URL} variant="outline" size="sm" external>
+              {t('venue.naver')}
+            </DarkLinkButton>
+            <DarkLinkButton href={KAKAO_MAP_URL} variant="outline" size="sm" external>
+              {t('venue.kakao')}
+            </DarkLinkButton>
+          </div>
+        )}
       </Reveal>
 
       <Reveal delayIndex={1}>

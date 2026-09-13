@@ -7,6 +7,15 @@ export const TICKET_PRICE = 30000;
 /** 1회 접수 최대 매수. DB check 제약(quantity between 1 and 4)과 동일해야 한다. */
 export const MAX_QUANTITY = 4;
 
+/**
+ * 예매 접수 마감 여부.
+ *
+ * 2026-09-13, 조직위가 9/19 반쥴 공연을 거리 집회 참여로 전환하면서 예매를 마감했다.
+ * 화면에서 신청 폼을 내리는 것과 별개로 API 가 직접 호출되는 경로까지 막아야 하므로
+ * 서버·클라이언트가 같은 상수를 본다. 접수를 다시 열려면 이 값만 false 로 되돌린다.
+ */
+export const RESERVATIONS_CLOSED = true;
+
 export type ReservationStatus = 'pending' | 'confirmed' | 'cancelled';
 
 export const RESERVATION_STATUSES: readonly ReservationStatus[] = [

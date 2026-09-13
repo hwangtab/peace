@@ -8,6 +8,11 @@ export interface SolidarityEventSchemaOptions {
   url?: string;
   /** 예매 시작일(ISO). offers.validFrom 으로 들어간다. */
   offerValidFrom?: string;
+  /**
+   * 기획이 바뀌어 원래 일정·장소로 열리지 않는 공연.
+   * eventStatus 를 EventRescheduled 로 바꾸고 offers 를 내린다(예매가 닫혔으므로).
+   */
+  rescheduled?: boolean;
 }
 
 export function buildSolidarityEventSchema(
@@ -16,14 +21,16 @@ export function buildSolidarityEventSchema(
 ): object {
   const listUrl = getFullUrl('/solidarity');
   const pageUrl = options.url ?? listUrl;
-  const isFree = options.price === undefined;
+  const isFree = options.price === undefined || options.rescheduled === true;
   return {
     '@context': 'https://schema.org',
     '@type': 'MusicEvent',
     '@id': `${listUrl}#${event.id}`,
     name: event.title,
     startDate: event.startDate,
-    eventStatus: 'https://schema.org/EventScheduled',
+    eventStatus: options.rescheduled
+      ? 'https://schema.org/EventRescheduled'
+      : 'https://schema.org/EventScheduled',
     eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
     isAccessibleForFree: isFree,
     location: {
@@ -47,14 +54,18 @@ export function buildSolidarityEventSchema(
       '@type': 'Organization',
       name: event.organizers,
     },
-    offers: {
-      '@type': 'Offer',
-      price: String(options.price ?? 0),
-      priceCurrency: 'KRW',
-      availability: 'https://schema.org/InStock',
-      url: pageUrl,
-      ...(options.offerValidFrom ? { validFrom: options.offerValidFrom } : {}),
-    },
+    ...(options.rescheduled
+      ? {}
+      : {
+          offers: {
+            '@type': 'Offer',
+            price: String(options.price ?? 0),
+            priceCurrency: 'KRW',
+            availability: 'https://schema.org/InStock',
+            url: pageUrl,
+            ...(options.offerValidFrom ? { validFrom: options.offerValidFrom } : {}),
+          },
+        }),
     url: pageUrl,
   };
 }

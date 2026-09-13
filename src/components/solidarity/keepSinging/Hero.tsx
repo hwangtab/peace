@@ -72,7 +72,7 @@ const Hero: React.FC = () => {
               [
                 ['hero.date_label', 'hero.date_value'],
                 ['hero.venue_label', 'hero.venue_value'],
-                ['hero.price_label', 'hero.price_value'],
+                ['hero.status_label', 'hero.status_value'],
               ] as const
             ).map(([labelKey, valueKey]) => (
               <div key={labelKey} className="flex flex-wrap gap-x-4 gap-y-1">
@@ -85,7 +85,7 @@ const Hero: React.FC = () => {
           </dl>
 
           <div className="mt-10 flex flex-wrap gap-3">
-            <DarkLinkButton href="#reservation">{t('hero.cta_reserve')}</DarkLinkButton>
+            <DarkLinkButton href="#notice">{t('hero.cta_notice')}</DarkLinkButton>
             <DarkLinkButton href="#support" variant="outline">
               {t('hero.cta_support')}
             </DarkLinkButton>

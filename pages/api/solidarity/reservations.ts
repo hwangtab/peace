@@ -5,6 +5,7 @@ import { getClientIp } from '@/lib/clientIp';
 import { sendEmail } from '@/lib/resend';
 import {
   EVENT_SLUG,
+  RESERVATIONS_CLOSED,
   createWindowRateLimiter,
   normalizePhone,
   reservationAmount,
@@ -50,6 +51,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     res.status(405).json({ error: 'method_not_allowed' });
+    return;
+  }
+
+  // 접수 마감 — 화면에서 폼을 내린 뒤에도 직접 POST 되는 경로를 막는다.
+  if (RESERVATIONS_CLOSED) {
+    res.status(410).json({ error: '예매 접수가 마감되었습니다.' });
     return;
   }
 

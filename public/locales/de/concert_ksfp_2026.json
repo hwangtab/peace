@@ -1,7 +1,7 @@
 {
   "seo": {
     "title": "Keep Singing for Palestine — Friedenskonzert | Gangjeong Peace and Music Camp",
-    "description": "Samstag, 19. September 2026, 18:00 Uhr in Banjul, Seoul. Ein Friedenskonzert von Gangjeong Peace and Music Camp × der Palästina-Befreiungsbewegung. Lee Seo-young, Lee Hyeong-ju, Moredo Saturday, MOMO. Vorverkauf 30.000 KRW."
+    "description": "Samstag, 19. September 2026, Seoul. Das Gangjeong Peace and Music Camp ändert das Programm des Banjul-Konzerts und schließt sich der Kundgebung gegen die Entsendung südkoreanischer Truppen an. Der Ticketverkauf ist geschlossen, der Preis wird voll erstattet. Ort und Uhrzeit folgen."
   },
   "hero": {
     "eyebrow": "Gangjeong Peace and Music Camp × Palästina-Befreiungsbewegung",
@@ -11,12 +11,15 @@
     "date_label": "Datum",
     "date_value": "Samstag, 19. September 2026, 18:00 – 20:00 Uhr",
     "venue_label": "Veranstaltungsort",
-    "venue_value": "Banjul (3. OG, 23 Samil-daero 17-gil, Jongno-gu, Seoul)",
+    "venue_value": "Straßen der Innenstadt von Seoul",
     "price_label": "Tickets",
     "price_value": "Vorverkauf 30.000 KRW · Abendkasse 35.000 KRW",
     "cta_reserve": "Ticket reservieren",
     "cta_support": "Spendenkonto ansehen",
-    "scroll_hint": "Nach unten scrollen"
+    "scroll_hint": "Nach unten scrollen",
+    "status_label": "Stand",
+    "status_value": "Ticketverkauf geschlossen · volle Erstattung, persönlich abgestimmt",
+    "cta_notice": "Vollständige Erklärung lesen"
   },
   "intro": {
     "heading": "Wir singen weiter",
@@ -123,11 +126,34 @@
   "venue": {
     "eyebrow": "Veranstaltungsort",
     "heading": "Anfahrt",
-    "name": "Banjul",
-    "address": "3. OG, 23 Samil-daero 17-gil, Jongno-gu, Seoul",
+    "name": "Ort wird noch bekannt gegeben",
+    "address": "Ort und Uhrzeit der Kundgebung werden auf dieser Seite bekannt gegeben, sobald sie feststehen.",
     "naver": "In Naver Maps öffnen",
     "kakao": "In Kakao Maps öffnen",
     "contact_heading": "Kontakt",
     "contact_cta": "Über KakaoTalk fragen"
+  },
+  "notice": {
+    "eyebrow": "Programmänderung",
+    "heading": "Das Gangjeong Peace and Music Camp geht auf die Straße, auf den Platz",
+    "subheading": "Gegen den Angriffskrieg der USA und Israels gegen den Iran und gegen die Entsendung südkoreanischer Truppen — zur Programmänderung des Konzerts Keep Singing for Palestine",
+    "refund_label": "Wenn ihr ein Ticket gebucht habt",
+    "refund_body": "Da aus dem Konzert am 19. September im Banjul die Teilnahme an einer Kundgebung auf der Straße wird, ist der Ticketverkauf geschlossen. Das Organisationskomitee meldet sich bei allen, die gebucht haben, persönlich und erstattet den vollen Ticketpreis. Ihr müsst nichts beantragen — wartet einfach auf unsere Nachricht.",
+    "para_1": "Im März dieses Jahres haben die USA und Israel den Iran angegriffen. Schon in den ersten Tagen des Krieges forderte Trump, dass Südkorea Truppen entsendet. Die Regierung, die zunächst erklärte, eine Entsendung nicht zu erwägen, spricht inzwischen davon, sie prüfe „mit dem nationalen Interesse an erster Stelle verschiedene Optionen“.",
+    "para_2": "Es wird erwartet, dass das Präsidialamt der Nationalversammlung noch vor den Chuseok-Feiertagen einen Zustimmungsantrag zur Truppenentsendung vorlegt und ihn im September rasch verabschieden lassen will. Die Führung der Demokratischen Partei hat ihren Mitgliedern untersagt, persönliche Positionen zu äußern, die People Power Party befürwortet die Entsendung nachdrücklich, und konservative Medien treiben die Stimmung in diese Richtung.",
+    "para_3": "Am Samstag, dem 12. September, fand in Seoul eine große Kundgebung gegen die Truppenentsendung statt. Von dort aus gilt es nun, vor Chuseok möglichst viele Bürgerinnen und Bürger zu organisieren und den Widerstand gegen die Entsendung dauerhaft sichtbar zu machen. Während die Zustimmungswerte der Regierung weiter fallen, ist der Ruf der auf dem Platz versammelten Menschen zugleich ein wirksames Mittel gegen die Entsendung und das letzte Bollwerk.",
+    "para_4": "Das Organisationskomitee des Gangjeong Peace and Music Camp wollte am Samstag, dem 19. September, im Seouler Club Banjul ein Friedenskonzert in Solidarität mit der palästinensischen Befreiungsbewegung veranstalten. Das Komitee ist jedoch zu dem Schluss gekommen, dass dieser Moment mehr verlangt als Solidarität durch Musik: Er verlangt, gemeinsam mit den Bürgerinnen und Bürgern auf den Platz zu gehen und zu handeln. Deshalb ändern wir das Programm des Konzerts Keep Singing for Palestine und schließen uns der Kundgebung gegen die Truppenentsendung an.",
+    "para_5": "Über die Teilnahme an der Kundgebung hinaus halten wir es für das, was das Gangjeong Peace and Music Camp kann und tun muss: vor und nach der Kundgebung und in den vielfältigen Zwischenräumen, die sich um sie herum öffnen, viele Stimmen gegen den Krieg und für den Frieden hörbar zu machen und zu bündeln. Bislang ist weder angekündigt, ob die Kundgebung gegen die Truppenentsendung am 19. September stattfindet, noch zu welcher Zeit; am selben Tag sind außerdem eine Kundgebung für die Befreiung Palästinas und der Klimagerechtigkeitsmarsch geplant. Angesichts der beweglichen Lage vor Ort wollen wir den Auftritt auf der Straße und die Teilnahme an der Kundgebung miteinander verbinden. Die Einzelheiten teilen wir mit, sobald sie feststehen.",
+    "para_6": "Die Kolonialherrschaft und der Völkermord am palästinensischen Volk und der von den USA und Israel begonnene Angriffskrieg gegen den Iran sind keineswegs getrennte Angelegenheiten. Es sind Tragödien desselben Zusammenhangs und eine Kette von Angriffshandlungen, in denen imperialistischer Militarismus das Leben und den Frieden der Menschen niedertritt und Gewalt rechtfertigt. Für den Frieden in Palästina zu singen heißt, sich dem Angriffskrieg gegen den Iran zu widersetzen, und es ist untrennbar damit verbunden, die Entsendung südkoreanischer Truppen zu verhindern.",
+    "para_7": "Jetzt, da zu befürchten ist, dass der Antrag noch vor Chuseok eingebracht wird, kann allein die Stimme der auf dem Platz versammelten Menschen das Fortrasen dieses gefährlichen Angriffskriegs aufhalten. Das Gangjeong Peace and Music Camp nimmt die verbindende Kraft der Musik mit und geht auf die Straße, auf den Platz. Kommt mit, damit die Lieder für die Befreiung Palästinas als eine Stimme mit dem Ruf gegen den Krieg im Iran und gegen die Entsendung südkoreanischer Truppen erklingen.",
+    "audience_heading": "An alle, die mit uns kommen",
+    "block_musicians_heading": "An die Musikerinnen und Musiker",
+    "block_musicians_body": "Sobald Ort und Uhrzeit des Auftritts auf der Straße feststehen, melden wir uns und stimmen alles Weitere ab. Die Bedingungen sind für einen Auftritt vielleicht nicht ideal, aber wir bitten euch, im Geist der Solidarität dabei zu sein. Die vereinbarten Gagen werden wie besprochen ausgezahlt.",
+    "block_speakers_heading": "An die Rednerinnen und Redner",
+    "block_speakers_body": "Sobald Ort und Uhrzeit des Auftritts auf der Straße feststehen, melden wir uns und stimmen alles Weitere ab. Wir bitten euch, soweit es euch möglich ist, vor Ort zu sprechen und an der Kundgebung gegen die Truppenentsendung teilzunehmen.",
+    "block_guests_heading": "An das Publikum",
+    "block_guests_body": "Es tut uns leid, dass das geplante Konzert geändert wurde. Das Organisationskomitee meldet sich bei allen, die gebucht haben, persönlich und erstattet den vollen Ticketpreis. Ort und Uhrzeit des Auftritts auf der Straße geben wir bekannt, sobald sie feststehen. Wir bitten euch, soweit es euch möglich ist, beim Auftritt auf der Straße und bei der Kundgebung gegen die Truppenentsendung dabei zu sein.",
+    "block_host_heading": "An Banjul",
+    "block_host_body": "Ihr habt uns euren Raum im Geist der Solidarität überlassen, und es tut uns aufrichtig leid, die Buchung so kurzfristig abzusagen. Wir werden das nicht vergessen und nach anderen Wegen suchen — und sie auch gehen —, um dazu beizutragen, dass euer Raum bestehen bleibt."
   }
 }

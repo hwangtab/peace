@@ -26,6 +26,14 @@ export const PALETTE = {
   muted: '#9C958B',
 } as const;
 
+/**
+ * 집회·공연 장소 확정 여부.
+ *
+ * 2026-09-13 기준 거리 공연 장소와 시간이 아직 미정이라 지도 링크를 내려둔다.
+ * 장소가 정해지면 아래 VENUE_QUERY 를 새 주소로 바꾸고 이 값을 true 로 되돌린다.
+ */
+export const LOCATION_CONFIRMED = false;
+
 /** 지도 검색 링크(장소명 검색 — 좌표가 바뀌어도 깨지지 않는다). */
 export const VENUE_QUERY = '서울 종로구 삼일대로17길 23';
 export const NAVER_MAP_URL = `https://map.naver.com/p/search/${encodeURIComponent(VENUE_QUERY)}`;

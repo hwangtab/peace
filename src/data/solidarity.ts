@@ -55,11 +55,13 @@ const eventStructs: SolidarityEventStruct[] = [
     ],
     organizers: '강정피스앤뮤직캠프 × 팔레스타인해방운동',
     contact: { name: '황경하', url: 'https://open.kakao.com/me/Alfseoul' },
-    startDate: '2026-09-19T18:00:00+09:00',
+    // 기획 변경(2026-09-13): 반쥴 대관을 취소하고 거리 집회에 합류한다.
+    // 시간이 미정이라 날짜만 두고, 확정되면 시각과 streetAddress 를 채운다.
+    startDate: '2026-09-19',
     address: {
-      streetAddress: '삼일대로17길 23 3층',
+      streetAddress: '',
       addressLocality: '서울특별시',
-      addressRegion: '종로구',
+      addressRegion: '',
       addressCountry: 'KR',
     },
   },

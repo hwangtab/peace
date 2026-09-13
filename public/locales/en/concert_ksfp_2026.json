@@ -1,7 +1,7 @@
 {
   "seo": {
     "title": "Keep Singing for Palestine — Peace Concert | Gangjeong Peace and Music Camp",
-    "description": "Saturday, September 19, 2026, 18:00 at Banjul, Seoul. A peace concert by Gangjeong Peace and Music Camp × the Palestine liberation movement. Lee Seo-young, Lee Hyeong-ju, Moredo Saturday, MOMO. Advance tickets 30,000 KRW."
+    "description": "Saturday 19 September 2026, Seoul. The Gangjeong Peace and Music Camp has changed its plan for the Banjul concert and is joining the street rally against the deployment of South Korean troops. Bookings are closed and will be refunded in full. Place and time to be announced."
   },
   "hero": {
     "eyebrow": "Gangjeong Peace and Music Camp × Palestine Liberation Movement",
@@ -11,12 +11,15 @@
     "date_label": "Date",
     "date_value": "Saturday, September 19, 2026, 18:00 – 20:00",
     "venue_label": "Venue",
-    "venue_value": "Banjul (3F, 23 Samil-daero 17-gil, Jongno-gu, Seoul)",
+    "venue_value": "Streets of central Seoul",
     "price_label": "Tickets",
     "price_value": "Advance 30,000 KRW · At the door 35,000 KRW",
     "cta_reserve": "Reserve a ticket",
     "cta_support": "See the donation account",
-    "scroll_hint": "Scroll down"
+    "scroll_hint": "Scroll down",
+    "status_label": "Status",
+    "status_value": "Bookings closed · full refunds, arranged individually with each ticket holder",
+    "cta_notice": "Read the full statement"
   },
   "intro": {
     "heading": "We keep singing",
@@ -123,11 +126,34 @@
   "venue": {
     "eyebrow": "Venue",
     "heading": "Getting there",
-    "name": "Banjul",
-    "address": "3F, 23 Samil-daero 17-gil, Jongno-gu, Seoul",
+    "name": "Location to be announced",
+    "address": "The place and time of the rally will be announced on this page as soon as they are confirmed.",
     "naver": "Open in Naver Map",
     "kakao": "Open in Kakao Map",
     "contact_heading": "Contact",
     "contact_cta": "Ask on KakaoTalk"
+  },
+  "notice": {
+    "eyebrow": "Change of plan",
+    "heading": "Gangjeong Peace and Music Camp is taking to the streets and the squares",
+    "subheading": "Against the US–Israeli war of aggression on Iran and the deployment of South Korean troops — on the change of plan for the Keep Singing for Palestine concert",
+    "refund_label": "If you booked a ticket",
+    "refund_body": "Now that the 19 September concert at Banjul has become participation in a street rally, ticket bookings are closed. The organising committee will contact everyone who booked, one by one, and refund the full ticket price. There is no need to apply — please wait for us to reach you.",
+    "para_1": "In March this year, the United States and Israel invaded Iran. From the earliest days of the war, Trump demanded that South Korea send troops. The government, which at first said it was not considering a deployment, has recently shifted to saying it is \"reviewing various options with the national interest as the top priority.\"",
+    "para_2": "There are forecasts that the presidential office will put a deployment consent motion before the National Assembly ahead of the Chuseok holiday and push it through within September. The leadership of the Democratic Party has ordered its members not to voice individual positions, the People Power Party actively supports the deployment, and conservative media are driving public opinion in favour of it.",
+    "para_3": "On Saturday 12 September, a large rally against the deployment was held in Seoul. Taking that as our starting point, we must now organise as many citizens as possible before Chuseok and show sustained momentum against the deployment. With the current government’s approval rating continuing to fall, the cry of the people gathered in the square is both an effective way to stop the deployment and the last line of defence.",
+    "para_4": "The organising committee of the Gangjeong Peace and Music Camp had planned to hold a peace concert in solidarity with the Palestinian liberation movement on Saturday 19 September at Banjul in Seoul. But the committee judged that this moment calls for more than solidarity through music — it calls for going out into the square and acting together with our fellow citizens. We are therefore changing the plan for the Keep Singing for Palestine concert and will join the anti-deployment rally in the square.",
+    "para_5": "Beyond taking part in the rally, we believe that raising and gathering many voices for peace and against war — before and after the rally, and in the various in-between spaces that open up around it — is what the Gangjeong Peace and Music Camp can and must do. As of now, it has not been announced whether the anti-deployment rally will be held on 19 September or on what schedule, and a rally for the liberation of Palestine and the Climate Justice March are also planned for the same day. Taking the fluid situation on the ground into account, we intend to combine performing in the street with joining the anti-deployment rally. We will share the details as soon as they are settled.",
+    "para_6": "The colonial rule and genocide inflicted on the Palestinian people and the war of aggression against Iran launched by the United States and Israel are by no means separate matters. They are tragedies of the same order and a chain of acts of aggression, in which imperialist militarism tramples the lives and peace of people and justifies violence. To sing for peace in Palestine is to oppose the war of aggression against Iran, and it is firmly tied to stopping the deployment of South Korean troops.",
+    "para_7": "Now, when we fear the deployment motion will be tabled before Chuseok, only the voices of the people gathered in the square can stop this dangerous war of aggression from running out of control. The Gangjeong Peace and Music Camp takes up the power of solidarity that music carries and goes out to the streets and the squares. Join us, so that songs for the liberation of Palestine may ring out as one with the cry against the war on Iran and against sending South Korean troops.",
+    "audience_heading": "To everyone joining us",
+    "block_musicians_heading": "To the musicians",
+    "block_musicians_body": "We will stay in touch and confirm details as soon as the place and time of the street performance are set. The conditions may not be well suited to a performance, but we ask you to join us in a spirit of solidarity. The fees we agreed on will be paid as arranged.",
+    "block_speakers_heading": "To the speakers",
+    "block_speakers_body": "We will stay in touch and confirm details as soon as the place and time of the street performance are set. As far as you are able, we ask you to speak at the event and to join the rally against the deployment.",
+    "block_guests_heading": "To the audience",
+    "block_guests_body": "We are sorry that the concert you were expecting has changed. The organising committee will contact everyone who booked, one by one, and refund the full ticket price. We will also let you know the place and time of the street performance as soon as they are confirmed. As far as you are able, we ask you to join us at the street performance and at the rally against the deployment.",
+    "block_host_heading": "To Banjul",
+    "block_host_body": "You offered us your space in a spirit of solidarity, and we are truly sorry to cancel the booking at such short notice. We will not forget this, and we will look for and act on other ways to help your space keep going."
   }
 }

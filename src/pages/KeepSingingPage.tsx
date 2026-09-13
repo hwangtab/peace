@@ -13,13 +13,11 @@ import Grain from '@/components/solidarity/keepSinging/Grain';
 import Hero from '@/components/solidarity/keepSinging/Hero';
 import Intro from '@/components/solidarity/keepSinging/Intro';
 import Lineup from '@/components/solidarity/keepSinging/Lineup';
-import Tickets from '@/components/solidarity/keepSinging/Tickets';
-import ReservationForm from '@/components/solidarity/keepSinging/ReservationForm';
-import ReservationLookup from '@/components/solidarity/keepSinging/ReservationLookup';
+import Notice from '@/components/solidarity/keepSinging/Notice';
 import Support from '@/components/solidarity/keepSinging/Support';
 import Venue from '@/components/solidarity/keepSinging/Venue';
 import { FlagRule } from '@/components/solidarity/keepSinging/DarkUI';
-import { EVENT_SLUG, TICKET_PRICE } from '@/components/solidarity/keepSinging/constants';
+import { EVENT_SLUG } from '@/components/solidarity/keepSinging/constants';
 
 interface Props {
   initialMusicians?: Musician[];
@@ -64,7 +62,7 @@ const KeepSingingPage: React.FC<Props> = ({ initialMusicians = [], initialLocale
   const structuredData = useMemo(() => {
     const schemas: object[] = [];
     if (event) {
-      schemas.push(buildSolidarityEventSchema(event, { price: TICKET_PRICE, url: pageUrl }));
+      schemas.push(buildSolidarityEventSchema(event, { url: pageUrl, rescheduled: true }));
     }
     schemas.push(
       getBreadcrumbSchema(breadcrumbs),
@@ -106,13 +104,12 @@ const KeepSingingPage: React.FC<Props> = ({ initialMusicians = [], initialLocale
 
         <div className="relative z-[2]">
           <Hero />
+          <Notice />
+          <FlagRule />
           <Intro />
           <FlagRule />
           <Lineup musicians={musicians} />
           <FlagRule />
-          <Tickets />
-          <ReservationForm />
-          <ReservationLookup />
           <Support />
           <Venue />
 
