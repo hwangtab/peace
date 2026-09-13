@@ -1,18 +1,15 @@
 import React from 'react';
 import { useTranslation } from 'next-i18next';
-import { DarkCard, DarkSection, FlagRule, Reveal, SectionHeading } from './DarkUI';
+import { DarkCard, DarkSection, Reveal, SectionHeading } from './DarkUI';
 
-const PARA_KEYS = [
-  'notice.para_1',
-  'notice.para_2',
-  'notice.para_3',
-  'notice.para_4',
-  'notice.para_5',
-  'notice.para_6',
-  'notice.para_7',
-] as const;
+/** 기획 변경 배경 — 계획(①②③) 앞에 오는 문단. */
+const LEAD_PARA_KEYS = ['notice.para_1', 'notice.para_2', 'notice.para_3'] as const;
 
-const BLOCK_KEYS = ['musicians', 'speakers', 'guests', 'host'] as const;
+/** 바뀐 기획 세 가지. */
+const PLAN_KEYS = ['notice.plan_1', 'notice.plan_2', 'notice.plan_3'] as const;
+
+/** 계획 뒤에 오는 맺음 문단. */
+const CLOSING_PARA_KEYS = ['notice.para_4', 'notice.para_5'] as const;
 
 /**
  * 기획 변경 공지 + 취지문.
@@ -46,7 +43,7 @@ const Notice: React.FC = () => {
 
       <Reveal delayIndex={1} className="mt-12">
         <div className="space-y-5">
-          {PARA_KEYS.map((key) => (
+          {LEAD_PARA_KEYS.map((key) => (
             <p key={key} className="text-sm leading-relaxed text-[#D7D1C7] md:text-base">
               {t(key)}
             </p>
@@ -54,21 +51,32 @@ const Notice: React.FC = () => {
         </div>
       </Reveal>
 
-      <Reveal delayIndex={2}>
-        <FlagRule className="my-12" />
-        <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#9C958B]">
-          {t('notice.audience_heading')}
+      {/* 바뀐 기획 — 본문보다 한 단 들여 눈에 띄게 둔다. */}
+      <Reveal delayIndex={2} className="mt-9">
+        <ol className="space-y-4">
+          {PLAN_KEYS.map((key, i) => (
+            <li key={key} className="flex gap-4">
+              <span
+                aria-hidden="true"
+                className="mt-[0.1em] shrink-0 font-serif text-lg text-[#E2566B] md:text-xl"
+              >
+                {`${i + 1}.`}
+              </span>
+              <span className="text-sm leading-relaxed text-[#F5F1EA] md:text-base">{t(key)}</span>
+            </li>
+          ))}
+        </ol>
+        <p className="mt-7 border-l border-[#CE1126]/60 pl-5 text-sm leading-relaxed text-[#9C958B] md:text-base">
+          {t('notice.plan_note')}
         </p>
-        <div className="mt-7 space-y-7">
-          {BLOCK_KEYS.map((key) => (
-            <div key={key} className="border-l border-[#CE1126]/60 pl-5">
-              <h3 className="font-serif text-lg text-[#F5F1EA] md:text-xl">
-                {t(`notice.block_${key}_heading`)}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#D7D1C7] md:text-base">
-                {t(`notice.block_${key}_body`)}
-              </p>
-            </div>
+      </Reveal>
+
+      <Reveal delayIndex={3} className="mt-9">
+        <div className="space-y-5">
+          {CLOSING_PARA_KEYS.map((key) => (
+            <p key={key} className="text-sm leading-relaxed text-[#D7D1C7] md:text-base">
+              {t(key)}
+            </p>
           ))}
         </div>
       </Reveal>

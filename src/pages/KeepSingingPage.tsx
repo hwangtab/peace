@@ -1,28 +1,17 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 import PageLayout from '@/components/layout/PageLayout';
-import { Musician } from '@/types/musician';
-import { getMusicians } from '@/api/musicians';
-import { useLocalizedResource } from '@/hooks/useLocalizedResource';
 import { getSolidarityEvents } from '@/data/solidarity';
 import { getFullUrl } from '@/config/env';
 import { getBreadcrumbSchema, getWebPageSchema } from '@/utils/structuredData';
 import { buildSolidarityEventSchema } from '@/utils/buildSolidaritySchemas';
 import Grain from '@/components/solidarity/keepSinging/Grain';
 import Hero from '@/components/solidarity/keepSinging/Hero';
-import Intro from '@/components/solidarity/keepSinging/Intro';
-import Lineup from '@/components/solidarity/keepSinging/Lineup';
 import Notice from '@/components/solidarity/keepSinging/Notice';
 import Support from '@/components/solidarity/keepSinging/Support';
-import Venue from '@/components/solidarity/keepSinging/Venue';
 import { FlagRule } from '@/components/solidarity/keepSinging/DarkUI';
 import { EVENT_SLUG } from '@/components/solidarity/keepSinging/constants';
-
-interface Props {
-  initialMusicians?: Musician[];
-  initialLocale?: string;
-}
 
 /**
  * Keep Singing for Palestine (2026-09-19) 공개 페이지.
@@ -31,18 +20,9 @@ interface Props {
  * #0a0a0a 로 덮고, 마지막 섹션(Venue)이 그 배경을 푸터 직전까지 칠하도록
  * `disableBottomPadding` 을 켠다(PageLayout 의 하단 배경색 띠 버그 방지).
  */
-const KeepSingingPage: React.FC<Props> = ({ initialMusicians = [], initialLocale = 'ko' }) => {
-  const { t, i18n } = useTranslation('concert_ksfp_2026');
+const KeepSingingPage: React.FC = () => {
+  const { t } = useTranslation('concert_ksfp_2026');
   const { t: tCommon } = useTranslation('translation');
-
-  const fetchMusicians = useCallback((locale: string) => getMusicians(locale), []);
-  const musiciansResource = useLocalizedResource<Musician>({
-    initialData: initialMusicians,
-    initialLocale,
-    currentLocale: i18n.language,
-    fetchResource: fetchMusicians,
-  });
-  const musicians = musiciansResource.isLoading ? initialMusicians : musiciansResource.data;
 
   const pageUrl = getFullUrl(`/solidarity/${EVENT_SLUG}`);
   const event = useMemo(
@@ -106,12 +86,7 @@ const KeepSingingPage: React.FC<Props> = ({ initialMusicians = [], initialLocale
           <Hero />
           <Notice />
           <FlagRule />
-          <Intro />
-          <FlagRule />
-          <Lineup musicians={musicians} />
-          <FlagRule />
           <Support />
-          <Venue />
 
           <div className="pb-16 text-center md:pb-24">
             <Link
