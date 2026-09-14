@@ -10,6 +10,7 @@ import Grain from '@/components/solidarity/keepSinging/Grain';
 import Hero from '@/components/solidarity/keepSinging/Hero';
 import Notice from '@/components/solidarity/keepSinging/Notice';
 import Support from '@/components/solidarity/keepSinging/Support';
+import Venue from '@/components/solidarity/keepSinging/Venue';
 import { FlagRule } from '@/components/solidarity/keepSinging/DarkUI';
 import { EVENT_SLUG } from '@/components/solidarity/keepSinging/constants';
 
@@ -87,6 +88,9 @@ const KeepSingingPage: React.FC = () => {
           <Notice />
           <FlagRule />
           <Support />
+          {/* 장소가 확정돼(덕수궁 돌담길) 오시는 길을 되살린다 — f7786143이 "임시 제거"한
+              자리다. 거리집회라 지도 링크가 실내 공연보다 오히려 더 필요하다. */}
+          <Venue />
 
           <div className="pb-16 text-center md:pb-24">
             <Link
