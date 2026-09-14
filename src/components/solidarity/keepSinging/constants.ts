@@ -14,6 +14,12 @@ export const TICKET_PRICE = 30000;
 export const MAX_QUANTITY = 4;
 export const MIN_QUANTITY = 1;
 
+/**
+ * 후원 페이지 — 스튜디오 놀에서 연다(토스 결제·리워드·환불이 이미 갖춰져 있다).
+ * 2026-09-14에 계좌 입금 안내를 대체했다.
+ */
+export const FUNDING_URL = 'https://studionol.co.kr/ko/funding/keep-singing-for-palestine';
+
 /** 후원·입금 계좌. 화면 표기와 복사 텍스트가 같다. */
 export const ACCOUNT_TEXT = '농협 352-2296-3136-63 장O나';
 

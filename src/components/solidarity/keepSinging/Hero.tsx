@@ -84,11 +84,10 @@ const Hero: React.FC = () => {
             ))}
           </dl>
 
+          {/* 예매 버튼은 2026-09-14에 없앴다 — 거리집회로 바뀌어 팔 티켓이 없고,
+              #reservation 섹션 자체가 사라져 누르면 아무 데도 가지 않았다. */}
           <div className="mt-10 flex flex-wrap gap-3">
-            <DarkLinkButton href="#reservation">{t('hero.cta_reserve')}</DarkLinkButton>
-            <DarkLinkButton href="#support" variant="outline">
-              {t('hero.cta_support')}
-            </DarkLinkButton>
+            <DarkLinkButton href="#support">{t('hero.cta_support')}</DarkLinkButton>
           </div>
         </Reveal>
       </div>

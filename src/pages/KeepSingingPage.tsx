@@ -13,13 +13,10 @@ import Grain from '@/components/solidarity/keepSinging/Grain';
 import Hero from '@/components/solidarity/keepSinging/Hero';
 import Intro from '@/components/solidarity/keepSinging/Intro';
 import Lineup from '@/components/solidarity/keepSinging/Lineup';
-import Tickets from '@/components/solidarity/keepSinging/Tickets';
-import ReservationForm from '@/components/solidarity/keepSinging/ReservationForm';
-import ReservationLookup from '@/components/solidarity/keepSinging/ReservationLookup';
 import Support from '@/components/solidarity/keepSinging/Support';
 import Venue from '@/components/solidarity/keepSinging/Venue';
 import { FlagRule } from '@/components/solidarity/keepSinging/DarkUI';
-import { EVENT_SLUG, TICKET_PRICE } from '@/components/solidarity/keepSinging/constants';
+import { EVENT_SLUG } from '@/components/solidarity/keepSinging/constants';
 
 interface Props {
   initialMusicians?: Musician[];
@@ -64,7 +61,9 @@ const KeepSingingPage: React.FC<Props> = ({ initialMusicians = [], initialLocale
   const structuredData = useMemo(() => {
     const schemas: object[] = [];
     if (event) {
-      schemas.push(buildSolidarityEventSchema(event, { price: TICKET_PRICE, url: pageUrl }));
+      // price를 넘기지 않으면 무료 행사(offers.price 0)로 나간다 — 거리집회라 참가비가
+      // 없다. 티켓 가격을 남겨 두면 검색 결과가 팔지 않는 티켓을 광고한다.
+      schemas.push(buildSolidarityEventSchema(event, { url: pageUrl }));
     }
     schemas.push(
       getBreadcrumbSchema(breadcrumbs),
@@ -110,9 +109,9 @@ const KeepSingingPage: React.FC<Props> = ({ initialMusicians = [], initialLocale
           <FlagRule />
           <Lineup musicians={musicians} />
           <FlagRule />
-          <Tickets />
-          <ReservationForm />
-          <ReservationLookup />
+          {/* 티켓·예매 섹션은 2026-09-14에 내렸다 — 실내 유료 공연이 거리집회로 바뀌면서
+              판매할 티켓이 없어졌다. 컴포넌트와 예매 API·테이블은 남겨 둔다(다른 연대
+              공연에 다시 쓴다). 예매 신청은 0건이라 환불 대상도 없었다. */}
           <Support />
           <Venue />
 
