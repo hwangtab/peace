@@ -14,6 +14,12 @@ export const TICKET_PRICE = 30000;
 export const MAX_QUANTITY = 4;
 export const MIN_QUANTITY = 1;
 
+/**
+ * 후원 페이지 — 스튜디오 놀에서 연다(토스 결제·리워드·환불이 이미 갖춰져 있다).
+ * 금액에 따라 앨범 음원을 리워드로 보낸다.
+ */
+export const FUNDING_URL = 'https://studionol.co.kr/ko/funding/keep-singing-for-palestine';
+
 /** 후원·입금 계좌. 화면 표기와 복사 텍스트가 같다. */
 export const ACCOUNT_TEXT = '농협 352-2296-3136-63 장O나';
 
@@ -29,13 +35,13 @@ export const PALETTE = {
 /**
  * 집회·공연 장소 확정 여부.
  *
- * 2026-09-13 기준 거리 공연 장소와 시간이 아직 미정이라 지도 링크를 내려둔다.
- * 장소가 정해지면 아래 VENUE_QUERY 를 새 주소로 바꾸고 이 값을 true 로 되돌린다.
+ * 2026-09-14에 덕수궁 돌담길로 확정돼 지도 링크를 되살렸다(VENUE_QUERY 도 함께 바꿨다).
+ * 장소가 또 바뀌면 둘을 함께 고쳐야 한다 — 플래그만 켜고 검색어를 두면 없는 곳을 가리킨다.
  */
-export const LOCATION_CONFIRMED = false;
+export const LOCATION_CONFIRMED = true;
 
 /** 지도 검색 링크(장소명 검색 — 좌표가 바뀌어도 깨지지 않는다). */
-export const VENUE_QUERY = '서울 종로구 삼일대로17길 23';
+export const VENUE_QUERY = '덕수궁 돌담길';
 export const NAVER_MAP_URL = `https://map.naver.com/p/search/${encodeURIComponent(VENUE_QUERY)}`;
 export const KAKAO_MAP_URL = `https://map.kakao.com/?q=${encodeURIComponent(VENUE_QUERY)}`;
 

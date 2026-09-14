@@ -56,12 +56,13 @@ const eventStructs: SolidarityEventStruct[] = [
     organizers: '강정피스앤뮤직캠프 × 팔레스타인해방운동',
     contact: { name: '황경하', url: 'https://open.kakao.com/me/Alfseoul' },
     // 기획 변경(2026-09-13): 반쥴 대관을 취소하고 거리 집회에 합류한다.
-    // 시간이 미정이라 날짜만 두고, 확정되면 시각과 streetAddress 를 채운다.
-    startDate: '2026-09-19',
+    // 2026-09-14에 장소·시각이 확정돼 채웠다. 이 값이 MusicEvent.location·startDate로
+    // 나가므로 비워 두면 검색 결과가 장소 없는 행사를 보여준다.
+    startDate: '2026-09-19T14:00:00+09:00',
     address: {
-      streetAddress: '',
+      streetAddress: '덕수궁길 (덕수궁 대한문 옆 돌담길)',
       addressLocality: '서울특별시',
-      addressRegion: '',
+      addressRegion: '중구',
       addressCountry: 'KR',
     },
   },
