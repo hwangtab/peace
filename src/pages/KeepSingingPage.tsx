@@ -76,9 +76,9 @@ const KeepSingingPage: React.FC<Props> = ({ initialMusicians = [], initialLocale
         keywords: [
           'Keep Singing for Palestine',
           '팔레스타인 연대 공연',
-          '평화 콘서트',
+          '팔레스타인 연대 집회',
           '강정피스앤뮤직캠프',
-          '반쥴 공연',
+          '덕수궁 돌담길 집회',
           'Palestine solidarity concert Seoul',
         ],
       })

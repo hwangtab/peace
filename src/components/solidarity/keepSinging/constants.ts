@@ -33,7 +33,7 @@ export const PALETTE = {
 } as const;
 
 /** 지도 검색 링크(장소명 검색 — 좌표가 바뀌어도 깨지지 않는다). */
-export const VENUE_QUERY = '서울 종로구 삼일대로17길 23';
+export const VENUE_QUERY = '덕수궁 돌담길';
 export const NAVER_MAP_URL = `https://map.naver.com/p/search/${encodeURIComponent(VENUE_QUERY)}`;
 export const KAKAO_MAP_URL = `https://map.kakao.com/?q=${encodeURIComponent(VENUE_QUERY)}`;
 

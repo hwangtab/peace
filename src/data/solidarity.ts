@@ -55,11 +55,14 @@ const eventStructs: SolidarityEventStruct[] = [
     ],
     organizers: '강정피스앤뮤직캠프 × 팔레스타인해방운동',
     contact: { name: '황경하', url: 'https://open.kakao.com/me/Alfseoul' },
-    startDate: '2026-09-19T18:00:00+09:00',
+    // 2026-09-14: 반쥴 실내 유료 공연 → 덕수궁 돌담길 거리집회로 바뀌었다.
+    // 이 값이 구조화 데이터(MusicEvent.location)로 나가므로 틀리면 검색 결과가
+    // 없는 장소로 사람을 보낸다.
+    startDate: '2026-09-19T14:00:00+09:00',
     address: {
-      streetAddress: '삼일대로17길 23 3층',
+      streetAddress: '덕수궁길 (덕수궁 대한문 옆 돌담길)',
       addressLocality: '서울특별시',
-      addressRegion: '종로구',
+      addressRegion: '중구',
       addressCountry: 'KR',
     },
   },
