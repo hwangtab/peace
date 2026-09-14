@@ -24,9 +24,13 @@ const Support: React.FC = () => {
 
       <Reveal>
         <DarkCard className="text-center">
-          <p className="text-sm leading-relaxed text-[#D7D1C7] md:text-base">{t('support.intro')}</p>
+          <p className="text-sm leading-relaxed text-[#D7D1C7] md:text-base">
+            {t('support.intro')}
+          </p>
           <FlagRule className="my-7" />
-          <p className="text-sm leading-relaxed text-[#D7D1C7] md:text-base">{t('support.reward')}</p>
+          <p className="text-sm leading-relaxed text-[#D7D1C7] md:text-base">
+            {t('support.reward')}
+          </p>
           {/* 다른 사이트(studionol.co.kr)로 나가는 링크라 새 탭으로 연다 — 집회 현장에서
               QR로 들어온 사람이 이 페이지를 잃지 않게. */}
           <a
