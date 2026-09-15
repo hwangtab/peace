@@ -37,10 +37,10 @@
     },
     "concert_banner": {
       "label": "9月19日,首尔",
-      "title": "Keep Singing for Palestine 和平音乐会",
+      "title": "Keep Singing for Palestine 9·19街头集会",
       "status": "预订开放中",
       "cta": "预订",
-      "image_alt": "Keep Singing for Palestine 和平音乐会海报"
+      "image_alt": "Keep Singing for Palestine 海报"
     }
   },
   "footer": {
@@ -289,8 +289,8 @@
     "back_to_list": "返回联合演出列表",
     "detail_cta": "查看活动详情",
     "event_ksfp": {
-      "poster_alt": "Keep Singing for Palestine 音乐会海报 — 映照巴勒斯坦国旗色彩的CD",
-      "title": "Keep Singing for Palestine — 为巴勒斯坦解放而举办的和平音乐会",
+      "poster_alt": "Keep Singing for Palestine 海报 — 映照巴勒斯坦国旗色彩的CD",
+      "title": "Keep Singing for Palestine — 为巴勒斯坦解放而举行的9·19街头集会",
       "date": "2026年9月19日(周六) 14:00",
       "venue": "德寿宫石墙路",
       "venue_address": "首尔市中区德寿宫街（大汉门旁）",

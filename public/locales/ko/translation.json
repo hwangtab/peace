@@ -37,10 +37,10 @@
     },
     "concert_banner": {
       "label": "9.19 서울",
-      "title": "Keep Singing for Palestine 평화 콘서트",
+      "title": "Keep Singing for Palestine 9·19 거리집회",
       "status": "예매 열림",
       "cta": "예매하기",
-      "image_alt": "Keep Singing for Palestine 평화 콘서트 포스터"
+      "image_alt": "Keep Singing for Palestine 포스터"
     }
   },
   "footer": {
@@ -289,8 +289,8 @@
     "back_to_list": "연대공연 목록으로",
     "detail_cta": "행사 자세히 보기",
     "event_ksfp": {
-      "poster_alt": "Keep Singing for Palestine 평화 콘서트 포스터 — 팔레스타인 국기색이 반사되는 CD",
-      "title": "Keep Singing for Palestine — 팔레스타인 해방을 위한 평화 콘서트",
+      "poster_alt": "Keep Singing for Palestine 포스터 — 팔레스타인 국기색이 반사되는 CD",
+      "title": "Keep Singing for Palestine — 팔레스타인 해방을 위한 9·19 거리집회",
       "date": "2026년 9월 19일(토) 14:00",
       "venue": "덕수궁 돌담길",
       "venue_address": "서울 중구 덕수궁길 (덕수궁 대한문 옆 돌담길)",

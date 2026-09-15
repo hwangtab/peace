@@ -37,10 +37,10 @@
     },
     "concert_banner": {
       "label": "19 सितंबर, सियोल",
-      "title": "Keep Singing for Palestine शांति संगीत कार्यक्रम",
+      "title": "Keep Singing for Palestine — 19 सितंबर प्रदर्शन",
       "status": "आरक्षण खुले हैं",
       "cta": "आरक्षित करें",
-      "image_alt": "Keep Singing for Palestine शांति संगीत कार्यक्रम का पोस्टर"
+      "image_alt": "Keep Singing for Palestine पोस्टर"
     }
   },
   "footer": {
@@ -289,8 +289,8 @@
     "back_to_list": "एकजुटता संगीत सूची पर वापस जाएं",
     "detail_cta": "कार्यक्रम विवरण देखें",
     "event_ksfp": {
-      "poster_alt": "Keep Singing for Palestine संगीत कार्यक्रम का पोस्टर — फ़िलिस्तीनी झंडे के रंगों को दर्शाती एक सीडी",
-      "title": "Keep Singing for Palestine — फ़िलिस्तीन की मुक्ति के लिए एक शांति संगीत कार्यक्रम",
+      "poster_alt": "Keep Singing for Palestine पोस्टर — फ़िलिस्तीनी झंडे के रंगों को दर्शाती एक सीडी",
+      "title": "Keep Singing for Palestine — फ़िलिस्तीन की मुक्ति के लिए 19 सितंबर प्रदर्शन",
       "date": "Saturday, September 19, 2026, 14:00",
       "venue": "Deoksugung Stone Wall Road",
       "venue_address": "Deoksugung-gil, Jung-gu, Seoul (beside Daehanmun Gate)",

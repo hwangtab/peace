@@ -37,10 +37,10 @@
     },
     "concert_banner": {
       "label": "9月19日、ソウル",
-      "title": "Keep Singing for Palestine ピースコンサート",
+      "title": "Keep Singing for Palestine 9・19街頭集会",
       "status": "予約受付中",
       "cta": "予約する",
-      "image_alt": "Keep Singing for Palestine ピースコンサートポスター"
+      "image_alt": "Keep Singing for Palestine ポスター"
     }
   },
   "footer": {
@@ -289,8 +289,8 @@
     "back_to_list": "連帯公演一覧へ",
     "detail_cta": "イベント詳細を見る",
     "event_ksfp": {
-      "poster_alt": "Keep Singing for Palestine コンサートポスター — パレスチナの旗の色を映したCD",
-      "title": "Keep Singing for Palestine — パレスチナ解放のためのピースコンサート",
+      "poster_alt": "Keep Singing for Palestine ポスター — パレスチナの旗の色を映したCD",
+      "title": "Keep Singing for Palestine — パレスチナ解放のための9・19街頭集会",
       "date": "2026年9月19日(土) 14:00",
       "venue": "徳寿宮の石垣道",
       "venue_address": "ソウル特別市中区徳寿宮キル（大漢門の脇）",
