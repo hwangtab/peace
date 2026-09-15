@@ -52,6 +52,9 @@ const eventStructs: SolidarityEventStruct[] = [
       { name: '이형주', musicianId: null },
       { name: '모레도토요일', musicianId: 7 },
       { name: '모모', musicianId: 10 },
+      // 남수는 본래 같은 날 낮 집회의 연대 공연자였다. 행사가 통째로 거리집회가
+      // 되면서 낮과 저녁의 구분이 사라져 한 라인업으로 합친다.
+      { name: '남수', musicianId: 4 },
     ],
     organizers: '강정피스앤뮤직캠프 × 팔레스타인해방운동',
     contact: { name: '황경하', url: 'https://open.kakao.com/me/Alfseoul' },

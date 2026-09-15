@@ -1,7 +1,10 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 import PageLayout from '@/components/layout/PageLayout';
+import { Musician } from '@/types/musician';
+import { getMusicians } from '@/api/musicians';
+import { useLocalizedResource } from '@/hooks/useLocalizedResource';
 import { getSolidarityEvents } from '@/data/solidarity';
 import { getFullUrl } from '@/config/env';
 import { getBreadcrumbSchema, getWebPageSchema } from '@/utils/structuredData';
@@ -9,6 +12,7 @@ import { buildSolidarityEventSchema } from '@/utils/buildSolidaritySchemas';
 import Grain from '@/components/solidarity/keepSinging/Grain';
 import Hero from '@/components/solidarity/keepSinging/Hero';
 import Notice from '@/components/solidarity/keepSinging/Notice';
+import Lineup from '@/components/solidarity/keepSinging/Lineup';
 import Support from '@/components/solidarity/keepSinging/Support';
 import Venue from '@/components/solidarity/keepSinging/Venue';
 import { FlagRule } from '@/components/solidarity/keepSinging/DarkUI';
@@ -21,9 +25,23 @@ import { EVENT_SLUG } from '@/components/solidarity/keepSinging/constants';
  * #0a0a0a 로 덮고, 마지막 섹션(Venue)이 그 배경을 푸터 직전까지 칠하도록
  * `disableBottomPadding` 을 켠다(PageLayout 의 하단 배경색 띠 버그 방지).
  */
-const KeepSingingPage: React.FC = () => {
-  const { t } = useTranslation('concert_ksfp_2026');
+interface Props {
+  initialMusicians?: Musician[];
+  initialLocale?: string;
+}
+
+const KeepSingingPage: React.FC<Props> = ({ initialMusicians = [], initialLocale = 'ko' }) => {
+  const { t, i18n } = useTranslation('concert_ksfp_2026');
   const { t: tCommon } = useTranslation('translation');
+
+  const fetchMusicians = useCallback((locale: string) => getMusicians(locale), []);
+  const musiciansResource = useLocalizedResource<Musician>({
+    initialData: initialMusicians,
+    initialLocale,
+    currentLocale: i18n.language,
+    fetchResource: fetchMusicians,
+  });
+  const musicians = musiciansResource.isLoading ? initialMusicians : musiciansResource.data;
 
   const pageUrl = getFullUrl(`/solidarity/${EVENT_SLUG}`);
   const event = useMemo(
@@ -89,6 +107,9 @@ const KeepSingingPage: React.FC = () => {
         <div className="relative z-[2]">
           <Hero />
           <Notice />
+          {/* 명단이 확정돼 라인업을 되살린다 — f7786143이 "임시 제거"한 자리다.
+              거리집회로 바뀌어 낮·저녁 구분이 사라졌으므로 남수까지 한 줄로 묶는다. */}
+          <Lineup musicians={musicians} />
           <FlagRule />
           <Support />
           {/* 장소가 확정돼(덕수궁 돌담길) 오시는 길을 되살린다 — f7786143이 "임시 제거"한
