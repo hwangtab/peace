@@ -37,10 +37,10 @@
     },
     "concert_banner": {
       "label": "19 سبتمبر، سيول",
-      "title": "حفل سلام Keep Singing for Palestine",
+      "title": "Keep Singing for Palestine — مسيرة 19 سبتمبر",
       "status": "الحجوزات مفتوحة",
       "cta": "احجز",
-      "image_alt": "ملصق حفل سلام Keep Singing for Palestine"
+      "image_alt": "ملصق Keep Singing for Palestine"
     }
   },
   "footer": {
@@ -289,8 +289,8 @@
     "back_to_list": "العودة إلى قائمة الحفلات التضامنية",
     "detail_cta": "عرض تفاصيل الفعالية",
     "event_ksfp": {
-      "poster_alt": "ملصق حفل Keep Singing for Palestine — قرص مضغوط يعكس ألوان العلم الفلسطيني",
-      "title": "Keep Singing for Palestine — حفل سلام من أجل تحرير فلسطين",
+      "poster_alt": "ملصق Keep Singing for Palestine — قرص مضغوط يعكس ألوان العلم الفلسطيني",
+      "title": "Keep Singing for Palestine — مسيرة 19 سبتمبر من أجل تحرير فلسطين",
       "date": "Saturday, September 19, 2026, 14:00",
       "venue": "Deoksugung Stone Wall Road",
       "venue_address": "Deoksugung-gil, Jung-gu, Seoul (beside Daehanmun Gate)",

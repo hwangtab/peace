@@ -37,10 +37,10 @@
     },
     "concert_banner": {
       "label": "19 sept., Seúl",
-      "title": "Concierto por la paz Keep Singing for Palestine",
+      "title": "Keep Singing for Palestine — Concentración del 19 de septiembre",
       "status": "Reservas abiertas",
       "cta": "Reservar",
-      "image_alt": "Cartel del concierto por la paz Keep Singing for Palestine"
+      "image_alt": "Cartel de Keep Singing for Palestine"
     }
   },
   "footer": {
@@ -289,8 +289,8 @@
     "back_to_list": "Volver a conciertos solidarios",
     "detail_cta": "Ver detalles del evento",
     "event_ksfp": {
-      "poster_alt": "Cartel del concierto Keep Singing for Palestine — un CD que refleja los colores de la bandera palestina",
-      "title": "Keep Singing for Palestine — Un concierto por la paz para la liberación de Palestina",
+      "poster_alt": "Cartel de Keep Singing for Palestine — un CD que refleja los colores de la bandera palestina",
+      "title": "Keep Singing for Palestine — Concentración del 19 de septiembre por la liberación de Palestina",
       "date": "Saturday, September 19, 2026, 14:00",
       "venue": "Deoksugung Stone Wall Road",
       "venue_address": "Deoksugung-gil, Jung-gu, Seoul (beside Daehanmun Gate)",

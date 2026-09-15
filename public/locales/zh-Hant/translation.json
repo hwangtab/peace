@@ -37,10 +37,10 @@
     },
     "concert_banner": {
       "label": "9月19日,首爾",
-      "title": "Keep Singing for Palestine 和平音樂會",
+      "title": "Keep Singing for Palestine 9·19街頭集會",
       "status": "預訂開放中",
       "cta": "預訂",
-      "image_alt": "Keep Singing for Palestine 和平音樂會海報"
+      "image_alt": "Keep Singing for Palestine 海報"
     }
   },
   "footer": {
@@ -289,8 +289,8 @@
     "back_to_list": "返回聯合演出列表",
     "detail_cta": "查看活動詳情",
     "event_ksfp": {
-      "poster_alt": "Keep Singing for Palestine 音樂會海報 — 映照巴勒斯坦國旗色彩的CD",
-      "title": "Keep Singing for Palestine — 為巴勒斯坦解放而舉辦的和平音樂會",
+      "poster_alt": "Keep Singing for Palestine 海報 — 映照巴勒斯坦國旗色彩的CD",
+      "title": "Keep Singing for Palestine — 為巴勒斯坦解放而舉行的9·19街頭集會",
       "date": "2026年9月19日(週六) 14:00",
       "venue": "德壽宮石牆路",
       "venue_address": "首爾市中區德壽宮街（大漢門旁）",
