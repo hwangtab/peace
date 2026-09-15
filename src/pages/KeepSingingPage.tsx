@@ -53,13 +53,16 @@ const KeepSingingPage: React.FC = () => {
         url: pageUrl,
         ...(event ? { mainEntityId: `${getFullUrl('/solidarity')}#${event.id}` } : {}),
         primaryImageUrl: getFullUrl('/images-webp/solidarity/keep-singing-for-palestine.webp'),
+        // 반쥴 실내 공연이 덕수궁 돌담길 거리집회로 바뀌었다. 취소된 기획을 겨냥한
+        // 키워드('평화 콘서트'·'반쥴 공연')를 남겨 두면 구조화 데이터가 사실과 어긋난다.
         keywords: [
           'Keep Singing for Palestine',
-          '팔레스타인 연대 공연',
-          '평화 콘서트',
+          '팔레스타인 연대 집회',
+          '9·19 거리집회',
+          '파병 반대 집회',
+          '덕수궁 돌담길',
           '강정피스앤뮤직캠프',
-          '반쥴 공연',
-          'Palestine solidarity concert Seoul',
+          'Palestine solidarity rally Seoul',
         ],
       })
     );
