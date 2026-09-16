@@ -17,9 +17,9 @@ interface LineupArtist {
 }
 
 /**
- * 노출 순서: 이서영 · 이형주 · 모레도토요일 · 모모 · 남수.
+ * 노출 순서: 이서영 · 이형주 · 모모 · 남수.
  *
- * 앞 넷은 포스터 배치 순서다. 남수는 본래 같은 날 낮 집회의 연대 공연자였는데,
+ * 앞 셋은 포스터 배치 순서다(포스터에 함께 실린 모레도토요일은 출연하지 않는다). 남수는 본래 같은 날 낮 집회의 연대 공연자였는데,
  * 행사가 통째로 거리집회가 되면서 낮·저녁 구분이 사라져 라인업 끝에 붙인다.
  *
  * 이형주는 캠프 뮤지션 명단(musicians.json)에 없어 아래에서 따로 조립하므로
@@ -27,7 +27,6 @@ interface LineupArtist {
  */
 const MUSICIAN_ORDER: Array<{ key: string; id: number }> = [
   { key: 'leeseoyoung', id: 12 },
-  { key: 'moredo', id: 7 },
   { key: 'momo', id: 10 },
   { key: 'namsu', id: 4 },
 ];
@@ -76,7 +75,7 @@ const Lineup: React.FC<Props> = ({ musicians }) => {
       instagramUrl: IHYEONGJU_INSTAGRAM,
     };
 
-    // 이서영 다음에 이형주를 끼워 넣는다: 이서영, 이형주, 모레도토요일, 모모, 남수.
+    // 이서영 다음에 이형주를 끼워 넣는다: 이서영, 이형주, 모모, 남수.
     const [first, ...rest] = fromCamp;
     return [...(first ? [first] : []), ihyeongju, ...rest];
   }, [musicians, t]);
