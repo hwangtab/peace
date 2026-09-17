@@ -35,18 +35,23 @@ export const PALETTE = {
 /**
  * 집회·공연 장소 확정 여부.
  *
- * 2026-09-14에 덕수궁 돌담길로 확정돼 지도 링크를 되살렸다(VENUE_QUERY 도 함께 바꿨다).
- * 장소가 또 바뀌면 둘을 함께 고쳐야 한다 — 플래그만 켜고 검색어를 두면 없는 곳을 가리킨다.
+ * 2026-09-17에 광화문광장으로 재확정됐다(직전 공지는 덕수궁 돌담길 14:00였다).
+ * 장소가 또 바뀌면 VENUE_QUERY 도 함께 고쳐야 한다 — 플래그만 켜고 검색어를 두면
+ * 없는 곳을 가리킨다.
  */
 export const LOCATION_CONFIRMED = true;
 
 /** 지도 검색 링크(장소명 검색 — 좌표가 바뀌어도 깨지지 않는다). */
-export const VENUE_QUERY = '덕수궁 돌담길';
+export const VENUE_QUERY = '광화문광장';
 export const NAVER_MAP_URL = `https://map.naver.com/p/search/${encodeURIComponent(VENUE_QUERY)}`;
 export const KAKAO_MAP_URL = `https://map.kakao.com/?q=${encodeURIComponent(VENUE_QUERY)}`;
 
-/** 문의 창구 — 다른 연대공연과 동일. */
-export const CONTACT_URL = 'https://open.kakao.com/me/Alfseoul';
+/**
+ * 문의 창구 — 2026-09-17 확정 공지에서 전화(이상)로 바뀌었다. tel: 링크라 페이지 쪽
+ * (Venue.tsx)의 DarkLinkButton 은 external 을 켜지 않는다 — target=_blank 를 붙이면
+ * 빈 탭이 열렸다가 다이얼러가 뜨는 등 브라우저마다 동작이 달라진다.
+ */
+export const CONTACT_URL = 'tel:010-2379-0760';
 
 /**
  * 입력 중인 휴대폰 번호에 하이픈을 자동으로 넣는다.

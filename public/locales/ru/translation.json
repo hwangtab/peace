@@ -38,8 +38,8 @@
     "concert_banner": {
       "label": "19 сент., Сеул",
       "title": "Keep Singing for Palestine — митинг 19 сентября",
-      "status": "Бронирование открыто",
-      "cta": "Забронировать",
+      "status": "Митинг 19 сентября",
+      "cta": "Подробнее",
       "image_alt": "Афиша Keep Singing for Palestine"
     }
   },
@@ -291,9 +291,9 @@
     "event_ksfp": {
       "poster_alt": "Афиша Keep Singing for Palestine — диск, отражающий цвета палестинского флага",
       "title": "Keep Singing for Palestine — митинг 19 сентября за освобождение Палестины",
-      "date": "Saturday, September 19, 2026, 14:00",
-      "venue": "Deoksugung Stone Wall Road",
-      "venue_address": "Deoksugung-gil, Jung-gu, Seoul (beside Daehanmun Gate)",
+      "date": "Saturday, September 19, 2026, 17:30",
+      "venue": "Gwanghwamun Square area",
+      "venue_address": "172 Sejong-daero, Jongno-gu, Seoul (Gwanghwamun Square area)",
       "para_1": "Уходящий корнями в движение за мир деревни Кангджон на острове Чеджу, лагерь мира и музыки Кангджон, отмечающий уже 19-й год, объединил волю противостоять войне и сопротивляться языком музыки.",
       "para_2": "На этот раз мы привозим в Сеул песни мира, звучавшие в деревне Кангджон, чтобы разделить их вместе.",
       "para_3": "Чтобы поддержать гражданское общество Кореи, борющееся против 78-летней незаконной оккупации Палестины Израилем и геноцида, мы продолжаем петь без остановки!",

@@ -1,7 +1,7 @@
 {
   "seo": {
     "title": "Keep Singing for Palestine — Sept 19 Street Rally | Gangjeong Peace and Music Camp",
-    "description": "Saturday 19 September 2026, 14:00, Deoksugung Stone Wall Road. Gangjeong Peace and Music Camp joins a street rally singing against the deployment of South Korean troops and for the liberation of Palestine. Previous bookings are closed and will be refunded in full."
+    "description": "Saturday 19 September 2026, 17:30, Gwanghwamun Square area. Gangjeong Peace and Music Camp joins a street rally singing against the deployment of South Korean troops and for the liberation of Palestine. Previous bookings are closed and will be refunded in full."
   },
   "hero": {
     "eyebrow": "Gangjeong Peace and Music Camp × Palestine Liberation Movement",
@@ -9,9 +9,9 @@
     "subtitle": "A street rally singing for the liberation of Palestine and against troop deployment",
     "poster_alt": "Keep Singing for Palestine poster — a CD reflecting the colors of the Palestinian flag",
     "date_label": "Date",
-    "date_value": "Sat 19 Sep 2026, 14:00",
+    "date_value": "Sat 19 Sep 2026, 17:30–19:00",
     "venue_label": "Venue",
-    "venue_value": "Deoksugung Stone Wall Road",
+    "venue_value": "Gwanghwamun Square area",
     "price_label": "Tickets",
     "price_value": "Advance 30,000 KRW · At the door 35,000 KRW",
     "cta_reserve": "Reserve a ticket",
@@ -125,12 +125,12 @@
   "venue": {
     "eyebrow": "Venue",
     "heading": "Getting there",
-    "name": "Deoksugung Stone Wall Road",
-    "address": "Deoksugung-gil, Jung-gu, Seoul (beside Daehanmun Gate)",
+    "name": "Gwanghwamun Square area",
+    "address": "172 Sejong-daero, Jongno-gu, Seoul (Gwanghwamun Square area)",
     "naver": "Open in Naver Map",
     "kakao": "Open in Kakao Map",
     "contact_heading": "Contact",
-    "contact_cta": "Ask on KakaoTalk"
+    "contact_cta": "Call to ask — 010-2379-0760"
   },
   "notice": {
     "eyebrow": "Change of plan",
@@ -144,8 +144,20 @@
     "plan_1": "On 19 September we will hold a rally in the streets of Seoul where music and speech together carry our opposition to the deployment and our hope for the liberation of Palestine.",
     "plan_2": "We will take part in the rally against the deployment and, as soon as it ends, hold a guerrilla peace concert.",
     "plan_3": "We will join the emergency action rally of Korean civil society in solidarity with Palestine with performances and speeches, and march in the Climate Justice March under our banner.",
-    "plan_note": "Details such as the exact times and places will be announced again as soon as they are settled, during the week of the 14th.",
+    "plan_note": "The confirmed time, place, and lineup are below.",
     "para_4": "The colonial rule and genocide inflicted on the Palestinian people and the war of aggression against Iran launched by the United States and Israel are by no means separate matters. They are tragedies of the same order and a chain of acts of aggression, in which imperialist militarism tramples the lives and peace of people and justifies violence. To sing for peace in Palestine is to oppose the war of aggression against Iran, and it is firmly tied to stopping the deployment of South Korean troops.",
-    "para_5": "Now, when we fear the deployment motion will be tabled before Chuseok, only the voices of the people gathered in the square can stop this dangerous war of aggression from running out of control. The Gangjeong Peace and Music Camp takes up the power of solidarity that music carries and goes out to the streets and the squares. Join us, so that songs for the liberation of Palestine may ring out as one with the cry against the war on Iran and against sending South Korean troops."
+    "para_5": "Now, when we fear the deployment motion will be tabled before Chuseok, only the voices of the people gathered in the square can stop this dangerous war of aggression from running out of control. The Gangjeong Peace and Music Camp takes up the power of solidarity that music carries and goes out to the streets and the squares. Join us, so that songs for the liberation of Palestine may ring out as one with the cry against the war on Iran and against sending South Korean troops.",
+    "confirmed_label": "Confirmed schedule (2026-09-17)",
+    "confirmed_datetime_label": "Date & time",
+    "confirmed_datetime_value": "Sat 19 Sep 2026, 17:30–19:00",
+    "confirmed_venue_label": "Venue",
+    "confirmed_venue_value": "Gwanghwamun Square area",
+    "confirmed_lineup_label": "Performers",
+    "confirmed_lineup_value": "Namsu, Lee Seoyoung, Lee Hyeongju, MOMO",
+    "confirmed_contact_label": "Contact",
+    "confirmed_contact_value": "010-2379-0760 (Sang Lee)",
+    "related_label": "Also happening that day",
+    "related_1": "1:00 PM, in front of the Le Meilleur Building, Jongno — joining the “2nd Citizens' March: Stop the war of aggression by the US and Israel! Government, firmly refuse deployment to Hormuz!” with rally participation and a solidarity performance.",
+    "related_2": "3:00 PM, Seoul City Hall — joining the Climate Justice March."
   }
 }

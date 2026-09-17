@@ -38,8 +38,8 @@
     "concert_banner": {
       "label": "19 de set., Seul",
       "title": "Keep Singing for Palestine — Manifestação de 19 de setembro",
-      "status": "Reservas abertas",
-      "cta": "Reservar",
+      "status": "Manifestação de 19 de set.",
+      "cta": "Saiba mais",
       "image_alt": "Cartaz de Keep Singing for Palestine"
     }
   },
@@ -291,9 +291,9 @@
     "event_ksfp": {
       "poster_alt": "Cartaz de Keep Singing for Palestine — um CD refletindo as cores da bandeira palestina",
       "title": "Keep Singing for Palestine — Manifestação de 19 de setembro pela libertação da Palestina",
-      "date": "Saturday, September 19, 2026, 14:00",
-      "venue": "Deoksugung Stone Wall Road",
-      "venue_address": "Deoksugung-gil, Jung-gu, Seoul (beside Daehanmun Gate)",
+      "date": "Sáb 19 set 2026, 17h30",
+      "venue": "Zona da Praça Gwanghwamun",
+      "venue_address": "172 Sejong-daero, Jongno-gu, Seul (zona da Praça Gwanghwamun)",
       "para_1": "Enraizado no movimento pela paz da vila de Gangjeong, na ilha de Jeju, e já em seu 19º ano, o Acampamento Gangjeong de Paz e Música tem reunido a vontade de se opor à guerra e de resistir pela linguagem da música.",
       "para_2": "Desta vez trazemos a Seul as canções de paz que ecoaram na vila de Gangjeong, para compartilhá-las juntos.",
       "para_3": "Para estar ao lado da sociedade civil coreana que luta contra os 78 anos de ocupação ilegal e o genocídio de Israel contra a Palestina, continuamos cantando sem parar!",

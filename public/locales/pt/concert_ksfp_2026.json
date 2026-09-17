@@ -1,7 +1,7 @@
 {
   "seo": {
     "title": "Keep Singing for Palestine — Manifestação de 19 de setembro | Gangjeong Peace and Music Camp",
-    "description": "Sábado, 19 de setembro de 2026, 14h00, Caminho do muro de pedra de Deoksugung. O Gangjeong Peace and Music Camp junta-se a uma manifestação de rua que canta contra o envio de tropas sul-coreanas e pela libertação da Palestina. As reservas anteriores estão encerradas e serão integralmente reembolsadas."
+    "description": "Sábado, 19 de setembro de 2026, 17h30, zona da Praça Gwanghwamun. O Gangjeong Peace and Music Camp junta-se a uma manifestação de rua que canta contra o envio de tropas sul-coreanas e pela libertação da Palestina. Namsu, Lee Seoyoung, Lee Hyeongju, MOMO. As reservas anteriores estão encerradas e serão integralmente reembolsadas."
   },
   "hero": {
     "eyebrow": "Acampamento Gangjeong de Paz e Música × Movimento de Libertação da Palestina",
@@ -9,9 +9,9 @@
     "subtitle": "Uma manifestação de rua que canta pela libertação da Palestina e contra o envio de tropas",
     "poster_alt": "Cartaz de Keep Singing for Palestine — um CD refletindo as cores da bandeira palestina",
     "date_label": "Data",
-    "date_value": "Sáb 19 set 2026, 14h00",
+    "date_value": "Sáb 19 set 2026, 17h30–19h00",
     "venue_label": "Local",
-    "venue_value": "Caminho do muro de pedra de Deoksugung",
+    "venue_value": "Zona da Praça Gwanghwamun",
     "price_label": "Ingressos",
     "price_value": "Antecipado 30.000 KRW · Na entrada 35.000 KRW",
     "cta_reserve": "Reservar ingresso",
@@ -125,12 +125,12 @@
   "venue": {
     "eyebrow": "Local",
     "heading": "Como chegar",
-    "name": "Caminho do muro de pedra de Deoksugung",
-    "address": "Deoksugung-gil, Jung-gu, Seul (ao lado do portão Daehanmun)",
+    "name": "Zona da Praça Gwanghwamun",
+    "address": "172 Sejong-daero, Jongno-gu, Seul (zona da Praça Gwanghwamun)",
     "naver": "Abrir no Naver Map",
     "kakao": "Abrir no Kakao Map",
     "contact_heading": "Contato",
-    "contact_cta": "Perguntar pelo KakaoTalk"
+    "contact_cta": "Ligar para perguntar — 010-2379-0760"
   },
   "notice": {
     "eyebrow": "Mudança de programa",
@@ -144,7 +144,19 @@
     "plan_1": "No dia 19 de setembro faremos nas ruas de Seul uma manifestação em que a música e a palavra levam juntas a nossa recusa do envio de tropas e o nosso desejo de libertação para a Palestina.",
     "plan_2": "Participaremos na manifestação contra o envio de tropas e, logo após o seu encerramento, faremos um concerto guerrilha pela paz.",
     "plan_3": "Juntar-nos-emos com atuações e intervenções à manifestação da ação de emergência da sociedade civil coreana em solidariedade com a Palestina, e participaremos na Marcha pela Justiça Climática com a nossa faixa.",
-    "plan_note": "Os pormenores de horários e locais serão novamente anunciados assim que estiverem definidos, durante a semana do dia 14.",
+    "plan_note": "O horário, o local e a escalação definitivos estão abaixo.",
+    "confirmed_label": "Programa confirmado (2026-09-17)",
+    "confirmed_datetime_label": "Data e hora",
+    "confirmed_datetime_value": "Sáb 19 set 2026, 17h30–19h00",
+    "confirmed_venue_label": "Local",
+    "confirmed_venue_value": "Zona da Praça Gwanghwamun",
+    "confirmed_lineup_label": "Artistas",
+    "confirmed_lineup_value": "Namsu, Lee Seoyoung, Lee Hyeongju, MOMO",
+    "confirmed_contact_label": "Contato",
+    "confirmed_contact_value": "010-2379-0760 (Sang Lee)",
+    "related_label": "Também nesse mesmo dia",
+    "related_1": "13h00, em frente ao edifício Le Meilleur, em Jongno — juntamo-nos com participação na manifestação e uma atuação solidária à <2ª Marcha Cidadã: que os Estados Unidos parem a guerra de agressão! Que o Governo recuse firmemente o envio de tropas a Ormuz!>.",
+    "related_2": "15h00, Prefeitura de Seul — participamos na Marcha pela Justiça Climática.",
     "para_4": "A dominação colonial e o genocídio contra o povo palestiniano e a guerra de agressão ao Irão desencadeada pelos Estados Unidos e por Israel não são, de forma alguma, questões separadas. São tragédias do mesmo contexto e uma cadeia de atos de agressão em que o militarismo imperialista esmaga a vida e a paz dos povos e justifica a violência. Cantar pela paz na Palestina é opor-se à guerra de agressão ao Irão, e está firmemente ligado a impedir o envio de tropas sul-coreanas.",
     "para_5": "Agora, quando se teme que a moção seja apresentada antes do Chuseok, só a voz do povo reunido na praça pode travar o descontrolo desta perigosa guerra de agressão. O Gangjeong Peace and Music Camp pega na força solidária que a música tem e sai para as ruas, para a praça. Venham connosco, para que as canções pela libertação da Palestina ressoem como uma só voz com o clamor contra a guerra no Irão e contra o envio de tropas sul-coreanas."
   }

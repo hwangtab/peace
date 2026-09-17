@@ -1,7 +1,7 @@
 {
   "seo": {
     "title": "Keep Singing for Palestine — Kundgebung am 19. September | Gangjeong Peace and Music Camp",
-    "description": "Samstag, 19. September 2026, 14:00 Uhr, Deoksugung-Steinmauerweg. Das Gangjeong Peace and Music Camp schließt sich einer Straßenkundgebung an, die gegen die Entsendung südkoreanischer Truppen und für die Befreiung Palästinas singt. Bereits erfolgte Buchungen sind storniert und werden vollständig erstattet."
+    "description": "Samstag, 19. September 2026, 17:30 Uhr, Bereich des Gwanghwamun-Platzes. Das Gangjeong Peace and Music Camp schließt sich einer Straßenkundgebung an, die gegen die Entsendung südkoreanischer Truppen und für die Befreiung Palästinas singt. Namsu, Lee Seoyoung, Lee Hyeongju, MOMO. Bereits erfolgte Buchungen sind storniert und werden vollständig erstattet."
   },
   "hero": {
     "eyebrow": "Gangjeong Peace and Music Camp × Palästina-Befreiungsbewegung",
@@ -9,9 +9,9 @@
     "subtitle": "Eine Straßenkundgebung für die Befreiung Palästinas und gegen die Entsendung von Truppen",
     "poster_alt": "Plakat von Keep Singing for Palestine — eine CD in den Farben der palästinensischen Flagge",
     "date_label": "Datum",
-    "date_value": "Sa, 19. Sep. 2026, 14:00",
+    "date_value": "Sa, 19. Sep. 2026, 17:30–19:00",
     "venue_label": "Veranstaltungsort",
-    "venue_value": "Deoksugung-Steinmauerweg",
+    "venue_value": "Bereich des Gwanghwamun-Platzes",
     "price_label": "Tickets",
     "price_value": "Vorverkauf 30.000 KRW · Abendkasse 35.000 KRW",
     "cta_reserve": "Ticket reservieren",
@@ -125,12 +125,12 @@
   "venue": {
     "eyebrow": "Veranstaltungsort",
     "heading": "Anfahrt",
-    "name": "Deoksugung-Steinmauerweg",
-    "address": "Deoksugung-gil, Jung-gu, Seoul (neben dem Daehanmun-Tor)",
+    "name": "Bereich des Gwanghwamun-Platzes",
+    "address": "172 Sejong-daero, Jongno-gu, Seoul (Bereich des Gwanghwamun-Platzes)",
     "naver": "In Naver Maps öffnen",
     "kakao": "In Kakao Maps öffnen",
     "contact_heading": "Kontakt",
-    "contact_cta": "Über KakaoTalk fragen"
+    "contact_cta": "Anrufen und fragen — 010-2379-0760"
   },
   "notice": {
     "eyebrow": "Programmänderung",
@@ -144,7 +144,19 @@
     "plan_1": "Am 19. September halten wir auf den Straßen Seouls eine Kundgebung ab, auf der Musik und Redebeiträge gemeinsam unseren Widerstand gegen die Truppenentsendung und unsere Hoffnung auf die Befreiung Palästinas tragen.",
     "plan_2": "Wir nehmen an der Kundgebung gegen die Truppenentsendung teil und geben direkt nach deren Ende ein Guerilla-Friedenskonzert.",
     "plan_3": "Zur Kundgebung der Nothilfe-Aktion der koreanischen Zivilgesellschaft in Solidarität mit Palästina kommen wir mit Auftritten und Redebeiträgen, und beim Klimagerechtigkeitsmarsch laufen wir mit unserem Banner mit.",
-    "plan_note": "Einzelheiten wie Uhrzeiten und Orte geben wir erneut bekannt, sobald sie feststehen — in der Woche ab dem 14.",
+    "plan_note": "Die endgültige Uhrzeit, der Ort und das Line-up stehen unten.",
+    "confirmed_label": "Bestätigter Zeitplan (2026-09-17)",
+    "confirmed_datetime_label": "Datum und Uhrzeit",
+    "confirmed_datetime_value": "Sa, 19. Sep. 2026, 17:30–19:00",
+    "confirmed_venue_label": "Veranstaltungsort",
+    "confirmed_venue_value": "Bereich des Gwanghwamun-Platzes",
+    "confirmed_lineup_label": "Mitwirkende",
+    "confirmed_lineup_value": "Namsu, Lee Seoyoung, Lee Hyeongju, MOMO",
+    "confirmed_contact_label": "Kontakt",
+    "confirmed_contact_value": "010-2379-0760 (Sang Lee)",
+    "related_label": "Außerdem an diesem Tag",
+    "related_1": "13:00 Uhr, vor dem Le-Meilleur-Gebäude in Jongno — wir schließen uns mit Kundgebungsteilnahme und einem Solidaritätsauftritt dem <2. Bürger-Marsch: USA, stoppt den Angriffskrieg! Regierung, lehnt die Entsendung nach Hormus entschieden ab!> an.",
+    "related_2": "15:00 Uhr, Rathaus Seoul — wir nehmen am Klimagerechtigkeitsmarsch teil.",
     "para_4": "Die Kolonialherrschaft und der Völkermord am palästinensischen Volk und der von den USA und Israel begonnene Angriffskrieg gegen den Iran sind keineswegs getrennte Angelegenheiten. Es sind Tragödien desselben Zusammenhangs und eine Kette von Angriffshandlungen, in denen imperialistischer Militarismus das Leben und den Frieden der Menschen niedertritt und Gewalt rechtfertigt. Für den Frieden in Palästina zu singen heißt, sich dem Angriffskrieg gegen den Iran zu widersetzen, und es ist untrennbar damit verbunden, die Entsendung südkoreanischer Truppen zu verhindern.",
     "para_5": "Jetzt, da zu befürchten ist, dass der Antrag noch vor Chuseok eingebracht wird, kann allein die Stimme der auf dem Platz versammelten Menschen das Fortrasen dieses gefährlichen Angriffskriegs aufhalten. Das Gangjeong Peace and Music Camp nimmt die verbindende Kraft der Musik mit und geht auf die Straße, auf den Platz. Kommt mit, damit die Lieder für die Befreiung Palästinas als eine Stimme mit dem Ruf gegen den Krieg im Iran und gegen die Entsendung südkoreanischer Truppen erklingen."
   }

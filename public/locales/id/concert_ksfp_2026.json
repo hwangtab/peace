@@ -1,7 +1,7 @@
 {
   "seo": {
     "title": "Keep Singing for Palestine — Aksi Jalanan 19 September | Gangjeong Peace and Music Camp",
-    "description": "Sabtu, 19 September 2026, pukul 14.00, Jalan Tembok Batu Deoksugung. Gangjeong Peace and Music Camp bergabung dalam aksi jalanan menentang pengiriman pasukan Korea Selatan dan menyuarakan pembebasan Palestina. Pemesanan tiket sebelumnya telah ditutup dan akan dikembalikan penuh."
+    "description": "Sabtu, 19 September 2026, pukul 17.30, Area Gwanghwamun Square. Gangjeong Peace and Music Camp bergabung dalam aksi jalanan menentang pengiriman pasukan Korea Selatan dan menyuarakan pembebasan Palestina. Namsu, Lee Seoyoung, Lee Hyeongju, MOMO. Pemesanan tiket sebelumnya telah ditutup dan akan dikembalikan penuh."
   },
   "hero": {
     "eyebrow": "Kemah Perdamaian dan Musik Gangjeong × Gerakan Pembebasan Palestina",
@@ -9,9 +9,9 @@
     "subtitle": "Aksi jalanan untuk pembebasan Palestina dan menentang pengiriman pasukan",
     "poster_alt": "Poster Keep Singing for Palestine — CD yang merefleksikan warna bendera Palestina",
     "date_label": "Tanggal",
-    "date_value": "Sab 19 Sep 2026, 14.00",
+    "date_value": "Sab 19 Sep 2026, 17.30–19.00",
     "venue_label": "Lokasi",
-    "venue_value": "Jalan Tembok Batu Deoksugung",
+    "venue_value": "Area Gwanghwamun Square",
     "price_label": "Tiket",
     "price_value": "Presale 30.000 won · Di tempat 35.000 won",
     "cta_reserve": "Pesan tiket",
@@ -125,12 +125,12 @@
   "venue": {
     "eyebrow": "Lokasi",
     "heading": "Cara menuju lokasi",
-    "name": "Jalan Tembok Batu Deoksugung",
-    "address": "Deoksugung-gil, Jung-gu, Seoul (di samping Gerbang Daehanmun)",
+    "name": "Area Gwanghwamun Square",
+    "address": "172 Sejong-daero, Jongno-gu, Seoul (Area Gwanghwamun Square)",
     "naver": "Buka di Naver Map",
     "kakao": "Buka di Kakao Map",
     "contact_heading": "Kontak",
-    "contact_cta": "Tanya via KakaoTalk"
+    "contact_cta": "Tanya via telepon — 010-2379-0760"
   },
   "notice": {
     "eyebrow": "Perubahan rencana",
@@ -144,7 +144,19 @@
     "plan_1": "Pada 19 September kami menggelar aksi di jalanan Seoul, tempat musik dan orasi bersama-sama menyuarakan penolakan atas pengiriman pasukan dan harapan akan pembebasan Palestina.",
     "plan_2": "Kami ikut dalam aksi menentang pengiriman pasukan dan, begitu aksi selesai, menggelar konser perdamaian gerilya.",
     "plan_3": "Kami bersolidaritas dengan pertunjukan dan orasi dalam aksi darurat masyarakat sipil Korea yang berpihak pada Palestina, dan ikut Pawai Keadilan Iklim dengan membawa bendera kami.",
-    "plan_note": "Rincian waktu dan tempat akan kami umumkan lagi begitu dipastikan, dalam pekan tanggal 14.",
+    "plan_note": "Waktu, tempat, dan susunan penampil yang pasti sudah ditetapkan seperti di bawah ini.",
+    "confirmed_label": "Jadwal pasti (2026-09-17)",
+    "confirmed_datetime_label": "Tanggal & waktu",
+    "confirmed_datetime_value": "Sab 19 Sep 2026, 17.30–19.00",
+    "confirmed_venue_label": "Lokasi",
+    "confirmed_venue_value": "Area Gwanghwamun Square",
+    "confirmed_lineup_label": "Penampil",
+    "confirmed_lineup_value": "Namsu, Lee Seoyoung, Lee Hyeongju, MOMO",
+    "confirmed_contact_label": "Kontak",
+    "confirmed_contact_value": "010-2379-0760 (Sang Lee)",
+    "related_label": "Kegiatan lain di hari yang sama",
+    "related_1": "Pukul 13.00, di depan Gedung Le Meilleur, Jongno — bergabung dalam \"Pawai Warga ke-2: Hentikan perang agresi AS dan Israel! Pemerintah, tolak tegas pengiriman pasukan ke Hormuz!\" dengan keikutsertaan aksi dan pertunjukan solidaritas.",
+    "related_2": "Pukul 15.00, Balai Kota Seoul — bergabung dalam Pawai Keadilan Iklim.",
     "para_4": "Penjajahan dan genosida terhadap rakyat Palestina serta perang agresi terhadap Iran yang dilancarkan Amerika Serikat dan Israel sama sekali bukan dua persoalan yang terpisah. Keduanya adalah tragedi dalam rangkaian yang sama dan mata rantai tindakan agresi, tempat militerisme imperialis menginjak kehidupan dan perdamaian rakyat serta membenarkan kekerasan. Menyanyikan perdamaian bagi Palestina berarti menentang perang agresi terhadap Iran, dan hal itu terikat erat dengan upaya menghentikan pengiriman pasukan Korea Selatan.",
     "para_5": "Kini, ketika kita mengkhawatirkan mosi itu diajukan sebelum Chuseok, hanya suara rakyat yang berkumpul di lapangan yang mampu menahan laju perang agresi yang berbahaya ini. Gangjeong Peace and Music Camp membawa kekuatan solidaritas yang dimiliki musik dan turun ke jalan, ke lapangan. Berjalanlah bersama kami, agar lagu-lagu bagi pembebasan Palestina berkumandang menyatu dengan seruan menentang perang di Iran dan menolak pengiriman pasukan Korea Selatan."
   }

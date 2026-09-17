@@ -43,7 +43,8 @@ const Venue: React.FC = () => {
           {t('venue.contact_heading')}
         </p>
         <div className="mt-4">
-          <DarkLinkButton href={CONTACT_URL} variant="quiet" size="sm" external>
+          {/* tel: 링크라 external 을 켜지 않는다 — constants.ts CONTACT_URL 주석 참조. */}
+          <DarkLinkButton href={CONTACT_URL} variant="quiet" size="sm">
             {t('venue.contact_cta')}
           </DarkLinkButton>
         </div>

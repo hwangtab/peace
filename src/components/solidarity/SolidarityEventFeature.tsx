@@ -186,7 +186,13 @@ const SolidarityEventFeature: React.FC<Props> = ({
 
             {/* Contact */}
             <div>
-              <Button href={event.contact.url} variant="primary" external>
+              {/* tel: 링크에 external(target=_blank)을 붙이면 빈 탭이 열렸다가 다이얼러가
+                  뜨는 등 브라우저마다 동작이 달라진다 — 카카오톡 같은 외부 URL에만 켠다. */}
+              <Button
+                href={event.contact.url}
+                variant="primary"
+                external={!event.contact.url.startsWith('tel:')}
+              >
                 {t('solidarity.contact_cta')} — {event.contact.name}
               </Button>
             </div>

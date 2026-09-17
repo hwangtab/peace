@@ -78,7 +78,7 @@ const KeepSingingPage: React.FC<Props> = ({ initialMusicians = [], initialLocale
           '팔레스타인 연대 집회',
           '9·19 거리집회',
           '파병 반대 집회',
-          '덕수궁 돌담길',
+          '광화문광장',
           '강정피스앤뮤직캠프',
           'Palestine solidarity rally Seoul',
         ],

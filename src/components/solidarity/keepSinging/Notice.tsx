@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'next-i18next';
-import { DarkCard, DarkSection, Reveal, SectionHeading } from './DarkUI';
+import { DarkCard, DarkSection, FlagRule, Reveal, SectionHeading } from './DarkUI';
 
 /** 기획 변경 배경 — 계획(①②③) 앞에 오는 문단. */
 const LEAD_PARA_KEYS = ['notice.para_1', 'notice.para_2', 'notice.para_3'] as const;
@@ -71,7 +71,51 @@ const Notice: React.FC = () => {
         </p>
       </Reveal>
 
+      {/*
+       * 확정 일정 카드 — 2026-09-17. plan_note("14일 주간 중 확정되는 대로 다시
+       * 공지하겠습니다")가 가리키던 그 공지다. 일시·장소·출연·문의를 Hero의 dl과
+       * 같은 형태로 다시 보여준다 — Hero는 스크롤 첫 화면이라 안 보고 지나치기 쉽고,
+       * 여기는 "왜 이 계획으로 바뀌었는지"를 읽은 다음이라 확정 정보가 더 눈에 든다.
+       */}
       <Reveal delayIndex={3} className="mt-9">
+        <DarkCard>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#E2566B]">
+            {t('notice.confirmed_label')}
+          </p>
+          <dl className="mt-5 space-y-3 text-sm md:text-base">
+            {(
+              [
+                ['notice.confirmed_datetime_label', 'notice.confirmed_datetime_value'],
+                ['notice.confirmed_venue_label', 'notice.confirmed_venue_value'],
+                ['notice.confirmed_lineup_label', 'notice.confirmed_lineup_value'],
+                ['notice.confirmed_contact_label', 'notice.confirmed_contact_value'],
+              ] as const
+            ).map(([labelKey, valueKey]) => (
+              <div key={labelKey} className="flex flex-wrap gap-x-4 gap-y-1">
+                <dt className="w-20 shrink-0 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#9C958B]">
+                  {t(labelKey)}
+                </dt>
+                <dd className="min-w-0 flex-1 text-[#F5F1EA]">{t(valueKey)}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <FlagRule className="my-7" />
+
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#9C958B]">
+            {t('notice.related_label')}
+          </p>
+          <ul className="mt-4 space-y-3">
+            {(['notice.related_1', 'notice.related_2'] as const).map((key) => (
+              <li key={key} className="text-sm leading-relaxed text-[#D7D1C7] md:text-base">
+                {t(key)}
+              </li>
+            ))}
+          </ul>
+        </DarkCard>
+      </Reveal>
+
+      <Reveal delayIndex={4} className="mt-9">
         <div className="space-y-5">
           {CLOSING_PARA_KEYS.map((key) => (
             <p key={key} className="text-sm leading-relaxed text-[#D7D1C7] md:text-base">
