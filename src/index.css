@@ -5932,6 +5932,21 @@
       U+D79D /* AUTO-SERIF-REST-RANGE:END */;
   }
 
+  /* 본문 Noto Sans KR 도착 전 폴백도 같은 이유로 폭을 맞춘다. KR 의 한글 advance 0.92em 에
+     비해 Apple SD Gothic Neo 는 0.865em 이라, 교체 순간 본문 한 줄이 5.6% 넓어지며 문단
+     아래 요소가 3~7px 씩 밀렸다. 안드로이드 시스템 한글은 Noto Sans CJK KR(0.92em)로 폭이
+     이미 같아 별도 페이스가 필요 없다. ascent/descent 는 KR hhea(1160/-288 @1000)를
+     size-adjust 로 나눈 값. */
+  @font-face {
+    font-family: 'Noto Sans KR Fallback Apple';
+    src: local('Apple SD Gothic Neo'), local('AppleSDGothicNeo-Regular');
+    size-adjust: 106.4%;
+    ascent-override: 109%;
+    descent-override: 27.1%;
+    line-gap-override: 0%;
+    unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7A3;
+  }
+
   /* Noto Serif KR 도착 전 폴백(시스템 고딕)을 세리프의 한글 폭·세로 메트릭에 맞춘다.
      Noto Serif KR 의 한글 advance 는 0.966em 인데 시스템 고딕은 0.865em(Apple SD Gothic
      Neo)·0.92em(Noto Sans CJK KR)이라, 세리프가 도착하는 순간 헤더 메뉴·제목의 글자 폭이
@@ -6019,8 +6034,8 @@
   :root {
     --font-script: 'Noto Sans KR';
     --font-sans:
-      'Noto Sans', var(--font-script), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-      sans-serif;
+      'Noto Sans', var(--font-script), 'Noto Sans KR Fallback Apple', -apple-system,
+      BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     /* 제목 세리프는 한국어 정체성 한정 — 다른 로케일은 sans 스택 그대로.
        세리프 도착 전에는 폭을 맞춘 폴백(위 @font-face)이 한글을 맡아 교체 순간 글자 폭이
        변하지 않는다 — var(--font-sans) 보다 앞에 둬야 효과가 있다. */
