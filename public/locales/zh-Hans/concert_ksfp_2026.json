@@ -1,7 +1,7 @@
 {
   "seo": {
     "title": "Keep Singing for Palestine — 9·19街头集会 | 江汀和平音乐营",
-    "description": "2026年9月19日（星期六）17:30，光化门广场一带。江汀和平音乐营将参与反对韩国派兵、声援巴勒斯坦解放的街头集会。南秀、李瑞英、李亨柱、MOMO。原有购票已截止，将全额退款。"
+    "description": "2026年9月19日（星期六）17:30，景福宫站 西十字阁遗址。江汀和平音乐营将参与反对韩国派兵、声援巴勒斯坦解放的街头集会。南秀、李瑞英、李亨柱、MOMO。原有购票已截止，将全额退款。"
   },
   "hero": {
     "eyebrow": "江汀和平音乐营 × 巴勒斯坦解放运动",
@@ -11,7 +11,7 @@
     "date_label": "日期",
     "date_value": "2026年9月19日(周六) 17:30–19:00",
     "venue_label": "场地",
-    "venue_value": "光化门广场一带",
+    "venue_value": "景福宫站 西十字阁遗址",
     "price_label": "门票",
     "price_value": "预售3万韩元 · 现场购票3.5万韩元",
     "cta_reserve": "预订门票",
@@ -32,7 +32,7 @@
   "rally": {
     "eyebrow": "当天白天",
     "heading": "从白天的街头到傍晚的广场",
-    "body": "下午1点，我们将参加在钟路Le Meilleur大厦前举行的〈美国停止侵略战争！政府坚决拒绝霍尔木兹派兵！第二次市民大游行〉，并献上声援演出。下午3点参加首尔市政厅的气候正义游行，傍晚5点30分前往光化门广场。"
+    "body": "下午1点，我们将参加在钟路Le Meilleur大厦前举行的〈美国停止侵略战争！政府坚决拒绝霍尔木兹派兵！第二次市民大游行〉，并献上声援演出。下午3点参加首尔市政厅的气候正义游行，傍晚5点30分前往景福宫站西十字阁遗址。"
   },
   "lineup": {
     "eyebrow": "阵容",
@@ -125,8 +125,8 @@
   "venue": {
     "eyebrow": "场地",
     "heading": "交通指南",
-    "name": "光化门广场一带",
-    "address": "首尔市钟路区世宗大路172（光化门广场一带）",
+    "name": "景福宫站 西十字阁遗址",
+    "address": "首尔市钟路区社稷路130（景福宫站 西十字阁遗址）",
     "naver": "在Naver地图中打开",
     "kakao": "在Kakao地图中打开",
     "contact_heading": "联系方式",
@@ -149,7 +149,7 @@
     "confirmed_datetime_label": "日期时间",
     "confirmed_datetime_value": "2026年9月19日(周六) 17:30–19:00",
     "confirmed_venue_label": "场地",
-    "confirmed_venue_value": "光化门广场一带",
+    "confirmed_venue_value": "景福宫站 西十字阁遗址",
     "confirmed_lineup_label": "演出阵容",
     "confirmed_lineup_value": "南秀、李瑞英、李亨柱、MOMO",
     "confirmed_contact_label": "联系方式",

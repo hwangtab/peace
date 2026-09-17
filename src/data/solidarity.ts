@@ -61,12 +61,13 @@ const eventStructs: SolidarityEventStruct[] = [
     // 2026-09-17: 확정 공지에서 문의처가 이상(010-2379-0760)으로 바뀌었다.
     contact: { name: '이상', url: 'tel:010-2379-0760' },
     // 기획 변경(2026-09-13): 반쥴 대관을 취소하고 거리 집회에 합류한다.
-    // 2026-09-17에 장소·시각이 광화문광장 17:30 으로 재확정됐다(직전엔 덕수궁 돌담길
-    // 14:00로 공지했었다). 이 값이 MusicEvent.location·startDate로 나가므로 비워
-    // 두면 검색 결과가 장소 없는 행사를 보여준다.
+    // 2026-09-17에 광화문광장 17:30으로 재확정된 뒤, 같은 날 다시 경복궁역
+    // 서십자각터로 장소가 바뀌었다(직전 공지 순서: 덕수궁 돌담길 14:00 → 광화문광장
+    // 17:30). 이 값이 MusicEvent.location·startDate로 나가므로 비워 두면 검색
+    // 결과가 장소 없는 행사를 보여준다.
     startDate: '2026-09-19T17:30:00+09:00',
     address: {
-      streetAddress: '세종대로 172 (광화문광장 내 일원)',
+      streetAddress: '사직로 130 (경복궁역 서십자각터)',
       addressLocality: '서울특별시',
       addressRegion: '종로구',
       addressCountry: 'KR',

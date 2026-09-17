@@ -35,14 +35,14 @@ export const PALETTE = {
 /**
  * 집회·공연 장소 확정 여부.
  *
- * 2026-09-17에 광화문광장으로 재확정됐다(직전 공지는 덕수궁 돌담길 14:00였다).
- * 장소가 또 바뀌면 VENUE_QUERY 도 함께 고쳐야 한다 — 플래그만 켜고 검색어를 두면
- * 없는 곳을 가리킨다.
+ * 2026-09-17 안에 두 차례 바뀌었다: 덕수궁 돌담길 14:00 → 광화문광장 17:30 →
+ * 경복궁역 서십자각터 17:30(최종). 장소가 또 바뀌면 VENUE_QUERY 도 함께 고쳐야
+ * 한다 — 플래그만 켜고 검색어를 두면 없는 곳을 가리킨다.
  */
 export const LOCATION_CONFIRMED = true;
 
 /** 지도 검색 링크(장소명 검색 — 좌표가 바뀌어도 깨지지 않는다). */
-export const VENUE_QUERY = '광화문광장';
+export const VENUE_QUERY = '경복궁역 서십자각터';
 export const NAVER_MAP_URL = `https://map.naver.com/p/search/${encodeURIComponent(VENUE_QUERY)}`;
 export const KAKAO_MAP_URL = `https://map.kakao.com/?q=${encodeURIComponent(VENUE_QUERY)}`;
 

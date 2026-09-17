@@ -1,7 +1,7 @@
 {
   "seo": {
     "title": "Keep Singing for Palestine — Kundgebung am 19. September | Gangjeong Peace and Music Camp",
-    "description": "Samstag, 19. September 2026, 17:30 Uhr, Bereich des Gwanghwamun-Platzes. Das Gangjeong Peace and Music Camp schließt sich einer Straßenkundgebung an, die gegen die Entsendung südkoreanischer Truppen und für die Befreiung Palästinas singt. Namsu, Lee Seoyoung, Lee Hyeongju, MOMO. Bereits erfolgte Buchungen sind storniert und werden vollständig erstattet."
+    "description": "Samstag, 19. September 2026, 17:30 Uhr, Westliches Sipjagak an der U-Bahn-Station Gyeongbokgung. Das Gangjeong Peace and Music Camp schließt sich einer Straßenkundgebung an, die gegen die Entsendung südkoreanischer Truppen und für die Befreiung Palästinas singt. Namsu, Lee Seoyoung, Lee Hyeongju, MOMO. Bereits erfolgte Buchungen sind storniert und werden vollständig erstattet."
   },
   "hero": {
     "eyebrow": "Gangjeong Peace and Music Camp × Palästina-Befreiungsbewegung",
@@ -11,7 +11,7 @@
     "date_label": "Datum",
     "date_value": "Sa, 19. Sep. 2026, 17:30–19:00",
     "venue_label": "Veranstaltungsort",
-    "venue_value": "Bereich des Gwanghwamun-Platzes",
+    "venue_value": "Westliches Sipjagak an der U-Bahn-Station Gyeongbokgung",
     "price_label": "Tickets",
     "price_value": "Vorverkauf 30.000 KRW · Abendkasse 35.000 KRW",
     "cta_reserve": "Ticket reservieren",
@@ -32,7 +32,7 @@
   "rally": {
     "eyebrow": "Am selben Tag, tagsüber",
     "heading": "Von der Straße am Tag zum Platz am Abend",
-    "body": "Um 13:00 Uhr schließen wir uns vor dem Le-Meilleur-Gebäude in Jongno dem 2. Bürgermarsch an — „Stoppt den Angriffskrieg! Die Regierung muss die Hormus-Entsendung entschieden ablehnen!\" — mit Teilnahme an der Kundgebung und einer Solidaritätsdarbietung. Um 15:00 Uhr nehmen wir am Klimagerechtigkeitsmarsch am Rathaus Seoul teil, und um 17:30 Uhr geht es zum Gwanghwamun-Platz."
+    "body": "Um 13:00 Uhr schließen wir uns vor dem Le-Meilleur-Gebäude in Jongno dem 2. Bürgermarsch an — „Stoppt den Angriffskrieg! Die Regierung muss die Hormus-Entsendung entschieden ablehnen!\" — mit Teilnahme an der Kundgebung und einer Solidaritätsdarbietung. Um 15:00 Uhr nehmen wir am Klimagerechtigkeitsmarsch am Rathaus Seoul teil, und um 17:30 Uhr geht es zum West-Sipjagak an der U-Bahn-Station Gyeongbokgung."
   },
   "lineup": {
     "eyebrow": "Lineup",
@@ -125,8 +125,8 @@
   "venue": {
     "eyebrow": "Veranstaltungsort",
     "heading": "Anfahrt",
-    "name": "Bereich des Gwanghwamun-Platzes",
-    "address": "172 Sejong-daero, Jongno-gu, Seoul (Bereich des Gwanghwamun-Platzes)",
+    "name": "Westliches Sipjagak an der U-Bahn-Station Gyeongbokgung",
+    "address": "Sajik-ro 130, Jongno-gu, Seoul (westliches Sipjagak, U-Bahn-Station Gyeongbokgung)",
     "naver": "In Naver Maps öffnen",
     "kakao": "In Kakao Maps öffnen",
     "contact_heading": "Kontakt",
@@ -149,7 +149,7 @@
     "confirmed_datetime_label": "Datum und Uhrzeit",
     "confirmed_datetime_value": "Sa, 19. Sep. 2026, 17:30–19:00",
     "confirmed_venue_label": "Veranstaltungsort",
-    "confirmed_venue_value": "Bereich des Gwanghwamun-Platzes",
+    "confirmed_venue_value": "Westliches Sipjagak an der U-Bahn-Station Gyeongbokgung",
     "confirmed_lineup_label": "Mitwirkende",
     "confirmed_lineup_value": "Namsu, Lee Seoyoung, Lee Hyeongju, MOMO",
     "confirmed_contact_label": "Kontakt",

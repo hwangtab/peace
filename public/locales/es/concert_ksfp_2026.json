@@ -1,7 +1,7 @@
 {
   "seo": {
     "title": "Keep Singing for Palestine — Concentración del 19 de septiembre | Gangjeong Peace and Music Camp",
-    "description": "Sábado 19 de septiembre de 2026, 17:30, zona de la plaza Gwanghwamun. Gangjeong Peace and Music Camp se suma a una concentración callejera que canta contra el envío de tropas surcoreanas y por la liberación de Palestina. Namsu, Lee Seoyoung, Lee Hyeongju, MOMO. Las reservas anteriores están cerradas y se reembolsarán íntegramente."
+    "description": "Sábado 19 de septiembre de 2026, 17:30, sitio del Seosipjagak, cerca de la estación Gyeongbokgung. Gangjeong Peace and Music Camp se suma a una concentración callejera que canta contra el envío de tropas surcoreanas y por la liberación de Palestina. Namsu, Lee Seoyoung, Lee Hyeongju, MOMO. Las reservas anteriores están cerradas y se reembolsarán íntegramente."
   },
   "hero": {
     "eyebrow": "Gangjeong Peace and Music Camp × Movimiento de liberación de Palestina",
@@ -11,7 +11,7 @@
     "date_label": "Fecha",
     "date_value": "Sáb 19 sep 2026, 17:30–19:00",
     "venue_label": "Lugar",
-    "venue_value": "Zona de la plaza Gwanghwamun",
+    "venue_value": "Sitio del Seosipjagak, cerca de la estación Gyeongbokgung",
     "price_label": "Entradas",
     "price_value": "Anticipada 30.000 KRW · En taquilla 35.000 KRW",
     "cta_reserve": "Reservar una entrada",
@@ -32,7 +32,7 @@
   "rally": {
     "eyebrow": "Ese mismo día, por la tarde",
     "heading": "De la calle por la tarde a la plaza al anochecer",
-    "body": "A las 13:00 nos sumamos, frente al edificio Le Meilleur en Jongno, a la 2.ª Marcha Ciudadana — «¡Estados Unidos, detengan la guerra de agresión! ¡El Gobierno debe rechazar con firmeza el envío de tropas a Ormuz!»—, participando en la concentración con una actuación solidaria. A las 15:00 nos unimos a la Marcha por la Justicia Climática en el Ayuntamiento de Seúl y a las 17:30 vamos a la plaza de Gwanghwamun."
+    "body": "A las 13:00 nos sumamos, frente al edificio Le Meilleur en Jongno, a la 2.ª Marcha Ciudadana — «¡Estados Unidos, detengan la guerra de agresión! ¡El Gobierno debe rechazar con firmeza el envío de tropas a Ormuz!»—, participando en la concentración con una actuación solidaria. A las 15:00 nos unimos a la Marcha por la Justicia Climática en el Ayuntamiento de Seúl y a las 17:30 vamos al sitio del Seosipjagak, cerca de la estación Gyeongbokgung."
   },
   "lineup": {
     "eyebrow": "Cartel",
@@ -125,8 +125,8 @@
   "venue": {
     "eyebrow": "Lugar",
     "heading": "Cómo llegar",
-    "name": "Zona de la plaza Gwanghwamun",
-    "address": "172 Sejong-daero, Jongno-gu, Seúl (zona de la plaza Gwanghwamun)",
+    "name": "Sitio del Seosipjagak, cerca de la estación Gyeongbokgung",
+    "address": "130 Sajik-ro, Jongno-gu, Seúl (sitio del Seosipjagak, estación Gyeongbokgung)",
     "naver": "Abrir en Naver Map",
     "kakao": "Abrir en Kakao Map",
     "contact_heading": "Contacto",
@@ -149,7 +149,7 @@
     "confirmed_datetime_label": "Fecha y hora",
     "confirmed_datetime_value": "Sáb 19 sep 2026, 17:30–19:00",
     "confirmed_venue_label": "Lugar",
-    "confirmed_venue_value": "Zona de la plaza Gwanghwamun",
+    "confirmed_venue_value": "Sitio del Seosipjagak, cerca de la estación Gyeongbokgung",
     "confirmed_lineup_label": "Artistas",
     "confirmed_lineup_value": "Namsu, Lee Seoyoung, Lee Hyeongju, MOMO",
     "confirmed_contact_label": "Contacto",

@@ -1,7 +1,7 @@
 {
   "seo": {
     "title": "Keep Singing for Palestine — Aksi Jalanan 19 September | Gangjeong Peace and Music Camp",
-    "description": "Sabtu, 19 September 2026, pukul 17.30, Area Gwanghwamun Square. Gangjeong Peace and Music Camp bergabung dalam aksi jalanan menentang pengiriman pasukan Korea Selatan dan menyuarakan pembebasan Palestina. Namsu, Lee Seoyoung, Lee Hyeongju, MOMO. Pemesanan tiket sebelumnya telah ditutup dan akan dikembalikan penuh."
+    "description": "Sabtu, 19 September 2026, pukul 17.30, Situs Seosipjagak, dekat Stasiun Gyeongbokgung. Gangjeong Peace and Music Camp bergabung dalam aksi jalanan menentang pengiriman pasukan Korea Selatan dan menyuarakan pembebasan Palestina. Namsu, Lee Seoyoung, Lee Hyeongju, MOMO. Pemesanan tiket sebelumnya telah ditutup dan akan dikembalikan penuh."
   },
   "hero": {
     "eyebrow": "Kemah Perdamaian dan Musik Gangjeong × Gerakan Pembebasan Palestina",
@@ -11,7 +11,7 @@
     "date_label": "Tanggal",
     "date_value": "Sab 19 Sep 2026, 17.30–19.00",
     "venue_label": "Lokasi",
-    "venue_value": "Area Gwanghwamun Square",
+    "venue_value": "Situs Seosipjagak, dekat Stasiun Gyeongbokgung",
     "price_label": "Tiket",
     "price_value": "Presale 30.000 won · Di tempat 35.000 won",
     "cta_reserve": "Pesan tiket",
@@ -32,7 +32,7 @@
   "rally": {
     "eyebrow": "Hari yang sama, siang hari",
     "heading": "Dari jalanan siang ke lapangan petang",
-    "body": "Pukul 13.00, di depan Gedung Le Meilleur di Jongno, kami bergabung dalam Pawai Warga ke-2 — \"Hentikan perang agresi! Pemerintah harus menolak tegas pengiriman pasukan ke Hormuz!\" — dengan mengikuti aksi dan menampilkan pertunjukan solidaritas. Pukul 15.00 kami mengikuti Pawai Keadilan Iklim di Balai Kota Seoul, lalu pukul 17.30 menuju Lapangan Gwanghwamun."
+    "body": "Pukul 13.00, di depan Gedung Le Meilleur di Jongno, kami bergabung dalam Pawai Warga ke-2 — \"Hentikan perang agresi! Pemerintah harus menolak tegas pengiriman pasukan ke Hormuz!\" — dengan mengikuti aksi dan menampilkan pertunjukan solidaritas. Pukul 15.00 kami mengikuti Pawai Keadilan Iklim di Balai Kota Seoul, lalu pukul 17.30 menuju situs Seosipjagak dekat Stasiun Gyeongbokgung."
   },
   "lineup": {
     "eyebrow": "Lineup",
@@ -125,8 +125,8 @@
   "venue": {
     "eyebrow": "Lokasi",
     "heading": "Cara menuju lokasi",
-    "name": "Area Gwanghwamun Square",
-    "address": "172 Sejong-daero, Jongno-gu, Seoul (Area Gwanghwamun Square)",
+    "name": "Situs Seosipjagak, dekat Stasiun Gyeongbokgung",
+    "address": "130 Sajik-ro, Jongno-gu, Seoul (situs Seosipjagak, Stasiun Gyeongbokgung)",
     "naver": "Buka di Naver Map",
     "kakao": "Buka di Kakao Map",
     "contact_heading": "Kontak",
@@ -149,7 +149,7 @@
     "confirmed_datetime_label": "Tanggal & waktu",
     "confirmed_datetime_value": "Sab 19 Sep 2026, 17.30–19.00",
     "confirmed_venue_label": "Lokasi",
-    "confirmed_venue_value": "Area Gwanghwamun Square",
+    "confirmed_venue_value": "Situs Seosipjagak, dekat Stasiun Gyeongbokgung",
     "confirmed_lineup_label": "Penampil",
     "confirmed_lineup_value": "Namsu, Lee Seoyoung, Lee Hyeongju, MOMO",
     "confirmed_contact_label": "Kontak",

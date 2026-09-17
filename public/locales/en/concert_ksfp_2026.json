@@ -1,7 +1,7 @@
 {
   "seo": {
     "title": "Keep Singing for Palestine — Sept 19 Street Rally | Gangjeong Peace and Music Camp",
-    "description": "Saturday 19 September 2026, 17:30, Gwanghwamun Square area. Gangjeong Peace and Music Camp joins a street rally singing against the deployment of South Korean troops and for the liberation of Palestine. Previous bookings are closed and will be refunded in full."
+    "description": "Saturday 19 September 2026, 17:30, West Sipjagak site, Gyeongbokgung Station. Gangjeong Peace and Music Camp joins a street rally singing against the deployment of South Korean troops and for the liberation of Palestine. Previous bookings are closed and will be refunded in full."
   },
   "hero": {
     "eyebrow": "Gangjeong Peace and Music Camp × Palestine Liberation Movement",
@@ -11,7 +11,7 @@
     "date_label": "Date",
     "date_value": "Sat 19 Sep 2026, 17:30–19:00",
     "venue_label": "Venue",
-    "venue_value": "Gwanghwamun Square area",
+    "venue_value": "West Sipjagak site, Gyeongbokgung Station",
     "price_label": "Tickets",
     "price_value": "Advance 30,000 KRW · At the door 35,000 KRW",
     "cta_reserve": "Reserve a ticket",
@@ -32,7 +32,7 @@
   "rally": {
     "eyebrow": "Earlier that day",
     "heading": "From the daytime streets to the evening square",
-    "body": "At 1:00 PM we join the 2nd Citizens' March — \"Stop the war of aggression! Refuse the Hormuz deployment!\" — in front of the Le Meilleur Building in Jongno, taking part in the rally with a solidarity performance. At 3:00 PM we join the Climate Justice March at Seoul City Hall, and at 5:30 PM we head to Gwanghwamun Square."
+    "body": "At 1:00 PM we join the 2nd Citizens' March — \"Stop the war of aggression! Refuse the Hormuz deployment!\" — in front of the Le Meilleur Building in Jongno, taking part in the rally with a solidarity performance. At 3:00 PM we join the Climate Justice March at Seoul City Hall, and at 5:30 PM we head to the West Sipjagak site near Gyeongbokgung Station."
   },
   "lineup": {
     "eyebrow": "Lineup",
@@ -125,8 +125,8 @@
   "venue": {
     "eyebrow": "Venue",
     "heading": "Getting there",
-    "name": "Gwanghwamun Square area",
-    "address": "172 Sejong-daero, Jongno-gu, Seoul (Gwanghwamun Square area)",
+    "name": "West Sipjagak site, Gyeongbokgung Station",
+    "address": "130 Sajik-ro, Jongno-gu, Seoul (West Sipjagak site, Gyeongbokgung Station)",
     "naver": "Open in Naver Map",
     "kakao": "Open in Kakao Map",
     "contact_heading": "Contact",
@@ -151,7 +151,7 @@
     "confirmed_datetime_label": "Date & time",
     "confirmed_datetime_value": "Sat 19 Sep 2026, 17:30–19:00",
     "confirmed_venue_label": "Venue",
-    "confirmed_venue_value": "Gwanghwamun Square area",
+    "confirmed_venue_value": "West Sipjagak site, Gyeongbokgung Station",
     "confirmed_lineup_label": "Performers",
     "confirmed_lineup_value": "Namsu, Lee Seoyoung, Lee Hyeongju, MOMO",
     "confirmed_contact_label": "Contact",
