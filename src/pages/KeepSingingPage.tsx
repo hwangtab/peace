@@ -70,7 +70,9 @@ const KeepSingingPage: React.FC<Props> = ({ initialMusicians = [], initialLocale
         description: t('seo.description'),
         url: pageUrl,
         ...(event ? { mainEntityId: `${getFullUrl('/solidarity')}#${event.id}` } : {}),
-        primaryImageUrl: getFullUrl('/images-webp/solidarity/keep-singing-for-palestine-20260917.webp'),
+        primaryImageUrl: getFullUrl(
+          '/images-webp/solidarity/keep-singing-for-palestine-20260917.webp'
+        ),
         // 반쥴 실내 공연이 덕수궁 돌담길 거리집회로 바뀌었다. 취소된 기획을 겨냥한
         // 키워드('평화 콘서트'·'반쥴 공연')를 남겨 두면 구조화 데이터가 사실과 어긋난다.
         keywords: [
