@@ -5932,6 +5932,33 @@
       U+D79D /* AUTO-SERIF-REST-RANGE:END */;
   }
 
+  /* Noto Serif KR 도착 전 폴백(시스템 고딕)을 세리프의 한글 폭·세로 메트릭에 맞춘다.
+     Noto Serif KR 의 한글 advance 는 0.966em 인데 시스템 고딕은 0.865em(Apple SD Gothic
+     Neo)·0.92em(Noto Sans CJK KR)이라, 세리프가 도착하는 순간 헤더 메뉴·제목의 글자 폭이
+     한꺼번에 5~12% 넓어지며 우측 정렬된 상단 메뉴가 통째로 밀려났다(프로덕션 실측:
+     로고 196px → 214px, 메뉴 항목 전부 이동, t≈220ms).
+     ascent/descent 는 Noto Serif KR hhea(1151/-286 @1000)를 size-adjust 로 나눈 값.
+     local() 이 없는 family 는 스택에서 건너뛰므로 각 OS 는 자기 것 하나만 쓴다.
+     세리프 파일에는 라틴 글리프가 없으므로(한글·구두점만) 한글 영역에만 적용한다. */
+  @font-face {
+    font-family: 'Noto Serif KR Fallback Apple';
+    src: local('Apple SD Gothic Neo'), local('AppleSDGothicNeo-Regular');
+    size-adjust: 112%;
+    ascent-override: 102.8%;
+    descent-override: 25.5%;
+    line-gap-override: 0%;
+    unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7A3;
+  }
+  @font-face {
+    font-family: 'Noto Serif KR Fallback CJK';
+    src: local('Noto Sans CJK KR'), local('NotoSansCJKkr-Regular'), local('Noto Sans KR');
+    size-adjust: 105%;
+    ascent-override: 109.6%;
+    descent-override: 27.2%;
+    line-gap-override: 0%;
+    unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7A3;
+  }
+
   /* ── 포인트 폰트 (유지) ── */
   @font-face {
     font-family: 'PartialSans';
@@ -5994,8 +6021,12 @@
     --font-sans:
       'Noto Sans', var(--font-script), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
       sans-serif;
-    /* 제목 세리프는 한국어 정체성 한정 — 다른 로케일은 sans 스택 그대로 */
-    --font-serif: 'Noto Serif KR', var(--font-sans);
+    /* 제목 세리프는 한국어 정체성 한정 — 다른 로케일은 sans 스택 그대로.
+       세리프 도착 전에는 폭을 맞춘 폴백(위 @font-face)이 한글을 맡아 교체 순간 글자 폭이
+       변하지 않는다 — var(--font-sans) 보다 앞에 둬야 효과가 있다. */
+    --font-serif:
+      'Noto Serif KR', 'Noto Serif KR Fallback Apple', 'Noto Serif KR Fallback CJK',
+      var(--font-sans);
   }
   html:lang(ja) {
     --font-script: 'Noto Sans JP';
