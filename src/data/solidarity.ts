@@ -45,7 +45,7 @@ const eventStructs: SolidarityEventStruct[] = [
   {
     id: 'keep-singing-for-palestine',
     keyPrefix: 'solidarity.event_ksfp',
-    poster: '/images-webp/solidarity/keep-singing-for-palestine.webp',
+    poster: '/images-webp/solidarity/keep-singing-for-palestine-20260917.webp',
     paraCount: 3,
     lineup: [
       { name: '이서영', musicianId: 12 },
