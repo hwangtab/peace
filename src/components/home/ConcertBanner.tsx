@@ -11,7 +11,7 @@ import { useTranslation } from 'next-i18next';
  */
 
 const CONCERT_URL = '/solidarity/keep-singing-for-palestine';
-const POSTER = '/images-webp/solidarity/keep-singing-for-palestine-20260917.webp';
+const POSTER = '/images-webp/solidarity/keep-singing-for-palestine-20260918.webp';
 
 /** 배너 노출 종료 시각 — 2026-09-20T00:00+09:00. */
 const BANNER_END = Date.UTC(2026, 8, 19, 15, 0, 0);

@@ -71,7 +71,7 @@ const KeepSingingPage: React.FC<Props> = ({ initialMusicians = [], initialLocale
         url: pageUrl,
         ...(event ? { mainEntityId: `${getFullUrl('/solidarity')}#${event.id}` } : {}),
         primaryImageUrl: getFullUrl(
-          '/images-webp/solidarity/keep-singing-for-palestine-20260917.webp'
+          '/images-webp/solidarity/keep-singing-for-palestine-20260918.webp'
         ),
         // 반쥴 실내 공연이 덕수궁 돌담길 거리집회로 바뀌었다. 취소된 기획을 겨냥한
         // 키워드('평화 콘서트'·'반쥴 공연')를 남겨 두면 구조화 데이터가 사실과 어긋난다.
@@ -93,7 +93,7 @@ const KeepSingingPage: React.FC<Props> = ({ initialMusicians = [], initialLocale
     <PageLayout
       title={t('seo.title')}
       description={t('seo.description')}
-      ogImage="/images-webp/solidarity/keep-singing-for-palestine-20260917.webp"
+      ogImage="/images-webp/solidarity/keep-singing-for-palestine-20260918.webp"
       ogImageAlt={t('hero.poster_alt')}
       ogType="event"
       canonicalUrl={pageUrl}

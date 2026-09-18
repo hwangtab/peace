@@ -4,7 +4,7 @@ import { useTranslation } from 'next-i18next';
 import { useReducedMotion } from 'framer-motion';
 import { DarkLinkButton, FlagRule, Reveal } from './DarkUI';
 
-const POSTER = '/images-webp/solidarity/keep-singing-for-palestine-20260917.webp';
+const POSTER = '/images-webp/solidarity/keep-singing-for-palestine-20260918.webp';
 
 /**
  * Hero — 포스터의 "국기색이 반사되는 CD"를 배경 광택으로 옮긴 도입부.
