@@ -17,10 +17,11 @@ interface LineupArtist {
 }
 
 /**
- * 노출 순서: 이서영 · 이형주 · 모모 · 남수.
+ * 노출 순서: 이서영 · 이형주 · 모모 · 남수 · 임정득.
  *
  * 앞 셋은 포스터 배치 순서다(포스터에 함께 실린 모레도토요일은 출연하지 않는다). 남수는 본래 같은 날 낮 집회의 연대 공연자였는데,
  * 행사가 통째로 거리집회가 되면서 낮·저녁 구분이 사라져 라인업 끝에 붙인다.
+ * 임정득은 2026-09-18 추가 합류.
  *
  * 이형주는 캠프 뮤지션 명단(musicians.json)에 없어 아래에서 따로 조립하므로
  * 이 배열에는 넣지 않는다.
@@ -29,6 +30,7 @@ const MUSICIAN_ORDER: Array<{ key: string; id: number }> = [
   { key: 'leeseoyoung', id: 12 },
   { key: 'momo', id: 10 },
   { key: 'namsu', id: 4 },
+  { key: 'imjeongdeuk', id: 42 },
 ];
 
 const IHYEONGJU_IMAGE = '/images-webp/solidarity/lineup/ihyeongju.webp';

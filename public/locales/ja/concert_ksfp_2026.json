@@ -1,7 +1,7 @@
 {
   "seo": {
     "title": "Keep Singing for Palestine — 9・19街頭集会 | カンジョン平和音楽キャンプ",
-    "description": "2026年9月19日（土）17:30、景福宮駅 西十字閣址。江汀ピース・アンド・ミュージック・キャンプは、韓国軍の派兵に反対しパレスチナ解放を訴える街頭集会に参加します。ナムス・イ・ソヨン・イ・ヒョンジュ・MOMO。既存のご予約は受付を終了し、全額返金いたします。"
+    "description": "2026年9月19日（土）17:30、景福宮駅 西十字閣址。江汀ピース・アンド・ミュージック・キャンプは、韓国軍の派兵に反対しパレスチナ解放を訴える街頭集会に参加します。ナムス・イ・ソヨン・イ・ヒョンジュ・MOMO・イム・ジョンドゥク。既存のご予約は受付を終了し、全額返金いたします。"
   },
   "hero": {
     "eyebrow": "カンジョン平和音楽キャンプ×パレスチナ解放運動",
@@ -9,7 +9,7 @@
     "subtitle": "パレスチナ解放と派兵反対を訴える街頭集会",
     "poster_alt": "Keep Singing for Palestine ポスター — パレスチナの旗の色を映したCD",
     "date_label": "日時",
-    "date_value": "2026年9月19日(土) 17:30–19:00",
+    "date_value": "2026年9月19日(土) 17:30–19:20",
     "venue_label": "会場",
     "venue_value": "景福宮駅 西十字閣址",
     "price_label": "チケット",
@@ -37,7 +37,7 @@
   "lineup": {
     "eyebrow": "ラインナップ",
     "heading": "歌う人びと",
-    "subheading": "パレスチナ解放のために街頭で歌う4組",
+    "subheading": "パレスチナ解放のために街頭で歌う5組",
     "link_profile": "アーティストプロフィールを見る",
     "link_instagram": "Instagram"
   },
@@ -147,11 +147,11 @@
     "plan_note": "詳しい時間・場所・出演者は下記の通り確定しました。",
     "confirmed_label": "確定スケジュール（2026年9月17日）",
     "confirmed_datetime_label": "日時",
-    "confirmed_datetime_value": "2026年9月19日(土) 17:30–19:00",
+    "confirmed_datetime_value": "2026年9月19日(土) 17:30–19:20",
     "confirmed_venue_label": "会場",
     "confirmed_venue_value": "景福宮駅 西十字閣址",
     "confirmed_lineup_label": "出演者",
-    "confirmed_lineup_value": "ナムス、イ・ソヨン、イ・ヒョンジュ、MOMO",
+    "confirmed_lineup_value": "ナムス、イ・ソヨン、イ・ヒョンジュ、MOMO、イム・ジョンドゥク",
     "confirmed_contact_label": "お問い合わせ",
     "confirmed_contact_value": "010-2379-0760（イ・サン）",
     "related_label": "同日開催のその他の行事",

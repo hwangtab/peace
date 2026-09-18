@@ -1,7 +1,7 @@
 {
   "seo": {
     "title": "Keep Singing for Palestine — Rassemblement du 19 septembre | Gangjeong Peace and Music Camp",
-    "description": "Samedi 19 septembre 2026, 17h30, site du Seosipjagak, près de la station Gyeongbokgung. Le Gangjeong Peace and Music Camp rejoint un rassemblement de rue qui chante contre l'envoi de troupes sud-coréennes et pour la libération de la Palestine. Namsu, Lee Seoyoung, Lee Hyeongju, MOMO. Les réservations précédentes sont closes et intégralement remboursées."
+    "description": "Samedi 19 septembre 2026, 17h30, site du Seosipjagak, près de la station Gyeongbokgung. Le Gangjeong Peace and Music Camp rejoint un rassemblement de rue qui chante contre l'envoi de troupes sud-coréennes et pour la libération de la Palestine. Namsu, Lee Seoyoung, Lee Hyeongju, MOMO, Lim Jeongdeuk. Les réservations précédentes sont closes et intégralement remboursées."
   },
   "hero": {
     "eyebrow": "Gangjeong Peace and Music Camp × Mouvement de libération de la Palestine",
@@ -9,7 +9,7 @@
     "subtitle": "Un rassemblement de rue qui chante pour la libération de la Palestine et contre l'envoi de troupes",
     "poster_alt": "Affiche de Keep Singing for Palestine — un CD reprenant les couleurs du drapeau palestinien",
     "date_label": "Date",
-    "date_value": "Sam 19 sept. 2026, 17h30–19h00",
+    "date_value": "Sam 19 sept. 2026, 17h30–19h20",
     "venue_label": "Lieu",
     "venue_value": "Site du Seosipjagak, près de la station Gyeongbokgung",
     "price_label": "Billets",
@@ -37,7 +37,7 @@
   "lineup": {
     "eyebrow": "Programmation",
     "heading": "Ceux qui chantent",
-    "subheading": "Quatre artistes chantent dans la rue pour la libération de la Palestine",
+    "subheading": "Cinq artistes chantent dans la rue pour la libération de la Palestine",
     "link_profile": "Voir le profil de l'artiste",
     "link_instagram": "Instagram"
   },
@@ -147,11 +147,11 @@
     "plan_note": "L'heure, le lieu et la programmation définitifs sont indiqués ci-dessous.",
     "confirmed_label": "Programme confirmé (2026-09-17)",
     "confirmed_datetime_label": "Date et heure",
-    "confirmed_datetime_value": "Sam 19 sept. 2026, 17h30–19h00",
+    "confirmed_datetime_value": "Sam 19 sept. 2026, 17h30–19h20",
     "confirmed_venue_label": "Lieu",
     "confirmed_venue_value": "Site du Seosipjagak, près de la station Gyeongbokgung",
     "confirmed_lineup_label": "Artistes",
-    "confirmed_lineup_value": "Namsu, Lee Seoyoung, Lee Hyeongju, MOMO",
+    "confirmed_lineup_value": "Namsu, Lee Seoyoung, Lee Hyeongju, MOMO, Lim Jeongdeuk",
     "confirmed_contact_label": "Contact",
     "confirmed_contact_value": "010-2379-0760 (Sang Lee)",
     "related_label": "Également ce jour-là",

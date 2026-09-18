@@ -1,7 +1,7 @@
 {
   "seo": {
     "title": "Keep Singing for Palestine — Aksi Jalanan 19 September | Gangjeong Peace and Music Camp",
-    "description": "Sabtu, 19 September 2026, pukul 17.30, Situs Seosipjagak, dekat Stasiun Gyeongbokgung. Gangjeong Peace and Music Camp bergabung dalam aksi jalanan menentang pengiriman pasukan Korea Selatan dan menyuarakan pembebasan Palestina. Namsu, Lee Seoyoung, Lee Hyeongju, MOMO. Pemesanan tiket sebelumnya telah ditutup dan akan dikembalikan penuh."
+    "description": "Sabtu, 19 September 2026, pukul 17.30, Situs Seosipjagak, dekat Stasiun Gyeongbokgung. Gangjeong Peace and Music Camp bergabung dalam aksi jalanan menentang pengiriman pasukan Korea Selatan dan menyuarakan pembebasan Palestina. Namsu, Lee Seoyoung, Lee Hyeongju, MOMO, Lim Jeongdeuk. Pemesanan tiket sebelumnya telah ditutup dan akan dikembalikan penuh."
   },
   "hero": {
     "eyebrow": "Kemah Perdamaian dan Musik Gangjeong × Gerakan Pembebasan Palestina",
@@ -9,7 +9,7 @@
     "subtitle": "Aksi jalanan untuk pembebasan Palestina dan menentang pengiriman pasukan",
     "poster_alt": "Poster Keep Singing for Palestine — CD yang merefleksikan warna bendera Palestina",
     "date_label": "Tanggal",
-    "date_value": "Sab 19 Sep 2026, 17.30–19.00",
+    "date_value": "Sab 19 Sep 2026, 17.30–19.20",
     "venue_label": "Lokasi",
     "venue_value": "Situs Seosipjagak, dekat Stasiun Gyeongbokgung",
     "price_label": "Tiket",
@@ -37,7 +37,7 @@
   "lineup": {
     "eyebrow": "Lineup",
     "heading": "Mereka yang bernyanyi",
-    "subheading": "Empat penampil bernyanyi di jalanan untuk pembebasan Palestina",
+    "subheading": "Lima penampil bernyanyi di jalanan untuk pembebasan Palestina",
     "link_profile": "Lihat profil artis",
     "link_instagram": "Instagram"
   },
@@ -147,11 +147,11 @@
     "plan_note": "Waktu, tempat, dan susunan penampil yang pasti sudah ditetapkan seperti di bawah ini.",
     "confirmed_label": "Jadwal pasti (2026-09-17)",
     "confirmed_datetime_label": "Tanggal & waktu",
-    "confirmed_datetime_value": "Sab 19 Sep 2026, 17.30–19.00",
+    "confirmed_datetime_value": "Sab 19 Sep 2026, 17.30–19.20",
     "confirmed_venue_label": "Lokasi",
     "confirmed_venue_value": "Situs Seosipjagak, dekat Stasiun Gyeongbokgung",
     "confirmed_lineup_label": "Penampil",
-    "confirmed_lineup_value": "Namsu, Lee Seoyoung, Lee Hyeongju, MOMO",
+    "confirmed_lineup_value": "Namsu, Lee Seoyoung, Lee Hyeongju, MOMO, Lim Jeongdeuk",
     "confirmed_contact_label": "Kontak",
     "confirmed_contact_value": "010-2379-0760 (Sang Lee)",
     "related_label": "Kegiatan lain di hari yang sama",

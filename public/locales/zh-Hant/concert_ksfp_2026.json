@@ -1,7 +1,7 @@
 {
   "seo": {
     "title": "Keep Singing for Palestine — 9·19街頭集會 | 江汀和平音樂營",
-    "description": "2026年9月19日（星期六）17:30，景福宮站 西十字閣遺址。江汀和平音樂營將參與反對韓國派兵、聲援巴勒斯坦解放的街頭集會。南秀、李瑞英、李亨柱、MOMO。原有購票已截止，將全額退款。"
+    "description": "2026年9月19日（星期六）17:30，景福宮站 西十字閣遺址。江汀和平音樂營將參與反對韓國派兵、聲援巴勒斯坦解放的街頭集會。南秀、李瑞英、李亨柱、MOMO、Lim Jeongdeuk。原有購票已截止，將全額退款。"
   },
   "hero": {
     "eyebrow": "江汀和平音樂營 × 巴勒斯坦解放運動",
@@ -9,7 +9,7 @@
     "subtitle": "為巴勒斯坦解放與反對派兵而唱的街頭集會",
     "poster_alt": "Keep Singing for Palestine 海報 — 映照巴勒斯坦國旗色彩的CD",
     "date_label": "日期",
-    "date_value": "2026年9月19日(週六) 17:30–19:00",
+    "date_value": "2026年9月19日(週六) 17:30–19:20",
     "venue_label": "場地",
     "venue_value": "景福宮站 西十字閣遺址",
     "price_label": "門票",
@@ -37,7 +37,7 @@
   "lineup": {
     "eyebrow": "陣容",
     "heading": "歌唱的人們",
-    "subheading": "為巴勒斯坦解放在街頭歌唱的四組音樂人",
+    "subheading": "為巴勒斯坦解放在街頭歌唱的五組音樂人",
     "link_profile": "查看藝人簡介",
     "link_instagram": "Instagram"
   },
@@ -147,11 +147,11 @@
     "plan_note": "詳細的時間、地點、陣容已確定如下。",
     "confirmed_label": "確定行程 (2026-09-17)",
     "confirmed_datetime_label": "日期時間",
-    "confirmed_datetime_value": "2026年9月19日(週六) 17:30–19:00",
+    "confirmed_datetime_value": "2026年9月19日(週六) 17:30–19:20",
     "confirmed_venue_label": "場地",
     "confirmed_venue_value": "景福宮站 西十字閣遺址",
     "confirmed_lineup_label": "演出陣容",
-    "confirmed_lineup_value": "南秀、李瑞英、李亨柱、MOMO",
+    "confirmed_lineup_value": "南秀、李瑞英、李亨柱、MOMO、Lim Jeongdeuk",
     "confirmed_contact_label": "聯絡方式",
     "confirmed_contact_value": "010-2379-0760（李相）",
     "related_label": "當天同時進行的活動",
