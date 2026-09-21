@@ -56,6 +56,9 @@ const eventStructs: SolidarityEventStruct[] = [
       { name: '남수', musicianId: 4 },
       // 2026-09-18 추가: 임정득(민중가수, '소금꽃나무').
       { name: '임정득', musicianId: 42 },
+      // 2026-09-22 추가: DJ 이브. 캠프 뮤지션 명단에 없고 아직 소개문·사진이 없어
+      // Lineup.tsx 카드에는 넣지 않는다 — 이 구조화 데이터(performer)에만 이름을 싣는다.
+      { name: 'DJ 이브', musicianId: null },
       // 모레도토요일은 반쥴 공연 포스터에는 있었지만 거리집회 출연진이 아니다
       // (2026-09-16 운영자 확인, dfb383c9). 구조화 데이터 performer 목록에도 넣지 않는다.
     ],
@@ -67,9 +70,10 @@ const eventStructs: SolidarityEventStruct[] = [
     // 서십자각터로 장소가 바뀌었다(직전 공지 순서: 덕수궁 돌담길 14:00 → 광화문광장
     // 17:30). 이 값이 MusicEvent.location·startDate로 나가므로 비워 두면 검색
     // 결과가 장소 없는 행사를 보여준다.
-    startDate: '2026-09-19T17:30:00+09:00',
+    // 2026-09-19 18:00 실제 시작(조직위 후기 기준). 예고 시각은 17:30이었다.
+    startDate: '2026-09-19T18:00:00+09:00',
     address: {
-      streetAddress: '사직로 130 (경복궁역 서십자각터)',
+      streetAddress: '사직로 130 (경복궁 돌담 앞 서십자각터)',
       addressLocality: '서울특별시',
       addressRegion: '종로구',
       addressCountry: 'KR',
