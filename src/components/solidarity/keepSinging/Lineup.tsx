@@ -14,16 +14,21 @@ interface LineupArtist {
   /** 사이트 안 뮤지션 상세 페이지 — 없으면 외부 링크를 쓴다. */
   profileHref?: string;
   instagramUrl?: string;
+  /**
+   * 원본이 작아(인스타그램 프로필 썸네일 등) object-cover로 4:5 박스를 채우면 심하게
+   * 흐려지는 사진. object-contain으로 원본 비율을 지켜 배경(#141414) 레터박스가 생기게 한다.
+   */
+  lowRes?: boolean;
 }
 
 /**
- * 노출 순서: 이서영 · 이형주 · 모모 · 남수 · 임정득.
+ * 노출 순서: 이서영 · 이형주 · 모모 · 남수 · 임정득 · DJ 이브.
  *
  * 앞 셋은 포스터 배치 순서다(포스터에 함께 실린 모레도토요일은 출연하지 않는다). 남수는 본래 같은 날 낮 집회의 연대 공연자였는데,
  * 행사가 통째로 거리집회가 되면서 낮·저녁 구분이 사라져 라인업 끝에 붙인다.
  * 임정득은 2026-09-18 추가 합류.
  *
- * 이형주는 캠프 뮤지션 명단(musicians.json)에 없어 아래에서 따로 조립하므로
+ * 이형주·DJ 이브는 캠프 뮤지션 명단(musicians.json)에 없어 아래에서 따로 조립하므로
  * 이 배열에는 넣지 않는다.
  */
 const MUSICIAN_ORDER: Array<{ key: string; id: number }> = [
@@ -35,6 +40,14 @@ const MUSICIAN_ORDER: Array<{ key: string; id: number }> = [
 
 const IHYEONGJU_IMAGE = '/images-webp/solidarity/lineup/ihyeongju.webp';
 const IHYEONGJU_INSTAGRAM = 'https://www.instagram.com/hyungju1218/';
+
+/**
+ * 인스타그램 프로필 썸네일(150×150, 본인 동의 확인)이라 다른 다섯 명(600×600 촬영본)보다
+ * 해상도가 낮다. aspect-[4/5] 큰 박스를 그대로 채우면 업스케일로 심하게 흐려진다(studio
+ * 쪽에서 같은 문제를 실측 확인) — object-contain으로 원본 비율을 지켜 흐림을 줄인다.
+ */
+const DJ_EVE_IMAGE = '/images-webp/solidarity/lineup/dj-eve.webp';
+const DJ_EVE_INSTAGRAM = 'https://www.instagram.com/jinaofyves/';
 
 interface Props {
   musicians: Musician[];
@@ -77,9 +90,19 @@ const Lineup: React.FC<Props> = ({ musicians }) => {
       instagramUrl: IHYEONGJU_INSTAGRAM,
     };
 
-    // 이서영 다음에 이형주를 끼워 넣는다: 이서영, 이형주, 모모, 남수.
+    const djEve: LineupArtist = {
+      key: 'djeve',
+      name: t('artists.djeve.name'),
+      description: t('artists.djeve.description'),
+      imageUrl: DJ_EVE_IMAGE,
+      imageAlt: t('artists.djeve.image_alt'),
+      instagramUrl: DJ_EVE_INSTAGRAM,
+      lowRes: true,
+    };
+
+    // 이서영 다음에 이형주를 끼워 넣는다: 이서영, 이형주, 모모, 남수, 임정득, DJ 이브.
     const [first, ...rest] = fromCamp;
-    return [...(first ? [first] : []), ihyeongju, ...rest];
+    return [...(first ? [first] : []), ihyeongju, ...rest, djEve];
   }, [musicians, t]);
 
   return (
@@ -116,7 +139,10 @@ const Lineup: React.FC<Props> = ({ musicians }) => {
                           alt={artist.imageAlt}
                           fill
                           sizes="(max-width: 1024px) 90vw, 380px"
-                          className="object-cover grayscale-[0.25] transition-[filter] duration-500 hover:grayscale-0"
+                          className={classNames(
+                            'grayscale-[0.25] transition-[filter] duration-500 hover:grayscale-0',
+                            artist.lowRes ? 'object-contain' : 'object-cover'
+                          )}
                         />
                       </div>
                     </div>

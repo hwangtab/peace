@@ -37,7 +37,7 @@
   "lineup": {
     "eyebrow": "陣容",
     "heading": "歌唱的人們",
-    "subheading": "五組音樂人在街頭為巴勒斯坦解放而歌唱",
+    "subheading": "六組音樂人在街頭為巴勒斯坦解放而歌唱",
     "link_profile": "查看藝人簡介",
     "link_instagram": "Instagram"
   },
@@ -46,6 +46,11 @@
       "name": "李亨柱",
       "description": "以指彈藍調(Fingerstyle Blues)為根基、融合民謠與爵士的創作歌手。自2017年起參與《新民眾歌謠合輯》第1至3輯,並在社會暴力現場演唱。首張迷你專輯《Atopy(異位性皮膚炎)》(2019)、首張正規專輯《We Wanted to Keep Each Other(我們曾想守護彼此)》(2023)。",
       "image_alt": "創作歌手 李亨柱"
+    },
+    "djeve": {
+      "name": "DJ Eve",
+      "description": "DJ Eve（伊芙）活躍於「저항과 소음 Noise For Protest」。저항과 소음是為結束加薩集團屠殺而聚集起來的巴勒斯坦聲援團體與DJ們的專案，透過音樂與舞蹈讓反對集團屠殺的行動被看見。她持續站上聲援舞台，包括6月的「為巴勒斯坦而自豪，抵抗與噪音（Pride Noise for Palestine）」。",
+      "image_alt": "DJ Eve"
     }
   },
   "tickets": {

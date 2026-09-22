@@ -56,8 +56,8 @@ const eventStructs: SolidarityEventStruct[] = [
       { name: '남수', musicianId: 4 },
       // 2026-09-18 추가: 임정득(민중가수, '소금꽃나무').
       { name: '임정득', musicianId: 42 },
-      // 2026-09-22 추가: DJ 이브. 캠프 뮤지션 명단에 없고 아직 소개문·사진이 없어
-      // Lineup.tsx 카드에는 넣지 않는다 — 이 구조화 데이터(performer)에만 이름을 싣는다.
+      // 2026-09-22 추가: DJ 이브('저항과 소음 Noise For Protest'). 본인 동의로 소개문·
+      // 사진까지 Lineup.tsx에 들어갔다(캠프 뮤지션 명단에는 없어 따로 조립).
       { name: 'DJ 이브', musicianId: null },
       // 모레도토요일은 반쥴 공연 포스터에는 있었지만 거리집회 출연진이 아니다
       // (2026-09-16 운영자 확인, dfb383c9). 구조화 데이터 performer 목록에도 넣지 않는다.

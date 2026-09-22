@@ -37,7 +37,7 @@
   "lineup": {
     "eyebrow": "Lineup",
     "heading": "Mereka yang bernyanyi",
-    "subheading": "Lima grup bernyanyi di jalanan untuk pembebasan Palestina.",
+    "subheading": "Enam grup bernyanyi di jalanan untuk pembebasan Palestina.",
     "link_profile": "Lihat profil artis",
     "link_instagram": "Instagram"
   },
@@ -46,6 +46,11 @@
       "name": "Lee Hyeong-ju",
       "description": "Seorang penyanyi-penulis lagu berakar pada fingerstyle blues, yang memadukan folk dan jazz dalam musiknya. Sejak 2017 ia telah ikut serta dalam New Minjung Music Compilation vol. 1–3 dan tampil di lokasi-lokasi kekerasan sosial. EP debut Atopy (2019), album penuh We Wanted to Keep Each Other (2023).",
       "image_alt": "Penyanyi-penulis lagu Lee Hyeong-ju"
+    },
+    "djeve": {
+      "name": "DJ Eve",
+      "description": "DJ Eve (Yves) aktif bersama Noise For Protest, sebuah proyek yang mempertemukan kelompok solidaritas Palestina dan para DJ untuk mengakhiri genosida di Gaza, membuat gerakan anti-genosida terlihat lewat musik dan tarian. Ia telah berulang kali tampil di panggung-panggung solidaritas, termasuk Pride Noise for Palestine pada bulan Juni.",
+      "image_alt": "DJ Eve"
     }
   },
   "tickets": {

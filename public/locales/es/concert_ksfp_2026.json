@@ -37,7 +37,7 @@
   "lineup": {
     "eyebrow": "Cartel",
     "heading": "Quienes cantan",
-    "subheading": "Cinco actos cantaron en la calle por la liberación de Palestina.",
+    "subheading": "Seis actos cantaron en la calle por la liberación de Palestina.",
     "link_profile": "Ver el perfil del artista",
     "link_instagram": "Instagram"
   },
@@ -46,6 +46,11 @@
       "name": "Lee Hyeong-ju",
       "description": "Cantautor arraigado en el fingerstyle blues, que entrelaza folk y jazz en su música. Desde 2017 ha participado en los volúmenes 1 a 3 de New Minjung Music Compilation y ha cantado en lugares marcados por la violencia social. EP debut Atopy (2019), álbum de larga duración We Wanted to Keep Each Other (2023).",
       "image_alt": "Cantautor Lee Hyeong-ju"
+    },
+    "djeve": {
+      "name": "DJ Eve",
+      "description": "DJ Eve (Yves) participa en Noise For Protest, un proyecto que reúne a colectivos de solidaridad con Palestina y DJs para poner fin al genocidio en Gaza, visibilizando el movimiento contra el genocidio a través de la música y el baile. Ha subido reiteradamente a escenarios solidarios, entre ellos Pride Noise for Palestine en junio.",
+      "image_alt": "DJ Eve"
     }
   },
   "tickets": {
