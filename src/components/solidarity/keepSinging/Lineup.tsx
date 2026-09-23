@@ -14,11 +14,6 @@ interface LineupArtist {
   /** 사이트 안 뮤지션 상세 페이지 — 없으면 외부 링크를 쓴다. */
   profileHref?: string;
   instagramUrl?: string;
-  /**
-   * 원본이 작아(인스타그램 프로필 썸네일 등) object-cover로 4:5 박스를 채우면 심하게
-   * 흐려지는 사진. object-contain으로 원본 비율을 지켜 배경(#141414) 레터박스가 생기게 한다.
-   */
-  lowRes?: boolean;
 }
 
 /**
@@ -43,8 +38,8 @@ const IHYEONGJU_INSTAGRAM = 'https://www.instagram.com/hyungju1218/';
 
 /**
  * 인스타그램 프로필 썸네일(150×150, 본인 동의 확인)이라 다른 다섯 명(600×600 촬영본)보다
- * 해상도가 낮다. aspect-[4/5] 큰 박스를 그대로 채우면 업스케일로 심하게 흐려진다(studio
- * 쪽에서 같은 문제를 실측 확인) — object-contain으로 원본 비율을 지켜 흐림을 줄인다.
+ * 해상도가 낮다. object-cover로 통일해 다른 카드와 같은 크기·자르기로 보이게 한다 —
+ * 흐려지는 것은 감수한다(원본이 그만큼 작다는 사실 자체는 바뀌지 않는다).
  */
 const DJ_EVE_IMAGE = '/images-webp/solidarity/lineup/dj-eve.webp';
 const DJ_EVE_INSTAGRAM = 'https://www.instagram.com/jinaofyves/';
@@ -97,7 +92,6 @@ const Lineup: React.FC<Props> = ({ musicians }) => {
       imageUrl: DJ_EVE_IMAGE,
       imageAlt: t('artists.djeve.image_alt'),
       instagramUrl: DJ_EVE_INSTAGRAM,
-      lowRes: true,
     };
 
     // 이서영 다음에 이형주를 끼워 넣는다: 이서영, 이형주, 모모, 남수, 임정득, DJ 이브.
@@ -139,10 +133,7 @@ const Lineup: React.FC<Props> = ({ musicians }) => {
                           alt={artist.imageAlt}
                           fill
                           sizes="(max-width: 1024px) 90vw, 380px"
-                          className={classNames(
-                            'grayscale-[0.25] transition-[filter] duration-500 hover:grayscale-0',
-                            artist.lowRes ? 'object-contain' : 'object-cover'
-                          )}
+                          className="object-cover grayscale-[0.25] transition-[filter] duration-500 hover:grayscale-0"
                         />
                       </div>
                     </div>
