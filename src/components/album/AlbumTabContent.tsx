@@ -51,10 +51,10 @@ const AlbumTabContent: React.FC<AlbumTabContentProps> = ({
   return (
     <>
       {/* Tab Navigation */}
-      <div className="flex justify-center mb-12">
+      <div className="mb-12 flex justify-center px-4">
         <div
           role="tablist"
-          className="inline-flex p-1 bg-white/50 backdrop-blur-sm rounded-2xl shadow-inner border border-white/50"
+          className="grid w-full max-w-md grid-cols-3 rounded-2xl border border-white/50 bg-white/50 p-1 shadow-inner backdrop-blur-sm"
         >
           {tabs.map((tab) => (
             <button
@@ -64,7 +64,7 @@ const AlbumTabContent: React.FC<AlbumTabContentProps> = ({
               aria-selected={activeTab === tab.id}
               aria-controls={`${tab.id}-panel`}
               onClick={() => setActiveTab(tab.id as 'info' | 'video' | 'photo')}
-              className={`relative px-6 py-3 rounded-xl text-sm font-bold transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${
+              className={`relative rounded-xl px-2 py-3 text-xs font-bold transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean sm:px-6 sm:text-sm ${
                 activeTab === tab.id ? 'text-white' : 'text-coastal-gray hover:text-jeju-ocean'
               }`}
             >

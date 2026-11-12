@@ -356,7 +356,7 @@ const CampSurvey2026Page: React.FC = () => {
                   <legend className="mb-2 block font-medium text-deep-ocean">
                     {s('label_role')}
                   </legend>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
                     {ROLE_OPTIONS.map((r) => {
                       const active = roles.includes(r.key);
                       return (
@@ -366,7 +366,7 @@ const CampSurvey2026Page: React.FC = () => {
                           aria-pressed={active}
                           onClick={() => toggleRole(r.key)}
                           className={classNames(
-                            'rounded-full border-2 px-5 py-2 text-sm font-medium transition',
+                            'w-full rounded-full border-2 px-5 py-2 text-sm font-medium transition sm:w-auto',
                             active
                               ? 'border-jeju-ocean bg-jeju-ocean text-white shadow-md'
                               : 'border-seafoam bg-white text-coastal-gray hover:border-ocean-mist'

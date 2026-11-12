@@ -96,15 +96,26 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
         <p className="typo-body !text-seafoam mb-12 drop-shadow-sm max-w-3xl mx-auto">
           {t('home.hero.message')}
         </p>
-        <div className="flex flex-wrap justify-center gap-4">
-          <Button href="#about" variant="gold" onClick={handleScrollToAbout}>
+        <div className="flex flex-col items-stretch gap-4 sm:flex-row sm:flex-wrap sm:justify-center">
+          <Button
+            href="#about"
+            variant="gold"
+            onClick={handleScrollToAbout}
+            className="w-full sm:w-auto"
+          >
             {t('home.hero.camp_intro')}
           </Button>
-          <Button to="/camps/2026" variant="white-outline">
+          <Button to="/camps/2026" variant="white-outline" className="w-full sm:w-auto">
             {t('home.hero.camp_2026')}
           </Button>
           {camp2026?.fundingUrl && (
-            <Button href={camp2026.fundingUrl} variant="white" external utmContent="home-hero">
+            <Button
+              href={camp2026.fundingUrl}
+              variant="white"
+              external
+              utmContent="home-hero"
+              className="w-full sm:w-auto"
+            >
               {t('camp.ticketing_2026')}
             </Button>
           )}
