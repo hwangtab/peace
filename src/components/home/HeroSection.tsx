@@ -53,13 +53,15 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
   // 먼저 보였다가 이미지가 오면 어두워지는 "흰 번쩍임"이 생긴다(느린 4G 실측 2.3초).
   return (
     <section className="relative h-screen flex items-center justify-center text-center overflow-hidden bg-jeju-ocean">
-      {/* Slow Ken Burns background for subtle atmosphere */}
+      {/* Slow Ken Burns background for subtle atmosphere.
+          12초 전체화면 scale 애니메이션은 로드 직후 스크롤과 겹쳐 GPU를 계속 점유했다.
+          짧게 끝내(3.5s) 이후에는 정지 상태로 둔다. */}
       {!imageFailed && (
         <motion.div
           className="absolute inset-0"
           initial={shouldReduceMotion ? { scale: 1 } : { scale: 1.08 }}
           animate={{ scale: 1 }}
-          transition={{ duration: shouldReduceMotion ? 0 : 12, ease: 'easeOut' }}
+          transition={{ duration: shouldReduceMotion ? 0 : 3.5, ease: 'easeOut' }}
           aria-hidden="true"
         >
           <Image

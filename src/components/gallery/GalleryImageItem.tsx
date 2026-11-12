@@ -110,6 +110,7 @@ const GalleryImageItem = React.memo(
               }`}
               quality={75}
               priority={priority}
+              decoding="async"
               {...(!priority && { loading: 'lazy' })}
               onLoad={() => setIsLoaded(true)}
               onError={handleImageError}

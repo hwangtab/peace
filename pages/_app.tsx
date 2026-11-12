@@ -36,6 +36,12 @@ declare global {
     gtag?: (...args: unknown[]) => void;
     // framer-motion 기능 청크 로드 완료 플래그(_document 폴백 타이머가 참조)
     __motionReady?: boolean;
+    // React hydration 완료 플래그 — 폴백 타이머가 hydration보다 먼저 콘텐츠를
+    // 강제 노출해 hydration 직후 다시 숨겨지는 깜빡임을 막기 위해 _document 가 참조.
+    __appHydrated?: boolean;
+    // 폴백이 실제로 콘텐츠를 강제 노출했음을 표시. useScrollReveal 이 이후 렌더에서
+    // 다시 opacity:0 을 적용하지 않도록(깜빡임 방지) 읽는다.
+    __motionFallback?: boolean;
   }
 }
 
@@ -45,6 +51,13 @@ const GA_MEASUREMENT_ID = config.gaMeasurementId;
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const isAdminRoute = router.pathname.startsWith('/admin');
+
+  // _document 의 3초 폴백 스크립트가 "JS는 살아있는데 아직 hydration 전"인 구간에
+  // 콘텐츠를 강제 노출하면, hydration 직후 reveal 이 다시 opacity:0 을 적용해
+  // 화면이 깜빡인다. hydration 완료를 알려 폴백이 그 전에 개입하지 않게 한다.
+  useEffect(() => {
+    window.__appHydrated = true;
+  }, []);
 
   // D1 — 전역 클라이언트 에러 수집.
   // 잡히지 않은 예외/Promise 거부를 자체 엔드포인트(/api/client-error)로 보내

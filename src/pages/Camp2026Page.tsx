@@ -210,6 +210,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({
                   subtitle={t('camp.section_overview_subtitle')}
                   align="left"
                   className="!mb-6"
+                  reveal={false}
                 />
                 <p className="typo-body mb-6 break-words">{translatedDescription}</p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -281,15 +282,11 @@ const Camp2026Page: React.FC<CampPageProps> = ({
           <Section background="ocean-sand" paddingTop="loose" paddingBottom="loose">
             <Container size="content">
               <SectionHeader title={t('camp.section_staff')} />
-              <motion.div
-                variants={item}
-                initial="hidden"
-                whileInView="visible"
-                viewport={viewport}
-                className="bg-white rounded-lg shadow-sm p-6 sm:p-8"
-              >
+              {/* 1,145px 짜리 스태프 블록 전체를 opacity reveal 하면 큰 레이어가
+                  스크롤 중 생성된다 — 카드 내부 항목 애니메이션은 CampStaff 가 담당. */}
+              <div className="bg-white rounded-lg shadow-sm p-6 sm:p-8">
                 <CampStaff staff={camp2026.staff || []} collaborators={camp2026.collaborators} />
-              </motion.div>
+              </div>
             </Container>
           </Section>
         </>

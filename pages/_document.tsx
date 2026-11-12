@@ -107,13 +107,20 @@ class MyDocument extends Document {
               }}
             />
           )}
-          {/* JS 는 켜졌지만 framer-motion 청크가 일정 시간 내 로드되지 않으면(__motionReady
-              미설정) 숨겨진 콘텐츠를 강제 노출한다. 정상 로드 시에는 아무 동작도 하지 않아
-              스크롤 등장 애니메이션을 그대로 유지한다. */}
+          {/* JS 는 켜졌지만 framer-motion 청크가 로드되지 않거나 앱 번들 자체가
+              실패해 콘텐츠가 영영 숨겨지는 경우를 대비한 최후 폴백.
+              주의: 예전에는 3초 뒤 무조건 강제 노출했는데, 느린 회선에서는 그 시점이
+              hydration 보다 먼저라 콘텐츠가 보였다가 hydration 직후 다시 opacity:0 으로
+              돌아가 깜빡였다(1.6Mbps 실측: 3.3s 노출 → 5.4s 재숨김). 그래서
+              (1) hydration 완료 후에도 motion 이 준비되지 않은 경우(6s),
+              (2) 앱 번들이 아예 실행되지 못한 경우(15s)에만 노출한다.
+              노출 시 window.__motionFallback 을 세워, 이후 렌더에서도 다시 숨기지 않는다. */}
           <script
             dangerouslySetInnerHTML={{
               __html:
-                "window.setTimeout(function(){if(window.__motionReady)return;var n=document.querySelectorAll('[style*=\"opacity:0\"],[style*=\"opacity: 0\"]');for(var i=0;i<n.length;i++){n[i].style.opacity='1';n[i].style.transform='none';}},3000);",
+                "function __revealHidden(){var n=document.querySelectorAll('[style*=\"opacity:0\"],[style*=\"opacity: 0\"]');for(var i=0;i<n.length;i++){n[i].style.opacity='1';n[i].style.transform='none';}window.__motionFallback=true;}" +
+                'window.setTimeout(function(){if(window.__motionReady)return;if(!window.__appHydrated)return;__revealHidden();},6000);' +
+                'window.setTimeout(function(){if(window.__motionReady||window.__appHydrated)return;__revealHidden();},15000);',
             }}
           />
         </Head>

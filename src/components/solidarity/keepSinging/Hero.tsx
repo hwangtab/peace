@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
-import { useReducedMotion } from 'framer-motion';
 import { DarkLinkButton, FlagRule, Reveal } from './DarkUI';
 
 const POSTER = '/images-webp/solidarity/keep-singing-for-palestine-20260918.webp';
@@ -9,12 +8,12 @@ const POSTER = '/images-webp/solidarity/keep-singing-for-palestine-20260918.webp
 /**
  * Hero — 포스터의 "국기색이 반사되는 CD"를 배경 광택으로 옮긴 도입부.
  *
- * conic-gradient 원을 blur 해 60초 주기로 천천히 돌린다. prefers-reduced-motion 이면
- * 회전을 멈추고 정적인 광택만 남긴다(애니메이션은 CSS 로 두어 JS 재렌더가 없다).
+ * conic-gradient 원을 blur 해 정적인 광택으로 둔다. 예전에는 60초 무한 회전을
+ * 걸었는데, 140vw + blur(90px) 레이어를 계속 변환·재래스터화해 스크롤 프레임을
+ * 잡아먹었다. 정지 상태에서도 시각 효과는 동일하다.
  */
 const Hero: React.FC = () => {
   const { t } = useTranslation('concert_ksfp_2026');
-  const reduce = useReducedMotion();
 
   return (
     <section className="relative overflow-hidden pb-16 pt-28 md:pb-24 md:pt-36">
@@ -25,7 +24,6 @@ const Hero: React.FC = () => {
           style={{
             background:
               'conic-gradient(from 0deg, #CE1126, #F5F1EA 25%, #007A3D 50%, #0a0a0a 72%, #CE1126)',
-            animation: reduce ? undefined : 'ksfp-spin 60s linear infinite',
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0a]/40 to-[#0a0a0a]" />

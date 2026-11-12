@@ -90,14 +90,9 @@ const CampCard: React.FC<CampCardProps> = React.memo(({ camp }) => {
 
   return (
     <motion.div
-      whileHover={
-        !isComingSoon
-          ? {
-              y: -8,
-              boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
-            }
-          : {}
-      }
+      // box-shadow 는 매 프레임 페인트를 유발한다. hover 리프트(transform)만 남기고
+      // 그림자는 정적 클래스(shadow-md)에 맡긴다.
+      whileHover={!isComingSoon ? { y: -8 } : {}}
       transition={{ duration: 0.3 }}
       className="h-full"
     >

@@ -215,14 +215,12 @@ const AnimatedGalleryItem: React.FC<{
   );
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.18 }}
-      className="aspect-square relative bg-ocean-sand rounded-lg overflow-hidden"
-    >
+    // 마운트 시 opacity 페이드를 걸면 sentinel 배치(24장)가 추가될 때마다
+    // 24개 레이어가 동시에 생성되어 스크롤이 끊긴다. 타일은 즉시 표시하고,
+    // 이미지 자체의 로드 페이드(GalleryImageItem)에 맡긴다.
+    <div className="aspect-square relative bg-ocean-sand rounded-lg overflow-hidden">
       <GalleryImageItem image={image} priority={priority} onClick={handleClick} />
-    </motion.div>
+    </div>
   );
 });
 

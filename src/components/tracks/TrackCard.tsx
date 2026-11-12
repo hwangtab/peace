@@ -60,11 +60,12 @@ const TrackCard = React.memo(
 
     return (
       <motion.div
-        initial={itemHidden}
-        whileInView={itemVisible}
+        // /album/tracks 처럼 항상 펼친 카드는 높이가 2,500px 에 달해, opacity reveal 시
+        // 거대한 컴포지트 레이어가 생긴다. 펼친 카드는 애니메이션 없이 즉시 렌더한다.
+        initial={alwaysExpanded ? false : itemHidden}
+        whileInView={alwaysExpanded ? undefined : itemVisible}
         viewport={viewport}
         transition={itemTransition()}
-        exit={{ opacity: 0, y: -20 }}
         className="bg-white rounded-xl shadow-md overflow-hidden"
       >
         {alwaysExpanded && musicianImageUrl && (

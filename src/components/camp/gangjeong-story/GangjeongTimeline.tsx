@@ -94,7 +94,7 @@ interface Props {
 
 const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
   const { t } = useTranslation('gangjeong');
-  const { viewport, container, item } = useScrollReveal();
+  const { viewport, item, itemHidden, itemVisible, itemTransition } = useScrollReveal();
   const isHome = variant === 'home';
   const lineGradient = isHome
     ? 'from-ocean-mist/40 via-jeju-ocean/40 to-seafoam/40'
@@ -125,13 +125,9 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
             className={`md:hidden absolute start-4 top-0 bottom-0 w-0.5 bg-gradient-to-b ${lineGradient}`}
           />
 
-          <motion.ol
-            className="relative"
-            variants={container}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewport}
-          >
+          {/* 1,500px 짜리 ol 전체를 한 번에 opacity reveal 하지 않고, 항목(li)마다
+              자기 뷰포트 진입 시 등장한다 — 큰 레이어 생성과 화면 밖 낭비 애니메이션 방지. */}
+          <ol className="relative">
             {nodes.map((node, i) => {
               const isLeft = i % 2 === 0;
               const isLast = i === nodes.length - 1;
@@ -139,7 +135,10 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
               return (
                 <motion.li
                   key={node.titleKey}
-                  variants={item}
+                  initial={itemHidden}
+                  whileInView={itemVisible}
+                  viewport={viewport}
+                  transition={itemTransition(i)}
                   className="relative mb-8 md:mb-12 last:mb-0"
                 >
                   {/* Mobile layout */}
@@ -261,7 +260,7 @@ const GangjeongTimeline: React.FC<Props> = ({ variant = 'camp' }) => {
                 </motion.li>
               );
             })}
-          </motion.ol>
+          </ol>
         </div>
       </Container>
     </Section>

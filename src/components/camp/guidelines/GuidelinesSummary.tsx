@@ -27,6 +27,7 @@ const GuidelinesSummary: React.FC = () => {
               subtitle={t('camp_guidelines_2026.summary_intro')}
               align="center"
               className="!mb-8"
+              reveal={false}
             />
           </motion.div>
 

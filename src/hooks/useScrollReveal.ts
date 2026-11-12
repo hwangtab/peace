@@ -19,7 +19,12 @@ import {
  * 제거하므로, 이 훅을 쓰는 것만으로 접근성 처리가 함께 해결된다.
  */
 export const useScrollReveal = () => {
-  const reduce = useReducedMotion();
+  const prefersReducedMotion = useReducedMotion();
+  // _document 폴백이 콘텐츠를 강제 노출한 뒤(hydration 이 늦은 느린 회선)에는
+  // 다시 opacity:0 을 적용하지 않는다 — 그렇지 않으면 화면이 한 번 깜빡이고
+  // 이미 본 콘텐츠가 스크롤 시 다시 페이드인한다.
+  const motionFallback = typeof window !== 'undefined' && window.__motionFallback === true;
+  const reduce = Boolean(prefersReducedMotion) || motionFallback;
   const duration = reduce ? 0 : REVEAL_DURATION;
 
   // 한 줄(STAGGER_GROUP) 안에서만 잔물결 — 누적하지 않아 뒤쪽 줄도 진입 즉시 나타난다.

@@ -1,6 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
 import { useTranslation } from 'next-i18next';
-import { m as motion } from 'framer-motion';
 import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
 import PageHero from '@/components/common/PageHero';
@@ -28,7 +27,6 @@ import {
   BulletList,
   AssignmentTable,
 } from '@/components/camp/guide/guidePrimitives';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 interface GuidePageProps {
   initialMusicians?: Musician[];
@@ -46,7 +44,6 @@ const CampMusicianGuide2026Page: React.FC<GuidePageProps> = ({
   initialLocale = 'ko',
 }) => {
   const { t, i18n } = useTranslation(['camp_musician_guide_2026', 'translation']);
-  const { container, item, viewport } = useScrollReveal();
 
   const g = useCallback(
     (key: string, opts?: Record<string, unknown>) => t(`camp_musician_guide_2026.${key}`, opts),
@@ -120,14 +117,11 @@ const CampMusicianGuide2026Page: React.FC<GuidePageProps> = ({
             </ul>
           </nav>
 
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewport}
-          >
+          {/* 문서 전체를 하나의 opacity reveal 로 감싸면 5,800px 레이어가 생긴다.
+              문서형 페이지는 즉시 렌더한다. */}
+          <div>
             {/* 1. 개요 */}
-            <motion.div variants={item}>
+            <div>
               <SectionHeading id="overview" index={1} title={g('section_overview') as string} />
               <dl className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">
                 {OVERVIEW.map((row) => (
@@ -145,12 +139,12 @@ const CampMusicianGuide2026Page: React.FC<GuidePageProps> = ({
               <p className="typo-body text-coastal-gray leading-relaxed">
                 {g('overview_rain_note')}
               </p>
-            </motion.div>
+            </div>
 
             <hr className="border-coastal-gray/20 my-10" />
 
             {/* 2. 취지 및 기조 */}
-            <motion.div variants={item}>
+            <div>
               <SectionHeading id="purpose" index={2} title={g('section_purpose') as string} />
               <div className="space-y-3">
                 {PURPOSE.map((p) => (
@@ -159,12 +153,12 @@ const CampMusicianGuide2026Page: React.FC<GuidePageProps> = ({
                   </p>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
             <hr className="border-coastal-gray/20 my-10" />
 
             {/* 3. 공연 타임테이블 — 원본 타임테이블(timetable-2026)에서 직접 읽어옴 */}
-            <motion.div variants={item}>
+            <div>
               <SectionHeading id="lineup" index={3} title={g('section_lineup') as string} />
               <div className="not-prose">
                 {musiciansResource.isLoading ? (
@@ -180,12 +174,12 @@ const CampMusicianGuide2026Page: React.FC<GuidePageProps> = ({
                 )}
               </div>
               <p className="mt-4 text-sm text-coastal-gray">{g('lineup_rain_note')}</p>
-            </motion.div>
+            </div>
 
             <hr className="border-coastal-gray/20 my-10" />
 
             {/* 4. 부대 프로그램 */}
-            <motion.div variants={item}>
+            <div>
               <SectionHeading id="programs" index={4} title={g('section_programs') as string} />
               <h3 className="text-base font-semibold text-jeju-ocean mb-2">
                 {g('programs_market_heading')}
@@ -195,12 +189,12 @@ const CampMusicianGuide2026Page: React.FC<GuidePageProps> = ({
                 {g('programs_booth_heading')}
               </h3>
               <BulletList items={BOOTH_ITEMS} />
-            </motion.div>
+            </div>
 
             <hr className="border-coastal-gray/20 my-10" />
 
             {/* 5. 오시는 길 · 숙박 · 식사 */}
-            <motion.div variants={item}>
+            <div>
               <SectionHeading id="access" index={5} title={g('section_access') as string} />
 
               {/* 오시는 길 */}
@@ -306,12 +300,12 @@ const CampMusicianGuide2026Page: React.FC<GuidePageProps> = ({
               <div className="rounded-xl border border-seafoam/40 bg-sky-horizon/40 p-4">
                 <BulletList items={arr('access_meal_items')} />
               </div>
-            </motion.div>
+            </div>
 
             <hr className="border-coastal-gray/20 my-10" />
 
             {/* 6. 운영진 */}
-            <motion.div variants={item}>
+            <div>
               <SectionHeading id="staff" index={6} title={g('section_staff') as string} />
               <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
                 {STAFF.map((s) => (
@@ -326,20 +320,20 @@ const CampMusicianGuide2026Page: React.FC<GuidePageProps> = ({
                   </div>
                 ))}
               </dl>
-            </motion.div>
+            </div>
 
             <hr className="border-coastal-gray/20 my-10" />
 
             {/* 7. 예산 · 정산 */}
-            <motion.div variants={item}>
+            <div>
               <SectionHeading id="budget" index={7} title={g('section_budget') as string} />
               <BulletList items={BUDGET} />
-            </motion.div>
+            </div>
 
             <hr className="border-coastal-gray/20 my-10" />
 
             {/* 운영지침 링크 */}
-            <motion.div variants={item}>
+            <div>
               <div className="rounded-xl border border-seafoam/40 bg-ocean-sand/40 p-5 sm:p-6">
                 <h3 className="text-base font-bold text-deep-ocean mb-1">
                   {g('guidelines_box_heading')}
@@ -353,8 +347,8 @@ const CampMusicianGuide2026Page: React.FC<GuidePageProps> = ({
                   <span aria-hidden="true">→</span>
                 </Link>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </Container>
       </Section>
 

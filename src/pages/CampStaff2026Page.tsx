@@ -1,6 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
 import { useTranslation } from 'next-i18next';
-import { m as motion } from 'framer-motion';
 import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
 import PageHero from '@/components/common/PageHero';
@@ -24,7 +23,6 @@ import {
   BulletList,
   AssignmentTable,
 } from '@/components/camp/guide/guidePrimitives';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 interface StaffPageProps {
   initialMusicians?: Musician[];
@@ -64,7 +62,6 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
   initialLocale = 'ko',
 }) => {
   const { t, i18n } = useTranslation(['camp_staff_2026', 'translation']);
-  const { container, item, viewport } = useScrollReveal();
 
   const s = useCallback(
     (key: string, opts?: Record<string, unknown>) => t(`camp_staff_2026.${key}`, opts),
@@ -154,14 +151,12 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
             </ul>
           </nav>
 
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewport}
-          >
+          {/* 이 문서 전체를 하나의 whileInView(opacity) 래퍼로 감싸면 7,000px 높이의
+              컴포지트 레이어가 스크롤 중 생성되어 모바일에서 수백 ms 정지가 생긴다.
+              문서형 페이지는 등장 애니메이션 없이 즉시 렌더한다. */}
+          <div>
             {/* 1. 핵심 정보 */}
-            <motion.div variants={item}>
+            <div>
               <SectionHeading id="info" index={1} title={s('section_info') as string} />
               <dl className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">
                 {OVERVIEW.map((row, i) => (
@@ -179,12 +174,12 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
                 ))}
               </dl>
               <p className="typo-body text-coastal-gray leading-relaxed">{s('rain_note')}</p>
-            </motion.div>
+            </div>
 
             <hr className="border-coastal-gray/20 my-10" />
 
             {/* 2. 운영 일정 */}
-            <motion.div variants={item}>
+            <div>
               <SectionHeading id="schedule" index={2} title={s('section_schedule') as string} />
               <p className="text-sm text-coastal-gray mb-5">{s('schedule_note')}</p>
               <ol className="space-y-3">
@@ -214,12 +209,12 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
                     </li>
                   ))}
               </ol>
-            </motion.div>
+            </div>
 
             <hr className="border-coastal-gray/20 my-10" />
 
             {/* 3. 역할 분담 */}
-            <motion.div variants={item}>
+            <div>
               <SectionHeading id="roles" index={3} title={s('section_roles') as string} />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {Array.isArray(roleItems) &&
@@ -249,12 +244,12 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
                     </div>
                   ))}
               </div>
-            </motion.div>
+            </div>
 
             <hr className="border-coastal-gray/20 my-10" />
 
             {/* 4. 공연 타임테이블 */}
-            <motion.div variants={item}>
+            <div>
               <SectionHeading id="timetable" index={4} title={s('section_timetable') as string} />
               <div className="not-prose">
                 {musiciansResource.isLoading ? (
@@ -270,12 +265,12 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
                 )}
               </div>
               <p className="mt-4 text-sm text-coastal-gray">{s('timetable_rain_note')}</p>
-            </motion.div>
+            </div>
 
             <hr className="border-coastal-gray/20 my-10" />
 
             {/* 5. 숙소 배정 */}
-            <motion.div variants={item}>
+            <div>
               <SectionHeading id="lodging" index={5} title={s('section_lodging') as string} />
 
               {/* 공통 안내 */}
@@ -400,12 +395,12 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
                   ))}
                 </ul>
               </div>
-            </motion.div>
+            </div>
 
             <hr className="border-coastal-gray/20 my-10" />
 
             {/* 6. 장터 운영 */}
-            <motion.div variants={item}>
+            <div>
               <SectionHeading id="market" index={6} title={s('section_market') as string} />
               {Array.isArray(marketItems) && <BulletList items={marketItems} />}
               <div className="mt-5 rounded-xl border border-seafoam/40 bg-ocean-sand/40 p-5 sm:p-6">
@@ -423,20 +418,20 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
                   <span aria-hidden="true">↗</span>
                 </a>
               </div>
-            </motion.div>
+            </div>
 
             <hr className="border-coastal-gray/20 my-10" />
 
             {/* 7. 정산 · 리워드 */}
-            <motion.div variants={item}>
+            <div>
               <SectionHeading id="rewards" index={7} title={s('section_rewards') as string} />
               {Array.isArray(rewardItems) && <BulletList items={rewardItems} />}
-            </motion.div>
+            </div>
 
             <hr className="border-coastal-gray/20 my-10" />
 
             {/* 8. 운영진 */}
-            <motion.div variants={item}>
+            <div>
               <SectionHeading id="org" index={8} title={s('section_org') as string} />
               <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
                 {Array.isArray(staffItems) &&
@@ -452,12 +447,12 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
                     </div>
                   ))}
               </dl>
-            </motion.div>
+            </div>
 
             <hr className="border-coastal-gray/20 my-10" />
 
             {/* 운영지침 + 뮤지션 안내 링크 */}
-            <motion.div variants={item} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="rounded-xl border border-seafoam/40 bg-ocean-sand/40 p-5 sm:p-6">
                 <h3 className="text-base font-bold text-deep-ocean mb-1">
                   {s('guidelines_card_title')}
@@ -484,8 +479,8 @@ const CampStaff2026Page: React.FC<StaffPageProps> = ({
                   <span aria-hidden="true">→</span>
                 </Link>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </Container>
       </Section>
 

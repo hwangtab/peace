@@ -51,7 +51,7 @@ const MobileMenu: React.FC<MobileMenuProps> = React.memo(
               // 스크롤된다(뒤 본문 스크롤은 body overflow:hidden으로 별도 차단).
               // z-50은 nav(z-50)와 같지만 top-16으로 영역이 겹치지 않아 충돌하지 않는다.
               // backdrop(z-40) 위·헤더 아래로 의도적으로 배치된다.
-              className="nav:hidden fixed inset-x-0 top-16 bottom-0 z-50 overflow-y-auto overscroll-contain bg-cloud-white/95 backdrop-blur-md border-t border-seafoam"
+              className="nav:hidden fixed inset-x-0 top-16 bottom-0 z-50 overflow-y-auto overscroll-contain bg-cloud-white border-t border-seafoam"
             >
               <Container size="wide" className="pt-4 pb-[calc(1rem+env(safe-area-inset-bottom))]">
                 {simpleMenuItems.map((item) => (

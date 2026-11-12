@@ -35,8 +35,10 @@ export function useCountUp({ target, duration = 2000, delay = 0 }: UseCountUpOpt
       }
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      // rAF 콜백 내 setState — effect 본문 동기 호출 아님
-      setAnimatedValue(Math.round(eased * target));
+      const next = Math.round(eased * target);
+      // rAF 콜백 내 setState — effect 본문 동기 호출 아님.
+      // 표시값이 바뀔 때만 렌더한다(2초 동안 120회 → 값 변화 횟수만큼).
+      setAnimatedValue((prev) => (prev === next ? prev : next));
       if (progress < 1) {
         rafId.current = requestAnimationFrame(step);
       }

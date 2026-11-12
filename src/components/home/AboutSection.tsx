@@ -21,7 +21,7 @@ const AboutSection = () => {
           viewport={viewport}
           className="text-center"
         >
-          <SectionHeader title={t('about.title')} subtitle={t('about.subtitle')} />
+          <SectionHeader title={t('about.title')} subtitle={t('about.subtitle')} reveal={false} />
 
           <motion.div
             variants={item}

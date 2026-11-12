@@ -33,7 +33,12 @@ const Navigation = () => {
       <nav
         aria-label="Main"
         className={`fixed w-full z-50 transition-[background-color,box-shadow] duration-300 ${
-          isScrolled ? 'bg-cloud-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
+          isScrolled
+            ? // backdrop-filter 는 스크롤하는 동안 뒤 콘텐츠를 매 프레임 재블렌딩한다.
+              // 모바일(특히 iOS Safari)에서 스크롤이 끊기는 주범이라 md 미만은
+              // 거의 불투명한 단색 배경으로 대체한다.
+              'bg-cloud-white/95 md:bg-cloud-white/90 md:backdrop-blur-md shadow-sm'
+            : 'bg-transparent'
         }`}
       >
         <Container size="wide">

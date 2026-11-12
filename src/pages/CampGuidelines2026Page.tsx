@@ -1,6 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
 import { useTranslation } from 'next-i18next';
-import { m as motion } from 'framer-motion';
 import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
 import PageHero from '@/components/common/PageHero';
@@ -8,7 +7,6 @@ import Section from '@/components/layout/Section';
 import Container from '@/components/layout/Container';
 import GuidelineSection from '@/components/camp/guidelines/GuidelineSection';
 import { getFullUrl } from '@/config/env';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 interface Hotline {
   name: string;
@@ -26,7 +24,6 @@ interface MedicalFacility {
 
 const CampGuidelines2026Page: React.FC = () => {
   const { t } = useTranslation(['camp_guidelines_2026', 'translation']);
-  const { container, item, viewport } = useScrollReveal();
 
   const g = useCallback(
     (key: string, opts?: Record<string, unknown>) => t(`camp_guidelines_2026.${key}`, opts),
@@ -70,24 +67,21 @@ const CampGuidelines2026Page: React.FC = () => {
       {/* Main content */}
       <Section background="white" paddingTop="loose" paddingBottom="loose">
         <Container size="prose">
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewport}
-          >
+          {/* 문서 전체를 하나의 opacity reveal 로 감싸면 5,000px 레이어가 생긴다.
+              문서형 페이지는 즉시 렌더한다. */}
+          <div>
             {/* 1. 들어가며 */}
-            <motion.div variants={item}>
+            <div>
               <GuidelineSection
                 title={g('intro_title') as string}
                 body={g('intro_body') as string}
               />
-            </motion.div>
+            </div>
 
             <hr className="border-coastal-gray/20 my-8" />
 
             {/* 2. 금지행동 */}
-            <motion.div variants={item}>
+            <div>
               <h2 className="typo-h3 mb-2">{g('prohibited_title')}</h2>
               <p className="typo-body text-coastal-gray mb-4">{g('prohibited_intro')}</p>
               <GuidelineSection
@@ -106,32 +100,32 @@ const CampGuidelines2026Page: React.FC = () => {
                 items={arr('prohibited_filming_items')}
                 note={g('prohibited_filming_note') as string}
               />
-            </motion.div>
+            </div>
 
             <hr className="border-coastal-gray/20 my-8" />
 
             {/* 3. 동의 */}
-            <motion.div variants={item}>
+            <div>
               <GuidelineSection
                 title={g('consent_title') as string}
                 body={g('consent_body') as string}
               />
-            </motion.div>
+            </div>
 
             <hr className="border-coastal-gray/20 my-8" />
 
             {/* 4. 불편한 상황 */}
-            <motion.div variants={item}>
+            <div>
               <GuidelineSection
                 title={g('bystander_title') as string}
                 items={arr('bystander_items')}
               />
-            </motion.div>
+            </div>
 
             <hr className="border-coastal-gray/20 my-8" />
 
             {/* 5. 신고 방법 */}
-            <motion.div variants={item}>
+            <div>
               <h2 className="typo-h3 mb-2">{g('report_title')}</h2>
               <p className="typo-body text-coastal-gray mb-4">{g('report_intro')}</p>
               <ul className="space-y-2">
@@ -148,12 +142,12 @@ const CampGuidelines2026Page: React.FC = () => {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
 
             <hr className="border-coastal-gray/20 my-8" />
 
             {/* 6. 주최 측 대응 방향 */}
-            <motion.div variants={item}>
+            <div>
               <h2 className="typo-h3 mb-6">{g('response_title')}</h2>
 
               {/* 성희롱 */}
@@ -238,12 +232,12 @@ const CampGuidelines2026Page: React.FC = () => {
                 </h3>
                 <GuidelineSection title="" items={arr('response_secondary_harm_items')} />
               </div>
-            </motion.div>
+            </div>
 
             <hr className="border-coastal-gray/20 my-8" />
 
             {/* 7. 의료·응급 */}
-            <motion.div variants={item}>
+            <div>
               <GuidelineSection title={g('medical_title') as string} items={arr('medical_items')} />
               {Array.isArray(facilities) && facilities.length > 0 && (
                 <div className="mt-2">
@@ -271,40 +265,40 @@ const CampGuidelines2026Page: React.FC = () => {
                   </div>
                 </div>
               )}
-            </motion.div>
+            </div>
 
             <hr className="border-coastal-gray/20 my-8" />
 
             {/* 8. 야외·캠핑 안전 */}
-            <motion.div variants={item}>
+            <div>
               <GuidelineSection title={g('outdoor_title') as string} items={arr('outdoor_items')} />
-            </motion.div>
+            </div>
 
             <hr className="border-coastal-gray/20 my-8" />
 
             {/* 9. 접근성 */}
-            <motion.div variants={item}>
+            <div>
               <GuidelineSection
                 title={g('accessibility_title') as string}
                 items={arr('accessibility_items')}
               />
-            </motion.div>
+            </div>
 
             <hr className="border-coastal-gray/20 my-8" />
 
             {/* 10. 환경·지속가능성 */}
-            <motion.div variants={item}>
+            <div>
               <GuidelineSection
                 title={g('environment_title') as string}
                 body={g('environment_intro') as string}
                 items={arr('environment_items')}
               />
-            </motion.div>
+            </div>
 
             <hr className="border-coastal-gray/20 my-8" />
 
             {/* 11. 문의 */}
-            <motion.div variants={item}>
+            <div>
               <h2 className="typo-h3 mb-3">{g('contact_title')}</h2>
               <div className="bg-sky-horizon/40 border border-seafoam/30 rounded-xl p-4 sm:p-6">
                 <p className="text-sm font-semibold text-deep-ocean mb-1">
@@ -314,8 +308,8 @@ const CampGuidelines2026Page: React.FC = () => {
                 </p>
                 <p className="text-xs text-coastal-gray">{g('contact_note')}</p>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </Container>
       </Section>
 

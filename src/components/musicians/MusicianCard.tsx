@@ -24,7 +24,7 @@ const MusicianCard = memo(({ musician, href }: MusicianCardProps) => {
         whileInView={itemVisible}
         viewport={viewport}
         transition={itemTransition()}
-        className="transform-gpu h-full scroll-mt-24"
+        className="h-full scroll-mt-24"
       >
         <div className="group relative bg-white rounded-2xl shadow-lg overflow-hidden h-full flex flex-col">
           {/* Image */}

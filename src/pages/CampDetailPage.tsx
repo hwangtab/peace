@@ -107,7 +107,12 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
         <Container size="prose">
           <motion.div variants={item} initial="hidden" whileInView="visible" viewport={viewport}>
             <div className="bg-white rounded-lg shadow-sm p-8 mb-12">
-              <SectionHeader title={t('camp.section_overview')} align="left" className="!mb-6" />
+              <SectionHeader
+                title={t('camp.section_overview')}
+                align="left"
+                className="!mb-6"
+                reveal={false}
+              />
               <p className="typo-body mb-4 break-words">{camp.description}</p>
             </div>
 
@@ -119,7 +124,12 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
                 viewport={viewport}
                 className="bg-white rounded-lg shadow-sm p-8 mb-8"
               >
-                <SectionHeader title={t('camp.section_musicians')} align="left" className="!mb-6" />
+                <SectionHeader
+                  title={t('camp.section_musicians')}
+                  align="left"
+                  className="!mb-6"
+                  reveal={false}
+                />
                 {musiciansResource.isLoading ? (
                   <p className="text-coastal-gray" role="status">
                     {t('common.loading')}
@@ -142,7 +152,12 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
                 viewport={viewport}
                 className="bg-white rounded-lg shadow-sm p-8"
               >
-                <SectionHeader title={t('camp.section_staff')} align="left" className="!mb-6" />
+                <SectionHeader
+                  title={t('camp.section_staff')}
+                  align="left"
+                  className="!mb-6"
+                  reveal={false}
+                />
                 <CampStaff staff={camp.staff} collaborators={camp.collaborators} />
               </motion.div>
             )}

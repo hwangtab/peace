@@ -133,7 +133,7 @@ const Lineup: React.FC<Props> = ({ musicians }) => {
                           alt={artist.imageAlt}
                           fill
                           sizes="(max-width: 1024px) 90vw, 380px"
-                          className="object-cover grayscale-[0.25] transition-[filter] duration-500 hover:grayscale-0"
+                          className="object-cover grayscale-[0.25] hover:grayscale-0"
                         />
                       </div>
                     </div>
