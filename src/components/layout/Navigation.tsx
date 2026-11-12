@@ -51,7 +51,7 @@ const Navigation = () => {
               className={`group inline-flex items-center gap-2 text-sm sm:text-base lg:text-lg xl:text-xl 2xl:text-2xl font-bold font-serif transition-colors duration-300 min-w-0 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-jeju-ocean ${
                 isScrolled
                   ? 'text-jeju-ocean hover:text-ocean-mist'
-                  : 'text-cloud-white hover:text-seafoam drop-shadow-md'
+                  : 'text-cloud-white hover:text-seafoam text-shadow-soft'
               }`}
             >
               <WaveLogoMark className="h-4 sm:h-5 w-auto flex-shrink-0 transition-transform duration-500 group-hover:-translate-y-0.5" />

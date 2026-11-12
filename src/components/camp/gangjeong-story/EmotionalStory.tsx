@@ -15,6 +15,40 @@ interface StoryBlockProps {
   variant?: 'camp' | 'home';
 }
 
+/**
+ * 데스크톱 전용 parallax 레이어. 모바일에서는 이 컴포넌트를 마운트하지 않아
+ * `useScroll` 스크롤 구독 자체를 만들지 않는다(StoryBlock 3개 × 매 프레임 측정 제거).
+ */
+const StoryParallaxImage: React.FC<{
+  blockRef: React.RefObject<HTMLDivElement>;
+  imageSrc: string;
+  alt: string;
+  imageClassName?: string;
+}> = ({ blockRef, imageSrc, alt, imageClassName }) => {
+  const isNearViewport = useInView(blockRef);
+  const { scrollYProgress } = useScroll({
+    target: blockRef,
+    offset: ['start end', 'end start'],
+  });
+  const bgY = useTransform(scrollYProgress, [0, 1], ['-4%', '4%']);
+
+  return (
+    <motion.div
+      className="absolute inset-0 w-full h-full scale-[1.15]"
+      style={isNearViewport ? { y: bgY } : undefined}
+    >
+      <Image
+        src={imageSrc}
+        alt={alt}
+        fill
+        sizes="100vw"
+        quality={60}
+        className={`object-cover ${imageClassName || ''}`}
+      />
+    </motion.div>
+  );
+};
+
 const StoryBlock: React.FC<StoryBlockProps> = ({
   imageSrc,
   textKey,
@@ -27,18 +61,9 @@ const StoryBlock: React.FC<StoryBlockProps> = ({
   const { viewport, itemHidden, itemVisible, itemTransition } = useScrollReveal();
   const blockRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
-  // 모바일에서는 parallax 비활성 — 3개 StoryBlock 이 동시에 rAF subscribe 하던 부담 제거.
+  // 모바일에서는 parallax 비활성 — 스크롤 구독을 아예 만들지 않는다.
   const isMobile = useIsMobile();
   const parallaxDisabled = prefersReducedMotion || isMobile;
-  // 뷰포트에서 벗어나면 transform 갱신을 멈춘다.
-  const isNearViewport = useInView(blockRef);
-
-  const { scrollYProgress } = useScroll({
-    target: blockRef,
-    offset: ['start end', 'end start'],
-  });
-
-  const bgY = useTransform(scrollYProgress, [0, 1], ['-4%', '4%']);
 
   // bg-deep-ocean: lazy 이미지 도착 전 바탕. 없으면 스크롤 진입 시 흰 블록이 먼저 번쩍인다.
   return (
@@ -46,19 +71,25 @@ const StoryBlock: React.FC<StoryBlockProps> = ({
       ref={blockRef}
       className="relative min-h-[60vh] md:min-h-[70vh] flex items-end overflow-hidden bg-deep-ocean"
     >
-      <motion.div
-        className="absolute inset-0 w-full h-full scale-[1.15]"
-        style={parallaxDisabled || !isNearViewport ? undefined : { y: bgY }}
-      >
-        <Image
-          src={imageSrc}
+      {parallaxDisabled ? (
+        <div className="absolute inset-0 w-full h-full scale-[1.15]">
+          <Image
+            src={imageSrc}
+            alt={t(altKey)}
+            fill
+            sizes="100vw"
+            quality={60}
+            className={`object-cover ${imageClassName || ''}`}
+          />
+        </div>
+      ) : (
+        <StoryParallaxImage
+          blockRef={blockRef}
+          imageSrc={imageSrc}
           alt={t(altKey)}
-          fill
-          sizes="100vw"
-          quality={60}
-          className={`object-cover ${imageClassName || ''}`}
+          imageClassName={imageClassName}
         />
-      </motion.div>
+      )}
       <div
         className={`absolute inset-0 bg-gradient-to-t ${variant === 'home' ? 'from-black/75 via-jeju-ocean/40 to-transparent' : 'from-black/80 via-black/30 to-transparent'}`}
       />

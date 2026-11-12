@@ -4,6 +4,11 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
     "./pages/**/*.{js,jsx,ts,tsx}",
   ],
+  future: {
+    // 터치 기기(iOS Safari 등)는 탭 후 :hover 가 풀리지 않아 hover:scale/shadow/bg 가
+    // 눌린 채로 남는다. hover 유틸을 "hover 가능한 입력"에서만 적용해 근본 차단.
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     extend: {
       screens: {
@@ -71,6 +76,15 @@ module.exports = {
         },
         '.hyphens-auto': {
           hyphens: 'auto',
+        },
+        // drop-shadow(filter)는 요소 전체를 별도 레이어로 래스터화한다. 스크롤하는
+        // 이미지 위 텍스트에서는 iOS가 매 프레임 비용을 치르므로, 글리프에만 칠하는
+        // text-shadow 로 대체한다(시각적으로 거의 동일, 훨씬 저렴).
+        '.text-shadow-hero': {
+          textShadow: '0 2px 10px rgba(0, 0, 0, 0.35), 0 1px 3px rgba(0, 0, 0, 0.25)',
+        },
+        '.text-shadow-soft': {
+          textShadow: '0 1px 4px rgba(0, 0, 0, 0.35)',
         },
       })
     },

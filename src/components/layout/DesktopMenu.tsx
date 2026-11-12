@@ -28,8 +28,8 @@ const DesktopMenu: React.FC<DesktopMenuProps> = React.memo(
         return isActive ? 'text-jeju-ocean font-bold' : 'text-coastal-gray hover:text-jeju-ocean';
       }
       return isActive
-        ? 'text-cloud-white font-bold drop-shadow-md'
-        : 'text-cloud-white/90 hover:text-cloud-white drop-shadow-md';
+        ? 'text-cloud-white font-bold text-shadow-soft'
+        : 'text-cloud-white/90 hover:text-cloud-white text-shadow-soft';
     };
 
     // 인증 영역을 언어 선택기와 같은 명조체(font-display) 알약으로 통일한다.

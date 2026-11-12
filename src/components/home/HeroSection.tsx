@@ -87,13 +87,13 @@ const HeroSection = ({ imageUrl }: HeroSectionProps) => {
 
       {/* LCP content renders visible on first paint — no JS-gated opacity. */}
       <Container size="wide" className="relative z-10">
-        <h1 className="typo-h1 text-cloud-white mb-6 drop-shadow-md max-w-5xl mx-auto">
+        <h1 className="typo-h1 text-cloud-white mb-6 text-shadow-hero max-w-5xl mx-auto">
           {t('home.hero.title')}
         </h1>
-        <p className="typo-h2 !text-golden-sun mb-6 drop-shadow-sm max-w-4xl mx-auto">
+        <p className="typo-h2 !text-golden-sun mb-6 text-shadow-soft max-w-4xl mx-auto">
           {t('home.hero.subtitle')}
         </p>
-        <p className="typo-body !text-seafoam mb-12 drop-shadow-sm max-w-3xl mx-auto">
+        <p className="typo-body !text-seafoam mb-12 text-shadow-soft max-w-3xl mx-auto">
           {t('home.hero.message')}
         </p>
         <div className="flex flex-col items-stretch gap-4 sm:flex-row sm:flex-wrap sm:justify-center">

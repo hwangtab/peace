@@ -6218,9 +6218,21 @@ html {
   position: relative;
 }
 
+/* overflow-x: hidden 은 반대 축(overflow-y)을 auto 로 계산시켜 html/body 를
+   세로 스크롤 컨테이너로 만든다. iOS Safari 는 이 구조에서 페이지 스크롤을
+   느린 경로로 처리한다. clip 은 스크롤 컨테이너를 만들지 않는다.
+   (iOS 16 미만은 clip 미지원 → hidden 폴백) */
 html,
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+@supports not (overflow-x: clip) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
 }
 
 body {
@@ -6264,12 +6276,6 @@ code {
   *::after {
     transition-duration: 0ms !important;
     animation-duration: 0ms !important;
-  }
-
-  /* 호버 효과는 모바일에서 불필요하므로 GPU 레이어 생성 억제 */
-  .group:hover .group-hover\:scale-110,
-  .hover\:scale-110:hover {
-    transform: none !important;
   }
 
   /* iOS Safari는 폼 컨트롤 글꼴이 16px 미만이면 포커스 시 화면을 자동 확대하고,

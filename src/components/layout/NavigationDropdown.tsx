@@ -85,8 +85,8 @@ const NavigationDropdown: React.FC<NavigationDropdownProps> = React.memo(
           : 'text-coastal-gray hover:text-jeju-ocean';
       }
       return isActive || open
-        ? 'text-cloud-white font-bold drop-shadow-md'
-        : 'text-cloud-white/90 hover:text-cloud-white drop-shadow-md';
+        ? 'text-cloud-white font-bold text-shadow-soft'
+        : 'text-cloud-white/90 hover:text-cloud-white text-shadow-soft';
     };
 
     // hover 로는 열지 않는다 — 갤러리·비디오 등으로 가려고 마우스가 캠프·앨범 버튼

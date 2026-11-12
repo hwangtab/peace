@@ -149,7 +149,7 @@ function App({ Component, pageProps }: AppProps) {
 
         {isAdminRoute ? (
           <ErrorBoundary FallbackComponent={ErrorFallback} onError={reportReactError}>
-            <main id="main-content" className="overflow-x-hidden">
+            <main id="main-content" className="overflow-x-clip">
               <Component {...pageProps} />
             </main>
           </ErrorBoundary>
@@ -157,7 +157,7 @@ function App({ Component, pageProps }: AppProps) {
           <AuthProvider>
             <Navigation />
             <ErrorBoundary FallbackComponent={ErrorFallback} onError={reportReactError}>
-              <main id="main-content" className="overflow-x-hidden">
+              <main id="main-content" className="overflow-x-clip">
                 <Component {...pageProps} />
               </main>
             </ErrorBoundary>
