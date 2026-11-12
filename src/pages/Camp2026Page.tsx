@@ -7,6 +7,7 @@ import PageLayout from '@/components/layout/PageLayout';
 import Section from '@/components/layout/Section';
 import Container from '@/components/layout/Container';
 import SectionHeader from '@/components/common/SectionHeader';
+import ScrollReveal from '@/components/common/ScrollReveal';
 import SectionWave from '@/components/layout/SectionWave';
 import { timetable2026 } from '@/data/timetable-2026';
 import CampHero from '@/components/camp/CampHero';
@@ -170,7 +171,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({
       {/* Overview Section */}
       <Section background="ocean-sand" paddingBottom="loose">
         <Container size="content">
-          <motion.div variants={item} initial="hidden" whileInView="visible" viewport={viewport}>
+          <ScrollReveal>
             <div className="flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-8 items-stretch min-w-0">
               {/* Poster */}
               {camp2026.fundingUrl && !isPast ? (
@@ -241,7 +242,7 @@ const Camp2026Page: React.FC<CampPageProps> = ({
                 </div>
               </div>
             </div>
-          </motion.div>
+          </ScrollReveal>
         </Container>
       </Section>
 

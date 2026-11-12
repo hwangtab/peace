@@ -8,9 +8,10 @@ const POSTER = '/images-webp/solidarity/keep-singing-for-palestine-20260918.webp
 /**
  * Hero — 포스터의 "국기색이 반사되는 CD"를 배경 광택으로 옮긴 도입부.
  *
- * conic-gradient 원을 blur 해 정적인 광택으로 둔다. 예전에는 60초 무한 회전을
- * 걸었는데, 140vw + blur(90px) 레이어를 계속 변환·재래스터화해 스크롤 프레임을
- * 잡아먹었다. 정지 상태에서도 시각 효과는 동일하다.
+ * 예전에는 140vw 원에 blur(90px) 필터를 걸고 60초 무한 회전을 시켰는데,
+ * 거대한 필터 레이어를 계속 변환·재래스터화해 스크롤 프레임을 잡아먹었다.
+ * 지금은 필터 없이 여러 radial-gradient 를 겹쳐 같은 색 번짐을 정적으로 표현한다
+ * (래스터 1회, 스크롤 중 추가 비용 없음).
  */
 const Hero: React.FC = () => {
   const { t } = useTranslation('concert_ksfp_2026');
@@ -20,10 +21,12 @@ const Hero: React.FC = () => {
       {/* CD 반사광 */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
-          className="absolute left-1/2 top-[-10%] aspect-square w-[140vw] max-w-[1100px] -translate-x-1/2 rounded-full opacity-[0.38] blur-[90px] md:w-[80vw]"
+          className="absolute left-1/2 top-[-10%] aspect-square w-[140vw] max-w-[1100px] -translate-x-1/2 rounded-full opacity-[0.38] md:w-[80vw]"
           style={{
             background:
-              'conic-gradient(from 0deg, #CE1126, #F5F1EA 25%, #007A3D 50%, #0a0a0a 72%, #CE1126)',
+              'radial-gradient(60% 60% at 32% 30%, rgba(206,17,38,0.85) 0%, rgba(206,17,38,0) 70%),' +
+              'radial-gradient(55% 55% at 70% 36%, rgba(245,241,234,0.5) 0%, rgba(245,241,234,0) 72%),' +
+              'radial-gradient(65% 65% at 56% 74%, rgba(0,122,61,0.8) 0%, rgba(0,122,61,0) 70%)',
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0a]/40 to-[#0a0a0a]" />

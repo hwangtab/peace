@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { m as motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
+import { m as motion, useScroll, useTransform, useReducedMotion, useInView } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import { useIsMobile } from '@/hooks/useIsMobile';
@@ -30,6 +30,8 @@ const StoryBlock: React.FC<StoryBlockProps> = ({
   // 모바일에서는 parallax 비활성 — 3개 StoryBlock 이 동시에 rAF subscribe 하던 부담 제거.
   const isMobile = useIsMobile();
   const parallaxDisabled = prefersReducedMotion || isMobile;
+  // 뷰포트에서 벗어나면 transform 갱신을 멈춘다.
+  const isNearViewport = useInView(blockRef);
 
   const { scrollYProgress } = useScroll({
     target: blockRef,
@@ -46,7 +48,7 @@ const StoryBlock: React.FC<StoryBlockProps> = ({
     >
       <motion.div
         className="absolute inset-0 w-full h-full scale-[1.15]"
-        style={parallaxDisabled ? undefined : { y: bgY }}
+        style={parallaxDisabled || !isNearViewport ? undefined : { y: bgY }}
       >
         <Image
           src={imageSrc}

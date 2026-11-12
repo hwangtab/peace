@@ -42,21 +42,10 @@ const TrackCard = React.memo(
     const { t } = useTranslation();
     const { viewport, itemHidden, itemVisible, itemTransition } = useScrollReveal();
     const showContent = alwaysExpanded || isExpanded;
-    const [shouldRenderContent, setShouldRenderContent] = React.useState(showContent);
 
     // TrackHeader는 () => void 시그니처를 사용하므로 id를 바인딩해 전달한다.
     const handleToggle = React.useCallback(() => onToggle(track.id), [onToggle, track.id]);
     const handlePlay = React.useCallback(() => onPlay(track.id), [onPlay, track.id]);
-
-    React.useEffect(() => {
-      if (showContent) {
-        setShouldRenderContent(true);
-        return undefined;
-      }
-
-      const timeoutId = window.setTimeout(() => setShouldRenderContent(false), 200);
-      return () => window.clearTimeout(timeoutId);
-    }, [showContent]);
 
     return (
       <motion.div
@@ -89,66 +78,59 @@ const TrackCard = React.memo(
           alwaysExpanded={alwaysExpanded}
         />
 
-        <div
-          className={`grid transition-[grid-template-rows,opacity] duration-200 ease-out ${
-            showContent ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
-          }`}
-          aria-hidden={!showContent}
-        >
-          {shouldRenderContent && (
-            <motion.div
-              initial={alwaysExpanded ? false : { opacity: 0, y: -8 }}
-              animate={alwaysExpanded ? undefined : { opacity: 1, y: 0 }}
-              transition={alwaysExpanded ? undefined : { duration: 0.18, ease: 'easeOut' }}
-              className="min-h-0 overflow-hidden"
-            >
-              <div className="p-4">
-                {track.audioUrl && (
-                  <div className="mt-4 mb-6 md:mb-8">
-                    <AudioPlayer
-                      audioUrl={track.audioUrl}
-                      isPlaying={currentlyPlaying}
-                      onPlayPause={handlePlay}
-                      onEnded={onEnded}
-                      title={track.title}
-                      artist={track.artist}
-                    />
-                  </div>
-                )}
+        {/* 펼침/접힘은 즉시 레이아웃을 바꾼다. 예전에는 grid-template-rows(0fr→1fr)를
+            transition 으로 애니메이션해 펼치는 동안 매 프레임 레이아웃이 재계산됐다.
+            지금은 내용 자체만 opacity/transform 으로 짧게 페이드한다. */}
+        {showContent && (
+          <motion.div
+            initial={alwaysExpanded ? false : { opacity: 0, y: -8 }}
+            animate={alwaysExpanded ? undefined : { opacity: 1, y: 0 }}
+            transition={alwaysExpanded ? undefined : { duration: 0.18, ease: 'easeOut' }}
+          >
+            <div className="p-4">
+              {track.audioUrl && (
+                <div className="mt-4 mb-6 md:mb-8">
+                  <AudioPlayer
+                    audioUrl={track.audioUrl}
+                    isPlaying={currentlyPlaying}
+                    onPlayPause={handlePlay}
+                    onEnded={onEnded}
+                    title={track.title}
+                    artist={track.artist}
+                  />
+                </div>
+              )}
 
-                {track.description && (
-                  <div className="mb-6 md:mb-8">
-                    <div className="flex items-center mb-4">
-                      <h4 className="text-lg font-serif text-jeju-ocean">
-                        {t('common.track_desc')}
-                      </h4>
-                      <div className="flex-grow ms-3 sm:ms-4 h-px bg-coastal-gray/20" />
-                    </div>
-                    <p className="text-coastal-gray leading-relaxed whitespace-pre-line break-words">
-                      {track.description}
+              {track.description && (
+                <div className="mb-6 md:mb-8">
+                  <div className="flex items-center mb-4">
+                    <h4 className="text-lg font-serif text-jeju-ocean">{t('common.track_desc')}</h4>
+                    <div className="flex-grow ms-3 sm:ms-4 h-px bg-coastal-gray/20" />
+                  </div>
+                  <p className="text-coastal-gray leading-relaxed whitespace-pre-line break-words">
+                    {track.description}
+                  </p>
+                </div>
+              )}
+
+              {track.lyrics && (
+                <div className="mb-6 md:mb-8">
+                  <div className="flex items-center mb-4">
+                    <h4 className="text-lg font-serif text-jeju-ocean">{t('common.lyrics')}</h4>
+                    <div className="flex-grow ms-3 sm:ms-4 h-px bg-coastal-gray/20" />
+                  </div>
+                  <div className="bg-ocean-sand/30 p-4 rounded-lg">
+                    <p className="text-coastal-gray whitespace-pre-line leading-relaxed break-words">
+                      {track.lyrics}
                     </p>
                   </div>
-                )}
+                </div>
+              )}
 
-                {track.lyrics && (
-                  <div className="mb-6 md:mb-8">
-                    <div className="flex items-center mb-4">
-                      <h4 className="text-lg font-serif text-jeju-ocean">{t('common.lyrics')}</h4>
-                      <div className="flex-grow ms-3 sm:ms-4 h-px bg-coastal-gray/20" />
-                    </div>
-                    <div className="bg-ocean-sand/30 p-4 rounded-lg">
-                      <p className="text-coastal-gray whitespace-pre-line leading-relaxed break-words">
-                        {track.lyrics}
-                      </p>
-                    </div>
-                  </div>
-                )}
-
-                {track.credits && <TrackCredits credits={track.credits} />}
-              </div>
-            </motion.div>
-          )}
-        </div>
+              {track.credits && <TrackCredits credits={track.credits} />}
+            </div>
+          </motion.div>
+        )}
       </motion.div>
     );
   }

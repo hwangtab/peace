@@ -1,6 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
 import { useTranslation } from 'next-i18next';
-import { m as motion } from 'framer-motion';
 import CampHero from '@/components/camp/CampHero';
 import CampGallery from '@/components/camp/CampGallery';
 import CampParticipants from '@/components/camp/CampParticipants';
@@ -10,6 +9,7 @@ import PageLayout from '@/components/layout/PageLayout';
 import Section from '@/components/layout/Section';
 import Container from '@/components/layout/Container';
 import SectionHeader from '@/components/common/SectionHeader';
+import ScrollReveal from '@/components/common/ScrollReveal';
 import SectionWave from '@/components/layout/SectionWave';
 import { getFullUrl } from '@/config/env';
 import { getMusicians } from '@/api/musicians';
@@ -19,7 +19,6 @@ import Button from '@/components/common/Button';
 import { useLocalizedResource } from '@/hooks/useLocalizedResource';
 import { buildCampDetailSchemas } from '@/utils/buildCampDetailSchemas';
 import type { SchemaT } from '@/utils/buildCamp2026Schemas';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 interface CampDetailPageProps {
   campId: string;
@@ -38,7 +37,6 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
   initialLocale = 'ko',
 }) => {
   const { t, i18n } = useTranslation();
-  const { item, viewport } = useScrollReveal();
   const campList = useCamps();
   const camp = campList.find((c) => c.id === campId);
   const fetchMusicians = useCallback((locale: string) => getMusicians(locale), []);
@@ -105,63 +103,49 @@ const CampDetailPage: React.FC<CampDetailPageProps> = ({
 
       <Section background="ocean-sand" paddingBottom="loose">
         <Container size="prose">
-          <motion.div variants={item} initial="hidden" whileInView="visible" viewport={viewport}>
-            <div className="bg-white rounded-lg shadow-sm p-8 mb-12">
+          <ScrollReveal className="bg-white rounded-lg shadow-sm p-8 mb-12">
+            <SectionHeader
+              title={t('camp.section_overview')}
+              align="left"
+              className="!mb-6"
+              reveal={false}
+            />
+            <p className="typo-body mb-4 break-words">{camp.description}</p>
+          </ScrollReveal>
+
+          {camp.participants && camp.participants.length > 0 && (
+            <ScrollReveal className="bg-white rounded-lg shadow-sm p-8 mb-8">
               <SectionHeader
-                title={t('camp.section_overview')}
+                title={t('camp.section_musicians')}
                 align="left"
                 className="!mb-6"
                 reveal={false}
               />
-              <p className="typo-body mb-4 break-words">{camp.description}</p>
-            </div>
+              {musiciansResource.isLoading ? (
+                <p className="text-coastal-gray" role="status">
+                  {t('common.loading')}
+                </p>
+              ) : musiciansResource.error ? (
+                <p className="text-coastal-gray" role="alert">
+                  {t('common.no_results')}
+                </p>
+              ) : (
+                <CampParticipants participants={camp.participants} musicians={musicians} />
+              )}
+            </ScrollReveal>
+          )}
 
-            {camp.participants && camp.participants.length > 0 && (
-              <motion.div
-                variants={item}
-                initial="hidden"
-                whileInView="visible"
-                viewport={viewport}
-                className="bg-white rounded-lg shadow-sm p-8 mb-8"
-              >
-                <SectionHeader
-                  title={t('camp.section_musicians')}
-                  align="left"
-                  className="!mb-6"
-                  reveal={false}
-                />
-                {musiciansResource.isLoading ? (
-                  <p className="text-coastal-gray" role="status">
-                    {t('common.loading')}
-                  </p>
-                ) : musiciansResource.error ? (
-                  <p className="text-coastal-gray" role="alert">
-                    {t('common.no_results')}
-                  </p>
-                ) : (
-                  <CampParticipants participants={camp.participants} musicians={musicians} />
-                )}
-              </motion.div>
-            )}
-
-            {camp.staff && camp.staff.length > 0 && (
-              <motion.div
-                variants={item}
-                initial="hidden"
-                whileInView="visible"
-                viewport={viewport}
-                className="bg-white rounded-lg shadow-sm p-8"
-              >
-                <SectionHeader
-                  title={t('camp.section_staff')}
-                  align="left"
-                  className="!mb-6"
-                  reveal={false}
-                />
-                <CampStaff staff={camp.staff} collaborators={camp.collaborators} />
-              </motion.div>
-            )}
-          </motion.div>
+          {camp.staff && camp.staff.length > 0 && (
+            <ScrollReveal className="bg-white rounded-lg shadow-sm p-8">
+              <SectionHeader
+                title={t('camp.section_staff')}
+                align="left"
+                className="!mb-6"
+                reveal={false}
+              />
+              <CampStaff staff={camp.staff} collaborators={camp.collaborators} />
+            </ScrollReveal>
+          )}
         </Container>
       </Section>
 

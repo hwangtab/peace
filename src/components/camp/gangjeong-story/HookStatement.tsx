@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { m as motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
+import { m as motion, useScroll, useTransform, useReducedMotion, useInView } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import { useIsMobile } from '@/hooks/useIsMobile';
@@ -18,6 +18,9 @@ const HookStatement: React.FC<Props> = ({ variant = 'camp' }) => {
   // 모바일에서는 parallax 비활성 — rAF subscribe 가 main thread 차지해 INP 악화.
   const isMobile = useIsMobile();
   const parallaxDisabled = prefersReducedMotion || isMobile;
+  // 뷰포트에서 벗어나면 transform 갱신을 멈춘다 — 페이지 아래쪽 섹션들이
+  // 스크롤 내내 style 을 다시 쓰지 않게.
+  const isNearViewport = useInView(sectionRef);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -34,7 +37,7 @@ const HookStatement: React.FC<Props> = ({ variant = 'camp' }) => {
     >
       <motion.div
         className="absolute inset-0 w-full h-full"
-        style={parallaxDisabled ? undefined : { y: bgY }}
+        style={parallaxDisabled || !isNearViewport ? undefined : { y: bgY }}
       >
         <Image
           src="/images-webp/camps/2023/IMG_3565.webp"
